@@ -279,37 +279,91 @@ function formatSteps(text) {
   var raw = String(text).trim();
   if (!raw) return '';
 
-  var markerRegex = /(Step\s+\d+[:.]|Example:|Answer:|Solution:|Therefore:|Hence:|So:|Then:|Finally:)/gi;
-  if (markerRegex.test(raw)) {
-    markerRegex.lastIndex = 0;
-    var parts = raw.split(markerRegex);
-    var html = '<div class="step-list">';
-    if (parts[0] && parts[0].trim()) {
-      html += '<div class="step-item">' + parts[0].trim().replace(/\n+/g, '<br/>') + '</div>';
+  function renderFormulaAware(content) {
+    var segments = content.split(/(\$[^$]+\$)/g).filter(function(seg) { return seg !== undefined && seg !== null && seg !== ''; });
+    if (segments.length === 1) {
+      return '<span class="step-text">' + segments[0].trim().replace(/\n+/g, '<br/>') + '</span>';
     }
-    for (var i = 1; i < parts.length; i += 2) {
-      var label = parts[i] ? parts[i].trim() : '';
-      var content = parts[i + 1] ? parts[i + 1].trim().replace(/\n+/g, '<br/>') : '';
-      if (label || content) {
-        html += '<div class="step-item">';
-        if (label) html += '<span class="step-label">' + label + '</span>';
-        html += content + '</div>';
+
+    var onlyFormula = segments.length === 1 && /^\$[^$]+\$$/.test(segments[0]);
+    return segments.map(function(segment) {
+      if (/^\$[^$]+\$$/.test(segment)) {
+        var formula = segment.slice(1, -1).trim();
+        if (onlyFormula || formula.length > 40) {
+          return '<div class="step-formula-block">$$' + formula + '$$</div>';
+        }
+        return '<span class="step-formula-inline">' + segment + '</span>';
       }
-    }
-    html += '</div>';
-    return html;
+      var trimmed = segment.trim();
+      return trimmed ? '<span class="step-text">' + trimmed.replace(/\n+/g, '<br/>') + '</span>' : '';
+    }).join('');
   }
 
-  var pieces = raw.split(/(?<=[.!?])\s+(?=[A-Za-z0-9\(\$])/g);
-  if (pieces.length <= 1) {
-    pieces = raw.split(/:\s+/g);
+  function splitMarkers(line) {
+    var markerRegex = /(Step\s*\d+[:\-\.]|Example[:\-\.]|Answer[:\-\.]|Solution[:\-\.]|Therefore[:\-\.]|Hence[:\-\.]|So[:\-\.]|Then[:\-\.]|Finally[:\-.])/gi;
+    if (!markerRegex.test(line)) {
+      return [line.trim()];
+    }
+    markerRegex.lastIndex = 0;
+    var tokens = line.split(markerRegex).filter(function(token) { return token !== undefined && token !== null && token !== ''; });
+    var results = [];
+    if (tokens.length === 1) {
+      return [tokens[0].trim()];
+    }
+    if (!/^\b(?:Step|Example|Answer|Solution|Therefore|Hence|So|Then|Finally)/i.test(tokens[0].trim())) {
+      results.push(tokens[0].trim());
+    }
+    for (var i = 0; i < tokens.length; i += 2) {
+      var label = tokens[i].trim();
+      var content = (tokens[i + 1] || '').trim();
+      if (!content && i + 1 >= tokens.length) {
+        results.push(label);
+        break;
+      }
+      results.push((label ? label + ' ' : '') + content);
+    }
+    return results.filter(function(part) { return part && part.trim(); });
+  }
+
+  var lines = raw.split(/\r?\n/).map(function(line) { return line.trim(); }).filter(Boolean);
+  var parts = [];
+  lines.forEach(function(line) {
+    splitMarkers(line).forEach(function(part) {
+      parts.push(part);
+    });
+  });
+
+  if (parts.length <= 1) {
+    var sentenceSplit = raw.split(/(?<=[.!?])\s+(?=[A-Z0-9\$\(])/g).filter(function(s) { return s && s.trim(); });
+    if (sentenceSplit.length > 1) {
+      parts = sentenceSplit;
+    }
+  }
+
+  if (parts.length <= 1) {
+    var colonSplit = raw.split(/:\s+/g).filter(function(s) { return s && s.trim(); });
+    if (colonSplit.length > 1) {
+      parts = colonSplit.map(function(part) { return part.trim(); });
+    }
   }
 
   var html = '<div class="step-list">';
-  pieces.forEach(function(piece) {
+  parts.forEach(function(piece) {
     var item = piece.trim();
     if (!item) return;
-    html += '<div class="step-item">' + item.replace(/\n+/g, '<br/>') + '</div>';
+    html += '<div class="step-item">';
+
+    var markerMatch = item.match(/^(Step\s*\d+[:\-\.]|Example[:\-\.]|Answer[:\-\.]|Solution[:\-\.]|Therefore[:\-\.]|Hence[:\-\.]|So[:\-\.]|Then[:\-\.]|Finally[:\-.])/i);
+    if (markerMatch) {
+      var label = markerMatch[0].replace(/[\.\-]$/,'').trim();
+      var rest = item.slice(markerMatch[0].length).trim();
+      html += '<span class="step-label">' + label + '</span>';
+      if (rest) html += renderFormulaAware(rest);
+    } else {
+      html += renderFormulaAware(item);
+    }
+
+    html += '</div>';
   });
   html += '</div>';
   return html;
