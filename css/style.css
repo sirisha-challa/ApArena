@@ -106,7 +106,7 @@ html.dark {
   --color-primary: #818CF8;
   --color-primary-light: #A5B4FC;
   --color-primary-dark: #6366F1;
-  --color-primary-bg: rgba(129,140,248,0.1);
+  --color-primary-bg: rgba(129,140,248,0.12);
 
   --color-secondary: #2DD4BF;
   --color-secondary-light: #5EEAD4;
@@ -116,33 +116,33 @@ html.dark {
   --color-accent-light: #FCD34D;
   --color-accent-dark: #F59E0B;
 
-  --color-bg: #0F172A;
-  --color-bg-secondary: #1E293B;
-  --color-bg-tertiary: #334155;
-  --color-surface: #1E293B;
-  --color-surface-hover: #334155;
-  --color-border: #334155;
-  --color-border-light: #1E293B;
+  --color-bg: #000000;
+  --color-bg-secondary: #111111;
+  --color-bg-tertiary: #1A1A1A;
+  --color-surface: #111111;
+  --color-surface-hover: #1A1A1A;
+  --color-border: #222222;
+  --color-border-light: #1A1A1A;
 
-  --color-text: #F1F5F9;
-  --color-text-secondary: #94A3B8;
-  --color-text-tertiary: #64748B;
-  --color-text-inverse: #0F172A;
+  --color-text: #FFFFFF;
+  --color-text-secondary: #CBD5E1;
+  --color-text-tertiary: #94A3B8;
+  --color-text-inverse: #0A0A0A;
 
-  --sidebar-bg: linear-gradient(180deg,#0F172A,#1E293B,#1E293B);
-  --sidebar-text: #94A3B8;
+  --sidebar-bg: linear-gradient(180deg,#000000,#111111,#111111);
+  --sidebar-text: #9CA3AF;
   --sidebar-text-active: #FFFFFF;
   --sidebar-item-hover: rgba(255,255,255,0.06);
   --sidebar-item-active: rgba(129,140,248,0.2);
 
-  --card-bg: #1E293B;
-  --card-border: #334155;
-  --card-shadow: 0 1px 3px rgba(0,0,0,0.2),0 1px 2px rgba(0,0,0,0.15);
-  --card-shadow-hover: 0 10px 25px rgba(0,0,0,0.3),0 4px 10px rgba(0,0,0,0.15);
+  --card-bg: #111111;
+  --card-border: #222222;
+  --card-shadow: 0 1px 3px rgba(0,0,0,0.3),0 1px 2px rgba(0,0,0,0.2);
+  --card-shadow-hover: 0 10px 25px rgba(0,0,0,0.4),0 4px 10px rgba(0,0,0,0.2);
 
-  --glass-bg: rgba(30,41,59,0.6);
-  --glass-border: rgba(51,65,85,0.4);
-  --glass-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  --glass-bg: rgba(0,0,0,0.7);
+  --glass-border: rgba(255,255,255,0.08);
+  --glass-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 
 /* ------------------------------------------------------------
@@ -309,8 +309,17 @@ p { margin-bottom:var(--space-3); color:var(--color-text-secondary); line-height
   flex:1; margin-left:0;
   display:flex; flex-direction:column;
   min-height:100dvh;
-  padding-bottom:calc(var(--bottom-nav-height) + var(--space-4));
   transition:margin-left var(--transition-slow);
+}
+
+/* Footer */
+.app-footer {
+  text-align:center;
+  padding:var(--space-5) var(--space-4) calc(var(--bottom-nav-height) + var(--space-5));
+  font-size:var(--text-sm);
+  color:var(--color-text-tertiary);
+  border-top:1px solid var(--color-border);
+  margin-top:auto;
 }
 
 /* Header */
@@ -682,9 +691,9 @@ p { margin-bottom:var(--space-3); color:var(--color-text-secondary); line-height
 .tab-btn:hover { color:var(--color-text); }
 .tab-btn.active { color:var(--color-primary); border-bottom-color:var(--color-primary); }
 
-html.dark .tab-btn { color:#94A3B8; }
-html.dark .tab-btn:hover { color:#F1F5F9; }
-html.dark .tab-btn.active { color:#818CF8; border-bottom-color:#818CF8; }
+html.dark .tab-btn { color:var(--color-text-tertiary); }
+html.dark .tab-btn:hover { color:var(--color-text); }
+html.dark .tab-btn.active { color:var(--color-primary); border-bottom-color:var(--color-primary); }
 
 /* ------------------------------------------------------------
    17. READING SECTIONS (Interactive Accordion)
@@ -1162,7 +1171,7 @@ html.dark .tab-btn.active { color:#818CF8; border-bottom-color:#818CF8; }
   flex-shrink:0;
 }
 
-html.dark .option-letter { background:#334155; }
+html.dark .option-letter { background:var(--color-bg-tertiary); }
 
 .option-text { flex:1; }
 
@@ -1375,7 +1384,9 @@ html.dark .reading-card { background:var(--color-surface); border-color:var(--co
 html.dark .reading-card:hover { border-color:var(--color-primary-border); }
 html.dark .reading-bullets li { background:var(--color-bg-tertiary); }
 html.dark .practice-formula-card { background:var(--color-surface); border-color:var(--color-border); }
-html.dark .step-item { background:var(--color-bg-secondary); border-color:var(--color-border); }
+html.dark .step-item { background:var(--color-surface); border-color:var(--color-border); color:var(--color-text); }
+html.dark .step-item .step-label { color:var(--color-primary-light); }
+html.dark .step-item .step-text, html.dark .step-formula-inline { color:var(--color-text); }
 html.dark .formula-card { background:var(--color-surface); }
 html.dark .formula-box { background:var(--color-bg-tertiary); border-color:var(--color-border); }
 html.dark .formula-example { background:var(--color-primary-bg); }
