@@ -1,0 +1,219 @@
+============================================================
+codebase-memory-mcp Index Report: home-atom-Dev-IRIS-ApArena
+============================================================
+
+Generated: 2026-07-06
+Index mode: full
+Total nodes: 126
+Total edges: 198
+Artifact: .codebase-memory/graph.db.zst
+
+============================================================
+1. FILES
+============================================================
+
+/home/atom/Dev/IRIS/ApArena/
+  Roadmap.md              - 72-day study plan (24 topics)
+  Topic.md                - Number System content (6 sections)
+  index.html              - Entry point (57 lines, KaTeX CDN, SVG icons)
+  css/style.css           - Complete stylesheet (1176 lines, glassmorphism)
+  js/app.js               - SPA application logic (631 lines, 42 functions)
+  js/data.js              - Content data (596 lines, 16 formulas, ~160 practice, ~480 MCQs)
+
+============================================================
+2. NODE LABELS
+============================================================
+
+  Section  : 69  (from Roadmap.md + Topic.md)
+  Function : 42  (from js/app.js + js/data.js)
+  File     : 6   (index.html, style.css, app.js, data.js, Roadmap.md, Topic.md)
+  Module   : 6   (index, css.style, js.app, js.data, Roadmap, Topic)
+  Folder   : 2   (css, js)
+  Project  : 1   (root)
+
+============================================================
+3. EDGE TYPES
+============================================================
+
+  DEFINES               : 117  (file defines module / function / section)
+  CALLS                 : 67   (function calls another function)
+  CONTAINS_FILE         : 6    (folder contains file / root contains file)
+  IMPORTS               : 3    (index.html imports css, js.data, js.app)
+  SEMANTICALLY_RELATED  : 3    (renderDashboard~renderRoadmap, nextPractice~nextMcq, renderPractice~renderMcq)
+  CONTAINS_FOLDER       : 2    (css, js)
+
+============================================================
+4. PACKAGES / LAYERS
+============================================================
+
+  app  (js/app.js)    — 37 nodes, entry layer (only outbound calls to data)
+  data (js/data.js)   — 5 nodes, leaf layer  (only inbound calls from app)
+
+  Boundary calls (app -> data): 2
+    - checkMcqAnswer -> add
+    - bindEvents -> add
+
+============================================================
+5. HOTSPOTS (highest fan-in)
+============================================================
+
+  renderTopic          : fan-in 12
+  getTopicProgress     : fan-in 8
+  getTopic             : fan-in 6
+  renderDashboard      : fan-in 4
+  renderBottomNav      : fan-in 4
+  add                  : fan-in 3
+  updateTopicProgress  : fan-in 3
+  setContent           : fan-in 3
+  generateAllPractice  : fan-in 2
+  showToast            : fan-in 2
+
+============================================================
+6. CLUSTERS (Leiden community detection)
+============================================================
+
+  Cluster 3 (js, 11 members, cohesion 0.50):
+    renderTopic, getTopic, nextPractice, nextMcq, switchSection
+
+  Cluster 0 (js, 9 members, cohesion 0.58):
+    renderDashboard, bindEvents, init, renderRoadmap, renderBottomNav
+
+  Cluster 1 (js, 9 members, cohesion 0.55):
+    getTopicProgress, renderSectionContent, renderSidebar,
+    getOverallProgress, updateSidebarProgress
+
+  Cluster 2 (js, 8 members, cohesion 0.62):
+    updateTopicProgress, markSectionRead, checkMcqAnswer, add, markPracticeDone
+
+  Cluster 7 (js, 2 members, cohesion 1.00):
+    generateAllPracticeProblems, getPracticeForFormula
+
+============================================================
+7. ALL FUNCTIONS (by file, with line numbers)
+============================================================
+
+--- js/app.js ---
+
+  state                          :4   App state object
+  init()                         :20  Entry point
+  setContent(html)               :28  Renders HTML + triggers KaTeX
+  applyTheme()                   :40  Toggles dark/light mode
+  getTopicProgress(topicId)      :47  Gets progress from localStorage
+  updateTopicProgress(...)       :51  Updates progress + persists
+  saveProgress()                 :68  Writes state to localStorage
+  getOverallProgress()           :72  Computes overall completion %
+  getTopic(id)                   :85  Finds topic from APP_DATA
+  renderSidebar()                :87  Renders sidebar navigation
+  updateSidebarProgress()        :106 Updates sidebar progress bar
+  renderBottomNav()              :112 Updates bottom nav active state
+  renderDashboard()              :118 Renders dashboard view
+  renderRoadmap()                :174 Renders roadmap view
+  renderTopic(topicId)           :213 Renders topic detail view
+  renderSectionContent(topicId)  :256 Dispatches to section renderer
+  renderLearn(topic)             :269 Renders reading accordion
+  renderFormulas(topic)          :296 Renders formula cards
+  renderPractice(topic)          :311 Renders practice problems
+  renderMcq(topic)               :360 Renders MCQ quiz
+  navigate(view, param)          :411 Router / view navigator
+  switchSection(section)         :422 Switches topic section tab
+  toggleSection(topicId,sid)     :429 Toggles reading accordion
+  markSectionRead(topicId,sid)   :434 Marks reading section done
+  selectPracticeFormula(id,fid)  :441 Selects formula for practice
+  backToFormulaList(topicId)     :447 Back to formula grid
+  toggleSolution(fid,idx)        :453 Toggles practice solution
+  markPracticeDone(tid,fid,idx)  :458 Marks practice problem done
+  nextPractice()                 :463 Next practice problem
+  prevPractice()                 :474 Previous practice problem
+  checkMcqAnswer(tid,idx,sel)    :481 Checks MCQ answer
+  nextMcq(topicId)               :519 Next MCQ question
+  prevMcq(topicId)               :532 Previous MCQ question
+  filterMcq(topicId,filter)      :539 Filters MCQ list
+  toggleSidebar()                :545 Opens/closes sidebar
+  toggleTheme()                  :550 Toggles dark/light mode
+  showToast(message, type)       :558 Shows notification toast
+  bindEvents()                   :572 Attaches DOM event listeners
+
+--- js/data.js ---
+
+  generateFormulas()             :130 Returns 16 formula objects
+  generateAllPracticeProblems()  :248 Returns per-formula problem map
+  getPracticeForFormula(id)      :483 Utility to get specific formula problems
+  generateAllMCQs()              :489 Returns ~480 MCQ objects
+  add(q, opts, c, exp)           :492 Helper to push an MCQ
+
+============================================================
+8. CALL GRAPH (key call chains)
+============================================================
+
+  init()
+    -> applyTheme()
+    -> renderSidebar() -> getTopicProgress()
+                      -> updateSidebarProgress() -> getOverallProgress()
+    -> renderBottomNav()
+    -> renderDashboard() -> getTopicProgress()
+                         -> getOverallProgress()
+                         -> setContent()
+                         -> renderBottomNav()
+    -> bindEvents()
+
+  navigate(view, param)
+    -> renderDashboard() | renderRoadmap() | renderTopic()
+
+  renderTopic()
+    -> getTopic()
+    -> getTopicProgress()
+    -> renderSectionContent() -> renderLearn() | renderFormulas()
+                              | renderPractice() | renderMcq()
+    -> setContent()
+    -> renderSidebar()
+    -> renderBottomNav()
+
+  App -> Data boundary:
+    bindEvents()       -> add()
+    checkMcqAnswer()   -> add()
+
+  Persistence chain:
+    updateTopicProgress() -> saveProgress()
+                         -> updateSidebarProgress()
+
+============================================================
+9. COMPLEXITY & STRUCTURE SMELLS
+============================================================
+
+  heaviest function: generateAllPracticeProblems (232 lines, data.js:248-480)
+  heaviest function: generateAllMCQs             (106 lines, data.js:489-594)
+  largest render:    renderMcq                   (49 lines, app.js:360-409)
+  largest render:    renderPractice              (47 lines, app.js:311-358)
+  deepest call chain: init -> renderDashboard -> setContent [depth 2]
+
+  SECURITY NOTE: data.js at line 593 sets window.APP_DATA = { topics: T };
+  This exposes the full topic data (formulas, MCQs, practice problems)
+  globally. Acceptable for a static client-side app.
+
+============================================================
+10. ARCHITECTURE SUMMARY
+============================================================
+
+  index.html ── imports ──> css/style.css
+                         ──> js/data.js  (window.APP_DATA)
+                         ──> js/app.js   (window.APP)
+
+  js/app.js ── calls ──> js/data.js (via window.APP_DATA)
+
+  App structure:
+    - SPA with hash-free routing (view state machine)
+    - 4 views: dashboard, roadmap, topic, (bottom nav: learn/mcq)
+    - Topic view has 4 sections: learn, formulas, practice, mcq
+    - Progress persisted in localStorage ('aptitudeProgress')
+    - Dark mode persisted in localStorage ('aptitudeDarkMode')
+    - KaTeX CDN for LaTeX rendering (auto-render on content swap)
+
+  Data flow:
+    APP_DATA (data.js) ──> render functions ──> setContent() ──> DOM
+                     ──> user interaction  ──> updateTopicProgress()
+                                              ──> saveProgress()
+                                              ──> re-render
+
+============================================================
+END OF REPORT
+============================================================
