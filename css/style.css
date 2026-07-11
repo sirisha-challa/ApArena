@@ -793,68 +793,6 @@ html.dark .tab-btn.active { color:var(--color-primary); border-bottom-color:var(
   color:var(--color-text-strong);
 }
 
-.step-list {
-  margin-top:var(--space-3);
-  display:flex;
-  flex-direction:column;
-  gap:var(--space-3);
-}
-
-.step-item {
-  padding:var(--space-3) var(--space-4);
-  background:var(--color-surface);
-  border-radius:var(--radius-md);
-  border-left:4px solid rgba(79,70,229,0.35);
-  font-size:var(--text-base);
-  line-height:var(--leading-relaxed);
-  margin-bottom:0;
-  box-shadow: 0 1px 2px rgba(15,23,42,0.04);
-}
-
-.step-item .step-label {
-  display:block;
-  font-weight:700;
-  color:var(--color-primary);
-  margin-bottom:var(--space-2);
-}
-
-.step-item .step-text {
-  display:inline;
-  margin:0;
-  overflow-wrap:break-word;
-}
-
-.step-formula-inline {
-  display:inline-block;
-  font-weight:700;
-  color:var(--color-text);
-  white-space:nowrap;
-  vertical-align:middle;
-  margin:0 0.15rem;
-}
-
-.step-formula-block {
-  display:flex;
-  justify-content:center;
-  width:100%;
-  margin:0.75rem 0 0.5rem;
-  padding:0;
-  background:transparent;
-  border:none;
-  overflow-x:auto;
-}
-
-.step-formula-block .katex,
-.step-formula-inline .katex {
-  display:inline-block;
-  font-weight:700;
-  max-width:100%;
-}
-
-.step-formula-block .katex-display {
-  max-width:100%;
-}
-
 .step-item strong,
 .step-item b {
   font-weight:700;
@@ -911,8 +849,6 @@ html.dark .tab-btn.active { color:var(--color-primary); border-bottom-color:var(
   display:block;
   margin-bottom:var(--space-1);
 }
-
-
 
 .reading-body .btn {
   margin-top:var(--space-3);
@@ -1386,7 +1322,7 @@ html.dark .reading-bullets li { background:var(--color-bg-tertiary); }
 html.dark .practice-formula-card { background:var(--color-surface); border-color:var(--color-border); }
 html.dark .step-item { background:var(--color-surface); border-color:var(--color-border); color:var(--color-text); }
 html.dark .step-item .step-label { color:var(--color-primary-light); }
-html.dark .step-item .step-text, html.dark .step-formula-inline { color:var(--color-text); }
+
 html.dark .formula-card { background:var(--color-surface); }
 html.dark .formula-box { background:var(--color-bg-tertiary); border-color:var(--color-border); }
 html.dark .formula-example { background:var(--color-primary-bg); }
@@ -1401,3 +1337,226 @@ html.dark .btn-outline { color:var(--color-text-secondary); }
 html.dark .btn-outline:hover { color:var(--color-primary-light); }
 html.dark .empty-state { color:var(--color-text-tertiary); }
 html.dark .toast-container { top:var(--space-4); right:var(--space-4); }
+
+/* ============================================================
+   MATH RENDERING - BOLD, NO BOXES
+   ============================================================ */
+.math-bold {
+    font-weight: 700;
+    color: var(--color-text);
+    white-space: nowrap;
+}
+
+.math-bold .katex {
+    font-weight: 700;
+}
+
+/* ============================================================
+   STEP-BY-STEP LAYOUT
+   ============================================================ */
+.step-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: var(--space-2) 0;
+}
+
+.step-item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border-left: 4px solid rgba(79, 70, 229, 0.35);
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+.step-item .step-label {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 60px;
+}
+
+.step-item .step-text {
+    flex: 1;
+    color: var(--color-text);
+    line-height: var(--leading-relaxed);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ============================================================
+   PROSE PARAGRAPHS (non-step content)
+   ============================================================ */
+.prose-para {
+    font-size: var(--text-base);
+    line-height: var(--leading-loose);
+    color: var(--color-text);
+    margin: 0 0 var(--space-3) 0;
+}
+
+.prose-para:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================================================
+   READING SECTIONS - PROPER SPACING
+   ============================================================ */
+.reading-intro {
+    font-size: var(--text-base);
+    line-height: var(--leading-loose);
+    color: var(--color-text);
+    margin-bottom: var(--space-4);
+}
+
+.reading-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-4) 0;
+}
+
+.reading-bullets li {
+    position: relative;
+    padding: var(--space-4) var(--space-5) var(--space-4) var(--space-8);
+    margin-bottom: var(--space-4);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    border-left: 4px solid var(--color-primary);
+    transition: all 0.15s ease;
+}
+
+.reading-bullets li:last-child {
+    margin-bottom: 0;
+}
+
+.reading-bullets li:hover {
+    background: var(--color-bg-secondary);
+}
+
+.reading-bullets li::before {
+    content: '';
+    position: absolute;
+    left: var(--space-4);
+    top: calc(var(--space-4) + 6px);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-primary);
+}
+
+.reading-bullets li strong.sub-title {
+    display: block;
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px dashed var(--color-border);
+    line-height: var(--leading-tight);
+}
+
+.reading-bullets li .sub-body {
+    font-size: var(--text-base);
+    line-height: var(--leading-loose);
+    color: var(--color-text);
+}
+
+.reading-bullets li .sub-body .prose-para {
+    margin-bottom: var(--space-2);
+}
+
+.reading-bullets li .sub-body .step-list {
+    margin: var(--space-2) 0 0 0;
+}
+
+/* ============================================================
+   FORMULA CARDS
+   ============================================================ */
+.formula-card .formula-explanation {
+    font-size: var(--text-base);
+    line-height: var(--leading-loose);
+    color: var(--color-text);
+    margin: var(--space-3) 0;
+}
+
+.formula-card .formula-example {
+    background: var(--color-bg-secondary);
+    border-left: 4px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-5);
+    margin-top: var(--space-4);
+}
+
+.formula-card .formula-example strong.example-label {
+    display: block;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-2);
+}
+
+.formula-card .formula-example .example-content {
+    font-size: var(--text-base);
+    line-height: var(--leading-relaxed);
+    color: var(--color-text);
+}
+
+/* ============================================================
+   MCQ EXPLANATION
+   ============================================================ */
+.mcq-explanation .step-list {
+    margin: var(--space-3) 0 0 0;
+}
+
+.mcq-explanation .step-item {
+    background: rgba(79, 70, 229, 0.04);
+}
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+html.dark .step-item {
+    background: var(--color-surface);
+}
+
+html.dark .reading-bullets li {
+    background: var(--color-bg-tertiary);
+}
+
+html.dark .reading-bullets li:hover {
+    background: var(--color-primary-bg);
+}
+
+html.dark .mcq-explanation .step-item {
+    background: rgba(129, 140, 248, 0.06);
+}
+
+html.dark .formula-card .formula-example {
+    background: var(--color-bg-tertiary);
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .step-item {
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+
+    .step-item .step-label {
+        min-width: auto;
+    }
+
+    .reading-bullets li {
+        padding: var(--space-3) var(--space-4) var(--space-3) var(--space-7);
+    }
+}

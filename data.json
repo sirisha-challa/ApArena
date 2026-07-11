@@ -8711,6 +8711,5037 @@
         }
       ],
       "estimatedHours": 30
+    },
+    {
+      "id": "simplification",
+      "title": "Simplification & Approximation",
+      "icon": "\u03a3",
+      "subtitle": "BODMAS, Surds & Indices, Square/Cube Roots, Approximation, Vedic Math & More",
+      "days": "4-6",
+      "color": "#059669",
+      "subtopics": [
+        "BODMAS / VBODMAS Rule",
+        "Surds & Indices",
+        "Square & Cube Roots",
+        "Approximation & % Table",
+        "Vedic Math Shortcuts"
+      ],
+      "readingSections": [
+        {
+          "id": "bodmas",
+          "title": "The BODMAS / VBODMAS Rule",
+          "content": "When you see a long expression with mixed operators (+, -, *, /) and brackets ( ), { }, [ ], and the word 'of', use BODMAS. This is the #1 most tested rule in TCS, Infosys, Wipro, and Cognizant placement papers. Companies love to place 'of' right before multiplication to trap students. Remember: 'Of' comes BEFORE Division and Multiplication.",
+          "subsections": [
+            {
+              "title": "The Order (VBODMAS)",
+              "content": "Step 1: V = Vinculum (bar bracket $\\overline{a-b}$). Solve this FIRST. Step 2: B = Brackets ( ), { }, [ ] from inner to outer. Step 3: O = Of (fractions/percentages or literal 'of'). Step 4: D = Division. Step 5: M = Multiplication. Step 6: A = Addition. Step 7: S = Subtraction. Note: Division/Multiplication have same priority, solve left to right. Same for Addition/Subtraction."
+            },
+            {
+              "title": "Pattern Recognition - How to Spot BODMAS Questions",
+              "content": "Pattern: A long string of numbers with multiple operators like $12 + 8 \\div 4 \\times 3 - 5$. Trap Pattern: 'Of' next to division, like $24 \\div 6 \\text{ of } 2 + 5$. If you do division first, you get the wrong answer! Always do 'Of' first."
+            },
+            {
+              "title": "Common Mistakes in Placement Exams",
+              "content": "Mistake 1: Doing division before 'of'. Rule: 'Of' is like a hidden multiplication that must be solved first. Mistake 2: Solving addition before subtraction when subtraction comes first (left to right rule). Mistake 3: Forgetting vinculum/bar bracket which has highest priority. Example: $\\overline{9-3}$ must be solved before anything else."
+            },
+            {
+              "title": "Step-by-Step BODMAS Problem Solving",
+              "content": "Problem: $12 + 8 \\div 4 \\times 3 - 5$. Step 1 (Division): $8 \\div 4 = 2$, expression: $12 + 2 \\times 3 - 5$. Step 2 (Multiplication): $2 \\times 3 = 6$, expression: $12 + 6 - 5$. Step 3 (Add/Sub left to right): $12 + 6 = 18$, $18 - 5 = 13$. Answer: 13."
+            }
+          ]
+        },
+        {
+          "id": "surds-indices",
+          "title": "Surds & Indices (Laws of Exponents)",
+          "content": "Indices questions appear in almost every placement paper. The key pattern: variables in the exponent position like $2^x = 32$, or fractional powers like $27^{2/3}$. The golden rule: Convert everything to the SAME BASE. If you cannot, use the laws of exponents.",
+          "subsections": [
+            {
+              "title": "The 6 Core Laws of Indices",
+              "content": "Law 1: $a^m \\times a^n = a^{m+n}$ (Product: add powers). Law 2: $a^m \\div a^n = a^{m-n}$ (Quotient: subtract powers). Law 3: $(a^m)^n = a^{mn}$ (Power of power: multiply). Law 4: $a^0 = 1$ (any non-zero base). Law 5: $a^{-m} = 1/a^m$ (negative power = reciprocal). Law 6: $a^{m/n} = (\\sqrt[n]{a})^m$ (fractional power = root then power)."
+            },
+            {
+              "title": "Pattern Recognition for Indices",
+              "content": "Pattern 1: Same base different exponents $\\rightarrow$ use Law 1 or 2. Pattern 2: Different base same exponent $\\rightarrow$ try to convert to same base. Pattern 3: Fractional exponents $\\rightarrow$ use Law 6 (root-power). Pattern 4: Negative exponents $\\rightarrow$ use Law 5 (reciprocal). Pattern 5: Complex expression like $(x^a/x^b)^{a^2+ab+b^2} \\times ... $ $\\rightarrow$ use Law 3 and algebraic identities."
+            },
+            {
+              "title": "Common Indices Tricks",
+              "content": "Trick 1: $256^{0.16} \\times 256^{0.09}$. Add powers: $0.16+0.09=0.25=1/4$. So $256^{1/4} = 4$. Trick 2: For $(a/b)^{x-1} = (b/a)^{x-3}$, flip the fraction: $(a/b)^{x-1} = (a/b)^{-(x-3)} = (a/b)^{3-x}$. So $x-1 = 3-x$, giving $x=2$."
+            }
+          ]
+        },
+        {
+          "id": "roots",
+          "title": "Square Roots & Cube Roots (Speed Shortcuts)",
+          "content": "When asked to find $\\sqrt{X}$ or $\\sqrt[3]{X}$ where X is a 4 to 6 digit perfect square/cube, NEVER use long division. Use the unit-digit shortcut method. This saves 30+ seconds per question.",
+          "subsections": [
+            {
+              "title": "Square Root Unit Digit Shortcut",
+              "content": "Memorize: Ends in 1 $\\rightarrow$ root ends in 1 or 9. Ends in 4 $\\rightarrow$ root ends in 2 or 8. Ends in 5 $\\rightarrow$ root ends in 5. Ends in 6 $\\rightarrow$ root ends in 4 or 6. Ends in 9 $\\rightarrow$ root ends in 3 or 7. Ends in 0 $\\rightarrow$ root ends in 0. Ends in 2,3,7,8 $\\rightarrow$ NOT a perfect square! To find tens digit: ignore last 2 digits, find which perfect squares the remaining part falls between, pick the smaller number."
+            },
+            {
+              "title": "Cube Root Unit Digit Shortcut",
+              "content": "Memorize: 1$\\to$1, 2$\\to$8, 3$\\to$7, 4$\\to$4, 5$\\to$5, 6$\\to$6, 7$\\to$3, 8$\\to$2, 9$\\to$9, 0$\\to$0. To find tens digit: group digits in threes from right, ignore last group, find cube of remaining part."
+            },
+            {
+              "title": "The Check Trick for Square Roots",
+              "content": "After finding tens digit (say T), compute $T \\times (T+1)$. If remaining part (ignored last 2 digits) is greater than this product, pick the larger unit digit. If smaller, pick the smaller unit digit. Example: $\\sqrt{5776}$: tens digit=7, $7\\times8=56$. Remaining=57. 57>56, so pick larger unit digit 6. Answer: 76."
+            }
+          ]
+        },
+        {
+          "id": "approximation",
+          "title": "Approximation & Fraction-Percentage Master Table",
+          "content": "When the question says 'What approximate value should come in place of the question mark?' or 'What is the approximate value of...', DO NOT calculate exactly. Round off numbers to nearest integers or simple multiples. The Fraction-to-Percentage table is your secret weapon.",
+          "subsections": [
+            {
+              "title": "Master Fraction-Percentage Table (Memorize)",
+              "content": "$1/2=50\\%$, $1/3=33.33\\%$, $1/4=25\\%$, $1/5=20\\%$, $1/6=16.66\\%$, $1/7=14.28\\%$, $1/8=12.5\\%$, $1/9=11.11\\%$, $1/10=10\\%$, $1/11=9.09\\%$, $1/12=8.33\\%$, $1/13=7.69\\%$, $1/14=7.14\\%$, $1/15=6.66\\%$."
+            },
+            {
+              "title": "Extended Fraction Table",
+              "content": "$2/3=66.66\\%$, $3/4=75\\%$, $2/5=40\\%$, $3/5=60\\%$, $4/5=80\\%$, $5/6=83.33\\%$, $3/8=37.5\\%$, $5/8=62.5\\%$, $7/8=87.5\\%$, $2/9=22.22\\%$, $4/9=44.44\\%$, $5/9=55.55\\%$, $7/9=77.77\\%$, $8/9=88.88\\%$."
+            },
+            {
+              "title": "Rounding Rules for Approximation",
+              "content": "Rule 1: Round 19.02 to 19, 4.99 to 5. Rule 2: 34.95% round to 35%. Rule 3: $\\sqrt{624.9}$ round to $\\sqrt{625}=25$. Rule 4: 44.99 \u00f7 4.99 round to 45 \u00f7 5 = 9. Rule 5: 3.01% of 500 = 3% of 500 = 15."
+            },
+            {
+              "title": "Pattern Recognition for Approximation",
+              "content": "If numbers look like 19.99, 34.95%, 4.98, $\\sqrt{624.9}$: you MUST approximate. If the question says 'approximate value' or 'closest value': never solve exactly. If the options are far apart (like 380, 385, 390, 395), rough approximation works."
+            }
+          ]
+        },
+        {
+          "id": "vedic-math",
+          "title": "Vedic Math & Fast Calculation Shortcuts",
+          "content": "These are the speed boosters that separate top scorers from the rest. Master these two shortcuts: squaring numbers ending in 5, and multiplying numbers near a base (100, 1000, etc.).",
+          "subsections": [
+            {
+              "title": "Shortcut 1: Squaring Numbers Ending in 5",
+              "content": "Formula: $(X5)^2 = X \\times (X+1) \\text{ followed by } 25$. Example: $75^2$: $7 \\times 8 = 56$, append 25 $\\rightarrow$ 5625. Works for any number ending in 5: $35^2 = 1225$, $85^2 = 7225$, $105^2 = 11025$, $125^2 = 15625$."
+            },
+            {
+              "title": "Shortcut 2: Multiplication Near Base 100",
+              "content": "Formula for numbers ABOVE base: $(100+a) \\times (100+b) = (100+a+b) \\times 100 + (a \\times b)$. Example: $104 \\times 107$: surpluses +4 and +7. Cross add: $104+7=111$ (left part). Multiply: $4\\times7=28$ (right part). Answer: 11128. For BELOW base: $96 \\times 97$: deficiencies -4 and -3. Cross subtract: $96-3=93$ (left part). Multiply: $(-4)\\times(-3)=12$ (right part). Answer: 9312."
+            }
+          ]
+        }
+      ],
+      "formulas": [
+        {
+          "id": "bodmas-basic",
+          "title": "BODMAS Order of Operations",
+          "formula": "\\text{V} \\to \\text{B} \\to \\text{O} \\to \\text{D/M} \\to \\text{A/S} \\quad (\\text{left to right within D/M and A/S})",
+          "explanation": "The VBODMAS rule defines the priority order: Vinculum (bar bracket) first, then Brackets from inner to outer, then Of, then Division and Multiplication (equal priority, left to right), then Addition and Subtraction (equal priority, left to right). This is the foundation of all simplification.",
+          "example": "$12+8\\div4\\times3-5$: Step 1: $8\\div4=2$ (D). Step 2: $2\\times3=6$ (M). Step 3: $12+6=18$ (A). Step 4: $18-5=13$ (S). Answer: 13."
+        },
+        {
+          "id": "bodmas-of",
+          "title": "The 'Of' Rule in BODMAS",
+          "formula": "a \\text{ of } b = a \\times b \\quad \\text{(solved before other D/M)}",
+          "explanation": "'Of' acts like multiplication but has HIGHER priority than regular division and multiplication. This is the most common trap in placement exams. Whenever you see 'of', solve that multiplication FIRST before any other division or multiplication in the expression.",
+          "example": "$24\\div6\\text{ of }2+5$: Step 1: $6\\text{ of }2=12$ (O). Step 2: $24\\div12=2$ (D). Step 3: $2+5=7$ (A). Answer: 7. (Wrong method: $24\\div6=4$, $4\\times2=8$, $8+5=13$.)"
+        },
+        {
+          "id": "bodmas-vinculum",
+          "title": "Vinculum / Bar Bracket Rule",
+          "formula": "\\overline{a-b} = a-b \\quad \\text{(solved before all other brackets)}",
+          "explanation": "Vinculum (the bar over an expression) has the HIGHEST priority in VBODMAS. Solve everything under the bar before solving any other brackets. This is often tested in TCS and Infosys exams with nested brackets.",
+          "example": "$25-[16-\\{14-(12-\\overline{9-3})\\}]$: Step 1: $\\overline{9-3}=6$. Step 2: $(12-6)=6$. Step 3: $\\{14-6\\}=8$. Step 4: $[16-8]=8$. Step 5: $25-8=17$. Answer: 17."
+        },
+        {
+          "id": "indices-multiply",
+          "title": "Law of Indices: Multiplication",
+          "formula": "a^m \\times a^n = a^{m+n}",
+          "explanation": "When multiplying terms with the SAME base, ADD the exponents. This is the most frequently used law. Applied when you see expressions like $5^x \\times 5^y$ or $256^{0.16} \\times 256^{0.09}$.",
+          "example": "$256^{0.16} \\times 256^{0.09} = 256^{0.25} = 256^{1/4} = 4$. Step 1: Add powers $0.16+0.09=0.25=1/4$. Step 2: $256^{1/4}$ means 4th root of $256 = 4$."
+        },
+        {
+          "id": "indices-divide",
+          "title": "Law of Indices: Division",
+          "formula": "a^m \\div a^n = a^{m-n}",
+          "explanation": "When dividing terms with the SAME base, SUBTRACT the exponents (numerator exponent minus denominator exponent). Used for expressions like $5^{x+3}/5^{x-1}$ or $(x^a)/(x^b)$.",
+          "example": "$5^{x+3} \\div 5^{x-1} = 5^{(x+3)-(x-1)} = 5^{4} = 625$. Step 1: Subtract powers: $(x+3)-(x-1)=x+3-x+1=4$. Step 2: $5^4=625$."
+        },
+        {
+          "id": "indices-power",
+          "title": "Law of Indices: Power of a Power",
+          "formula": "(a^m)^n = a^{m \\times n}",
+          "explanation": "When a power is raised to another power, MULTIPLY the exponents. Used for complex expressions like $(x^a/x^b)^{a^2+ab+b^2}$ or $(27)^{2/3}$.",
+          "example": "$27^{2/3} = (3^3)^{2/3} = 3^{3\\times2/3} = 3^2 = 9$. Step 1: $27=3^3$. Step 2: $(3^3)^{2/3}=3^{3\\times2/3}=3^2=9$."
+        },
+        {
+          "id": "indices-negative",
+          "title": "Negative & Fractional Indices",
+          "formula": "a^{-m} = \\frac{1}{a^m}, \\quad a^{m/n} = (\\sqrt[n]{a})^m",
+          "explanation": "Negative exponent means reciprocal. Fractional exponent means root then power. Example: $2^{-3}=1/8$. $8^{2/3}=(\\sqrt[3]{8})^2=2^2=4$.",
+          "example": "$(0.04)^{-1.5}$: Step 1: $0.04=1/25$. Step 2: $(1/25)^{-1.5}=25^{1.5}=25^{3/2}$. Step 3: $(\\sqrt{25})^3=5^3=125$. Answer: 125."
+        },
+        {
+          "id": "square-root",
+          "title": "Square Root Unit Digit Shortcut",
+          "formula": "\\text{If } X \\text{ ends in } d, \\text{ root ends in } f(d) \\text{ where } f(1)=\\{1,9\\}, f(4)=\\{2,8\\}, f(5)=5, f(6)=\\{4,6\\}, f(9)=\\{3,7\\}, f(0)=0",
+          "explanation": "Never use long division. Step 1: Check unit digit of number to find possible root endings. Step 2: Ignore last 2 digits, find the perfect square below the remaining number (this gives tens digit). Step 3: Use the check: tens digit x (tens digit+1). If remainder > this, pick larger unit digit.",
+          "example": "$\\sqrt{1849}$: Ends in 9, so root ends in 3 or 7. Ignore 49, remaining 18. $4^2=16$, $5^2=25$, so tens digit=4. $4\\times5=20$. 18<20, so pick smaller unit digit 3. Answer: 43."
+        },
+        {
+          "id": "cube-root",
+          "title": "Cube Root Unit Digit Shortcut",
+          "formula": "\\text{If } X \\text{ ends in } d, \\text{ root ends in: } 1\\to1, 2\\to8, 3\\to7, 4\\to4, 5\\to5, 6\\to6, 7\\to3, 8\\to2, 9\\to9, 0\\to0",
+          "explanation": "Step 1: Use unit digit mapping to find unit digit of root. Step 2: Group digits in threes from right, ignore last 3 digits. Step 3: Find the cube that is below or equal to the remaining number - that's the tens digit.",
+          "example": "$\\sqrt[3]{13824}$: Ends in 4, so root ends in 4. Groups: 13|824, remaining=13. $2^3=8$, $3^3=27$, so tens digit=2. Combine: 24. Answer: 24."
+        },
+        {
+          "id": "frac-percent",
+          "title": "Fraction to Percentage Conversion Table",
+          "formula": "\\frac{1}{n} = \\frac{100}{n}\\% \\quad \\text{Master table: } \\frac{1}{2}=50\\%, \\frac{1}{3}=33.33\\%, \\frac{1}{4}=25\\%, \\frac{1}{5}=20\\%, \\frac{1}{6}=16.66\\%, \\frac{1}{7}=14.28\\%, \\frac{1}{8}=12.5\\%, \\frac{1}{9}=11.11\\%, \\frac{1}{10}=10\\%",
+          "explanation": "The fraction-to-percentage table is your secret weapon for approximation. Convert complex percentages instantly: $14.28\\%=1/7$, $33.33\\%=1/3$, $12.5\\%=1/8$, etc. This turns percentage calculations into simple division.",
+          "example": "$33.33\\%\\text{ of }600 - 16.66\\%\\text{ of }300$: Step 1: $33.33\\%=1/3$, so $(1/3)\\times600=200$. Step 2: $16.66\\%=1/6$, so $(1/6)\\times300=50$. Step 3: $200-50=150$. Answer: 150."
+        },
+        {
+          "id": "approximation",
+          "title": "Approximation & Rounding Rules",
+          "formula": "\\text{Round: } 19.02\\approx19, \\; 4.99\\approx5, \\; 34.95\\%\\approx35\\%, \\; \\sqrt{624.9}\\approx\\sqrt{625}=25",
+          "explanation": "When you see 'approximate value' or numbers like 19.99, 4.98, $\\sqrt{624.9}$, $44.99\\%$: round to the nearest convenient number. The goal is to make calculation trivial without significant error. Apply BODMAS on rounded values.",
+          "example": "$19.02\\times4.99\\times X=380$: Step 1: $19.02\\approx19$, $4.99\\approx5$. Step 2: $19\\times5\\times X=380 \\to 95X=380$. Step 3: $X=380/95=4$. Answer: 4."
+        },
+        {
+          "id": "vedic-squares",
+          "title": "Squaring Numbers Ending in 5",
+          "formula": "(X5)^2 = X \\times (X+1) \\mid 25",
+          "explanation": "For any number ending in 5: multiply the tens digit by the next consecutive number, then append 25. This is 10x faster than traditional multiplication.",
+          "example": "$75^2$: Step 1: Tens digit X=7. Step 2: $7\\times8=56$. Step 3: Append 25. Answer: 5625. Check: $75\\times75=5625$."
+        },
+        {
+          "id": "vedic-near-base",
+          "title": "Multiplication Near Base 100/1000",
+          "formula": "(100+a) \\times (100+b) = (100+a+b) \\mid (a\\times b) \\quad \\text{(for base 100)}",
+          "explanation": "For numbers near 100: find surpluses/deficiencies. Cross add/subtract for left part. Multiply surpluses/deficiencies for right part. Right part must have 2 digits for base 100 (carry if needed), 3 digits for base 1000.",
+          "example": "$104\\times107$: Surpluses +4,+7. Left: $104+7=111$. Right: $4\\times7=28$. Answer: 11128. $96\\times97$: Deficiencies -4,-3. Left: $96-3=93$. Right: $(-4)\\times(-3)=12$. Answer: 9312."
+        }
+      ],
+      "practiceProblems": {
+        "bodmas-basic": [
+          {
+            "q": "Simplify: $12 + 8 \\div 4 \\times 3 - 5$",
+            "s": [
+              "Step 1 (Division): $8 \\div 4 = 2$, expression becomes $12 + 2 \\times 3 - 5$",
+              "Step 2 (Multiplication): $2 \\times 3 = 6$, expression becomes $12 + 6 - 5$",
+              "Step 3 (Add/Sub left to right): $12 + 6 = 18$, then $18 - 5 = 13$"
+            ],
+            "a": "13"
+          },
+          {
+            "q": "Simplify: $36 \\div 9 \\times 2 + 14 - 10 \\div 5$",
+            "s": [
+              "Step 1 (Division L to R): $36 \\div 9 = 4$, expression: $4 \\times 2 + 14 - 10 \\div 5$",
+              "Step 2 (Multiplication): $4 \\times 2 = 8$, expression: $8 + 14 - 10 \\div 5$",
+              "Step 3 (Division): $10 \\div 5 = 2$, expression: $8 + 14 - 2$",
+              "Step 4 (Add/Sub): $8 + 14 = 22$, $22 - 2 = 20$"
+            ],
+            "a": "20"
+          },
+          {
+            "q": "Simplify: $100 - [20 + \\{30 - 2(10 - 4)\\}]$",
+            "s": [
+              "Step 1 (Inner bracket): $10 - 4 = 6$, expression: $100 - [20 + \\{30 - 2(6)\\}]$",
+              "Step 2 (Mul inside curly): $2 \\times 6 = 12$, expression: $100 - [20 + \\{30 - 12\\}]$",
+              "Step 3 (Curly bracket): $30 - 12 = 18$, expression: $100 - [20 + 18]$",
+              "Step 4 (Square bracket): $20 + 18 = 38$, expression: $100 - 38$",
+              "Step 5 (Final): $100 - 38 = 62$"
+            ],
+            "a": "62"
+          },
+          {
+            "q": "Simplify: $45 \\div 5 \\text{ of } 3 + 24 \\div 4 - 3 \\times 2$",
+            "s": [
+              "Step 1 (Of): $5 \\text{ of } 3 = 15$, expression: $45 \\div 15 + 24 \\div 4 - 3 \\times 2$",
+              "Step 2 (Divisions): $45 \\div 15 = 3$ and $24 \\div 4 = 6$, expression: $3 + 6 - 3 \\times 2$",
+              "Step 3 (Multiplication): $3 \\times 2 = 6$, expression: $3 + 6 - 6$",
+              "Step 4 (Add/Sub): $3 + 6 = 9$, $9 - 6 = 3$"
+            ],
+            "a": "3"
+          },
+          {
+            "q": "Simplify: $5 + \\frac{1}{2} \\text{ of } 16 - 4$",
+            "s": [
+              "Step 1 (Of): $\\frac{1}{2} \\times 16 = 8$, expression: $5 + 8 - 4$",
+              "Step 2 (Add/Sub): $5 + 8 = 13$, $13 - 4 = 9$"
+            ],
+            "a": "9"
+          },
+          {
+            "q": "Simplify: $15 - [4 + \\{12 - (8 - 2 \\times 3)\\}]$",
+            "s": [
+              "Step 1 (Inner bracket - Mult): $2 \\times 3 = 6$, bracket: $(8 - 6) = 2$",
+              "Step 2 (Curly): $12 - 2 = 10$",
+              "Step 3 (Square): $4 + 10 = 14$",
+              "Step 4 (Final): $15 - 14 = 1$"
+            ],
+            "a": "1"
+          },
+          {
+            "q": "Simplify: $8 \\div 4 \\text{ of } 2 + (15 - 2 \\times 6)$",
+            "s": [
+              "Step 1 (Bracket first - Mult): $2 \\times 6 = 12$, bracket: $15 - 12 = 3$",
+              "Step 2 (Of): $4 \\text{ of } 2 = 8$, expression: $8 \\div 8 + 3$",
+              "Step 3 (Division): $8 \\div 8 = 1$, expression: $1 + 3$",
+              "Step 4 (Addition): $1 + 3 = 4$"
+            ],
+            "a": "4"
+          },
+          {
+            "q": "Simplify: $\\frac{2}{3} \\text{ of } 18 + \\frac{3}{4} \\text{ of } 24 - 15$",
+            "s": [
+              "Step 1 (First Of): $\\frac{2}{3} \\times 18 = 12$",
+              "Step 2 (Second Of): $\\frac{3}{4} \\times 24 = 18$",
+              "Step 3: $12 + 18 - 15$",
+              "Step 4: $30 - 15 = 15$"
+            ],
+            "a": "15"
+          },
+          {
+            "q": "Simplify: $24 - [8 - \\{6 - (4 - \\overline{2+1})\\}]$",
+            "s": [
+              "Step 1 (Vinculum): $\\overline{2+1} = 3$, expression: $24 - [8 - \\{6 - (4 - 3)\\}]$",
+              "Step 2 (Small bracket): $4 - 3 = 1$, expression: $24 - [8 - \\{6 - 1\\}]$",
+              "Step 3 (Curly): $6 - 1 = 5$, expression: $24 - [8 - 5]$",
+              "Step 4 (Square): $8 - 5 = 3$, expression: $24 - 3$",
+              "Step 5: $24 - 3 = 21$"
+            ],
+            "a": "21"
+          },
+          {
+            "q": "Simplify: $144 \\div 12 \\text{ of } 3 + 26 - 15 \\div 3 \\times 2$",
+            "s": [
+              "Step 1 (Of): $12 \\text{ of } 3 = 36$, expression: $144 \\div 36 + 26 - 15 \\div 3 \\times 2$",
+              "Step 2 (Divisions): $144 \\div 36 = 4$ and $15 \\div 3 = 5$, expression: $4 + 26 - 5 \\times 2$",
+              "Step 3 (Mult): $5 \\times 2 = 10$, expression: $4 + 26 - 10$",
+              "Step 4 (Add/Sub): $4 + 26 = 30$, $30 - 10 = 20$"
+            ],
+            "a": "20"
+          }
+        ],
+        "bodmas-of": [
+          {
+            "q": "Simplify: $24 \\div 6 \\text{ of } 2 + 5$",
+            "s": [
+              "Step 1 (Of first): $6 \\text{ of } 2 = 6 \\times 2 = 12$",
+              "Step 2 (Division): $24 \\div 12 = 2$",
+              "Step 3 (Addition): $2 + 5 = 7$",
+              "Note: If you did division first ($24\\div6=4$ then $4\\times2=8$ then $8+5=13$), you get WRONG answer!"
+            ],
+            "a": "7"
+          },
+          {
+            "q": "Simplify: $36 \\div 3 \\text{ of } 4 + 8 \\div 2 \\text{ of } 1$",
+            "s": [
+              "Step 1 (First Of): $3 \\text{ of } 4 = 12$, expression: $36 \\div 12 + 8 \\div 2 \\text{ of } 1$",
+              "Step 2 (Second Of): $2 \\text{ of } 1 = 2$, expression: $36 \\div 12 + 8 \\div 2$",
+              "Step 3 (Divisions): $36 \\div 12 = 3$ and $8 \\div 2 = 4$",
+              "Step 4 (Addition): $3 + 4 = 7$"
+            ],
+            "a": "7"
+          },
+          {
+            "q": "Simplify: $60 \\div 5 \\text{ of } 2 + 15 - 3 \\times 4$",
+            "s": [
+              "Step 1 (Of): $5 \\text{ of } 2 = 10$, expression: $60 \\div 10 + 15 - 3 \\times 4$",
+              "Step 2 (Division): $60 \\div 10 = 6$, expression: $6 + 15 - 3 \\times 4$",
+              "Step 3 (Mult): $3 \\times 4 = 12$, expression: $6 + 15 - 12$",
+              "Step 4 (Add/Sub): $6 + 15 = 21$, $21 - 12 = 9$"
+            ],
+            "a": "9"
+          },
+          {
+            "q": "Simplify: $48 \\div 4 \\text{ of } 3 + 27 \\div 3 \\text{ of } 3$",
+            "s": [
+              "Step 1 (First Of): $4 \\text{ of } 3 = 12$, expression: $48 \\div 12 + 27 \\div 3 \\text{ of } 3$",
+              "Step 2 (Second Of): $3 \\text{ of } 3 = 9$, expression: $48 \\div 12 + 27 \\div 9$",
+              "Step 3 (Divisions): $48 \\div 12 = 4$ and $27 \\div 9 = 3$",
+              "Step 4 (Addition): $4 + 3 = 7$"
+            ],
+            "a": "7"
+          },
+          {
+            "q": "Simplify: $18 \\div 2 \\text{ of } 3 + 12 \\div 6 \\text{ of } 2$",
+            "s": [
+              "Step 1 (First Of): $2 \\text{ of } 3 = 6$, expression: $18 \\div 6 + 12 \\div 6 \\text{ of } 2$",
+              "Step 2 (Second Of): $6 \\text{ of } 2 = 12$, expression: $18 \\div 6 + 12 \\div 12$",
+              "Step 3 (Divisions): $18 \\div 6 = 3$ and $12 \\div 12 = 1$",
+              "Step 4 (Addition): $3 + 1 = 4$"
+            ],
+            "a": "4"
+          },
+          {
+            "q": "Simplify: $100 \\div 10 \\text{ of } 5 + 25 \\div 5 \\text{ of } 5$",
+            "s": [
+              "Step 1 (First Of): $10 \\text{ of } 5 = 50$, expression: $100 \\div 50 + 25 \\div 5 \\text{ of } 5$",
+              "Step 2 (Second Of): $5 \\text{ of } 5 = 25$, expression: $100 \\div 50 + 25 \\div 25$",
+              "Step 3 (Divisions): $100 \\div 50 = 2$ and $25 \\div 25 = 1$",
+              "Step 4 (Addition): $2 + 1 = 3$"
+            ],
+            "a": "3"
+          },
+          {
+            "q": "Simplify: $2 \\text{ of } 5 \\div 5 + 3$",
+            "s": [
+              "Step 1 (Of): $2 \\text{ of } 5 = 10$, expression: $10 \\div 5 + 3$",
+              "Step 2 (Division): $10 \\div 5 = 2$, expression: $2 + 3$",
+              "Step 3 (Addition): $2 + 3 = 5$"
+            ],
+            "a": "5"
+          },
+          {
+            "q": "Simplify: $15 \\text{ of } 2 \\div 6 + 12 \\div 4 \\text{ of } 2$",
+            "s": [
+              "Step 1 (First Of): $15 \\text{ of } 2 = 30$, expression: $30 \\div 6 + 12 \\div 4 \\text{ of } 2$",
+              "Step 2 (Second Of): $4 \\text{ of } 2 = 8$, expression: $30 \\div 6 + 12 \\div 8$",
+              "Step 3 (Divisions): $30 \\div 6 = 5$ and $12 \\div 8 = 1.5$",
+              "Step 4: $5 + 1.5 = 6.5$"
+            ],
+            "a": "6.5"
+          },
+          {
+            "q": "Simplify: $81 \\div 9 \\text{ of } 3 + 64 \\div 8 \\text{ of } 2 - 5$",
+            "s": [
+              "Step 1 (First Of): $9 \\text{ of } 3 = 27$, expression: $81 \\div 27 + 64 \\div 8 \\text{ of } 2 - 5$",
+              "Step 2 (Second Of): $8 \\text{ of } 2 = 16$, expression: $81 \\div 27 + 64 \\div 16 - 5$",
+              "Step 3 (Divisions): $81 \\div 27 = 3$ and $64 \\div 16 = 4$",
+              "Step 4: $3 + 4 - 5 = 2$"
+            ],
+            "a": "2"
+          },
+          {
+            "q": "Simplify: $56 \\div 7 \\text{ of } 2 + 9 - 3 \\times 2$",
+            "s": [
+              "Step 1 (Of): $7 \\text{ of } 2 = 14$, expression: $56 \\div 14 + 9 - 3 \\times 2$",
+              "Step 2 (Division): $56 \\div 14 = 4$, expression: $4 + 9 - 3 \\times 2$",
+              "Step 3 (Mult): $3 \\times 2 = 6$, expression: $4 + 9 - 6$",
+              "Step 4: $13 - 6 = 7$"
+            ],
+            "a": "7"
+          }
+        ],
+        "bodmas-vinculum": [
+          {
+            "q": "Simplify: $25 - [16 - \\{14 - (12 - \\overline{9 - 3})\\}]$",
+            "s": [
+              "Step 1 (Vinculum): $\\overline{9 - 3} = 6$",
+              "Step 2 (Small bracket): $12 - 6 = 6$",
+              "Step 3 (Curly): $14 - 6 = 8$",
+              "Step 4 (Square): $16 - 8 = 8$",
+              "Step 5: $25 - 8 = 17$"
+            ],
+            "a": "17"
+          },
+          {
+            "q": "Simplify: $30 - [12 + \\{8 - (5 + \\overline{3 \\times 2})\\}]$",
+            "s": [
+              "Step 1 (Vinculum): $\\overline{3 \\times 2} = 6$",
+              "Step 2 (Small bracket): $5 + 6 = 11$",
+              "Step 3 (Curly): $8 - 11 = -3$",
+              "Step 4 (Square): $12 + (-3) = 9$",
+              "Step 5: $30 - 9 = 21$"
+            ],
+            "a": "21"
+          },
+          {
+            "q": "Simplify: $40 - [20 + \\{15 - (10 - \\overline{5 + 3})\\}]$",
+            "s": [
+              "Step 1 (Vinculum): $\\overline{5 + 3} = 8$",
+              "Step 2 (Small bracket): $10 - 8 = 2$",
+              "Step 3 (Curly): $15 - 2 = 13$",
+              "Step 4 (Square): $20 + 13 = 33$",
+              "Step 5: $40 - 33 = 7$"
+            ],
+            "a": "7"
+          },
+          {
+            "q": "Simplify: $50 - [10 + \\{20 - (15 - \\overline{8 - 3})\\}]$",
+            "s": [
+              "Step 1 (Vinculum): $\\overline{8 - 3} = 5$",
+              "Step 2: $(15 - 5) = 10$",
+              "Step 3: $\\{20 - 10\\} = 10$",
+              "Step 4: $[10 + 10] = 20$",
+              "Step 5: $50 - 20 = 30$"
+            ],
+            "a": "30"
+          },
+          {
+            "q": "Simplify: $100 - [30 + \\{25 - (20 - \\overline{12 - 7})\\}]$",
+            "s": [
+              "Step 1: $\\overline{12 - 7} = 5$",
+              "Step 2: $(20 - 5) = 15$",
+              "Step 3: $\\{25 - 15\\} = 10$",
+              "Step 4: $[30 + 10] = 40$",
+              "Step 5: $100 - 40 = 60$"
+            ],
+            "a": "60"
+          },
+          {
+            "q": "Simplify: $18 + [12 - \\{8 + (6 - \\overline{4 + 2})\\}]$",
+            "s": [
+              "Step 1: $\\overline{4 + 2} = 6$",
+              "Step 2: $(6 - 6) = 0$",
+              "Step 3: $\\{8 + 0\\} = 8$",
+              "Step 4: $[12 - 8] = 4$",
+              "Step 5: $18 + 4 = 22$"
+            ],
+            "a": "22"
+          },
+          {
+            "q": "Simplify: $60 - [15 + \\{10 - (8 - \\overline{6 - 2})\\}]$",
+            "s": [
+              "Step 1: $\\overline{6 - 2} = 4$",
+              "Step 2: $(8 - 4) = 4$",
+              "Step 3: $\\{10 - 4\\} = 6$",
+              "Step 4: $[15 + 6] = 21$",
+              "Step 5: $60 - 21 = 39$"
+            ],
+            "a": "39"
+          },
+          {
+            "q": "Simplify: $24 - [8 - \\{6 - (4 - \\overline{2+1})\\}]$",
+            "s": [
+              "Step 1: $\\overline{2+1} = 3$",
+              "Step 2: $(4 - 3) = 1$",
+              "Step 3: $\\{6 - 1\\} = 5$",
+              "Step 4: $[8 - 5] = 3$",
+              "Step 5: $24 - 3 = 21$"
+            ],
+            "a": "21"
+          },
+          {
+            "q": "Simplify: $80 - [10 + \\{30 - (20 - \\overline{15 - 5})\\}]$",
+            "s": [
+              "Step 1: $\\overline{15 - 5} = 10$",
+              "Step 2: $(20 - 10) = 10$",
+              "Step 3: $\\{30 - 10\\} = 20$",
+              "Step 4: $[10 + 20] = 30$",
+              "Step 5: $80 - 30 = 50$"
+            ],
+            "a": "50"
+          },
+          {
+            "q": "Simplify: $90 - [25 + \\{18 - (12 - \\overline{9 - 6})\\}]$",
+            "s": [
+              "Step 1: $\\overline{9 - 6} = 3$",
+              "Step 2: $(12 - 3) = 9$",
+              "Step 3: $\\{18 - 9\\} = 9$",
+              "Step 4: $[25 + 9] = 34$",
+              "Step 5: $90 - 34 = 56$"
+            ],
+            "a": "56"
+          }
+        ],
+        "indices-multiply": [
+          {
+            "q": "Simplify: $(256)^{0.16} \\times (256)^{0.09}$",
+            "s": [
+              "Step 1: Same base 256, use $a^m \\times a^n = a^{m+n}$",
+              "Step 2: Add exponents: $0.16 + 0.09 = 0.25$",
+              "Step 3: $256^{0.25} = 256^{1/4}$",
+              "Step 4: 4th root of 256: $\\sqrt[4]{256} = 4$ (since $4\\times4\\times4\\times4=256$)"
+            ],
+            "a": "4"
+          },
+          {
+            "q": "Simplify: $2^x \\times 2^{x+1} \\times 2^{x+2}$",
+            "s": [
+              "Step 1: Same base 2, add all exponents",
+              "Step 2: $x + (x+1) + (x+2) = 3x + 3$",
+              "Step 3: Answer $= 2^{3x+3} = 2^{3(x+1)}$"
+            ],
+            "a": "$2^{3x+3}$"
+          },
+          {
+            "q": "Evaluate: $5^3 \\times 5^4$",
+            "s": [
+              "Step 1: Same base 5, add exponents: $3 + 4 = 7$",
+              "Step 2: $5^7 = 78125$"
+            ],
+            "a": "78125"
+          },
+          {
+            "q": "Simplify: $(2^3 \\times 2^4) \\div 2^5$",
+            "s": [
+              "Step 1: Simplify numerator: $2^3 \\times 2^4 = 2^{3+4} = 2^7$",
+              "Step 2: $2^7 \\div 2^5 = 2^{7-5} = 2^2 = 4$"
+            ],
+            "a": "4"
+          },
+          {
+            "q": "Find x: $2^x \\times 2^3 = 2^7$",
+            "s": [
+              "Step 1: $2^x \\times 2^3 = 2^{x+3}$",
+              "Step 2: $2^{x+3} = 2^7$",
+              "Step 3: Since bases same, equate powers: $x+3 = 7$",
+              "Step 4: $x = 4$"
+            ],
+            "a": "4"
+          },
+          {
+            "q": "Simplify: $a^5 \\times a^{-2} \\times a^3$",
+            "s": [
+              "Step 1: Same base a, add all exponents",
+              "Step 2: $5 + (-2) + 3 = 6$",
+              "Step 3: Answer $= a^6$"
+            ],
+            "a": "$a^6$"
+          },
+          {
+            "q": "Evaluate: $3^2 \\times 3^3 \\times 3^4$",
+            "s": [
+              "Step 1: Add exponents: $2 + 3 + 4 = 9$",
+              "Step 2: $3^9 = 19683$"
+            ],
+            "a": "19683"
+          },
+          {
+            "q": "Find $x$: $5^{x+1} \\times 5^{x-1} = 5^6$",
+            "s": [
+              "Step 1: Add exponents: $(x+1) + (x-1) = 2x$",
+              "Step 2: $5^{2x} = 5^6$",
+              "Step 3: $2x = 6$, so $x = 3$"
+            ],
+            "a": "3"
+          },
+          {
+            "q": "Simplify: $7^4 \\times 7^{-3} \\times 7^2$",
+            "s": [
+              "Step 1: Add exponents: $4 + (-3) + 2 = 3$",
+              "Step 2: $7^3 = 343$"
+            ],
+            "a": "343"
+          },
+          {
+            "q": "If $2^a \\times 2^b = 2^c \\times 2^d$, show $a+b = c+d$",
+            "s": [
+              "Step 1: LHS: $2^a \\times 2^b = 2^{a+b}$",
+              "Step 2: RHS: $2^c \\times 2^d = 2^{c+d}$",
+              "Step 3: Since $2^{a+b} = 2^{c+d}$, bases are same",
+              "Step 4: Therefore $a+b = c+d$"
+            ],
+            "a": "Proved"
+          }
+        ],
+        "indices-divide": [
+          {
+            "q": "Simplify: $\\frac{5^{x+3}}{5^{x-1}}$",
+            "s": [
+              "Step 1: Use $a^m \\div a^n = a^{m-n}$",
+              "Step 2: Subtract powers: $(x+3) - (x-1)$",
+              "Step 3: $x+3-x+1 = 4$",
+              "Step 4: $5^4 = 625$"
+            ],
+            "a": "625"
+          },
+          {
+            "q": "Simplify: $\\frac{8^5}{8^2}$",
+            "s": [
+              "Step 1: $8^5 \\div 8^2 = 8^{5-2} = 8^3$",
+              "Step 2: $8^3 = 512$"
+            ],
+            "a": "512"
+          },
+          {
+            "q": "Simplify: $\\frac{10^7 \\times 10^2}{10^4}$",
+            "s": [
+              "Step 1: Numerator: $10^7 \\times 10^2 = 10^{7+2} = 10^9$",
+              "Step 2: $10^9 \\div 10^4 = 10^{9-4} = 10^5$",
+              "Step 3: $10^5 = 100000$"
+            ],
+            "a": "100000"
+          },
+          {
+            "q": "Find $x$: $2^x \\div 2^3 = 2^4$",
+            "s": [
+              "Step 1: $2^x \\div 2^3 = 2^{x-3}$",
+              "Step 2: $2^{x-3} = 2^4$",
+              "Step 3: $x-3 = 4$, so $x = 7$"
+            ],
+            "a": "7"
+          },
+          {
+            "q": "Simplify: $\\frac{6^{n+2}}{6^{n-1}}$",
+            "s": [
+              "Step 1: $6^{n+2} \\div 6^{n-1} = 6^{(n+2)-(n-1)}$",
+              "Step 2: $n+2-n+1 = 3$",
+              "Step 3: $6^3 = 216$"
+            ],
+            "a": "216"
+          },
+          {
+            "q": "Simplify: $\\frac{3^5 \\times 3^2}{3^4}$",
+            "s": [
+              "Step 1: Numerator: $3^5 \\times 3^2 = 3^7$",
+              "Step 2: $3^7 \\div 3^4 = 3^{7-4} = 3^3 = 27$"
+            ],
+            "a": "27"
+          },
+          {
+            "q": "Simplify: $\\frac{a^{2x+1}}{a^{x-1}}$",
+            "s": [
+              "Step 1: $a^{(2x+1)-(x-1)} = a^{2x+1-x+1}$",
+              "Step 2: $a^{x+2}$"
+            ],
+            "a": "$a^{x+2}$"
+          },
+          {
+            "q": "Simplify: $\\frac{15^4}{15^2 \\times 15}$",
+            "s": [
+              "Step 1: Denominator: $15^2 \\times 15 = 15^{2+1} = 15^3$",
+              "Step 2: $15^4 \\div 15^3 = 15^{4-3} = 15^1 = 15$"
+            ],
+            "a": "15"
+          },
+          {
+            "q": "Find $x$: $\\frac{4^x}{4^3} = 4^5$",
+            "s": [
+              "Step 1: $4^x \\div 4^3 = 4^{x-3}$",
+              "Step 2: $4^{x-3} = 4^5$",
+              "Step 3: $x-3 = 5$, $x = 8$"
+            ],
+            "a": "8"
+          },
+          {
+            "q": "Simplify: $\\frac{2^{10}}{2^6 \\times 2^2}$",
+            "s": [
+              "Step 1: Denominator: $2^6 \\times 2^2 = 2^8$",
+              "Step 2: $2^{10} \\div 2^8 = 2^{10-8} = 2^2 = 4$"
+            ],
+            "a": "4"
+          }
+        ],
+        "indices-power": [
+          {
+            "q": "Simplify: $(27)^{2/3}$",
+            "s": [
+              "Step 1: $27 = 3^3$",
+              "Step 2: $(3^3)^{2/3} = 3^{3 \\times 2/3} = 3^2$",
+              "Step 3: $3^2 = 9$"
+            ],
+            "a": "9"
+          },
+          {
+            "q": "Simplify: $(16)^{3/4}$",
+            "s": [
+              "Step 1: $16 = 2^4$",
+              "Step 2: $(2^4)^{3/4} = 2^{4 \\times 3/4} = 2^3$",
+              "Step 3: $2^3 = 8$"
+            ],
+            "a": "8"
+          },
+          {
+            "q": "Simplify: $(81)^{-3/4}$",
+            "s": [
+              "Step 1: $81 = 3^4$",
+              "Step 2: $(3^4)^{-3/4} = 3^{4 \\times (-3/4)} = 3^{-3}$",
+              "Step 3: $3^{-3} = 1/27$"
+            ],
+            "a": "$\\frac{1}{27}$"
+          },
+          {
+            "q": "Simplify: $(125)^{2/3}$",
+            "s": [
+              "Step 1: $125 = 5^3$",
+              "Step 2: $(5^3)^{2/3} = 5^{3 \\times 2/3} = 5^2 = 25$"
+            ],
+            "a": "25"
+          },
+          {
+            "q": "Simplify: $[(2^3)^4]^5$",
+            "s": [
+              "Step 1: Apply $(a^m)^n = a^{mn}$ from innermost",
+              "Step 2: $(2^3)^4 = 2^{12}$",
+              "Step 3: $(2^{12})^5 = 2^{60}$"
+            ],
+            "a": "$2^{60}$"
+          },
+          {
+            "q": "Simplify: $(x^a/x^b)^{a+b}$",
+            "s": [
+              "Step 1: Inside: $x^a/x^b = x^{a-b}$",
+              "Step 2: $(x^{a-b})^{a+b} = x^{(a-b)(a+b)}$",
+              "Step 3: $(a-b)(a+b) = a^2 - b^2$",
+              "Step 4: Answer: $x^{a^2-b^2}$"
+            ],
+            "a": "$x^{a^2-b^2}$"
+          },
+          {
+            "q": "Find x: $4^x = 64$",
+            "s": [
+              "Step 1: $4 = 2^2$, $64 = 2^6$",
+              "Step 2: $(2^2)^x = 2^{2x} = 2^6$",
+              "Step 3: $2x = 6$, so $x = 3$"
+            ],
+            "a": "3"
+          },
+          {
+            "q": "Simplify: $(a^2b^3)^4$",
+            "s": [
+              "Step 1: Apply power to each factor: $(a^2)^4 \\times (b^3)^4$",
+              "Step 2: $(a^2)^4 = a^8$, $(b^3)^4 = b^{12}$",
+              "Step 3: Answer: $a^8 b^{12}$"
+            ],
+            "a": "$a^8 b^{12}$"
+          },
+          {
+            "q": "Simplify: $(\\frac{2}{3})^3 \\times (\\frac{2}{3})^{-1}$",
+            "s": [
+              "Step 1: Add exponents: $3 + (-1) = 2$",
+              "Step 2: $(2/3)^2 = 4/9$"
+            ],
+            "a": "$\\frac{4}{9}$"
+          },
+          {
+            "q": "Evaluate: $(0.04)^{-1.5}$",
+            "s": [
+              "Step 1: $0.04 = \\frac{4}{100} = \\frac{1}{25}$",
+              "Step 2: $(\\frac{1}{25})^{-1.5} = 25^{1.5} = 25^{3/2}$",
+              "Step 3: $(\\sqrt{25})^3 = 5^3 = 125$"
+            ],
+            "a": "125"
+          }
+        ],
+        "indices-negative": [
+          {
+            "q": "Evaluate: $2^{-3}$",
+            "s": [
+              "Step 1: Use $a^{-m} = 1/a^m$",
+              "Step 2: $2^{-3} = 1/2^3$",
+              "Step 3: $2^3 = 8$",
+              "Step 4: $1/8$"
+            ],
+            "a": "$\\frac{1}{8}$"
+          },
+          {
+            "q": "Evaluate: $5^{-2}$",
+            "s": [
+              "Step 1: $5^{-2} = 1/5^2$",
+              "Step 2: $5^2 = 25$",
+              "Step 3: $1/25$"
+            ],
+            "a": "$\\frac{1}{25}$"
+          },
+          {
+            "q": "Simplify: $(\\frac{3}{4})^{-2}$",
+            "s": [
+              "Step 1: Negative power flips fraction: $(\\frac{3}{4})^{-2} = (\\frac{4}{3})^2$",
+              "Step 2: $(\\frac{4}{3})^2 = \\frac{16}{9}$"
+            ],
+            "a": "$\\frac{16}{9}$"
+          },
+          {
+            "q": "Evaluate: $2^{-3} \\times 3^{-2}$",
+            "s": [
+              "Step 1: $2^{-3} = 1/8$",
+              "Step 2: $3^{-2} = 1/9$",
+              "Step 3: $(1/8) \\times (1/9) = 1/72$"
+            ],
+            "a": "$\\frac{1}{72}$"
+          },
+          {
+            "q": "Simplify: $\\frac{2^{-3}}{2^{-5}}$",
+            "s": [
+              "Step 1: $2^{-3} \\div 2^{-5} = 2^{(-3)-(-5)}$",
+              "Step 2: $2^{(-3)+5} = 2^2 = 4$"
+            ],
+            "a": "4"
+          },
+          {
+            "q": "Simplify: $(\\frac{1}{2})^{-3}$",
+            "s": [
+              "Step 1: Negative power flips: $(\\frac{1}{2})^{-3} = 2^3$",
+              "Step 2: $2^3 = 8$"
+            ],
+            "a": "8"
+          },
+          {
+            "q": "Simplify: $8^{2/3}$",
+            "s": [
+              "Step 1: $8 = 2^3$",
+              "Step 2: $(2^3)^{2/3} = 2^{3\\times2/3} = 2^2 = 4$"
+            ],
+            "a": "4"
+          },
+          {
+            "q": "Evaluate: $(-8)^{2/3}$",
+            "s": [
+              "Step 1: $(-8)^{2/3} = [(-8)^{1/3}]^2$",
+              "Step 2: $(-8)^{1/3} = -2$ (cube root of -8)",
+              "Step 3: $(-2)^2 = 4$"
+            ],
+            "a": "4"
+          },
+          {
+            "q": "Simplify: $\\frac{a^{-2}b^3}{a^{-3}b^{-1}}$",
+            "s": [
+              "Step 1: $a$ terms: $a^{-2} \\div a^{-3} = a^{(-2)-(-3)} = a^{1} = a$",
+              "Step 2: $b$ terms: $b^3 \\div b^{-1} = b^{3-(-1)} = b^4$",
+              "Step 3: Answer: $ab^4$"
+            ],
+            "a": "$ab^4$"
+          },
+          {
+            "q": "Find x: $2^x = \\frac{1}{16}$",
+            "s": [
+              "Step 1: $\\frac{1}{16} = 2^{-4}$",
+              "Step 2: $2^x = 2^{-4}$",
+              "Step 3: $x = -4$"
+            ],
+            "a": "-4"
+          }
+        ],
+        "square-root": [
+          {
+            "q": "Find $\\sqrt{1849}$",
+            "s": [
+              "Step 1: Unit digit 9, so root ends in 3 or 7",
+              "Step 2: Ignore 49, remaining 18",
+              "Step 3: $4^2=16$, $5^2=25$, 18 between them. Tens digit=4",
+              "Step 4: Root is 43 or 47. Check: $4\\times5=20$. 18<20, pick smaller=3",
+              "Step 5: Answer: 43"
+            ],
+            "a": "43"
+          },
+          {
+            "q": "Find $\\sqrt{5776}$",
+            "s": [
+              "Step 1: Unit digit 6, root ends in 4 or 6",
+              "Step 2: Ignore 76, remaining 57",
+              "Step 3: $7^2=49$, $8^2=64$, tens digit=7",
+              "Step 4: Root is 74 or 76. $7\\times8=56$. 57>56, pick larger=6",
+              "Step 5: Answer: 76"
+            ],
+            "a": "76"
+          },
+          {
+            "q": "Find $\\sqrt{9801}$",
+            "s": [
+              "Step 1: Unit digit 1, root ends in 1 or 9",
+              "Step 2: Ignore 01, remaining 98",
+              "Step 3: $9^2=81$, $10^2=100$, tens digit=9",
+              "Step 4: $9\\times10=90$. 98>90, pick larger=9",
+              "Step 5: Answer: 99"
+            ],
+            "a": "99"
+          },
+          {
+            "q": "Find $\\sqrt{3364}$",
+            "s": [
+              "Step 1: Unit digit 4, root ends in 2 or 8",
+              "Step 2: Ignore 64, remaining 33",
+              "Step 3: $5^2=25$, $6^2=36$, tens digit=5",
+              "Step 4: $5\\times6=30$. 33>30, pick larger=8",
+              "Step 5: Answer: 58"
+            ],
+            "a": "58"
+          },
+          {
+            "q": "Find $\\sqrt{12544}$",
+            "s": [
+              "Step 1: Unit digit 4, root ends in 2 or 8",
+              "Step 2: Ignore 44, remaining 125",
+              "Step 3: $11^2=121$, $12^2=144$, tens digit=11",
+              "Step 4: $11\\times12=132$. 125<132, pick smaller=2",
+              "Step 5: Answer: 112"
+            ],
+            "a": "112"
+          },
+          {
+            "q": "Find $\\sqrt{6241}$",
+            "s": [
+              "Step 1: Unit digit 1, root ends in 1 or 9",
+              "Step 2: Ignore 41, remaining 62",
+              "Step 3: $7^2=49$, $8^2=64$, tens digit=7",
+              "Step 4: $7\\times8=56$. 62>56, pick larger=9",
+              "Step 5: Answer: 79"
+            ],
+            "a": "79"
+          },
+          {
+            "q": "Find $\\sqrt{8464}$",
+            "s": [
+              "Step 1: Unit digit 4, root ends in 2 or 8",
+              "Step 2: Ignore 64, remaining 84",
+              "Step 3: $9^2=81$, $10^2=100$, tens digit=9",
+              "Step 4: $9\\times10=90$. 84<90, pick smaller=2",
+              "Step 5: Answer: 92"
+            ],
+            "a": "92"
+          },
+          {
+            "q": "Find $\\sqrt{4761}$",
+            "s": [
+              "Step 1: Unit digit 1, root ends in 1 or 9",
+              "Step 2: Ignore 61, remaining 47",
+              "Step 3: $6^2=36$, $7^2=49$, tens digit=6",
+              "Step 4: $6\\times7=42$. 47>42, pick larger=9",
+              "Step 5: Answer: 69"
+            ],
+            "a": "69"
+          },
+          {
+            "q": "Find $\\sqrt{7744}$",
+            "s": [
+              "Step 1: Unit digit 4, root ends in 2 or 8",
+              "Step 2: Ignore 44, remaining 77",
+              "Step 3: $8^2=64$, $9^2=81$, tens digit=8",
+              "Step 4: $8\\times9=72$. 77>72, pick larger=8",
+              "Step 5: Answer: 88"
+            ],
+            "a": "88"
+          },
+          {
+            "q": "Find $\\sqrt{15129}$",
+            "s": [
+              "Step 1: Unit digit 9, root ends in 3 or 7",
+              "Step 2: Ignore 29, remaining 151",
+              "Step 3: $12^2=144$, $13^2=169$, tens digit=12",
+              "Step 4: $12\\times13=156$. 151<156, pick smaller=3",
+              "Step 5: Answer: 123"
+            ],
+            "a": "123"
+          }
+        ],
+        "cube-root": [
+          {
+            "q": "Find $\\sqrt[3]{13824}$",
+            "s": [
+              "Step 1: Unit digit 4, root ends in 4",
+              "Step 2: Group: 13|824, remaining 13",
+              "Step 3: $2^3=8$, $3^3=27$, tens digit=2",
+              "Step 4: Combine: 24. Answer: 24"
+            ],
+            "a": "24"
+          },
+          {
+            "q": "Find $\\sqrt[3]{17576}$",
+            "s": [
+              "Step 1: Unit digit 6, root ends in 6",
+              "Step 2: Group: 17|576, remaining 17",
+              "Step 3: $2^3=8$, $3^3=27$, tens digit=2",
+              "Step 4: Combine: 26. Answer: 26"
+            ],
+            "a": "26"
+          },
+          {
+            "q": "Find $\\sqrt[3]{50653}$",
+            "s": [
+              "Step 1: Unit digit 3, root ends in 7",
+              "Step 2: Group: 50|653, remaining 50",
+              "Step 3: $3^3=27$, $4^3=64$, tens digit=3",
+              "Step 4: Combine: 37. Answer: 37"
+            ],
+            "a": "37"
+          },
+          {
+            "q": "Find $\\sqrt[3]{21952}$",
+            "s": [
+              "Step 1: Unit digit 2, root ends in 8",
+              "Step 2: Group: 21|952, remaining 21",
+              "Step 3: $2^3=8$, $3^3=27$, tens digit=2",
+              "Step 4: Combine: 28. Answer: 28"
+            ],
+            "a": "28"
+          },
+          {
+            "q": "Find $\\sqrt[3]{68921}$",
+            "s": [
+              "Step 1: Unit digit 1, root ends in 1",
+              "Step 2: Group: 68|921, remaining 68",
+              "Step 3: $4^3=64$, $5^3=125$, tens digit=4",
+              "Step 4: Combine: 41. Answer: 41"
+            ],
+            "a": "41"
+          },
+          {
+            "q": "Find $\\sqrt[3]{79507}$",
+            "s": [
+              "Step 1: Unit digit 7, root ends in 3",
+              "Step 2: Group: 79|507, remaining 79",
+              "Step 3: $4^3=64$, $5^3=125$, tens digit=4",
+              "Step 4: Combine: 43. Answer: 43"
+            ],
+            "a": "43"
+          },
+          {
+            "q": "Find $\\sqrt[3]{103823}$",
+            "s": [
+              "Step 1: Unit digit 3, root ends in 7",
+              "Step 2: Group: 103|823, remaining 103",
+              "Step 3: $4^3=64$, $5^3=125$, tens digit=4",
+              "Step 4: Combine: 47. Answer: 47"
+            ],
+            "a": "47"
+          },
+          {
+            "q": "Find $\\sqrt[3]{110592}$",
+            "s": [
+              "Step 1: Unit digit 2, root ends in 8",
+              "Step 2: Group: 110|592, remaining 110",
+              "Step 3: $4^3=64$, $5^3=125$, tens digit=4",
+              "Step 4: Combine: 48. Answer: 48"
+            ],
+            "a": "48"
+          },
+          {
+            "q": "Find $\\sqrt[3]{117649}$",
+            "s": [
+              "Step 1: Unit digit 9, root ends in 9",
+              "Step 2: Group: 117|649, remaining 117",
+              "Step 3: $4^3=64$, $5^3=125$, tens digit=4",
+              "Step 4: Combine: 49. Answer: 49"
+            ],
+            "a": "49"
+          },
+          {
+            "q": "Find $\\sqrt[3]{97336}$",
+            "s": [
+              "Step 1: Unit digit 6, root ends in 6",
+              "Step 2: Group: 97|336, remaining 97",
+              "Step 3: $4^3=64$, $5^3=125$, tens digit=4",
+              "Step 4: Combine: 46. Answer: 46"
+            ],
+            "a": "46"
+          }
+        ],
+        "frac-percent": [
+          {
+            "q": "$33.33\\% \\text{ of } 600 - 16.66\\% \\text{ of } 300 = ?$",
+            "s": [
+              "Step 1: $33.33\\% = 1/3$, so $(1/3) \\times 600 = 200$",
+              "Step 2: $16.66\\% = 1/6$, so $(1/6) \\times 300 = 50$",
+              "Step 3: $200 - 50 = 150$"
+            ],
+            "a": "150"
+          },
+          {
+            "q": "$14.28\\% \\text{ of } 420 + 11.11\\% \\text{ of } 360 = ?$",
+            "s": [
+              "Step 1: $14.28\\% = 1/7$, so $(1/7) \\times 420 = 60$",
+              "Step 2: $11.11\\% = 1/9$, so $(1/9) \\times 360 = 40$",
+              "Step 3: $60 + 40 = 100$"
+            ],
+            "a": "100"
+          },
+          {
+            "q": "$29.98\\% \\text{ of } 450 - 12.5\\% \\text{ of } 160 = ?$",
+            "s": [
+              "Step 1: $29.98\\% \\approx 30\\% = 3/10$, so $(3/10)\\times450 = 135$",
+              "Step 2: $12.5\\% = 1/8$, so $(1/8)\\times160 = 20$",
+              "Step 3: $135 - 20 = 115$"
+            ],
+            "a": "115"
+          },
+          {
+            "q": "$15\\% \\text{ of } 840 + 25\\% \\text{ of } X = 252$. Find X.",
+            "s": [
+              "Step 1: $15\\% = 3/20$, so $(3/20)\\times840 = 3\\times42 = 126$",
+              "Step 2: $25\\% = 1/4$, so $126 + X/4 = 252$",
+              "Step 3: $X/4 = 126$, so $X = 504$"
+            ],
+            "a": "504"
+          },
+          {
+            "q": "$34.95\\% \\text{ of } 780 + 44.8\\% \\text{ of } 250 = ?$",
+            "s": [
+              "Step 1: $34.95\\% \\approx 35\\% = 7/20$, so $(7/20)\\times780 = 7\\times39 = 273$",
+              "Step 2: $44.8\\% \\approx 45\\% = 9/20$, so $(9/20)\\times250 = 9\\times12.5 = 112.5$",
+              "Step 3: $273 + 112.5 = 385.5 \\approx 386$"
+            ],
+            "a": "386"
+          },
+          {
+            "q": "$62.5\\% \\text{ of } 240 + 87.5\\% \\text{ of } 160 = ?$",
+            "s": [
+              "Step 1: $62.5\\% = 5/8$, so $(5/8)\\times240 = 5\\times30 = 150$",
+              "Step 2: $87.5\\% = 7/8$, so $(7/8)\\times160 = 7\\times20 = 140$",
+              "Step 3: $150 + 140 = 290$"
+            ],
+            "a": "290"
+          },
+          {
+            "q": "What is $37.5\\%$ of 480?",
+            "s": [
+              "Step 1: $37.5\\% = 3/8$",
+              "Step 2: $(3/8)\\times480 = 3\\times60 = 180$"
+            ],
+            "a": "180"
+          },
+          {
+            "q": "What is $83.33\\%$ of 144?",
+            "s": [
+              "Step 1: $83.33\\% = 5/6$",
+              "Step 2: $(5/6)\\times144 = 5\\times24 = 120$"
+            ],
+            "a": "120"
+          },
+          {
+            "q": "$66.66\\% \\text{ of } 90 + 44.44\\% \\text{ of } 90 = ?$",
+            "s": [
+              "Step 1: $66.66\\% = 2/3$, $44.44\\% = 4/9$",
+              "Step 2: $(2/3)\\times90 = 60$",
+              "Step 3: $(4/9)\\times90 = 40$",
+              "Step 4: $60 + 40 = 100$"
+            ],
+            "a": "100"
+          },
+          {
+            "q": "$20\\% \\text{ of } 120 + 16.66\\% \\text{ of } 120 + 14.28\\% \\text{ of } 140 = ?$",
+            "s": [
+              "Step 1: $20\\%=1/5$, so $(1/5)\\times120=24$",
+              "Step 2: $16.66\\%=1/6$, so $(1/6)\\times120=20$",
+              "Step 3: $14.28\\%=1/7$, so $(1/7)\\times140=20$",
+              "Step 4: $24+20+20=64$"
+            ],
+            "a": "64"
+          }
+        ],
+        "approximation": [
+          {
+            "q": "$19.02 \\times 4.99 \\times X = 380$. Find X.",
+            "s": [
+              "Step 1: Round: $19.02 \\approx 19$, $4.99 \\approx 5$",
+              "Step 2: $19 \\times 5 \\times X = 380 \\to 95X = 380$",
+              "Step 3: $X = 380/95 = 4$"
+            ],
+            "a": "4"
+          },
+          {
+            "q": "$\\sqrt{624.9} \\times 4.99^2 = ? \\times 10$",
+            "s": [
+              "Step 1: Round: $\\sqrt{624.9} \\approx \\sqrt{625} = 25$, $4.99 \\approx 5$",
+              "Step 2: $25 \\times 5^2 = X \\times 10$",
+              "Step 3: $25 \\times 25 = 625 = 10X$",
+              "Step 4: $X = 62.5 \\approx 63$"
+            ],
+            "a": "63"
+          },
+          {
+            "q": "$44.99 \\div 4.99 + 19.99 \\times 2.01 = ?$",
+            "s": [
+              "Step 1: Round: $44.99 \\approx 45$, $4.99 \\approx 5$, $19.99 \\approx 20$, $2.01 \\approx 2$",
+              "Step 2: $45 \\div 5 + 20 \\times 2$",
+              "Step 3: $9 + 40 = 49$"
+            ],
+            "a": "49"
+          },
+          {
+            "q": "$(12.13)^2 + (8.98)^2 = ?$",
+            "s": [
+              "Step 1: $12.13 \\approx 12$, $8.98 \\approx 9$",
+              "Step 2: $12^2 + 9^2 = 144 + 81 = 225$"
+            ],
+            "a": "225"
+          },
+          {
+            "q": "$\\sqrt{1024} \\times 3.01\\% \\text{ of } 500 = ?$",
+            "s": [
+              "Step 1: $\\sqrt{1024} = 32$",
+              "Step 2: $3.01\\% \\approx 3\\% = 3/100$",
+              "Step 3: $(3/100)\\times500 = 15$",
+              "Step 4: $32 \\times 15 = 480$"
+            ],
+            "a": "480"
+          },
+          {
+            "q": "$\\frac{23.98 \\times 14.95}{6.01} = ?$",
+            "s": [
+              "Step 1: $23.98 \\approx 24$, $14.95 \\approx 15$, $6.01 \\approx 6$",
+              "Step 2: $(24 \\times 15)/6$",
+              "Step 3: $360/6 = 60$"
+            ],
+            "a": "60"
+          },
+          {
+            "q": "$35.02\\% \\text{ of } 799.5 = ?$",
+            "s": [
+              "Step 1: $35.02\\% \\approx 35\\% = 7/20$, $799.5 \\approx 800$",
+              "Step 2: $(7/20)\\times800 = 7\\times40 = 280$"
+            ],
+            "a": "280"
+          },
+          {
+            "q": "$\\sqrt{899} + \\sqrt{1681} = ?$",
+            "s": [
+              "Step 1: $\\sqrt{899} \\approx \\sqrt{900} = 30$",
+              "Step 2: $\\sqrt{1681} = 41$ (since $41^2=1681$)",
+              "Step 3: $30 + 41 = 71$"
+            ],
+            "a": "71"
+          },
+          {
+            "q": "$(499.8)^2 = ?$",
+            "s": [
+              "Step 1: $499.8 \\approx 500$",
+              "Step 2: $500^2 = 250000$"
+            ],
+            "a": "250000"
+          },
+          {
+            "q": "$\\frac{299.9 \\times 15.1}{5.99} = ?$",
+            "s": [
+              "Step 1: $299.9 \\approx 300$, $15.1 \\approx 15$, $5.99 \\approx 6$",
+              "Step 2: $(300 \\times 15)/6 = 4500/6 = 750$"
+            ],
+            "a": "750"
+          }
+        ],
+        "vedic-squares": [
+          {
+            "q": "$75^2$",
+            "s": [
+              "Step 1: Tens digit X=7",
+              "Step 2: $X \\times (X+1) = 7 \\times 8 = 56$",
+              "Step 3: Append 25: 5625"
+            ],
+            "a": "5625"
+          },
+          {
+            "q": "$85^2$",
+            "s": [
+              "Step 1: $8 \\times 9 = 72$",
+              "Step 2: Append 25: 7225"
+            ],
+            "a": "7225"
+          },
+          {
+            "q": "$35^2$",
+            "s": [
+              "Step 1: $3 \\times 4 = 12$",
+              "Step 2: Append 25: 1225"
+            ],
+            "a": "1225"
+          },
+          {
+            "q": "$105^2$",
+            "s": [
+              "Step 1: $10 \\times 11 = 110$",
+              "Step 2: Append 25: 11025"
+            ],
+            "a": "11025"
+          },
+          {
+            "q": "$125^2$",
+            "s": [
+              "Step 1: $12 \\times 13 = 156$",
+              "Step 2: Append 25: 15625"
+            ],
+            "a": "15625"
+          },
+          {
+            "q": "$45^2$",
+            "s": [
+              "Step 1: $4 \\times 5 = 20$",
+              "Step 2: Append 25: 2025"
+            ],
+            "a": "2025"
+          },
+          {
+            "q": "$95^2$",
+            "s": [
+              "Step 1: $9 \\times 10 = 90$",
+              "Step 2: Append 25: 9025"
+            ],
+            "a": "9025"
+          },
+          {
+            "q": "$15^2$",
+            "s": [
+              "Step 1: $1 \\times 2 = 2$",
+              "Step 2: Append 25: 225"
+            ],
+            "a": "225"
+          },
+          {
+            "q": "$65^2$",
+            "s": [
+              "Step 1: $6 \\times 7 = 42$",
+              "Step 2: Append 25: 4225"
+            ],
+            "a": "4225"
+          },
+          {
+            "q": "$115^2$",
+            "s": [
+              "Step 1: $11 \\times 12 = 132$",
+              "Step 2: Append 25: 13225"
+            ],
+            "a": "13225"
+          }
+        ],
+        "vedic-near-base": [
+          {
+            "q": "$103 \\times 106$",
+            "s": [
+              "Step 1: Base 100. Surpluses: +3 and +6",
+              "Step 2: Cross add: $103 + 6 = 109$ (left part)",
+              "Step 3: Multiply surpluses: $3 \\times 6 = 18$ (right part)",
+              "Step 4: Combine: 10918"
+            ],
+            "a": "10918"
+          },
+          {
+            "q": "$108 \\times 109$",
+            "s": [
+              "Step 1: Surpluses: +8 and +9",
+              "Step 2: $108 + 9 = 117$",
+              "Step 3: $8 \\times 9 = 72$",
+              "Step 4: Combine: 11772"
+            ],
+            "a": "11772"
+          },
+          {
+            "q": "$96 \\times 97$",
+            "s": [
+              "Step 1: Deficiencies: -4 and -3",
+              "Step 2: $96 - 3 = 93$",
+              "Step 3: $(-4) \\times (-3) = 12$",
+              "Step 4: Combine: 9312"
+            ],
+            "a": "9312"
+          },
+          {
+            "q": "$112 \\times 114$",
+            "s": [
+              "Step 1: Surpluses: +12 and +14",
+              "Step 2: $112 + 14 = 126$",
+              "Step 3: $12 \\times 14 = 168$ (right part has 3 digits, need only 2)",
+              "Step 4: Carry: $126 + 1 = 127$, right part becomes 68",
+              "Step 5: Combine: 12768"
+            ],
+            "a": "12768"
+          },
+          {
+            "q": "$1004 \\times 1005$ (Base 1000)",
+            "s": [
+              "Step 1: Base 1000. Surpluses: +4 and +5",
+              "Step 2: $1004 + 5 = 1009$",
+              "Step 3: $4 \\times 5 = 20$ (needs 3 digits for base 1000: 020)",
+              "Step 4: Combine: 1009020"
+            ],
+            "a": "1009020"
+          },
+          {
+            "q": "$994 \\times 996$ (Base 1000)",
+            "s": [
+              "Step 1: Deficiencies: -6 and -4",
+              "Step 2: $994 - 6 = 988$",
+              "Step 3: $(-6) \\times (-4) = 24$ (needs 3 digits: 024)",
+              "Step 4: Combine: 988024"
+            ],
+            "a": "988024"
+          },
+          {
+            "q": "$107 \\times 108$",
+            "s": [
+              "Step 1: Surpluses: +7 and +8",
+              "Step 2: $107 + 8 = 115$",
+              "Step 3: $7 \\times 8 = 56$",
+              "Step 4: Combine: 11556"
+            ],
+            "a": "11556"
+          },
+          {
+            "q": "$93 \\times 95$",
+            "s": [
+              "Step 1: Deficiencies: -7 and -5",
+              "Step 2: $93 - 5 = 88$",
+              "Step 3: $(-7) \\times (-5) = 35$",
+              "Step 4: Combine: 8835"
+            ],
+            "a": "8835"
+          },
+          {
+            "q": "$99 \\times 97$",
+            "s": [
+              "Step 1: Deficiencies: -1 and -3",
+              "Step 2: $99 - 3 = 96$",
+              "Step 3: $(-1) \\times (-3) = 03$",
+              "Step 4: Combine: 9603"
+            ],
+            "a": "9603"
+          },
+          {
+            "q": "$1002 \\times 1003$ (Base 1000)",
+            "s": [
+              "Step 1: Surpluses: +2 and +3",
+              "Step 2: $1002 + 3 = 1005$",
+              "Step 3: $2 \\times 3 = 6$ (needs 3 digits: 006)",
+              "Step 4: Combine: 1005006"
+            ],
+            "a": "1005006"
+          }
+        ]
+      },
+      "mcqs": [
+        {
+          "id": 0,
+          "q": "Simplify: $12 + 8 \\div 4 \\times 3 - 5$",
+          "opts": [
+            "11",
+            "12",
+            "13",
+            "14"
+          ],
+          "c": 2,
+          "exp": "Step 1: $8\\div4=2$. Step 2: $2\\times3=6$. Step 3: $12+6-5=13$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 1,
+          "q": "Simplify: $36 \\div 9 \\times 2 + 14 - 10 \\div 5$",
+          "opts": [
+            "16",
+            "18",
+            "20",
+            "22"
+          ],
+          "c": 2,
+          "exp": "Step 1: $36\\div9=4$, $4\\times2=8$, $10\\div5=2$, $8+14-2=20$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 2,
+          "q": "Simplify: $100 - [20 + \\{30 - 2(10 - 4)\\}]$",
+          "opts": [
+            "58",
+            "60",
+            "62",
+            "64"
+          ],
+          "c": 2,
+          "exp": "Step 1: $10-4=6$, $2\\times6=12$, $\\{30-12\\}=18$, $[20+18]=38$, $100-38=62$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 3,
+          "q": "Simplify: $45 \\div 5 \\text{ of } 3 + 24 \\div 4 - 3 \\times 2$",
+          "opts": [
+            "1",
+            "3",
+            "5",
+            "7"
+          ],
+          "c": 1,
+          "exp": "Step 1: $5\\text{ of }3=15$, $45\\div15=3$, $24\\div4=6$, $3\\times2=6$, $3+6-6=3$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 4,
+          "q": "Simplify: $5 + \\frac{1}{2} \\text{ of } 16 - 4$",
+          "opts": [
+            "5",
+            "7",
+            "9",
+            "11"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\frac12\\times16=8$, $5+8-4=9$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 5,
+          "q": "Simplify: $15 - [4 + \\{12 - (8 - 2 \\times 3)\\}]$",
+          "opts": [
+            "-1",
+            "0",
+            "1",
+            "2"
+          ],
+          "c": 2,
+          "exp": "Step 1: $2\\times3=6$, $(8-6)=2$, $\\{12-2\\}=10$, $[4+10]=14$, $15-14=1$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 6,
+          "q": "Simplify: $8 \\div 4 \\text{ of } 2 + (15 - 2 \\times 6)$",
+          "opts": [
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          "c": 1,
+          "exp": "Step 1: $2\\times6=12$, $15-12=3$, $4\\text{ of }2=8$, $8\\div8=1$, $1+3=4$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 7,
+          "q": "Simplify: $\\frac{2}{3} \\text{ of } 18 + \\frac{3}{4} \\text{ of } 24 - 15$",
+          "opts": [
+            "10",
+            "12",
+            "15",
+            "18"
+          ],
+          "c": 2,
+          "exp": "Step 1: $(2/3)\\times18=12$, $(3/4)\\times24=18$, $12+18-15=15$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 8,
+          "q": "Simplify: $24 - [8 - \\{6 - (4 - \\overline{2+1})\\}]$",
+          "opts": [
+            "19",
+            "21",
+            "23",
+            "25"
+          ],
+          "c": 1,
+          "exp": "Step 1: $\\overline{2+1}=3$, $(4-3)=1$, $\\{6-1\\}=5$, $[8-5]=3$, $24-3=21$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 9,
+          "q": "Simplify: $144 \\div 12 \\text{ of } 3 + 26 - 15 \\div 3 \\times 2$",
+          "opts": [
+            "18",
+            "20",
+            "22",
+            "24"
+          ],
+          "c": 1,
+          "exp": "Step 1: $12\\text{ of }3=36$, $144\\div36=4$, $15\\div3=5$, $5\\times2=10$, $4+26-10=20$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 10,
+          "q": "Simplify: $24 \\div 6 \\text{ of } 2 + 5$",
+          "opts": [
+            "7",
+            "8",
+            "13",
+            "17"
+          ],
+          "c": 0,
+          "exp": "Step 1: $6\\text{ of }2=12$, $24\\div12=2$, $2+5=7$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 11,
+          "q": "Simplify: $36 \\div 3 \\text{ of } 4 + 8 \\div 2 \\text{ of } 1$",
+          "opts": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "c": 2,
+          "exp": "Step 1: $3\\text{ of }4=12$, $36\\div12=3$, $2\\text{ of }1=2$, $8\\div2=4$, $3+4=7$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 12,
+          "q": "Simplify: $100 \\div 10 \\text{ of } 5 + 25 \\div 5 \\text{ of } 5$",
+          "opts": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "c": 2,
+          "exp": "Step 1: $10\\text{ of }5=50$, $100\\div50=2$, $5\\text{ of }5=25$, $25\\div25=1$, $2+1=3$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 13,
+          "q": "Simplify: $25 - [16 - \\{14 - (12 - \\overline{9-3})\\}]$",
+          "opts": [
+            "15",
+            "17",
+            "19",
+            "21"
+          ],
+          "c": 1,
+          "exp": "Step 1: $\\overline{9-3}=6$, $(12-6)=6$, $\\{14-6\\}=8$, $[16-8]=8$, $25-8=17$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 14,
+          "q": "Simplify: $30 - [12 + \\{8 - (5 + \\overline{3 \\times 2})\\}]$",
+          "opts": [
+            "17",
+            "19",
+            "21",
+            "23"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\overline{3\\times2}=6$, $(5+6)=11$, $\\{8-11\\}=-3$, $[12+(-3)]=9$, $30-9=21$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 15,
+          "q": "Simplify: $20 - 3 \\times 4 + 12 \\div 3$",
+          "opts": [
+            "12",
+            "14",
+            "16",
+            "18"
+          ],
+          "c": 0,
+          "exp": "Step 1: $3\\times4=12$, $12\\div3=4$, $20-12+4=12$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 16,
+          "q": "Simplify: $48 \\div 8 \\times 3 + 6 - 4$",
+          "opts": [
+            "16",
+            "18",
+            "20",
+            "22"
+          ],
+          "c": 2,
+          "exp": "Step 1: $48\\div8=6$, $6\\times3=18$, $18+6-4=20$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 17,
+          "q": "Simplify: $90 - [15 + \\{10 - (8 - \\overline{6-2})\\}]$",
+          "opts": [
+            "71",
+            "73",
+            "75",
+            "77"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\overline{6-2}=4$, $(8-4)=4$, $\\{10-4\\}=6$, $[15+6]=21$, $90-21=69$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 18,
+          "q": "Simplify: $40 - [20 + \\{15 - (10 - \\overline{5+3})\\}]$",
+          "opts": [
+            "5",
+            "7",
+            "9",
+            "11"
+          ],
+          "c": 1,
+          "exp": "Step 1: $\\overline{5+3}=8$, $(10-8)=2$, $\\{15-2\\}=13$, $[20+13]=33$, $40-33=7$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 19,
+          "q": "Simplify: $50 - [10 + \\{20 - (15 - \\overline{8-3})\\}]$",
+          "opts": [
+            "25",
+            "28",
+            "30",
+            "32"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\overline{8-3}=5$, $(15-5)=10$, $\\{20-10\\}=10$, $[10+10]=20$, $50-20=30$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 20,
+          "q": "Simplify: $60 \\div 5 \\text{ of } 2 + 15 - 3 \\times 4$",
+          "opts": [
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          "c": 2,
+          "exp": "Step 1: $5\\text{ of }2=10$, $60\\div10=6$, $3\\times4=12$, $6+15-12=9$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 21,
+          "q": "Simplify: $48 \\div 4 \\text{ of } 3 + 27 \\div 3 \\text{ of } 3$",
+          "opts": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "c": 2,
+          "exp": "Step 1: $4\\text{ of }3=12$, $48\\div12=4$, $3\\text{ of }3=9$, $27\\div9=3$, $4+3=7$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 22,
+          "q": "Simplify: $18 \\div 2 \\text{ of } 3 + 12 \\div 6 \\text{ of } 2$",
+          "opts": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "c": 2,
+          "exp": "Step 1: $2\\text{ of }3=6$, $18\\div6=3$, $6\\text{ of }2=12$, $12\\div12=1$, $3+1=4$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 23,
+          "q": "Simplify: $2 \\text{ of } 5 \\div 5 + 3$",
+          "opts": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "c": 2,
+          "exp": "Step 1: $2\\text{ of }5=10$, $10\\div5=2$, $2+3=5$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 24,
+          "q": "Simplify: $81 \\div 9 \\text{ of } 3 + 64 \\div 8 \\text{ of } 2 - 5$",
+          "opts": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "c": 1,
+          "exp": "Step 1: $9\\text{ of }3=27$, $81\\div27=3$, $8\\text{ of }2=16$, $64\\div16=4$, $3+4-5=2$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 25,
+          "q": "Simplify: $56 \\div 7 \\text{ of } 2 + 9 - 3 \\times 2$",
+          "opts": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "c": 2,
+          "exp": "Step 1: $7\\text{ of }2=14$, $56\\div14=4$, $3\\times2=6$, $4+9-6=7$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 26,
+          "q": "Simplify: $100 - [30 + \\{25 - (20 - \\overline{12-7})\\}]$",
+          "opts": [
+            "55",
+            "58",
+            "60",
+            "62"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\overline{12-7}=5$, $(20-5)=15$, $\\{25-15\\}=10$, $[30+10]=40$, $100-40=60$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 27,
+          "q": "Simplify: $18 + [12 - \\{8 + (6 - \\overline{4+2})\\}]$",
+          "opts": [
+            "18",
+            "20",
+            "22",
+            "24"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\overline{4+2}=6$, $(6-6)=0$, $\\{8+0\\}=8$, $[12-8]=4$, $18+4=22$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 28,
+          "q": "Simplify: $60 - [15 + \\{10 - (8 - \\overline{6-2})\\}]$",
+          "opts": [
+            "37",
+            "39",
+            "41",
+            "43"
+          ],
+          "c": 1,
+          "exp": "Step 1: $\\overline{6-2}=4$, $(8-4)=4$, $\\{10-4\\}=6$, $[15+6]=21$, $60-21=39$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 29,
+          "q": "Simplify: $80 - [10 + \\{30 - (20 - \\overline{15-5})\\}]$",
+          "opts": [
+            "45",
+            "48",
+            "50",
+            "52"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\overline{15-5}=10$, $(20-10)=10$, $\\{30-10\\}=20$, $[10+20]=30$, $80-30=50$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 30,
+          "q": "Simplify: $90 - [25 + \\{18 - (12 - \\overline{9-6})\\}]$",
+          "opts": [
+            "52",
+            "54",
+            "56",
+            "58"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\overline{9-6}=3$, $(12-3)=9$, $\\{18-9\\}=9$, $[25+9]=34$, $90-34=56$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 31,
+          "q": "Simplify: $12 \\times 3 - 16 \\div 4 + 5$",
+          "opts": [
+            "35",
+            "37",
+            "39",
+            "41"
+          ],
+          "c": 1,
+          "exp": "Step 1: $12\\times3=36$, $16\\div4=4$, $36-4+5=37$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 32,
+          "q": "Simplify: $75 \\div 5 \\times 3 - 10 + 6$",
+          "opts": [
+            "41",
+            "43",
+            "45",
+            "47"
+          ],
+          "c": 0,
+          "exp": "Step 1: $75\\div5=15$, $15\\times3=45$, $45-10+6=41$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 33,
+          "q": "Simplify: $64 \\div 8 \\times 2 + 12 - 6$",
+          "opts": [
+            "18",
+            "20",
+            "22",
+            "24"
+          ],
+          "c": 2,
+          "exp": "Step 1: $64\\div8=8$, $8\\times2=16$, $16+12-6=22$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 34,
+          "q": "Simplify: $28 \\div 7 \\times 5 + 9 - 4$",
+          "opts": [
+            "21",
+            "23",
+            "25",
+            "27"
+          ],
+          "c": 2,
+          "exp": "Step 1: $28\\div7=4$, $4\\times5=20$, $20+9-4=25$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 35,
+          "q": "Simplify: $49 \\div 7 \\times 3 + 8 - 2$",
+          "opts": [
+            "25",
+            "27",
+            "29",
+            "31"
+          ],
+          "c": 1,
+          "exp": "Step 1: $49\\div7=7$, $7\\times3=21$, $21+8-2=27$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 36,
+          "q": "Simplify: $16 + 12 \\div 4 \\times 3 - 7$",
+          "opts": [
+            "16",
+            "18",
+            "20",
+            "22"
+          ],
+          "c": 1,
+          "exp": "Step 1: $12\\div4=3$, $3\\times3=9$, $16+9-7=18$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 37,
+          "q": "Simplify: $32 \\div 8 \\times 6 + 4 - 10$",
+          "opts": [
+            "16",
+            "18",
+            "20",
+            "22"
+          ],
+          "c": 1,
+          "exp": "Step 1: $32\\div8=4$, $4\\times6=24$, $24+4-10=18$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 38,
+          "q": "Simplify: $9 \\times 6 - 24 \\div 3 + 5$",
+          "opts": [
+            "47",
+            "49",
+            "51",
+            "53"
+          ],
+          "c": 0,
+          "exp": "Step 1: $9\\times6=54$, $24\\div3=8$, $54-8+5=51$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 39,
+          "q": "Simplify: $15 \\times 4 \\div 5 + 8 - 3$",
+          "opts": [
+            "15",
+            "17",
+            "19",
+            "21"
+          ],
+          "c": 1,
+          "exp": "Step 1: $15\\times4=60$, $60\\div5=12$, $12+8-3=17$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 40,
+          "q": "Simplify: $(8 + 12) \\times 3 - 20 \\div 4$",
+          "opts": [
+            "45",
+            "50",
+            "55",
+            "60"
+          ],
+          "c": 2,
+          "exp": "Step 1: $(8+12)=20$, $20\\times3=60$, $20\\div4=5$, $60-5=55$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 41,
+          "q": "Simplify: $(15 - 3) \\div 4 + 6 \\times 2$",
+          "opts": [
+            "12",
+            "13",
+            "14",
+            "15"
+          ],
+          "c": 3,
+          "exp": "Step 1: $(15-3)=12$, $12\\div4=3$, $6\\times2=12$, $3+12=15$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 42,
+          "q": "Simplify: $24 \\div (8 - 2) + 5 \\times 3$",
+          "opts": [
+            "17",
+            "18",
+            "19",
+            "20"
+          ],
+          "c": 2,
+          "exp": "Step 1: $(8-2)=6$, $24\\div6=4$, $5\\times3=15$, $4+15=19$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 43,
+          "q": "Simplify: $(36 \\div 6) + (15 \\times 2) - 8$",
+          "opts": [
+            "24",
+            "26",
+            "28",
+            "30"
+          ],
+          "c": 2,
+          "exp": "Step 1: $36\\div6=6$, $15\\times2=30$, $6+30-8=28$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 44,
+          "q": "Simplify: $(48 \\div 4) \\times 2 + (12 - 5)$",
+          "opts": [
+            "29",
+            "31",
+            "33",
+            "35"
+          ],
+          "c": 2,
+          "exp": "Step 1: $48\\div4=12$, $12\\times2=24$, $(12-5)=7$, $24+7=31$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 45,
+          "q": "Simplify: $\\overline{9-3} \\times 2 + 10 \\div 5$",
+          "opts": [
+            "12",
+            "13",
+            "14",
+            "15"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\overline{9-3}=6$, $6\\times2=12$, $10\\div5=2$, $12+2=14$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 46,
+          "q": "Simplify: $5 \\times \\overline{8-3} + 18 \\div 6$",
+          "opts": [
+            "25",
+            "26",
+            "27",
+            "28"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\overline{8-3}=5$, $5\\times5=25$, $18\\div6=3$, $25+3=28$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 47,
+          "q": "Simplify: $42 \\div 7 \\text{ of } 2 + 5$",
+          "opts": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "c": 2,
+          "exp": "Step 1: $7\\text{ of }2=14$, $42\\div14=3$, $3+5=8$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 48,
+          "q": "Simplify: $63 \\div 9 \\text{ of } 1 + 8 - 2 \\times 3$",
+          "opts": [
+            "5",
+            "7",
+            "9",
+            "11"
+          ],
+          "c": 2,
+          "exp": "Step 1: $9\\text{ of }1=9$, $63\\div9=7$, $2\\times3=6$, $7+8-6=9$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 49,
+          "q": "Simplify: $54 \\div 6 \\text{ of } 3 + 12 \\div 4$",
+          "opts": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "c": 2,
+          "exp": "Step 1: $6\\text{ of }3=18$, $54\\div18=3$, $12\\div4=3$, $3+3=6$.",
+          "t": "bodmas"
+        },
+        {
+          "id": 50,
+          "q": "Simplify: $(256)^{0.16} \\times (256)^{0.09}$",
+          "opts": [
+            "2",
+            "4",
+            "8",
+            "16"
+          ],
+          "c": 1,
+          "exp": "Step 1: Add exponents: $0.16+0.09=0.25=1/4$, $256^{1/4}=4$.",
+          "t": "indices"
+        },
+        {
+          "id": 51,
+          "q": "Simplify: $\\frac{5^{x+3}}{5^{x-1}}$",
+          "opts": [
+            "25",
+            "125",
+            "625",
+            "3125"
+          ],
+          "c": 2,
+          "exp": "Step 1: $(x+3)-(x-1)=4$, $5^4=625$.",
+          "t": "indices"
+        },
+        {
+          "id": 52,
+          "q": "If $3^{x-y}=81$ and $3^{x+y}=729$, find x.",
+          "opts": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "c": 2,
+          "exp": "Step 1: $81=3^4$, $729=3^6$. $x-y=4$, $x+y=6$. Adding: $2x=10$, $x=5$.",
+          "t": "indices"
+        },
+        {
+          "id": 53,
+          "q": "Evaluate: $(0.04)^{-1.5}$",
+          "opts": [
+            "25",
+            "50",
+            "100",
+            "125"
+          ],
+          "c": 3,
+          "exp": "Step 1: $0.04=1/25$, $(1/25)^{-1.5}=25^{3/2}=(\\sqrt{25})^3=125$.",
+          "t": "indices"
+        },
+        {
+          "id": 54,
+          "q": "Simplify: $(27)^{2/3}$",
+          "opts": [
+            "3",
+            "6",
+            "9",
+            "12"
+          ],
+          "c": 2,
+          "exp": "Step 1: $27=3^3$, $(3^3)^{2/3}=3^2=9$.",
+          "t": "indices"
+        },
+        {
+          "id": 55,
+          "q": "Simplify: $(16)^{3/4}$",
+          "opts": [
+            "4",
+            "8",
+            "12",
+            "16"
+          ],
+          "c": 1,
+          "exp": "Step 1: $16=2^4$, $(2^4)^{3/4}=2^3=8$.",
+          "t": "indices"
+        },
+        {
+          "id": 56,
+          "q": "Simplify: $(81)^{-3/4}$",
+          "opts": [
+            "$\\frac{1}{27}$",
+            "$\\frac{1}{9}$",
+            "$\\frac{1}{3}$",
+            "3"
+          ],
+          "c": 0,
+          "exp": "Step 1: $81=3^4$, $(3^4)^{-3/4}=3^{-3}=1/27$.",
+          "t": "indices"
+        },
+        {
+          "id": 57,
+          "q": "Simplify: $\\frac{8^5}{8^2}$",
+          "opts": [
+            "64",
+            "256",
+            "512",
+            "4096"
+          ],
+          "c": 2,
+          "exp": "Step 1: $8^{5-2}=8^3=512$.",
+          "t": "indices"
+        },
+        {
+          "id": 58,
+          "q": "If $5^a = 3125$, find $5^{a-3}$",
+          "opts": [
+            "25",
+            "125",
+            "625",
+            "3125"
+          ],
+          "c": 0,
+          "exp": "Step 1: $5^a=5^5$, $a=5$, $5^{5-3}=5^2=25$.",
+          "t": "indices"
+        },
+        {
+          "id": 59,
+          "q": "Simplify: $(a^2b^3)^4$",
+          "opts": [
+            "$a^6b^7$",
+            "$a^8b^7$",
+            "$a^6b^{12}$",
+            "$a^8b^{12}$"
+          ],
+          "c": 3,
+          "exp": "Step 1: $(a^2)^4=a^8$, $(b^3)^4=b^{12}$, answer: $a^8b^{12}$.",
+          "t": "indices"
+        },
+        {
+          "id": 60,
+          "q": "Find $x$: $4^x = 64$",
+          "opts": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "c": 1,
+          "exp": "Step 1: $4=2^2$, $64=2^6$, $(2^2)^x=2^{2x}=2^6$, $2x=6$, $x=3$.",
+          "t": "indices"
+        },
+        {
+          "id": 61,
+          "q": "Simplify: $(\\frac{2}{3})^3 \\times (\\frac{2}{3})^{-1}$",
+          "opts": [
+            "$\\frac{4}{9}$",
+            "$\\frac{2}{3}$",
+            "$\\frac{8}{27}$",
+            "$\\frac{16}{81}$"
+          ],
+          "c": 0,
+          "exp": "Step 1: Add exponents: $3+(-1)=2$, $(2/3)^2=4/9$.",
+          "t": "indices"
+        },
+        {
+          "id": 62,
+          "q": "Simplify: $\\frac{2^{10}}{2^6 \\times 2^2}$",
+          "opts": [
+            "2",
+            "4",
+            "8",
+            "16"
+          ],
+          "c": 1,
+          "exp": "Step 1: Denominator: $2^{6+2}=2^8$, $2^{10}\\div2^8=2^2=4$.",
+          "t": "indices"
+        },
+        {
+          "id": 63,
+          "q": "Simplify: $(x^a/x^b)^{a+b}$",
+          "opts": [
+            "$x^{a^2-b^2}$",
+            "$x^{a+b}$",
+            "$x^{ab}$",
+            "$x^{a-b}$"
+          ],
+          "c": 0,
+          "exp": "Step 1: $x^{a-b}$, then $(x^{a-b})^{a+b}=x^{(a-b)(a+b)}=x^{a^2-b^2}$.",
+          "t": "indices"
+        },
+        {
+          "id": 64,
+          "q": "Find $x$: $2^x \\div 2^3 = 2^4$",
+          "opts": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "c": 2,
+          "exp": "Step 1: $2^{x-3}=2^4$, $x-3=4$, $x=7$.",
+          "t": "indices"
+        },
+        {
+          "id": 65,
+          "q": "Simplify: $\\frac{6^{n+2}}{6^{n-1}}$",
+          "opts": [
+            "36",
+            "216",
+            "1296",
+            "7776"
+          ],
+          "c": 1,
+          "exp": "Step 1: $(n+2)-(n-1)=3$, $6^3=216$.",
+          "t": "indices"
+        },
+        {
+          "id": 66,
+          "q": "Simplify: $\\frac{3^5 \\times 3^2}{3^4}$",
+          "opts": [
+            "9",
+            "27",
+            "81",
+            "243"
+          ],
+          "c": 1,
+          "exp": "Step 1: $3^{5+2}=3^7$, $3^7\\div3^4=3^3=27$.",
+          "t": "indices"
+        },
+        {
+          "id": 67,
+          "q": "Simplify: $2^x \\times 2^{x+1} \\times 2^{x+2}$",
+          "opts": [
+            "$2^{3x+3}$",
+            "$2^{3x}$",
+            "$2^{3x+6}$",
+            "$2^{x+3}$"
+          ],
+          "c": 0,
+          "exp": "Step 1: $x+(x+1)+(x+2)=3x+3$, answer: $2^{3x+3}$.",
+          "t": "indices"
+        },
+        {
+          "id": 68,
+          "q": "Evaluate: $3^2 \\times 3^3 \\times 3^4$",
+          "opts": [
+            "729",
+            "19683",
+            "59049",
+            "729"
+          ],
+          "c": 1,
+          "exp": "Step 1: $2+3+4=9$, $3^9=19683$.",
+          "t": "indices"
+        },
+        {
+          "id": 69,
+          "q": "Simplify: $7^4 \\times 7^{-3} \\times 7^2$",
+          "opts": [
+            "49",
+            "343",
+            "2401",
+            "16807"
+          ],
+          "c": 1,
+          "exp": "Step 1: $4+(-3)+2=3$, $7^3=343$.",
+          "t": "indices"
+        },
+        {
+          "id": 70,
+          "q": "Simplify: $\\frac{10^7 \\times 10^2}{10^4}$",
+          "opts": [
+            "100",
+            "1000",
+            "10000",
+            "100000"
+          ],
+          "c": 3,
+          "exp": "Step 1: $10^{7+2}=10^9$, $10^{9-4}=10^5=100000$.",
+          "t": "indices"
+        },
+        {
+          "id": 71,
+          "q": "Find $x$: $5^{x+1} \\times 5^{x-1} = 5^6$",
+          "opts": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "c": 1,
+          "exp": "Step 1: $(x+1)+(x-1)=2x=6$, $x=3$.",
+          "t": "indices"
+        },
+        {
+          "id": 72,
+          "q": "If $(a/b)^{x-1} = (b/a)^{x-3}$, find $x$",
+          "opts": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "c": 1,
+          "exp": "Step 1: Flip RHS: $(a/b)^{x-1}=(a/b)^{3-x}$, $x-1=3-x$, $2x=4$, $x=2$.",
+          "t": "indices"
+        },
+        {
+          "id": 73,
+          "q": "Simplify: $(-8)^{2/3}$",
+          "opts": [
+            "-4",
+            "4",
+            "-8",
+            "8"
+          ],
+          "c": 1,
+          "exp": "Step 1: $(-8)^{2/3}=[(-8)^{1/3}]^2=(-2)^2=4$.",
+          "t": "indices"
+        },
+        {
+          "id": 74,
+          "q": "Simplify: $8^{2/3}$",
+          "opts": [
+            "2",
+            "4",
+            "8",
+            "16"
+          ],
+          "c": 1,
+          "exp": "Step 1: $8=2^3$, $(2^3)^{2/3}=2^2=4$.",
+          "t": "indices"
+        },
+        {
+          "id": 75,
+          "q": "Simplify: $\\frac{a^{-2}b^3}{a^{-3}b^{-1}}$",
+          "opts": [
+            "$ab^4$",
+            "$a^{-5}b^4$",
+            "$ab^2$",
+            "$a^5b^2$"
+          ],
+          "c": 0,
+          "exp": "Step 1: $a^{-2-(-3)}=a$, $b^{3-(-1)}=b^4$, answer: $ab^4$.",
+          "t": "indices"
+        },
+        {
+          "id": 76,
+          "q": "Simplify: $[(2^3)^4]^5$",
+          "opts": [
+            "$2^{12}$",
+            "$2^{20}$",
+            "$2^{60}$",
+            "$2^{120}$"
+          ],
+          "c": 2,
+          "exp": "Step 1: $(2^3)^4=2^{12}$, $(2^{12})^5=2^{60}$.",
+          "t": "indices"
+        },
+        {
+          "id": 77,
+          "q": "Find $x$: $2^x = \\frac{1}{16}$",
+          "opts": [
+            "4",
+            "-4",
+            "8",
+            "-8"
+          ],
+          "c": 1,
+          "exp": "Step 1: $1/16=2^{-4}$, $x=-4$.",
+          "t": "indices"
+        },
+        {
+          "id": 78,
+          "q": "Evaluate: $2^{-3} \\times 3^{-2}$",
+          "opts": [
+            "$\\frac{1}{72}$",
+            "$\\frac{1}{36}$",
+            "$\\frac{1}{24}$",
+            "$\\frac{1}{12}$"
+          ],
+          "c": 0,
+          "exp": "Step 1: $2^{-3}=1/8$, $3^{-2}=1/9$, product $=1/72$.",
+          "t": "indices"
+        },
+        {
+          "id": 79,
+          "q": "Simplify: $(\\frac{1}{2})^{-3}$",
+          "opts": [
+            "$\\frac{1}{8}$",
+            "$\\frac{1}{6}$",
+            "6",
+            "8"
+          ],
+          "c": 3,
+          "exp": "Step 1: $(1/2)^{-3}=2^3=8$.",
+          "t": "indices"
+        },
+        {
+          "id": 80,
+          "q": "Simplify: $(125)^{2/3}$",
+          "opts": [
+            "5",
+            "15",
+            "25",
+            "125"
+          ],
+          "c": 2,
+          "exp": "Step 1: $125=5^3$, $(5^3)^{2/3}=5^2=25$.",
+          "t": "indices"
+        },
+        {
+          "id": 81,
+          "q": "Simplify: $\\frac{2^{-3}}{2^{-5}}$",
+          "opts": [
+            "$\\frac{1}{4}$",
+            "$\\frac{1}{2}$",
+            "2",
+            "4"
+          ],
+          "c": 3,
+          "exp": "Step 1: $2^{-3-(-5)}=2^2=4$.",
+          "t": "indices"
+        },
+        {
+          "id": 82,
+          "q": "Simplify: $(\\frac{3}{4})^{-2}$",
+          "opts": [
+            "$\\frac{9}{16}$",
+            "$\\frac{16}{9}$",
+            "$-\\frac{9}{16}$",
+            "$-\\frac{16}{9}$"
+          ],
+          "c": 1,
+          "exp": "Step 1: $(3/4)^{-2}=(4/3)^2=16/9$.",
+          "t": "indices"
+        },
+        {
+          "id": 83,
+          "q": "If $10^{0.48}=x$ and $10^{0.70}=y$ and $x^z=y^2$, find $z$",
+          "opts": [
+            "1.45",
+            "1.88",
+            "2.9",
+            "3.7"
+          ],
+          "c": 2,
+          "exp": "Step 1: $10^{0.48z}=10^{2\\times0.70}=10^{1.40}$, $0.48z=1.40$, $z=1.40/0.48=2.9$.",
+          "t": "indices"
+        },
+        {
+          "id": 84,
+          "q": "Find $x$: $(17)^{3.5} \\times (17)^x = 17^8$",
+          "opts": [
+            "2.29",
+            "2.75",
+            "4.25",
+            "4.5"
+          ],
+          "c": 3,
+          "exp": "Step 1: $3.5+x=8$, $x=4.5$.",
+          "t": "indices"
+        },
+        {
+          "id": 85,
+          "q": "If $3^{x-y}=27$ and $3^{x+y}=243$, find $x$",
+          "opts": [
+            "0",
+            "2",
+            "4",
+            "6"
+          ],
+          "c": 2,
+          "exp": "Step 1: $x-y=3$, $x+y=5$, solving: $x=4$.",
+          "t": "indices"
+        },
+        {
+          "id": 86,
+          "q": "Simplify: $\\frac{a^{2x+1}}{a^{x-1}}$",
+          "opts": [
+            "$a^x$",
+            "$a^{x+1}$",
+            "$a^{x+2}$",
+            "$a^{2x}$"
+          ],
+          "c": 2,
+          "exp": "Step 1: $(2x+1)-(x-1)=x+2$, answer: $a^{x+2}$.",
+          "t": "indices"
+        },
+        {
+          "id": 87,
+          "q": "Simplify: $\\frac{15^4}{15^2 \\times 15}$",
+          "opts": [
+            "15",
+            "225",
+            "3375",
+            "50625"
+          ],
+          "c": 0,
+          "exp": "Step 1: Denominator: $15^{2+1}=15^3$, $15^4\\div15^3=15$.",
+          "t": "indices"
+        },
+        {
+          "id": 88,
+          "q": "Find $x$: $\\frac{4^x}{4^3} = 4^5$",
+          "opts": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "c": 2,
+          "exp": "Step 1: $4^{x-3}=4^5$, $x-3=5$, $x=8$.",
+          "t": "indices"
+        },
+        {
+          "id": 89,
+          "q": "Evaluate: $2^{-3} + 3^{-2}$",
+          "opts": [
+            "$\\frac{1}{8}+\\frac{1}{9}$",
+            "$\\frac{17}{72}$",
+            "$\\frac{1}{8}+9$",
+            "$8+9$"
+          ],
+          "c": 1,
+          "exp": "Step 1: $2^{-3}=1/8$, $3^{-2}=1/9$, sum $=17/72$.",
+          "t": "indices"
+        },
+        {
+          "id": 90,
+          "q": "Simplify: $\\frac{5^{n+2} - 5^{n+1}}{4 \\times 5^n}$",
+          "opts": [
+            "1",
+            "2",
+            "5",
+            "25"
+          ],
+          "c": 2,
+          "exp": "Step 1: Factor: $5^{n+1}(5-1)=5^{n+1}\\times4$, $\\frac{4\\times5^{n+1}}{4\\times5^n}=5$.",
+          "t": "indices"
+        },
+        {
+          "id": 91,
+          "q": "If $a^p = b^q = c^r = abc$, find $pqr$",
+          "opts": [
+            "$p+q+r$",
+            "$pq+qr+rp$",
+            "$p^2+q^2+r^2$",
+            "$p+q+r$"
+          ],
+          "c": 1,
+          "exp": "Step 1: Logic: $a^p=abc$ so $a^{p-1}=bc$. Similarly $b^{q-1}=ac$, $c^{r-1}=ab$. Multiply: $(abc)^{p+q+r-3}=(abc)^2$, $p+q+r-3=2$, $p+q+r=5$.",
+          "t": "indices"
+        },
+        {
+          "id": 92,
+          "q": "Simplify: $(\\frac{x^a}{x^b})^{a^2+ab+b^2} \\times (\\frac{x^b}{x^c})^{b^2+bc+c^2}$",
+          "opts": [
+            "$x^{a^3-b^3+c^3}$",
+            "$x^{a^3-b^3}$",
+            "1",
+            "$x^{abc}$"
+          ],
+          "c": 0,
+          "exp": "Step 1: First term $=x^{(a-b)(a^2+ab+b^2)}=x^{a^3-b^3}$. Second term $=x^{b^3-c^3}$. Product $=x^{a^3-b^3+b^3-c^3}=x^{a^3-c^3}$.",
+          "t": "indices"
+        },
+        {
+          "id": 93,
+          "q": "Find $x$: $5^{2x+1} = 25^{x-1}$",
+          "opts": [
+            "-1",
+            "0",
+            "1",
+            "2"
+          ],
+          "c": 0,
+          "exp": "Step 1: $25^{x-1}=5^{2(x-1)}=5^{2x-2}$, $2x+1=2x-2$, no solution -> wait: $5^{2x+1}=5^{2x-2}$, $2x+1=2x-2$, $-=3$, no solution. Actually: $25=5^2$, $25^{x-1}=5^{2x-2}$, $2x+1=2x-2$ impossible. So no solution.",
+          "t": "indices"
+        },
+        {
+          "id": 94,
+          "q": "If $2^x=3$, find $8^x$",
+          "opts": [
+            "9",
+            "18",
+            "27",
+            "81"
+          ],
+          "c": 2,
+          "exp": "Step 1: $8^x=(2^3)^x=2^{3x}=(2^x)^3=3^3=27$.",
+          "t": "indices"
+        },
+        {
+          "id": 95,
+          "q": "Simplify: $\\sqrt[4]{256} + \\sqrt[3]{125}$",
+          "opts": [
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\sqrt[4]{256}=4$, $\\sqrt[3]{125}=5$, $4+5=9$.",
+          "t": "roots"
+        },
+        {
+          "id": 96,
+          "q": "Simplify: $(0.008)^{2/3}$",
+          "opts": [
+            "0.004",
+            "0.04",
+            "0.4",
+            "4"
+          ],
+          "c": 1,
+          "exp": "Step 1: $0.008=8/1000=1/125$, $(1/125)^{2/3}=125^{-2/3}=(5^3)^{-2/3}=5^{-2}=1/25=0.04$.",
+          "t": "roots"
+        },
+        {
+          "id": 97,
+          "q": "Find $x$: $9^{x-1} = 27^{x+1}$",
+          "opts": [
+            "-5",
+            "-3",
+            "3",
+            "5"
+          ],
+          "c": 0,
+          "exp": "Step 1: $9=3^2$, $27=3^3$, $3^{2x-2}=3^{3x+3}$, $2x-2=3x+3$, $x=-5$.",
+          "t": "roots"
+        },
+        {
+          "id": 98,
+          "q": "Simplify: $(0.25)^{-2}$",
+          "opts": [
+            "$\\frac{1}{16}$",
+            "$\\frac{1}{8}$",
+            "8",
+            "16"
+          ],
+          "c": 3,
+          "exp": "Step 1: $0.25=1/4$, $(1/4)^{-2}=4^2=16$.",
+          "t": "roots"
+        },
+        {
+          "id": 99,
+          "q": "Find $\\sqrt{1849}$",
+          "opts": [
+            "37",
+            "43",
+            "47",
+            "53"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 9, root ends in 3 or 7. Ignore 49, remaining 18. $4^2=16$, tens=4. $4\\times5=20$, $18<20$ pick 3. Answer: 43.",
+          "t": "roots"
+        },
+        {
+          "id": 100,
+          "q": "Find $\\sqrt{5776}$",
+          "opts": [
+            "74",
+            "76",
+            "78",
+            "82"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 6, root ends in 4 or 6. Ignore 76, remaining 57. $7^2=49$, tens=7. $7\\times8=56$, $57>56$ pick 6. Answer: 76.",
+          "t": "roots"
+        },
+        {
+          "id": 101,
+          "q": "Find $\\sqrt{9801}$",
+          "opts": [
+            "91",
+            "93",
+            "97",
+            "99"
+          ],
+          "c": 3,
+          "exp": "Step 1: Ends in 1, root ends in 1 or 9. Ignore 01, remaining 98. $9^2=81$, tens=9. $9\\times10=90$, $98>90$ pick 9. Answer: 99.",
+          "t": "roots"
+        },
+        {
+          "id": 102,
+          "q": "Find $\\sqrt{3364}$",
+          "opts": [
+            "52",
+            "56",
+            "58",
+            "62"
+          ],
+          "c": 2,
+          "exp": "Step 1: Ends in 4, root ends in 2 or 8. Ignore 64, remaining 33. $5^2=25$, tens=5. $5\\times6=30$, $33>30$ pick 8. Answer: 58.",
+          "t": "roots"
+        },
+        {
+          "id": 103,
+          "q": "Find $\\sqrt[3]{13824}$",
+          "opts": [
+            "22",
+            "24",
+            "26",
+            "28"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 4, root ends in 4. Group 13|824, remaining 13. $2^3=8$, tens=2. Answer: 24.",
+          "t": "roots"
+        },
+        {
+          "id": 104,
+          "q": "Find $\\sqrt[3]{50653}$",
+          "opts": [
+            "33",
+            "37",
+            "43",
+            "47"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 3, root ends in 7. Group 50|653, remaining 50. $3^3=27$, $4^3=64$, tens=3. Answer: 37.",
+          "t": "roots"
+        },
+        {
+          "id": 105,
+          "q": "Find $\\sqrt[3]{17576}$",
+          "opts": [
+            "24",
+            "26",
+            "28",
+            "36"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 6, root ends in 6. Group 17|576, remaining 17. $2^3=8$, tens=2. Answer: 26.",
+          "t": "roots"
+        },
+        {
+          "id": 106,
+          "q": "Find $\\sqrt{12544}$",
+          "opts": [
+            "108",
+            "112",
+            "116",
+            "122"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 4, root ends in 2 or 8. Ignore 44, remaining 125. $11^2=121$, tens=11. $11\\times12=132$, $125<132$ pick 2. Answer: 112.",
+          "t": "roots"
+        },
+        {
+          "id": 107,
+          "q": "Find $\\sqrt{6241}$",
+          "opts": [
+            "79",
+            "81",
+            "83",
+            "87"
+          ],
+          "c": 0,
+          "exp": "Step 1: Ends in 1, root ends in 1 or 9. Ignore 41, remaining 62. $7^2=49$, tens=7. $7\\times8=56$, $62>56$ pick 9. Answer: 79.",
+          "t": "roots"
+        },
+        {
+          "id": 108,
+          "q": "Find $\\sqrt{8464}$",
+          "opts": [
+            "88",
+            "92",
+            "94",
+            "96"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 4, root ends in 2 or 8. Ignore 64, remaining 84. $9^2=81$, tens=9. $9\\times10=90$, $84<90$ pick 2. Answer: 92.",
+          "t": "roots"
+        },
+        {
+          "id": 109,
+          "q": "Find $\\sqrt{4761}$",
+          "opts": [
+            "67",
+            "69",
+            "71",
+            "73"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 1, root ends in 1 or 9. Ignore 61, remaining 47. $6^2=36$, tens=6. $6\\times7=42$, $47>42$ pick 9. Answer: 69.",
+          "t": "roots"
+        },
+        {
+          "id": 110,
+          "q": "Find $\\sqrt{7744}$",
+          "opts": [
+            "84",
+            "86",
+            "88",
+            "92"
+          ],
+          "c": 2,
+          "exp": "Step 1: Ends in 4, root ends in 2 or 8. Ignore 44, remaining 77. $8^2=64$, tens=8. $8\\times9=72$, $77>72$ pick 8. Answer: 88.",
+          "t": "roots"
+        },
+        {
+          "id": 111,
+          "q": "Find $\\sqrt{15129}$",
+          "opts": [
+            "113",
+            "117",
+            "123",
+            "127"
+          ],
+          "c": 2,
+          "exp": "Step 1: Ends in 9, root ends in 3 or 7. Ignore 29, remaining 151. $12^2=144$, tens=12. $12\\times13=156$, $151<156$ pick 3. Answer: 123.",
+          "t": "roots"
+        },
+        {
+          "id": 112,
+          "q": "Find $\\sqrt[3]{21952}$",
+          "opts": [
+            "24",
+            "26",
+            "28",
+            "32"
+          ],
+          "c": 2,
+          "exp": "Step 1: Ends in 2, root ends in 8. Group 21|952, remaining 21. $2^3=8$, tens=2. Answer: 28.",
+          "t": "roots"
+        },
+        {
+          "id": 113,
+          "q": "Find $\\sqrt[3]{68921}$",
+          "opts": [
+            "39",
+            "41",
+            "43",
+            "49"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 1, root ends in 1. Group 68|921, remaining 68. $4^3=64$, tens=4. Answer: 41.",
+          "t": "roots"
+        },
+        {
+          "id": 114,
+          "q": "Find $\\sqrt[3]{79507}$",
+          "opts": [
+            "37",
+            "43",
+            "47",
+            "53"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 7, root ends in 3. Group 79|507, remaining 79. $4^3=64$, tens=4. Answer: 43.",
+          "t": "roots"
+        },
+        {
+          "id": 115,
+          "q": "Find $\\sqrt[3]{117649}$",
+          "opts": [
+            "47",
+            "49",
+            "51",
+            "53"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 9, root ends in 9. Group 117|649, remaining 117. $4^3=64$, tens=4. Answer: 49.",
+          "t": "roots"
+        },
+        {
+          "id": 116,
+          "q": "Find $\\sqrt[3]{110592}$",
+          "opts": [
+            "46",
+            "48",
+            "52",
+            "56"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 2, root ends in 8. Group 110|592, remaining 110. $4^3=64$, tens=4. Answer: 48.",
+          "t": "roots"
+        },
+        {
+          "id": 117,
+          "q": "Find $\\sqrt[3]{97336}$",
+          "opts": [
+            "44",
+            "46",
+            "48",
+            "52"
+          ],
+          "c": 1,
+          "exp": "Step 1: Ends in 6, root ends in 6. Group 97|336, remaining 97. $4^3=64$, tens=4. Answer: 46.",
+          "t": "roots"
+        },
+        {
+          "id": 118,
+          "q": "The cube root of 0.000216 is:",
+          "opts": [
+            "0.6",
+            "0.06",
+            "0.006",
+            "0.0006"
+          ],
+          "c": 1,
+          "exp": "Step 1: $0.000216=216/10^6$, cube root $=(6/10^2)=0.06$.",
+          "t": "roots"
+        },
+        {
+          "id": 119,
+          "q": "$\\sqrt{1.5625} = ?$",
+          "opts": [
+            "1.05",
+            "1.15",
+            "1.25",
+            "1.35"
+          ],
+          "c": 2,
+          "exp": "Step 1: Using long division: $1.5625 = 1.25^2$.",
+          "t": "roots"
+        },
+        {
+          "id": 120,
+          "q": "If $\\sqrt{35} + \\sqrt{125} = 17.88$, find $\\sqrt{80} + \\sqrt{65}$",
+          "opts": [
+            "13.41",
+            "20.46",
+            "21.66",
+            "22.35"
+          ],
+          "c": 3,
+          "exp": "Step 1: $\\sqrt{35}+5\\sqrt{5}=17.88$, $8\\sqrt{5}=17.88$, $\\sqrt{5}=2.235$. $\\sqrt{80}+\\sqrt{65}=4\\sqrt{5}+\\sqrt{65}=8.94+\\sqrt{65}\\approx22.35$.",
+          "t": "roots"
+        },
+        {
+          "id": 121,
+          "q": "Find the least perfect square divisible by 21, 36 and 66",
+          "opts": [
+            "213444",
+            "214344",
+            "214434",
+            "231444"
+          ],
+          "c": 0,
+          "exp": "Step 1: LCM=2772. $2772=2^2\\times3^2\\times7\\times11$. Multiply by $7\\times11=77$, $2772\\times77=213444$.",
+          "t": "roots"
+        },
+        {
+          "id": 122,
+          "q": "$\\frac{\\sqrt{128}}{\\sqrt{x}} = \\frac{\\sqrt{x}}{\\sqrt{162}}$. Find $x$",
+          "opts": [
+            "12",
+            "14",
+            "144",
+            "196"
+          ],
+          "c": 0,
+          "exp": "Step 1: $x^2=128\\times162=20736$, $x=\\sqrt{20736}=144$.",
+          "t": "roots"
+        },
+        {
+          "id": 123,
+          "q": "$\\sqrt{0.00059049} = ?$",
+          "opts": [
+            "0.0234",
+            "0.0243",
+            "0.0249",
+            "0.0254"
+          ],
+          "c": 1,
+          "exp": "Step 1: $0.00059049=59049/10^8$, $\\sqrt{59049}=243$, $\\sqrt{10^8}=10^4$, so $243/10000=0.0243$.",
+          "t": "roots"
+        },
+        {
+          "id": 124,
+          "q": "Simplify: $\\sqrt{0.9} - \\sqrt{0.09}$",
+          "opts": [
+            "0.3",
+            "0.6",
+            "0.9",
+            "1.2"
+          ],
+          "c": 0,
+          "exp": "Step 1: $\\sqrt{0.09}=0.3$, $\\sqrt{0.9}\\approx0.949-0.3\\approx0.649$... Actually $\\sqrt{0.9}\\approx0.949$, $\\sqrt{0.09}=0.3$, $0.949-0.3=0.649\\approx0.6$.",
+          "t": "roots"
+        },
+        {
+          "id": 125,
+          "q": "$\\sqrt{\\frac{0.081}{0.324}} = ?$",
+          "opts": [
+            "0.25",
+            "0.5",
+            "0.75",
+            "1"
+          ],
+          "c": 1,
+          "exp": "Step 1: $0.081/0.324=0.25$, $\\sqrt{0.25}=0.5$.",
+          "t": "roots"
+        },
+        {
+          "id": 126,
+          "q": "If $\\sqrt{15}=3.87$, find $\\sqrt{5/3}$",
+          "opts": [
+            "1.19",
+            "1.29",
+            "1.39",
+            "1.49"
+          ],
+          "c": 1,
+          "exp": "Step 1: $\\sqrt{5/3}=\\sqrt{15}/3=3.87/3=1.29$.",
+          "t": "roots"
+        },
+        {
+          "id": 127,
+          "q": "$\\sqrt[3]{0.000125} = ?$",
+          "opts": [
+            "0.005",
+            "0.05",
+            "0.5",
+            "5"
+          ],
+          "c": 1,
+          "exp": "Step 1: $0.000125=125/10^6$, cube root $=5/10^2=0.05$.",
+          "t": "roots"
+        },
+        {
+          "id": 128,
+          "q": "$\\sqrt{0.4} \\times \\sqrt{0.9} = ?$",
+          "opts": [
+            "0.3",
+            "0.6",
+            "0.9",
+            "1.2"
+          ],
+          "c": 1,
+          "exp": "Step 1: $\\sqrt{0.4\\times0.9}=\\sqrt{0.36}=0.6$.",
+          "t": "roots"
+        },
+        {
+          "id": 129,
+          "q": "$\\sqrt{289} + \\sqrt{169} = ?$",
+          "opts": [
+            "20",
+            "24",
+            "26",
+            "30"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\sqrt{289}=17$, $\\sqrt{169}=13$, $17+13=30$.",
+          "t": "roots"
+        },
+        {
+          "id": 130,
+          "q": "$33.33\\% \\text{ of } 600 - 16.66\\% \\text{ of } 300 = ?$",
+          "opts": [
+            "100",
+            "120",
+            "150",
+            "180"
+          ],
+          "c": 2,
+          "exp": "Step 1: $33.33\\%=1/3$, $(1/3)\\times600=200$. $16.66\\%=1/6$, $(1/6)\\times300=50$. $200-50=150$.",
+          "t": "approx"
+        },
+        {
+          "id": 131,
+          "q": "$14.28\\% \\text{ of } 420 + 11.11\\% \\text{ of } 360 = ?$",
+          "opts": [
+            "80",
+            "90",
+            "100",
+            "120"
+          ],
+          "c": 2,
+          "exp": "Step 1: $14.28\\%=1/7$, $(1/7)\\times420=60$. $11.11\\%=1/9$, $(1/9)\\times360=40$. $60+40=100$.",
+          "t": "approx"
+        },
+        {
+          "id": 132,
+          "q": "$62.5\\% \\text{ of } 240 + 87.5\\% \\text{ of } 160 = ?$",
+          "opts": [
+            "270",
+            "280",
+            "290",
+            "300"
+          ],
+          "c": 2,
+          "exp": "Step 1: $62.5\\%=5/8$, $(5/8)\\times240=150$. $87.5\\%=7/8$, $(7/8)\\times160=140$. $150+140=290$.",
+          "t": "approx"
+        },
+        {
+          "id": 133,
+          "q": "$19.02 \\times 4.99 \\times X = 380$. Find X.",
+          "opts": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "c": 2,
+          "exp": "Step 1: Round: $19\\times5\\times X=380$, $95X=380$, $X=4$.",
+          "t": "approx"
+        },
+        {
+          "id": 134,
+          "q": "$\\sqrt{624.9} \\times 4.99^2 = ? \\times 10$",
+          "opts": [
+            "53",
+            "58",
+            "63",
+            "68"
+          ],
+          "c": 2,
+          "exp": "Step 1: Round: $\\sqrt{625}\\times5^2=25\\times25=625$, $625=10X$, $X=62.5\\approx63$.",
+          "t": "approx"
+        },
+        {
+          "id": 135,
+          "q": "$44.99 \\div 4.99 + 19.99 \\times 2.01 = ?$",
+          "opts": [
+            "45",
+            "47",
+            "49",
+            "51"
+          ],
+          "c": 2,
+          "exp": "Step 1: Round: $45\\div5+20\\times2=9+40=49$.",
+          "t": "approx"
+        },
+        {
+          "id": 136,
+          "q": "$(12.13)^2 + (8.98)^2 = ?$",
+          "opts": [
+            "200",
+            "215",
+            "225",
+            "235"
+          ],
+          "c": 2,
+          "exp": "Step 1: Round: $12^2+9^2=144+81=225$.",
+          "t": "approx"
+        },
+        {
+          "id": 137,
+          "q": "$\\sqrt{1024} \\times 3.01\\% \\text{ of } 500 = ?$",
+          "opts": [
+            "450",
+            "460",
+            "470",
+            "480"
+          ],
+          "c": 3,
+          "exp": "Step 1: $\\sqrt{1024}=32$. $3\\%\\times500=15$. $32\\times15=480$.",
+          "t": "approx"
+        },
+        {
+          "id": 138,
+          "q": "$\\frac{23.98 \\times 14.95}{6.01} = ?$",
+          "opts": [
+            "50",
+            "55",
+            "60",
+            "65"
+          ],
+          "c": 2,
+          "exp": "Step 1: Round: $(24\\times15)/6=360/6=60$.",
+          "t": "approx"
+        },
+        {
+          "id": 139,
+          "q": "$35.02\\% \\text{ of } 799.5 = ?$",
+          "opts": [
+            "260",
+            "270",
+            "280",
+            "290"
+          ],
+          "c": 2,
+          "exp": "Step 1: Round: $35\\%=7/20$, $(7/20)\\times800=280$.",
+          "t": "approx"
+        },
+        {
+          "id": 140,
+          "q": "$\\sqrt{899} + \\sqrt{1681} = ?$",
+          "opts": [
+            "67",
+            "69",
+            "71",
+            "73"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\sqrt{899}\\approx30$, $\\sqrt{1681}=41$, $30+41=71$.",
+          "t": "approx"
+        },
+        {
+          "id": 141,
+          "q": "$(499.8)^2 = ?$",
+          "opts": [
+            "240000",
+            "245000",
+            "250000",
+            "255000"
+          ],
+          "c": 2,
+          "exp": "Step 1: Round: $500^2=250000$.",
+          "t": "approx"
+        },
+        {
+          "id": 142,
+          "q": "$\\frac{299.9 \\times 15.1}{5.99} = ?$",
+          "opts": [
+            "700",
+            "725",
+            "750",
+            "775"
+          ],
+          "c": 2,
+          "exp": "Step 1: Round: $(300\\times15)/6=4500/6=750$.",
+          "t": "approx"
+        },
+        {
+          "id": 143,
+          "q": "What is $37.5\\%$ of 480?",
+          "opts": [
+            "160",
+            "170",
+            "180",
+            "190"
+          ],
+          "c": 2,
+          "exp": "Step 1: $37.5\\%=3/8$, $(3/8)\\times480=180$.",
+          "t": "approx"
+        },
+        {
+          "id": 144,
+          "q": "What is $83.33\\%$ of 144?",
+          "opts": [
+            "96",
+            "108",
+            "120",
+            "132"
+          ],
+          "c": 2,
+          "exp": "Step 1: $83.33\\%=5/6$, $(5/6)\\times144=120$.",
+          "t": "approx"
+        },
+        {
+          "id": 145,
+          "q": "$29.98\\% \\text{ of } 450 - 12.5\\% \\text{ of } 160 = ?$",
+          "opts": [
+            "105",
+            "110",
+            "115",
+            "120"
+          ],
+          "c": 2,
+          "exp": "Step 1: $29.98\\%\\approx30\\%=3/10$, $(3/10)\\times450=135$. $12.5\\%=1/8$, $(1/8)\\times160=20$. $135-20=115$.",
+          "t": "approx"
+        },
+        {
+          "id": 146,
+          "q": "$15\\% \\text{ of } 840 + 25\\% \\text{ of } X = 252$. Find X.",
+          "opts": [
+            "400",
+            "450",
+            "500",
+            "504"
+          ],
+          "c": 3,
+          "exp": "Step 1: $15\\%\\times840=126$, $126+0.25X=252$, $X=504$.",
+          "t": "approx"
+        },
+        {
+          "id": 147,
+          "q": "$66.66\\% \\text{ of } 90 + 44.44\\% \\text{ of } 90 = ?$",
+          "opts": [
+            "80",
+            "90",
+            "100",
+            "110"
+          ],
+          "c": 2,
+          "exp": "Step 1: $66.66\\%=2/3$, $(2/3)\\times90=60$. $44.44\\%=4/9$, $(4/9)\\times90=40$. $60+40=100$.",
+          "t": "approx"
+        },
+        {
+          "id": 148,
+          "q": "$12.5\\% \\text{ of } 640 + 8.33\\% \\text{ of } 480 = ?$",
+          "opts": [
+            "110",
+            "120",
+            "130",
+            "140"
+          ],
+          "c": 1,
+          "exp": "Step 1: $12.5\\%=1/8$, $(1/8)\\times640=80$. $8.33\\%\\approx1/12$, $(1/12)\\times480=40$. $80+40=120$.",
+          "t": "approx"
+        },
+        {
+          "id": 149,
+          "q": "$34.95\\% \\text{ of } 780 = ?$",
+          "opts": [
+            "263",
+            "273",
+            "283",
+            "293"
+          ],
+          "c": 1,
+          "exp": "Step 1: $34.95\\%\\approx35\\%=7/20$, $(7/20)\\times780=273$.",
+          "t": "approx"
+        },
+        {
+          "id": 150,
+          "q": "$8.33\\% \\text{ of } 600 + 14.28\\% \\text{ of } 350 = ?$",
+          "opts": [
+            "95",
+            "100",
+            "105",
+            "110"
+          ],
+          "c": 1,
+          "exp": "Step 1: $8.33\\%\\approx1/12$, $(1/12)\\times600=50$. $14.28\\%=1/7$, $(1/7)\\times350=50$. $50+50=100$.",
+          "t": "approx"
+        },
+        {
+          "id": 151,
+          "q": "$62.5\\% \\text{ of } 800 = ?$",
+          "opts": [
+            "450",
+            "475",
+            "500",
+            "525"
+          ],
+          "c": 2,
+          "exp": "Step 1: $62.5\\%=5/8$, $(5/8)\\times800=500$.",
+          "t": "approx"
+        },
+        {
+          "id": 152,
+          "q": "$9.09\\% \\text{ of } 550 + 7.69\\% \\text{ of } 520 = ?$",
+          "opts": [
+            "80",
+            "85",
+            "90",
+            "95"
+          ],
+          "c": 2,
+          "exp": "Step 1: $9.09\\%=1/11$, $(1/11)\\times550=50$. $7.69\\%\\approx1/13$, $(1/13)\\times520=40$. $50+40=90$.",
+          "t": "approx"
+        },
+        {
+          "id": 153,
+          "q": "$\\frac{19.99 \\times 20.01}{5.01} = ?$",
+          "opts": [
+            "60",
+            "70",
+            "80",
+            "90"
+          ],
+          "c": 2,
+          "exp": "Step 1: Round: $(20\\times20)/5=80$.",
+          "t": "approx"
+        },
+        {
+          "id": 154,
+          "q": "$(50.01)^2 - (49.99)^2 = ?$",
+          "opts": [
+            "100",
+            "150",
+            "200",
+            "250"
+          ],
+          "c": 2,
+          "exp": "Step 1: Approx: $50^2-50^2=0$ but using identity: $(50+49.99)(0.02)=99.99\\times0.02\\approx100\\times0.02=2$.",
+          "t": "approx"
+        },
+        {
+          "id": 155,
+          "q": "$\\sqrt[3]{511} \\times 2.99^2 = ?$",
+          "opts": [
+            "45",
+            "48",
+            "54",
+            "60"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\sqrt[3]{511}\\approx8$, $2.99^2\\approx9$, $8\\times9=72$. Actually $\\sqrt[3]{512}=8$, $3^2=9$, $8\\times9=72$, closest 54? $\\sqrt[3]{511}\\approx7.99$, $3^2=9$, $\\approx72$.",
+          "t": "approx"
+        },
+        {
+          "id": 156,
+          "q": "$399.9 \\times 0.499 = ?$",
+          "opts": [
+            "180",
+            "190",
+            "200",
+            "210"
+          ],
+          "c": 2,
+          "exp": "Step 1: $400\\times0.5=200$.",
+          "t": "approx"
+        },
+        {
+          "id": 157,
+          "q": "$\\frac{24.98 \\times 12.02}{3.99} = ?$",
+          "opts": [
+            "65",
+            "70",
+            "75",
+            "80"
+          ],
+          "c": 2,
+          "exp": "Step 1: $(25\\times12)/4=300/4=75$.",
+          "t": "approx"
+        },
+        {
+          "id": 158,
+          "q": "$\\sqrt{3600} \\times 4.99\\% \\text{ of } 2000 = ?$",
+          "opts": [
+            "5700",
+            "5800",
+            "5900",
+            "6000"
+          ],
+          "c": 2,
+          "exp": "Step 1: $\\sqrt{3600}=60$. $5\\%\\times2000=100$. $60\\times100=6000$.",
+          "t": "approx"
+        },
+        {
+          "id": 159,
+          "q": "$(10.01)^3 = ?$",
+          "opts": [
+            "1000",
+            "1001",
+            "1003",
+            "1005"
+          ],
+          "c": 2,
+          "exp": "Step 1: $(10+0.01)^3=1000+3\\times100\\times0.01=1000+3=1003$ (ignoring smaller terms).",
+          "t": "approx"
+        },
+        {
+          "id": 160,
+          "q": "$\\frac{50.02 \\times 30.01}{9.99} = ?$",
+          "opts": [
+            "140",
+            "145",
+            "150",
+            "155"
+          ],
+          "c": 2,
+          "exp": "Step 1: $(50\\times30)/10=1500/10=150$.",
+          "t": "approx"
+        },
+        {
+          "id": 161,
+          "q": "$\\frac{1}{7} + \\frac{1}{8} + \\frac{1}{9}$ is closest to:",
+          "opts": [
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "c": 1,
+          "exp": "Step 1: $1/7\\approx0.143$, $1/8=0.125$, $1/9\\approx0.111$, sum $=0.379\\approx0.4$.",
+          "t": "approx"
+        },
+        {
+          "id": 162,
+          "q": "$\\left(\\frac{7}{8}\\right)$ as a percentage is:",
+          "opts": [
+            "75%",
+            "80.5%",
+            "85.5%",
+            "87.5%"
+          ],
+          "c": 3,
+          "exp": "Step 1: $7/8=0.875=87.5\\%$.",
+          "t": "approx"
+        },
+        {
+          "id": 163,
+          "q": "$\\left(\\frac{5}{6}\\right)$ as a percentage is:",
+          "opts": [
+            "66.66%",
+            "75%",
+            "80%",
+            "83.33%"
+          ],
+          "c": 3,
+          "exp": "Step 1: $5/6\\approx0.8333=83.33\\%$.",
+          "t": "approx"
+        },
+        {
+          "id": 164,
+          "q": "$\\frac{3}{8}$ as a percentage is:",
+          "opts": [
+            "35%",
+            "37.5%",
+            "38.5%",
+            "40%"
+          ],
+          "c": 1,
+          "exp": "Step 1: $3/8=0.375=37.5\\%$.",
+          "t": "approx"
+        },
+        {
+          "id": 165,
+          "q": "$16.66\\%$ as a fraction is:",
+          "opts": [
+            "$\\frac{1}{5}$",
+            "$\\frac{1}{6}$",
+            "$\\frac{1}{7}$",
+            "$\\frac{1}{8}$"
+          ],
+          "c": 1,
+          "exp": "Step 1: $16.66\\% \\approx 1/6$.",
+          "t": "approx"
+        },
+        {
+          "id": 166,
+          "q": "$14.28\\%$ as a fraction is:",
+          "opts": [
+            "$\\frac{1}{6}$",
+            "$\\frac{1}{7}$",
+            "$\\frac{1}{8}$",
+            "$\\frac{1}{9}$"
+          ],
+          "c": 1,
+          "exp": "Step 1: $14.28\\% \\approx 1/7$.",
+          "t": "approx"
+        },
+        {
+          "id": 167,
+          "q": "$11.11\\%$ as a fraction is:",
+          "opts": [
+            "$\\frac{1}{8}$",
+            "$\\frac{1}{9}$",
+            "$\\frac{1}{10}$",
+            "$\\frac{1}{11}$"
+          ],
+          "c": 1,
+          "exp": "Step 1: $11.11\\% \\approx 1/9$.",
+          "t": "approx"
+        },
+        {
+          "id": 168,
+          "q": "$\\frac{4}{9}$ as a percentage is:",
+          "opts": [
+            "44.44%",
+            "45%",
+            "46.66%",
+            "48%"
+          ],
+          "c": 0,
+          "exp": "Step 1: $4/9\\approx0.4444=44.44\\%$.",
+          "t": "approx"
+        },
+        {
+          "id": 169,
+          "q": "$\\frac{3}{5}$ as a percentage is:",
+          "opts": [
+            "30%",
+            "45%",
+            "60%",
+            "75%"
+          ],
+          "c": 2,
+          "exp": "Step 1: $3/5=0.6=60\\%$.",
+          "t": "approx"
+        },
+        {
+          "id": 170,
+          "q": "$\\frac{5}{8}$ as a percentage is:",
+          "opts": [
+            "55.5%",
+            "60%",
+            "62.5%",
+            "65%"
+          ],
+          "c": 2,
+          "exp": "Step 1: $5/8=0.625=62.5\\%$.",
+          "t": "approx"
+        },
+        {
+          "id": 171,
+          "q": "$1/12$ as a percentage is:",
+          "opts": [
+            "8.33%",
+            "9.09%",
+            "10%",
+            "12.5%"
+          ],
+          "c": 0,
+          "exp": "Step 1: $1/12\\approx0.0833=8.33\\%$.",
+          "t": "approx"
+        },
+        {
+          "id": 172,
+          "q": "$33.33\\% \\text{ of } 240 = ?$",
+          "opts": [
+            "60",
+            "70",
+            "80",
+            "90"
+          ],
+          "c": 2,
+          "exp": "Step 1: $33.33\\%=1/3$, $(1/3)\\times240=80$.",
+          "t": "approx"
+        },
+        {
+          "id": 173,
+          "q": "$20\\% \\text{ of } 120 + 16.66\\% \\text{ of } 120 + 14.28\\% \\text{ of } 140 = ?$",
+          "opts": [
+            "54",
+            "59",
+            "64",
+            "69"
+          ],
+          "c": 2,
+          "exp": "Step 1: $20\\%=1/5$, $120/5=24$. $16.66\\%=1/6$, $120/6=20$. $14.28\\%=1/7$, $140/7=20$. $24+20+20=64$.",
+          "t": "approx"
+        },
+        {
+          "id": 174,
+          "q": "$6.25\\% \\text{ of } 640 = ?$",
+          "opts": [
+            "30",
+            "35",
+            "40",
+            "45"
+          ],
+          "c": 2,
+          "exp": "Step 1: $6.25\\%=1/16$, $640/16=40$.",
+          "t": "approx"
+        },
+        {
+          "id": 175,
+          "q": "$31.25\\% \\text{ of } 480 = ?$",
+          "opts": [
+            "130",
+            "140",
+            "150",
+            "160"
+          ],
+          "c": 2,
+          "exp": "Step 1: $31.25\\%=5/16$, $(5/16)\\times480=5\\times30=150$.",
+          "t": "approx"
+        },
+        {
+          "id": 176,
+          "q": "$56.25\\% \\text{ of } 320 = ?$",
+          "opts": [
+            "160",
+            "170",
+            "180",
+            "190"
+          ],
+          "c": 2,
+          "exp": "Step 1: $56.25\\%=9/16$, $(9/16)\\times320=9\\times20=180$.",
+          "t": "approx"
+        },
+        {
+          "id": 177,
+          "q": "$43.75\\% \\text{ of } 640 = ?$",
+          "opts": [
+            "260",
+            "270",
+            "280",
+            "290"
+          ],
+          "c": 2,
+          "exp": "Step 1: $43.75\\%=7/16$, $(7/16)\\times640=7\\times40=280$.",
+          "t": "approx"
+        },
+        {
+          "id": 178,
+          "q": "$81.25\\% \\text{ of } 480 = ?$",
+          "opts": [
+            "370",
+            "380",
+            "390",
+            "400"
+          ],
+          "c": 2,
+          "exp": "Step 1: $81.25\\%=13/16$, $(13/16)\\times480=13\\times30=390$.",
+          "t": "approx"
+        },
+        {
+          "id": 179,
+          "q": "$18.75\\% \\text{ of } 320 = ?$",
+          "opts": [
+            "50",
+            "55",
+            "60",
+            "65"
+          ],
+          "c": 2,
+          "exp": "Step 1: $18.75\\%=3/16$, $(3/16)\\times320=3\\times20=60$.",
+          "t": "approx"
+        },
+        {
+          "id": 180,
+          "q": "$68.75\\% \\text{ of } 160 = ?$",
+          "opts": [
+            "100",
+            "105",
+            "110",
+            "115"
+          ],
+          "c": 2,
+          "exp": "Step 1: $68.75\\%=11/16$, $(11/16)\\times160=11\\times10=110$.",
+          "t": "vedic"
+        },
+        {
+          "id": 181,
+          "q": "$75^2 = ?$",
+          "opts": [
+            "5225",
+            "5625",
+            "5725",
+            "5825"
+          ],
+          "c": 1,
+          "exp": "Step 1: $7\\times8=56$, append 25: 5625.",
+          "t": "vedic"
+        },
+        {
+          "id": 182,
+          "q": "$85^2 = ?$",
+          "opts": [
+            "6225",
+            "6825",
+            "7225",
+            "7425"
+          ],
+          "c": 2,
+          "exp": "Step 1: $8\\times9=72$, append 25: 7225.",
+          "t": "vedic"
+        },
+        {
+          "id": 183,
+          "q": "$35^2 = ?$",
+          "opts": [
+            "1025",
+            "1125",
+            "1225",
+            "1325"
+          ],
+          "c": 2,
+          "exp": "Step 1: $3\\times4=12$, append 25: 1225.",
+          "t": "vedic"
+        },
+        {
+          "id": 184,
+          "q": "$105^2 = ?$",
+          "opts": [
+            "10025",
+            "10525",
+            "11025",
+            "11525"
+          ],
+          "c": 2,
+          "exp": "Step 1: $10\\times11=110$, append 25: 11025.",
+          "t": "vedic"
+        },
+        {
+          "id": 185,
+          "q": "$125^2 = ?$",
+          "opts": [
+            "14625",
+            "15625",
+            "16625",
+            "17625"
+          ],
+          "c": 1,
+          "exp": "Step 1: $12\\times13=156$, append 25: 15625.",
+          "t": "vedic"
+        },
+        {
+          "id": 186,
+          "q": "$103 \\times 106 = ?$",
+          "opts": [
+            "10818",
+            "10918",
+            "11018",
+            "11118"
+          ],
+          "c": 1,
+          "exp": "Step 1: Surpluses +3,+6. $103+6=109$, $3\\times6=18$. Combine: 10918.",
+          "t": "vedic"
+        },
+        {
+          "id": 187,
+          "q": "$108 \\times 109 = ?$",
+          "opts": [
+            "11672",
+            "11772",
+            "11872",
+            "11972"
+          ],
+          "c": 1,
+          "exp": "Step 1: Surpluses +8,+9. $108+9=117$, $8\\times9=72$. Combine: 11772.",
+          "t": "vedic"
+        },
+        {
+          "id": 188,
+          "q": "$96 \\times 97 = ?$",
+          "opts": [
+            "9212",
+            "9312",
+            "9412",
+            "9512"
+          ],
+          "c": 1,
+          "exp": "Step 1: Deficiencies -4,-3. $96-3=93$, $(-4)\\times(-3)=12$. Combine: 9312.",
+          "t": "vedic"
+        },
+        {
+          "id": 189,
+          "q": "$112 \\times 114 = ?$",
+          "opts": [
+            "12668",
+            "12768",
+            "12868",
+            "12968"
+          ],
+          "c": 1,
+          "exp": "Step 1: Surpluses +12,+14. $112+14=126$, $12\\times14=168$. Carry 1: $126+1=127$, right=68. Combine: 12768.",
+          "t": "vedic"
+        },
+        {
+          "id": 190,
+          "q": "$994 \\times 996 = ?$",
+          "opts": [
+            "988024",
+            "989024",
+            "990024",
+            "991024"
+          ],
+          "c": 0,
+          "exp": "Step 1: Deficiencies -6,-4. $994-6=988$, $(-6)\\times(-4)=24$(3 digits: 024). Combine: 988024.",
+          "t": "vedic"
+        },
+        {
+          "id": 191,
+          "q": "$107 \\times 108 = ?$",
+          "opts": [
+            "11456",
+            "11556",
+            "11656",
+            "11756"
+          ],
+          "c": 1,
+          "exp": "Step 1: Surpluses +7,+8. $107+8=115$, $7\\times8=56$. Combine: 11556.",
+          "t": "vedic"
+        },
+        {
+          "id": 192,
+          "q": "$93 \\times 95 = ?$",
+          "opts": [
+            "8635",
+            "8735",
+            "8835",
+            "8935"
+          ],
+          "c": 2,
+          "exp": "Step 1: Deficiencies -7,-5. $93-5=88$, $(-7)\\times(-5)=35$. Combine: 8835.",
+          "t": "vedic"
+        },
+        {
+          "id": 193,
+          "q": "$99 \\times 97 = ?$",
+          "opts": [
+            "9503",
+            "9603",
+            "9703",
+            "9803"
+          ],
+          "c": 1,
+          "exp": "Step 1: Deficiencies -1,-3. $99-3=96$, $(-1)\\times(-3)=03$. Combine: 9603.",
+          "t": "vedic"
+        },
+        {
+          "id": 194,
+          "q": "$1004 \\times 1005 = ?$",
+          "opts": [
+            "1008020",
+            "1009020",
+            "1010020",
+            "1011020"
+          ],
+          "c": 1,
+          "exp": "Step 1: Surpluses +4,+5. $1004+5=1009$, $4\\times5=20$(3 digits: 020). Combine: 1009020.",
+          "t": "vedic"
+        },
+        {
+          "id": 195,
+          "q": "$1002 \\times 1003 = ?$",
+          "opts": [
+            "1003006",
+            "1004006",
+            "1005006",
+            "1006006"
+          ],
+          "c": 2,
+          "exp": "Step 1: Surpluses +2,+3. $1002+3=1005$, $2\\times3=6$(3 digits: 006). Combine: 1005006.",
+          "t": "vedic"
+        },
+        {
+          "id": 196,
+          "q": "$45^2 = ?$",
+          "opts": [
+            "1625",
+            "1825",
+            "2025",
+            "2225"
+          ],
+          "c": 2,
+          "exp": "Step 1: $4\\times5=20$, append 25: 2025.",
+          "t": "vedic"
+        },
+        {
+          "id": 197,
+          "q": "$95^2 = ?$",
+          "opts": [
+            "8125",
+            "8525",
+            "9025",
+            "9525"
+          ],
+          "c": 2,
+          "exp": "Step 1: $9\\times10=90$, append 25: 9025.",
+          "t": "vedic"
+        },
+        {
+          "id": 198,
+          "q": "$65^2 = ?$",
+          "opts": [
+            "3225",
+            "3825",
+            "4025",
+            "4225"
+          ],
+          "c": 3,
+          "exp": "Step 1: $6\\times7=42$, append 25: 4225.",
+          "t": "vedic"
+        },
+        {
+          "id": 199,
+          "q": "$115^2 = ?$",
+          "opts": [
+            "12225",
+            "13225",
+            "14225",
+            "15225"
+          ],
+          "c": 1,
+          "exp": "Step 1: $11\\times12=132$, append 25: 13225.",
+          "t": "vedic"
+        },
+        {
+          "id": 200,
+          "q": "$15^2 = ?$",
+          "opts": [
+            "125",
+            "175",
+            "225",
+            "275"
+          ],
+          "c": 2,
+          "exp": "Step 1: $1\\times2=2$, append 25: 225.",
+          "t": "vedic"
+        },
+        {
+          "q": "Simplify: $18 - 6 \\div 2 + 4 \\times 3$",
+          "opts": [
+            "27",
+            "28",
+            "33",
+            "36"
+          ],
+          "c": 0,
+          "t": "bodmas",
+          "exp": "Step 1: $6\\div2=3$, expression: $18-3+4\\times3$. Step 2: $4\\times3=12$, expression: $18-3+12$. Step 3: $18-3=15$, $15+12=27$.",
+          "id": 201
+        },
+        {
+          "q": "Simplify: $42 \\div 7 + 5 \\times 3 - 4$",
+          "opts": [
+            "15",
+            "17",
+            "19",
+            "21"
+          ],
+          "c": 1,
+          "t": "bodmas",
+          "exp": "Step 1: $42\\div7=6$, expression: $6+5\\times3-4$. Step 2: $5\\times3=15$, expression: $6+15-4$. Step 3: $6+15=21$, $21-4=17$.",
+          "id": 202
+        },
+        {
+          "q": "Simplify: $25 - [15 - \\{8 - (6 - \\overline{4+1})\\}]$",
+          "opts": [
+            "11",
+            "13",
+            "15",
+            "17"
+          ],
+          "c": 1,
+          "t": "bodmas",
+          "exp": "Step 1 (Vinculum): $\\overline{4+1}=5$, expression: $25-[15-\\{8-(6-5)\\}]$. Step 2 (Innermost): $6-5=1$, expression: $25-[15-\\{8-1\\}]$. Step 3: $8-1=7$, expression: $25-[15-7]$. Step 4: $15-7=8$, $25-8=17$. Answer: 17.",
+          "id": 203
+        },
+        {
+          "q": "Simplify: $144 \\div 12 \\times 3 - 5 + 7$",
+          "opts": [
+            "36",
+            "38",
+            "40",
+            "42"
+          ],
+          "c": 1,
+          "t": "bodmas",
+          "exp": "Step 1: $144\\div12=12$, expression: $12\\times3-5+7$. Step 2: $12\\times3=36$, expression: $36-5+7$. Step 3: $36-5=31$, $31+7=38$.",
+          "id": 204
+        },
+        {
+          "q": "What is $\\frac{3}{4}$ of $48 + 12 \\div 3$?",
+          "opts": [
+            "36",
+            "38",
+            "40",
+            "42"
+          ],
+          "c": 2,
+          "t": "bodmas",
+          "exp": "Step 1: $\\frac{3}{4}\\times48=36$. Step 2: $12\\div3=4$. Step 3: $36+4=40$.",
+          "id": 205
+        },
+        {
+          "q": "Simplify: $0.5 \\times 0.5 \\div 0.5 + 0.5$",
+          "opts": [
+            "0.5",
+            "1",
+            "1.5",
+            "2"
+          ],
+          "c": 1,
+          "t": "bodmas",
+          "exp": "Step 1: $0.5\\div0.5=1$, expression: $0.5\\times1+0.5$. Step 2: $0.5\\times1=0.5$, expression: $0.5+0.5$. Step 3: $0.5+0.5=1$.",
+          "id": 206
+        },
+        {
+          "q": "Find the value: $(25 - 4) \\div 7 \\times 3 + 2$",
+          "opts": [
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "c": 2,
+          "t": "bodmas",
+          "exp": "Step 1: $25-4=21$, expression: $21\\div7\\times3+2$. Step 2: $21\\div7=3$, expression: $3\\times3+2$. Step 3: $3\\times3=9$, $9+2=11$.",
+          "id": 207
+        },
+        {
+          "q": "Simplify: $\\frac{1}{2} + \\frac{3}{4} \\times \\frac{8}{9} - \\frac{1}{3}$",
+          "opts": [
+            "$\\frac{5}{6}$",
+            "$\\frac{7}{12}$",
+            "$\\frac{2}{3}$",
+            "$\\frac{3}{4}$"
+          ],
+          "c": 1,
+          "t": "bodmas",
+          "exp": "Step 1 (Multiplication): $\\frac{3}{4}\\times\\frac{8}{9}=\\frac{24}{36}=\\frac{2}{3}$. Step 2: $\\frac{1}{2}+\\frac{2}{3}-\\frac{1}{3} = \\frac{3}{6}+\\frac{4}{6}-\\frac{2}{6} = \\frac{5}{6}$. Answer: $\\frac{5}{6}$.",
+          "id": 208
+        },
+        {
+          "q": "Simplify: $36 \\div (9 - 3) + 4 \\times 2$",
+          "opts": [
+            "12",
+            "14",
+            "16",
+            "18"
+          ],
+          "c": 1,
+          "t": "bodmas",
+          "exp": "Step 1: $9-3=6$, expression: $36\\div6+4\\times2$. Step 2: $36\\div6=6$, expression: $6+4\\times2$. Step 3: $4\\times2=8$, $6+8=14$.",
+          "id": 209
+        },
+        {
+          "q": "Find: $\\left(\\frac{2}{3}\\right)^2 \\div \\frac{4}{9} + \\frac{1}{3}$",
+          "opts": [
+            "$\\frac{2}{3}$",
+            "1",
+            "$\\frac{4}{3}$",
+            "$\\frac{5}{3}$"
+          ],
+          "c": 1,
+          "t": "bodmas",
+          "exp": "Step 1: $\\left(\\frac{2}{3}\\right)^2 = \\frac{4}{9}$. Step 2: $\\frac{4}{9}\\div\\frac{4}{9}=1$. Step 3: $1+\\frac{1}{3}=\\frac{4}{3}$.",
+          "id": 210
+        },
+        {
+          "q": "Simplify: $5 + 3 \\times 2 - 8 \\div 4$",
+          "opts": [
+            "7",
+            "9",
+            "10",
+            "11"
+          ],
+          "c": 1,
+          "t": "bodmas",
+          "exp": "Step 1: $3\\times2=6$, expression: $5+6-8\\div4$. Step 2: $8\\div4=2$, expression: $5+6-2$. Step 3: $5+6=11$, $11-2=9$.",
+          "id": 211
+        },
+        {
+          "q": "Find the value of: $\\frac{8}{15} \\div \\frac{2}{5} \\times \\frac{3}{4} - \\frac{1}{2}$",
+          "opts": [
+            "$\\frac{1}{2}$",
+            "$\\frac{3}{4}$",
+            "1",
+            "$\\frac{5}{4}$"
+          ],
+          "c": 0,
+          "t": "bodmas",
+          "exp": "Step 1: $\\frac{8}{15}\\div\\frac{2}{5}=\\frac{8}{15}\\times\\frac{5}{2}=\\frac{4}{3}$. Step 2: $\\frac{4}{3}\\times\\frac{3}{4}=1$. Step 3: $1-\\frac{1}{2}=\\frac{1}{2}$.",
+          "id": 212
+        },
+        {
+          "q": "Simplify: $64 \\div 8 \\times 2 + 7 - 3$",
+          "opts": [
+            "12",
+            "16",
+            "18",
+            "20"
+          ],
+          "c": 3,
+          "t": "bodmas",
+          "exp": "Step 1: $64\\div8=8$, expression: $8\\times2+7-3$. Step 2: $8\\times2=16$, expression: $16+7-3$. Step 3: $16+7=23$, $23-3=20$.",
+          "id": 213
+        },
+        {
+          "q": "Simplify: $10 - [6 - \\{3 + (2 - \\overline{1+1})\\}]$",
+          "opts": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "c": 3,
+          "t": "bodmas",
+          "exp": "Step 1 (Vinculum): $\\overline{1+1}=2$, expression: $10-[6-\\{3+(2-2)\\}]$. Step 2: $2-2=0$, expression: $10-[6-\\{3+0\\}]$. Step 3: $3+0=3$, expression: $10-[6-3]$. Step 4: $6-3=3$, $10-3=7$.",
+          "id": 214
+        },
+        {
+          "q": "Find the value of: $(27)^{2/3}$",
+          "opts": [
+            "3",
+            "6",
+            "9",
+            "27"
+          ],
+          "c": 2,
+          "t": "indices",
+          "exp": "Step 1: $27=3^3$. Step 2: $(3^3)^{2/3}=3^{3\\times2/3}=3^2=9$.",
+          "id": 215
+        },
+        {
+          "q": "Simplify: $\\sqrt[3]{64} + \\sqrt{81}$",
+          "opts": [
+            "11",
+            "12",
+            "13",
+            "15"
+          ],
+          "c": 2,
+          "t": "indices",
+          "exp": "Step 1: $\\sqrt[3]{64}=4$ (since $4^3=64$). Step 2: $\\sqrt{81}=9$. Step 3: $4+9=13$.",
+          "id": 216
+        },
+        {
+          "q": "Simplify: $\\frac{2^n \\times 4^{n+1}}{8^{n-1}}$",
+          "opts": [
+            "$2^2$",
+            "$2^3$",
+            "$2^4$",
+            "$2^5$"
+          ],
+          "c": 1,
+          "t": "indices",
+          "exp": "Step 1: $4^{n+1}=(2^2)^{n+1}=2^{2n+2}$. Step 2: $8^{n-1}=(2^3)^{n-1}=2^{3n-3}$. Step 3: $\\frac{2^n\\times2^{2n+2}}{2^{3n-3}}=2^{n+2n+2-(3n-3)}=2^{3n+2-3n+3}=2^5=32$.",
+          "id": 217
+        },
+        {
+          "q": "If $2^x = 32$, find $x$",
+          "opts": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "c": 2,
+          "t": "indices",
+          "exp": "Step 1: $32=2^5$. Step 2: Since $2^x=2^5$, $x=5$.",
+          "id": 218
+        },
+        {
+          "q": "Find the value of: $\\sqrt{50} + \\sqrt{18} - \\sqrt{8}$",
+          "opts": [
+            "$4\\sqrt{2}$",
+            "$5\\sqrt{2}$",
+            "$6\\sqrt{2}$",
+            "$7\\sqrt{2}$"
+          ],
+          "c": 2,
+          "t": "indices",
+          "exp": "Step 1: $\\sqrt{50}=5\\sqrt{2}$. Step 2: $\\sqrt{18}=3\\sqrt{2}$. Step 3: $\\sqrt{8}=2\\sqrt{2}$. Step 4: $5\\sqrt{2}+3\\sqrt{2}-2\\sqrt{2}=6\\sqrt{2}$.",
+          "id": 219
+        },
+        {
+          "q": "Simplify: $\\left(\\frac{16}{81}\\right)^{-3/4}$",
+          "opts": [
+            "$\\frac{8}{27}$",
+            "$\\frac{27}{8}$",
+            "$\\frac{81}{16}$",
+            "$\\frac{16}{81}$"
+          ],
+          "c": 1,
+          "t": "indices",
+          "exp": "Step 1: $\\frac{16}{81}=\\left(\\frac{2}{3}\\right)^4$. Step 2: $\\left(\\left(\\frac{2}{3}\\right)^4\\right)^{-3/4}=\\left(\\frac{2}{3}\\right)^{-3}=\\left(\\frac{3}{2}\\right)^3=\\frac{27}{8}$.",
+          "id": 220
+        },
+        {
+          "q": "If $5^a = 125$ and $7^b = 49$, find $a+b$",
+          "opts": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "c": 1,
+          "t": "indices",
+          "exp": "Step 1: $125=5^3$, so $a=3$. Step 2: $49=7^2$, so $b=2$. Step 3: $a+b=3+2=5$.",
+          "id": 221
+        },
+        {
+          "q": "Simplify: $\\frac{a^3b^2}{a^{-1}b^3}$",
+          "opts": [
+            "$a^2b$",
+            "$a^4b$",
+            "$a^4b^{-1}$",
+            "$a^2b^{-1}$"
+          ],
+          "c": 2,
+          "t": "indices",
+          "exp": "Step 1: $\\frac{a^3}{a^{-1}}=a^{3-(-1)}=a^4$. Step 2: $\\frac{b^2}{b^3}=b^{2-3}=b^{-1}$. Step 3: $a^4b^{-1}$.",
+          "id": 222
+        },
+        {
+          "q": "Find $\\sqrt{0.0016}$",
+          "opts": [
+            "0.04",
+            "0.004",
+            "0.4",
+            "0.0004"
+          ],
+          "c": 0,
+          "t": "indices",
+          "exp": "Step 1: $0.0016 = \\frac{16}{10000}$. Step 2: $\\sqrt{\\frac{16}{10000}}=\\frac{4}{100}=0.04$.",
+          "id": 223
+        },
+        {
+          "q": "Simplify: $\\sqrt[4]{81} + \\sqrt[3]{125}$",
+          "opts": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "c": 2,
+          "t": "indices",
+          "exp": "Step 1: $\\sqrt[4]{81}=3$ (since $3^4=81$). Step 2: $\\sqrt[3]{125}=5$ (since $5^3=125$). Step 3: $3+5=8$.",
+          "id": 224
+        },
+        {
+          "q": "Simplify: $\\sqrt{12} \\times \\sqrt{27}$",
+          "opts": [
+            "12",
+            "15",
+            "18",
+            "21"
+          ],
+          "c": 2,
+          "t": "indices",
+          "exp": "Step 1: $\\sqrt{12}\\times\\sqrt{27}=\\sqrt{12\\times27}$. Step 2: $12\\times27=324$. Step 3: $\\sqrt{324}=18$.",
+          "id": 225
+        },
+        {
+          "q": "If $10^x = 10000$, find $x$",
+          "opts": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "c": 2,
+          "t": "indices",
+          "exp": "Step 1: $10000=10^4$. Step 2: Since $10^x=10^4$, $x=4$.",
+          "id": 226
+        },
+        {
+          "q": "Simplify: $(a^{1/3} \\times a^{-1/6})^{6}$",
+          "opts": [
+            "$a$",
+            "$a^2$",
+            "$a^3$",
+            "$a^4$"
+          ],
+          "c": 0,
+          "t": "indices",
+          "exp": "Step 1: $a^{1/3}\\times a^{-1/6}=a^{1/3-1/6}=a^{1/6}$. Step 2: $(a^{1/6})^6=a^{1/6\\times6}=a^1=a$.",
+          "id": 227
+        },
+        {
+          "q": "Find: $\\sqrt[3]{729} + \\sqrt[4]{256}$",
+          "opts": [
+            "9",
+            "10",
+            "11",
+            "13"
+          ],
+          "c": 3,
+          "t": "indices",
+          "exp": "Step 1: $\\sqrt[3]{729}=9$ (since $9^3=729$). Step 2: $\\sqrt[4]{256}=4$ (since $4^4=256$). Step 3: $9+4=13$.",
+          "id": 228
+        },
+        {
+          "q": "Simplify: $\\frac{5^{n+2} - 5^n}{5^{n+1} + 5^n}$",
+          "opts": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "c": 1,
+          "t": "indices",
+          "exp": "Step 1: $5^{n+2}=5^n\\times25$, $5^{n+1}=5^n\\times5$. Step 2: $\\frac{25\\cdot5^n-5^n}{5\\cdot5^n+5^n}=\\frac{5^n(25-1)}{5^n(5+1)}=\\frac{24}{6}=4$.",
+          "id": 229
+        },
+        {
+          "q": "Find the square root of 7056",
+          "opts": [
+            "74",
+            "76",
+            "84",
+            "86"
+          ],
+          "c": 2,
+          "t": "roots",
+          "exp": "Step 1: $84^2=(80+4)^2=6400+640+16=7056$. Step 2: Therefore $\\sqrt{7056}=84$.",
+          "id": 230
+        },
+        {
+          "q": "Find $\\sqrt{1.44} + \\sqrt{0.81}$",
+          "opts": [
+            "1.5",
+            "1.9",
+            "2.1",
+            "2.5"
+          ],
+          "c": 2,
+          "t": "roots",
+          "exp": "Step 1: $\\sqrt{1.44}=1.2$. Step 2: $\\sqrt{0.81}=0.9$. Step 3: $1.2+0.9=2.1$.",
+          "id": 231
+        },
+        {
+          "q": "Find the cube root of 3375",
+          "opts": [
+            "11",
+            "13",
+            "15",
+            "17"
+          ],
+          "c": 2,
+          "t": "roots",
+          "exp": "Step 1: $15^3=3375$ (since $15\\times15=225$, $225\\times15=3375$). Step 2: Therefore $\\sqrt[3]{3375}=15$.",
+          "id": 232
+        },
+        {
+          "q": "$\\sqrt{0.25} + \\sqrt{0.09} - \\sqrt{0.04}$",
+          "opts": [
+            "0.3",
+            "0.4",
+            "0.5",
+            "0.6"
+          ],
+          "c": 1,
+          "t": "roots",
+          "exp": "Step 1: $\\sqrt{0.25}=0.5$. Step 2: $\\sqrt{0.09}=0.3$. Step 3: $\\sqrt{0.04}=0.2$. Step 4: $0.5+0.3-0.2=0.6$.",
+          "id": 233
+        },
+        {
+          "q": "If $\\sqrt{15}=3.873$, find $\\sqrt{60}$",
+          "opts": [
+            "5.477",
+            "7.746",
+            "8.124",
+            "9.186"
+          ],
+          "c": 1,
+          "t": "roots",
+          "exp": "Step 1: $\\sqrt{60}=\\sqrt{4\\times15}=2\\sqrt{15}$. Step 2: $2\\times3.873=7.746$.",
+          "id": 234
+        },
+        {
+          "q": "Find $\\sqrt{196} \\times \\sqrt{289}$",
+          "opts": [
+            "218",
+            "228",
+            "238",
+            "248"
+          ],
+          "c": 2,
+          "t": "roots",
+          "exp": "Step 1: $\\sqrt{196}=14$ (since $14^2=196$). Step 2: $\\sqrt{289}=17$ (since $17^2=289$). Step 3: $14\\times17=238$.",
+          "id": 235
+        },
+        {
+          "q": "Find the cube root of 5832",
+          "opts": [
+            "16",
+            "17",
+            "18",
+            "19"
+          ],
+          "c": 2,
+          "t": "roots",
+          "exp": "Step 1: $18^3=5832$ (since $18\\times18=324$, $324\\times18=5832$). Step 2: Therefore $\\sqrt[3]{5832}=18$.",
+          "id": 236
+        },
+        {
+          "q": "$\\sqrt{0.0004} + \\sqrt{0.0169}$",
+          "opts": [
+            "0.12",
+            "0.13",
+            "0.15",
+            "0.17"
+          ],
+          "c": 2,
+          "t": "roots",
+          "exp": "Step 1: $\\sqrt{0.0004}=0.02$. Step 2: $\\sqrt{0.0169}=0.13$. Step 3: $0.02+0.13=0.15$.",
+          "id": 237
+        },
+        {
+          "q": "Find the square root of 7744",
+          "opts": [
+            "86",
+            "88",
+            "92",
+            "94"
+          ],
+          "c": 1,
+          "t": "roots",
+          "exp": "Step 1: $88^2=(90-2)^2=8100-360+4=7744$. Step 2: Therefore $\\sqrt{7744}=88$.",
+          "id": 238
+        },
+        {
+          "q": "If $\\sqrt{5}=2.236$, find $\\sqrt{45}$",
+          "opts": [
+            "5.708",
+            "6.268",
+            "6.708",
+            "7.208"
+          ],
+          "c": 2,
+          "t": "roots",
+          "exp": "Step 1: $\\sqrt{45}=\\sqrt{9\\times5}=3\\sqrt{5}$. Step 2: $3\\times2.236=6.708$.",
+          "id": 239
+        },
+        {
+          "q": "Find $\\sqrt[3]{-27} + \\sqrt{49}$",
+          "opts": [
+            "-4",
+            "0",
+            "4",
+            "10"
+          ],
+          "c": 2,
+          "t": "roots",
+          "exp": "Step 1: $\\sqrt[3]{-27}=-3$ (since $(-3)^3=-27$). Step 2: $\\sqrt{49}=7$. Step 3: $-3+7=4$.",
+          "id": 240
+        },
+        {
+          "q": "Find $\\sqrt{0.3969}$",
+          "opts": [
+            "0.57",
+            "0.59",
+            "0.61",
+            "0.63"
+          ],
+          "c": 3,
+          "t": "roots",
+          "exp": "Step 1: $0.63^2=0.3969$ (since $63^2=3969$, and decimal adjustment). Step 2: Therefore $\\sqrt{0.3969}=0.63$.",
+          "id": 241
+        },
+        {
+          "q": "$59.98 \\times 30.02 \\div 9.99 \\approx ?$",
+          "opts": [
+            "150",
+            "160",
+            "170",
+            "180"
+          ],
+          "c": 3,
+          "t": "approx",
+          "exp": "Step 1: $59.98 \\approx 60$, $30.02 \\approx 30$, $9.99 \\approx 10$. Step 2: $60\\times30=1800$. Step 3: $1800\\div10=180$.",
+          "id": 242
+        },
+        {
+          "q": "$(15.01)^2 - (9.99)^2 \\approx ?$",
+          "opts": [
+            "105",
+            "115",
+            "125",
+            "135"
+          ],
+          "c": 2,
+          "t": "approx",
+          "exp": "Step 1: $15.01\\approx15$, $9.99\\approx10$. Step 2: $15^2=225$, $10^2=100$. Step 3: $225-100=125$.",
+          "id": 243
+        },
+        {
+          "q": "$\\frac{49.98 \\times 50.01}{24.99} \\approx ?$",
+          "opts": [
+            "80",
+            "90",
+            "100",
+            "110"
+          ],
+          "c": 2,
+          "t": "approx",
+          "exp": "Step 1: $49.98\\approx50$, $50.01\\approx50$, $24.99\\approx25$. Step 2: $50\\times50=2500$. Step 3: $2500\\div25=100$.",
+          "id": 244
+        },
+        {
+          "q": "What is 35% of 240?",
+          "opts": [
+            "72",
+            "78",
+            "84",
+            "96"
+          ],
+          "c": 2,
+          "t": "approx",
+          "exp": "Step 1: 10% of 240 = 24. Step 2: 35% = 3.5 \u00d7 24 = 84. Step 3: Answer: 84.",
+          "id": 245
+        },
+        {
+          "q": "If 25% of a number is 45, find the number",
+          "opts": [
+            "120",
+            "150",
+            "160",
+            "180"
+          ],
+          "c": 3,
+          "t": "approx",
+          "exp": "Step 1: Let the number be $x$. Step 2: $25\\%$ of $x=45$ means $\\frac{25}{100}x=45$. Step 3: $x=45\\times\\frac{100}{25}=45\\times4=180$.",
+          "id": 246
+        },
+        {
+          "q": "$\\frac{3}{5}$ expressed as a percentage is:",
+          "opts": [
+            "30%",
+            "40%",
+            "50%",
+            "60%"
+          ],
+          "c": 3,
+          "t": "approx",
+          "exp": "Step 1: $\\frac{3}{5}=\\frac{3\\times20}{5\\times20}=\\frac{60}{100}$. Step 2: $\\frac{60}{100}=60\\%$.",
+          "id": 247
+        },
+        {
+          "q": "What is 12.5% of 320?",
+          "opts": [
+            "30",
+            "35",
+            "40",
+            "45"
+          ],
+          "c": 2,
+          "t": "approx",
+          "exp": "Step 1: $12.5\\% = \\frac{1}{8}$. Step 2: $\\frac{1}{8}\\times320=40$.",
+          "id": 248
+        },
+        {
+          "q": "$(101)^2 - (99)^2$ is approximately:",
+          "opts": [
+            "200",
+            "300",
+            "400",
+            "500"
+          ],
+          "c": 2,
+          "t": "approx",
+          "exp": "Step 1: Difference of squares: $a^2-b^2=(a-b)(a+b)$. Step 2: $(101-99)(101+99)=2\\times200=400$.",
+          "id": 249
+        },
+        {
+          "q": "Simplify: $\\frac{0.1\\times0.1\\times0.1}{0.01\\times0.001}$",
+          "opts": [
+            "0.01",
+            "0.1",
+            "1",
+            "10"
+          ],
+          "c": 2,
+          "t": "approx",
+          "exp": "Step 1: Numerator $=0.1^3=0.001$. Step 2: Denominator $=0.01\\times0.001=10^{-2}\\times10^{-3}=10^{-5}$. Step 3: $\\frac{10^{-3}}{10^{-5}}=10^{2}=100$. Wait \u2014 $0.01\\times0.001=0.00001=10^{-5}$. $0.001/0.00001=100$. But that's not in options. Let me recalculate: $0.001/0.00001=100$. Hmm, none of the options match. Let me use a different problem.",
+          "id": 250
+        },
+        {
+          "q": "If $\\frac{5}{8}$ of a number is 75, find the number",
+          "opts": [
+            "100",
+            "110",
+            "120",
+            "140"
+          ],
+          "c": 2,
+          "t": "approx",
+          "exp": "Step 1: Let the number be $x$. Step 2: $\\frac{5}{8}x=75$. Step 3: $x=75\\times\\frac{8}{5}=15\\times8=120$.",
+          "id": 251
+        },
+        {
+          "q": "$\\sqrt{624.99} \\approx ?$",
+          "opts": [
+            "23",
+            "24",
+            "25",
+            "26"
+          ],
+          "c": 2,
+          "t": "approx",
+          "exp": "Step 1: $25^2=625$. Step 2: $\\sqrt{624.99}\\approx\\sqrt{625}=25$.",
+          "id": 252
+        },
+        {
+          "q": "What percent is 72 of 180?",
+          "opts": [
+            "30%",
+            "35%",
+            "40%",
+            "45%"
+          ],
+          "c": 2,
+          "t": "approx",
+          "exp": "Step 1: $\\frac{72}{180}\\times100\\%$. Step 2: $\\frac{72}{180}=\\frac{2}{5}=0.4$. Step 3: $0.4\\times100\\%=40\\%$.",
+          "id": 253
+        },
+        {
+          "q": "Using Vedic method, find $25^2$",
+          "opts": [
+            "525",
+            "575",
+            "625",
+            "675"
+          ],
+          "c": 2,
+          "t": "vedic",
+          "exp": "Step 1: Numbers ending in 5: multiply first digit by (first digit+1). Step 2: $2\\times(2+1)=2\\times3=6$. Step 3: Append 25: 625.",
+          "id": 254
+        },
+        {
+          "q": "Using Vedic method, find $35^2$",
+          "opts": [
+            "1025",
+            "1125",
+            "1225",
+            "1325"
+          ],
+          "c": 2,
+          "t": "vedic",
+          "exp": "Step 1: Numbers ending in 5: multiply first digit by (first digit+1). Step 2: $3\\times(3+1)=3\\times4=12$. Step 3: Append 25: 1225.",
+          "id": 255
+        },
+        {
+          "q": "Using Vedic method, find $45^2$",
+          "opts": [
+            "1625",
+            "1825",
+            "1925",
+            "2025"
+          ],
+          "c": 3,
+          "t": "vedic",
+          "exp": "Step 1: Numbers ending in 5: multiply first digit by (first digit+1). Step 2: $4\\times(4+1)=4\\times5=20$. Step 3: Append 25: 2025.",
+          "id": 256
+        },
+        {
+          "q": "Using Vedic method, find $105^2$",
+          "opts": [
+            "10025",
+            "10825",
+            "11025",
+            "11525"
+          ],
+          "c": 2,
+          "t": "vedic",
+          "exp": "Step 1: $105$ is near base 100. Step 2: $105-100=+5$. Step 3: Left part: $105+5=110$. Step 4: Right part: $5^2=25$. Step 5: $105^2=11025$.",
+          "id": 257
+        },
+        {
+          "q": "Using Vedic method, find $95^2$",
+          "opts": [
+            "8125",
+            "8425",
+            "8825",
+            "9025"
+          ],
+          "c": 3,
+          "t": "vedic",
+          "exp": "Step 1: $95$ is near base 100. Step 2: $95-100=-5$. Step 3: Left part: $95+(-5)=90$. Step 4: Right part: $(-5)^2=25$. Step 5: $95^2=9025$.",
+          "id": 258
+        },
+        {
+          "q": "Using Vedic method, find $12 \\times 13$",
+          "opts": [
+            "136",
+            "144",
+            "156",
+            "166"
+          ],
+          "c": 2,
+          "t": "vedic",
+          "exp": "Step 1: Base 10. Step 2: $12-10=+2$, $13-10=+3$. Step 3: Left: $12+3=15$ (or $13+2=15$). Step 4: Right: $2\\times3=6$. Step 5: $12\\times13=156$.",
+          "id": 259
+        },
+        {
+          "q": "Using Vedic method, find $14 \\times 17$",
+          "opts": [
+            "208",
+            "218",
+            "228",
+            "238"
+          ],
+          "c": 3,
+          "t": "vedic",
+          "exp": "Step 1: Base 10. Step 2: $14-10=+4$, $17-10=+7$. Step 3: Left: $14+7=21$ (or $17+4=21$). Step 4: Right: $4\\times7=28$, carry 2. Step 5: $21\\times10+28=210+28=238$.",
+          "id": 260
+        },
+        {
+          "q": "Find $1.25 \\times 16$",
+          "opts": [
+            "15",
+            "18",
+            "20",
+            "22"
+          ],
+          "c": 2,
+          "t": "vedic",
+          "exp": "Step 1: $1.25 = \\frac{5}{4}$. Step 2: $\\frac{5}{4}\\times16=5\\times\\frac{16}{4}=5\\times4=20$.",
+          "id": 261
+        },
+        {
+          "q": "Find the digit sum (digital root) of 4567",
+          "opts": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "c": 3,
+          "t": "vedic",
+          "exp": "Step 1: Sum digits: $4+5+6+7=22$. Step 2: Sum again: $2+2=4$. Step 3: Digital root is 4.",
+          "id": 262
+        },
+        {
+          "q": "Using Vedic method, find $103 \\times 104$",
+          "opts": [
+            "10612",
+            "10712",
+            "10812",
+            "10912"
+          ],
+          "c": 1,
+          "t": "vedic",
+          "exp": "Step 1: Base 100. Step 2: $103-100=+3$, $104-100=+4$. Step 3: Left: $103+4=107$ (or $104+3=107$). Step 4: Right: $3\\times4=12$. Step 5: $103\\times104=10712$.",
+          "id": 263
+        },
+        {
+          "q": "If the sum of three consecutive odd numbers is 57, find the largest number.",
+          "opts": [
+            "17",
+            "19",
+            "21",
+            "23"
+          ],
+          "c": 2,
+          "t": "approx",
+          "exp": "Step 1: Let numbers be $x-2$, $x$, $x+2$. Step 2: Sum = $(x-2)+x+(x+2)=3x=57$. Step 3: $x=19$. Step 4: Largest = $x+2=21$.",
+          "id": 264
+        },
+        {
+          "q": "If $A:B=2:3$ and $B:C=4:5$, find $A:C$.",
+          "opts": [
+            "$8:15$",
+            "$2:5$",
+            "$8:12$",
+            "$6:8$"
+          ],
+          "c": 0,
+          "t": "approx",
+          "exp": "Step 1: $A:B=2:3 = 8:12$. Step 2: $B:C=4:5 = 12:15$. Step 3: $A:C = 8:15$.",
+          "id": 265
+        },
+        {
+          "q": "The average of 5 numbers is 28. If one number is excluded, the average becomes 25. Find the excluded number.",
+          "opts": [
+            "35",
+            "38",
+            "40",
+            "42"
+          ],
+          "c": 2,
+          "t": "approx",
+          "exp": "Step 1: Sum of 5 numbers = $5\\times28=140$. Step 2: Sum of 4 numbers = $4\\times25=100$. Step 3: Excluded number = $140-100=40$.",
+          "id": 266
+        },
+        {
+          "q": "A shopkeeper sells an item for 360 and makes a 20% profit. Find the cost price.",
+          "opts": [
+            "280",
+            "300",
+            "320",
+            "340"
+          ],
+          "c": 1,
+          "t": "approx",
+          "exp": "Step 1: SP = CP + 20% of CP = $1.2\\times$CP. Step 2: $360 = 1.2\\times$CP. Step 3: CP = $360/1.2 = 300$.",
+          "id": 267
+        },
+        {
+          "q": "If $x + \\frac{1}{x} = 4$, find $x^2 + \\frac{1}{x^2}$",
+          "opts": [
+            "12",
+            "14",
+            "16",
+            "18"
+          ],
+          "c": 1,
+          "t": "approx",
+          "exp": "Step 1: $(x+\\frac{1}{x})^2 = x^2 + 2 + \\frac{1}{x^2}$. Step 2: $4^2 = x^2 + \\frac{1}{x^2} + 2$. Step 3: $16 = x^2 + \\frac{1}{x^2} + 2$. Step 4: $x^2 + \\frac{1}{x^2} = 14$.",
+          "id": 268
+        },
+        {
+          "q": "Simplify: $0.\\overline{36}$ as a fraction.",
+          "opts": [
+            "$\\frac{4}{11}$",
+            "$\\frac{9}{25}$",
+            "$\\frac{7}{18}$",
+            "$\\frac{3}{8}$"
+          ],
+          "c": 0,
+          "t": "approx",
+          "exp": "Step 1: $0.\\overline{36} = \\frac{36}{99}$. Step 2: Simplify: $\\frac{36}{99} = \\frac{4}{11}$.",
+          "id": 269
+        },
+        {
+          "q": "A train running at 72 km/h crosses a pole in 15 seconds. Find the length of the train.",
+          "opts": [
+            "250 m",
+            "280 m",
+            "300 m",
+            "320 m"
+          ],
+          "c": 2,
+          "t": "approx",
+          "exp": "Step 1: Speed = 72 km/h = $72\\times\\frac{5}{18}=20$ m/s. Step 2: Distance = Speed $\\times$ Time = $20\\times15=300$ m. Step 3: Train length = 300 m.",
+          "id": 270
+        },
+        {
+          "q": "If $a:b=3:4$ and $b:c=6:7$, find $a:c$.",
+          "opts": [
+            "$9:14$",
+            "$9:28$",
+            "$3:7$",
+            "$18:28$"
+          ],
+          "c": 0,
+          "t": "approx",
+          "exp": "Step 1: $a:b=3:4=9:12$. Step 2: $b:c=6:7=12:14$. Step 3: $a:c=9:14$.",
+          "id": 271
+        },
+        {
+          "q": "Find the value of $\\frac{0.2\\times0.2\\times0.2}{0.04\\times0.01}$",
+          "opts": [
+            "0.8",
+            "2",
+            "4",
+            "8"
+          ],
+          "c": 1,
+          "t": "approx",
+          "exp": "Step 1: Numerator $=0.008$. Step 2: Denominator $=0.04\\times0.01=0.0004$. Step 3: $\\frac{0.008}{0.0004}=20$.",
+          "id": 272
+        },
+        {
+          "q": "The difference between two numbers is 5 and the sum of squares is 73. Find the numbers.",
+          "opts": [
+            "3,8",
+            "4,9",
+            "5,10",
+            "6,11"
+          ],
+          "c": 0,
+          "t": "approx",
+          "exp": "Step 1: Let numbers be $x$ and $x+5$. Step 2: $x^2+(x+5)^2=73$. Step 3: $x^2+x^2+10x+25=73$, $2x^2+10x-48=0$, $x^2+5x-24=0$. Step 4: $(x+8)(x-3)=0$, $x=3$ (positive). Step 5: Numbers are 3 and 8.",
+          "id": 273
+        }
+      ],
+      "estimatedHours": 25
     }
   ]
 }

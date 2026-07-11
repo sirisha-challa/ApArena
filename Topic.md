@@ -1,221 +1,455 @@
-# Decoding the Number System: A Pattern-Based Framework for Placement Aptitude Success
+# Master Topic 2: Simplification & Approximation for MNC Placements
 
-This report provides a comprehensive and strategic guide to mastering the Number System, the foundational topic for quantitative aptitude sections in placement examinations for leading multinational corporations (MNCs) and IT companies, including TCS, Infosys, Wipro, Cognizant, Accenture, Capgemini, Amazon, and Microsoft [[131](https://www.geeksforgeeks.org/aptitude/aptitude-for-placements/), [133](https://www.geeksforgeeks.org/blogs/service-based-companies-in-india/)]. The content is structured to align with a three-day intensive study cycle—conceptual learning on Day 1, untimed pattern-wise practice on Day 2, and timed speed drills on Day 3—to optimize preparation efficiency and effectiveness . Each concept is explained with clarity, supported by relevant formulas, and illustrated with over ten detailed, step-by-step examples demonstrating the application of both fundamental principles and time-saving shortcuts. The primary objective is to equip aspirants with the ability to identify high-frequency question patterns and deploy the correct solution strategy under exam pressure, thereby enabling them to solve 90-95% of quantitative aptitude questions accurately within the given time limits .
+Simplification and Approximation are the highest-scoring topics in the quantitative aptitude sections of TCS, Infosys, Wipro, Cognizant, and Accenture. These questions test your calculation speed and clarity of basic rules. If you master this, you can secure 5-8 easy marks in just 5 minutes.
 
-## Foundational Knowledge: Classification of Numbers and Core Properties
+This document is your **complete, spoon-fed guide**. We will break down every formula, shortcut, and pattern with step-by-step mathematical reasoning, followed by exactly 10 practice problems for each concept, modeled directly from past placement papers.
 
-A robust understanding of the Number System begins with a clear grasp of its fundamental building blocks: the different sets of numbers and their inherent properties. This foundational knowledge prevents conceptual confusion and is essential for tackling more complex topics like prime factorization, HCF, and LCM. The mathematical universe of numbers is systematically categorized into distinct sets, each with unique characteristics [[56](https://www.careers360.com/quantitative-aptitude/classification-of-numbers-topic-pge), [199](https://www.visionias.in/onlinedemo_test/index.php?package_id=4040&vid=161428)]. These classifications include Natural Numbers, Whole Numbers, Integers, Rational Numbers, Irrational Numbers, Real Numbers, and Complex Numbers [[55](https://www.scribd.com/document/885032414/Csat-Revision-Number-System-06-03-2025), [56](https://www.careers360.com/quantitative-aptitude/classification-of-numbers-topic-pge)]. For the purposes of most placement aptitude tests, the focus remains primarily on the real number system, which encompasses all numbers that can be represented on a number line [[224](https://www.scribd.com/document/511506725/Numbers)].
+---
 
-The most basic set is the set of **Natural Numbers**, denoted by 'N'. These are the counting numbers, starting from 1 and extending infinitely (1, 2, 3, 4, ...) [[94](https://www.mtgcoach.online/prepcapsule/preview/study/191687)]. When we include zero (0) in this set, we get the set of **Whole Numbers**, denoted by 'W' [[94](https://www.mtgcoach.online/prepcapsule/preview/study/191687)]. The set of **Integers**, denoted by 'Z', expands upon whole numbers to include their negative counterparts (-3, -2, -1, 0, 1, 2, 3, ...), forming a symmetric set around zero [[53](https://study.com/academy/lesson/classification-of-numbers.html)]. Within the integers, numbers are further classified as **Prime Numbers** and **Composite Numbers** [[52](https://www.topcoaching.in/uploads/pdf/iWPj7cCJKkyAr8kIyPUL.pdf)]. A prime number is a natural number greater than 1 that has exactly two distinct positive factors: 1 and itself [[1](https://www.geeksforgeeks.org/aptitude/numbers-in-aptitude/), [120](https://testbook.com/objective-questions/mcq-on-prime-numbers--621f7d725cd97917dcecb221)]. Examples of prime numbers include 2, 3, 5, 7, 11, and 13 [[14](https://www.learntheta.com/placement-aptitude-numbers/)]. It is crucial to note that 2 is the only even prime number [[120](https://testbook.com/objective-questions/mcq-on-prime-numbers--621f7d725cd97917dcecb221)]. Conversely, a **Composite Number** is a natural number greater than 1 that has more than two factors; it is any natural number that is not prime [[52](https://www.topcoaching.in/uploads/pdf/iWPj7cCJKkyAr8kIyPUL.pdf), [54](https://davenport.libguides.com/math-skills-overview/basic-operations/sets)]. Examples include 4, 6, 8, 9, and 10 [[52](https://www.topcoaching.in/uploads/pdf/iWPj7cCJKkyAr8kIyPUL.pdf)]. A useful shortcut to check for primality is to test divisibility by all prime numbers less than or equal to the square root of the given number [[21](https://www.geeksforgeeks.org/aptitude/numbers-solved-questions-and-answers/)]. For instance, to check if 423 is prime, one would test divisibility by primes up to √423 (approximately 20.5), such as 2, 3, 5, 7, 11, 13, 17, and 19. Since 423 is divisible by 3 (as the sum of its digits, 4+2+3=9, is divisible by 3), it is not a prime number [[21](https://www.geeksforgeeks.org/aptitude/numbers-solved-questions-and-answers/)].
+## Part 1: The BODMAS / VBODMAS Rule
 
-Another important classification is between **Rational Numbers** and **Irrational Numbers**. A rational number is any number that can be expressed as the ratio of two integers (p/q), where q is not zero [[55](https://www.scribd.com/document/885032414/Csat-Revision-Number-System-06-03-2025)]. This set includes all integers, fractions, and terminating or repeating decimals. An **Irrational Number** is a number that cannot be expressed as a simple fraction; its decimal representation is non-terminating and non-repeating. Famous examples include √2 and π [[56](https://www.careers360.com/quantitative-aptitude/classification-of-numbers-topic-pge)]. The combination of all rational and irrational numbers forms the set of **Real Numbers**, denoted by 'R' [[56](https://www.careers360.com/quantitative-aptitude/classification-of-numbers-topic-pge)]. Finally, **Complex Numbers** are numbers that include a real part and an imaginary part (e.g., a + bi), but these are generally beyond the scope of typical placement aptitude tests [[56](https://www.careers360.com/quantitative-aptitude/classification-of-numbers-topic-pge)].
+### The Concept & Pattern
+**Pattern Recognition:** If a question has a long string of numbers mixed with `+`, `-`, `*`, `/`, `()`, `{}`, `[]`, and the word **"of"**, it is a BODMAS question. 
+**The Trap:** Companies love to put "of" next to multiplication to confuse you. **Rule:** "Of" always comes *before* Division and Multiplication.
 
-Beyond classification, understanding the fundamental properties of operations on integers is crucial. These properties govern how numbers behave under addition and multiplication and provide the logical framework for many mathematical manipulations [[31](https://www.scribd.com/document/934516686/Associative-Commutative-Identity-Closure-and-Distributive-Laws)]. The six main properties are:
+**The Order (VBODMAS):**
+1. **V** = Vinculum (Bar bracket: $\overline{a-b}$). Solve this first.
+2. **B** = Brackets `( )`, `{ }`, `[ ]`. Solve inner to outer.
+3. **O** = **Of** (Fractions, percentages, or literal 'of').
+4. **D** = Division (`/` or `÷`).
+5. **M** = Multiplication (`*` or `×`).
+6. **A** = Addition (`+`).
+7. **S** = Subtraction (`-`).
 
-1.  **Closure Property:** This property states that if you perform an operation (like addition or multiplication) on any two numbers within a set, the result will also belong to that set. For example, the sum or product of any two integers is always an integer [[35](https://www.slideshare.net/slideshow/presentation-on-the-properties-of-the/253019774), [159](https://www.youtube.com/watch?v=HshLLF8CrOw)].
-2.  **Commutative Property:** This property applies to addition and multiplication and states that changing the order of the numbers does not change the result. For any integers a and b, a + b = b + a and a × b = b × a [[30](https://www.youtube.com/watch?v=ncsz5eGEeug), [126](https://quizlet.com/study-guides/rational-number-properties-closure-commutative-associative-d-cda2a3cc-f53d-465c-bb3c-46dc6f303b5d)]. This property does not hold for subtraction or division.
-3.  **Associative Property:** This property also applies to addition and multiplication and states that the way numbers are grouped does not affect the result. For any integers a, b, and c, (a + b) + c = a + (b + c) and (a × b) × c = a × (b × c) [[30](https://www.youtube.com/watch?v=ncsz5eGEeug), [35](https://www.slideshare.net/slideshow/presentation-on-the-properties-of-the/253019774)].
-4.  **Distributive Property:** This property links addition and multiplication. It states that multiplying a number by a sum is the same as multiplying the number by each addend and then adding the products. For any integers a, b, and c, a × (b + c) = (a × b) + (a × c) [[31](https://www.scribd.com/document/934516686/Associative-Commutative-Identity-Closure-and-Distributive-Laws), [33](https://study.com/academy/lesson/video/number-properties-communicative-associative-distributive.html)].
-5.  **Identity Property:** There exists a special number, called the identity element, for each operation. For addition, the identity is 0 (since a + 0 = a). For multiplication, the identity is 1 (since a × 1 = a) [[30](https://www.youtube.com/watch?v=ncsz5eGEeug), [189](https://www.youtube.com/watch?v=_rkDZdcg7-8)].
-6.  **Inverse Property:** For every number, there exists an inverse such that when the operation is performed, the result is the identity element. For any integer a, its additive inverse is -a (since a + (-a) = 0). For any non-zero integer a, its multiplicative inverse is 1/a (since a × (1/a) = 1) [[34](https://mathematicalmysteries.org/k-12-commutative-associative-distributive-identity-and-inverse-laws/), [124](https://www.youtube.com/watch?v=ENDAn9S8U6k)].
+*Note: Division and Multiplication have the same priority; solve left to right. Same for Addition and Subtraction.*
 
-Mastering these classifications and properties is the first and most critical step in building a strong foundation for the Number System. They are not merely theoretical concepts; they are the tools used implicitly in almost every problem involving numbers. For instance, recognizing that a problem involves integers allows you to apply properties like closure and commutativity to rearrange terms and simplify expressions [[160](https://www.coursehero.com/file/250773809/Week-4pptx/)]. Visual aids, such as Venn diagrams, can be highly effective in illustrating the relationships between these different sets of numbers, showing how natural numbers are a subset of whole numbers, which are a subset of integers, which are a subset of rational numbers, and so on [[161](https://www.instagram.com/reel/DVTCollkcGa/)].
+### Step-by-Step Examples (10 Problems)
 
-| Number Type | Denotation | Definition | Examples |
-| :--- | :--- | :--- | :--- |
-| Natural Numbers | N | Counting numbers starting from 1. | 1, 2, 3, 4, ... [[94](https://www.mtgcoach.online/prepcapsule/preview/study/191687)] |
-| Whole Numbers | W | Natural numbers including zero. | 0, 1, 2, 3, ... [[94](https://www.mtgcoach.online/prepcapsule/preview/study/191687)] |
-| Integers | Z | Whole numbers and their negative counterparts. | ..., -3, -2, -1, 0, 1, 2, 3, ... [[53](https://study.com/academy/lesson/classification-of-numbers.html)] |
-| Prime Numbers | - | Natural numbers > 1 with exactly two factors: 1 and itself. | 2, 3, 5, 7, 11, 13 [[1](https://www.geeksforgeeks.org/aptitude/numbers-in-aptitude/), [120](https://testbook.com/objective-questions/mcq-on-prime-numbers--621f7d725cd97917dcecb221)] |
-| Composite Numbers | - | Natural numbers > 1 that are not prime. | 4, 6, 8, 9, 10, 12 [[52](https://www.topcoaching.in/uploads/pdf/iWPj7cCJKkyAr8kIyPUL.pdf), [54](https://davenport.libguides.com/math-skills-overview/basic-operations/sets)] |
-| Co-prime Numbers | - | Two numbers whose Highest Common Factor (HCF) is 1. | (8, 15), (7, 11) [[51](https://www.instagram.com/reel/DXy8QKYjjlu/)] |
-| Rational Numbers | Q | Numbers expressible as p/q, where p and q are integers and q ≠ 0. | 1/2, -4/7, 5 (which is 5/1) [[55](https://www.scribd.com/document/885032414/Csat-Revision-Number-System-06-03-2025)] |
-| Irrational Numbers | - | Numbers that cannot be expressed as p/q; non-terminating, non-repeating decimals. | √2, π, e [[56](https://www.careers360.com/quantitative-aptitude/classification-of-numbers-topic-pge)] |
-| Real Numbers | R | The union of all rational and irrational numbers. | All numbers on the number line [[56](https://www.careers360.com/quantitative-aptitude/classification-of-numbers-topic-pge)] |
+**1. $12 + 8 \div 4 \times 3 - 5$**
+*   **Step 1 (Division):** $8 \div 4 = 2$. Equation becomes: $12 + 2 \times 3 - 5$
+*   **Step 2 (Multiplication):** $2 \times 3 = 6$. Equation becomes: $12 + 6 - 5$
+*   **Step 3 (Addition):** $12 + 6 = 18$. Equation becomes: $18 - 5$
+*   **Step 4 (Subtraction):** $18 - 5 = 13$. **Answer: 13**
 
-Understanding these definitions and properties is paramount. For example, knowing that prime numbers have only two factors is the basis for the entire process of prime factorization [[9](https://www.geeksforgeeks.org/dsa/print-all-prime-factors-of-a-given-number/)]. Recognizing that composite numbers have more than two factors helps in finding all divisors of a number. The distinction between co-prime numbers (where HCF is 1) is vital for applying certain theorems, particularly the Chinese Remainder Theorem [[51](https://www.instagram.com/reel/DXy8QKYjjlu/)]. This initial phase of learning is about building a mental model of the number world, which will make subsequent topics like HCF, LCM, and remainders much more intuitive and less reliant on rote memorization.
+**2. $24 \div 6 \text{ of } 2 + 5$** *(Classic TCS Trap)*
+*   **Step 1 (Of):** "6 of 2" means $6 \times 2 = 12$. Equation becomes: $24 \div 12 + 5$
+*   **Step 2 (Division):** $24 \div 12 = 2$. Equation becomes: $2 + 5$
+*   **Step 3 (Addition):** $2 + 5 = 7$. **Answer: 7** *(If you did division first, you'd get 7, wait, no, $24/6=4$, $4*2=8$, $8+5=13$. This is why 'of' must be done first!)*
 
-## Divisibility, Factors, HCF, and LCM: Core Operations and Shortcuts
+**3. $15 - [ 4 + \{ 12 - ( 8 \div 2 \text{ of } 3 ) \} ]$**
+*   **Step 1 (Innermost Bracket & Of):** $2 \text{ of } 3 = 6$. Bracket becomes: $(8 \div 6)$. Wait, $8 \div 6$ is a fraction. Let's re-read standard placement rules: usually it's $8 \div (2 \times 3)$ or it's a typo in standard memory. Let's use a cleaner standard example: $15 - [ 4 + \{ 12 - ( 8 - 2 \times 3 ) \} ]$
+*   **Step 1 (Innermost Bracket & Mult):** $2 \times 3 = 6$. Bracket: $(8 - 6) = 2$.
+*   **Step 2 (Curly Bracket):** $12 - 2 = 10$.
+*   **Step 3 (Square Bracket):** $4 + 10 = 14$.
+*   **Step 4 (Final Subtraction):** $15 - 14 = 1$. **Answer: 1**
 
-Once the foundational classifications of numbers are understood, the next logical progression is to explore the core operations associated with them: divisibility, factors, and multiples. These concepts are not only fundamental in themselves but also serve as the bedrock for solving more advanced problems related to remainders, simplification, and modular arithmetic. Proficiency in these areas is a prerequisite for success in any quantitative aptitude section, as questions based on them are ubiquitous in placement tests from companies like TCS, Infosys, and Wipro [[6](https://www.linkedin.com/posts/samiksha-financial-analyst_aptitude-placements-excel-activity-7382654502165864448-rPQp), [131](https://www.geeksforgeeks.org/aptitude/aptitude-for-placements/)].
+**4. $5 + \frac{1}{2} \text{ of } 16 - 4$**
+*   **Step 1 (Of):** $\frac{1}{2} \times 16 = 8$. Equation: $5 + 8 - 4$
+*   **Step 2 (Addition):** $5 + 8 = 13$. Equation: $13 - 4$
+*   **Step 3 (Subtraction):** $13 - 4 = 9$. **Answer: 9**
 
-The cornerstone of this domain is **prime factorization**, which is the process of expressing a composite number as a product of its prime factors [[5](https://www.geeksforgeeks.org/videos/prime-factorization-hqg369//), [9](https://www.geeksforgeeks.org/dsa/print-all-prime-factors-of-a-given-number/)]. This decomposition is unique for every number (according to the Fundamental Theorem of Arithmetic) and reveals the intrinsic building blocks of that number. There are several methods to perform prime factorization. The most common is the **division method**: start by dividing the number by the smallest prime number (2), and continue dividing the quotient by prime numbers until the final quotient is 1 [[113](https://byjus.com/maths/prime-factorization/), [114](https://www.cuemath.com/numbers/prime-factorization/)]. For example, to find the prime factorization of 60:
-1.  Divide 60 by 2: 60 ÷ 2 = 30
-2.  Divide 30 by 2: 30 ÷ 2 = 15
-3.  15 is not divisible by 2, so try the next prime, 3: 15 ÷ 3 = 5
-4.  5 is a prime number.
-So, the prime factorization of 60 is $2^2 \times 3 \times 5$ [[114](https://www.cuemath.com/numbers/prime-factorization/)]. Another approach is to break the number into any two factors and then recursively factorize those components until all are prime [[7](https://math.stackexchange.com/questions/1500832/are-there-any-tricks-or-shortcuts-to-prime-factorization), [121](https://www.studypug.com/basic-math-help/prime-factorization/)]. While this may seem slower, it can sometimes be faster for numbers with obvious composite factors. Several sources highlight tricks to make prime factorization easier, such as memorizing squares and cubes of small numbers or recognizing divisibility patterns immediately [[90](https://www.vedantu.com/maths/prime-factorization), [165](https://www.geeksforgeeks.org/dsa/prime-factorization-tips-and-tricks/)]. For finding the largest prime factor of a number, one can repeatedly divide the number by 2, then check odd numbers from 3 up to √n [[85](https://www.geeksforgeeks.org/dsa/prime-factor/), [87](https://www.youtube.com/watch?v=RVa7siUvzxs)].
+**5. $36 \div 9 \times 2 + 14 - 10 \div 5$**
+*   **Step 1 (Division - Left to Right):** $36 \div 9 = 4$. Equation: $4 \times 2 + 14 - 10 \div 5$
+*   **Step 2 (Multiplication):** $4 \times 2 = 8$. Equation: $8 + 14 - 10 \div 5$
+*   **Step 3 (Division - Right side):** $10 \div 5 = 2$. Equation: $8 + 14 - 2$
+*   **Step 4 (Addition):** $8 + 14 = 22$. Equation: $22 - 2$
+*   **Step 5 (Subtraction):** $22 - 2 = 20$. **Answer: 20**
 
-From prime factorization, we derive the concepts of **Factors** and **Multiples**. A factor of a number is an integer that divides it without leaving a remainder. Multiples are the products of a number and any other integer. The Highest Common Factor (HCF), also known as the Greatest Common Divisor (GCD), is the largest number that divides two or more given numbers [[168](https://www.geeksforgeeks.org/maths/short-tricks-to-solve-hcf/)]. To find the HCF of multiple numbers, one can use the prime factorization method: find the prime factors of each number, identify the common prime factors among all of them, and multiply the lowest powers of these common factors [[166](https://www.geeksforgeeks.org/maths/hcf-and-lcm/), [170](https://www.geeksforgeeks.org/maths/how-to-find-hcf-of-3-numbers/)]. For example, to find the HCF of 36 ($2^2 \times 3^2$) and 24 ($2^3 \times 3$):
-*   Common prime factors are 2 and 3.
-*   The lowest power of 2 in both is $2^2$.
-*   The lowest power of 3 in both is $3^1$.
-*   Therefore, HCF = $2^2 \times 3 = 12$.
-An alternative and often faster method for two numbers is the **long division method**, where the larger number is divided by the smaller, the divisor becomes the new dividend, and the process repeats with the last divisor becoming the new divisor until the remainder is zero. The last non-zero divisor is the HCF [[168](https://www.geeksforgeeks.org/maths/short-tricks-to-solve-hcf/)]. A powerful shortcut is the relationship: `Product of two numbers = HCF × LCM` [[272](https://www.facebook.com/groups/maththinkers/posts/1529650952110910/)].
+**6. $25 - [ 16 - \{ 14 - ( 12 - \overline{9 - 3} ) \} ]$** *(Vinculum/Bar bracket)*
+*   **Step 1 (Vinculum):** $\overline{9 - 3} = 6$. Equation: $25 - [ 16 - \{ 14 - ( 12 - 6 ) \} ]$
+*   **Step 2 (Small Bracket):** $12 - 6 = 6$. Equation: $25 - [ 16 - \{ 14 - 6 \} ]$
+*   **Step 3 (Curly Bracket):** $14 - 6 = 8$. Equation: $25 - [ 16 - 8 ]$
+*   **Step 4 (Square Bracket):** $16 - 8 = 8$. Equation: $25 - 8$
+*   **Step 5 (Final):** $25 - 8 = 17$. **Answer: 17**
 
-The **Least Common Multiple (LCM)** is the smallest positive integer that is divisible by two or more given numbers [[193](https://www.geeksforgeeks.org/maths/tips-and-tricks-for-lcm/)]. Similar to HCF, the LCM can be found using prime factorization: take the highest powers of all prime factors present in the numbers [[166](https://www.geeksforgeeks.org/maths/hcf-and-lcm/), [193](https://www.geeksforgeeks.org/maths/tips-and-tricks-for-lcm/)]. Using the previous example (36 and 24):
-*   Prime factors are 2 and 3.
-*   The highest power of 2 present is $2^3$ (from 24).
-*   The highest power of 3 present is $3^2$ (from 36).
-*   Therefore, LCM = $2^3 \times 3^2 = 8 \times 9 = 72$.
-The relationship `Product of two numbers = HCF × LCM` can be rearranged to find either HCF or LCM if the other is known, which is a frequently tested shortcut [[272](https://www.facebook.com/groups/maththinkers/posts/1529650952110910/)].
+**7. $45 \div 5 \text{ of } 3 + 24 \div 4 - 3 \times 2$**
+*   **Step 1 (Of):** $5 \text{ of } 3 = 15$. Equation: $45 \div 15 + 24 \div 4 - 3 \times 2$
+*   **Step 2 (Division):** $45 \div 15 = 3$ AND $24 \div 4 = 6$. Equation: $3 + 6 - 3 \times 2$
+*   **Step 3 (Multiplication):** $3 \times 2 = 6$. Equation: $3 + 6 - 6$
+*   **Step 4 (Add/Sub Left to Right):** $3 + 6 = 9$. $9 - 6 = 3$. **Answer: 3**
 
-To expedite calculations, especially in competitive exams, **divisibility rules** are indispensable. These are quick checks to determine if one number is divisible by another without performing the full division [[169](https://www.geeksforgeeks.org/maths/divisibility-rules/)]. Mastering these rules saves significant time.
+**8. $\frac{2}{3} \text{ of } 18 + \frac{3}{4} \text{ of } 24 - 15$**
+*   **Step 1 (Of):** $\frac{2}{3} \times 18 = 12$. AND $\frac{3}{4} \times 24 = 18$. Equation: $12 + 18 - 15$
+*   **Step 2 (Addition):** $12 + 18 = 30$. Equation: $30 - 15$
+*   **Step 3 (Subtraction):** $30 - 15 = 15$. **Answer: 15**
 
-| Divisor | Divisibility Rule | Example |
-| :--- | :--- | :--- |
-| 2 | The unit digit is 0, 2, 4, 6, or 8. [[119](https://talentbattle.in/practice-quantitative-aptitude-questions/number-system-divisibility-rules)] | 124 is divisible by 2. |
-| 3 | The sum of the digits is divisible by 3. [[12](https://www.scribd.com/document/808866561/Tech-mahindra-Aptitude)] | 123 (1+2+3=6) is divisible by 3. |
-| 4 | The number formed by the last two digits is divisible by 4. | 1324 is divisible by 4 (last two digits, 24). |
-| 5 | The unit digit is 0 or 5. [[119](https://talentbattle.in/practice-quantitative-aptitude-questions/number-system-divisibility-rules)] | 125 is divisible by 5. |
-| 6 | The number is divisible by both 2 and 3. | 126 is divisible by 2 and 3, so it is divisible by 6. |
-| 8 | The number formed by the last three digits is divisible by 8. | 1232 is divisible by 8 (last three digits, 232). |
-| 9 | The sum of the digits is divisible by 9. [[12](https://www.scribd.com/document/808866561/Tech-mahindra-Aptitude)] | 261 (2+6+1=9) is divisible by 9. |
-| 10 | The unit digit is 0. [[119](https://talentbattle.in/practice-quantitative-aptitude-questions/number-system-divisibility-rules)] | 150 is divisible by 10. |
-| 11 | The difference between the sum of the digits in the odd positions and the sum of the digits in the even positions is 0 or divisible by 11. | 121: (1+1) - 2 = 0, so it is divisible by 11. |
+**9. $100 - [ 20 + \{ 30 - 2( 10 - 4 ) \} ]$**
+*   **Step 1 (Innermost Bracket):** $10 - 4 = 6$. Equation: $100 - [ 20 + \{ 30 - 2(6) \} ]$
+*   **Step 2 (Multiplication inside curly):** $2 \times 6 = 12$. Equation: $100 - [ 20 + \{ 30 - 12 \} ]$
+*   **Step 3 (Curly Bracket):** $30 - 12 = 18$. Equation: $100 - [ 20 + 18 ]$
+*   **Step 4 (Square Bracket):** $20 + 18 = 38$. Equation: $100 - 38$
+*   **Step 5 (Final):** $100 - 38 = 62$. **Answer: 62**
 
-These rules are not just for checking divisibility; they are often embedded in word problems or used as intermediate steps in solving complex remainder or number theory questions [[151](https://prepinsta.com/divisibility/divisibility-questions-and-answers/)]. For instance, a question might ask for the smallest number that must be added to 5678 to make it divisible by 460. Here, understanding divisibility by 4, 5, and 23 (factors of 460) would be crucial [[154](https://prepinsta.com/tcs-nqt/placement-papers/aptitude-questions/number-system/quiz-1/)]. Resources like IndiaBIX and PrepInsta provide extensive practice on these rules and their applications [[2](https://www.indiabix.com/), [151](https://prepinsta.com/divisibility/divisibility-questions-and-answers/)]. By internalizing these foundational concepts and their associated shortcuts, a candidate builds the necessary fluency to tackle higher-level problems in the Number System with confidence and speed.
+**10. $8 \div 4 \text{ of } 2 + ( 15 - 2 \times 6 )$**
+*   **Step 1 (Bracket):** $2 \times 6 = 12$. $15 - 12 = 3$. Equation: $8 \div 4 \text{ of } 2 + 3$
+*   **Step 2 (Of):** $4 \text{ of } 2 = 8$. Equation: $8 \div 8 + 3$
+*   **Step 3 (Division):** $8 \div 8 = 1$. Equation: $1 + 3$
+*   **Step 4 (Addition):** $1 + 3 = 4$. **Answer: 4**
 
-## Remainder Theorems: From Basic Principles to Advanced Applications
+---
 
-The concept of the remainder is central to the Number System and appears in a vast array of problem types in placement aptitude tests. Questions can range from straightforward division problems to highly complex scenarios involving large exponents and systems of equations. A strategic approach to remainders requires mastery of a hierarchy of techniques, starting from basic principles and escalating to powerful theorems designed for specific, high-difficulty cases. The goal is to develop a "trigger-based" problem-solving mindset, where the structure of the question signals the appropriate method to employ .
+## Part 2: Surds and Indices (Laws of Exponents)
 
-The simplest form of remainder problems involves direct division. For example, if a number `n` when divided by 56 gives a remainder of 29, what will be the remainder when the same number is divided by 8? [[83](https://www.placementpreparation.io/quantitative-aptitude/number-system/questions-and-answers/page/2/)]. The solution hinges on expressing `n` algebraically. If `n` divided by 56 leaves a remainder of 29, we can write `n = 56k + 29` for some integer `k`. To find the remainder when `n` is divided by 8, we substitute: `(56k + 29) % 8`. Since 56 is divisible by 8 (56 % 8 = 0), this simplifies to `(0*k + 29%8)`, which is `5` [[83](https://www.placementpreparation.io/quantitative-aptitude/number-system/questions-and-answers/page/2/)]. This method of representing the number in the form `Dividend = (Divisor × Quotient) + Remainder` is the fundamental tool for solving such problems [[275](https://www.instagram.com/reel/DZMOmOSvHTh/)].
+### The Concept & Pattern
+**Pattern Recognition:** If you see variables in the power (e.g., $2^x = 32$, or $5^{x+1} / 5^x$), or large numbers that can be broken into prime factors (e.g., $27^{2/3}$), use Indices.
+**The Golden Rule:** Convert everything to the same base. If you can't, use the laws of exponents.
 
-When the problem involves finding the remainder of a large expression, especially one with a large exponent, direct calculation is impossible. This is where **binomial expansion** becomes a valuable shortcut. The technique involves rewriting the base of the exponent in a form that makes the division obvious. For example, to find the remainder when $10^{20}$ is divided by 9, one can rewrite 10 as $(9+1)$. The expression becomes $(9+1)^{20}$. Expanding this using the binomial theorem, every term except the last one ($1^{20}$) will contain a factor of 9 and thus be divisible by 9. Therefore, the remainder is simply $1^{20} = 1$ [[277](https://www.scribd.com/presentation/741175373/Unit-Digit-Last-2-Digit-FACTORIALand-Remainders-TDY302)].
+**Core Formulas:**
+1. $a^m \times a^n = a^{m+n}$
+2. $a^m \div a^n = a^{m-n}$
+3. $(a^m)^n = a^{m \times n}$
+4. $a^0 = 1$
+5. $a^{-m} = \frac{1}{a^m}$
+6. $a^{m/n} = (\sqrt[n]{a})^m$
 
-For problems involving large exponents modulo a **prime number**, **Fermat's Little Theorem** is an exceptionally powerful tool. The theorem states that if `p` is a prime number and `a` is an integer not divisible by `p`, then $a^{p-1} \equiv 1 \pmod{p}$ [[253](https://www.ias.ac.in/public/Volumes/reso/029/04/0477-0492.pdf), [256](https://webstor.srmist.edu.in/web_assets/srm_mainsite/files/2017/15CS434E-unitII.pdf), [261](https://testbook.com/maths/fermats-little-theorem)]. This means that $a^{p-1}$ leaves a remainder of 1 when divided by `p`. This theorem dramatically simplifies the exponent. For example, to find the remainder when $3^{100}$ is divided by 7, we note that 7 is prime. By Fermat's Little Theorem, $3^6 \equiv 1 \pmod{7}$. We can write 100 as $6 \times 16 + 4$. Therefore, $3^{100} = (3^6)^{16} \times 3^4 \equiv 1^{16} \times 3^4 \pmod{7}$. Now, we only need to calculate $3^4 = 81$ and find $81 \mod 7$, which is 4 [[95](https://artofproblemsolving.com/wiki/index.php/Fermat%27s_Little_Theorem?srsltid=AfmBOopgHUjx5ocx-l02DHawdHjNk2z6MhXOxRcTO5Ml6QWwG6RSm5DJ)]. Numerous sources provide examples and proofs of this theorem, highlighting its importance in competitive mathematics and cryptography [[61](https://www.youtube.com/watch?v=oT7kRlh1nVQ), [62](https://www.math.cmu.edu/~mlavrov/arml/15-16/number-theory-09-27-15-solutions.pdf), [64](https://www.geeksforgeeks.org/engineering-mathematics/fermat-little-theorem/), [263](https://www.facebook.com/probal.chakraborty.121/posts/empower-your-math-skills-with-this-video-lecture-on-fermats-little-theorem-/2012417772822814/)].
+### Step-by-Step Examples (10 Problems)
 
-Fermat's theorem is a special case of the more general **Euler's Theorem**. Euler's theorem states that if `a` and `n` are coprime positive integers (i.e., their HCF is 1), then $a^{\phi(n)} \equiv 1 \pmod{n}$, where $\phi(n)$ is Euler's totient function, which counts the number of positive integers less than or equal to `n` that are coprime to `n` [[66](https://www.scribd.com/document/580897552/Eulers-Theorem-and-Fermats-Little-Theorem), [251](https://www.geeksforgeeks.org/maths/eulers-theorem/), [257](https://people.iith.ac.in/aravind/Files-CS5610/CNT-NotesInProgress.pdf)]. When `n` is a prime number `p`, $\phi(p) = p-1$, and Euler's theorem reduces to Fermat's Little Theorem [[251](https://www.geeksforgeeks.org/maths/eulers-theorem/)]. Euler's theorem is invaluable for finding remainders when the modulus is a composite number. For instance, to find the remainder of $2^{100}$ when divided by 15, since gcd(2, 15) = 1, we can use Euler's theorem. $\phi(15) = \phi(3 \times 5) = 15 \times (1-1/3) \times (1-1/5) = 8$. So, $2^8 \equiv 1 \pmod{15}$. We can then reduce the exponent 100 modulo 8 to simplify the calculation.
+**1. Solve for x: $2^x = 32$**
+*   **Step 1:** Express 32 as a power of 2. $32 = 2 \times 2 \times 2 \times 2 \times 2 = 2^5$.
+*   **Step 2:** Equation becomes $2^x = 2^5$.
+*   **Step 3:** Since bases are same, powers must be equal. $x = 5$. **Answer: 5**
 
-A more complex scenario involves solving a system of simultaneous linear congruences, which is the domain of the **Chinese Remainder Theorem (CRT)**. The theorem provides a way to find a number `x` that has specific remainders when divided by several pairwise coprime integers. Formally, if we have a system like $x \equiv r_1 \pmod{m_1}$ and $x \equiv r_2 \pmod{m_2}$, where $m_1$ and $m_2$ are coprime, CRT guarantees a unique solution modulo $m_1 \times m_2$ [[44](https://brilliant.org/wiki/chinese-remainder-theorem/), [46](https://www.maths.tcd.ie/pub/Maths/Courseware/NumberTheory/ch05.pdf)]. For example, to find a number that leaves a remainder of 1 when divided by 3 and a remainder of 2 when divided by 5, one can find that x=7 is a solution, and the general solution is all numbers of the form $15k + 7$ [[258](https://www.themathdoctors.org/chinese-remainders-with-and-without-the-theorem/)]. The standard CRT applies only when the moduli are coprime. However, systems with non-coprime moduli can also be solved, though the conditions for solvability are stricter and the solution may not always exist or may not be unique [[45](https://www.reddit.com/r/learnmath/comments/wta13n/chinese_remainder_theorem_modules_not_coprime/), [47](https://cp-algorithms.com/algebra/chinese-remainder-theorem.html), [100](https://forthright48.com/chinese-remainder-theorem-part-2-non-coprime-moduli/)]. Understanding when to apply each of these theorems is key. A problem with a single large exponent and a prime modulus triggers Fermat's theorem. A similar problem with a composite modulus triggers Euler's theorem. A problem stating "when divided by A, remainder is X, and when divided by B, remainder is Y" triggers the Chinese Remainder Theorem (if A and B are coprime).
+**2. Simplify: $\frac{5^{x+3}}{5^{x-1}}$**
+*   **Step 1:** Use formula $a^m \div a^n = a^{m-n}$.
+*   **Step 2:** Subtract powers: $(x + 3) - (x - 1)$.
+*   **Step 3:** $x + 3 - x + 1 = 4$.
+*   **Step 4:** Result is $5^4$. **Answer: $5^4$ (or 625)**
 
-The following table summarizes the application criteria for these remainder-finding techniques:
+**3. Find the value of: $(256)^{0.16} \times (256)^{0.09}$**
+*   **Step 1:** Bases are same (256). Use $a^m \times a^n = a^{m+n}$.
+*   **Step 2:** Add powers: $0.16 + 0.09 = 0.25$.
+*   **Step 3:** Expression is $256^{0.25}$.
+*   **Step 4:** Convert decimal to fraction: $0.25 = \frac{1}{4}$. So, $256^{1/4}$.
+*   **Step 5:** $256^{1/4}$ means the 4th root of 256. $4 \times 4 \times 4 \times 4 = 256$. **Answer: 4**
 
-| Technique/Theorem | Trigger / Applicable Condition | Example Scenario |
-| :--- | :--- | :--- |
-| Algebraic Representation | Direct division problem asking for remainder of a derived expression. | "If n%56=29, find n%8." [[83](https://www.placementpreparation.io/quantitative-aptitude/number-system/questions-and-answers/page/2/)] |
-| Binomial Expansion | Expression of the form (a+b)^n divided by a number close to 'a' or 'b'. | Find remainder of $10^{20}/9$. [[277](https://www.scribd.com/presentation/741175373/Unit-Digit-Last-2-Digit-FACTORIALand-Remainders-TDY302)] |
-| Fermat's Little Theorem | Large exponent with a prime modulus (and base not divisible by prime). | Find remainder of $3^{100}/7$. [[95](https://artofproblemsolving.com/wiki/index.php/Fermat%27s_Little_Theorem?srsltid=AfmBOopgHUjx5ocx-l02DHawdHjNk2z6MhXOxRcTO5Ml6QWwG6RSm5DJ), [261](https://testbook.com/maths/fermats-little-theorem)] |
-| Euler's Theorem | Large exponent with a composite modulus (and base and modulus are coprime). | Find remainder of $2^{100}/15$. [[66](https://www.scribd.com/document/580897552/Eulers-Theorem-and-Fermats-Little-Theorem), [257](https://people.iith.ac.in/aravind/Files-CS5610/CNT-NotesInProgress.pdf)] |
-| Chinese Remainder Theorem | System of two or more simultaneous congruences with pairwise coprime moduli. | Find x if x%3=1 and x%5=2. [[44](https://brilliant.org/wiki/chinese-remainder-theorem/), [46](https://www.maths.tcd.ie/pub/Maths/Courseware/NumberTheory/ch05.pdf)] |
+**4. If $3^{x-y} = 81$ and $3^{x+y} = 729$, find x.**
+*   **Step 1:** Convert 81 and 729 to base 3. $81 = 3^4$, $729 = 3^6$.
+*   **Step 2:** Equations become: $3^{x-y} = 3^4 \Rightarrow x - y = 4$ (Eq 1)
+*   **Step 3:** And $3^{x+y} = 3^6 \Rightarrow x + y = 6$ (Eq 2)
+*   **Step 4:** Add Eq 1 and Eq 2: $(x - y) + (x + y) = 4 + 6 \Rightarrow 2x = 10$.
+*   **Step 5:** $x = 5$. **Answer: 5**
 
-By systematically learning these methods and practicing their identification through pattern recognition, candidates can demystify what initially appear to be intractable remainder problems, turning them into manageable and solvable exercises.
+**5. Simplify: $(x^a / x^b)^{a^2+ab+b^2} \times (x^b / x^c)^{b^2+bc+c^2} \times (x^c / x^a)^{c^2+ca+a^2}$** *(Classic Infosys hard question)*
+*   **Step 1:** Simplify inside brackets first. $x^a / x^b = x^{a-b}$.
+*   **Step 2:** Apply outer power: $(x^{a-b})^{a^2+ab+b^2} = x^{(a-b)(a^2+ab+b^2)}$.
+*   **Step 3:** Recognize algebra identity: $(a-b)(a^2+ab+b^2) = a^3 - b^3$. So, first term is $x^{a^3 - b^3}$.
+*   **Step 4:** Similarly, second term is $x^{b^3 - c^3}$, third term is $x^{c^3 - a^3}$.
+*   **Step 5:** Multiply them (add powers): $(a^3 - b^3) + (b^3 - c^3) + (c^3 - a^3) = 0$.
+*   **Step 6:** $x^0 = 1$. **Answer: 1**
 
-## Unit Digit and Cyclicity: High-Frequency Problem Solving Strategies
+**6. Evaluate: $2^{-3} \times 3^{-2}$**
+*   **Step 1:** Apply negative power rule $a^{-m} = 1/a^m$.
+*   **Step 2:** $2^{-3} = \frac{1}{2^3} = \frac{1}{8}$.
+*   **Step 3:** $3^{-2} = \frac{1}{3^2} = \frac{1}{9}$.
+*   **Step 4:** Multiply: $\frac{1}{8} \times \frac{1}{9} = \frac{1}{72}$. **Answer: 1/72**
 
-Among the most frequently tested and strategically important topics in the Number System for placement aptitude is the calculation of the unit digit (also known as the last digit) of a number, particularly when it is raised to a very large power. These questions are designed to test a candidate's ability to recognize patterns and apply shortcuts rather than perform cumbersome calculations, making them ideal for timed exams [[227](https://www.instagram.com/reel/DY2EixuNhuS/)]. The concept of **cyclicity** is the key to solving these problems efficiently.
+**7. Solve: $4^{x} = 64$**
+*   **Step 1:** Express both in base 2. $4 = 2^2$, so $4^x = (2^2)^x = 2^{2x}$.
+*   **Step 2:** $64 = 2^6$.
+*   **Step 3:** Equation: $2^{2x} = 2^6$.
+*   **Step 4:** Equate powers: $2x = 6 \Rightarrow x = 3$. **Answer: 3**
 
-Cyclicity refers to the repeating pattern of the unit digits of a number when it is raised to successive powers [[221](https://www.hitbullseye.com/Quant/Units-Digit.php), [278](https://www.geeksforgeeks.org/maths/number-system-cyclicity-of-numbers/)]. Instead of calculating the entire value of a number like $147^{100}$, one can simply analyze the cyclical pattern of the unit digit of its base, which is 7 in this case. The cyclicity of a digit is the length of this repeating cycle. Different digits exhibit different cyclical behaviors, which can be categorized as follows:
+**8. Simplify: $\frac{5^{n+2} - 5^{n+1}}{4 \times 5^n}$**
+*   **Step 1:** Factor out $5^{n+1}$ from the numerator: $5^{n+1}(5^1 - 1) = 5^{n+1}(4)$.
+*   **Step 2:** Put back in fraction: $\frac{5^{n+1} \times 4}{4 \times 5^n}$.
+*   **Step 3:** Cancel the 4s: $\frac{5^{n+1}}{5^n}$.
+*   **Step 4:** Divide powers: $5^{(n+1)-n} = 5^1 = 5$. **Answer: 5**
 
-*   **Digits with Cyclicity 1 (0, 1, 5, 6):** The unit digit remains the same regardless of the power.
-    *   $0^n$ always ends in 0.
-    *   $1^n$ always ends in 1.
-    *   $5^n$ always ends in 5.
-    *   $6^n$ always ends in 6.
-    *   Example: The unit digit of $185^{563}$ is 5, and the unit digit of $190^{anything}$ is 0 [[221](https://www.hitbullseye.com/Quant/Units-Digit.php)].
+**9. Find value of: $(0.04)^{-1.5}$**
+*   **Step 1:** Convert decimal to fraction: $0.04 = \frac{4}{100} = \frac{1}{25}$.
+*   **Step 2:** Expression: $(\frac{1}{25})^{-1.5}$.
+*   **Step 3:** Negative power flips fraction: $(25)^{1.5}$.
+*   **Step 4:** $1.5 = \frac{3}{2}$. So, $25^{3/2} = (\sqrt{25})^3 = 5^3 = 125$. **Answer: 125**
 
-*   **Digits with Cyclicity 2 (4, 9):** The unit digits alternate between two values depending on whether the exponent is odd or even.
-    *   For 4: The cycle is [4, 6]. Odd powers end in 4; even powers end in 6.
-        *   $4^{odd}$ ends in 4 (e.g., $4^1=4$, $4^3=64$).
-        *   $4^{even}$ ends in 6 (e.g., $4^2=16$, $4^4=256$).
-    *   For 9: The cycle is [9, 1]. Odd powers end in 9; even powers end in 1.
-        *   $9^{odd}$ ends in 9 (e.g., $9^1=9$, $9^3=729$).
-        *   $9^{even}$ ends in 1 (e.g., $9^2=81$, $9^4=6561$).
-    *   Example: The unit digit of $189^{562589743}$ (odd power) is 9, while the unit digit of $154^{258741369}$ (odd power) is 4 [[221](https://www.hitbullseye.com/Quant/Units-Digit.php)].
+**10. If $a = 3$, find $a^3 - a^2 + a$**
+*   **Step 1:** Substitute $a = 3$.
+*   **Step 2:** Calculate $3^3 = 27$.
+*   **Step 3:** Calculate $3^2 = 9$.
+*   **Step 4:** Equation: $27 - 9 + 3$.
+*   **Step 5:** $27 - 9 = 18$. $18 + 3 = 21$. **Answer: 21**
 
-*   **Digits with Cyclicity 4 (2, 3, 7, 8):** The unit digits follow a repeating cycle of four different values.
-    *   **Cycle for 2:** [2, 4, 8, 6]
-    *   **Cycle for 3:** [3, 9, 7, 1]
-    *   **Cycle for 7:** [7, 9, 3, 1]
-    *   **Cycle for 8:** [8, 4, 2, 6]
-    *   To find the unit digit, the universal algorithm is:
-        1.  Consider only the unit digit of the base number.
-        2.  Determine the cycle length (for 2, 3, 7, 8, it is 4).
-        3.  Divide the given exponent by the cycle length.
-        4.  Use the **remainder** from this division to find the corresponding digit in the cycle.
-        5.  If the remainder is 0, it corresponds to the 4th position in the cycle (the last digit of the cycle).
-    *   Example: Find the unit digit of $287^{562581}$.
-        *   Step 1: Base's unit digit is 7. Its cycle is [7, 9, 3, 1] with a length of 4 [[221](https://www.hitbullseye.com/Quant/Units-Digit.php)].
-        *   Step 2: Divide the exponent 562581 by 4. The division yields a remainder of 1 [[221](https://www.hitbullseye.com/Quant/Units-Digit.php)].
-        *   Step 3: The 1st value in the cycle [7, 9, 3, 1] is 7.
-        *   Answer: The unit digit is 7 [[221](https://www.hitbullseye.com/Quant/Units-Digit.php)].
-    *   Another example: Find the unit digit of $2^{99}$.
-        *   Cycle for 2 is [2, 4, 8, 6].
-        *   99 divided by 4 gives a remainder of 3.
-        *   The 3rd value in the cycle is 8.
-        *   Therefore, the unit digit of $2^{99}$ is 8 [[236](https://byjus.com/free-cat-prep/power-cycle/)].
+---
 
-The following table summarizes the cyclicity for all digits 0-9, providing a quick reference guide for problem-solving.
+## Part 3: Square Roots & Cube Roots (Speed Shortcuts)
 
-| Unit Digit of Base | Cyclicity | Power Cycle | Example |
-| :--- | :--- | :--- | :--- |
-| 0 | 1 | 0 | Unit digit of $...0^n$ is always 0. |
-| 1 | 1 | 1 | Unit digit of $...1^n$ is always 1. |
-| 2 | 4 | [2, 4, 8, 6] | Unit digit of $2^1=2$, $2^2=4$, $2^3=8$, $2^4=6$, $2^5=2$ (cycle repeats). |
-| 3 | 4 | [3, 9, 7, 1] | Unit digit of $3^1=3$, $3^2=9$, $3^3=7$, $3^4=1$, $3^5=3$ (cycle repeats). |
-| 4 | 2 | [4, 6] | Unit digit of $4^{odd}$ is 4, $4^{even}$ is 6. |
-| 5 | 1 | 5 | Unit digit of $...5^n$ is always 5. |
-| 6 | 1 | 6 | Unit digit of $...6^n$ is always 6. |
-| 7 | 4 | [7, 9, 3, 1] | Unit digit of $7^1=7$, $7^2=9$, $7^3=3$, $7^4=1$, $7^5=7$ (cycle repeats). |
-| 8 | 4 | [8, 4, 2, 6] | Unit digit of $8^1=8$, $8^2=4$, $8^3=2$, $8^4=6$, $8^5=8$ (cycle repeats). |
-| 9 | 2 | [9, 1] | Unit digit of $9^{odd}$ is 9, $9^{even}$ is 1. |
+### The Concept & Pattern
+**Pattern Recognition:** If asked to find $\sqrt{X}$ or $\sqrt[3]{X}$ where X is a 4 to 6 digit perfect square/cube, **do not use long division**. Use the unit-digit shortcut.
 
-Questions can become more complex by combining operations. For example, finding the unit digit of an expression like $712 + 811$. The solution involves finding the unit digit of each term separately and then performing the operation on those digits: unit digit of 712 is 2, and unit digit of 811 is 8. The sum is 2 + 8 = 10, so the final unit digit is 0 [[81](https://www.scribd.com/document/632393522/unit-digit-questions-for-cat-63)]. Similarly, for multiplication, one multiplies the unit digits and takes the unit digit of the result. For instance, the unit digit of $8314 \times 8415$ depends only on the unit digits of the bases: 4 and 5. The unit digit of $4 \times 5 = 20$ is 0 [[84](https://testbook.com/question-answer/what-will-be-the-unit-digit-of-8314-8--606797af8962ae6dac4071b2)]. Mastering cyclicity and its application to combined operations is crucial for achieving speed and accuracy in solving these high-frequency placement test questions.
+**Shortcut 1: Square Roots (Unit Digit Method)**
+Memorize the unit digits of squares:
+*   Ends in 1 $\rightarrow$ Root ends in **1 or 9**
+*   Ends in 4 $\rightarrow$ Root ends in **2 or 8**
+*   Ends in 5 $\rightarrow$ Root ends in **5**
+*   Ends in 6 $\rightarrow$ Root ends in **4 or 6**
+*   Ends in 9 $\rightarrow$ Root ends in **3 or 7**
+*   Ends in 0 $\rightarrow$ Root ends in **0** (must be even number of zeros)
+*(Note: If it ends in 2, 3, 7, 8, it's NOT a perfect square!)*
+**How to find the tens digit:** Ignore the last two digits of the number. Look at the remaining part. Find between which two consecutive perfect squares it lies. Take the smaller number.
 
-## Digital Root and Last Two Digits: Verification and Advanced Calculations
+**Shortcut 2: Cube Roots (Unit Digit Method)**
+Memorize the unit digits of cubes (Notice the magic pattern! 1-1, 8-2, 27-3, 64-4, 125-5, 216-6, 343-7, 512-8, 729-9):
+*   Ends in 1 $\rightarrow$ Root ends in **1**
+*   Ends in 2 $\rightarrow$ Root ends in **8**
+*   Ends in 3 $\rightarrow$ Root ends in **7**
+*   Ends in 4 $\rightarrow$ Root ends in **4**
+*   Ends in 5 $\rightarrow$ Root ends in **5**
+*   Ends in 6 $\rightarrow$ Root ends in **6**
+*   Ends in 7 $\rightarrow$ Root ends in **3**
+*   Ends in 8 $\rightarrow$ Root ends in **2**
+*   Ends in 9 $\rightarrow$ Root ends in **9**
+*   Ends in 0 $\rightarrow$ Root ends in **0**
+**How to find tens digit:** Group digits in threes from the right. Ignore the last group. Find the cube root of the remaining part.
 
-Beyond unit digits, two other advanced concepts in the Number System that frequently appear in placement examinations are the **digital root** and the calculation of the **last two digits** of a number. While the digital root serves as a powerful tool for verification and quick estimation, the last two digits problem extends the logic of cyclicity to a higher level of complexity, testing a candidate's depth of understanding.
+### Step-by-Step Examples (10 Problems)
 
-The **digital root** of a number is obtained by repeatedly summing its digits until a single-digit number is reached [[222](https://www.scribd.com/document/937730792/Mastering-Number-System-for-Competitive-Exams-SSC-CGL-CHSL)]. For example, the digital root of 987 is calculated as: 9 + 8 + 7 = 24, and then 2 + 4 = 6. Therefore, the digital root of 987 is 6 [[225](https://www.instagram.com/p/DWU9vKHj859/)]. This concept has a direct relationship with modulo 9 arithmetic. For any positive integer `N`, its digital root is congruent to `N mod 9`. Specifically, if `N % 9 = 0` and `N` is not zero, then the digital root is 9; otherwise, the digital root is `N % 9` [[229](https://www.instagram.com/reel/DXg3kc_k57M/)]. This property makes the digital root an excellent tool for verifying the correctness of arithmetic operations. For instance, before committing to an answer in a multiplication problem, one can calculate the digital roots of the multiplicands, multiply them, and find the digital root of the result. This should match the digital root of the actual computed product. This "casting out nines" trick was historically used to check for errors and remains a valuable sanity check during exams [[226](https://www.instagram.com/p/DUYlNbuE9r5/), [229](https://www.instagram.com/reel/DXg3kc_k57M/)]. Furthermore, the digital root can help in identifying perfect squares. A number cannot be a perfect square if its digital root is 2, 3, 5, 6, or 8. Only numbers with a digital root of 1, 4, 7, or 9 can be perfect squares [[226](https://www.instagram.com/p/DUYlNbuE9r5/)]. This provides a rapid elimination method for certain types of problems.
+**1. Find $\sqrt{1849}$**
+*   **Step 1 (Unit digit):** Ends in 9. Root ends in 3 or 7.
+*   **Step 2 (Tens digit):** Ignore last two digits (49). Remaining is 18.
+*   **Step 3:** $4^2 = 16$, $5^2 = 25$. 18 lies between 16 and 25. Take the smaller: 4.
+*   **Step 4:** Tens digit is 4. Root is 43 or 47.
+*   **Step 5 (Check):** $43^2 = 1849$. (Shortcut trick: $4 \times 5 = 20$, $18 < 20$, so pick the smaller unit digit 3). **Answer: 43**
 
-Calculating the **last two digits** of a number, especially one raised to a high power (e.g., finding the last two digits of $147^{100}$), is a more challenging extension of the unit digit concept. This problem is essentially asking for the value of the number modulo 100. Unlike the unit digit, which only required tracking a cycle of length at most 4, finding the last two digits involves dealing with cycles modulo 100. This can be approached by breaking down the problem using the Chinese Remainder Theorem. Since $100 = 4 \times 25$ and 4 and 25 are coprime, one can find the last two digits by:
-1.  Finding the remainder when the number is divided by 4.
-2.  Finding the remainder when the number is divided by 25.
-3.  Using the Chinese Remainder Theorem to find a unique number modulo 100 that satisfies both remainder conditions.
+**2. Find $\sqrt{5776}$**
+*   **Step 1:** Ends in 6. Root ends in 4 or 6.
+*   **Step 2:** Ignore 76. Remaining is 57.
+*   **Step 3:** $7^2 = 49$, $8^2 = 64$. 57 is between them. Tens digit = 7.
+*   **Step 4:** Root is 74 or 76.
+*   **Step 5 (Check):** $7 \times 8 = 56$. $57 > 56$, so pick the larger unit digit 6. **Answer: 76**
 
-This process is significantly more complex than unit digit cyclicity. For the base modulo 4, the calculation is often straightforward because powers of most numbers stabilize quickly modulo 4. For the base modulo 25, Euler's theorem is typically employed. Since $\phi(25) = 20$, if the base is coprime to 25, the exponent can be reduced modulo 20. Once both remainders (modulo 4 and modulo 25) are found, one must solve the system of congruences to find the equivalent value modulo 100. While this is a potent technique, it requires careful execution and is generally considered an advanced topic. Some shortcut guides suggest memorizing specific cycles for different last two digits, but deriving them on the spot using the CRT method is more reliable. Given the complexity, it is important for aspirants to prioritize mastering unit digit cyclicity, as it constitutes the majority of "last digit" type questions. However, being aware of the method for last two digits is advantageous for tackling the most difficult problems that may appear in exams from highly competitive companies like Amazon or Microsoft [[79](https://prepinsta.com/microsoft-quantitative-aptitude-questions/)].
+**3. Find $\sqrt{9801}$**
+*   **Step 1:** Ends in 1. Root ends in 1 or 9.
+*   **Step 2:** Ignore 01. Remaining 98.
+*   **Step 3:** $9^2 = 81$, $10^2 = 100$. Tens digit = 9.
+*   **Step 4:** Root is 91 or 99. $9 \times 10 = 90$. $98 > 90$, pick larger (9). **Answer: 99**
 
-In summary, the digital root is a practical and time-saving tool for verification and quick checks, leveraging the properties of modulo 9 arithmetic. The calculation of the last two digits is a more profound application of number theory, primarily relying on the Chinese Remainder Theorem and Euler's theorem, and represents a higher level of proficiency in the Number System. While digital root problems are more common, having a conceptual understanding of the last two digits problem prepares a candidate for the most challenging quantitative aptitude questions.
+**4. Find $\sqrt{3364}$**
+*   **Step 1:** Ends in 4. Root ends in 2 or 8.
+*   **Step 2:** Ignore 64. Remaining 33.
+*   **Step 3:** $5^2 = 25$, $6^2 = 36$. Tens digit = 5.
+*   **Step 4:** Root is 52 or 58. $5 \times 6 = 30$. $33 > 30$, pick larger (8). **Answer: 58**
 
-## Pattern-Based Practice and Resource Compilation
+**5. Find $\sqrt{12544}$**
+*   **Step 1:** Ends in 4. Root ends in 2 or 8.
+*   **Step 2:** Ignore 44. Remaining 125.
+*   **Step 3:** $11^2 = 121$, $12^2 = 144$. Tens digit = 11.
+*   **Step 4:** Root is 112 or 118. $11 \times 12 = 132$. $125 < 132$, pick smaller (2). **Answer: 112**
 
-The ultimate goal of mastering the Number System is to translate theoretical knowledge and shortcut techniques into high-speed, accurate problem-solving under exam conditions. This requires deliberate, pattern-based practice. The final stage of preparation involves moving from untimed conceptual understanding to timed, mixed-question drills that simulate the pressure of a real placement test. This section consolidates the key patterns and provides a curated list of resources to facilitate this final, crucial phase of learning.
+**6. Find $\sqrt[3]{13824}$**
+*   **Step 1 (Unit digit):** Ends in 4. Root ends in **4**.
+*   **Step 2 (Tens digit):** Group in threes: 13 | 824. Ignore 824. Remaining is 13.
+*   **Step 3:** $2^3 = 8$, $3^3 = 27$. 13 lies between them. Take smaller: 2.
+*   **Step 4:** Combine tens and units: 24. **Answer: 24**
 
-Based on analysis of placement papers from companies like TCS, Infosys, Capgemini, and Cognizant, several recurring patterns emerge [[28](https://prepinsta.com/infosys/aptitude/divisibility/quiz-1/), [152](https://prepinsta.com/tcs-ninja/aptitude/), [154](https://prepinsta.com/tcs-nqt/placement-papers/aptitude-questions/number-system/quiz-1/)]. Recognizing these patterns is the essence of strategic problem-solving.
+**7. Find $\sqrt[3]{17576}$**
+*   **Step 1:** Ends in 6. Root ends in **6**.
+*   **Step 2:** Group: 17 | 576. Remaining 17.
+*   **Step 3:** $2^3 = 8$, $3^3 = 27$. Tens digit = 2.
+*   **Step 4:** Combine: 26. **Answer: 26**
 
-**Pattern 1: Unit Digit via Cyclicity.** This is the most frequent pattern. The question will invariably ask for the "unit digit," "last digit," or "digit at the unit place" of a number raised to a large power, such as $17^{144}$ or $2026^{2026}$. The trigger is the combination of a large exponent and the keywords "unit digit."
-*   **Strategy:** Apply the universal cyclicity algorithm: (1) Take the unit digit of the base. (2) Identify its 4-step cycle. (3) Divide the exponent by 4. (4) Use the remainder to pick the corresponding digit from the cycle. A remainder of 0 means the 4th digit in the cycle [[27](https://testbook.com/objective-questions/mcq-on-unit-digit--5eea6a1039140f30f369e813), [221](https://www.hitbullseye.com/Quant/Units-Digit.php)].
+**8. Find $\sqrt[3]{50653}$**
+*   **Step 1:** Ends in 3. Root ends in **7**.
+*   **Step 2:** Group: 50 | 653. Remaining 50.
+*   **Step 3:** $3^3 = 27$, $4^3 = 64$. Tens digit = 3.
+*   **Step 4:** Combine: 37. **Answer: 37**
 
-**Pattern 2: Remainder with Prime Modulus.** These questions involve finding the remainder of an expression like $a^b$ divided by a prime number `p`.
-*   **Strategy:** Immediately think of **Fermat's Little Theorem** ($a^{p-1} \equiv 1 \pmod{p}$). Reduce the exponent `b` modulo (p-1) to simplify the calculation [[64](https://www.geeksforgeeks.org/engineering-mathematics/fermat-little-theorem/), [95](https://artofproblemsolving.com/wiki/index.php/Fermat%27s_Little_Theorem?srsltid=AfmBOopgHUjx5ocx-l02DHawdHjNk2z6MhXOxRcTO5Ml6QWwG6RSm5DJ)].
+**9. Find $\sqrt[3]{21952}$**
+*   **Step 1:** Ends in 2. Root ends in **8**.
+*   **Step 2:** Group: 21 | 952. Remaining 21.
+*   **Step 3:** $2^3 = 8$, $3^3 = 27$. Tens digit = 2.
+*   **Step 4:** Combine: 28. **Answer: 28**
 
-**Pattern 3: Remainder with Composite Modulus.** Similar to Pattern 2, but the divisor is a composite number, often co-prime to the base.
-*   **Strategy:** Think of **Euler's Theorem** ($a^{\phi(n)} \equiv 1 \pmod{n}$). Reduce the exponent `b` modulo $\phi(n)$, where $\phi(n)$ is Euler's totient function [[66](https://www.scribd.com/document/580897552/Eulers-Theorem-and-Fermats-Little-Theorem), [257](https://people.iith.ac.in/aravind/Files-CS5610/CNT-NotesInProgress.pdf)].
+**10. Find $\sqrt[3]{68921}$**
+*   **Step 1:** Ends in 1. Root ends in **1**.
+*   **Step 2:** Group: 68 | 921. Remaining 68.
+*   **Step 3:** $4^3 = 64$, $5^3 = 125$. Tens digit = 4.
+*   **Step 4:** Combine: 41. **Answer: 41**
 
-**Pattern 4: System of Congruences.** The question will state a number leaves a remainder `R1` when divided by `D1` and a remainder `R2` when divided by `D2`, and ask for the smallest such number or the general form.
-*   **Strategy:** This is a classic **Chinese Remainder Theorem (CRT)** problem. If D1 and D2 are coprime, a unique solution exists modulo D1×D2. The solution can often be found by trial and error for small numbers or by applying the formal CRT algorithm for larger ones [[46](https://www.maths.tcd.ie/pub/Maths/Courseware/NumberTheory/ch05.pdf), [258](https://www.themathdoctors.org/chinese-remainders-with-and-without-the-theorem/)].
+---
 
-**Pattern 5: Divisibility and Factors.** Questions may ask for the number of factors, sum of factors, or the least number to be multiplied/divided to make a number a perfect square/cube. They may also involve finding HCF/LCM of algebraic expressions or three numbers.
-*   **Strategy:** Use prime factorization as the primary tool. The number of factors of $n = a^p \times b^q \times c^r$ is $(p+1)(q+1)(r+1)$. The sum of factors is $(1+a+...+a^p)(1+b+...+b^q)...$. For HCF of three numbers, find the common prime factors among all three [[166](https://www.geeksforgeeks.org/maths/hcf-and-lcm/), [170](https://www.geeksforgeeks.org/maths/how-to-find-hcf-of-3-numbers/)].
+## Part 4: Approximation & Fraction-Percentage Master Table
 
-To effectively practice these patterns, a structured approach is recommended, perfectly aligning with the proposed three-day study cycle.
+### The Concept & Pattern
+**Pattern Recognition:** If the question says **"What approximate value should come in place of the question mark?"** or **"What is the approximate value of..."**, DO NOT calculate exactly. Round off numbers to the nearest integers or simple multiples of 10/100.
+**The Secret Weapon:** The Fraction-to-Percentage table. Convert complex decimals/fractions to simple percentages mentally.
 
-**Day 1 (Learn):** Focus on understanding the concepts and formulas outlined in this document. Create a personal formula sheet summarizing key points, divisibility rules, the cyclicity table, and the conditions for applying Fermat's, Euler's, and CRT.
+**Master Fraction-Percentage Table (Memorize this!):**
+*   $1/2 = 50\%$
+*   $1/3 = 33.33\%$
+*   $1/4 = 25\%$
+*   $1/5 = 20\%$
+*   $1/6 = 16.66\%$
+*   $1/7 = 14.28\%$ (approx 14.3%)
+*   $1/8 = 12.5\%$
+*   $1/9 = 11.11\%$
+*   $1/10 = 10\%$
+*   $1/11 = 9.09\%$
+*   $1/12 = 8.33\%$
+*   $1/13 = 7.69\%$
+*   $1/14 = 7.14\%$
+*   $1/15 = 6.66\%$
 
-**Day 2 (Practice):** Work through problems organized by pattern. Solve 15-20 problems for each of the five patterns listed above. Do not use a timer. The goal is to solidify the application of the correct strategy for each pattern. Review solutions meticulously to understand the reasoning behind each step.
+### Step-by-Step Examples (10 Problems)
 
-**Day 3 (Speed Practice):** Simulate exam conditions. Attempt 2-3 mock tests containing 20-25 mixed-number system questions. Time yourself strictly (e.g., 30-35 minutes per test). This forces you to identify the pattern quickly and execute the solution without hesitation. Maintain an error notebook to log mistakes made during this phase for later review.
+**1. $19.02 \times 4.99 \times X = 380$**
+*   **Step 1 (Round off):** $19.02 \approx 19$. $4.99 \approx 5$.
+*   **Step 2 (Simplify):** $19 \times 5 \times X = 380 \Rightarrow 95 \times X = 380$.
+*   **Step 3 (Solve):** $X = 380 / 95 = 4$. **Answer: 4**
 
-The following table curates essential free online resources to support this learning journey:
+**2. $34.95\% \text{ of } 780 + 44.8\% \text{ of } 250 = ?$**
+*   **Step 1 (Round off):** $34.95\% \approx 35\%$. $44.8\% \approx 45\%$.
+*   **Step 2 (Convert to fractions):** $35\% = 7/20$. $45\% = 9/20$.
+*   **Step 3 (Calculate):** $(7/20) \times 780 = 7 \times 39 = 273$.
+*   **Step 4 (Calculate):** $(9/20) \times 250 = 9 \times 12.5 = 112.5$.
+*   **Step 5 (Add):** $273 + 112.5 = 385.5 \approx 386$. **Answer: 386**
 
-| Resource Name | Type | Key Features & Focus Areas |
-| :--- | :--- | :--- |
-| **IndiaBIX** | Website | Extensive bank of aptitude questions with detailed explanations. Good for building foundational practice. [[3](https://www.quora.com/Which-site-is-better-for-preparing-for-aptitude-for-campus-placements-GeeksforGeeks-or-IndiaBix), [76](https://www.cse.iitb.ac.in/~manishk/siteBeingCopied.html)] |
-| **PrepInsta** | Website | Company-specific question banks (TCS, Infosys, etc.), quizzes, and articles on tips and tricks. Excellent for pattern analysis. [[73](https://prepinsta.com/infosys-aptitude-questions/), [152](https://prepinsta.com/tcs-ninja/aptitude/), [179](https://www.instagram.com/reel/DVoBprODYDN/)] |
-| **GeeksforGeeks** | Website/YouTube | In-depth articles and videos on algorithms, data structures, and advanced mathematical concepts. Great for understanding derivations and proofs. [[5](https://www.geeksforgeeks.org/videos/prime-factorization-hqg369//), [169](https://www.geeksforgeeks.org/maths/divisibility-rules/), [275](https://www.instagram.com/reel/DZMOmOSvHTh/)] |
-| **Feel Free To Learn** | YouTube Channel | Comprehensive playlists covering quantitative aptitude fundamentals, including the Number System. Good for visual learners. [[206](https://www.instagram.com/p/DX84M89ANTU/)] |
-| **Takshzila Shikshak** | YouTube Channel | Focuses on fast calculation techniques, Vedic math, and advanced shortcuts for competitive exams. [[206](https://www.instagram.com/p/DX84M89ANTU/)] |
-| **CareerRide** | Website | Offers topic-wise quizzes with instant explanations, useful for quick self-assessment. [[3](https://www.quora.com/Which-site-is-better-for-preparing-for-aptitude-for-campus-placements-GeeksforGeeks-or-IndiaBix)] |
+**3. $\sqrt{624.9} \times 4.99^2 = ? \times 10$**
+*   **Step 1 (Round off):** $\sqrt{625} = 25$. $4.99 \approx 5$.
+*   **Step 2 (Simplify):** $25 \times 5^2 = X \times 10$.
+*   **Step 3 (Calculate):** $25 \times 25 = 625$.
+*   **Step 4 (Solve):** $625 = 10X \Rightarrow X = 62.5 \approx 63$. **Answer: 63**
 
-By systematically working through these patterns using the recommended resources, a candidate can transform their understanding of the Number System from a collection of isolated facts into a cohesive, strategic toolkit. This prepares them not just to answer questions, but to dominate the quantitative aptitude section of any placement examination.
+**4. $14.28\% \text{ of } 420 + 11.11\% \text{ of } 360 = ?$**
+*   **Step 1 (Identify fractions):** $14.28\% = 1/7$. $11.11\% = 1/9$.
+*   **Step 2 (Calculate):** $(1/7) \times 420 = 60$.
+*   **Step 3 (Calculate):** $(1/9) \times 360 = 40$.
+*   **Step 4 (Add):** $60 + 40 = 100$. **Answer: 100**
+
+**5. $29.98\% \text{ of } 450 - 12.5\% \text{ of } 160 = ?$**
+*   **Step 1 (Round off & Identify):** $29.98\% \approx 30\% = 3/10$. $12.5\% = 1/8$.
+*   **Step 2 (Calculate):** $(3/10) \times 450 = 3 \times 45 = 135$.
+*   **Step 3 (Calculate):** $(1/8) \times 160 = 20$.
+*   **Step 4 (Subtract):** $135 - 20 = 115$. **Answer: 115**
+
+**6. $15\% \text{ of } 840 + 25\% \text{ of } X = 252$**
+*   **Step 1 (Calculate first part):** $15\% = 3/20$. $(3/20) \times 840 = 3 \times 42 = 126$.
+*   **Step 2 (Substitute):** $126 + 0.25X = 252$.
+*   **Step 3 (Solve):** $0.25X = 252 - 126 = 126$.
+*   **Step 4 (Final):** $X = 126 / 0.25 = 126 \times 4 = 504$. **Answer: 504**
+
+**7. $(12.13)^2 + (8.98)^2 = ?$**
+*   **Step 1 (Round off):** $12.13 \approx 12$. $8.98 \approx 9$.
+*   **Step 2 (Calculate squares):** $12^2 = 144$. $9^2 = 81$.
+*   **Step 3 (Add):** $144 + 81 = 225$. **Answer: 225**
+
+**8. $44.99 \div 4.99 + 19.99 \times 2.01 = ?$**
+*   **Step 1 (Round off):** $45 \div 5 + 20 \times 2$.
+*   **Step 2 (Calculate):** $9 + 40 = 49$. **Answer: 49**
+
+**9. $33.33\% \text{ of } 600 - 16.66\% \text{ of } 300 = ?$**
+*   **Step 1 (Identify fractions):** $33.33\% = 1/3$. $16.66\% = 1/6$.
+*   **Step 2 (Calculate):** $(1/3) \times 600 = 200$.
+*   **Step 3 (Calculate):** $(1/6) \times 300 = 50$.
+*   **Step 4 (Subtract):** $200 - 50 = 150$. **Answer: 150**
+
+**10. $\sqrt{1024} \times 3.01\% \text{ of } 500 = ?$**
+*   **Step 1 (Calculate root):** $\sqrt{1024} = 32$.
+*   **Step 2 (Round off percentage):** $3.01\% \approx 3\%$.
+*   **Step 3 (Calculate percentage):** $3\% \text{ of } 500 = (3/100) \times 500 = 15$.
+*   **Step 4 (Multiply):** $32 \times 15 = 480$. **Answer: 480**
+
+---
+
+## Part 5: Vedic Math & Fast Calculation Shortcuts
+
+### The Concept & Pattern
+**Pattern Recognition:** When you see numbers ending in 5 being squared, or numbers very close to 100, 1000, 10000 being multiplied.
+
+**Shortcut 1: Squaring numbers ending in 5**
+Formula: $(X5)^2 = X \times (X+1) | 25$
+*Example:* $75^2 \rightarrow 7 \times 8 = 56 | 25 \rightarrow 5625$.
+
+**Shortcut 2: Multiplying numbers near a base (100, 1000)**
+Formula: $(100+a) \times (100+b) = (100+a+b) | a \times b$ (for base 100)
+*Example:* $104 \times 107 \rightarrow 104+7 = 111 | 4 \times 7 = 28 \rightarrow 11128$.
+
+### Step-by-Step Examples (10 Problems)
+
+**1. $65^2$**
+*   **Step 1:** Split 6 and 5.
+*   **Step 2:** Multiply tens digit by next number: $6 \times 7 = 42$.
+*   **Step 3:** Append 25: $4225$. **Answer: 4225**
+
+**2. $85^2$**
+*   **Step 1:** $8 \times 9 = 72$.
+*   **Step 2:** Append 25. **Answer: 7225**
+
+**3. $105^2$**
+*   **Step 1:** $10 \times 11 = 110$.
+*   **Step 2:** Append 25. **Answer: 11025**
+
+**4. $103 \times 106$**
+*   **Step 1:** Base is 100. Deficiencies/Surpluses: +3 and +6.
+*   **Step 2:** Cross add: $103 + 6 = 109$ (or $106 + 3 = 109$). This is the left part.
+*   **Step 3:** Multiply surpluses: $3 \times 6 = 18$. This is the right part.
+*   **Step 4:** Combine: $10918$. **Answer: 10918**
+
+**5. $108 \times 109$**
+*   **Step 1:** Surpluses: +8 and +9.
+*   **Step 2:** Cross add: $108 + 9 = 117$.
+*   **Step 3:** Multiply: $8 \times 9 = 72$.
+*   **Step 4:** Combine: $11772$. **Answer: 11772**
+
+**6. $96 \times 97$** *(Numbers below base)*
+*   **Step 1:** Base 100. Deficiencies: -4 and -3.
+*   **Step 2:** Cross subtract: $96 - 3 = 93$.
+*   **Step 3:** Multiply deficiencies: $-4 \times -3 = 12$.
+*   **Step 4:** Combine: $9312$. **Answer: 9312**
+
+**7. $112 \times 114$**
+*   **Step 1:** Surpluses: +12 and +14.
+*   **Step 2:** Cross add: $112 + 14 = 126$.
+*   **Step 3:** Multiply: $12 \times 14 = 168$.
+*   **Step 4:** Since base is 100, right part can only have 2 digits. Carry over 1 from 168 to 126. $126 + 1 = 127$. Right part is 68.
+*   **Step 5:** Combine: $12768$. **Answer: 12768**
+
+**8. $35^2$**
+*   **Step 1:** $3 \times 4 = 12$.
+*   **Step 2:** Append 25. **Answer: 1225**
+
+**9. $1004 \times 1005$** *(Base 1000)*
+*   **Step 1:** Surpluses: +4 and +5.
+*   **Step 2:** Cross add: $1004 + 5 = 1009$.
+*   **Step 3:** Multiply: $4 \times 5 = 20$.
+*   **Step 4:** Base 1000 means right part needs 3 digits. So, 020.
+*   **Step 5:** Combine: $1009020$. **Answer: 1009020**
+
+**10. $994 \times 996$** *(Base 1000)*
+*   **Step 1:** Deficiencies: -6 and -4.
+*   **Step 2:** Cross subtract: $994 - 6 = 988$.
+*   **Step 3:** Multiply: $-6 \times -4 = 24$.
+*   **Step 4:** Right part needs 3 digits: 024.
+*   **Step 5:** Combine: $988024$. **Answer: 988024**
+
+---
+
+## How to Identify Which Tool to Use (Pattern Summary)
+
+When you see a question in the exam, scan it for these triggers:
+
+1.  **Trigger:** Long expression with mixed operators and brackets.
+    *   **Action:** Apply **BODMAS/VBODMAS**. Watch out for "of".
+2.  **Trigger:** Variables in exponents ($2^x$, $3^{x-1}$) or fractional powers ($27^{2/3}$).
+    *   **Action:** Use **Laws of Indices**. Convert to same base.
+3.  **Trigger:** "Find the square root/cube root of [large number]".
+    *   **Action:** Use **Unit Digit Shortcut**. Do not do manual division.
+4.  **Trigger:** "Approximate value", numbers like 19.99, 34.95%.
+    *   **Action:** **Round off** immediately. Use **Fraction-Percentage table**.
+5.  **Trigger:** Squaring numbers ending in 5, or multiplying 3-digit numbers near 100.
+    *   **Action:** Use **Vedic Math Shortcuts**.
+
+---
+
+## Resources for Practice (Old Placement Papers)
+
+To get the exact PDFs and Google Drive links for past papers, use these specific search queries and platforms. These are the goldmines for MNC placement prep:
+
+1.  **IndiaBIX (Website):** Go to the "Verbal/Quantitative Aptitude" section. Search for "Simplification" and "Approximation". They have 1000+ questions with step-by-step solutions.
+2.  **PrepInsta (Website):** Search for "TCS NQT Quantitative Aptitude Questions" or "Infosys Quants". They provide company-specific previous year questions.
+3.  **GeeksforGeeks (Website):** Search "Simplification and Approximation for Placements". Excellent for learning the exact shortcuts used in coding/IT company tests.
+4.  **Google Search for Drive Links:**
+    *   Search query: `"TCS NQT previous year question paper" site:drive.google.com`
+    *   Search query: `"Infosys aptitude previous year questions" site:drive.google.com`
+    *   Search query: `"Wipro elite aptitude questions pdf" site:drive.google.com`
+    *   *Note: Many coaching institutes and students upload massive ZIP files/PDFs of past 5 years' papers to public Drive folders. These links change frequently, so searching these exact strings will yield the freshest active links.*
+
+**Your Next Step:** Take the 50 examples provided above, cover the solutions, and solve them yourself using the step-by-step logic. Once you can solve them without looking, move to the practice resources and do 100 more. You will master this topic in 2 days!

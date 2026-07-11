@@ -275,141 +275,117 @@ function renderSectionContent(topicId) {
 }
 
 function formatSteps(text) {
-  if (text === null || text === undefined) return '';
-  var raw = String(text).trim();
-  if (!raw) return '';
+    if (text === null || text === undefined) return '';
+    var raw = String(text).trim();
+    if (!raw) return '';
 
-  function renderFormulaAware(content) {
-    var segments = content.split(/(\$[^$]+\$)/g).filter(function(seg) { return seg !== undefined && seg !== null && seg !== ''; });
-    if (segments.length === 1) {
-      return '<span class="step-text">' + segments[0].trim().replace(/\n+/g, '<br/>') + '</span>';
+    function highlightMath(content) {
+        if (!content) return '';
+        var segments = content.split(/(\$\$[^$]+\$\$|\$[^$]+\$)/g);
+        return segments.map(function(seg) {
+            if (/^\$\$[^$]+\$\$$/.test(seg)) {
+                return '<span class="math-bold">' + seg + '</span>';
+            }
+            if (/^\$[^$]+\$$/.test(seg)) {
+                return '<span class="math-bold">' + seg + '</span>';
+            }
+            return seg;
+        }).join('');
     }
 
-    var onlyFormula = segments.length === 1 && /^\$[^$]+\$$/.test(segments[0]);
-    return segments.map(function(segment) {
-      if (/^\$[^$]+\$$/.test(segment)) {
-        var formula = segment.slice(1, -1).trim();
-        if (onlyFormula || formula.length > 40) {
-          return '<div class="step-formula-block">$$' + formula + '$$</div>';
+    var stepPattern = /Step\s*\d+\s*(?:\([^)]*\))?\s*[:\-\.]\s*/gi;
+    var matches = [];
+    var m;
+    while ((m = stepPattern.exec(raw)) !== null) {
+        matches.push({ index: m.index, length: m[0].length, label: m[0].trim() });
+    }
+
+    if (matches.length === 0) {
+        var paragraphs = raw.split(/\n\n+/).filter(function(p) { return p.trim(); });
+        if (paragraphs.length > 1) {
+            return paragraphs.map(function(p) {
+                return '<p class="prose-para">' + highlightMath(p.trim()) + '</p>';
+            }).join('');
         }
-        return '<span class="step-formula-inline">' + segment + '</span>';
-      }
-      var trimmed = segment.trim();
-      return trimmed ? '<span class="step-text">' + trimmed.replace(/\n+/g, '<br/>') + '</span>' : '';
-    }).join('');
-  }
-
-  function splitMarkers(line) {
-    var markerRegex = /(Step\s*\d+[:\-\.]|Example[:\-\.]|Answer[:\-\.]|Solution[:\-\.]|Therefore[:\-\.]|Hence[:\-\.]|So[:\-\.]|Then[:\-\.]|Finally[:\-.])/gi;
-    if (!markerRegex.test(line)) {
-      return [line.trim()];
+        return '<p class="prose-para">' + highlightMath(raw) + '</p>';
     }
-    markerRegex.lastIndex = 0;
-    var tokens = line.split(markerRegex).filter(function(token) { return token !== undefined && token !== null && token !== ''; });
-    var results = [];
-    if (tokens.length === 1) {
-      return [tokens[0].trim()];
-    }
-    if (!/^\b(?:Step|Example|Answer|Solution|Therefore|Hence|So|Then|Finally)/i.test(tokens[0].trim())) {
-      results.push(tokens[0].trim());
-    }
-    for (var i = 0; i < tokens.length; i += 2) {
-      var label = tokens[i].trim();
-      var content = (tokens[i + 1] || '').trim();
-      if (!content && i + 1 >= tokens.length) {
-        results.push(label);
-        break;
-      }
-      results.push((label ? label + ' ' : '') + content);
-    }
-    return results.filter(function(part) { return part && part.trim(); });
-  }
 
-  var lines = raw.split(/\r?\n/).map(function(line) { return line.trim(); }).filter(Boolean);
-  var parts = [];
-  lines.forEach(function(line) {
-    splitMarkers(line).forEach(function(part) {
-      parts.push(part);
-    });
-  });
+    var html = '<div class="step-list">';
 
-  if (parts.length <= 1) {
-    var sentenceSplit = raw.split(/(?<=[.!?])\s+(?=[A-Z0-9\$\(])/g).filter(function(s) { return s && s.trim(); });
-    if (sentenceSplit.length > 1) {
-      parts = sentenceSplit;
+    if (matches[0].index > 0) {
+        var preamble = raw.slice(0, matches[0].index).trim();
+        if (preamble) {
+            html += '<div class="step-item"><span class="step-text">' + highlightMath(preamble) + '</span></div>';
+        }
     }
-  }
 
-  if (parts.length <= 1) {
-    var colonSplit = raw.split(/:\s+/g).filter(function(s) { return s && s.trim(); });
-    if (colonSplit.length > 1) {
-      parts = colonSplit.map(function(part) { return part.trim(); });
-    }
-  }
+    for (var i = 0; i < matches.length; i++) {
+        var contentStart = matches[i].index + matches[i].length;
+        var contentEnd = (i + 1 < matches.length) ? matches[i + 1].index : raw.length;
+        var content = raw.slice(contentStart, contentEnd).trim();
+        var label = matches[i].label.replace(/[:\-\.]\s*$/, '').trim();
 
-  var html = '<div class="step-list">';
-  parts.forEach(function(piece) {
-    var item = piece.trim();
-    if (!item) return;
-    html += '<div class="step-item">';
-
-    var markerMatch = item.match(/^(Step\s*\d+[:\-\.]|Example[:\-\.]|Answer[:\-\.]|Solution[:\-\.]|Therefore[:\-\.]|Hence[:\-\.]|So[:\-\.]|Then[:\-\.]|Finally[:\-.])/i);
-    if (markerMatch) {
-      var label = markerMatch[0].replace(/[\.\-]$/,'').trim();
-      var rest = item.slice(markerMatch[0].length).trim();
-      html += '<span class="step-label">' + label + '</span>';
-      if (rest) html += renderFormulaAware(rest);
-    } else {
-      html += renderFormulaAware(item);
+        html += '<div class="step-item">';
+        html += '<span class="step-label">' + label + '</span>';
+        html += '<span class="step-text">' + highlightMath(content) + '</span>';
+        html += '</div>';
     }
 
     html += '</div>';
-  });
-  html += '</div>';
-  return html;
+    return html;
 }
 
+var renderSteps = formatSteps;
+
 function renderLearn(topic) {
-  let html = '<div class="reading-sections">';
-  topic.readingSections.forEach((section, si) => {
-    const p = getTopicProgress(topic.id);
-    const read = p.sections[section.id] || false;
-    const expanded = state.currentReadingSection === section.id;
-    html += `
-    <div class="reading-card glass ${read?'completed':''}" id="section-${section.id}">
-      <div class="reading-header" onclick="APP.toggleSection('${topic.id}','${section.id}')">
-        <h3 class="reading-title">${section.title}</h3>
-        <span class="reading-toggle ${expanded?'expanded':''}">▼</span>
-      </div>
-      <div class="reading-body ${expanded?'expanded':''}">
-        <div class="reading-intro">${formatSteps(section.content)}</div>
-        <ul class="reading-bullets">
-        ${section.subsections.map(sub => `
-          <li><strong>${sub.title}</strong> ${formatSteps(sub.content)}</li>
-        `).join('')}
-        </ul>
-        <button class="btn btn-primary btn-sm" onclick="APP.markSectionRead('${topic.id}','${section.id}')">${read ? 'DONE' : 'Mark as Read'}</button>
-      </div>
-    </div>`;
-  });
-  html += '</div>';
-  return html;
+    let html = '<div class="reading-sections">';
+    topic.readingSections.forEach((section, si) => {
+        const p = getTopicProgress(topic.id);
+        const read = p.sections[section.id] || false;
+        const expanded = state.currentReadingSection === section.id;
+        html += `
+        <div class="reading-card glass ${read ? 'completed' : ''}" id="section-${section.id}">
+            <div class="reading-header" onclick="APP.toggleSection('${topic.id}','${section.id}')">
+                <h3 class="reading-title">${section.title}</h3>
+                <span class="reading-toggle ${expanded ? 'expanded' : ''}">▼</span>
+            </div>
+            <div class="reading-body ${expanded ? 'expanded' : ''}">
+                <div class="reading-intro">${formatSteps(section.content)}</div>
+                <ul class="reading-bullets">
+                    ${section.subsections.map(sub => `
+                    <li>
+                        <strong class="sub-title">${sub.title}</strong>
+                        <div class="sub-body">${formatSteps(sub.content)}</div>
+                    </li>
+                    `).join('')}
+                </ul>
+                <button class="btn btn-primary btn-sm" onclick="APP.markSectionRead('${topic.id}','${section.id}')">
+                    ${read ? '✓ DONE' : 'Mark as Read'}
+                </button>
+            </div>
+        </div>`;
+    });
+    html += '</div>';
+    return html;
 }
 
 function renderFormulas(topic) {
-  let html = '<div class="formulas-grid">';
-  topic.formulas.forEach((f, i) => {
-    html += `
-    <div class="formula-card glass">
-      <div class="formula-number">#${i+1}</div>
-      <div class="formula-title">${f.title}</div>
-      <div class="formula-box">$$${f.formula}$$</div>
-      <div class="formula-explanation">${formatSteps(f.explanation)}</div>
-      <div class="formula-example"><strong>Example:</strong> ${formatSteps(f.example)}</div>
-    </div>`;
-  });
-  html += '</div>';
-  return html;
+    let html = '<div class="formulas-grid">';
+    topic.formulas.forEach((f, i) => {
+        html += `
+        <div class="formula-card glass">
+            <div class="formula-number">#${i + 1}</div>
+            <div class="formula-title">${f.title}</div>
+            <div class="formula-box">$$${f.formula}$$</div>
+            <div class="formula-explanation">${formatSteps(f.explanation)}</div>
+            <div class="formula-example">
+                <strong class="example-label">Example:</strong>
+                <div class="example-content">${formatSteps(f.example)}</div>
+            </div>
+        </div>`;
+    });
+    html += '</div>';
+    return html;
 }
 
 function renderPractice(topic) {
@@ -459,10 +435,21 @@ function renderPractice(topic) {
     <div class="practice-question">${formatSteps(problem.q)}</div>
     <button class="btn btn-primary mt-2" onclick="APP.toggleSolution('${state.currentPracticeFormulaId}',${idx})">Show Solution</button>
     <div class="practice-solution" id="solution-${state.currentPracticeFormulaId}-${idx}">
-      <h4>Step-by-Step Solution:</h4>
-      <ol>${problem.s.map(s => `<li>${s}</li>`).join('')}</ol>
-      <div class="practice-answer"><strong>Answer:</strong> ${problem.a}</div>
-      <button class="btn btn-success btn-sm mt-2" onclick="APP.markPracticeDone('${topic.id}','${state.currentPracticeFormulaId}',${idx})">Mark as Done</button>
+        <h4>Step-by-Step Solution:</h4>
+        <div class="practice-solution-steps">
+            ${problem.s.map((step, i) => `
+            <div class="step-item">
+                <span class="step-label">Step ${i+1}</span>
+                <span class="step-text">${formatSteps(step)}</span>
+            </div>
+            `).join('')}
+        </div>
+        <div class="practice-answer">
+            <strong>Answer:</strong> ${problem.a}
+        </div>
+        <button class="btn btn-success btn-sm mt-2" onclick="APP.markPracticeDone('${topic.id}','${state.currentPracticeFormulaId}',${idx})">
+            ✓ Mark as Done
+        </button>
     </div>
   </div>`;
   return html;
