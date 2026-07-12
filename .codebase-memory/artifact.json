@@ -1,11 +1,11 @@
 {
     "schema_version": 1,
-    "commit": "4a50ae43c8c4788385a0078ea2d0989882c1f7a9",
-    "indexed_at": "2026-07-12T06:35:13Z",
+    "commit": "ce19342cc93529caf11b6f54311ff884430a3889",
+    "indexed_at": "2026-07-12T08:25:32Z",
     "project": "home-atom-Dev-IRIS-ApArena",
-    "nodes": 178,
-    "edges": 245,
-    "original_size": 1966080,
-    "compressed_size": 134778,
+    "nodes": 192,
+    "edges": 261,
+    "original_size": 2097152,
+    "compressed_size": 152865,
     "compression_level": 3
 }

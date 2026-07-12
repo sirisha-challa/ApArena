@@ -9,6 +9,8 @@ const state = {
   currentMcqIndex: 0,
   currentMcqFilter: 'all',
   currentMcqResults: [],
+  mcqCorrectTotal: 0,
+  mcqWrongTotal: 0,
   currentPracticeFormulaId: null,
   currentPracticeIndex: 0,
   currentFormulaIndex: 0,
@@ -387,10 +389,23 @@ function formatSteps(text) {
     }
 
     var stepPattern = /Step\s*\d+\s*(?:\([^)]*\))?\s*[:\-\.]\s*/gi;
+    var numPattern = /\(\s*\d+\s*\)\s*|\b\d+\.\s+/g;
     var matches = [];
     var m;
     while ((m = stepPattern.exec(raw)) !== null) {
         matches.push({ index: m.index, length: m[0].length, label: m[0].trim() });
+    }
+
+    var hasNumMatches = false;
+    if (matches.length === 0) {
+        numPattern.lastIndex = 0;
+        while ((m = numPattern.exec(raw)) !== null) {
+            matches.push({ index: m.index, length: m[0].length, label: m[0].trim() });
+            hasNumMatches = true;
+        }
+    }
+    if (hasNumMatches) {
+        matches.sort(function(a, b) { return a.index - b.index; });
     }
 
     if (matches.length === 0) {
@@ -416,7 +431,7 @@ function formatSteps(text) {
         var contentStart = matches[i].index + matches[i].length;
         var contentEnd = (i + 1 < matches.length) ? matches[i + 1].index : raw.length;
         var content = raw.slice(contentStart, contentEnd).trim();
-        var label = matches[i].label.replace(/[:\-\.]\s*$/, '').trim();
+        var label = matches[i].label.replace(/[:\-\.]\s*$/, '').replace(/[()]/g, '').trim();
 
         html += '<div class="step-item">';
         html += '<span class="step-label">' + label + '</span>';
@@ -431,35 +446,111 @@ function formatSteps(text) {
 var renderSteps = formatSteps;
 
 function renderLearn(topic) {
+    var sectionBadges = {
+        'intro-analogies': 'INTRO',
+        'word-analogies': 'WORDS',
+        'letter-number-analogies': 'LETTERS',
+        'pattern-recognition': 'PATTERNS',
+        'company-patterns': 'COMPANY',
+        'shortcuts-speed': 'TIPS',
+        'intro-coding': 'INTRO',
+        'letter-coding-types': 'LETTERS',
+        'number-coding': 'NUMBERS',
+        'advanced-coding': 'ADVANCED',
+        'coding-tricks': 'TIPS',
+        'common-mistakes': 'CAUTION',
+        'revision-coding': 'REVIEW'
+    };
     let html = '<div class="reading-sections">';
     topic.readingSections.forEach((section, si) => {
         const p = getTopicProgress(topic.id);
         const read = p.sections[section.id] || false;
         const expanded = state.currentReadingSection === section.id;
+        const badge = sectionBadges[section.id] || 'READ';
+
+        var introParsed = extractExamples(section.content);
+        var introMain = introParsed.mainText;
+        var introExamples = introParsed.examples;
+
         html += `
         <div class="reading-card glass ${read ? 'completed' : ''}" id="section-${section.id}">
             <div class="reading-header" onclick="APP.toggleSection('${topic.id}','${section.id}')">
+                <span class="reading-badge">${badge}</span>
                 <h3 class="reading-title">${section.title}</h3>
+                <span class="reading-progress-badge">${read ? '<span class="badge success">Done</span>' : '<span class="badge outline">New</span>'}</span>
                 <span class="reading-toggle ${expanded ? 'expanded' : ''}">▼</span>
             </div>
             <div class="reading-body ${expanded ? 'expanded' : ''}">
-                <div class="reading-intro">${formatSteps(section.content)}</div>
+                <div class="reading-intro">${formatSteps(introMain)}</div>
+                ${introExamples.length ? `
+                <div class="reading-examples-block">
+                    <span class="reading-examples-label">Examples</span>
+                    ${introExamples.map(ex => `<div class="reading-example-item">${formatSteps(ex)}</div>`).join('')}
+                </div>` : ''}
                 <ul class="reading-bullets">
-                    ${section.subsections.map(sub => `
+                    ${section.subsections.map(sub => {
+                        var subParsed = extractExamples(sub.content);
+                        var subMain = subParsed.mainText;
+                        var subExamples = subParsed.examples;
+                        return `
                     <li>
                         <strong class="sub-title">${sub.title}</strong>
-                        <div class="sub-body">${formatSteps(sub.content)}</div>
-                    </li>
-                    `).join('')}
+                        <div class="sub-body">
+                            <div class="sub-main-text">${formatSteps(subMain)}</div>
+                            ${subExamples.length ? `
+                            <div class="example-block">
+                                <span class="example-label">Example${subExamples.length > 1 ? 's' : ''}</span>
+                                ${subExamples.map(ex => `<div class="example-item">${formatSteps(ex)}</div>`).join('')}
+                            </div>` : ''}
+                        </div>
+                    </li>`;
+                    }).join('')}
                 </ul>
                 <button class="btn btn-primary btn-sm" onclick="APP.markSectionRead('${topic.id}','${section.id}')">
-                    ${read ? '✓ DONE' : 'Mark as Read'}
+                    ${read ? 'DONE' : 'Mark as Read'}
                 </button>
             </div>
         </div>`;
     });
     html += '</div>';
     return html;
+}
+
+function extractExamples(text) {
+    if (!text) return { mainText: text || '', examples: [] };
+    var markers = ['Example:', 'Example.', 'Examples:', 'Eg:', 'e.g.:', 'E.g.:'];
+    var parts = [];
+    var remaining = String(text);
+
+    while (true) {
+        var earliestIdx = remaining.length;
+        var matchedMarker = null;
+        for (var mi = 0; mi < markers.length; mi++) {
+            var idx = remaining.indexOf(markers[mi]);
+            if (idx !== -1 && idx < earliestIdx) {
+                earliestIdx = idx;
+                matchedMarker = markers[mi];
+            }
+        }
+        if (matchedMarker === null) break;
+
+        if (earliestIdx > 0) {
+            parts.push({ type: 'text', content: remaining.slice(0, earliestIdx).trim() });
+        }
+        var exampleRaw = remaining.slice(earliestIdx + matchedMarker.length).trim();
+        var endIdx = exampleRaw.search(/\b(?:Example:|Examples:|Common |More |Learn |Memorize |Also |Note:)\b/);
+        if (endIdx === -1) endIdx = exampleRaw.length;
+        var exampleContent = exampleRaw.slice(0, endIdx).trim();
+        parts.push({ type: 'example', content: exampleContent });
+        remaining = endIdx >= exampleRaw.length ? '' : exampleRaw.slice(endIdx).trim();
+    }
+
+    if (remaining.trim()) parts.push({ type: 'text', content: remaining.trim() });
+
+    var mainTexts = parts.filter(function(p) { return p.type === 'text'; }).map(function(p) { return p.content; });
+    var examples = parts.filter(function(p) { return p.type === 'example'; }).map(function(p) { return p.content; });
+
+    return { mainText: mainTexts.join(' '), examples: examples };
 }
 
 function renderFormulas(topic) {
@@ -541,7 +632,7 @@ function renderPractice(topic) {
             <strong>Answer:</strong> ${problem.a}
         </div>
         <button class="btn btn-success btn-sm mt-2" onclick="APP.markPracticeDone('${topic.id}','${state.currentPracticeFormulaId}',${idx})">
-            ✓ Mark as Done
+            Mark as Done
         </button>
     </div>
   </div>`;
@@ -564,12 +655,31 @@ function renderMcq(topic) {
   if (!mcq) return '<div class="empty-state">No MCQs match filter</div>';
 
   const p = getTopicProgress(topic.id);
+  const totalAttempted = state.mcqCorrectTotal + state.mcqWrongTotal;
+  const scorePct = totalAttempted ? Math.round(state.mcqCorrectTotal / totalAttempted * 100) : 0;
+  var grade, gradeColor;
+  if (scorePct >= 90) { grade = 'A+'; gradeColor = 'var(--color-success)'; }
+  else if (scorePct >= 80) { grade = 'A'; gradeColor = 'var(--color-success)'; }
+  else if (scorePct >= 70) { grade = 'B'; gradeColor = '#3B82F6'; }
+  else if (scorePct >= 60) { grade = 'C'; gradeColor = '#F59E0B'; }
+  else if (scorePct >= 40) { grade = 'D'; gradeColor = '#EF4444'; }
+  else { grade = 'F'; gradeColor = 'var(--color-error)'; }
 
   let html = `
-  <div class="mcq-stats-bar">
-    <span>Questions: ${filtered.length}</span>
-    <span>Answered: ${p.mcq||0}</span>
-    <span>Progress: ${Math.min(Math.round((p.mcq||0)/mcqs.length*100),100)}%</span>
+  <div class="mcq-controls-row">
+    <div class="mcq-stats-bar">
+      <span>Questions: ${filtered.length}</span>
+      <span>Answered: ${p.mcq||0}</span>
+      <span>Progress: ${Math.min(Math.round((p.mcq||0)/mcqs.length*100),100)}%</span>
+    </div>
+    <div class="mcq-score-badge" title="Correct:${state.mcqCorrectTotal} Wrong:${state.mcqWrongTotal}">
+      <span>Correct: ${state.mcqCorrectTotal}</span>
+      <span>Wrong: ${state.mcqWrongTotal}</span>
+      <span class="mcq-grade" style="color:${gradeColor};font-weight:700;">${grade}</span>
+    </div>
+    <button class="btn btn-reset-progress" onclick="APP.resetMcqProgress('${topic.id}')" title="Reset MCQ progress">
+      ↺ Reset
+    </button>
   </div>
   <div class="mcq-nav">
     <button class="btn btn-outline" onclick="APP.prevMcq('${topic.id}')" ${idx===0?'disabled':''}>Prev</button>
@@ -578,7 +688,7 @@ function renderMcq(topic) {
   </div>
   <div class="mcq-card glass" id="mcq-card">
     <div class="mcq-header">
-      <span class="badge primary">Number System</span>
+      <span class="badge primary">${topic.title || 'Number System'}</span>
       <span class="mcq-number">Q${idx+1}</span>
     </div>
     <div class="mcq-question">${formatSteps(mcq.q)}</div>
@@ -593,6 +703,7 @@ function renderMcq(topic) {
     <div class="mcq-feedback" id="mcq-feedback" style="display:none">
       <div class="mcq-result" id="mcq-result"></div>
       <div class="mcq-explanation" id="mcq-explanation"></div>
+      <div class="mcq-score" id="mcq-score" style="display:none"></div>
       <button class="btn btn-primary mt-2" onclick="APP.nextMcq('${topic.id}')">Next Question</button>
     </div>
   </div>`;
@@ -685,11 +796,15 @@ function checkMcqAnswer(topicId, idx, selected, el) {
 
   if (selected === mcq.c) {
     updateTopicProgress(topicId, 'mcq', null, 1);
+    state.mcqCorrectTotal++;
+  } else {
+    state.mcqWrongTotal++;
   }
 
   const feedback = document.getElementById('mcq-feedback');
   const result = document.getElementById('mcq-result');
   const explanation = document.getElementById('mcq-explanation');
+  const scoreDiv = document.getElementById('mcq-score');
 
   if (selected === mcq.c) {
     result.innerHTML = '<strong>Correct!</strong>';
@@ -701,6 +816,27 @@ function checkMcqAnswer(topicId, idx, selected, el) {
 
   explanation.innerHTML = formatSteps(mcq.exp || 'No explanation available.');
   feedback.style.display = 'block';
+
+  const totalAttempted = state.mcqCorrectTotal + state.mcqWrongTotal;
+  if (scoreDiv && totalAttempted > 0) {
+    const scorePct = Math.round(state.mcqCorrectTotal / totalAttempted * 100);
+    var grade, gradeColor;
+    if (scorePct >= 90) { grade = 'A+'; gradeColor = 'var(--color-success)'; }
+    else if (scorePct >= 80) { grade = 'A'; gradeColor = 'var(--color-success)'; }
+    else if (scorePct >= 70) { grade = 'B'; gradeColor = '#3B82F6'; }
+    else if (scorePct >= 60) { grade = 'C'; gradeColor = '#F59E0B'; }
+    else if (scorePct >= 40) { grade = 'D'; gradeColor = '#EF4444'; }
+    else { grade = 'F'; gradeColor = 'var(--color-error)'; }
+
+    scoreDiv.style.display = 'block';
+    scoreDiv.innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);">
+        <span style="font-size:var(--text-sm);">Score: ${state.mcqCorrectTotal}/${totalAttempted} (${scorePct}%)</span>
+        <span style="font-weight:700;font-size:var(--text-xl);color:${gradeColor};">Grade: ${grade}</span>
+      </div>`;
+  }
+
+  updateMcqScoreBadge();
 }
 
 function nextMcq(topicId) {
@@ -727,6 +863,36 @@ function filterMcq(topicId, filter) {
   state.currentMcqFilter = filter;
   state.currentMcqIndex = 0;
   renderTopic(topicId);
+}
+
+function resetMcqProgress(topicId) {
+  if (!confirm('Reset all MCQ progress for this topic? This cannot be undone.')) return;
+  var p = getTopicProgress(topicId);
+  p.mcq = 0;
+  p.totalMcq = 0;
+  state.currentMcqResults = [];
+  state.currentMcqIndex = 0;
+  state.mcqCorrectTotal = 0;
+  state.mcqWrongTotal = 0;
+  saveProgress();
+  updateSidebarProgress();
+  renderTopic(topicId);
+  showToast('MCQ progress reset!', 'info');
+}
+
+function updateMcqScoreBadge() {
+  var badge = document.querySelector('.mcq-score-badge');
+  if (!badge) return;
+  var totalAttempted = state.mcqCorrectTotal + state.mcqWrongTotal;
+  var scorePct = totalAttempted ? Math.round(state.mcqCorrectTotal / totalAttempted * 100) : 0;
+  var grade, gradeColor;
+  if (scorePct >= 90) { grade = 'A+'; gradeColor = 'var(--color-success)'; }
+  else if (scorePct >= 80) { grade = 'A'; gradeColor = 'var(--color-success)'; }
+  else if (scorePct >= 70) { grade = 'B'; gradeColor = '#3B82F6'; }
+  else if (scorePct >= 60) { grade = 'C'; gradeColor = '#F59E0B'; }
+  else if (scorePct >= 40) { grade = 'D'; gradeColor = '#EF4444'; }
+  else { grade = 'F'; gradeColor = 'var(--color-error)'; }
+  badge.innerHTML = '<span>Correct: ' + state.mcqCorrectTotal + '</span><span>Wrong: ' + state.mcqWrongTotal + '</span><span class="mcq-grade" style="color:' + gradeColor + ';font-weight:700;">' + grade + '</span>';
 }
 
 function toggleSidebar() {
@@ -852,6 +1018,7 @@ window.APP = {
   nextMcq,
   prevMcq,
   filterMcq,
+  resetMcqProgress,
   toggleSidebar,
   toggleTheme,
   selectPracticeFormula,
