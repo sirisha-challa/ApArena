@@ -1,0 +1,80 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - complementary [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e10]: ApArena
+        - button "Close sidebar" [ref=e11] [cursor=pointer]: ✕
+      - navigation [ref=e12]:
+        - generic [ref=e960]: Aptitude
+        - button "# Number System" [ref=e961] [cursor=pointer]:
+          - generic [ref=e962]: "#"
+          - generic [ref=e963]: Number System
+        - button "Σ Simplification & Approximation" [ref=e965] [cursor=pointer]:
+          - generic [ref=e966]: Σ
+          - generic [ref=e967]: Simplification & Approximation
+        - generic [ref=e969]: Verbal & English
+        - button "≈ Analogies" [ref=e970] [cursor=pointer]:
+          - generic [ref=e971]: ≈
+          - generic [ref=e972]: Analogies
+        - button "⌂ Coding-Decoding" [ref=e974] [cursor=pointer]:
+          - generic [ref=e975]: ⌂
+          - generic [ref=e976]: Coding-Decoding
+      - generic [ref=e14]:
+        - generic [ref=e15]: Progress
+        - generic [ref=e17]: 0%
+    - generic [ref=e18]:
+      - banner [ref=e19]:
+        - button "Toggle sidebar" [ref=e20] [cursor=pointer]: ☰
+        - heading "⌂ Coding-Decoding" [level=1] [ref=e510]
+        - generic [ref=e22]:
+          - button "Toggle sidebar" [ref=e23] [cursor=pointer]: Menu
+          - button "Toggle theme" [ref=e24] [cursor=pointer]
+      - main [ref=e27]:
+        - generic [ref=e978]:
+          - generic [ref=e979]:
+            - generic [ref=e980]:
+              - heading "⌂ Coding-Decoding" [level=1] [ref=e981]
+              - paragraph [ref=e982]: Letter Shifts - Number Coding - Mirror Coding - Substitution - Mixed Patterns
+            - generic [ref=e983]:
+              - generic [ref=e984]: Days 1-2
+              - generic [ref=e985]: 12hrs
+              - generic [ref=e986]: 0% complete
+          - generic [ref=e987]:
+            - button "Learn" [ref=e988] [cursor=pointer]
+            - button "Formulas" [ref=e989] [cursor=pointer]
+            - button "Practice" [ref=e990] [cursor=pointer]
+            - button "MCQ (100)" [ref=e991] [cursor=pointer]
+          - generic [ref=e992]:
+            - generic [ref=e993]:
+              - generic [ref=e994]: "Questions: 100"
+              - generic [ref=e995]: "Answered: 0"
+              - generic [ref=e996]: "Progress: 0%"
+            - generic [ref=e997]:
+              - button "Prev" [ref=e998] [cursor=pointer]
+              - generic [ref=e999]: 2 / 100
+              - button "Next" [ref=e1000] [cursor=pointer]
+            - generic [ref=e1001]:
+              - generic [ref=e1002]:
+                - generic [ref=e1003]: Number System
+                - generic [ref=e1004]: Q2
+              - paragraph [ref=e1006]: If CAT=FDW, then DOG=?
+              - generic [ref=e1007]:
+                - button "A GRJ" [ref=e1008] [cursor=pointer]:
+                  - generic [ref=e1009]: A
+                  - generic [ref=e1010]: GRJ
+                - button "B GRI" [ref=e1011] [cursor=pointer]:
+                  - generic [ref=e1012]: B
+                  - generic [ref=e1013]: GRI
+                - button "C FRJ" [ref=e1014] [cursor=pointer]:
+                  - generic [ref=e1015]: C
+                  - generic [ref=e1016]: FRJ
+                - button "D GRH" [ref=e1017] [cursor=pointer]:
+                  - generic [ref=e1018]: D
+                  - generic [ref=e1019]: GRH
+      - contentinfo [ref=e28]: Made for Siri with ♥ by Nitin.
+  - navigation [ref=e29]:
+    - button "Home" [ref=e30] [cursor=pointer]
+    - button "Roadmap" [ref=e37] [cursor=pointer]
+    - button "Learn" [ref=e41] [cursor=pointer]
+    - button "Verbal" [ref=e46] [cursor=pointer]
+    - button "MCQ" [ref=e50] [cursor=pointer]

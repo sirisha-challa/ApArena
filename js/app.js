@@ -94,19 +94,42 @@ function getTopic(id) { return APP_DATA.topics.find(t => t.id === id); }
 
 function renderSidebar() {
   const nav = document.getElementById('sidebar-nav');
+  const categories = APP_DATA.categories || [];
   const topics = APP_DATA.topics;
-  let html = '<div class="sidebar-section-label">Topics</div>';
-  topics.forEach(t => {
-    const p = getTopicProgress(t.id);
-    const mcqDone = Math.min(p.mcq || 0, t.mcqs.length || 1);
-    const mcqTotal = t.mcqs.length || 1;
-    const pct = Math.round(mcqDone / mcqTotal * 100);
-    html += `<button class="sidebar-item ${state.currentTopicId===t.id?'active':''}" data-topic="${t.id}" onclick="APP.navigate('topic','${t.id}')">
-      <span class="sidebar-item-icon">${t.icon}</span>
-      <span class="sidebar-item-text">${t.title}</span>
-      <span class="sidebar-item-status" style="background:${pct>=100?'#10B981':pct>0?'#F59E0B':'#CBD5E1'}"></span>
-    </button>`;
-  });
+  let html = '';
+
+  if (categories.length) {
+    categories.forEach(cat => {
+      const catTopics = topics.filter(t => t.category === cat.id);
+      if (!catTopics.length) return;
+      html += `<div class="sidebar-section-label">${cat.title}</div>`;
+      catTopics.forEach(t => {
+        const p = getTopicProgress(t.id);
+        const mcqDone = Math.min(p.mcq || 0, t.mcqs.length || 1);
+        const mcqTotal = t.mcqs.length || 1;
+        const pct = Math.round(mcqDone / mcqTotal * 100);
+        html += `<button class="sidebar-item ${state.currentTopicId===t.id?'active':''}" data-topic="${t.id}" onclick="APP.navigate('topic','${t.id}')">
+          <span class="sidebar-item-icon">${t.icon}</span>
+          <span class="sidebar-item-text">${t.title}</span>
+          <span class="sidebar-item-status" style="background:${pct>=100?'#10B981':pct>0?'#F59E0B':'#CBD5E1'}"></span>
+        </button>`;
+      });
+    });
+  } else {
+    html += '<div class="sidebar-section-label">Topics</div>';
+    topics.forEach(t => {
+      const p = getTopicProgress(t.id);
+      const mcqDone = Math.min(p.mcq || 0, t.mcqs.length || 1);
+      const mcqTotal = t.mcqs.length || 1;
+      const pct = Math.round(mcqDone / mcqTotal * 100);
+      html += `<button class="sidebar-item ${state.currentTopicId===t.id?'active':''}" data-topic="${t.id}" onclick="APP.navigate('topic','${t.id}')">
+        <span class="sidebar-item-icon">${t.icon}</span>
+        <span class="sidebar-item-text">${t.title}</span>
+        <span class="sidebar-item-status" style="background:${pct>=100?'#10B981':pct>0?'#F59E0B':'#CBD5E1'}"></span>
+      </button>`;
+    });
+  }
+
   nav.innerHTML = html;
   updateSidebarProgress();
 }
@@ -128,6 +151,7 @@ function renderDashboard() {
   document.getElementById('header-title').textContent = 'Dashboard';
   const content = document.getElementById('app-content');
   const topics = APP_DATA.topics;
+  const categories = APP_DATA.categories || [];
   const completed = topics.filter(t => (getTopicProgress(t.id).mcq||0) >= t.mcqs.length).length;
 
   let html = `
@@ -135,8 +159,8 @@ function renderDashboard() {
     <div class="dashboard-grid">
       <div class="dashboard-header">
         <div>
-          <h1 class="text-2xl fw-700">Aptitude Mastery</h1>
-          <p class="text-muted">Complete Placement Preparation - Number System</p>
+          <h1 class="text-2xl fw-700">Placement Preparation Hub</h1>
+          <p class="text-muted">Aptitude + Verbal & English — Complete Campus Placement Training</p>
         </div>
         <div class="dashboard-stats">
           <div class="stat-card glass">
@@ -148,30 +172,64 @@ function renderDashboard() {
             <span class="stat-label">Overall Progress</span>
           </div>
         </div>
-      </div>
-      <div class="bento-grid">`;
+      </div>`;
 
-  topics.forEach(t => {
-    const p = getTopicProgress(t.id);
-    const mcqPct = t.mcqs.length ? Math.round(Math.min(p.mcq||0, t.mcqs.length)/t.mcqs.length*100) : 0;
-    html += `
-    <div class="topic-card glass bento-${topics.indexOf(t)%4+1}" style="--topic-color:${t.color}" onclick="APP.navigate('topic','${t.id}')">
-      <div class="topic-card-header">
-        <span class="topic-icon">${t.icon}</span>
-        <span class="topic-days">${t.days}</span>
-      </div>
-      <h3 class="topic-title">${t.title}</h3>
-      <div class="topic-subtopics">${t.subtopics.slice(0,3).join(' - ')}</div>
-      <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
-      <div class="topic-meta">
-        <span>${t.estimatedHours}h</span>
-        <span>${mcqPct}%</span>
-      </div>
-    </div>`;
-  });
+  if (categories.length) {
+    categories.forEach((cat, catIdx) => {
+      const catTopics = topics.filter(t => t.category === cat.id);
+      if (!catTopics.length) return;
+      html += `
+      <div class="category-section">
+        <h2 class="category-title" style="color:${cat.color}">${cat.icon} ${cat.title}</h2>
+        <p class="text-muted category-subtitle">${cat.subtitle}</p>
+        <div class="bento-grid">`;
+
+      catTopics.forEach((t, ti) => {
+        const p = getTopicProgress(t.id);
+        const mcqPct = t.mcqs.length ? Math.round(Math.min(p.mcq||0, t.mcqs.length)/t.mcqs.length*100) : 0;
+        const globalIdx = catIdx * 10 + ti;
+        html += `
+        <div class="topic-card glass bento-${(globalIdx%4)+1}" style="--topic-color:${t.color || cat.color}" onclick="APP.navigate('topic','${t.id}')">
+          <div class="topic-card-header">
+            <span class="topic-icon">${t.icon}</span>
+            <span class="topic-days">${t.days}</span>
+          </div>
+          <h3 class="topic-title">${t.title}</h3>
+          <div class="topic-subtopics">${t.subtopics.slice(0,3).join(' - ')}</div>
+          <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
+          <div class="topic-meta">
+            <span>${t.estimatedHours}h</span>
+            <span>${mcqPct}%</span>
+          </div>
+        </div>`;
+      });
+
+      html += `</div></div>`;
+    });
+  } else {
+    html += `<div class="bento-grid">`;
+    topics.forEach(t => {
+      const p = getTopicProgress(t.id);
+      const mcqPct = t.mcqs.length ? Math.round(Math.min(p.mcq||0, t.mcqs.length)/t.mcqs.length*100) : 0;
+      html += `
+      <div class="topic-card glass bento-${topics.indexOf(t)%4+1}" style="--topic-color:${t.color}" onclick="APP.navigate('topic','${t.id}')">
+        <div class="topic-card-header">
+          <span class="topic-icon">${t.icon}</span>
+          <span class="topic-days">${t.days}</span>
+        </div>
+        <h3 class="topic-title">${t.title}</h3>
+        <div class="topic-subtopics">${t.subtopics.slice(0,3).join(' - ')}</div>
+        <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
+        <div class="topic-meta">
+          <span>${t.estimatedHours}h</span>
+          <span>${mcqPct}%</span>
+        </div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
 
   html += `
-      </div>
     </div>
   </div>`;
 
@@ -184,36 +242,71 @@ function renderRoadmap() {
   document.getElementById('header-title').textContent = 'Roadmap';
   const content = document.getElementById('app-content');
   const topics = APP_DATA.topics;
+  const categories = APP_DATA.categories || [];
 
   let html = `
   <div class="page-content">
     <h1 class="text-2xl fw-700 mb-4">Study Plan</h1>
-    <p class="text-muted mb-6">Master Number System in 3 days: Learn - Practice - Speed.</p>
-    <div class="roadmap-container">
+    <p class="text-muted mb-6">Master All Topics: Learn - Practice - Speed.</p>
+    <div class="roadmap-container">`;
+
+  if (categories.length) {
+    categories.forEach(cat => {
+      const catTopics = topics.filter(t => t.category === cat.id);
+      if (!catTopics.length) return;
+      html += `
+      <div class="month-section">
+        <h2 class="month-title">${cat.icon} ${cat.title}</h2>
+        <div class="roadmap">`;
+
+      catTopics.forEach((t) => {
+        const p = getTopicProgress(t.id);
+        const mcqPct = t.mcqs.length ? Math.round(Math.min(p.mcq||0, t.mcqs.length)/t.mcqs.length*100) : 0;
+        const status = mcqPct >= 100 ? 'completed' : mcqPct > 0 ? 'in-progress' : 'locked';
+        html += `<div class="roadmap-item ${status}" onclick="APP.navigate('topic','${t.id}')">
+          <div class="roadmap-dot"></div>
+          <div class="roadmap-content">
+            <div class="roadmap-header">
+              <span class="roadmap-icon">${t.icon}</span>
+              <span class="roadmap-days">Day ${t.days}</span>
+              <span class="roadmap-status">${status === 'completed' ? 'DONE' : status === 'in-progress' ? '...' : 'LOCK'}</span>
+            </div>
+            <h3 class="roadmap-title">${t.title}</h3>
+            <p class="roadmap-subtopics">${t.subtopics.join(' - ')}</p>
+            <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
+          </div>
+        </div>`;
+      });
+
+      html += `</div></div>`;
+    });
+  } else {
+    html += `
       <div class="month-section">
         <h2 class="month-title">Number System</h2>
         <div class="roadmap">`;
-
-  topics.forEach((t) => {
-    const p = getTopicProgress(t.id);
-    const mcqPct = t.mcqs.length ? Math.round(Math.min(p.mcq||0, t.mcqs.length)/t.mcqs.length*100) : 0;
-    const status = mcqPct >= 100 ? 'completed' : mcqPct > 0 ? 'in-progress' : 'locked';
-    html += `<div class="roadmap-item ${status}" onclick="APP.navigate('topic','${t.id}')">
-      <div class="roadmap-dot"></div>
-      <div class="roadmap-content">
-        <div class="roadmap-header">
-          <span class="roadmap-icon">${t.icon}</span>
-          <span class="roadmap-days">Day ${t.days}</span>
-          <span class="roadmap-status">${status === 'completed' ? 'DONE' : status === 'in-progress' ? '...' : 'LOCK'}</span>
+    topics.forEach((t) => {
+      const p = getTopicProgress(t.id);
+      const mcqPct = t.mcqs.length ? Math.round(Math.min(p.mcq||0, t.mcqs.length)/t.mcqs.length*100) : 0;
+      const status = mcqPct >= 100 ? 'completed' : mcqPct > 0 ? 'in-progress' : 'locked';
+      html += `<div class="roadmap-item ${status}" onclick="APP.navigate('topic','${t.id}')">
+        <div class="roadmap-dot"></div>
+        <div class="roadmap-content">
+          <div class="roadmap-header">
+            <span class="roadmap-icon">${t.icon}</span>
+            <span class="roadmap-days">Day ${t.days}</span>
+            <span class="roadmap-status">${status === 'completed' ? 'DONE' : status === 'in-progress' ? '...' : 'LOCK'}</span>
+          </div>
+          <h3 class="roadmap-title">${t.title}</h3>
+          <p class="roadmap-subtopics">${t.subtopics.join(' - ')}</p>
+          <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
         </div>
-        <h3 class="roadmap-title">${t.title}</h3>
-        <p class="roadmap-subtopics">${t.subtopics.join(' - ')}</p>
-        <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
-      </div>
-    </div>`;
-  });
+      </div>`;
+    });
+    html += `</div></div>`;
+  }
 
-  html += `</div></div></div></div>`;
+  html += `</div></div>`;
   setContent(html);
   renderBottomNav();
 }
@@ -710,6 +803,13 @@ function bindEvents() {
       const view = el.dataset.view;
       if (view === 'dashboard') renderDashboard();
       else if (view === 'roadmap') renderRoadmap();
+      else if (view === 'verbal') {
+        const verbalTopics = APP_DATA.topics.filter(t => t.category === 'verbal');
+        if (verbalTopics.length) {
+          navigate('topic', verbalTopics[0].id);
+          state.currentSection = 'learn';
+        }
+      }
       else if (view === 'learn' || view === 'practice' || view === 'mcq') {
         if (state.currentTopicId) {
           const sectionMap = {learn:'learn', practice:'practice', mcq:'mcq'};

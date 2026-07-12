@@ -592,6 +592,22 @@ p { margin-bottom:var(--space-3); color:var(--color-text-secondary); line-height
   gap:var(--space-4);
 }
 
+.category-section {
+  margin-bottom:var(--space-4);
+}
+
+.category-title {
+  font-size:var(--text-xl);
+  font-weight:700;
+  margin-bottom:var(--space-2);
+  padding-bottom:var(--space-2);
+  border-bottom:2px solid var(--color-border);
+}
+
+.category-subtitle {
+  margin-bottom:var(--space-4);
+}
+
 .topic-card {
   padding:var(--space-5);
   cursor:pointer;
