@@ -31,3 +31,6 @@ yarn.lock
 # Ignore Python cache
 __pycache__/
 *.py[cod]
+
+
+.codebase-memory/
