@@ -921,6 +921,7 @@ function checkMcqAnswer(topicId, idx, selected, el) {
   }
 
   explanation.innerHTML = formatSteps(mcq.exp || 'No explanation available.');
+  renderMath();
   feedback.style.display = 'block';
 
   const totalAttempted = state.mcqCorrectTotal + state.mcqWrongTotal;

@@ -8,6 +8,13 @@
       "subtitle": "Quantitative Aptitude & Logical Reasoning"
     },
     {
+      "id": "reasoning",
+      "title": "Logical Reasoning",
+      "icon": "?",
+      "color": "#DC2626",
+      "subtitle": "Blood Relations, Direction Sense & Statement Logic"
+    },
+    {
       "id": "verbal",
       "title": "Verbal & English",
       "icon": "A",
@@ -48,6 +55,54 @@
         "Vedic Math Shortcuts"
       ],
       "estimatedHours": 25
+    },
+    {
+      "id": "blood-relations",
+      "title": "Blood Relations",
+      "icon": "👨‍👩‍👧‍👦",
+      "category": "reasoning",
+      "color": "#DC2626",
+      "days": "1-2",
+      "subtopics": [
+        "Direct Blood Relations",
+        "Coded Blood Relations",
+        "Puzzle-Based Blood Relations",
+        "Pointing/Photograph Problems",
+        "Generation Arithmetic"
+      ],
+      "estimatedHours": 15
+    },
+    {
+      "id": "direction-sense",
+      "title": "Direction Sense",
+      "icon": "🧭",
+      "category": "reasoning",
+      "color": "#2563EB",
+      "days": "1-2",
+      "subtopics": [
+        "Cardinal & Intermediate Directions",
+        "Left/Right Turns",
+        "Distance Calculation (Pythagoras)",
+        "Shadow-Based Direction",
+        "Coded Direction Sense"
+      ],
+      "estimatedHours": 12
+    },
+    {
+      "id": "statements-conclusions",
+      "title": "Statements & Conclusions",
+      "icon": "📊",
+      "category": "reasoning",
+      "color": "#7C3AED",
+      "days": "1-2",
+      "subtopics": [
+        "Direct Conclusions",
+        "Assumed Conclusions",
+        "Irrelevant Conclusions",
+        "Extreme Language Traps",
+        "Multiple Conclusions"
+      ],
+      "estimatedHours": 10
     },
     {
       "id": "analogies",

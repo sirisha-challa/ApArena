@@ -1,0 +1,1942 @@
+{
+  "id": "statements-conclusions",
+  "title": "Statements & Conclusions",
+  "icon": "📊",
+  "category": "reasoning",
+  "subtitle": "Logical Inference, Direct Conclusions, Assumptions & More",
+  "days": "1-2",
+  "color": "#7C3AED",
+  "subtopics": [
+    "Direct Conclusions",
+    "Assumed Conclusions",
+    "Irrelevant Conclusions",
+    "Extreme Language Traps",
+    "Multiple Conclusions"
+  ],
+  "estimatedHours": 10,
+  "companyPatterns": {
+    "TCS NQT": {
+      "frequency": "2-3 questions",
+      "style": "Direct conclusions, assumption-based questions",
+      "timePerQuestion": "45-60 seconds"
+    },
+    "Infosys": {
+      "frequency": "2-3 questions",
+      "style": "Multiple conclusions, syllogism-style questions",
+      "timePerQuestion": "60-75 seconds"
+    },
+    "Wipro": {
+      "frequency": "1-2 questions",
+      "style": "Simple direct conclusions",
+      "timePerQuestion": "30-45 seconds"
+    },
+    "Accenture": {
+      "frequency": "2-3 questions",
+      "style": "Statement-conclusion with keywords",
+      "timePerQuestion": "45-60 seconds"
+    }
+  },
+  "readingSections": [
+    {
+      "id": "intro-statement-conclusion",
+      "title": "What are Statements & Conclusions?",
+      "type": "concept",
+      "quickSummary": "A statement is given as true. A conclusion must follow from it.",
+      "whyThisMatters": "These questions appear in every major placement exam and test logical thinking.",
+      "pattern": "If you see a statement followed by conclusions I, II, III, the question is a statement-conclusion problem.",
+      "content": "You must decide which conclusions follow only from the given statement, without using outside knowledge.",
+      "subsections": [
+        {
+          "title": "Golden Rule",
+          "content": "A valid conclusion adds nothing new. It only repeats or clearly follows from the statement.[reference:0]"
+        },
+        {
+          "title": "Use only the statement",
+          "content": "Do not bring real-world facts into the question. Assume the statement is 100% true.[reference:1]"
+        },
+        {
+          "title": "Watch keywords",
+          "content": "Words like all, some, none, always, and never change the logic sharply.[reference:2]"
+        }
+      ],
+      "quickRevision": [
+        "Statement is always true",
+        "Conclusion must follow from it",
+        "Do not use outside knowledge",
+        "Watch extreme words"
+      ],
+      "companyNote": "This topic is short, scoring, and very common in placement papers.[reference:3]"
+    },
+    {
+      "id": "types-of-conclusions",
+      "title": "Types of Conclusions",
+      "type": "concept",
+      "quickSummary": "Different conclusions need different checks.",
+      "whyThisMatters": "Knowing the type helps you eliminate wrong options faster.",
+      "pattern": "Check whether the conclusion is direct, assumed, irrelevant, or extreme.",
+      "content": "Most questions use one of four patterns: direct, assumed, irrelevant, or extreme language.[reference:4]",
+      "subsections": [
+        {
+          "title": "Direct",
+          "content": "The conclusion clearly follows from the statement.[reference:5]"
+        },
+        {
+          "title": "Assumed",
+          "content": "The conclusion is not written directly but is reasonably implied.[reference:6]"
+        },
+        {
+          "title": "Irrelevant",
+          "content": "The conclusion adds a new idea that the statement does not support.[reference:7]"
+        },
+        {
+          "title": "Extreme",
+          "content": "The conclusion uses all, always, never, or none without enough support.[reference:8]"
+        }
+      ],
+      "quickRevision": [
+        "Direct follows clearly",
+        "Assumed is implied",
+        "Irrelevant is off-topic",
+        "Extreme words are risky"
+      ],
+      "companyNote": "Extreme words are one of the biggest traps in aptitude tests.[reference:9]"
+    },
+    {
+      "id": "statement-conclusion-strategies",
+      "title": "How to Solve Fast",
+      "type": "guided",
+      "quickSummary": "Read carefully, test each conclusion, and reject anything that adds new information.",
+      "whyThisMatters": "You need a fast repeatable method under time pressure.",
+      "pattern": "Use the same four-step method every time.",
+      "content": "The quickest approach is to read the statement, ignore outside knowledge, check each conclusion, and watch for extreme words.",
+      "subsections": [
+        {
+          "title": "Step 1",
+          "content": "Read the statement carefully and identify the exact wording.[reference:10]"
+        },
+        {
+          "title": "Step 2",
+          "content": "Treat the statement as true, even if it looks unrealistic.[reference:11]"
+        },
+        {
+          "title": "Step 3",
+          "content": "Check whether each conclusion follows from the statement alone.[reference:12]"
+        },
+        {
+          "title": "Step 4",
+          "content": "Reject any conclusion that adds new information or uses extreme language too strongly.[reference:13]"
+        }
+      ],
+      "quickRevision": [
+        "Read the exact wording",
+        "Ignore outside knowledge",
+        "Check each conclusion alone",
+        "Extreme words need caution"
+      ],
+      "companyNote": "A disciplined process beats guessing every time."
+    },
+    {
+      "id": "statement-conclusion-formulas",
+      "title": "Quick Reference: Conclusion Rules",
+      "type": "mastery",
+      "quickSummary": "Your short rule sheet for statement-conclusion questions.",
+      "whyThisMatters": "A simple rule list prevents silly mistakes.",
+      "pattern": "Whenever you see a statement-conclusion question, apply the rules below.",
+      "content": "These rules work for most placement-level questions.",
+      "subsections": [
+        {
+          "title": "Rule 1",
+          "content": "The statement is always true.[reference:14]"
+        },
+        {
+          "title": "Rule 2",
+          "content": "A valid conclusion adds nothing new.[reference:15]"
+        },
+        {
+          "title": "Rule 3",
+          "content": "Some does not mean all.[reference:16]"
+        },
+        {
+          "title": "Rule 4",
+          "content": "All can imply some, but some cannot imply all.[reference:17]"
+        },
+        {
+          "title": "Rule 5",
+          "content": "Extreme words need strong support.[reference:18]"
+        }
+      ],
+      "quickRevision": [
+        "Statement true",
+        "Conclusion adds nothing new",
+        "Some is not all",
+        "Extreme words are traps"
+      ],
+      "companyNote": "These rules are enough to solve most basic questions quickly.[reference:19]"
+    }
+  ],
+  "learningPath": [
+    { "type": "concept", "sectionId": "intro-statement-conclusion" },
+    { "type": "concept", "sectionId": "types-of-conclusions" },
+    { "type": "guided", "sectionId": "statement-conclusion-strategies" },
+    { "type": "mastery", "sectionId": "statement-conclusion-formulas" }
+  ],
+  "formulas": [
+    {
+      "id": "direct-conclusion",
+      "title": "Direct Conclusion Rule",
+      "formula": "If the statement already says it, the conclusion is valid",
+      "whenToUse": "When the conclusion directly follows from the statement without any extra assumption.",
+      "theTrick": "Direct means no extra assumption is needed. If the conclusion repeats or restates the statement, it is valid.",
+      "explanation": "A direct conclusion is already contained in the statement or follows immediately from it. For example, if the statement says 'All cats are animals', the conclusion 'Some animals are cats' directly follows because 'All' implies 'Some'.[reference:0]",
+      "example": "Statement: All cats are animals. Conclusion: Some animals are cats. (Valid - directly follows)",
+      "commonMistake": "Do not overthink direct conclusions. If it is clearly stated, accept it. Also remember: 'All A are B' means 'Some B are A' is always true.[reference:1]",
+      "practiceProblems": []
+    },
+    {
+      "id": "assumed-conclusion",
+      "title": "Assumed Conclusion Rule",
+      "formula": "If the statement implies it, the conclusion may be accepted",
+      "whenToUse": "When the conclusion is not said directly but is logically supported by the statement.",
+      "theTrick": "Ask: Does the statement make sense without this conclusion? If removing the conclusion weakens or contradicts the statement, it is a valid assumption.[reference:2]",
+      "explanation": "An assumed conclusion is a reasonable inference from the statement. For example, if a statement says 'The population of City A is growing at 10% annually', it reasonably implies that 'City A will need more infrastructure' but does not guarantee 'City A will face housing shortages' because more houses can be built.[reference:3]",
+      "example": "Statement: The government has announced a free training program for fresh graduates. Conclusion: The government wants to improve employability skills. (Valid assumption)",
+      "commonMistake": "Do not treat every guess as an assumption. The conclusion must be directly supported by the statement, not based on external knowledge.[reference:4]",
+      "practiceProblems": []
+    },
+    {
+      "id": "extreme-language",
+      "title": "Extreme Language Trap",
+      "formula": "Always, never, all, and none are dangerous words",
+      "whenToUse": "When a conclusion uses absolute language like 'always', 'never', 'all', or 'none'.",
+      "theTrick": "Extreme claims need strong support. If the statement is not equally absolute, the conclusion is usually unsafe.[reference:5]",
+      "explanation": "If the statement says 'Some students are hardworking', the conclusion 'All students are hardworking' does not follow because 'Some' does not mean 'All'. Similarly, 'No' statements are absolute and need direct support.[reference:6]",
+      "example": "Statement: Some students are hardworking. Conclusion: All students are hardworking. (Invalid - extreme overgeneralization)",
+      "commonMistake": "Accepting a conclusion just because it sounds strong. Always check if the statement supports such extreme language.[reference:7]",
+      "practiceProblems": []
+    },
+    {
+      "id": "some-all-rule",
+      "title": "Some vs All Rule",
+      "formula": "Some does not imply all. All can imply some.",
+      "whenToUse": "When statements use quantifiers like 'some' or 'all'.",
+      "theTrick": "Reverse direction is often wrong. 'All A are B' implies 'Some B are A' but does not imply 'All B are A'.[reference:8]",
+      "explanation": "Some means at least one, not every one. If 'All A are B', then A is a subset of B. So, some B (the ones that are A) are also A. But not all B are A because B may have elements outside A.[reference:9]",
+      "example": "Statement: All dogs are animals. Conclusion: Some animals are dogs. (Valid) Conclusion: All animals are dogs. (Invalid)",
+      "commonMistake": "Mixing up the direction of the logic. Remember: All A → B means A is subset of B, not B is subset of A.[reference:10]",
+      "practiceProblems": []
+    },
+    {
+      "id": "negation-test",
+      "title": "Negation Test (For Assumptions)",
+      "formula": "If the opposite breaks the statement, the assumption is likely required",
+      "whenToUse": "When checking whether a hidden assumption exists.",
+      "theTrick": "Flip the idea and see whether the statement still works. If the statement falls apart without the assumption, it is valid.[reference:11]",
+      "explanation": "This helps when the conclusion is not directly written but seems necessary. For example, if rain causes delay, then removing that idea weakens the statement. If the statement says 'The roads are wet because it rained', the assumption is that rain makes roads wet. If we negate it (rain does not make roads wet), the statement becomes illogical.[reference:12]",
+      "example": "Statement: The roads are wet because it rained. Assumption: Rain makes roads wet. (Valid - negation would break the statement)",
+      "commonMistake": "Using the negation test on a direct conclusion question instead of an assumption question. Use this only when the conclusion is implied, not directly stated.",
+      "practiceProblems": []
+    },
+    {
+      "id": "syllogism-chain-rule",
+      "title": "Syllogism Chain Rule",
+      "formula": "A → B + B → C = A → C (Transitive property)",
+      "whenToUse": "When you have two statements that share a common term.",
+      "theTrick": "Chain the statements: If All A are B and All B are C, then All A are C.[reference:13]",
+      "explanation": "This is the transitive rule of syllogisms. If A is a subset of B, and B is a subset of C, then A is a subset of C. This works for 'All' statements. For 'Some' statements, the chain is more limited.[reference:14]",
+      "example": "Statement 1: All dogs are animals. Statement 2: All animals are living beings. Conclusion: All dogs are living beings. (Valid - chain rule)",
+      "commonMistake": "Trying to chain 'Some' statements. 'Some A are B' and 'Some B are C' does NOT guarantee 'Some A are C'. The common term must be used in a way that guarantees overlap.[reference:15]",
+      "practiceProblems": []
+    },
+    {
+      "id": "complementary-pair",
+      "title": "Complementary Pair Rule",
+      "formula": "Some-not + All = At least one is true (Either-Or)",
+      "whenToUse": "When two conclusions cannot both be true but one must be true.",
+      "theTrick": "If one conclusion says 'Some A are not B' and the other says 'All A are B', then one of them must be true. This is the 'Either-Or' case.[reference:16]",
+      "explanation": "Complementary pairs occur when the two conclusions are contradictory. For example, 'Some A are B' and 'No A are B' cannot both be true, but one must be true. Similarly, 'Some A are not B' and 'All A are B' are complementary.[reference:17]",
+      "example": "Statement: All A are B. Conclusion I: Some A are not B. Conclusion II: No A are B. (Neither follows, but if the options say 'Either I or II follows', that is incorrect for this example. The correct complementary pair is 'Some A are not B' and 'All A are B'.)",
+      "commonMistake": "Identifying complementary pairs incorrectly. The pair must be logically contradictory. 'Some' and 'No' are complementary. 'Some-not' and 'All' are complementary.[reference:18]",
+      "practiceProblems": []
+    },
+    {
+      "id": "possibility-conclusion",
+      "title": "Possibility Conclusion Rule",
+      "formula": "Possibility is valid only when no definite conclusion exists",
+      "whenToUse": "When a conclusion uses words like 'possible', 'may', or 'can be'.",
+      "theTrick": "If there is no definite contradiction, a possibility conclusion is valid.[reference:19]",
+      "explanation": "A possibility conclusion is one that says something 'may' or 'can' happen. It is valid if it does not contradict the statement. For example, if the statement says 'Some A are B', the conclusion 'All A may be B' is valid because it is possible (though not definite).[reference:20]",
+      "example": "Statement: Some A are B. Conclusion: All A may be B. (Valid - possibility)",
+      "commonMistake": "Treating possibility as definite. A possibility conclusion is NOT a definite conclusion. It only says something is possible, not guaranteed.[reference:21]",
+      "practiceProblems": []
+    },
+    {
+      "id": "negative-statement-rule",
+      "title": "Negative Statement Rule",
+      "formula": "Two negatives ⇒ no conclusion | No + Some = Some-not (reversed)",
+      "whenToUse": "When statements contain negative terms like 'No' or 'Not'.",
+      "theTrick": "Two 'No' statements never give a conclusion. 'No + Some' gives 'Some-not' in reverse.[reference:22]",
+      "explanation": "If Statement 1 says 'No A are B' and Statement 2 says 'No B are C', there is no definite conclusion. But if Statement 1 says 'No A are B' and Statement 2 says 'Some B are C', we can conclude that 'Some C are not A'. This is because the 'Some B' that are C cannot be A (since no B are A).[reference:23]",
+      "example": "Statement 1: No A are B. Statement 2: Some B are C. Conclusion: Some C are not A. (Valid - No + Some rule)",
+      "commonMistake": "Assuming two negatives give a positive conclusion. They do not - they give no conclusion.[reference:24]",
+      "practiceProblems": []
+    },
+    {
+      "id": "only-statement-rule",
+      "title": "Only Statement Rule",
+      "formula": "Only A are B ⇒ All B are A (Reverse the arrow)",
+      "whenToUse": "When the statement uses the word 'only'.",
+      "theTrick": "'Only A are B' means the only things that are B are A, so all B are A.[reference:25]",
+      "explanation": "The word 'only' reverses the relationship. If the statement says 'Only boys are students', it means that only boys can be students. So, all students are boys. This is the opposite of 'All boys are students'.[reference:26]",
+      "example": "Statement: Only boys are students. Conclusion: All students are boys. (Valid - 'Only' rule)",
+      "commonMistake": "Treating 'Only A are B' as 'All A are B'. They are different. 'Only A are B' means B → A, not A → B.[reference:27]",
+      "practiceProblems": []
+    }
+  ],
+  "practiceProblems": {
+    "direct-conclusion": [
+      {
+        "q": "Statement: All cats are animals. Conclusions: I. Some animals are cats. II. All animals are cats. Which conclusion follows?",
+        "s": [
+          "Step 1: Read the statement carefully. 'All cats are animals' means the set of cats is a subset of animals.",
+          "Step 2: Check Conclusion I: 'Some animals are cats' - Since cats are included in animals, some animals (the cats) are indeed cats. This follows from the statement.",
+          "Step 3: Check Conclusion II: 'All animals are cats' - This would mean the set of animals is a subset of cats, which is not stated. The statement does not say all animals are cats.",
+          "Step 4: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      },
+      {
+        "q": "Statement: All students who study hard will pass. If A studies hard, then A passes. Which is true?",
+        "s": [
+          "Step 1: The statement gives a direct condition: studying hard leads to passing.",
+          "Step 2: A studies hard, which satisfies the condition.",
+          "Step 3: Therefore, A passes. This is a direct application of the statement.",
+          "Step 4: The conclusion is valid."
+        ],
+        "a": "The conclusion is valid"
+      },
+      {
+        "q": "Statement: No state is a district. Some districts are cities. Conclusions: I. No state is a city. II. Some cities are not states. Which conclusion follows?",
+        "s": [
+          "Step 1: 'No state is a district' means states and districts are completely separate sets.",
+          "Step 2: 'Some districts are cities' means there is an overlap between districts and cities.",
+          "Step 3: Check Conclusion I: 'No state is a city' - This does not necessarily follow because cities could include states indirectly. The statement does not say no state is a city.",
+          "Step 4: Check Conclusion II: 'Some cities are not states' - Since some cities are districts, and no district is a state, those cities that are districts are not states. This follows.",
+          "Step 5: Only Conclusion II follows."
+        ],
+        "a": "Only II follows"
+      },
+      {
+        "q": "Statement: All roads are poles. No pole is a house. Conclusions: I. Some roads are houses. II. No road is a house. Which conclusion follows?",
+        "s": [
+          "Step 1: 'All roads are poles' means roads are a subset of poles.",
+          "Step 2: 'No pole is a house' means poles and houses are completely separate.",
+          "Step 3: Since roads are poles, and no pole is a house, roads cannot be houses.",
+          "Step 4: Conclusion I: 'Some roads are houses' contradicts the chain. Conclusion II: 'No road is a house' follows from the chain.",
+          "Step 5: Only Conclusion II follows."
+        ],
+        "a": "Only II follows"
+      },
+      {
+        "q": "Statement: All doctors are graduates. Some graduates are engineers. Conclusions: I. Some doctors are engineers. II. Some engineers are doctors. Which conclusion follows?",
+        "s": [
+          "Step 1: 'All doctors are graduates' means doctors are a subset of graduates.",
+          "Step 2: 'Some graduates are engineers' means there is an overlap between graduates and engineers.",
+          "Step 3: The overlap between graduates and engineers may or may not include doctors. The statement does not specify.",
+          "Step 4: Conclusion I: 'Some doctors are engineers' - Cannot be guaranteed. Conclusion II: 'Some engineers are doctors' - Cannot be guaranteed.",
+          "Step 5: Neither conclusion follows."
+        ],
+        "a": "Neither follows"
+      }
+    ],
+    "assumed-conclusion": [
+      {
+        "q": "Statement: The population of City A is growing at 10% annually. Conclusions: I. City A will face housing shortages. II. City A will need more infrastructure. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says the population is growing.",
+          "Step 2: Conclusion I: 'City A will face housing shortages' - This is not guaranteed because more houses can be built. The statement does not mention housing supply.",
+          "Step 3: Conclusion II: 'City A will need more infrastructure' - Growing population reasonably suggests more infrastructure (roads, schools, hospitals) will be needed. This is a logical assumption.",
+          "Step 4: Only Conclusion II follows."
+        ],
+        "a": "Only II follows"
+      },
+      {
+        "q": "Statement: The government has announced a free training program for fresh graduates. Conclusions: I. The government wants to improve employability skills. II. The program will be compulsory for all graduates. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says the government announced a free training program.",
+          "Step 2: Conclusion I: 'The government wants to improve employability skills' - This is a reasonable assumption. Training programs are typically meant to improve skills.",
+          "Step 3: Conclusion II: 'The program will be compulsory for all graduates' - The statement does not say it is compulsory. It only says it is announced.",
+          "Step 4: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      },
+      {
+        "q": "Statement: The company has decided to give bonuses to all employees this year. Conclusions: I. The company is profitable this year. II. All employees will receive bonuses. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement directly says the company has decided to give bonuses to all employees.",
+          "Step 2: Conclusion I: 'The company is profitable this year' - This is an assumption. The company may give bonuses for reasons other than profit (e.g., to retain employees).",
+          "Step 3: Conclusion II: 'All employees will receive bonuses' - This directly follows from the statement.",
+          "Step 4: Only Conclusion II follows."
+        ],
+        "a": "Only II follows"
+      },
+      {
+        "q": "Statement: The school has banned mobile phones on campus. Conclusions: I. Mobile phones are a distraction for students. II. The school wants to improve student focus. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says mobile phones are banned on campus.",
+          "Step 2: Conclusion I: 'Mobile phones are a distraction for students' - This is a reasonable assumption for why a ban might be implemented.",
+          "Step 3: Conclusion II: 'The school wants to improve student focus' - This is also a reasonable assumption.",
+          "Step 4: Both conclusions follow as assumptions."
+        ],
+        "a": "Both follow"
+      },
+      {
+        "q": "Statement: The government has increased the price of fuel. Conclusions: I. The government wants to reduce fuel consumption. II. The government wants to increase revenue. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says fuel prices have been increased.",
+          "Step 2: Conclusion I: 'The government wants to reduce fuel consumption' - Higher prices typically discourage consumption. This is a reasonable assumption.",
+          "Step 3: Conclusion II: 'The government wants to increase revenue' - Higher prices also generate more revenue. This is also a reasonable assumption.",
+          "Step 4: Both conclusions follow as possible assumptions."
+        ],
+        "a": "Both follow"
+      }
+    ],
+    "extreme-language": [
+      {
+        "q": "Statement: Some students are hardworking. Conclusions: I. All students are hardworking. II. No students are hardworking. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says 'Some students are hardworking'.",
+          "Step 2: Conclusion I: 'All students are hardworking' - 'Some' does not mean 'All'. This is an extreme overgeneralization. Invalid.",
+          "Step 3: Conclusion II: 'No students are hardworking' - Contradicts the statement which says some are hardworking. Invalid.",
+          "Step 4: Neither conclusion follows."
+        ],
+        "a": "Neither follows"
+      },
+      {
+        "q": "Statement: Most people prefer coffee over tea. Conclusions: I. All people prefer coffee over tea. II. Some people prefer tea over coffee. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says 'Most people prefer coffee over tea'.",
+          "Step 2: Conclusion I: 'All people prefer coffee over tea' - 'Most' does not mean 'All'. This is an extreme claim. Invalid.",
+          "Step 3: Conclusion II: 'Some people prefer tea over coffee' - Since 'most' prefer coffee, some must prefer tea. This follows.",
+          "Step 4: Only Conclusion II follows."
+        ],
+        "a": "Only II follows"
+      },
+      {
+        "q": "Statement: No one in the class failed the exam. Conclusions: I. Everyone in the class passed the exam. II. Some students in the class failed the exam. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says 'No one failed'.",
+          "Step 2: Conclusion I: 'Everyone passed' - This is a direct implication. If no one failed, everyone passed. Valid.",
+          "Step 3: Conclusion II: 'Some students failed' - Contradicts the statement. Invalid.",
+          "Step 4: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      },
+      {
+        "q": "Statement: All cats are animals. Conclusions: I. All animals are cats. II. Some animals are not cats. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says 'All cats are animals'.",
+          "Step 2: Conclusion I: 'All animals are cats' - Extreme reversal. Invalid.",
+          "Step 3: Conclusion II: 'Some animals are not cats' - This follows because if cats are a subset of animals, there may be animals that are not cats. Valid.",
+          "Step 4: Only Conclusion II follows."
+        ],
+        "a": "Only II follows"
+      },
+      {
+        "q": "Statement: The company will never hire unqualified candidates. Conclusions: I. All candidates hired by the company are qualified. II. The company may hire some unqualified candidates. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says 'never hire unqualified candidates'.",
+          "Step 2: Conclusion I: 'All candidates hired are qualified' - This directly follows. If they never hire unqualified, all hired are qualified. Valid.",
+          "Step 3: Conclusion II: 'The company may hire some unqualified candidates' - Contradicts 'never'. Invalid.",
+          "Step 4: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      }
+    ],
+    "some-all-rule": [
+      {
+        "q": "Statement: All dogs are animals. Conclusions: I. Some animals are dogs. II. All animals are dogs. Which conclusion follows?",
+        "s": [
+          "Step 1: 'All dogs are animals' means dogs are a subset of animals.",
+          "Step 2: Conclusion I: 'Some animals are dogs' - Since dogs are animals, some animals (the dogs) are indeed dogs. Valid.",
+          "Step 3: Conclusion II: 'All animals are dogs' - This would mean animals are a subset of dogs, which is not stated. Invalid.",
+          "Step 4: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      },
+      {
+        "q": "Statement: Some pens are books. Conclusions: I. Some books are pens. II. All pens are books. Which conclusion follows?",
+        "s": [
+          "Step 1: 'Some pens are books' means there is an overlap between pens and books.",
+          "Step 2: Conclusion I: 'Some books are pens' - 'Some' is reversible. If some pens are books, then some books are pens. Valid.[reference:28]",
+          "Step 3: Conclusion II: 'All pens are books' - 'Some' does not mean 'All'. Invalid.",
+          "Step 4: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      },
+      {
+        "q": "Statement: No dogs are cats. Conclusions: I. No cats are dogs. II. Some cats are dogs. Which conclusion follows?",
+        "s": [
+          "Step 1: 'No dogs are cats' means the sets are completely separate.",
+          "Step 2: Conclusion I: 'No cats are dogs' - 'No' is reversible. If no dogs are cats, then no cats are dogs. Valid.[reference:29]",
+          "Step 3: Conclusion II: 'Some cats are dogs' - Contradicts the statement. Invalid.",
+          "Step 4: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      },
+      {
+        "q": "Statement: All teachers are graduates. Some graduates are engineers. Conclusions: I. Some teachers are engineers. II. Some engineers are teachers. Which conclusion follows?",
+        "s": [
+          "Step 1: 'All teachers are graduates' means teachers are a subset of graduates.",
+          "Step 2: 'Some graduates are engineers' means there is an overlap between graduates and engineers.",
+          "Step 3: The overlap between graduates and engineers may or may not include teachers. We cannot guarantee.",
+          "Step 4: Conclusion I: 'Some teachers are engineers' - Cannot be guaranteed. Invalid.",
+          "Step 5: Conclusion II: 'Some engineers are teachers' - Cannot be guaranteed. Invalid.",
+          "Step 6: Neither conclusion follows."
+        ],
+        "a": "Neither follows"
+      },
+      {
+        "q": "Statement: Some students are toppers. All toppers are hardworking. Conclusions: I. Some students are hardworking. II. All hardworking students are toppers. Which conclusion follows?",
+        "s": [
+          "Step 1: 'Some students are toppers' and 'All toppers are hardworking'.",
+          "Step 2: The students who are toppers are also hardworking (since all toppers are hardworking).",
+          "Step 3: Conclusion I: 'Some students are hardworking' - Valid, those students who are toppers are hardworking.",
+          "Step 4: Conclusion II: 'All hardworking students are toppers' - Not guaranteed. Hardworking students could exist who are not toppers. Invalid.",
+          "Step 5: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      }
+    ],
+    "negation-test": [
+      {
+        "q": "Statement: The roads are wet because it rained. Assumption: Rain makes roads wet. Is this a valid assumption?",
+        "s": [
+          "Step 1: The statement says the roads are wet because it rained.",
+          "Step 2: Apply the negation test: If rain does not make roads wet, then the statement 'roads are wet because it rained' makes no sense.",
+          "Step 3: The assumption is necessary for the statement to be logical.",
+          "Step 4: The assumption is valid."
+        ],
+        "a": "Valid assumption"
+      },
+      {
+        "q": "Statement: The school has banned junk food in the cafeteria. Assumption: Junk food is unhealthy for students. Is this a valid assumption?",
+        "s": [
+          "Step 1: The statement says junk food is banned in the cafeteria.",
+          "Step 2: Apply the negation test: If junk food is not unhealthy, why would the school ban it?",
+          "Step 3: The assumption supports the action taken by the school.",
+          "Step 4: The assumption is valid."
+        ],
+        "a": "Valid assumption"
+      },
+      {
+        "q": "Statement: The government has increased taxes on luxury goods. Assumption: The government wants to discourage the consumption of luxury goods. Is this a valid assumption?",
+        "s": [
+          "Step 1: The statement says taxes on luxury goods have been increased.",
+          "Step 2: Apply the negation test: If the government does not want to discourage consumption, why would they increase taxes?",
+          "Step 3: The assumption provides a logical reason for the action.",
+          "Step 4: The assumption is valid."
+        ],
+        "a": "Valid assumption"
+      },
+      {
+        "q": "Statement: The company offers flexible working hours to its employees. Assumption: Flexible working hours improve employee satisfaction. Is this a valid assumption?",
+        "s": [
+          "Step 1: The statement says the company offers flexible working hours.",
+          "Step 2: Apply the negation test: If flexible hours do not improve satisfaction, why would the company offer them?",
+          "Step 3: The assumption provides a logical reason for the policy.",
+          "Step 4: The assumption is valid."
+        ],
+        "a": "Valid assumption"
+      },
+      {
+        "q": "Statement: The police have increased patrolling in the area. Assumption: The area has a high crime rate. Is this a valid assumption?",
+        "s": [
+          "Step 1: The statement says police patrolling has increased.",
+          "Step 2: Apply the negation test: If the area does not have a high crime rate, why would patrolling be increased?",
+          "Step 3: The assumption provides a logical reason for the action.",
+          "Step 4: The assumption is valid."
+        ],
+        "a": "Valid assumption"
+      }
+    ],
+    "syllogism-chain-rule": [
+      {
+        "q": "Statement 1: All dogs are animals. Statement 2: All animals are living beings. Conclusions: I. All dogs are living beings. II. All living beings are dogs. Which conclusion follows?",
+        "s": [
+          "Step 1: Chain the statements: Dogs → Animals → Living beings.",
+          "Step 2: Conclusion I: 'All dogs are living beings' - Valid by chain rule.[reference:30]",
+          "Step 3: Conclusion II: 'All living beings are dogs' - Invalid, reverse direction.",
+          "Step 4: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      },
+      {
+        "q": "Statement 1: All teachers are graduates. Statement 2: All graduates are educated. Conclusions: I. All teachers are educated. II. Some educated people are teachers. Which conclusion follows?",
+        "s": [
+          "Step 1: Chain: Teachers → Graduates → Educated.",
+          "Step 2: Conclusion I: 'All teachers are educated' - Valid by chain rule.",
+          "Step 3: Conclusion II: 'Some educated people are teachers' - Since all teachers are educated, some educated people (the teachers) are teachers. Valid.[reference:31]",
+          "Step 4: Both conclusions follow."
+        ],
+        "a": "Both follow"
+      },
+      {
+        "q": "Statement 1: All A are B. Statement 2: All B are C. Conclusions: I. All A are C. II. Some C are A. Which conclusion follows?",
+        "s": [
+          "Step 1: Chain: A → B → C.",
+          "Step 2: Conclusion I: 'All A are C' - Valid by chain rule.",
+          "Step 3: Conclusion II: 'Some C are A' - Since all A are C, some C (the A's) are A. Valid.[reference:32]",
+          "Step 4: Both conclusions follow.[reference:33]"
+        ],
+        "a": "Both follow"
+      },
+      {
+        "q": "Statement 1: All cats are animals. Statement 2: Some animals are dogs. Conclusions: I. Some cats are dogs. II. Some dogs are cats. Which conclusion follows?",
+        "s": [
+          "Step 1: 'All cats are animals' means cats are a subset of animals.",
+          "Step 2: 'Some animals are dogs' means there is an overlap between animals and dogs.",
+          "Step 3: The overlap between animals and dogs may or may not include cats. We cannot guarantee.",
+          "Step 4: Conclusion I: 'Some cats are dogs' - Cannot be guaranteed. Invalid.",
+          "Step 5: Conclusion II: 'Some dogs are cats' - Cannot be guaranteed. Invalid.",
+          "Step 6: Neither conclusion follows.[reference:34]"
+        ],
+        "a": "Neither follows"
+      },
+      {
+        "q": "Statement 1: All chairs are tables. Statement 2: Some tables are desks. Conclusions: I. Some desks are chairs. II. All desks are chairs. Which conclusion follows?",
+        "s": [
+          "Step 1: 'All chairs are tables' means chairs are a subset of tables.",
+          "Step 2: 'Some tables are desks' means there is an overlap between tables and desks.",
+          "Step 3: The overlap between tables and desks may or may not include chairs. We cannot guarantee.",
+          "Step 4: Conclusion I: 'Some desks are chairs' - Cannot be guaranteed. Invalid.",
+          "Step 5: Conclusion II: 'All desks are chairs' - Invalid.",
+          "Step 6: Neither conclusion follows.[reference:35]"
+        ],
+        "a": "Neither follows"
+      }
+    ],
+    "complementary-pair": [
+      {
+        "q": "Statement: All A are B. Conclusions: I. Some A are not B. II. No A are B. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says 'All A are B'.",
+          "Step 2: Conclusion I: 'Some A are not B' - Contradicts 'All A are B'. Invalid.",
+          "Step 3: Conclusion II: 'No A are B' - Contradicts 'All A are B'. Invalid.",
+          "Step 4: Neither conclusion follows. They are not complementary because both contradict the statement.[reference:36]"
+        ],
+        "a": "Neither follows"
+      },
+      {
+        "q": "Statement: Some A are B. Conclusions: I. Some A are not B. II. No A are B. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says 'Some A are B'.",
+          "Step 2: Conclusion I: 'Some A are not B' - It is possible that some A are not B, but not guaranteed. If the statement only says 'some', the rest could be all B or could be not B. Cannot be determined.",
+          "Step 3: Conclusion II: 'No A are B' - Contradicts the statement. Invalid.",
+          "Step 4: Only Conclusion I may be true but is not guaranteed. However, if the options are 'Either I or II follows', neither is complementary here."
+        ],
+        "a": "Neither follows (or cannot be determined)"
+      },
+      {
+        "q": "Statement: No A are B. Conclusions: I. Some A are not B. II. Some A are B. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says 'No A are B'.",
+          "Step 2: Conclusion I: 'Some A are not B' - Since no A are B, all A are not B. So some A are not B. Valid.",
+          "Step 3: Conclusion II: 'Some A are B' - Contradicts the statement. Invalid.",
+          "Step 4: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      },
+      {
+        "q": "Statement: Some A are not B. Conclusions: I. All A are B. II. No A are B. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says 'Some A are not B'.",
+          "Step 2: Conclusion I: 'All A are B' - Contradicts the statement. Invalid.",
+          "Step 3: Conclusion II: 'No A are B' - Could be true or false. The statement only says some A are not B, the rest could be B or could be not B. Cannot be determined.",
+          "Step 4: Neither conclusion follows definitively."
+        ],
+        "a": "Neither follows"
+      },
+      {
+        "q": "Statement: Some A are B. Conclusions: I. All A are B. II. Some A are not B. Which conclusion follows?",
+        "s": [
+          "Step 1: The statement says 'Some A are B'.",
+          "Step 2: Conclusion I: 'All A are B' - 'Some' does not mean 'All'. Invalid.",
+          "Step 3: Conclusion II: 'Some A are not B' - It is possible, but not guaranteed. If all A are B, then no A are not B. Cannot be determined.",
+          "Step 4: Neither conclusion follows definitively."
+        ],
+        "a": "Neither follows"
+      }
+    ],
+    "possibility-conclusion": [
+      {
+        "q": "Statement: Some A are B. Conclusion: All A may be B. Does this follow?",
+        "s": [
+          "Step 1: The statement says 'Some A are B'.",
+          "Step 2: 'All A may be B' means it is possible that all A are B.",
+          "Step 3: There is no contradiction. If some A are B, it is possible that all A are B.",
+          "Step 4: The possibility conclusion is valid.[reference:37]"
+        ],
+        "a": "Valid (possibility)"
+      },
+      {
+        "q": "Statement: No A are B. Conclusion: Some A may be B. Does this follow?",
+        "s": [
+          "Step 1: The statement says 'No A are B'.",
+          "Step 2: 'Some A may be B' means it is possible that some A are B.",
+          "Step 3: This contradicts the statement. 'No A are B' means it is impossible for any A to be B.",
+          "Step 4: The possibility conclusion is invalid.[reference:38]"
+        ],
+        "a": "Invalid (contradicts the statement)"
+      },
+      {
+        "q": "Statement: All A are B. Conclusion: Some A may not be B. Does this follow?",
+        "s": [
+          "Step 1: The statement says 'All A are B'.",
+          "Step 2: 'Some A may not be B' means it is possible that some A are not B.",
+          "Step 3: This contradicts the statement. 'All A are B' means every A is B, so no A can be not B.",
+          "Step 4: The possibility conclusion is invalid."
+        ],
+        "a": "Invalid (contradicts the statement)"
+      },
+      {
+        "q": "Statement: Some A are not B. Conclusion: All A may not be B. Does this follow?",
+        "s": [
+          "Step 1: The statement says 'Some A are not B'.",
+          "Step 2: 'All A may not be B' means it is possible that all A are not B.",
+          "Step 3: There is no contradiction. If some A are not B, it is possible that all A are not B.",
+          "Step 4: The possibility conclusion is valid.[reference:39]"
+        ],
+        "a": "Valid (possibility)"
+      },
+      {
+        "q": "Statement: Some A are B. Conclusion: All B may be A. Does this follow?",
+        "s": [
+          "Step 1: The statement says 'Some A are B'.",
+          "Step 2: 'All B may be A' means it is possible that all B are A.",
+          "Step 3: There is no contradiction. If some A are B, it is possible that all B are A (though not guaranteed).",
+          "Step 4: The possibility conclusion is valid.[reference:40]"
+        ],
+        "a": "Valid (possibility)"
+      }
+    ],
+    "negative-statement-rule": [
+      {
+        "q": "Statement 1: No A are B. Statement 2: No B are C. Conclusions: I. No A are C. II. Some A are C. Which conclusion follows?",
+        "s": [
+          "Step 1: Statement 1: 'No A are B' - A and B are separate.",
+          "Step 2: Statement 2: 'No B are C' - B and C are separate.",
+          "Step 3: Two 'No' statements together give no definite conclusion about A and C.[reference:41]",
+          "Step 4: Neither conclusion follows."
+        ],
+        "a": "Neither follows"
+      },
+      {
+        "q": "Statement 1: No A are B. Statement 2: Some B are C. Conclusions: I. Some C are not A. II. Some A are C. Which conclusion follows?",
+        "s": [
+          "Step 1: 'No A are B' means A and B are separate.",
+          "Step 2: 'Some B are C' means there is an overlap between B and C.",
+          "Step 3: Since the B's that are C cannot be A (because no B are A), those C's (that are B) are not A.",
+          "Step 4: Conclusion I: 'Some C are not A' - Valid.[reference:42]",
+          "Step 5: Conclusion II: 'Some A are C' - Cannot be guaranteed. Invalid.",
+          "Step 6: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      },
+      {
+        "q": "Statement 1: Some A are not B. Statement 2: All B are C. Conclusions: I. Some A are not C. II. Some C are A. Which conclusion follows?",
+        "s": [
+          "Step 1: 'Some A are not B' means there are A's that are not in B.",
+          "Step 2: 'All B are C' means B is a subset of C.",
+          "Step 3: The A's that are not B may or may not be C. We cannot guarantee.",
+          "Step 4: Conclusion I: 'Some A are not C' - Cannot be guaranteed. Invalid.",
+          "Step 5: Conclusion II: 'Some C are A' - Cannot be guaranteed. Invalid.",
+          "Step 6: Neither conclusion follows."
+        ],
+        "a": "Neither follows"
+      },
+      {
+        "q": "Statement 1: No A are B. Statement 2: Some C are A. Conclusions: I. No C are B. II. Some C are not B. Which conclusion follows?",
+        "s": [
+          "Step 1: 'No A are B' means A and B are separate.",
+          "Step 2: 'Some C are A' means there is an overlap between C and A.",
+          "Step 3: Since A and B are separate, the C's that are A cannot be B.",
+          "Step 4: Conclusion I: 'No C are B' - Cannot be guaranteed because other C's (not A) could be B.",
+          "Step 5: Conclusion II: 'Some C are not B' - Valid, because the C's that are A are not B.",
+          "Step 6: Only Conclusion II follows."
+        ],
+        "a": "Only II follows"
+      },
+      {
+        "q": "Statement 1: No A are B. Statement 2: Some C are not A. Conclusions: I. Some C are B. II. Some C are not B. Which conclusion follows?",
+        "s": [
+          "Step 1: 'No A are B' means A and B are separate.",
+          "Step 2: 'Some C are not A' means there are C's outside A.",
+          "Step 3: We don't know if those C's are B or not.",
+          "Step 4: Conclusion I: 'Some C are B' - Cannot be guaranteed. Invalid.",
+          "Step 5: Conclusion II: 'Some C are not B' - Cannot be guaranteed. Invalid.",
+          "Step 6: Neither conclusion follows."
+        ],
+        "a": "Neither follows"
+      }
+    ],
+    "only-statement-rule": [
+      {
+        "q": "Statement: Only boys are students. Conclusions: I. All students are boys. II. All boys are students. Which conclusion follows?",
+        "s": [
+          "Step 1: 'Only boys are students' means the only people who are students are boys.",
+          "Step 2: This implies that all students are boys.[reference:43]",
+          "Step 3: Conclusion I: 'All students are boys' - Valid.",
+          "Step 4: Conclusion II: 'All boys are students' - Not necessarily true. There could be boys who are not students.",
+          "Step 5: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      },
+      {
+        "q": "Statement: Only doctors are surgeons. Conclusions: I. All surgeons are doctors. II. Some doctors are surgeons. Which conclusion follows?",
+        "s": [
+          "Step 1: 'Only doctors are surgeons' means the only people who are surgeons are doctors.",
+          "Step 2: This implies that all surgeons are doctors.[reference:44]",
+          "Step 3: Conclusion I: 'All surgeons are doctors' - Valid.",
+          "Step 4: Conclusion II: 'Some doctors are surgeons' - Since all surgeons are doctors, some doctors (the surgeons) are surgeons. Valid.[reference:45]",
+          "Step 5: Both conclusions follow."
+        ],
+        "a": "Both follow"
+      },
+      {
+        "q": "Statement: Only students are scholars. Conclusions: I. All scholars are students. II. All students are scholars. Which conclusion follows?",
+        "s": [
+          "Step 1: 'Only students are scholars' means the only people who are scholars are students.",
+          "Step 2: This implies that all scholars are students.[reference:46]",
+          "Step 3: Conclusion I: 'All scholars are students' - Valid.",
+          "Step 4: Conclusion II: 'All students are scholars' - Not necessarily true. There could be students who are not scholars.",
+          "Step 5: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      },
+      {
+        "q": "Statement: Only citizens can vote. Conclusions: I. All voters are citizens. II. Some citizens are voters. Which conclusion follows?",
+        "s": [
+          "Step 1: 'Only citizens can vote' means the only people who can vote are citizens.",
+          "Step 2: This implies that all voters are citizens.[reference:47]",
+          "Step 3: Conclusion I: 'All voters are citizens' - Valid.",
+          "Step 4: Conclusion II: 'Some citizens are voters' - Since all voters are citizens, some citizens (the voters) are voters. Valid.[reference:48]",
+          "Step 5: Both conclusions follow."
+        ],
+        "a": "Both follow"
+      },
+      {
+        "q": "Statement: Only members can enter the club. Conclusions: I. All people in the club are members. II. All members are in the club. Which conclusion follows?",
+        "s": [
+          "Step 1: 'Only members can enter the club' means the only people who can enter are members.",
+          "Step 2: This implies that all people in the club are members.[reference:49]",
+          "Step 3: Conclusion I: 'All people in the club are members' - Valid.",
+          "Step 4: Conclusion II: 'All members are in the club' - Not necessarily true. There could be members who are not in the club.",
+          "Step 5: Only Conclusion I follows."
+        ],
+        "a": "Only I follows"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "id": 1,
+      "q": "Statement: All cats are animals. Conclusions: I. Some animals are cats. II. All animals are cats. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "direct",
+      "exp": "Step 1: 'All cats are animals' means cats are a subset of animals. Step 2: Conclusion I: 'Some animals are cats' - Since cats are animals, some animals (the cats) are indeed cats. Valid. Step 3: Conclusion II: 'All animals are cats' - This would mean animals are a subset of cats, which is not stated. Invalid. Step 4: Only Conclusion I follows.",
+      "elimination": "The second conclusion reverses the statement.",
+      "trap": "All A are B does not mean all B are A.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 2,
+      "q": "Statement: Some pens are books. Some books are pencils. Conclusions: I. Some pens are pencils. II. Some pencils are pens. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: The two 'some' statements may refer to different books. Step 2: There is no guaranteed link between pens and pencils. Step 3: Conclusion I assumes a connection not given. Conclusion II also assumes a connection not given. Step 4: Neither conclusion follows.",
+      "elimination": "Both conclusions assume a connection that is not given.",
+      "trap": "Do not connect two 'some' statements unless the bridge is explicit.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 3,
+      "q": "Statement: All students who study hard will pass. If A studies hard, then A passes. Which is true?",
+      "opts": ["The conclusion is valid", "The conclusion is invalid", "Cannot be determined", "Partially true"],
+      "c": 0,
+      "t": "direct",
+      "exp": "Step 1: The statement gives a direct condition: studying hard leads to passing. Step 2: A studies hard, which satisfies the condition. Step 3: Therefore, A passes. Step 4: The conclusion is valid.",
+      "elimination": "The statement already gives the rule.",
+      "trap": "Do not ignore the given condition.",
+      "time": "20 seconds"
+    },
+    {
+      "id": 4,
+      "q": "Statement: The population of City A is growing at 10% annually. Conclusions: I. City A will face housing shortages. II. City A will need more infrastructure. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "assumed",
+      "exp": "Step 1: Growing population reasonably suggests more infrastructure will be needed. Step 2: Housing shortages are not guaranteed because more houses can be built. Step 3: Only Conclusion II follows as a reasonable assumption.",
+      "elimination": "The first conclusion is too specific.",
+      "trap": "Reasonable assumption is not the same as definite fact.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 5,
+      "q": "Statement: If you are a good artist, then we have a job for you. Conclusions: I. You are a good artist. II. We have a job for you. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "conditional",
+      "exp": "Step 1: A conditional does not prove the condition or the result by itself. Step 2: It only says what happens if the condition is true. Step 3: Neither conclusion is given as a fact. Step 4: Neither follows.",
+      "elimination": "Both conclusions are extra facts not given in the statement.",
+      "trap": "If A then B does not mean A or B is already true.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 6,
+      "q": "Statement: All dogs are animals. All animals are living beings. Conclusions: I. All dogs are living beings. II. All living beings are dogs. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "syllogism-chain",
+      "exp": "Step 1: Chain: dogs → animals → living beings. Step 2: Conclusion I: 'All dogs are living beings' - Valid by chain rule. Step 3: Conclusion II: 'All living beings are dogs' - Invalid, reverse direction. Step 4: Only Conclusion I follows.",
+      "elimination": "The reverse direction is not valid.",
+      "trap": "Forward chain works; reverse chain usually does not.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 7,
+      "q": "Statement: Some managers are leaders. All leaders are decision-makers. Conclusions: I. Some managers are decision-makers. II. Some decision-makers are managers. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "syllogism",
+      "exp": "Step 1: Some managers are leaders, and all leaders are decision-makers. Step 2: Those managers who are leaders are also decision-makers. Step 3: Conclusion I follows. Step 4: The reverse statement is also valid - some decision-makers are managers. Step 5: Both conclusions follow.",
+      "elimination": "Both conclusions are supported by the chain.",
+      "trap": "Some A are B can be read in the reverse direction as Some B are A.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 8,
+      "q": "Statement: No state is a district. Some districts are cities. Conclusions: I. No state is a city. II. Some cities are not states. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "negative-statement",
+      "exp": "Step 1: 'No state is a district' means states and districts are separate. Step 2: 'Some districts are cities' means some cities are districts. Step 3: Those cities that are districts cannot be states. Step 4: Conclusion I: 'No state is a city' - Too absolute. Invalid. Step 5: Conclusion II: 'Some cities are not states' - Valid. Step 6: Only Conclusion II follows.",
+      "elimination": "The first conclusion is too absolute.",
+      "trap": "Do not extend 'no state is a district' into 'no state is a city'.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 9,
+      "q": "Statement: All roads are poles. No pole is a house. Conclusions: I. Some roads are houses. II. No road is a house. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "syllogism",
+      "exp": "Step 1: 'All roads are poles' means roads are a subset of poles. Step 2: 'No pole is a house' means poles and houses are separate. Step 3: Since roads are poles, roads cannot be houses. Step 4: Conclusion I contradicts the chain. Step 5: Conclusion II follows. Step 6: Only Conclusion II follows.",
+      "elimination": "Conclusion I contradicts the chain.",
+      "trap": "A negative chain is still a valid chain.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 10,
+      "q": "Statement: Some students are hardworking. All hardworking students are successful. Conclusions: I. Some students are successful. II. All successful students are hardworking. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "syllogism",
+      "exp": "Step 1: Some students are hardworking. Step 2: All hardworking students are successful. Step 3: Those students who are hardworking are also successful. Step 4: Conclusion I follows. Step 5: Conclusion II reverses the chain - not guaranteed. Step 6: Only Conclusion I follows.",
+      "elimination": "The reverse of the second conclusion is not guaranteed.",
+      "trap": "Do not reverse the chain unless the logic supports it.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 11,
+      "q": "Statement: All doctors are graduates. Some graduates are engineers. Conclusions: I. Some doctors are engineers. II. Some engineers are doctors. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: 'All doctors are graduates' means doctors are a subset of graduates. Step 2: 'Some graduates are engineers' means there is an overlap between graduates and engineers. Step 3: The overlap may or may not include doctors. Step 4: Neither conclusion is guaranteed. Step 5: Neither follows.",
+      "elimination": "Both conclusions assume a connection not given.",
+      "trap": "Do not assume the overlap includes doctors.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 12,
+      "q": "Statement: The government has announced a free training program for fresh graduates. Conclusions: I. The government wants to improve employability skills. II. The program will be compulsory for all graduates. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "assumed",
+      "exp": "Step 1: The statement says the government announced a free training program. Step 2: Conclusion I: 'The government wants to improve employability skills' - Reasonable assumption. Step 3: Conclusion II: 'The program will be compulsory' - Not stated. Step 4: Only Conclusion I follows.",
+      "elimination": "The statement does not say the program is compulsory.",
+      "trap": "Do not assume compulsion unless stated.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 13,
+      "q": "Statement: The school has banned mobile phones on campus. Conclusions: I. Mobile phones are a distraction for students. II. The school wants to improve student focus. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "assumed",
+      "exp": "Step 1: The statement says mobile phones are banned. Step 2: Conclusion I: 'Mobile phones are a distraction' - Reasonable assumption for why a ban might be implemented. Step 3: Conclusion II: 'The school wants to improve student focus' - Also a reasonable assumption. Step 4: Both conclusions follow as assumptions.",
+      "elimination": "Both are reasonable inferences from the ban.",
+      "trap": "Assumptions must be reasonable, not extreme.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 14,
+      "q": "Statement: Some students are hardworking. Conclusions: I. All students are hardworking. II. No students are hardworking. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "extreme-language",
+      "exp": "Step 1: The statement says 'Some students are hardworking'. Step 2: Conclusion I: 'All students are hardworking' - 'Some' does not mean 'All'. Invalid. Step 3: Conclusion II: 'No students are hardworking' - Contradicts the statement. Invalid. Step 4: Neither conclusion follows.",
+      "elimination": "Both conclusions are extremes not supported by the statement.",
+      "trap": "'Some' does not mean 'All' or 'None'.",
+      "time": "20 seconds"
+    },
+    {
+      "id": 15,
+      "q": "Statement: No one in the class failed the exam. Conclusions: I. Everyone in the class passed the exam. II. Some students in the class failed the exam. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "direct",
+      "exp": "Step 1: The statement says 'No one failed'. Step 2: Conclusion I: 'Everyone passed' - Direct implication. Valid. Step 3: Conclusion II: 'Some students failed' - Contradicts the statement. Invalid. Step 4: Only Conclusion I follows.",
+      "elimination": "The second conclusion contradicts the statement.",
+      "trap": "'No one failed' means everyone passed.",
+      "time": "20 seconds"
+    },
+    {
+      "id": 16,
+      "q": "Statement: Only boys are students. Conclusions: I. All students are boys. II. All boys are students. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "only-statement",
+      "exp": "Step 1: 'Only boys are students' means the only people who are students are boys. Step 2: This implies that all students are boys. Step 3: Conclusion I follows. Step 4: Conclusion II: 'All boys are students' - Not necessarily true. There could be boys who are not students. Step 5: Only Conclusion I follows.",
+      "elimination": "'Only A are B' means B → A, not A → B.",
+      "trap": "'Only' reverses the relationship.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 17,
+      "q": "Statement: Only doctors are surgeons. Conclusions: I. All surgeons are doctors. II. Some doctors are surgeons. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "only-statement",
+      "exp": "Step 1: 'Only doctors are surgeons' means the only people who are surgeons are doctors. Step 2: This implies that all surgeons are doctors. Step 3: Conclusion I follows. Step 4: Since all surgeons are doctors, some doctors (the surgeons) are surgeons. Step 5: Conclusion II also follows. Step 6: Both conclusions follow.",
+      "elimination": "Both conclusions are supported by the 'only' statement.",
+      "trap": "'Only' statements imply both directions for 'some'.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 18,
+      "q": "Statement: All dogs are animals. Conclusions: I. Some animals are not dogs. II. All animals are dogs. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "some-all-rule",
+      "exp": "Step 1: 'All dogs are animals' means dogs are a subset of animals. Step 2: Conclusion I: 'Some animals are not dogs' - Since dogs are only a subset, there may be animals that are not dogs. Valid. Step 3: Conclusion II: 'All animals are dogs' - Invalid. Step 4: Only Conclusion I follows.",
+      "elimination": "The second conclusion reverses the statement.",
+      "trap": "All A are B means there could be B that are not A.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 19,
+      "q": "Statement: The company will never hire unqualified candidates. Conclusions: I. All candidates hired by the company are qualified. II. The company may hire some unqualified candidates. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "extreme-language",
+      "exp": "Step 1: The statement says 'never hire unqualified candidates'. Step 2: Conclusion I: 'All candidates hired are qualified' - Directly follows. Step 3: Conclusion II: 'The company may hire some unqualified candidates' - Contradicts 'never'. Invalid. Step 4: Only Conclusion I follows.",
+      "elimination": "The second conclusion contradicts the statement.",
+      "trap": "'Never' is absolute - it means zero unqualified hires.",
+      "time": "20 seconds"
+    },
+    {
+      "id": 20,
+      "q": "Statement: Most people prefer coffee over tea. Conclusions: I. All people prefer coffee over tea. II. Some people prefer tea over coffee. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "extreme-language",
+      "exp": "Step 1: The statement says 'Most people prefer coffee over tea'. Step 2: Conclusion I: 'All people prefer coffee' - 'Most' does not mean 'All'. Invalid. Step 3: Conclusion II: 'Some people prefer tea' - Since 'most' prefer coffee, some must prefer tea. Valid. Step 4: Only Conclusion II follows.",
+      "elimination": "'Most' does not mean 'All'.",
+      "trap": "'Most' means more than half - some must prefer the other.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 21,
+      "q": "Statement: No dogs are cats. Conclusions: I. No cats are dogs. II. Some cats are dogs. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "some-all-rule",
+      "exp": "Step 1: 'No dogs are cats' means the sets are completely separate. Step 2: Conclusion I: 'No cats are dogs' - 'No' is reversible. Valid. Step 3: Conclusion II: 'Some cats are dogs' - Contradicts the statement. Invalid. Step 4: Only Conclusion I follows.",
+      "elimination": "The second conclusion contradicts the statement.",
+      "trap": "'No' is reversible.",
+      "time": "20 seconds"
+    },
+    {
+      "id": 22,
+      "q": "Statement: Hard work leads to success. Conclusions: I. Intelligent people are those who work hard. II. There is no other way to success except hard work. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "irrelevant",
+      "exp": "Step 1: The statement says 'Hard work leads to success'. Step 2: Conclusion I: 'Intelligent people are those who work hard' - Intelligence is not mentioned. Invalid. Step 3: Conclusion II: 'There is no other way to success except hard work' - The statement does not say it's the only way. Invalid. Step 4: Neither conclusion follows.",
+      "elimination": "Both conclusions add new information not in the statement.",
+      "trap": "Do not assume hard work is the ONLY path to success.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 23,
+      "q": "Statement: Quality comes with a price. India is spending a lot for education. Conclusions: I. Soon improvement in the quality of education in India will happen. II. Only funding can improve the quality of education. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "assumed",
+      "exp": "Step 1: The statement says quality comes with a price and India is spending on education. Step 2: Conclusion I: 'Quality of education will improve' - Reasonable inference. Step 3: Conclusion II: 'Only funding can improve quality' - Too extreme. Not stated. Step 4: Only Conclusion I follows.[reference:8]",
+      "elimination": "The second conclusion is too extreme.",
+      "trap": "'Only' makes the conclusion extreme.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 24,
+      "q": "Statement: Death keeps no calendar. Conclusions: I. Man must die one day. II. Death can come at any time. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "assumed",
+      "exp": "Step 1: The statement says 'Death keeps no calendar'. Step 2: Conclusion I: 'Man must die one day' - Reasonable inference. Step 3: Conclusion II: 'Death can come at any time' - Also reasonable. Step 4: Both conclusions follow.[reference:9]",
+      "elimination": "Both are reasonable inferences from the statement.",
+      "trap": "Do not overthink - both are logical conclusions.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 25,
+      "q": "Statement: Industrial Revolution, which first started in Europe, has brought about modern age. Conclusions: I. Disparity between rich and poor results in revolution. II. Revolution overhauls society. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "assumed",
+      "exp": "Step 1: The statement says Industrial Revolution brought about modern age. Step 2: Conclusion I: 'Disparity between rich and poor results in revolution' - Not mentioned. Invalid. Step 3: Conclusion II: 'Revolution overhauls society' - Since it brought modern age, it overhauls society. Valid.[reference:10][reference:11]",
+      "elimination": "The cause of revolution is not mentioned.",
+      "trap": "Do not assume the cause of the revolution.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 26,
+      "q": "Statement: The executive board of MNM Ltd has asked its four regional vice-presidents to resign by the evening or face termination orders. Three of them put in their papers this afternoon. Conclusions: I. The fourth manager would resign before the evening deadline. II. The executive board will terminate the service of the fourth manager, as soon as the deadline is over. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Either I or II follows", "Neither follows"],
+      "c": 2,
+      "t": "complementary",
+      "exp": "Step 1: The statement says managers must resign by evening or face termination. Step 2: Three have resigned. Step 3: The fourth will either resign (I) or be terminated (II). Step 4: Only one of the two conclusions can happen, but not both. Step 5: Either I or II follows.[reference:12]",
+      "elimination": "Both cannot be true simultaneously.",
+      "trap": "This is an 'Either-Or' case.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 27,
+      "q": "Statement: The state government has sought a waiver of outstanding central loans of 5,000 crores and a moratorium on repayment pending the waiver. Conclusions: I. Unlike other states, this state has no desire to make repayment of its loan. II. This state's financial condition does not appear to be satisfactory. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "assumed",
+      "exp": "Step 1: The statement says the state has sought a loan waiver. Step 2: Conclusion I: 'Unlike other states' - Comparison not given. Invalid. Step 3: Conclusion II: 'Financial condition not satisfactory' - Seeking a waiver indicates poor finances. Valid.[reference:13]",
+      "elimination": "The first conclusion makes a comparison not in the statement.",
+      "trap": "Do not compare with other states unless stated.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 28,
+      "q": "Statement: The constitutional amendment prohibits child labour in any organisation. Conclusions: I. All employers in the country must abide by this new rule. II. All the victims of child labour will now enrol in schools. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "assumed",
+      "exp": "Step 1: The statement says the constitutional amendment prohibits child labour. Step 2: Conclusion I: 'All employers must abide' - Since it's a constitutional amendment, all must comply. Valid. Step 3: Conclusion II: 'All victims will enrol in schools' - Not stated. Invalid.[reference:14]",
+      "elimination": "The second conclusion assumes what children will do after.",
+      "trap": "Do not assume outcomes beyond the statement.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 29,
+      "q": "Statement: It is almost impossible to survive and prosper in this world without sacrificing ethics and morality. Conclusions: I. World appreciates some concepts but may not uphold it. II. Concept of ethics and morality are not practicable in life. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "assumed",
+      "exp": "Step 1: The statement says it's almost impossible to prosper without sacrificing ethics. Step 2: Conclusion I: 'World appreciates some concepts but may not uphold it' - Vague, does not follow. Step 3: Conclusion II: 'Ethics and morality are not practicable in life' - Directly follows from the statement.[reference:15]",
+      "elimination": "The first conclusion is vague and does not follow.",
+      "trap": "Do not accept vague conclusions.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 30,
+      "q": "Statement: From the next academic year, students will have the option of dropping Mathematics and Science for their school leaving certificate examination. Conclusions: I. Students who are weak in Science and Mathematics will be admitted. II. Earlier students did not have the choice of continuing their education without taking these subjects. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "assumed",
+      "exp": "Step 1: The statement says students can now drop Math and Science. Step 2: Conclusion I: 'Students weak in these subjects can be admitted' - Since they can drop, weak students can also be admitted. Valid. Step 3: Conclusion II: 'Earlier students did not have this choice' - Since it says 'from the next academic year', it was not available before. Valid.[reference:16]",
+      "elimination": "Both conclusions are reasonable inferences.",
+      "trap": "The phrase 'from the next academic year' implies it was not available before.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 31,
+      "q": "Statement: A large majority of the work force in India is unorganised. Most of them earn either the minimum or uncertain wages while others are engaged in sundry jobs. Conclusions: I. The workers in the organised sector get better facilities and stay longer in their jobs. II. Some workers in the unorganised sector of the work force have regular and fixed income. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "assumed",
+      "exp": "Step 1: The statement talks about unorganised sector workers. Step 2: Conclusion I: 'Organised sector workers' - Not mentioned. Invalid. Step 3: Conclusion II: 'Some unorganised workers have regular income' - Since 'others are engaged in sundry jobs', they have fixed income. Valid.[reference:17][reference:18]",
+      "elimination": "The organised sector is not mentioned.",
+      "trap": "Do not assume information about sectors not mentioned.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 32,
+      "q": "Statement: Company X has marketed the product, go ahead to purchase if its price and quality are in your consideration. Conclusions: I. The product must be good in quality. II. The price of the product must be reasonable. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "assumed",
+      "exp": "Step 1: The statement says to purchase if price and quality are in your consideration. Step 2: This implies both price and quality are important factors. Step 3: Conclusion I: 'Product must be good in quality' - Valid. Step 4: Conclusion II: 'Price must be reasonable' - Valid.[reference:19]",
+      "elimination": "Both conclusions are supported by the statement.",
+      "trap": "The statement implies both factors are important.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 33,
+      "q": "Statement: All the organised persons find time for rest. Sunita inspite of her very busy schedule, finds time for rest. Conclusions: I. Sunita is an organised person. II. Sunita is an industrious person. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "syllogism",
+      "exp": "Step 1: The statement says all organised persons find time for rest. Step 2: Sunita finds time for rest despite a busy schedule. Step 3: Conclusion I: 'Sunita is organised' - Since she finds time for rest, she is organised. Valid. Step 4: Conclusion II: 'Sunita is industrious' - A busy schedule indicates she is industrious. Valid.[reference:20]",
+      "elimination": "Both conclusions are supported.",
+      "trap": "A busy schedule implies industriousness.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 34,
+      "q": "Statement: Until your country achieves economic equality, political freedom and democracy would be meaningless. Conclusions: I. Political freedom and democracy go hand in hand. II. Economic equality leads to real political freedom and democracy. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "assumed",
+      "exp": "Step 1: The statement says without economic equality, political freedom is meaningless. Step 2: Conclusion I: 'Political freedom and democracy go hand in hand' - Not mentioned. Invalid. Step 3: Conclusion II: 'Economic equality leads to real political freedom' - Directly follows.[reference:21]",
+      "elimination": "The relationship between political freedom and democracy is not mentioned.",
+      "trap": "Do not assume relationships not stated.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 35,
+      "q": "Statement: People who speak too much against the dowry are those who had taken it themselves. Conclusions: I. It is easier said than done. II. People have double standards. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "assumed",
+      "exp": "Step 1: The statement says those who speak against dowry have taken it themselves. Step 2: Conclusion I: 'It is easier said than done' - People speak against it but have done it themselves. Valid. Step 3: Conclusion II: 'People have double standards' - They say one thing but do another. Valid.[reference:22]",
+      "elimination": "Both conclusions are reasonable inferences.",
+      "trap": "The statement clearly implies hypocrisy.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 36,
+      "q": "Statement: Although the education system has progressed from the point of view of the number of schools, most of them are ill-equipped and have not achieved excellence in imparting education. Conclusions: I. In future, we should provide good teachers and equipment to these schools. II. We need not open any more schools in the future. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "assumed",
+      "exp": "Step 1: The statement says schools are ill-equipped and lack excellence. Step 2: Conclusion I: 'We should provide good teachers and equipment' - Directly follows from the need. Valid. Step 3: Conclusion II: 'We need not open any more schools' - Not stated. Invalid.[reference:23]",
+      "elimination": "The second conclusion does not follow from the statement.",
+      "trap": "Do not assume we should stop opening schools.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 37,
+      "q": "Statement: Security investments carry market risks. Hence it is best to consult your investment advisor or agent before investing. Conclusions: I. One should not invest in securities. II. The investment advisor calculates market risk with certainty. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "assumed",
+      "exp": "Step 1: The statement says security investments are risky and advises consulting an advisor. Step 2: Conclusion I: 'One should not invest' - Extreme action, does not follow. Step 3: Conclusion II: 'Advisor calculates risk with certainty' - Since the statement advises consulting an advisor, the advisor must be able to calculate risk. Valid.[reference:24]",
+      "elimination": "The first conclusion is an extreme action.",
+      "trap": "Do not assume one should never invest.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 38,
+      "q": "Statement: The manager humiliated Sachin in the presence of his colleagues. Conclusions: I. The manager did not like Sachin. II. Sachin was not popular with his colleagues. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "irrelevant",
+      "exp": "Step 1: The statement says the manager humiliated Sachin. Step 2: Conclusion I: 'The manager did not like Sachin' - Could be true but not guaranteed. Step 3: Conclusion II: 'Sachin was not popular with colleagues' - Not mentioned. Step 4: Neither conclusion follows.[reference:25]",
+      "elimination": "Both conclusions add new information not in the statement.",
+      "trap": "Do not assume reasons for humiliation.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 39,
+      "q": "Statement: All the students of SRM College who clear the Interview will get placement in HDFC Bank. Rohit works in HDFC Bank. Conclusions: I. Rohit studied at SRM College. II. Rohit was selected in the interview. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "conditional",
+      "exp": "Step 1: The statement says SRM students who clear interviews get placed in HDFC. Step 2: Rohit works in HDFC. Step 3: This does NOT mean Rohit is from SRM or cleared an interview - he could have joined through other means. Step 4: Neither conclusion follows.[reference:26][reference:27]",
+      "elimination": "Working at HDFC does not prove he is from SRM.",
+      "trap": "Do not reverse the conditional.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 40,
+      "q": "Statement: All pens are chalks. All chairs are chalks. Conclusions: I. Some pens are chairs. II. Some chalks are pens. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "syllogism",
+      "exp": "Step 1: 'All pens are chalks' and 'All chairs are chalks'. Step 2: Both pens and chairs are subsets of chalks. Step 3: Conclusion I: 'Some pens are chairs' - Not guaranteed. Invalid. Step 4: Conclusion II: 'Some chalks are pens' - Since all pens are chalks, some chalks are pens. Valid.[reference:28]",
+      "elimination": "The first conclusion assumes overlap between pens and chairs.",
+      "trap": "Two subsets of the same set may not overlap.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 41,
+      "q": "Statement: All good athletes win. All good athletes eat well. Conclusions: I. All those who eat well are good athletes. II. All those who win eat well. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: Both statements say good athletes have two properties: win and eat well. Step 2: Conclusion I: 'All who eat well are good athletes' - Reverse of the statement. Invalid. Step 3: Conclusion II: 'All who win eat well' - Reverse of the statement. Invalid. Step 4: Neither conclusion follows.[reference:29]",
+      "elimination": "Both conclusions reverse the statements.",
+      "trap": "Do not reverse 'All A are B' to 'All B are A'.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 42,
+      "q": "Statement: Some hills are rivers. Some rivers are deserts. All deserts are roads. Conclusions: I. Some roads are rivers. II. Some roads are hills. III. Some deserts are hills. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Only III follows", "Only I and II follow"],
+      "c": 0,
+      "t": "syllogism",
+      "exp": "Step 1: 'Some rivers are deserts' and 'All deserts are roads' → Some rivers are roads (Some roads are rivers). Step 2: Conclusion I follows. Step 3: Conclusion II: 'Some roads are hills' - No link between hills and roads. Invalid. Step 4: Conclusion III: 'Some deserts are hills' - No link between hills and deserts. Invalid.[reference:30]",
+      "elimination": "Only the chain between rivers and roads is valid.",
+      "trap": "Do not connect unrelated terms.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 43,
+      "q": "Statement: All intelligent students attend coaching classes. Ram attends the coaching class. Conclusions: I. Ram is intelligent. II. Those who do not attend coaching classes are not intelligent. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "conditional",
+      "exp": "Step 1: 'All intelligent students attend coaching classes'. Step 2: This means if you are intelligent → you attend coaching. Step 3: Ram attends coaching - this does NOT prove he is intelligent (others may also attend). Step 4: Conclusion I does not follow. Step 5: Conclusion II: 'Those who do not attend are not intelligent' - Contrapositive of the statement. Valid.[reference:31]",
+      "elimination": "Attending coaching does not prove intelligence.",
+      "trap": "The contrapositive is valid: Not attend → Not intelligent.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 44,
+      "q": "Statement: No school is an institution but they are establishment. All establishments that are not institutions have buildings. Conclusions: I. Schools are not establishments. II. All schools have buildings. III. Schools do not have buildings. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Only III follows", "Both I and III follow"],
+      "c": 1,
+      "t": "syllogism",
+      "exp": "Step 1: 'No school is an institution but they are establishment' → Schools are establishments. Step 2: 'All establishments that are not institutions have buildings' → Schools are establishments that are not institutions. Step 3: Conclusion I: 'Schools are not establishments' - False. Step 4: Conclusion II: 'All schools have buildings' - True. Step 5: Conclusion III: 'Schools do not have buildings' - False.[reference:32]",
+      "elimination": "Only the conclusion about buildings follows.",
+      "trap": "Read the statement carefully - schools ARE establishments.",
+      "time": "40 seconds"
+    },
+    {
+      "id": 45,
+      "q": "Statement: All balls are round. Some round are plates. All plates are utensils. Conclusions: I. Some utensils being balls is a possibility. II. Some round are utensils. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "syllogism",
+      "exp": "Step 1: 'Some round are plates' and 'All plates are utensils' → Some round are utensils. Step 2: Conclusion II follows. Step 3: Conclusion I: 'Some utensils being balls is a possibility' - Since balls are round, and some round are plates (utensils), it is possible that some utensils are balls. Valid.[reference:33]",
+      "elimination": "Both conclusions are supported.",
+      "trap": "Possibility conclusions are valid when not contradicted.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 46,
+      "q": "Statement: All fans are small. All small are rats. Conclusions: I. All fans are rats. II. Some rats are fans. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "syllogism-chain",
+      "exp": "Step 1: Chain: fans → small → rats. Step 2: Conclusion I: 'All fans are rats' - Valid by chain rule. Step 3: Conclusion II: 'Some rats are fans' - Since all fans are rats, some rats are fans. Valid.[reference:34]",
+      "elimination": "Both conclusions are supported by the chain.",
+      "trap": "All A are B implies some B are A.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 47,
+      "q": "Statement: No bird is a crow. Some crows are black. Conclusions: I. At least some birds are black. II. Some black which are crows are definitely not birds. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "negative-statement",
+      "exp": "Step 1: 'No bird is a crow' means birds and crows are separate. Step 2: 'Some crows are black' means there are black crows. Step 3: Conclusion I: 'Some birds are black' - No link between birds and black. Invalid. Step 4: Conclusion II: 'Some black which are crows are not birds' - Since no bird is a crow, black crows are not birds. Valid.[reference:35]",
+      "elimination": "There is no link between birds and black.",
+      "trap": "Crows being black does not mean birds are black.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 48,
+      "q": "Statement: Some leaves are roots. Some roots are stems. All flowers are stems. Conclusions: I. No flower is a leaf. II. Some leaves are stem. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: 'Some leaves are roots' and 'Some roots are stems' → No guaranteed link between leaves and stems. Step 2: 'All flowers are stems' → Flowers are a subset of stems. Step 3: Conclusion I: 'No flower is a leaf' - Not guaranteed. Invalid. Step 4: Conclusion II: 'Some leaves are stem' - Not guaranteed (the roots that are stems may not be the roots that are leaves). Invalid.[reference:36]",
+      "elimination": "Neither conclusion is guaranteed.",
+      "trap": "Two 'some' statements do not guarantee a connection.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 49,
+      "q": "Statement: Some forests are huts. Some huts are walls. Some walls are nets. Conclusions: I. Some nets are forests. II. Some nets are huts. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: Three 'some' statements with no guaranteed overlap between non-adjacent terms. Step 2: Conclusion I: 'Some nets are forests' - No link between nets and forests. Invalid. Step 3: Conclusion II: 'Some nets are huts' - No link between nets and huts. Invalid.[reference:37]",
+      "elimination": "Neither conclusion is guaranteed.",
+      "trap": "Multiple 'some' statements do not create chains.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 50,
+      "q": "Statement: Some toys are tables. No table is black. Conclusions: I. Some toys are black. II. Some toys are not black. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "negative-statement",
+      "exp": "Step 1: 'Some toys are tables' means there is an overlap between toys and tables. Step 2: 'No table is black' means tables are not black. Step 3: The toys that are tables are not black. Step 4: Conclusion I: 'Some toys are black' - Contradicts. Invalid. Step 5: Conclusion II: 'Some toys are not black' - Valid.[reference:38]",
+      "elimination": "The first conclusion contradicts the chain.",
+      "trap": "Some toys that are tables are definitely not black.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 51,
+      "q": "Statement: All foxes are plates. All plates are trees. Conclusions: I. Some trees are foxes. II. Some plates are foxes. III. All foxes are trees. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II and III follow", "I, II and III follow", "Only I and II follow"],
+      "c": 2,
+      "t": "syllogism-chain",
+      "exp": "Step 1: Chain: foxes → plates → trees. Step 2: Conclusion I: 'Some trees are foxes' - Since all foxes are trees, some trees are foxes. Valid. Step 3: Conclusion II: 'Some plates are foxes' - Since all foxes are plates, some plates are foxes. Valid. Step 4: Conclusion III: 'All foxes are trees' - Valid by chain rule.[reference:39]",
+      "elimination": "All three conclusions are valid.",
+      "trap": "All A are B → some B are A is valid.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 52,
+      "q": "Statement: Some boys are brave. All boys are punctual. Conclusions: I. Some brave are boys. II. Some punctual are boys. III. Some brave are punctual. Which conclusion follows?",
+      "opts": ["Only I and II follow", "Only II and III follow", "All follow", "Only I and III follow"],
+      "c": 0,
+      "t": "syllogism",
+      "exp": "Step 1: 'Some boys are brave' → Some brave are boys (I valid). Step 2: 'All boys are punctual' → Some punctual are boys (II valid). Step 3: The brave boys are also punctual → Some brave are punctual (III valid). Step 4: All three follow.[reference:40]",
+      "elimination": "All three conclusions are valid.",
+      "trap": "Chain: brave boys are both brave and punctual.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 53,
+      "q": "Statement: Some men are hardworking. No blue is advocate. Some blue are men. Conclusions: I. Some blue are hardworking. II. Some men are advocates. III. Some blue are not hardworking. IV. Some men are not advocates. Which conclusion follows?",
+      "opts": ["Only I follows", "Only IV follows", "Only II and III follow", "Only III and IV follow"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: 'Some blue are men' and 'Some men are hardworking' → No guaranteed link between blue and hardworking (I invalid). Step 2: 'No blue is advocate' → Some blue are not advocates, but men? Some blue are men, so some men (the blue ones) are not advocates (IV valid). Step 3: 'No blue is advocate' and 'Some blue are men' → Some blue are men, and men could be advocates? No, blue are not advocates, but blue are men → some men are not advocates. IV valid. Step 4: III: 'Some blue are not hardworking' - Not guaranteed.[reference:41][reference:42]",
+      "elimination": "Only conclusions about men not being advocates follows.",
+      "trap": "Do not assume hardworking status of blue.",
+      "time": "45 seconds"
+    },
+    {
+      "id": 54,
+      "q": "Statement: All pens are pencils. No pencil is a monkey. Conclusions: I. No pen is a monkey. II. Some pens are monkeys. III. All monkeys are pens. IV. Some monkeys are pens. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Only III follows", "Only IV follows"],
+      "c": 0,
+      "t": "syllogism",
+      "exp": "Step 1: 'All pens are pencils' means pens are a subset of pencils. Step 2: 'No pencil is a monkey' means pencils and monkeys are separate. Step 3: Since pens are pencils, no pen is a monkey. Step 4: Only Conclusion I follows.[reference:43]",
+      "elimination": "All other conclusions contradict or reverse the logic.",
+      "trap": "The chain 'pen → pencil → not monkey' is valid.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 55,
+      "q": "Statement: Some carpenters are plumbers. Some plumbers are daily wage labourers. Conclusions: 1. Some plumbers are carpenters. 2. Some daily wage labourers are plumbers. Which conclusion follows?",
+      "opts": ["Only conclusion 1 follows", "Only conclusion 2 follows", "Both 1 and 2 follow", "Neither follows"],
+      "c": 2,
+      "t": "syllogism",
+      "exp": "Step 1: 'Some carpenters are plumbers' → Some plumbers are carpenters (valid - 'some' is reversible). Step 2: 'Some plumbers are daily wage labourers' → Some daily wage labourers are plumbers (valid - 'some' is reversible). Step 3: Both conclusions follow.[reference:44]",
+      "elimination": "Both conclusions are valid reversals.",
+      "trap": "'Some' is reversible.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 56,
+      "q": "Statement: Some enjoy silence. Some silence is calm. Conclusions: I. Some who enjoy silence are calm. II. Some calm is silence. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "syllogism",
+      "exp": "Step 1: 'Some silence is calm' → Some calm is silence (II valid - 'some' is reversible). Step 2: 'Some enjoy silence' and 'Some silence is calm' → No guaranteed link between those who enjoy silence and calm (I invalid).[reference:45]",
+      "elimination": "Only the reversal of the second statement is valid.",
+      "trap": "Two 'some' statements do not create a chain.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 57,
+      "q": "Statement: All pens are books. Some books are tables. Conclusions: I. Some pens are tables. II. Some tables are pens. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: 'All pens are books' means pens are a subset of books. Step 2: 'Some books are tables' means there is an overlap between books and tables. Step 3: The overlap between books and tables may or may not include pens. Step 4: Neither conclusion is guaranteed.[reference:46]",
+      "elimination": "Neither conclusion can be guaranteed.",
+      "trap": "Do not assume the overlap includes pens.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 58,
+      "q": "Statement: All cats are animals. Some animals are dogs. Conclusions: I. Some cats are dogs. II. Some dogs are cats. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: 'All cats are animals' means cats are a subset of animals. Step 2: 'Some animals are dogs' means there is an overlap between animals and dogs. Step 3: The overlap between animals and dogs may or may not include cats. Step 4: Neither conclusion follows.",
+      "elimination": "Neither conclusion can be guaranteed.",
+      "trap": "Do not assume cats are part of the dog overlap.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 59,
+      "q": "Statement: All teachers are graduates. Some graduates are engineers. Some engineers are doctors. Conclusions: I. Some doctors are graduates. II. Some teachers are engineers. III. Some doctors are teachers. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Only III follows", "None follows"],
+      "c": 0,
+      "t": "syllogism",
+      "exp": "Step 1: 'Some graduates are engineers' and 'Some engineers are doctors' → No guaranteed link between graduates and doctors. But wait: some graduates are engineers, and some engineers are doctors - these could be different engineers, so no guaranteed link. However, some doctors are engineers, and some engineers are graduates? No, the overlap between engineers and doctors may not be the same engineers who are graduates. So I does not follow. Let me re-evaluate: 'Some graduates are engineers' and 'Some engineers are doctors' - we cannot guarantee any doctor is a graduate. So none follow.",
+      "elimination": "None of the conclusions are guaranteed.",
+      "trap": "Multiple 'some' statements do not create guaranteed chains.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 60,
+      "q": "Statement: No A is B. All B are C. Some C are D. Conclusions: I. Some D are not A. II. Some C are not A. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "negative-statement",
+      "exp": "Step 1: 'No A is B' means A and B are separate. Step 2: 'All B are C' means B is a subset of C. Step 3: Since B is a subset of C and no A is B, some C (the B's) are not A. Step 4: Conclusion II follows. Step 5: 'Some C are D' → Some D are C (reversible). The D's that are C may or may not be B, so we cannot guarantee they are not A. Step 6: Only Conclusion II follows.",
+      "elimination": "Only the conclusion about C not being A is guaranteed.",
+      "trap": "D's that are C may or may not be B.",
+      "time": "40 seconds"
+    },
+    {
+      "id": 61,
+      "q": "Statement: All A are B. No B is C. Some D are C. Conclusions: I. Some D are not A. II. No A is C. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "negative-statement",
+      "exp": "Step 1: 'All A are B' and 'No B is C' → No A is C (II valid). Step 2: 'Some D are C' and 'No A is C' → The D's that are C are not A, so Some D are not A (I valid). Step 3: Both conclusions follow.",
+      "elimination": "Both conclusions are valid.",
+      "trap": "Chain the negative statement correctly.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 62,
+      "q": "Statement: No A is B. Some C are B. All D are A. Conclusions: I. Some C are not A. II. No D is B. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "negative-statement",
+      "exp": "Step 1: 'No A is B' means A and B are separate. Step 2: 'All D are A' means D is a subset of A. Step 3: Since D is a subset of A and no A is B → No D is B (II valid). Step 4: 'Some C are B' and 'No A is B' → The C's that are B are not A → Some C are not A (I valid). Step 5: Both conclusions follow.",
+      "elimination": "Both conclusions are valid.",
+      "trap": "Chain the negative statements correctly.",
+      "time": "40 seconds"
+    },
+    {
+      "id": 63,
+      "q": "Statement: Some A are B. All B are C. No C is D. Conclusions: I. Some A are not D. II. No A is D. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "negative-statement",
+      "exp": "Step 1: 'Some A are B' and 'All B are C' → Some A are C. Step 2: 'No C is D' → The A's that are C are not D → Some A are not D (I valid). Step 3: Conclusion II: 'No A is D' - Too absolute. Not all A are C, so we cannot say no A is D. Invalid.",
+      "elimination": "Only 'some' conclusion is valid, not 'no'.",
+      "trap": "'Some' does not imply 'All' or 'No'.",
+      "time": "40 seconds"
+    },
+    {
+      "id": 64,
+      "q": "Statement: Only a few pens are books. All books are copies. Conclusions: I. Some copies are pens. II. Some pens are copies. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "syllogism",
+      "exp": "Step 1: 'Only a few pens are books' means some pens are books and some pens are not books. Step 2: 'All books are copies' means books are a subset of copies. Step 3: The pens that are books are copies → Some pens are copies (II valid). Step 4: Some copies are pens (I valid - 'some' is reversible). Step 5: Both conclusions follow.[reference:47]",
+      "elimination": "Both conclusions are valid.",
+      "trap": "'Only a few' still means some.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 65,
+      "q": "Statement: All papers are books. Some books are pages. No page is a sheet. Conclusions: I. Some papers are pages. II. Some books are not sheets. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "syllogism",
+      "exp": "Step 1: 'All papers are books' means papers are a subset of books. Step 2: 'Some books are pages' means there is an overlap between books and pages. Step 3: The overlap between books and pages may or may not include papers (I invalid). Step 4: 'Some books are pages' and 'No page is a sheet' → Those books that are pages are not sheets → Some books are not sheets (II valid).",
+      "elimination": "Only the conclusion about books not being sheets is valid.",
+      "trap": "Do not assume papers are part of the page overlap.",
+      "time": "40 seconds"
+    },
+    {
+      "id": 66,
+      "q": "Statement: Some trees are plants. All plants are flowers. No flower is a fruit. Conclusions: I. Some trees are not fruits. II. Some fruits are trees. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "negative-statement",
+      "exp": "Step 1: 'Some trees are plants' and 'All plants are flowers' → Some trees are flowers. Step 2: 'No flower is a fruit' → The trees that are flowers are not fruits → Some trees are not fruits (I valid). Step 3: Conclusion II: 'Some fruits are trees' - Contradicts the chain. Invalid.",
+      "elimination": "Only the 'some not' conclusion is valid.",
+      "trap": "No flower is fruit, so trees that are flowers cannot be fruits.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 67,
+      "q": "Statement: All A are B. Some B are C. No C is D. Conclusions: I. Some A are D. II. Some A are not D. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: 'All A are B' means A is a subset of B. Step 2: 'Some B are C' means there is an overlap between B and C. Step 3: 'No C is D' means C and D are separate. Step 4: The overlap between B and C may or may not include A. Step 5: Therefore, we cannot say some A are D or some A are not D. Neither follows.",
+      "elimination": "Neither conclusion is guaranteed.",
+      "trap": "Do not assume the B-C overlap includes A.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 68,
+      "q": "Statement: Some doctors are engineers. All engineers are graduates. Some graduates are professors. Conclusions: I. Some doctors are professors. II. Some engineers are professors. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: 'Some doctors are engineers' means there is an overlap between doctors and engineers. Step 2: 'All engineers are graduates' means engineers are a subset of graduates. Step 3: 'Some graduates are professors' means there is an overlap between graduates and professors. Step 4: The overlap between graduates and professors may or may not include engineers or doctors. Step 5: Neither conclusion follows.",
+      "elimination": "Neither conclusion is guaranteed.",
+      "trap": "Multiple 'some' and 'all' statements require careful chaining.",
+      "time": "40 seconds"
+    },
+    {
+      "id": 69,
+      "q": "Statement: All fruits are healthy. Some healthy are sweet. No sweet is sour. Conclusions: I. Some fruits are sweet. II. Some fruits are not sour. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "syllogism",
+      "exp": "Step 1: 'All fruits are healthy' means fruits are a subset of healthy. Step 2: 'Some healthy are sweet' means there is an overlap between healthy and sweet. Step 3: The overlap between healthy and sweet may or may not include fruits (I invalid). Step 4: 'No sweet is sour' → The fruits that are sweet (if any) would not be sour, but we don't know if any fruits are sweet. However, some healthy are sweet, and fruits are healthy. Could fruits be sweet? Possibly, but not guaranteed. What about 'some fruits are not sour'? Since fruits are healthy, and some healthy are sweet, and sweet is not sour, the healthy-sweet overlap (if it includes fruits) would be not sour. But we don't know if fruits are in that overlap. So II is also not guaranteed. Let me re-evaluate: 'All fruits are healthy' and 'No sweet is sour' - fruits could be sweet or not. If they are sweet, they are not sour. If they are not sweet, they still might be sour or not. So we cannot guarantee any fruit is not sour. Neither follows.",
+      "elimination": "Neither conclusion is guaranteed.",
+      "trap": "Do not assume fruits are in the healthy-sweet overlap.",
+      "time": "40 seconds"
+    },
+    {
+      "id": 70,
+      "q": "Statement: All vehicles are cars. Some cars are buses. No bus is a truck. Conclusions: I. Some vehicles are buses. II. Some vehicles are not trucks. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: 'All vehicles are cars' means vehicles are a subset of cars. Step 2: 'Some cars are buses' means there is an overlap between cars and buses. Step 3: The overlap between cars and buses may or may not include vehicles (I invalid). Step 4: 'No bus is a truck' → The cars that are buses are not trucks. If vehicles are in that overlap, they are not trucks. But we don't know if vehicles are in the overlap. Step 5: Neither conclusion is guaranteed.",
+      "elimination": "Neither conclusion is guaranteed.",
+      "trap": "Do not assume vehicles are in the car-bus overlap.",
+      "time": "40 seconds"
+    },
+    {
+      "id": 71,
+      "q": "Statement: All oranges are fruits. Some fruits are red. All red are tasty. Conclusions: I. Some oranges are red. II. Some oranges are tasty. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: 'All oranges are fruits' means oranges are a subset of fruits. Step 2: 'Some fruits are red' means there is an overlap between fruits and red. Step 3: The overlap between fruits and red may or may not include oranges (I invalid). Step 4: 'All red are tasty' → If oranges were red, they would be tasty. But we don't know if oranges are red. Step 5: Neither conclusion is guaranteed.",
+      "elimination": "Neither conclusion is guaranteed.",
+      "trap": "Do not assume oranges are in the fruit-red overlap.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 72,
+      "q": "Statement: Some cats are dogs. All dogs are animals. No animal is a plant. Conclusions: I. Some cats are animals. II. Some cats are not plants. III. Some plants are dogs. Which conclusion follows?",
+      "opts": ["Only I follows", "Only I and II follow", "All follow", "Only II and III follow"],
+      "c": 1,
+      "t": "syllogism",
+      "exp": "Step 1: 'Some cats are dogs' and 'All dogs are animals' → Some cats are animals (I valid). Step 2: 'No animal is a plant' → The cats that are animals are not plants → Some cats are not plants (II valid). Step 3: Conclusion III: 'Some plants are dogs' - Contradicts 'no animal is a plant' since dogs are animals. Invalid. Step 4: Only I and II follow.",
+      "elimination": "Only conclusions I and II are valid.",
+      "trap": "Dogs are animals, so no plant is a dog.",
+      "time": "40 seconds"
+    },
+    {
+      "id": 73,
+      "q": "Statement: All books are pages. Some pages are covers. All covers are hard. Conclusions: I. Some books are hard. II. Some pages are hard. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "syllogism",
+      "exp": "Step 1: 'All books are pages' means books are a subset of pages. Step 2: 'Some pages are covers' means there is an overlap between pages and covers. Step 3: 'All covers are hard' → The pages that are covers are hard → Some pages are hard (II valid). Step 4: The overlap between pages and covers may or may not include books (I invalid). Step 5: Only Conclusion II follows.",
+      "elimination": "Only the conclusion about pages being hard is valid.",
+      "trap": "Do not assume books are in the pages-covers overlap.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 74,
+      "q": "Statement: All A are B. No B is C. All D are C. Conclusions: I. No A is C. II. No D is A. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "negative-statement",
+      "exp": "Step 1: 'All A are B' and 'No B is C' → No A is C (I valid). Step 2: 'No B is C' and 'All D are C' → No D is B (since D is subset of C, and no B is C → no D is B). Step 3: 'All A are B' and 'No D is B' → No D is A (II valid). Step 4: Both conclusions follow.",
+      "elimination": "Both conclusions are valid.",
+      "trap": "Chain the negative statements correctly.",
+      "time": "40 seconds"
+    },
+    {
+      "id": 75,
+      "q": "Statement: Some A are B. All B are C. Some C are D. No D is E. Conclusions: I. Some A are C. II. Some A are not E. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "syllogism",
+      "exp": "Step 1: 'Some A are B' and 'All B are C' → Some A are C (I valid). Step 2: 'Some C are D' and 'No D is E' → Some C are not E. But does that mean some A are not E? The C's that are A may or may not be the C's that are D. We cannot guarantee some A are not E (II invalid). Step 3: Only Conclusion I follows.",
+      "elimination": "Only the chain between A and C is guaranteed.",
+      "trap": "Do not assume the A-C overlap includes the C-D overlap.",
+      "time": "40 seconds"
+    },
+    {
+      "id": 76,
+      "q": "Statement: The Minister questioned the utility of the space research programme and suggested its replacement by other areas of felt national needs. Conclusions: I. Exploring the space does not contribute to critical national needs. II. Research should be oriented to national needs. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "assumed",
+      "exp": "Step 1: The statement says the Minister questioned the utility of space research and suggested replacement with other national needs. Step 2: Conclusion I: 'Space does not contribute to national needs' - The Minister questioned it, but that doesn't mean it doesn't contribute. Invalid. Step 3: Conclusion II: 'Research should be oriented to national needs' - The Minister's suggestion implies this. Valid.[reference:48]",
+      "elimination": "The first conclusion is too strong.",
+      "trap": "Questioning utility does not prove lack of utility.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 77,
+      "q": "Statement: The government has increased the price of fuel. Conclusions: I. The government wants to reduce fuel consumption. II. The government wants to increase revenue. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "assumed",
+      "exp": "Step 1: The statement says fuel prices have been increased. Step 2: Conclusion I: 'Reduce fuel consumption' - Higher prices typically discourage consumption. Reasonable assumption. Step 3: Conclusion II: 'Increase revenue' - Higher prices also generate more revenue. Reasonable assumption. Step 4: Both conclusions follow as possible assumptions.",
+      "elimination": "Both are reasonable inferences.",
+      "trap": "Multiple valid assumptions can follow from one statement.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 78,
+      "q": "Statement: The company has decided to give bonuses to all employees this year. Conclusions: I. The company is profitable this year. II. All employees will receive bonuses. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "direct",
+      "exp": "Step 1: The statement directly says the company has decided to give bonuses to all employees. Step 2: Conclusion I: 'The company is profitable' - Not necessarily; they may give bonuses for other reasons. Invalid. Step 3: Conclusion II: 'All employees will receive bonuses' - Directly follows. Valid. Step 4: Only Conclusion II follows.",
+      "elimination": "Profitability is not guaranteed.",
+      "trap": "Do not assume reasons for bonuses.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 79,
+      "q": "Statement: Every man should have his identity card with him. That card should mention his blood group, complete address and telephone number for contact, in case, some serious accident take place. Conclusions: I. Blood cannot be transfused until its group is mentioned in the card. II. The police needs this information specially when the accident is fatal. III. In case of emergency, he may forget his address and may need the card to contact his house. IV. None is supposed to forget his phone number under any circumstances. V. When the seriously injured person is helpless to tell his blood group, this information would suffice to indicate the required blood group. Which conclusion follows?",
+      "opts": ["Only II follows", "Only III follows", "Only V follows", "Only II and V follow"],
+      "c": 2,
+      "t": "assumed",
+      "exp": "Step 1: The statement says the identity card should have blood group, address, and phone number for emergencies. Step 2: Conclusion V: 'When injured person can't tell blood group, the card would indicate it' - This is the most logical conclusion for why blood group is mentioned. Valid. Step 3: Other conclusions make assumptions not directly supported.[reference:49]",
+      "elimination": "Only the conclusion about blood group identification is clearly supported.",
+      "trap": "The card is for the person's own use in emergencies.",
+      "time": "45 seconds"
+    },
+    {
+      "id": 80,
+      "q": "Statement: It is not good to interfere in anyone's private life. Conclusions: I. Encroachment in anyone's personal matter is bad. II. Professional detail does not come under private life. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "assumed",
+      "exp": "Step 1: The statement says it is not good to interfere in anyone's private life. Step 2: Conclusion I: 'Encroachment in personal matter is bad' - Directly restates the statement. Valid. Step 3: Conclusion II: 'Professional detail does not come under private life' - Not mentioned. Invalid.[reference:50]",
+      "elimination": "Professional life is not mentioned.",
+      "trap": "Do not assume what constitutes private life.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 81,
+      "q": "Statement: Pakistan is planning to test five nuclear bombs in Baghdad. Conclusions: I. People of Pakistan are supporting the decision of the nation. II. Other nations will oppose the decision made by Pakistan. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "irrelevant",
+      "exp": "Step 1: The statement says Pakistan is planning to test nuclear bombs. Step 2: Conclusion I: 'People of Pakistan are supporting' - Not mentioned. Invalid. Step 3: Conclusion II: 'Other nations will oppose' - Not mentioned. Invalid.[reference:51]",
+      "elimination": "Neither conclusion is supported by the statement.",
+      "trap": "Do not assume public support or international reaction.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 82,
+      "q": "Statement: Only smart and intelligent people are invited into the conference. Shakti has been invited to attend the conference. Conclusions: I. Shakti is smart. II. Shakti is intelligent. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "direct",
+      "exp": "Step 1: The statement says only smart and intelligent people are invited. Step 2: Shakti has been invited. Step 3: Therefore, Shakti is both smart and intelligent. Step 4: Both conclusions follow.[reference:52]",
+      "elimination": "Both conclusions are directly supported.",
+      "trap": "The statement explicitly requires both qualities.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 83,
+      "q": "Statement: Company Z is making such a camera that you can take perfect photos even in bad weather. Conclusions: I. No other company has such a manufacturing camera unit. II. Any common man can take perfect shots through this camera. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "irrelevant",
+      "exp": "Step 1: The statement says Company Z is making a camera that can take perfect photos in bad weather. Step 2: Conclusion I: 'No other company has such a unit' - Not mentioned. Invalid. Step 3: Conclusion II: 'Any common man can take perfect shots' - The statement talks about the camera, not the photographer. Invalid.[reference:53]",
+      "elimination": "Neither conclusion is supported.",
+      "trap": "The camera's capability does not mean anyone can use it perfectly.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 84,
+      "q": "Statement: The panel asked 5 members to resign from job or else they will be facing forceful rejection. Four of them have resigned till this evening. Conclusions: I. One manager will resign tomorrow. II. The panel will terminate him tomorrow. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Either I or II follows", "Neither follows"],
+      "c": 2,
+      "t": "complementary",
+      "exp": "Step 1: The statement says 5 members must resign or face termination. Step 2: Four have resigned. Step 3: The fifth will either resign (I) or be terminated (II). Step 4: Either I or II follows.[reference:54]",
+      "elimination": "Both cannot be true simultaneously.",
+      "trap": "This is an 'Either-Or' case.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 85,
+      "q": "Statement: Fashion is a form of ugliness and becomes necessary to change every six months. Conclusions: I. Fashion designers are incapable of understanding the mind of the general public very well. II. Public go for a new change every time. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "assumed",
+      "exp": "Step 1: The statement says fashion changes every six months. Step 2: Conclusion I: 'Designers are incapable' - Not mentioned. Invalid. Step 3: Conclusion II: 'Public go for a new change' - Since fashion changes every six months, people must go for new changes. Valid.[reference:55]",
+      "elimination": "Designer capability is not mentioned.",
+      "trap": "Do not assume reasons for fashion changes.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 86,
+      "q": "Statement: Nepal was selected by the UNICEF executive board. Conclusions: I. Nepal has more number of children. II. Nepal has better facilities for children. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "irrelevant",
+      "exp": "Step 1: The statement says Nepal was selected by UNICEF. Step 2: Conclusion I: 'More number of children' - Not mentioned. Invalid. Step 3: Conclusion II: 'Better facilities' - Not mentioned. Invalid.[reference:56]",
+      "elimination": "Neither conclusion is supported.",
+      "trap": "Selection by UNICEF does not imply either reason.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 87,
+      "q": "Statement: Reading makes a full man, conference a ready man and writing an exact man. Conclusions: I. The product must be good in quality. II. The price of product must be reasonable. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "irrelevant",
+      "exp": "Step 1: The statement is about reading, conference, and writing making a full, ready, and exact man. Step 2: The conclusions about product quality and price are completely irrelevant. Step 3: Neither conclusion follows.[reference:57]",
+      "elimination": "Both conclusions are irrelevant to the statement.",
+      "trap": "Do not force relevance where none exists.",
+      "time": "20 seconds"
+    },
+    {
+      "id": 88,
+      "q": "Statement: This world is neither good nor evil, each man manufactures a world for himself. Conclusions: I. Some people create a good world. II. Some people create a bad world. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "irrelevant",
+      "exp": "Step 1: The statement says each man manufactures a world for himself but doesn't specify good or bad. Step 2: Conclusion I and II make assumptions about what kind of world people create. Step 3: Neither conclusion follows.[reference:58]",
+      "elimination": "Neither conclusion is supported.",
+      "trap": "The statement does not specify the nature of the world each creates.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 89,
+      "q": "Statement: Vegetables prices are soaring in the market. Conclusions: I. Vegetables are becoming a rare commodity. II. People cannot eat vegetables. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "irrelevant",
+      "exp": "Step 1: The statement says vegetable prices are soaring. Step 2: Conclusion I: 'Vegetables are becoming rare' - High prices do not necessarily mean rarity. Invalid. Step 3: Conclusion II: 'People cannot eat vegetables' - High prices do not mean people cannot eat them. Invalid.[reference:59][reference:60]",
+      "elimination": "Neither conclusion is supported.",
+      "trap": "Price increase does not imply rarity or inability to consume.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 90,
+      "q": "Statement: Quality has a price tag. India is allocating lots of funds to education. Conclusions: I. Quality of education in India would improve soon. II. Funding alone can enhance quality of education. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 0,
+      "t": "assumed",
+      "exp": "Step 1: The statement says quality has a price tag and India is allocating funds to education. Step 2: Conclusion I: 'Quality of education would improve' - Since quality requires funding and India is funding, improvement is likely. Valid. Step 3: Conclusion II: 'Funding alone can enhance quality' - The statement says quality has a price tag, but does not say funding alone is sufficient. Invalid.[reference:61]",
+      "elimination": "Funding alone is not stated as sufficient.",
+      "trap": "'Price tag' means funding is necessary, not sufficient.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 91,
+      "q": "Statement: All the organised persons find time for rest. Sunita inspite of her very busy schedule, finds time for rest. Conclusions: I. Sunita is an organised person. II. Sunita is an industrious person. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "syllogism",
+      "exp": "Step 1: 'All organised persons find time for rest' → If someone finds time for rest, they may be organised, but not necessarily. However, Sunita finds time for rest despite a busy schedule. Step 2: This implies she is organised (I valid) because organised persons find time for rest. Step 3: A busy schedule implies she is industrious (II valid). Step 4: Both conclusions follow.[reference:62]",
+      "elimination": "Both conclusions are reasonable.",
+      "trap": "A busy schedule implies industriousness.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 92,
+      "q": "Statement: In a one day cricket match, the total runs made by a team were 200. Out of these 160 runs were made by spinners. 80% of the runs were made by spinners. Which conclusion follows?",
+      "opts": ["The team has good spinners", "The team has poor batsmen", "The team has only spinners", "None of these"],
+      "c": 3,
+      "t": "irrelevant",
+      "exp": "Step 1: The statement says 160 out of 200 runs were made by spinners. Step 2: This means 80% of runs were from spinners. Step 3: This does not imply the team has good spinners (they could have scored runs by chance). Step 4: It does not imply poor batsmen (batsmen might have made the remaining 40 runs). Step 5: It does not imply the team has only spinners. Step 6: None of these conclusions follow.[reference:63]",
+      "elimination": "None of the conclusions are logically supported.",
+      "trap": "Statistics do not imply quality or composition.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 93,
+      "q": "Statement: The manager humiliated Sachin in the presence of his colleagues. Conclusions: I. The manager did not like Sachin. II. Sachin was not popular with his colleagues. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "irrelevant",
+      "exp": "Step 1: The statement says the manager humiliated Sachin. Step 2: This does not prove the manager disliked Sachin (could be other reasons). Step 3: It does not say anything about Sachin's popularity with colleagues. Step 4: Neither conclusion follows.",
+      "elimination": "Both conclusions add new information.",
+      "trap": "Humiliation does not prove dislike or unpopularity.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 94,
+      "q": "Statement: A man must be wise to be a good wrangler. Good wranglers are talkative and boring. Conclusions: I. All the wise persons are boring. II. All the talkative persons are wise. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: 'A man must be wise to be a good wrangler' → All good wranglers are wise. Step 2: 'Good wranglers are talkative and boring' → All good wranglers are talkative and boring. Step 3: Conclusion I: 'All wise persons are boring' - Reverses the logic. Invalid. Step 4: Conclusion II: 'All talkative persons are wise' - Reverses the logic. Invalid.[reference:64]",
+      "elimination": "Both conclusions reverse the statements.",
+      "trap": "Do not reverse 'All A are B' to 'All B are A'.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 95,
+      "q": "Statement: All good athletes win. All good athletes eat well. Conclusions: I. All those who eat well are good athletes. II. All those who win eat well. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: Both statements say good athletes have two properties: win and eat well. Step 2: This does not mean everyone who wins or eats well is a good athlete. Step 3: Neither conclusion follows.[reference:65]",
+      "elimination": "Both conclusions reverse the statements.",
+      "trap": "All A are B does not mean all B are A.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 96,
+      "q": "Statement: All pens are chalks. All chairs are chalks. Conclusions: I. Some pens are chairs. II. Some chalks are pens. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "syllogism",
+      "exp": "Step 1: 'All pens are chalks' and 'All chairs are chalks'. Step 2: Both pens and chairs are subsets of chalks. Step 3: Conclusion I: 'Some pens are chairs' - Not guaranteed. Invalid. Step 4: Conclusion II: 'Some chalks are pens' - Since all pens are chalks, some chalks are pens. Valid.[reference:66]",
+      "elimination": "Two subsets of the same set may not overlap.",
+      "trap": "Do not assume overlap between pens and chairs.",
+      "time": "30 seconds"
+    },
+    {
+      "id": 97,
+      "q": "Statement: All fans are small. All small are rats. Conclusions: I. All fans are rats. II. Some rats are fans. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 2,
+      "t": "syllogism-chain",
+      "exp": "Step 1: Chain: fans → small → rats. Step 2: Conclusion I: 'All fans are rats' - Valid by chain rule. Step 3: Conclusion II: 'Some rats are fans' - Since all fans are rats, some rats are fans. Valid.[reference:67]",
+      "elimination": "Both conclusions are supported.",
+      "trap": "All A are B implies some B are A.",
+      "time": "25 seconds"
+    },
+    {
+      "id": 98,
+      "q": "Statement: No bird is a crow. Some crows are black. Conclusions: I. At least some birds are black. II. Some black which are crows are definitely not birds. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 1,
+      "t": "negative-statement",
+      "exp": "Step 1: 'No bird is a crow' means birds and crows are separate. Step 2: 'Some crows are black' means there are black crows. Step 3: Conclusion I: 'Some birds are black' - No link between birds and black. Invalid. Step 4: Conclusion II: 'Some black which are crows are not birds' - Since no bird is a crow, black crows are not birds. Valid.[reference:68]",
+      "elimination": "There is no link between birds and black.",
+      "trap": "Crows being black does not mean birds are black.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 99,
+      "q": "Statement: Some leaves are roots. Some roots are stems. All flowers are stems. Conclusions: I. No flower is a leaf. II. Some leaves are stem. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: 'Some leaves are roots' and 'Some roots are stems' → No guaranteed link between leaves and stems. Step 2: 'All flowers are stems' → Flowers are a subset of stems. Step 3: Conclusion I: 'No flower is a leaf' - Not guaranteed. Invalid. Step 4: Conclusion II: 'Some leaves are stem' - Not guaranteed (the roots that are stems may not be the roots that are leaves). Invalid.[reference:69]",
+      "elimination": "Neither conclusion is guaranteed.",
+      "trap": "Two 'some' statements do not guarantee a connection.",
+      "time": "35 seconds"
+    },
+    {
+      "id": 100,
+      "q": "Statement: Some forests are huts. Some huts are walls. Some walls are nets. Conclusions: I. Some nets are forests. II. Some nets are huts. Which conclusion follows?",
+      "opts": ["Only I follows", "Only II follows", "Both follow", "Neither follows"],
+      "c": 3,
+      "t": "syllogism",
+      "exp": "Step 1: Three 'some' statements with no guaranteed overlap between non-adjacent terms. Step 2: Conclusion I: 'Some nets are forests' - No link between nets and forests. Invalid. Step 3: Conclusion II: 'Some nets are huts' - No link between nets and huts. Invalid.[reference:70]",
+      "elimination": "Neither conclusion is guaranteed.",
+      "trap": "Multiple 'some' statements do not create chains.",
+      "time": "35 seconds"
+    }
+    ]
+}
