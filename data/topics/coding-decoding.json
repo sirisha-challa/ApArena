@@ -1,0 +1,1910 @@
+{
+  "id": "coding-decoding",
+  "title": "Coding-Decoding",
+  "icon": "⌂",
+  "category": "verbal",
+  "subtitle": "Letter Shifts, Number Coding, Mirror Coding & Substitution",
+  "days": "1-2",
+  "color": "#0284C7",
+  "subtopics": [
+    "Letter Shifts",
+    "Number Coding",
+    "Mirror Coding",
+    "Substitution",
+    "Mixed Patterns"
+  ],
+  "estimatedHours": 12,
+  "readingSections": [
+    {
+      "id": "intro-coding",
+      "title": "What is Coding-Decoding?",
+      "content": "Coding-Decoding is a reasoning skill where letters, numbers, or symbols are transformed using a hidden rule. Your task is to crack the logic. This is one of the most scoring topics in campus placement exams like TCS, Infosys, Wipro, and Accenture.",
+      "subsections": [
+        {
+          "title": "Why Companies Ask",
+          "content": "Coding-decoding tests your ability to find patterns quickly. In IT jobs, you constantly understand how data transforms from one form to another. This shows recruiters you can: find hidden rules, apply rules consistently, and work systematically under pressure."
+        },
+        {
+          "title": "Basic Structure",
+          "content": "You get a word and its code. Example: CAT is coded as FDW. Find the pattern, then either code another word or decode a given code. All questions follow: find the rule, apply the rule."
+        },
+        {
+          "title": "Real-Life Example",
+          "content": "Think of a secret language where every letter shifts by +3 (A->D, B->E). When friend sends FDW, you decode it as CAT. Companies test how fast you learn the secret language."
+        },
+        {
+          "title": "Success Strategy",
+          "content": "Step 1: Write A=1 to Z=26 on rough paper. Step 2: Compare each original letter with its code. Step 3: Note the difference per position. Step 4: Apply same pattern to new word. Step 5: Verify at least 2 letters before finalizing."
+        }
+      ],
+      "type": "concept"
+    },
+    {
+      "id": "letter-coding-types",
+      "title": "Letter Coding Types",
+      "content": "Letter coding transforms letters into other letters. This is the most common category.",
+      "subsections": [
+        {
+          "title": "Forward Shift Coding",
+          "content": "Each letter moves forward by fixed number. Example: CAT->FDW (+3 each). C+3=F, A+3=D, T+3=W. Common shifts: +1, +2, +3, +5. If wrapping: Z+1=A (circular alphabet)."
+        },
+        {
+          "title": "Backward Shift Coding",
+          "content": "Each letter moves backward. Example: DOG->ALD (-3). D-3=A, O-3=L, G-3=D. For wrapping: A-1=Z."
+        },
+        {
+          "title": "Mirror/Reverse Coding",
+          "content": "A<->Z, B<->Y, C<->X. Formula: new_pos = 27 - old_pos. A(1) becomes Z(26). This is like seeing the alphabet in a mirror."
+        },
+        {
+          "title": "Alternating Pattern Coding",
+          "content": "Different letters get different shifts. Example: LAP->OBS: L+3=O, A+1=B, P+3=S. Always check 2+ letter pairs to identify the alternating rule."
+        },
+        {
+          "title": "Group Coding",
+          "content": "Groups of letters coded together. Example: AB->CD, EF->GH. Or reverse pairs: AB->BA, CD->DC."
+        }
+      ],
+      "type": "concept"
+    },
+    {
+      "id": "number-coding",
+      "title": "Number and Mixed Coding",
+      "content": "Numbers represent letters through position values. Letters and numbers can mix.",
+      "subsections": [
+        {
+          "title": "Direct Position Coding",
+          "content": "Write the position number: A=1, B=2... CAT = 3-1-20 = 3120. Very common in TCS and Infosys."
+        },
+        {
+          "title": "Sum/Product of Positions",
+          "content": "Positions are added or multiplied. CAT = 3+1+20 = 24 (single number). Check if code length matches word (concatenated) or shorter (sum)."
+        },
+        {
+          "title": "Digit Manipulation",
+          "content": "Multiple operations on digits: sum (12->3), reverse (23->32), product (12->2)."
+        },
+        {
+          "title": "Symbol-Based Coding",
+          "content": "Symbols like star, circle, #, $ represent letters/numbers. Straightforward substitution."
+        },
+        {
+          "title": "Mixed Letter-Number Coding",
+          "content": "Code has both letters and numbers. Example: GO = G(7)+O(15) = 715. Just concatenate positions."
+        }
+      ],
+      "type": "example"
+    },
+    {
+      "id": "advanced-coding",
+      "title": "Advanced and Company Patterns",
+      "content": "Placement exams often combine multiple patterns.",
+      "subsections": [
+        {
+          "title": "Conditional Coding",
+          "content": "Rule changes based on position or letter type. Vowels get +2, consonants get +3. Or first letter gets +1, last +2, middle +3."
+        },
+        {
+          "title": "Vowel-Consonant Coding",
+          "content": "Different rules for vowels (A,E,I,O,U) and consonants. Identify vowels first, then apply rules."
+        },
+        {
+          "title": "TCS Coding Patterns",
+          "content": "Forward/backward shifts (+3, +5), Mirror coding, Position value concatenation, Alternating patterns. 45 sec per question."
+        },
+        {
+          "title": "Infosys Coding Patterns",
+          "content": "Complex alternating patterns, Vowel-consonant coding, Mixed letter-number. 60 sec per question. Harder."
+        },
+        {
+          "title": "Wipro/Accenture Patterns",
+          "content": "Simple shifts (+1,+2,+3), Direct substitution, Position coding. Easier but faster pace: 30-35 sec."
+        }
+      ],
+      "type": "guided"
+    },
+    {
+      "id": "coding-tricks",
+      "title": "Speed Shortcuts",
+      "content": "Solve coding-decoding in 15-25 seconds.",
+      "subsections": [
+        {
+          "title": "EJOTY Trick",
+          "content": "E=5, J=10, O=15, T=20, Y=25. Use nearest anchor. Need S? S is 1 before T(20)=19. Need G? G is 2 after E(5)=7."
+        },
+        {
+          "title": "The 27-Minus Trick",
+          "content": "For mirror coding: 27 - position. Memorize one formula. A(1) -> 27-1=26=Z. M(13) -> 27-13=14=N."
+        },
+        {
+          "title": "Pattern Detection Speed",
+          "content": "Check first AND last letter pairs first. If same shift, rule is uniform. If different, check for alternating."
+        },
+        {
+          "title": "Two-Letter Verification",
+          "content": "Never guess from one pair. Always check at least two letter pairs. If they match, you are confident."
+        },
+        {
+          "title": "Reverse Check for Decoding",
+          "content": "To decode, reverse the rule. If coding was +3, decoding is -3. Mirror (27-pos) is its own reverse!"
+        }
+      ],
+      "type": "practice"
+    },
+    {
+      "id": "common-mistakes",
+      "title": "Common Mistakes",
+      "content": "Learn these to avoid losing easy marks.",
+      "subsections": [
+        {
+          "title": "Wrong Direction",
+          "content": "If coding adds +3, decoding subtracts -3. Always check: original to code or code to original? Write arrows!"
+        },
+        {
+          "title": "Forgetting Wrap Around",
+          "content": "Z+1 = A (not Z). A-1 = Z (not A). Use circular alphabet: after Z comes A, before A is Z."
+        },
+        {
+          "title": "Miscounting Positions",
+          "content": "Use EJOTY anchors or write positions. Quick check: A=1, E=5, I=9, O=15, U=21."
+        },
+        {
+          "title": "Assuming Uniform Pattern",
+          "content": "Not all codes use same shift. Check 2-3 pairs. Look for vowel/consonant distinction or position-based rules."
+        },
+        {
+          "title": "Skipping Verification",
+          "content": "Take 5 seconds to verify one letter pair. If the code matches your rule, you are correct. One quick check saves 5 wrong answers."
+        }
+      ],
+      "type": "concept"
+    },
+    {
+      "id": "revision-coding",
+      "title": "Quick Revision",
+      "content": "One-page recap of everything for Coding-Decoding.",
+      "subsections": [
+        {
+          "title": "30-Second Revision",
+          "content": "Forward = Add. Backward = Subtract. Mirror = 27-P. Position = A=1 to Z=26. Substitution = Direct mapping. Always check 2+ pairs."
+        },
+        {
+          "title": "Position Summary",
+          "content": "A=1, B=2, C=3, D=4, E=5, F=6, G=7, H=8, I=9, J=10, K=11, L=12, M=13, N=14, O=15, P=16, Q=17, R=18, S=19, T=20, U=21, V=22, W=23, X=24, Y=25, Z=26."
+        },
+        {
+          "title": "Interview Tips",
+          "content": "This is one of the fastest-scoring topics. Most questions solve in 20-30 seconds with practice. Focus on: speed position finding (EJOTY), pattern detection (check 2 letters), and careful arithmetic (wrap-around). Practice 20 daily questions for automaticity."
+        }
+      ],
+      "type": "mastery"
+    }
+  ],
+  "formulas": [
+    {
+      "id": "pos-value-rule",
+      "title": "Alphabet Position Value",
+      "formula": "A=1, B=2, C=3, ..., Z=26",
+      "explanation": "Foundation of all coding-decoding. Each letter has a fixed position. Memorize using EJOTY trick: E=5, J=10, O=15, T=20, Y=25.",
+      "example": "CAT = C(3)A(1)T(20) = 3120"
+    },
+    {
+      "id": "letter-shift-forward",
+      "title": "Forward Letter Shift",
+      "formula": "Letter -> Letter + n",
+      "explanation": "Each letter shifts forward by a fixed number. Same shift for all or alternating.",
+      "example": "CAT -> FDW (+3 each): C+3=F, A+3=D, T+3=W"
+    },
+    {
+      "id": "letter-shift-backward",
+      "title": "Backward Letter Shift",
+      "formula": "Letter -> Letter - n",
+      "explanation": "Each letter shifts backward. Handle wrapping: A-1 = Z.",
+      "example": "DOG -> ALD (-3 each): D-3=A, O-3=L, G-3=D"
+    },
+    {
+      "id": "reverse-code-rule",
+      "title": "Reverse/Mirror Coding",
+      "formula": "Position -> 27 - Position",
+      "explanation": "A(1) -> Z(26), B(2) -> Y(25). Just subtract from 27.",
+      "example": "MAN -> NZM: M(13)->27-13=14=N, A->Z, N(14)->13=M"
+    },
+    {
+      "id": "substitution-coding",
+      "title": "Direct Substitution Coding",
+      "formula": "Letter_X -> Code_Y (specific mapping)",
+      "explanation": "Each letter maps to a specific code letter. May be random but consistent.",
+      "example": "If EARTH=QWERT then E->Q, A->W, R->E, T->R, H->T"
+    },
+    {
+      "id": "mixed-coding",
+      "title": "Mixed Letter-Number Coding",
+      "formula": "Position values concatenated",
+      "explanation": "Write position number of each letter and join. CAT -> C(3)A(1)T(20) -> 3120.",
+      "example": "SUN -> S=19, U=21, N=14 -> 192114"
+    },
+    {
+      "id": "symbol-coding",
+      "title": "Symbol to Value Coding",
+      "formula": "Symbol -> Assigned Value",
+      "explanation": "Symbols (like stars, circles, #, $) are assigned values.",
+      "example": "If star=1, circle=2 then star+circle = 3"
+    },
+    {
+      "id": "ejoty-trick",
+      "title": "EJOTY Quick Reference",
+      "formula": "E=5, J=10, O=15, T=20, Y=25",
+      "explanation": "Use these 5 anchor points for quick position finding.",
+      "example": "Find M: M is 2 before O(15) -> 13. Find R: R is 3 after O(15) -> 18"
+    }
+  ],
+  "practiceProblems": {
+    "pos-value-rule": [
+      {
+        "q": "If A=1, B=2, then CAB = ?",
+        "s": [
+          "Step 1: C=3, A=1, B=2.",
+          "Step 2: CAB = 3 1 2 = 312."
+        ],
+        "a": "312"
+      },
+      {
+        "q": "If BAG = 217, then DOG = ?",
+        "s": [
+          "Step 1: B=2, A=1, G=7.",
+          "Step 2: D=4, O=15, G=7 -> DOG=4157."
+        ],
+        "a": "4157"
+      },
+      {
+        "q": "If TOP = 201516, then CAT = ?",
+        "s": [
+          "Step 1: T=20, O=15, P=16.",
+          "Step 2: C=3, A=1, T=20 -> CAT=3120."
+        ],
+        "a": "3120"
+      },
+      {
+        "q": "If CODE = 31545, what is D?",
+        "s": [
+          "Step 1: C=3, O=15, D=4, E=5.",
+          "Step 2: D=4."
+        ],
+        "a": "4"
+      },
+      {
+        "q": "If BALL = 211212, then BAT = ?",
+        "s": [
+          "Step 1: B=2, A=1, L=12.",
+          "Step 2: B=2, A=1, T=20 -> BAT=2120."
+        ],
+        "a": "2120"
+      }
+    ],
+    "letter-shift-forward": [
+      {
+        "q": "If CAT = FDW, then DOG = ?",
+        "s": [
+          "Step 1: C+3=F, A+3=D, T+3=W.",
+          "Step 2: D+3=G, O+3=R, G+3=J.",
+          "Step 3: DOG = GRJ."
+        ],
+        "a": "GRJ"
+      },
+      {
+        "q": "If BAG = EDJ, then PEN = ?",
+        "s": [
+          "Step 1: B+3=E, A+3=D, G+3=J.",
+          "Step 2: P+3=S, E+3=H, N+3=Q.",
+          "Step 3: PEN = SHQ."
+        ],
+        "a": "SHQ"
+      },
+      {
+        "q": "If BOOK = ERRN, then PAGE = ?",
+        "s": [
+          "Step 1: B+3=E, O+3=R, O+3=R, K+3=N.",
+          "Step 2: P+3=S, A+3=D, G+3=J, E+3=H.",
+          "Step 3: PAGE = SDJH."
+        ],
+        "a": "SDJH"
+      },
+      {
+        "q": "If STAR = UVCT, then MOON = ?",
+        "s": [
+          "Step 1: S+2=U, T+2=V, A+2=C, R+2=T.",
+          "Step 2: M+2=O, O+2=Q, O+2=Q, N+2=P.",
+          "Step 3: MOON = OQQP."
+        ],
+        "a": "OQQP"
+      },
+      {
+        "q": "If WATER = XBUFS, then FIRE = ?",
+        "s": [
+          "Step 1: W+1=X, A+1=B, T+1=U, E+1=F, R+1=S.",
+          "Step 2: F+1=G, I+1=J, R+1=S, E+1=F.",
+          "Step 3: FIRE = GJSF."
+        ],
+        "a": "GJSF"
+      }
+    ],
+    "letter-shift-backward": [
+      {
+        "q": "If DOG = ALD, then CAT = ?",
+        "s": [
+          "Step 1: D-3=A, O-3=L, G-3=D.",
+          "Step 2: C-3=Z (wrap), A-3=X (wrap), T-3=Q.",
+          "Step 3: CAT = ZXQ."
+        ],
+        "a": "ZXQ"
+      },
+      {
+        "q": "If PEN = MBK, then RAT = ?",
+        "s": [
+          "Step 1: P-3=M, E-3=B, N-3=K.",
+          "Step 2: R-3=O, A-3=X (wrap), T-3=Q.",
+          "Step 3: RAT = OXQ."
+        ],
+        "a": "OXQ"
+      },
+      {
+        "q": "If SUN = PRK, then MOON = ?",
+        "s": [
+          "Step 1: S-3=P, U-3=R, N-3=K.",
+          "Step 2: M-3=J, O-3=L, O-3=L, N-3=K.",
+          "Step 3: MOON = JLLK."
+        ],
+        "a": "JLLK"
+      },
+      {
+        "q": "If LION = KHRM, then TIGER = ?",
+        "s": [
+          "Step 1: L-1=K, I-1=H, O-1=N, N-1=M.",
+          "Step 2: T-1=S, I-1=H, G-1=F, E-1=D, R-1=Q.",
+          "Step 3: TIGER = SHFDQ."
+        ],
+        "a": "SHFDQ"
+      },
+      {
+        "q": "If BALL = A Z K K (each -1), then CALL = ?",
+        "s": [
+          "Step 1: B-1=A, A-1=Z, L-1=K, L-1=K.",
+          "Step 2: C-1=B, A-1=Z, L-1=K, L-1=K.",
+          "Step 3: CALL = BZKK."
+        ],
+        "a": "BZKK"
+      }
+    ],
+    "reverse-code-rule": [
+      {
+        "q": "If ABC = ZYX, then CAB = ?",
+        "s": [
+          "Step 1: A<->Z, B<->Y, C<->X (27-pos rule).",
+          "Step 2: C<->X, A<->Z, B<->Y.",
+          "Step 3: CAB = XZY."
+        ],
+        "a": "XZY"
+      },
+      {
+        "q": "If MAN = NZM, then CAN = ?",
+        "s": [
+          "Step 1: M(13)->27-13=14=N, A->Z, N->M.",
+          "Step 2: C(3)->24=X, A->Z, N->M.",
+          "Step 3: CAN = XZM."
+        ],
+        "a": "XZM"
+      },
+      {
+        "q": "If PEN = KVM, then TOP = ?",
+        "s": [
+          "Step 1: P(16)->11=K, E(5)->22=V, N(14)->13=M.",
+          "Step 2: T(20)->7=G, O(15)->12=L, P(16)->11=K.",
+          "Step 3: TOP = GLK."
+        ],
+        "a": "GLK"
+      },
+      {
+        "q": "If BALL = YZOO, then CALL = ?",
+        "s": [
+          "Step 1: B->Y, A->Z, L->O, L->O.",
+          "Step 2: C->X, A->Z, L->O, L->O.",
+          "Step 3: CALL = XZOO."
+        ],
+        "a": "XZOO"
+      },
+      {
+        "q": "If ROSE = ILHV, then LILY = ?",
+        "s": [
+          "Step 1: R(18)->9=I, O(15)->12=L, S(19)->8=H, E(5)->22=V.",
+          "Step 2: L(12)->15=O, I(9)->18=R, L(12)->15=O, Y(25)->2=B.",
+          "Step 3: LILY = OROB."
+        ],
+        "a": "OROB"
+      }
+    ],
+    "substitution-coding": [
+      {
+        "q": "If APPLE = BQQMF, then BANANA = ?",
+        "s": [
+          "Step 1: Each letter shifts +1: A->B, P->Q, P->Q, L->M, E->F.",
+          "Step 2: B->C, A->B, N->O, A->B, N->O, A->B.",
+          "Step 3: BANANA = CBOBOB."
+        ],
+        "a": "CBOBOB"
+      },
+      {
+        "q": "If STAR = UVCT, then MOON = ?",
+        "s": [
+          "Step 1: S+2=U, T+2=V, A+2=C, R+2=T. All +2.",
+          "Step 2: M+2=O, O+2=Q, O+2=Q, N+2=P.",
+          "Step 3: MOON = OQQP."
+        ],
+        "a": "OQQP"
+      },
+      {
+        "q": "If PINK = QJOL and BALL = CBMM, then RING = ?",
+        "s": [
+          "Step 1: P->Q(+1), I->J(+1), N->O(+1), K->L(+1). All +1.",
+          "Step 2: R->S, I->J, N->O, G->H.",
+          "Step 3: RING = SJOH."
+        ],
+        "a": "SJOH"
+      },
+      {
+        "q": "If LAPTOP = MBQUPQ, then MOBILE = ?",
+        "s": [
+          "Step 1: L->M, A->B, P->Q, T->U, O->P, P->Q. All +1.",
+          "Step 2: M->N, O->P, B->C, I->J, L->M, E->F.",
+          "Step 3: MOBILE = NPCJMF."
+        ],
+        "a": "NPCJMF"
+      },
+      {
+        "q": "If SCHOOL = SDIPPM, then COLLEGE = ?",
+        "s": [
+          "Step 1: S->S(+0), C->D(+1), H->I(+1), O->P(+1), O->P(+1), L->M(+1).",
+          "Step 2: C->C(+0), O->P(+1), L->M(+1), L->M(+1), E->F(+1), G->H(+1), E->F(+1).",
+          "Step 3: COLLEGE = DPMMFHF."
+        ],
+        "a": "DPMMFHF"
+      }
+    ],
+    "mixed-coding": [
+      {
+        "q": "If GO = 715 and TO = 2015, then GOT = ?",
+        "s": [
+          "Step 1: G=7, O=15 -> GO=715. T=20, O=15 -> TO=2015.",
+          "Step 2: G=7, O=15, T=20 -> GOT=71520."
+        ],
+        "a": "71520"
+      },
+      {
+        "q": "If SUN = 192114 and MOON = 13151514, then MOONLIT = ?",
+        "s": [
+          "Step 1: S=19, U=21, N=14.",
+          "Step 2: M=13, O=15, O=15, N=14, L=12, I=9, T=20.",
+          "Step 3: MOONLIT = 1315151412920."
+        ],
+        "a": "1315151412920"
+      },
+      {
+        "q": "If ARM = 11813, then RAM = ?",
+        "s": [
+          "Step 1: A=1, R=18, M=13.",
+          "Step 2: R=18, A=1, M=13 -> RAM=18113."
+        ],
+        "a": "18113"
+      },
+      {
+        "q": "If BAD = 214, then DAB = ?",
+        "s": [
+          "Step 1: B=2, A=1, D=4.",
+          "Step 2: D=4, A=1, B=2 -> DAB=412."
+        ],
+        "a": "412"
+      },
+      {
+        "q": "If CAB = 312, then BAC = ?",
+        "s": [
+          "Step 1: C=3, A=1, B=2.",
+          "Step 2: B=2, A=1, C=3 -> BAC=213."
+        ],
+        "a": "213"
+      }
+    ],
+    "symbol-coding": [
+      {
+        "q": "If star = 1, circle = 2, triangle = 3, then star-circle-triangle = ?",
+        "s": [
+          "Step 1: star=1, circle=2, triangle=3.",
+          "Step 2: star-circle-triangle = 1 2 3 = 123."
+        ],
+        "a": "123"
+      },
+      {
+        "q": "If # = A, $ = B, % = C, then #$% = ?",
+        "s": [
+          "Step 1: #=A, $=B, %=C.",
+          "Step 2: #$% = ABC."
+        ],
+        "a": "ABC"
+      },
+      {
+        "q": "If alpha-beta-gamma = 123 and beta-gamma-alpha = 231, then gamma-alpha-beta = ?",
+        "s": [
+          "Step 1: alpha=1, beta=2, gamma=3.",
+          "Step 2: gamma-alpha-beta = 3 1 2 = 312."
+        ],
+        "a": "312"
+      },
+      {
+        "q": "If @=L, #=O, $=V, %=E, then @#$% = ?",
+        "s": [
+          "Step 1: @=L, #=O, $=V, %=E.",
+          "Step 2: @#$% = LOVE."
+        ],
+        "a": "LOVE"
+      },
+      {
+        "q": "If A=*, B=#, C=$, then A+B+C = ?",
+        "s": [
+          "Step 1: A=*, B=#, C=$.",
+          "Step 2: A+B+C = * + # + $."
+        ],
+        "a": "*#$"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "q": "If A=1, B=2, then CAB = ?",
+      "opts": [
+        "312",
+        "123",
+        "321",
+        "213"
+      ],
+      "c": 0,
+      "t": "position",
+      "exp": "Step 1: C=3, A=1, B=2. Step 2: Concatenate as 312. Step 3: 312 correct.",
+      "id": 1
+    },
+    {
+      "q": "If CAT=FDW, then DOG=?",
+      "opts": [
+        "GRJ",
+        "GRI",
+        "FRJ",
+        "GRH"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: Each letter +3: C->F, A->D, T->W. Step 2: D+3=G, O+3=R, G+3=J. Step 3: GRJ correct.",
+      "id": 2
+    },
+    {
+      "q": "If A=Z, then B=?",
+      "opts": [
+        "Y",
+        "X",
+        "A",
+        "C"
+      ],
+      "c": 0,
+      "t": "mirror",
+      "exp": "Step 1: A(1) maps to Z(26) by 27-pos. Step 2: B(2)->27-2=25=Y. Step 3: Y correct.",
+      "id": 3
+    },
+    {
+      "q": "If BAG=217, then DOG=?",
+      "opts": [
+        "4157",
+        "4175",
+        "4517",
+        "4715"
+      ],
+      "c": 0,
+      "t": "position",
+      "exp": "Step 1: B=2,A=1,G=7->217. Step 2: D=4,O=15,G=7->4157. Step 3: 4157 correct.",
+      "id": 4
+    },
+    {
+      "q": "If SUN=192114, then NUS=?",
+      "opts": [
+        "142119",
+        "141921",
+        "211419",
+        "192114"
+      ],
+      "c": 0,
+      "t": "position",
+      "exp": "Step 1: S=19,U=21,N=14. Step 2: N=14,U=21,S=19->142119. Step 3: 142119 correct.",
+      "id": 5
+    },
+    {
+      "q": "If APPLE=BQQMF, then BANANA=?",
+      "opts": [
+        "CBOBOB",
+        "CBOPOB",
+        "CBNBOB",
+        "DBOBOB"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: All letters +1: A->B,P->Q,P->Q,L->M,E->F. Step 2: B->C,A->B,N->O,A->B,N->O,A->B. Step 3: CBOBOB correct.",
+      "id": 6
+    },
+    {
+      "q": "If SUN=PRK, then MOON=?",
+      "opts": [
+        "JLLK",
+        "JLLJ",
+        "KLLK",
+        "JLKK"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: S-3=P,U-3=R,N-3=K. Step 2: M-3=J,O-3=L,O-3=L,N-3=K. Step 3: JLLK correct.",
+      "id": 7
+    },
+    {
+      "q": "If GO=715 and TO=2015, then GOT=?",
+      "opts": [
+        "71520",
+        "72015",
+        "15207",
+        "20157"
+      ],
+      "c": 0,
+      "t": "position",
+      "exp": "Step 1: G=7,O=15,T=20. Step 2: GOT=71520. Step 3: 71520 correct.",
+      "id": 8
+    },
+    {
+      "q": "If BALL=YZOO, then CALL=?",
+      "opts": [
+        "XZOO",
+        "YZPP",
+        "XAPP",
+        "ZZOO"
+      ],
+      "c": 0,
+      "t": "mirror",
+      "exp": "Step 1: B->Y,A->Z,L->O,L->O (27-pos). Step 2: C->X,A->Z,L->O,L->O. Step 3: XZOO correct.",
+      "id": 9
+    },
+    {
+      "q": "If TOP=USQ, then BOT=?",
+      "opts": [
+        "CPU",
+        "CQU",
+        "BPT",
+        "COU"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: T+1=U,O+1=P,P+1=Q. Step 2: B+1=C,O+1=P,T+1=U. Step 3: CPU correct.",
+      "id": 10
+    },
+    {
+      "q": "If STAR=UVCT, then MOON=?",
+      "opts": [
+        "OQQP",
+        "OQPQ",
+        "OPQP",
+        "NQQP"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: S+2=U,T+2=V,A+2=C,R+2=T. Step 2: M+2=O,O+2=Q,O+2=Q,N+2=P. Step 3: OQQP correct.",
+      "id": 11
+    },
+    {
+      "q": "If CAB=312, then BAC=?",
+      "opts": [
+        "213",
+        "312",
+        "321",
+        "132"
+      ],
+      "c": 0,
+      "t": "position",
+      "exp": "Step 1: C=3,A=1,B=2. Step 2: B=2,A=1,C=3->213. Step 3: 213 correct.",
+      "id": 12
+    },
+    {
+      "q": "If 123=ABC and 456=DEF, then 321=?",
+      "opts": [
+        "CBA",
+        "ABC",
+        "DEF",
+        "FED"
+      ],
+      "c": 0,
+      "t": "substitution",
+      "exp": "Step 1: 1=A,2=B,3=C. Step 2: 321=CBA. Step 3: CBA correct.",
+      "id": 13
+    },
+    {
+      "q": "If HAT=KCW, then SUN=?",
+      "opts": [
+        "VWQ",
+        "VWP",
+        "UWQ",
+        "VXQ"
+      ],
+      "c": 0,
+      "t": "alternating",
+      "exp": "Step 1: H+3=K,A+2=C,T+3=W -> +3,+2,+3. Step 2: S+3=V,U+2=W,N+3=Q. Step 3: VWQ correct.",
+      "id": 14
+    },
+    {
+      "q": "If LAP=OBS, then TOP=?",
+      "opts": [
+        "WPS",
+        "WPT",
+        "VPS",
+        "WOS"
+      ],
+      "c": 0,
+      "t": "alternating",
+      "exp": "Step 1: L+3=O,A+1=B,P+3=S -> +3,+1,+3. Step 2: T+3=W,O+1=P,P+3=S. Step 3: WPS correct.",
+      "id": 15
+    },
+    {
+      "q": "If PEN=KVM, then TOP=?",
+      "opts": [
+        "GLK",
+        "GKL",
+        "HLK",
+        "FLK"
+      ],
+      "c": 0,
+      "t": "mirror",
+      "exp": "Step 1: P(16)->11=K,E(5)->22=V,N(14)->13=M. Step 2: T(20)->7=G,O(15)->12=L,P(16)->11=K. Step 3: GLK correct.",
+      "id": 16
+    },
+    {
+      "q": "If WATER=XBUFS, then FIRE=?",
+      "opts": [
+        "GJSF",
+        "GJSG",
+        "FJSF",
+        "GJSE"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: All +1. Step 2: F+1=G,I+1=J,R+1=S,E+1=F. Step 3: GJSF correct.",
+      "id": 17
+    },
+    {
+      "q": "If ABCD=ZYXW, then EFGH=?",
+      "opts": [
+        "VUTS",
+        "VUSR",
+        "WVUT",
+        "UTSR"
+      ],
+      "c": 0,
+      "t": "mirror",
+      "exp": "Step 1: Mirror 27-pos. Step 2: E(5)->22=V,F(6)->21=U,G(7)->20=T,H(8)->19=S. Step 3: VUTS correct.",
+      "id": 18
+    },
+    {
+      "q": "If ROSE=ILHV, then LILY=?",
+      "opts": [
+        "OROB",
+        "ORBO",
+        "OROC",
+        "ORPB"
+      ],
+      "c": 0,
+      "t": "mirror",
+      "exp": "Step 1: Mirror 27-pos. Step 2: L(12)->15=O,I(9)->18=R,L(12)->15=O,Y(25)->2=B. Step 3: OROB correct.",
+      "id": 19
+    },
+    {
+      "q": "If PINK=QJOL and BALL=CBMM, then RING=?",
+      "opts": [
+        "SJOH",
+        "SIOH",
+        "SJNH",
+        "SKOH"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: All +1. Step 2: R+1=S,I+1=J,N+1=O,G+1=H. Step 3: SJOH correct.",
+      "id": 20
+    },
+    {
+      "q": "If PENCIL=QFODJM, then ERASER=?",
+      "opts": [
+        "FSBTFS",
+        "FSBTER",
+        "FSBSFS",
+        "FRBTFS"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: All +1. Step 2: E+1=F,R+1=S,A+1=B,S+1=T,E+1=F,R+1=S. Step 3: FSBTFS correct.",
+      "id": 21
+    },
+    {
+      "q": "If CONSTANT=DPOTUBOU, then BEAUTIFUL=?",
+      "opts": [
+        "CFBUVJGVM",
+        "CFBUVJGVL",
+        "CFBUVJHVN",
+        "CFAUVJGVM"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: All +1. Step 2: B->C,E->F,A->B,U->V,T->U,I->J,F->G,U->V,L->M. Step 3: CFBUVJGVM correct.",
+      "id": 22
+    },
+    {
+      "q": "If SCHOOL=SDIPPM, then COLLEGE=?",
+      "opts": [
+        "DPMMFHF",
+        "DPMMFHG",
+        "DPNMFHF",
+        "DPMMEHF"
+      ],
+      "c": 0,
+      "t": "alternating",
+      "exp": "Step 1: S->S(+0),C->D(+1),H->I(+1),O->P(+1),O->P(+1),L->M(+1). Step 2: C->C(+0),O->P(+1),L->M(+1),L->M(+1),E->F(+1),G->H(+1),E->F(+1). Step 3: DPMMFHF correct.",
+      "id": 23
+    },
+    {
+      "q": "If NATION=1412091514, then INDIA=?",
+      "opts": [
+        "914491",
+        "914149",
+        "941491",
+        "914419"
+      ],
+      "c": 0,
+      "t": "position",
+      "exp": "Step 1: N=14,A=1,T=20,I=9,O=15,N=14. Step 2: I=9,N=14,D=4,I=9,A=1 -> 914491. Step 3: 914491 correct.",
+      "id": 24
+    },
+    {
+      "q": "If MOBILE=131529125, then LAPTOP=?",
+      "opts": [
+        "12116201516",
+        "1211620156",
+        "12116152016",
+        "21116201516"
+      ],
+      "c": 0,
+      "t": "position",
+      "exp": "Step 1: M=13,O=15,B=2,I=9,L=12,E=5 -> 13|15|2|9|12|5. Step 2: L=12,A=1,P=16,T=20,O=15,P=16 -> 12116201516. Step 3: 12116201516 correct.",
+      "id": 25
+    },
+    {
+      "q": "If KITE=NGWH, then BIRD=?",
+      "opts": [
+        "EKUF",
+        "EKVF",
+        "DKUF",
+        "EGUG"
+      ],
+      "c": 0,
+      "t": "alternating",
+      "exp": "Step 1: K->N(+3),I->G(-2),T->W(+3),E->H(+3). Pattern +3,-2,+3,+3. Step 2: B+3=E,I-2=G,R+3=U,D+3=G. Step 3: EGUG correct.",
+      "id": 26
+    },
+    {
+      "q": "If LAPTOP=MBQUPQ, then MOBILE=?",
+      "opts": [
+        "NPCJMF",
+        "NPCJNF",
+        "NPDJMF",
+        "NOCJMF"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: All +1: L->M,A->B,P->Q,T->U,O->P,P->Q. Step 2: M->N,O->P,B->C,I->J,L->M,E->F. Step 3: NPCJMF correct.",
+      "id": 27
+    },
+    {
+      "q": "If star=1, circle=2, triangle=3 then star+circle=?",
+      "opts": [
+        "3",
+        "12",
+        "star+circle",
+        "21"
+      ],
+      "c": 0,
+      "t": "symbol",
+      "exp": "Step 1: star=1, circle=2. Step 2: star+circle = 1+2 = 3. Step 3: 3 correct.",
+      "id": 28
+    },
+    {
+      "id": 29,
+      "q": "If BED=254, then DEB=?",
+      "opts": [
+        "7154",
+        "22114",
+        "452",
+        "14520"
+      ],
+      "c": 2,
+      "t": "position",
+      "exp": "Step 1: Letter positions: B=2, E=5, D=4 -> 254. Step 2: DEB: D=4, E=5, B=2 -> 452. Step 3: 452 is correct."
+    },
+    {
+      "id": 30,
+      "q": "If RED=1854, then DER=?",
+      "opts": [
+        "211212",
+        "61225",
+        "4518",
+        "14520"
+      ],
+      "c": 2,
+      "t": "position",
+      "exp": "Step 1: Letter positions: R=18, E=5, D=4 -> 1854. Step 2: DER: D=4, E=5, R=18 -> 4518. Step 3: 4518 is correct."
+    },
+    {
+      "id": 31,
+      "q": "If ARM=11813, then MRA=?",
+      "opts": [
+        "22114",
+        "18120",
+        "182114",
+        "13181"
+      ],
+      "c": 3,
+      "t": "position",
+      "exp": "Step 1: Letter positions: A=1, R=18, M=13 -> 11813. Step 2: MRA: M=13, R=18, A=1 -> 13181. Step 3: 13181 is correct."
+    },
+    {
+      "id": 32,
+      "q": "If NUS=142119, then SUN=?",
+      "opts": [
+        "191125",
+        "1854",
+        "192114",
+        "4157"
+      ],
+      "c": 2,
+      "t": "position",
+      "exp": "Step 1: Letter positions: N=14, U=21, S=19 -> 142119. Step 2: SUN: S=19, U=21, N=14 -> 192114. Step 3: 192114 is correct."
+    },
+    {
+      "id": 33,
+      "q": "If NET=14520, then TEN=?",
+      "opts": [
+        "20514",
+        "21524",
+        "18120",
+        "211212"
+      ],
+      "c": 0,
+      "t": "position",
+      "exp": "Step 1: Letter positions: N=14, E=5, T=20 -> 14520. Step 2: TEN: T=20, E=5, N=14 -> 20514. Step 3: 20514 is correct."
+    },
+    {
+      "id": 34,
+      "q": "If SKY=191125, then YKS=?",
+      "opts": [
+        "2120",
+        "3118",
+        "251119",
+        "31545"
+      ],
+      "c": 2,
+      "t": "position",
+      "exp": "Step 1: Letter positions: S=19, K=11, Y=25 -> 191125. Step 2: YKS: Y=25, K=11, S=19 -> 251119. Step 3: 251119 is correct."
+    },
+    {
+      "id": 35,
+      "q": "If PEN=16514, then NEP=?",
+      "opts": [
+        "201516",
+        "22119",
+        "14516",
+        "13114"
+      ],
+      "c": 2,
+      "t": "position",
+      "exp": "Step 1: Letter positions: P=16, E=5, N=14 -> 16514. Step 2: NEP: N=14, E=5, P=16 -> 14516. Step 3: 14516 is correct."
+    },
+    {
+      "id": 36,
+      "q": "If MAP=13116, then PAM=?",
+      "opts": [
+        "16514",
+        "211212",
+        "8120",
+        "16113"
+      ],
+      "c": 3,
+      "t": "position",
+      "exp": "Step 1: Letter positions: M=13, A=1, P=16 -> 13116. Step 2: PAM: P=16, A=1, M=13 -> 16113. Step 3: 16113 is correct."
+    },
+    {
+      "id": 37,
+      "q": "If VAN=22114, then NAV=?",
+      "opts": [
+        "14122",
+        "182114",
+        "3118",
+        "201516"
+      ],
+      "c": 0,
+      "t": "position",
+      "exp": "Step 1: Letter positions: V=22, A=1, N=14 -> 22114. Step 2: NAV: N=14, A=1, V=22 -> 14122. Step 3: 14122 is correct."
+    },
+    {
+      "id": 38,
+      "q": "If JAM=10113, then MAJ=?",
+      "opts": [
+        "18120",
+        "13110",
+        "8120",
+        "14520"
+      ],
+      "c": 1,
+      "t": "position",
+      "exp": "Step 1: Letter positions: J=10, A=1, M=13 -> 10113. Step 2: MAJ: M=13, A=1, J=10 -> 13110. Step 3: 13110 is correct."
+    },
+    {
+      "id": 39,
+      "q": "If BALL=211212, then LLAB=?",
+      "opts": [
+        "22114",
+        "121212",
+        "18120",
+        "3120"
+      ],
+      "c": 1,
+      "t": "position",
+      "exp": "Step 1: Letter positions: B=2, A=1, L=12, L=12 -> 211212. Step 2: LLAB: L=12, L=12, A=1, B=2 -> 121212. Step 3: 121212 is correct."
+    },
+    {
+      "id": 40,
+      "q": "If CAR=3118, then RAC=?",
+      "opts": [
+        "32116",
+        "217",
+        "1813",
+        "254"
+      ],
+      "c": 2,
+      "t": "position",
+      "exp": "Step 1: Letter positions: C=3, A=1, R=18 -> 3118. Step 2: RAC: R=18, A=1, C=3 -> 1813. Step 3: 1813 is correct."
+    },
+    {
+      "id": 41,
+      "q": "If TOP=201516, then POT=?",
+      "opts": [
+        "32116",
+        "161520",
+        "254",
+        "211212"
+      ],
+      "c": 1,
+      "t": "position",
+      "exp": "Step 1: Letter positions: T=20, O=15, P=16 -> 201516. Step 2: POT: P=16, O=15, T=20 -> 161520. Step 3: 161520 is correct."
+    },
+    {
+      "id": 42,
+      "q": "If SIT=19920, then TIS=?",
+      "opts": [
+        "1854",
+        "20919",
+        "254",
+        "22119"
+      ],
+      "c": 1,
+      "t": "position",
+      "exp": "Step 1: Letter positions: S=19, I=9, T=20 -> 19920. Step 2: TIS: T=20, I=9, S=19 -> 20919. Step 3: 20919 is correct."
+    },
+    {
+      "id": 43,
+      "q": "If POT=161520, then TOP=?",
+      "opts": [
+        "11813",
+        "201516",
+        "191125",
+        "61225"
+      ],
+      "c": 1,
+      "t": "position",
+      "exp": "Step 1: Letter positions: P=16, O=15, T=20 -> 161520. Step 2: TOP: T=20, O=15, P=16 -> 201516. Step 3: 201516 is correct."
+    },
+    {
+      "id": 44,
+      "q": "If CUT=32120, then TUC=?",
+      "opts": [
+        "161520",
+        "20213",
+        "32120",
+        "211212"
+      ],
+      "c": 1,
+      "t": "position",
+      "exp": "Step 1: Letter positions: C=3, U=21, T=20 -> 32120. Step 2: TUC: T=20, U=21, C=3 -> 20213. Step 3: 20213 is correct."
+    },
+    {
+      "id": 45,
+      "q": "If FLY=61225, then YLF=?",
+      "opts": [
+        "61225",
+        "25126",
+        "10113",
+        "312"
+      ],
+      "c": 1,
+      "t": "position",
+      "exp": "Step 1: Letter positions: F=6, L=12, Y=25 -> 61225. Step 2: YLF: Y=25, L=12, F=6 -> 25126. Step 3: 25126 is correct."
+    },
+    {
+      "id": 46,
+      "q": "If BAG=217, then GAB=?",
+      "opts": [
+        "2120",
+        "201516",
+        "712",
+        "13116"
+      ],
+      "c": 2,
+      "t": "position",
+      "exp": "Step 1: Letter positions: B=2, A=1, G=7 -> 217. Step 2: GAB: G=7, A=1, B=2 -> 712. Step 3: 712 is correct."
+    },
+    {
+      "id": 47,
+      "q": "If MOON=NPPO, what is the code for MOON? (forward +1)",
+      "opts": [
+        "EPH",
+        "CFBS",
+        "MBQUPQ",
+        "NPPO"
+      ],
+      "c": 3,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: M+1=N, O+1=P, O+1=P, N+1=O. Step 2: MOON becomes NPPO. Step 3: NPPO correct."
+    },
+    {
+      "id": 48,
+      "q": "If TOP=UPQ, what is the code for TOP? (forward +1)",
+      "opts": [
+        "CBMM",
+        "UPQ",
+        "UJHFS",
+        "EPH"
+      ],
+      "c": 1,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: T+1=U, O+1=P, P+1=Q. Step 2: TOP becomes UPQ. Step 3: UPQ correct."
+    },
+    {
+      "id": 49,
+      "q": "If DEER=EFFS, what is the code for DEER? (forward +1)",
+      "opts": [
+        "EFFS",
+        "XBUFS",
+        "EPH",
+        "MBQUPQ"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: D+1=E, E+1=F, E+1=F, R+1=S. Step 2: DEER becomes EFFS. Step 3: EFFS correct."
+    },
+    {
+      "id": 50,
+      "q": "If ERASER=FSBTFS, what is the code for ERASER? (forward +1)",
+      "opts": [
+        "QFO",
+        "FSBTFS",
+        "EFFS",
+        "QBHF"
+      ],
+      "c": 1,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: E+1=F, R+1=S, A+1=B, S+1=T, E+1=F, R+1=S. Step 2: ERASER becomes FSBTFS. Step 3: FSBTFS correct."
+    },
+    {
+      "id": 51,
+      "q": "If FISH=GJTI, what is the code for FISH? (forward +1)",
+      "opts": [
+        "TUBS",
+        "GJTI",
+        "MBQ",
+        "GJSF"
+      ],
+      "c": 1,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: F+1=G, I+1=J, S+1=T, H+1=I. Step 2: FISH becomes GJTI. Step 3: GJTI correct."
+    },
+    {
+      "id": 52,
+      "q": "If GOAT=HPBU, what is the code for GOAT? (forward +1)",
+      "opts": [
+        "XPMG",
+        "SJOH",
+        "HPBU",
+        "CBMM"
+      ],
+      "c": 2,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: G+1=H, O+1=P, A+1=B, T+1=U. Step 2: GOAT becomes HPBU. Step 3: HPBU correct."
+    },
+    {
+      "id": 53,
+      "q": "If WATER=XBUFS, what is the code for WATER? (forward +1)",
+      "opts": [
+        "TUBS",
+        "XBUFS",
+        "QJOL",
+        "UJHFS"
+      ],
+      "c": 1,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: W+1=X, A+1=B, T+1=U, E+1=F, R+1=S. Step 2: WATER becomes XBUFS. Step 3: XBUFS correct."
+    },
+    {
+      "id": 54,
+      "q": "If SUN=TVO, what is the code for SUN? (forward +1)",
+      "opts": [
+        "TVO",
+        "QBHF",
+        "QJOL",
+        "SJOH"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: S+1=T, U+1=V, N+1=O. Step 2: SUN becomes TVO. Step 3: TVO correct."
+    },
+    {
+      "id": 55,
+      "q": "If STAR=TUBS, what is the code for STAR? (forward +1)",
+      "opts": [
+        "MJPO",
+        "MBQ",
+        "CBMM",
+        "TUBS"
+      ],
+      "c": 3,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: S+1=T, T+1=U, A+1=B, R+1=S. Step 2: STAR becomes TUBS. Step 3: TUBS correct."
+    },
+    {
+      "id": 56,
+      "q": "If PENCIL=QFODJM, what is the code for PENCIL? (forward +1)",
+      "opts": [
+        "QFODJM",
+        "QBHF",
+        "UPQ",
+        "CJSE"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: P+1=Q, E+1=F, N+1=O, C+1=D, I+1=J, L+1=M. Step 2: PENCIL becomes QFODJM. Step 3: QFODJM correct."
+    },
+    {
+      "id": 57,
+      "q": "If RING=SJOH, what is the code for RING? (forward +1)",
+      "opts": [
+        "QFODJM",
+        "MBQ",
+        "QJOL",
+        "SJOH"
+      ],
+      "c": 3,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: R+1=S, I+1=J, N+1=O, G+1=H. Step 2: RING becomes SJOH. Step 3: SJOH correct."
+    },
+    {
+      "id": 58,
+      "q": "If PINK=QJOL, what is the code for PINK? (forward +1)",
+      "opts": [
+        "CPPL",
+        "NPCJMF",
+        "QJOL",
+        "MBQ"
+      ],
+      "c": 2,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: P+1=Q, I+1=J, N+1=O, K+1=L. Step 2: PINK becomes QJOL. Step 3: QJOL correct."
+    },
+    {
+      "id": 59,
+      "q": "If MOBILE=NPCJMF, what is the code for MOBILE? (forward +1)",
+      "opts": [
+        "NPCJMF",
+        "TUBS",
+        "TOBLF",
+        "CJSE"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: M+1=N, O+1=P, B+1=C, I+1=J, L+1=M, E+1=F. Step 2: MOBILE becomes NPCJMF. Step 3: NPCJMF correct."
+    },
+    {
+      "id": 60,
+      "q": "If PEN=QFO, what is the code for PEN? (forward +1)",
+      "opts": [
+        "QFO",
+        "CPPL",
+        "GJSF",
+        "SJOH"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: P+1=Q, E+1=F, N+1=O. Step 2: PEN becomes QFO. Step 3: QFO correct."
+    },
+    {
+      "id": 61,
+      "q": "If BIRD=CJSE, what is the code for BIRD? (forward +1)",
+      "opts": [
+        "HPBU",
+        "QJOL",
+        "CJSE",
+        "TOBLF"
+      ],
+      "c": 2,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: B+1=C, I+1=J, R+1=S, D+1=E. Step 2: BIRD becomes CJSE. Step 3: CJSE correct."
+    },
+    {
+      "id": 62,
+      "q": "If SNAKE=TOBLF, what is the code for SNAKE? (forward +1)",
+      "opts": [
+        "UJHFS",
+        "NPPO",
+        "TOBLF",
+        "DBU"
+      ],
+      "c": 2,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: S+1=T, N+1=O, A+1=B, K+1=L, E+1=F. Step 2: SNAKE becomes TOBLF. Step 3: TOBLF correct."
+    },
+    {
+      "id": 63,
+      "q": "If CAT=DBU, what is the code for CAT? (forward +1)",
+      "opts": [
+        "QJOL",
+        "EPH",
+        "GJSF",
+        "DBU"
+      ],
+      "c": 3,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: C+1=D, A+1=B, T+1=U. Step 2: CAT becomes DBU. Step 3: DBU correct."
+    },
+    {
+      "id": 64,
+      "q": "If TIGER=UJHFS, what is the code for TIGER? (forward +1)",
+      "opts": [
+        "CPPL",
+        "UJHFS",
+        "QFODJM",
+        "TOBLF"
+      ],
+      "c": 1,
+      "t": "shift",
+      "exp": "Step 1: Each letter +1: T+1=U, I+1=J, G+1=H, E+1=F, R+1=S. Step 2: TIGER becomes UJHFS. Step 3: UJHFS correct."
+    },
+    {
+      "id": 65,
+      "q": "If TREE=SQDD, what is the code for TREE? (backward -1)",
+      "opts": [
+        "BZKK",
+        "BNCD",
+        "SQDD",
+        "QHMF"
+      ],
+      "c": 2,
+      "t": "shift",
+      "exp": "Step 1: Each letter -1: T-1=S, R-1=Q, E-1=D, E-1=D. Step 2: TREE becomes SQDD. Step 3: SQDD correct."
+    },
+    {
+      "id": 66,
+      "q": "If TOP=SNO, what is the code for TOP? (backward -1)",
+      "opts": [
+        "CTBJ",
+        "SNO",
+        "RSZQ",
+        "QHMF"
+      ],
+      "c": 1,
+      "t": "shift",
+      "exp": "Step 1: Each letter -1: T-1=S, O-1=N, P-1=O. Step 2: TOP becomes SNO. Step 3: SNO correct."
+    },
+    {
+      "id": 67,
+      "q": "If SUN=RTM, what is the code for SUN? (backward -1)",
+      "opts": [
+        "RTM",
+        "KZLA",
+        "QHMF",
+        "OZFD"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: Each letter -1: S-1=R, U-1=T, N-1=M. Step 2: SUN becomes RTM. Step 3: RTM correct."
+    },
+    {
+      "id": 68,
+      "q": "If CODE=BNCD, what is the code for CODE? (backward -1)",
+      "opts": [
+        "CTBJ",
+        "BNCD",
+        "KDZE",
+        "OZFD"
+      ],
+      "c": 1,
+      "t": "shift",
+      "exp": "Step 1: Each letter -1: C-1=B, O-1=N, D-1=C, E-1=D. Step 2: CODE becomes BNCD. Step 3: BNCD correct."
+    },
+    {
+      "id": 69,
+      "q": "If FROG=EQNF, what is the code for FROG? (backward -1)",
+      "opts": [
+        "KDZE",
+        "EQNF",
+        "BZKK",
+        "EHQD"
+      ],
+      "c": 1,
+      "t": "shift",
+      "exp": "Step 1: Each letter -1: F-1=E, R-1=Q, O-1=N, G-1=F. Step 2: FROG becomes EQNF. Step 3: EQNF correct."
+    },
+    {
+      "id": 70,
+      "q": "If WOLF=VNKE, what is the code for WOLF? (backward -1)",
+      "opts": [
+        "VNKE",
+        "VZSDQ",
+        "LNNM",
+        "CTBJ"
+      ],
+      "c": 0,
+      "t": "shift",
+      "exp": "Step 1: Each letter -1: W-1=V, O-1=N, L-1=K, F-1=E. Step 2: WOLF becomes VNKE. Step 3: VNKE correct."
+    },
+    {
+      "id": 71,
+      "q": "If WATER=VZSDQ, what is the code for WATER? (backward -1)",
+      "opts": [
+        "RSZQ",
+        "ANNJ",
+        "EQNF",
+        "VZSDQ"
+      ],
+      "c": 3,
+      "t": "shift",
+      "exp": "Step 1: Each letter -1: W-1=V, A-1=Z, T-1=S, E-1=D, R-1=Q. Step 2: WATER becomes VZSDQ. Step 3: VZSDQ correct."
+    },
+    {
+      "id": 72,
+      "q": "If DUCK=CTBJ, what is the code for DUCK? (backward -1)",
+      "opts": [
+        "VNKE",
+        "SQDD",
+        "CTBJ",
+        "SNO"
+      ],
+      "c": 2,
+      "t": "shift",
+      "exp": "Step 1: Each letter -1: D-1=C, U-1=T, C-1=B, K-1=J. Step 2: DUCK becomes CTBJ. Step 3: CTBJ correct."
+    },
+    {
+      "id": 73,
+      "q": "If STAR=RSZQ, what is the code for STAR? (backward -1)",
+      "opts": [
+        "QHMF",
+        "AZKK",
+        "RSZQ",
+        "SNO"
+      ],
+      "c": 2,
+      "t": "shift",
+      "exp": "Step 1: Each letter -1: S-1=R, T-1=S, A-1=Z, R-1=Q. Step 2: STAR becomes RSZQ. Step 3: RSZQ correct."
+    },
+    {
+      "id": 74,
+      "q": "If LEAF=KDZE, what is the code for LEAF? (backward -1)",
+      "opts": [
+        "OZFD",
+        "KDZE",
+        "RSZQ",
+        "SNO"
+      ],
+      "c": 1,
+      "t": "shift",
+      "exp": "Step 1: Each letter -1: L-1=K, E-1=D, A-1=Z, F-1=E. Step 2: LEAF becomes KDZE. Step 3: KDZE correct."
+    },
+    {
+      "id": 75,
+      "q": "If CALL=BZKK, what is the code for CALL? (backward -1)",
+      "opts": [
+        "RTM",
+        "KZO",
+        "BZKK",
+        "AZKK"
+      ],
+      "c": 2,
+      "t": "shift",
+      "exp": "Step 1: Each letter -1: C-1=B, A-1=Z, L-1=K, L-1=K. Step 2: CALL becomes BZKK. Step 3: BZKK correct."
+    },
+    {
+      "id": 76,
+      "q": "If LAMB=KZLA, what is the code for LAMB? (backward -1)",
+      "opts": [
+        "CTBJ",
+        "SQDD",
+        "KZLA",
+        "VNKE"
+      ],
+      "c": 2,
+      "t": "shift",
+      "exp": "Step 1: Each letter -1: L-1=K, A-1=Z, M-1=L, B-1=A. Step 2: LAMB becomes KZLA. Step 3: KZLA correct."
+    },
+    {
+      "id": 77,
+      "q": "If LAP=OBS, then BALL=?",
+      "opts": [
+        "UJQJ",
+        "JPDW",
+        "VVQ",
+        "EBOO"
+      ],
+      "c": 3,
+      "t": "alternating",
+      "exp": "Step 1: Pattern [+3,+1,+3,+3] from LAP: L->O, A->B, P->S. Step 2: Apply [+3,+1,+3,+3] to BALL: B+3=E, A+1=B, L+3=O, L+3=O. Step 3: EBOO correct."
+    },
+    {
+      "id": 78,
+      "q": "If LAP=OBS, then GOAT=?",
+      "opts": [
+        "JPDW",
+        "EBOO",
+        "VUDU",
+        "OJRQ"
+      ],
+      "c": 0,
+      "t": "alternating",
+      "exp": "Step 1: Pattern [+3,+1,+3,+3] from LAP: L->O, A->B, P->S. Step 2: Apply [+3,+1,+3,+3] to GOAT: G+3=J, O+1=P, A+3=D, T+3=W. Step 3: JPDW correct."
+    },
+    {
+      "id": 79,
+      "q": "If LAP=OBS, then DUCK=?",
+      "opts": [
+        "JPDW",
+        "EPRN",
+        "GVFN",
+        "IJVK"
+      ],
+      "c": 2,
+      "t": "alternating",
+      "exp": "Step 1: Pattern [+3,+1,+3,+3] from LAP: L->O, A->B, P->S. Step 2: Apply [+3,+1,+3,+3] to DUCK: D+3=G, U+1=V, C+3=F, K+3=N. Step 3: GVFN correct."
+    },
+    {
+      "id": 80,
+      "q": "If LAP=OBS, then LION=?",
+      "opts": [
+        "VUDU",
+        "ZPOI",
+        "IJVK",
+        "OJRQ"
+      ],
+      "c": 3,
+      "t": "alternating",
+      "exp": "Step 1: Pattern [+3,+1,+3,+3] from LAP: L->O, A->B, P->S. Step 2: Apply [+3,+1,+3,+3] to LION: L+3=O, I+1=J, O+3=R, N+3=Q. Step 3: OJRQ correct."
+    },
+    {
+      "id": 81,
+      "q": "If LAP=OBS, then WOLF=?",
+      "opts": [
+        "ZPOI",
+        "JPDW",
+        "SBJH",
+        "IJVK"
+      ],
+      "c": 0,
+      "t": "alternating",
+      "exp": "Step 1: Pattern [+3,+1,+3,+3] from LAP: L->O, A->B, P->S. Step 2: Apply [+3,+1,+3,+3] to WOLF: W+3=Z, O+1=P, L+3=O, F+3=I. Step 3: ZPOI correct."
+    },
+    {
+      "id": 82,
+      "q": "If LAP=OBS, then RING=?",
+      "opts": [
+        "IJVK",
+        "GVFN",
+        "UJQJ",
+        "VVQ"
+      ],
+      "c": 2,
+      "t": "alternating",
+      "exp": "Step 1: Pattern [+3,+1,+3,+3] from LAP: L->O, A->B, P->S. Step 2: Apply [+3,+1,+3,+3] to RING: R+3=U, I+1=J, N+3=Q, G+3=J. Step 3: UJQJ correct."
+    },
+    {
+      "id": 83,
+      "q": "If LAP=OBS, then FROG=?",
+      "opts": [
+        "UJQJ",
+        "EBOO",
+        "IJVK",
+        "ISRJ"
+      ],
+      "c": 3,
+      "t": "alternating",
+      "exp": "Step 1: Pattern [+3,+1,+3,+3] from LAP: L->O, A->B, P->S. Step 2: Apply [+3,+1,+3,+3] to FROG: F+3=I, R+1=S, O+3=R, G+3=J. Step 3: ISRJ correct."
+    },
+    {
+      "id": 84,
+      "q": "If LAP=OBS, then DEER=?",
+      "opts": [
+        "UJQJ",
+        "OJRQ",
+        "VUDU",
+        "GFHU"
+      ],
+      "c": 3,
+      "t": "alternating",
+      "exp": "Step 1: Pattern [+3,+1,+3,+3] from LAP: L->O, A->B, P->S. Step 2: Apply [+3,+1,+3,+3] to DEER: D+3=G, E+1=F, E+3=H, R+3=U. Step 3: GFHU correct."
+    },
+    {
+      "id": 85,
+      "q": "If LAP=OBS, then STAR=?",
+      "opts": [
+        "OJRQ",
+        "VUDU",
+        "EPRN",
+        "OBPE"
+      ],
+      "c": 1,
+      "t": "alternating",
+      "exp": "Step 1: Pattern [+3,+1,+3,+3] from LAP: L->O, A->B, P->S. Step 2: Apply [+3,+1,+3,+3] to STAR: S+3=V, T+1=U, A+3=D, R+3=U. Step 3: VUDU correct."
+    },
+    {
+      "id": 86,
+      "q": "If LAP=OBS, then FISH=?",
+      "opts": [
+        "ISRJ",
+        "IJVK",
+        "EBOO",
+        "VUDU"
+      ],
+      "c": 1,
+      "t": "alternating",
+      "exp": "Step 1: Pattern [+3,+1,+3,+3] from LAP: L->O, A->B, P->S. Step 2: Apply [+3,+1,+3,+3] to FISH: F+3=I, I+1=J, S+3=V, H+3=K. Step 3: IJVK correct."
+    },
+    {
+      "id": 87,
+      "q": "If LAP=OBS, then BOOK=?",
+      "opts": [
+        "SBJH",
+        "EPRN",
+        "EBOO",
+        "JPDW"
+      ],
+      "c": 1,
+      "t": "alternating",
+      "exp": "Step 1: Pattern [+3,+1,+3,+3] from LAP: L->O, A->B, P->S. Step 2: Apply [+3,+1,+3,+3] to BOOK: B+3=E, O+1=P, O+3=R, K+3=N. Step 3: EPRN correct."
+    },
+    {
+      "id": 88,
+      "q": "If LAP=OBS, then PAGE=?",
+      "opts": [
+        "OJRQ",
+        "SBJH",
+        "ISRJ",
+        "ZPOI"
+      ],
+      "c": 1,
+      "t": "alternating",
+      "exp": "Step 1: Pattern [+3,+1,+3,+3] from LAP: L->O, A->B, P->S. Step 2: Apply [+3,+1,+3,+3] to PAGE: P+3=S, A+1=B, G+3=J, E+3=H. Step 3: SBJH correct."
+    },
+    {
+      "id": 89,
+      "q": "If WOLF=DLOU, what is the mirror code of WOLF?",
+      "opts": [
+        "KVMXRO",
+        "ORLM",
+        "DLOU",
+        "OROB"
+      ],
+      "c": 2,
+      "t": "mirror",
+      "exp": "Step 1: Mirror each letter (27-pos): W(23)->D(4), O(15)->L(12), L(12)->O(15), F(6)->U(21). Step 2: WOLF -> DLOU. Step 3: DLOU correct."
+    },
+    {
+      "id": 90,
+      "q": "If LILY=OROB, what is the mirror code of LILY?",
+      "opts": [
+        "NZM",
+        "OROB",
+        "ORLM",
+        "KVMXRO"
+      ],
+      "c": 1,
+      "t": "mirror",
+      "exp": "Step 1: Mirror each letter (27-pos): L(12)->O(15), I(9)->R(18), L(12)->O(15), Y(25)->B(2). Step 2: LILY -> OROB. Step 3: OROB correct."
+    },
+    {
+      "id": 91,
+      "q": "If HORSE=SLIHV, what is the mirror code of HORSE?",
+      "opts": [
+        "NZM",
+        "SLIHV",
+        "HMZPV",
+        "KVM"
+      ],
+      "c": 1,
+      "t": "mirror",
+      "exp": "Step 1: Mirror each letter (27-pos): H(8)->S(19), O(15)->L(12), R(18)->I(9), S(19)->H(8), E(5)->V(22). Step 2: HORSE -> SLIHV. Step 3: SLIHV correct."
+    },
+    {
+      "id": 92,
+      "q": "If BALL=YZOO, what is the mirror code of BALL?",
+      "opts": [
+        "YZOO",
+        "GRTVI",
+        "XZM",
+        "GLK"
+      ],
+      "c": 0,
+      "t": "mirror",
+      "exp": "Step 1: Mirror each letter (27-pos): B(2)->Y(25), A(1)->Z(26), L(12)->O(15), L(12)->O(15). Step 2: BALL -> YZOO. Step 3: YZOO correct."
+    },
+    {
+      "id": 93,
+      "q": "If TIGER=GRTVI, what is the mirror code of TIGER?",
+      "opts": [
+        "OROB",
+        "NZM",
+        "URHS",
+        "GRTVI"
+      ],
+      "c": 3,
+      "t": "mirror",
+      "exp": "Step 1: Mirror each letter (27-pos): T(20)->G(7), I(9)->R(18), G(7)->T(20), E(5)->V(22), R(18)->I(9). Step 2: TIGER -> GRTVI. Step 3: GRTVI correct."
+    },
+    {
+      "id": 94,
+      "q": "If SNAKE=HMZPV, what is the mirror code of SNAKE?",
+      "opts": [
+        "HMZPV",
+        "VZTOV",
+        "URHS",
+        "KVM"
+      ],
+      "c": 0,
+      "t": "mirror",
+      "exp": "Step 1: Mirror each letter (27-pos): S(19)->H(8), N(14)->M(13), A(1)->Z(26), K(11)->P(16), E(5)->V(22). Step 2: SNAKE -> HMZPV. Step 3: HMZPV correct."
+    },
+    {
+      "id": 95,
+      "q": "If CAN=XZM, what is the mirror code of CAN?",
+      "opts": [
+        "GRTVI",
+        "TLZG",
+        "XZM",
+        "YVZI"
+      ],
+      "c": 2,
+      "t": "mirror",
+      "exp": "Step 1: Mirror each letter (27-pos): C(3)->X(24), A(1)->Z(26), N(14)->M(13). Step 2: CAN -> XZM. Step 3: XZM correct."
+    },
+    {
+      "id": 96,
+      "q": "If LAMB=OZNY, what is the mirror code of LAMB?",
+      "opts": [
+        "NZM",
+        "ORLM",
+        "OZNY",
+        "WVVI"
+      ],
+      "c": 2,
+      "t": "mirror",
+      "exp": "Step 1: Mirror each letter (27-pos): L(12)->O(15), A(1)->Z(26), M(13)->N(14), B(2)->Y(25). Step 2: LAMB -> OZNY. Step 3: OZNY correct."
+    },
+    {
+      "id": 97,
+      "q": "If PENCIL=KVMXRO, what is the mirror code of PENCIL?",
+      "opts": [
+        "KVMXRO",
+        "XZOO",
+        "WVVI",
+        "KVM"
+      ],
+      "c": 0,
+      "t": "mirror",
+      "exp": "Step 1: Mirror each letter (27-pos): P(16)->K(11), E(5)->V(22), N(14)->M(13), C(3)->X(24), I(9)->R(18), L(12)->O(15). Step 2: PENCIL -> KVMXRO. Step 3: KVMXRO correct."
+    },
+    {
+      "id": 98,
+      "q": "If DEER=WVVI, what is the mirror code of DEER?",
+      "opts": [
+        "VZTOV",
+        "KVMXRO",
+        "WVVI",
+        "OZNY"
+      ],
+      "c": 2,
+      "t": "mirror",
+      "exp": "Step 1: Mirror each letter (27-pos): D(4)->W(23), E(5)->V(22), E(5)->V(22), R(18)->I(9). Step 2: DEER -> WVVI. Step 3: WVVI correct."
+    },
+    {
+      "id": 99,
+      "q": "If PEN=KVM, what is the mirror code of PEN?",
+      "opts": [
+        "OZNY",
+        "KVM",
+        "HSVVK",
+        "YVZI"
+      ],
+      "c": 1,
+      "t": "mirror",
+      "exp": "Step 1: Mirror each letter (27-pos): P(16)->K(11), E(5)->V(22), N(14)->M(13). Step 2: PEN -> KVM. Step 3: KVM correct."
+    },
+    {
+      "id": 100,
+      "q": "If LION=ORLM, what is the mirror code of LION?",
+      "opts": [
+        "VZTOV",
+        "ORLM",
+        "GRTVI",
+        "HMZPV"
+      ],
+      "c": 1,
+      "t": "mirror",
+      "exp": "Step 1: Mirror each letter (27-pos): L(12)->O(15), I(9)->R(18), O(15)->L(12), N(14)->M(13). Step 2: LION -> ORLM. Step 3: ORLM correct."
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "intro-coding"
+    },
+    {
+      "type": "concept",
+      "sectionId": "letter-coding-types"
+    },
+    {
+      "type": "example",
+      "sectionId": "number-coding"
+    },
+    {
+      "type": "guided",
+      "sectionId": "advanced-coding"
+    },
+    {
+      "type": "practice",
+      "sectionId": "coding-tricks"
+    },
+    {
+      "type": "concept",
+      "sectionId": "common-mistakes"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "revision-coding"
+    }
+  ]
+}

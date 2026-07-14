@@ -1754,3 +1754,131 @@ html.dark .example-block {
         padding: var(--space-3) var(--space-4) var(--space-3) var(--space-7);
     }
 }
+
+/* ============================================================
+   26. LEARNING PATH
+   ============================================================ */
+.learning-path {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.path-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-6);
+}
+.path-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+}
+.path-progress .progress-bar {
+  width: 100px;
+}
+.path-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+.path-step {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
+}
+.path-step.active {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-bg);
+}
+.path-step.completed {
+  border-left: 4px solid var(--color-success);
+}
+.path-step.locked {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.step-indicator {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.path-step.completed .step-indicator {
+  background: var(--color-success);
+  color: #fff;
+}
+.path-step.active .step-indicator {
+  background: var(--color-primary);
+  color: #fff;
+}
+.step-content {
+  flex: 1;
+  cursor: pointer;
+}
+.step-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+}
+.step-badge {
+  font-size: var(--text-xs);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary-bg);
+  color: var(--color-primary);
+}
+.step-badge.concept { background: #E0F2FE; color: #0284C7; }
+.step-badge.example { background: #FEF3C7; color: #D97706; }
+.step-badge.guided { background: #D1FAE5; color: #059669; }
+.step-badge.practice { background: #FEE2E2; color: #DC2626; }
+.step-badge.mastery { background: #E9D5FF; color: #7C3AED; }
+.step-status {
+  margin-left: auto;
+  color: var(--color-success);
+}
+.step-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.step-body.expanded {
+  max-height: 2000px;
+  padding-top: var(--space-4);
+}
+.path-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-6);
+}
+
+html.dark .step-badge.concept { background: rgba(14,165,233,0.2); color: #38BDF8; }
+html.dark .step-badge.example { background: rgba(251,146,60,0.2); color: #FB923C; }
+html.dark .step-badge.guided { background: rgba(52,211,153,0.2); color: #34D399; }
+html.dark .step-badge.practice { background: rgba(248,113,113,0.2); color: #F87171; }
+html.dark .step-badge.mastery { background: rgba(167,139,250,0.2); color: #A78BFA; }
+
+@media (max-width: 768px) {
+  .path-step {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .step-indicator {
+    width: 28px;
+    height: 28px;
+    font-size: var(--text-sm);
+  }
+  .path-progress .progress-bar {
+    width: 60px;
+  }
+}

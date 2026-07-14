@@ -1,0 +1,85 @@
+{
+  "categories": [
+    {
+      "id": "aptitude",
+      "title": "Aptitude",
+      "icon": "#",
+      "color": "#4F46E5",
+      "subtitle": "Quantitative Aptitude & Logical Reasoning"
+    },
+    {
+      "id": "verbal",
+      "title": "Verbal & English",
+      "icon": "A",
+      "color": "#059669",
+      "subtitle": "Verbal Reasoning, Analogies & Coding-Decoding"
+    }
+  ],
+  "topics": [
+    {
+      "id": "number-system",
+      "title": "Number System",
+      "icon": "#",
+      "category": "aptitude",
+      "color": "#4F46E5",
+      "days": "1-3",
+      "subtopics": [
+        "Number Family Tree",
+        "Primes & Composites",
+        "Speed Math (Divisibility)",
+        "HCF & LCM",
+        "Cyclicity & Unit Digit",
+        "Remainder Theorems"
+      ],
+      "estimatedHours": 30
+    },
+    {
+      "id": "simplification",
+      "title": "Simplification & Approximation",
+      "icon": "Σ",
+      "category": "aptitude",
+      "color": "#059669",
+      "days": "4-6",
+      "subtopics": [
+        "BODMAS / VBODMAS Rule",
+        "Surds & Indices",
+        "Square & Cube Roots",
+        "Approximation & % Table",
+        "Vedic Math Shortcuts"
+      ],
+      "estimatedHours": 25
+    },
+    {
+      "id": "analogies",
+      "title": "Analogies",
+      "icon": "≈",
+      "category": "verbal",
+      "color": "#059669",
+      "days": "1-2",
+      "subtopics": [
+        "Word Analogies",
+        "Letter & Number Analogies",
+        "Relationship Types",
+        "Pattern Recognition",
+        "Company Patterns"
+      ],
+      "estimatedHours": 12
+    },
+    {
+      "id": "coding-decoding",
+      "title": "Coding-Decoding",
+      "icon": "⌂",
+      "category": "verbal",
+      "color": "#0284C7",
+      "days": "1-2",
+      "subtopics": [
+        "Letter Shifts",
+        "Number Coding",
+        "Mirror Coding",
+        "Substitution",
+        "Mixed Patterns"
+      ],
+      "estimatedHours": 12
+    }
+  ]
+}

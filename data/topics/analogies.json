@@ -1,0 +1,3506 @@
+{
+  "id": "analogies",
+  "title": "Analogies",
+  "icon": "≈",
+  "category": "verbal",
+  "subtitle": "Word, Letter, Number Analogies & Relationship Patterns",
+  "days": "1-2",
+  "color": "#059669",
+  "subtopics": [
+    "Word Analogies",
+    "Letter & Number Analogies",
+    "Relationship Types",
+    "Pattern Recognition",
+    "Company Patterns"
+  ],
+  "estimatedHours": 12,
+  "readingSections": [
+    {
+      "id": "intro-analogies",
+      "title": "What is an Analogy?",
+      "content": "An analogy is a comparison between two things that shows how they are similar. Companies use analogy questions to test your reasoning, vocabulary, and pattern recognition skills. These appear in TCS, Infosys, Wipro, Accenture and almost all campus placement exams.",
+      "subsections": [
+        {
+          "title": "Why Companies Ask Analogy Questions",
+          "content": "Companies want people who think logically and spot patterns quickly. Solving analogies proves you can: (1) Understand relationships between concepts, (2) Think abstractly, (3) Make quick decisions under pressure. These are essential IT job skills."
+        },
+        {
+          "title": "Basic Structure",
+          "content": "An analogy looks like: A : B :: C : ? (read as A is to B as C is to what). Your job is to find the relationship between A and B, then apply it to C. Example: Doctor : Hospital :: Teacher : ? Answer: School (a doctor works in a hospital, a teacher works in a school)."
+        },
+        {
+          "title": "Real-Life Example",
+          "content": "If your friend says My phone is to me what wings are to a bird, you understand the phone is essential for communication just like wings are essential for flight. You are comparing two relationships that work the same way."
+        },
+        {
+          "title": "How to Approach",
+          "content": "Step 1: Read the first pair carefully. Step 2: Identify the exact relationship. Step 3: Apply the same relationship to C. Step 4: Find the matching answer. Step 5: Double-check by reversing the logic."
+        }
+      ],
+      "type": "concept"
+    },
+    {
+      "id": "word-analogies",
+      "title": "Word Analogies (Most Common)",
+      "content": "Word analogies use regular English words. The relationship can be based on meaning, function, category, or association.",
+      "subsections": [
+        {
+          "title": "Synonym Analogies (Same Meaning)",
+          "content": "The relationship is same meaning. Example: Happy : Joyful :: Sad : ? Answer: Unhappy. Common pairs: Big-Large, Small-Tiny, Fast-Quick, Brave-Courageous, Afraid-Scared."
+        },
+        {
+          "title": "Antonym Analogies (Opposite Meaning)",
+          "content": "The relationship is opposite meaning. Example: Hot : Cold :: Light : ? Answer: Dark. Common pairs: Up-Down, Good-Bad, Happy-Sad, Rich-Poor, Strong-Weak."
+        },
+        {
+          "title": "Cause and Effect Analogies",
+          "content": "One word causes the other. Example: Rain : Flood :: Virus : ? Answer: Disease. Ask yourself: Does A cause B?"
+        },
+        {
+          "title": "Function/Use Analogies",
+          "content": "Shows what something is used for. Example: Pen : Write :: Knife : ? Answer: Cut. Pattern: A is used to B."
+        },
+        {
+          "title": "Part to Whole Analogies",
+          "content": "First word is part of the second. Example: Finger : Hand :: Toe : ? Answer: Foot. More: Page : Book, Wheel : Car, Leaf : Tree."
+        },
+        {
+          "title": "Profession and Tool",
+          "content": "Shows what tool a professional uses. Example: Doctor : Stethoscope :: Carpenter : ? Answer: Hammer. Common: Teacher-Chalk, Chef-Knife, Painter-Brush."
+        },
+        {
+          "title": "Animal and Young Ones",
+          "content": "Shows parent and baby relationship. Example: Cat : Kitten :: Dog : ? Answer: Puppy. Memorize: Cow-Calf, Lion-Cub, Sheep-Lamb, Horse-Foal."
+        },
+        {
+          "title": "Animal and Home/Dwelling",
+          "content": "Shows where an animal lives. Example: Dog : Kennel :: Bird : ? Answer: Nest. Learn: Lion-Den, Rabbit-Burrow, Bee-Hive, Horse-Stable."
+        },
+        {
+          "title": "Country and Capital",
+          "content": "Shows capital cities. Example: India : Delhi :: USA : ? Answer: Washington DC. Must-know: India-Delhi, UK-London, France-Paris, Japan-Tokyo."
+        },
+        {
+          "title": "Person and Achievement",
+          "content": "Shows who created something. Example: Shakespeare : Hamlet :: Einstein : ? Answer: Theory of Relativity. Common: Newton-Gravity, Edison-Light Bulb."
+        }
+      ],
+      "type": "concept"
+    },
+    {
+      "id": "letter-number-analogies",
+      "title": "Letter and Number Analogies",
+      "content": "Letter analogies use alphabet patterns and number analogies use mathematical relationships.",
+      "subsections": [
+        {
+          "title": "Position-Based Letter Analogies",
+          "content": "Uses A=1, B=2, C=3...Z=26. Example: A : D :: B : ? Answer: E (A+3=D, B+3=E). Common: +1, +2, +3 shifts, reverse positions, mirror positions."
+        },
+        {
+          "title": "Skip Pattern Analogies",
+          "content": "Letters skip a fixed number. Example: A : C :: E : ? Answer: G (skip 1 letter)."
+        },
+        {
+          "title": "Mirror/Reverse Analogies",
+          "content": "A <-> Z, B <-> Y, C <-> X. Example: ABC : ZYX :: DEF : ? Answer: WVU."
+        },
+        {
+          "title": "Addition/Subtraction Number Patterns",
+          "content": "Simple arithmetic. Example: 5 : 8 :: 10 : ? Answer: 13 (add 3)."
+        },
+        {
+          "title": "Multiplication and Square Patterns",
+          "content": "Example: 4 : 12 :: 6 : ? Answer: 18 (multiply by 3). Or 3 : 9 :: 5 : ? Answer: 25 (square)."
+        },
+        {
+          "title": "Digit-Based Patterns",
+          "content": "Manipulates digits. Example: 12 : 3 :: 45 : ? Answer: 9 (1+2=3, 4+5=9). Or reverse digits."
+        }
+      ],
+      "type": "example"
+    },
+    {
+      "id": "pattern-recognition",
+      "title": "Pattern Recognition - Find Relationships Fast",
+      "content": "The key to solving analogies quickly is recognizing the relationship type within 10-15 seconds.",
+      "subsections": [
+        {
+          "title": "The 5-Second Classification Test",
+          "content": "Ask in order: (1) Are they synonyms? (2) Are they opposites? (3) Does one cause the other? (4) Is one part of the other? (5) Is there a functional relationship? Practice until automatic."
+        },
+        {
+          "title": "Keyword Triggers",
+          "content": "Similar meanings -> Synonym. Opposite meanings -> Antonym. Action words -> Function. Place names -> Location. Person names -> Achievement. Numbers -> Mathematical. Animals -> Young One or Home."
+        },
+        {
+          "title": "Sentence Frame Technique",
+          "content": "Force into a sentence: A is a type of B, A uses B, A lives in B, A causes B, A is opposite of B. The frame that fits tells you the relationship."
+        },
+        {
+          "title": "Elimination Strategy",
+          "content": "When stuck: (1) Cross out options that don't match word type. (2) Eliminate reversed relationships. (3) Remove overly specific or general answers. Usually 2-3 options get eliminated quickly."
+        },
+        {
+          "title": "Common Traps",
+          "content": "Trap 1: Reversed relationship. Trap 2: Partial match. Trap 3: Association without true relationship. Trap 4: Too specific. Always verify: Does C relate to my answer exactly like A relates to B?"
+        }
+      ],
+      "type": "guided"
+    },
+    {
+      "id": "company-patterns",
+      "title": "Company-Specific Patterns",
+      "content": "Different companies favor different analogy types. Knowing their patterns gives you an edge.",
+      "subsections": [
+        {
+          "title": "TCS Patterns",
+          "content": "TCS heavily tests: Profession-Tool, Animal-Young, Country-Capital, Synonym-Antonym mix. Difficulty: Medium. Time: 45 seconds per question."
+        },
+        {
+          "title": "Infosys Patterns",
+          "content": "Infosys prefers: Cause-Effect, Part-Whole, Letter analogies with complex skips, Function-based. Difficulty: Medium-Hard."
+        },
+        {
+          "title": "Wipro Patterns",
+          "content": "Wipro focuses on: Synonym-Antonym, Number analogies with squares/cubes, Simple function. Difficulty: Easy-Medium."
+        },
+        {
+          "title": "Accenture/Capgemini",
+          "content": "Accenture: Mix of word and letter analogies, emphasis on speed. Capgemini: Loves classification analogies."
+        },
+        {
+          "title": "Cognizant/HCL",
+          "content": "Cognizant: Straightforward word analogies, synonyms/antonyms. HCL: More abstract relationships and GK-based analogies."
+        }
+      ],
+      "type": "practice"
+    },
+    {
+      "id": "shortcuts-speed",
+      "title": "Speed Shortcuts and Memory Tricks",
+      "content": "Master these to solve analogies in 20-30 seconds.",
+      "subsections": [
+        {
+          "title": "The 3-Second Relationship Label",
+          "content": "The moment you read A:B, mentally say: Opposites!, Same!, Tool!, Home!, Baby!, Capital!. This labels the relationship instantly and prevents overthinking."
+        },
+        {
+          "title": "EJOTY Trick for Letter Positions",
+          "content": "Remember E=5, J=10, O=15, T=20, Y=25. Use these anchors to find positions quickly. M is 2 before O(15) so M=13."
+        },
+        {
+          "title": "Memory Tricks for Capitals",
+          "content": "Create silly sentences: Delhi is India capital, DC is USA capital, London has Queen, Paris has Eiffel Tower. Weird associations are memorable."
+        },
+        {
+          "title": "Reverse Check Shortcut",
+          "content": "After picking your answer, quickly verify by reversing: If A:B::C:D works, then B:A::D:C should also make sense. If not, reconsider!"
+        },
+        {
+          "title": "Animal Young Grouping",
+          "content": "Group by pattern: Cub endings for big cats/bears, Calf for large animals (cow, elephant, whale), Lamb for sheep, Foal for horses, Chick for birds."
+        }
+      ],
+      "type": "mastery"
+    }
+  ],
+  "formulas": [
+    {
+      "id": "synonym-rule",
+      "title": "Synonym Relationship Rule",
+      "formula": "A ~ B => C ~ ?",
+      "explanation": "When A and B have similar meanings, find a word with similar meaning to C.",
+      "example": "Happy : Joyful :: Sad : Unhappy"
+    },
+    {
+      "id": "antonym-rule",
+      "title": "Antonym Relationship Rule",
+      "formula": "A = opposite of B => C = opposite of ?",
+      "explanation": "When A and B are opposites, find the opposite of C.",
+      "example": "Hot : Cold :: Light : Dark"
+    },
+    {
+      "id": "cause-effect-rule",
+      "title": "Cause and Effect Rule",
+      "formula": "A causes B => C causes ?",
+      "explanation": "When A causes B, find what C causes.",
+      "example": "Rain : Flood :: Virus : Disease"
+    },
+    {
+      "id": "function-rule",
+      "title": "Function/Use Rule",
+      "formula": "A is used to B => C is used to ?",
+      "explanation": "When B is the function of A, find the function of C.",
+      "example": "Pen : Write :: Knife : Cut"
+    },
+    {
+      "id": "part-whole-rule",
+      "title": "Part to Whole Rule",
+      "formula": "A is part of B => C is part of ?",
+      "explanation": "When A is part of B, find what C is part of.",
+      "example": "Finger : Hand :: Toe : Foot"
+    },
+    {
+      "id": "profession-tool-rule",
+      "title": "Profession and Tool Rule",
+      "formula": "A uses B => C uses ?",
+      "explanation": "When B is the tool of profession A, find the tool of profession C.",
+      "example": "Doctor : Stethoscope :: Carpenter : Hammer"
+    },
+    {
+      "id": "animal-young-rule",
+      "title": "Animal and Young One Rule",
+      "formula": "Adult : Baby => Adult : ?",
+      "explanation": "When B is the baby of animal A, find the baby of animal C.",
+      "example": "Cat : Kitten :: Dog : Puppy"
+    },
+    {
+      "id": "animal-home-rule",
+      "title": "Animal and Dwelling Rule",
+      "formula": "A lives in B => C lives in ?",
+      "explanation": "When B is the home of animal A, find the home of animal C.",
+      "example": "Dog : Kennel :: Bird : Nest"
+    },
+    {
+      "id": "country-capital-rule",
+      "title": "Country and Capital Rule",
+      "formula": "Country : Capital => Country : ?",
+      "explanation": "When B is capital of country A, find capital of country C.",
+      "example": "India : Delhi :: USA : Washington DC"
+    },
+    {
+      "id": "letter-shift-rule",
+      "title": "Letter Shift Formula",
+      "formula": "A+n = B => C+n = ?",
+      "explanation": "When B is n positions after A in alphabet, find n positions after C.",
+      "example": "A : D :: B : E (shift of +3)"
+    },
+    {
+      "id": "letter-reverse-rule",
+      "title": "Letter Mirror/Reverse Rule",
+      "formula": "A <-> Z, B <-> Y => C <-> ?",
+      "explanation": "Position p maps to position (27-p).",
+      "example": "A <-> Z, B <-> Y, C <-> X"
+    },
+    {
+      "id": "number-square-rule",
+      "title": "Number Square Rule",
+      "formula": "A : A^2 => C : ?",
+      "explanation": "When second number is square of first.",
+      "example": "3 : 9 :: 5 : 25"
+    },
+    {
+      "id": "digit-sum-rule",
+      "title": "Digit Sum Rule",
+      "formula": "A -> sum_digits(A) = B => C -> ?",
+      "explanation": "Sum the digits of the number.",
+      "example": "12 : 3 :: 45 : 9"
+    }
+  ],
+  "practiceProblems": {
+    "synonym-rule": [
+      {
+        "q": "Big : Large :: Small : ?",
+        "s": [
+          "Step 1: Big and Large are synonyms.",
+          "Step 2: Find a synonym for Small.",
+          "Step 3: Tiny means the same as Small."
+        ],
+        "a": "Tiny"
+      },
+      {
+        "q": "Brave : Courageous :: Afraid : ?",
+        "s": [
+          "Step 1: Brave and Courageous are synonyms.",
+          "Step 2: Find synonym for Afraid.",
+          "Step 3: Scared means the same as Afraid."
+        ],
+        "a": "Scared"
+      },
+      {
+        "q": "Fast : Quick :: Slow : ?",
+        "s": [
+          "Step 1: Fast and Quick are synonyms.",
+          "Step 2: Need synonym for Slow.",
+          "Step 3: Sluggish means slow-moving."
+        ],
+        "a": "Sluggish"
+      },
+      {
+        "q": "Beautiful : Pretty :: Ugly : ?",
+        "s": [
+          "Step 1: Beautiful and Pretty are synonyms.",
+          "Step 2: Find synonym for Ugly.",
+          "Step 3: Unattractive means the same as Ugly."
+        ],
+        "a": "Unattractive"
+      },
+      {
+        "q": "Intelligent : Smart :: Stupid : ?",
+        "s": [
+          "Step 1: Intelligent and Smart are synonyms.",
+          "Step 2: Need synonym for Stupid.",
+          "Step 3: Foolish means the same as Stupid."
+        ],
+        "a": "Foolish"
+      }
+    ],
+    "antonym-rule": [
+      {
+        "q": "Hot : Cold :: Light : ?",
+        "s": [
+          "Step 1: Hot and Cold are opposites.",
+          "Step 2: Find opposite of Light.",
+          "Step 3: Dark is opposite of Light."
+        ],
+        "a": "Dark"
+      },
+      {
+        "q": "Up : Down :: Left : ?",
+        "s": [
+          "Step 1: Up and Down are opposites.",
+          "Step 2: Find opposite of Left.",
+          "Step 3: Right is opposite of Left."
+        ],
+        "a": "Right"
+      },
+      {
+        "q": "Good : Bad :: Happy : ?",
+        "s": [
+          "Step 1: Good and Bad are opposites.",
+          "Step 2: Find opposite of Happy.",
+          "Step 3: Sad is opposite of Happy."
+        ],
+        "a": "Sad"
+      },
+      {
+        "q": "Fast : Slow :: Strong : ?",
+        "s": [
+          "Step 1: Fast and Slow are opposites.",
+          "Step 2: Find opposite of Strong.",
+          "Step 3: Weak is opposite of Strong."
+        ],
+        "a": "Weak"
+      },
+      {
+        "q": "Day : Night :: Summer : ?",
+        "s": [
+          "Step 1: Day and Night are opposites.",
+          "Step 2: Find opposite of Summer.",
+          "Step 3: Winter is opposite of Summer."
+        ],
+        "a": "Winter"
+      }
+    ],
+    "cause-effect-rule": [
+      {
+        "q": "Rain : Flood :: Virus : ?",
+        "s": [
+          "Step 1: Heavy rain causes flood.",
+          "Step 2: Find what virus causes.",
+          "Step 3: Virus causes disease."
+        ],
+        "a": "Disease"
+      },
+      {
+        "q": "Fire : Smoke :: Exercise : ?",
+        "s": [
+          "Step 1: Fire produces smoke.",
+          "Step 2: Find what exercise produces.",
+          "Step 3: Exercise produces health."
+        ],
+        "a": "Health"
+      },
+      {
+        "q": "Study : Success :: Neglect : ?",
+        "s": [
+          "Step 1: Studying leads to success.",
+          "Step 2: Find what neglect leads to.",
+          "Step 3: Neglect leads to failure."
+        ],
+        "a": "Failure"
+      },
+      {
+        "q": "Eating : Energy :: Sleeping : ?",
+        "s": [
+          "Step 1: Eating provides energy.",
+          "Step 2: Find what sleeping provides.",
+          "Step 3: Sleeping provides rest."
+        ],
+        "a": "Rest"
+      },
+      {
+        "q": "Seed : Plant :: Egg : ?",
+        "s": [
+          "Step 1: A seed grows into a plant.",
+          "Step 2: Find what an egg grows into.",
+          "Step 3: An egg hatches into a chick."
+        ],
+        "a": "Chick"
+      }
+    ],
+    "function-rule": [
+      {
+        "q": "Pen : Write :: Knife : ?",
+        "s": [
+          "Step 1: A pen is used to write.",
+          "Step 2: Find what a knife is used for.",
+          "Step 3: A knife is used to cut."
+        ],
+        "a": "Cut"
+      },
+      {
+        "q": "Scissors : Cut :: Brush : ?",
+        "s": [
+          "Step 1: Scissors are used to cut.",
+          "Step 2: Find what a brush is used for.",
+          "Step 3: A brush is used to paint."
+        ],
+        "a": "Paint"
+      },
+      {
+        "q": "Phone : Call :: Car : ?",
+        "s": [
+          "Step 1: A phone is used to call.",
+          "Step 2: Find what a car is used for.",
+          "Step 3: A car is used to transport."
+        ],
+        "a": "Transport"
+      },
+      {
+        "q": "Clock : Time :: Thermometer : ?",
+        "s": [
+          "Step 1: A clock shows time.",
+          "Step 2: Find what a thermometer measures.",
+          "Step 3: A thermometer measures temperature."
+        ],
+        "a": "Temperature"
+      },
+      {
+        "q": "Key : Lock :: Password : ?",
+        "s": [
+          "Step 1: A key opens a lock.",
+          "Step 2: Find what a password opens.",
+          "Step 3: A password opens an account."
+        ],
+        "a": "Account"
+      }
+    ],
+    "part-whole-rule": [
+      {
+        "q": "Finger : Hand :: Toe : ?",
+        "s": [
+          "Step 1: A finger is part of a hand.",
+          "Step 2: Find what a toe is part of.",
+          "Step 3: A toe is part of a foot."
+        ],
+        "a": "Foot"
+      },
+      {
+        "q": "Page : Book :: Leaf : ?",
+        "s": [
+          "Step 1: A page is part of a book.",
+          "Step 2: Find what a leaf is part of.",
+          "Step 3: A leaf is part of a tree."
+        ],
+        "a": "Tree"
+      },
+      {
+        "q": "Wheel : Car :: Brick : ?",
+        "s": [
+          "Step 1: A wheel is part of a car.",
+          "Step 2: Find what a brick is part of.",
+          "Step 3: A brick is part of a wall."
+        ],
+        "a": "Wall"
+      },
+      {
+        "q": "Engine : Car :: CPU : ?",
+        "s": [
+          "Step 1: An engine is part of a car.",
+          "Step 2: Find what a CPU is part of.",
+          "Step 3: A CPU is part of a computer."
+        ],
+        "a": "Computer"
+      },
+      {
+        "q": "Stanza : Poem :: Chapter : ?",
+        "s": [
+          "Step 1: A stanza is part of a poem.",
+          "Step 2: Find what a chapter is part of.",
+          "Step 3: A chapter is part of a book."
+        ],
+        "a": "Book"
+      }
+    ],
+    "profession-tool-rule": [
+      {
+        "q": "Doctor : Stethoscope :: Carpenter : ?",
+        "s": [
+          "Step 1: A doctor uses a stethoscope.",
+          "Step 2: Find what a carpenter uses.",
+          "Step 3: A carpenter uses a hammer."
+        ],
+        "a": "Hammer"
+      },
+      {
+        "q": "Teacher : Chalk :: Chef : ?",
+        "s": [
+          "Step 1: A teacher uses chalk.",
+          "Step 2: Find what a chef uses.",
+          "Step 3: A chef uses a knife."
+        ],
+        "a": "Knife"
+      },
+      {
+        "q": "Painter : Brush :: Farmer : ?",
+        "s": [
+          "Step 1: A painter uses a brush.",
+          "Step 2: Find what a farmer uses.",
+          "Step 3: A farmer uses a plough."
+        ],
+        "a": "Plough"
+      },
+      {
+        "q": "Mechanic : Wrench :: Surgeon : ?",
+        "s": [
+          "Step 1: A mechanic uses a wrench.",
+          "Step 2: Find what a surgeon uses.",
+          "Step 3: A surgeon uses a scalpel."
+        ],
+        "a": "Scalpel"
+      },
+      {
+        "q": "Photographer : Camera :: Astronomer : ?",
+        "s": [
+          "Step 1: A photographer uses a camera.",
+          "Step 2: Find what an astronomer uses.",
+          "Step 3: An astronomer uses a telescope."
+        ],
+        "a": "Telescope"
+      }
+    ],
+    "animal-young-rule": [
+      {
+        "q": "Cat : Kitten :: Dog : ?",
+        "s": [
+          "Step 1: A cat's baby is a kitten.",
+          "Step 2: A dog's baby is a puppy."
+        ],
+        "a": "Puppy"
+      },
+      {
+        "q": "Cow : Calf :: Lion : ?",
+        "s": [
+          "Step 1: A cow's baby is a calf.",
+          "Step 2: A lion's baby is a cub."
+        ],
+        "a": "Cub"
+      },
+      {
+        "q": "Sheep : Lamb :: Horse : ?",
+        "s": [
+          "Step 1: A sheep's baby is a lamb.",
+          "Step 2: A horse's baby is a foal."
+        ],
+        "a": "Foal"
+      },
+      {
+        "q": "Duck : Duckling :: Frog : ?",
+        "s": [
+          "Step 1: A duck's baby is a duckling.",
+          "Step 2: A frog's baby is a tadpole."
+        ],
+        "a": "Tadpole"
+      },
+      {
+        "q": "Goat : Kid :: Human : ?",
+        "s": [
+          "Step 1: A goat's baby is a kid.",
+          "Step 2: A human's baby is an infant."
+        ],
+        "a": "Infant"
+      }
+    ],
+    "animal-home-rule": [
+      {
+        "q": "Dog : Kennel :: Bird : ?",
+        "s": [
+          "Step 1: A dog lives in a kennel.",
+          "Step 2: A bird lives in a nest."
+        ],
+        "a": "Nest"
+      },
+      {
+        "q": "Lion : Den :: Rabbit : ?",
+        "s": [
+          "Step 1: A lion lives in a den.",
+          "Step 2: A rabbit lives in a burrow."
+        ],
+        "a": "Burrow"
+      },
+      {
+        "q": "Bee : Hive :: Horse : ?",
+        "s": [
+          "Step 1: A bee lives in a hive.",
+          "Step 2: A horse lives in a stable."
+        ],
+        "a": "Stable"
+      },
+      {
+        "q": "Pig : Sty :: Cow : ?",
+        "s": [
+          "Step 1: A pig lives in a sty.",
+          "Step 2: A cow lives in a shed."
+        ],
+        "a": "Shed"
+      },
+      {
+        "q": "Spider : Web :: Mouse : ?",
+        "s": [
+          "Step 1: A spider lives in a web.",
+          "Step 2: A mouse lives in a hole."
+        ],
+        "a": "Hole"
+      }
+    ],
+    "country-capital-rule": [
+      {
+        "q": "India : Delhi :: USA : ?",
+        "s": [
+          "Step 1: The capital of India is Delhi.",
+          "Step 2: The capital of USA is Washington DC."
+        ],
+        "a": "Washington DC"
+      },
+      {
+        "q": "UK : London :: France : ?",
+        "s": [
+          "Step 1: The capital of UK is London.",
+          "Step 2: The capital of France is Paris."
+        ],
+        "a": "Paris"
+      },
+      {
+        "q": "Japan : Tokyo :: China : ?",
+        "s": [
+          "Step 1: The capital of Japan is Tokyo.",
+          "Step 2: The capital of China is Beijing."
+        ],
+        "a": "Beijing"
+      },
+      {
+        "q": "Russia : Moscow :: Germany : ?",
+        "s": [
+          "Step 1: The capital of Russia is Moscow.",
+          "Step 2: The capital of Germany is Berlin."
+        ],
+        "a": "Berlin"
+      },
+      {
+        "q": "Australia : Canberra :: Canada : ?",
+        "s": [
+          "Step 1: The capital of Australia is Canberra.",
+          "Step 2: The capital of Canada is Ottawa."
+        ],
+        "a": "Ottawa"
+      }
+    ],
+    "letter-shift-rule": [
+      {
+        "q": "A : D :: B : ?",
+        "s": [
+          "Step 1: A to D is +3 shift.",
+          "Step 2: B(2)+3 = E(5)."
+        ],
+        "a": "E"
+      },
+      {
+        "q": "C : F :: G : ?",
+        "s": [
+          "Step 1: C to F is +3.",
+          "Step 2: G(7)+3 = J(10)."
+        ],
+        "a": "J"
+      },
+      {
+        "q": "M : P :: R : ?",
+        "s": [
+          "Step 1: M to P is +3.",
+          "Step 2: R(18)+3 = U(21)."
+        ],
+        "a": "U"
+      },
+      {
+        "q": "P : T :: L : ?",
+        "s": [
+          "Step 1: P to T is +4.",
+          "Step 2: L(12)+4 = P(16)."
+        ],
+        "a": "P"
+      },
+      {
+        "q": "X : A :: Y : ?",
+        "s": [
+          "Step 1: X(24) to A(1) is +3 wrap around.",
+          "Step 2: Y(25)+3=28, 28-26=2=B."
+        ],
+        "a": "B"
+      }
+    ],
+    "letter-reverse-rule": [
+      {
+        "q": "A : Z :: B : ?",
+        "s": [
+          "Step 1: A(1) maps to Z(26). Rule: 27-pos.",
+          "Step 2: B is 2. 27-2=25=Y."
+        ],
+        "a": "Y"
+      },
+      {
+        "q": "C : X :: D : ?",
+        "s": [
+          "Step 1: C(3) maps to X(24).",
+          "Step 2: D is 4. 27-4=23=W."
+        ],
+        "a": "W"
+      },
+      {
+        "q": "M : N :: P : ?",
+        "s": [
+          "Step 1: M(13) to N(14).",
+          "Step 2: P is 16. 27-16=11=K."
+        ],
+        "a": "K"
+      },
+      {
+        "q": "E : V :: R : ?",
+        "s": [
+          "Step 1: E(5) to V(22).",
+          "Step 2: R is 18. 27-18=9=I."
+        ],
+        "a": "I"
+      },
+      {
+        "q": "H : S :: U : ?",
+        "s": [
+          "Step 1: H(8) to S(19).",
+          "Step 2: U is 21. 27-21=6=F."
+        ],
+        "a": "F"
+      }
+    ],
+    "number-square-rule": [
+      {
+        "q": "2 : 4 :: 3 : ?",
+        "s": [
+          "Step 1: 2 squared is 4.",
+          "Step 2: 3 squared is 9."
+        ],
+        "a": "9"
+      },
+      {
+        "q": "3 : 9 :: 4 : ?",
+        "s": [
+          "Step 1: 3 squared is 9.",
+          "Step 2: 4 squared is 16."
+        ],
+        "a": "16"
+      },
+      {
+        "q": "5 : 25 :: 6 : ?",
+        "s": [
+          "Step 1: 5 squared is 25.",
+          "Step 2: 6 squared is 36."
+        ],
+        "a": "36"
+      },
+      {
+        "q": "7 : 49 :: 8 : ?",
+        "s": [
+          "Step 1: 7 squared is 49.",
+          "Step 2: 8 squared is 64."
+        ],
+        "a": "64"
+      },
+      {
+        "q": "9 : 81 :: 10 : ?",
+        "s": [
+          "Step 1: 9 squared is 81.",
+          "Step 2: 10 squared is 100."
+        ],
+        "a": "100"
+      }
+    ],
+    "digit-sum-rule": [
+      {
+        "q": "12 : 3 :: 45 : ?",
+        "s": [
+          "Step 1: Sum digits of 12: 1+2=3.",
+          "Step 2: Sum digits of 45: 4+5=9."
+        ],
+        "a": "9"
+      },
+      {
+        "q": "23 : 5 :: 67 : ?",
+        "s": [
+          "Step 1: Sum digits of 23: 2+3=5.",
+          "Step 2: Sum digits of 67: 6+7=13."
+        ],
+        "a": "13"
+      },
+      {
+        "q": "99 : 18 :: 100 : ?",
+        "s": [
+          "Step 1: Sum digits of 99: 9+9=18.",
+          "Step 2: Sum digits of 100: 1+0+0=1."
+        ],
+        "a": "1"
+      },
+      {
+        "q": "81 : 9 :: 64 : ?",
+        "s": [
+          "Step 1: Sum digits of 81: 8+1=9.",
+          "Step 2: Sum digits of 64: 6+4=10."
+        ],
+        "a": "10"
+      },
+      {
+        "q": "37 : 10 :: 55 : ?",
+        "s": [
+          "Step 1: Sum digits of 37: 3+7=10.",
+          "Step 2: Sum digits of 55: 5+5=10."
+        ],
+        "a": "10"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "q": "Doctor : Hospital :: Teacher : ?",
+      "opts": [
+        "School",
+        "Office",
+        "Home",
+        "Hospital"
+      ],
+      "c": 0,
+      "t": "profession",
+      "exp": "Step 1: A doctor works in a hospital (workplace). Step 2: A teacher works in a school. Step 3: School is correct.",
+      "id": 1
+    },
+    {
+      "q": "Pen : Write :: Scissors : ?",
+      "opts": [
+        "Cut",
+        "Draw",
+        "Hold",
+        "Play"
+      ],
+      "c": 0,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: Scissors are used to cut. Step 3: Cut is correct.",
+      "id": 2
+    },
+    {
+      "q": "Happy : Sad :: Hot : ?",
+      "opts": [
+        "Warm",
+        "Cold",
+        "Cool",
+        "Boiling"
+      ],
+      "c": 1,
+      "t": "antonym",
+      "exp": "Step 1: Happy and Sad are opposites. Step 2: Opposite of Hot is Cold. Step 3: Cold is correct.",
+      "id": 3
+    },
+    {
+      "q": "Cat : Kitten :: Dog : ?",
+      "opts": [
+        "Puppy",
+        "Calf",
+        "Foal",
+        "Cub"
+      ],
+      "c": 0,
+      "t": "animal-young",
+      "exp": "Step 1: A cat baby is a kitten. Step 2: A dog baby is a puppy. Step 3: Puppy is correct.",
+      "id": 4
+    },
+    {
+      "q": "Big : Large :: Small : ?",
+      "opts": [
+        "Tiny",
+        "Huge",
+        "Medium",
+        "Tall"
+      ],
+      "c": 0,
+      "t": "synonym",
+      "exp": "Step 1: Big and Large are synonyms. Step 2: A synonym for Small is Tiny. Step 3: Tiny is correct.",
+      "id": 5
+    },
+    {
+      "q": "Up : Down :: Left : ?",
+      "opts": [
+        "Right",
+        "Center",
+        "Front",
+        "Back"
+      ],
+      "c": 0,
+      "t": "antonym",
+      "exp": "Step 1: Up and Down are opposites. Step 2: Opposite of Left is Right. Step 3: Right is correct.",
+      "id": 6
+    },
+    {
+      "q": "Finger : Hand :: Toe : ?",
+      "opts": [
+        "Foot",
+        "Leg",
+        "Arm",
+        "Nose"
+      ],
+      "c": 0,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A toe is part of a foot. Step 3: Foot is correct.",
+      "id": 7
+    },
+    {
+      "q": "Bird : Fly :: Fish : ?",
+      "opts": [
+        "Swim",
+        "Walk",
+        "Crawl",
+        "Jump"
+      ],
+      "c": 0,
+      "t": "function",
+      "exp": "Step 1: A bird moves by flying. Step 2: A fish moves by swimming. Step 3: Swim is correct.",
+      "id": 8
+    },
+    {
+      "q": "India : Delhi :: Japan : ?",
+      "opts": [
+        "Tokyo",
+        "Beijing",
+        "Seoul",
+        "Bangkok"
+      ],
+      "c": 0,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Tokyo is the capital of Japan. Step 3: Tokyo is correct.",
+      "id": 9
+    },
+    {
+      "q": "Lion : Cub :: Cow : ?",
+      "opts": [
+        "Calf",
+        "Lamb",
+        "Foal",
+        "Kid"
+      ],
+      "c": 0,
+      "t": "animal-young",
+      "exp": "Step 1: A lion baby is a cub. Step 2: A cow baby is a calf. Step 3: Calf is correct.",
+      "id": 10
+    },
+    {
+      "q": "Rain : Flood :: Virus : ?",
+      "opts": [
+        "Disease",
+        "Water",
+        "Air",
+        "Food"
+      ],
+      "c": 0,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes flood. Step 2: Virus causes disease. Step 3: Disease is correct.",
+      "id": 11
+    },
+    {
+      "q": "Book : Read :: Music : ?",
+      "opts": [
+        "Listen",
+        "Write",
+        "Sing",
+        "Play"
+      ],
+      "c": 0,
+      "t": "function",
+      "exp": "Step 1: A book is to read. Step 2: Music is to listen. Step 3: Listen is correct.",
+      "id": 12
+    },
+    {
+      "q": "Day : Night :: Summer : ?",
+      "opts": [
+        "Winter",
+        "Spring",
+        "Monsoon",
+        "Autumn"
+      ],
+      "c": 0,
+      "t": "antonym",
+      "exp": "Step 1: Day and Night are opposites. Step 2: Opposite of Summer is Winter. Step 3: Winter is correct.",
+      "id": 13
+    },
+    {
+      "q": "Doctor : Stethoscope :: Carpenter : ?",
+      "opts": [
+        "Hammer",
+        "Paint",
+        "Wood",
+        "Nail"
+      ],
+      "c": 0,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A carpenter uses a hammer. Step 3: Hammer is correct.",
+      "id": 14
+    },
+    {
+      "q": "A : D :: B : ?",
+      "opts": [
+        "E",
+        "F",
+        "C",
+        "G"
+      ],
+      "c": 0,
+      "t": "letter-shift",
+      "exp": "Step 1: A to D is +3 shift. Step 2: B+3=E. Step 3: E is correct.",
+      "id": 15
+    },
+    {
+      "q": "3 : 9 :: 4 : ?",
+      "opts": [
+        "16",
+        "12",
+        "8",
+        "20"
+      ],
+      "c": 0,
+      "t": "number-square",
+      "exp": "Step 1: 3 squared is 9. Step 2: 4 squared is 16. Step 3: 16 is correct.",
+      "id": 16
+    },
+    {
+      "q": "12 : 3 :: 45 : ?",
+      "opts": [
+        "9",
+        "5",
+        "7",
+        "6"
+      ],
+      "c": 0,
+      "t": "digit-sum",
+      "exp": "Step 1: Sum digits of 12: 1+2=3. Step 2: Sum digits of 45: 4+5=9. Step 3: 9 is correct.",
+      "id": 17
+    },
+    {
+      "q": "USA : Washington DC :: UK : ?",
+      "opts": [
+        "London",
+        "Paris",
+        "Berlin",
+        "Rome"
+      ],
+      "c": 0,
+      "t": "country-capital",
+      "exp": "Step 1: Washington DC is USA capital. Step 2: London is UK capital. Step 3: London is correct.",
+      "id": 18
+    },
+    {
+      "q": "Dog : Kennel :: Bird : ?",
+      "opts": [
+        "Nest",
+        "Tree",
+        "Sky",
+        "Cage"
+      ],
+      "c": 0,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A bird lives in a nest. Step 3: Nest is correct.",
+      "id": 19
+    },
+    {
+      "q": "Mumbai : Maharashtra :: Chennai : ?",
+      "opts": [
+        "Tamil Nadu",
+        "Kerala",
+        "Andhra",
+        "Karnataka"
+      ],
+      "c": 0,
+      "t": "india-state",
+      "exp": "Step 1: Mumbai is in Maharashtra. Step 2: Chennai is in Tamil Nadu. Step 3: Tamil Nadu is correct.",
+      "id": 20
+    },
+    {
+      "q": "Chef : Knife :: Painter : ?",
+      "opts": [
+        "Brush",
+        "Canvas",
+        "Paint",
+        "Easel"
+      ],
+      "c": 0,
+      "t": "profession-tool",
+      "exp": "Step 1: A chef uses a knife. Step 2: A painter uses a brush. Step 3: Brush is correct.",
+      "id": 21
+    },
+    {
+      "q": "C : F :: G : ?",
+      "opts": [
+        "J",
+        "H",
+        "K",
+        "I"
+      ],
+      "c": 0,
+      "t": "letter-shift",
+      "exp": "Step 1: C to F is +3. Step 2: G+3=J. Step 3: J is correct.",
+      "id": 22
+    },
+    {
+      "q": "Sheep : Lamb :: Horse : ?",
+      "opts": [
+        "Foal",
+        "Calf",
+        "Puppy",
+        "Kid"
+      ],
+      "c": 0,
+      "t": "animal-young",
+      "exp": "Step 1: A sheep baby is a lamb. Step 2: A horse baby is a foal. Step 3: Foal is correct.",
+      "id": 23
+    },
+    {
+      "q": "Engine : Car :: CPU : ?",
+      "opts": [
+        "Computer",
+        "Fan",
+        "Screen",
+        "Keyboard"
+      ],
+      "c": 0,
+      "t": "part-whole",
+      "exp": "Step 1: An engine is part of a car. Step 2: CPU is part of a computer. Step 3: Computer is correct.",
+      "id": 24
+    },
+    {
+      "q": "Oxygen : Human :: Petrol : ?",
+      "opts": [
+        "Car",
+        "Bike",
+        "Fire",
+        "Engine"
+      ],
+      "c": 0,
+      "t": "essential",
+      "exp": "Step 1: Oxygen is essential for humans. Step 2: Petrol is essential for a car. Step 3: Car is correct.",
+      "id": 25
+    },
+    {
+      "q": "Student : Classroom :: Actor : ?",
+      "opts": [
+        "Stage",
+        "Movie",
+        "Drama",
+        "Camera"
+      ],
+      "c": 0,
+      "t": "place-person",
+      "exp": "Step 1: A student learns in a classroom. Step 2: An actor performs on a stage. Step 3: Stage is correct.",
+      "id": 26
+    },
+    {
+      "q": "2 : 8 :: 3 : ?",
+      "opts": [
+        "27",
+        "9",
+        "6",
+        "12"
+      ],
+      "c": 0,
+      "t": "number-cube",
+      "exp": "Step 1: 2 cube is 8. Step 2: 3 cube is 27. Step 3: 27 is correct.",
+      "id": 27
+    },
+    {
+      "q": "Stanza : Poem :: Chapter : ?",
+      "opts": [
+        "Book",
+        "Page",
+        "Paragraph",
+        "Story"
+      ],
+      "c": 0,
+      "t": "part-whole",
+      "exp": "Step 1: A stanza is part of a poem. Step 2: A chapter is part of a book. Step 3: Book is correct.",
+      "id": 28
+    },
+    {
+      "q": "A : Z :: M : ?",
+      "opts": [
+        "N",
+        "L",
+        "O",
+        "K"
+      ],
+      "c": 0,
+      "t": "letter-mirror",
+      "exp": "Step 1: A(1) maps to Z(26) by 27-pos. Step 2: M(13) -> 27-13=14=N. Step 3: N is correct.",
+      "id": 29
+    },
+    {
+      "q": "Bird : Nest :: Bee : ?",
+      "opts": [
+        "Hive",
+        "Nest",
+        "Web",
+        "Burrow"
+      ],
+      "c": 0,
+      "t": "animal-home",
+      "exp": "Step 1: A bird lives in a nest. Step 2: A bee lives in a hive. Step 3: Hive is correct.",
+      "id": 30
+    },
+    {
+      "q": "Teacher : Educate :: Chef : ?",
+      "opts": [
+        "Cook",
+        "Serve",
+        "Prepare",
+        "Eat"
+      ],
+      "c": 0,
+      "t": "function",
+      "exp": "Step 1: A teacher educates. Step 2: A chef cooks. Step 3: Cook is correct.",
+      "id": 31
+    },
+    {
+      "q": "Study : Knowledge :: Exercise : ?",
+      "opts": [
+        "Strength",
+        "Health",
+        "Sweat",
+        "Energy"
+      ],
+      "c": 0,
+      "t": "cause-effect",
+      "exp": "Step 1: Study gives knowledge. Step 2: Exercise gives strength. Step 3: Strength is correct.",
+      "id": 32
+    },
+    {
+      "q": "Key : Lock :: Password : ?",
+      "opts": [
+        "Account",
+        "User",
+        "Security",
+        "Login"
+      ],
+      "c": 0,
+      "t": "function",
+      "exp": "Step 1: A key opens a lock. Step 2: A password opens an account. Step 3: Account is correct.",
+      "id": 33
+    },
+    {
+      "q": "Carpenter : Wood :: Goldsmith : ?",
+      "opts": [
+        "Gold",
+        "Silver",
+        "Metal",
+        "Jewelry"
+      ],
+      "c": 0,
+      "t": "profession-material",
+      "exp": "Step 1: A carpenter works with wood. Step 2: A goldsmith works with gold. Step 3: Gold is correct.",
+      "id": 34
+    },
+    {
+      "q": "Ice : Cold :: Fire : ?",
+      "opts": [
+        "Hot",
+        "Warm",
+        "Light",
+        "Burn"
+      ],
+      "c": 0,
+      "t": "property",
+      "exp": "Step 1: Ice feels cold. Step 2: Fire feels hot. Step 3: Hot is correct.",
+      "id": 35
+    },
+    {
+      "q": "Meter : Distance :: Liter : ?",
+      "opts": [
+        "Volume",
+        "Weight",
+        "Length",
+        "Time"
+      ],
+      "c": 0,
+      "t": "measurement",
+      "exp": "Step 1: Meter measures distance. Step 2: Liter measures volume. Step 3: Volume is correct.",
+      "id": 36
+    },
+    {
+      "q": "Horse : Stable :: Dog : ?",
+      "opts": [
+        "Kennel",
+        "Nest",
+        "Den",
+        "Cave"
+      ],
+      "c": 0,
+      "t": "animal-home",
+      "exp": "Step 1: A horse lives in a stable. Step 2: A dog lives in a kennel. Step 3: Kennel is correct.",
+      "id": 37
+    },
+    {
+      "q": "P : T :: L : ?",
+      "opts": [
+        "P",
+        "M",
+        "K",
+        "O"
+      ],
+      "c": 0,
+      "t": "letter-shift",
+      "exp": "Step 1: P to T is +4. Step 2: L+4=P. Step 3: P is correct.",
+      "id": 38
+    },
+    {
+      "q": "Sleep : Tired :: Eat : ?",
+      "opts": [
+        "Hungry",
+        "Full",
+        "Energy",
+        "Thirsty"
+      ],
+      "c": 0,
+      "t": "cause-effect",
+      "exp": "Step 1: Sleep cures tiredness. Step 2: Eating cures hunger. Step 3: Hungry is correct.",
+      "id": 39
+    },
+    {
+      "q": "Newton : Physics :: Shakespeare : ?",
+      "opts": [
+        "Literature",
+        "Biology",
+        "Chemistry",
+        "Art"
+      ],
+      "c": 0,
+      "t": "person-field",
+      "exp": "Step 1: Newton contributed to Physics. Step 2: Shakespeare contributed to Literature. Step 3: Literature is correct.",
+      "id": 40
+    },
+    {
+      "q": "Seismograph : Earthquake :: Anemometer : ?",
+      "opts": [
+        "Wind",
+        "Rain",
+        "Temperature",
+        "Pressure"
+      ],
+      "c": 0,
+      "t": "measurement",
+      "exp": "Step 1: Seismograph measures earthquakes. Step 2: Anemometer measures wind. Step 3: Wind is correct.",
+      "id": 41
+    },
+    {
+      "q": "Callous : Sensitive :: Frugal : ?",
+      "opts": [
+        "Extravagant",
+        "Careful",
+        "Miserly",
+        "Generous"
+      ],
+      "c": 0,
+      "t": "antonym",
+      "exp": "Step 1: Callous means insensitive, opposite of Sensitive. Step 2: Frugal means thrifty, opposite of Extravagant. Step 3: Extravagant is correct.",
+      "id": 42
+    },
+    {
+      "q": "ABC : ZYX :: DEF : ?",
+      "opts": [
+        "WVU",
+        "EDC",
+        "XYZ",
+        "FED"
+      ],
+      "c": 0,
+      "t": "letter-mirror",
+      "exp": "Step 1: A-Z, B-Y, C-X mirror. Step 2: D-W, E-V, F-U = WVU. Step 3: WVU is correct.",
+      "id": 43
+    },
+    {
+      "q": "Oligarchy : Few :: Autocracy : ?",
+      "opts": [
+        "One",
+        "Many",
+        "None",
+        "All"
+      ],
+      "c": 0,
+      "t": "definition",
+      "exp": "Step 1: Oligarchy means rule by few. Step 2: Autocracy means rule by one. Step 3: One is correct.",
+      "id": 44
+    },
+    {
+      "q": "Chronometer : Time :: Hygrometer : ?",
+      "opts": [
+        "Humidity",
+        "Pressure",
+        "Speed",
+        "Sound"
+      ],
+      "c": 0,
+      "t": "measurement",
+      "exp": "Step 1: Chronometer measures time. Step 2: Hygrometer measures humidity. Step 3: Humidity is correct.",
+      "id": 45
+    },
+    {
+      "q": "Ephemeral : Permanent :: Ubiquitous : ?",
+      "opts": [
+        "Rare",
+        "Common",
+        "Everywhere",
+        "Unique"
+      ],
+      "c": 0,
+      "t": "antonym",
+      "exp": "Step 1: Ephemeral means short-lived, opposite of Permanent. Step 2: Ubiquitous means everywhere, opposite of Rare. Step 3: Rare is correct.",
+      "id": 46
+    },
+    {
+      "q": "Nun : Convent :: Abbot : ?",
+      "opts": [
+        "Monastery",
+        "Church",
+        "Temple",
+        "Mosque"
+      ],
+      "c": 0,
+      "t": "person-place",
+      "exp": "Step 1: Nuns live in a convent. Step 2: An abbot lives in a monastery. Step 3: Monastery is correct.",
+      "id": 47
+    },
+    {
+      "q": "Topography : Terrain :: Phonology : ?",
+      "opts": [
+        "Sounds",
+        "Music",
+        "Voice",
+        "Speech"
+      ],
+      "c": 0,
+      "t": "study-of",
+      "exp": "Step 1: Topography studies terrain. Step 2: Phonology studies speech sounds. Step 3: Sounds is correct.",
+      "id": 48
+    },
+    {
+      "q": "Catacombs : Burial :: Archives : ?",
+      "opts": [
+        "Storage",
+        "History",
+        "Records",
+        "Library"
+      ],
+      "c": 0,
+      "t": "function",
+      "exp": "Step 1: Catacombs are for burial. Step 2: Archives are for storing records. Step 3: Records is correct.",
+      "id": 49
+    },
+    {
+      "q": "Deleterious : Harmful :: Salubrious : ?",
+      "opts": [
+        "Healthy",
+        "Salty",
+        "Dangerous",
+        "Beautiful"
+      ],
+      "c": 0,
+      "t": "synonym",
+      "exp": "Step 1: Deleterious means harmful. Step 2: Salubrious means healthy. Step 3: Healthy is correct.",
+      "id": 50
+    },
+    {
+      "id": 51,
+      "q": "Happy : Joyful :: Big : ?",
+      "opts": [
+        "tardy",
+        "large",
+        "easy",
+        "old"
+      ],
+      "c": 1,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Big is Large. Step 3: Large is correct."
+    },
+    {
+      "id": 52,
+      "q": "Happy : Joyful :: Small : ?",
+      "opts": [
+        "hard",
+        "tiny",
+        "happy",
+        "silent"
+      ],
+      "c": 1,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Small is Tiny. Step 3: Tiny is correct."
+    },
+    {
+      "id": 53,
+      "q": "Happy : Joyful :: Fast : ?",
+      "opts": [
+        "easy",
+        "quick",
+        "rich",
+        "joyful"
+      ],
+      "c": 1,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Fast is Quick. Step 3: Quick is correct."
+    },
+    {
+      "id": 54,
+      "q": "Happy : Joyful :: Brave : ?",
+      "opts": [
+        "tardy",
+        "intelligent",
+        "courageous",
+        "wealthy"
+      ],
+      "c": 2,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Brave is Courageous. Step 3: Courageous is correct."
+    },
+    {
+      "id": 55,
+      "q": "Happy : Joyful :: Afraid : ?",
+      "opts": [
+        "old",
+        "small",
+        "scared",
+        "gloomy"
+      ],
+      "c": 2,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Afraid is Scared. Step 3: Scared is correct."
+    },
+    {
+      "id": 56,
+      "q": "Happy : Joyful :: Pretty : ?",
+      "opts": [
+        "kind",
+        "late",
+        "slender",
+        "beautiful"
+      ],
+      "c": 3,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Pretty is Beautiful. Step 3: Beautiful is correct."
+    },
+    {
+      "id": 57,
+      "q": "Happy : Joyful :: Smart : ?",
+      "opts": [
+        "large",
+        "scorching",
+        "pretty",
+        "intelligent"
+      ],
+      "c": 3,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Smart is Intelligent. Step 3: Intelligent is correct."
+    },
+    {
+      "id": 58,
+      "q": "Happy : Joyful :: Angry : ?",
+      "opts": [
+        "large",
+        "wealthy",
+        "old",
+        "furious"
+      ],
+      "c": 3,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Angry is Furious. Step 3: Furious is correct."
+    },
+    {
+      "id": 59,
+      "q": "Happy : Joyful :: Calm : ?",
+      "opts": [
+        "quick",
+        "intelligent",
+        "scorching",
+        "serene"
+      ],
+      "c": 3,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Calm is Serene. Step 3: Serene is correct."
+    },
+    {
+      "id": 60,
+      "q": "Happy : Joyful :: Rich : ?",
+      "opts": [
+        "wealthy",
+        "bold",
+        "kind",
+        "melancholy"
+      ],
+      "c": 0,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Rich is Wealthy. Step 3: Wealthy is correct."
+    },
+    {
+      "id": 61,
+      "q": "Happy : Joyful :: Poor : ?",
+      "opts": [
+        "old",
+        "silent",
+        "big",
+        "destitute"
+      ],
+      "c": 3,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Poor is Destitute. Step 3: Destitute is correct."
+    },
+    {
+      "id": 62,
+      "q": "Happy : Joyful :: Old : ?",
+      "opts": [
+        "new",
+        "destitute",
+        "slender",
+        "ancient"
+      ],
+      "c": 3,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Old is Ancient. Step 3: Ancient is correct."
+    },
+    {
+      "id": 63,
+      "q": "Happy : Joyful :: New : ?",
+      "opts": [
+        "novel",
+        "scared",
+        "quick",
+        "bright"
+      ],
+      "c": 0,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of New is Novel. Step 3: Novel is correct."
+    },
+    {
+      "id": 64,
+      "q": "Happy : Joyful :: Cold : ?",
+      "opts": [
+        "difficult",
+        "bold",
+        "frigid",
+        "silent"
+      ],
+      "c": 2,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Cold is Frigid. Step 3: Frigid is correct."
+    },
+    {
+      "id": 65,
+      "q": "Happy : Joyful :: Hot : ?",
+      "opts": [
+        "old",
+        "obese",
+        "poor",
+        "scorching"
+      ],
+      "c": 3,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Hot is Scorching. Step 3: Scorching is correct."
+    },
+    {
+      "id": 66,
+      "q": "Happy : Joyful :: Sad : ?",
+      "opts": [
+        "destitute",
+        "silent",
+        "beautiful",
+        "melancholy"
+      ],
+      "c": 3,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Sad is Melancholy. Step 3: Melancholy is correct."
+    },
+    {
+      "id": 67,
+      "q": "Happy : Joyful :: Bright : ?",
+      "opts": [
+        "old",
+        "frigid",
+        "luminous",
+        "large"
+      ],
+      "c": 2,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Bright is Luminous. Step 3: Luminous is correct."
+    },
+    {
+      "id": 68,
+      "q": "Happy : Joyful :: Dark : ?",
+      "opts": [
+        "gloomy",
+        "old",
+        "benevolent",
+        "ancient"
+      ],
+      "c": 0,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Dark is Gloomy. Step 3: Gloomy is correct."
+    },
+    {
+      "id": 69,
+      "q": "Happy : Joyful :: Loud : ?",
+      "opts": [
+        "novel",
+        "slender",
+        "noisy",
+        "ancient"
+      ],
+      "c": 2,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Loud is Noisy. Step 3: Noisy is correct."
+    },
+    {
+      "id": 70,
+      "q": "Happy : Joyful :: Thin : ?",
+      "opts": [
+        "hot",
+        "ancient",
+        "slender",
+        "angry"
+      ],
+      "c": 2,
+      "t": "synonym",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Thin is Slender. Step 3: Slender is correct."
+    },
+    {
+      "id": 71,
+      "q": "Hot : Cold :: Light : ?",
+      "opts": [
+        "dirty",
+        "ancient",
+        "blunt",
+        "dark"
+      ],
+      "c": 3,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Light is Dark. Step 3: Dark is correct."
+    },
+    {
+      "id": 72,
+      "q": "Hot : Cold :: Up : ?",
+      "opts": [
+        "down",
+        "bright",
+        "lose",
+        "dim"
+      ],
+      "c": 0,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Up is Down. Step 3: Down is correct."
+    },
+    {
+      "id": 73,
+      "q": "Hot : Cold :: Good : ?",
+      "opts": [
+        "small",
+        "hate",
+        "win",
+        "bad"
+      ],
+      "c": 3,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Good is Bad. Step 3: Bad is correct."
+    },
+    {
+      "id": 74,
+      "q": "Hot : Cold :: Happy : ?",
+      "opts": [
+        "big",
+        "quiet",
+        "hot",
+        "sad"
+      ],
+      "c": 3,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Happy is Sad. Step 3: Sad is correct."
+    },
+    {
+      "id": 75,
+      "q": "Hot : Cold :: Fast : ?",
+      "opts": [
+        "thick",
+        "short",
+        "empty",
+        "slow"
+      ],
+      "c": 3,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Fast is Slow. Step 3: Slow is correct."
+    },
+    {
+      "id": 76,
+      "q": "Hot : Cold :: Strong : ?",
+      "opts": [
+        "begin",
+        "dim",
+        "weak",
+        "night"
+      ],
+      "c": 2,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Strong is Weak. Step 3: Weak is correct."
+    },
+    {
+      "id": 77,
+      "q": "Hot : Cold :: Day : ?",
+      "opts": [
+        "sad",
+        "bright",
+        "night",
+        "happy"
+      ],
+      "c": 2,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Day is Night. Step 3: Night is correct."
+    },
+    {
+      "id": 78,
+      "q": "Hot : Cold :: Summer : ?",
+      "opts": [
+        "down",
+        "dim",
+        "winter",
+        "fast"
+      ],
+      "c": 2,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Summer is Winter. Step 3: Winter is correct."
+    },
+    {
+      "id": 79,
+      "q": "Hot : Cold :: Rich : ?",
+      "opts": [
+        "poor",
+        "ancient",
+        "hot",
+        "weak"
+      ],
+      "c": 0,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Rich is Poor. Step 3: Poor is correct."
+    },
+    {
+      "id": 80,
+      "q": "Hot : Cold :: Tall : ?",
+      "opts": [
+        "death",
+        "short",
+        "hot",
+        "low"
+      ],
+      "c": 1,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Tall is Short. Step 3: Short is correct."
+    },
+    {
+      "id": 81,
+      "q": "Hot : Cold :: Big : ?",
+      "opts": [
+        "bright",
+        "quiet",
+        "late",
+        "small"
+      ],
+      "c": 3,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Big is Small. Step 3: Small is correct."
+    },
+    {
+      "id": 82,
+      "q": "Hot : Cold :: Wet : ?",
+      "opts": [
+        "dry",
+        "weak",
+        "clean",
+        "few"
+      ],
+      "c": 0,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Wet is Dry. Step 3: Dry is correct."
+    },
+    {
+      "id": 83,
+      "q": "Hot : Cold :: Clean : ?",
+      "opts": [
+        "small",
+        "dirty",
+        "ancient",
+        "clean"
+      ],
+      "c": 1,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Clean is Dirty. Step 3: Dirty is correct."
+    },
+    {
+      "id": 84,
+      "q": "Hot : Cold :: High : ?",
+      "opts": [
+        "low",
+        "night",
+        "hot",
+        "good"
+      ],
+      "c": 0,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of High is Low. Step 3: Low is correct."
+    },
+    {
+      "id": 85,
+      "q": "Hot : Cold :: Thick : ?",
+      "opts": [
+        "small",
+        "thin",
+        "winter",
+        "dirty"
+      ],
+      "c": 1,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Thick is Thin. Step 3: Thin is correct."
+    },
+    {
+      "id": 86,
+      "q": "Hot : Cold :: Bright : ?",
+      "opts": [
+        "night",
+        "dim",
+        "lose",
+        "wet"
+      ],
+      "c": 1,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Bright is Dim. Step 3: Dim is correct."
+    },
+    {
+      "id": 87,
+      "q": "Hot : Cold :: Sharp : ?",
+      "opts": [
+        "late",
+        "begin",
+        "blunt",
+        "dim"
+      ],
+      "c": 2,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Sharp is Blunt. Step 3: Blunt is correct."
+    },
+    {
+      "id": 88,
+      "q": "Hot : Cold :: Full : ?",
+      "opts": [
+        "empty",
+        "high",
+        "cold",
+        "night"
+      ],
+      "c": 0,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Full is Empty. Step 3: Empty is correct."
+    },
+    {
+      "id": 89,
+      "q": "Hot : Cold :: Hard : ?",
+      "opts": [
+        "down",
+        "soft",
+        "weak",
+        "winter"
+      ],
+      "c": 1,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Hard is Soft. Step 3: Soft is correct."
+    },
+    {
+      "id": 90,
+      "q": "Hot : Cold :: Loud : ?",
+      "opts": [
+        "quiet",
+        "small",
+        "day",
+        "lose"
+      ],
+      "c": 0,
+      "t": "antonym",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Loud is Quiet. Step 3: Quiet is correct."
+    },
+    {
+      "id": 91,
+      "q": "Rain : Flood :: Fire : ?",
+      "opts": [
+        "practice",
+        "smoke",
+        "fire",
+        "heat"
+      ],
+      "c": 1,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Fire causes Smoke. Step 3: Smoke is correct."
+    },
+    {
+      "id": 92,
+      "q": "Rain : Flood :: Study : ?",
+      "opts": [
+        "success",
+        "sweat",
+        "training",
+        "flood"
+      ],
+      "c": 0,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Study causes Success. Step 3: Success is correct."
+    },
+    {
+      "id": 93,
+      "q": "Rain : Flood :: Neglect : ?",
+      "opts": [
+        "smoke",
+        "fitness",
+        "failure",
+        "exercise"
+      ],
+      "c": 2,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Neglect causes Failure. Step 3: Failure is correct."
+    },
+    {
+      "id": 94,
+      "q": "Rain : Flood :: Eating : ?",
+      "opts": [
+        "eating",
+        "energy",
+        "practice",
+        "sweat"
+      ],
+      "c": 1,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Eating causes Energy. Step 3: Energy is correct."
+    },
+    {
+      "id": 95,
+      "q": "Rain : Flood :: Sleep : ?",
+      "opts": [
+        "smoke",
+        "rest",
+        "training",
+        "chick"
+      ],
+      "c": 1,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Sleep causes Rest. Step 3: Rest is correct."
+    },
+    {
+      "id": 96,
+      "q": "Rain : Flood :: Seed : ?",
+      "opts": [
+        "plant",
+        "yield",
+        "smoke",
+        "flood"
+      ],
+      "c": 0,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Seed causes Plant. Step 3: Plant is correct."
+    },
+    {
+      "id": 97,
+      "q": "Rain : Flood :: Egg : ?",
+      "opts": [
+        "smoking",
+        "chick",
+        "perfection",
+        "obesity"
+      ],
+      "c": 1,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Egg causes Chick. Step 3: Chick is correct."
+    },
+    {
+      "id": 98,
+      "q": "Rain : Flood :: Practice : ?",
+      "opts": [
+        "friction",
+        "fire",
+        "heat",
+        "perfection"
+      ],
+      "c": 3,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Practice causes Perfection. Step 3: Perfection is correct."
+    },
+    {
+      "id": 99,
+      "q": "Rain : Flood :: Training : ?",
+      "opts": [
+        "egg",
+        "growth",
+        "sweat",
+        "fitness"
+      ],
+      "c": 3,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Training causes Fitness. Step 3: Fitness is correct."
+    },
+    {
+      "id": 100,
+      "q": "Rain : Flood :: Watering : ?",
+      "opts": [
+        "fitness",
+        "growth",
+        "success",
+        "perfection"
+      ],
+      "c": 1,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Watering causes Growth. Step 3: Growth is correct."
+    },
+    {
+      "id": 101,
+      "q": "Rain : Flood :: Heat : ?",
+      "opts": [
+        "study",
+        "fertilizer",
+        "fitness",
+        "expansion"
+      ],
+      "c": 3,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Heat causes Expansion. Step 3: Expansion is correct."
+    },
+    {
+      "id": 102,
+      "q": "Rain : Flood :: Cold : ?",
+      "opts": [
+        "seed",
+        "study",
+        "obesity",
+        "contraction"
+      ],
+      "c": 3,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Cold causes Contraction. Step 3: Contraction is correct."
+    },
+    {
+      "id": 103,
+      "q": "Rain : Flood :: Friction : ?",
+      "opts": [
+        "heat",
+        "watering",
+        "perfection",
+        "egg"
+      ],
+      "c": 0,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Friction causes Heat. Step 3: Heat is correct."
+    },
+    {
+      "id": 104,
+      "q": "Rain : Flood :: Exercise : ?",
+      "opts": [
+        "sweat",
+        "study",
+        "cold",
+        "fertilizer"
+      ],
+      "c": 0,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Exercise causes Sweat. Step 3: Sweat is correct."
+    },
+    {
+      "id": 105,
+      "q": "Rain : Flood :: Overeating : ?",
+      "opts": [
+        "obesity",
+        "egg",
+        "fitness",
+        "fire"
+      ],
+      "c": 0,
+      "t": "cause-effect",
+      "exp": "Step 1: Rain causes Flood. Step 2: Overeating causes Obesity. Step 3: Obesity is correct."
+    },
+    {
+      "id": 106,
+      "q": "Pen : Write :: Knife : ?",
+      "opts": [
+        "oven",
+        "phone",
+        "cut",
+        "account"
+      ],
+      "c": 2,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A knife is used to cut. Step 3: Cut is correct."
+    },
+    {
+      "id": 107,
+      "q": "Pen : Write :: Brush : ?",
+      "opts": [
+        "knife",
+        "paint",
+        "pen",
+        "fan"
+      ],
+      "c": 1,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A brush is used to paint. Step 3: Paint is correct."
+    },
+    {
+      "id": 108,
+      "q": "Pen : Write :: Phone : ?",
+      "opts": [
+        "freezer",
+        "call",
+        "chair",
+        "heater"
+      ],
+      "c": 1,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A phone is used to call. Step 3: Call is correct."
+    },
+    {
+      "id": 109,
+      "q": "Pen : Write :: Car : ?",
+      "opts": [
+        "dry",
+        "music",
+        "transport",
+        "walk"
+      ],
+      "c": 2,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A car is used to transport. Step 3: Transport is correct."
+    },
+    {
+      "id": 110,
+      "q": "Pen : Write :: Clock : ?",
+      "opts": [
+        "warm",
+        "book",
+        "time",
+        "clean"
+      ],
+      "c": 2,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A clock is used to time. Step 3: Time is correct."
+    },
+    {
+      "id": 111,
+      "q": "Pen : Write :: Thermometer : ?",
+      "opts": [
+        "temperature",
+        "password",
+        "walk",
+        "fork"
+      ],
+      "c": 0,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A thermometer is used to temperature. Step 3: Temperature is correct."
+    },
+    {
+      "id": 112,
+      "q": "Pen : Write :: Key : ?",
+      "opts": [
+        "spoon",
+        "lock",
+        "comb",
+        "eat"
+      ],
+      "c": 1,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A key is used to lock. Step 3: Lock is correct."
+    },
+    {
+      "id": 113,
+      "q": "Pen : Write :: Password : ?",
+      "opts": [
+        "freezer",
+        "thermometer",
+        "comb",
+        "account"
+      ],
+      "c": 3,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A password is used to account. Step 3: Account is correct."
+    },
+    {
+      "id": 114,
+      "q": "Pen : Write :: Book : ?",
+      "opts": [
+        "cut",
+        "brush",
+        "clock",
+        "read"
+      ],
+      "c": 3,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A book is used to read. Step 3: Read is correct."
+    },
+    {
+      "id": 115,
+      "q": "Pen : Write :: Music : ?",
+      "opts": [
+        "phone",
+        "dry",
+        "listen",
+        "account"
+      ],
+      "c": 2,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A music is used to listen. Step 3: Listen is correct."
+    },
+    {
+      "id": 116,
+      "q": "Pen : Write :: Shoes : ?",
+      "opts": [
+        "lamp",
+        "glasses",
+        "walk",
+        "wake"
+      ],
+      "c": 2,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A shoes is used to walk. Step 3: Walk is correct."
+    },
+    {
+      "id": 117,
+      "q": "Pen : Write :: Glasses : ?",
+      "opts": [
+        "chair",
+        "eat",
+        "thermometer",
+        "see"
+      ],
+      "c": 3,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A glasses is used to see. Step 3: See is correct."
+    },
+    {
+      "id": 118,
+      "q": "Pen : Write :: Chair : ?",
+      "opts": [
+        "sit",
+        "account",
+        "paint",
+        "call"
+      ],
+      "c": 0,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A chair is used to sit. Step 3: Sit is correct."
+    },
+    {
+      "id": 119,
+      "q": "Pen : Write :: Spoon : ?",
+      "opts": [
+        "call",
+        "eat",
+        "bake",
+        "time"
+      ],
+      "c": 1,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A spoon is used to eat. Step 3: Eat is correct."
+    },
+    {
+      "id": 120,
+      "q": "Pen : Write :: Fork : ?",
+      "opts": [
+        "pierce",
+        "chair",
+        "key",
+        "paint"
+      ],
+      "c": 0,
+      "t": "function",
+      "exp": "Step 1: A pen is used to write. Step 2: A fork is used to pierce. Step 3: Pierce is correct."
+    },
+    {
+      "id": 121,
+      "q": "Finger : Hand :: Page : ?",
+      "opts": [
+        "car",
+        "ship",
+        "alphabet",
+        "book"
+      ],
+      "c": 3,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A page is part of a book. Step 3: Book is correct."
+    },
+    {
+      "id": 122,
+      "q": "Finger : Hand :: Leaf : ?",
+      "opts": [
+        "car",
+        "book",
+        "tree",
+        "act"
+      ],
+      "c": 2,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A leaf is part of a tree. Step 3: Tree is correct."
+    },
+    {
+      "id": 123,
+      "q": "Finger : Hand :: Wheel : ?",
+      "opts": [
+        "alphabet",
+        "tree",
+        "poem",
+        "car"
+      ],
+      "c": 3,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A wheel is part of a car. Step 3: Car is correct."
+    },
+    {
+      "id": 124,
+      "q": "Finger : Hand :: Brick : ?",
+      "opts": [
+        "wall",
+        "ladder",
+        "foot",
+        "tree"
+      ],
+      "c": 0,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A brick is part of a wall. Step 3: Wall is correct."
+    },
+    {
+      "id": 125,
+      "q": "Finger : Hand :: Engine : ?",
+      "opts": [
+        "petal",
+        "car",
+        "chapter",
+        "stanza"
+      ],
+      "c": 1,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A engine is part of a car. Step 3: Car is correct."
+    },
+    {
+      "id": 126,
+      "q": "Finger : Hand :: Cpu : ?",
+      "opts": [
+        "chapter",
+        "computer",
+        "ladder",
+        "car"
+      ],
+      "c": 1,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A cpu is part of a computer. Step 3: Computer is correct."
+    },
+    {
+      "id": 127,
+      "q": "Finger : Hand :: Stanza : ?",
+      "opts": [
+        "guitar",
+        "wheel",
+        "scene",
+        "poem"
+      ],
+      "c": 3,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A stanza is part of a poem. Step 3: Poem is correct."
+    },
+    {
+      "id": 128,
+      "q": "Finger : Hand :: Chapter : ?",
+      "opts": [
+        "book",
+        "toe",
+        "cpu",
+        "foot"
+      ],
+      "c": 0,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A chapter is part of a book. Step 3: Book is correct."
+    },
+    {
+      "id": 129,
+      "q": "Finger : Hand :: Branch : ?",
+      "opts": [
+        "book",
+        "spoke",
+        "tree",
+        "alphabet"
+      ],
+      "c": 2,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A branch is part of a tree. Step 3: Tree is correct."
+    },
+    {
+      "id": 130,
+      "q": "Finger : Hand :: Petal : ?",
+      "opts": [
+        "staircase",
+        "book",
+        "foot",
+        "flower"
+      ],
+      "c": 3,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A petal is part of a flower. Step 3: Flower is correct."
+    },
+    {
+      "id": 131,
+      "q": "Finger : Hand :: Key : ?",
+      "opts": [
+        "branch",
+        "tree",
+        "step",
+        "piano"
+      ],
+      "c": 3,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A key is part of a piano. Step 3: Piano is correct."
+    },
+    {
+      "id": 132,
+      "q": "Finger : Hand :: Letter : ?",
+      "opts": [
+        "ship",
+        "alphabet",
+        "piano",
+        "brick"
+      ],
+      "c": 1,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A letter is part of a alphabet. Step 3: Alphabet is correct."
+    },
+    {
+      "id": 133,
+      "q": "Finger : Hand :: String : ?",
+      "opts": [
+        "spoke",
+        "poem",
+        "engine",
+        "guitar"
+      ],
+      "c": 3,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A string is part of a guitar. Step 3: Guitar is correct."
+    },
+    {
+      "id": 134,
+      "q": "Finger : Hand :: Scene : ?",
+      "opts": [
+        "play",
+        "movie",
+        "ladder",
+        "stanza"
+      ],
+      "c": 1,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A scene is part of a movie. Step 3: Movie is correct."
+    },
+    {
+      "id": 135,
+      "q": "Finger : Hand :: Paragraph : ?",
+      "opts": [
+        "brick",
+        "wheel",
+        "essay",
+        "paragraph"
+      ],
+      "c": 2,
+      "t": "part-whole",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A paragraph is part of a essay. Step 3: Essay is correct."
+    },
+    {
+      "id": 136,
+      "q": "Doctor : Stethoscope :: Teacher : ?",
+      "opts": [
+        "carpenter",
+        "chalk",
+        "farmer",
+        "mechanic"
+      ],
+      "c": 1,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A teacher uses a chalk. Step 3: Chalk is correct."
+    },
+    {
+      "id": 137,
+      "q": "Doctor : Stethoscope :: Chef : ?",
+      "opts": [
+        "doctor",
+        "instrument",
+        "knife",
+        "stethoscope"
+      ],
+      "c": 2,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A chef uses a knife. Step 3: Knife is correct."
+    },
+    {
+      "id": 138,
+      "q": "Doctor : Stethoscope :: Painter : ?",
+      "opts": [
+        "chef",
+        "brush",
+        "musician",
+        "soldier"
+      ],
+      "c": 1,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A painter uses a brush. Step 3: Brush is correct."
+    },
+    {
+      "id": 139,
+      "q": "Doctor : Stethoscope :: Farmer : ?",
+      "opts": [
+        "carpenter",
+        "nurse",
+        "plough",
+        "camera"
+      ],
+      "c": 2,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A farmer uses a plough. Step 3: Plough is correct."
+    },
+    {
+      "id": 140,
+      "q": "Doctor : Stethoscope :: Mechanic : ?",
+      "opts": [
+        "gun",
+        "soldier",
+        "syringe",
+        "wrench"
+      ],
+      "c": 3,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A mechanic uses a wrench. Step 3: Wrench is correct."
+    },
+    {
+      "id": 141,
+      "q": "Doctor : Stethoscope :: Surgeon : ?",
+      "opts": [
+        "teacher",
+        "chef",
+        "trowel",
+        "scalpel"
+      ],
+      "c": 3,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A surgeon uses a scalpel. Step 3: Scalpel is correct."
+    },
+    {
+      "id": 142,
+      "q": "Doctor : Stethoscope :: Photographer : ?",
+      "opts": [
+        "needle",
+        "photographer",
+        "shears",
+        "camera"
+      ],
+      "c": 3,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A photographer uses a camera. Step 3: Camera is correct."
+    },
+    {
+      "id": 143,
+      "q": "Doctor : Stethoscope :: Astronomer : ?",
+      "opts": [
+        "farmer",
+        "telescope",
+        "shears",
+        "hammer"
+      ],
+      "c": 1,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A astronomer uses a telescope. Step 3: Telescope is correct."
+    },
+    {
+      "id": 144,
+      "q": "Doctor : Stethoscope :: Tailor : ?",
+      "opts": [
+        "needle",
+        "gardener",
+        "net",
+        "doctor"
+      ],
+      "c": 0,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A tailor uses a needle. Step 3: Needle is correct."
+    },
+    {
+      "id": 145,
+      "q": "Doctor : Stethoscope :: Barber : ?",
+      "opts": [
+        "mechanic",
+        "scissors",
+        "soldier",
+        "wrench"
+      ],
+      "c": 1,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A barber uses a scissors. Step 3: Scissors is correct."
+    },
+    {
+      "id": 146,
+      "q": "Doctor : Stethoscope :: Gardener : ?",
+      "opts": [
+        "scalpel",
+        "soldier",
+        "shears",
+        "chef"
+      ],
+      "c": 2,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A gardener uses a shears. Step 3: Shears is correct."
+    },
+    {
+      "id": 147,
+      "q": "Doctor : Stethoscope :: Fisherman : ?",
+      "opts": [
+        "syringe",
+        "net",
+        "doctor",
+        "artist"
+      ],
+      "c": 1,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A fisherman uses a net. Step 3: Net is correct."
+    },
+    {
+      "id": 148,
+      "q": "Doctor : Stethoscope :: Artist : ?",
+      "opts": [
+        "gardener",
+        "mechanic",
+        "canvas",
+        "pilot"
+      ],
+      "c": 2,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A artist uses a canvas. Step 3: Canvas is correct."
+    },
+    {
+      "id": 149,
+      "q": "Doctor : Stethoscope :: Soldier : ?",
+      "opts": [
+        "carpenter",
+        "gun",
+        "pilot",
+        "needle"
+      ],
+      "c": 1,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A soldier uses a gun. Step 3: Gun is correct."
+    },
+    {
+      "id": 150,
+      "q": "Doctor : Stethoscope :: Nurse : ?",
+      "opts": [
+        "canvas",
+        "syringe",
+        "farmer",
+        "shears"
+      ],
+      "c": 1,
+      "t": "profession-tool",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A nurse uses a syringe. Step 3: Syringe is correct."
+    },
+    {
+      "id": 151,
+      "q": "Cat : Kitten :: Cow : ?",
+      "opts": [
+        "tiger",
+        "kangaroo",
+        "cub",
+        "calf"
+      ],
+      "c": 3,
+      "t": "animal-young",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby cow is called a calf. Step 3: Calf is correct."
+    },
+    {
+      "id": 152,
+      "q": "Cat : Kitten :: Lion : ?",
+      "opts": [
+        "cub",
+        "goat",
+        "pigeon",
+        "fawn"
+      ],
+      "c": 0,
+      "t": "animal-young",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby lion is called a cub. Step 3: Cub is correct."
+    },
+    {
+      "id": 153,
+      "q": "Cat : Kitten :: Sheep : ?",
+      "opts": [
+        "lamb",
+        "cow",
+        "chick",
+        "kitten"
+      ],
+      "c": 0,
+      "t": "animal-young",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby sheep is called a lamb. Step 3: Lamb is correct."
+    },
+    {
+      "id": 154,
+      "q": "Cat : Kitten :: Horse : ?",
+      "opts": [
+        "tadpole",
+        "squab",
+        "pigeon",
+        "foal"
+      ],
+      "c": 3,
+      "t": "animal-young",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby horse is called a foal. Step 3: Foal is correct."
+    },
+    {
+      "id": 155,
+      "q": "Cat : Kitten :: Duck : ?",
+      "opts": [
+        "lamb",
+        "duckling",
+        "puppy",
+        "tadpole"
+      ],
+      "c": 1,
+      "t": "animal-young",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby duck is called a duckling. Step 3: Duckling is correct."
+    },
+    {
+      "id": 156,
+      "q": "Cat : Kitten :: Frog : ?",
+      "opts": [
+        "eaglet",
+        "cat",
+        "tadpole",
+        "dog"
+      ],
+      "c": 2,
+      "t": "animal-young",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby frog is called a tadpole. Step 3: Tadpole is correct."
+    },
+    {
+      "id": 157,
+      "q": "Cat : Kitten :: Goat : ?",
+      "opts": [
+        "kid",
+        "lamb",
+        "pigeon",
+        "cub"
+      ],
+      "c": 0,
+      "t": "animal-young",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby goat is called a kid. Step 3: Kid is correct."
+    },
+    {
+      "id": 158,
+      "q": "Cat : Kitten :: Hen : ?",
+      "opts": [
+        "kitten",
+        "cat",
+        "chick",
+        "elephant"
+      ],
+      "c": 2,
+      "t": "animal-young",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby hen is called a chick. Step 3: Chick is correct."
+    },
+    {
+      "id": 159,
+      "q": "Cat : Kitten :: Deer : ?",
+      "opts": [
+        "fawn",
+        "squab",
+        "eagle",
+        "pigeon"
+      ],
+      "c": 0,
+      "t": "animal-young",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby deer is called a fawn. Step 3: Fawn is correct."
+    },
+    {
+      "id": 160,
+      "q": "Cat : Kitten :: Elephant : ?",
+      "opts": [
+        "calf",
+        "eaglet",
+        "cub",
+        "cub"
+      ],
+      "c": 0,
+      "t": "animal-young",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby elephant is called a calf. Step 3: Calf is correct."
+    },
+    {
+      "id": 161,
+      "q": "Cat : Kitten :: Bear : ?",
+      "opts": [
+        "kangaroo",
+        "bear",
+        "cat",
+        "cub"
+      ],
+      "c": 3,
+      "t": "animal-young",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby bear is called a cub. Step 3: Cub is correct."
+    },
+    {
+      "id": 162,
+      "q": "Cat : Kitten :: Wolf : ?",
+      "opts": [
+        "peacock",
+        "cub",
+        "kid",
+        "deer"
+      ],
+      "c": 1,
+      "t": "animal-young",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby wolf is called a cub. Step 3: Cub is correct."
+    },
+    {
+      "id": 163,
+      "q": "Dog : Kennel :: Lion : ?",
+      "opts": [
+        "mouse",
+        "shell",
+        "den",
+        "burrow"
+      ],
+      "c": 2,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A lion lives in a den. Step 3: Den is correct."
+    },
+    {
+      "id": 164,
+      "q": "Dog : Kennel :: Rabbit : ?",
+      "opts": [
+        "fish",
+        "bee",
+        "burrow",
+        "nest"
+      ],
+      "c": 2,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A rabbit lives in a burrow. Step 3: Burrow is correct."
+    },
+    {
+      "id": 165,
+      "q": "Dog : Kennel :: Bee : ?",
+      "opts": [
+        "hen",
+        "shell",
+        "hole",
+        "hive"
+      ],
+      "c": 3,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A bee lives in a hive. Step 3: Hive is correct."
+    },
+    {
+      "id": 166,
+      "q": "Dog : Kennel :: Horse : ?",
+      "opts": [
+        "stable",
+        "horse",
+        "hole",
+        "snail"
+      ],
+      "c": 0,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A horse lives in a stable. Step 3: Stable is correct."
+    },
+    {
+      "id": 167,
+      "q": "Dog : Kennel :: Pig : ?",
+      "opts": [
+        "den",
+        "hive",
+        "nest",
+        "sty"
+      ],
+      "c": 3,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A pig lives in a sty. Step 3: Sty is correct."
+    },
+    {
+      "id": 168,
+      "q": "Dog : Kennel :: Cow : ?",
+      "opts": [
+        "shed",
+        "hen",
+        "cow",
+        "spider"
+      ],
+      "c": 0,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A cow lives in a shed. Step 3: Shed is correct."
+    },
+    {
+      "id": 169,
+      "q": "Dog : Kennel :: Spider : ?",
+      "opts": [
+        "web",
+        "hive",
+        "bee",
+        "shed"
+      ],
+      "c": 0,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A spider lives in a web. Step 3: Web is correct."
+    },
+    {
+      "id": 170,
+      "q": "Dog : Kennel :: Hen : ?",
+      "opts": [
+        "fish",
+        "shed",
+        "coop",
+        "rabbit"
+      ],
+      "c": 2,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A hen lives in a coop. Step 3: Coop is correct."
+    },
+    {
+      "id": 171,
+      "q": "Dog : Kennel :: Bear : ?",
+      "opts": [
+        "turtle",
+        "lion",
+        "den",
+        "cave"
+      ],
+      "c": 3,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A bear lives in a cave. Step 3: Cave is correct."
+    },
+    {
+      "id": 172,
+      "q": "Dog : Kennel :: Fish : ?",
+      "opts": [
+        "aquarium",
+        "mouse",
+        "snail",
+        "fox"
+      ],
+      "c": 0,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A fish lives in a aquarium. Step 3: Aquarium is correct."
+    },
+    {
+      "id": 173,
+      "q": "Dog : Kennel :: Ant : ?",
+      "opts": [
+        "stable",
+        "dog",
+        "anthill",
+        "horse"
+      ],
+      "c": 2,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A ant lives in a anthill. Step 3: Anthill is correct."
+    },
+    {
+      "id": 174,
+      "q": "Dog : Kennel :: Fox : ?",
+      "opts": [
+        "den",
+        "fox",
+        "hen",
+        "lodge"
+      ],
+      "c": 0,
+      "t": "animal-home",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A fox lives in a den. Step 3: Den is correct."
+    },
+    {
+      "id": 175,
+      "q": "India : Delhi :: USA : ?",
+      "opts": [
+        "Delhi",
+        "Washington DC",
+        "Brussels",
+        "Ottawa"
+      ],
+      "c": 1,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Washington DC is the capital of USA. Step 3: Washington DC is correct."
+    },
+    {
+      "id": 176,
+      "q": "India : Delhi :: UK : ?",
+      "opts": [
+        "Paris",
+        "Tokyo",
+        "Portugal",
+        "London"
+      ],
+      "c": 3,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: London is the capital of UK. Step 3: London is correct."
+    },
+    {
+      "id": 177,
+      "q": "India : Delhi :: France : ?",
+      "opts": [
+        "Paris",
+        "Italy",
+        "Tokyo",
+        "Portugal"
+      ],
+      "c": 0,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Paris is the capital of France. Step 3: Paris is correct."
+    },
+    {
+      "id": 178,
+      "q": "India : Delhi :: China : ?",
+      "opts": [
+        "Rome",
+        "Vienna",
+        "Beijing",
+        "USA"
+      ],
+      "c": 2,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Beijing is the capital of China. Step 3: Beijing is correct."
+    },
+    {
+      "id": 179,
+      "q": "India : Delhi :: Russia : ?",
+      "opts": [
+        "Lisbon",
+        "Austria",
+        "Washington DC",
+        "Moscow"
+      ],
+      "c": 3,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Moscow is the capital of Russia. Step 3: Moscow is correct."
+    },
+    {
+      "id": 180,
+      "q": "India : Delhi :: Germany : ?",
+      "opts": [
+        "Belgium",
+        "Austria",
+        "Lisbon",
+        "Berlin"
+      ],
+      "c": 3,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Berlin is the capital of Germany. Step 3: Berlin is correct."
+    },
+    {
+      "id": 181,
+      "q": "India : Delhi :: Australia : ?",
+      "opts": [
+        "Austria",
+        "Canberra",
+        "Brazil",
+        "Beijing"
+      ],
+      "c": 1,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Canberra is the capital of Australia. Step 3: Canberra is correct."
+    },
+    {
+      "id": 182,
+      "q": "India : Delhi :: Canada : ?",
+      "opts": [
+        "Australia",
+        "Lisbon",
+        "Ottawa",
+        "Belgium"
+      ],
+      "c": 2,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Ottawa is the capital of Canada. Step 3: Ottawa is correct."
+    },
+    {
+      "id": 183,
+      "q": "India : Delhi :: Italy : ?",
+      "opts": [
+        "Rome",
+        "London",
+        "Moscow",
+        "Belgium"
+      ],
+      "c": 0,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Rome is the capital of Italy. Step 3: Rome is correct."
+    },
+    {
+      "id": 184,
+      "q": "India : Delhi :: Spain : ?",
+      "opts": [
+        "Madrid",
+        "Stockholm",
+        "Egypt",
+        "London"
+      ],
+      "c": 0,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Madrid is the capital of Spain. Step 3: Madrid is correct."
+    },
+    {
+      "id": 185,
+      "q": "India : Delhi :: Brazil : ?",
+      "opts": [
+        "UK",
+        "Cairo",
+        "Brasilia",
+        "Switzerland"
+      ],
+      "c": 2,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Brasilia is the capital of Brazil. Step 3: Brasilia is correct."
+    },
+    {
+      "id": 186,
+      "q": "India : Delhi :: Egypt : ?",
+      "opts": [
+        "USA",
+        "Cairo",
+        "Belgium",
+        "Spain"
+      ],
+      "c": 1,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Cairo is the capital of Egypt. Step 3: Cairo is correct."
+    },
+    {
+      "id": 187,
+      "q": "India : Delhi :: Austria : ?",
+      "opts": [
+        "Vienna",
+        "Paris",
+        "Brazil",
+        "France"
+      ],
+      "c": 0,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Vienna is the capital of Austria. Step 3: Vienna is correct."
+    },
+    {
+      "id": 188,
+      "q": "India : Delhi :: Greece : ?",
+      "opts": [
+        "Brazil",
+        "Athens",
+        "Brussels",
+        "Cairo"
+      ],
+      "c": 1,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Athens is the capital of Greece. Step 3: Athens is correct."
+    },
+    {
+      "id": 189,
+      "q": "India : Delhi :: Sweden : ?",
+      "opts": [
+        "Madrid",
+        "Egypt",
+        "Stockholm",
+        "Ireland"
+      ],
+      "c": 2,
+      "t": "country-capital",
+      "exp": "Step 1: Delhi is the capital of India. Step 2: Stockholm is the capital of Sweden. Step 3: Stockholm is correct."
+    },
+    {
+      "id": 190,
+      "q": "A : B :: D : ?",
+      "opts": [
+        "A",
+        "C",
+        "U",
+        "E"
+      ],
+      "c": 3,
+      "t": "letter-shift",
+      "exp": "Step 1: A to B is +1 shift. Step 2: D+1=E. Step 3: E is correct."
+    },
+    {
+      "id": 191,
+      "q": "B : C :: E : ?",
+      "opts": [
+        "U",
+        "V",
+        "D",
+        "F"
+      ],
+      "c": 3,
+      "t": "letter-shift",
+      "exp": "Step 1: B to C is +1 shift. Step 2: E+1=F. Step 3: F is correct."
+    },
+    {
+      "id": 192,
+      "q": "C : D :: F : ?",
+      "opts": [
+        "Z",
+        "W",
+        "G",
+        "N"
+      ],
+      "c": 2,
+      "t": "letter-shift",
+      "exp": "Step 1: C to D is +1 shift. Step 2: F+1=G. Step 3: G is correct."
+    },
+    {
+      "id": 193,
+      "q": "D : E :: G : ?",
+      "opts": [
+        "P",
+        "J",
+        "K",
+        "H"
+      ],
+      "c": 3,
+      "t": "letter-shift",
+      "exp": "Step 1: D to E is +1 shift. Step 2: G+1=H. Step 3: H is correct."
+    },
+    {
+      "id": 194,
+      "q": "E : F :: H : ?",
+      "opts": [
+        "O",
+        "I",
+        "J",
+        "Z"
+      ],
+      "c": 1,
+      "t": "letter-shift",
+      "exp": "Step 1: E to F is +1 shift. Step 2: H+1=I. Step 3: I is correct."
+    },
+    {
+      "id": 195,
+      "q": "F : G :: I : ?",
+      "opts": [
+        "I",
+        "C",
+        "Z",
+        "J"
+      ],
+      "c": 3,
+      "t": "letter-shift",
+      "exp": "Step 1: F to G is +1 shift. Step 2: I+1=J. Step 3: J is correct."
+    },
+    {
+      "id": 196,
+      "q": "G : H :: J : ?",
+      "opts": [
+        "I",
+        "L",
+        "K",
+        "B"
+      ],
+      "c": 2,
+      "t": "letter-shift",
+      "exp": "Step 1: G to H is +1 shift. Step 2: J+1=K. Step 3: K is correct."
+    },
+    {
+      "id": 197,
+      "q": "H : I :: K : ?",
+      "opts": [
+        "Q",
+        "C",
+        "L",
+        "G"
+      ],
+      "c": 2,
+      "t": "letter-shift",
+      "exp": "Step 1: H to I is +1 shift. Step 2: K+1=L. Step 3: L is correct."
+    },
+    {
+      "id": 198,
+      "q": "I : J :: L : ?",
+      "opts": [
+        "D",
+        "E",
+        "M",
+        "S"
+      ],
+      "c": 2,
+      "t": "letter-shift",
+      "exp": "Step 1: I to J is +1 shift. Step 2: L+1=M. Step 3: M is correct."
+    },
+    {
+      "id": 199,
+      "q": "J : K :: M : ?",
+      "opts": [
+        "P",
+        "X",
+        "I",
+        "N"
+      ],
+      "c": 3,
+      "t": "letter-shift",
+      "exp": "Step 1: J to K is +1 shift. Step 2: M+1=N. Step 3: N is correct."
+    },
+    {
+      "id": 200,
+      "q": "K : L :: N : ?",
+      "opts": [
+        "Y",
+        "O",
+        "C",
+        "T"
+      ],
+      "c": 1,
+      "t": "letter-shift",
+      "exp": "Step 1: K to L is +1 shift. Step 2: N+1=O. Step 3: O is correct."
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "intro-analogies"
+    },
+    {
+      "type": "concept",
+      "sectionId": "word-analogies"
+    },
+    {
+      "type": "example",
+      "sectionId": "letter-number-analogies"
+    },
+    {
+      "type": "guided",
+      "sectionId": "pattern-recognition"
+    },
+    {
+      "type": "practice",
+      "sectionId": "company-patterns"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "shortcuts-speed"
+    }
+  ]
+}
