@@ -18,7 +18,9 @@ const state = {
   topicDataCache: {},
   progress: JSON.parse(localStorage.getItem('aptitudeProgress')) || {},
   sidebarOpen: window.innerWidth > 1024,
-  darkMode: localStorage.getItem('aptitudeDarkMode') === 'true'
+  darkMode: localStorage.getItem('aptitudeDarkMode') === 'true',
+  restoringHistory: false,
+  mathRenderPending: false
 };
 
 function init() {
@@ -34,16 +36,34 @@ function init() {
   renderBottomNav();
   renderDashboard();
   bindEvents();
+  history.replaceState(getRouteState(), '', window.location.href);
 }
 
 function renderMath() {
   const container = document.getElementById('app-content');
-  if (!container || !window.renderMathInElement) return;
+  if (!container) return;
+  if (!window.renderMathInElement) {
+    if (!state.mathRenderPending) {
+      state.mathRenderPending = true;
+      window.addEventListener('load', () => {
+        state.mathRenderPending = false;
+        renderMath();
+      }, { once: true });
+    }
+    return;
+  }
   renderMathInElement(container, {
     delimiters: [
       {left: '$$', right: '$$', display: true},
-      {left: '$', right: '$', display: false}
-    ]
+      {left: '$', right: '$', display: false},
+      {left: '\\(', right: '\\)', display: false},
+      {left: '\\[', right: '\\]', display: true}
+    ],
+    throwOnError: false,
+    strict: 'ignore',
+    trust: false,
+    ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+    ignoredClasses: ['katex', 'math-rendered']
   });
 }
 
@@ -52,6 +72,95 @@ function setContent(html) {
   if (!container) return;
   container.innerHTML = html;
   renderMath();
+}
+
+function escapeHtml(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function stripReferences(value) {
+  return String(value == null ? '' : value).replace(/\[reference:\d+\]/gi, '');
+}
+
+function stripEmoji(value) {
+  return String(value == null ? '' : value)
+    .replace(/[\u{1F000}-\u{1FAFF}\u{2300}-\u{23FF}\u{2600}-\u{27BF}\u200D]/gu, '')
+    .replace(/[\uFE0F\uFE0E]/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
+
+function displayIcon(icon, fallback) {
+  const clean = stripEmoji(icon);
+  return escapeHtml(clean || fallback || '•');
+}
+
+function renderText(value) {
+  return escapeHtml(stripEmoji(stripReferences(value)));
+}
+
+function renderInlineMath(value) {
+  if (Array.isArray(value)) return value.map(renderInlineMath).join('<br>');
+  return renderText(value).replace(/\n/g, '<br>');
+}
+
+function renderFormula(formula) {
+  const latex = formula && typeof formula === 'object' ? formula.latex : null;
+  const legacy = formula && typeof formula === 'object' ? formula.text : formula;
+  const compactLegacyMath = typeof legacy === 'string'
+    && /^[A-Za-z0-9\s()+\-*/=^_.,]+$/.test(legacy)
+    && /[=^_]/.test(legacy)
+    && !/[A-Za-z]{2,}/.test(legacy);
+  const mathSource = latex || (typeof legacy === 'string' && (legacy.includes('\\') || compactLegacyMath) ? legacy : null);
+  if (mathSource) return '<div class="formula-math">$$' + escapeHtml(mathSource) + '$$</div>';
+  return '<div class="formula-plain" role="note">' + renderText(legacy) + '</div>';
+}
+
+function renderCallout(label, value, type) {
+  if (!value) return '';
+  return '<aside class="learning-callout ' + (type || 'note') + '"><span class="callout-label">' + escapeHtml(label) + '</span><p>' + renderInlineMath(value) + '</p></aside>';
+}
+
+function renderWorkedExample(example) {
+  if (!example) return '';
+  if (typeof example === 'string' || Array.isArray(example)) return formatSteps(example, true);
+  let html = example.prompt ? '<p class="example-prompt">' + renderInlineMath(example.prompt) + '</p>' : '';
+  if (Array.isArray(example.steps) && example.steps.length) {
+    html += '<div class="solution-steps">' + example.steps.map((step, index) =>
+      '<div class="solution-step"><span class="solution-step-number">' + (index + 1) + '</span><p>' + renderInlineMath(step) + '</p></div>'
+    ).join('') + '</div>';
+  }
+  if (example.answer) html += '<p class="example-answer"><strong>Answer:</strong> ' + renderInlineMath(example.answer) + '</p>';
+  return html;
+}
+
+function getRouteState() {
+  return {
+    view: state.currentView,
+    topicId: state.currentTopicId,
+    section: state.currentSection,
+    practiceFormulaId: state.currentPracticeFormulaId,
+    practiceIndex: state.currentPracticeIndex,
+    mcqIndex: state.currentMcqIndex,
+    mcqFilter: state.currentMcqFilter,
+    stepIndex: state.currentStepIndex
+  };
+}
+
+function pushRoute() {
+  if (!state.restoringHistory) history.pushState(getRouteState(), '', window.location.href);
+  updateBackButton();
+}
+
+function updateBackButton() {
+  const button = document.getElementById('back-button');
+  if (!button) return;
+  button.hidden = state.currentView === 'dashboard';
 }
 
 function applyTheme() {
@@ -120,7 +229,7 @@ function renderSidebar() {
     categories.forEach(cat => {
       const catTopics = topics.filter(t => t.category === cat.id);
       if (!catTopics.length) return;
-      html += `<div class="sidebar-section-label">${cat.title}</div>`;
+      html += `<div class="sidebar-section-label">${renderText(cat.title)}</div>`;
       catTopics.forEach(t => {
         const p = getTopicProgress(t.id);
         const topic = getTopic(t.id);
@@ -128,8 +237,8 @@ function renderSidebar() {
         const mcqDone = Math.min(p.mcq || 0, mcqTotal);
         const pct = Math.round(mcqDone / mcqTotal * 100);
         html += `<button class="sidebar-item ${state.currentTopicId===t.id?'active':''}" data-topic="${t.id}" onclick="APP.navigate('topic','${t.id}')">
-          <span class="sidebar-item-icon">${t.icon}</span>
-          <span class="sidebar-item-text">${t.title}</span>
+          <span class="sidebar-item-icon">${displayIcon(t.icon, t.title.slice(0, 1))}</span>
+          <span class="sidebar-item-text">${renderText(t.title)}</span>
           <span class="sidebar-item-status" style="background:${pct>=100?'#10B981':pct>0?'#F59E0B':'#CBD5E1'}"></span>
         </button>`;
       });
@@ -143,8 +252,8 @@ function renderSidebar() {
       const mcqDone = Math.min(p.mcq || 0, mcqTotal);
       const pct = Math.round(mcqDone / mcqTotal * 100);
       html += `<button class="sidebar-item ${state.currentTopicId===t.id?'active':''}" data-topic="${t.id}" onclick="APP.navigate('topic','${t.id}')">
-        <span class="sidebar-item-icon">${t.icon}</span>
-        <span class="sidebar-item-text">${t.title}</span>
+          <span class="sidebar-item-icon">${displayIcon(t.icon, t.title.slice(0, 1))}</span>
+          <span class="sidebar-item-text">${renderText(t.title)}</span>
         <span class="sidebar-item-status" style="background:${pct>=100?'#10B981':pct>0?'#F59E0B':'#CBD5E1'}"></span>
       </button>`;
     });
@@ -200,8 +309,8 @@ function renderDashboard() {
       if (!catTopics.length) return;
       html += `
       <div class="category-section">
-        <h2 class="category-title" style="color:${cat.color}">${cat.icon} ${cat.title}</h2>
-        <p class="text-muted category-subtitle">${cat.subtitle}</p>
+        <h2 class="category-title" style="color:${cat.color}">${displayIcon(cat.icon, '')} ${renderText(cat.title)}</h2>
+        <p class="text-muted category-subtitle">${renderText(cat.subtitle)}</p>
         <div class="bento-grid">`;
 
       catTopics.forEach((t, ti) => {
@@ -213,11 +322,11 @@ function renderDashboard() {
         html += `
         <div class="topic-card glass bento-${(globalIdx%4)+1}" style="--topic-color:${t.color || cat.color}" onclick="APP.navigate('topic','${t.id}')">
           <div class="topic-card-header">
-            <span class="topic-icon">${t.icon}</span>
+            <span class="topic-icon">${displayIcon(t.icon, t.title.slice(0, 1))}</span>
             <span class="topic-days">${t.days}</span>
           </div>
-          <h3 class="topic-title">${t.title}</h3>
-          <div class="topic-subtopics">${t.subtopics.slice(0,3).join(' - ')}</div>
+          <h3 class="topic-title">${renderText(t.title)}</h3>
+          <div class="topic-subtopics">${renderText(t.subtopics.slice(0,3).join(' · '))}</div>
           <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
           <div class="topic-meta">
             <span>${t.estimatedHours}h</span>
@@ -238,11 +347,11 @@ function renderDashboard() {
       html += `
       <div class="topic-card glass bento-${topics.indexOf(t)%4+1}" style="--topic-color:${t.color}" onclick="APP.navigate('topic','${t.id}')">
         <div class="topic-card-header">
-          <span class="topic-icon">${t.icon}</span>
+          <span class="topic-icon">${displayIcon(t.icon, t.title.slice(0, 1))}</span>
           <span class="topic-days">${t.days}</span>
         </div>
-        <h3 class="topic-title">${t.title}</h3>
-        <div class="topic-subtopics">${t.subtopics.slice(0,3).join(' - ')}</div>
+        <h3 class="topic-title">${renderText(t.title)}</h3>
+        <div class="topic-subtopics">${renderText(t.subtopics.slice(0,3).join(' · '))}</div>
         <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
         <div class="topic-meta">
           <span>${t.estimatedHours}h</span>
@@ -259,6 +368,7 @@ function renderDashboard() {
 
   setContent(html);
   renderBottomNav();
+  updateBackButton();
 }
 
 function renderRoadmap() {
@@ -280,7 +390,7 @@ function renderRoadmap() {
       if (!catTopics.length) return;
       html += `
       <div class="month-section">
-        <h2 class="month-title">${cat.icon} ${cat.title}</h2>
+        <h2 class="month-title">${displayIcon(cat.icon, '')} ${renderText(cat.title)}</h2>
         <div class="roadmap">`;
 
       catTopics.forEach((t) => {
@@ -293,12 +403,12 @@ function renderRoadmap() {
           <div class="roadmap-dot"></div>
           <div class="roadmap-content">
             <div class="roadmap-header">
-              <span class="roadmap-icon">${t.icon}</span>
+              <span class="roadmap-icon">${displayIcon(t.icon, t.title.slice(0, 1))}</span>
               <span class="roadmap-days">Day ${t.days}</span>
               <span class="roadmap-status">${status === 'completed' ? 'DONE' : status === 'in-progress' ? '...' : 'LOCK'}</span>
             </div>
-            <h3 class="roadmap-title">${t.title}</h3>
-            <p class="roadmap-subtopics">${t.subtopics.join(' - ')}</p>
+            <h3 class="roadmap-title">${renderText(t.title)}</h3>
+            <p class="roadmap-subtopics">${renderText(t.subtopics.join(' · '))}</p>
             <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
           </div>
         </div>`;
@@ -321,12 +431,12 @@ function renderRoadmap() {
         <div class="roadmap-dot"></div>
         <div class="roadmap-content">
           <div class="roadmap-header">
-            <span class="roadmap-icon">${t.icon}</span>
+            <span class="roadmap-icon">${displayIcon(t.icon, t.title.slice(0, 1))}</span>
             <span class="roadmap-days">Day ${t.days}</span>
             <span class="roadmap-status">${status === 'completed' ? 'DONE' : status === 'in-progress' ? '...' : 'LOCK'}</span>
           </div>
-          <h3 class="roadmap-title">${t.title}</h3>
-          <p class="roadmap-subtopics">${t.subtopics.join(' - ')}</p>
+          <h3 class="roadmap-title">${renderText(t.title)}</h3>
+          <p class="roadmap-subtopics">${renderText(t.subtopics.join(' · '))}</p>
           <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
         </div>
       </div>`;
@@ -337,6 +447,7 @@ function renderRoadmap() {
   html += `</div></div>`;
   setContent(html);
   renderBottomNav();
+  updateBackButton();
 }
 
 function renderTopic(topicOrId) {
@@ -346,7 +457,7 @@ function renderTopic(topicOrId) {
   state.currentView = 'topic';
   state.currentTopicId = topic.id;
   state.currentSection = state.currentSection || 'learn';
-  document.getElementById('header-title').textContent = topic.icon + ' ' + topic.title;
+  document.getElementById('header-title').textContent = stripEmoji(topic.icon) + ' ' + stripEmoji(topic.title);
 
   const content = document.getElementById('app-content');
   const p = getTopicProgress(topic.id);
@@ -356,8 +467,8 @@ function renderTopic(topicOrId) {
   <div class="page-content">
     <div class="topic-header glass" style="--topic-color:${topic.color}">
       <div class="topic-header-info">
-        <h1 class="text-2xl fw-700">${topic.icon} ${topic.title}</h1>
-        <p class="text-muted">${topic.subtopics.join(' - ')}</p>
+        <h1 class="text-2xl fw-700">${displayIcon(topic.icon, '')} ${renderText(topic.title)}</h1>
+        <p class="text-muted">${renderText(topic.subtopics.join(' · '))}</p>
       </div>
       <div class="topic-header-stats">
         <span>Days ${topic.days}</span>
@@ -380,6 +491,7 @@ function renderTopic(topicOrId) {
   setContent(html);
   renderSidebar();
   renderBottomNav();
+  updateBackButton();
 }
 
 function renderSectionContent(topicId) {
@@ -395,84 +507,75 @@ function renderSectionContent(topicId) {
   }
 }
 
-function formatSteps(text) {
-    if (text === null || text === undefined) return '';
-    var raw = String(text).trim();
-    if (!raw) return '';
+function renderNumberedSteps(lines) {
+  return '<div class="solution-steps">' + lines.filter(Boolean).map((line, index) =>
+    '<div class="solution-step"><span class="solution-step-number">' + (index + 1) + '</span><p>' + renderInlineMath(line.trim()) + '</p></div>'
+  ).join('') + '</div>';
+}
 
-    function highlightMath(content) {
-        if (!content) return '';
-        var segments = content.split(/(\$\$[^$]+\$\$|\$[^$]+\$)/g);
-        return segments.map(function(seg) {
-            if (/^\$\$[^$]+\$\$$/.test(seg)) {
-                return '<span class="math-bold">' + seg + '</span>';
-            }
-            if (/^\$[^$]+\$$/.test(seg)) {
-                return '<span class="math-bold">' + seg + '</span>';
-            }
-            return seg;
-        }).join('');
-    }
+function splitWhiteboardLines(text) {
+  const sentences = String(text)
+    .replace(/\s+/g, ' ')
+    .trim()
+    .split(/(?<=[.!?])\s+(?=(?:[A-Z]|['“]))|\s*;\s*/)
+    .filter(Boolean);
 
-    var stepPattern = /Step\s*\d+\s*(?:\([^)]*\))?\s*[:\-\.]\s*/gi;
-    var numPattern = /\(\s*\d+\s*\)\s*|\b\d+\.\s+/g;
-    var matches = [];
-    var m;
-    while ((m = stepPattern.exec(raw)) !== null) {
-        matches.push({ index: m.index, length: m[0].length, label: m[0].trim() });
-    }
+  return sentences.flatMap(sentence => sentence
+    .split(/\s*(?:→|⇒)\s*/)
+    .flatMap(part => {
+      const equalSigns = (part.match(/\s=\s/g) || []).length;
+      return equalSigns >= 2 ? part.split(/\s(?==\s)/) : [part];
+    })
+    .map(part => part.trim())
+    .filter(Boolean)
+  );
+}
 
-    var hasNumMatches = false;
-    if (matches.length === 0) {
-        numPattern.lastIndex = 0;
-        while ((m = numPattern.exec(raw)) !== null) {
-            matches.push({ index: m.index, length: m[0].length, label: m[0].trim() });
-            hasNumMatches = true;
-        }
-    }
-    if (hasNumMatches) {
-        matches.sort(function(a, b) { return a.index - b.index; });
-    }
+function formatSteps(text, asWhiteboard) {
+  if (text === null || text === undefined) return '';
+  if (Array.isArray(text)) {
+    return asWhiteboard
+      ? renderNumberedSteps(text)
+      : text.filter(Boolean).map(paragraph => '<p class="prose-para">' + renderInlineMath(paragraph) + '</p>').join('');
+  }
+  const raw = stripEmoji(stripReferences(text)).trim();
+  if (!raw) return '';
 
-    if (matches.length === 0) {
-        var paragraphs = raw.split(/\n\n+/).filter(function(p) { return p.trim(); });
-        if (paragraphs.length > 1) {
-            return paragraphs.map(function(p) {
-                return '<p class="prose-para">' + highlightMath(p.trim()) + '</p>';
-            }).join('');
-        }
-        return '<p class="prose-para">' + highlightMath(raw) + '</p>';
-    }
+  const stepPattern = /(?:^|\s)(?:step\s*(\d+)\s*(?:\([^)]*\))?|\(?\s*(\d+)\s*\))\s*[:.\-]\s*/gi;
+  const matches = [...raw.matchAll(stepPattern)];
+  if (!matches.length) {
+    if (asWhiteboard) return renderNumberedSteps(splitWhiteboardLines(raw));
+    return raw.split(/\n\s*\n+/).filter(Boolean)
+      .map(paragraph => '<p class="prose-para">' + renderInlineMath(paragraph.trim()) + '</p>')
+      .join('');
+  }
 
-    var html = '<div class="step-list">';
+  let html = '<div class="solution-steps">';
+  const preamble = raw.slice(0, matches[0].index).trim();
+  if (preamble) html += '<p class="solution-intro">' + renderInlineMath(preamble) + '</p>';
 
-    if (matches[0].index > 0) {
-        var preamble = raw.slice(0, matches[0].index).trim();
-        if (preamble) {
-            html += '<div class="step-item"><span class="step-text">' + highlightMath(preamble) + '</span></div>';
-        }
-    }
-
-    for (var i = 0; i < matches.length; i++) {
-        var contentStart = matches[i].index + matches[i].length;
-        var contentEnd = (i + 1 < matches.length) ? matches[i + 1].index : raw.length;
-        var content = raw.slice(contentStart, contentEnd).trim();
-        var label = matches[i].label.replace(/[:\-\.]\s*$/, '').replace(/[()]/g, '').trim();
-
-        html += '<div class="step-item">';
-        html += '<span class="step-label">' + label + '</span>';
-        html += '<span class="step-text">' + highlightMath(content) + '</span>';
-        html += '</div>';
-    }
-
-    html += '</div>';
-    return html;
+  matches.forEach((match, index) => {
+    const start = match.index + match[0].length;
+    const end = index + 1 < matches.length ? matches[index + 1].index : raw.length;
+    const content = raw.slice(start, end).trim();
+    const number = match[1] || match[2] || index + 1;
+    html += '<div class="solution-step"><span class="solution-step-number">' + number + '</span><p>' + renderInlineMath(content) + '</p></div>';
+  });
+  return html + '</div>';
 }
 
 var renderSteps = formatSteps;
 
+function getLearningPath(topic) {
+  if (Array.isArray(topic.learningPath) && topic.learningPath.length) return topic.learningPath;
+  return (topic.readingSections || []).map((section, index) => ({
+    sectionId: section.id,
+    type: section.type || (index === 0 ? 'concept' : 'guided')
+  }));
+}
+
 function renderLearnPath(topic) {
-  const path = topic.learningPath || [];
+  const path = getLearningPath(topic);
   const progress = getTopicProgress(topic.id);
   const completedSteps = path.filter((step, i) => {
     const section = topic.readingSections.find(s => s.id === step.sectionId);
@@ -483,7 +586,7 @@ function renderLearnPath(topic) {
   let html = `
     <div class="learning-path">
       <div class="path-header">
-        <h2>${topic.icon} ${topic.title}</h2>
+        <h2>${displayIcon(topic.icon, '')} ${renderText(topic.title)}</h2>
         <div class="path-progress">
           <span>${completedSteps}/${path.length}</span>
           <div class="progress-bar thin"><div style="width:${percentComplete}%"></div></div>
@@ -496,17 +599,18 @@ function renderLearnPath(topic) {
     if (!section) return;
     const isCompleted = progress.sections[section.id] || false;
     const isActive = index === state.currentStepIndex;
-    const isLocked = index > state.currentStepIndex && !isCompleted;
+    const isLocked = false;
+    const isExpanded = state.expandedStep === section.id || (state.expandedStep === null && isActive);
     html += `
       <div class="path-step ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''} ${isLocked ? 'locked' : ''}">
         <div class="step-indicator">${index + 1}</div>
         <div class="step-content">
           <div class="step-title" onclick="APP.toggleStep('${topic.id}','${section.id}')">
             <span class="step-badge ${step.type}">${step.type.toUpperCase()}</span>
-            ${section.title}
-            <span class="step-status">${isCompleted ? '✓' : ''}</span>
+            ${renderText(section.title)}
+            <span class="step-status">${isCompleted ? 'Done' : ''}</span>
           </div>
-          <div class="step-body ${state.expandedStep === section.id ? 'expanded' : ''}">
+          <div class="step-body ${isExpanded ? 'expanded' : ''}">
             ${renderSectionContentForPath(topic.id, section)}
           </div>
         </div>
@@ -531,11 +635,16 @@ function renderSectionContentForPath(topicId, section) {
   var introMain = introParsed.mainText;
   var introExamples = introParsed.examples;
 
-  let html = `<div class="reading-intro">${formatSteps(introMain)}</div>`;
+  let html = '<div class="reading-intro">';
+  html += section.quickSummary ? renderCallout('Key idea', section.quickSummary, 'definition') : '';
+  html += introMain ? '<div class="reading-prose">' + formatSteps(introMain) + '</div>' : '';
+  html += section.whyThisMatters ? renderCallout('Why it matters', section.whyThisMatters, 'tip') : '';
+  html += section.pattern ? renderCallout('How to recognise it', section.pattern, 'pattern') : '';
+  html += '</div>';
   if (introExamples.length) {
     html += `<div class="reading-examples-block">
       <span class="reading-examples-label">Examples</span>
-      ${introExamples.map(ex => `<div class="reading-example-item">${formatSteps(ex)}</div>`).join('')}
+      ${introExamples.map(ex => `<div class="reading-example-item">${formatSteps(ex, true)}</div>`).join('')}
     </div>`;
   }
   html += `<ul class="reading-bullets">`;
@@ -545,26 +654,32 @@ function renderSectionContentForPath(topicId, section) {
     var subExamples = subParsed.examples;
     html += `
       <li>
-        <strong class="sub-title">${sub.title}</strong>
+        <strong class="sub-title">${renderText(sub.title)}</strong>
         <div class="sub-body">
           <div class="sub-main-text">${formatSteps(subMain)}</div>
-          ${subExamples.length ? `
+          ${subExamples.length || sub.example ? `
           <div class="example-block">
-            <span class="example-label">Example${subExamples.length > 1 ? 's' : ''}</span>
-            ${subExamples.map(ex => `<div class="example-item">${formatSteps(ex)}</div>`).join('')}
+            <span class="example-label">${subExamples.length > 1 ? 'Examples' : 'Worked example'}</span>
+            ${subExamples.map(ex => `<div class="example-item">${formatSteps(ex, true)}</div>`).join('')}
+            ${sub.example ? `<div class="example-item">${renderWorkedExample(sub.example)}</div>` : ''}
           </div>` : ''}
         </div>
       </li>`;
   });
   html += `</ul>`;
+  if (Array.isArray(section.quickRevision) && section.quickRevision.length) {
+    html += `<aside class="revision-card"><span class="callout-label">Quick revision</span><ul>${section.quickRevision.map(item => '<li>' + renderInlineMath(item) + '</li>').join('')}</ul></aside>`;
+  }
+  if (section.companyNote) html += renderCallout('Exam note', section.companyNote, 'tip');
   html += `<button class="btn btn-primary btn-sm path-mark-btn" onclick="event.stopPropagation();APP.markSectionRead('${topicId}','${section.id}')">
-    ${isCompleted ? '✓ Completed' : 'Mark as Read'}
+    ${isCompleted ? 'Completed' : 'Mark as Read'}
   </button>`;
   return html;
 }
 
 function extractExamples(text) {
     if (!text) return { mainText: text || '', examples: [] };
+    if (Array.isArray(text)) return { mainText: text, examples: [] };
     var markers = ['Example:', 'Example.', 'Examples:', 'Eg:', 'e.g.:', 'E.g.:'];
     var parts = [];
     var remaining = String(text);
@@ -601,22 +716,20 @@ function extractExamples(text) {
 }
 
 function renderFormulas(topic) {
-    let html = '<div class="formulas-grid">';
-    topic.formulas.forEach((f, i) => {
-        html += `
-        <div class="formula-card glass">
-            <div class="formula-number">#${i + 1}</div>
-            <div class="formula-title">${f.title}</div>
-            <div class="formula-box">$$${f.formula}$$</div>
-            <div class="formula-explanation">${formatSteps(f.explanation)}</div>
-            <div class="formula-example">
-                <strong class="example-label">Example:</strong>
-                <div class="example-content">${formatSteps(f.example)}</div>
-            </div>
-        </div>`;
-    });
-    html += '</div>';
-    return html;
+  let html = '<div class="formula-section-heading"><p class="eyebrow">Formula library</p><h2>Understand, apply, and remember</h2><p>Each formula is separated from its context and example so you can scan it quickly during revision.</p></div><div class="formulas-grid">';
+  topic.formulas.forEach((f, i) => {
+    html += `
+      <article class="formula-card glass">
+        <div class="formula-card-header"><span class="formula-number">${String(i + 1).padStart(2, '0')}</span><h3 class="formula-title">${renderText(f.title)}</h3></div>
+        <div class="formula-box">${renderFormula(f.formula)}</div>
+        ${f.whenToUse ? renderCallout('Use it when', f.whenToUse, 'use') : ''}
+        ${f.explanation ? `<div class="formula-explanation"><h4>How it works</h4>${formatSteps(f.explanation, true)}</div>` : ''}
+        ${f.example ? `<div class="formula-example"><span class="example-label">Worked example</span><div class="example-content">${renderWorkedExample(f.example)}</div></div>` : ''}
+        ${f.theTrick || f.memoryTip ? renderCallout('Memory cue', f.theTrick || f.memoryTip, 'tip') : ''}
+        ${f.commonMistake ? renderCallout('Common mistake', f.commonMistake, 'warning') : ''}
+      </article>`;
+  });
+  return html + '</div>';
 }
 
 function renderPractice(topic) {
@@ -630,8 +743,8 @@ function renderPractice(topic) {
       const done = Object.keys(getTopicProgress(topic.id).practice || {}).filter(k => k.startsWith(f.id+':')).length;
       html += `<div class="formula-card glass" onclick="APP.selectPracticeFormula('${topic.id}','${f.id}')">
         <div class="formula-number">#${i+1}</div>
-        <div class="formula-title">${f.title}</div>
-        <div class="formula-box">$$${f.formula}$$</div>
+        <div class="formula-title">${renderText(f.title)}</div>
+        <div class="formula-box">${renderFormula(f.formula)}</div>
         <div class="formula-meta">${done}/${probs.length} done</div>
       </div>`;
     });
@@ -650,8 +763,8 @@ function renderPractice(topic) {
   <button class="btn btn-ghost mb-3" onclick="APP.backToFormulaList('${topic.id}')">Back to formulas</button>
   ${currentFormula ? `
   <div class="practice-formula-card glass">
-    <div class="formula-title">${currentFormula.title}</div>
-    <div class="formula-box">$$${currentFormula.formula}$$</div>
+    <div class="formula-title">${renderText(currentFormula.title)}</div>
+    <div class="formula-box">${renderFormula(currentFormula.formula)}</div>
   </div>` : ''}
   <div class="practice-nav">
     <button class="btn btn-outline" onclick="APP.prevPractice()" ${idx===0?'disabled':''}>Prev</button>
@@ -669,14 +782,14 @@ function renderPractice(topic) {
         <h4>Step-by-Step Solution:</h4>
         <div class="practice-solution-steps">
             ${problem.s.map((step, i) => `
-            <div class="step-item">
-                <span class="step-label">Step ${i+1}</span>
-                <span class="step-text">${formatSteps(step)}</span>
+            <div class="solution-step">
+                <span class="solution-step-number">${i + 1}</span>
+                <p>${renderInlineMath(step)}</p>
             </div>
             `).join('')}
         </div>
         <div class="practice-answer">
-            <strong>Answer:</strong> ${problem.a}
+            <strong>Answer:</strong> ${renderInlineMath(problem.a)}
         </div>
         <button class="btn btn-success btn-sm mt-2" onclick="APP.markPracticeDone('${topic.id}','${state.currentPracticeFormulaId}',${idx})">
             Mark as Done
@@ -725,7 +838,7 @@ function renderMcq(topic) {
       <span class="mcq-grade" style="color:${gradeColor};font-weight:700;">${grade}</span>
     </div>
     <button class="btn btn-reset-progress" onclick="APP.resetMcqProgress('${topic.id}')" title="Reset MCQ progress">
-      ↺ Reset
+      Reset
     </button>
   </div>
   <div class="mcq-nav">
@@ -735,7 +848,7 @@ function renderMcq(topic) {
   </div>
   <div class="mcq-card glass" id="mcq-card">
     <div class="mcq-header">
-      <span class="badge primary">${topic.title || 'Number System'}</span>
+      <span class="badge primary">${renderText(topic.title || 'Number System')}</span>
       <span class="mcq-number">Q${idx+1}</span>
     </div>
     <div class="mcq-question">${formatSteps(mcq.q)}</div>
@@ -743,7 +856,7 @@ function renderMcq(topic) {
       ${mcq.opts.map((opt, oi) => `
         <button class="mcq-option" data-index="${oi}" onclick="APP.checkMcqAnswer('${topic.id}', ${idx}, ${oi}, this)">
           <span class="option-letter">${String.fromCharCode(65+oi)}</span>
-          <span class="option-text">${opt}</span>
+          <span class="option-text">${renderInlineMath(opt)}</span>
         </button>
       `).join('')}
     </div>
@@ -757,9 +870,10 @@ function renderMcq(topic) {
   return html;
 }
 
-function loadTopic(topicId) {
+function loadTopic(topicId, shouldPush) {
   if (state.topicDataCache[topicId]) {
     renderTopic(state.topicDataCache[topicId]);
+    if (shouldPush) pushRoute();
     return;
   }
   const indexTopic = TOPICS_INDEX.topics.find(t => t.id === topicId);
@@ -776,6 +890,7 @@ function loadTopic(topicId) {
     .then(function(data) {
       state.topicDataCache[topicId] = data;
       renderTopic(data);
+      if (shouldPush) pushRoute();
     })
     .catch(function(e) {
       console.error('Failed to load topic', e);
@@ -786,16 +901,30 @@ function loadTopic(topicId) {
 
 function navigate(view, param) {
   closeSidebar();
-  if (view === 'dashboard') renderDashboard();
-  else if (view === 'roadmap') renderRoadmap();
-  else if (view === 'topic') loadTopic(param);
+  if (view === 'dashboard') {
+    state.currentTopicId = null;
+    state.currentSection = 'learn';
+    renderDashboard();
+    pushRoute();
+  }
+  else if (view === 'roadmap') {
+    state.currentTopicId = null;
+    renderRoadmap();
+    pushRoute();
+  }
+  else if (view === 'topic') loadTopic(param, true);
 }
 
 function switchSection(section) {
   state.currentSection = section;
+  state.currentPracticeFormulaId = null;
+  state.currentPracticeIndex = 0;
   if (state.currentTopicId) {
     const topic = getTopic(state.currentTopicId);
-    if (topic) renderTopic(topic);
+    if (topic) {
+      renderTopic(topic);
+      pushRoute();
+    }
   }
 }
 
@@ -810,7 +939,7 @@ function markSectionRead(topicId, sectionId) {
   state.expandedStep = null;
   const topic = getTopic(topicId);
   if (topic) {
-    const path = topic.learningPath || [];
+    const path = getLearningPath(topic);
     const currentIdx = path.findIndex(s => s.sectionId === sectionId);
     if (currentIdx >= 0 && currentIdx < path.length - 1) {
       state.currentStepIndex = currentIdx + 1;
@@ -824,7 +953,7 @@ function markSectionRead(topicId, sectionId) {
 function nextStep() {
   const topic = getTopic(state.currentTopicId);
   if (!topic) return;
-  const path = topic.learningPath;
+  const path = getLearningPath(topic);
   if (state.currentStepIndex < path.length - 1) {
     state.currentStepIndex++;
     renderTopic(topic);
@@ -843,14 +972,20 @@ function selectPracticeFormula(topicId, formulaId) {
   state.currentPracticeFormulaId = formulaId;
   state.currentPracticeIndex = 0;
   const topic = getTopic(topicId);
-  if (topic) renderTopic(topic);
+  if (topic) {
+    renderTopic(topic);
+    pushRoute();
+  }
 }
 
 function backToFormulaList(topicId) {
   state.currentPracticeFormulaId = null;
   state.currentPracticeIndex = 0;
   const topic = getTopic(topicId);
-  if (topic) renderTopic(topic);
+  if (topic) {
+    renderTopic(topic);
+    pushRoute();
+  }
 }
 
 function toggleSolution(formulaId, idx) {
@@ -920,7 +1055,7 @@ function checkMcqAnswer(topicId, idx, selected, el) {
     result.style.color = 'var(--color-error)';
   }
 
-  explanation.innerHTML = formatSteps(mcq.exp || 'No explanation available.');
+  explanation.innerHTML = formatSteps(mcq.exp || 'No explanation available.', true);
   renderMath();
   feedback.style.display = 'block';
 
@@ -1073,12 +1208,14 @@ function bindEvents() {
   document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
   var closeBtn = document.getElementById('sidebar-close');
   if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+  var backButton = document.getElementById('back-button');
+  if (backButton) backButton.addEventListener('click', () => history.back());
 
   document.querySelectorAll('.bottom-nav-item').forEach(el => {
     el.addEventListener('click', () => {
       const view = el.dataset.view;
-      if (view === 'dashboard') renderDashboard();
-      else if (view === 'roadmap') renderRoadmap();
+      if (view === 'dashboard') navigate('dashboard');
+      else if (view === 'roadmap') navigate('roadmap');
       else if (view === 'verbal') {
         const verbalTopics = TOPICS_INDEX.topics.filter(t => t.category === 'verbal');
         if (verbalTopics.length) {
@@ -1104,6 +1241,22 @@ function bindEvents() {
 
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeSidebar();
+  });
+
+  window.addEventListener('popstate', (event) => {
+    const route = event.state;
+    if (!route) return;
+    state.restoringHistory = true;
+    state.currentSection = route.section || 'learn';
+    state.currentPracticeFormulaId = route.practiceFormulaId || null;
+    state.currentPracticeIndex = route.practiceIndex || 0;
+    state.currentMcqIndex = route.mcqIndex || 0;
+    state.currentMcqFilter = route.mcqFilter || 'all';
+    state.currentStepIndex = route.stepIndex || 0;
+    if (route.view === 'topic' && route.topicId) loadTopic(route.topicId, false);
+    else if (route.view === 'roadmap') renderRoadmap();
+    else renderDashboard();
+    state.restoringHistory = false;
   });
 
   window.addEventListener('resize', () => {

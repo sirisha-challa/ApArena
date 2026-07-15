@@ -1882,3 +1882,136 @@ html.dark .step-badge.mastery { background: rgba(167,139,250,0.2); color: #A78BF
     width: 60px;
   }
 }
+
+/* ============================================================
+   2026 CONTENT EXPERIENCE — FORMULAS, EXPLANATIONS & NAVIGATION
+   ============================================================ */
+.back-button {
+  display:inline-flex; align-items:center; gap:6px; min-height:36px;
+  padding:0 10px; margin-left:4px; border:1px solid var(--color-border);
+  border-radius:var(--radius-md); color:var(--color-text-secondary);
+  font-size:var(--text-sm); font-weight:600; background:var(--color-surface);
+}
+.back-button:hover { color:var(--color-primary); border-color:var(--color-primary-border); }
+.back-button[hidden] { display:none; }
+
+.page-content { max-width:1240px; margin-inline:auto; width:100%; }
+.main-area { min-width:0; }
+.topbar-title { min-width:0; }
+.topic-section { max-width:1040px; margin-inline:auto; }
+.topic-header { border:1px solid var(--color-border); border-top:4px solid var(--topic-color,var(--color-primary)); box-shadow:var(--card-shadow); }
+.topic-header-info p { max-width:74ch; }
+.topic-tabs { position:sticky; top:var(--header-height); z-index:20; background:var(--color-bg); padding-top:8px; }
+
+.formula-section-heading { max-width:72ch; margin:0 0 var(--space-6); }
+.formula-section-heading h2 { margin-bottom:var(--space-2); }
+.formula-section-heading p:last-child { margin-bottom:0; }
+.eyebrow, .callout-label, .example-label {
+  display:block; margin-bottom:6px; color:var(--color-primary); font-size:0.72rem;
+  line-height:1.2; font-weight:800; letter-spacing:.09em; text-transform:uppercase;
+}
+.formulas-grid { grid-template-columns:repeat(auto-fit,minmax(min(100%, 440px),1fr)); gap:var(--space-5); align-items:start; }
+.formula-card { overflow:hidden; padding:0; border:1px solid var(--card-border); background:var(--card-bg); box-shadow:var(--card-shadow); }
+.formula-card:hover { transform:none; box-shadow:var(--card-shadow-hover); }
+.formula-card-header { display:flex; align-items:center; gap:var(--space-3); padding:var(--space-5) var(--space-5) var(--space-3); }
+.formula-card .formula-title { margin:0; font-size:1.13rem; }
+.formula-number {
+  display:grid; place-items:center; width:34px; height:28px; flex:0 0 auto;
+  border-radius:var(--radius-sm); background:var(--color-primary-bg); color:var(--color-primary);
+  font-size:.72rem; font-weight:800; letter-spacing:.05em;
+}
+.formula-box {
+  display:flex; align-items:center; justify-content:center; min-height:112px; margin:0 var(--space-5) var(--space-4);
+  padding:var(--space-4); border:1px solid var(--color-primary-border); border-radius:var(--radius-lg);
+  background:linear-gradient(135deg,var(--color-primary-bg),transparent); overflow:visible;
+}
+.formula-math { width:100%; text-align:center; overflow-x:auto; overflow-y:hidden; padding:4px 2px; }
+.formula-math .katex-display { margin:.25em 0; min-width:max-content; }
+.formula-math .katex { color:var(--color-text); font-size:1.12em; }
+.formula-plain { width:100%; color:var(--color-text); font-size:1rem; line-height:1.6; text-align:center; font-weight:650; letter-spacing:.005em; }
+.formula-card > .learning-callout,
+.formula-card > .formula-explanation,
+.formula-card > .formula-example { margin-left:var(--space-5); margin-right:var(--space-5); }
+.formula-card > :last-child { margin-bottom:var(--space-5); }
+.formula-explanation h4 { font-size:.86rem; margin:0 0 var(--space-2); color:var(--color-text); }
+.formula-example { padding:var(--space-4); border:1px solid rgba(13,148,136,.22); border-radius:var(--radius-md); background:rgba(13,148,136,.06); }
+.formula-example .example-label { color:var(--color-secondary-dark); }
+
+.learning-callout, .revision-card {
+  position:relative; margin:var(--space-4) 0; padding:var(--space-4); border:1px solid var(--color-border);
+  border-radius:var(--radius-md); background:var(--color-surface-hover);
+}
+.learning-callout p { margin:0; color:var(--color-text-secondary); }
+.learning-callout.definition { border-left:4px solid var(--color-primary); }
+.learning-callout.tip { border-left:4px solid var(--color-secondary); }
+.learning-callout.pattern, .learning-callout.use { border-left:4px solid #0284c7; }
+.learning-callout.warning { border-left:4px solid var(--color-warning); background:var(--color-warning-bg); }
+.revision-card { border-left:4px solid var(--color-secondary); }
+.revision-card ul { list-style:disc; padding-left:1.25rem; }
+.revision-card li { margin:.35rem 0; color:var(--color-text-secondary); }
+
+.reading-intro, .reading-prose { max-width:75ch; }
+.prose-para { color:var(--color-text-secondary); line-height:1.75; margin-bottom:var(--space-4); }
+.reading-bullets { display:grid; gap:var(--space-3); }
+.reading-bullets li { margin:0; padding:var(--space-5); border:1px solid var(--color-border); border-left:4px solid var(--color-primary); background:var(--color-surface); }
+.reading-bullets li::before { display:none; }
+.reading-bullets li strong.sub-title { margin-bottom:var(--space-2); padding:0; border:0; font-size:1.02rem; }
+.example-block, .reading-examples-block { padding:var(--space-4); border-radius:var(--radius-md); background:rgba(13,148,136,.06); border:1px solid rgba(13,148,136,.16); }
+
+.solution-steps, .practice-solution-steps { display:grid; gap:10px; margin:var(--space-3) 0; }
+.solution-intro { margin:0 0 2px; color:var(--color-text-secondary); }
+.solution-step {
+  display:grid; grid-template-columns:28px minmax(0,1fr); gap:12px; align-items:start;
+  padding:12px; border:1px solid var(--color-border); border-radius:var(--radius-md); background:var(--color-surface);
+}
+.solution-step-number { display:grid; place-items:center; width:28px; height:28px; border-radius:50%; background:var(--color-primary); color:#fff; font-size:.78rem; font-weight:800; }
+.solution-step p { margin:1px 0 0; color:var(--color-text); line-height:1.65; min-width:0; }
+.practice-solution .solution-step { background:var(--color-bg-secondary); }
+.practice-question .prose-para, .mcq-question .prose-para { color:var(--color-text); font-size:1.08rem; font-weight:500; }
+
+.katex { font-size:1em; }
+.katex-display { margin:1rem 0; }
+.prose-para .katex, .solution-step .katex, .mcq-option .katex { color:inherit; font-size:1em; }
+.prose-para .katex-display, .solution-step .katex-display { overflow-x:auto; overflow-y:hidden; padding:4px 0; }
+html.dark .formula-card, html.dark .reading-bullets li, html.dark .solution-step { background:var(--color-surface); }
+html.dark .formula-box { background:linear-gradient(135deg,rgba(129,140,248,.14),transparent); }
+html.dark .formula-example { background:rgba(45,212,191,.08); }
+
+@media (max-width:640px) {
+  .back-button span { display:none; }
+  .back-button { padding:0; width:36px; justify-content:center; }
+  .topic-header { padding:var(--space-4); }
+  .topic-header-stats { gap:var(--space-2); flex-wrap:wrap; }
+  .topic-tabs { top:var(--header-height); margin-inline:-4px; padding-inline:4px; }
+  .formulas-grid { grid-template-columns:1fr; gap:var(--space-4); }
+  .formula-card-header, .formula-card > .learning-callout, .formula-card > .formula-explanation, .formula-card > .formula-example { margin-left:var(--space-4); margin-right:var(--space-4); }
+  .formula-card-header { padding-left:0; padding-right:0; }
+  .formula-box { margin-left:var(--space-4); margin-right:var(--space-4); min-height:96px; }
+  .formula-math .katex { font-size:1em; }
+  .solution-step { grid-template-columns:24px minmax(0,1fr); gap:10px; padding:10px; }
+  .solution-step-number { width:24px; height:24px; }
+}
+
+/* Reading path: show every section at a useful width and never clip long lessons. */
+.topic-section { max-width:1180px; }
+.learning-path { max-width:1120px; }
+.path-step { gap:var(--space-3); padding:var(--space-3); align-items:flex-start; }
+.step-content { min-width:0; cursor:default; }
+.step-title { cursor:pointer; padding:4px 0; }
+.step-status { font-size:.72rem; font-weight:700; }
+.step-body.expanded { max-height:none; overflow:visible; padding-top:var(--space-3); }
+
+/* Use the available page width while retaining comfortable reading line lengths. */
+.reading-intro, .reading-prose { max-width:88ch; }
+.reading-bullets li { padding:var(--space-4); }
+.learning-callout, .revision-card { margin:var(--space-3) 0; padding:var(--space-3) var(--space-4); }
+.example-block, .reading-examples-block { padding:var(--space-3) var(--space-4); }
+.reading-example-item + .reading-example-item { margin-top:var(--space-3); }
+.example-prompt { margin:0 0 var(--space-3); color:var(--color-text); font-weight:650; }
+.example-answer { margin:var(--space-3) 0 0; color:var(--color-text); }
+
+@media (max-width:768px) {
+  .learning-path { max-width:none; }
+  .path-step { padding:var(--space-3); }
+  .reading-bullets li { padding:var(--space-3); }
+}
