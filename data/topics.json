@@ -57,6 +57,25 @@
       "estimatedHours": 25
     },
     {
+      "id": "work-and-time",
+      "title": "Work and Time",
+      "icon": "⏱️",
+      "category": "aptitude",
+      "color": "#059669",
+      "days": "2-3",
+      "subtopics": [
+        "Basic Work Rate Formula",
+        "Man-Days Concept",
+        "Efficiency & Ratio",
+        "Combined Work",
+        "Pipes & Cisterns",
+        "Alternate Day Work",
+        "Men-Women-Children Problems",
+        "Data Sufficiency"
+      ],
+      "estimatedHours": 18
+    },
+    {
       "id": "blood-relations",
       "title": "Blood Relations",
       "icon": "👨‍👩‍👧‍👦",
