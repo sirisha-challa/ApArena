@@ -57,7 +57,7 @@
         </header>
 
         <main class="content" id="app-content"></main>
-        <footer class="app-footer">Made for Siri by Nitin.</footer>
+        <footer class="app-footer">Made Specially for Siri.</footer>
       </div>
     </div>
 
@@ -77,9 +77,15 @@
       } catch(e) {
         console.error('Failed to load topics index', e);
       }
-      const s = document.createElement('script');
-      s.src = 'js/app.js';
-      document.body.appendChild(s);
+      // Load prose renderer first (must be before app.js)
+      var proseScript = document.createElement('script');
+      proseScript.src = 'js/renderer/prose.js';
+      proseScript.onload = function() {
+        var appScript = document.createElement('script');
+        appScript.src = 'js/app.js';
+        document.body.appendChild(appScript);
+      };
+      document.body.appendChild(proseScript);
     })();
   </script>
 </body>

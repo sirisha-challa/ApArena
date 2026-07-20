@@ -106,6 +106,8 @@ function renderText(value) {
 
 function renderInlineMath(value) {
   if (Array.isArray(value)) return value.map(renderInlineMath).join('<br>');
+  // use enhanced prose renderer for inline markdown
+  if (window.Prose && Prose.inline) return Prose.inline(value);
   return renderText(value).replace(/\n/g, '<br>');
 }
 
@@ -132,7 +134,7 @@ function renderWorkedExample(example) {
   let html = example.prompt ? '<p class="example-prompt">' + renderInlineMath(example.prompt) + '</p>' : '';
   if (Array.isArray(example.steps) && example.steps.length) {
     html += '<div class="solution-steps">' + example.steps.map((step, index) =>
-      '<div class="solution-step"><span class="solution-step-number">' + (index + 1) + '</span><p>' + renderInlineMath(step) + '</p></div>'
+      '<div class="solution-step"><p>' + renderInlineMath(step) + '</p></div>'
     ).join('') + '</div>';
   }
   if (example.answer) html += '<p class="example-answer"><strong>Answer:</strong> ' + renderInlineMath(example.answer) + '</p>';
@@ -508,8 +510,9 @@ function renderSectionContent(topicId) {
 }
 
 function renderNumberedSteps(lines) {
+  if (window.Prose && Prose.numbered) return Prose.numbered(lines);
   return '<div class="solution-steps">' + lines.filter(Boolean).map((line, index) =>
-    '<div class="solution-step"><span class="solution-step-number">' + (index + 1) + '</span><p>' + renderInlineMath(line.trim()) + '</p></div>'
+    '<div class="solution-step"><p>' + renderInlineMath(line.trim()) + '</p></div>'
   ).join('') + '</div>';
 }
 
@@ -532,6 +535,8 @@ function splitWhiteboardLines(text) {
 }
 
 function formatSteps(text, asWhiteboard) {
+  if (window.Prose && Prose.steps) return Prose.steps(text, asWhiteboard);
+  // fallback to original implementation
   if (text === null || text === undefined) return '';
   if (Array.isArray(text)) {
     return asWhiteboard
@@ -559,7 +564,7 @@ function formatSteps(text, asWhiteboard) {
     const end = index + 1 < matches.length ? matches[index + 1].index : raw.length;
     const content = raw.slice(start, end).trim();
     const number = match[1] || match[2] || index + 1;
-    html += '<div class="solution-step"><span class="solution-step-number">' + number + '</span><p>' + renderInlineMath(content) + '</p></div>';
+    html += '<div class="solution-step"><p>' + renderInlineMath(content) + '</p></div>';
   });
   return html + '</div>';
 }
@@ -783,7 +788,6 @@ function renderPractice(topic) {
         <div class="practice-solution-steps">
             ${problem.s.map((step, i) => `
             <div class="solution-step">
-                <span class="solution-step-number">${i + 1}</span>
                 <p>${renderInlineMath(step)}</p>
             </div>
             `).join('')}

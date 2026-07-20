@@ -57,6 +57,26 @@
       "estimatedHours": 25
     },
     {
+      "id": "percentages",
+      "title": "Percentages",
+      "icon": "%",
+      "category": "aptitude",
+      "color": "#E11D48",
+      "days": "7-10",
+      "subtopics": [
+        "Concept of Percentage",
+        "Percentage to Fraction Table",
+        "Percentage Increase & Decrease",
+        "Population & Depreciation Problems",
+        "Successive Percentage Change",
+        "Profit, Loss & Discount as %",
+        "Elections, Marks & Voter Problems",
+        "Alligation & Mixture with %",
+        "Data Interpretation with %"
+      ],
+      "estimatedHours": 40
+    },
+    {
       "id": "work-and-time",
       "title": "Work and Time",
       "icon": "⏱️",
