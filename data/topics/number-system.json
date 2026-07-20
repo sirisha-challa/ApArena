@@ -96,6 +96,10 @@
           "content": "Divisible by BOTH 2 and 3. Example: 126 is even (by 2) and $1+2+3=6$ (by 3), so divisible by 6."
         },
         {
+          "title": "By 7",
+          "content": "Double the last digit and subtract it from the rest of the number. If the result is divisible by 7, the original number is. Example: 672: double 2=4, 67-4=63, 63 is divisible by 7, so 672 is divisible by 7."
+        },
+        {
           "title": "By 8",
           "content": "Last 3 digits divisible by 8. Example: 1232 has last 3 digits 232, and $232 \\div 8 = 29$, so divisible by 8."
         },
@@ -110,6 +114,10 @@
         {
           "title": "By 11",
           "content": "Difference of sums of alternate digits is $0$ or multiple of 11. Example: 121: sum of odd positions $1+1=2$, even positions $=2$. Difference $= 0$. So 121 is divisible by 11."
+        },
+        {
+          "title": "By 12",
+          "content": "Divisible by BOTH 3 and 4. Example: 648: sum $6+4+8=18$ divisible by 3 (by 3 rule), and last 2 digits 48 divisible by 4 (by 4 rule), so 648 is divisible by 12."
         }
       ],
       "type": "concept"
