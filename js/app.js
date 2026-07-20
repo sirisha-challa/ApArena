@@ -328,7 +328,7 @@ function renderDashboard() {
             <span class="topic-days">${t.days}</span>
           </div>
           <h3 class="topic-title">${renderText(t.title)}</h3>
-          <div class="topic-subtopics">${renderText(t.subtopics.slice(0,3).join(' · '))}</div>
+          <ul class="topic-subtopics">${t.subtopics.slice(0,3).map(s => `<li>${renderText(s)}</li>`).join('')}</ul>
           <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
           <div class="topic-meta">
             <span>${t.estimatedHours}h</span>
@@ -353,7 +353,7 @@ function renderDashboard() {
           <span class="topic-days">${t.days}</span>
         </div>
         <h3 class="topic-title">${renderText(t.title)}</h3>
-        <div class="topic-subtopics">${renderText(t.subtopics.slice(0,3).join(' · '))}</div>
+        <ul class="topic-subtopics">${t.subtopics.slice(0,3).map(s => `<li>${renderText(s)}</li>`).join('')}</ul>
         <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
         <div class="topic-meta">
           <span>${t.estimatedHours}h</span>
@@ -410,7 +410,7 @@ function renderRoadmap() {
               <span class="roadmap-status">${status === 'completed' ? 'DONE' : status === 'in-progress' ? '...' : 'LOCK'}</span>
             </div>
             <h3 class="roadmap-title">${renderText(t.title)}</h3>
-            <p class="roadmap-subtopics">${renderText(t.subtopics.join(' · '))}</p>
+            <ul class="roadmap-subtopics">${t.subtopics.map(s => `<li>${renderText(s)}</li>`).join('')}</ul>
             <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
           </div>
         </div>`;
@@ -438,7 +438,7 @@ function renderRoadmap() {
             <span class="roadmap-status">${status === 'completed' ? 'DONE' : status === 'in-progress' ? '...' : 'LOCK'}</span>
           </div>
           <h3 class="roadmap-title">${renderText(t.title)}</h3>
-          <p class="roadmap-subtopics">${renderText(t.subtopics.join(' · '))}</p>
+          <ul class="roadmap-subtopics">${t.subtopics.map(s => `<li>${renderText(s)}</li>`).join('')}</ul>
           <div class="progress-bar"><div style="width:${mcqPct}%"></div></div>
         </div>
       </div>`;
@@ -470,7 +470,7 @@ function renderTopic(topicOrId) {
     <div class="topic-header glass" style="--topic-color:${topic.color}">
       <div class="topic-header-info">
         <h1 class="text-2xl fw-700">${displayIcon(topic.icon, '')} ${renderText(topic.title)}</h1>
-        <p class="text-muted">${renderText(topic.subtopics.join(' · '))}</p>
+        <ul class="topic-header-subtopics">${topic.subtopics.map(s => `<li>${renderText(s)}</li>`).join('')}</ul>
       </div>
       <div class="topic-header-stats">
         <span>Days ${topic.days}</span>

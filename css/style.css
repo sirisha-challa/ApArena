@@ -643,9 +643,15 @@ p { margin-bottom:var(--space-3); color:var(--color-text-secondary); line-height
 .topic-title { font-size:var(--text-lg); font-weight:700; margin-bottom:var(--space-1); }
 
 .topic-subtopics {
+  list-style:none; padding:0; margin:0 0 var(--space-4);
   font-size:var(--text-sm); color:var(--color-text-secondary);
-  margin-bottom:var(--space-4);
-  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.topic-subtopics li {
+  position:relative; padding-left:var(--space-4); margin-bottom:2px;
+}
+.topic-subtopics li::before {
+  content:"•"; position:absolute; left:0; color:var(--topic-color,var(--color-primary));
+  font-weight:700; font-size:1.1em;
 }
 
 .topic-meta {
@@ -1245,10 +1251,16 @@ html.dark .option-letter { background:var(--color-bg-tertiary); }
 .roadmap-title { font-size:var(--text-base); font-weight:600; }
 
 .roadmap-subtopics {
+  list-style:none; padding:0; margin:0 0 var(--space-3);
   font-size:var(--text-sm);
   color:var(--color-text-secondary);
-  margin-bottom:var(--space-3);
-  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.roadmap-subtopics li {
+  position:relative; padding-left:var(--space-4); margin-bottom:2px;
+}
+.roadmap-subtopics li::before {
+  content:"•"; position:absolute; left:0; color:var(--topic-color,var(--color-primary));
+  font-weight:700; font-size:1.1em;
 }
 
 /* ------------------------------------------------------------
@@ -1899,6 +1911,17 @@ html.dark .step-badge.mastery { background: rgba(167,139,250,0.2); color: #A78BF
 .topic-section { max-width:1040px; margin-inline:auto; }
 .topic-header { border:1px solid var(--color-border); border-top:4px solid var(--topic-color,var(--color-primary)); box-shadow:var(--card-shadow); }
 .topic-header-info p { max-width:74ch; }
+.topic-header-subtopics {
+  list-style:none; padding:0; margin:var(--space-2) 0 var(--space-1);
+}
+.topic-header-subtopics li {
+  position:relative; padding-left:var(--space-4); margin-bottom:4px;
+  line-height:var(--leading-loose); color:var(--color-text-secondary);
+}
+.topic-header-subtopics li::before {
+  content:"•"; position:absolute; left:0; color:var(--topic-color,var(--color-primary));
+  font-weight:700; font-size:1.2em;
+}
 .topic-tabs { position:sticky; top:var(--header-height); z-index:20; background:var(--color-bg); padding-top:8px; }
 
 .formula-section-heading { max-width:72ch; margin:0 0 var(--space-6); }

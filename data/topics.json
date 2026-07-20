@@ -96,6 +96,26 @@
       "estimatedHours": 18
     },
     {
+      "id": "profit-and-loss",
+      "title": "Profit and Loss",
+      "icon": "₹",
+      "category": "aptitude",
+      "color": "#EAB308",
+      "days": "2-4",
+      "subtopics": [
+        "Basic CP/SP Concepts",
+        "Profit & Loss Percentage",
+        "Discount & Marked Price",
+        "Successive Discounts",
+        "Dishonest Dealer (False Weight)",
+        "Profit % on SP vs CP",
+        "Two Items — Same SP",
+        "Partnership & Ratio in P&L",
+        "Miscellaneous Problems"
+      ],
+      "estimatedHours": 30
+    },
+    {
       "id": "blood-relations",
       "title": "Blood Relations",
       "icon": "👨‍👩‍👧‍👦",
