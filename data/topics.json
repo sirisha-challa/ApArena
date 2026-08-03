@@ -116,6 +116,26 @@
       "estimatedHours": 30
     },
     {
+      "id": "ratio-and-proportion",
+      "title": "Ratio & Proportion",
+      "icon": "÷",
+      "category": "aptitude",
+      "color": "#F97316",
+      "days": "3-4",
+      "subtopics": [
+        "Ratio Basics & Simplification",
+        "Types of Ratios (Duplicate, Triplicate, Compound)",
+        "Proportion & Proportionality",
+        "Division of a Quantity into a Ratio",
+        "Combined Ratio (a : b : c)",
+        "Coins & Denominations",
+        "Mixture Problems",
+        "Income-Expenditure & Salary Changes",
+        "Partnership & Profit Sharing"
+      ],
+      "estimatedHours": 25
+    },
+    {
       "id": "blood-relations",
       "title": "Blood Relations",
       "icon": "👨‍👩‍👧‍👦",
