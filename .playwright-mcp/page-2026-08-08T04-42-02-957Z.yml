@@ -1,0 +1,1325 @@
+- generic [active] [ref=f2e1]:
+  - link "Skip to main content" [ref=f2e2] [cursor=pointer]:
+    - /url: "#main-content"
+  - generic [ref=f2e6]:
+    - generic:
+      - generic: "Accenture On-Campus Assessment 2025 - HUGE Pattern Change & My Honest Experience (A Warning for Non-CSE Students) : r/Btechtards"
+      - banner [ref=f2e10]:
+        - navigation [ref=f2e11]:
+          - generic [ref=f2e12]:
+            - button "Open menu" [ref=f2e16] [cursor=pointer]
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - link "Home":
+                        - /url: https://www.reddit.com/
+          - search [ref=f2e31]:
+            - generic [ref=f2e33]:
+              - textbox "Ask" [ref=f2e40]:
+                - /placeholder: Find anything
+              - separator [ref=f2e41]
+              - link "Ask" [ref=f2e45] [cursor=pointer]:
+                - /url: /answers/
+              - generic: Find anything
+          - generic [ref=f2e51]:
+            - link "Log In" [ref=f2e55] [cursor=pointer]:
+              - /url: https://www.reddit.com/login/
+            - button "Expand user menu" [ref=f2e62] [cursor=pointer]
+      - generic [ref=f2e71]:
+        - main [ref=f2e72]:
+          - 'generic "Accenture On-Campus Assessment 2025 - HUGE Pattern Change & My Honest Experience (A Warning for Non-CSE Students) : r/Btechtards"'
+          - generic [ref=f2e73]:
+            - generic [ref=f2e74]:
+              - generic [ref=f2e75]:
+                - button "Back" [ref=f2e77] [cursor=pointer]
+                - link "Go to Btechtards" [ref=f2e85] [cursor=pointer]:
+                  - /url: https://www.reddit.com/r/Btechtards/
+                - group [ref=f2e90]:
+                  - generic [ref=f2e91]:
+                    - link "r/Btechtards" [ref=f2e94] [cursor=pointer]:
+                      - /url: https://www.reddit.com/r/Btechtards/
+                    - generic [ref=f2e95]: •
+                    - time [ref=f2e97]: 1y ago
+                  - 'link "Author: WarFresh2208" [ref=f2e102] [cursor=pointer]':
+                    - /url: https://www.reddit.com/user/WarFresh2208/
+                    - generic [ref=f2e103]: WarFresh2208
+              - button "Open user actions" [ref=f2e107] [cursor=pointer]
+            - 'heading "Post Title: Accenture On-Campus Assessment 2025 - HUGE Pattern Change & My Honest Experience (A Warning for Non-CSE Students)" [level=1] [ref=f2e114]': Accenture On-Campus Assessment 2025 - HUGE Pattern Change & My Honest Experience (A Warning for Non-CSE Students)
+            - generic [ref=f2e117]:
+              - generic [ref=f2e118]:
+                - figure [ref=f2e119]:
+                  - link [ref=f2e120] [cursor=pointer]:
+                    - /url: https://preview.redd.it/accenture-on-campus-assessment-2025-huge-pattern-change-my-v0-islz99mprfrf1.jpg?width=1080&format=pjpg&auto=webp&s=34dc36be1272488f1eda642e3e9365505278a5ba
+                    - img "r/Btechtards - Accenture On-Campus Assessment 2025 - HUGE Pattern Change & My Honest Experience (A Warning for Non-CSE Students)" [ref=f2e121]
+                - paragraph [ref=f2e122]: I just finished my Accenture on-campus assessment and wanted to give a detailed heads-up because the pattern has been completely overhauled. If you're preparing based on last year's info, you need to read this.
+                - paragraph [ref=f2e123]:
+                  - strong [ref=f2e124]: "What We All Expected (The Old Pattern):"
+                  - text: "The usual suspects: Quantitative Aptitude, Logical Reasoning, English, Pseudo Code, MS Office, and some questions on Cloud, Networking, etc."
+                - paragraph [ref=f2e125]:
+                  - strong [ref=f2e126]: "The New Reality: A Multi-Stage Gauntlet"
+                - paragraph [ref=f2e127]:
+                  - strong [ref=f2e128]: "Round 1: Psychometric Test"
+                  - text: This was a standard personality/behavioral test. Pretty straightforward.
+                - paragraph [ref=f2e129]:
+                  - strong [ref=f2e130]: "Round 2: Gamified Assessment"
+                  - text: "After clearing Round 1, it immediately moved to a series of brain games:"
+                - list [ref=f2e131]:
+                  - listitem [ref=f2e132]:
+                    - paragraph [ref=f2e133]: A memory-based game.
+                  - listitem [ref=f2e134]:
+                    - paragraph [ref=f2e135]: A quick-fire math game.
+                  - listitem [ref=f2e136]:
+                    - paragraph [ref=f2e137]: A grid puzzle where you had to find the path in the least number of steps.
+                - paragraph [ref=f2e138]:
+                  - strong [ref=f2e139]: "Round 3: The Brutal Technical Assessment (Where I Failed Miserably)"
+                - paragraph [ref=f2e140]: This is where the real shock came. After clearing the games, we moved to the technical round, and it was nothing like before.
+                - list [ref=f2e141]:
+                  - listitem [ref=f2e142]:
+                    - paragraph [ref=f2e143]:
+                      - strong [ref=f2e144]: "What was GONE:"
+                      - text: Quantitative Aptitude, LR, and English were completely absent.
+                  - listitem [ref=f2e145]:
+                    - paragraph [ref=f2e146]:
+                      - strong [ref=f2e147]: "What was there (IN-DEPTH):"
+                      - text: Pseudo Code, MS Office, Cloud, Computer Networks, and Cybersecurity were asked in great detail with many scenario-based questions.
+                  - listitem [ref=f2e148]:
+                    - paragraph [ref=f2e149]:
+                      - strong [ref=f2e150]: "The Curveballs:"
+                      - text: They also grilled us on Python OOPs, Java OOPs, and JavaScript-based frontend questions.
+                - paragraph [ref=f2e151]:
+                  - text: As an Electronics branch student, this was incredibly tough. My entire preparation was focused on Operating Systems and OOPs in C++, which I know in-depth. To my dismay,
+                  - strong [ref=f2e152]: there wasn't a single question on C++
+                  - text: . Instead, I was facing questions on Python, Java, and JS, which I barely know. The networking and DevOps scenario questions were completely out of my league.
+                - paragraph [ref=f2e153]:
+                  - text: To make matters worse, the Pseudo Code section was filled with bit manipulation and bitwise operations. It was extremely calculation-heavy, and
+                  - strong [ref=f2e154]: we were not allowed to use pen and paper
+                  - text: . Trying to mentally trace complex bitwise logic was a nightmare.
+                - paragraph [ref=f2e155]: Unsurprisingly, I failed this round.
+                - paragraph [ref=f2e156]:
+                  - strong [ref=f2e157]: "Round 4: The Coding Round I Never Reached"
+                - paragraph [ref=f2e158]: "Even if I had passed, the coding round has also changed. Instead of the usual two coding questions, it's now three separate problems:"
+                - list [ref=f2e159]:
+                  - listitem [ref=f2e160]:
+                    - paragraph [ref=f2e161]:
+                      - strong [ref=f2e162]: "DSA:"
+                      - text: A simple array-based question.
+                  - listitem [ref=f2e163]:
+                    - paragraph [ref=f2e164]:
+                      - strong [ref=f2e165]: "SQL:"
+                      - text: A query question involving JOINs on 2-3 tables/schemas.
+                  - listitem [ref=f2e166]:
+                    - paragraph [ref=f2e167]:
+                      - strong [ref=f2e168]: "JavaScript Frontend:"
+                      - text: A task like creating some colored boxes or a basic UI element.
+                - paragraph [ref=f2e169]: Honestly, with my limited knowledge of SQL and frontend, I wouldn't have cleared this round either.
+                - paragraph [ref=f2e170]:
+                  - strong [ref=f2e171]: My Final Thoughts - Why I'm Not Even Mad
+                - paragraph [ref=f2e172]:
+                  - text: "I should be sad or angry right now, but I'm strangely not. Here's why: the entire exam was held"
+                  - strong [ref=f2e173]: offline in our campus computer labs
+                  - text: . This meant there was absolutely
+                  - strong [ref=f2e174]: zero chance of cheating
+                  - text: .
+                - paragraph [ref=f2e175]: If this had been an online proctored test, we all know what would have happened. People would have cheated, and the final shortlisting would have been based on arbitrary metrics like Gender, CGPA, or 10th/12th marks to filter the crowd. Getting rejected like that would have made me genuinely depressed and infuriated.
+                - paragraph [ref=f2e176]: Failing because I lacked the specific skills they were looking for, in a fair and cheat-proof environment, feels a thousand times better. I was beaten by the test, not the system.
+                - paragraph [ref=f2e177]:
+                  - strong [ref=f2e178]: "INSHORT :"
+                  - strong [ref=f2e179]: "Accenture's new pattern is: Psychometric test -> Gamified assessment -> In-depth Technical round (NO Quant/LR/English, YES Python/Java/JS/Networking) -> 3-part Coding round (DSA + SQL + Frontend). Prepare for languages beyond C++ and practice bit manipulation without pen and paper. Major props to them for conducting it offline and ensuring a level playing field."
+              - button "Read more" [ref=f2e180] [cursor=pointer]
+            - generic [ref=f2e186]:
+              - generic [ref=f2e189]: "223"
+              - generic [ref=f2e192]: ·
+              - generic [ref=f2e195]: "180"
+          - separator [ref=f2e196]
+          - generic "What if AI ran the busywork?" [ref=f2e197]:
+            - generic [ref=f2e198]:
+              - 'generic "Advertisement: What if AI ran the busywork?" [ref=f2e199]':
+                - 'link "Advertisement: What if AI ran the busywork?" [ref=f2e200] [cursor=pointer]':
+                  - /url: https://alb.reddit.com/cr?za=cB3iMpMxPAn1YyRPlera5sZSgGJJ5yV7VCskGRyFIHuqlM9-v2OmEwikX5XU3phPaFKtPOAp_npBwKFOe_oiqM9G4ibZ1RA7htlxXojhx2qYFFGj7-HcYk3TlM2sJkD-uqbHAt28yOEsyf4qkcM1lfryo5U52Eu9dZ83zqd9w9A_b6NkxGY4UHGWzoCh4i64u426w8pSlTqLx9woF9Mup86rQ7XfQ_nloYzWOdnkxdY2GPms9Uqy0XzMzBmFjS15Pqba4nsKgFuiIH9haIVXZyB74Bby46AX4Z8piPoOE8W9azKbrbGbZf4DaPLIYPJwe7ngAQmXGDYgpHCinnSgGG7rAxgb5rYmUaUpVMVahbkJzafFRmBte9yNxAk6VluACkma4yNQy3IOkjl724V4C_o_RLPKV_QKI1l7izgQRJhrJ-8wbs_zyZick1nzPc79fle7dzef80H6YMlGUp7B3fIo_dg-nWQalnX7feL_tduTa4wq-UADAeWW0TjXOlgSwKgDpyXZ9x3lfZK4J8N0kou9JZvc5Qd7vlManR7cAyUT-Hfoulgn7Mpl-n6A76qUyKjiD_c8CRa2I19d0SNWyvV1J3B2SITPhOvPnLzGnvb3njbCG6X1ORsRtl1kNXK-SPUIMlONNsS_F1RC50cwCQhsAQ8dmayRdg&zp=LmZjsz9DQPA_j8_n0-cufvQgw7JEJHV69aF36Cv_EzFhI9GQwcS95OU5gFrTlDF2FyPEzSsiDbzNYn39Mrjsdtgcf7zRcCGuv9cZrOsehiEDkgeBQ41rCDsIEDIkb9c9Oz6lpuDxoiHDx6_AMx1zsa91VV1egVPOuUvbdbiMiqPzR8zkvM2fxG3lkrbswOXOOrtapHIKPDwgXVAkfrbmH0cm2yO2_r7ILWeNcDGVyJSZjNj_iHY5yZC7-gEGvzcFEVyIFDoYqR3DTXrJIL9eE3Jx7yurQl3K-hEPB3OReC7LJH6LpiG3WX5DiJQVDMDvqrPPl5sQYwSjZ69VTRNyh9_Q88Zuow-8ny1XHjLF9-3LEW5Olj0aOTKlKwnU96SRSKAUvcNpbS8q8PKPVYbFcinKEjVXAUFh_dbMQIlleCT81ADvn8bVvUb-k-hiI4UaPIfOOwOQcRCRttnOq8oG1UfRDn29aNrRlPyuPTiaDL9IWLk8B0D9lR5qXoDduu-2e3qJPGCgOTHz6PN6oGXjir6qwloQx4cM45GbcbscZQWNNX98OsnOkdg7kTjngUfQrnHvesU0gfraPLB20HcLQUxu8PkgRbdpTgKABGXFR-bWcurSlEOt36uQ
+              - generic [ref=f2e201]:
+                - generic [ref=f2e202]:
+                  - link "ClickUp_App" [ref=f2e204] [cursor=pointer]:
+                    - /url: /user/ClickUp_App/
+                    - img "u/ClickUp_App avatar" [ref=f2e207]
+                  - generic [ref=f2e209]: •
+                  - link "Promoted" [ref=f2e211] [cursor=pointer]:
+                    - /url: /user/ClickUp_App/
+                  - link [ref=f2e214] [cursor=pointer]:
+                    - /url: https://alb.reddit.com/cr?za=cB3iMpMxPAn1YyRPlera5sZSgGJJ5yV7VCskGRyFIHuqlM9-v2OmEwikX5XU3phPaFKtPOAp_npBwKFOe_oiqM9G4ibZ1RA7htlxXojhx2qYFFGj7-HcYk3TlM2sJkD-uqbHAt28yOEsyf4qkcM1lfryo5U52Eu9dZ83zqd9w9A_b6NkxGY4UHGWzoCh4i64u426w8pSlTqLx9woF9Mup86rQ7XfQ_nloYzWOdnkxdY2GPms9Uqy0XzMzBmFjS15Pqba4nsKgFuiIH9haIVXZyB74Bby46AX4Z8piPoOE8W9azKbrbGbZf4DaPLIYPJwe7ngAQmXGDYgpHCinnSgGG7rAxgb5rYmUaUpVMVahbkJzafFRmBte9yNxAk6VluACkma4yNQy3IOkjl724V4C_o_RLPKV_QKI1l7izgQRJhrJ-8wbs_zyZick1nzPc79fle7dzef80H6YMlGUp7B3fIo_dg-nWQalnX7feL_tduTa4wq-UADAeWW0TjXOlgSwKgDpyXZ9x3lfZK4J8N0kou9JZvc5Qd7vlManR7cAyUT-Hfoulgn7Mpl-n6A76qUyKjiD_c8CRa2I19d0SNWyvV1J3B2SITPhOvPnLzGnvb3njbCG6X1ORsRtl1kNXK-SPUIMlONNsS_F1RC50cwCQhsAQ8dmayRdg&zp=LmZjsz9DQPA_j8_n0-cufvQgw7JEJHV69aF36Cv_EzFhI9GQwcS95OU5gFrTlDF2FyPEzSsiDbzNYn39Mrjsdtgcf7zRcCGuv9cZrOsehiEDkgeBQ41rCDsIEDIkb9c9Oz6lpuDxoiHDx6_AMx1zsa91VV1egVPOuUvbdbiMiqPzR8zkvM2fxG3lkrbswOXOOrtapHIKPDwgXVAkfrbmH0cm2yO2_r7ILWeNcDGVyJSZjNj_iHY5yZC7-gEGvzcFEVyIFDoYqR3DTXrJIL9eE3Jx7yurQl3K-hEPB3OReC7LJH6LpiG3WX5DiJQVDMDvqrPPl5sQYwSjZ69VTRNyh9_Q88Zuow-8ny1XHjLF9-3LEW5Olj0aOTKlKwnU96SRSKAUvcNpbS8q8PKPVYbFcinKEjVXAUFh_dbMQIlleCT81ADvn8bVvUb-k-hiI4UaPIfOOwOQcRCRttnOq8oG1UfRDn29aNrRlPyuPTiaDL9IWLk8B0D9lR5qXoDduu-2e3qJPGCgOTHz6PN6oGXjir6qwloQx4cM45GbcbscZQWNNX98OsnOkdg7kTjngUfQrnHvesU0gfraPLB20HcLQUxu8PkgRbdpTgKABGXFR-bWcurSlEOt36uQ
+                - button "Open user actions" [ref=f2e220] [cursor=pointer]
+              - generic [ref=f2e226]:
+                - generic [ref=f2e227]:
+                  - link "What if AI ran the busywork?" [ref=f2e229] [cursor=pointer]:
+                    - /url: https://alb.reddit.com/cr?za=cB3iMpMxPAn1YyRPlera5sZSgGJJ5yV7VCskGRyFIHuqlM9-v2OmEwikX5XU3phPaFKtPOAp_npBwKFOe_oiqM9G4ibZ1RA7htlxXojhx2qYFFGj7-HcYk3TlM2sJkD-uqbHAt28yOEsyf4qkcM1lfryo5U52Eu9dZ83zqd9w9A_b6NkxGY4UHGWzoCh4i64u426w8pSlTqLx9woF9Mup86rQ7XfQ_nloYzWOdnkxdY2GPms9Uqy0XzMzBmFjS15Pqba4nsKgFuiIH9haIVXZyB74Bby46AX4Z8piPoOE8W9azKbrbGbZf4DaPLIYPJwe7ngAQmXGDYgpHCinnSgGG7rAxgb5rYmUaUpVMVahbkJzafFRmBte9yNxAk6VluACkma4yNQy3IOkjl724V4C_o_RLPKV_QKI1l7izgQRJhrJ-8wbs_zyZick1nzPc79fle7dzef80H6YMlGUp7B3fIo_dg-nWQalnX7feL_tduTa4wq-UADAeWW0TjXOlgSwKgDpyXZ9x3lfZK4J8N0kou9JZvc5Qd7vlManR7cAyUT-Hfoulgn7Mpl-n6A76qUyKjiD_c8CRa2I19d0SNWyvV1J3B2SITPhOvPnLzGnvb3njbCG6X1ORsRtl1kNXK-SPUIMlONNsS_F1RC50cwCQhsAQ8dmayRdg&zp=LmZjsz9DQPA_j8_n0-cufvQgw7JEJHV69aF36Cv_EzFhI9GQwcS95OU5gFrTlDF2FyPEzSsiDbzNYn39Mrjsdtgcf7zRcCGuv9cZrOsehiEDkgeBQ41rCDsIEDIkb9c9Oz6lpuDxoiHDx6_AMx1zsa91VV1egVPOuUvbdbiMiqPzR8zkvM2fxG3lkrbswOXOOrtapHIKPDwgXVAkfrbmH0cm2yO2_r7ILWeNcDGVyJSZjNj_iHY5yZC7-gEGvzcFEVyIFDoYqR3DTXrJIL9eE3Jx7yurQl3K-hEPB3OReC7LJH6LpiG3WX5DiJQVDMDvqrPPl5sQYwSjZ69VTRNyh9_Q88Zuow-8ny1XHjLF9-3LEW5Olj0aOTKlKwnU96SRSKAUvcNpbS8q8PKPVYbFcinKEjVXAUFh_dbMQIlleCT81ADvn8bVvUb-k-hiI4UaPIfOOwOQcRCRttnOq8oG1UfRDn29aNrRlPyuPTiaDL9IWLk8B0D9lR5qXoDduu-2e3qJPGCgOTHz6PN6oGXjir6qwloQx4cM45GbcbscZQWNNX98OsnOkdg7kTjngUfQrnHvesU0gfraPLB20HcLQUxu8PkgRbdpTgKABGXFR-bWcurSlEOt36uQ
+                  - generic [ref=f2e230]:
+                    - link [ref=f2e232] [cursor=pointer]:
+                      - /url: https://alb.reddit.com/cr?za=cB3iMpMxPAn1YyRPlera5sZSgGJJ5yV7VCskGRyFIHuqlM9-v2OmEwikX5XU3phPaFKtPOAp_npBwKFOe_oiqM9G4ibZ1RA7htlxXojhx2qYFFGj7-HcYk3TlM2sJkD-uqbHAt28yOEsyf4qkcM1lfryo5U52Eu9dZ83zqd9w9A_b6NkxGY4UHGWzoCh4i64u426w8pSlTqLx9woF9Mup86rQ7XfQ_nloYzWOdnkxdY2GPms9Uqy0XzMzBmFjS15Pqba4nsKgFuiIH9haIVXZyB74Bby46AX4Z8piPoOE8W9azKbrbGbZf4DaPLIYPJwe7ngAQmXGDYgpHCinnSgGG7rAxgb5rYmUaUpVMVahbkJzafFRmBte9yNxAk6VluACkma4yNQy3IOkjl724V4C_o_RLPKV_QKI1l7izgQRJhrJ-8wbs_zyZick1nzPc79fle7dzef80H6YMlGUp7B3fIo_dg-nWQalnX7feL_tduTa4wq-UADAeWW0TjXOlgSwKgDpyXZ9x3lfZK4J8N0kou9JZvc5Qd7vlManR7cAyUT-Hfoulgn7Mpl-n6A76qUyKjiD_c8CRa2I19d0SNWyvV1J3B2SITPhOvPnLzGnvb3njbCG6X1ORsRtl1kNXK-SPUIMlONNsS_F1RC50cwCQhsAQ8dmayRdg&zp=LmZjsz9DQPA_j8_n0-cufvQgw7JEJHV69aF36Cv_EzFhI9GQwcS95OU5gFrTlDF2FyPEzSsiDbzNYn39Mrjsdtgcf7zRcCGuv9cZrOsehiEDkgeBQ41rCDsIEDIkb9c9Oz6lpuDxoiHDx6_AMx1zsa91VV1egVPOuUvbdbiMiqPzR8zkvM2fxG3lkrbswOXOOrtapHIKPDwgXVAkfrbmH0cm2yO2_r7ILWeNcDGVyJSZjNj_iHY5yZC7-gEGvzcFEVyIFDoYqR3DTXrJIL9eE3Jx7yurQl3K-hEPB3OReC7LJH6LpiG3WX5DiJQVDMDvqrPPl5sQYwSjZ69VTRNyh9_Q88Zuow-8ny1XHjLF9-3LEW5Olj0aOTKlKwnU96SRSKAUvcNpbS8q8PKPVYbFcinKEjVXAUFh_dbMQIlleCT81ADvn8bVvUb-k-hiI4UaPIfOOwOQcRCRttnOq8oG1UfRDn29aNrRlPyuPTiaDL9IWLk8B0D9lR5qXoDduu-2e3qJPGCgOTHz6PN6oGXjir6qwloQx4cM45GbcbscZQWNNX98OsnOkdg7kTjngUfQrnHvesU0gfraPLB20HcLQUxu8PkgRbdpTgKABGXFR-bWcurSlEOt36uQ
+                    - generic [ref=f2e233]:
+                      - link "View More" [ref=f2e235] [cursor=pointer]:
+                        - /url: https://alb.reddit.com/cr?za=cB3iMpMxPAn1YyRPlera5sZSgGJJ5yV7VCskGRyFIHuqlM9-v2OmEwikX5XU3phPaFKtPOAp_npBwKFOe_oiqM9G4ibZ1RA7htlxXojhx2qYFFGj7-HcYk3TlM2sJkD-uqbHAt28yOEsyf4qkcM1lfryo5U52Eu9dZ83zqd9w9A_b6NkxGY4UHGWzoCh4i64u426w8pSlTqLx9woF9Mup86rQ7XfQ_nloYzWOdnkxdY2GPms9Uqy0XzMzBmFjS15Pqba4nsKgFuiIH9haIVXZyB74Bby46AX4Z8piPoOE8W9azKbrbGbZf4DaPLIYPJwe7ngAQmXGDYgpHCinnSgGG7rAxgb5rYmUaUpVMVahbkJzafFRmBte9yNxAk6VluACkma4yNQy3IOkjl724V4C_o_RLPKV_QKI1l7izgQRJhrJ-8wbs_zyZick1nzPc79fle7dzef80H6YMlGUp7B3fIo_dg-nWQalnX7feL_tduTa4wq-UADAeWW0TjXOlgSwKgDpyXZ9x3lfZK4J8N0kou9JZvc5Qd7vlManR7cAyUT-Hfoulgn7Mpl-n6A76qUyKjiD_c8CRa2I19d0SNWyvV1J3B2SITPhOvPnLzGnvb3njbCG6X1ORsRtl1kNXK-SPUIMlONNsS_F1RC50cwCQhsAQ8dmayRdg&zp=LmZjsz9DQPA_j8_n0-cufvQgw7JEJHV69aF36Cv_EzFhI9GQwcS95OU5gFrTlDF2FyPEzSsiDbzNYn39Mrjsdtgcf7zRcCGuv9cZrOsehiEDkgeBQ41rCDsIEDIkb9c9Oz6lpuDxoiHDx6_AMx1zsa91VV1egVPOuUvbdbiMiqPzR8zkvM2fxG3lkrbswOXOOrtapHIKPDwgXVAkfrbmH0cm2yO2_r7ILWeNcDGVyJSZjNj_iHY5yZC7-gEGvzcFEVyIFDoYqR3DTXrJIL9eE3Jx7yurQl3K-hEPB3OReC7LJH6LpiG3WX5DiJQVDMDvqrPPl5sQYwSjZ69VTRNyh9_Q88Zuow-8ny1XHjLF9-3LEW5Olj0aOTKlKwnU96SRSKAUvcNpbS8q8PKPVYbFcinKEjVXAUFh_dbMQIlleCT81ADvn8bVvUb-k-hiI4UaPIfOOwOQcRCRttnOq8oG1UfRDn29aNrRlPyuPTiaDL9IWLk8B0D9lR5qXoDduu-2e3qJPGCgOTHz6PN6oGXjir6qwloQx4cM45GbcbscZQWNNX98OsnOkdg7kTjngUfQrnHvesU0gfraPLB20HcLQUxu8PkgRbdpTgKABGXFR-bWcurSlEOt36uQ
+                      - link "clickup.com" [ref=f2e240] [cursor=pointer]:
+                        - /url: https://alb.reddit.com/cr?za=cB3iMpMxPAn1YyRPlera5sZSgGJJ5yV7VCskGRyFIHuqlM9-v2OmEwikX5XU3phPaFKtPOAp_npBwKFOe_oiqM9G4ibZ1RA7htlxXojhx2qYFFGj7-HcYk3TlM2sJkD-uqbHAt28yOEsyf4qkcM1lfryo5U52Eu9dZ83zqd9w9A_b6NkxGY4UHGWzoCh4i64u426w8pSlTqLx9woF9Mup86rQ7XfQ_nloYzWOdnkxdY2GPms9Uqy0XzMzBmFjS15Pqba4nsKgFuiIH9haIVXZyB74Bby46AX4Z8piPoOE8W9azKbrbGbZf4DaPLIYPJwe7ngAQmXGDYgpHCinnSgGG7rAxgb5rYmUaUpVMVahbkJzafFRmBte9yNxAk6VluACkma4yNQy3IOkjl724V4C_o_RLPKV_QKI1l7izgQRJhrJ-8wbs_zyZick1nzPc79fle7dzef80H6YMlGUp7B3fIo_dg-nWQalnX7feL_tduTa4wq-UADAeWW0TjXOlgSwKgDpyXZ9x3lfZK4J8N0kou9JZvc5Qd7vlManR7cAyUT-Hfoulgn7Mpl-n6A76qUyKjiD_c8CRa2I19d0SNWyvV1J3B2SITPhOvPnLzGnvb3njbCG6X1ORsRtl1kNXK-SPUIMlONNsS_F1RC50cwCQhsAQ8dmayRdg&zp=LmZjsz9DQPA_j8_n0-cufvQgw7JEJHV69aF36Cv_EzFhI9GQwcS95OU5gFrTlDF2FyPEzSsiDbzNYn39Mrjsdtgcf7zRcCGuv9cZrOsehiEDkgeBQ41rCDsIEDIkb9c9Oz6lpuDxoiHDx6_AMx1zsa91VV1egVPOuUvbdbiMiqPzR8zkvM2fxG3lkrbswOXOOrtapHIKPDwgXVAkfrbmH0cm2yO2_r7ILWeNcDGVyJSZjNj_iHY5yZC7-gEGvzcFEVyIFDoYqR3DTXrJIL9eE3Jx7yurQl3K-hEPB3OReC7LJH6LpiG3WX5DiJQVDMDvqrPPl5sQYwSjZ69VTRNyh9_Q88Zuow-8ny1XHjLF9-3LEW5Olj0aOTKlKwnU96SRSKAUvcNpbS8q8PKPVYbFcinKEjVXAUFh_dbMQIlleCT81ADvn8bVvUb-k-hiI4UaPIfOOwOQcRCRttnOq8oG1UfRDn29aNrRlPyuPTiaDL9IWLk8B0D9lR5qXoDduu-2e3qJPGCgOTHz6PN6oGXjir6qwloQx4cM45GbcbscZQWNNX98OsnOkdg7kTjngUfQrnHvesU0gfraPLB20HcLQUxu8PkgRbdpTgKABGXFR-bWcurSlEOt36uQ
+                - link [ref=f2e243] [cursor=pointer]:
+                  - /url: https://alb.reddit.com/cr?za=cB3iMpMxPAn1YyRPlera5sZSgGJJ5yV7VCskGRyFIHuqlM9-v2OmEwikX5XU3phPaFKtPOAp_npBwKFOe_oiqM9G4ibZ1RA7htlxXojhx2qYFFGj7-HcYk3TlM2sJkD-uqbHAt28yOEsyf4qkcM1lfryo5U52Eu9dZ83zqd9w9A_b6NkxGY4UHGWzoCh4i64u426w8pSlTqLx9woF9Mup86rQ7XfQ_nloYzWOdnkxdY2GPms9Uqy0XzMzBmFjS15Pqba4nsKgFuiIH9haIVXZyB74Bby46AX4Z8piPoOE8W9azKbrbGbZf4DaPLIYPJwe7ngAQmXGDYgpHCinnSgGG7rAxgb5rYmUaUpVMVahbkJzafFRmBte9yNxAk6VluACkma4yNQy3IOkjl724V4C_o_RLPKV_QKI1l7izgQRJhrJ-8wbs_zyZick1nzPc79fle7dzef80H6YMlGUp7B3fIo_dg-nWQalnX7feL_tduTa4wq-UADAeWW0TjXOlgSwKgDpyXZ9x3lfZK4J8N0kou9JZvc5Qd7vlManR7cAyUT-Hfoulgn7Mpl-n6A76qUyKjiD_c8CRa2I19d0SNWyvV1J3B2SITPhOvPnLzGnvb3njbCG6X1ORsRtl1kNXK-SPUIMlONNsS_F1RC50cwCQhsAQ8dmayRdg&zp=LmZjsz9DQPA_j8_n0-cufvQgw7JEJHV69aF36Cv_EzFhI9GQwcS95OU5gFrTlDF2FyPEzSsiDbzNYn39Mrjsdtgcf7zRcCGuv9cZrOsehiEDkgeBQ41rCDsIEDIkb9c9Oz6lpuDxoiHDx6_AMx1zsa91VV1egVPOuUvbdbiMiqPzR8zkvM2fxG3lkrbswOXOOrtapHIKPDwgXVAkfrbmH0cm2yO2_r7ILWeNcDGVyJSZjNj_iHY5yZC7-gEGvzcFEVyIFDoYqR3DTXrJIL9eE3Jx7yurQl3K-hEPB3OReC7LJH6LpiG3WX5DiJQVDMDvqrPPl5sQYwSjZ69VTRNyh9_Q88Zuow-8ny1XHjLF9-3LEW5Olj0aOTKlKwnU96SRSKAUvcNpbS8q8PKPVYbFcinKEjVXAUFh_dbMQIlleCT81ADvn8bVvUb-k-hiI4UaPIfOOwOQcRCRttnOq8oG1UfRDn29aNrRlPyuPTiaDL9IWLk8B0D9lR5qXoDduu-2e3qJPGCgOTHz6PN6oGXjir6qwloQx4cM45GbcbscZQWNNX98OsnOkdg7kTjngUfQrnHvesU0gfraPLB20HcLQUxu8PkgRbdpTgKABGXFR-bWcurSlEOt36uQ
+                  - 'img "Thumbnail image: What if AI ran the busywork?" [ref=f2e244]'
+          - separator [ref=f2e245]
+          - region "Comments" [ref=f2e248]:
+            - heading "Comments Section" [level=1] [ref=f2e249]
+            - article "Comment from AutoModerator 1 year ago" [ref=f2e251]:
+              - generic [ref=f2e259] [cursor=pointer]:
+                - link "AutoModerator's profile" [ref=f2e262]:
+                  - /url: https://www.reddit.com/user/AutoModerator/
+                  - text: AutoModerator
+                - generic "Comment distinguished by moderator" [ref=f2e265]: MOD
+                - generic [ref=f2e266]: •
+                - link [ref=f2e268]:
+                  - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng92t3v/
+                  - time [ref=f2e270]: 1y ago
+            - article "Comment from SirCocainalot 1 year ago" [ref=f2e273]:
+              - generic [ref=f2e274] [cursor=pointer]:
+                - link "SirCocainalot's profile --- avatar" [ref=f2e279]:
+                  - /url: https://www.reddit.com/user/SirCocainalot/
+                - generic [ref=f2e295]:
+                  - link "SirCocainalot's profile" [ref=f2e298]:
+                    - /url: https://www.reddit.com/user/SirCocainalot/
+                    - text: SirCocainalot
+                  - generic [ref=f2e299]: •
+                  - link [ref=f2e301]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng9semt/
+                    - time [ref=f2e303]: 1y ago
+              - generic [ref=f2e305]:
+                - paragraph [ref=f2e309]: All this and they're offering only 3ish lpa. I swear my interviews were soo much more simpler and I was offered more than this.
+                - generic [ref=f2e310]: "68"
+                - generic [ref=f2e317]:
+                  - 'article "Comment thread level 1: Reply from WarFresh2208 1 year ago" [ref=f2e319]':
+                    - generic [ref=f2e320] [cursor=pointer]:
+                      - link "WarFresh2208's profile --- avatar" [ref=f2e325]:
+                        - /url: https://www.reddit.com/user/WarFresh2208/
+                      - generic [ref=f2e335]:
+                        - link "WarFresh2208's profile" [ref=f2e338]:
+                          - /url: https://www.reddit.com/user/WarFresh2208/
+                          - text: WarFresh2208
+                        - generic "Comment distinguished as the original poster" [ref=f2e341]: OP
+                        - generic [ref=f2e342]: •
+                        - link [ref=f2e344]:
+                          - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ngaaw15/
+                          - time [ref=f2e346]: 1y ago
+                    - generic [ref=f2e348]:
+                      - paragraph [ref=f2e352]: 😔
+                      - generic [ref=f2e353]: "3"
+                  - button "7 more replies" [ref=f2e362] [cursor=pointer]:
+                    - generic [ref=f2e367]:
+                      - generic [ref=f2e368]: "7"
+                      - text: more replies
+            - article "Comment from Beneficial-Mud1632 1 year ago" [ref=f2e372]:
+              - generic [ref=f2e373] [cursor=pointer]:
+                - link "Beneficial-Mud1632's profile --- avatar" [ref=f2e378]:
+                  - /url: https://www.reddit.com/user/Beneficial-Mud1632/
+                  - img "u/Beneficial-Mud1632 avatar" [ref=f2e381]
+                - generic [ref=f2e385]:
+                  - link "Beneficial-Mud1632's profile" [ref=f2e388]:
+                    - /url: https://www.reddit.com/user/Beneficial-Mud1632/
+                    - text: Beneficial-Mud1632
+                  - generic [ref=f2e389]: •
+                  - link [ref=f2e391]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng95mfc/
+                    - time [ref=f2e393]: 1y ago
+              - generic [ref=f2e395]:
+                - paragraph [ref=f2e399]: thank uu.. really helpful
+                - generic [ref=f2e400]: "29"
+                - 'article "Comment thread level 1: Reply from WarFresh2208 1 year ago" [ref=f2e409]':
+                  - generic [ref=f2e410] [cursor=pointer]:
+                    - link "WarFresh2208's profile --- avatar" [ref=f2e415]:
+                      - /url: https://www.reddit.com/user/WarFresh2208/
+                    - generic [ref=f2e425]:
+                      - link "WarFresh2208's profile" [ref=f2e428]:
+                        - /url: https://www.reddit.com/user/WarFresh2208/
+                        - text: WarFresh2208
+                      - generic "Comment distinguished as the original poster" [ref=f2e431]: OP
+                      - generic [ref=f2e432]: •
+                      - link [ref=f2e434]:
+                        - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng97mxx/
+                        - time [ref=f2e436]: 1y ago
+                  - generic [ref=f2e438]:
+                    - paragraph [ref=f2e442]: 😸
+                    - generic [ref=f2e443]: "4"
+            - article "Comment from UKnowNothiing 1 year ago" [ref=f2e451]:
+              - generic [ref=f2e452] [cursor=pointer]:
+                - link "UKnowNothiing's profile --- avatar" [ref=f2e457]:
+                  - /url: https://www.reddit.com/user/UKnowNothiing/
+                - generic [ref=f2e467]:
+                  - link "UKnowNothiing's profile" [ref=f2e470]:
+                    - /url: https://www.reddit.com/user/UKnowNothiing/
+                    - text: UKnowNothiing
+                  - generic [ref=f2e471]: •
+                  - link [ref=f2e473]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng9vo6z/
+                    - time [ref=f2e475]: 1y ago
+              - generic [ref=f2e477]:
+                - paragraph [ref=f2e481]: Unrelated but I think all colleges should implement this thing where the assessments are conducted in the college lab itself. The amount of cheating i have seen this year has completely made me lose my faith on campus placement whatsoever. People from hostels even cheat on live interviews.And then pretend like they won a war when they get placed. Also companies should have a standard set for interview ques. Why are you asking to find prime no to one candidate and , dynamic to the other? How is that fair.
+                - generic [ref=f2e482]: "25"
+                - generic [ref=f2e489]:
+                  - 'article "Comment thread level 1: Reply from WarFresh2208 1 year ago" [ref=f2e491]':
+                    - generic [ref=f2e492] [cursor=pointer]:
+                      - link "WarFresh2208's profile --- avatar" [ref=f2e497]:
+                        - /url: https://www.reddit.com/user/WarFresh2208/
+                      - generic [ref=f2e507]:
+                        - link "WarFresh2208's profile" [ref=f2e510]:
+                          - /url: https://www.reddit.com/user/WarFresh2208/
+                          - text: WarFresh2208
+                        - generic "Comment distinguished as the original poster" [ref=f2e513]: OP
+                        - generic [ref=f2e514]: •
+                        - link [ref=f2e516]:
+                          - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ngabl4f/
+                          - time [ref=f2e518]: 1y ago
+                    - generic [ref=f2e520]:
+                      - paragraph [ref=f2e524]: Brother life is unfair, meri branch se ek bande ki 9 lpa lagg gayi and he is the least deserving guy from our branch and life is unfair because people like them get to gloat over it.
+                      - generic [ref=f2e525]: "8"
+                      - button "3 more replies" [ref=f2e535] [cursor=pointer]:
+                        - generic [ref=f2e540]:
+                          - generic [ref=f2e541]: "3"
+                          - text: more replies
+                  - button "1 more reply" [ref=f2e546] [cursor=pointer]:
+                    - generic [ref=f2e551]:
+                      - generic [ref=f2e552]: "1"
+                      - text: more reply
+            - generic "🎮 Freedom Sale is Here! Get Up to 40% OFF on Lenovo Legion Gaming Laptops Powered by Intel® Core™" [ref=f2e557]:
+              - generic [ref=f2e558]:
+                - 'generic "Advertisement: 🎮 Freedom Sale is Here! Get Up to 40% OFF on Lenovo Legion Gaming Laptops Powered by Intel® Core™" [ref=f2e559]':
+                  - 'link "Advertisement: 🎮 Freedom Sale is Here! Get Up to 40% OFF on Lenovo Legion Gaming Laptops Powered by Intel® Core™" [ref=f2e560] [cursor=pointer]':
+                    - /url: https://alb.reddit.com/cr?za=dLqVquJ5c9ziX_gBQsXc744a2iAjM0BqJXHRBgogAokt4IP2a6q4YG0--MAdyYWndBGoZHI8mN-rP67ggLY13F-Uezzdvs2QsIJJhP2GrYLj59N1c5-OYd-1gApVlS_0CWKC9fGD1p_vlL3fIMKd3h6H233djN384kEz-huIklIkwwFqh9eHuvb2ZDKYMovAj4GW24bqa5D9goMaCDpmZHwd1FWG5zvFdsnpWgg-ak9VkQ5XYBXd9eVeT_dQ6IFerD2Hp1ZbfIv5KlePtvwVSZsyPUzFnI96COHmFMOUbSAH1vVzSj97V9xIv3Q_ntTgSfC_9vYkGETBgcuBDNHkqe5Xy-sxPCJ5ntaRf3az1ZELaiXQe4txkOQnay3WwlprIL1gfKUALimvsZlkTUwHO1kHryk-9LGc1Vd5HC5VYKdo5yBw9gEWQ_6kZ5UXM4jahcGoGLlat6lhemmURDOJJcEM7EdsjoGp3ROA2V5zibSfY9QJbw9zZPq6YGjvJMW7Ap472zFnaNe2t_YB96hB7xHL4ouaADESQdKyGqUjCXBvMwSxmtmtXYaewSE5DBJyGba8nepGdS1Sp2821J1MoPdNa_44dZjeNrqoLMHPYjM_FJHIfaSz7JB702BZhYq_T4Cwp_vRJBZwy8aYGok2H9WTxbMQBUJuPkApzDo&zp=CfPsLWLoGmcdFW73aDYiNSrhtMdkX0Jln2IAJxJfZYCtBsRmnpY4hYduW3UPeL2vw08OsUrZBxKhlGdrKFS7th5GPvWsiz40zuTjQdWeiyppI_diSUiXtmwlILEA1A6hWX2zlqF6O-t0NIrWEzgWEnd5TrP4HlVzLLEMa7Xsbn0UB9y0ppT_hZ65dZdllNycSwMgippCecApsHyzETOCp4f0-YVc6TpAu_nFxLX4TjqzMObWmK0eLj2EDoRh-ZwQdgMfyrm5LZv09R-hJ0xgAiDHbStScgR8ImHNoY1A0Gv4rRLms9C0LLuRIdXhD3pi9mrsO6T3AA
+                - generic [ref=f2e561]:
+                  - generic [ref=f2e562]:
+                    - link "u/LenovoIndia" [ref=f2e564] [cursor=pointer]:
+                      - /url: /user/LenovoIndia/
+                      - img "u/LenovoIndia avatar" [ref=f2e567]
+                    - generic [ref=f2e569]: •
+                    - link "Promoted" [ref=f2e571] [cursor=pointer]:
+                      - /url: /user/LenovoIndia/
+                    - link [ref=f2e574] [cursor=pointer]:
+                      - /url: https://alb.reddit.com/cr?za=dLqVquJ5c9ziX_gBQsXc744a2iAjM0BqJXHRBgogAokt4IP2a6q4YG0--MAdyYWndBGoZHI8mN-rP67ggLY13F-Uezzdvs2QsIJJhP2GrYLj59N1c5-OYd-1gApVlS_0CWKC9fGD1p_vlL3fIMKd3h6H233djN384kEz-huIklIkwwFqh9eHuvb2ZDKYMovAj4GW24bqa5D9goMaCDpmZHwd1FWG5zvFdsnpWgg-ak9VkQ5XYBXd9eVeT_dQ6IFerD2Hp1ZbfIv5KlePtvwVSZsyPUzFnI96COHmFMOUbSAH1vVzSj97V9xIv3Q_ntTgSfC_9vYkGETBgcuBDNHkqe5Xy-sxPCJ5ntaRf3az1ZELaiXQe4txkOQnay3WwlprIL1gfKUALimvsZlkTUwHO1kHryk-9LGc1Vd5HC5VYKdo5yBw9gEWQ_6kZ5UXM4jahcGoGLlat6lhemmURDOJJcEM7EdsjoGp3ROA2V5zibSfY9QJbw9zZPq6YGjvJMW7Ap472zFnaNe2t_YB96hB7xHL4ouaADESQdKyGqUjCXBvMwSxmtmtXYaewSE5DBJyGba8nepGdS1Sp2821J1MoPdNa_44dZjeNrqoLMHPYjM_FJHIfaSz7JB702BZhYq_T4Cwp_vRJBZwy8aYGok2H9WTxbMQBUJuPkApzDo&zp=CfPsLWLoGmcdFW73aDYiNSrhtMdkX0Jln2IAJxJfZYCtBsRmnpY4hYduW3UPeL2vw08OsUrZBxKhlGdrKFS7th5GPvWsiz40zuTjQdWeiyppI_diSUiXtmwlILEA1A6hWX2zlqF6O-t0NIrWEzgWEnd5TrP4HlVzLLEMa7Xsbn0UB9y0ppT_hZ65dZdllNycSwMgippCecApsHyzETOCp4f0-YVc6TpAu_nFxLX4TjqzMObWmK0eLj2EDoRh-ZwQdgMfyrm5LZv09R-hJ0xgAiDHbStScgR8ImHNoY1A0Gv4rRLms9C0LLuRIdXhD3pi9mrsO6T3AA
+                  - button "Open user actions" [ref=f2e580] [cursor=pointer]
+                - generic [ref=f2e586]:
+                  - generic [ref=f2e587]:
+                    - link "🎮 Freedom Sale is Here! Get Up to 40% OFF on Lenovo Legion Gaming Laptops Powered by Intel® Core™" [ref=f2e589] [cursor=pointer]:
+                      - /url: https://alb.reddit.com/cr?za=dLqVquJ5c9ziX_gBQsXc744a2iAjM0BqJXHRBgogAokt4IP2a6q4YG0--MAdyYWndBGoZHI8mN-rP67ggLY13F-Uezzdvs2QsIJJhP2GrYLj59N1c5-OYd-1gApVlS_0CWKC9fGD1p_vlL3fIMKd3h6H233djN384kEz-huIklIkwwFqh9eHuvb2ZDKYMovAj4GW24bqa5D9goMaCDpmZHwd1FWG5zvFdsnpWgg-ak9VkQ5XYBXd9eVeT_dQ6IFerD2Hp1ZbfIv5KlePtvwVSZsyPUzFnI96COHmFMOUbSAH1vVzSj97V9xIv3Q_ntTgSfC_9vYkGETBgcuBDNHkqe5Xy-sxPCJ5ntaRf3az1ZELaiXQe4txkOQnay3WwlprIL1gfKUALimvsZlkTUwHO1kHryk-9LGc1Vd5HC5VYKdo5yBw9gEWQ_6kZ5UXM4jahcGoGLlat6lhemmURDOJJcEM7EdsjoGp3ROA2V5zibSfY9QJbw9zZPq6YGjvJMW7Ap472zFnaNe2t_YB96hB7xHL4ouaADESQdKyGqUjCXBvMwSxmtmtXYaewSE5DBJyGba8nepGdS1Sp2821J1MoPdNa_44dZjeNrqoLMHPYjM_FJHIfaSz7JB702BZhYq_T4Cwp_vRJBZwy8aYGok2H9WTxbMQBUJuPkApzDo&zp=CfPsLWLoGmcdFW73aDYiNSrhtMdkX0Jln2IAJxJfZYCtBsRmnpY4hYduW3UPeL2vw08OsUrZBxKhlGdrKFS7th5GPvWsiz40zuTjQdWeiyppI_diSUiXtmwlILEA1A6hWX2zlqF6O-t0NIrWEzgWEnd5TrP4HlVzLLEMa7Xsbn0UB9y0ppT_hZ65dZdllNycSwMgippCecApsHyzETOCp4f0-YVc6TpAu_nFxLX4TjqzMObWmK0eLj2EDoRh-ZwQdgMfyrm5LZv09R-hJ0xgAiDHbStScgR8ImHNoY1A0Gv4rRLms9C0LLuRIdXhD3pi9mrsO6T3AA
+                    - generic [ref=f2e590]:
+                      - link [ref=f2e592] [cursor=pointer]:
+                        - /url: https://alb.reddit.com/cr?za=dLqVquJ5c9ziX_gBQsXc744a2iAjM0BqJXHRBgogAokt4IP2a6q4YG0--MAdyYWndBGoZHI8mN-rP67ggLY13F-Uezzdvs2QsIJJhP2GrYLj59N1c5-OYd-1gApVlS_0CWKC9fGD1p_vlL3fIMKd3h6H233djN384kEz-huIklIkwwFqh9eHuvb2ZDKYMovAj4GW24bqa5D9goMaCDpmZHwd1FWG5zvFdsnpWgg-ak9VkQ5XYBXd9eVeT_dQ6IFerD2Hp1ZbfIv5KlePtvwVSZsyPUzFnI96COHmFMOUbSAH1vVzSj97V9xIv3Q_ntTgSfC_9vYkGETBgcuBDNHkqe5Xy-sxPCJ5ntaRf3az1ZELaiXQe4txkOQnay3WwlprIL1gfKUALimvsZlkTUwHO1kHryk-9LGc1Vd5HC5VYKdo5yBw9gEWQ_6kZ5UXM4jahcGoGLlat6lhemmURDOJJcEM7EdsjoGp3ROA2V5zibSfY9QJbw9zZPq6YGjvJMW7Ap472zFnaNe2t_YB96hB7xHL4ouaADESQdKyGqUjCXBvMwSxmtmtXYaewSE5DBJyGba8nepGdS1Sp2821J1MoPdNa_44dZjeNrqoLMHPYjM_FJHIfaSz7JB702BZhYq_T4Cwp_vRJBZwy8aYGok2H9WTxbMQBUJuPkApzDo&zp=CfPsLWLoGmcdFW73aDYiNSrhtMdkX0Jln2IAJxJfZYCtBsRmnpY4hYduW3UPeL2vw08OsUrZBxKhlGdrKFS7th5GPvWsiz40zuTjQdWeiyppI_diSUiXtmwlILEA1A6hWX2zlqF6O-t0NIrWEzgWEnd5TrP4HlVzLLEMa7Xsbn0UB9y0ppT_hZ65dZdllNycSwMgippCecApsHyzETOCp4f0-YVc6TpAu_nFxLX4TjqzMObWmK0eLj2EDoRh-ZwQdgMfyrm5LZv09R-hJ0xgAiDHbStScgR8ImHNoY1A0Gv4rRLms9C0LLuRIdXhD3pi9mrsO6T3AA
+                      - generic [ref=f2e593]:
+                        - link "Shop Now" [ref=f2e595] [cursor=pointer]:
+                          - /url: https://alb.reddit.com/cr?za=dLqVquJ5c9ziX_gBQsXc744a2iAjM0BqJXHRBgogAokt4IP2a6q4YG0--MAdyYWndBGoZHI8mN-rP67ggLY13F-Uezzdvs2QsIJJhP2GrYLj59N1c5-OYd-1gApVlS_0CWKC9fGD1p_vlL3fIMKd3h6H233djN384kEz-huIklIkwwFqh9eHuvb2ZDKYMovAj4GW24bqa5D9goMaCDpmZHwd1FWG5zvFdsnpWgg-ak9VkQ5XYBXd9eVeT_dQ6IFerD2Hp1ZbfIv5KlePtvwVSZsyPUzFnI96COHmFMOUbSAH1vVzSj97V9xIv3Q_ntTgSfC_9vYkGETBgcuBDNHkqe5Xy-sxPCJ5ntaRf3az1ZELaiXQe4txkOQnay3WwlprIL1gfKUALimvsZlkTUwHO1kHryk-9LGc1Vd5HC5VYKdo5yBw9gEWQ_6kZ5UXM4jahcGoGLlat6lhemmURDOJJcEM7EdsjoGp3ROA2V5zibSfY9QJbw9zZPq6YGjvJMW7Ap472zFnaNe2t_YB96hB7xHL4ouaADESQdKyGqUjCXBvMwSxmtmtXYaewSE5DBJyGba8nepGdS1Sp2821J1MoPdNa_44dZjeNrqoLMHPYjM_FJHIfaSz7JB702BZhYq_T4Cwp_vRJBZwy8aYGok2H9WTxbMQBUJuPkApzDo&zp=CfPsLWLoGmcdFW73aDYiNSrhtMdkX0Jln2IAJxJfZYCtBsRmnpY4hYduW3UPeL2vw08OsUrZBxKhlGdrKFS7th5GPvWsiz40zuTjQdWeiyppI_diSUiXtmwlILEA1A6hWX2zlqF6O-t0NIrWEzgWEnd5TrP4HlVzLLEMa7Xsbn0UB9y0ppT_hZ65dZdllNycSwMgippCecApsHyzETOCp4f0-YVc6TpAu_nFxLX4TjqzMObWmK0eLj2EDoRh-ZwQdgMfyrm5LZv09R-hJ0xgAiDHbStScgR8ImHNoY1A0Gv4rRLms9C0LLuRIdXhD3pi9mrsO6T3AA
+                        - link "lenovo.com" [ref=f2e600] [cursor=pointer]:
+                          - /url: https://alb.reddit.com/cr?za=dLqVquJ5c9ziX_gBQsXc744a2iAjM0BqJXHRBgogAokt4IP2a6q4YG0--MAdyYWndBGoZHI8mN-rP67ggLY13F-Uezzdvs2QsIJJhP2GrYLj59N1c5-OYd-1gApVlS_0CWKC9fGD1p_vlL3fIMKd3h6H233djN384kEz-huIklIkwwFqh9eHuvb2ZDKYMovAj4GW24bqa5D9goMaCDpmZHwd1FWG5zvFdsnpWgg-ak9VkQ5XYBXd9eVeT_dQ6IFerD2Hp1ZbfIv5KlePtvwVSZsyPUzFnI96COHmFMOUbSAH1vVzSj97V9xIv3Q_ntTgSfC_9vYkGETBgcuBDNHkqe5Xy-sxPCJ5ntaRf3az1ZELaiXQe4txkOQnay3WwlprIL1gfKUALimvsZlkTUwHO1kHryk-9LGc1Vd5HC5VYKdo5yBw9gEWQ_6kZ5UXM4jahcGoGLlat6lhemmURDOJJcEM7EdsjoGp3ROA2V5zibSfY9QJbw9zZPq6YGjvJMW7Ap472zFnaNe2t_YB96hB7xHL4ouaADESQdKyGqUjCXBvMwSxmtmtXYaewSE5DBJyGba8nepGdS1Sp2821J1MoPdNa_44dZjeNrqoLMHPYjM_FJHIfaSz7JB702BZhYq_T4Cwp_vRJBZwy8aYGok2H9WTxbMQBUJuPkApzDo&zp=CfPsLWLoGmcdFW73aDYiNSrhtMdkX0Jln2IAJxJfZYCtBsRmnpY4hYduW3UPeL2vw08OsUrZBxKhlGdrKFS7th5GPvWsiz40zuTjQdWeiyppI_diSUiXtmwlILEA1A6hWX2zlqF6O-t0NIrWEzgWEnd5TrP4HlVzLLEMa7Xsbn0UB9y0ppT_hZ65dZdllNycSwMgippCecApsHyzETOCp4f0-YVc6TpAu_nFxLX4TjqzMObWmK0eLj2EDoRh-ZwQdgMfyrm5LZv09R-hJ0xgAiDHbStScgR8ImHNoY1A0Gv4rRLms9C0LLuRIdXhD3pi9mrsO6T3AA
+                  - link [ref=f2e603] [cursor=pointer]:
+                    - /url: https://alb.reddit.com/cr?za=dLqVquJ5c9ziX_gBQsXc744a2iAjM0BqJXHRBgogAokt4IP2a6q4YG0--MAdyYWndBGoZHI8mN-rP67ggLY13F-Uezzdvs2QsIJJhP2GrYLj59N1c5-OYd-1gApVlS_0CWKC9fGD1p_vlL3fIMKd3h6H233djN384kEz-huIklIkwwFqh9eHuvb2ZDKYMovAj4GW24bqa5D9goMaCDpmZHwd1FWG5zvFdsnpWgg-ak9VkQ5XYBXd9eVeT_dQ6IFerD2Hp1ZbfIv5KlePtvwVSZsyPUzFnI96COHmFMOUbSAH1vVzSj97V9xIv3Q_ntTgSfC_9vYkGETBgcuBDNHkqe5Xy-sxPCJ5ntaRf3az1ZELaiXQe4txkOQnay3WwlprIL1gfKUALimvsZlkTUwHO1kHryk-9LGc1Vd5HC5VYKdo5yBw9gEWQ_6kZ5UXM4jahcGoGLlat6lhemmURDOJJcEM7EdsjoGp3ROA2V5zibSfY9QJbw9zZPq6YGjvJMW7Ap472zFnaNe2t_YB96hB7xHL4ouaADESQdKyGqUjCXBvMwSxmtmtXYaewSE5DBJyGba8nepGdS1Sp2821J1MoPdNa_44dZjeNrqoLMHPYjM_FJHIfaSz7JB702BZhYq_T4Cwp_vRJBZwy8aYGok2H9WTxbMQBUJuPkApzDo&zp=CfPsLWLoGmcdFW73aDYiNSrhtMdkX0Jln2IAJxJfZYCtBsRmnpY4hYduW3UPeL2vw08OsUrZBxKhlGdrKFS7th5GPvWsiz40zuTjQdWeiyppI_diSUiXtmwlILEA1A6hWX2zlqF6O-t0NIrWEzgWEnd5TrP4HlVzLLEMa7Xsbn0UB9y0ppT_hZ65dZdllNycSwMgippCecApsHyzETOCp4f0-YVc6TpAu_nFxLX4TjqzMObWmK0eLj2EDoRh-ZwQdgMfyrm5LZv09R-hJ0xgAiDHbStScgR8ImHNoY1A0Gv4rRLms9C0LLuRIdXhD3pi9mrsO6T3AA
+                    - 'img "Thumbnail image: 🎮 Freedom Sale is Here! Get Up to 40% OFF on Lenovo Legion Gaming Laptops Powered by Intel® Core™" [ref=f2e604]'
+            - article "Comment from Enough_Honeydew26 1 year ago" [ref=f2e606]:
+              - generic [ref=f2e607] [cursor=pointer]:
+                - link "Enough_Honeydew26's profile --- avatar" [ref=f2e612]:
+                  - /url: https://www.reddit.com/user/Enough_Honeydew26/
+                  - img "u/Enough_Honeydew26 avatar" [ref=f2e615]
+                - generic [ref=f2e619]:
+                  - link "Enough_Honeydew26's profile" [ref=f2e622]:
+                    - /url: https://www.reddit.com/user/Enough_Honeydew26/
+                    - text: Enough_Honeydew26
+                  - generic [ref=f2e623]: •
+                  - link [ref=f2e625]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng9usx6/
+                    - time [ref=f2e627]: 1y ago
+              - generic [ref=f2e629]:
+                - paragraph [ref=f2e633]: 3 lakh ke liye itna bakchodi?
+                - generic [ref=f2e634]: "14"
+                - 'article "Comment thread level 1: Reply from WarFresh2208 1 year ago" [ref=f2e643]':
+                  - generic [ref=f2e644] [cursor=pointer]:
+                    - link "WarFresh2208's profile --- avatar" [ref=f2e649]:
+                      - /url: https://www.reddit.com/user/WarFresh2208/
+                    - generic [ref=f2e659]:
+                      - link "WarFresh2208's profile" [ref=f2e662]:
+                        - /url: https://www.reddit.com/user/WarFresh2208/
+                        - text: WarFresh2208
+                      - generic "Comment distinguished as the original poster" [ref=f2e665]: OP
+                      - generic [ref=f2e666]: •
+                      - link [ref=f2e668]:
+                        - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ngab80p/
+                        - time [ref=f2e670]: 1y ago
+                  - generic [ref=f2e672]:
+                    - paragraph [ref=f2e676]: Software mai easy way in nahi hai abb broda 😮‍💨
+                    - generic [ref=f2e677]: "9"
+                    - button "2 more replies" [ref=f2e687] [cursor=pointer]:
+                      - generic [ref=f2e692]:
+                        - generic [ref=f2e693]: "2"
+                        - text: more replies
+            - article "Comment from Laznaz 1 year ago" [ref=f2e697]:
+              - generic [ref=f2e698] [cursor=pointer]:
+                - link "Laznaz's profile --- avatar" [ref=f2e703]:
+                  - /url: https://www.reddit.com/user/Laznaz/
+                - generic [ref=f2e719]:
+                  - link "Laznaz's profile" [ref=f2e722]:
+                    - /url: https://www.reddit.com/user/Laznaz/
+                    - text: Laznaz
+                  - generic [ref=f2e723]: •
+                  - link [ref=f2e725]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/nga5sbo/
+                    - time [ref=f2e727]: 1y ago
+              - generic [ref=f2e729]:
+                - paragraph [ref=f2e733]: Same for cognizant and Capgemini
+                - generic [ref=f2e734]: "11"
+                - button "18 more replies" [ref=f2e744] [cursor=pointer]:
+                  - generic [ref=f2e749]:
+                    - generic [ref=f2e750]: "18"
+                    - text: more replies
+            - article "Comment from Commercial-Nail-8350 1 year ago" [ref=f2e754]:
+              - generic [ref=f2e755] [cursor=pointer]:
+                - link "Commercial-Nail-8350's profile --- avatar" [ref=f2e760]:
+                  - /url: https://www.reddit.com/user/Commercial-Nail-8350/
+                - generic [ref=f2e770]:
+                  - link "Commercial-Nail-8350's profile" [ref=f2e773]:
+                    - /url: https://www.reddit.com/user/Commercial-Nail-8350/
+                    - text: Commercial-Nail-8350
+                  - generic [ref=f2e774]: •
+                  - link [ref=f2e776]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng98hzz/
+                    - time [ref=f2e778]: 1y ago
+              - generic [ref=f2e780]:
+                - paragraph [ref=f2e784]: Are you from Thapar?
+                - generic [ref=f2e785]: "5"
+                - button "5 more replies" [ref=f2e795] [cursor=pointer]:
+                  - generic [ref=f2e800]:
+                    - generic [ref=f2e801]: "5"
+                    - text: more replies
+            - article "Comment from Ill-Youth2447 1 year ago" [ref=f2e805]:
+              - generic [ref=f2e806] [cursor=pointer]:
+                - link "Ill-Youth2447's profile --- avatar" [ref=f2e811]:
+                  - /url: https://www.reddit.com/user/Ill-Youth2447/
+                  - img "u/Ill-Youth2447 avatar" [ref=f2e814]
+                - generic [ref=f2e818]:
+                  - link "Ill-Youth2447's profile" [ref=f2e821]:
+                    - /url: https://www.reddit.com/user/Ill-Youth2447/
+                    - text: Ill-Youth2447
+                  - generic [ref=f2e822]: •
+                  - link [ref=f2e824]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng94jnu/
+                    - time [ref=f2e826]: 1y ago
+              - generic [ref=f2e828]:
+                - paragraph [ref=f2e832]: Bro I'm also an electronics student, how will I do this much depth along side electronics subjects 😢
+                - generic [ref=f2e833]: "8"
+                - 'article "Comment thread level 1: Reply from WarFresh2208 1 year ago" [ref=f2e842]':
+                  - generic [ref=f2e843] [cursor=pointer]:
+                    - link "WarFresh2208's profile --- avatar" [ref=f2e848]:
+                      - /url: https://www.reddit.com/user/WarFresh2208/
+                    - generic [ref=f2e858]:
+                      - link "WarFresh2208's profile" [ref=f2e861]:
+                        - /url: https://www.reddit.com/user/WarFresh2208/
+                        - text: WarFresh2208
+                      - generic "Comment distinguished as the original poster" [ref=f2e864]: OP
+                      - generic [ref=f2e865]: •
+                      - link [ref=f2e867]:
+                        - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng97gfr/
+                        - time [ref=f2e869]: 1y ago
+                  - generic [ref=f2e871]:
+                    - paragraph [ref=f2e875]: Pata nahi bhai we are so doomed, DSA aata hai aur thoda bahut microcontrollers, soch rha hoon embedded software mai chala jaaon but embedded software wali companies mai sirf big tech he achi hai like qualcomm,amd,nvidia,intel etc baaki sab chotti motti acha paisa nahi deti and even college mai ajeebo garreeb eligibility criteria hote hai like nvidia aayi thi ussme software mai female only aur hardware 7.8 cgpa(mera 7.52 tha 🥲😔) aur qualcomm aayi nahi , AMD ne hmari branch se sirf ek ladki ko shortlist kiya on the basis of cg for OADon't know what to do moving forward
+                    - generic [ref=f2e876]: "5"
+                    - button "2 more replies" [ref=f2e886] [cursor=pointer]:
+                      - generic [ref=f2e891]:
+                        - generic [ref=f2e892]: "2"
+                        - text: more replies
+            - article "Comment from Big-Caregiver8817 1 year ago" [ref=f2e896]:
+              - generic [ref=f2e897] [cursor=pointer]:
+                - link "Big-Caregiver8817's profile --- avatar" [ref=f2e902]:
+                  - /url: https://www.reddit.com/user/Big-Caregiver8817/
+                - generic [ref=f2e912]:
+                  - link "Big-Caregiver8817's profile" [ref=f2e915]:
+                    - /url: https://www.reddit.com/user/Big-Caregiver8817/
+                    - text: Big-Caregiver8817
+                  - generic [ref=f2e916]: •
+                  - link [ref=f2e918]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ngbaene/
+                    - time [ref=f2e920]: 1y ago
+              - generic [ref=f2e922]:
+                - generic [ref=f2e925]:
+                  - paragraph [ref=f2e926]: Brutal man, given they are literally paying pennies.
+                  - paragraph [ref=f2e927]: Feeling grateful for the on campus job which I got in an Indian bank. It was simplest and most straight forward process. Paying handsomly, not much stressful.
+                - generic [ref=f2e928]: "4"
+                - button "3 more replies" [ref=f2e938] [cursor=pointer]:
+                  - generic [ref=f2e943]:
+                    - generic [ref=f2e944]: "3"
+                    - text: more replies
+            - article "Comment from IntrovertSD 1 year ago" [ref=f2e948]:
+              - generic [ref=f2e949] [cursor=pointer]:
+                - link "IntrovertSD's profile --- avatar" [ref=f2e954]:
+                  - /url: https://www.reddit.com/user/IntrovertSD/
+                  - img "u/IntrovertSD avatar" [ref=f2e957]
+                - generic [ref=f2e961]:
+                  - link "IntrovertSD's profile" [ref=f2e964]:
+                    - /url: https://www.reddit.com/user/IntrovertSD/
+                    - text: IntrovertSD
+                  - generic [ref=f2e965]: •
+                  - link [ref=f2e967]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ngeysyq/
+                    - time [ref=f2e969]: 1y ago
+              - generic [ref=f2e971]:
+                - paragraph [ref=f2e975]: That's so messed up , they are short on projects that's why they're hiring with such low success rate OAs. Last year the process was so simple for us , people easily cracked ASE.
+                - generic [ref=f2e976]: "3"
+                - button "1 more reply" [ref=f2e986] [cursor=pointer]:
+                  - generic [ref=f2e991]:
+                    - generic [ref=f2e992]: "1"
+                    - text: more reply
+            - article "Comment from Dependent-Car-6739 1 year ago" [ref=f2e996]:
+              - generic [ref=f2e997] [cursor=pointer]:
+                - link "Dependent-Car-6739's profile --- avatar" [ref=f2e1002]:
+                  - /url: https://www.reddit.com/user/Dependent-Car-6739/
+                  - img "u/Dependent-Car-6739 avatar" [ref=f2e1005]
+                - generic [ref=f2e1009]:
+                  - link "Dependent-Car-6739's profile" [ref=f2e1012]:
+                    - /url: https://www.reddit.com/user/Dependent-Car-6739/
+                    - text: Dependent-Car-6739
+                  - generic [ref=f2e1013]: •
+                  - link [ref=f2e1015]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng9ync6/
+                    - time [ref=f2e1017]: 1y ago
+              - generic [ref=f2e1019]:
+                - paragraph [ref=f2e1023]: 😭 why randomly js??
+                - generic [ref=f2e1024]: "2"
+                - 'article "Comment thread level 1: Reply from WarFresh2208 1 year ago" [ref=f2e1033]':
+                  - generic [ref=f2e1034] [cursor=pointer]:
+                    - link "WarFresh2208's profile --- avatar" [ref=f2e1039]:
+                      - /url: https://www.reddit.com/user/WarFresh2208/
+                    - generic [ref=f2e1049]:
+                      - link "WarFresh2208's profile" [ref=f2e1052]:
+                        - /url: https://www.reddit.com/user/WarFresh2208/
+                        - text: WarFresh2208
+                      - generic "Comment distinguished as the original poster" [ref=f2e1055]: OP
+                      - generic [ref=f2e1056]: •
+                      - link [ref=f2e1058]:
+                        - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ngabnqr/
+                        - time [ref=f2e1060]: 1y ago
+                  - generic [ref=f2e1062]:
+                    - paragraph [ref=f2e1066]: "Accenture wale be like : Aise he sexy lagg rha tha"
+                    - generic [ref=f2e1067]: "11"
+                    - button "1 more reply" [ref=f2e1077] [cursor=pointer]:
+                      - generic [ref=f2e1082]:
+                        - generic [ref=f2e1083]: "1"
+                        - text: more reply
+            - article "Comment from bulbul_alig 10 months ago" [ref=f2e1087]:
+              - generic [ref=f2e1088] [cursor=pointer]:
+                - link "bulbul_alig's profile --- avatar" [ref=f2e1093]:
+                  - /url: https://www.reddit.com/user/bulbul_alig/
+                - generic [ref=f2e1103]:
+                  - link "bulbul_alig's profile" [ref=f2e1106]:
+                    - /url: https://www.reddit.com/user/bulbul_alig/
+                    - text: bulbul_alig
+                  - generic [ref=f2e1107]: •
+                  - link [ref=f2e1109]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ngs60tj/
+                    - time [ref=f2e1111]: 10mo ago
+              - generic [ref=f2e1113]:
+                - paragraph [ref=f2e1117]: All this happened in one day ?
+                - generic [ref=f2e1118]: "2"
+                - button "1 more reply" [ref=f2e1128] [cursor=pointer]:
+                  - generic [ref=f2e1133]:
+                    - generic [ref=f2e1134]: "1"
+                    - text: more reply
+            - 'generic "Focus on prompts, not plumbing. Offload that to Arch: the sidecar agent for AI" [ref=f2e1139]':
+              - generic [ref=f2e1140]:
+                - 'generic "Advertisement: Focus on prompts, not plumbing. Offload that to Arch: the sidecar agent for AI" [ref=f2e1141]':
+                  - 'link "Advertisement: Focus on prompts, not plumbing. Offload that to Arch: the sidecar agent for AI" [ref=f2e1142] [cursor=pointer]':
+                    - /url: https://alb.reddit.com/cr?za=sGfhT3EeUlcwylOAsp_EGwdqODqgvMR2VaDvO8tik1mZ4Rc6l5AqFfnFu9DEIEWzU3QgCY7tqHkx5Js9KKCf-yHubEWuDKa4ZVgv6zVTPG6q99rXhb_9tyGWn4T4Eq4qE2s04RBrfK5DApXOqSqNnWa7csUOHjPyHUHcgAImYAI85nTqqCjCMG0Pnumnz--S3jfu716zNPwM3fl2hu9t4WWLKvapPzpgi1obfiuxi2HAxBT2KS6qLI-VbW9Lm3zK-mjTFpIkybii21eL6IMSjMcGMA8May96Qj-GYWXVynWbkSryXFXkQZBAhIhfNa6iQ_B3BS0hDnvaT8bwrxVKcRoERERTULYVPmkgBnGZC0hEOOG4bLQvZpkoGQEmEX0Kjx9HF2_dNvAeFBxrdZj8T75XpwZR9cQHFYohGk-ezIwg1jXoNRSzsTbRwzOwgi8rsaPNCot5fJBAdc_O3dybtL0Sm0A7cz5dYcbaHSvU1GH7ey9BdENup5S4Pj_yuUd1GwKRPsoUvnYMBVcm298aKPtKvforPBCsnhUzLE9t-t3-kDlcC62j4tMm1c3PsYXRHcvcJEuxGPCgV-aUlsQjJdQ8V6s5wOBW3mNdJ6rnI6mzkSPyAajmmbTF6nyzTxbbsifPUAqS1e-UhumsqW2AHqMwi-6K8mxTJerhm1yl&zp=RT1n8tlYmCeE2424CtgsW_pXSY5KGNmKRhw5BsMKVym2eLVdHl0GMPDDCvi4y2_GvSw3GI5yUgg6bJHCH6JUM96b1mYmDzG5wjPcRXxLNcJEt7vfe3148xV7JfMpD1NOjRfl6JgVTAkIaiMU-4poHTTxtaKfhnN12asGCvmRZDBegg5DJYExpe_tueBnRkHVLJ8AqMngJbrB9KSu3DMt-F2xDa6eFI47uFC_jvvgrC5DFMynQNFXyypckiLHu1nkEUw__VM66B__-Uu_BcNwVA
+                - generic [ref=f2e1143]:
+                  - generic [ref=f2e1144]:
+                    - link "u/AdditionalWeb107" [ref=f2e1146] [cursor=pointer]:
+                      - /url: /user/AdditionalWeb107/
+                      - img "u/AdditionalWeb107 avatar" [ref=f2e1149]
+                    - generic [ref=f2e1151]: •
+                    - link "Promoted" [ref=f2e1153] [cursor=pointer]:
+                      - /url: /user/AdditionalWeb107/
+                    - link [ref=f2e1156] [cursor=pointer]:
+                      - /url: https://alb.reddit.com/cr?za=sGfhT3EeUlcwylOAsp_EGwdqODqgvMR2VaDvO8tik1mZ4Rc6l5AqFfnFu9DEIEWzU3QgCY7tqHkx5Js9KKCf-yHubEWuDKa4ZVgv6zVTPG6q99rXhb_9tyGWn4T4Eq4qE2s04RBrfK5DApXOqSqNnWa7csUOHjPyHUHcgAImYAI85nTqqCjCMG0Pnumnz--S3jfu716zNPwM3fl2hu9t4WWLKvapPzpgi1obfiuxi2HAxBT2KS6qLI-VbW9Lm3zK-mjTFpIkybii21eL6IMSjMcGMA8May96Qj-GYWXVynWbkSryXFXkQZBAhIhfNa6iQ_B3BS0hDnvaT8bwrxVKcRoERERTULYVPmkgBnGZC0hEOOG4bLQvZpkoGQEmEX0Kjx9HF2_dNvAeFBxrdZj8T75XpwZR9cQHFYohGk-ezIwg1jXoNRSzsTbRwzOwgi8rsaPNCot5fJBAdc_O3dybtL0Sm0A7cz5dYcbaHSvU1GH7ey9BdENup5S4Pj_yuUd1GwKRPsoUvnYMBVcm298aKPtKvforPBCsnhUzLE9t-t3-kDlcC62j4tMm1c3PsYXRHcvcJEuxGPCgV-aUlsQjJdQ8V6s5wOBW3mNdJ6rnI6mzkSPyAajmmbTF6nyzTxbbsifPUAqS1e-UhumsqW2AHqMwi-6K8mxTJerhm1yl&zp=RT1n8tlYmCeE2424CtgsW_pXSY5KGNmKRhw5BsMKVym2eLVdHl0GMPDDCvi4y2_GvSw3GI5yUgg6bJHCH6JUM96b1mYmDzG5wjPcRXxLNcJEt7vfe3148xV7JfMpD1NOjRfl6JgVTAkIaiMU-4poHTTxtaKfhnN12asGCvmRZDBegg5DJYExpe_tueBnRkHVLJ8AqMngJbrB9KSu3DMt-F2xDa6eFI47uFC_jvvgrC5DFMynQNFXyypckiLHu1nkEUw__VM66B__-Uu_BcNwVA
+                  - button "Open user actions" [ref=f2e1162] [cursor=pointer]
+                - generic [ref=f2e1168]:
+                  - generic [ref=f2e1169]:
+                    - 'link "Focus on prompts, not plumbing. Offload that to Arch: the sidecar agent for AI" [ref=f2e1171] [cursor=pointer]':
+                      - /url: https://alb.reddit.com/cr?za=sGfhT3EeUlcwylOAsp_EGwdqODqgvMR2VaDvO8tik1mZ4Rc6l5AqFfnFu9DEIEWzU3QgCY7tqHkx5Js9KKCf-yHubEWuDKa4ZVgv6zVTPG6q99rXhb_9tyGWn4T4Eq4qE2s04RBrfK5DApXOqSqNnWa7csUOHjPyHUHcgAImYAI85nTqqCjCMG0Pnumnz--S3jfu716zNPwM3fl2hu9t4WWLKvapPzpgi1obfiuxi2HAxBT2KS6qLI-VbW9Lm3zK-mjTFpIkybii21eL6IMSjMcGMA8May96Qj-GYWXVynWbkSryXFXkQZBAhIhfNa6iQ_B3BS0hDnvaT8bwrxVKcRoERERTULYVPmkgBnGZC0hEOOG4bLQvZpkoGQEmEX0Kjx9HF2_dNvAeFBxrdZj8T75XpwZR9cQHFYohGk-ezIwg1jXoNRSzsTbRwzOwgi8rsaPNCot5fJBAdc_O3dybtL0Sm0A7cz5dYcbaHSvU1GH7ey9BdENup5S4Pj_yuUd1GwKRPsoUvnYMBVcm298aKPtKvforPBCsnhUzLE9t-t3-kDlcC62j4tMm1c3PsYXRHcvcJEuxGPCgV-aUlsQjJdQ8V6s5wOBW3mNdJ6rnI6mzkSPyAajmmbTF6nyzTxbbsifPUAqS1e-UhumsqW2AHqMwi-6K8mxTJerhm1yl&zp=RT1n8tlYmCeE2424CtgsW_pXSY5KGNmKRhw5BsMKVym2eLVdHl0GMPDDCvi4y2_GvSw3GI5yUgg6bJHCH6JUM96b1mYmDzG5wjPcRXxLNcJEt7vfe3148xV7JfMpD1NOjRfl6JgVTAkIaiMU-4poHTTxtaKfhnN12asGCvmRZDBegg5DJYExpe_tueBnRkHVLJ8AqMngJbrB9KSu3DMt-F2xDa6eFI47uFC_jvvgrC5DFMynQNFXyypckiLHu1nkEUw__VM66B__-Uu_BcNwVA
+                    - generic [ref=f2e1172]:
+                      - link [ref=f2e1174] [cursor=pointer]:
+                        - /url: https://alb.reddit.com/cr?za=sGfhT3EeUlcwylOAsp_EGwdqODqgvMR2VaDvO8tik1mZ4Rc6l5AqFfnFu9DEIEWzU3QgCY7tqHkx5Js9KKCf-yHubEWuDKa4ZVgv6zVTPG6q99rXhb_9tyGWn4T4Eq4qE2s04RBrfK5DApXOqSqNnWa7csUOHjPyHUHcgAImYAI85nTqqCjCMG0Pnumnz--S3jfu716zNPwM3fl2hu9t4WWLKvapPzpgi1obfiuxi2HAxBT2KS6qLI-VbW9Lm3zK-mjTFpIkybii21eL6IMSjMcGMA8May96Qj-GYWXVynWbkSryXFXkQZBAhIhfNa6iQ_B3BS0hDnvaT8bwrxVKcRoERERTULYVPmkgBnGZC0hEOOG4bLQvZpkoGQEmEX0Kjx9HF2_dNvAeFBxrdZj8T75XpwZR9cQHFYohGk-ezIwg1jXoNRSzsTbRwzOwgi8rsaPNCot5fJBAdc_O3dybtL0Sm0A7cz5dYcbaHSvU1GH7ey9BdENup5S4Pj_yuUd1GwKRPsoUvnYMBVcm298aKPtKvforPBCsnhUzLE9t-t3-kDlcC62j4tMm1c3PsYXRHcvcJEuxGPCgV-aUlsQjJdQ8V6s5wOBW3mNdJ6rnI6mzkSPyAajmmbTF6nyzTxbbsifPUAqS1e-UhumsqW2AHqMwi-6K8mxTJerhm1yl&zp=RT1n8tlYmCeE2424CtgsW_pXSY5KGNmKRhw5BsMKVym2eLVdHl0GMPDDCvi4y2_GvSw3GI5yUgg6bJHCH6JUM96b1mYmDzG5wjPcRXxLNcJEt7vfe3148xV7JfMpD1NOjRfl6JgVTAkIaiMU-4poHTTxtaKfhnN12asGCvmRZDBegg5DJYExpe_tueBnRkHVLJ8AqMngJbrB9KSu3DMt-F2xDa6eFI47uFC_jvvgrC5DFMynQNFXyypckiLHu1nkEUw__VM66B__-Uu_BcNwVA
+                      - generic [ref=f2e1175]:
+                        - link "Learn More" [ref=f2e1177] [cursor=pointer]:
+                          - /url: https://alb.reddit.com/cr?za=sGfhT3EeUlcwylOAsp_EGwdqODqgvMR2VaDvO8tik1mZ4Rc6l5AqFfnFu9DEIEWzU3QgCY7tqHkx5Js9KKCf-yHubEWuDKa4ZVgv6zVTPG6q99rXhb_9tyGWn4T4Eq4qE2s04RBrfK5DApXOqSqNnWa7csUOHjPyHUHcgAImYAI85nTqqCjCMG0Pnumnz--S3jfu716zNPwM3fl2hu9t4WWLKvapPzpgi1obfiuxi2HAxBT2KS6qLI-VbW9Lm3zK-mjTFpIkybii21eL6IMSjMcGMA8May96Qj-GYWXVynWbkSryXFXkQZBAhIhfNa6iQ_B3BS0hDnvaT8bwrxVKcRoERERTULYVPmkgBnGZC0hEOOG4bLQvZpkoGQEmEX0Kjx9HF2_dNvAeFBxrdZj8T75XpwZR9cQHFYohGk-ezIwg1jXoNRSzsTbRwzOwgi8rsaPNCot5fJBAdc_O3dybtL0Sm0A7cz5dYcbaHSvU1GH7ey9BdENup5S4Pj_yuUd1GwKRPsoUvnYMBVcm298aKPtKvforPBCsnhUzLE9t-t3-kDlcC62j4tMm1c3PsYXRHcvcJEuxGPCgV-aUlsQjJdQ8V6s5wOBW3mNdJ6rnI6mzkSPyAajmmbTF6nyzTxbbsifPUAqS1e-UhumsqW2AHqMwi-6K8mxTJerhm1yl&zp=RT1n8tlYmCeE2424CtgsW_pXSY5KGNmKRhw5BsMKVym2eLVdHl0GMPDDCvi4y2_GvSw3GI5yUgg6bJHCH6JUM96b1mYmDzG5wjPcRXxLNcJEt7vfe3148xV7JfMpD1NOjRfl6JgVTAkIaiMU-4poHTTxtaKfhnN12asGCvmRZDBegg5DJYExpe_tueBnRkHVLJ8AqMngJbrB9KSu3DMt-F2xDa6eFI47uFC_jvvgrC5DFMynQNFXyypckiLHu1nkEUw__VM66B__-Uu_BcNwVA
+                        - link "github.com" [ref=f2e1182] [cursor=pointer]:
+                          - /url: https://alb.reddit.com/cr?za=sGfhT3EeUlcwylOAsp_EGwdqODqgvMR2VaDvO8tik1mZ4Rc6l5AqFfnFu9DEIEWzU3QgCY7tqHkx5Js9KKCf-yHubEWuDKa4ZVgv6zVTPG6q99rXhb_9tyGWn4T4Eq4qE2s04RBrfK5DApXOqSqNnWa7csUOHjPyHUHcgAImYAI85nTqqCjCMG0Pnumnz--S3jfu716zNPwM3fl2hu9t4WWLKvapPzpgi1obfiuxi2HAxBT2KS6qLI-VbW9Lm3zK-mjTFpIkybii21eL6IMSjMcGMA8May96Qj-GYWXVynWbkSryXFXkQZBAhIhfNa6iQ_B3BS0hDnvaT8bwrxVKcRoERERTULYVPmkgBnGZC0hEOOG4bLQvZpkoGQEmEX0Kjx9HF2_dNvAeFBxrdZj8T75XpwZR9cQHFYohGk-ezIwg1jXoNRSzsTbRwzOwgi8rsaPNCot5fJBAdc_O3dybtL0Sm0A7cz5dYcbaHSvU1GH7ey9BdENup5S4Pj_yuUd1GwKRPsoUvnYMBVcm298aKPtKvforPBCsnhUzLE9t-t3-kDlcC62j4tMm1c3PsYXRHcvcJEuxGPCgV-aUlsQjJdQ8V6s5wOBW3mNdJ6rnI6mzkSPyAajmmbTF6nyzTxbbsifPUAqS1e-UhumsqW2AHqMwi-6K8mxTJerhm1yl&zp=RT1n8tlYmCeE2424CtgsW_pXSY5KGNmKRhw5BsMKVym2eLVdHl0GMPDDCvi4y2_GvSw3GI5yUgg6bJHCH6JUM96b1mYmDzG5wjPcRXxLNcJEt7vfe3148xV7JfMpD1NOjRfl6JgVTAkIaiMU-4poHTTxtaKfhnN12asGCvmRZDBegg5DJYExpe_tueBnRkHVLJ8AqMngJbrB9KSu3DMt-F2xDa6eFI47uFC_jvvgrC5DFMynQNFXyypckiLHu1nkEUw__VM66B__-Uu_BcNwVA
+                  - link [ref=f2e1185] [cursor=pointer]:
+                    - /url: https://alb.reddit.com/cr?za=sGfhT3EeUlcwylOAsp_EGwdqODqgvMR2VaDvO8tik1mZ4Rc6l5AqFfnFu9DEIEWzU3QgCY7tqHkx5Js9KKCf-yHubEWuDKa4ZVgv6zVTPG6q99rXhb_9tyGWn4T4Eq4qE2s04RBrfK5DApXOqSqNnWa7csUOHjPyHUHcgAImYAI85nTqqCjCMG0Pnumnz--S3jfu716zNPwM3fl2hu9t4WWLKvapPzpgi1obfiuxi2HAxBT2KS6qLI-VbW9Lm3zK-mjTFpIkybii21eL6IMSjMcGMA8May96Qj-GYWXVynWbkSryXFXkQZBAhIhfNa6iQ_B3BS0hDnvaT8bwrxVKcRoERERTULYVPmkgBnGZC0hEOOG4bLQvZpkoGQEmEX0Kjx9HF2_dNvAeFBxrdZj8T75XpwZR9cQHFYohGk-ezIwg1jXoNRSzsTbRwzOwgi8rsaPNCot5fJBAdc_O3dybtL0Sm0A7cz5dYcbaHSvU1GH7ey9BdENup5S4Pj_yuUd1GwKRPsoUvnYMBVcm298aKPtKvforPBCsnhUzLE9t-t3-kDlcC62j4tMm1c3PsYXRHcvcJEuxGPCgV-aUlsQjJdQ8V6s5wOBW3mNdJ6rnI6mzkSPyAajmmbTF6nyzTxbbsifPUAqS1e-UhumsqW2AHqMwi-6K8mxTJerhm1yl&zp=RT1n8tlYmCeE2424CtgsW_pXSY5KGNmKRhw5BsMKVym2eLVdHl0GMPDDCvi4y2_GvSw3GI5yUgg6bJHCH6JUM96b1mYmDzG5wjPcRXxLNcJEt7vfe3148xV7JfMpD1NOjRfl6JgVTAkIaiMU-4poHTTxtaKfhnN12asGCvmRZDBegg5DJYExpe_tueBnRkHVLJ8AqMngJbrB9KSu3DMt-F2xDa6eFI47uFC_jvvgrC5DFMynQNFXyypckiLHu1nkEUw__VM66B__-Uu_BcNwVA
+                    - 'img "Thumbnail image: Focus on prompts, not plumbing. Offload that to Arch: the sidecar agent for AI" [ref=f2e1186]'
+            - article "Comment from Top_Sandwich2881 10 months ago" [ref=f2e1188]:
+              - generic [ref=f2e1189] [cursor=pointer]:
+                - link "Top_Sandwich2881's profile --- avatar" [ref=f2e1194]:
+                  - /url: https://www.reddit.com/user/Top_Sandwich2881/
+                  - img "u/Top_Sandwich2881 avatar" [ref=f2e1197]
+                - generic [ref=f2e1201]:
+                  - link "Top_Sandwich2881's profile" [ref=f2e1204]:
+                    - /url: https://www.reddit.com/user/Top_Sandwich2881/
+                    - text: Top_Sandwich2881
+                  - generic [ref=f2e1205]: •
+                  - link [ref=f2e1207]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/nh7a065/
+                    - time [ref=f2e1209]: 10mo ago
+              - generic [ref=f2e1211]:
+                - paragraph [ref=f2e1215]: Did they allowed C++ for dsa problem? I heard only java , python were allowed please clarify
+                - generic [ref=f2e1216]: "2"
+                - button "4 more replies" [ref=f2e1226] [cursor=pointer]:
+                  - generic [ref=f2e1231]:
+                    - generic [ref=f2e1232]: "4"
+                    - text: more replies
+            - article "Comment from Icy_Perception_8524 10 months ago" [ref=f2e1236]:
+              - generic [ref=f2e1237] [cursor=pointer]:
+                - link "Icy_Perception_8524's profile --- avatar" [ref=f2e1242]:
+                  - /url: https://www.reddit.com/user/Icy_Perception_8524/
+                  - img "u/Icy_Perception_8524 avatar" [ref=f2e1245]
+                - generic [ref=f2e1249]:
+                  - link "Icy_Perception_8524's profile" [ref=f2e1252]:
+                    - /url: https://www.reddit.com/user/Icy_Perception_8524/
+                    - text: Icy_Perception_8524
+                  - generic [ref=f2e1253]: •
+                  - link [ref=f2e1255]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/nkrm1zp/
+                    - time [ref=f2e1257]: 10mo ago
+              - generic [ref=f2e1259]:
+                - paragraph [ref=f2e1263]: broooo! you are the man of god! this was perfect! thanks
+                - generic [ref=f2e1264]: "2"
+                - button "1 more reply" [ref=f2e1274] [cursor=pointer]:
+                  - generic [ref=f2e1279]:
+                    - generic [ref=f2e1280]: "1"
+                    - text: more reply
+            - article "Comment from Intelligent_Drop6654 1 year ago" [ref=f2e1284]:
+              - generic [ref=f2e1285] [cursor=pointer]:
+                - link "Intelligent_Drop6654's profile --- avatar" [ref=f2e1290]:
+                  - /url: https://www.reddit.com/user/Intelligent_Drop6654/
+                  - img "u/Intelligent_Drop6654 avatar" [ref=f2e1293]
+                - generic [ref=f2e1297]:
+                  - link "Intelligent_Drop6654's profile" [ref=f2e1300]:
+                    - /url: https://www.reddit.com/user/Intelligent_Drop6654/
+                    - text: Intelligent_Drop6654
+                  - generic [ref=f2e1301]: •
+                  - link [ref=f2e1303]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng99oge/
+                    - time [ref=f2e1305]: 1y ago
+              - generic [ref=f2e1307]:
+                - paragraph [ref=f2e1311]: What was the package offered?
+                - generic [ref=f2e1312]: "3"
+                - 'article "Comment thread level 1: Reply from WarFresh2208 1 year ago" [ref=f2e1321]':
+                  - generic [ref=f2e1322] [cursor=pointer]:
+                    - link "WarFresh2208's profile --- avatar" [ref=f2e1327]:
+                      - /url: https://www.reddit.com/user/WarFresh2208/
+                    - generic [ref=f2e1337]:
+                      - link "WarFresh2208's profile" [ref=f2e1340]:
+                        - /url: https://www.reddit.com/user/WarFresh2208/
+                        - text: WarFresh2208
+                      - generic "Comment distinguished as the original poster" [ref=f2e1343]: OP
+                      - generic [ref=f2e1344]: •
+                      - link [ref=f2e1346]:
+                        - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ngab15x/
+                        - time [ref=f2e1348]: 1y ago
+                  - generic [ref=f2e1350]:
+                    - paragraph [ref=f2e1354]: 3.xx,6.xx,11 lpa
+                    - generic [ref=f2e1355]: "7"
+                    - button "9 more replies" [ref=f2e1365] [cursor=pointer]:
+                      - generic [ref=f2e1370]:
+                        - generic [ref=f2e1371]: "9"
+                        - text: more replies
+            - article "Comment from squirt_on_me_pls 1 year ago" [ref=f2e1375]:
+              - generic [ref=f2e1376] [cursor=pointer]:
+                - link "squirt_on_me_pls's profile --- avatar" [ref=f2e1381]:
+                  - /url: https://www.reddit.com/user/squirt_on_me_pls/
+                - generic [ref=f2e1391]:
+                  - link "squirt_on_me_pls's profile" [ref=f2e1394]:
+                    - /url: https://www.reddit.com/user/squirt_on_me_pls/
+                    - text: squirt_on_me_pls
+                  - generic [ref=f2e1395]: •
+                  - link [ref=f2e1397]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng9egr9/
+                    - time [ref=f2e1399]: 1y ago
+              - generic [ref=f2e1401]:
+                - paragraph [ref=f2e1405]: Bc 3 lakh ke liye itna kuch
+                - generic [ref=f2e1406]: "6"
+                - 'article "Comment thread level 1: Reply from Practical_South_2471 1 year ago" [ref=f2e1415]':
+                  - generic [ref=f2e1416] [cursor=pointer]:
+                    - link "Practical_South_2471's profile --- avatar" [ref=f2e1421]:
+                      - /url: https://www.reddit.com/user/Practical_South_2471/
+                      - img "u/Practical_South_2471 avatar" [ref=f2e1424]
+                    - generic [ref=f2e1428]:
+                      - link "Practical_South_2471's profile" [ref=f2e1431]:
+                        - /url: https://www.reddit.com/user/Practical_South_2471/
+                        - text: Practical_South_2471
+                      - generic [ref=f2e1432]: •
+                      - link [ref=f2e1434]:
+                        - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng9fi1e/
+                        - time [ref=f2e1436]: 1y ago
+                  - generic [ref=f2e1438]:
+                    - paragraph [ref=f2e1442]: they didnt even give joining date to 2025 batch lol
+                    - generic [ref=f2e1443]: "11"
+                    - button "1 more reply" [ref=f2e1453] [cursor=pointer]:
+                      - generic [ref=f2e1458]:
+                        - generic [ref=f2e1459]: "1"
+                        - text: more reply
+            - article "Comment from Calm-Tap-9690 1 year ago" [ref=f2e1463]:
+              - generic [ref=f2e1464] [cursor=pointer]:
+                - link "Calm-Tap-9690's profile --- avatar" [ref=f2e1469]:
+                  - /url: https://www.reddit.com/user/Calm-Tap-9690/
+                - generic [ref=f2e1479]:
+                  - link "Calm-Tap-9690's profile" [ref=f2e1482]:
+                    - /url: https://www.reddit.com/user/Calm-Tap-9690/
+                    - text: Calm-Tap-9690
+                  - generic [ref=f2e1483]: •
+                  - link [ref=f2e1485]:
+                    - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/comment/ng98npk/
+                    - time [ref=f2e1487]: 1y ago
+              - generic [ref=f2e1489]:
+                - paragraph [ref=f2e1493]: the bitwise operators have a trick to be calculated you dont need to conver to binary to calculate it each time
+                - generic [ref=f2e1494]: "4"
+                - button "3 more replies" [ref=f2e1504] [cursor=pointer]:
+                  - generic [ref=f2e1509]:
+                    - generic [ref=f2e1510]: "3"
+                    - text: more replies
+        - generic [ref=f2e1516]:
+          - generic [ref=f2e1517]:
+            - complementary "People also ask about section" [ref=f2e1519]:
+              - heading "People also ask about section" [level=1] [ref=f2e1520]
+              - generic [ref=f2e1521]: People also ask about
+              - generic [ref=f2e1526]:
+                - link "Accenture assessment test details" [ref=f2e1528] [cursor=pointer]:
+                  - /url: https://www.reddit.com/answers/6928ac30-1b7e-4c8b-9a28-6a132e1dad5a/?q=Accenture+assessment+test+details&source=PDP&ep=pdp_unit&relatedPostId=t3_1nqrxka
+                - link "Top engineering projects for beginners" [ref=f2e1537] [cursor=pointer]:
+                  - /url: https://www.reddit.com/answers/1b637ac9-7df4-4b91-a4a6-b593c5ef859a/?q=Top+engineering+projects+for+beginners&source=PDP&ep=pdp_unit&relatedPostId=t3_1nqrxka
+                - link "Best study techniques for BTech students" [ref=f2e1546] [cursor=pointer]:
+                  - /url: https://www.reddit.com/answers/6f05d662-2d41-4e5d-ac67-a15cbbaec781/?q=Best+study+techniques+for+BTech+students&source=PDP&ep=pdp_unit&relatedPostId=t3_1nqrxka
+                - link "Most useful programming languages to learn" [ref=f2e1555] [cursor=pointer]:
+                  - /url: https://www.reddit.com/answers/78af9cda-063b-4c3f-827f-d4b8e5ca9672/?q=Most+useful+programming+languages+to+learn&source=PDP&ep=pdp_unit&relatedPostId=t3_1nqrxka
+                - link "Tips for acing technical interviews" [ref=f2e1564] [cursor=pointer]:
+                  - /url: https://www.reddit.com/answers/c520fa35-3e11-4289-8be3-c8df32542513/?q=Tips+for+acing+technical+interviews&source=PDP&ep=pdp_unit&relatedPostId=t3_1nqrxka
+            - complementary "Related Posts Section" [ref=f2e1572]:
+              - heading "Related Posts Section" [level=1] [ref=f2e1573]: More posts you may like
+              - generic [ref=f2e1574]: Related posts
+              - list [ref=f2e1580]:
+                - listitem [ref=f2e1581]:
+                  - generic [ref=f2e1582]:
+                    - generic [ref=f2e1583]:
+                      - link "Accenture offer is much lower than expected (22.36 LPA fixed) — joining on 30th June, need advice" [ref=f2e1584] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/developersIndia/comments/1uf8ugr/accenture_offer_is_much_lower_than_expected_2236/
+                      - generic [ref=f2e1587]:
+                        - generic [ref=f2e1589]:
+                          - link "r/developersIndia" [ref=f2e1590] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/developersIndia/
+                          - generic [ref=f2e1595]: •
+                          - time [ref=f2e1597]: 1mo ago
+                        - link [ref=f2e1599] [cursor=pointer]:
+                          - /url: /r/developersIndia/comments/1uf8ugr/accenture_offer_is_much_lower_than_expected_2236/
+                          - heading "List item post - Accenture offer is much lower than expected (22.36 LPA fixe..." [level=3] [ref=f2e1602]: Accenture offer is much lower than expected (22.36 LPA fixed) — joining on 30th June, need advice
+                      - generic [ref=f2e1604]:
+                        - generic [ref=f2e1605]: "306"
+                        - text: upvotes ·
+                        - generic [ref=f2e1606]: "142"
+                        - text: comments
+                    - separator [ref=f2e1607]
+                - listitem [ref=f2e1608]:
+                  - generic [ref=f2e1610]:
+                    - generic:
+                      - 'generic "Advertisement: 🎮 Freedom Sale is Here! Get Up to 40% OFF on Lenovo Legion Gaming Laptops Powered by Intel® Core™" [ref=f2e1611]':
+                        - 'link "Advertisement: 🎮 Freedom Sale is Here! Get Up to 40% OFF on Lenovo Legion Gaming Laptops Powered by Intel® Core™" [ref=f2e1612] [cursor=pointer]':
+                          - /url: https://alb.reddit.com/cr?za=-HJxCtAcCrvuuP7U3mY3R8L_VffaILSjUb-u2_vjErF7_QD2buKcZ-cWrq0Hadj2fRDqZ5up-De6qddBtGbsGbpCiJbnt_CcnrVVOa4ga2XpRF4rP2shuxoBcKDya54UQc_vWpLJfS-Qn4l_A20qpEHeR5GAgW865bV3ZLhcgFh_yYwboNqEspi5s3OLh-BNJ5QaIheEpKXTSmjSC6eIw4quYZQgxQSf3P3IgY13Lro9pIaCYLt1lN-205Gb02A-I48R7gAxAK4HFC0ZR1ntowHzWG1oMVvzOJMabeIlB6HJiWDVe42EhLf_DASxpOwnoB1ByHK2csAX0fsTWjHPuqMWoouoLlpvcPO8RKBlTWEoEVQNH6lMuqiL39WFdEeeJDTHMBEjjmO6a8xpm7GwWtqxcTEiAr6olNgwuponmFB60ktWXQxWpwEbC85BBXn6Jth82jl2y-mRVDWSb4o2r7D8ttcXvcqO6xd5OsVfI-alWDFZ8hTUrNaTclQ4sISX7W1BonBpwuItTZhPFyfzfuC3kxHdIrdcV0EQSsJVlkLm7sD5LvOuydFfh8wmFeEW4PopJNtpks2FsGUYrxvuUsSz06zAsqrS7EqycEtxuOVVBcG9QNfRyRIm1reixpv5UtH3kWjj05qXYLdQPcCwQg&zp=Co8w8Qd8jfhxwgu749Jd0CKLrgp5dRbsdpRmXob0-XUHvxowq1kx4-t5wMVowehlTbFWOtOkA3Jhx6dMDy3QAYzIGtXYUbjGGgsOxvJ6bs45RQ4rL8vZnzwbXsCs_G8vtfhY6y_638X8G2VClii_2omLsybDNKfpOihhpoZAgdwZ2nBus0BuCWN-V019VrjTktyWso-AqB_HnKzp3wEKPjpHj6gMzWwCdVreJkSkze1E62b5S0W5usYsLqo2Ba_Qb8DCruhK7CO2V4tgWb54E-_bI33cK_HVukIYPvqE35Ilvt6XS19LqMlCAHdMGIDp_vHYW57GVA
+                      - generic [ref=f2e1613]:
+                        - generic [ref=f2e1614]:
+                          - generic [ref=f2e1615]:
+                            - generic [ref=f2e1616]:
+                              - generic [ref=f2e1617]:
+                                - link "u/LenovoIndia avatar LenovoIndia" [ref=f2e1619] [cursor=pointer]:
+                                  - /url: /user/LenovoIndia/
+                                  - img "u/LenovoIndia avatar" [ref=f2e1622]
+                                  - generic [ref=f2e1623]: LenovoIndia
+                                - generic [ref=f2e1624]: •
+                                - link "Promoted" [ref=f2e1626] [cursor=pointer]:
+                                  - /url: /user/LenovoIndia/
+                                - link [ref=f2e1629] [cursor=pointer]:
+                                  - /url: https://alb.reddit.com/cr?za=-HJxCtAcCrvuuP7U3mY3R8L_VffaILSjUb-u2_vjErF7_QD2buKcZ-cWrq0Hadj2fRDqZ5up-De6qddBtGbsGbpCiJbnt_CcnrVVOa4ga2XpRF4rP2shuxoBcKDya54UQc_vWpLJfS-Qn4l_A20qpEHeR5GAgW865bV3ZLhcgFh_yYwboNqEspi5s3OLh-BNJ5QaIheEpKXTSmjSC6eIw4quYZQgxQSf3P3IgY13Lro9pIaCYLt1lN-205Gb02A-I48R7gAxAK4HFC0ZR1ntowHzWG1oMVvzOJMabeIlB6HJiWDVe42EhLf_DASxpOwnoB1ByHK2csAX0fsTWjHPuqMWoouoLlpvcPO8RKBlTWEoEVQNH6lMuqiL39WFdEeeJDTHMBEjjmO6a8xpm7GwWtqxcTEiAr6olNgwuponmFB60ktWXQxWpwEbC85BBXn6Jth82jl2y-mRVDWSb4o2r7D8ttcXvcqO6xd5OsVfI-alWDFZ8hTUrNaTclQ4sISX7W1BonBpwuItTZhPFyfzfuC3kxHdIrdcV0EQSsJVlkLm7sD5LvOuydFfh8wmFeEW4PopJNtpks2FsGUYrxvuUsSz06zAsqrS7EqycEtxuOVVBcG9QNfRyRIm1reixpv5UtH3kWjj05qXYLdQPcCwQg&zp=Co8w8Qd8jfhxwgu749Jd0CKLrgp5dRbsdpRmXob0-XUHvxowq1kx4-t5wMVowehlTbFWOtOkA3Jhx6dMDy3QAYzIGtXYUbjGGgsOxvJ6bs45RQ4rL8vZnzwbXsCs_G8vtfhY6y_638X8G2VClii_2omLsybDNKfpOihhpoZAgdwZ2nBus0BuCWN-V019VrjTktyWso-AqB_HnKzp3wEKPjpHj6gMzWwCdVreJkSkze1E62b5S0W5usYsLqo2Ba_Qb8DCruhK7CO2V4tgWb54E-_bI33cK_HVukIYPvqE35Ilvt6XS19LqMlCAHdMGIDp_vHYW57GVA
+                              - button "Open user actions" [ref=f2e1635] [cursor=pointer]
+                            - link "🎮 Freedom Sale is Here! Get Up to 40% OFF on Lenovo Legion Gaming Laptops Powered by Intel® Core™" [ref=f2e1642] [cursor=pointer]:
+                              - /url: https://alb.reddit.com/cr?za=-HJxCtAcCrvuuP7U3mY3R8L_VffaILSjUb-u2_vjErF7_QD2buKcZ-cWrq0Hadj2fRDqZ5up-De6qddBtGbsGbpCiJbnt_CcnrVVOa4ga2XpRF4rP2shuxoBcKDya54UQc_vWpLJfS-Qn4l_A20qpEHeR5GAgW865bV3ZLhcgFh_yYwboNqEspi5s3OLh-BNJ5QaIheEpKXTSmjSC6eIw4quYZQgxQSf3P3IgY13Lro9pIaCYLt1lN-205Gb02A-I48R7gAxAK4HFC0ZR1ntowHzWG1oMVvzOJMabeIlB6HJiWDVe42EhLf_DASxpOwnoB1ByHK2csAX0fsTWjHPuqMWoouoLlpvcPO8RKBlTWEoEVQNH6lMuqiL39WFdEeeJDTHMBEjjmO6a8xpm7GwWtqxcTEiAr6olNgwuponmFB60ktWXQxWpwEbC85BBXn6Jth82jl2y-mRVDWSb4o2r7D8ttcXvcqO6xd5OsVfI-alWDFZ8hTUrNaTclQ4sISX7W1BonBpwuItTZhPFyfzfuC3kxHdIrdcV0EQSsJVlkLm7sD5LvOuydFfh8wmFeEW4PopJNtpks2FsGUYrxvuUsSz06zAsqrS7EqycEtxuOVVBcG9QNfRyRIm1reixpv5UtH3kWjj05qXYLdQPcCwQg&zp=Co8w8Qd8jfhxwgu749Jd0CKLrgp5dRbsdpRmXob0-XUHvxowq1kx4-t5wMVowehlTbFWOtOkA3Jhx6dMDy3QAYzIGtXYUbjGGgsOxvJ6bs45RQ4rL8vZnzwbXsCs_G8vtfhY6y_638X8G2VClii_2omLsybDNKfpOihhpoZAgdwZ2nBus0BuCWN-V019VrjTktyWso-AqB_HnKzp3wEKPjpHj6gMzWwCdVreJkSkze1E62b5S0W5usYsLqo2Ba_Qb8DCruhK7CO2V4tgWb54E-_bI33cK_HVukIYPvqE35Ilvt6XS19LqMlCAHdMGIDp_vHYW57GVA
+                              - generic "🎮 Freedom Sale is Here! Get Up to 40% OFF on Lenovo Legion Gaming Laptops Powered by Intel® Core™" [ref=f2e1643]
+                          - link [ref=f2e1646] [cursor=pointer]:
+                            - /url: https://alb.reddit.com/cr?za=-HJxCtAcCrvuuP7U3mY3R8L_VffaILSjUb-u2_vjErF7_QD2buKcZ-cWrq0Hadj2fRDqZ5up-De6qddBtGbsGbpCiJbnt_CcnrVVOa4ga2XpRF4rP2shuxoBcKDya54UQc_vWpLJfS-Qn4l_A20qpEHeR5GAgW865bV3ZLhcgFh_yYwboNqEspi5s3OLh-BNJ5QaIheEpKXTSmjSC6eIw4quYZQgxQSf3P3IgY13Lro9pIaCYLt1lN-205Gb02A-I48R7gAxAK4HFC0ZR1ntowHzWG1oMVvzOJMabeIlB6HJiWDVe42EhLf_DASxpOwnoB1ByHK2csAX0fsTWjHPuqMWoouoLlpvcPO8RKBlTWEoEVQNH6lMuqiL39WFdEeeJDTHMBEjjmO6a8xpm7GwWtqxcTEiAr6olNgwuponmFB60ktWXQxWpwEbC85BBXn6Jth82jl2y-mRVDWSb4o2r7D8ttcXvcqO6xd5OsVfI-alWDFZ8hTUrNaTclQ4sISX7W1BonBpwuItTZhPFyfzfuC3kxHdIrdcV0EQSsJVlkLm7sD5LvOuydFfh8wmFeEW4PopJNtpks2FsGUYrxvuUsSz06zAsqrS7EqycEtxuOVVBcG9QNfRyRIm1reixpv5UtH3kWjj05qXYLdQPcCwQg&zp=Co8w8Qd8jfhxwgu749Jd0CKLrgp5dRbsdpRmXob0-XUHvxowq1kx4-t5wMVowehlTbFWOtOkA3Jhx6dMDy3QAYzIGtXYUbjGGgsOxvJ6bs45RQ4rL8vZnzwbXsCs_G8vtfhY6y_638X8G2VClii_2omLsybDNKfpOihhpoZAgdwZ2nBus0BuCWN-V019VrjTktyWso-AqB_HnKzp3wEKPjpHj6gMzWwCdVreJkSkze1E62b5S0W5usYsLqo2Ba_Qb8DCruhK7CO2V4tgWb54E-_bI33cK_HVukIYPvqE35Ilvt6XS19LqMlCAHdMGIDp_vHYW57GVA
+                            - 'img "Thumbnail image: 🎮 Freedom Sale is Here! Get Up to 40% OFF on Lenovo Legion Gaming Laptops Powered by Intel® Core™" [ref=f2e1648]'
+                        - generic [ref=f2e1649]:
+                          - link [ref=f2e1651] [cursor=pointer]:
+                            - /url: https://alb.reddit.com/cr?za=-HJxCtAcCrvuuP7U3mY3R8L_VffaILSjUb-u2_vjErF7_QD2buKcZ-cWrq0Hadj2fRDqZ5up-De6qddBtGbsGbpCiJbnt_CcnrVVOa4ga2XpRF4rP2shuxoBcKDya54UQc_vWpLJfS-Qn4l_A20qpEHeR5GAgW865bV3ZLhcgFh_yYwboNqEspi5s3OLh-BNJ5QaIheEpKXTSmjSC6eIw4quYZQgxQSf3P3IgY13Lro9pIaCYLt1lN-205Gb02A-I48R7gAxAK4HFC0ZR1ntowHzWG1oMVvzOJMabeIlB6HJiWDVe42EhLf_DASxpOwnoB1ByHK2csAX0fsTWjHPuqMWoouoLlpvcPO8RKBlTWEoEVQNH6lMuqiL39WFdEeeJDTHMBEjjmO6a8xpm7GwWtqxcTEiAr6olNgwuponmFB60ktWXQxWpwEbC85BBXn6Jth82jl2y-mRVDWSb4o2r7D8ttcXvcqO6xd5OsVfI-alWDFZ8hTUrNaTclQ4sISX7W1BonBpwuItTZhPFyfzfuC3kxHdIrdcV0EQSsJVlkLm7sD5LvOuydFfh8wmFeEW4PopJNtpks2FsGUYrxvuUsSz06zAsqrS7EqycEtxuOVVBcG9QNfRyRIm1reixpv5UtH3kWjj05qXYLdQPcCwQg&zp=Co8w8Qd8jfhxwgu749Jd0CKLrgp5dRbsdpRmXob0-XUHvxowq1kx4-t5wMVowehlTbFWOtOkA3Jhx6dMDy3QAYzIGtXYUbjGGgsOxvJ6bs45RQ4rL8vZnzwbXsCs_G8vtfhY6y_638X8G2VClii_2omLsybDNKfpOihhpoZAgdwZ2nBus0BuCWN-V019VrjTktyWso-AqB_HnKzp3wEKPjpHj6gMzWwCdVreJkSkze1E62b5S0W5usYsLqo2Ba_Qb8DCruhK7CO2V4tgWb54E-_bI33cK_HVukIYPvqE35Ilvt6XS19LqMlCAHdMGIDp_vHYW57GVA
+                          - generic [ref=f2e1652]:
+                            - link "lenovo.com" [ref=f2e1655] [cursor=pointer]:
+                              - /url: https://alb.reddit.com/cr?za=-HJxCtAcCrvuuP7U3mY3R8L_VffaILSjUb-u2_vjErF7_QD2buKcZ-cWrq0Hadj2fRDqZ5up-De6qddBtGbsGbpCiJbnt_CcnrVVOa4ga2XpRF4rP2shuxoBcKDya54UQc_vWpLJfS-Qn4l_A20qpEHeR5GAgW865bV3ZLhcgFh_yYwboNqEspi5s3OLh-BNJ5QaIheEpKXTSmjSC6eIw4quYZQgxQSf3P3IgY13Lro9pIaCYLt1lN-205Gb02A-I48R7gAxAK4HFC0ZR1ntowHzWG1oMVvzOJMabeIlB6HJiWDVe42EhLf_DASxpOwnoB1ByHK2csAX0fsTWjHPuqMWoouoLlpvcPO8RKBlTWEoEVQNH6lMuqiL39WFdEeeJDTHMBEjjmO6a8xpm7GwWtqxcTEiAr6olNgwuponmFB60ktWXQxWpwEbC85BBXn6Jth82jl2y-mRVDWSb4o2r7D8ttcXvcqO6xd5OsVfI-alWDFZ8hTUrNaTclQ4sISX7W1BonBpwuItTZhPFyfzfuC3kxHdIrdcV0EQSsJVlkLm7sD5LvOuydFfh8wmFeEW4PopJNtpks2FsGUYrxvuUsSz06zAsqrS7EqycEtxuOVVBcG9QNfRyRIm1reixpv5UtH3kWjj05qXYLdQPcCwQg&zp=Co8w8Qd8jfhxwgu749Jd0CKLrgp5dRbsdpRmXob0-XUHvxowq1kx4-t5wMVowehlTbFWOtOkA3Jhx6dMDy3QAYzIGtXYUbjGGgsOxvJ6bs45RQ4rL8vZnzwbXsCs_G8vtfhY6y_638X8G2VClii_2omLsybDNKfpOihhpoZAgdwZ2nBus0BuCWN-V019VrjTktyWso-AqB_HnKzp3wEKPjpHj6gMzWwCdVreJkSkze1E62b5S0W5usYsLqo2Ba_Qb8DCruhK7CO2V4tgWb54E-_bI33cK_HVukIYPvqE35Ilvt6XS19LqMlCAHdMGIDp_vHYW57GVA
+                            - link "Shop Now" [ref=f2e1657] [cursor=pointer]:
+                              - /url: https://alb.reddit.com/cr?za=-HJxCtAcCrvuuP7U3mY3R8L_VffaILSjUb-u2_vjErF7_QD2buKcZ-cWrq0Hadj2fRDqZ5up-De6qddBtGbsGbpCiJbnt_CcnrVVOa4ga2XpRF4rP2shuxoBcKDya54UQc_vWpLJfS-Qn4l_A20qpEHeR5GAgW865bV3ZLhcgFh_yYwboNqEspi5s3OLh-BNJ5QaIheEpKXTSmjSC6eIw4quYZQgxQSf3P3IgY13Lro9pIaCYLt1lN-205Gb02A-I48R7gAxAK4HFC0ZR1ntowHzWG1oMVvzOJMabeIlB6HJiWDVe42EhLf_DASxpOwnoB1ByHK2csAX0fsTWjHPuqMWoouoLlpvcPO8RKBlTWEoEVQNH6lMuqiL39WFdEeeJDTHMBEjjmO6a8xpm7GwWtqxcTEiAr6olNgwuponmFB60ktWXQxWpwEbC85BBXn6Jth82jl2y-mRVDWSb4o2r7D8ttcXvcqO6xd5OsVfI-alWDFZ8hTUrNaTclQ4sISX7W1BonBpwuItTZhPFyfzfuC3kxHdIrdcV0EQSsJVlkLm7sD5LvOuydFfh8wmFeEW4PopJNtpks2FsGUYrxvuUsSz06zAsqrS7EqycEtxuOVVBcG9QNfRyRIm1reixpv5UtH3kWjj05qXYLdQPcCwQg&zp=Co8w8Qd8jfhxwgu749Jd0CKLrgp5dRbsdpRmXob0-XUHvxowq1kx4-t5wMVowehlTbFWOtOkA3Jhx6dMDy3QAYzIGtXYUbjGGgsOxvJ6bs45RQ4rL8vZnzwbXsCs_G8vtfhY6y_638X8G2VClii_2omLsybDNKfpOihhpoZAgdwZ2nBus0BuCWN-V019VrjTktyWso-AqB_HnKzp3wEKPjpHj6gMzWwCdVreJkSkze1E62b5S0W5usYsLqo2Ba_Qb8DCruhK7CO2V4tgWb54E-_bI33cK_HVukIYPvqE35Ilvt6XS19LqMlCAHdMGIDp_vHYW57GVA
+                  - separator [ref=f2e1660]
+                - listitem [ref=f2e1661]:
+                  - generic [ref=f2e1662]:
+                    - generic [ref=f2e1663]:
+                      - link "Did everything right in Accenture’s test… still got rejected in round 1 💀" [ref=f2e1664] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/Btechtards/comments/1o21uhw/did_everything_right_in_accentures_test_still_got/
+                      - generic [ref=f2e1667]:
+                        - generic [ref=f2e1669]:
+                          - link "r/Btechtards" [ref=f2e1670] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/Btechtards/
+                          - generic [ref=f2e1675]: •
+                          - time [ref=f2e1677]: 10mo ago
+                        - link [ref=f2e1679] [cursor=pointer]:
+                          - /url: /r/Btechtards/comments/1o21uhw/did_everything_right_in_accentures_test_still_got/
+                          - heading "List item post - Did everything right in Accenture’s test… still got rejecte..." [level=3] [ref=f2e1682]: Did everything right in Accenture’s test… still got rejected in round 1 💀
+                      - generic [ref=f2e1684]:
+                        - generic [ref=f2e1685]: "101"
+                        - text: upvotes ·
+                        - generic [ref=f2e1686]: "67"
+                        - text: comments
+                    - separator [ref=f2e1687]
+                - listitem [ref=f2e1688]:
+                  - generic [ref=f2e1689]:
+                    - generic [ref=f2e1690]:
+                      - link "Accenture Online Assessment (Oct, 2025) batch 2026" [ref=f2e1691] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/Btechtards/comments/1oj3u5p/accenture_online_assessment_oct_2025_batch_2026/
+                      - generic [ref=f2e1694]:
+                        - generic [ref=f2e1696]:
+                          - link "r/Btechtards" [ref=f2e1697] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/Btechtards/
+                          - generic [ref=f2e1702]: •
+                          - time [ref=f2e1704]: 9mo ago
+                        - link [ref=f2e1706] [cursor=pointer]:
+                          - /url: /r/Btechtards/comments/1oj3u5p/accenture_online_assessment_oct_2025_batch_2026/
+                          - heading "List item post - Accenture Online Assessment (Oct, 2025) batch 2026" [level=3] [ref=f2e1709]: Accenture Online Assessment (Oct, 2025) batch 2026
+                      - generic [ref=f2e1711]:
+                        - generic [ref=f2e1712]: "47"
+                        - text: upvotes ·
+                        - generic [ref=f2e1713]: "86"
+                        - text: comments
+                    - separator [ref=f2e1714]
+                - listitem
+                - listitem [ref=f2e1715]:
+                  - generic [ref=f2e1716]:
+                    - generic [ref=f2e1717]:
+                      - link "Accenture Interview Experience Campus Hiring 2026 (AASE,ASE)" [ref=f2e1718] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/Btechtards/comments/1opwulb/accenture_interview_experience_campus_hiring_2026/
+                      - generic [ref=f2e1721]:
+                        - generic [ref=f2e1723]:
+                          - link "r/Btechtards" [ref=f2e1724] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/Btechtards/
+                          - generic [ref=f2e1729]: •
+                          - time [ref=f2e1731]: 9mo ago
+                        - link [ref=f2e1733] [cursor=pointer]:
+                          - /url: /r/Btechtards/comments/1opwulb/accenture_interview_experience_campus_hiring_2026/
+                          - heading "List item post - Accenture Interview Experience Campus Hiring 2026 (AASE,ASE)" [level=3] [ref=f2e1736]: Accenture Interview Experience Campus Hiring 2026 (AASE,ASE)
+                      - generic [ref=f2e1738]:
+                        - generic [ref=f2e1739]: "11"
+                        - text: upvotes ·
+                        - generic [ref=f2e1740]: "61"
+                        - text: comments
+                    - separator [ref=f2e1741]
+                - listitem [ref=f2e1742]:
+                  - generic [ref=f2e1743]:
+                    - generic [ref=f2e1744]:
+                      - link "Did Accenture onCampus really changed their pattern?" [ref=f2e1745] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/Btechtards/comments/1nqxfy4/did_accenture_oncampus_really_changed_their/
+                      - generic [ref=f2e1748]:
+                        - generic [ref=f2e1750]:
+                          - link "r/Btechtards" [ref=f2e1751] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/Btechtards/
+                          - generic [ref=f2e1756]: •
+                          - time [ref=f2e1758]: 1y ago
+                        - link [ref=f2e1760] [cursor=pointer]:
+                          - /url: /r/Btechtards/comments/1nqxfy4/did_accenture_oncampus_really_changed_their/
+                          - heading "List item post - Did Accenture onCampus really changed their pattern?" [level=3] [ref=f2e1763]: Did Accenture onCampus really changed their pattern?
+                      - generic [ref=f2e1765]:
+                        - generic [ref=f2e1766]: "8"
+                        - text: upvotes ·
+                        - generic [ref=f2e1767]: "75"
+                        - text: comments
+                    - separator [ref=f2e1768]
+                - listitem [ref=f2e1769]:
+                  - generic [ref=f2e1770]:
+                    - generic [ref=f2e1771]:
+                      - link "Accenture Assessment" [ref=f2e1772] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/BPOinPH/comments/1qbix08/accenture_assessment/
+                      - generic [ref=f2e1775]:
+                        - generic [ref=f2e1777]:
+                          - link "r/BPOinPH" [ref=f2e1778] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/BPOinPH/
+                          - generic [ref=f2e1783]: •
+                          - time [ref=f2e1785]: 7mo ago
+                        - link [ref=f2e1787] [cursor=pointer]:
+                          - /url: /r/BPOinPH/comments/1qbix08/accenture_assessment/
+                          - heading "List item post - Accenture Assessment" [level=3] [ref=f2e1790]: Accenture Assessment
+                      - generic [ref=f2e1792]:
+                        - generic [ref=f2e1793]: "4"
+                        - text: upvotes ·
+                        - generic [ref=f2e1794]: "5"
+                        - text: comments
+                    - separator [ref=f2e1795]
+                - listitem [ref=f2e1796]:
+                  - generic [ref=f2e1797]:
+                    - generic [ref=f2e1798]:
+                      - link "In our college accenture hired 300+ out of 350 students who gave interview" [ref=f2e1799] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture/comments/1phi6w3/in_our_college_accenture_hired_300_out_of_350/
+                      - generic [ref=f2e1802]:
+                        - generic [ref=f2e1804]:
+                          - link "r/accenture" [ref=f2e1805] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/accenture/
+                          - generic [ref=f2e1810]: •
+                          - time [ref=f2e1812]: 8mo ago
+                        - link [ref=f2e1814] [cursor=pointer]:
+                          - /url: /r/accenture/comments/1phi6w3/in_our_college_accenture_hired_300_out_of_350/
+                          - heading "List item post - In our college accenture hired 300+ out of 350 students who..." [level=3] [ref=f2e1817]: In our college accenture hired 300+ out of 350 students who gave interview
+                      - generic [ref=f2e1819]:
+                        - generic [ref=f2e1820]: "12"
+                        - text: upvotes ·
+                        - generic [ref=f2e1821]: "15"
+                        - text: comments
+                    - separator [ref=f2e1822]
+                - listitem [ref=f2e1823]:
+                  - generic [ref=f2e1824]:
+                    - generic [ref=f2e1825]:
+                      - link "Accenture 2026 Batch – On-Campus Hiring (College-wise Data Thread)" [ref=f2e1826] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture/comments/1pxqbok/accenture_2026_batch_oncampus_hiring_collegewise/
+                      - generic [ref=f2e1829]:
+                        - generic [ref=f2e1831]:
+                          - link "r/accenture" [ref=f2e1832] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/accenture/
+                          - generic [ref=f2e1837]: •
+                          - time [ref=f2e1839]: 7mo ago
+                        - link [ref=f2e1841] [cursor=pointer]:
+                          - /url: /r/accenture/comments/1pxqbok/accenture_2026_batch_oncampus_hiring_collegewise/
+                          - heading "List item post - Accenture 2026 Batch – On-Campus Hiring (College-wise Data ..." [level=3] [ref=f2e1844]: Accenture 2026 Batch – On-Campus Hiring (College-wise Data Thread)
+                      - generic [ref=f2e1846]:
+                        - generic [ref=f2e1847]: "11"
+                        - text: upvotes ·
+                        - generic [ref=f2e1848]: "43"
+                        - text: comments
+                    - separator [ref=f2e1849]
+                - listitem
+                - listitem [ref=f2e1850]:
+                  - generic [ref=f2e1851]:
+                    - generic [ref=f2e1852]:
+                      - link "Rejected after clearing all Accenture interview rounds due to education requirement that I had disclosed before the process. Has anyone else experienced this?" [ref=f2e1853] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1v6zjfc/rejected_after_clearing_all_accenture_interview/
+                      - generic [ref=f2e1855]:
+                        - generic [ref=f2e1856]:
+                          - generic [ref=f2e1858]:
+                            - link "r/accenture_india" [ref=f2e1859] [cursor=pointer]:
+                              - /url: https://www.reddit.com/r/accenture_india/
+                            - generic [ref=f2e1864]: •
+                            - time [ref=f2e1866]: 13d ago
+                          - link [ref=f2e1868] [cursor=pointer]:
+                            - /url: /r/accenture_india/comments/1v6zjfc/rejected_after_clearing_all_accenture_interview/
+                            - heading "List item post - Rejected after clearing all Accenture interview rounds due ..." [level=3] [ref=f2e1871]: Rejected after clearing all Accenture interview rounds due to education requirement that I had disclosed before the process. Has anyone else experienced this?
+                        - generic [ref=f2e1873]:
+                          - link "r/accenture_india - Rejected after clearing all Accenture interview rounds due to education requirement that I had disclosed before the process. Has anyone else experienced this?" [ref=f2e1874] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/accenture_india/comments/1v6zjfc/rejected_after_clearing_all_accenture_interview/
+                            - img "r/accenture_india - Rejected after clearing all Accenture interview rounds due to education requirement that I had disclosed before the process. Has anyone else experienced this?" [ref=f2e1875]
+                          - generic: "2"
+                      - generic [ref=f2e1877]:
+                        - generic [ref=f2e1878]: "11"
+                        - text: upvotes ·
+                        - generic [ref=f2e1879]: "3"
+                        - text: comments
+                    - separator [ref=f2e1880]
+                - listitem [ref=f2e1881]:
+                  - generic [ref=f2e1882]:
+                    - generic [ref=f2e1883]:
+                      - link "👉🏻Steps to follow - On-campus 2026 batch only" [ref=f2e1884] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1r6wxih/steps_to_follow_oncampus_2026_batch_only/
+                      - generic [ref=f2e1886]:
+                        - generic [ref=f2e1887]:
+                          - generic [ref=f2e1889]:
+                            - link "r/accenture_india" [ref=f2e1890] [cursor=pointer]:
+                              - /url: https://www.reddit.com/r/accenture_india/
+                            - generic [ref=f2e1895]: •
+                            - time [ref=f2e1897]: 6mo ago
+                          - link [ref=f2e1899] [cursor=pointer]:
+                            - /url: /r/accenture_india/comments/1r6wxih/steps_to_follow_oncampus_2026_batch_only/
+                            - heading "List item post - 👉🏻Steps to follow - On-campus 2026 batch only" [level=3] [ref=f2e1902]: 👉🏻Steps to follow - On-campus 2026 batch only
+                        - link "r/accenture_india - 👉🏻Steps to follow - On-campus 2026 batch only" [ref=f2e1905] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/accenture_india/comments/1r6wxih/steps_to_follow_oncampus_2026_batch_only/
+                          - img "r/accenture_india - 👉🏻Steps to follow - On-campus 2026 batch only" [ref=f2e1906]
+                      - generic [ref=f2e1908]:
+                        - generic [ref=f2e1909]: "44"
+                        - text: upvotes ·
+                        - generic [ref=f2e1910]: "33"
+                        - text: comments
+                    - separator [ref=f2e1911]
+                - listitem [ref=f2e1912]:
+                  - generic [ref=f2e1913]:
+                    - generic [ref=f2e1914]:
+                      - link "Expected Assessment Pattern" [ref=f2e1915] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1rwczs8/expected_assessment_pattern/
+                      - generic [ref=f2e1917]:
+                        - generic [ref=f2e1918]:
+                          - generic [ref=f2e1920]:
+                            - link "r/accenture_india" [ref=f2e1921] [cursor=pointer]:
+                              - /url: https://www.reddit.com/r/accenture_india/
+                            - generic [ref=f2e1926]: •
+                            - time [ref=f2e1928]: 5mo ago
+                          - link [ref=f2e1930] [cursor=pointer]:
+                            - /url: /r/accenture_india/comments/1rwczs8/expected_assessment_pattern/
+                            - heading "List item post - Expected Assessment Pattern" [level=3] [ref=f2e1933]: Expected Assessment Pattern
+                        - link "r/accenture_india - Expected Assessment Pattern" [ref=f2e1936] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/accenture_india/comments/1rwczs8/expected_assessment_pattern/
+                          - img "r/accenture_india - Expected Assessment Pattern" [ref=f2e1937]
+                      - generic [ref=f2e1939]:
+                        - generic [ref=f2e1940]: "18"
+                        - text: upvotes ·
+                        - generic [ref=f2e1941]: "9"
+                        - text: comments
+                    - separator [ref=f2e1942]
+                - listitem [ref=f2e1943]:
+                  - generic [ref=f2e1944]:
+                    - generic [ref=f2e1945]:
+                      - link "Accenture hiring aggressively? 400–500 from one college + huge off-campus intake 👀" [ref=f2e1946] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1q4ju3h/accenture_hiring_aggressively_400500_from_one/
+                      - generic [ref=f2e1949]:
+                        - generic [ref=f2e1951]:
+                          - link "r/accenture_india" [ref=f2e1952] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/accenture_india/
+                          - generic [ref=f2e1957]: •
+                          - time [ref=f2e1959]: 7mo ago
+                        - link [ref=f2e1961] [cursor=pointer]:
+                          - /url: /r/accenture_india/comments/1q4ju3h/accenture_hiring_aggressively_400500_from_one/
+                          - heading "List item post - Accenture hiring aggressively? 400–500 from one college + h..." [level=3] [ref=f2e1964]: Accenture hiring aggressively? 400–500 from one college + huge off-campus intake 👀
+                      - generic [ref=f2e1966]:
+                        - generic [ref=f2e1967]: "88"
+                        - text: upvotes ·
+                        - generic [ref=f2e1968]: "52"
+                        - text: comments
+                    - separator [ref=f2e1969]
+                - listitem [ref=f2e1970]:
+                  - generic [ref=f2e1971]:
+                    - generic [ref=f2e1972]:
+                      - link "One thing which i loved about Accenture (On Campus )" [ref=f2e1973] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/DTU__Delhi/comments/1o7cwbr/one_thing_which_i_loved_about_accenture_on_campus/
+                      - generic [ref=f2e1976]:
+                        - generic [ref=f2e1978]:
+                          - link "r/DTU__Delhi" [ref=f2e1979] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/DTU__Delhi/
+                          - generic [ref=f2e1984]: •
+                          - time [ref=f2e1986]: 10mo ago
+                        - link [ref=f2e1988] [cursor=pointer]:
+                          - /url: /r/DTU__Delhi/comments/1o7cwbr/one_thing_which_i_loved_about_accenture_on_campus/
+                          - heading "List item post - One thing which i loved about Accenture (On Campus )" [level=3] [ref=f2e1991]: One thing which i loved about Accenture (On Campus )
+                      - generic [ref=f2e1993]:
+                        - generic [ref=f2e1994]: "45"
+                        - text: upvotes ·
+                        - generic [ref=f2e1995]: "7"
+                        - text: comments
+                    - separator [ref=f2e1996]
+                - listitem [ref=f2e1997]:
+                  - generic [ref=f2e1998]:
+                    - generic [ref=f2e1999]:
+                      - 'link "Need advice: Got Accenture ASE joining (23 Jan) but cracked 12 LPA off-campus – what’s the correct exit process?" [ref=f2e2000] [cursor=pointer]':
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1q1zlga/need_advice_got_accenture_ase_joining_23_jan_but/
+                      - generic [ref=f2e2003]:
+                        - generic [ref=f2e2005]:
+                          - link "r/accenture_india" [ref=f2e2006] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/accenture_india/
+                          - generic [ref=f2e2011]: •
+                          - time [ref=f2e2013]: 7mo ago
+                        - link [ref=f2e2015] [cursor=pointer]:
+                          - /url: /r/accenture_india/comments/1q1zlga/need_advice_got_accenture_ase_joining_23_jan_but/
+                          - 'heading "List item post - Need advice: Got Accenture ASE joining (23 Jan) but cracked..." [level=3] [ref=f2e2018]': "Need advice: Got Accenture ASE joining (23 Jan) but cracked 12 LPA off-campus – what’s the correct exit process?"
+                      - generic [ref=f2e2020]:
+                        - generic [ref=f2e2021]: "19"
+                        - text: upvotes ·
+                        - generic [ref=f2e2022]: "21"
+                        - text: comments
+                    - separator [ref=f2e2023]
+                - listitem [ref=f2e2024]:
+                  - generic [ref=f2e2025]:
+                    - generic [ref=f2e2026]:
+                      - link "Accenture 8th semester training program" [ref=f2e2027] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1phzwm6/accenture_8th_semester_training_program/
+                      - generic [ref=f2e2029]:
+                        - generic [ref=f2e2030]:
+                          - generic [ref=f2e2032]:
+                            - link "r/accenture_india" [ref=f2e2033] [cursor=pointer]:
+                              - /url: https://www.reddit.com/r/accenture_india/
+                            - generic [ref=f2e2038]: •
+                            - time [ref=f2e2040]: 8mo ago
+                          - link [ref=f2e2042] [cursor=pointer]:
+                            - /url: /r/accenture_india/comments/1phzwm6/accenture_8th_semester_training_program/
+                            - heading "List item post - Accenture 8th semester training program" [level=3] [ref=f2e2045]: Accenture 8th semester training program
+                        - link "r/accenture_india - Accenture 8th semester training program" [ref=f2e2048] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/accenture_india/comments/1phzwm6/accenture_8th_semester_training_program/
+                          - img "r/accenture_india - Accenture 8th semester training program" [ref=f2e2049]
+                      - generic [ref=f2e2051]:
+                        - generic [ref=f2e2052]: "35"
+                        - text: upvotes ·
+                        - generic [ref=f2e2053]: "116"
+                        - text: comments
+                    - separator [ref=f2e2054]
+                - listitem [ref=f2e2055]:
+                  - generic [ref=f2e2056]:
+                    - generic [ref=f2e2057]:
+                      - link "Accenture hiring 2026 on-campus while leaving 2025 grads behind feels so unfair" [ref=f2e2058] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1nk2547/accenture_hiring_2026_oncampus_while_leaving_2025/
+                      - generic [ref=f2e2061]:
+                        - generic [ref=f2e2063]:
+                          - link "r/accenture_india" [ref=f2e2064] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/accenture_india/
+                          - generic [ref=f2e2069]: •
+                          - time [ref=f2e2071]: 1y ago
+                        - link [ref=f2e2073] [cursor=pointer]:
+                          - /url: /r/accenture_india/comments/1nk2547/accenture_hiring_2026_oncampus_while_leaving_2025/
+                          - heading "List item post - Accenture hiring 2026 on-campus while leaving 2025 grads be..." [level=3] [ref=f2e2076]: Accenture hiring 2026 on-campus while leaving 2025 grads behind feels so unfair
+                      - generic [ref=f2e2078]:
+                        - generic [ref=f2e2079]: "50"
+                        - text: upvotes ·
+                        - generic [ref=f2e2080]: "55"
+                        - text: comments
+                    - separator [ref=f2e2081]
+                - listitem [ref=f2e2082]:
+                  - generic [ref=f2e2083]:
+                    - generic [ref=f2e2084]:
+                      - link "Is Accenture taking in too many students this year (2026)? Concern about unpaid training." [ref=f2e2085] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1pi4bjk/is_accenture_taking_in_too_many_students_this/
+                      - generic [ref=f2e2088]:
+                        - generic [ref=f2e2090]:
+                          - link "r/accenture_india" [ref=f2e2091] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/accenture_india/
+                          - generic [ref=f2e2096]: •
+                          - time [ref=f2e2098]: 8mo ago
+                        - link [ref=f2e2100] [cursor=pointer]:
+                          - /url: /r/accenture_india/comments/1pi4bjk/is_accenture_taking_in_too_many_students_this/
+                          - heading "List item post - Is Accenture taking in too many students this year (2026)? ..." [level=3] [ref=f2e2103]: Is Accenture taking in too many students this year (2026)? Concern about unpaid training.
+                      - generic [ref=f2e2105]:
+                        - generic [ref=f2e2106]: "47"
+                        - text: upvotes ·
+                        - generic [ref=f2e2107]: "92"
+                        - text: comments
+                    - separator [ref=f2e2108]
+                - listitem [ref=f2e2109]:
+                  - generic [ref=f2e2110]:
+                    - generic [ref=f2e2111]:
+                      - link "Accenture on campus onboarding (2026)" [ref=f2e2112] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1pi9d1y/accenture_on_campus_onboarding_2026/
+                      - generic [ref=f2e2115]:
+                        - generic [ref=f2e2117]:
+                          - link "r/accenture_india" [ref=f2e2118] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/accenture_india/
+                          - generic [ref=f2e2123]: •
+                          - time [ref=f2e2125]: 8mo ago
+                        - link [ref=f2e2127] [cursor=pointer]:
+                          - /url: /r/accenture_india/comments/1pi9d1y/accenture_on_campus_onboarding_2026/
+                          - heading "List item post - Accenture on campus onboarding (2026)" [level=3] [ref=f2e2130]: Accenture on campus onboarding (2026)
+                      - generic [ref=f2e2132]:
+                        - generic [ref=f2e2133]: "16"
+                        - text: upvotes ·
+                        - generic [ref=f2e2134]: "54"
+                        - text: comments
+                    - separator [ref=f2e2135]
+                - listitem [ref=f2e2136]:
+                  - generic [ref=f2e2137]:
+                    - generic [ref=f2e2138]:
+                      - link "W*F is wrong with accenture assessment?" [ref=f2e2139] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1rynuwm/wf_is_wrong_with_accenture_assessment/
+                      - generic [ref=f2e2142]:
+                        - generic [ref=f2e2144]:
+                          - link "r/accenture_india" [ref=f2e2145] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/accenture_india/
+                          - generic [ref=f2e2150]: •
+                          - time [ref=f2e2152]: 5mo ago
+                        - link [ref=f2e2154] [cursor=pointer]:
+                          - /url: /r/accenture_india/comments/1rynuwm/wf_is_wrong_with_accenture_assessment/
+                          - heading "List item post - W*F is wrong with accenture assessment?" [level=3] [ref=f2e2157]: W*F is wrong with accenture assessment?
+                      - generic [ref=f2e2159]:
+                        - generic [ref=f2e2160]: "5"
+                        - text: upvotes ·
+                        - generic [ref=f2e2161]: "72"
+                        - text: comments
+                    - separator [ref=f2e2162]
+                - listitem [ref=f2e2163]:
+                  - generic [ref=f2e2164]:
+                    - generic [ref=f2e2165]:
+                      - link "Accenture Online Assessment" [ref=f2e2166] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/dataengineersindia/comments/1t9uicu/accenture_online_assessment/
+                      - generic [ref=f2e2169]:
+                        - generic [ref=f2e2171]:
+                          - link "r/dataengineersindia" [ref=f2e2172] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/dataengineersindia/
+                          - generic [ref=f2e2177]: •
+                          - time [ref=f2e2179]: 3mo ago
+                        - link [ref=f2e2181] [cursor=pointer]:
+                          - /url: /r/dataengineersindia/comments/1t9uicu/accenture_online_assessment/
+                          - heading "List item post - Accenture Online Assessment" [level=3] [ref=f2e2184]: Accenture Online Assessment
+                      - generic [ref=f2e2186]:
+                        - generic [ref=f2e2187]: "7"
+                        - text: upvotes ·
+                        - generic [ref=f2e2188]: "22"
+                        - text: comments
+                    - separator [ref=f2e2189]
+                - listitem [ref=f2e2190]:
+                  - generic [ref=f2e2191]:
+                    - generic [ref=f2e2192]:
+                      - link "Accenture on campus placement, virtual interview happened for less than 10 minutes" [ref=f2e2193] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1ormmhm/accenture_on_campus_placement_virtual_interview/
+                      - generic [ref=f2e2196]:
+                        - generic [ref=f2e2198]:
+                          - link "r/accenture_india" [ref=f2e2199] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/accenture_india/
+                          - generic [ref=f2e2204]: •
+                          - time [ref=f2e2206]: 9mo ago
+                        - link [ref=f2e2208] [cursor=pointer]:
+                          - /url: /r/accenture_india/comments/1ormmhm/accenture_on_campus_placement_virtual_interview/
+                          - heading "List item post - Accenture on campus placement, virtual interview happened f..." [level=3] [ref=f2e2211]: Accenture on campus placement, virtual interview happened for less than 10 minutes
+                      - generic [ref=f2e2213]:
+                        - generic [ref=f2e2214]: "23"
+                        - text: upvotes ·
+                        - generic [ref=f2e2215]: "104"
+                        - text: comments
+                    - separator [ref=f2e2216]
+                - listitem [ref=f2e2217]:
+                  - generic [ref=f2e2218]:
+                    - generic [ref=f2e2219]:
+                      - 'link "Today in our college Accenture Hiring: 140 AEH Offers (12 LPA) Despite Failed Code/Poor Interviews, Most High-Scoring Students Rejected" [ref=f2e2220] [cursor=pointer]':
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1pd2sg2/today_in_our_college_accenture_hiring_140_aeh/
+                      - generic [ref=f2e2223]:
+                        - generic [ref=f2e2225]:
+                          - link "r/accenture_india" [ref=f2e2226] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/accenture_india/
+                          - generic [ref=f2e2231]: •
+                          - time [ref=f2e2233]: 8mo ago
+                        - link [ref=f2e2235] [cursor=pointer]:
+                          - /url: /r/accenture_india/comments/1pd2sg2/today_in_our_college_accenture_hiring_140_aeh/
+                          - 'heading "List item post - Today in our college Accenture Hiring: 140 AEH Offers (12 L..." [level=3] [ref=f2e2238]': "Today in our college Accenture Hiring: 140 AEH Offers (12 LPA) Despite Failed Code/Poor Interviews, Most High-Scoring Students Rejected"
+                      - generic [ref=f2e2240]:
+                        - generic [ref=f2e2241]: "12"
+                        - text: upvotes ·
+                        - generic [ref=f2e2242]: "89"
+                        - text: comments
+                    - separator [ref=f2e2243]
+                - listitem [ref=f2e2244]:
+                  - generic [ref=f2e2245]:
+                    - generic [ref=f2e2246]:
+                      - link "Has Accenture changed its interview process recently? Got an assessment mail after final round" [ref=f2e2247] [cursor=pointer]:
+                        - /url: https://www.reddit.com/r/accenture_india/comments/1o8x2ly/has_accenture_changed_its_interview_process/
+                      - generic [ref=f2e2250]:
+                        - generic [ref=f2e2252]:
+                          - link "r/accenture_india" [ref=f2e2253] [cursor=pointer]:
+                            - /url: https://www.reddit.com/r/accenture_india/
+                          - generic [ref=f2e2258]: •
+                          - time [ref=f2e2260]: 10mo ago
+                        - link [ref=f2e2262] [cursor=pointer]:
+                          - /url: /r/accenture_india/comments/1o8x2ly/has_accenture_changed_its_interview_process/
+                          - heading "List item post - Has Accenture changed its interview process recently? Got a..." [level=3] [ref=f2e2265]: Has Accenture changed its interview process recently? Got an assessment mail after final round
+                      - generic [ref=f2e2267]:
+                        - generic [ref=f2e2268]: "9"
+                        - text: upvotes ·
+                        - generic [ref=f2e2269]: "89"
+                        - text: comments
+                    - separator [ref=f2e2270]
+                - listitem [ref=f2e2271]:
+                  - generic [ref=f2e2273]:
+                    - link "Accenture campus hiring process has changed a lot (sharing my experience)" [ref=f2e2274] [cursor=pointer]:
+                      - /url: https://www.reddit.com/r/PlacementsPrep/comments/1pr7q1q/accenture_campus_hiring_process_has_changed_a_lot/
+                    - generic [ref=f2e2277]:
+                      - generic [ref=f2e2279]:
+                        - link "r/PlacementsPrep" [ref=f2e2280] [cursor=pointer]:
+                          - /url: https://www.reddit.com/r/PlacementsPrep/
+                        - generic [ref=f2e2285]: •
+                        - time [ref=f2e2287]: 8mo ago
+                      - link [ref=f2e2289] [cursor=pointer]:
+                        - /url: /r/PlacementsPrep/comments/1pr7q1q/accenture_campus_hiring_process_has_changed_a_lot/
+                        - heading "List item post - Accenture campus hiring process has changed a lot (sharing ..." [level=3] [ref=f2e2292]: Accenture campus hiring process has changed a lot (sharing my experience)
+                    - generic [ref=f2e2294]:
+                      - generic [ref=f2e2295]: "6"
+                      - text: upvotes ·
+                      - generic [ref=f2e2296]: "11"
+                      - text: comments
+            - generic [ref=f2e2297]:
+              - heading "View Post in" [level=2] [ref=f2e2299]
+              - generic [ref=f2e2301]:
+                - link "日本語" [ref=f2e2303] [cursor=pointer]:
+                  - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/accenture_oncampus_assessment_2025_huge_pattern/?tl=ja
+                - link "हिन्दी" [ref=f2e2305] [cursor=pointer]:
+                  - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/accenture_oncampus_assessment_2025_huge_pattern/?tl=hi
+                - link "简体中文" [ref=f2e2307] [cursor=pointer]:
+                  - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/accenture_oncampus_assessment_2025_huge_pattern/?tl=zh-hans
+                - link "Русский" [ref=f2e2309] [cursor=pointer]:
+                  - /url: https://www.reddit.com/r/Btechtards/comments/1nqrxka/accenture_oncampus_assessment_2025_huge_pattern/?tl=ru
+                - group [ref=f2e2310]:
+                  - generic "See more" [ref=f2e2311] [cursor=pointer]
+            - complementary "Community information" [ref=f2e2316]:
+              - generic [ref=f2e2318]:
+                - heading "Community Info Section" [level=1] [ref=f2e2319]
+                - generic [ref=f2e2320]:
+                  - generic [ref=f2e2321]:
+                    - link "r/Btechtards" [ref=f2e2322] [cursor=pointer]:
+                      - /url: /r/Btechtards/
+                    - 'button "Community status: join our discord @ https://dsc.gg/btechtards" [ref=f2e2326] [cursor=pointer]':
+                      - img "blush-cat" [ref=f2e2327]
+                  - button "Join" [ref=f2e2331] [cursor=pointer]
+                - generic [ref=f2e2332]:
+                  - generic [ref=f2e2333]: BTechtards
+                  - generic [ref=f2e2334]: A community for BTech and Engineering students, aspirants & STEM enthusiasts. From serious discussions, advice-guidance, suggestions to shitposts.
+                  - button "Show more" [ref=f2e2335] [cursor=pointer]
+                  - generic: Public
+            - generic [ref=f2e2343]:
+              - heading "Top Posts" [level=2] [ref=f2e2344]
+              - list [ref=f2e2345]:
+                - listitem [ref=f2e2346]:
+                  - 'link "Reddit reReddit: Top posts of September 26, 2025" [ref=f2e2347] [cursor=pointer]':
+                    - /url: https://www.reddit.com/posts/2025/september-26-1/global/
+                    - generic [ref=f2e2348]: Reddit
+                    - generic [ref=f2e2363]: "reReddit: Top posts of September 26, 2025"
+                    - separator [ref=f2e2364]
+                - listitem [ref=f2e2365]:
+                  - 'link "Reddit reReddit: Top posts of September 2025" [ref=f2e2366] [cursor=pointer]':
+                    - /url: https://www.reddit.com/posts/2025/september/global/
+                    - generic [ref=f2e2367]: Reddit
+                    - generic [ref=f2e2382]: "reReddit: Top posts of September 2025"
+                    - separator [ref=f2e2383]
+                - listitem [ref=f2e2384]:
+                  - 'link "Reddit reReddit: Top posts of 2025" [ref=f2e2385] [cursor=pointer]':
+                    - /url: https://www.reddit.com/posts/2025/global/
+                    - generic [ref=f2e2386]: Reddit
+                    - generic [ref=f2e2401]: "reReddit: Top posts of 2025"
+                    - separator [ref=f2e2402]
+          - list [ref=f2e2404]:
+            - listitem [ref=f2e2405]:
+              - link "Home" [ref=f2e2407] [cursor=pointer]:
+                - /url: /?feed=home
+            - listitem [ref=f2e2408]:
+              - link "Popular" [ref=f2e2410] [cursor=pointer]:
+                - /url: /r/popular/
+            - listitem [ref=f2e2411]:
+              - link "News" [ref=f2e2413] [cursor=pointer]:
+                - /url: /news/
+            - listitem [ref=f2e2414]:
+              - link "Explore" [ref=f2e2416] [cursor=pointer]:
+                - /url: /explore/
+            - listitem [ref=f2e2417]:
+              - link "Best of Reddit" [ref=f2e2419] [cursor=pointer]:
+                - /url: https://www.reddit.com/posts/2026/global/
+            - listitem [ref=f2e2420]:
+              - link "Best of Reddit in Portuguese" [ref=f2e2422] [cursor=pointer]:
+                - /url: https://www.reddit.com/posts/2026/tl-pt-BR/
+            - listitem [ref=f2e2423]:
+              - link "Best of Reddit in German" [ref=f2e2425] [cursor=pointer]:
+                - /url: https://www.reddit.com/posts/2026/tl-de/
+            - listitem [ref=f2e2426]:
+              - link "Reddit Rules" [ref=f2e2428] [cursor=pointer]:
+                - /url: https://www.redditinc.com/policies/content-policy
+            - listitem [ref=f2e2429]:
+              - link "Privacy Policy" [ref=f2e2431] [cursor=pointer]:
+                - /url: https://www.reddit.com/policies/privacy-policy
+            - listitem [ref=f2e2432]:
+              - link "User Agreement" [ref=f2e2434] [cursor=pointer]:
+                - /url: https://www.redditinc.com/policies/user-agreement
+            - listitem [ref=f2e2435]:
+              - link "Accessibility" [ref=f2e2437] [cursor=pointer]:
+                - /url: https://support.reddithelp.com/hc/sections/38303584022676-Accessibility
+            - listitem [ref=f2e2438]:
+              - link "Reddit, Inc. © 2026. All rights reserved." [ref=f2e2439] [cursor=pointer]:
+                - /url: https://redditinc.com

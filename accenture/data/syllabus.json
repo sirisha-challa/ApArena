@@ -1,0 +1,1397 @@
+{
+  "_comment": "Accenture Preparation syllabus outline. status: pending (content to be uploaded), sample (demonstrates renderer), in-progress, complete. Upload content per-topic as { ... } following _schema below.",
+  "meta": {
+    "title": "Accenture Preparation Arena",
+    "subtitle": "ASE / AASE Software Engineer — Recruitment Test Syllabus",
+    "company": "Accenture",
+    "ctc": {
+      "ASE": "4.50 LPA",
+      "AASE": "6.50 LPA"
+    },
+    "eligibility": "BE/BTech/ME/MTech/MCA/MSc/BCA/BSc/MS · 60% aggregate · batches 2024–2026",
+    "negativeMarking": false,
+    "roundsAreEliminatory": true,
+    "sources": [
+      "PrepInsta",
+      "TalentBattle",
+      "Hitbullseye",
+      "Unstop",
+      "MockStep",
+      "CCBP/NxtWave",
+      "Scribd",
+      "Payilagam",
+      "GeeksforGeeks",
+      "Reddit r/Btechtards"
+    ],
+    "lastUpdated": "2026-08-08"
+  },
+  "examPattern": {
+    "current": {
+      "label": "2026 AXIS Pattern",
+      "rounds": [
+        {
+          "name": "Behavioral Assessment",
+          "questions": 50,
+          "duration": "20 min",
+          "note": "Personality & work-style; no elimination"
+        },
+        {
+          "name": "Gamified Cognitive Assessment",
+          "questions": 3,
+          "duration": "20 min",
+          "note": "Game-based memory, quick math, pattern tasks"
+        },
+        {
+          "name": "Technical MCQ Assessment",
+          "questions": 45,
+          "duration": "45 min",
+          "note": "Pseudo code, core CS, networking, MS Office, apti"
+        },
+        {
+          "name": "Coding Assessment",
+          "questions": 3,
+          "duration": "60 min",
+          "note": "DSA + SQL JOINs + UI task"
+        },
+        {
+          "name": "Communication Assessment",
+          "questions": 1,
+          "duration": "30 min",
+          "note": "Speaking task (AI scored)"
+        }
+      ]
+    },
+    "legacy": {
+      "label": "Legacy CoCubes Pattern",
+      "note": "90 min, sectional cut-offs, no negative marking",
+      "rounds": [
+        {
+          "name": "English",
+          "questions": 17,
+          "duration": ""
+        },
+        {
+          "name": "Critical Reasoning",
+          "questions": 18,
+          "duration": ""
+        },
+        {
+          "name": "Abstract Reasoning",
+          "questions": 15,
+          "duration": ""
+        },
+        {
+          "name": "MS Office",
+          "questions": 12,
+          "duration": ""
+        },
+        {
+          "name": "Pseudo Code",
+          "questions": 18,
+          "duration": ""
+        },
+        {
+          "name": "Network, Security & Cloud",
+          "questions": 10,
+          "duration": ""
+        },
+        {
+          "name": "Coding",
+          "questions": "2–3",
+          "duration": "45 min",
+          "note": "C/C++/Java/Python"
+        }
+      ]
+    }
+  },
+  "_schema": {
+    "topic": {
+      "introduction": [
+        "paragraphs; inline math with $...$, display math with $$...$$"
+      ],
+      "sections": [
+        {
+          "id": "string",
+          "title": "string",
+          "blocks": [
+            {
+              "type": "p",
+              "text": "paragraph with $math$"
+            },
+            {
+              "type": "formula",
+              "title": "string",
+              "latex": "string",
+              "text": "string",
+              "whenToUse": "string",
+              "explanation": [
+                "..."
+              ]
+            },
+            {
+              "type": "solution",
+              "prompt": "string",
+              "reasoning": [
+                "..."
+              ],
+              "steps": [
+                {
+                  "text": "...",
+                  "reason": "optional"
+                }
+              ],
+              "answer": "string|object(expression/latex)"
+            },
+            {
+              "type": "pseudocode",
+              "code": "multi-line",
+              "language": "pseudocode",
+              "explanation": [
+                "..."
+              ],
+              "lineHighlights": [
+                1,
+                3
+              ]
+            },
+            {
+              "type": "code",
+              "code": "multi-line",
+              "language": "python|c|java|javascript|sql",
+              "explanation": [
+                "..."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "..."
+              ],
+              "rows": [
+                [
+                  "..."
+                ]
+              ]
+            },
+            {
+              "type": "callout",
+              "kind": "tip|warning|remember|danger",
+              "title": "string",
+              "content": [
+                "..."
+              ]
+            },
+            {
+              "type": "steps",
+              "title": "string",
+              "steps": [
+                {
+                  "text": "...",
+                  "reason": "optional"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "quickRevision": [
+        "..."
+      ],
+      "practiceQuestions": [
+        {
+          "prompt": "...",
+          "options": [
+            "..."
+          ],
+          "answer": "A",
+          "explanation": "..."
+        }
+      ],
+      "companyNote": "string"
+    }
+  },
+  "sections": [
+    {
+      "id": "behavioral",
+      "order": 1,
+      "round": "Round 1",
+      "name": "Behavioral Assessment",
+      "short": "Behavioral",
+      "description": "Personality and work-style questionnaire. 50 questions in 20 minutes. No elimination — used for culture-fit profiling.",
+      "questions": 50,
+      "duration": "20 min",
+      "status": "outline",
+      "icon": "person",
+      "topics": [
+        {
+          "id": "work-style",
+          "title": "Work Style & Teamwork",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "leadership",
+          "title": "Leadership & Ownership",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "stress-coping",
+          "title": "Stress & Pressure Handling",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "ethics",
+          "title": "Workplace Ethics & Integrity",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "adaptability",
+          "title": "Adaptability & Learning Agility",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "communication-style",
+          "title": "Communication Style",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "situational-judgment",
+          "title": "Situational Judgment",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "response-strategy",
+          "title": "Response Strategy (avoid extremes)",
+          "status": "pending",
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "cognitive",
+      "order": 2,
+      "round": "Round 1",
+      "name": "Gamified Cognitive Assessment",
+      "short": "Cognitive",
+      "description": "3 game-based tasks in 20 minutes: memory, quick mental math, spatial reasoning. Speed and accuracy under pressure.",
+      "questions": 3,
+      "duration": "20 min",
+      "status": "outline",
+      "icon": "puzzle",
+      "topics": [
+        {
+          "id": "memory-task",
+          "title": "Memory / Observation Task",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "quick-math",
+          "title": "Quick Mental Arithmetic",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "pattern-task",
+          "title": "Pattern & Grid Navigation Task",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "spatial-reasoning",
+          "title": "Spatial & Shape Reasoning",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "sequence-recall",
+          "title": "Sequence Recall Games",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "game-strategy",
+          "title": "Game Strategy & Practice",
+          "status": "pending",
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "english",
+      "order": 3,
+      "round": "Round 1",
+      "name": "English Ability",
+      "short": "English",
+      "description": "Legacy round (17 Q). Grammar, vocabulary, reading comprehension, sentence arrangement. Sectional cut-off applies.",
+      "questions": 17,
+      "duration": "",
+      "status": "outline",
+      "icon": "book",
+      "topics": [
+        {
+          "id": "synonyms",
+          "title": "Synonyms",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "antonyms",
+          "title": "Antonyms",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "sentence-arrangement",
+          "title": "Sentence Arrangement (Para Jumble)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "grammar-errors",
+          "title": "Error Detection & Grammar",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "fill-blanks",
+          "title": "Fill in the Blanks",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "reading-comprehension",
+          "title": "Reading Comprehension",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "cloze-test",
+          "title": "Cloze Test",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "idioms-phrases",
+          "title": "Idioms & Phrases",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "one-word-substitution",
+          "title": "One Word Substitution",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "spellings",
+          "title": "Correct Spelling",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "spot-error",
+          "title": "Spot the Error",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "phrasal-verbs",
+          "title": "Phrasal Verbs",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "vocabulary-strategy",
+          "title": "Vocabulary Strategy & Speed",
+          "status": "pending",
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "critical-reasoning",
+      "order": 4,
+      "round": "Round 1",
+      "name": "Critical Reasoning",
+      "short": "Reasoning",
+      "description": "Legacy round (18 Q). Deductive, inductive and verbal reasoning. Logical games with conditions.",
+      "questions": 18,
+      "duration": "",
+      "status": "outline",
+      "icon": "brain",
+      "topics": [
+        {
+          "id": "deductive",
+          "title": "Deductive Reasoning",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "inductive",
+          "title": "Inductive Reasoning",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "abstract-patterns",
+          "title": "Abstract Reasoning",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "analytical",
+          "title": "Analytical Reasoning",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "syllogisms",
+          "title": "Syllogisms",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "logical-games",
+          "title": "Logical Games (Conditions)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "visual-reasoning",
+          "title": "Visual Reasoning",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "logical-sequences",
+          "title": "Logical Sequences",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "data-sufficiency",
+          "title": "Data Sufficiency",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "statement-conclusion",
+          "title": "Statement & Conclusion",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "statement-assumption",
+          "title": "Statement & Assumption",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "statement-argument",
+          "title": "Statement & Argument",
+          "status": "pending",
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "abstract-reasoning",
+      "order": 5,
+      "round": "Round 1",
+      "name": "Abstract Reasoning",
+      "short": "Abstract",
+      "description": "Legacy round (15 Q). Non-verbal pattern matrices, figure series and classification.",
+      "questions": 15,
+      "duration": "",
+      "status": "outline",
+      "icon": "shape",
+      "topics": [
+        {
+          "id": "figure-series",
+          "title": "Figure Series",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "analogies",
+          "title": "Analogy (Visual)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "classification",
+          "title": "Odd One Out (Visual)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "pattern-matrix",
+          "title": "Pattern Matrix",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "mirror-images",
+          "title": "Mirror & Water Images",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "embedded-figures",
+          "title": "Embedded Figures",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "paper-folding",
+          "title": "Paper Folding & Cutting",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "series-transformations",
+          "title": "Series Transformations",
+          "status": "pending",
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "quantitative",
+      "order": 6,
+      "round": "Round 1",
+      "name": "Quantitative Aptitude",
+      "short": "Quant",
+      "description": "Legacy round. Arithmetic, algebra, number systems and data interpretation. Premium math rendering for every formula.",
+      "questions": 30,
+      "duration": "",
+      "status": "outline",
+      "icon": "calc",
+      "topics": [
+        {
+          "id": "number-system",
+          "title": "Number System",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "percentages",
+          "title": "Percentages",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "profit-loss",
+          "title": "Profit & Loss",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "simple-compound-interest",
+          "title": "Simple & Compound Interest",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "time-work",
+          "title": "Time & Work",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "time-speed-distance",
+          "title": "Time, Speed & Distance",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "averages",
+          "title": "Averages",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "ratios-proportions",
+          "title": "Ratios & Proportions",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "permutations-combinations",
+          "title": "Permutations & Combinations",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "probability",
+          "title": "Probability",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "data-interpretation",
+          "title": "Data Interpretation",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "logarithms",
+          "title": "Logarithms",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "surds-indices",
+          "title": "Surds & Indices",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "geometry-mensuration",
+          "title": "Geometry & Mensuration",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "algebra",
+          "title": "Algebra & Equations",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "speed-math",
+          "title": "Speed Math & Mental Calculation",
+          "status": "pending",
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "ms-office",
+      "order": 7,
+      "round": "Round 2",
+      "name": "MS Office & Common Applications",
+      "short": "MS Office",
+      "description": "Technical round (12 Q). Word, Excel, PowerPoint, Outlook, browser and shortcut keys.",
+      "questions": 12,
+      "duration": "",
+      "status": "outline",
+      "icon": "office",
+      "topics": [
+        {
+          "id": "ms-word",
+          "title": "MS Word",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "ms-excel",
+          "title": "MS Excel (Formulas & Functions)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "ms-powerpoint",
+          "title": "MS PowerPoint",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "ms-outlook",
+          "title": "MS Outlook",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "internet-browser",
+          "title": "Internet & Browser Basics",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "shortcut-keys",
+          "title": "Shortcut Keys (Windows & Office)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "file-extensions",
+          "title": "File Extensions & Formats",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "computer-fundamentals",
+          "title": "Computer Fundamentals",
+          "status": "pending",
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "pseudocode",
+      "order": 8,
+      "round": "Round 2",
+      "name": "Pseudo Code",
+      "short": "Pseudo Code",
+      "description": "Core technical round (18 Q). Trace, debug and predict output of pseudocode — heavily bit-manipulation heavy since 2025.",
+      "questions": 18,
+      "duration": "",
+      "status": "outline",
+      "icon": "code",
+      "topics": [
+        {
+          "id": "output-tracing",
+          "title": "Output Tracing (Sequence)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "while-loop",
+          "title": "While Loop",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "repeat-until",
+          "title": "Repeat-Until Loop",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "for-loop",
+          "title": "For Loop (Step variant)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "if-else",
+          "title": "If-Then-Else",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "case-statement",
+          "title": "Case (Switch) Statement",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "functions",
+          "title": "Functions & Return",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "arrays",
+          "title": "Arrays & Indexing",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "recursion",
+          "title": "Recursion",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "increment-decrement",
+          "title": "Increment / Decrement",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "bitwise-operators",
+          "title": "Bitwise Operators (AND/OR/XOR/SHIFT)",
+          "status": "sample",
+          "content": {
+            "introduction": [
+              "Since the 2025 pattern overhaul, the pseudo code round is **calculation-heavy on bitwise operators**. You must trace bit-by-bit — $\\text{AND}$, $\\text{OR}$, $\\text{XOR}$, left shift $\\ll$ and right shift $\\gg$ — without a compiler.",
+              "The conversion chain, worked out longhand: $$10110_2 = 1 \\cdot 16 + 0 \\cdot 8 + 1 \\cdot 4 + 1 \\cdot 2 + 0 \\cdot 1 = 22_{10}$$ and it is this single chain — left as $d$, $t$, $h$, $o$ on the ladder — that every bitwise problem reduces to.",
+              "The conversion chain, worked out longhand: 39061510110_2 = 1 cdot 16 + 0 cdot 8 + 1 cdot 4 + 1 cdot 2 + 0 cdot 1 = 22_{10}390615 and it is this single chain — left as $, $, $, $ on the ladder — that every bitwise problem reduces to."
+            ],
+            "sections": [
+              {
+                "id": "binary-basics",
+                "title": "Binary ↔ Decimal in 3 seconds",
+                "blocks": [
+                  {
+                    "type": "formula",
+                    "title": "Place-value expansion",
+                    "latex": "d = \\sum_{i=0}^{n-1} b_i \\cdot 2^i",
+                    "text": "Each bit $b_i$ (from the right, starting at $i=0$) contributes $2^i$ when set.",
+                    "whenToUse": "Convert any binary number to decimal while tracing pseudocode.",
+                    "explanation": [
+                      "Read bits right-to-left: positions are $2^0, 2^1, 2^2, \\dots$",
+                      "Only add powers whose bit is $1$."
+                    ],
+                    "example": {
+                      "prompt": "Convert $10110_2$ to decimal.",
+                      "steps": [
+                        {
+                          "text": "Write positions under the bits: $16\\;\\;8\\;\\;4\\;\\;2\\;\\;1$",
+                          "reason": "Powers of two from the left."
+                        },
+                        {
+                          "text": "Keep only positions with bit $1$: $16 + 4 + 2$",
+                          "reason": "Bits at index 4, 2 and 1 are set."
+                        },
+                        {
+                          "text": "Add: $16 + 4 + 2 = 22$"
+                        }
+                      ],
+                      "answer": {
+                        "latex": "10110_2 = 22_{10}"
+                      }
+                    },
+                    "memoryTip": "Memorize the power ladder: 1, 2, 4, 8, 16, 32, 64, 128 — and reverse it for decimal → binary.",
+                    "commonMistake": "Counting positions from 1 instead of 0 — $2^0 = 1$, not $2^1$."
+                  },
+                  {
+                    "type": "table",
+                    "headers": [
+                      "Power",
+                      "2^4",
+                      "2^3",
+                      "2^2",
+                      "2^1",
+                      "2^0"
+                    ],
+                    "rows": [
+                      [
+                        "Value",
+                        "16",
+                        "8",
+                        "4",
+                        "2",
+                        "1"
+                      ],
+                      [
+                        "Bit 10110",
+                        "1",
+                        "0",
+                        "1",
+                        "1",
+                        "0"
+                      ],
+                      [
+                        "Contribution",
+                        "16",
+                        "0",
+                        "4",
+                        "2",
+                        "0"
+                      ]
+                    ]
+                  },
+                  {
+                    "type": "derivation",
+                    "title": "The same conversion, textbook style",
+                    "lines": [
+                      {
+                        "latex": "10110_2 = 1 \\cdot 2^4 + 0 \\cdot 2^3 + 1 \\cdot 2^2 + 1 \\cdot 2^1 + 0 \\cdot 2^0",
+                        "note": "expand every bit by its place value"
+                      },
+                      {
+                        "latex": "= 16 + 4 + 2",
+                        "note": "drop the zero terms"
+                      },
+                      {
+                        "latex": "= 22_{10}",
+                        "note": "add left to right"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "callout",
+                    "kind": "tip",
+                    "title": "Exam shortcut",
+                    "content": [
+                      "If the MSB (leftmost bit) is set, the number is at least half of the range. For an 8-bit view, $1000\\,0000_2 = 128$ exactly — anchor yourself to that.",
+                      "Write the power ladder above every trace — 10 seconds saved per question."
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "operator-rules",
+                "title": "The four operators, exactly as Accenture tests them",
+                "blocks": [
+                  {
+                    "type": "table",
+                    "headers": [
+                      "Operator",
+                      "Pseudocode form",
+                      "Rule",
+                      "Example (a=12, b=5)"
+                    ],
+                    "rows": [
+                      [
+                        "AND",
+                        "$a \\text{ AND } b$",
+                        "Bit is 1 only when both bits are 1",
+                        "$1100 \\& 0101 = 0100 = 4$"
+                      ],
+                      [
+                        "OR",
+                        "$a \\text{ OR } b$",
+                        "Bit is 1 when at least one bit is 1",
+                        "$1100 \\mid 0101 = 1101 = 13$"
+                      ],
+                      [
+                        "XOR",
+                        "$a \\text{ XOR } b$",
+                        "Bit is 1 when the bits differ",
+                        "$1100 \\oplus 0101 = 1001 = 9$"
+                      ],
+                      [
+                        "Left shift",
+                        "$a \\ll 2$",
+                        "Shift bits left, pad zeros; $= a \\cdot 2^2$",
+                        "$12 \\ll 2 = 48$"
+                      ],
+                      [
+                        "Right shift",
+                        "$a \\gg 1$",
+                        "Shift bits right; $= \\lfloor a / 2 \\rfloor$",
+                        "$12 \\gg 1 = 6$"
+                      ]
+                    ]
+                  },
+                  {
+                    "type": "pseudocode",
+                    "language": "pseudocode",
+                    "code": "DECLARE a AS INTEGER\nDECLARE b AS INTEGER\nSET a = 12\nSET b = 5\nSET r1 = a AND b\nSET r2 = a XOR b\nSET r3 = b << 2\nPRINT r1, r2, r3",
+                    "explanation": [
+                      "AND: $1100 \\& 0101 = 0100 = 4$",
+                      "XOR: $1100 \\oplus 0101 = 1001 = 9$",
+                      "Shift: $5 \\ll 2 = 5 \\times 4 = 20$",
+                      "Output: 4, 9, 20"
+                    ],
+                    "lineHighlights": [
+                      6,
+                      7,
+                      8
+                    ]
+                  },
+                  {
+                    "type": "callout",
+                    "kind": "danger",
+                    "title": "Accenture gotcha",
+                    "content": [
+                      "In Accenture pseudocode, **AND / OR / XOR double as both logical and bitwise operators** depending on operands. With integers they are bitwise; with TRUE/FALSE they are logical. Never assume — check the operand types.",
+                      "Decrement and increment often appear inside loops: $x = x - 1$ before the XOR line changes the answer entirely."
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "full-trace",
+                "title": "Full worked trace (the standard exam pattern)",
+                "blocks": [
+                  {
+                    "type": "solution",
+                    "prompt": "What is the output of the pseudocode below?",
+                    "reasoning": [
+                      "Track every variable in a state table; do not compute in your head.",
+                      "The loop runs 3 iterations — write a row per iteration."
+                    ],
+                    "steps": [
+                      {
+                        "text": "Initialise: $n = 6$, $mask = 1$, $count = 0$",
+                        "reason": "DECLARE/SET lines run before the loop."
+                      },
+                      {
+                        "text": "Iteration 1: $n \\& mask = 110 \\& 001 = 000 = 0 \\neq 0$ → skip; $mask = 1 \\ll 1 = 2$",
+                        "reason": "Bit 0 of 6 is 0."
+                      },
+                      {
+                        "text": "Iteration 2: $110 \\& 010 = 010 = 2 \\neq 0$ → $count = 1$; $mask = 2 \\ll 1 = 4$",
+                        "reason": "Bit 1 is set."
+                      },
+                      {
+                        "text": "Iteration 3: $110 \\& 100 = 100 = 4 \\neq 0$ → $count = 2$; $mask = 4 \\ll 1 = 8$",
+                        "reason": "Bit 2 is set."
+                      },
+                      {
+                        "text": "Loop ends ($mask = 8 > n$), PRINT count → 2"
+                      }
+                    ],
+                    "answer": {
+                      "text": "2 — the number of set bits in 6 (i.e., 110₂)"
+                    }
+                  },
+                  {
+                    "type": "pseudocode",
+                    "language": "pseudocode",
+                    "code": "DECLARE n AS INTEGER\nDECLARE mask AS INTEGER\nDECLARE count AS INTEGER\nSET n = 6\nSET mask = 1\nSET count = 0\nWHILE mask <= n DO\n    IF (n AND mask) <> 0 THEN\n        SET count = count + 1\n    ENDIF\n    SET mask = mask << 1\nENDWHILE\nPRINT count",
+                    "explanation": [
+                      "This is the classic 'count set bits' pattern — appears in Accenture coding and pseudo code rounds.",
+                      "`<>` means 'not equal' in pseudocode (same as $\\neq$)."
+                    ]
+                  },
+                  {
+                    "type": "code",
+                    "language": "python",
+                    "code": "n = 6\nmask = 1\ncount = 0\nwhile mask <= n:\n    if (n & mask) != 0:\n        count += 1\n    mask = mask << 1\nprint(count)",
+                    "explanation": [
+                      "The equivalent Python — verify your trace by translating to real code."
+                    ]
+                  }
+                ]
+              }
+            ],
+            "quickRevision": [
+              "Binary ladder: 1, 2, 4, 8, 16, 32, 64, 128.",
+              "$x \\ll k = x \\cdot 2^k$; $x \\gg k = \\lfloor x / 2^k \\rfloor$.",
+              "XOR properties: $x \\oplus 0 = x$, $x \\oplus x = 0$, $x \\oplus 1$ flips the last bit.",
+              "AND with a mask tests bits; OR sets bits; XOR toggles bits.",
+              "No negative marking — always attempt; elimination first."
+            ],
+            "practiceQuestions": [
+              {
+                "prompt": "SET x = 15; SET y = x XOR 7; What is y?",
+                "options": [
+                  "6",
+                  "8",
+                  "9",
+                  "12"
+                ],
+                "answer": "B",
+                "explanation": "$15_{10} = 1111_2$, $7 = 0111_2$; $1111 \\oplus 0111 = 1000 = 8$."
+              }
+            ],
+            "companyNote": "2025+ pseudo code questions are calculation-heavy with bitwise operators — no pen/paper allowed, so build binary tables mentally or on the notepad feature."
+          }
+        },
+        {
+          "id": "logical-operators",
+          "title": "Logical Operators (AND/OR/NOT)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "data-structures-basics",
+          "title": "Linked List, Stack, Queue Basics",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "pointers-references",
+          "title": "Pointers & References (C-style)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "string-operations",
+          "title": "String Operations in Pseudocode",
+          "status": "pending",
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "network-security-cloud",
+      "order": 9,
+      "round": "Round 2",
+      "name": "Network, Security & Cloud",
+      "short": "Network",
+      "description": "Technical round (10 Q). Networking fundamentals, security concepts, cloud basics.",
+      "questions": 10,
+      "duration": "",
+      "status": "outline",
+      "icon": "cloud",
+      "topics": [
+        {
+          "id": "osi-tcpip",
+          "title": "OSI & TCP/IP Model",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "ip-addressing",
+          "title": "IP Addressing & Subnetting",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "protocols",
+          "title": "Protocols (TCP/UDP/HTTP/HTTPS/FTP/SMTP)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "dns-dhcp",
+          "title": "DNS & DHCP",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "network-devices",
+          "title": "Network Devices (Router/Switch/Hub)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "topologies",
+          "title": "Network Topologies",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "cybersecurity-basics",
+          "title": "Cybersecurity Fundamentals",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "encryption",
+          "title": "Encryption & Cryptography",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "firewalls-vpn",
+          "title": "Firewalls & VPN",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "cloud-computing",
+          "title": "Cloud Computing Basics (IaaS/PaaS/SaaS)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "virtualization",
+          "title": "Virtualization & Containers",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "security-attacks",
+          "title": "Common Attacks (Phishing/DDoS/SQLi/XSS)",
+          "status": "pending",
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "core-cs",
+      "order": 10,
+      "round": "Round 2",
+      "name": "Core CS Fundamentals",
+      "short": "Core CS",
+      "description": "Technical MCQ round. OOPs, DBMS, SQL, OS and JavaScript fundamentals.",
+      "questions": 25,
+      "duration": "",
+      "status": "outline",
+      "icon": "chip",
+      "topics": [
+        {
+          "id": "oops",
+          "title": "OOPs (Abstraction/Inheritance/Polymorphism)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "dbms-basics",
+          "title": "DBMS Basics (Keys/ER/ACID)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "sql-queries",
+          "title": "SQL Queries & JOINs",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "normalization",
+          "title": "Normalization (1NF–3NF)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "os-basics",
+          "title": "OS Basics (Process/Thread/Memory)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "javascript",
+          "title": "JavaScript & Frontend Basics",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "data-structures-algo",
+          "title": "Data Structures & Algorithms Concepts",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "html-css",
+          "title": "HTML & CSS",
+          "status": "pending",
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "coding",
+      "order": 11,
+      "round": "Round 2",
+      "name": "Coding Assessment",
+      "short": "Coding",
+      "description": "3 questions in 60 minutes: 2 DSA + 1 SQL/UI. Languages: C, C++, Java, Python. Recurring patterns listed below.",
+      "questions": 3,
+      "duration": "60 min",
+      "status": "outline",
+      "icon": "terminal",
+      "topics": [
+        {
+          "id": "array-patterns",
+          "title": "Array Rotation, Large-Small Sum, Merge Sorted",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "two-pointer",
+          "title": "Two Pointer & Equilibrium Point",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "string-patterns",
+          "title": "Anagram Check, Longest Unique Substring",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "number-theory",
+          "title": "Prime Summation, Max Product Pair",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "greedy",
+          "title": "Chocolate Distribution (Greedy)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "linked-list",
+          "title": "Palindromic Linked List",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "time-complexity",
+          "title": "Time Complexity Analysis",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "space-complexity",
+          "title": "Space Complexity",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "sql-coding",
+          "title": "SQL JOINs & Aggregation Queries",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "ui-task",
+          "title": "HTML/CSS/JS UI Task",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "contest-strategy",
+          "title": "Contest Strategy & Partial Scoring",
+          "status": "pending",
+          "content": null
+        }
+      ]
+    },
+    {
+      "id": "communication",
+      "order": 12,
+      "round": "Round 3",
+      "name": "Communication Assessment",
+      "short": "Communication",
+      "description": "AI-scored speaking task (~30 min). Fluency, clarity, pronunciation, confidence. Final eliminator.",
+      "questions": 1,
+      "duration": "30 min",
+      "status": "outline",
+      "icon": "mic",
+      "topics": [
+        {
+          "id": "self-introduction",
+          "title": "Self Introduction",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "fluency",
+          "title": "Fluency & Coherence",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "pronunciation",
+          "title": "Pronunciation & Accent Clarity",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "grammar-accuracy",
+          "title": "Grammar & Accuracy",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "vocabulary-usage",
+          "title": "Vocabulary Usage",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "topic-speaking",
+          "title": "Speaking on a Given Topic",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "structured-answers",
+          "title": "Structured Answers (P.E.E.L.)",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "confidence",
+          "title": "Confidence & Pace Control",
+          "status": "pending",
+          "content": null
+        },
+        {
+          "id": "mock-practice",
+          "title": "Mock Practice & Self-Recording",
+          "status": "pending",
+          "content": null
+        }
+      ]
+    }
+  ]
+}

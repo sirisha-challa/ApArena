@@ -1,0 +1,1109 @@
+- generic [ref=f8e2]:
+  - complementary "Primary" [ref=f8e3]:
+    - generic [ref=f8e4]:
+      - generic [ref=f8e5]: A
+      - generic [ref=f8e6]:
+        - strong [ref=f8e7]: Accenture Arena
+        - text: ASE · AASE Prep
+    - navigation [ref=f8e8]:
+      - paragraph [ref=f8e9]: Main
+      - link "Dashboard" [ref=f8e10] [cursor=pointer]:
+        - /url: "#/"
+      - paragraph [ref=f8e14]: Syllabus
+      - generic "Syllabus sections" [ref=f8e15]:
+        - link "Behavioral Assessment" [ref=f8e16] [cursor=pointer]:
+          - /url: "#/section/behavioral"
+        - link "Gamified Cognitive Assessment" [ref=f8e21] [cursor=pointer]:
+          - /url: "#/section/cognitive"
+        - link "English Ability" [ref=f8e28] [cursor=pointer]:
+          - /url: "#/section/english"
+        - link "Critical Reasoning" [ref=f8e33] [cursor=pointer]:
+          - /url: "#/section/critical-reasoning"
+        - link "Abstract Reasoning" [ref=f8e38] [cursor=pointer]:
+          - /url: "#/section/abstract-reasoning"
+        - link "Quantitative Aptitude" [ref=f8e44] [cursor=pointer]:
+          - /url: "#/section/quantitative"
+        - link "MS Office & Common Applications" [ref=f8e49] [cursor=pointer]:
+          - /url: "#/section/ms-office"
+        - link "Pseudo Code" [ref=f8e53] [cursor=pointer]:
+          - /url: "#/section/pseudocode"
+        - link "Network, Security & Cloud" [ref=f8e57] [cursor=pointer]:
+          - /url: "#/section/network-security-cloud"
+        - link "Core CS Fundamentals" [ref=f8e61] [cursor=pointer]:
+          - /url: "#/section/core-cs"
+        - link "Coding Assessment" [ref=f8e66] [cursor=pointer]:
+          - /url: "#/section/coding"
+        - link "Communication Assessment" [ref=f8e70] [cursor=pointer]:
+          - /url: "#/section/communication"
+      - paragraph [ref=f8e75]: Other
+      - link "Classic Arena (existing app)" [ref=f8e76] [cursor=pointer]:
+        - /url: ../index.html
+    - generic [ref=f8e79]: Syllabus compiled from 10 sources · updated 2026
+  - generic [ref=f8e80]:
+    - banner [ref=f8e81]:
+      - generic [ref=f8e82]:
+        - strong [ref=f8e83]: Accenture
+        - text: Preparation Arena
+      - generic [ref=f8e84]:
+        - link "Classic Arena" [ref=f8e85] [cursor=pointer]:
+          - /url: ../index.html
+        - button "Toggle theme" [ref=f8e86] [cursor=pointer]
+    - main [ref=f8e89]:
+      - navigation [ref=f8e415]:
+        - link "Dashboard" [ref=f8e416] [cursor=pointer]:
+          - /url: "#/"
+        - generic [ref=f8e417]: /
+        - link "Pseudo Code" [ref=f8e418] [cursor=pointer]:
+          - /url: "#/section/pseudocode"
+        - generic [ref=f8e419]: /
+        - generic [ref=f8e420]: Bitwise Operators (AND/OR/XOR/SHIFT)
+      - article [ref=f8e422]:
+        - generic [ref=f8e423]:
+          - heading "Bitwise Operators (AND/OR/XOR/SHIFT)" [level=1] [ref=f8e424]
+          - generic [ref=f8e425]:
+            - button "Mark as reviewed" [ref=f8e426] [cursor=pointer]
+            - link "Back to section" [ref=f8e427] [cursor=pointer]:
+              - /url: "#/section/pseudocode"
+        - paragraph [ref=f8e428]:
+          - text: Since the 2025 pattern overhaul, the pseudo code round is
+          - strong [ref=f8e429]: calculation-heavy on bitwise operators
+          - text: . You must trace bit-by-bit —
+          - 'math "\\text{AND}" [ref=f8e430]':
+            - generic [ref=f8e431]:
+              - math [ref=f8e433]:
+                - generic [ref=f8e434]: AND
+              - generic [ref=f8e437]: AND
+          - text: ","
+          - 'math "\\text{OR}" [ref=f8e440]':
+            - generic [ref=f8e441]:
+              - math [ref=f8e443]:
+                - generic [ref=f8e444]: OR
+              - generic [ref=f8e447]: OR
+          - text: ","
+          - 'math "\\text{XOR}" [ref=f8e450]':
+            - generic [ref=f8e451]:
+              - math [ref=f8e453]:
+                - generic [ref=f8e454]: XOR
+              - generic [ref=f8e457]: XOR
+          - text: ", left shift"
+          - math "\\ll" [ref=f8e460]:
+            - generic [ref=f8e461]:
+              - math [ref=f8e463]:
+                - generic [ref=f8e464]: ≪
+              - generic [ref=f8e467]: ≪
+          - text: and right shift
+          - math "\\gg" [ref=f8e469]:
+            - generic [ref=f8e470]:
+              - math [ref=f8e472]:
+                - generic [ref=f8e473]: ≫
+              - generic [ref=f8e476]: ≫
+          - text: — without a compiler.
+        - paragraph [ref=f8e478]:
+          - text: "Every integer in these problems is stored as a fixed-width binary number. Conversion is the core skill:"
+          - 'math "13_{10} = 1101_2" [ref=f8e479]':
+            - generic [ref=f8e480]:
+              - math [ref=f8e482]:
+                - generic [ref=f8e484]:
+                  - generic [ref=f8e485]: "1"
+                  - generic [ref=f8e486]:
+                    - generic [ref=f8e487]: "3"
+                    - generic [ref=f8e488]: "10"
+                  - generic [ref=f8e489]: =
+                  - generic [ref=f8e490]: "110"
+                  - generic [ref=f8e491]:
+                    - generic [ref=f8e492]: "1"
+                    - generic [ref=f8e493]: "2"
+              - generic [ref=f8e494]:
+                - generic [ref=f8e495]:
+                  - text: "1"
+                  - generic [ref=f8e496]:
+                    - text: "3"
+                    - generic [ref=f8e497]: "10"
+                  - text: =
+                - generic [ref=f8e506]:
+                  - text: "110"
+                  - generic [ref=f8e507]:
+                    - text: "1"
+                    - generic [ref=f8e508]: "2"
+          - text: .
+        - generic [ref=f8e516]:
+          - heading "01 Binary ↔ Decimal in 3 seconds" [level=2] [ref=f8e517]:
+            - generic [ref=f8e518]: "01"
+            - text: Binary ↔ Decimal in 3 seconds
+          - article [ref=f8e519]:
+            - heading "Place-value expansion" [level=4] [ref=f8e524]
+            - generic [ref=f8e527]:
+              - math [ref=f8e529]:
+                - generic [ref=f8e531]:
+                  - generic [ref=f8e532]: d
+                  - generic [ref=f8e533]: =
+                  - generic [ref=f8e534]:
+                    - generic [ref=f8e535]: ∑
+                    - generic [ref=f8e536]:
+                      - generic [ref=f8e537]: i
+                      - generic [ref=f8e538]: =
+                      - generic [ref=f8e539]: "0"
+                    - generic [ref=f8e540]:
+                      - generic [ref=f8e541]: "n"
+                      - generic [ref=f8e542]: −
+                      - generic [ref=f8e543]: "1"
+                  - generic [ref=f8e544]:
+                    - generic [ref=f8e545]: b
+                    - generic [ref=f8e546]: i
+                  - generic [ref=f8e547]: ⋅
+                  - generic [ref=f8e548]:
+                    - generic [ref=f8e549]: "2"
+                    - generic [ref=f8e550]: i
+              - generic [ref=f8e551]:
+                - generic [ref=f8e552]: d =
+                - generic [ref=f8e553]:
+                  - generic [ref=f8e557]:
+                    - generic [ref=f8e558]: i=0
+                    - generic [ref=f8e560]: ∑
+                    - generic [ref=f8e561]: n−1
+                  - generic [ref=f8e566]:
+                    - text: b
+                    - generic [ref=f8e567]: i
+                  - text: ⋅
+                - generic [ref=f8e576]:
+                  - text: "2"
+                  - generic [ref=f8e577]: i
+            - paragraph [ref=f8e582]:
+              - text: Each bit
+              - math "b_i" [ref=f8e583]:
+                - generic [ref=f8e584]:
+                  - math [ref=f8e586]:
+                    - generic [ref=f8e589]:
+                      - generic [ref=f8e590]: b
+                      - generic [ref=f8e591]: i
+                  - generic [ref=f8e594]:
+                    - text: b
+                    - generic [ref=f8e595]: i
+              - text: (from the right, starting at
+              - math "i=0" [ref=f8e603]:
+                - generic [ref=f8e604]:
+                  - math [ref=f8e606]:
+                    - generic [ref=f8e608]:
+                      - generic [ref=f8e609]: i
+                      - generic [ref=f8e610]: =
+                      - generic [ref=f8e611]: "0"
+                  - generic [ref=f8e612]:
+                    - generic [ref=f8e613]: i =
+                    - generic [ref=f8e614]: "0"
+              - text: ) contributes
+              - math "2^i" [ref=f8e615]:
+                - generic [ref=f8e616]:
+                  - math [ref=f8e618]:
+                    - generic [ref=f8e621]:
+                      - generic [ref=f8e622]: "2"
+                      - generic [ref=f8e623]: i
+                  - generic [ref=f8e626]:
+                    - text: "2"
+                    - generic [ref=f8e627]: i
+              - text: when set.
+            - generic [ref=f8e632]:
+              - generic [ref=f8e633]: When to use
+              - paragraph [ref=f8e634]: Convert any binary number to decimal while tracing pseudocode.
+            - generic [ref=f8e635]:
+              - generic [ref=f8e636]: Why it works
+              - list [ref=f8e637]:
+                - listitem [ref=f8e638]:
+                  - text: "Read bits right-to-left: positions are"
+                  - math "2^0, 2^1, 2^2, \\dots" [ref=f8e639]:
+                    - generic [ref=f8e640]:
+                      - math [ref=f8e642]:
+                        - generic [ref=f8e644]:
+                          - generic [ref=f8e645]:
+                            - generic [ref=f8e646]: "2"
+                            - generic [ref=f8e647]: "0"
+                          - generic [ref=f8e648]: ","
+                          - generic [ref=f8e649]:
+                            - generic [ref=f8e650]: "2"
+                            - generic [ref=f8e651]: "1"
+                          - generic [ref=f8e652]: ","
+                          - generic [ref=f8e653]:
+                            - generic [ref=f8e654]: "2"
+                            - generic [ref=f8e655]: "2"
+                          - generic [ref=f8e656]: ","
+                          - generic [ref=f8e657]: …
+                      - generic [ref=f8e659]:
+                        - generic [ref=f8e660]:
+                          - text: "2"
+                          - generic [ref=f8e661]: "0"
+                        - text: ","
+                        - generic [ref=f8e666]:
+                          - text: "2"
+                          - generic [ref=f8e667]: "1"
+                        - text: ","
+                        - generic [ref=f8e672]:
+                          - text: "2"
+                          - generic [ref=f8e673]: "2"
+                        - text: ", …"
+                - listitem [ref=f8e678]:
+                  - text: Only add powers whose bit is
+                  - math "1" [ref=f8e679]:
+                    - generic [ref=f8e680]:
+                      - math [ref=f8e682]:
+                        - generic [ref=f8e683]: "1"
+                      - generic [ref=f8e686]: "1"
+                  - text: .
+            - generic [ref=f8e688]:
+              - generic [ref=f8e689]: Example
+              - paragraph [ref=f8e690]:
+                - text: Convert
+                - math "10110_2" [ref=f8e691]:
+                  - generic [ref=f8e692]:
+                    - math [ref=f8e694]:
+                      - generic [ref=f8e696]:
+                        - generic [ref=f8e697]: "1011"
+                        - generic [ref=f8e698]:
+                          - generic [ref=f8e699]: "0"
+                          - generic [ref=f8e700]: "2"
+                    - generic [ref=f8e702]:
+                      - text: "1011"
+                      - generic [ref=f8e703]:
+                        - text: "0"
+                        - generic [ref=f8e704]: "2"
+                - text: to decimal.
+              - list [ref=f8e712]:
+                - listitem [ref=f8e713]:
+                  - generic [ref=f8e714]: "1"
+                  - generic [ref=f8e715]:
+                    - paragraph [ref=f8e716]:
+                      - text: "Write positions under the bits:"
+                      - math "16\\;\\;8\\;\\;4\\;\\;2\\;\\;1" [ref=f8e717]:
+                        - generic [ref=f8e718]:
+                          - math [ref=f8e720]:
+                            - generic [ref=f8e722]:
+                              - generic [ref=f8e723]: "16"
+                              - generic [ref=f8e724]: "8"
+                              - generic [ref=f8e725]: "4"
+                              - generic [ref=f8e726]: "2"
+                              - generic [ref=f8e727]: "1"
+                          - generic [ref=f8e728]: 16 8 4 2 1
+                    - paragraph [ref=f8e730]:
+                      - generic [ref=f8e735]: Powers of two from the left.
+                - listitem [ref=f8e736]:
+                  - generic [ref=f8e737]: "2"
+                  - generic [ref=f8e738]:
+                    - paragraph [ref=f8e739]:
+                      - text: Keep only positions with bit
+                      - math "1" [ref=f8e740]:
+                        - generic [ref=f8e741]:
+                          - math [ref=f8e743]:
+                            - generic [ref=f8e744]: "1"
+                          - generic [ref=f8e747]: "1"
+                      - text: ":"
+                      - math "16 + 4 + 2" [ref=f8e749]:
+                        - generic [ref=f8e750]:
+                          - math [ref=f8e752]:
+                            - generic [ref=f8e754]:
+                              - generic [ref=f8e755]: "16"
+                              - generic [ref=f8e756]: +
+                              - generic [ref=f8e757]: "4"
+                              - generic [ref=f8e758]: +
+                              - generic [ref=f8e759]: "2"
+                          - generic [ref=f8e760]:
+                            - generic [ref=f8e761]: 16 +
+                            - generic [ref=f8e762]: 4 +
+                            - generic [ref=f8e763]: "2"
+                    - paragraph [ref=f8e764]:
+                      - generic [ref=f8e769]: Bits at index 4, 2 and 1 are set.
+                - listitem [ref=f8e770]:
+                  - generic [ref=f8e771]: "3"
+                  - paragraph [ref=f8e773]:
+                    - text: "Add:"
+                    - math "16 + 4 + 2 = 22" [ref=f8e774]:
+                      - generic [ref=f8e775]:
+                        - math [ref=f8e777]:
+                          - generic [ref=f8e779]:
+                            - generic [ref=f8e780]: "16"
+                            - generic [ref=f8e781]: +
+                            - generic [ref=f8e782]: "4"
+                            - generic [ref=f8e783]: +
+                            - generic [ref=f8e784]: "2"
+                            - generic [ref=f8e785]: =
+                            - generic [ref=f8e786]: "22"
+                        - generic [ref=f8e787]:
+                          - generic [ref=f8e788]: 16 +
+                          - generic [ref=f8e789]: 4 +
+                          - generic [ref=f8e790]: 2 =
+                          - generic [ref=f8e791]: "22"
+              - generic [ref=f8e792]:
+                - generic [ref=f8e793]: Answer
+                - generic [ref=f8e796]:
+                  - math [ref=f8e798]:
+                    - generic [ref=f8e800]:
+                      - generic [ref=f8e801]: "1011"
+                      - generic [ref=f8e802]:
+                        - generic [ref=f8e803]: "0"
+                        - generic [ref=f8e804]: "2"
+                      - generic [ref=f8e805]: =
+                      - generic [ref=f8e806]: "2"
+                      - generic [ref=f8e807]:
+                        - generic [ref=f8e808]: "2"
+                        - generic [ref=f8e809]: "10"
+                  - generic [ref=f8e810]:
+                    - generic [ref=f8e811]:
+                      - text: "1011"
+                      - generic [ref=f8e812]:
+                        - text: "0"
+                        - generic [ref=f8e813]: "2"
+                      - text: =
+                    - generic [ref=f8e821]:
+                      - text: "2"
+                      - generic [ref=f8e822]:
+                        - text: "2"
+                        - generic [ref=f8e823]: "10"
+            - generic [ref=f8e832]:
+              - generic [ref=f8e833]:
+                - generic [ref=f8e834]: Memory tip
+                - paragraph [ref=f8e838]: "Memorize the power ladder: 1, 2, 4, 8, 16, 32, 64, 128 — and reverse it for decimal → binary."
+              - generic [ref=f8e839]:
+                - generic [ref=f8e840]: Common mistake
+                - paragraph [ref=f8e845]:
+                  - text: Counting positions from 1 instead of 0 —
+                  - math "2^0 = 1" [ref=f8e846]:
+                    - generic [ref=f8e847]:
+                      - math [ref=f8e849]:
+                        - generic [ref=f8e851]:
+                          - generic [ref=f8e852]:
+                            - generic [ref=f8e853]: "2"
+                            - generic [ref=f8e854]: "0"
+                          - generic [ref=f8e855]: =
+                          - generic [ref=f8e856]: "1"
+                      - generic [ref=f8e857]:
+                        - generic [ref=f8e858]:
+                          - generic [ref=f8e859]:
+                            - text: "2"
+                            - generic [ref=f8e860]: "0"
+                          - text: =
+                        - generic [ref=f8e865]: "1"
+                  - text: ", not"
+                  - math "2^1" [ref=f8e866]:
+                    - generic [ref=f8e867]:
+                      - math [ref=f8e869]:
+                        - generic [ref=f8e872]:
+                          - generic [ref=f8e873]: "2"
+                          - generic [ref=f8e874]: "1"
+                      - generic [ref=f8e877]:
+                        - text: "2"
+                        - generic [ref=f8e878]: "1"
+                  - text: .
+          - table [ref=f8e884]:
+            - rowgroup [ref=f8e885]:
+              - row [ref=f8e886]:
+                - columnheader "Power" [ref=f8e887]
+                - columnheader "2^4" [ref=f8e888]
+                - columnheader "2^3" [ref=f8e889]
+                - columnheader "2^2" [ref=f8e890]
+                - columnheader "2^1" [ref=f8e891]
+                - columnheader "2^0" [ref=f8e892]
+            - rowgroup [ref=f8e893]:
+              - row [ref=f8e894]:
+                - cell "Value" [ref=f8e895]
+                - cell "16" [ref=f8e896]
+                - cell "8" [ref=f8e897]
+                - cell "4" [ref=f8e898]
+                - cell "2" [ref=f8e899]
+                - cell "1" [ref=f8e900]
+              - row [ref=f8e901]:
+                - cell "Bit 10110" [ref=f8e902]
+                - cell "1" [ref=f8e903]
+                - cell "0" [ref=f8e904]
+                - cell "1" [ref=f8e905]
+                - cell "1" [ref=f8e906]
+                - cell "0" [ref=f8e907]
+              - row [ref=f8e908]:
+                - cell "Contribution" [ref=f8e909]
+                - cell "16" [ref=f8e910]
+                - cell "0" [ref=f8e911]
+                - cell "4" [ref=f8e912]
+                - cell "2" [ref=f8e913]
+                - cell "0" [ref=f8e914]
+          - complementary [ref=f8e915]:
+            - strong [ref=f8e921]: Exam shortcut
+            - generic [ref=f8e922]:
+              - paragraph [ref=f8e923]:
+                - text: If the MSB (leftmost bit) is set, the number is at least half of the range. For an 8-bit view,
+                - math "1000\\,0000_2 = 128" [ref=f8e924]:
+                  - generic [ref=f8e925]:
+                    - math [ref=f8e927]:
+                      - generic [ref=f8e929]:
+                        - generic [ref=f8e930]: "1000"
+                        - generic [ref=f8e931]: "000"
+                        - generic [ref=f8e932]:
+                          - generic [ref=f8e933]: "0"
+                          - generic [ref=f8e934]: "2"
+                        - generic [ref=f8e935]: =
+                        - generic [ref=f8e936]: "128"
+                    - generic [ref=f8e937]:
+                      - generic [ref=f8e938]:
+                        - text: 1000 000
+                        - generic [ref=f8e939]:
+                          - text: "0"
+                          - generic [ref=f8e940]: "2"
+                        - text: =
+                      - generic [ref=f8e948]: "128"
+                - text: exactly — anchor yourself to that.
+              - paragraph [ref=f8e949]: Write the power ladder above every trace — 10 seconds saved per question.
+        - generic [ref=f8e950]:
+          - heading "02 The four operators, exactly as Accenture tests them" [level=2] [ref=f8e951]:
+            - generic [ref=f8e952]: "02"
+            - text: The four operators, exactly as Accenture tests them
+          - table [ref=f8e954]:
+            - rowgroup [ref=f8e955]:
+              - row [ref=f8e956]:
+                - columnheader "Operator" [ref=f8e957]
+                - columnheader "Pseudocode form" [ref=f8e958]
+                - columnheader "Rule" [ref=f8e959]
+                - columnheader "Example (a=12, b=5)" [ref=f8e960]
+            - rowgroup [ref=f8e961]:
+              - row [ref=f8e962]:
+                - cell "AND" [ref=f8e963]
+                - cell [ref=f8e964]:
+                  - 'math "a \\text{ AND } b" [ref=f8e965]':
+                    - generic [ref=f8e966]:
+                      - math [ref=f8e968]:
+                        - generic [ref=f8e970]:
+                          - generic [ref=f8e971]: a
+                          - generic [ref=f8e972]: AND
+                          - generic [ref=f8e973]: b
+                      - generic [ref=f8e975]:
+                        - text: a
+                        - generic [ref=f8e976]: AND
+                        - text: b
+                - cell "Bit is 1 only when both bits are 1" [ref=f8e977]
+                - cell [ref=f8e978]:
+                  - math "1100 \\& 0101 = 0100 = 4" [ref=f8e979]:
+                    - generic [ref=f8e980]:
+                      - math [ref=f8e982]:
+                        - generic [ref=f8e984]:
+                          - generic [ref=f8e985]: "1100"
+                          - generic [ref=f8e986]: "&"
+                          - generic [ref=f8e987]: "0101"
+                          - generic [ref=f8e988]: =
+                          - generic [ref=f8e989]: "0100"
+                          - generic [ref=f8e990]: =
+                          - generic [ref=f8e991]: "4"
+                      - generic [ref=f8e992]:
+                        - generic [ref=f8e993]: 1100&0101 =
+                        - generic [ref=f8e994]: 0100 =
+                        - generic [ref=f8e995]: "4"
+              - row [ref=f8e996]:
+                - cell "OR" [ref=f8e997]
+                - cell [ref=f8e998]:
+                  - 'math "a \\text{ OR } b" [ref=f8e999]':
+                    - generic [ref=f8e1000]:
+                      - math [ref=f8e1002]:
+                        - generic [ref=f8e1004]:
+                          - generic [ref=f8e1005]: a
+                          - generic [ref=f8e1006]: OR
+                          - generic [ref=f8e1007]: b
+                      - generic [ref=f8e1009]:
+                        - text: a
+                        - generic [ref=f8e1010]: OR
+                        - text: b
+                - cell "Bit is 1 when at least one bit is 1" [ref=f8e1011]
+                - cell [ref=f8e1012]:
+                  - math "1100 \\mid 0101 = 1101 = 13" [ref=f8e1013]:
+                    - generic [ref=f8e1014]:
+                      - math [ref=f8e1016]:
+                        - generic [ref=f8e1018]:
+                          - generic [ref=f8e1019]: "1100"
+                          - generic [ref=f8e1020]: ∣
+                          - generic [ref=f8e1021]: "0101"
+                          - generic [ref=f8e1022]: =
+                          - generic [ref=f8e1023]: "1101"
+                          - generic [ref=f8e1024]: =
+                          - generic [ref=f8e1025]: "13"
+                      - generic [ref=f8e1026]:
+                        - generic [ref=f8e1027]: 1100 ∣
+                        - generic [ref=f8e1028]: 0101 =
+                        - generic [ref=f8e1029]: 1101 =
+                        - generic [ref=f8e1030]: "13"
+              - row [ref=f8e1031]:
+                - cell "XOR" [ref=f8e1032]
+                - cell [ref=f8e1033]:
+                  - 'math "a \\text{ XOR } b" [ref=f8e1034]':
+                    - generic [ref=f8e1035]:
+                      - math [ref=f8e1037]:
+                        - generic [ref=f8e1039]:
+                          - generic [ref=f8e1040]: a
+                          - generic [ref=f8e1041]: XOR
+                          - generic [ref=f8e1042]: b
+                      - generic [ref=f8e1044]:
+                        - text: a
+                        - generic [ref=f8e1045]: XOR
+                        - text: b
+                - cell "Bit is 1 when the bits differ" [ref=f8e1046]
+                - cell [ref=f8e1047]:
+                  - math "1100 \\oplus 0101 = 1001 = 9" [ref=f8e1048]:
+                    - generic [ref=f8e1049]:
+                      - math [ref=f8e1051]:
+                        - generic [ref=f8e1053]:
+                          - generic [ref=f8e1054]: "1100"
+                          - generic [ref=f8e1055]: ⊕
+                          - generic [ref=f8e1056]: "0101"
+                          - generic [ref=f8e1057]: =
+                          - generic [ref=f8e1058]: "1001"
+                          - generic [ref=f8e1059]: =
+                          - generic [ref=f8e1060]: "9"
+                      - generic [ref=f8e1061]:
+                        - generic [ref=f8e1062]: 1100 ⊕
+                        - generic [ref=f8e1063]: 0101 =
+                        - generic [ref=f8e1064]: 1001 =
+                        - generic [ref=f8e1065]: "9"
+              - row [ref=f8e1066]:
+                - cell "Left shift" [ref=f8e1067]
+                - cell [ref=f8e1068]:
+                  - math "a \\ll 2" [ref=f8e1069]:
+                    - generic [ref=f8e1070]:
+                      - math [ref=f8e1072]:
+                        - generic [ref=f8e1074]:
+                          - generic [ref=f8e1075]: a
+                          - generic [ref=f8e1076]: ≪
+                          - generic [ref=f8e1077]: "2"
+                      - generic [ref=f8e1078]:
+                        - generic [ref=f8e1079]: a ≪
+                        - generic [ref=f8e1080]: "2"
+                - cell [ref=f8e1081]:
+                  - text: Shift bits left, pad zeros;
+                  - math "= a \\cdot 2^2" [ref=f8e1082]:
+                    - generic [ref=f8e1083]:
+                      - math [ref=f8e1085]:
+                        - generic [ref=f8e1087]:
+                          - generic [ref=f8e1088]: =
+                          - generic [ref=f8e1089]: a
+                          - generic [ref=f8e1090]: ⋅
+                          - generic [ref=f8e1091]:
+                            - generic [ref=f8e1092]: "2"
+                            - generic [ref=f8e1093]: "2"
+                      - generic [ref=f8e1094]:
+                        - generic [ref=f8e1095]: =
+                        - generic [ref=f8e1096]: a ⋅
+                        - generic [ref=f8e1098]:
+                          - text: "2"
+                          - generic [ref=f8e1099]: "2"
+                - cell [ref=f8e1104]:
+                  - math "12 \\ll 2 = 48" [ref=f8e1105]:
+                    - generic [ref=f8e1106]:
+                      - math [ref=f8e1108]:
+                        - generic [ref=f8e1110]:
+                          - generic [ref=f8e1111]: "12"
+                          - generic [ref=f8e1112]: ≪
+                          - generic [ref=f8e1113]: "2"
+                          - generic [ref=f8e1114]: =
+                          - generic [ref=f8e1115]: "48"
+                      - generic [ref=f8e1116]:
+                        - generic [ref=f8e1117]: 12 ≪
+                        - generic [ref=f8e1118]: 2 =
+                        - generic [ref=f8e1119]: "48"
+              - row [ref=f8e1120]:
+                - cell "Right shift" [ref=f8e1121]
+                - cell [ref=f8e1122]:
+                  - math "a \\gg 1" [ref=f8e1123]:
+                    - generic [ref=f8e1124]:
+                      - math [ref=f8e1126]:
+                        - generic [ref=f8e1128]:
+                          - generic [ref=f8e1129]: a
+                          - generic [ref=f8e1130]: ≫
+                          - generic [ref=f8e1131]: "1"
+                      - generic [ref=f8e1132]:
+                        - generic [ref=f8e1133]: a ≫
+                        - generic [ref=f8e1134]: "1"
+                - cell [ref=f8e1135]:
+                  - text: Shift bits right;
+                  - math "= \\lfloor a / 2 \\rfloor" [ref=f8e1136]:
+                    - generic [ref=f8e1137]:
+                      - math [ref=f8e1139]:
+                        - generic [ref=f8e1141]:
+                          - generic [ref=f8e1142]: =
+                          - generic [ref=f8e1143]: ⌊
+                          - generic [ref=f8e1144]: a
+                          - generic [ref=f8e1145]: /
+                          - generic [ref=f8e1146]: "2"
+                          - generic [ref=f8e1147]: ⌋
+                      - generic [ref=f8e1148]:
+                        - generic [ref=f8e1149]: =
+                        - generic [ref=f8e1150]: ⌊a/2⌋
+                - cell [ref=f8e1151]:
+                  - math "12 \\gg 1 = 6" [ref=f8e1152]:
+                    - generic [ref=f8e1153]:
+                      - math [ref=f8e1155]:
+                        - generic [ref=f8e1157]:
+                          - generic [ref=f8e1158]: "12"
+                          - generic [ref=f8e1159]: ≫
+                          - generic [ref=f8e1160]: "1"
+                          - generic [ref=f8e1161]: =
+                          - generic [ref=f8e1162]: "6"
+                      - generic [ref=f8e1163]:
+                        - generic [ref=f8e1164]: 12 ≫
+                        - generic [ref=f8e1165]: 1 =
+                        - generic [ref=f8e1166]: "6"
+          - generic [ref=f8e1167]:
+            - generic [ref=f8e1168]:
+              - generic [ref=f8e1169]: pseudocode
+              - generic [ref=f8e1170]: 8 lines
+              - generic [ref=f8e1171]:
+                - generic "No issues — clean analysis" [ref=f8e1172]: clean
+                - button "Copy" [ref=f8e1174] [cursor=pointer]
+            - generic [ref=f8e1180]:
+              - generic [ref=f8e1181]: "1"
+              - generic [ref=f8e1184]: "2"
+              - generic [ref=f8e1187]: "3"
+              - generic [ref=f8e1190]: "4"
+              - generic [ref=f8e1193]: "5"
+              - generic [ref=f8e1196]: "6"
+              - generic [ref=f8e1199]: "7"
+              - generic [ref=f8e1202]: "8"
+          - complementary [ref=f8e1205]:
+            - strong [ref=f8e1211]: Accenture gotcha
+            - generic [ref=f8e1212]:
+              - paragraph [ref=f8e1213]:
+                - text: In Accenture pseudocode,
+                - strong [ref=f8e1214]: AND / OR / XOR double as both logical and bitwise operators
+                - text: depending on operands. With integers they are bitwise; with TRUE/FALSE they are logical. Never assume — check the operand types.
+              - paragraph [ref=f8e1215]:
+                - text: "Decrement and increment often appear inside loops:"
+                - math "x = x - 1" [ref=f8e1216]:
+                  - generic [ref=f8e1217]:
+                    - math [ref=f8e1219]:
+                      - generic [ref=f8e1221]:
+                        - generic [ref=f8e1222]: x
+                        - generic [ref=f8e1223]: =
+                        - generic [ref=f8e1224]: x
+                        - generic [ref=f8e1225]: −
+                        - generic [ref=f8e1226]: "1"
+                    - generic [ref=f8e1227]:
+                      - generic [ref=f8e1228]: x =
+                      - generic [ref=f8e1229]: x −
+                      - generic [ref=f8e1230]: "1"
+                - text: before the XOR line changes the answer entirely.
+        - generic [ref=f8e1231]:
+          - heading "03 Full worked trace (the standard exam pattern)" [level=2] [ref=f8e1232]:
+            - generic [ref=f8e1233]: "03"
+            - text: Full worked trace (the standard exam pattern)
+          - generic [ref=f8e1234]:
+            - heading "Solution" [level=4] [ref=f8e1240]
+            - generic [ref=f8e1241]:
+              - generic [ref=f8e1242]: Question
+              - paragraph [ref=f8e1243]: What is the output of the pseudocode below?
+            - generic [ref=f8e1244]:
+              - generic [ref=f8e1245]: Reasoning
+              - list [ref=f8e1246]:
+                - listitem [ref=f8e1247]: Track every variable in a state table; do not compute in your head.
+                - listitem [ref=f8e1248]: The loop runs 3 iterations — write a row per iteration.
+            - generic [ref=f8e1249]:
+              - generic [ref=f8e1250]: Step by step
+              - list [ref=f8e1251]:
+                - listitem [ref=f8e1252]:
+                  - generic [ref=f8e1253]: "1"
+                  - generic [ref=f8e1254]:
+                    - paragraph [ref=f8e1255]:
+                      - text: "Initialise:"
+                      - math "n = 6" [ref=f8e1256]:
+                        - generic [ref=f8e1257]:
+                          - math [ref=f8e1259]:
+                            - generic [ref=f8e1261]:
+                              - generic [ref=f8e1262]: "n"
+                              - generic [ref=f8e1263]: =
+                              - generic [ref=f8e1264]: "6"
+                          - generic [ref=f8e1265]:
+                            - generic [ref=f8e1266]: n =
+                            - generic [ref=f8e1267]: "6"
+                      - text: ","
+                      - math "mask = 1" [ref=f8e1268]:
+                        - generic [ref=f8e1269]:
+                          - math [ref=f8e1271]:
+                            - generic [ref=f8e1273]:
+                              - generic [ref=f8e1274]: m
+                              - generic [ref=f8e1275]: a
+                              - generic [ref=f8e1276]: s
+                              - generic [ref=f8e1277]: k
+                              - generic [ref=f8e1278]: =
+                              - generic [ref=f8e1279]: "1"
+                          - generic [ref=f8e1280]:
+                            - generic [ref=f8e1281]: mask =
+                            - generic [ref=f8e1282]: "1"
+                      - text: ","
+                      - math "count = 0" [ref=f8e1283]:
+                        - generic [ref=f8e1284]:
+                          - math [ref=f8e1286]:
+                            - generic [ref=f8e1288]:
+                              - generic [ref=f8e1289]: c
+                              - generic [ref=f8e1290]: o
+                              - generic [ref=f8e1291]: u
+                              - generic [ref=f8e1292]: "n"
+                              - generic [ref=f8e1293]: t
+                              - generic [ref=f8e1294]: =
+                              - generic [ref=f8e1295]: "0"
+                          - generic [ref=f8e1296]:
+                            - generic [ref=f8e1297]: count =
+                            - generic [ref=f8e1298]: "0"
+                    - paragraph [ref=f8e1299]:
+                      - generic [ref=f8e1304]: DECLARE/SET lines run before the loop.
+                - listitem [ref=f8e1305]:
+                  - generic [ref=f8e1306]: "2"
+                  - generic [ref=f8e1307]:
+                    - paragraph [ref=f8e1308]:
+                      - text: "Iteration 1:"
+                      - math "n \\& mask = 110 \\& 001 = 000 = 0 \\neq 0" [ref=f8e1309]:
+                        - generic [ref=f8e1310]:
+                          - math [ref=f8e1312]:
+                            - generic [ref=f8e1314]:
+                              - generic [ref=f8e1315]: "n"
+                              - generic [ref=f8e1316]: "&"
+                              - generic [ref=f8e1317]: m
+                              - generic [ref=f8e1318]: a
+                              - generic [ref=f8e1319]: s
+                              - generic [ref=f8e1320]: k
+                              - generic [ref=f8e1321]: =
+                              - generic [ref=f8e1322]: "110"
+                              - generic [ref=f8e1323]: "&"
+                              - generic [ref=f8e1324]: "001"
+                              - generic [ref=f8e1325]: =
+                              - generic [ref=f8e1326]: "000"
+                              - generic [ref=f8e1327]: =
+                              - generic [ref=f8e1328]: "0"
+                              - generic [ref=f8e1329]: ≠
+                              - generic [ref=f8e1330]: "0"
+                          - generic [ref=f8e1331]:
+                            - generic [ref=f8e1332]: n&mask =
+                            - generic [ref=f8e1333]: 110&001 =
+                            - generic [ref=f8e1334]: 000 =
+                            - generic [ref=f8e1335]:
+                              - text: "0"
+                              - generic [ref=f8e1336]:
+                                - generic [ref=f8e1337]: 
+                                - text: =
+                            - generic [ref=f8e1339]: "0"
+                      - text: → skip;
+                      - math "mask = 1 \\ll 1 = 2" [ref=f8e1340]:
+                        - generic [ref=f8e1341]:
+                          - math [ref=f8e1343]:
+                            - generic [ref=f8e1345]:
+                              - generic [ref=f8e1346]: m
+                              - generic [ref=f8e1347]: a
+                              - generic [ref=f8e1348]: s
+                              - generic [ref=f8e1349]: k
+                              - generic [ref=f8e1350]: =
+                              - generic [ref=f8e1351]: "1"
+                              - generic [ref=f8e1352]: ≪
+                              - generic [ref=f8e1353]: "1"
+                              - generic [ref=f8e1354]: =
+                              - generic [ref=f8e1355]: "2"
+                          - generic [ref=f8e1356]:
+                            - generic [ref=f8e1357]: mask =
+                            - generic [ref=f8e1358]: 1 ≪
+                            - generic [ref=f8e1359]: 1 =
+                            - generic [ref=f8e1360]: "2"
+                    - paragraph [ref=f8e1361]:
+                      - generic [ref=f8e1366]: Bit 0 of 6 is 0.
+                - listitem [ref=f8e1367]:
+                  - generic [ref=f8e1368]: "3"
+                  - generic [ref=f8e1369]:
+                    - paragraph [ref=f8e1370]:
+                      - text: "Iteration 2:"
+                      - math "110 \\& 010 = 010 = 2 \\neq 0" [ref=f8e1371]:
+                        - generic [ref=f8e1372]:
+                          - math [ref=f8e1374]:
+                            - generic [ref=f8e1376]:
+                              - generic [ref=f8e1377]: "110"
+                              - generic [ref=f8e1378]: "&"
+                              - generic [ref=f8e1379]: "010"
+                              - generic [ref=f8e1380]: =
+                              - generic [ref=f8e1381]: "010"
+                              - generic [ref=f8e1382]: =
+                              - generic [ref=f8e1383]: "2"
+                              - generic [ref=f8e1384]: ≠
+                              - generic [ref=f8e1385]: "0"
+                          - generic [ref=f8e1386]:
+                            - generic [ref=f8e1387]: 110&010 =
+                            - generic [ref=f8e1388]: 010 =
+                            - generic [ref=f8e1389]:
+                              - text: "2"
+                              - generic [ref=f8e1390]:
+                                - generic [ref=f8e1391]: 
+                                - text: =
+                            - generic [ref=f8e1393]: "0"
+                      - text: →
+                      - math "count = 1" [ref=f8e1394]:
+                        - generic [ref=f8e1395]:
+                          - math [ref=f8e1397]:
+                            - generic [ref=f8e1399]:
+                              - generic [ref=f8e1400]: c
+                              - generic [ref=f8e1401]: o
+                              - generic [ref=f8e1402]: u
+                              - generic [ref=f8e1403]: "n"
+                              - generic [ref=f8e1404]: t
+                              - generic [ref=f8e1405]: =
+                              - generic [ref=f8e1406]: "1"
+                          - generic [ref=f8e1407]:
+                            - generic [ref=f8e1408]: count =
+                            - generic [ref=f8e1409]: "1"
+                      - text: ;
+                      - math "mask = 2 \\ll 1 = 4" [ref=f8e1410]:
+                        - generic [ref=f8e1411]:
+                          - math [ref=f8e1413]:
+                            - generic [ref=f8e1415]:
+                              - generic [ref=f8e1416]: m
+                              - generic [ref=f8e1417]: a
+                              - generic [ref=f8e1418]: s
+                              - generic [ref=f8e1419]: k
+                              - generic [ref=f8e1420]: =
+                              - generic [ref=f8e1421]: "2"
+                              - generic [ref=f8e1422]: ≪
+                              - generic [ref=f8e1423]: "1"
+                              - generic [ref=f8e1424]: =
+                              - generic [ref=f8e1425]: "4"
+                          - generic [ref=f8e1426]:
+                            - generic [ref=f8e1427]: mask =
+                            - generic [ref=f8e1428]: 2 ≪
+                            - generic [ref=f8e1429]: 1 =
+                            - generic [ref=f8e1430]: "4"
+                    - paragraph [ref=f8e1431]:
+                      - generic [ref=f8e1436]: Bit 1 is set.
+                - listitem [ref=f8e1437]:
+                  - generic [ref=f8e1438]: "4"
+                  - generic [ref=f8e1439]:
+                    - paragraph [ref=f8e1440]:
+                      - text: "Iteration 3:"
+                      - math "110 \\& 100 = 100 = 4 \\neq 0" [ref=f8e1441]:
+                        - generic [ref=f8e1442]:
+                          - math [ref=f8e1444]:
+                            - generic [ref=f8e1446]:
+                              - generic [ref=f8e1447]: "110"
+                              - generic [ref=f8e1448]: "&"
+                              - generic [ref=f8e1449]: "100"
+                              - generic [ref=f8e1450]: =
+                              - generic [ref=f8e1451]: "100"
+                              - generic [ref=f8e1452]: =
+                              - generic [ref=f8e1453]: "4"
+                              - generic [ref=f8e1454]: ≠
+                              - generic [ref=f8e1455]: "0"
+                          - generic [ref=f8e1456]:
+                            - generic [ref=f8e1457]: 110&100 =
+                            - generic [ref=f8e1458]: 100 =
+                            - generic [ref=f8e1459]:
+                              - text: "4"
+                              - generic [ref=f8e1460]:
+                                - generic [ref=f8e1461]: 
+                                - text: =
+                            - generic [ref=f8e1463]: "0"
+                      - text: →
+                      - math "count = 2" [ref=f8e1464]:
+                        - generic [ref=f8e1465]:
+                          - math [ref=f8e1467]:
+                            - generic [ref=f8e1469]:
+                              - generic [ref=f8e1470]: c
+                              - generic [ref=f8e1471]: o
+                              - generic [ref=f8e1472]: u
+                              - generic [ref=f8e1473]: "n"
+                              - generic [ref=f8e1474]: t
+                              - generic [ref=f8e1475]: =
+                              - generic [ref=f8e1476]: "2"
+                          - generic [ref=f8e1477]:
+                            - generic [ref=f8e1478]: count =
+                            - generic [ref=f8e1479]: "2"
+                      - text: ;
+                      - math "mask = 4 \\ll 1 = 8" [ref=f8e1480]:
+                        - generic [ref=f8e1481]:
+                          - math [ref=f8e1483]:
+                            - generic [ref=f8e1485]:
+                              - generic [ref=f8e1486]: m
+                              - generic [ref=f8e1487]: a
+                              - generic [ref=f8e1488]: s
+                              - generic [ref=f8e1489]: k
+                              - generic [ref=f8e1490]: =
+                              - generic [ref=f8e1491]: "4"
+                              - generic [ref=f8e1492]: ≪
+                              - generic [ref=f8e1493]: "1"
+                              - generic [ref=f8e1494]: =
+                              - generic [ref=f8e1495]: "8"
+                          - generic [ref=f8e1496]:
+                            - generic [ref=f8e1497]: mask =
+                            - generic [ref=f8e1498]: 4 ≪
+                            - generic [ref=f8e1499]: 1 =
+                            - generic [ref=f8e1500]: "8"
+                    - paragraph [ref=f8e1501]:
+                      - generic [ref=f8e1506]: Bit 2 is set.
+                - listitem [ref=f8e1507]:
+                  - generic [ref=f8e1508]: "5"
+                  - paragraph [ref=f8e1510]:
+                    - text: Loop ends (
+                    - math "mask = 8 > n" [ref=f8e1511]:
+                      - generic [ref=f8e1512]:
+                        - math [ref=f8e1514]:
+                          - generic [ref=f8e1516]:
+                            - generic [ref=f8e1517]: m
+                            - generic [ref=f8e1518]: a
+                            - generic [ref=f8e1519]: s
+                            - generic [ref=f8e1520]: k
+                            - generic [ref=f8e1521]: =
+                            - generic [ref=f8e1522]: "8"
+                            - generic [ref=f8e1523]: ">"
+                            - generic [ref=f8e1524]: "n"
+                        - generic [ref=f8e1525]:
+                          - generic [ref=f8e1526]: mask =
+                          - generic [ref=f8e1527]: 8 >
+                          - generic [ref=f8e1528]: "n"
+                    - text: ), PRINT count → 2
+            - generic [ref=f8e1529]:
+              - generic [ref=f8e1530]: Answer
+              - paragraph [ref=f8e1531]: 2 — the number of set bits in 6 (i.e., 110₂)
+          - generic [ref=f8e1532]:
+            - generic [ref=f8e1533]:
+              - generic [ref=f8e1534]: pseudocode
+              - generic [ref=f8e1535]: 13 lines
+              - generic [ref=f8e1536]:
+                - generic "No issues — clean analysis" [ref=f8e1537]: clean
+                - button "Copy" [ref=f8e1539] [cursor=pointer]
+            - generic [ref=f8e1545]:
+              - generic [ref=f8e1546]: "1"
+              - generic [ref=f8e1549]: "2"
+              - generic [ref=f8e1552]: "3"
+              - generic [ref=f8e1555]: "4"
+              - generic [ref=f8e1558]: "5"
+              - generic [ref=f8e1561]: "6"
+              - generic [ref=f8e1564]: "7"
+              - generic [ref=f8e1567]: "8"
+              - generic [ref=f8e1570]: "9"
+              - generic [ref=f8e1573]: "10"
+              - generic [ref=f8e1576]: "11"
+              - generic [ref=f8e1579]: "12"
+              - generic [ref=f8e1582]: "13"
+          - generic [ref=f8e1585]:
+            - generic [ref=f8e1586]:
+              - generic [ref=f8e1587]: python
+              - generic [ref=f8e1588]: 8 lines
+              - button "Copy" [ref=f8e1590] [cursor=pointer]
+            - code [ref=f8e1597]: "n = 6 mask = 1 count = 0 while mask <= n: if (n & mask) != 0: count += 1 mask = mask << 1 print(count)"
+            - generic [ref=f8e1598]:
+              - generic [ref=f8e1599]: Explanation
+              - list [ref=f8e1600]:
+                - listitem [ref=f8e1601]: The equivalent Python — verify your trace by translating to real code.
+        - generic [ref=f8e1602]:
+          - heading "QR Quick revision" [level=2] [ref=f8e1603]:
+            - generic [ref=f8e1604]: QR
+            - text: Quick revision
+          - list [ref=f8e1605]:
+            - listitem [ref=f8e1606]: "Binary ladder: 1, 2, 4, 8, 16, 32, 64, 128."
+            - listitem [ref=f8e1607]:
+              - math "x \\ll k = x \\cdot 2^k" [ref=f8e1608]:
+                - generic [ref=f8e1609]:
+                  - math [ref=f8e1611]:
+                    - generic [ref=f8e1613]:
+                      - generic [ref=f8e1614]: x
+                      - generic [ref=f8e1615]: ≪
+                      - generic [ref=f8e1616]: k
+                      - generic [ref=f8e1617]: =
+                      - generic [ref=f8e1618]: x
+                      - generic [ref=f8e1619]: ⋅
+                      - generic [ref=f8e1620]:
+                        - generic [ref=f8e1621]: "2"
+                        - generic [ref=f8e1622]: k
+                  - generic [ref=f8e1623]:
+                    - generic [ref=f8e1624]: x ≪
+                    - generic [ref=f8e1625]: k =
+                    - generic [ref=f8e1626]: x ⋅
+                    - generic [ref=f8e1628]:
+                      - text: "2"
+                      - generic [ref=f8e1629]: k
+              - text: ;
+              - math "x \\gg k = \\lfloor x / 2^k \\rfloor" [ref=f8e1634]:
+                - generic [ref=f8e1635]:
+                  - math [ref=f8e1637]:
+                    - generic [ref=f8e1639]:
+                      - generic [ref=f8e1640]: x
+                      - generic [ref=f8e1641]: ≫
+                      - generic [ref=f8e1642]: k
+                      - generic [ref=f8e1643]: =
+                      - generic [ref=f8e1644]: ⌊
+                      - generic [ref=f8e1645]: x
+                      - generic [ref=f8e1646]: /
+                      - generic [ref=f8e1647]:
+                        - generic [ref=f8e1648]: "2"
+                        - generic [ref=f8e1649]: k
+                      - generic [ref=f8e1650]: ⌋
+                  - generic [ref=f8e1651]:
+                    - generic [ref=f8e1652]: x ≫
+                    - generic [ref=f8e1653]: k =
+                    - generic [ref=f8e1654]:
+                      - text: ⌊x/
+                      - generic [ref=f8e1655]:
+                        - text: "2"
+                        - generic [ref=f8e1656]: k
+                      - text: ⌋
+              - text: .
+            - listitem [ref=f8e1661]:
+              - text: "XOR properties:"
+              - math "x \\oplus 0 = x" [ref=f8e1662]:
+                - generic [ref=f8e1663]:
+                  - math [ref=f8e1665]:
+                    - generic [ref=f8e1667]:
+                      - generic [ref=f8e1668]: x
+                      - generic [ref=f8e1669]: ⊕
+                      - generic [ref=f8e1670]: "0"
+                      - generic [ref=f8e1671]: =
+                      - generic [ref=f8e1672]: x
+                  - generic [ref=f8e1673]:
+                    - generic [ref=f8e1674]: x ⊕
+                    - generic [ref=f8e1675]: 0 =
+                    - generic [ref=f8e1676]: x
+              - text: ","
+              - math "x \\oplus x = 0" [ref=f8e1677]:
+                - generic [ref=f8e1678]:
+                  - math [ref=f8e1680]:
+                    - generic [ref=f8e1682]:
+                      - generic [ref=f8e1683]: x
+                      - generic [ref=f8e1684]: ⊕
+                      - generic [ref=f8e1685]: x
+                      - generic [ref=f8e1686]: =
+                      - generic [ref=f8e1687]: "0"
+                  - generic [ref=f8e1688]:
+                    - generic [ref=f8e1689]: x ⊕
+                    - generic [ref=f8e1690]: x =
+                    - generic [ref=f8e1691]: "0"
+              - text: ","
+              - math "x \\oplus 1" [ref=f8e1692]:
+                - generic [ref=f8e1693]:
+                  - math [ref=f8e1695]:
+                    - generic [ref=f8e1697]:
+                      - generic [ref=f8e1698]: x
+                      - generic [ref=f8e1699]: ⊕
+                      - generic [ref=f8e1700]: "1"
+                  - generic [ref=f8e1701]:
+                    - generic [ref=f8e1702]: x ⊕
+                    - generic [ref=f8e1703]: "1"
+              - text: flips the last bit.
+            - listitem [ref=f8e1704]: AND with a mask tests bits; OR sets bits; XOR toggles bits.
+            - listitem [ref=f8e1705]: No negative marking — always attempt; elimination first.
+        - generic [ref=f8e1706]:
+          - heading "PQ Practice" [level=2] [ref=f8e1707]:
+            - generic [ref=f8e1708]: PQ
+            - text: Practice
+          - generic [ref=f8e1709]:
+            - generic [ref=f8e1710]:
+              - generic [ref=f8e1711]: Q1
+              - paragraph [ref=f8e1712]: SET x = 15; SET y = x XOR 7; What is y?
+            - generic [ref=f8e1713]:
+              - generic [ref=f8e1714] [cursor=pointer]: A. 6
+              - generic [ref=f8e1715] [cursor=pointer]: B. 8
+              - generic [ref=f8e1716] [cursor=pointer]: C. 9
+              - generic [ref=f8e1717] [cursor=pointer]: D. 12
+        - complementary [ref=f8e1718]:
+          - strong [ref=f8e1724]: Accenture interview note
+          - paragraph [ref=f8e1725]: 2025+ pseudo code questions are calculation-heavy with bitwise operators — no pen/paper allowed, so build binary tables mentally or on the notepad feature.
+        - navigation [ref=f8e1726]:
+          - link "Previous Increment / Decrement" [ref=f8e1727] [cursor=pointer]:
+            - /url: "#/topic/pseudocode/increment-decrement"
+            - generic [ref=f8e1728]: Previous
+            - generic [ref=f8e1729]: Increment / Decrement
+          - link "Next Logical Operators (AND/OR/NOT)" [ref=f8e1730] [cursor=pointer]:
+            - /url: "#/topic/pseudocode/logical-operators"
+            - generic [ref=f8e1731]: Next
+            - generic [ref=f8e1732]: Logical Operators (AND/OR/NOT)
+    - contentinfo [ref=f8e412]:
+      - generic [ref=f8e413]: Accenture Preparation Arena — syllabus researched from 10 sources.
+      - generic [ref=f8e414]: "Math: KaTeX · Pseudocode: PseudoLSP v1.0"

@@ -1,0 +1,566 @@
+{
+  "meta": {
+    "company": "Accenture",
+    "position": "Software Engineer (Associate Software Engineer ASE / Advanced Associate Software Engineer AASE)",
+    "roles_covered": ["Associate Software Engineer (ASE)", "Advanced Associate Software Engineer (AASE)", "Custom Software Engineering"],
+    "assessment_platforms": ["AXIS (Accenture proprietary platform, 2025+ drives)", "CoCubes (legacy/pre-2025 drives)"],
+    "exam_mode": "Online proctored / On-campus computer-lab based (offline labs reported in some 2025 drives)",
+    "marking": "No negative marking across all MCQ sections",
+    "research_date": "2026-08-08",
+    "methodology": "Web research + deep page scraping (Firecrawl, Tavily) + live browser rendering (Playwright) across 9 independent sources: PrepInsta, TalentBattle, Hitbullseye, Unstop, MockStep, CCBP/NxtWave, Payilagam, GeeksforGeeks, Reddit candidate experience",
+    "sources": [
+      {
+        "source": "PrepInsta",
+        "title": "(Updated) Accenture Syllabus 2026",
+        "url": "https://prepinsta.com/accenture/test-pattern-exam/",
+        "captured": "2026-08-08"
+      },
+      {
+        "source": "TalentBattle",
+        "title": "Accenture Latest Syllabus & Pattern 2025",
+        "url": "https://talentbattle.in/accenture/syllabus-pattern",
+        "captured": "2026-08-08"
+      },
+      {
+        "source": "Hitbullseye",
+        "title": "Test Pattern & Selection Procedure of Accenture",
+        "url": "https://cpt.hitbullseye.com/Accenture-Test-Pattern.php",
+        "captured": "2026-08-08"
+      },
+      {
+        "source": "Unstop",
+        "title": "Detailed Exam Syllabus of Accenture: A Guide for Freshers 2026",
+        "url": "https://unstop.com/blog/accenture-syllabus-for-freshers",
+        "captured": "2026-08-08"
+      },
+      {
+        "source": "MockStep",
+        "title": "Complete Accenture Preparation Guide 2026",
+        "url": "https://mockstep.com/companies/accenture",
+        "captured": "2026-08-08"
+      },
+      {
+        "source": "CCBP / NxtWave",
+        "title": "Accenture Coding Questions and Answers",
+        "url": "https://www.ccbp.in/blog/articles/accenture-coding-questions-and-answers",
+        "captured": "2026-08-08"
+      },
+      {
+        "source": "Scribd",
+        "title": "Accenture 2026 Test Pattern Overview (detailed syllabus doc)",
+        "url": "https://www.scribd.com/document/657306368/Accenture-Test-Pattern-Topics",
+        "captured": "2026-08-08"
+      },
+      {
+        "source": "Payilagam",
+        "title": "Accenture Cognitive and Technical Assessment Questions 2026",
+        "url": "https://payilagam.com/blogs/accenture-cognitive-and-technical-questions/",
+        "captured": "2026-08-08"
+      },
+      {
+        "source": "GeeksforGeeks",
+        "title": "Accenture Interview Experience for Associate Software Engineer",
+        "url": "https://www.geeksforgeeks.org/interview-experiences/accenture-interview-experience-for-associate-software-engineer-1",
+        "captured": "2026-08-08"
+      },
+      {
+        "source": "Reddit r/Btechtards",
+        "title": "Accenture On-Campus Assessment 2025 - HUGE Pattern Change (real candidate experience)",
+        "url": "https://www.reddit.com/r/Btechtards/comments/1nqrxka/accenture_oncampus_assessment_2025_huge_pattern/",
+        "captured": "2026-08-08 (rendered via Playwright)"
+      }
+    ]
+  },
+  "recruitment_process_overview": [
+    "Online application & eligibility screening",
+    "Round 1: Behavioral (Psychometric) Assessment + Cognitive Gamified Assessment",
+    "Round 2: Technical Assessment (MCQs) + Coding Assessment",
+    "Round 3: Communication Assessment (non-elimination in most drives)",
+    "Final: Technical Interview + HR Interview (sometimes combined panel)",
+    "Note: All assessment rounds are elimination rounds with sectional cut-offs; coding round is mandatory and its score counts toward final interview"
+  ],
+  "exam_pattern": {
+    "current_2026_axix_pattern": {
+      "total_questions": 125,
+      "total_duration_min": 175,
+      "negative_marking": "None",
+      "sectional_navigation": "Inter-sectional navigation allowed",
+      "rounds": [
+        {
+          "round": 1,
+          "assessment": "Behavioral Assessment (Psychometric)",
+          "questions": 50,
+          "duration_min": 20,
+          "type": "Scenario-based personality questions with Agree/Disagree options",
+          "elimination": true
+        },
+        {
+          "round": 1,
+          "assessment": "Cognitive Assessment (Gamified)",
+          "questions": 3,
+          "duration_min": 20,
+          "type": "Logical brain games / puzzles (replaces old Quant+LR+English)",
+          "elimination": true
+        },
+        {
+          "round": 2,
+          "assessment": "Technical Assessment (MCQs)",
+          "questions": 45,
+          "duration_min": 45,
+          "type": "MCQs distributed 7+10+14+14 across sections",
+          "elimination": true
+        },
+        {
+          "round": 2,
+          "assessment": "Coding Assessment",
+          "questions": 3,
+          "duration_min": 60,
+          "type": "1 DSA problem + 1 SQL query + 1 UI (HTML/CSS/JavaScript) task",
+          "elimination": true
+        },
+        {
+          "round": 3,
+          "assessment": "Communication Assessment",
+          "questions": "20-25 (some drives report 65 in 30 min)",
+          "duration_min": 30,
+          "type": "Reading, Listening, Speaking, Sentence building",
+          "elimination": false
+        }
+      ]
+    },
+    "legacy_pre2025_pattern_cocubes": {
+      "note": "Still used in some drives; replaced in most 2025-2026 drives",
+      "round_1_cognitive_and_technical": {
+        "duration_min": 90,
+        "cognitive_section_50q": {
+          "english_ability": 17,
+          "critical_reasoning_and_problem_solving": 18,
+          "abstract_reasoning": 15
+        },
+        "technical_section_40q": {
+          "common_application_and_ms_office": 12,
+          "pseudo_code": 18,
+          "networking_security_cloud": 10
+        }
+      },
+      "round_2_coding": {
+        "questions": "2-3",
+        "duration_min": 45,
+        "languages": ["C", "C++", "Dot Net", "Java", "Python"]
+      },
+      "round_3_communication": {
+        "questions": 20,
+        "duration_min": 20
+      }
+    },
+    "section_weightage_2026": {
+      "behavioral_and_cognitive": "25%",
+      "technical_mcqs": "35%",
+      "coding_assessment": "25%",
+      "communication_assessment": "15%"
+    }
+  },
+  "syllabus_by_section": [
+    {
+      "section": "1. Behavioral Assessment (Psychometric)",
+      "stage": "Round 1",
+      "status": "Current 2026 pattern",
+      "description": "Personality/behavioral evaluation. No technical content. Consistency of answers matters.",
+      "topics": [
+        "Work style and teamwork preferences",
+        "Leadership and initiative scenarios",
+        "Agree/Disagree scenario-based personality questions",
+        "Stress and pressure handling scenarios",
+        "Ethics and integrity scenarios",
+        "Learning and adaptability preferences"
+      ]
+    },
+    {
+      "section": "2. Cognitive Assessment (Gamified)",
+      "stage": "Round 1",
+      "status": "Current 2026 pattern",
+      "description": "Series of brain games replacing the traditional Quantitative Aptitude / Logical Reasoning / English sections. Evaluates logical and problem-solving ability in real time.",
+      "topics": [
+        "Memory-based games (recall sequences/patterns)",
+        "Quick-fire mental math games (speed arithmetic)",
+        "Grid puzzles - pathfinding in minimum steps",
+        "Pattern recognition puzzles",
+        "Logical sequencing puzzles"
+      ]
+    },
+    {
+      "section": "3. English Ability (Verbal)",
+      "stage": "Round 1",
+      "status": "LEGACY (marked 'Not Asked Anymore' in the 2026 gamified pattern; still relevant for drives using the legacy pattern)",
+      "description": "17 questions in legacy pattern. Tests grammar, vocabulary, comprehension.",
+      "topics": [
+        "Sentence Correction",
+        "Prepositions",
+        "Grammar",
+        "Reading Comprehension",
+        "Synonyms & Antonyms",
+        "Idioms and Phrases",
+        "Speech and Tenses (Active/Passive Voice, Tense usage)",
+        "Articles",
+        "Sentence Selection",
+        "Spotting Errors",
+        "Sentence Arrangement / Para Jumbles",
+        "Fill in the blanks / Sentence Completion",
+        "Sentence Improvement",
+        "Vocabulary"
+      ],
+      "question_distribution_legacy": {
+        "synonyms_and_antonyms": "3-4",
+        "error_detection_sentence_correction": "3-4",
+        "para_jumbles": "2",
+        "reading_comprehension": "3",
+        "sentence_completion_fill_blanks": "2-3",
+        "sentence_improvement": "2-3"
+      }
+    },
+    {
+      "section": "4. Critical Reasoning & Problem Solving",
+      "stage": "Round 1",
+      "status": "LEGACY (18 questions in legacy pattern; replaced by gamified cognitive in 2026)",
+      "topics": [
+        "Arrangements (Linear/Circular/Data arrangements)",
+        "Blood Relations",
+        "Statement & Conclusions",
+        "Coding-Decoding",
+        "Agree-Disagree Psychometric",
+        "Analogies",
+        "Inferred Meaning",
+        "Logical Sequence",
+        "Data Sufficiency",
+        "Syllogisms",
+        "Argument & Assumption",
+        "Flow charts (critical reasoning type)"
+      ],
+      "question_distribution_legacy": {
+        "data_arrangements": "7-8",
+        "flow_chart": "2-3",
+        "data_sufficiency": "1-2",
+        "argument_and_assumption": "2-3",
+        "syllogisms": "2-3",
+        "statement_conclusion": "2-3"
+      }
+    },
+    {
+      "section": "5. Abstract Reasoning",
+      "stage": "Round 1",
+      "status": "LEGACY (15 questions in legacy pattern; replaced by gamified cognitive in 2026)",
+      "topics": [
+        "Visual Reasoning",
+        "Flowcharts - Visual Reasoning - Data Interpretation",
+        "Directional Sense",
+        "Seating Arrangement",
+        "Number & Letter Series",
+        "Odd Man Out",
+        "Analogies (abstract)",
+        "Coding-Decoding"
+      ],
+      "question_distribution_legacy": {
+        "number_and_letter_series": "3-4",
+        "odd_man_out": "2-3",
+        "analogies": "2-3",
+        "coding_and_decoding": "3-4",
+        "visual_reasoning": "4-5"
+      }
+    },
+    {
+      "section": "6. Quantitative Aptitude (Numerical Ability)",
+      "stage": "Round 1",
+      "status": "LEGACY - DROPPED from the 2025+ pattern (candidates reported 'no Quant' in the new technical round); still appears in some drives and in candidate prep material",
+      "description": "Numerical speed and accuracy. Moderate difficulty, no negative marking.",
+      "topics": [
+        "Percentages",
+        "Profit & Loss",
+        "Ratio & Proportion",
+        "Averages",
+        "Speed, Time & Distance",
+        "Algebra",
+        "Geometry",
+        "Basic Arithmetic",
+        "Data Interpretation (charts and tables)",
+        "Probability",
+        "Permutations & Combinations",
+        "Number-based problems",
+        "Work & Time",
+        "Simple & Compound Interest"
+      ],
+      "mark_weightage": "20-25% when present"
+    },
+    {
+      "section": "7. Common Applications & MS Office",
+      "stage": "Round 2 Technical (MCQs)",
+      "status": "Current - both patterns",
+      "description": "12 questions in legacy pattern; 0-8 in topic-wise analysis. Tests practical software literacy.",
+      "topics": [
+        "MS Word: creating, editing, saving and printing text documents",
+        "MS Word: font and paragraph formatting",
+        "MS Word: simple character formatting",
+        "MS Word: inserting tables, smart art, page breaks",
+        "MS Word: lists and styles",
+        "MS Word: mail merge",
+        "MS Word: spelling and grammar check",
+        "MS Word: document properties",
+        "MS Excel: spreadsheet basics (create, edit, save, print)",
+        "MS Excel: working with functions & formulas",
+        "MS Excel: working with images",
+        "MS Excel: modifying worksheets with color & autoformats",
+        "MS Excel: graphically representing data - charts & graphs",
+        "MS Excel: data forms, data entry",
+        "MS Excel: data menu, subtotal, filtering data",
+        "MS Excel: formatting worksheets",
+        "MS Excel: securing & protecting spreadsheets",
+        "MS PowerPoint: opening, viewing, creating and printing slides",
+        "MS PowerPoint: applying auto layouts",
+        "MS PowerPoint: custom animation",
+        "MS PowerPoint: slide transitions",
+        "MS PowerPoint: charts & graphs",
+        "MS PowerPoint: professional presentation creation",
+        "MS Outlook basics",
+        "Browser fundamentals",
+        "Shortcut keys",
+        "Command prompt basics",
+        "Working flow of keys"
+      ]
+    },
+    {
+      "section": "8. Pseudo Code",
+      "stage": "Round 2 Technical (MCQs)",
+      "status": "Current - both patterns (HIGH priority; 0-5 questions, high difficulty per PrepInsta analysis)",
+      "description": "Trace and predict output of pseudocode. 2025+ drives report heavy bit manipulation and bitwise operations, calculation-heavy, NO pen/paper allowed.",
+      "topics": [
+        "Sequence (basic statement execution)",
+        "While loops",
+        "Repeat-until loops",
+        "For loops",
+        "If-then-else conditional statements",
+        "Case/Switch constructs",
+        "Programming fundamentals",
+        "Looping concepts",
+        "Arrays",
+        "Recursion",
+        "Functions",
+        "Bitwise operators (AND, OR, XOR, shifts) - HIGH FREQUENCY",
+        "Increment & Decrement operators",
+        "Conditional statements",
+        "Basics of Data Structures"
+      ]
+    },
+    {
+      "section": "9. Networking, Security & Cloud",
+      "stage": "Round 2 Technical (MCQs)",
+      "status": "Current - both patterns (10 questions legacy; HIGH priority in 2026)",
+      "topics": [
+        "Basics of Networking",
+        "Data and Computer Communication Networks",
+        "OSI model (layers - routing/network layer etc.)",
+        "TCP/IP protocols",
+        "Subnetting",
+        "Mobile & Wireless Networks",
+        "Network Security",
+        "Database Security",
+        "Software Security",
+        "Cryptography and Network Security (encryption standards & algorithms)",
+        "Biometric Security",
+        "Network security devices",
+        "Attack types (cyber attacks)",
+        "Firewalls",
+        "Fundamentals of Cloud Computing",
+        "Client-server architecture",
+        "Cloud data centers",
+        "Cloud service providers",
+        "Cloud service platforms (AWS, Azure, etc.)",
+        "DevOps scenario questions (reported in 2025 drives)"
+      ]
+    },
+    {
+      "section": "10. Core CS Subjects (reported in 2025+ technical round)",
+      "stage": "Round 2 Technical (MCQs)",
+      "status": "Current - introduced/emphasized in 2025+ drives",
+      "description": "2025 candidate reports: 'Python OOPs, Java OOPs, JavaScript frontend questions' + technical MCQs on OOPs, DBMS, OS, CN, SQL. MockStep lists these as high-priority.",
+      "topics": [
+        "Object-Oriented Programming (OOPs) - Python and Java focused",
+        "DBMS & SQL",
+        "Operating Systems",
+        "Computer Networks",
+        "Cloud Computing Fundamentals",
+        "JavaScript / frontend fundamentals (HTML, CSS, JS)",
+        "Computer Fundamentals (0-5 questions per PrepInsta topic-wise analysis)",
+        "Scenario-based technical problem solving"
+      ]
+    },
+    {
+      "section": "11. Coding Assessment",
+      "stage": "Round 2 Coding",
+      "status": "Current - pattern changed from 2 questions to 3 questions (DSA + SQL + UI)",
+      "languages_allowed": ["C", "C++", "Java", "Python", "JavaScript", "HTML/CSS", "Dot Net (legacy)"],
+      "description": "Mandatory elimination round; score counts toward final interview. Graded on sample + hidden test cases. Clearing = passing all test cases on at least one problem.",
+      "current_3_problem_structure": [
+        {
+          "problem": "1. DSA problem",
+          "typical_level": "Easy to Medium",
+          "examples": "Array-based question (e.g. Rat Count House, Valid Password, Large-Small Sum, Array Rotation)"
+        },
+        {
+          "problem": "2. SQL query",
+          "typical_level": "Medium",
+          "examples": "Query involving JOINs on 2-3 tables/schemas"
+        },
+        {
+          "problem": "3. UI task (HTML/CSS/JavaScript)",
+          "typical_level": "Easy",
+          "examples": "Create colored boxes or a basic UI element"
+        }
+      ],
+      "syllabus_topics": [
+        "Arrays",
+        "Strings",
+        "Searching and Sorting",
+        "Recursion",
+        "Hashing",
+        "Linked Lists",
+        "Stacks and Queues",
+        "Trees and Graphs",
+        "Dynamic Programming",
+        "Greedy Algorithms",
+        "Mathematical and Logical Problems",
+        "Time and Space Complexity"
+      ],
+      "recurring_question_patterns": [
+        "Array Rotation",
+        "Large-Small Sum",
+        "Anagram Check",
+        "Merge Sorted Arrays",
+        "Equilibrium Point",
+        "Maximum Product Pair",
+        "Longest Unique Substring",
+        "Prime Summation / Prime Numbers",
+        "Chocolate Distribution Problem",
+        "Palindromic Linked List",
+        "String Manipulation",
+        "Binary Search",
+        "Fibonacci Variations",
+        "Palindrome Detection",
+        "Character Frequency Count",
+        "Missing Number",
+        "Second Largest Element",
+        "Duplicate Detection (Hashing)",
+        "Two-Pointer Techniques"
+      ],
+      "topic_to_question_mapping": {
+        "Arrays": ["Array Rotation", "Large-Small Sum", "Unique Elements"],
+        "Strings": ["Anagram Check", "Palindrome Detection", "Character Frequency"],
+        "Searching & Sorting": ["Binary Search", "Merge Sorted Arrays", "Sorting-Based Problems"],
+        "Mathematical Logic": ["Prime Numbers", "Factorial Variations", "Number Series"],
+        "Hashing": ["Duplicate Detection", "Frequency Counting"],
+        "Linked Lists": ["Reversal", "Palindrome Linked List"],
+        "Recursion": ["Pattern Generation", "Recursive Computations"]
+      },
+      "difficulty_levels": {
+        "beginner": "Loops, conditionals, basic functions, number base conversion, logic/math warm-ups",
+        "medium": "DS fundamentals + sorting/searching/recursion; may include DP and backtracking",
+        "hard": "Complex algorithms, system design, OOP - less common, for advanced roles or tie-breakers"
+      },
+      "rules_and_marking": [
+        "2-3 questions in 45-60 minutes (varies by drive)",
+        "Scored by number of test cases passed",
+        "Clear = pass all test cases on at least one question",
+        "Partial credit for some test cases on another question",
+        "Write entire code from scratch (no pre-written code)",
+        "Compile/run/debug allowed; errors shown",
+        "No negative marking",
+        "Only standard libraries allowed",
+        "Plagiarism leads to disqualification",
+        "No online resources allowed"
+      ]
+    },
+    {
+      "section": "12. Communication Assessment",
+      "stage": "Round 3",
+      "status": "Current - generally NOT an elimination round",
+      "description": "Tests English communication: sentence mastery, vocabulary, fluency, pronunciation. In 2025+ drives: 65 questions in 30 minutes.",
+      "topics": [
+        "Reading (8 questions per legacy breakdown)",
+        "Listening / Repeat (16 questions)",
+        "Q&A (24 questions)",
+        "Sentence Jumble / Sentence Building (10 questions)",
+        "Story Telling (3 questions)",
+        "Speaking (2 questions)",
+        "Sentence Mastery",
+        "Vocabulary",
+        "Fluency",
+        "Pronunciation",
+        "Listening comprehension"
+      ]
+    }
+  ],
+  "interview_rounds": {
+    "technical_interview": {
+      "duration": "45-60 min",
+      "focus": [
+        "DBMS, OOPs, Networking core subjects",
+        "Coding logic and problem-solving approach",
+        "Final year project discussion (name, role, languages, contribution, issues faced)",
+        "Preferred programming language (Java/C++/Python) in depth",
+        "Basic SQL",
+        "Data model design",
+        "Operating systems"
+      ]
+    },
+    "hr_interview": {
+      "focus": [
+        "Introduction and communication skills",
+        "Strengths and weaknesses",
+        "Career goals and salary expectations",
+        "Relocation availability across India offices",
+        "Willingness to work in any business unit/service line",
+        "Extra-curricular achievements (sports, music, etc.)",
+        "Cultural fit and leadership skills"
+      ]
+    }
+  },
+  "high_frequency_topics_2026": [
+    "Pseudocode with Bitwise Operators (HIGH)",
+    "DBMS & SQL (HIGH)",
+    "Object-Oriented Programming (HIGH)",
+    "Computer Networks (HIGH)",
+    "Cloud Computing Fundamentals (HIGH)",
+    "MS Office (MEDIUM-HIGH)",
+    "JavaScript / Frontend basics (NEW, 2025+)",
+    "Cybersecurity scenario questions (NEW emphasis, 2025+)",
+    "Python OOPs and Java OOPs (NEW emphasis, 2025+)"
+  ],
+  "eligibility_criteria": {
+    "degrees": ["B.E/B.Tech", "M.E/M.Tech", "MCA", "M.Sc", "BCA", "B.Sc", "MS"],
+    "batches": ["2024", "2025", "2026"],
+    "academic_criteria": "Minimum 60% aggregate (or 6.0 CGPA) from Class 10 through graduation",
+    "backlogs": "No active backlogs at application or onboarding",
+    "education_gap": "Up to 24 months acceptable with valid documentation",
+    "work_experience": "Freshers up to 1-2 years",
+    "course_type": "Full-time regular degrees only (no distance/part-time/correspondence)",
+    "reapplication_wait": "Must not have attempted Accenture assessment in the last 3-6 months"
+  },
+  "ctc": {
+    "ASE": "4.50 LPA (UG and PG)",
+    "AASE": "6.50 LPA (UG and PG)"
+  },
+  "candidate_insights_2025_drive": {
+    "removed_sections": ["Quantitative Aptitude", "Logical Reasoning", "English Ability (as standalone sections)"],
+    "emphasized_sections": ["Pseudo Code with bit manipulation (calculation-heavy, no pen/paper)", "MS Office", "Cloud", "Computer Networks", "Cybersecurity (scenario-based)", "Python OOPs", "Java OOPs", "JavaScript frontend"],
+    "coding_round_change": "From 2 questions to 3: DSA (array) + SQL (JOINs on 2-3 tables) + JS frontend (UI element)",
+    "exam_environment": "Conducted offline in campus computer labs (anti-cheating) in reported drives",
+    "tip": "Prepare languages beyond C/C++: Python, Java, JS; practice mental bitwise tracing; revise SQL JOINs and basic HTML/CSS/JS"
+  },
+  "preparation_notes": [
+    "No negative marking - attempt all questions",
+    "Sectional cut-offs apply; each round is elimination-based",
+    "Pseudocode sectional cut-off failure blocks the coding round",
+    "Practice previous-year questions: patterns repeat (Large-Small Sum, Array Rotation, Anagram, Binary Search)",
+    "Mock tests after basic prep; review mistakes",
+    "Consistency matters in the behavioral round",
+    "Revision of networking, cloud basics and OOP fundamentals is high-value"
+  ]
+}
