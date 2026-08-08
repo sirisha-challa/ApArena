@@ -416,6 +416,36 @@
       ]
     },
     {
+      "id": "verbal-ability",
+      "order": 3.5,
+      "round": "Round 1",
+      "name": "Verbal Ability",
+      "short": "Verbal",
+      "status": "outline",
+      "icon": "bulb",
+      "questions": 15,
+      "duration": "",
+      "description": "Core verbal reasoning — analogies and coding-decoding. Uploaded in the Verbal Bank; topics open there with Learn, Formulas, Practice and MCQ tabs.",
+      "topics": [
+        {
+          "id": "analogies",
+          "title": "Analogies",
+          "status": "complete",
+          "bank": "Verbal Bank",
+          "bankTopicId": "analogies",
+          "bankUrl": "../verbal/#/topic/analogies"
+        },
+        {
+          "id": "coding-decoding",
+          "title": "Coding-Decoding",
+          "status": "complete",
+          "bank": "Verbal Bank",
+          "bankTopicId": "coding-decoding",
+          "bankUrl": "../verbal/#/topic/coding-decoding"
+        }
+      ]
+    },
+    {
       "id": "critical-reasoning",
       "order": 4,
       "round": "Round 1",
@@ -583,6 +613,68 @@
           "title": "Series Transformations",
           "status": "pending",
           "content": null
+        }
+      ]
+    },
+    {
+      "id": "quantitative",
+      "order": 6,
+      "round": "Round 1",
+      "name": "Quantitative Aptitude",
+      "short": "Quantitative",
+      "status": "outline",
+      "icon": "calc",
+      "questions": 18,
+      "duration": "",
+      "description": "Classic aptitude math — percentages, ratios, time & work, number theory. Every topic is uploaded in the Aptitude Bank and opens there with Learn, Formulas, Practice and MCQ tabs.",
+      "topics": [
+        {
+          "id": "number-system",
+          "title": "Number System",
+          "status": "complete",
+          "bank": "Aptitude Bank",
+          "bankTopicId": "number-system",
+          "bankUrl": "../aptitude/#/topic/number-system"
+        },
+        {
+          "id": "simplification",
+          "title": "Simplification & Approximation",
+          "status": "complete",
+          "bank": "Aptitude Bank",
+          "bankTopicId": "simplification",
+          "bankUrl": "../aptitude/#/topic/simplification"
+        },
+        {
+          "id": "percentages",
+          "title": "Percentages",
+          "status": "complete",
+          "bank": "Aptitude Bank",
+          "bankTopicId": "percentages",
+          "bankUrl": "../aptitude/#/topic/percentages"
+        },
+        {
+          "id": "work-and-time",
+          "title": "Work and Time",
+          "status": "complete",
+          "bank": "Aptitude Bank",
+          "bankTopicId": "work-and-time",
+          "bankUrl": "../aptitude/#/topic/work-and-time"
+        },
+        {
+          "id": "profit-and-loss",
+          "title": "Profit and Loss",
+          "status": "complete",
+          "bank": "Aptitude Bank",
+          "bankTopicId": "profit-and-loss",
+          "bankUrl": "../aptitude/#/topic/profit-and-loss"
+        },
+        {
+          "id": "ratio-and-proportion",
+          "title": "Ratio & Proportion",
+          "status": "complete",
+          "bank": "Aptitude Bank",
+          "bankTopicId": "ratio-and-proportion",
+          "bankUrl": "../aptitude/#/topic/ratio-and-proportion"
         }
       ]
     },

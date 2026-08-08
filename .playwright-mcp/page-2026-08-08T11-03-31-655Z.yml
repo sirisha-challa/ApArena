@@ -1,0 +1,319 @@
+- generic [ref=e2]:
+  - complementary "Primary" [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]: A
+      - generic [ref=e6]:
+        - strong [ref=e7]: Accenture Arena
+        - text: ASE · AASE Prep
+    - navigation [ref=e8]:
+      - paragraph [ref=e9]: Main
+      - link "Dashboard" [ref=e10] [cursor=pointer]:
+        - /url: "#/"
+      - paragraph [ref=e14]: Syllabus
+      - generic "Syllabus sections" [ref=e15]:
+        - link "Behavioral Assessment" [ref=e16] [cursor=pointer]:
+          - /url: "#/section/behavioral"
+        - link "Gamified Cognitive Assessment" [ref=e21] [cursor=pointer]:
+          - /url: "#/section/cognitive"
+        - link "English Ability" [ref=e25] [cursor=pointer]:
+          - /url: "#/section/english"
+        - link "Verbal Ability" [ref=e29] [cursor=pointer]:
+          - /url: "#/section/verbal-ability"
+        - link "Critical Reasoning" [ref=e33] [cursor=pointer]:
+          - /url: "#/section/critical-reasoning"
+        - link "Abstract Reasoning" [ref=e45] [cursor=pointer]:
+          - /url: "#/section/abstract-reasoning"
+        - link "Quantitative Aptitude" [ref=e51] [cursor=pointer]:
+          - /url: "#/section/quantitative"
+        - link "MS Office & Common Applications" [ref=e55] [cursor=pointer]:
+          - /url: "#/section/ms-office"
+        - link "Pseudo Code" [ref=e61] [cursor=pointer]:
+          - /url: "#/section/pseudocode"
+        - link "Network, Security & Cloud" [ref=e67] [cursor=pointer]:
+          - /url: "#/section/network-security-cloud"
+        - link "Core CS Fundamentals" [ref=e71] [cursor=pointer]:
+          - /url: "#/section/core-cs"
+        - link "Coding Assessment" [ref=e76] [cursor=pointer]:
+          - /url: "#/section/coding"
+        - link "Communication Assessment" [ref=e80] [cursor=pointer]:
+          - /url: "#/section/communication"
+      - paragraph [ref=e85]: Other
+      - link "Aptitude Bank" [ref=e86] [cursor=pointer]:
+        - /url: ../aptitude/
+    - generic [ref=e91]: Syllabus compiled from 10 sources · updated 2026
+  - generic [ref=e92]:
+    - banner [ref=e93]:
+      - generic [ref=e94]:
+        - strong [ref=e95]: Accenture
+        - text: Preparation Arena
+      - generic [ref=e96]:
+        - link "Aptitude Bank" [ref=e97] [cursor=pointer]:
+          - /url: ../aptitude/
+        - button "Toggle theme" [ref=e98] [cursor=pointer]
+    - main [ref=e105]:
+      - generic [ref=e106]:
+        - paragraph [ref=e107]: ACCENTURE · ASE / AASE · Accenture
+        - heading "Accenture Preparation Arena" [level=1] [ref=e108]
+        - paragraph [ref=e109]: ASE / AASE Software Engineer — Recruitment Test Syllabus
+        - generic [ref=e110]:
+          - generic [ref=e111]: "Eligibility: BE/BTech/ME/MTech/MCA/MSc/BCA/BSc/MS · 60% aggregate · batches 2024–2026"
+          - generic [ref=e112]: "CTC: ASE 4.50 LPA · AASE 6.50 LPA"
+          - generic [ref=e113]: No negative marking
+          - generic [ref=e114]: All rounds eliminatory
+        - generic [ref=e115]:
+          - link "Start with Pseudo Code" [ref=e116] [cursor=pointer]:
+            - /url: "#/section/pseudocode"
+          - link "Full syllabus" [ref=e117] [cursor=pointer]:
+            - /url: "#syllabus-grid"
+      - generic [ref=e118]:
+        - generic [ref=e119]:
+          - generic [ref=e120]: "13"
+          - generic [ref=e121]: Sections
+          - generic [ref=e122]: exam rounds + technical
+        - generic [ref=e123]:
+          - generic [ref=e124]: "121"
+          - generic [ref=e125]: Topics
+          - generic [ref=e126]: syllabus items
+        - generic [ref=e127]:
+          - generic [ref=e128]: "14"
+          - generic [ref=e129]: Ready
+          - generic [ref=e130]: content loaded so far
+        - generic [ref=e131]:
+          - generic [ref=e132]: "0"
+          - generic [ref=e133]: Reviewed
+          - generic [ref=e134]: by you
+        - generic [ref=e135]:
+          - generic [ref=e136]: "5"
+          - generic [ref=e137]: Rounds
+          - generic [ref=e138]: behavioral · coding · comm
+      - generic [ref=e139]:
+        - generic [ref=e140]:
+          - heading "Exam pattern 2026 AXIS Pattern" [level=2] [ref=e141]
+          - paragraph [ref=e142]: "Legacy CoCubes pattern: 90 min, sectional cut-offs, no negative marking"
+        - generic [ref=e143]:
+          - generic [ref=e144]:
+            - generic [ref=e145]: R1
+            - heading "Behavioral Assessment" [level=3] [ref=e146]
+            - paragraph [ref=e147]: 50 questions · 20 min
+            - paragraph [ref=e148]: Personality & work-style; no elimination
+          - generic [ref=e149]:
+            - generic [ref=e150]: R2
+            - heading "Gamified Cognitive Assessment" [level=3] [ref=e151]
+            - paragraph [ref=e152]: 3 questions · 20 min
+            - paragraph [ref=e153]: Game-based memory, quick math, pattern tasks
+          - generic [ref=e154]:
+            - generic [ref=e155]: R3
+            - heading "Technical MCQ Assessment" [level=3] [ref=e156]
+            - paragraph [ref=e157]: 45 questions · 45 min
+            - paragraph [ref=e158]: Pseudo code, core CS, networking, MS Office, apti
+          - generic [ref=e159]:
+            - generic [ref=e160]: R4
+            - heading "Coding Assessment" [level=3] [ref=e161]
+            - paragraph [ref=e162]: 3 questions · 60 min
+            - paragraph [ref=e163]: DSA + SQL JOINs + UI task
+          - generic [ref=e164]:
+            - generic [ref=e165]: R5
+            - heading "Communication Assessment" [level=3] [ref=e166]
+            - paragraph [ref=e167]: 1 questions · 30 min
+            - paragraph [ref=e168]: Speaking task (AI scored)
+      - generic [ref=e169]:
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - heading "Syllabus sections" [level=2] [ref=e172]
+            - paragraph [ref=e173]: Content is uploaded section by section — every topic renders with premium math, pseudocode and step-by-step explanations.
+          - searchbox "Filter syllabus" [ref=e175]
+        - generic [ref=e176]:
+          - link "Round 1 50 Q · 20 min Behavioral Assessment Personality and work-style questionnaire. 50 questions in 20 minutes. No elimination — used for culture-fit profiling. Work Style & Teamwork Leadership & Ownership Stress & Pressure Handling Workplace Ethics & Integrity Adaptability & Learning Agility +3 more 0/8 reviewed" [ref=e177] [cursor=pointer]:
+            - /url: "#/section/behavioral"
+            - generic [ref=e183]:
+              - generic [ref=e184]: Round 1
+              - generic [ref=e185]: 50 Q · 20 min
+            - heading "Behavioral Assessment" [level=3] [ref=e186]
+            - paragraph [ref=e187]: Personality and work-style questionnaire. 50 questions in 20 minutes. No elimination — used for culture-fit profiling.
+            - generic [ref=e188]:
+              - generic [ref=e189]: Work Style & Teamwork
+              - generic [ref=e190]: Leadership & Ownership
+              - generic [ref=e191]: Stress & Pressure Handling
+              - generic [ref=e192]: Workplace Ethics & Integrity
+              - generic [ref=e193]: Adaptability & Learning Agility
+              - generic [ref=e194]: +3 more
+            - generic [ref=e195]: 0/8 reviewed
+          - 'link "Round 1 3 Q · 20 min Gamified Cognitive Assessment 3 game-based tasks in 20 minutes: memory, quick mental math, spatial reasoning. Speed and accuracy under pressure. Memory / Observation Task Quick Mental Arithmetic Pattern & Grid Navigation Task Spatial & Shape Reasoning Sequence Recall Games +1 more 0/6 reviewed" [ref=e198] [cursor=pointer]':
+            - /url: "#/section/cognitive"
+            - generic [ref=e203]:
+              - generic [ref=e204]: Round 1
+              - generic [ref=e205]: 3 Q · 20 min
+            - heading "Gamified Cognitive Assessment" [level=3] [ref=e206]
+            - paragraph [ref=e207]: "3 game-based tasks in 20 minutes: memory, quick mental math, spatial reasoning. Speed and accuracy under pressure."
+            - generic [ref=e208]:
+              - generic [ref=e209]: Memory / Observation Task
+              - generic [ref=e210]: Quick Mental Arithmetic
+              - generic [ref=e211]: Pattern & Grid Navigation Task
+              - generic [ref=e212]: Spatial & Shape Reasoning
+              - generic [ref=e213]: Sequence Recall Games
+              - generic [ref=e214]: +1 more
+            - generic [ref=e215]: 0/6 reviewed
+          - link "Round 1 17 Q English Ability Legacy round (17 Q). Grammar, vocabulary, reading comprehension, sentence arrangement. Sectional cut-off applies. Synonyms Antonyms Sentence Arrangement (Para Jumble) Error Detection & Grammar Fill in the Blanks +8 more 0/13 reviewed" [ref=e218] [cursor=pointer]:
+            - /url: "#/section/english"
+            - generic [ref=e223]:
+              - generic [ref=e224]: Round 1
+              - generic [ref=e225]: 17 Q
+            - heading "English Ability" [level=3] [ref=e226]
+            - paragraph [ref=e227]: Legacy round (17 Q). Grammar, vocabulary, reading comprehension, sentence arrangement. Sectional cut-off applies.
+            - generic [ref=e228]:
+              - generic [ref=e229]: Synonyms
+              - generic [ref=e230]: Antonyms
+              - generic [ref=e231]: Sentence Arrangement (Para Jumble)
+              - generic [ref=e232]: Error Detection & Grammar
+              - generic [ref=e233]: Fill in the Blanks
+              - generic [ref=e234]: +8 more
+            - generic [ref=e235]: 0/13 reviewed
+          - link "Round 1 15 Q Verbal Ability Core verbal reasoning — analogies and coding-decoding. Uploaded in the Verbal Bank; topics open there with Learn, Formulas, Practice and MCQ tabs. Analogies Coding-Decoding 0/2 reviewed" [ref=e238] [cursor=pointer]:
+            - /url: "#/section/verbal-ability"
+            - generic [ref=e243]:
+              - generic [ref=e244]: Round 1
+              - generic [ref=e245]: 15 Q
+            - heading "Verbal Ability" [level=3] [ref=e246]
+            - paragraph [ref=e247]: Core verbal reasoning — analogies and coding-decoding. Uploaded in the Verbal Bank; topics open there with Learn, Formulas, Practice and MCQ tabs.
+            - generic [ref=e248]:
+              - generic [ref=e249]: Analogies
+              - generic [ref=e250]: Coding-Decoding
+            - generic [ref=e251]: 0/2 reviewed
+          - link "Round 1 18 Q Critical Reasoning Legacy round (18 Q). Deductive, inductive and verbal reasoning. Logical games with conditions. Deductive Reasoning Inductive Reasoning Abstract Reasoning Analytical Reasoning Syllogisms +10 more 0/15 reviewed" [ref=e254] [cursor=pointer]:
+            - /url: "#/section/critical-reasoning"
+            - generic [ref=e267]:
+              - generic [ref=e268]: Round 1
+              - generic [ref=e269]: 18 Q
+            - heading "Critical Reasoning" [level=3] [ref=e270]
+            - paragraph [ref=e271]: Legacy round (18 Q). Deductive, inductive and verbal reasoning. Logical games with conditions.
+            - generic [ref=e272]:
+              - generic [ref=e273]: Deductive Reasoning
+              - generic [ref=e274]: Inductive Reasoning
+              - generic [ref=e275]: Abstract Reasoning
+              - generic [ref=e276]: Analytical Reasoning
+              - generic [ref=e277]: Syllogisms
+              - generic [ref=e278]: +10 more
+            - generic [ref=e279]: 0/15 reviewed
+          - link "Round 1 15 Q Abstract Reasoning Legacy round (15 Q). Non-verbal pattern matrices, figure series and classification. Figure Series Analogies Odd One Out (Visual) Pattern Matrix Mirror & Water Images +3 more 0/8 reviewed" [ref=e282] [cursor=pointer]:
+            - /url: "#/section/abstract-reasoning"
+            - generic [ref=e289]:
+              - generic [ref=e290]: Round 1
+              - generic [ref=e291]: 15 Q
+            - heading "Abstract Reasoning" [level=3] [ref=e292]
+            - paragraph [ref=e293]: Legacy round (15 Q). Non-verbal pattern matrices, figure series and classification.
+            - generic [ref=e294]:
+              - generic [ref=e295]: Figure Series
+              - generic [ref=e296]: Analogies
+              - generic [ref=e297]: Odd One Out (Visual)
+              - generic [ref=e298]: Pattern Matrix
+              - generic [ref=e299]: Mirror & Water Images
+              - generic [ref=e300]: +3 more
+            - generic [ref=e301]: 0/8 reviewed
+          - link "Round 1 18 Q Quantitative Aptitude Classic aptitude math — percentages, ratios, time & work, number theory. Every topic is uploaded in the Aptitude Bank and opens there with Learn, Formulas, Practice and MCQ tabs. Number System Simplification & Approximation Percentages Work and Time Profit and Loss +1 more 0/6 reviewed" [ref=e304] [cursor=pointer]:
+            - /url: "#/section/quantitative"
+            - generic [ref=e309]:
+              - generic [ref=e310]: Round 1
+              - generic [ref=e311]: 18 Q
+            - heading "Quantitative Aptitude" [level=3] [ref=e312]
+            - paragraph [ref=e313]: Classic aptitude math — percentages, ratios, time & work, number theory. Every topic is uploaded in the Aptitude Bank and opens there with Learn, Formulas, Practice and MCQ tabs.
+            - generic [ref=e314]:
+              - generic [ref=e315]: Number System
+              - generic [ref=e316]: Simplification & Approximation
+              - generic [ref=e317]: Percentages
+              - generic [ref=e318]: Work and Time
+              - generic [ref=e319]: Profit and Loss
+              - generic [ref=e320]: +1 more
+            - generic [ref=e321]: 0/6 reviewed
+          - link "Round 2 12 Q MS Office & Common Applications Technical round (12 Q). Word, Excel, PowerPoint, Outlook, browser and shortcut keys. MS Word MS Excel (Formulas & Functions) MS PowerPoint MS Outlook Internet & Browser Basics +3 more 0/8 reviewed" [ref=e324] [cursor=pointer]:
+            - /url: "#/section/ms-office"
+            - generic [ref=e331]:
+              - generic [ref=e332]: Round 2
+              - generic [ref=e333]: 12 Q
+            - heading "MS Office & Common Applications" [level=3] [ref=e334]
+            - paragraph [ref=e335]: Technical round (12 Q). Word, Excel, PowerPoint, Outlook, browser and shortcut keys.
+            - generic [ref=e336]:
+              - generic [ref=e337]: MS Word
+              - generic [ref=e338]: MS Excel (Formulas & Functions)
+              - generic [ref=e339]: MS PowerPoint
+              - generic [ref=e340]: MS Outlook
+              - generic [ref=e341]: Internet & Browser Basics
+              - generic [ref=e342]: +3 more
+            - generic [ref=e343]: 0/8 reviewed
+          - link "Round 2 18 Q Pseudo Code Core technical round (18 Q). Trace, debug and predict output of pseudocode — heavily bit-manipulation heavy since 2025. Output Tracing (Sequence) While Loop Repeat-Until Loop For Loop (Step variant) If-Then-Else +10 more 0/15 reviewed" [ref=e346] [cursor=pointer]:
+            - /url: "#/section/pseudocode"
+            - generic [ref=e353]:
+              - generic [ref=e354]: Round 2
+              - generic [ref=e355]: 18 Q
+            - heading "Pseudo Code" [level=3] [ref=e356]
+            - paragraph [ref=e357]: Core technical round (18 Q). Trace, debug and predict output of pseudocode — heavily bit-manipulation heavy since 2025.
+            - generic [ref=e358]:
+              - generic [ref=e359]: Output Tracing (Sequence)
+              - generic [ref=e360]: While Loop
+              - generic [ref=e361]: Repeat-Until Loop
+              - generic [ref=e362]: For Loop (Step variant)
+              - generic [ref=e363]: If-Then-Else
+              - generic [ref=e364]: +10 more
+            - generic [ref=e365]: 0/15 reviewed
+          - link "Round 2 10 Q Network, Security & Cloud Technical round (10 Q). Networking fundamentals, security concepts, cloud basics. OSI & TCP/IP Model IP Addressing & Subnetting Protocols (TCP/UDP/HTTP/HTTPS/FTP/SMTP) DNS & DHCP Network Devices (Router/Switch/Hub) +7 more 0/12 reviewed" [ref=e368] [cursor=pointer]:
+            - /url: "#/section/network-security-cloud"
+            - generic [ref=e373]:
+              - generic [ref=e374]: Round 2
+              - generic [ref=e375]: 10 Q
+            - heading "Network, Security & Cloud" [level=3] [ref=e376]
+            - paragraph [ref=e377]: Technical round (10 Q). Networking fundamentals, security concepts, cloud basics.
+            - generic [ref=e378]:
+              - generic [ref=e379]: OSI & TCP/IP Model
+              - generic [ref=e380]: IP Addressing & Subnetting
+              - generic [ref=e381]: Protocols (TCP/UDP/HTTP/HTTPS/FTP/SMTP)
+              - generic [ref=e382]: DNS & DHCP
+              - generic [ref=e383]: Network Devices (Router/Switch/Hub)
+              - generic [ref=e384]: +7 more
+            - generic [ref=e385]: 0/12 reviewed
+          - link "Round 2 25 Q Core CS Fundamentals Technical MCQ round. OOPs, DBMS, SQL, OS and JavaScript fundamentals. OOPs (Abstraction/Inheritance/Polymorphism) DBMS Basics (Keys/ER/ACID) SQL Queries & JOINs Normalization (1NF–3NF) OS Basics (Process/Thread/Memory) +3 more 0/8 reviewed" [ref=e388] [cursor=pointer]:
+            - /url: "#/section/core-cs"
+            - generic [ref=e394]:
+              - generic [ref=e395]: Round 2
+              - generic [ref=e396]: 25 Q
+            - heading "Core CS Fundamentals" [level=3] [ref=e397]
+            - paragraph [ref=e398]: Technical MCQ round. OOPs, DBMS, SQL, OS and JavaScript fundamentals.
+            - generic [ref=e399]:
+              - generic [ref=e400]: OOPs (Abstraction/Inheritance/Polymorphism)
+              - generic [ref=e401]: DBMS Basics (Keys/ER/ACID)
+              - generic [ref=e402]: SQL Queries & JOINs
+              - generic [ref=e403]: Normalization (1NF–3NF)
+              - generic [ref=e404]: OS Basics (Process/Thread/Memory)
+              - generic [ref=e405]: +3 more
+            - generic [ref=e406]: 0/8 reviewed
+          - 'link "Round 2 3 Q · 60 min Coding Assessment 3 questions in 60 minutes: 2 DSA + 1 SQL/UI. Languages: C, C++, Java, Python. Recurring patterns listed below. Array Rotation, Large-Small Sum, Merge Sorted Two Pointer & Equilibrium Point Anagram Check, Longest Unique Substring Prime Summation, Max Product Pair Chocolate Distribution (Greedy) +6 more 0/11 reviewed" [ref=e409] [cursor=pointer]':
+            - /url: "#/section/coding"
+            - generic [ref=e414]:
+              - generic [ref=e415]: Round 2
+              - generic [ref=e416]: 3 Q · 60 min
+            - heading "Coding Assessment" [level=3] [ref=e417]
+            - paragraph [ref=e418]: "3 questions in 60 minutes: 2 DSA + 1 SQL/UI. Languages: C, C++, Java, Python. Recurring patterns listed below."
+            - generic [ref=e419]:
+              - generic [ref=e420]: Array Rotation, Large-Small Sum, Merge Sorted
+              - generic [ref=e421]: Two Pointer & Equilibrium Point
+              - generic [ref=e422]: Anagram Check, Longest Unique Substring
+              - generic [ref=e423]: Prime Summation, Max Product Pair
+              - generic [ref=e424]: Chocolate Distribution (Greedy)
+              - generic [ref=e425]: +6 more
+            - generic [ref=e426]: 0/11 reviewed
+          - link "Round 3 1 Q · 30 min Communication Assessment AI-scored speaking task (~30 min). Fluency, clarity, pronunciation, confidence. Final eliminator. Self Introduction Fluency & Coherence Pronunciation & Accent Clarity Grammar & Accuracy Vocabulary Usage +4 more 0/9 reviewed" [ref=e429] [cursor=pointer]:
+            - /url: "#/section/communication"
+            - generic [ref=e435]:
+              - generic [ref=e436]: Round 3
+              - generic [ref=e437]: 1 Q · 30 min
+            - heading "Communication Assessment" [level=3] [ref=e438]
+            - paragraph [ref=e439]: AI-scored speaking task (~30 min). Fluency, clarity, pronunciation, confidence. Final eliminator.
+            - generic [ref=e440]:
+              - generic [ref=e441]: Self Introduction
+              - generic [ref=e442]: Fluency & Coherence
+              - generic [ref=e443]: Pronunciation & Accent Clarity
+              - generic [ref=e444]: Grammar & Accuracy
+              - generic [ref=e445]: Vocabulary Usage
+              - generic [ref=e446]: +4 more
+            - generic [ref=e447]: 0/9 reviewed
+    - contentinfo [ref=e450]:
+      - generic [ref=e451]: Accenture Preparation Arena — syllabus researched from 10 sources.
+      - generic [ref=e452]: "Math: KaTeX · Pseudocode: PseudoLSP v1.0"

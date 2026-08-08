@@ -1,0 +1,36 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "ApArena" [ref=e10] [cursor=pointer]:
+      - /url: ../index.html
+    - navigation [ref=e11]:
+      - generic [ref=e12]: Aptitude
+      - button "# Number System" [ref=e13] [cursor=pointer]:
+        - generic [ref=e14]: "#"
+        - generic [ref=e15]: Number System
+      - button "Σ Simplification & Approximation" [ref=e17] [cursor=pointer]:
+        - generic [ref=e18]: Σ
+        - generic [ref=e19]: Simplification & Approximation
+      - button "% Percentages" [ref=e21] [cursor=pointer]:
+        - generic [ref=e22]: "%"
+        - generic [ref=e23]: Percentages
+      - button "W Work and Time" [ref=e25] [cursor=pointer]:
+        - generic [ref=e26]: W
+        - generic [ref=e27]: Work and Time
+      - button "₹ Profit and Loss" [ref=e29] [cursor=pointer]:
+        - generic [ref=e30]: ₹
+        - generic [ref=e31]: Profit and Loss
+      - button "÷ Ratio & Proportion" [ref=e33] [cursor=pointer]:
+        - generic [ref=e34]: ÷
+        - generic [ref=e35]: Ratio & Proportion
+    - generic [ref=e38]:
+      - generic [ref=e39]: Progress
+      - generic [ref=e41]: 0%
+  - generic [ref=e42]:
+    - banner [ref=e43]:
+      - heading "Loading..." [level=1] [ref=e44]
+      - generic [ref=e45]:
+        - button "Toggle sidebar" [ref=e46] [cursor=pointer]: Menu
+        - button "Toggle theme" [ref=e47] [cursor=pointer]
+    - main [ref=e50]:
+      - generic [ref=e51]: Loading topic...
+    - contentinfo [ref=e53]: Made Specially for Siri.

@@ -34,7 +34,12 @@ function init() {
   updateHamburger();
   renderSidebar();
   renderBottomNav();
-  renderDashboard();
+  var deepLink = (location.hash || '').match(/^#\/topic\/([\w-]+)/);
+  if (deepLink && TOPICS_INDEX.topics.some(function (t) { return t.id === deepLink[1]; })) {
+    navigate('topic', deepLink[1]);
+  } else {
+    renderDashboard();
+  }
   bindEvents();
   history.replaceState(getRouteState(), '', window.location.href);
 }

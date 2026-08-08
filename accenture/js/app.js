@@ -43,6 +43,7 @@
     localStorage.setItem('accentureTheme', t);
     var btn = $('[data-action="theme"]');
     if (btn) btn.innerHTML = t === 'dark' ? sunIco() : moonIco();
+    $$('.classic-topic').forEach(function (el) { el.classList.toggle('dark', t === 'dark'); });
   }
   function sunIco() { return ICONS.sun; }
   function moonIco() { return ICONS.moon; }
@@ -162,7 +163,9 @@
       html += badge(t.status);
       html += '<span class="topic-chev" aria-hidden="true">&#9654;</span>';
       html += '</button>';
-      if (t.bankTopicId) {
+      if (t.bankUrl) {
+        html += '<div class="topic-empty"><p><strong>Bank topic.</strong> Opens in the ' + esc(t.bank) + ' — Learn, Formulas, Practice &amp; MCQ tabs live there.</p></div>';
+      } else if (t.bankTopicId) {
         html += '<div class="topic-empty"><p><strong>Bank topic.</strong> Content loads in-app from the ' + esc(t.bank) + ' — Learn, Formulas, Practice &amp; MCQ tabs.</p></div>';
       } else if (!t.content) {
         html += '<div class="topic-empty"><div class="empty-art" aria-hidden="true">' + ICONS.book + '</div><p><strong>Content pending.</strong> This topic is queued for upload — the outline is final, the lesson is on its way.</p></div>';
@@ -191,7 +194,11 @@
     var html = '';
     html += '<nav class="crumbs"><a href="#/">Dashboard</a><span class="sep">/</span><a href="#/section/' + esc(sid) + '">' + esc(sec.name) + '</a><span class="sep">/</span><span>' + esc(t.title) + '</span></nav>';
 
-    if (t.bankTopicId) { loadBankTopic(t); return; }
+      if (t.bankUrl) {
+        window.location.href = t.bankUrl;
+        return;
+      }
+      if (t.bankTopicId) { loadBankTopic(t); return; }
 
     if (!t.content) {
       html += '<section class="topic-empty-lg"><div class="empty-art">' + ICONS.book + '</div><h1>' + esc(t.title) + '</h1><p>This topic has not been uploaded yet. It will appear here with premium math rendering, pseudocode analysis and step-by-step explanations.</p><a class="btn primary" href="#/section/' + esc(sid) + '">Back to ' + esc(sec.name) + '</a></section>';
@@ -202,11 +209,11 @@
     renderTopicContent(sec, t, t.content);
   }
 
-  /* Bank-linked topics: fetch the bank topic JSON and render it in-app with the
-   * same Learn / Formulas / Practice / MCQ tab flow the banks use. */
+  /* Bank-linked topics: fetch the bank topic JSON and render it with the
+   * classic bank topic view (ClassicTopic) — same layout as the banks. */
   function loadBankTopic(t) {
     var cached = state.bankTopicCache[t.bankTopicId];
-    if (cached) { renderTopicContent(state.section, t, cached); return; }
+    if (cached) { renderClassicTopic(t, cached); return; }
     $('#main').innerHTML = '<section class="topic-empty-lg"><div class="boot-spinner" aria-hidden="true"></div><h1>' + esc(t.title) + '</h1><p>Loading from ' + esc(t.bank) + '…</p></section>';
     fetch('/data/topics/' + encodeURIComponent(t.bankTopicId) + '.json', { cache: 'no-store' })
       .then(function (r) {
@@ -214,8 +221,8 @@
         return r.json();
       })
       .then(function (json) {
-        state.bankTopicCache[t.bankTopicId] = bankTopicToContent(json);
-        renderTopicContent(state.section, t, state.bankTopicCache[t.bankTopicId]);
+        state.bankTopicCache[t.bankTopicId] = json;
+        renderClassicTopic(t, json);
       })
       .catch(function (err) {
         var shell = t.bank === 'Verbal Bank' ? 'verbal' : 'reasoning';
@@ -223,48 +230,16 @@
       });
   }
 
-  /* Adapt bank topic schema (readingSections / formulas / practiceProblems /
-   * mcqs) to the accenture content schema the topic renderer expects. */
-  function bankTopicToContent(bt) {
-    var c = { introduction: [], sections: [], practiceQuestions: [], practiceGroups: [], quickRevision: bt.quickRevision || [], mcqs: bt.mcqs || [] };
-    (bt.readingSections || []).forEach(function (rs) {
-      if (rs.id === 'formulas') return; // rendered as the dedicated Formulas section below
-      var blocks = [];
-      if (rs.content) blocks.push({ type: 'p', text: rs.content });
-      if (rs.quickSummary) blocks.push({ type: 'p', text: rs.quickSummary });
-      (rs.subsections || []).forEach(function (sub) {
-        blocks.push({ type: 'p', text: '**' + sub.title + '** — ' + sub.content });
-      });
-      if (rs.tricks && rs.tricks.length) blocks.push({ type: 'callout', kind: 'tip', title: 'Tricks', content: rs.tricks });
-      c.sections.push({ id: rs.id, title: rs.title, blocks: blocks });
-    });
-    if (bt.formulas && bt.formulas.length) {
-      c.sections.push({ id: 'formulas', title: 'Formulas', blocks: bt.formulas.map(function (f) {
-        var ex = f.example;
-        return {
-          type: 'formula', title: f.title, latex: f.formula, text: f.explanation,
-          whenToUse: f.whenToUse, memoryTip: f.memoryTip, commonMistake: f.commonMistake,
-          example: ex ? { prompt: ex.prompt, steps: (ex.steps || []).map(function (s) { return { text: s, reason: '' }; }), answer: ex.answer } : null
-        };
-      }) });
+  /* Render a bank topic with the exact classic bank layout. */
+  function renderClassicTopic(t, json) {
+    var html = '';
+    html += '<nav class="crumbs"><a href="#/">Dashboard</a><span class="sep">/</span><a href="#/section/' + esc(state.section.id) + '">' + esc(state.section.name) + '</a><span class="sep">/</span><span>' + esc(t.title) + '</span></nav>';
+    $('#main').innerHTML = html;
+    if (window.ClassicTopic) {
+      window.ClassicTopic.render($('#main'), json);
+    } else {
+      $('#main').innerHTML += '<section class="topic-empty-lg"><div class="empty-art">' + ICONS.warn + '</div><h1>' + esc(t.title) + '</h1><p>Topic renderer failed to load. Hard-refresh the page.</p></section>';
     }
-    var titles = {};
-    (bt.formulas || []).forEach(function (f) { titles[f.id] = f.title; });
-    var pp = bt.practiceProblems || {};
-    Object.keys(pp).forEach(function (fid) {
-      c.practiceGroups.push({
-        title: titles[fid] || fid,
-        problems: pp[fid].map(function (p) {
-          return {
-            prompt: p.q,
-            options: p.opts || [],
-            answer: String.fromCharCode(65 + (p.c || 0)),
-            explanation: (p.a ? 'Correct answer: ' + p.a + '. ' : '') + (p.s || []).join(' ')
-          };
-        })
-      });
-    });
-    return c;
   }
 
   function renderTopicContent(sec, t, c) {
