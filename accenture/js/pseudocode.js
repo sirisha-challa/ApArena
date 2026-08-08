@@ -30,7 +30,7 @@
     '|(\\d+(?:\\.\\d+)?)' + // 5 number
     '|(<<|>>|<=|>=|<>|!=|==|&&|\\|\\|)' + // 6 multi-char op
     '|([+\\-*\\/%^=<>!&|~()\\[\\],:;])' + // 7 single-char op/delim
-    '|([@#$?{}\\x27"])', // 8 unknown (incl. lone quote → unterminated string)
+    '|([@#$?{}\\x27"])', // 8 unknown (incl. lone quote -> unterminated string)
     'g'
   );
 

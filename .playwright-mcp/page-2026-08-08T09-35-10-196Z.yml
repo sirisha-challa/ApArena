@@ -1,0 +1,53 @@
+- generic [active] [ref=f1e1]:
+  - generic [ref=f1e2]:
+    - paragraph [ref=f1e3]: ApArena · Prep Hub
+    - heading "Navigation Landing" [level=1] [ref=f1e4]
+    - paragraph [ref=f1e5]: Pick a dashboard. Every section, topic and practice problem lives inside the app you choose.
+    - generic [ref=f1e6]:
+      - generic [ref=f1e7]:
+        - generic [ref=f1e8]: "12"
+        - text: Accenture sections
+      - generic [ref=f1e9]:
+        - generic [ref=f1e10]: "131"
+        - text: Accenture topics
+      - generic [ref=f1e11]:
+        - generic [ref=f1e12]: "13"
+        - text: Accenture ready
+      - generic [ref=f1e13]:
+        - generic [ref=f1e14]: "11"
+        - text: Classic topics
+      - generic [ref=f1e15]:
+        - generic [ref=f1e16]: "71"
+        - text: Classic subtopics
+    - generic [ref=f1e17]:
+      - link "A Accenture Arena ASE · AASE Software Engineer Syllabus-driven prep for the Accenture recruitment test — behavioral, cognitive, aptitude, pseudocode, core CS, coding and communication rounds with premium math rendering. 12 sections 13 ready 2026 AXIS pattern Open dashboard" [ref=f1e18] [cursor=pointer]:
+        - /url: /accenture/
+        - generic [ref=f1e19]:
+          - generic [ref=f1e20]: A
+          - generic [ref=f1e21]:
+            - generic [ref=f1e22]: Accenture Arena
+            - generic [ref=f1e23]: ASE · AASE Software Engineer
+        - paragraph [ref=f1e24]: Syllabus-driven prep for the Accenture recruitment test — behavioral, cognitive, aptitude, pseudocode, core CS, coding and communication rounds with premium math rendering.
+        - generic [ref=f1e25]:
+          - generic [ref=f1e26]: 12 sections
+          - generic [ref=f1e27]: 13 ready
+          - generic [ref=f1e28]: 2026 AXIS pattern
+        - generic [ref=f1e29]:
+          - text: Open dashboard
+          - generic [ref=f1e30]: →
+      - link "C ApArena Classic Aptitude Mastery The original aptitude arena — topic-by-topic learning paths, reading sections, formulas and practice problems with a personal progress roadmap. 11 topics 3 categories 71 subtopics Open dashboard" [ref=f1e31] [cursor=pointer]:
+        - /url: /classic/
+        - generic [ref=f1e32]:
+          - generic [ref=f1e33]: C
+          - generic [ref=f1e34]:
+            - generic [ref=f1e35]: ApArena Classic
+            - generic [ref=f1e36]: Aptitude Mastery
+        - paragraph [ref=f1e37]: The original aptitude arena — topic-by-topic learning paths, reading sections, formulas and practice problems with a personal progress roadmap.
+        - generic [ref=f1e38]:
+          - generic [ref=f1e39]: 11 topics
+          - generic [ref=f1e40]: 3 categories
+          - generic [ref=f1e41]: 71 subtopics
+        - generic [ref=f1e42]:
+          - text: Open dashboard
+          - generic [ref=f1e43]: →
+  - contentinfo [ref=f1e44]: ApArena — all preparation content in one place.

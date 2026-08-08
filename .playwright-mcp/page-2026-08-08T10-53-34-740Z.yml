@@ -1,0 +1,123 @@
+- generic [ref=f18e3]:
+  - complementary [ref=f18e4]:
+    - link "ApArena" [ref=f18e10] [cursor=pointer]:
+      - /url: ../index.html
+    - navigation [ref=f18e11]:
+      - generic [ref=f18e12]: Aptitude
+      - button "# Number System" [ref=f18e13] [cursor=pointer]:
+        - generic [ref=f18e14]: "#"
+        - generic [ref=f18e15]: Number System
+      - button "Σ Simplification & Approximation" [ref=f18e17] [cursor=pointer]:
+        - generic [ref=f18e18]: Σ
+        - generic [ref=f18e19]: Simplification & Approximation
+      - button "% Percentages" [ref=f18e21] [cursor=pointer]:
+        - generic [ref=f18e22]: "%"
+        - generic [ref=f18e23]: Percentages
+      - button "W Work and Time" [ref=f18e25] [cursor=pointer]:
+        - generic [ref=f18e26]: W
+        - generic [ref=f18e27]: Work and Time
+      - button "₹ Profit and Loss" [ref=f18e29] [cursor=pointer]:
+        - generic [ref=f18e30]: ₹
+        - generic [ref=f18e31]: Profit and Loss
+      - button "÷ Ratio & Proportion" [ref=f18e33] [cursor=pointer]:
+        - generic [ref=f18e34]: ÷
+        - generic [ref=f18e35]: Ratio & Proportion
+    - generic [ref=f18e38]:
+      - generic [ref=f18e39]: Progress
+      - generic [ref=f18e41]: 0%
+  - generic [ref=f18e42]:
+    - banner [ref=f18e43]:
+      - heading "Dashboard" [level=1] [ref=f18e44]
+      - generic [ref=f18e45]:
+        - button "Toggle sidebar" [ref=f18e46] [cursor=pointer]: Close
+        - button "Toggle theme" [ref=f18e47] [cursor=pointer]
+    - main [ref=f18e50]:
+      - generic [ref=f18e52]:
+        - generic [ref=f18e53]:
+          - generic [ref=f18e54]:
+            - heading "Placement Preparation Hub" [level=1] [ref=f18e55]
+            - paragraph [ref=f18e56]: Aptitude — Complete Campus Placement Training
+          - generic [ref=f18e57]:
+            - generic [ref=f18e58]:
+              - generic [ref=f18e59]: 0/6
+              - text: Topics Completed
+            - generic [ref=f18e60]:
+              - generic [ref=f18e61]: 0%
+              - text: Overall Progress
+        - generic [ref=f18e62]:
+          - heading "# Aptitude" [level=2] [ref=f18e63]
+          - paragraph [ref=f18e64]: Quantitative Aptitude & Logical Reasoning
+          - generic [ref=f18e65]:
+            - generic [ref=f18e66] [cursor=pointer]:
+              - generic [ref=f18e67]:
+                - generic [ref=f18e68]: "#"
+                - generic [ref=f18e69]: 1-3
+              - heading "Number System" [level=3] [ref=f18e70]
+              - list [ref=f18e71]:
+                - listitem [ref=f18e72]: • Number Family Tree
+                - listitem [ref=f18e73]: • Primes & Composites
+                - listitem [ref=f18e74]: • Speed Math (Divisibility)
+              - generic [ref=f18e77]:
+                - generic [ref=f18e78]: 30h
+                - generic [ref=f18e79]: 100%
+            - generic [ref=f18e80] [cursor=pointer]:
+              - generic [ref=f18e81]:
+                - generic [ref=f18e82]: Σ
+                - generic [ref=f18e83]: 4-6
+              - heading "Simplification & Approximation" [level=3] [ref=f18e84]
+              - list [ref=f18e85]:
+                - listitem [ref=f18e86]: • BODMAS / VBODMAS Rule
+                - listitem [ref=f18e87]: • Surds & Indices
+                - listitem [ref=f18e88]: • Square & Cube Roots
+              - generic [ref=f18e90]:
+                - generic [ref=f18e91]: 25h
+                - generic [ref=f18e92]: 0%
+            - generic [ref=f18e93] [cursor=pointer]:
+              - generic [ref=f18e94]:
+                - generic [ref=f18e95]: "%"
+                - generic [ref=f18e96]: 7-10
+              - heading "Percentages" [level=3] [ref=f18e97]
+              - list [ref=f18e98]:
+                - listitem [ref=f18e99]: • Concept of Percentage
+                - listitem [ref=f18e100]: • Percentage to Fraction Table
+                - listitem [ref=f18e101]: • Percentage Increase & Decrease
+              - generic [ref=f18e103]:
+                - generic [ref=f18e104]: 40h
+                - generic [ref=f18e105]: 0%
+            - generic [ref=f18e106] [cursor=pointer]:
+              - generic [ref=f18e107]:
+                - generic [ref=f18e108]: W
+                - generic [ref=f18e109]: 2-3
+              - heading "Work and Time" [level=3] [ref=f18e110]
+              - list [ref=f18e111]:
+                - listitem [ref=f18e112]: • Basic Work Rate Formula
+                - listitem [ref=f18e113]: • Man-Days Concept
+                - listitem [ref=f18e114]: • Efficiency & Ratio
+              - generic [ref=f18e116]:
+                - generic [ref=f18e117]: 18h
+                - generic [ref=f18e118]: 0%
+            - generic [ref=f18e119] [cursor=pointer]:
+              - generic [ref=f18e120]:
+                - generic [ref=f18e121]: ₹
+                - generic [ref=f18e122]: 2-4
+              - heading "Profit and Loss" [level=3] [ref=f18e123]
+              - list [ref=f18e124]:
+                - listitem [ref=f18e125]: • Basic CP/SP Concepts
+                - listitem [ref=f18e126]: • Profit & Loss Percentage
+                - listitem [ref=f18e127]: • Discount & Marked Price
+              - generic [ref=f18e129]:
+                - generic [ref=f18e130]: 30h
+                - generic [ref=f18e131]: 0%
+            - generic [ref=f18e132] [cursor=pointer]:
+              - generic [ref=f18e133]:
+                - generic [ref=f18e134]: ÷
+                - generic [ref=f18e135]: 3-4
+              - heading "Ratio & Proportion" [level=3] [ref=f18e136]
+              - list [ref=f18e137]:
+                - listitem [ref=f18e138]: • Ratio Basics & Simplification
+                - listitem [ref=f18e139]: • Types of Ratios (Duplicate, Triplicate, Compound)
+                - listitem [ref=f18e140]: • Proportion & Proportionality
+              - generic [ref=f18e142]:
+                - generic [ref=f18e143]: 25h
+                - generic [ref=f18e144]: 0%
+    - contentinfo [ref=f18e145]: Made Specially for Siri.

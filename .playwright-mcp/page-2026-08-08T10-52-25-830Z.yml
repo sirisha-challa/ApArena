@@ -1,0 +1,91 @@
+- generic [ref=f17e2]:
+  - complementary "Primary" [ref=f17e3]:
+    - generic [ref=f17e4]:
+      - generic [ref=f17e5]: A
+      - generic [ref=f17e6]:
+        - strong [ref=f17e7]: Accenture Arena
+        - text: ASE · AASE Prep
+    - navigation [ref=f17e8]:
+      - paragraph [ref=f17e9]: Main
+      - link "Dashboard" [ref=f17e10] [cursor=pointer]:
+        - /url: "#/"
+      - paragraph [ref=f17e14]: Syllabus
+      - generic "Syllabus sections" [ref=f17e15]:
+        - link "Behavioral Assessment" [ref=f17e16] [cursor=pointer]:
+          - /url: "#/section/behavioral"
+        - link "Gamified Cognitive Assessment" [ref=f17e21] [cursor=pointer]:
+          - /url: "#/section/cognitive"
+        - link "English Ability" [ref=f17e25] [cursor=pointer]:
+          - /url: "#/section/english"
+        - link "Critical Reasoning" [ref=f17e29] [cursor=pointer]:
+          - /url: "#/section/critical-reasoning"
+        - link "Abstract Reasoning" [ref=f17e41] [cursor=pointer]:
+          - /url: "#/section/abstract-reasoning"
+        - link "MS Office & Common Applications" [ref=f17e47] [cursor=pointer]:
+          - /url: "#/section/ms-office"
+        - link "Pseudo Code" [ref=f17e53] [cursor=pointer]:
+          - /url: "#/section/pseudocode"
+        - link "Network, Security & Cloud" [ref=f17e59] [cursor=pointer]:
+          - /url: "#/section/network-security-cloud"
+        - link "Core CS Fundamentals" [ref=f17e63] [cursor=pointer]:
+          - /url: "#/section/core-cs"
+        - link "Coding Assessment" [ref=f17e68] [cursor=pointer]:
+          - /url: "#/section/coding"
+        - link "Communication Assessment" [ref=f17e72] [cursor=pointer]:
+          - /url: "#/section/communication"
+      - paragraph [ref=f17e77]: Other
+      - link "Aptitude Bank" [ref=f17e78] [cursor=pointer]:
+        - /url: ../aptitude/
+    - generic [ref=f17e83]: Syllabus compiled from 10 sources · updated 2026
+  - generic [ref=f17e84]:
+    - banner [ref=f17e85]:
+      - generic [ref=f17e86]:
+        - strong [ref=f17e87]: Accenture
+        - text: Preparation Arena
+      - generic [ref=f17e88]:
+        - link "Aptitude Bank" [ref=f17e89] [cursor=pointer]:
+          - /url: ../aptitude/
+        - button "Toggle theme" [ref=f17e90] [cursor=pointer]
+    - main [ref=f17e97]:
+      - article [ref=f17e1579]:
+        - generic [ref=f17e1580]:
+          - heading "Blood Relations & Family Trees" [level=1] [ref=f17e1581]
+          - generic [ref=f17e1582]:
+            - button "Mark as reviewed" [ref=f17e1583] [cursor=pointer]
+            - link "Back to section" [ref=f17e1584] [cursor=pointer]:
+              - /url: "#/section/critical-reasoning"
+        - generic [ref=f17e1585]:
+          - button "Learn" [ref=f17e1586] [cursor=pointer]
+          - button "Formulas (10)" [ref=f17e1587] [cursor=pointer]
+          - button "Practice (99)" [ref=f17e1588] [cursor=pointer]
+          - button "MCQ (200)" [ref=f17e1589] [cursor=pointer]
+        - generic [ref=f17e1590]:
+          - generic [ref=f17e1591]:
+            - generic [ref=f17e1592]: Question 20 of 200
+            - generic [ref=f17e1593]: family-tree-symbols · easy
+            - button "Prev" [ref=f17e1594] [cursor=pointer]
+            - button "Next" [ref=f17e1595] [cursor=pointer]
+          - generic [ref=f17e1596]:
+            - generic [ref=f17e1597]:
+              - generic [ref=f17e1598]: Q20
+              - paragraph [ref=f17e1599]: Vidya is the wife of Gopi and Gopi is the brother of Akhil. Akhil is the uncle of Vijay. What is Vijay's relation with Vidya?
+            - generic [ref=f17e1600]:
+              - generic [ref=f17e1601] [cursor=pointer]: A. Son
+              - generic [ref=f17e1602] [cursor=pointer]: B. Nephew
+              - generic [ref=f17e1603] [cursor=pointer]: C. Brother-in-law
+              - generic [ref=f17e1604] [cursor=pointer]: D. Brother
+            - generic [ref=f17e1605]:
+              - generic [ref=f17e1606]: "Answer: Nephew"
+              - paragraph [ref=f17e1607]: "Step 1: Akhil is the uncle of Vijay, so Vijay is Akhil's nephew. Step 2: Gopi is Akhil's brother, so Gopi is also Vijay's uncle. Step 3: Vidya is Gopi's wife, so Vidya is Vijay's aunt. Step 4: From Vijay's perspective, Vidya is his aunt, so Vijay is Vidya's nephew."
+        - navigation [ref=f17e1608]:
+          - link "Previous Statement & Argument" [ref=f17e1609] [cursor=pointer]:
+            - /url: "#/topic/critical-reasoning/statement-argument"
+            - generic [ref=f17e1610]: Previous
+            - generic [ref=f17e1611]: Statement & Argument
+          - link "Next Direction Sense" [ref=f17e1612] [cursor=pointer]:
+            - /url: "#/topic/critical-reasoning/direction-sense"
+            - generic [ref=f17e1613]: Next
+            - generic [ref=f17e1614]: Direction Sense
+    - contentinfo [ref=f17e1541]:
+      - generic [ref=f17e1542]: Accenture Preparation Arena — syllabus researched from 10 sources.
+      - generic [ref=f17e1543]: "Math: KaTeX · Pseudocode: PseudoLSP v1.0"

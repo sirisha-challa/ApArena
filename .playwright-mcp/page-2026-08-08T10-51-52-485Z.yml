@@ -1,0 +1,1350 @@
+- generic [ref=f17e2]:
+  - complementary "Primary" [ref=f17e3]:
+    - generic [ref=f17e4]:
+      - generic [ref=f17e5]: A
+      - generic [ref=f17e6]:
+        - strong [ref=f17e7]: Accenture Arena
+        - text: ASE · AASE Prep
+    - navigation [ref=f17e8]:
+      - paragraph [ref=f17e9]: Main
+      - link "Dashboard" [ref=f17e10] [cursor=pointer]:
+        - /url: "#/"
+      - paragraph [ref=f17e14]: Syllabus
+      - generic "Syllabus sections" [ref=f17e15]:
+        - link "Behavioral Assessment" [ref=f17e16] [cursor=pointer]:
+          - /url: "#/section/behavioral"
+        - link "Gamified Cognitive Assessment" [ref=f17e21] [cursor=pointer]:
+          - /url: "#/section/cognitive"
+        - link "English Ability" [ref=f17e25] [cursor=pointer]:
+          - /url: "#/section/english"
+        - link "Critical Reasoning" [ref=f17e29] [cursor=pointer]:
+          - /url: "#/section/critical-reasoning"
+        - link "Abstract Reasoning" [ref=f17e41] [cursor=pointer]:
+          - /url: "#/section/abstract-reasoning"
+        - link "MS Office & Common Applications" [ref=f17e47] [cursor=pointer]:
+          - /url: "#/section/ms-office"
+        - link "Pseudo Code" [ref=f17e53] [cursor=pointer]:
+          - /url: "#/section/pseudocode"
+        - link "Network, Security & Cloud" [ref=f17e59] [cursor=pointer]:
+          - /url: "#/section/network-security-cloud"
+        - link "Core CS Fundamentals" [ref=f17e63] [cursor=pointer]:
+          - /url: "#/section/core-cs"
+        - link "Coding Assessment" [ref=f17e68] [cursor=pointer]:
+          - /url: "#/section/coding"
+        - link "Communication Assessment" [ref=f17e72] [cursor=pointer]:
+          - /url: "#/section/communication"
+      - paragraph [ref=f17e77]: Other
+      - link "Aptitude Bank" [ref=f17e78] [cursor=pointer]:
+        - /url: ../aptitude/
+    - generic [ref=f17e83]: Syllabus compiled from 10 sources · updated 2026
+  - generic [ref=f17e84]:
+    - banner [ref=f17e85]:
+      - generic [ref=f17e86]:
+        - strong [ref=f17e87]: Accenture
+        - text: Preparation Arena
+      - generic [ref=f17e88]:
+        - link "Aptitude Bank" [ref=f17e89] [cursor=pointer]:
+          - /url: ../aptitude/
+        - button "Toggle theme" [ref=f17e90] [cursor=pointer]
+    - main [ref=f17e97]:
+      - article [ref=f17e99]:
+        - generic [ref=f17e100]:
+          - heading "Blood Relations & Family Trees" [level=1] [ref=f17e101]
+          - generic [ref=f17e102]:
+            - button "Mark as reviewed" [ref=f17e103] [cursor=pointer]
+            - link "Back to section" [ref=f17e104] [cursor=pointer]:
+              - /url: "#/section/critical-reasoning"
+        - generic [ref=f17e105]:
+          - button "Learn" [ref=f17e106] [cursor=pointer]
+          - button "Formulas (10)" [ref=f17e107] [cursor=pointer]
+          - button "Practice (99)" [ref=f17e108] [cursor=pointer]
+          - button "MCQ (200)" [ref=f17e109] [cursor=pointer]
+        - generic [ref=f17e110]:
+          - generic [ref=f17e111]:
+            - heading "01 What are Blood Relations? 🧬" [level=2] [ref=f17e112]:
+              - generic [ref=f17e113]: "01"
+              - text: What are Blood Relations? 🧬
+            - paragraph [ref=f17e114]: Blood relation questions test your ability to map out family connections[reference:0]. You must track generations (grandparents, parents, children), genders (male/female), and specific roles (brother, sister, uncle, aunt). These relations can be direct like parents and children, or indirect like uncles, aunts, and cousins[reference:1]. The golden rule is to never assume genders unless explicitly stated, and always draw a family tree[reference:2]!
+            - paragraph [ref=f17e115]: Blood relations are all about figuring out how people are connected through family! Think of it like building a family tree from the roots to the leaves.
+            - paragraph [ref=f17e116]:
+              - strong [ref=f17e117]: "The Golden Rule: Draw it Out!"
+              - text: — Never try to solve these purely in your head. The human brain gets tangled in 'my mother's brother's son'. Always draw a quick family tree on your rough sheet[reference:3].
+            - paragraph [ref=f17e118]:
+              - strong [ref=f17e119]: Generations Matter
+              - text: — Always figure out which generation each person belongs to[reference:5]. Grandparents are +2, Parents/Uncles/Aunts are +1, Self/Siblings/Cousins are 0, Children/Nieces/Nephews are -1, Grandchildren are -2[reference:6].
+            - paragraph [ref=f17e120]:
+              - strong [ref=f17e121]: The Gender Trap
+              - text: — Never assume the gender of a person based on their name or profession unless the question explicitly states it[reference:7]. 'Doctor' can be male or female.
+            - paragraph [ref=f17e122]:
+              - strong [ref=f17e123]: Blood Relation vs Marriage Relations
+              - text: — Blood relations are connections by birth. Marriage relations (in-laws) are connections created through marriage[reference:9]. Both are tested in exams!
+          - generic [ref=f17e124]:
+            - heading "02 Types of Blood Relation Questions 🔍" [level=2] [ref=f17e125]:
+              - generic [ref=f17e126]: "02"
+              - text: Types of Blood Relation Questions 🔍
+            - paragraph [ref=f17e127]: Understanding the format saves time[reference:13]. Pointing questions are solved by working backward from the end of the sentence. Coded questions are solved by replacing symbols with actual relations[reference:14]. Puzzle questions require drawing a complete chart[reference:15].
+            - paragraph [ref=f17e128]: "Questions usually come in three flavors: Pointing (who is in the photo?), Coded (math-like symbols), and Puzzles (a whole family story)."
+            - paragraph [ref=f17e129]:
+              - strong [ref=f17e130]: "Type 1: Pointing / Indicating"
+              - text: — Someone points to a photo or a person and describes them[reference:16]. Solve by starting from the last relation mentioned and working backward to the speaker[reference:17].
+            - paragraph [ref=f17e131]:
+              - strong [ref=f17e132]: "Type 2: Coded Relations"
+              - text: — Relations are hidden behind symbols (+, -, *, /) or words[reference:19]. You must decode the symbol first, then chain them together[reference:20].
+            - paragraph [ref=f17e133]:
+              - strong [ref=f17e134]: "Type 3: Family Puzzles"
+              - text: — A paragraph describes a family with conditions (e.g., 'There are two married couples', 'No two males sit together')[reference:22]. You must build the whole tree[reference:23].
+          - generic [ref=f17e135]:
+            - heading "03 Generational Mapping & Symbols 🗺️" [level=2] [ref=f17e136]:
+              - generic [ref=f17e137]: "03"
+              - text: Generational Mapping & Symbols 🗺️
+            - paragraph [ref=f17e138]: Think of a family tree like a building[reference:27]. The top floor is Grandparents (+2 generation). The middle floor is Parents, Uncles, Aunts (+1 generation). The ground floor is You, Siblings, Cousins (0 generation). The basement is Children, Nieces, Nephews (-1 generation)[reference:28].
+            - paragraph [ref=f17e139]: A family tree has levels (generations) and lines (relationships). Master the symbols to map anyone instantly!
+            - paragraph [ref=f17e140]:
+              - strong [ref=f17e141]: The Symbols Cheat Sheet
+              - text: "— Male: Square [ ] or (+). Female: Circle ( ) or (-). Marriage: Double line (=). Siblings: Single horizontal line (-). Parent-Child: Single vertical line (|)[reference:29][reference:30]."
+            - paragraph [ref=f17e142]:
+              - strong [ref=f17e143]: Maternal vs Paternal
+              - text: — Paternal = Father's side (Paternal Uncle = Father's brother). Maternal = Mother's side (Maternal Uncle = Mother's brother)[reference:32].
+            - paragraph [ref=f17e144]:
+              - strong [ref=f17e145]: In-Law Relations
+              - text: — Spouse's parents = Father-in-law / Mother-in-law. Spouse's siblings = Brother-in-law / Sister-in-law. Sibling's spouse = Also Brother/Sister-in-law.[reference:34][reference:35]
+          - generic [ref=f17e146]:
+            - heading "04 5 Question Patterns You Must Know 🎯" [level=2] [ref=f17e147]:
+              - generic [ref=f17e148]: "04"
+              - text: 5 Question Patterns You Must Know 🎯
+            - paragraph [ref=f17e149]: We've categorized all campus test blood relation questions into 5 core patterns[reference:40]. Master these, and you can solve any variation.
+            - paragraph [ref=f17e150]: Every blood relation question fits a pattern. Recognize it, apply the trick, and solve in 30 seconds!
+            - paragraph [ref=f17e151]:
+              - strong [ref=f17e152]: "Pattern 1: The 'Backward Tracking' Pointing"
+              - text: "— Question: 'Pointing to a man, a woman said, 'He is the son of my father's only daughter.' How is the man related to the woman?[reference:41]"
+            - paragraph [ref=f17e153]:
+              - strong [ref=f17e154]: "Pattern 2: The 'Coded Chain'"
+              - text: "— Question: If A $ B means A is brother of B, A @ B means A is wife of B. Find relation in P $ Q @ R.[reference:43]"
+            - paragraph [ref=f17e155]:
+              - strong [ref=f17e156]: "Pattern 3: The 'Only Son/Daughter' Trap"
+              - text: "— Question: 'I have no brother or sister, but that man's son is my father's son.'[reference:45]"
+            - paragraph [ref=f17e157]:
+              - strong [ref=f17e158]: "Pattern 4: The 'Multi-Generation Puzzle'"
+              - text: "— Question: A family of 6. A and B are a couple. C is their son. D is C's wife. E is D's brother. How is E related to A?[reference:47]"
+            - paragraph [ref=f17e159]:
+              - strong [ref=f17e160]: "Pattern 5: The 'Gender Unknown' Trick"
+              - text: "— Question: A is the child of B. But B is not the father of A. Who is B?[reference:49]"
+          - generic [ref=f17e161]:
+            - 'heading "05 Quick Reference: The Blood Relation Method ✅" [level=2] [ref=f17e162]':
+              - generic [ref=f17e163]: "05"
+              - text: "Quick Reference: The Blood Relation Method ✅"
+            - paragraph [ref=f17e164]: Follow these 4 steps every single time[reference:53]. They work for all patterns and guarantee accuracy.
+            - paragraph [ref=f17e165]: Your ultimate cheat sheet to solve any blood relation question in under 45 seconds.
+            - paragraph [ref=f17e166]:
+              - strong [ref=f17e167]: "Step 1: Read & Identify"
+              - text: — Read the question. Is it Pointing, Coded, or a Puzzle? This decides your approach[reference:54].
+            - paragraph [ref=f17e168]:
+              - strong [ref=f17e169]: "Step 2: Break it Down"
+              - text: — For pointing, break the sentence at 'my', 'his', 'her'. For coded, write the meaning of each symbol next to it[reference:56].
+            - paragraph [ref=f17e170]:
+              - strong [ref=f17e171]: "Step 3: Draw the Mini-Tree"
+              - text: — Use your rough sheet[reference:58]. Draw boxes for males, circles for females. Connect them[reference:59]. Don't rely on memory[reference:60].
+            - paragraph [ref=f17e172]:
+              - strong [ref=f17e173]: "Step 4: The 'Reverse Check'"
+              - text: — Once you find the answer, read the relationship backward to see if it makes sense[reference:62].
+          - generic [ref=f17e174]:
+            - heading "06 Formulas" [level=2] [ref=f17e175]:
+              - generic [ref=f17e176]: "06"
+              - text: Formulas
+            - article [ref=f17e177]:
+              - heading "Family Tree Symbols & Generations" [level=4] [ref=f17e182]
+              - generic [ref=f17e185]:
+                - math [ref=f17e187]:
+                  - generic [ref=f17e189]:
+                    - generic [ref=f17e190]: M
+                    - generic [ref=f17e191]: a
+                    - generic [ref=f17e192]: l
+                    - generic [ref=f17e193]: e
+                    - generic [ref=f17e194]: =
+                    - generic [ref=f17e195]: □
+                    - generic [ref=f17e196]: o
+                    - generic [ref=f17e197]: r
+                    - generic [ref=f17e198]: (
+                    - generic [ref=f17e199]: +
+                    - generic [ref=f17e200]: )
+                    - generic [ref=f17e201]: ∣
+                    - generic [ref=f17e202]: F
+                    - generic [ref=f17e203]: e
+                    - generic [ref=f17e204]: m
+                    - generic [ref=f17e205]: a
+                    - generic [ref=f17e206]: l
+                    - generic [ref=f17e207]: e
+                    - generic [ref=f17e208]: =
+                    - generic [ref=f17e209]: ○
+                    - generic [ref=f17e210]: o
+                    - generic [ref=f17e211]: r
+                    - generic [ref=f17e212]: (
+                    - generic [ref=f17e213]: −
+                    - generic [ref=f17e214]: )
+                    - generic [ref=f17e215]: ∣
+                    - generic [ref=f17e216]: M
+                    - generic [ref=f17e217]: a
+                    - generic [ref=f17e218]: r
+                    - generic [ref=f17e219]: r
+                    - generic [ref=f17e220]: i
+                    - generic [ref=f17e221]: a
+                    - generic [ref=f17e222]: g
+                    - generic [ref=f17e223]: e
+                    - generic [ref=f17e224]: =
+                    - generic [ref=f17e225]: =
+                    - generic [ref=f17e226]: ∣
+                    - generic [ref=f17e227]: S
+                    - generic [ref=f17e228]: i
+                    - generic [ref=f17e229]: b
+                    - generic [ref=f17e230]: l
+                    - generic [ref=f17e231]: i
+                    - generic [ref=f17e232]: "n"
+                    - generic [ref=f17e233]: g
+                    - generic [ref=f17e234]: =
+                    - generic [ref=f17e235]: —
+                    - generic [ref=f17e236]: ∣
+                    - generic [ref=f17e237]: P
+                    - generic [ref=f17e238]: a
+                    - generic [ref=f17e239]: r
+                    - generic [ref=f17e240]: e
+                    - generic [ref=f17e241]: "n"
+                    - generic [ref=f17e242]: t
+                    - generic [ref=f17e243]: −
+                    - generic [ref=f17e244]: C
+                    - generic [ref=f17e245]: h
+                    - generic [ref=f17e246]: i
+                    - generic [ref=f17e247]: l
+                    - generic [ref=f17e248]: d
+                    - generic [ref=f17e249]: =
+                    - generic [ref=f17e250]: ∣
+                - generic [ref=f17e251]:
+                  - generic [ref=f17e252]: Male =
+                  - generic [ref=f17e253]: □or(+)∣Female =
+                  - generic [ref=f17e254]: ○or(−)∣Marriage ==
+                  - generic [ref=f17e255]: ∣Sibling =
+                  - generic [ref=f17e256]: —∣Parent −
+                  - generic [ref=f17e257]: Child =
+                  - generic [ref=f17e258]: ∣
+              - paragraph [ref=f17e259]: Think of it like a corporate org chart. The CEO (Grandpa) is at the top. Managers (Parents) are in the middle. Employees (You) are at the bottom. Lines show who reports to whom (parent to child) or who is on the same level (siblings). Always maintain generation levels.[reference:7][reference:8]
+              - generic [ref=f17e260]:
+                - generic [ref=f17e261]: When to use
+                - paragraph [ref=f17e262]: For ALL blood relation questions. This is your foundational tool.
+              - generic [ref=f17e263]: Example
+              - generic [ref=f17e266]:
+                - generic [ref=f17e267]: Common mistake
+                - paragraph [ref=f17e271]: Putting spouses on different vertical levels. Spouses (husband and wife) MUST be on the exact same horizontal level, connected by a double line.[reference:9]
+            - article [ref=f17e272]:
+              - heading "Pointing/Indicating Backward Rule" [level=4] [ref=f17e277]
+              - generic [ref=f17e280]:
+                - math [ref=f17e282]:
+                  - generic [ref=f17e284]:
+                    - generic [ref=f17e285]: S
+                    - generic [ref=f17e286]: t
+                    - generic [ref=f17e287]: a
+                    - generic [ref=f17e288]: r
+                    - generic [ref=f17e289]: t
+                    - generic [ref=f17e290]: f
+                    - generic [ref=f17e291]: r
+                    - generic [ref=f17e292]: o
+                    - generic [ref=f17e293]: m
+                    - generic [ref=f17e294]: t
+                    - generic [ref=f17e295]: h
+                    - generic [ref=f17e296]: e
+                    - generic [ref=f17e297]: L
+                    - generic [ref=f17e298]: A
+                    - generic [ref=f17e299]: S
+                    - generic [ref=f17e300]: T
+                    - generic [ref=f17e301]: r
+                    - generic [ref=f17e302]: e
+                    - generic [ref=f17e303]: l
+                    - generic [ref=f17e304]: a
+                    - generic [ref=f17e305]: t
+                    - generic [ref=f17e306]: i
+                    - generic [ref=f17e307]: o
+                    - generic [ref=f17e308]: "n"
+                    - generic [ref=f17e309]: m
+                    - generic [ref=f17e310]: e
+                    - generic [ref=f17e311]: "n"
+                    - generic [ref=f17e312]: t
+                    - generic [ref=f17e313]: i
+                    - generic [ref=f17e314]: o
+                    - generic [ref=f17e315]: "n"
+                    - generic [ref=f17e316]: e
+                    - generic [ref=f17e317]: d
+                    - generic [ref=f17e318]: →
+                    - generic [ref=f17e319]: R
+                    - generic [ref=f17e320]: e
+                    - generic [ref=f17e321]: p
+                    - generic [ref=f17e322]: l
+                    - generic [ref=f17e323]: a
+                    - generic [ref=f17e324]: c
+                    - generic [ref=f17e325]: e
+                    - generic [ref=f17e326]: w
+                    - generic [ref=f17e327]: i
+                    - generic [ref=f17e328]: t
+                    - generic [ref=f17e329]: h
+                    - generic [ref=f17e330]: t
+                    - generic [ref=f17e331]: h
+                    - generic [ref=f17e332]: e
+                    - generic [ref=f17e333]: s
+                    - generic [ref=f17e334]: p
+                    - generic [ref=f17e335]: e
+                    - generic [ref=f17e336]: a
+                    - generic [ref=f17e337]: k
+                    - generic [ref=f17e338]: e
+                    - generic [ref=f17e339]: r
+                    - generic [ref=f17e340]: →
+                    - generic [ref=f17e341]: M
+                    - generic [ref=f17e342]: o
+                    - generic [ref=f17e343]: v
+                    - generic [ref=f17e344]: e
+                    - generic [ref=f17e345]: b
+                    - generic [ref=f17e346]: a
+                    - generic [ref=f17e347]: c
+                    - generic [ref=f17e348]: k
+                    - generic [ref=f17e349]: w
+                    - generic [ref=f17e350]: a
+                    - generic [ref=f17e351]: r
+                    - generic [ref=f17e352]: d
+                    - generic [ref=f17e353]: t
+                    - generic [ref=f17e354]: o
+                    - generic [ref=f17e355]: t
+                    - generic [ref=f17e356]: h
+                    - generic [ref=f17e357]: e
+                    - generic [ref=f17e358]: f
+                    - generic [ref=f17e359]: i
+                    - generic [ref=f17e360]: r
+                    - generic [ref=f17e361]: s
+                    - generic [ref=f17e362]: t
+                    - generic [ref=f17e363]: r
+                    - generic [ref=f17e364]: e
+                    - generic [ref=f17e365]: l
+                    - generic [ref=f17e366]: a
+                    - generic [ref=f17e367]: t
+                    - generic [ref=f17e368]: i
+                    - generic [ref=f17e369]: o
+                    - generic [ref=f17e370]: "n"
+                    - generic [ref=f17e371]: .
+                - generic [ref=f17e372]:
+                  - generic [ref=f17e373]: StartfromtheLASTrelationmentioned →
+                  - generic [ref=f17e374]: Replacewiththespeaker →
+                  - generic [ref=f17e375]: Movebackwardtothefirstrelation.
+              - paragraph [ref=f17e376]: "Sentences like 'my father's mother's only son' are designed to confuse you if read left-to-right. If you read right-to-left, it's just: 'mother's only son' (which is my father) -> 'my father' (which is me). Simple![reference:16]"
+              - generic [ref=f17e377]:
+                - generic [ref=f17e378]: When to use
+                - paragraph [ref=f17e379]: When the question starts with 'Pointing to a photograph/person, X said...'[reference:14]
+              - generic [ref=f17e380]: Example
+              - generic [ref=f17e383]:
+                - generic [ref=f17e384]: Common mistake
+                - paragraph [ref=f17e388]: Starting from 'He is the brother...' and getting stuck. Always start from the deepest nested relation ('my father's...').
+            - article [ref=f17e389]:
+              - heading "Coded Relations Chaining Rule" [level=4] [ref=f17e394]
+              - generic [ref=f17e397]:
+                - math [ref=f17e399]:
+                  - generic [ref=f17e401]:
+                    - generic [ref=f17e402]: D
+                    - generic [ref=f17e403]: e
+                    - generic [ref=f17e404]: c
+                    - generic [ref=f17e405]: o
+                    - generic [ref=f17e406]: d
+                    - generic [ref=f17e407]: e
+                    - generic [ref=f17e408]: S
+                    - generic [ref=f17e409]: "y"
+                    - generic [ref=f17e410]: m
+                    - generic [ref=f17e411]: b
+                    - generic [ref=f17e412]: o
+                    - generic [ref=f17e413]: l
+                    - generic [ref=f17e414]: →
+                    - generic [ref=f17e415]: I
+                    - generic [ref=f17e416]: d
+                    - generic [ref=f17e417]: e
+                    - generic [ref=f17e418]: "n"
+                    - generic [ref=f17e419]: t
+                    - generic [ref=f17e420]: i
+                    - generic [ref=f17e421]: f
+                    - generic [ref=f17e422]: "y"
+                    - generic [ref=f17e423]: G
+                    - generic [ref=f17e424]: e
+                    - generic [ref=f17e425]: "n"
+                    - generic [ref=f17e426]: d
+                    - generic [ref=f17e427]: e
+                    - generic [ref=f17e428]: r
+                    - generic [ref=f17e429]: →
+                    - generic [ref=f17e430]: C
+                    - generic [ref=f17e431]: h
+                    - generic [ref=f17e432]: a
+                    - generic [ref=f17e433]: i
+                    - generic [ref=f17e434]: "n"
+                    - generic [ref=f17e435]: L
+                    - generic [ref=f17e436]: e
+                    - generic [ref=f17e437]: f
+                    - generic [ref=f17e438]: t
+                    - generic [ref=f17e439]: −
+                    - generic [ref=f17e440]: t
+                    - generic [ref=f17e441]: o
+                    - generic [ref=f17e442]: −
+                    - generic [ref=f17e443]: R
+                    - generic [ref=f17e444]: i
+                    - generic [ref=f17e445]: g
+                    - generic [ref=f17e446]: h
+                    - generic [ref=f17e447]: t
+                    - generic [ref=f17e448]: →
+                    - generic [ref=f17e449]: F
+                    - generic [ref=f17e450]: i
+                    - generic [ref=f17e451]: "n"
+                    - generic [ref=f17e452]: d
+                    - generic [ref=f17e453]: E
+                    - generic [ref=f17e454]: "n"
+                    - generic [ref=f17e455]: d
+                    - generic [ref=f17e456]: R
+                    - generic [ref=f17e457]: e
+                    - generic [ref=f17e458]: l
+                    - generic [ref=f17e459]: a
+                    - generic [ref=f17e460]: t
+                    - generic [ref=f17e461]: i
+                    - generic [ref=f17e462]: o
+                    - generic [ref=f17e463]: "n"
+                    - generic [ref=f17e464]: .
+                - generic [ref=f17e465]:
+                  - generic [ref=f17e466]: DecodeSymbol →
+                  - generic [ref=f17e467]: IdentifyGender →
+                  - generic [ref=f17e468]: ChainLeft −
+                  - generic [ref=f17e469]: to −
+                  - generic [ref=f17e470]: Right →
+                  - generic [ref=f17e471]: FindEndRelation.
+              - paragraph [ref=f17e472]: It's like a math equation, but for family! If '+' means father, 'A + B' means A is the dad of B. If you have 'A + B - C', it means A is dad of B, and B is sister of C. So A is also the dad of C. Just chain them![reference:25]
+              - generic [ref=f17e473]:
+                - generic [ref=f17e474]: When to use
+                - paragraph [ref=f17e475]: When the question uses symbols like A + B, A - B, A * B, A / B.[reference:22][reference:23]
+              - generic [ref=f17e476]: Example
+              - generic [ref=f17e479]:
+                - generic [ref=f17e480]: Common mistake
+                - paragraph [ref=f17e484]: Forgetting to check the gender of the subject in the final answer. If the question asks 'How is P related to R?', and P is female, the answer must be 'Mother' or 'Sister', not 'Father' or 'Brother'.[reference:27]
+            - article [ref=f17e485]:
+              - heading "The 'Only Son/Daughter' Identity Rule" [level=4] [ref=f17e490]
+              - generic [ref=f17e493]:
+                - math [ref=f17e495]:
+                  - generic [ref=f17e497]:
+                    - generic [ref=f17e498]: M
+                    - generic [ref=f17e499]: "y"
+                    - generic [ref=f17e500]: f
+                    - generic [ref=f17e501]: a
+                    - generic [ref=f17e502]: t
+                    - generic [ref=f17e503]: h
+                    - generic [ref=f17e504]: e
+                    - generic [ref=f17e505]:
+                      - generic [ref=f17e506]: r
+                      - generic [ref=f17e507]: ′
+                    - generic [ref=f17e508]: s
+                    - generic [ref=f17e509]: o
+                    - generic [ref=f17e510]: "n"
+                    - generic [ref=f17e511]: l
+                    - generic [ref=f17e512]: "y"
+                    - generic [ref=f17e513]: s
+                    - generic [ref=f17e514]: o
+                    - generic [ref=f17e515]: "n"
+                    - generic [ref=f17e516]: (
+                    - generic [ref=f17e517]: i
+                    - generic [ref=f17e518]: f
+                    - generic [ref=f17e519]: I
+                    - generic [ref=f17e520]: a
+                    - generic [ref=f17e521]: m
+                    - generic [ref=f17e522]: m
+                    - generic [ref=f17e523]: a
+                    - generic [ref=f17e524]: l
+                    - generic [ref=f17e525]: e
+                    - generic [ref=f17e526]: )
+                    - generic [ref=f17e527]: =
+                    - generic [ref=f17e528]: M
+                    - generic [ref=f17e529]: E
+                    - generic [ref=f17e530]: .
+                    - generic [ref=f17e531]: M
+                    - generic [ref=f17e532]: "y"
+                    - generic [ref=f17e533]: f
+                    - generic [ref=f17e534]: a
+                    - generic [ref=f17e535]: t
+                    - generic [ref=f17e536]: h
+                    - generic [ref=f17e537]: e
+                    - generic [ref=f17e538]:
+                      - generic [ref=f17e539]: r
+                      - generic [ref=f17e540]: ′
+                    - generic [ref=f17e541]: s
+                    - generic [ref=f17e542]: o
+                    - generic [ref=f17e543]: "n"
+                    - generic [ref=f17e544]: l
+                    - generic [ref=f17e545]: "y"
+                    - generic [ref=f17e546]: d
+                    - generic [ref=f17e547]: a
+                    - generic [ref=f17e548]: u
+                    - generic [ref=f17e549]: g
+                    - generic [ref=f17e550]: h
+                    - generic [ref=f17e551]: t
+                    - generic [ref=f17e552]: e
+                    - generic [ref=f17e553]: r
+                    - generic [ref=f17e554]: (
+                    - generic [ref=f17e555]: i
+                    - generic [ref=f17e556]: f
+                    - generic [ref=f17e557]: I
+                    - generic [ref=f17e558]: a
+                    - generic [ref=f17e559]: m
+                    - generic [ref=f17e560]: f
+                    - generic [ref=f17e561]: e
+                    - generic [ref=f17e562]: m
+                    - generic [ref=f17e563]: a
+                    - generic [ref=f17e564]: l
+                    - generic [ref=f17e565]: e
+                    - generic [ref=f17e566]: )
+                    - generic [ref=f17e567]: =
+                    - generic [ref=f17e568]: M
+                    - generic [ref=f17e569]: E
+                    - generic [ref=f17e570]: .
+                - generic [ref=f17e571]:
+                  - generic [ref=f17e572]:
+                    - text: Myfathe
+                    - generic [ref=f17e573]:
+                      - text: r
+                      - generic [ref=f17e574]: ′
+                    - text: sonlyson(ifIammale) =
+                  - generic [ref=f17e580]:
+                    - text: ME.Myfathe
+                    - generic [ref=f17e581]:
+                      - text: r
+                      - generic [ref=f17e582]: ′
+                    - text: sonlydaughter(ifIamfemale) =
+                  - generic [ref=f17e588]: ME.
+              - paragraph [ref=f17e589]: Parents have children. If a father has ONLY ONE son, and the speaker is a boy, that boy MUST be the only son. If the speaker is a girl, her father's only son is her brother.[reference:33]
+              - generic [ref=f17e590]:
+                - generic [ref=f17e591]: When to use
+                - paragraph [ref=f17e592]: When the phrase 'only son' or 'only daughter' appears in a pointing question.[reference:32]
+              - generic [ref=f17e593]: Example
+              - generic [ref=f17e596]:
+                - generic [ref=f17e597]: Common mistake
+                - paragraph [ref=f17e601]: Assuming 'only son' always means 'ME'. If the speaker is a woman, 'my father's only son' is her BROTHER, not her!
+            - article [ref=f17e602]:
+              - heading "In-Law & Spouse Generation Rule" [level=4] [ref=f17e607]
+              - generic [ref=f17e610]:
+                - math [ref=f17e612]:
+                  - generic [ref=f17e614]:
+                    - generic [ref=f17e615]: S
+                    - generic [ref=f17e616]: p
+                    - generic [ref=f17e617]: o
+                    - generic [ref=f17e618]: u
+                    - generic [ref=f17e619]: s
+                    - generic [ref=f17e620]: e
+                    - generic [ref=f17e621]: =
+                    - generic [ref=f17e622]: S
+                    - generic [ref=f17e623]: a
+                    - generic [ref=f17e624]: m
+                    - generic [ref=f17e625]: e
+                    - generic [ref=f17e626]: G
+                    - generic [ref=f17e627]: e
+                    - generic [ref=f17e628]: "n"
+                    - generic [ref=f17e629]: e
+                    - generic [ref=f17e630]: r
+                    - generic [ref=f17e631]: a
+                    - generic [ref=f17e632]: t
+                    - generic [ref=f17e633]: i
+                    - generic [ref=f17e634]: o
+                    - generic [ref=f17e635]: "n"
+                    - generic [ref=f17e636]: ∣
+                    - generic [ref=f17e637]: I
+                    - generic [ref=f17e638]: "n"
+                    - generic [ref=f17e639]: −
+                    - generic [ref=f17e640]: l
+                    - generic [ref=f17e641]: a
+                    - generic [ref=f17e642]: w
+                    - generic [ref=f17e643]: s
+                    - generic [ref=f17e644]: (
+                    - generic [ref=f17e645]: P
+                    - generic [ref=f17e646]: a
+                    - generic [ref=f17e647]: r
+                    - generic [ref=f17e648]: e
+                    - generic [ref=f17e649]: "n"
+                    - generic [ref=f17e650]: t
+                    - generic [ref=f17e651]: s
+                    - generic [ref=f17e652]: /
+                    - generic [ref=f17e653]: S
+                    - generic [ref=f17e654]: i
+                    - generic [ref=f17e655]: b
+                    - generic [ref=f17e656]: l
+                    - generic [ref=f17e657]: i
+                    - generic [ref=f17e658]: "n"
+                    - generic [ref=f17e659]: g
+                    - generic [ref=f17e660]: s
+                    - generic [ref=f17e661]: )
+                    - generic [ref=f17e662]: =
+                    - generic [ref=f17e663]: S
+                    - generic [ref=f17e664]: a
+                    - generic [ref=f17e665]: m
+                    - generic [ref=f17e666]: e
+                    - generic [ref=f17e667]: G
+                    - generic [ref=f17e668]: e
+                    - generic [ref=f17e669]: "n"
+                    - generic [ref=f17e670]: e
+                    - generic [ref=f17e671]: r
+                    - generic [ref=f17e672]: a
+                    - generic [ref=f17e673]: t
+                    - generic [ref=f17e674]: i
+                    - generic [ref=f17e675]: o
+                    - generic [ref=f17e676]: "n"
+                    - generic [ref=f17e677]: a
+                    - generic [ref=f17e678]: s
+                    - generic [ref=f17e679]: S
+                    - generic [ref=f17e680]: p
+                    - generic [ref=f17e681]: o
+                    - generic [ref=f17e682]: u
+                    - generic [ref=f17e683]: s
+                    - generic [ref=f17e684]: e
+                - generic [ref=f17e685]:
+                  - generic [ref=f17e686]: Spouse =
+                  - generic [ref=f17e687]: SameGeneration∣In −
+                  - generic [ref=f17e688]: laws(Parents/Siblings) =
+                  - generic [ref=f17e689]: SameGenerationasSpouse
+              - paragraph [ref=f17e690]: Think of marriage as a bridge between two families at the same height. Your husband is on your level. His mother (your mother-in-law) is on your parents' level. His sister (your sister-in-law) is on your level.[reference:37][reference:38]
+              - generic [ref=f17e691]:
+                - generic [ref=f17e692]: When to use
+                - paragraph [ref=f17e693]: When the question involves 'husband', 'wife', 'father-in-law', 'sister-in-law'.[reference:35]
+              - generic [ref=f17e694]: Example
+              - generic [ref=f17e697]:
+                - generic [ref=f17e698]: Common mistake
+                - paragraph [ref=f17e702]: Thinking 'sister-in-law' is always the spouse's sister. It can ALSO be your own sibling's wife! Both are on your generation level.[reference:40]
+            - article [ref=f17e703]:
+              - heading "Maternal vs Paternal Distinction" [level=4] [ref=f17e708]
+              - generic [ref=f17e711]:
+                - math [ref=f17e713]:
+                  - generic [ref=f17e715]:
+                    - generic [ref=f17e716]: P
+                    - generic [ref=f17e717]: a
+                    - generic [ref=f17e718]: t
+                    - generic [ref=f17e719]: e
+                    - generic [ref=f17e720]: r
+                    - generic [ref=f17e721]: "n"
+                    - generic [ref=f17e722]: a
+                    - generic [ref=f17e723]: l
+                    - generic [ref=f17e724]: =
+                    - generic [ref=f17e725]: F
+                    - generic [ref=f17e726]: a
+                    - generic [ref=f17e727]: t
+                    - generic [ref=f17e728]: h
+                    - generic [ref=f17e729]: e
+                    - generic [ref=f17e730]:
+                      - generic [ref=f17e731]: r
+                      - generic [ref=f17e732]: ′
+                    - generic [ref=f17e733]: s
+                    - generic [ref=f17e734]: s
+                    - generic [ref=f17e735]: i
+                    - generic [ref=f17e736]: d
+                    - generic [ref=f17e737]: e
+                    - generic [ref=f17e738]: (
+                    - generic [ref=f17e739]: f
+                    - generic [ref=f17e740]: a
+                    - generic [ref=f17e741]: t
+                    - generic [ref=f17e742]: h
+                    - generic [ref=f17e743]: e
+                    - generic [ref=f17e744]:
+                      - generic [ref=f17e745]: r
+                      - generic [ref=f17e746]: ′
+                    - generic [ref=f17e747]: s
+                    - generic [ref=f17e748]: b
+                    - generic [ref=f17e749]: r
+                    - generic [ref=f17e750]: o
+                    - generic [ref=f17e751]: t
+                    - generic [ref=f17e752]: h
+                    - generic [ref=f17e753]: e
+                    - generic [ref=f17e754]: r
+                    - generic [ref=f17e755]: =
+                    - generic [ref=f17e756]: p
+                    - generic [ref=f17e757]: a
+                    - generic [ref=f17e758]: t
+                    - generic [ref=f17e759]: e
+                    - generic [ref=f17e760]: r
+                    - generic [ref=f17e761]: "n"
+                    - generic [ref=f17e762]: a
+                    - generic [ref=f17e763]: l
+                    - generic [ref=f17e764]: u
+                    - generic [ref=f17e765]: "n"
+                    - generic [ref=f17e766]: c
+                    - generic [ref=f17e767]: l
+                    - generic [ref=f17e768]: e
+                    - generic [ref=f17e769]: )
+                    - generic [ref=f17e770]: .
+                    - generic [ref=f17e771]: M
+                    - generic [ref=f17e772]: a
+                    - generic [ref=f17e773]: t
+                    - generic [ref=f17e774]: e
+                    - generic [ref=f17e775]: r
+                    - generic [ref=f17e776]: "n"
+                    - generic [ref=f17e777]: a
+                    - generic [ref=f17e778]: l
+                    - generic [ref=f17e779]: =
+                    - generic [ref=f17e780]: M
+                    - generic [ref=f17e781]: o
+                    - generic [ref=f17e782]: t
+                    - generic [ref=f17e783]: h
+                    - generic [ref=f17e784]: e
+                    - generic [ref=f17e785]:
+                      - generic [ref=f17e786]: r
+                      - generic [ref=f17e787]: ′
+                    - generic [ref=f17e788]: s
+                    - generic [ref=f17e789]: s
+                    - generic [ref=f17e790]: i
+                    - generic [ref=f17e791]: d
+                    - generic [ref=f17e792]: e
+                    - generic [ref=f17e793]: (
+                    - generic [ref=f17e794]: m
+                    - generic [ref=f17e795]: o
+                    - generic [ref=f17e796]: t
+                    - generic [ref=f17e797]: h
+                    - generic [ref=f17e798]: e
+                    - generic [ref=f17e799]:
+                      - generic [ref=f17e800]: r
+                      - generic [ref=f17e801]: ′
+                    - generic [ref=f17e802]: s
+                    - generic [ref=f17e803]: b
+                    - generic [ref=f17e804]: r
+                    - generic [ref=f17e805]: o
+                    - generic [ref=f17e806]: t
+                    - generic [ref=f17e807]: h
+                    - generic [ref=f17e808]: e
+                    - generic [ref=f17e809]: r
+                    - generic [ref=f17e810]: =
+                    - generic [ref=f17e811]: m
+                    - generic [ref=f17e812]: a
+                    - generic [ref=f17e813]: t
+                    - generic [ref=f17e814]: e
+                    - generic [ref=f17e815]: r
+                    - generic [ref=f17e816]: "n"
+                    - generic [ref=f17e817]: a
+                    - generic [ref=f17e818]: l
+                    - generic [ref=f17e819]: u
+                    - generic [ref=f17e820]: "n"
+                    - generic [ref=f17e821]: c
+                    - generic [ref=f17e822]: l
+                    - generic [ref=f17e823]: e
+                    - generic [ref=f17e824]: )
+                    - generic [ref=f17e825]: .
+                - generic [ref=f17e826]:
+                  - generic [ref=f17e827]: Paternal =
+                  - generic [ref=f17e828]:
+                    - text: Fathe
+                    - generic [ref=f17e829]:
+                      - text: r
+                      - generic [ref=f17e830]: ′
+                    - text: sside(fathe
+                    - generic [ref=f17e836]:
+                      - text: r
+                      - generic [ref=f17e837]: ′
+                    - text: sbrother =
+                  - generic [ref=f17e843]: paternaluncle).Maternal =
+                  - generic [ref=f17e844]:
+                    - text: Mothe
+                    - generic [ref=f17e845]:
+                      - text: r
+                      - generic [ref=f17e846]: ′
+                    - text: sside(mothe
+                    - generic [ref=f17e852]:
+                      - text: r
+                      - generic [ref=f17e853]: ′
+                    - text: sbrother =
+                  - generic [ref=f17e859]: maternaluncle).
+              - paragraph [ref=f17e860]: In many questions, the terms 'uncle' or 'grandfather' can be ambiguous. The words 'maternal' and 'paternal' clarify which parent's side. Paternal means from the father's side, maternal from the mother's side.[reference:48]
+              - generic [ref=f17e861]:
+                - generic [ref=f17e862]: When to use
+                - paragraph [ref=f17e863]: When the question uses terms like 'maternal' or 'paternal' explicitly, or when you need to differentiate between relatives from father's and mother's side.[reference:46]
+              - generic [ref=f17e864]: Example
+              - generic [ref=f17e867]:
+                - generic [ref=f17e868]: Common mistake
+                - paragraph [ref=f17e872]: "Confusing the two. Remember: Pater = Father, Mater = Mother.[reference:50]"
+            - article [ref=f17e873]:
+              - heading "Generation Count Rule" [level=4] [ref=f17e878]
+              - generic [ref=f17e881]:
+                - math [ref=f17e883]:
+                  - generic [ref=f17e885]:
+                    - generic [ref=f17e886]: S
+                    - generic [ref=f17e887]: a
+                    - generic [ref=f17e888]: m
+                    - generic [ref=f17e889]: e
+                    - generic [ref=f17e890]: g
+                    - generic [ref=f17e891]: e
+                    - generic [ref=f17e892]: "n"
+                    - generic [ref=f17e893]: e
+                    - generic [ref=f17e894]: r
+                    - generic [ref=f17e895]: a
+                    - generic [ref=f17e896]: t
+                    - generic [ref=f17e897]: i
+                    - generic [ref=f17e898]: o
+                    - generic [ref=f17e899]: "n"
+                    - generic [ref=f17e900]: ":"
+                    - generic [ref=f17e901]: B
+                    - generic [ref=f17e902]: r
+                    - generic [ref=f17e903]: o
+                    - generic [ref=f17e904]: t
+                    - generic [ref=f17e905]: h
+                    - generic [ref=f17e906]: e
+                    - generic [ref=f17e907]: r
+                    - generic [ref=f17e908]: ","
+                    - generic [ref=f17e909]: S
+                    - generic [ref=f17e910]: i
+                    - generic [ref=f17e911]: s
+                    - generic [ref=f17e912]: t
+                    - generic [ref=f17e913]: e
+                    - generic [ref=f17e914]: r
+                    - generic [ref=f17e915]: ","
+                    - generic [ref=f17e916]: C
+                    - generic [ref=f17e917]: o
+                    - generic [ref=f17e918]: u
+                    - generic [ref=f17e919]: s
+                    - generic [ref=f17e920]: i
+                    - generic [ref=f17e921]: "n"
+                    - generic [ref=f17e922]: ∣
+                    - generic [ref=f17e923]: +
+                    - generic [ref=f17e924]: "1"
+                    - generic [ref=f17e925]: g
+                    - generic [ref=f17e926]: e
+                    - generic [ref=f17e927]: "n"
+                    - generic [ref=f17e928]: e
+                    - generic [ref=f17e929]: r
+                    - generic [ref=f17e930]: a
+                    - generic [ref=f17e931]: t
+                    - generic [ref=f17e932]: i
+                    - generic [ref=f17e933]: o
+                    - generic [ref=f17e934]: "n"
+                    - generic [ref=f17e935]: ":"
+                    - generic [ref=f17e936]: F
+                    - generic [ref=f17e937]: a
+                    - generic [ref=f17e938]: t
+                    - generic [ref=f17e939]: h
+                    - generic [ref=f17e940]: e
+                    - generic [ref=f17e941]: r
+                    - generic [ref=f17e942]: ","
+                    - generic [ref=f17e943]: M
+                    - generic [ref=f17e944]: o
+                    - generic [ref=f17e945]: t
+                    - generic [ref=f17e946]: h
+                    - generic [ref=f17e947]: e
+                    - generic [ref=f17e948]: r
+                    - generic [ref=f17e949]: ","
+                    - generic [ref=f17e950]: U
+                    - generic [ref=f17e951]: "n"
+                    - generic [ref=f17e952]: c
+                    - generic [ref=f17e953]: l
+                    - generic [ref=f17e954]: e
+                    - generic [ref=f17e955]: ","
+                    - generic [ref=f17e956]: A
+                    - generic [ref=f17e957]: u
+                    - generic [ref=f17e958]: "n"
+                    - generic [ref=f17e959]: t
+                    - generic [ref=f17e960]: ∣
+                    - generic [ref=f17e961]: +
+                    - generic [ref=f17e962]: "2"
+                    - generic [ref=f17e963]: g
+                    - generic [ref=f17e964]: e
+                    - generic [ref=f17e965]: "n"
+                    - generic [ref=f17e966]: e
+                    - generic [ref=f17e967]: r
+                    - generic [ref=f17e968]: a
+                    - generic [ref=f17e969]: t
+                    - generic [ref=f17e970]: i
+                    - generic [ref=f17e971]: o
+                    - generic [ref=f17e972]: "n"
+                    - generic [ref=f17e973]: ":"
+                    - generic [ref=f17e974]: G
+                    - generic [ref=f17e975]: r
+                    - generic [ref=f17e976]: a
+                    - generic [ref=f17e977]: "n"
+                    - generic [ref=f17e978]: d
+                    - generic [ref=f17e979]: f
+                    - generic [ref=f17e980]: a
+                    - generic [ref=f17e981]: t
+                    - generic [ref=f17e982]: h
+                    - generic [ref=f17e983]: e
+                    - generic [ref=f17e984]: r
+                    - generic [ref=f17e985]: ","
+                    - generic [ref=f17e986]: G
+                    - generic [ref=f17e987]: r
+                    - generic [ref=f17e988]: a
+                    - generic [ref=f17e989]: "n"
+                    - generic [ref=f17e990]: d
+                    - generic [ref=f17e991]: m
+                    - generic [ref=f17e992]: o
+                    - generic [ref=f17e993]: t
+                    - generic [ref=f17e994]: h
+                    - generic [ref=f17e995]: e
+                    - generic [ref=f17e996]: r
+                    - generic [ref=f17e997]: ∣
+                    - generic [ref=f17e998]: −
+                    - generic [ref=f17e999]: "1"
+                    - generic [ref=f17e1000]: g
+                    - generic [ref=f17e1001]: e
+                    - generic [ref=f17e1002]: "n"
+                    - generic [ref=f17e1003]: e
+                    - generic [ref=f17e1004]: r
+                    - generic [ref=f17e1005]: a
+                    - generic [ref=f17e1006]: t
+                    - generic [ref=f17e1007]: i
+                    - generic [ref=f17e1008]: o
+                    - generic [ref=f17e1009]: "n"
+                    - generic [ref=f17e1010]: ":"
+                    - generic [ref=f17e1011]: S
+                    - generic [ref=f17e1012]: o
+                    - generic [ref=f17e1013]: "n"
+                    - generic [ref=f17e1014]: ","
+                    - generic [ref=f17e1015]: D
+                    - generic [ref=f17e1016]: a
+                    - generic [ref=f17e1017]: u
+                    - generic [ref=f17e1018]: g
+                    - generic [ref=f17e1019]: h
+                    - generic [ref=f17e1020]: t
+                    - generic [ref=f17e1021]: e
+                    - generic [ref=f17e1022]: r
+                    - generic [ref=f17e1023]: ","
+                    - generic [ref=f17e1024]: "N"
+                    - generic [ref=f17e1025]: e
+                    - generic [ref=f17e1026]: p
+                    - generic [ref=f17e1027]: h
+                    - generic [ref=f17e1028]: e
+                    - generic [ref=f17e1029]: w
+                    - generic [ref=f17e1030]: ","
+                    - generic [ref=f17e1031]: "N"
+                    - generic [ref=f17e1032]: i
+                    - generic [ref=f17e1033]: e
+                    - generic [ref=f17e1034]: c
+                    - generic [ref=f17e1035]: e
+                    - generic [ref=f17e1036]: ∣
+                    - generic [ref=f17e1037]: −
+                    - generic [ref=f17e1038]: "2"
+                    - generic [ref=f17e1039]: g
+                    - generic [ref=f17e1040]: e
+                    - generic [ref=f17e1041]: "n"
+                    - generic [ref=f17e1042]: e
+                    - generic [ref=f17e1043]: r
+                    - generic [ref=f17e1044]: a
+                    - generic [ref=f17e1045]: t
+                    - generic [ref=f17e1046]: i
+                    - generic [ref=f17e1047]: o
+                    - generic [ref=f17e1048]: "n"
+                    - generic [ref=f17e1049]: ":"
+                    - generic [ref=f17e1050]: G
+                    - generic [ref=f17e1051]: r
+                    - generic [ref=f17e1052]: a
+                    - generic [ref=f17e1053]: "n"
+                    - generic [ref=f17e1054]: d
+                    - generic [ref=f17e1055]: s
+                    - generic [ref=f17e1056]: o
+                    - generic [ref=f17e1057]: "n"
+                    - generic [ref=f17e1058]: ","
+                    - generic [ref=f17e1059]: G
+                    - generic [ref=f17e1060]: r
+                    - generic [ref=f17e1061]: a
+                    - generic [ref=f17e1062]: "n"
+                    - generic [ref=f17e1063]: d
+                    - generic [ref=f17e1064]: d
+                    - generic [ref=f17e1065]: a
+                    - generic [ref=f17e1066]: u
+                    - generic [ref=f17e1067]: g
+                    - generic [ref=f17e1068]: h
+                    - generic [ref=f17e1069]: t
+                    - generic [ref=f17e1070]: e
+                    - generic [ref=f17e1071]: r
+                    - generic [ref=f17e1072]: "["
+                    - generic [ref=f17e1073]: r
+                    - generic [ref=f17e1074]: e
+                    - generic [ref=f17e1075]: f
+                    - generic [ref=f17e1076]: e
+                    - generic [ref=f17e1077]: r
+                    - generic [ref=f17e1078]: e
+                    - generic [ref=f17e1079]: "n"
+                    - generic [ref=f17e1080]: c
+                    - generic [ref=f17e1081]: e
+                    - generic [ref=f17e1082]: ":"
+                    - generic [ref=f17e1083]: "56"
+                    - generic [ref=f17e1084]: "]"
+                    - generic [ref=f17e1085]: "["
+                    - generic [ref=f17e1086]: r
+                    - generic [ref=f17e1087]: e
+                    - generic [ref=f17e1088]: f
+                    - generic [ref=f17e1089]: e
+                    - generic [ref=f17e1090]: r
+                    - generic [ref=f17e1091]: e
+                    - generic [ref=f17e1092]: "n"
+                    - generic [ref=f17e1093]: c
+                    - generic [ref=f17e1094]: e
+                    - generic [ref=f17e1095]: ":"
+                    - generic [ref=f17e1096]: "57"
+                    - generic [ref=f17e1097]: "]"
+                - generic [ref=f17e1098]:
+                  - generic [ref=f17e1099]: "Samegeneration :"
+                  - generic [ref=f17e1100]: Brother, Sister, Cousin∣ +
+                  - generic [ref=f17e1101]: "1generation :"
+                  - generic [ref=f17e1102]: Father, Mother, Uncle, Aunt∣ +
+                  - generic [ref=f17e1103]: "2generation :"
+                  - generic [ref=f17e1104]: Grandfather, Grandmother∣ −
+                  - generic [ref=f17e1105]: "1generation :"
+                  - generic [ref=f17e1106]: Son, Daughter, Nephew, Niece∣ −
+                  - generic [ref=f17e1107]: "2generation :"
+                  - generic [ref=f17e1108]: "Grandson, Granddaughter[reference :"
+                  - generic [ref=f17e1109]: "56][reference :"
+                  - generic [ref=f17e1110]: 57]
+              - paragraph [ref=f17e1111]: Every parent-child relationship adds one generation. If A is B's father (1 link), A is +1 generation. If A is B's grandfather (2 links), A is +2 generation.[reference:60]
+              - generic [ref=f17e1112]:
+                - generic [ref=f17e1113]: When to use
+                - paragraph [ref=f17e1114]: When you need to determine the generation gap between two people in a family tree.[reference:58]
+              - generic [ref=f17e1115]: Example
+              - generic [ref=f17e1118]:
+                - generic [ref=f17e1119]: Common mistake
+                - paragraph [ref=f17e1123]: Forgetting to count the generation of the reference person correctly. Always set the reference person as generation 0.
+            - article [ref=f17e1124]:
+              - heading "Cousin Relations Rule" [level=4] [ref=f17e1129]
+              - generic [ref=f17e1132]:
+                - math [ref=f17e1134]:
+                  - generic [ref=f17e1136]:
+                    - generic [ref=f17e1137]: C
+                    - generic [ref=f17e1138]: o
+                    - generic [ref=f17e1139]: u
+                    - generic [ref=f17e1140]: s
+                    - generic [ref=f17e1141]: i
+                    - generic [ref=f17e1142]: "n"
+                    - generic [ref=f17e1143]: =
+                    - generic [ref=f17e1144]: C
+                    - generic [ref=f17e1145]: h
+                    - generic [ref=f17e1146]: i
+                    - generic [ref=f17e1147]: l
+                    - generic [ref=f17e1148]: d
+                    - generic [ref=f17e1149]: o
+                    - generic [ref=f17e1150]: f
+                    - generic [ref=f17e1151]: U
+                    - generic [ref=f17e1152]: "n"
+                    - generic [ref=f17e1153]: c
+                    - generic [ref=f17e1154]: l
+                    - generic [ref=f17e1155]: e
+                    - generic [ref=f17e1156]: /
+                    - generic [ref=f17e1157]: A
+                    - generic [ref=f17e1158]: u
+                    - generic [ref=f17e1159]: "n"
+                    - generic [ref=f17e1160]: t
+                    - generic [ref=f17e1161]: (
+                    - generic [ref=f17e1162]: s
+                    - generic [ref=f17e1163]: a
+                    - generic [ref=f17e1164]: m
+                    - generic [ref=f17e1165]: e
+                    - generic [ref=f17e1166]: g
+                    - generic [ref=f17e1167]: e
+                    - generic [ref=f17e1168]: "n"
+                    - generic [ref=f17e1169]: e
+                    - generic [ref=f17e1170]: r
+                    - generic [ref=f17e1171]: a
+                    - generic [ref=f17e1172]: t
+                    - generic [ref=f17e1173]: i
+                    - generic [ref=f17e1174]: o
+                    - generic [ref=f17e1175]: "n"
+                    - generic [ref=f17e1176]: a
+                    - generic [ref=f17e1177]: s
+                    - generic [ref=f17e1178]: "y"
+                    - generic [ref=f17e1179]: o
+                    - generic [ref=f17e1180]: u
+                    - generic [ref=f17e1181]: )
+                    - generic [ref=f17e1182]: ∣
+                    - generic [ref=f17e1183]: F
+                    - generic [ref=f17e1184]: i
+                    - generic [ref=f17e1185]: r
+                    - generic [ref=f17e1186]: s
+                    - generic [ref=f17e1187]: t
+                    - generic [ref=f17e1188]: c
+                    - generic [ref=f17e1189]: o
+                    - generic [ref=f17e1190]: u
+                    - generic [ref=f17e1191]: s
+                    - generic [ref=f17e1192]: i
+                    - generic [ref=f17e1193]: "n"
+                    - generic [ref=f17e1194]: =
+                    - generic [ref=f17e1195]: c
+                    - generic [ref=f17e1196]: h
+                    - generic [ref=f17e1197]: i
+                    - generic [ref=f17e1198]: l
+                    - generic [ref=f17e1199]: d
+                    - generic [ref=f17e1200]: o
+                    - generic [ref=f17e1201]: f
+                    - generic [ref=f17e1202]: "y"
+                    - generic [ref=f17e1203]: o
+                    - generic [ref=f17e1204]: u
+                    - generic [ref=f17e1205]: r
+                    - generic [ref=f17e1206]: p
+                    - generic [ref=f17e1207]: a
+                    - generic [ref=f17e1208]: r
+                    - generic [ref=f17e1209]: e
+                    - generic [ref=f17e1210]: "n"
+                    - generic [ref=f17e1211]:
+                      - generic [ref=f17e1212]: t
+                      - generic [ref=f17e1213]: ′
+                    - generic [ref=f17e1214]: s
+                    - generic [ref=f17e1215]: s
+                    - generic [ref=f17e1216]: i
+                    - generic [ref=f17e1217]: b
+                    - generic [ref=f17e1218]: l
+                    - generic [ref=f17e1219]: i
+                    - generic [ref=f17e1220]: "n"
+                    - generic [ref=f17e1221]: g
+                    - generic [ref=f17e1222]: "["
+                    - generic [ref=f17e1223]: r
+                    - generic [ref=f17e1224]: e
+                    - generic [ref=f17e1225]: f
+                    - generic [ref=f17e1226]: e
+                    - generic [ref=f17e1227]: r
+                    - generic [ref=f17e1228]: e
+                    - generic [ref=f17e1229]: "n"
+                    - generic [ref=f17e1230]: c
+                    - generic [ref=f17e1231]: e
+                    - generic [ref=f17e1232]: ":"
+                    - generic [ref=f17e1233]: "66"
+                    - generic [ref=f17e1234]: "]"
+                - generic [ref=f17e1235]:
+                  - generic [ref=f17e1236]: Cousin =
+                  - generic [ref=f17e1237]: ChildofUncle/Aunt(samegenerationasyou)∣Firstcousin =
+                  - generic [ref=f17e1238]:
+                    - text: childofyourparen
+                    - generic [ref=f17e1239]:
+                      - text: t
+                      - generic [ref=f17e1240]: ′
+                    - text: "ssibling[reference :"
+                  - generic [ref=f17e1246]: 66]
+              - paragraph [ref=f17e1247]: Your uncle/aunt is your parent's sibling. Their children are your cousins. They are in your generation (0).
+              - generic [ref=f17e1248]:
+                - generic [ref=f17e1249]: When to use
+                - paragraph [ref=f17e1250]: When the question involves 'cousin' or relations through uncle/aunt.
+              - generic [ref=f17e1251]: Example
+              - generic [ref=f17e1254]:
+                - generic [ref=f17e1255]: Common mistake
+                - paragraph [ref=f17e1259]: Thinking cousins are in a different generation. They are ALWAYS in the same generation as you.
+            - article [ref=f17e1260]:
+              - heading "Chain Breaking Rule (My/His/Her)" [level=4] [ref=f17e1265]
+              - generic [ref=f17e1268]:
+                - math [ref=f17e1270]:
+                  - generic [ref=f17e1272]:
+                    - generic [ref=f17e1273]: B
+                    - generic [ref=f17e1274]: r
+                    - generic [ref=f17e1275]: e
+                    - generic [ref=f17e1276]: a
+                    - generic [ref=f17e1277]: k
+                    - generic [ref=f17e1278]: t
+                    - generic [ref=f17e1279]: h
+                    - generic [ref=f17e1280]: e
+                    - generic [ref=f17e1281]: c
+                    - generic [ref=f17e1282]: h
+                    - generic [ref=f17e1283]: a
+                    - generic [ref=f17e1284]: i
+                    - generic [ref=f17e1285]: "n"
+                    - generic [ref=f17e1286]: a
+                    - generic [ref=f17e1287]:
+                      - generic [ref=f17e1288]: t
+                      - generic [ref=f17e1289]: ′
+                    - generic [ref=f17e1290]: m
+                    - generic [ref=f17e1291]:
+                      - generic [ref=f17e1292]: "y"
+                      - generic [ref=f17e1293]: ′
+                    - generic [ref=f17e1294]:
+                      - generic [ref=f17e1295]: ","
+                      - generic [ref=f17e1296]: ′
+                    - generic [ref=f17e1297]: h
+                    - generic [ref=f17e1298]: i
+                    - generic [ref=f17e1299]:
+                      - generic [ref=f17e1300]: s
+                      - generic [ref=f17e1301]: ′
+                    - generic [ref=f17e1302]:
+                      - generic [ref=f17e1303]: ","
+                      - generic [ref=f17e1304]: ′
+                    - generic [ref=f17e1305]: h
+                    - generic [ref=f17e1306]: e
+                    - generic [ref=f17e1307]:
+                      - generic [ref=f17e1308]: r
+                      - generic [ref=f17e1309]: ′
+                    - generic [ref=f17e1310]: a
+                    - generic [ref=f17e1311]: "n"
+                    - generic [ref=f17e1312]: d
+                    - generic [ref=f17e1313]: r
+                    - generic [ref=f17e1314]: e
+                    - generic [ref=f17e1315]: p
+                    - generic [ref=f17e1316]: l
+                    - generic [ref=f17e1317]: a
+                    - generic [ref=f17e1318]: c
+                    - generic [ref=f17e1319]: e
+                    - generic [ref=f17e1320]: w
+                    - generic [ref=f17e1321]: i
+                    - generic [ref=f17e1322]: t
+                    - generic [ref=f17e1323]: h
+                    - generic [ref=f17e1324]: t
+                    - generic [ref=f17e1325]: h
+                    - generic [ref=f17e1326]: e
+                    - generic [ref=f17e1327]: a
+                    - generic [ref=f17e1328]: c
+                    - generic [ref=f17e1329]: t
+                    - generic [ref=f17e1330]: u
+                    - generic [ref=f17e1331]: a
+                    - generic [ref=f17e1332]: l
+                    - generic [ref=f17e1333]: p
+                    - generic [ref=f17e1334]: e
+                    - generic [ref=f17e1335]: r
+                    - generic [ref=f17e1336]: s
+                    - generic [ref=f17e1337]: o
+                    - generic [ref=f17e1338]: "n"
+                    - generic [ref=f17e1339]: .
+                - generic [ref=f17e1341]:
+                  - text: Breakthechaina
+                  - generic [ref=f17e1342]:
+                    - text: t
+                    - generic [ref=f17e1343]: ′
+                  - text: m
+                  - generic [ref=f17e1349]:
+                    - text: "y"
+                    - generic [ref=f17e1350]: ′
+                  - generic [ref=f17e1356]:
+                    - text: ","
+                    - generic [ref=f17e1357]: ′
+                  - text: hi
+                  - generic [ref=f17e1363]:
+                    - text: s
+                    - generic [ref=f17e1364]: ′
+                  - generic [ref=f17e1370]:
+                    - text: ","
+                    - generic [ref=f17e1371]: ′
+                  - text: he
+                  - generic [ref=f17e1377]:
+                    - text: r
+                    - generic [ref=f17e1378]: ′
+                  - text: andreplacewiththeactualperson.
+              - paragraph [ref=f17e1384]: "Statements like 'my mother's husband's sister' can be broken down: 'my mother' = my mom, 'my mother's husband' = my father, 'my father's sister' = my aunt. Work from the innermost relation outward.[reference:73]"
+              - generic [ref=f17e1385]:
+                - generic [ref=f17e1386]: When to use
+                - paragraph [ref=f17e1387]: When the statement contains multiple possessive pronouns like 'my', 'his', 'her'.[reference:71]
+              - generic [ref=f17e1388]: Example
+              - generic [ref=f17e1391]:
+                - generic [ref=f17e1392]: Common mistake
+                - paragraph [ref=f17e1396]: Trying to solve the entire chain at once without breaking it down step by step.
+            - article [ref=f17e1397]:
+              - heading "Gender Unknown Rule" [level=4] [ref=f17e1402]
+              - generic [ref=f17e1405]:
+                - math [ref=f17e1407]:
+                  - generic [ref=f17e1409]:
+                    - generic [ref=f17e1410]: "N"
+                    - generic [ref=f17e1411]: e
+                    - generic [ref=f17e1412]: v
+                    - generic [ref=f17e1413]: e
+                    - generic [ref=f17e1414]: r
+                    - generic [ref=f17e1415]: a
+                    - generic [ref=f17e1416]: s
+                    - generic [ref=f17e1417]: s
+                    - generic [ref=f17e1418]: u
+                    - generic [ref=f17e1419]: m
+                    - generic [ref=f17e1420]: e
+                    - generic [ref=f17e1421]: g
+                    - generic [ref=f17e1422]: e
+                    - generic [ref=f17e1423]: "n"
+                    - generic [ref=f17e1424]: d
+                    - generic [ref=f17e1425]: e
+                    - generic [ref=f17e1426]: r
+                    - generic [ref=f17e1427]: u
+                    - generic [ref=f17e1428]: "n"
+                    - generic [ref=f17e1429]: l
+                    - generic [ref=f17e1430]: e
+                    - generic [ref=f17e1431]: s
+                    - generic [ref=f17e1432]: s
+                    - generic [ref=f17e1433]: e
+                    - generic [ref=f17e1434]: x
+                    - generic [ref=f17e1435]: p
+                    - generic [ref=f17e1436]: l
+                    - generic [ref=f17e1437]: i
+                    - generic [ref=f17e1438]: c
+                    - generic [ref=f17e1439]: i
+                    - generic [ref=f17e1440]: t
+                    - generic [ref=f17e1441]: l
+                    - generic [ref=f17e1442]: "y"
+                    - generic [ref=f17e1443]: s
+                    - generic [ref=f17e1444]: t
+                    - generic [ref=f17e1445]: a
+                    - generic [ref=f17e1446]: t
+                    - generic [ref=f17e1447]: e
+                    - generic [ref=f17e1448]: d
+                    - generic [ref=f17e1449]: .
+                    - generic [ref=f17e1450]: I
+                    - generic [ref=f17e1451]: f
+                    - generic [ref=f17e1452]: g
+                    - generic [ref=f17e1453]: e
+                    - generic [ref=f17e1454]: "n"
+                    - generic [ref=f17e1455]: d
+                    - generic [ref=f17e1456]: e
+                    - generic [ref=f17e1457]: r
+                    - generic [ref=f17e1458]: i
+                    - generic [ref=f17e1459]: s
+                    - generic [ref=f17e1460]: u
+                    - generic [ref=f17e1461]: "n"
+                    - generic [ref=f17e1462]: k
+                    - generic [ref=f17e1463]: "n"
+                    - generic [ref=f17e1464]: o
+                    - generic [ref=f17e1465]: w
+                    - generic [ref=f17e1466]: "n"
+                    - generic [ref=f17e1467]: ","
+                    - generic [ref=f17e1468]: t
+                    - generic [ref=f17e1469]: h
+                    - generic [ref=f17e1470]: e
+                    - generic [ref=f17e1471]: a
+                    - generic [ref=f17e1472]: "n"
+                    - generic [ref=f17e1473]: s
+                    - generic [ref=f17e1474]: w
+                    - generic [ref=f17e1475]: e
+                    - generic [ref=f17e1476]: r
+                    - generic [ref=f17e1477]: m
+                    - generic [ref=f17e1478]: a
+                    - generic [ref=f17e1479]: "y"
+                    - generic [ref=f17e1480]: b
+                    - generic [ref=f17e1481]:
+                      - generic [ref=f17e1482]: e
+                      - generic [ref=f17e1483]: ′
+                    - generic [ref=f17e1484]: C
+                    - generic [ref=f17e1485]: a
+                    - generic [ref=f17e1486]: "n"
+                    - generic [ref=f17e1487]: "n"
+                    - generic [ref=f17e1488]: o
+                    - generic [ref=f17e1489]: t
+                    - generic [ref=f17e1490]: b
+                    - generic [ref=f17e1491]: e
+                    - generic [ref=f17e1492]: d
+                    - generic [ref=f17e1493]: e
+                    - generic [ref=f17e1494]: t
+                    - generic [ref=f17e1495]: e
+                    - generic [ref=f17e1496]: r
+                    - generic [ref=f17e1497]: m
+                    - generic [ref=f17e1498]: i
+                    - generic [ref=f17e1499]: "n"
+                    - generic [ref=f17e1500]: e
+                    - generic [ref=f17e1501]:
+                      - generic [ref=f17e1502]: d
+                      - generic [ref=f17e1503]: ′
+                    - generic [ref=f17e1504]: .
+                - generic [ref=f17e1506]:
+                  - text: Neverassumegenderunlessexplicitlystated.Ifgenderisunknown, theanswermayb
+                  - generic [ref=f17e1507]:
+                    - text: e
+                    - generic [ref=f17e1508]: ′
+                  - text: Cannotbedetermine
+                  - generic [ref=f17e1514]:
+                    - text: d
+                    - generic [ref=f17e1515]: ′
+                  - text: .
+              - paragraph [ref=f17e1521]: Many students make the mistake of assuming 'child' is a son or 'sibling' is a brother. Always check if gender is given. If not, the answer might be 'Cannot be determined'.
+              - generic [ref=f17e1522]:
+                - generic [ref=f17e1523]: When to use
+                - paragraph [ref=f17e1524]: When the question does not specify the gender of a person.[reference:74]
+              - generic [ref=f17e1525]: Example
+              - generic [ref=f17e1528]:
+                - generic [ref=f17e1529]: Common mistake
+                - paragraph [ref=f17e1533]: Assuming 'child' means 'son' or 'daughter' without confirmation.
+        - navigation [ref=f17e1534]:
+          - link "Previous Statement & Argument" [ref=f17e1535] [cursor=pointer]:
+            - /url: "#/topic/critical-reasoning/statement-argument"
+            - generic [ref=f17e1536]: Previous
+            - generic [ref=f17e1537]: Statement & Argument
+          - link "Next Direction Sense" [ref=f17e1538] [cursor=pointer]:
+            - /url: "#/topic/critical-reasoning/direction-sense"
+            - generic [ref=f17e1539]: Next
+            - generic [ref=f17e1540]: Direction Sense
+    - contentinfo [ref=f17e1541]:
+      - generic [ref=f17e1542]: Accenture Preparation Arena — syllabus researched from 10 sources.
+      - generic [ref=f17e1543]: "Math: KaTeX · Pseudocode: PseudoLSP v1.0"

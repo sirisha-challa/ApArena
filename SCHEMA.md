@@ -67,8 +67,70 @@ Use short paragraphs in `content`, and make each subsection a single teachable p
 
 ## Rules
 
-- Delimit inline mathematics with `$...$`; use `\\[...\\]` only for standalone display mathematics in prose.
+- Delimit inline mathematics with `$...$`; use `$$...$$` (on its own line) for standalone display mathematics in prose.
 - Use LaTex commands such as `\\frac`, `\\times`, `\\sqrt`, `^`, `_`, `\\leq`, and `\\text{}`. Do not use Unicode superscripts, `×`, `÷`, or `|` as formula separators in `latex`.
 - Keep narrative text out of the `latex` field. Use `text`, `explanation`, `whenToUse`, or `memoryTip` instead.
 - Store a sequence as an array (`steps`), not a single paragraph with embedded step labels.
 - Use plain text only for titles and icons. Do not include emoji; the interface removes legacy emoji at render time.
+
+## MCQ
+
+Every MCQ carries a difficulty level and may carry optional rich-explanation fields. The renderer shows the explanation only after the user picks an option.
+
+```json
+{
+  "id": "ns-factors-007",
+  "q": "How many factors does $888888$ have?",
+  "opts": ["96", "128", "120", "144"],
+  "c": 1,
+  "d": "medium",
+  "t": "factors",
+  "source": "Asked in TCS NQT (2022)",
+  "exp": ["$888888 = 2^3 \\times 3 \\times 7 \\times 11 \\times 13 \\times 37$.", "Number of factors $= (3+1)(1+1)^5 = 128$."],
+  "shortcut": "Use the exponents: factors = product of (exponent + 1).",
+  "pattern": "BIG composite numbers in factor questions: prime-factorise completely, never guess."
+}
+```
+
+Fields:
+- `d` — difficulty: `easy` | `medium` | `hard` (drives the easy → medium → hard progression and filter chips).
+- `t` — subtopic tag shown as a filter chip (e.g. `divisibility`, `factors`, `remainders`).
+- `source` — optional placement/PYQ origin tag shown on the card.
+- `exp` — string or array of steps (array renders as numbered steps).
+- `shortcut` — optional quick-trick callout in the explanation.
+- `pattern` — optional "pattern to spot" callout in the explanation.
+- `wrongOptions` — optional explanation of why the distractors are wrong.
+
+## Practice problem (formula-based practice)
+
+10 MCQs per formula. Each formula group is rendered with a "how to use this formula" worked example before its problems.
+
+```json
+{
+  "q": "Find the number of factors of $72$.",
+  "opts": ["6", "10", "12", "18"],
+  "c": 2,
+  "s": ["$72 = 2^3 \\times 3^2$.", "Number of factors $= (3+1)(2+1) = 12$."],
+  "a": "$12$",
+  "shortcut": "Prime-factorise, add 1 to each exponent, multiply.",
+  "pattern": "Pure factor-count questions are always this pipeline."
+}
+```
+
+Fields: `opts` + `c` (correct option index) make the problem a MCQ with reveal-on-select; `s` is the step-by-step solution; `a` the final answer. Legacy `{q, s, a}` free-response problems still render with a "Show Solution" button.
+
+## Reading section extras
+
+Optional fields per reading section, rendered as callouts below the prose:
+
+- `tricks` — array of strings: tips, tricks, shortcuts for the section.
+- `patterns` — array of strings: patterns to recognise in questions.
+- `pyqPatterns` — array of `{source, question, approach}`: previous-year question patterns with the solving approach.
+- `companyNote` — string, exam-specific note callout.
+
+## Rules (addition)
+
+- Author exactly N formulas × 10 practice MCQs per topic.
+- Target 50–500 MCQs per topic with a clear easy → medium → hard progression.
+- Every MCQ answer must be validated by reasoning (and web cross-check where possible) before authoring. Many "official" answers published on the web are wrong.
+- Standalone display mathematics must use `$$...$$` (one pair per line) so multi-line derivations stack line-by-line instead of collapsing onto one line. Do NOT use `\[...\]` in prose: the prose renderer escapes backslashes and KaTeX never sees it.

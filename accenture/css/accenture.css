@@ -323,6 +323,8 @@ code, pre { font-family: var(--font-mono); font-size: 0.92em; }
 .svg-ico { display: inline-flex; vertical-align: -3px; }
 .svg-ico svg { width: 15px; height: 15px; }
 .svg-ico.tiny svg { width: 12px; height: 12px; }
+.btn .svg-ico { margin-right: 6px; vertical-align: -2px; }
+.btn .svg-ico svg { width: 14px; height: 14px; }
 
 .mini-label {
   display: inline-flex;
@@ -638,7 +640,7 @@ code, pre { font-family: var(--font-mono); font-size: 0.92em; }
 
 .topic-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 240px;
+  grid-template-columns: minmax(0, 1fr);
   gap: 36px;
   align-items: start;
 }
@@ -649,11 +651,38 @@ code, pre { font-family: var(--font-mono); font-size: 0.92em; }
 .topic-head h1 { font-size: 30px; margin: 0; }
 .topic-actions { display: flex; gap: 8px; }
 
+/* topic tabs — learn / formulas / practice / quick revision */
+.topic-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 28px;
+  border-bottom: 2px solid var(--border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.tab-btn {
+  padding: 10px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-3);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  white-space: nowrap;
+  min-height: 44px;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--accent-3); border-bottom-color: var(--accent-3); }
+
 .intro-p { color: var(--text-2); font-size: 15.5px; margin: 0 0 10px; }
 .topic-article > .intro-p:last-of-type { margin-bottom: 28px; }
 
-.topic-section { margin-bottom: 40px; scroll-margin-top: calc(var(--topbar-h) + 12px); }
-.topic-section h2, .quick-revision h2, .practice h2 {
+.topic-section { margin-bottom: 40px; }
+.topic-section-inner { margin-bottom: 40px; scroll-margin-top: calc(var(--topbar-h) + 12px); }
+.topic-section h2, .topic-section-inner h2, .quick-revision h2, .practice h2 {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1130,6 +1159,22 @@ code, pre { font-family: var(--font-mono); font-size: 0.92em; }
 .quick-revision li { margin-bottom: 8px; font-size: 14px; color: var(--text-2); }
 .quick-revision li::marker { color: var(--accent-3); }
 
+/* formulas tab grid + empty state */
+.formulas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.empty-state {
+  color: var(--text-3);
+  font-size: 14px;
+  padding: 28px;
+  text-align: center;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+}
+
 .pq-item {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -1197,32 +1242,6 @@ code, pre { font-family: var(--font-mono); font-size: 0.92em; }
 .tn-name { font-size: 13.5px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .tn-next { text-align: right; }
 
-/* ---------- TOC ---------- */
-
-.toc { position: sticky; top: calc(var(--topbar-h) + 24px); }
-.toc-inner { display: flex; flex-direction: column; gap: 2px; max-height: calc(100vh - var(--topbar-h) - 60px); overflow-y: auto; padding-right: 6px; }
-.toc-label {
-  font-size: 10.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-3);
-  margin: 0 0 8px;
-}
-.toc a {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-size: 12.5px;
-  color: var(--text-2);
-  border-left: 2px solid transparent;
-}
-.toc a:hover { background: var(--surface); color: var(--text); text-decoration: none; }
-.toc a.active { color: var(--accent-3); background: var(--accent-soft); border-left-color: var(--accent-3); }
-.toc-idx { font-family: var(--font-mono); font-size: 10px; color: var(--text-3); }
-
 /* ---------- boot / footer ---------- */
 
 .boot { display: flex; flex-direction: column; align-items: center; gap: 14px; padding: 120px 0; color: var(--text-3); }
@@ -1253,8 +1272,6 @@ code, pre { font-family: var(--font-mono); font-size: 0.92em; }
 @media (max-width: 1080px) {
   .stats-row { grid-template-columns: repeat(3, 1fr); }
   .timeline { grid-template-columns: repeat(2, 1fr); }
-  .toc { display: none; }
-  .topic-layout { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 860px) {
@@ -1282,3 +1299,19 @@ code, pre { font-family: var(--font-mono); font-size: 0.92em; }
   .search-wrap input { width: 100%; }
   .hero { padding-top: 28px; }
 }
+
+/* bank topic extras: MCQ tab + practice groups */
+.mcq-controls-row {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  margin: 4px 0 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border);
+}
+.mcq-counter { font-weight: 700; font-size: 14px; }
+.mcq-tag { font-size: 12px; color: var(--muted); background: var(--panel-2); border: 1px solid var(--border); border-radius: 999px; padding: 3px 10px; }
+.mcq-controls-row .btn { margin-left: auto; }
+.mcq-item { border-color: var(--border-strong, var(--border)); }
+.pq-group-title {
+  font-size: 15px; font-weight: 700; margin: 26px 0 10px;
+  padding-left: 12px; border-left: 3px solid var(--acc);
+  color: var(--text);
+}
+.pq-group-title:first-child { margin-top: 0; }

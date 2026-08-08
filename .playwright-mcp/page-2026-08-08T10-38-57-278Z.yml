@@ -1,0 +1,88 @@
+- generic [ref=f22e2]:
+  - complementary "Primary" [ref=f22e3]:
+    - generic [ref=f22e4]:
+      - generic [ref=f22e5]: A
+      - generic [ref=f22e6]:
+        - strong [ref=f22e7]: Accenture Arena
+        - text: ASE · AASE Prep
+    - navigation [ref=f22e8]:
+      - paragraph [ref=f22e9]: Main
+      - link "Dashboard" [ref=f22e10] [cursor=pointer]:
+        - /url: "#/"
+      - paragraph [ref=f22e14]: Syllabus
+      - generic "Syllabus sections" [ref=f22e15]:
+        - link "Behavioral Assessment" [ref=f22e16] [cursor=pointer]:
+          - /url: "#/section/behavioral"
+        - link "Gamified Cognitive Assessment" [ref=f22e21] [cursor=pointer]:
+          - /url: "#/section/cognitive"
+        - link "English Ability" [ref=f22e25] [cursor=pointer]:
+          - /url: "#/section/english"
+        - link "Critical Reasoning" [ref=f22e29] [cursor=pointer]:
+          - /url: "#/section/critical-reasoning"
+        - link "Abstract Reasoning" [ref=f22e41] [cursor=pointer]:
+          - /url: "#/section/abstract-reasoning"
+        - link "MS Office & Common Applications" [ref=f22e47] [cursor=pointer]:
+          - /url: "#/section/ms-office"
+        - link "Pseudo Code" [ref=f22e53] [cursor=pointer]:
+          - /url: "#/section/pseudocode"
+        - link "Network, Security & Cloud" [ref=f22e59] [cursor=pointer]:
+          - /url: "#/section/network-security-cloud"
+        - link "Core CS Fundamentals" [ref=f22e63] [cursor=pointer]:
+          - /url: "#/section/core-cs"
+        - link "Coding Assessment" [ref=f22e68] [cursor=pointer]:
+          - /url: "#/section/coding"
+        - link "Communication Assessment" [ref=f22e72] [cursor=pointer]:
+          - /url: "#/section/communication"
+      - paragraph [ref=f22e77]: Other
+      - link "Classic Arena (existing app)" [ref=f22e78] [cursor=pointer]:
+        - /url: ../classic/
+    - generic [ref=f22e83]: Syllabus compiled from 10 sources · updated 2026
+  - generic [ref=f22e84]:
+    - banner [ref=f22e85]:
+      - generic [ref=f22e86]:
+        - strong [ref=f22e87]: Accenture
+        - text: Preparation Arena
+      - generic [ref=f22e88]:
+        - link "Classic Arena" [ref=f22e89] [cursor=pointer]:
+          - /url: ../classic/
+        - button "Toggle theme" [ref=f22e90] [cursor=pointer]
+    - main [ref=f22e93]:
+      - article [ref=f22e1541]:
+        - generic [ref=f22e1542]:
+          - heading "Blood Relations & Family Trees" [level=1] [ref=f22e1543]
+          - generic [ref=f22e1544]:
+            - button "Mark as reviewed" [ref=f22e1545] [cursor=pointer]
+            - link "Back to section" [ref=f22e1546] [cursor=pointer]:
+              - /url: "#/section/critical-reasoning"
+        - generic [ref=f22e1547]:
+          - button "Learn" [ref=f22e1548] [cursor=pointer]
+          - button "Formulas (10)" [ref=f22e1549] [cursor=pointer]
+          - button "Practice (99)" [ref=f22e1550] [cursor=pointer]
+          - button "MCQ (200)" [ref=f22e1551] [cursor=pointer]
+        - generic [ref=f22e1552]:
+          - generic [ref=f22e1553]:
+            - generic [ref=f22e1554]: Question 1 of 200
+            - generic [ref=f22e1555]: pointing-backward-rule · easy
+            - button "Prev" [disabled] [ref=f22e1556] [cursor=pointer]
+            - button "Next" [ref=f22e1557] [cursor=pointer]
+          - generic [ref=f22e1558]:
+            - generic [ref=f22e1559]:
+              - generic [ref=f22e1560]: Q1
+              - paragraph [ref=f22e1561]: Introducing a woman, a man said, 'Her husband is the only son of my father'. How is that woman related to the man?
+            - generic [ref=f22e1562]:
+              - generic [ref=f22e1563] [cursor=pointer]: A. Husband
+              - generic [ref=f22e1564] [cursor=pointer]: B. Sister
+              - generic [ref=f22e1565] [cursor=pointer]: C. Wife
+              - generic [ref=f22e1566] [cursor=pointer]: D. Mother
+        - navigation [ref=f22e1567]:
+          - link "Previous Statement & Argument" [ref=f22e1568] [cursor=pointer]:
+            - /url: "#/topic/critical-reasoning/statement-argument"
+            - generic [ref=f22e1569]: Previous
+            - generic [ref=f22e1570]: Statement & Argument
+          - link "Next Direction Sense" [ref=f22e1571] [cursor=pointer]:
+            - /url: "#/topic/critical-reasoning/direction-sense"
+            - generic [ref=f22e1572]: Next
+            - generic [ref=f22e1573]: Direction Sense
+    - contentinfo [ref=f22e1537]:
+      - generic [ref=f22e1538]: Accenture Preparation Arena — syllabus researched from 10 sources.
+      - generic [ref=f22e1539]: "Math: KaTeX · Pseudocode: PseudoLSP v1.0"

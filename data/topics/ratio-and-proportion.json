@@ -677,7 +677,8 @@
         "$3 : 4$"
       ],
       "c": 1,
-      "exp": "Step 1: Convert 12 m to cm. 12 m = 1200 cm. Step 2: Ratio = 1200 : 800. Step 3: Divide both terms by 400. Ratio = 3 : 2. Answer is option B."
+      "exp": "Step 1: Convert 12 m to cm. 12 m = 1200 cm. Step 2: Ratio = 1200 : 800. Step 3: Divide both terms by 400. Ratio = 3 : 2. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 1,
@@ -690,7 +691,8 @@
         "$3 : 4$"
       ],
       "c": 0,
-      "exp": "Step 1: Find the HCF of 45 and 75, which is 15. Step 2: 45 ÷ 15 = 3 and 75 ÷ 15 = 5. Step 3: Simplified ratio = 3 : 5. Answer is option A."
+      "exp": "Step 1: Find the HCF of 45 and 75, which is 15. Step 2: 45 ÷ 15 = 3 and 75 ÷ 15 = 5. Step 3: Simplified ratio = 3 : 5. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 2,
@@ -703,7 +705,8 @@
         "$3 : 2$"
       ],
       "c": 1,
-      "exp": "Step 1: Multiply both terms by 100 to remove decimals: 150 : 75. Step 2: Divide both by 75. Ratio = 2 : 1. Answer is option B."
+      "exp": "Step 1: Multiply both terms by 100 to remove decimals: 150 : 75. Step 2: Divide both by 75. Ratio = 2 : 1. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 3,
@@ -716,7 +719,8 @@
         "80"
       ],
       "c": 2,
-      "exp": "Step 1: a : b = 2 : 3 means a/b = 2/3. Step 2: 40/b = 2/3. Step 3: Cross-multiply: 2b = 120, so b = 60. Answer is option C."
+      "exp": "Step 1: a : b = 2 : 3 means a/b = 2/3. Step 2: 40/b = 2/3. Step 3: Cross-multiply: 2b = 120, so b = 60. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 4,
@@ -729,7 +733,8 @@
         "Rs 160"
       ],
       "c": 2,
-      "exp": "Step 1: Cost of 1 notebook = 80 ÷ 4 = Rs 20. Step 2: Cost of 7 notebooks = 7 × 20 = Rs 140. Answer is option C."
+      "exp": "Step 1: Cost of 1 notebook = 80 ÷ 4 = Rs 20. Step 2: Cost of 7 notebooks = 7 × 20 = Rs 140. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 5,
@@ -742,7 +747,8 @@
         "21"
       ],
       "c": 1,
-      "exp": "Step 1: Let x = 3k and y = 4k. Step 2: 3k + 4k = 28, so 7k = 28 and k = 4. Step 3: x = 3 × 4 = 12. Answer is option B."
+      "exp": "Step 1: Let x = 3k and y = 4k. Step 2: 3k + 4k = 28, so 7k = 28 and k = 4. Step 3: x = 3 × 4 = 12. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 6,
@@ -755,7 +761,8 @@
         "$3 : 5$"
       ],
       "c": 0,
-      "exp": "Step 1: Convert Rs 3 to paise = 300 paise. Step 2: Ratio = 60 : 300. Step 3: Divide both by 60, ratio = 1 : 5. Answer is option A."
+      "exp": "Step 1: Convert Rs 3 to paise = 300 paise. Step 2: Ratio = 60 : 300. Step 3: Divide both by 60, ratio = 1 : 5. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 7,
@@ -768,7 +775,8 @@
         "36, 63"
       ],
       "c": 2,
-      "exp": "Step 1: Let the numbers be 4k and 7k. Step 2: 7k − 4k = 3k = 24, so k = 8. Step 3: Numbers = 4 × 8 = 32 and 7 × 8 = 56. Answer is option C."
+      "exp": "Step 1: Let the numbers be 4k and 7k. Step 2: 7k − 4k = 3k = 24, so k = 8. Step 3: Numbers = 4 × 8 = 32 and 7 × 8 = 56. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 8,
@@ -781,7 +789,8 @@
         "$6 : 1$"
       ],
       "c": 1,
-      "exp": "Step 1: Multiply both fractions by the LCM of denominators, 6. Step 2: (1/2 × 6) : (1/3 × 6) = 3 : 2. Answer is option B."
+      "exp": "Step 1: Multiply both fractions by the LCM of denominators, 6. Step 2: (1/2 × 6) : (1/3 × 6) = 3 : 2. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 9,
@@ -794,7 +803,8 @@
         "21"
       ],
       "c": 1,
-      "exp": "Step 1: a/b = 5/6. Step 2: a/18 = 5/6. Step 3: Cross-multiply: 6a = 90, so a = 15. Answer is option B."
+      "exp": "Step 1: a/b = 5/6. Step 2: a/18 = 5/6. Step 3: Cross-multiply: 6a = 90, so a = 15. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 10,
@@ -807,7 +817,8 @@
         "30°"
       ],
       "c": 1,
-      "exp": "Step 1: Let angles be k, 2k, 3k. Sum = 6k = 180°, so k = 30°. Step 2: Largest angle = 3k = 90°. Answer is option B."
+      "exp": "Step 1: Let angles be k, 2k, 3k. Sum = 6k = 180°, so k = 30°. Step 2: Largest angle = 3k = 90°. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 11,
@@ -820,7 +831,8 @@
         "28, 56"
       ],
       "c": 1,
-      "exp": "Step 1: Total parts = 5 + 7 = 12. Step 2: Each part = 84 ÷ 12 = 7. Step 3: Parts = 5 × 7 = 35 and 7 × 7 = 49. Answer is option B."
+      "exp": "Step 1: Total parts = 5 + 7 = 12. Step 2: Each part = 84 ÷ 12 = 7. Step 3: Parts = 5 × 7 = 35 and 7 × 7 = 49. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 12,
@@ -833,7 +845,8 @@
         "$1 : 2 : 3$"
       ],
       "c": 0,
-      "exp": "Step 1: Find the HCF of 12, 18 and 24, which is 6. Step 2: Divide each term by 6: 2 : 3 : 4. Answer is option A."
+      "exp": "Step 1: Find the HCF of 12, 18 and 24, which is 6. Step 2: Divide each term by 6: 2 : 3 : 4. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 13,
@@ -846,7 +859,8 @@
         "45"
       ],
       "c": 2,
-      "exp": "Step 1: Let a = 7k, b = 9k. Sum = 16k = 64, so k = 4. Step 2: b = 9 × 4 = 36. Answer is option C."
+      "exp": "Step 1: Let a = 7k, b = 9k. Sum = 16k = 64, so k = 4. Step 2: b = 9 × 4 = 36. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 14,
@@ -859,7 +873,8 @@
         "$6 : 8$"
       ],
       "c": 1,
-      "exp": "Step 1: Ratio = 60 : 80. Step 2: Divide both by 20. Ratio = 3 : 4. Answer is option B."
+      "exp": "Step 1: Ratio = 60 : 80. Step 2: Divide both by 20. Ratio = 3 : 4. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 15,
@@ -872,7 +887,8 @@
         "Rs 150"
       ],
       "c": 2,
-      "exp": "Step 1: A's share = (2/5) × 250. Step 2: 250 ÷ 5 = 50, then 50 × 2 = Rs 100. Answer is option C."
+      "exp": "Step 1: A's share = (2/5) × 250. Step 2: 250 ÷ 5 = 50, then 50 × 2 = Rs 100. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 16,
@@ -885,7 +901,8 @@
         "$3 : 1$"
       ],
       "c": 0,
-      "exp": "Step 1: Convert 1 hr 40 min = 100 minutes. Step 2: Ratio = 25 : 100 = 1 : 4. Answer is option A."
+      "exp": "Step 1: Convert 1 hr 40 min = 100 minutes. Step 2: Ratio = 25 : 100 = 1 : 4. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 17,
@@ -898,7 +915,8 @@
         "45"
       ],
       "c": 2,
-      "exp": "Step 1: x = 3k, y = 5k. Sum = 8k = 56, so k = 7. Step 2: y = 5 × 7 = 35. Answer is option C."
+      "exp": "Step 1: x = 3k, y = 5k. Sum = 8k = 56, so k = 7. Step 2: y = 5 × 7 = 35. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 18,
@@ -911,7 +929,8 @@
         "$3/5,\\ 66.6\\%$"
       ],
       "c": 0,
-      "exp": "Step 1: Ratio 3 : 5 is the fraction 3/5. Step 2: Percentage = (3/5) × 100 = 60%. Answer is option A."
+      "exp": "Step 1: Ratio 3 : 5 is the fraction 3/5. Step 2: Percentage = (3/5) × 100 = 60%. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 19,
@@ -924,7 +943,8 @@
         "24"
       ],
       "c": 1,
-      "exp": "Step 1: Let numbers be 2k and 3k. Step 2: (2k+8)/(3k+8) = 3/4. Step 3: 4(2k+8) = 3(3k+8), so 8k+32 = 9k+24, giving k = 8. Step 4: Smaller number = 2 × 8 = 16. Answer is option B."
+      "exp": "Step 1: Let numbers be 2k and 3k. Step 2: (2k+8)/(3k+8) = 3/4. Step 3: 4(2k+8) = 3(3k+8), so 8k+32 = 9k+24, giving k = 8. Step 4: Smaller number = 2 × 8 = 16. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 20,
@@ -937,7 +957,8 @@
         "$27 : 125$"
       ],
       "c": 1,
-      "exp": "Step 1: Duplicate ratio means squaring both terms. Step 2: 3² : 5² = 9 : 25. Answer is option B."
+      "exp": "Step 1: Duplicate ratio means squaring both terms. Step 2: 3² : 5² = 9 : 25. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 21,
@@ -950,7 +971,8 @@
         "$4 : 25$"
       ],
       "c": 0,
-      "exp": "Step 1: Sub-duplicate ratio means taking the square root of both terms. Step 2: √16 : √25 = 4 : 5. Answer is option A."
+      "exp": "Step 1: Sub-duplicate ratio means taking the square root of both terms. Step 2: √16 : √25 = 4 : 5. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 22,
@@ -963,7 +985,8 @@
         "$8 : 9$"
       ],
       "c": 1,
-      "exp": "Step 1: Triplicate ratio means cubing both terms. Step 2: 2³ : 3³ = 8 : 27. Answer is option B."
+      "exp": "Step 1: Triplicate ratio means cubing both terms. Step 2: 2³ : 3³ = 8 : 27. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 23,
@@ -976,7 +999,8 @@
         "$27 : 8$"
       ],
       "c": 1,
-      "exp": "Step 1: Sub-triplicate means taking the cube root of both terms. Step 2: ³√27 : ³√64 = 3 : 4. Answer is option B."
+      "exp": "Step 1: Sub-triplicate means taking the cube root of both terms. Step 2: ³√27 : ³√64 = 3 : 4. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 24,
@@ -989,7 +1013,8 @@
         "$7 : 2$"
       ],
       "c": 1,
-      "exp": "Step 1: Inverse ratio is obtained by swapping the terms. Step 2: Inverse of 7 : 9 = 9 : 7. Answer is option B."
+      "exp": "Step 1: Inverse ratio is obtained by swapping the terms. Step 2: Inverse of 7 : 9 = 9 : 7. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 25,
@@ -1002,7 +1027,8 @@
         "$2 : 7$"
       ],
       "c": 0,
-      "exp": "Step 1: Multiply the first terms: 2 × 4 × 6 = 48. Step 2: Multiply the second terms: 3 × 5 × 7 = 105. Step 3: Compound ratio = 48 : 105. Step 4: Divide both by 3, ratio = 16 : 35. Answer is option A."
+      "exp": "Step 1: Multiply the first terms: 2 × 4 × 6 = 48. Step 2: Multiply the second terms: 3 × 5 × 7 = 105. Step 3: Compound ratio = 48 : 105. Step 4: Divide both by 3, ratio = 16 : 35. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 26,
@@ -1015,7 +1041,8 @@
         "$5 : 6$"
       ],
       "c": 0,
-      "exp": "Step 1: Square both terms. Step 2: 5² : 6² = 25 : 36. Answer is option A."
+      "exp": "Step 1: Square both terms. Step 2: 5² : 6² = 25 : 36. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 27,
@@ -1028,7 +1055,8 @@
         "$18 : 32$"
       ],
       "c": 1,
-      "exp": "Step 1: Take the square root of each term. Step 2: √9 : √16 = 3 : 4. Answer is option B."
+      "exp": "Step 1: Take the square root of each term. Step 2: √9 : √16 = 3 : 4. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 28,
@@ -1041,7 +1069,8 @@
         "$2 : 1$"
       ],
       "c": 1,
-      "exp": "Step 1: Cube both terms. Step 2: 1³ : 2³ = 1 : 8. Answer is option B."
+      "exp": "Step 1: Cube both terms. Step 2: 1³ : 2³ = 1 : 8. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 29,
@@ -1054,7 +1083,8 @@
         "$5 : 9$"
       ],
       "c": 1,
-      "exp": "Step 1: Multiply first terms: 5 × 8 = 40. Step 2: Multiply second terms: 6 × 9 = 54. Step 3: Ratio = 40 : 54. Step 4: Divide both by 2, ratio = 20 : 27. Answer is option B."
+      "exp": "Step 1: Multiply first terms: 5 × 8 = 40. Step 2: Multiply second terms: 6 × 9 = 54. Step 3: Ratio = 40 : 54. Step 4: Divide both by 2, ratio = 20 : 27. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 30,
@@ -1067,7 +1097,8 @@
         "$3 : 2$"
       ],
       "c": 1,
-      "exp": "Step 1: Inverse of 2 : 3 = 3 : 2. Step 2: Duplicate means squaring: 3² : 2² = 9 : 4. Answer is option B."
+      "exp": "Step 1: Inverse of 2 : 3 = 3 : 2. Step 2: Duplicate means squaring: 3² : 2² = 9 : 4. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 31,
@@ -1080,7 +1111,8 @@
         "Compound"
       ],
       "c": 1,
-      "exp": "Step 1: The ratio of squares of two numbers is called the duplicate ratio. Step 2: Here it is 16 : 81. Answer is option B."
+      "exp": "Step 1: The ratio of squares of two numbers is called the duplicate ratio. Step 2: Here it is 16 : 81. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 32,
@@ -1093,7 +1125,8 @@
         "10"
       ],
       "c": 1,
-      "exp": "Step 1: In a proportion, product of extremes = product of means. Step 2: x × 25 = 5 × 10 = 50. Step 3: x = 50/25 = 2. Answer is option B."
+      "exp": "Step 1: In a proportion, product of extremes = product of means. Step 2: x × 25 = 5 × 10 = 50. Step 3: x = 50/25 = 2. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 33,
@@ -1106,7 +1139,8 @@
         "Only if reversed"
       ],
       "c": 0,
-      "exp": "Step 1: Check 3 × 15 = 45 and 5 × 9 = 45. Step 2: Products are equal, so yes, they are in proportion. Answer is option A."
+      "exp": "Step 1: Check 3 × 15 = 45 and 5 × 9 = 45. Step 2: Products are equal, so yes, they are in proportion. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 34,
@@ -1119,7 +1153,8 @@
         "36"
       ],
       "c": 1,
-      "exp": "Step 1: 4/9 = 12/x. Step 2: Cross-multiply: 4x = 9 × 12 = 108. Step 3: x = 108/4 = 27. Answer is option B."
+      "exp": "Step 1: 4/9 = 12/x. Step 2: Cross-multiply: 4x = 9 × 12 = 108. Step 3: x = 108/4 = 27. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 35,
@@ -1132,7 +1167,8 @@
         "$6 : 9$"
       ],
       "c": 1,
-      "exp": "Step 1: 2 : 4 simplifies to 1 : 2. Step 2: Check options: 5 : 10 also simplifies to 1 : 2. Step 3: So 2 : 4 :: 5 : 10. Answer is option B."
+      "exp": "Step 1: 2 : 4 simplifies to 1 : 2. Step 2: Check options: 5 : 10 also simplifies to 1 : 2. Step 3: So 2 : 4 :: 5 : 10. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 36,
@@ -1145,7 +1181,8 @@
         "6"
       ],
       "c": 1,
-      "exp": "Step 1: x/6 = 8/12. Step 2: Simplify 8/12 = 2/3. Step 3: x = 6 × (2/3) = 4. Answer is option B."
+      "exp": "Step 1: x/6 = 8/12. Step 2: Simplify 8/12 = 2/3. Step 3: x = 6 × (2/3) = 4. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 37,
@@ -1158,7 +1195,8 @@
         "Only 10 : 16"
       ],
       "c": 0,
-      "exp": "Step 1: Check 5 × 16 = 80 and 8 × 10 = 80. Step 2: Products are equal, so yes. Answer is option A."
+      "exp": "Step 1: Check 5 × 16 = 80 and 8 × 10 = 80. Step 2: Products are equal, so yes. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 38,
@@ -1171,7 +1209,8 @@
         "6"
       ],
       "c": 2,
-      "exp": "Step 1: 7/14 = x/8, simplify 7/14 = 1/2. Step 2: x = 8 × (1/2) = 4. Answer is option C."
+      "exp": "Step 1: 7/14 = x/8, simplify 7/14 = 1/2. Step 2: x = 8 × (1/2) = 4. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 39,
@@ -1184,7 +1223,8 @@
         "Needs 15"
       ],
       "c": 0,
-      "exp": "Step 1: Check extremes: 3 × 20 = 60. Step 2: Check means: 5 × 12 = 60. Step 3: Equal, so yes. Answer is option A."
+      "exp": "Step 1: Check extremes: 3 × 20 = 60. Step 2: Check means: 5 × 12 = 60. Step 3: Equal, so yes. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 40,
@@ -1197,7 +1237,8 @@
         "27"
       ],
       "c": 1,
-      "exp": "Step 1: 3/7 = 9/x. Step 2: Cross-multiply: 3x = 63. Step 3: x = 63/3 = 21. Answer is option B."
+      "exp": "Step 1: 3/7 = 9/x. Step 2: Cross-multiply: 3x = 63. Step 3: x = 63/3 = 21. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 41,
@@ -1210,7 +1251,8 @@
         "14"
       ],
       "c": 2,
-      "exp": "Step 1: 2/3 = x/18. Step 2: Cross-multiply: 3x = 36. Step 3: x = 12. Answer is option C."
+      "exp": "Step 1: 2/3 = x/18. Step 2: Cross-multiply: 3x = 36. Step 3: x = 12. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 42,
@@ -1223,7 +1265,8 @@
         "7"
       ],
       "c": 1,
-      "exp": "Step 1: Mean proportional = √(a × b). Step 2: √(4 × 9) = √36 = 6. Answer is option B."
+      "exp": "Step 1: Mean proportional = √(a × b). Step 2: √(4 × 9) = √36 = 6. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 43,
@@ -1236,7 +1279,8 @@
         "48"
       ],
       "c": 2,
-      "exp": "Step 1: Third proportional s satisfies 4 : 12 = 12 : s. Step 2: 4s = 12 × 12 = 144. Step 3: s = 144/4 = 36. Answer is option C."
+      "exp": "Step 1: Third proportional s satisfies 4 : 12 = 12 : s. Step 2: 4s = 12 × 12 = 144. Step 3: s = 144/4 = 36. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 44,
@@ -1249,7 +1293,8 @@
         "15"
       ],
       "c": 1,
-      "exp": "Step 1: Let it be y: 3 : 5 = 6 : y. Step 2: 3y = 5 × 6 = 30. Step 3: y = 30/3 = 10. Answer is option B."
+      "exp": "Step 1: Let it be y: 3 : 5 = 6 : y. Step 2: 3y = 5 × 6 = 30. Step 3: y = 30/3 = 10. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 45,
@@ -1262,7 +1307,8 @@
         "14"
       ],
       "c": 1,
-      "exp": "Step 1: Mean proportional = √(a × b) = √(8 × 18). Step 2: √144 = 12. Answer is option B."
+      "exp": "Step 1: Mean proportional = √(a × b) = √(8 × 18). Step 2: √144 = 12. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 46,
@@ -1275,7 +1321,8 @@
         "40"
       ],
       "c": 2,
-      "exp": "Step 1: Third proportional s satisfies 2 : 8 = 8 : s. Step 2: 2s = 64. Step 3: s = 32. Answer is option C."
+      "exp": "Step 1: Third proportional s satisfies 2 : 8 = 8 : s. Step 2: 2s = 64. Step 3: s = 32. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 47,
@@ -1288,7 +1335,8 @@
         "16"
       ],
       "c": 1,
-      "exp": "Step 1: Let it be y: 2 : 3 = 8 : y. Step 2: 2y = 3 × 8 = 24. Step 3: y = 12. Answer is option B."
+      "exp": "Step 1: Let it be y: 2 : 3 = 8 : y. Step 2: 2y = 3 × 8 = 24. Step 3: y = 12. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 48,
@@ -1301,7 +1349,8 @@
         "1.5"
       ],
       "c": 1,
-      "exp": "Step 1: Mean proportional = √(0.5 × 2) = √1. Step 2: = 1. Answer is option B."
+      "exp": "Step 1: Mean proportional = √(0.5 × 2) = √1. Step 2: = 1. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 49,
@@ -1314,7 +1363,8 @@
         "27"
       ],
       "c": 2,
-      "exp": "Step 1: Third proportional s: 9 : 15 = 15 : s. Step 2: 9s = 225. Step 3: s = 25. Answer is option C."
+      "exp": "Step 1: Third proportional s: 9 : 15 = 15 : s. Step 2: 9s = 225. Step 3: s = 25. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 50,
@@ -1327,7 +1377,8 @@
         "13"
       ],
       "c": 2,
-      "exp": "Step 1: Let it be y: 5 : 6 = 10 : y. Step 2: 5y = 6 × 10 = 60. Step 3: y = 60/5 = 12. Answer is option C."
+      "exp": "Step 1: Let it be y: 5 : 6 = 10 : y. Step 2: 5y = 6 × 10 = 60. Step 3: y = 60/5 = 12. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 51,
@@ -1340,7 +1391,8 @@
         "10, 14.4"
       ],
       "c": 1,
-      "exp": "Step 1: Mean proportional m satisfies m² = a × b. Step 2: 12² = 144 = a × b. Step 3: Among options, 9 × 16 = 144. Answer is option B."
+      "exp": "Step 1: Mean proportional m satisfies m² = a × b. Step 2: 12² = 144 = a × b. Step 3: Among options, 9 × 16 = 144. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 52,
@@ -1353,7 +1405,8 @@
         "535, 446"
       ],
       "c": 0,
-      "exp": "Step 1: Total parts = 5 + 4 = 9. Step 2: One part = 981/9 = 109. Step 3: Shares = 5 × 109 = 545 and 4 × 109 = 436. Answer is option A."
+      "exp": "Step 1: Total parts = 5 + 4 = 9. Step 2: One part = 981/9 = 109. Step 3: Shares = 5 × 109 = 545 and 4 × 109 = 436. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 53,
@@ -1366,7 +1419,8 @@
         "500, 540"
       ],
       "c": 0,
-      "exp": "Step 1: Total parts = 13. Step 2: One part = 1040/13 = 80. Step 3: Shares = 5 × 80 = 400 and 8 × 80 = 640. Answer is option A."
+      "exp": "Step 1: Total parts = 13. Step 2: One part = 1040/13 = 80. Step 3: Shares = 5 × 80 = 400 and 8 × 80 = 640. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 54,
@@ -1379,7 +1433,8 @@
         "45, 105, 150"
       ],
       "c": 1,
-      "exp": "Step 1: Total parts = 1 + 2 + 3 = 6. Step 2: One part = 300/6 = 50. Step 3: Shares = 50, 100, 150. Answer is option B."
+      "exp": "Step 1: Total parts = 1 + 2 + 3 = 6. Step 2: One part = 300/6 = 50. Step 3: Shares = 50, 100, 150. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 55,
@@ -1392,7 +1447,8 @@
         "220, 380"
       ],
       "c": 1,
-      "exp": "Step 1: Total parts = 5. Step 2: One part = 600/5 = 120. Step 3: Shares = 2 × 120 = 240 and 3 × 120 = 360. Answer is option B."
+      "exp": "Step 1: Total parts = 5. Step 2: One part = 600/5 = 120. Step 3: Shares = 2 × 120 = 240 and 3 × 120 = 360. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 56,
@@ -1405,7 +1461,8 @@
         "30, 70"
       ],
       "c": 0,
-      "exp": "Step 1: Total parts = 8. Step 2: One part = 100/8 = 12.5. Step 3: Shares = 3 × 12.5 = 37.5 and 5 × 12.5 = 62.5. Answer is option A."
+      "exp": "Step 1: Total parts = 8. Step 2: One part = 100/8 = 12.5. Step 3: Shares = 3 × 12.5 = 37.5 and 5 × 12.5 = 62.5. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 57,
@@ -1418,7 +1475,8 @@
         "360"
       ],
       "c": 0,
-      "exp": "Step 1: Total parts = 9. Step 2: One part = 900/9 = 100. Step 3: A's share = 4 × 100 = Rs 400. Answer is option A."
+      "exp": "Step 1: Total parts = 9. Step 2: One part = 900/9 = 100. Step 3: A's share = 4 × 100 = Rs 400. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 58,
@@ -1431,7 +1489,8 @@
         "50, 22"
       ],
       "c": 1,
-      "exp": "Step 1: Total parts = 8. Step 2: One part = 72/8 = 9. Step 3: Shares = 5 × 9 = 45 and 3 × 9 = 27. Answer is option B."
+      "exp": "Step 1: Total parts = 8. Step 2: One part = 72/8 = 9. Step 3: Shares = 5 × 9 = 45 and 3 × 9 = 27. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 59,
@@ -1444,7 +1503,8 @@
         "4000, 4000"
       ],
       "c": 0,
-      "exp": "Step 1: Total parts = 8. Step 2: One part = 8000/8 = 1000. Step 3: Shares = 3 × 1000 = 3000 and 5 × 1000 = 5000. Answer is option A."
+      "exp": "Step 1: Total parts = 8. Step 2: One part = 8000/8 = 1000. Step 3: Shares = 3 × 1000 = 3000 and 5 × 1000 = 5000. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 60,
@@ -1457,7 +1517,8 @@
         "120, 120"
       ],
       "c": 1,
-      "exp": "Step 1: Total parts = 12. Step 2: One part = 240/12 = 20. Step 3: Shares = 7 × 20 = 140 and 5 × 20 = 100. Answer is option B."
+      "exp": "Step 1: Total parts = 12. Step 2: One part = 240/12 = 20. Step 3: Shares = 7 × 20 = 140 and 5 × 20 = 100. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 61,
@@ -1470,7 +1531,8 @@
         "1200, 1500, 1800"
       ],
       "c": 1,
-      "exp": "Step 1: Total parts = 9. Step 2: One part = 4500/9 = 500. Step 3: Shares = 2 × 500 = 1000, 3 × 500 = 1500, 4 × 500 = 2000. Answer is option B."
+      "exp": "Step 1: Total parts = 9. Step 2: One part = 4500/9 = 500. Step 3: Shares = 2 × 500 = 1000, 3 × 500 = 1500, 4 × 500 = 2000. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 62,
@@ -1483,7 +1545,8 @@
         "130, 230"
       ],
       "c": 0,
-      "exp": "Step 1: Total parts = 12. Step 2: One part = 360/12 = 30. Step 3: Shares = 5 × 30 = 150 and 7 × 30 = 210. Answer is option A."
+      "exp": "Step 1: Total parts = 12. Step 2: One part = 360/12 = 30. Step 3: Shares = 5 × 30 = 150 and 7 × 30 = 210. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 63,
@@ -1496,7 +1559,8 @@
         "24, 64"
       ],
       "c": 1,
-      "exp": "Step 1: Total parts = 8. Step 2: One part = 88/8 = 11. Step 3: Parts = 3 × 11 = 33 and 5 × 11 = 55. Answer is option B."
+      "exp": "Step 1: Total parts = 8. Step 2: One part = 88/8 = 11. Step 3: Parts = 3 × 11 = 33 and 5 × 11 = 55. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 64,
@@ -1509,7 +1573,8 @@
         "500"
       ],
       "c": 2,
-      "exp": "Step 1: Total parts = 10. Step 2: One part = 1500/10 = 150. Step 3: B's share = 3 × 150 = Rs 450. Answer is option C."
+      "exp": "Step 1: Total parts = 10. Step 2: One part = 1500/10 = 150. Step 3: B's share = 3 × 150 = Rs 450. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 65,
@@ -1522,7 +1587,8 @@
         "10, 50, 60"
       ],
       "c": 0,
-      "exp": "Step 1: Total parts = 6. Step 2: One part = 120/6 = 20. Step 3: Shares = 20, 40, 60. Answer is option A."
+      "exp": "Step 1: Total parts = 6. Step 2: One part = 120/6 = 20. Step 3: Shares = 20, 40, 60. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 66,
@@ -1535,7 +1601,8 @@
         "30, 30"
       ],
       "c": 1,
-      "exp": "Step 1: Total parts = 5. Step 2: One part = 60/5 = 12. Step 3: Numbers = 2 × 12 = 24 and 3 × 12 = 36. Answer is option B."
+      "exp": "Step 1: Total parts = 5. Step 2: One part = 60/5 = 12. Step 3: Numbers = 2 × 12 = 24 and 3 × 12 = 36. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 67,
@@ -1548,7 +1615,8 @@
         "260, 280"
       ],
       "c": 0,
-      "exp": "Step 1: Total parts = 9. Step 2: One part = 540/9 = 60. Step 3: Shares = 4 × 60 = 240 and 5 × 60 = 300. Answer is option A."
+      "exp": "Step 1: Total parts = 9. Step 2: One part = 540/9 = 60. Step 3: Shares = 4 × 60 = 240 and 5 × 60 = 300. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 68,
@@ -1561,7 +1629,8 @@
         "280, 440"
       ],
       "c": 1,
-      "exp": "Step 1: Total parts = 16. Step 2: One part = 720/16 = 45. Step 3: Shares = 7 × 45 = 315 and 9 × 45 = 405. Answer is option B."
+      "exp": "Step 1: Total parts = 16. Step 2: One part = 720/16 = 45. Step 3: Shares = 7 × 45 = 315 and 9 × 45 = 405. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 69,
@@ -1574,7 +1643,8 @@
         "450"
       ],
       "c": 1,
-      "exp": "Step 1: Total parts = 12. Step 2: One part = 900/12 = 75. Step 3: Middle share = 4 × 75 = Rs 300. Answer is option B."
+      "exp": "Step 1: Total parts = 12. Step 2: One part = 900/12 = 75. Step 3: Middle share = 4 × 75 = Rs 300. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 70,
@@ -1587,7 +1657,8 @@
         "12, 24, 24"
       ],
       "c": 0,
-      "exp": "Step 1: Total parts = 10. Step 2: One part = 60/10 = 6. Step 3: Shares = 2 × 6 = 12, 3 × 6 = 18, 5 × 6 = 30. Answer is option A."
+      "exp": "Step 1: Total parts = 10. Step 2: One part = 60/10 = 6. Step 3: Shares = 2 × 6 = 12, 3 × 6 = 18, 5 × 6 = 30. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 71,
@@ -1600,7 +1671,8 @@
         "Rs 480"
       ],
       "c": 2,
-      "exp": "Step 1: P gets 3 parts = 270, so 1 part = 90. Step 2: Total parts = 5, so total = 5 × 90 = Rs 450. Answer is option C."
+      "exp": "Step 1: P gets 3 parts = 270, so 1 part = 90. Step 2: Total parts = 5, so total = 5 × 90 = Rs 450. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 72,
@@ -1613,7 +1685,8 @@
         "$2 : 3 : 5$"
       ],
       "c": 0,
-      "exp": "Step 1: b is 3 in the first and 4 in the second; LCM(3,4) = 12. Step 2: a : b = 8 : 12 and b : c = 12 : 15. Step 3: a : b : c = 8 : 12 : 15. Answer is option A."
+      "exp": "Step 1: b is 3 in the first and 4 in the second; LCM(3,4) = 12. Step 2: a : b = 8 : 12 and b : c = 12 : 15. Step 3: a : b : c = 8 : 12 : 15. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 73,
@@ -1626,7 +1699,8 @@
         "$9 : 12 : 7$"
       ],
       "c": 0,
-      "exp": "Step 1: LCM(4,6) = 12. Step 2: a : b = 9 : 12 and b : c = 12 : 14. Step 3: a : b : c = 9 : 12 : 14. Answer is option A."
+      "exp": "Step 1: LCM(4,6) = 12. Step 2: a : b = 9 : 12 and b : c = 12 : 14. Step 3: a : b : c = 9 : 12 : 14. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 74,
@@ -1639,7 +1713,8 @@
         "$1 : 4 : 3$"
       ],
       "c": 0,
-      "exp": "Step 1: b already matches: b = 2 in both. Step 2: a : b : c = 1 : 2 : 3. Answer is option A."
+      "exp": "Step 1: b already matches: b = 2 in both. Step 2: a : b : c = 1 : 2 : 3. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 75,
@@ -1652,7 +1727,8 @@
         "$5 : 8 : 9$"
       ],
       "c": 0,
-      "exp": "Step 1: LCM(7,8) = 56. Step 2: a : b = 40 : 56 and b : c = 56 : 63. Step 3: a : b : c = 40 : 56 : 63. Answer is option A."
+      "exp": "Step 1: LCM(7,8) = 56. Step 2: a : b = 40 : 56 and b : c = 56 : 63. Step 3: a : b : c = 40 : 56 : 63. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 76,
@@ -1665,7 +1741,8 @@
         "$6 : 12 : 27$"
       ],
       "c": 0,
-      "exp": "Step 1: LCM(3,4) = 12. Step 2: a : b = 8 : 12 and b : c = 12 : 27. Step 3: a : b : c = 8 : 12 : 27. Answer is option A."
+      "exp": "Step 1: LCM(3,4) = 12. Step 2: a : b = 8 : 12 and b : c = 12 : 27. Step 3: a : b : c = 8 : 12 : 27. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 77,
@@ -1678,7 +1755,8 @@
         "$4:5,\\ 6:5$"
       ],
       "c": 0,
-      "exp": "Step 1: Read the combined ratio directly. Step 2: a : b = 4 : 5 and b : c = 5 : 6. Answer is option A."
+      "exp": "Step 1: Read the combined ratio directly. Step 2: a : b = 4 : 5 and b : c = 5 : 6. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 78,
@@ -1691,7 +1769,8 @@
         "$9 : 25$"
       ],
       "c": 0,
-      "exp": "Step 1: b is 5 in both ratios. Step 2: a : b : c = 3 : 5 : 7. Step 3: a : c = 3 : 7. Answer is option A."
+      "exp": "Step 1: b is 5 in both ratios. Step 2: a : b : c = 3 : 5 : 7. Step 3: a : c = 3 : 7. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 79,
@@ -1704,7 +1783,8 @@
         "$1 : 4$"
       ],
       "c": 0,
-      "exp": "Step 1: b = 3 in both ratios. Step 2: a : b : c = 2 : 3 : 4. Step 3: a : c = 2 : 4 = 1 : 2. Answer is option A."
+      "exp": "Step 1: b = 3 in both ratios. Step 2: a : b : c = 2 : 3 : 4. Step 3: a : c = 2 : 4 = 1 : 2. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 80,
@@ -1717,7 +1797,8 @@
         "$3 : 4$"
       ],
       "c": 0,
-      "exp": "Step 1: LCM(7,14) = 14. Step 2: a : b = 12 : 14 and b : c = 14 : 15. Step 3: a : c = 12 : 15 = 4 : 5. Answer is option A."
+      "exp": "Step 1: LCM(7,14) = 14. Step 2: a : b = 12 : 14 and b : c = 14 : 15. Step 3: a : c = 12 : 15 = 4 : 5. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 81,
@@ -1730,7 +1811,8 @@
         "$8 : 15$"
       ],
       "c": 0,
-      "exp": "Step 1: LCM(5,10) = 10. Step 2: x : y = 8 : 10 and y : z = 10 : 13. Step 3: x : z = 8 : 13. Answer is option A."
+      "exp": "Step 1: LCM(5,10) = 10. Step 2: x : y = 8 : 10 and y : z = 10 : 13. Step 3: x : z = 8 : 13. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 82,
@@ -1743,7 +1825,8 @@
         "$49 : 54 : 99$"
       ],
       "c": 1,
-      "exp": "Step 1: LCM(9,6) = 18. Step 2: a : b = 14 : 18 and b : c = 18 : 33. Step 3: a : b : c = 14 : 18 : 33. Answer is option B."
+      "exp": "Step 1: LCM(9,6) = 18. Step 2: a : b = 14 : 18 and b : c = 18 : 33. Step 3: a : b : c = 14 : 18 : 33. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 83,
@@ -1756,7 +1839,8 @@
         "$15 : 24 : 20$"
       ],
       "c": 0,
-      "exp": "Step 1: LCM(4,5) = 20. Step 2: a : b = 15 : 20 and b : c = 20 : 24. Step 3: a : b : c = 15 : 20 : 24. Answer is option A."
+      "exp": "Step 1: LCM(4,5) = 20. Step 2: a : b = 15 : 20 and b : c = 20 : 24. Step 3: a : b : c = 15 : 20 : 24. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 84,
@@ -1769,7 +1853,8 @@
         "$6 : 10 : 9$"
       ],
       "c": 0,
-      "exp": "Step 1: LCM(3,9) = 9. Step 2: a : b = 6 : 9 and b : c = 9 : 10. Step 3: a : b : c = 6 : 9 : 10. Answer is option A."
+      "exp": "Step 1: LCM(3,9) = 9. Step 2: a : b = 6 : 9 and b : c = 9 : 10. Step 3: a : b : c = 6 : 9 : 10. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 85,
@@ -1782,7 +1867,8 @@
         "$4 : 9 : 3$"
       ],
       "c": 1,
-      "exp": "Step 1: LCM(9,3) = 9. Step 2: a : b = 4 : 9 and b : c = 9 : 15. Step 3: a : b : c = 4 : 9 : 15. Answer is option B."
+      "exp": "Step 1: LCM(9,3) = 9. Step 2: a : b = 4 : 9 and b : c = 9 : 15. Step 3: a : b : c = 4 : 9 : 15. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 86,
@@ -1795,7 +1881,8 @@
         "$10 : 21 : 12$"
       ],
       "c": 0,
-      "exp": "Step 1: LCM(6,4) = 12. Step 2: a : b = 10 : 12 and b : c = 12 : 21. Step 3: a : b : c = 10 : 12 : 21. Answer is option A."
+      "exp": "Step 1: LCM(6,4) = 12. Step 2: a : b = 10 : 12 and b : c = 12 : 21. Step 3: a : b : c = 10 : 12 : 21. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 87,
@@ -1808,7 +1895,8 @@
         "24"
       ],
       "c": 2,
-      "exp": "Step 1: a = 3k, c = 5k, so a + c = 8k = 40, giving k = 5. Step 2: b = 4k = 4 × 5 = 20. Answer is option C."
+      "exp": "Step 1: a = 3k, c = 5k, so a + c = 8k = 40, giving k = 5. Step 2: b = 4k = 4 × 5 = 20. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 88,
@@ -1821,7 +1909,8 @@
         "$8 : 5$"
       ],
       "c": 0,
-      "exp": "Step 1: LCM(15,5) = 15. Step 2: a : b = 8 : 15 and b : c = 15 : 24. Step 3: a : c = 8 : 24 = 1 : 3. Answer is option A."
+      "exp": "Step 1: LCM(15,5) = 15. Step 2: a : b = 8 : 15 and b : c = 15 : 24. Step 3: a : c = 8 : 24 = 1 : 3. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 89,
@@ -1834,7 +1923,8 @@
         "$24 : 35$"
       ],
       "c": 0,
-      "exp": "Step 1: LCM(3,4,6) = 12. Step 2: A : B = 8 : 12, B : C = 12 : 15, C : D = 15 : 17.5 — instead scale directly: A=2×4×6=48 units, D=3×5×7=105. Step 3: A : D = 48 : 105 = 16 : 35. Answer is option A."
+      "exp": "Step 1: LCM(3,4,6) = 12. Step 2: A : B = 8 : 12, B : C = 12 : 15, C : D = 15 : 17.5 — instead scale directly: A=2×4×6=48 units, D=3×5×7=105. Step 3: A : D = 48 : 105 = 16 : 35. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 90,
@@ -1847,7 +1937,8 @@
         "600"
       ],
       "c": 1,
-      "exp": "Step 1: Let counts be 2k, 5k, 3k. Step 2: Value = 0.5×2k + 0.25×5k + 0.1×3k = k + 1.25k + 0.3k = 2.55k. Step 3: 2.55k = 510, so k = 200. Step 4: 50p coins = 2k = 400. Answer is option B."
+      "exp": "Step 1: Let counts be 2k, 5k, 3k. Step 2: Value = 0.5×2k + 0.25×5k + 0.1×3k = k + 1.25k + 0.3k = 2.55k. Step 3: 2.55k = 510, so k = 200. Step 4: 50p coins = 2k = 400. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 91,
@@ -1860,7 +1951,8 @@
         "75"
       ],
       "c": 2,
-      "exp": "Step 1: Let the equal count be k. Step 2: Value = 0.25k + 0.5k + 1k = 1.75k = 105. Step 3: k = 105/1.75 = 60. Answer is option C."
+      "exp": "Step 1: Let the equal count be k. Step 2: Value = 0.25k + 0.5k + 1k = 1.75k = 105. Step 3: k = 105/1.75 = 60. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 92,
@@ -1873,7 +1965,8 @@
         "$4 : 3$"
       ],
       "c": 2,
-      "exp": "Step 1: Count = value ÷ coin size. Step 2: Counts = (2/0.5) : (3/0.25) = 4 : 12. Step 3: Simplify = 1 : 3. Answer is option C."
+      "exp": "Step 1: Count = value ÷ coin size. Step 2: Counts = (2/0.5) : (3/0.25) = 4 : 12. Step 3: Simplify = 1 : 3. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 93,
@@ -1886,7 +1979,8 @@
         "200"
       ],
       "c": 2,
-      "exp": "Step 1: Counts = 11 : (9/0.5) : (5/0.25) = 11 : 18 : 20. Step 2: Total units = 49 = 490, so 1 unit = 10. Step 3: 50p coins = 18 × 10 = 180. Answer is option C."
+      "exp": "Step 1: Counts = 11 : (9/0.5) : (5/0.25) = 11 : 18 : 20. Step 2: Total units = 49 = 490, so 1 unit = 10. Step 3: 50p coins = 18 × 10 = 180. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 94,
@@ -1899,7 +1993,8 @@
         "80"
       ],
       "c": 2,
-      "exp": "Step 1: Let counts be 3k and 4k. Step 2: Value = 0.25×3k + 0.5×4k = 0.75k + 2k = 2.75k = 55. Step 3: k = 20. Step 4: 25p coins = 3 × 20 = 60. Answer is option C."
+      "exp": "Step 1: Let counts be 3k and 4k. Step 2: Value = 0.25×3k + 0.5×4k = 0.75k + 2k = 2.75k = 55. Step 3: k = 20. Step 4: 25p coins = 3 × 20 = 60. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 95,
@@ -1912,7 +2007,8 @@
         "75"
       ],
       "c": 1,
-      "exp": "Step 1: Counts 5k, 4k, 3k. Step 2: Value = 0.1×5k + 0.25×4k + 0.5×3k = 0.5k + 1k + 1.5k = 3k = 45. Step 3: k = 15. Step 4: 50p coins = 3 × 15 = 45. Answer is option B."
+      "exp": "Step 1: Counts 5k, 4k, 3k. Step 2: Value = 0.1×5k + 0.25×4k + 0.5×3k = 0.5k + 1k + 1.5k = 3k = 45. Step 3: k = 15. Step 4: 50p coins = 3 × 15 = 45. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 96,
@@ -1925,7 +2021,8 @@
         "450"
       ],
       "c": 2,
-      "exp": "Step 1: Let x be 1 rupee coins, y be 50p coins. x + y = 500. Step 2: Value: x + 0.5y = 300. Step 3: Subtract: 0.5y = 200, so y = 400. Answer is option C."
+      "exp": "Step 1: Let x be 1 rupee coins, y be 50p coins. x + y = 500. Step 2: Value: x + 0.5y = 300. Step 3: Subtract: 0.5y = 200, so y = 400. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 97,
@@ -1938,7 +2035,8 @@
         "100"
       ],
       "c": 1,
-      "exp": "Step 1: Counts 4k and 3k. Step 2: Value = 0.25×4k + 1×3k = k + 3k = 4k = 100. Step 3: k = 25. Step 4: 1 rupee coins = 3 × 25 = 75. Answer is option B."
+      "exp": "Step 1: Counts 4k and 3k. Step 2: Value = 0.25×4k + 1×3k = k + 3k = 4k = 100. Step 3: k = 25. Step 4: 1 rupee coins = 3 × 25 = 75. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 98,
@@ -1951,7 +2049,8 @@
         "200"
       ],
       "c": 1,
-      "exp": "Step 1: Counts 3k, 4k, 5k. Step 2: Value = 0.5×3k + 0.25×4k + 0.1×5k = 1.5k + k + 0.5k = 3k = 120. Step 3: k = 40. Step 4: 25p coins = 4 × 40 = 160. Answer is option B."
+      "exp": "Step 1: Counts 3k, 4k, 5k. Step 2: Value = 0.5×3k + 0.25×4k + 0.1×5k = 1.5k + k + 0.5k = 3k = 120. Step 3: k = 40. Step 4: 25p coins = 4 × 40 = 160. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 99,
@@ -1964,7 +2063,8 @@
         "$4 : 3 : 2$"
       ],
       "c": 0,
-      "exp": "Step 1: Counts = (2/1) : (3/0.5) : (4/0.25). Step 2: = 2 : 6 : 16. Answer is option A."
+      "exp": "Step 1: Counts = (2/1) : (3/0.5) : (4/0.25). Step 2: = 2 : 6 : 16. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 100,
@@ -1977,7 +2077,8 @@
         "200"
       ],
       "c": 2,
-      "exp": "Step 1: Counts k, 2k, 4k. Step 2: Value = 1×k + 0.5×2k + 0.25×4k = k + k + k = 3k = 120. Step 3: k = 40. Step 4: 25p coins = 4 × 40 = 160. Answer is option C."
+      "exp": "Step 1: Counts k, 2k, 4k. Step 2: Value = 1×k + 0.5×2k + 0.25×4k = k + k + k = 3k = 120. Step 3: k = 40. Step 4: 25p coins = 4 × 40 = 160. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 101,
@@ -1990,7 +2091,8 @@
         "1200"
       ],
       "c": 3,
-      "exp": "Step 1: Counts = (1/0.5) : (3/0.25) = 2 : 12 = 1 : 6. Step 2: For 200 50p coins (1 unit), 25p coins = 6 × 200 = 1200? No — 1 unit = 200, so 6 units = 1200. Recheck: ratio counts 2:12 means for every 2 50p coins there are 12 25p coins. 200 50p coins = 100 × 2, so 25p = 100 × 12 = 1200. Answer is option D."
+      "exp": "Step 1: Counts = (1/0.5) : (3/0.25) = 2 : 12 = 1 : 6. Step 2: For 200 50p coins (1 unit), 25p coins = 6 × 200 = 1200? No — 1 unit = 200, so 6 units = 1200. Recheck: ratio counts 2:12 means for every 2 50p coins there are 12 25p coins. 200 50p coins = 100 × 2, so 25p = 100 × 12 = 1200. Answer is option D.",
+      "d": "medium"
     },
     {
       "id": 102,
@@ -2003,7 +2105,8 @@
         "$7 : 6$"
       ],
       "c": 1,
-      "exp": "Step 1: After removing 3 L, 10 L of mixture (3:2) remains: milk = 6 L, water = 4 L. Step 2: Add 3 L milk: milk = 9 L, water = 4 L. Step 3: New ratio = 9 : 4. Answer is option B."
+      "exp": "Step 1: After removing 3 L, 10 L of mixture (3:2) remains: milk = 6 L, water = 4 L. Step 2: Add 3 L milk: milk = 9 L, water = 4 L. Step 3: New ratio = 9 : 4. Answer is option B.",
+      "d": "hard"
     },
     {
       "id": 103,
@@ -2016,7 +2119,8 @@
         "21 L"
       ],
       "c": 1,
-      "exp": "Step 1: Let alcohol = 7k, water = 5k. Step 2: 7k/(5k+8) = 7/9. Step 3: 63k = 35k + 56, so 28k = 56 and k = 2. Step 4: Alcohol = 7 × 2 = 14 L. Answer is option B."
+      "exp": "Step 1: Let alcohol = 7k, water = 5k. Step 2: 7k/(5k+8) = 7/9. Step 3: 63k = 35k + 56, so 28k = 56 and k = 2. Step 4: Alcohol = 7 × 2 = 14 L. Answer is option B.",
+      "d": "hard"
     },
     {
       "id": 104,
@@ -2029,7 +2133,8 @@
         "28 L"
       ],
       "c": 1,
-      "exp": "Step 1: Let sugar = 4k, water = 3k. Step 2: 4k/(3k+10) = 4/5. Step 3: 20k = 12k + 40, so 8k = 40 and k = 5. Step 4: Sugar = 4 × 5 = 20 L. Answer is option B."
+      "exp": "Step 1: Let sugar = 4k, water = 3k. Step 2: 4k/(3k+10) = 4/5. Step 3: 20k = 12k + 40, so 8k = 40 and k = 5. Step 4: Sugar = 4 × 5 = 20 L. Answer is option B.",
+      "d": "hard"
     },
     {
       "id": 105,
@@ -2042,7 +2147,8 @@
         "35 L"
       ],
       "c": 2,
-      "exp": "Step 1: Milk = 5k, water = 3k. Step 2: 5k/(3k+6) = 5/4. Step 3: 20k = 15k + 30, so k = 6. Step 4: Milk = 5 × 6 = 30 L. Answer is option C."
+      "exp": "Step 1: Milk = 5k, water = 3k. Step 2: 5k/(3k+6) = 5/4. Step 3: 20k = 15k + 30, so k = 6. Step 4: Milk = 5 × 6 = 30 L. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 106,
@@ -2055,7 +2161,8 @@
         "60 L"
       ],
       "c": 2,
-      "exp": "Step 1: Milk = 5k, water = 2k. Step 2: 5k/(2k+10) = 5/3. Step 3: 15k = 10k + 50, so 5k = 50 and k = 10. Step 4: Milk = 5 × 10 = 50 L. Answer is option C."
+      "exp": "Step 1: Milk = 5k, water = 2k. Step 2: 5k/(2k+10) = 5/3. Step 3: 15k = 10k + 50, so 5k = 50 and k = 10. Step 4: Milk = 5 × 10 = 50 L. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 107,
@@ -2068,7 +2175,8 @@
         "6 L"
       ],
       "c": 2,
-      "exp": "Step 1: Milk = 40 L, water = 20 L. Step 2: 40/(20+x) = 8/5. Step 3: 200 = 160 + 8x, so 8x = 40 and x = 5. Answer is option C."
+      "exp": "Step 1: Milk = 40 L, water = 20 L. Step 2: 40/(20+x) = 8/5. Step 3: 200 = 160 + 8x, so 8x = 40 and x = 5. Answer is option C.",
+      "d": "hard"
     },
     {
       "id": 108,
@@ -2081,7 +2189,8 @@
         "$9 : 16$"
       ],
       "c": 0,
-      "exp": "Step 1: Initially alcohol 15 L, water 10 L. Step 2: Remove 5 L of mixture: 3 L alcohol and 2 L water removed. Step 3: Left: alcohol 12 L, water 8 L. Step 4: Add 5 L water: water = 13 L. New ratio = 12 : 13. Answer is option A."
+      "exp": "Step 1: Initially alcohol 15 L, water 10 L. Step 2: Remove 5 L of mixture: 3 L alcohol and 2 L water removed. Step 3: Left: alcohol 12 L, water 8 L. Step 4: Add 5 L water: water = 13 L. New ratio = 12 : 13. Answer is option A.",
+      "d": "hard"
     },
     {
       "id": 109,
@@ -2094,7 +2203,8 @@
         "40/7 kg"
       ],
       "c": 0,
-      "exp": "Step 1: Copper = 25 kg, tin = 20 kg. Step 2: (25+x)/20 = 10/7. Step 3: 7(25+x) = 200 → 175 + 7x = 200 → 7x = 25 → x = 25/7 kg. Answer is option A."
+      "exp": "Step 1: Copper = 25 kg, tin = 20 kg. Step 2: (25+x)/20 = 10/7. Step 3: 7(25+x) = 200 → 175 + 7x = 200 → 7x = 25 → x = 25/7 kg. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 110,
@@ -2107,7 +2217,8 @@
         "18 L"
       ],
       "c": 2,
-      "exp": "Step 1: Milk = 20 L, water = 15 L. Step 2: 20/(15+x) = 2/3. Step 3: 60 = 30 + 2x, so 2x = 30 and x = 15. Answer is option C."
+      "exp": "Step 1: Milk = 20 L, water = 15 L. Step 2: 20/(15+x) = 2/3. Step 3: 60 = 30 + 2x, so 2x = 30 and x = 15. Answer is option C.",
+      "d": "hard"
     },
     {
       "id": 111,
@@ -2120,7 +2231,8 @@
         "75%"
       ],
       "c": 2,
-      "exp": "Step 1: Milk in 2 parts A = 2 × 0.8 = 1.6 parts, in 1 part B = 0.6 parts. Step 2: Total milk = 2.2 out of 3 parts. Step 3: Percentage = (2.2/3) × 100 = 73.33%. Answer is option C."
+      "exp": "Step 1: Milk in 2 parts A = 2 × 0.8 = 1.6 parts, in 1 part B = 0.6 parts. Step 2: Total milk = 2.2 out of 3 parts. Step 3: Percentage = (2.2/3) × 100 = 73.33%. Answer is option C.",
+      "d": "hard"
     },
     {
       "id": 112,
@@ -2133,7 +2245,8 @@
         "40 L"
       ],
       "c": 1,
-      "exp": "Step 1: Milk = 2k, water = k. Step 2: 2k/(k+10) = 1/1. Step 3: 2k = k + 10, so k = 10. Step 4: Milk = 2 × 10 = 20 L. Answer is option B."
+      "exp": "Step 1: Milk = 2k, water = k. Step 2: 2k/(k+10) = 1/1. Step 3: 2k = k + 10, so k = 10. Step 4: Milk = 2 × 10 = 20 L. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 113,
@@ -2146,7 +2259,8 @@
         "$11 : 5$"
       ],
       "c": 0,
-      "exp": "Step 1: Initial milk 5 L, water 3 L. Step 2: Remove 2 L (ratio 5:3): milk 1.25 L, water 0.75 L removed. Step 3: Left: milk 3.75 L, water 2.25 L. Step 4: Add 2 L milk: milk 5.75 L. Ratio 5.75 : 2.25 = 23 : 9. Answer is option A."
+      "exp": "Step 1: Initial milk 5 L, water 3 L. Step 2: Remove 2 L (ratio 5:3): milk 1.25 L, water 0.75 L removed. Step 3: Left: milk 3.75 L, water 2.25 L. Step 4: Add 2 L milk: milk 5.75 L. Ratio 5.75 : 2.25 = 23 : 9. Answer is option A.",
+      "d": "hard"
     },
     {
       "id": 114,
@@ -2159,7 +2273,8 @@
         "15 L"
       ],
       "c": 1,
-      "exp": "Step 1: A = 12 L, B = 9 L. Step 2: 12/(9+x) = 2/3. Step 3: 36 = 18 + 2x, so 2x = 18 and x = 9. Answer is option B."
+      "exp": "Step 1: A = 12 L, B = 9 L. Step 2: 12/(9+x) = 2/3. Step 3: 36 = 18 + 2x, so 2x = 18 and x = 9. Answer is option B.",
+      "d": "hard"
     },
     {
       "id": 115,
@@ -2172,7 +2287,8 @@
         "6 L"
       ],
       "c": 1,
-      "exp": "Step 1: Spirit = 34 L, water = 6 L. Step 2: 34/(6+x) = 17/5. Step 3: 170 = 102 + 17x, so 17x = 68 and x = 4. Answer is option B."
+      "exp": "Step 1: Spirit = 34 L, water = 6 L. Step 2: 34/(6+x) = 17/5. Step 3: 170 = 102 + 17x, so 17x = 68 and x = 4. Answer is option B.",
+      "d": "hard"
     },
     {
       "id": 116,
@@ -2185,7 +2301,8 @@
         "$4 : 7$"
       ],
       "c": 0,
-      "exp": "Step 1: Milk in 3 parts of A = 3 × (2/5) = 6/5. Milk in 2 parts of B = 2 × (5/6) = 5/3. Step 2: Total milk = 6/5 + 5/3 = (18+25)/15 = 43/15. Step 3: Total = 5 parts, water = 5 − 43/15 = 32/15. Step 4: Ratio = 43 : 32. Answer is option A."
+      "exp": "Step 1: Milk in 3 parts of A = 3 × (2/5) = 6/5. Milk in 2 parts of B = 2 × (5/6) = 5/3. Step 2: Total milk = 6/5 + 5/3 = (18+25)/15 = 43/15. Step 3: Total = 5 parts, water = 5 − 43/15 = 32/15. Step 4: Ratio = 43 : 32. Answer is option A.",
+      "d": "hard"
     },
     {
       "id": 117,
@@ -2198,7 +2315,8 @@
         "$2 : 1$"
       ],
       "c": 0,
-      "exp": "Step 1: Alligation: 40 − 25 = 15 parts of the 50% solution, 50 − 40 = 10 parts of the 25% solution. Step 2: Ratio 25% : 50% = 10 : 15 = 2 : 3. Answer is option A."
+      "exp": "Step 1: Alligation: 40 − 25 = 15 parts of the 50% solution, 50 − 40 = 10 parts of the 25% solution. Step 2: Ratio 25% : 50% = 10 : 15 = 2 : 3. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 118,
@@ -2211,7 +2329,8 @@
         "Rs 2000"
       ],
       "c": 1,
-      "exp": "Step 1: Let incomes be 3x and 4x. Savings = 3x−1000 and 4x−1000. Step 2: (3x−1000)/(4x−1000) = 1/2. Step 3: 6x − 2000 = 4x − 1000 → 2x = 1000 → x = 500. Step 4: P's income = 3 × 500 = Rs 1500. Answer is option B."
+      "exp": "Step 1: Let incomes be 3x and 4x. Savings = 3x−1000 and 4x−1000. Step 2: (3x−1000)/(4x−1000) = 1/2. Step 3: 6x − 2000 = 4x − 1000 → 2x = 1000 → x = 500. Step 4: P's income = 3 × 500 = Rs 1500. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 119,
@@ -2224,7 +2343,8 @@
         "Rs 40000"
       ],
       "c": 1,
-      "exp": "Step 1: Let salaries be 4x and 5x. Step 2: (4x+5000)/(5x+5000) = 50/60 = 5/6. Step 3: 6(4x+5000) = 5(5x+5000) → 24x + 30000 = 25x + 25000 → x = 5000. Step 4: Sham's present = 5 × 5000 + 5000 = Rs 30000. Answer is option B."
+      "exp": "Step 1: Let salaries be 4x and 5x. Step 2: (4x+5000)/(5x+5000) = 50/60 = 5/6. Step 3: 6(4x+5000) = 5(5x+5000) → 24x + 30000 = 25x + 25000 → x = 5000. Step 4: Sham's present = 5 × 5000 + 5000 = Rs 30000. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 120,
@@ -2237,7 +2357,8 @@
         "$2 : 3$"
       ],
       "c": 0,
-      "exp": "Step 1: Income = saving ÷ saving rate. Step 2: A = 15/0.3 = 50, B = 11/0.2 = 55. Step 3: Ratio = 50 : 55 = 10 : 11. Answer is option A."
+      "exp": "Step 1: Income = saving ÷ saving rate. Step 2: A = 15/0.3 = 50, B = 11/0.2 = 55. Step 3: Ratio = 50 : 55 = 10 : 11. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 121,
@@ -2250,7 +2371,8 @@
         "Rs 2100"
       ],
       "c": 0,
-      "exp": "Step 1: Incomes 7x, 8x; savings 7x−1000, 8x−1000. Step 2: (7x−1000)/(8x−1000) = 3/4. Step 3: 28x − 4000 = 24x − 3000 → 4x = 1000 → x = 250. Step 4: A = 7 × 250 = Rs 1750. Answer is option A."
+      "exp": "Step 1: Incomes 7x, 8x; savings 7x−1000, 8x−1000. Step 2: (7x−1000)/(8x−1000) = 3/4. Step 3: 28x − 4000 = 24x − 3000 → 4x = 1000 → x = 250. Step 4: A = 7 × 250 = Rs 1750. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 122,
@@ -2263,7 +2385,8 @@
         "Rs 20000"
       ],
       "c": 1,
-      "exp": "Step 1: Salaries 5x, 6x. Step 2: (5x+3000)/(6x+3000) = 6/7. Step 3: 35x + 21000 = 36x + 18000 → x = 3000. Step 4: A's old = 5 × 3000 = Rs 15000. Answer is option B."
+      "exp": "Step 1: Salaries 5x, 6x. Step 2: (5x+3000)/(6x+3000) = 6/7. Step 3: 35x + 21000 = 36x + 18000 → x = 3000. Step 4: A's old = 5 × 3000 = Rs 15000. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 123,
@@ -2276,7 +2399,8 @@
         "Rs 22000"
       ],
       "c": 1,
-      "exp": "Step 1: Incomes 3x, 4x. Step 2: (3x+2000)/(4x+2000) = 7/9. Step 3: 27x + 18000 = 28x + 14000 → x = 4000. Step 4: Sham new = 4 × 4000 + 2000 = Rs 18000. Answer is option B."
+      "exp": "Step 1: Incomes 3x, 4x. Step 2: (3x+2000)/(4x+2000) = 7/9. Step 3: 27x + 18000 = 28x + 14000 → x = 4000. Step 4: Sham new = 4 × 4000 + 2000 = Rs 18000. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 124,
@@ -2289,7 +2413,8 @@
         "$5 : 4$"
       ],
       "c": 0,
-      "exp": "Step 1: P saves 20% → income = 8/0.2 = 40. Step 2: Q saves 15% → income = 9/0.15 = 60. Step 3: Ratio = 40 : 60 = 2 : 3. Answer is option A."
+      "exp": "Step 1: P saves 20% → income = 8/0.2 = 40. Step 2: Q saves 15% → income = 9/0.15 = 60. Step 3: Ratio = 40 : 60 = 2 : 3. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 125,
@@ -2302,7 +2427,8 @@
         "Rs 15"
       ],
       "c": 0,
-      "exp": "Step 1: Wages 5x, 4x, 3x. Step 2: 3(5x) + 2(4x) + 4(3x) = 105 → 15x + 8x + 12x = 35x = 105. Step 3: x = 3. Step 4: Daughter's wage = 3x = Rs 9. Answer is option A."
+      "exp": "Step 1: Wages 5x, 4x, 3x. Step 2: 3(5x) + 2(4x) + 4(3x) = 105 → 15x + 8x + 12x = 35x = 105. Step 3: x = 3. Step 4: Daughter's wage = 3x = Rs 9. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 126,
@@ -2315,7 +2441,8 @@
         "Rs 24000"
       ],
       "c": 2,
-      "exp": "Step 1: Incomes 5x, 4x; expenditures 7y, 5y. Step 2: 5x − 7y = 6000 and 4x − 5y = 6000. Step 3: Subtract: x − 2y = 0 → x = 2y. Step 4: 4(2y) − 5y = 6000 → 3y = 6000 → y = 2000, x = 4000. Step 5: A's income = 5 × 4000 = Rs 20000. Answer is option C."
+      "exp": "Step 1: Incomes 5x, 4x; expenditures 7y, 5y. Step 2: 5x − 7y = 6000 and 4x − 5y = 6000. Step 3: Subtract: x − 2y = 0 → x = 2y. Step 4: 4(2y) − 5y = 6000 → 3y = 6000 → y = 2000, x = 4000. Step 5: A's income = 5 × 4000 = Rs 20000. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 127,
@@ -2328,7 +2455,8 @@
         "Rs 6000"
       ],
       "c": 1,
-      "exp": "Step 1: Incomes 3x, 2x; expenditures 5y, 3y. Step 2: 3x − 5y = 1000 and 2x − 3y = 1000. Step 3: Subtract: x − 2y = 0 → x = 2y. Step 4: 3(2y) − 5y = 1000 → y = 1000, x = 2000. Step 5: B's income = 2 × 2000 = Rs 4000. Answer is option B."
+      "exp": "Step 1: Incomes 3x, 2x; expenditures 5y, 3y. Step 2: 3x − 5y = 1000 and 2x − 3y = 1000. Step 3: Subtract: x − 2y = 0 → x = 2y. Step 4: 3(2y) − 5y = 1000 → y = 1000, x = 2000. Step 5: B's income = 2 × 2000 = Rs 4000. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 128,
@@ -2341,7 +2469,8 @@
         "Rs 15000"
       ],
       "c": 1,
-      "exp": "Step 1: Incomes 9x, 11x; expenditures 7y, 9y. Step 2: 9x − 7y = 2000 and 11x − 9y = 2000. Step 3: Subtract: 2x − 2y = 0 → x = y. Step 4: 9x − 7x = 2000 → 2x = 2000 → x = 1000. Step 5: Y's income = 11 × 1000 = Rs 11000. Answer is option B."
+      "exp": "Step 1: Incomes 9x, 11x; expenditures 7y, 9y. Step 2: 9x − 7y = 2000 and 11x − 9y = 2000. Step 3: Subtract: 2x − 2y = 0 → x = y. Step 4: 9x − 7x = 2000 → 2x = 2000 → x = 1000. Step 5: Y's income = 11 × 1000 = Rs 11000. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 129,
@@ -2354,7 +2483,8 @@
         "Rs 18000"
       ],
       "c": 2,
-      "exp": "Step 1: He saves 1 − 2/5 = 3/5 of salary. Step 2: (3/5) × Salary = 9000. Step 3: Salary = 9000 × 5/3 = Rs 15000. Answer is option C."
+      "exp": "Step 1: He saves 1 − 2/5 = 3/5 of salary. Step 2: (3/5) × Salary = 9000. Step 3: Salary = 9000 × 5/3 = Rs 15000. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 130,
@@ -2367,7 +2497,8 @@
         "Rs 25000"
       ],
       "c": 0,
-      "exp": "Step 1: Profit shares are in capital ratio 1 : 2. Step 2: Total parts = 3, one part = 30000/3 = 10000. Step 3: A's share = 1 × 10000 = Rs 10000. Answer is option A."
+      "exp": "Step 1: Profit shares are in capital ratio 1 : 2. Step 2: Total parts = 3, one part = 30000/3 = 10000. Step 3: A's share = 1 × 10000 = Rs 10000. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 131,
@@ -2380,7 +2511,8 @@
         "Rs 2000"
       ],
       "c": 1,
-      "exp": "Step 1: Input = capital × time. A = 1000 × 6 = 6000, B = 2000 × 3 = 6000. Step 2: Ratio 1 : 1. Step 3: B's share = 3000/2 = Rs 1500. Answer is option B."
+      "exp": "Step 1: Input = capital × time. A = 1000 × 6 = 6000, B = 2000 × 3 = 6000. Step 2: Ratio 1 : 1. Step 3: B's share = 3000/2 = Rs 1500. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 132,
@@ -2393,7 +2525,8 @@
         "Rs 2400"
       ],
       "c": 2,
-      "exp": "Step 1: A input = 5000 × 8 = 40000, B input = 4000 × 6 = 24000. Step 2: Ratio = 40000 : 24000 = 5 : 3. Step 3: Total parts 8, one part = 3200/8 = 400. Step 4: A = 5 × 400 = Rs 2000. Answer is option C."
+      "exp": "Step 1: A input = 5000 × 8 = 40000, B input = 4000 × 6 = 24000. Step 2: Ratio = 40000 : 24000 = 5 : 3. Step 3: Total parts 8, one part = 3200/8 = 400. Step 4: A = 5 × 400 = Rs 2000. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 133,
@@ -2406,7 +2539,8 @@
         "Rs 15000"
       ],
       "c": 2,
-      "exp": "Step 1: Inputs: A = 10000×5 + 7000×7 = 99000. B = 10000×5 + 8000×7 = 106000. C = 10000×5 + 13000×7 = 141000. Step 2: Ratio = 99 : 106 : 141, total 346. Step 3: One part = 34600/346 = 100. Step 4: C = 141 × 100 = Rs 14100. Answer is option C."
+      "exp": "Step 1: Inputs: A = 10000×5 + 7000×7 = 99000. B = 10000×5 + 8000×7 = 106000. C = 10000×5 + 13000×7 = 141000. Step 2: Ratio = 99 : 106 : 141, total 346. Step 3: One part = 34600/346 = 100. Step 4: C = 141 × 100 = Rs 14100. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 134,
@@ -2419,7 +2553,8 @@
         "6"
       ],
       "c": 2,
-      "exp": "Step 1: A input = 70000 × 12, B input = 60000 × (12−n). Step 2: (70000×12)/(60000×(12−n)) = 2/1. Step 3: (7×12)/(6×(12−n)) = 2 → 84 = 144 − 12n → 12n = 60 → n = 5. Step 4: B joined after 5 months. Answer is option C."
+      "exp": "Step 1: A input = 70000 × 12, B input = 60000 × (12−n). Step 2: (70000×12)/(60000×(12−n)) = 2/1. Step 3: (7×12)/(6×(12−n)) = 2 → 84 = 144 − 12n → 12n = 60 → n = 5. Step 4: B joined after 5 months. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 135,
@@ -2432,7 +2567,8 @@
         "$4 : 5$"
       ],
       "c": 0,
-      "exp": "Step 1: A input = 2000 × 6 = 12000, B input = 3000 × 4 = 12000. Step 2: Ratio = 1 : 1. Answer is option A."
+      "exp": "Step 1: A input = 2000 × 6 = 12000, B input = 3000 × 4 = 12000. Step 2: Ratio = 1 : 1. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 136,
@@ -2445,7 +2581,8 @@
         "Rs 1280"
       ],
       "c": 0,
-      "exp": "Step 1: Inputs = 5×6 : 7×7 : 8×8 = 30 : 49 : 64, total 143. Step 2: One part = 2860/143 = 20. Step 3: A = 30 × 20 = Rs 600. Answer is option A."
+      "exp": "Step 1: Inputs = 5×6 : 7×7 : 8×8 = 30 : 49 : 64, total 143. Step 2: One part = 2860/143 = 20. Step 3: A = 30 × 20 = Rs 600. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 137,
@@ -2458,7 +2595,8 @@
         "Rs 3200"
       ],
       "c": 0,
-      "exp": "Step 1: A input = 6000 × 12 = 72000. B input = 4000 × 8 = 32000. Step 2: Ratio = 72 : 32 = 9 : 4. Step 3: Total 13 parts, one part = 5200/13 = 400. Step 4: B = 4 × 400 = Rs 1600. Answer is option A."
+      "exp": "Step 1: A input = 6000 × 12 = 72000. B input = 4000 × 8 = 32000. Step 2: Ratio = 72 : 32 = 9 : 4. Step 3: Total 13 parts, one part = 5200/13 = 400. Step 4: B = 4 × 400 = Rs 1600. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 138,
@@ -2471,7 +2609,8 @@
         "Rs 1500"
       ],
       "c": 0,
-      "exp": "Step 1: Input ratio = (2×5) : (3×4) = 10 : 12 = 5 : 6. Step 2: Total 11 parts, one part = 2200/11 = 200. Step 3: A = 5 × 200 = Rs 1000. Answer is option A."
+      "exp": "Step 1: Input ratio = (2×5) : (3×4) = 10 : 12 = 5 : 6. Step 2: Total 11 parts, one part = 2200/11 = 200. Step 3: A = 5 × 200 = Rs 1000. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 139,
@@ -2484,7 +2623,8 @@
         "Rs 2000"
       ],
       "c": 2,
-      "exp": "Step 1: Profit ratio = 4 : 6 : 9, total 19. Step 2: One part = 3800/19 = 200. Step 3: C = 9 × 200 = Rs 1800. Answer is option C."
+      "exp": "Step 1: Profit ratio = 4 : 6 : 9, total 19. Step 2: One part = 3800/19 = 200. Step 3: C = 9 × 200 = Rs 1800. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 140,
@@ -2497,7 +2637,8 @@
         "Rs 3050"
       ],
       "c": 1,
-      "exp": "Step 1: Manager fee = 10% of 5500 = 550. Step 2: Remaining = 4950 in 4000 : 6000 = 2 : 3. Step 3: A's share = 4950 × (2/5) = 1980. Step 4: A total = 1980 + 550 = Rs 2530. Answer is option B."
+      "exp": "Step 1: Manager fee = 10% of 5500 = 550. Step 2: Remaining = 4950 in 4000 : 6000 = 2 : 3. Step 3: A's share = 4950 × (2/5) = 1980. Step 4: A total = 1980 + 550 = Rs 2530. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 141,
@@ -2510,7 +2651,8 @@
         "$4 : 5$"
       ],
       "c": 0,
-      "exp": "Step 1: A input = 10000×6 + 20000×6 = 60000 + 120000 = 180000. Step 2: B input = 15000 × 12 = 180000. Step 3: Ratio = 1 : 1. Answer is option A."
+      "exp": "Step 1: A input = 10000×6 + 20000×6 = 60000 + 120000 = 180000. Step 2: B input = 15000 × 12 = 180000. Step 3: Ratio = 1 : 1. Answer is option A.",
+      "d": "medium"
     },
     {
       "id": 142,
@@ -2523,7 +2665,8 @@
         "Rs 5000"
       ],
       "c": 1,
-      "exp": "Step 1: Inputs (units): A = 2×6 + 1×6 = 18, B = 3×12 = 36, C = 5×12 = 60. Step 2: Ratio = 18 : 36 : 60 = 3 : 6 : 10, total 19. Step 3: One part = 9500/19 = 500. Step 4: B = 6 × 500 = Rs 3000. Answer is option B."
+      "exp": "Step 1: Inputs (units): A = 2×6 + 1×6 = 18, B = 3×12 = 36, C = 5×12 = 60. Step 2: Ratio = 18 : 36 : 60 = 3 : 6 : 10, total 19. Step 3: One part = 9500/19 = 500. Step 4: B = 6 × 500 = Rs 3000. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 143,
@@ -2536,7 +2679,8 @@
         "6"
       ],
       "c": 1,
-      "exp": "Step 1: More men → fewer days (inverse proportion). Step 2: Total work = 6 × 10 = 60 man-days. Step 3: 15 men → 60/15 = 4 days. Answer is option B."
+      "exp": "Step 1: More men → fewer days (inverse proportion). Step 2: Total work = 6 × 10 = 60 man-days. Step 3: 15 men → 60/15 = 4 days. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 144,
@@ -2549,7 +2693,8 @@
         "360"
       ],
       "c": 2,
-      "exp": "Step 1: More machines → more toys (direct proportion). Step 2: One machine = 200/5 = 40 toys. Step 3: 8 machines = 8 × 40 = 320. Answer is option C."
+      "exp": "Step 1: More machines → more toys (direct proportion). Step 2: One machine = 200/5 = 40 toys. Step 3: 8 machines = 8 × 40 = 320. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 145,
@@ -2562,7 +2707,8 @@
         "30"
       ],
       "c": 2,
-      "exp": "Step 1: Direct: x/y is constant = 12/3 = 4. Step 2: x = 4 × y. Step 3: x = 4 × 7 = 28. Answer is option C."
+      "exp": "Step 1: Direct: x/y is constant = 12/3 = 4. Step 2: x = 4 × y. Step 3: x = 4 × 7 = 28. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 146,
@@ -2575,7 +2721,8 @@
         "6"
       ],
       "c": 2,
-      "exp": "Step 1: Inverse: x × y is constant = 8 × 6 = 48. Step 2: x = 48/12 = 4. Answer is option C."
+      "exp": "Step 1: Inverse: x × y is constant = 8 × 6 = 48. Step 2: x = 48/12 = 4. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 147,
@@ -2588,7 +2735,8 @@
         "7 h"
       ],
       "c": 2,
-      "exp": "Step 1: More pipes → less time (inverse). Step 2: Total = 12 × 8 = 96 pipe-hours. Step 3: 16 pipes → 96/16 = 6 hours. Answer is option C."
+      "exp": "Step 1: More pipes → less time (inverse). Step 2: Total = 12 × 8 = 96 pipe-hours. Step 3: 16 pipes → 96/16 = 6 hours. Answer is option C.",
+      "d": "medium"
     },
     {
       "id": 148,
@@ -2601,7 +2749,8 @@
         "4 h"
       ],
       "c": 1,
-      "exp": "Step 1: Higher speed → less time (inverse). Step 2: Distance = 45 × 4 = 180 km. Step 3: Time = 180/60 = 3 hours. Answer is option B."
+      "exp": "Step 1: Higher speed → less time (inverse). Step 2: Distance = 45 × 4 = 180 km. Step 3: Time = 180/60 = 3 hours. Answer is option B.",
+      "d": "medium"
     },
     {
       "id": 149,
@@ -2614,7 +2763,8 @@
         "30"
       ],
       "c": 2,
-      "exp": "Step 1: Fewer days → more workers (inverse). Step 2: Work = 15 × 20 = 300 worker-days. Step 3: Workers = 300/12 = 25. Answer is option C."
+      "exp": "Step 1: Fewer days → more workers (inverse). Step 2: Work = 15 × 20 = 300 worker-days. Step 3: Workers = 300/12 = 25. Answer is option C.",
+      "d": "medium"
     }
   ]
 }

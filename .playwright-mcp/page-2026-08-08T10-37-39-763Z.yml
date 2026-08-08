@@ -1,0 +1,15 @@
+- generic [ref=f20e3]:
+  - complementary [ref=f20e4]:
+    - generic [ref=f20e5]: ApArena
+    - navigation [ref=f20e11]
+    - generic [ref=f20e13]:
+      - generic [ref=f20e14]: Progress
+      - generic [ref=f20e16]: 0%
+  - generic [ref=f20e17]:
+    - banner [ref=f20e18]:
+      - heading "Dashboard" [level=1] [ref=f20e19]
+      - generic [ref=f20e20]:
+        - button "Toggle sidebar" [ref=f20e21] [cursor=pointer]: Menu
+        - button "Toggle theme" [ref=f20e22] [cursor=pointer]
+    - main [ref=f20e25]
+    - contentinfo [ref=f20e26]: Made Specially for Siri.

@@ -1,0 +1,125 @@
+{
+  "categories": [
+    {
+      "id": "aptitude",
+      "title": "Aptitude",
+      "icon": "#",
+      "color": "#4F46E5",
+      "subtitle": "Quantitative Aptitude & Logical Reasoning"
+    }
+  ],
+  "topics": [
+    {
+      "id": "number-system",
+      "title": "Number System",
+      "icon": "#",
+      "category": "aptitude",
+      "color": "#4F46E5",
+      "days": "1-3",
+      "subtopics": [
+        "Number Family Tree",
+        "Primes & Composites",
+        "Speed Math (Divisibility)",
+        "HCF & LCM",
+        "Cyclicity & Unit Digit",
+        "Remainder Theorems"
+      ],
+      "estimatedHours": 30
+    },
+    {
+      "id": "simplification",
+      "title": "Simplification & Approximation",
+      "icon": "Σ",
+      "category": "aptitude",
+      "color": "#059669",
+      "days": "4-6",
+      "subtopics": [
+        "BODMAS / VBODMAS Rule",
+        "Surds & Indices",
+        "Square & Cube Roots",
+        "Approximation & % Table",
+        "Vedic Math Shortcuts"
+      ],
+      "estimatedHours": 25
+    },
+    {
+      "id": "percentages",
+      "title": "Percentages",
+      "icon": "%",
+      "category": "aptitude",
+      "color": "#E11D48",
+      "days": "7-10",
+      "subtopics": [
+        "Concept of Percentage",
+        "Percentage to Fraction Table",
+        "Percentage Increase & Decrease",
+        "Population & Depreciation Problems",
+        "Successive Percentage Change",
+        "Profit, Loss & Discount as %",
+        "Elections, Marks & Voter Problems",
+        "Alligation & Mixture with %",
+        "Data Interpretation with %"
+      ],
+      "estimatedHours": 40
+    },
+    {
+      "id": "work-and-time",
+      "title": "Work and Time",
+      "icon": "⏱️",
+      "category": "aptitude",
+      "color": "#059669",
+      "days": "2-3",
+      "subtopics": [
+        "Basic Work Rate Formula",
+        "Man-Days Concept",
+        "Efficiency & Ratio",
+        "Combined Work",
+        "Pipes & Cisterns",
+        "Alternate Day Work",
+        "Men-Women-Children Problems",
+        "Data Sufficiency"
+      ],
+      "estimatedHours": 18
+    },
+    {
+      "id": "profit-and-loss",
+      "title": "Profit and Loss",
+      "icon": "₹",
+      "category": "aptitude",
+      "color": "#EAB308",
+      "days": "2-4",
+      "subtopics": [
+        "Basic CP/SP Concepts",
+        "Profit & Loss Percentage",
+        "Discount & Marked Price",
+        "Successive Discounts",
+        "Dishonest Dealer (False Weight)",
+        "Profit % on SP vs CP",
+        "Two Items — Same SP",
+        "Partnership & Ratio in P&L",
+        "Miscellaneous Problems"
+      ],
+      "estimatedHours": 30
+    },
+    {
+      "id": "ratio-and-proportion",
+      "title": "Ratio & Proportion",
+      "icon": "÷",
+      "category": "aptitude",
+      "color": "#F97316",
+      "days": "3-4",
+      "subtopics": [
+        "Ratio Basics & Simplification",
+        "Types of Ratios (Duplicate, Triplicate, Compound)",
+        "Proportion & Proportionality",
+        "Division of a Quantity into a Ratio",
+        "Combined Ratio (a : b : c)",
+        "Coins & Denominations",
+        "Mixture Problems",
+        "Income-Expenditure & Salary Changes",
+        "Partnership & Profit Sharing"
+      ],
+      "estimatedHours": 25
+    }
+  ]
+}

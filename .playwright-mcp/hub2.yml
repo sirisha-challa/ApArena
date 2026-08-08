@@ -1,0 +1,104 @@
+- generic [active] [ref=f19e1]:
+  - generic [ref=f19e2]:
+    - paragraph [ref=f19e3]: ApArena · Prep Hub
+    - heading "Navigation Landing" [level=1] [ref=f19e4]
+    - paragraph [ref=f19e5]: Pick a dashboard. Every section, topic and practice problem lives inside the app you choose.
+    - generic [ref=f19e6]:
+      - generic [ref=f19e7]:
+        - generic [ref=f19e8]: "11"
+        - text: Accenture sections
+      - generic [ref=f19e9]:
+        - generic [ref=f19e10]: "113"
+        - text: Accenture topics
+      - generic [ref=f19e11]:
+        - generic [ref=f19e12]: "6"
+        - text: Accenture ready
+      - generic [ref=f19e13]:
+        - generic [ref=f19e14]: "12"
+        - text: Bank topics
+      - generic [ref=f19e15]:
+        - generic [ref=f19e16]: "81"
+        - text: Bank subtopics
+    - generic [ref=f19e17]:
+      - link "A Accenture Arena ASE · AASE Software Engineer Syllabus-driven prep for the Accenture recruitment test — behavioral, cognitive, pseudocode, core CS, coding and communication rounds. Reasoning and verbal topics load from the banks in-app. 11 sections 6 ready 2026 AXIS pattern Open dashboard" [ref=f19e18] [cursor=pointer]:
+        - /url: /accenture/
+        - generic [ref=f19e19]:
+          - generic [ref=f19e20]: A
+          - generic [ref=f19e21]:
+            - generic [ref=f19e22]: Accenture Arena
+            - generic [ref=f19e23]: ASE · AASE Software Engineer
+        - paragraph [ref=f19e24]: Syllabus-driven prep for the Accenture recruitment test — behavioral, cognitive, pseudocode, core CS, coding and communication rounds. Reasoning and verbal topics load from the banks in-app.
+        - generic [ref=f19e25]:
+          - generic [ref=f19e26]: 11 sections
+          - generic [ref=f19e27]: 6 ready
+          - generic [ref=f19e28]: 2026 AXIS pattern
+        - generic [ref=f19e29]:
+          - text: Open dashboard
+          - generic [ref=f19e30]: →
+      - link "Σ Aptitude Bank Quantitative Aptitude Number System, Simplification, Percentages, Work & Time, Profit & Loss, Ratio & Proportion — learn, formulas, formula practice and MCQs per topic. 6 topics 46 subtopics Open bank" [ref=f19e31] [cursor=pointer]:
+        - /url: /aptitude/
+        - generic [ref=f19e32]:
+          - generic [ref=f19e33]: Σ
+          - generic [ref=f19e34]:
+            - generic [ref=f19e35]: Aptitude Bank
+            - generic [ref=f19e36]: Quantitative Aptitude
+        - paragraph [ref=f19e37]: Number System, Simplification, Percentages, Work & Time, Profit & Loss, Ratio & Proportion — learn, formulas, formula practice and MCQs per topic.
+        - generic [ref=f19e38]:
+          - generic [ref=f19e39]: 6 topics
+          - generic [ref=f19e40]: 46 subtopics
+        - generic [ref=f19e41]:
+          - text: Open bank
+          - generic [ref=f19e42]: →
+      - link "? Reasoning Bank Logical Reasoning Blood Relations, Direction Sense, Statements & Conclusions, Clock & Calendar — puzzles, patterns and statement logic with full practice sets. 4 topics 25 subtopics Open bank" [ref=f19e43] [cursor=pointer]:
+        - /url: /reasoning/
+        - generic [ref=f19e44]:
+          - generic [ref=f19e45]: "?"
+          - generic [ref=f19e46]:
+            - generic [ref=f19e47]: Reasoning Bank
+            - generic [ref=f19e48]: Logical Reasoning
+        - paragraph [ref=f19e49]: Blood Relations, Direction Sense, Statements & Conclusions, Clock & Calendar — puzzles, patterns and statement logic with full practice sets.
+        - generic [ref=f19e50]:
+          - generic [ref=f19e51]: 4 topics
+          - generic [ref=f19e52]: 25 subtopics
+        - generic [ref=f19e53]:
+          - text: Open bank
+          - generic [ref=f19e54]: →
+      - link "A Verbal Bank Verbal & English Analogies and Coding-Decoding — word relationships and letter patterns with formula practice and MCQs. 2 topics 10 subtopics Open bank" [ref=f19e55] [cursor=pointer]:
+        - /url: /verbal/
+        - generic [ref=f19e56]:
+          - generic [ref=f19e57]: A
+          - generic [ref=f19e58]:
+            - generic [ref=f19e59]: Verbal Bank
+            - generic [ref=f19e60]: Verbal & English
+        - paragraph [ref=f19e61]: Analogies and Coding-Decoding — word relationships and letter patterns with formula practice and MCQs.
+        - generic [ref=f19e62]:
+          - generic [ref=f19e63]: 2 topics
+          - generic [ref=f19e64]: 10 subtopics
+        - generic [ref=f19e65]:
+          - text: Open bank
+          - generic [ref=f19e66]: →
+      - link "</> Programming Bank DSA · SQL · Puzzles DSA patterns, SQL and coding puzzles — the next bank being built with the same topic flow. Coming soon Peek" [ref=f19e67] [cursor=pointer]:
+        - /url: /programming/
+        - generic [ref=f19e68]:
+          - generic [ref=f19e69]: </>
+          - generic [ref=f19e70]:
+            - generic [ref=f19e71]: Programming Bank
+            - generic [ref=f19e72]: DSA · SQL · Puzzles
+        - paragraph [ref=f19e73]: DSA patterns, SQL and coding puzzles — the next bank being built with the same topic flow.
+        - generic [ref=f19e74]: Coming soon
+        - generic [ref=f19e76]:
+          - text: Peek
+          - generic [ref=f19e77]: →
+      - link "T TCS Arena TCS NQT The TCS NQT dashboard — same syllabus-driven approach, bank topics open inside the relevant bank. Coming soon Peek" [ref=f19e78] [cursor=pointer]:
+        - /url: /tcs/
+        - generic [ref=f19e79]:
+          - generic [ref=f19e80]: T
+          - generic [ref=f19e81]:
+            - generic [ref=f19e82]: TCS Arena
+            - generic [ref=f19e83]: TCS NQT
+        - paragraph [ref=f19e84]: The TCS NQT dashboard — same syllabus-driven approach, bank topics open inside the relevant bank.
+        - generic [ref=f19e85]: Coming soon
+        - generic [ref=f19e87]:
+          - text: Peek
+          - generic [ref=f19e88]: →
+  - contentinfo [ref=f19e89]: ApArena — all preparation content in one place.

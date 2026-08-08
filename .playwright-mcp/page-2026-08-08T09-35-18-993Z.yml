@@ -1,0 +1,217 @@
+- generic [ref=f2e2]:
+  - generic [ref=f2e3]:
+    - complementary [ref=f2e4]:
+      - generic [ref=f2e5]:
+        - generic [ref=f2e10]: ApArena
+        - button "Close sidebar" [ref=f2e11] [cursor=pointer]: ✕
+      - navigation [ref=f2e12]:
+        - generic [ref=f2e13]: Aptitude
+        - button "# Number System" [ref=f2e14] [cursor=pointer]:
+          - generic [ref=f2e15]: "#"
+          - generic [ref=f2e16]: Number System
+        - button "Σ Simplification & Approximation" [ref=f2e18] [cursor=pointer]:
+          - generic [ref=f2e19]: Σ
+          - generic [ref=f2e20]: Simplification & Approximation
+        - button "% Percentages" [ref=f2e22] [cursor=pointer]:
+          - generic [ref=f2e23]: "%"
+          - generic [ref=f2e24]: Percentages
+        - button "W Work and Time" [ref=f2e26] [cursor=pointer]:
+          - generic [ref=f2e27]: W
+          - generic [ref=f2e28]: Work and Time
+        - button "₹ Profit and Loss" [ref=f2e30] [cursor=pointer]:
+          - generic [ref=f2e31]: ₹
+          - generic [ref=f2e32]: Profit and Loss
+        - button "÷ Ratio & Proportion" [ref=f2e34] [cursor=pointer]:
+          - generic [ref=f2e35]: ÷
+          - generic [ref=f2e36]: Ratio & Proportion
+        - generic [ref=f2e38]: Logical Reasoning
+        - button "B Blood Relations" [ref=f2e39] [cursor=pointer]:
+          - generic [ref=f2e40]: B
+          - generic [ref=f2e41]: Blood Relations
+        - button "D Direction Sense" [ref=f2e43] [cursor=pointer]:
+          - generic [ref=f2e44]: D
+          - generic [ref=f2e45]: Direction Sense
+        - button "S Statements & Conclusions" [ref=f2e47] [cursor=pointer]:
+          - generic [ref=f2e48]: S
+          - generic [ref=f2e49]: Statements & Conclusions
+        - generic [ref=f2e51]: Verbal & English
+        - button "≈ Analogies" [ref=f2e52] [cursor=pointer]:
+          - generic [ref=f2e53]: ≈
+          - generic [ref=f2e54]: Analogies
+        - button "C Coding-Decoding" [ref=f2e56] [cursor=pointer]:
+          - generic [ref=f2e57]: C
+          - generic [ref=f2e58]: Coding-Decoding
+      - generic [ref=f2e61]:
+        - generic [ref=f2e62]: Progress
+        - generic [ref=f2e64]: 0%
+    - generic [ref=f2e65]:
+      - banner [ref=f2e66]:
+        - button "Toggle sidebar" [ref=f2e67] [cursor=pointer]: ☰
+        - heading "Dashboard" [level=1] [ref=f2e68]
+        - generic [ref=f2e69]:
+          - button "Toggle sidebar" [ref=f2e70] [cursor=pointer]: Menu
+          - button "Toggle theme" [ref=f2e71] [cursor=pointer]
+      - main [ref=f2e74]:
+        - generic [ref=f2e76]:
+          - generic [ref=f2e77]:
+            - generic [ref=f2e78]:
+              - heading "Placement Preparation Hub" [level=1] [ref=f2e79]
+              - paragraph [ref=f2e80]: Aptitude + Verbal & English — Complete Campus Placement Training
+            - generic [ref=f2e81]:
+              - generic [ref=f2e82]:
+                - generic [ref=f2e83]: 11/11
+                - text: Topics Completed
+              - generic [ref=f2e84]:
+                - generic [ref=f2e85]: 0%
+                - text: Overall Progress
+          - generic [ref=f2e86]:
+            - heading "# Aptitude" [level=2] [ref=f2e87]
+            - paragraph [ref=f2e88]: Quantitative Aptitude & Logical Reasoning
+            - generic [ref=f2e89]:
+              - generic [ref=f2e90] [cursor=pointer]:
+                - generic [ref=f2e91]:
+                  - generic [ref=f2e92]: "#"
+                  - generic [ref=f2e93]: 1-3
+                - heading "Number System" [level=3] [ref=f2e94]
+                - list [ref=f2e95]:
+                  - listitem [ref=f2e96]: • Number Family Tree
+                  - listitem [ref=f2e97]: • Primes & Composites
+                  - listitem [ref=f2e98]: • Speed Math (Divisibility)
+                - generic [ref=f2e100]:
+                  - generic [ref=f2e101]: 30h
+                  - generic [ref=f2e102]: 0%
+              - generic [ref=f2e103] [cursor=pointer]:
+                - generic [ref=f2e104]:
+                  - generic [ref=f2e105]: Σ
+                  - generic [ref=f2e106]: 4-6
+                - heading "Simplification & Approximation" [level=3] [ref=f2e107]
+                - list [ref=f2e108]:
+                  - listitem [ref=f2e109]: • BODMAS / VBODMAS Rule
+                  - listitem [ref=f2e110]: • Surds & Indices
+                  - listitem [ref=f2e111]: • Square & Cube Roots
+                - generic [ref=f2e113]:
+                  - generic [ref=f2e114]: 25h
+                  - generic [ref=f2e115]: 0%
+              - generic [ref=f2e116] [cursor=pointer]:
+                - generic [ref=f2e117]:
+                  - generic [ref=f2e118]: "%"
+                  - generic [ref=f2e119]: 7-10
+                - heading "Percentages" [level=3] [ref=f2e120]
+                - list [ref=f2e121]:
+                  - listitem [ref=f2e122]: • Concept of Percentage
+                  - listitem [ref=f2e123]: • Percentage to Fraction Table
+                  - listitem [ref=f2e124]: • Percentage Increase & Decrease
+                - generic [ref=f2e126]:
+                  - generic [ref=f2e127]: 40h
+                  - generic [ref=f2e128]: 0%
+              - generic [ref=f2e129] [cursor=pointer]:
+                - generic [ref=f2e130]:
+                  - generic [ref=f2e131]: W
+                  - generic [ref=f2e132]: 2-3
+                - heading "Work and Time" [level=3] [ref=f2e133]
+                - list [ref=f2e134]:
+                  - listitem [ref=f2e135]: • Basic Work Rate Formula
+                  - listitem [ref=f2e136]: • Man-Days Concept
+                  - listitem [ref=f2e137]: • Efficiency & Ratio
+                - generic [ref=f2e139]:
+                  - generic [ref=f2e140]: 18h
+                  - generic [ref=f2e141]: 0%
+              - generic [ref=f2e142] [cursor=pointer]:
+                - generic [ref=f2e143]:
+                  - generic [ref=f2e144]: ₹
+                  - generic [ref=f2e145]: 2-4
+                - heading "Profit and Loss" [level=3] [ref=f2e146]
+                - list [ref=f2e147]:
+                  - listitem [ref=f2e148]: • Basic CP/SP Concepts
+                  - listitem [ref=f2e149]: • Profit & Loss Percentage
+                  - listitem [ref=f2e150]: • Discount & Marked Price
+                - generic [ref=f2e152]:
+                  - generic [ref=f2e153]: 30h
+                  - generic [ref=f2e154]: 0%
+              - generic [ref=f2e155] [cursor=pointer]:
+                - generic [ref=f2e156]:
+                  - generic [ref=f2e157]: ÷
+                  - generic [ref=f2e158]: 3-4
+                - heading "Ratio & Proportion" [level=3] [ref=f2e159]
+                - list [ref=f2e160]:
+                  - listitem [ref=f2e161]: • Ratio Basics & Simplification
+                  - listitem [ref=f2e162]: • Types of Ratios (Duplicate, Triplicate, Compound)
+                  - listitem [ref=f2e163]: • Proportion & Proportionality
+                - generic [ref=f2e165]:
+                  - generic [ref=f2e166]: 25h
+                  - generic [ref=f2e167]: 0%
+          - generic [ref=f2e168]:
+            - heading "? Logical Reasoning" [level=2] [ref=f2e169]
+            - paragraph [ref=f2e170]: Blood Relations, Direction Sense & Statement Logic
+            - generic [ref=f2e171]:
+              - generic [ref=f2e172] [cursor=pointer]:
+                - generic [ref=f2e173]:
+                  - generic [ref=f2e174]: B
+                  - generic [ref=f2e175]: 1-2
+                - heading "Blood Relations" [level=3] [ref=f2e176]
+                - list [ref=f2e177]:
+                  - listitem [ref=f2e178]: • Direct Blood Relations
+                  - listitem [ref=f2e179]: • Coded Blood Relations
+                  - listitem [ref=f2e180]: • Puzzle-Based Blood Relations
+                - generic [ref=f2e182]:
+                  - generic [ref=f2e183]: 15h
+                  - generic [ref=f2e184]: 0%
+              - generic [ref=f2e185] [cursor=pointer]:
+                - generic [ref=f2e186]:
+                  - generic [ref=f2e187]: D
+                  - generic [ref=f2e188]: 1-2
+                - heading "Direction Sense" [level=3] [ref=f2e189]
+                - list [ref=f2e190]:
+                  - listitem [ref=f2e191]: • Cardinal & Intermediate Directions
+                  - listitem [ref=f2e192]: • Left/Right Turns
+                  - listitem [ref=f2e193]: • Distance Calculation (Pythagoras)
+                - generic [ref=f2e195]:
+                  - generic [ref=f2e196]: 12h
+                  - generic [ref=f2e197]: 0%
+              - generic [ref=f2e198] [cursor=pointer]:
+                - generic [ref=f2e199]:
+                  - generic [ref=f2e200]: S
+                  - generic [ref=f2e201]: 1-2
+                - heading "Statements & Conclusions" [level=3] [ref=f2e202]
+                - list [ref=f2e203]:
+                  - listitem [ref=f2e204]: • Direct Conclusions
+                  - listitem [ref=f2e205]: • Assumed Conclusions
+                  - listitem [ref=f2e206]: • Irrelevant Conclusions
+                - generic [ref=f2e208]:
+                  - generic [ref=f2e209]: 10h
+                  - generic [ref=f2e210]: 0%
+          - generic [ref=f2e211]:
+            - heading "A Verbal & English" [level=2] [ref=f2e212]
+            - paragraph [ref=f2e213]: Verbal Reasoning, Analogies & Coding-Decoding
+            - generic [ref=f2e214]:
+              - generic [ref=f2e215] [cursor=pointer]:
+                - generic [ref=f2e216]:
+                  - generic [ref=f2e217]: ≈
+                  - generic [ref=f2e218]: 1-2
+                - heading "Analogies" [level=3] [ref=f2e219]
+                - list [ref=f2e220]:
+                  - listitem [ref=f2e221]: • Word Analogies
+                  - listitem [ref=f2e222]: • Letter & Number Analogies
+                  - listitem [ref=f2e223]: • Relationship Types
+                - generic [ref=f2e225]:
+                  - generic [ref=f2e226]: 12h
+                  - generic [ref=f2e227]: 0%
+              - generic [ref=f2e228] [cursor=pointer]:
+                - generic [ref=f2e229]:
+                  - generic [ref=f2e230]: C
+                  - generic [ref=f2e231]: 1-2
+                - heading "Coding-Decoding" [level=3] [ref=f2e232]
+                - list [ref=f2e233]:
+                  - listitem [ref=f2e234]: • Letter Shifts
+                  - listitem [ref=f2e235]: • Number Coding
+                  - listitem [ref=f2e236]: • Mirror Coding
+                - generic [ref=f2e238]:
+                  - generic [ref=f2e239]: 12h
+                  - generic [ref=f2e240]: 0%
+      - contentinfo [ref=f2e241]: Made Specially for Siri.
+  - navigation [ref=f2e242]:
+    - button "Home" [ref=f2e243] [cursor=pointer]
+    - button "Roadmap" [ref=f2e250] [cursor=pointer]
+    - button "Learn" [ref=f2e254] [cursor=pointer]
+    - button "Verbal" [ref=f2e259] [cursor=pointer]
+    - button "MCQ" [ref=f2e263] [cursor=pointer]

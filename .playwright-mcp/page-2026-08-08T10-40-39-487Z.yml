@@ -1,0 +1,62 @@
+- generic [ref=f23e3]:
+  - complementary [ref=f23e4]:
+    - generic [ref=f23e5]: ApArena
+    - navigation [ref=f23e11]:
+      - generic [ref=f23e12]: Verbal & English
+      - button "≈ Analogies" [ref=f23e13] [cursor=pointer]:
+        - generic [ref=f23e14]: ≈
+        - generic [ref=f23e15]: Analogies
+      - button "C Coding-Decoding" [ref=f23e17] [cursor=pointer]:
+        - generic [ref=f23e18]: C
+        - generic [ref=f23e19]: Coding-Decoding
+    - generic [ref=f23e22]:
+      - generic [ref=f23e23]: Progress
+      - generic [ref=f23e25]: 0%
+  - generic [ref=f23e26]:
+    - banner [ref=f23e27]:
+      - heading "Dashboard" [level=1] [ref=f23e28]
+      - generic [ref=f23e29]:
+        - button "Toggle sidebar" [ref=f23e30] [cursor=pointer]: Close
+        - button "Toggle theme" [ref=f23e31] [cursor=pointer]
+    - main [ref=f23e34]:
+      - generic [ref=f23e36]:
+        - generic [ref=f23e37]:
+          - generic [ref=f23e38]:
+            - heading "Placement Preparation Hub" [level=1] [ref=f23e39]
+            - paragraph [ref=f23e40]: Verbal & English — Complete Campus Placement Training
+          - generic [ref=f23e41]:
+            - generic [ref=f23e42]:
+              - generic [ref=f23e43]: 0/2
+              - text: Topics Completed
+            - generic [ref=f23e44]:
+              - generic [ref=f23e45]: 0%
+              - text: Overall Progress
+        - generic [ref=f23e46]:
+          - heading "A Verbal & English" [level=2] [ref=f23e47]
+          - paragraph [ref=f23e48]: Verbal Reasoning, Analogies & Coding-Decoding
+          - generic [ref=f23e49]:
+            - generic [ref=f23e50] [cursor=pointer]:
+              - generic [ref=f23e51]:
+                - generic [ref=f23e52]: ≈
+                - generic [ref=f23e53]: 1-2
+              - heading "Analogies" [level=3] [ref=f23e54]
+              - list [ref=f23e55]:
+                - listitem [ref=f23e56]: • Word Analogies
+                - listitem [ref=f23e57]: • Letter & Number Analogies
+                - listitem [ref=f23e58]: • Relationship Types
+              - generic [ref=f23e60]:
+                - generic [ref=f23e61]: 12h
+                - generic [ref=f23e62]: 0%
+            - generic [ref=f23e63] [cursor=pointer]:
+              - generic [ref=f23e64]:
+                - generic [ref=f23e65]: C
+                - generic [ref=f23e66]: 1-2
+              - heading "Coding-Decoding" [level=3] [ref=f23e67]
+              - list [ref=f23e68]:
+                - listitem [ref=f23e69]: • Letter Shifts
+                - listitem [ref=f23e70]: • Number Coding
+                - listitem [ref=f23e71]: • Mirror Coding
+              - generic [ref=f23e73]:
+                - generic [ref=f23e74]: 12h
+                - generic [ref=f23e75]: 0%
+    - contentinfo [ref=f23e76]: Made Specially for Siri.

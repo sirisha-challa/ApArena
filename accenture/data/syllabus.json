@@ -483,9 +483,10 @@
         },
         {
           "id": "statement-conclusion",
-          "title": "Statement & Conclusion",
-          "status": "pending",
-          "content": null
+          "title": "Statements & Conclusions",
+          "status": "complete",
+          "bankTopicId": "statements-conclusions",
+          "bank": "Reasoning Bank"
         },
         {
           "id": "statement-assumption",
@@ -498,6 +499,27 @@
           "title": "Statement & Argument",
           "status": "pending",
           "content": null
+        },
+        {
+          "id": "blood-relations",
+          "title": "Blood Relations & Family Trees",
+          "status": "complete",
+          "bankTopicId": "blood-relations",
+          "bank": "Reasoning Bank"
+        },
+        {
+          "id": "direction-sense",
+          "title": "Direction Sense",
+          "status": "complete",
+          "bankTopicId": "direction-sense",
+          "bank": "Reasoning Bank"
+        },
+        {
+          "id": "coding-decoding",
+          "title": "Coding & Decoding",
+          "status": "complete",
+          "bankTopicId": "coding-decoding",
+          "bank": "Verbal Bank"
         }
       ]
     },
@@ -521,9 +543,10 @@
         },
         {
           "id": "analogies",
-          "title": "Analogy (Visual)",
-          "status": "pending",
-          "content": null
+          "title": "Analogies",
+          "status": "complete",
+          "bankTopicId": "analogies",
+          "bank": "Verbal Bank"
         },
         {
           "id": "classification",
@@ -558,116 +581,6 @@
         {
           "id": "series-transformations",
           "title": "Series Transformations",
-          "status": "pending",
-          "content": null
-        }
-      ]
-    },
-    {
-      "id": "quantitative",
-      "order": 6,
-      "round": "Round 1",
-      "name": "Quantitative Aptitude",
-      "short": "Quant",
-      "description": "Legacy round. Arithmetic, algebra, number systems and data interpretation. Premium math rendering for every formula.",
-      "questions": 30,
-      "duration": "",
-      "status": "outline",
-      "icon": "calc",
-      "topics": [
-        {
-          "id": "number-system",
-          "title": "Number System",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "percentages",
-          "title": "Percentages",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "profit-loss",
-          "title": "Profit & Loss",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "simple-compound-interest",
-          "title": "Simple & Compound Interest",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "time-work",
-          "title": "Time & Work",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "time-speed-distance",
-          "title": "Time, Speed & Distance",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "averages",
-          "title": "Averages",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "ratios-proportions",
-          "title": "Ratios & Proportions",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "permutations-combinations",
-          "title": "Permutations & Combinations",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "probability",
-          "title": "Probability",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "data-interpretation",
-          "title": "Data Interpretation",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "logarithms",
-          "title": "Logarithms",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "surds-indices",
-          "title": "Surds & Indices",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "geometry-mensuration",
-          "title": "Geometry & Mensuration",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "algebra",
-          "title": "Algebra & Equations",
-          "status": "pending",
-          "content": null
-        },
-        {
-          "id": "speed-math",
-          "title": "Speed Math & Mental Calculation",
           "status": "pending",
           "content": null
         }
@@ -820,7 +733,7 @@
             "sections": [
               {
                 "id": "binary-basics",
-                "title": "Binary ↔ Decimal in 3 seconds",
+                "title": "Binary to Decimal in 3 seconds",
                 "blocks": [
                   {
                     "type": "formula",
@@ -851,7 +764,7 @@
                         "latex": "10110_2 = 22_{10}"
                       }
                     },
-                    "memoryTip": "Memorize the power ladder: 1, 2, 4, 8, 16, 32, 64, 128 — and reverse it for decimal → binary.",
+                    "memoryTip": "Memorize the power ladder: 1, 2, 4, 8, 16, 32, 64, 128 — and reverse it for decimal to binary.",
                     "commonMistake": "Counting positions from 1 instead of 0 — $2^0 = 1$, not $2^1$."
                   },
                   {
@@ -1009,19 +922,19 @@
                         "reason": "DECLARE/SET lines run before the loop."
                       },
                       {
-                        "text": "Iteration 1: $n \\& mask = 110 \\& 001 = 000 = 0 \\neq 0$ → skip; $mask = 1 \\ll 1 = 2$",
+                        "text": "Iteration 1: $n \\& mask = 110 \\& 001 = 000 = 0 \\neq 0$, so skip; $mask = 1 \\ll 1 = 2$",
                         "reason": "Bit 0 of 6 is 0."
                       },
                       {
-                        "text": "Iteration 2: $110 \\& 010 = 010 = 2 \\neq 0$ → $count = 1$; $mask = 2 \\ll 1 = 4$",
+                        "text": "Iteration 2: $110 \\& 010 = 010 = 2 \\neq 0$, so $count = 1$; $mask = 2 \\ll 1 = 4$",
                         "reason": "Bit 1 is set."
                       },
                       {
-                        "text": "Iteration 3: $110 \\& 100 = 100 = 4 \\neq 0$ → $count = 2$; $mask = 4 \\ll 1 = 8$",
+                        "text": "Iteration 3: $110 \\& 100 = 100 = 4 \\neq 0$, so $count = 2$; $mask = 4 \\ll 1 = 8$",
                         "reason": "Bit 2 is set."
                       },
                       {
-                        "text": "Loop ends ($mask = 8 > n$), PRINT count → 2"
+                        "text": "Loop ends ($mask = 8 > n$), PRINT count gives 2"
                       }
                     ],
                     "answer": {

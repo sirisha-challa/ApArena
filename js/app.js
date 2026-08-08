@@ -9,7 +9,7 @@ const state = {
   expandedStep: null,
   currentMcqIndex: 0,
   currentMcqFilter: 'all',
-  currentMcqResults: [],
+  currentMcqDifficulty: 'all',
   mcqCorrectTotal: 0,
   mcqWrongTotal: 0,
   currentPracticeFormulaId: null,
@@ -217,8 +217,13 @@ function getTopic(id) {
   return null;
 }
 
-function getTopicIndex(id) {
-  return TOPICS_INDEX.topics.find(t => t.id === id);
+function getGrade(pct) {
+  if (pct >= 90) return { grade: 'A+', color: 'var(--color-success)' };
+  if (pct >= 80) return { grade: 'A', color: 'var(--color-success)' };
+  if (pct >= 70) return { grade: 'B', color: '#3B82F6' };
+  if (pct >= 60) return { grade: 'C', color: '#F59E0B' };
+  if (pct >= 40) return { grade: 'D', color: '#EF4444' };
+  return { grade: 'F', color: 'var(--color-error)' };
 }
 
 function renderSidebar() {
@@ -280,10 +285,14 @@ function renderBottomNav() {
 function renderDashboard() {
   state.currentView = 'dashboard';
   document.getElementById('header-title').textContent = 'Dashboard';
-  const content = document.getElementById('app-content');
   const topics = TOPICS_INDEX.topics;
   const categories = TOPICS_INDEX.categories || [];
-  const completed = topics.filter(t => (getTopicProgress(t.id).mcq||0) >= (getTopic(t.id)?.mcqs?.length || 0)).length;
+  const completed = topics.filter(t => {
+    const topic = getTopic(t.id);
+    if (!topic || !topic.mcqs || !topic.mcqs.length) return false;
+    return (getTopicProgress(t.id).mcq || 0) >= topic.mcqs.length;
+  }).length;
+  const heroSub = (categories.length ? categories.map(c => c.title).join(' + ') : 'Topic Bank') + ' — Complete Campus Placement Training';
 
   let html = `
   <div class="page-content">
@@ -291,7 +300,7 @@ function renderDashboard() {
       <div class="dashboard-header">
         <div>
           <h1 class="text-2xl fw-700">Placement Preparation Hub</h1>
-          <p class="text-muted">Aptitude + Verbal & English — Complete Campus Placement Training</p>
+          <p class="text-muted">${renderText(heroSub)}</p>
         </div>
         <div class="dashboard-stats">
           <div class="stat-card glass">
@@ -376,7 +385,6 @@ function renderDashboard() {
 function renderRoadmap() {
   state.currentView = 'roadmap';
   document.getElementById('header-title').textContent = 'Roadmap';
-  const content = document.getElementById('app-content');
   const topics = TOPICS_INDEX.topics;
   const categories = TOPICS_INDEX.categories || [];
 
@@ -569,8 +577,6 @@ function formatSteps(text, asWhiteboard) {
   return html + '</div>';
 }
 
-var renderSteps = formatSteps;
-
 function getLearningPath(topic) {
   if (Array.isArray(topic.learningPath) && topic.learningPath.length) return topic.learningPath;
   return (topic.readingSections || []).map((section, index) => ({
@@ -675,6 +681,17 @@ function renderSectionContentForPath(topicId, section) {
   if (Array.isArray(section.quickRevision) && section.quickRevision.length) {
     html += `<aside class="revision-card"><span class="callout-label">Quick revision</span><ul>${section.quickRevision.map(item => '<li>' + renderInlineMath(item) + '</li>').join('')}</ul></aside>`;
   }
+  if (Array.isArray(section.tricks) && section.tricks.length) {
+    html += `<aside class="revision-card tricks-card"><span class="callout-label">Tips, tricks &amp; shortcuts</span><ul>${section.tricks.map(item => '<li>' + renderInlineMath(item) + '</li>').join('')}</ul></aside>`;
+  }
+  if (Array.isArray(section.patterns) && section.patterns.length) {
+    html += `<aside class="revision-card patterns-card"><span class="callout-label">Patterns to recognise</span><ul>${section.patterns.map(item => '<li>' + renderInlineMath(item) + '</li>').join('')}</ul></aside>`;
+  }
+  if (Array.isArray(section.pyqPatterns) && section.pyqPatterns.length) {
+    html += `<div class="pyq-block"><span class="callout-label">Previous-year patterns</span>${section.pyqPatterns.map(item =>
+      '<div class="pyq-item"><strong>' + renderInlineMath(item.source || 'Asked in exams') + '</strong><p>' + renderInlineMath(item.question) + '</p><p class="pyq-approach">' + renderInlineMath(item.approach) + '</p></div>'
+    ).join('')}</div>`;
+  }
   if (section.companyNote) html += renderCallout('Exam note', section.companyNote, 'tip');
   html += `<button class="btn btn-primary btn-sm path-mark-btn" onclick="event.stopPropagation();APP.markSectionRead('${topicId}','${section.id}')">
     ${isCompleted ? 'Completed' : 'Mark as Read'}
@@ -764,12 +781,16 @@ function renderPractice(topic) {
   if (!problems.length) return '<div class="empty-state">No practice problems for this formula</div>';
   if (!problem) return '<div class="empty-state">Problem not found</div>';
 
+  const isMcq = Array.isArray(problem.opts);
+
   let html = `
   <button class="btn btn-ghost mb-3" onclick="APP.backToFormulaList('${topic.id}')">Back to formulas</button>
   ${currentFormula ? `
   <div class="practice-formula-card glass">
     <div class="formula-title">${renderText(currentFormula.title)}</div>
     <div class="formula-box">${renderFormula(currentFormula.formula)}</div>
+    ${currentFormula.example ? `<div class="formula-howto"><span class="example-label">How to use this formula (step by step)</span>${renderWorkedExample(currentFormula.example)}</div>` : ''}
+    ${currentFormula.memoryTip || currentFormula.theTrick ? renderCallout('Memory cue', currentFormula.theTrick || currentFormula.memoryTip, 'tip') : ''}
   </div>` : ''}
   <div class="practice-nav">
     <button class="btn btn-outline" onclick="APP.prevPractice()" ${idx===0?'disabled':''}>Prev</button>
@@ -781,12 +802,46 @@ function renderPractice(topic) {
       <span class="badge medium">Practice</span>
       <span class="practice-number">Q${idx+1}</span>
     </div>
-    <div class="practice-question">${formatSteps(problem.q)}</div>
+    <div class="practice-question">${formatSteps(problem.q)}</div>`;
+
+  if (isMcq) {
+    html += `
+    <div class="mcq-options" id="practice-options">
+      ${problem.opts.map((opt, oi) => `
+        <button class="mcq-option" data-index="${oi}" onclick="APP.checkPracticeAnswer('${topic.id}','${state.currentPracticeFormulaId}',${idx},${oi},this)">
+          <span class="option-letter">${String.fromCharCode(65+oi)}</span>
+          <span class="option-text">${renderInlineMath(opt)}</span>
+        </button>
+      `).join('')}
+    </div>
+    <div class="mcq-feedback" id="practice-feedback" style="display:none">
+      <div class="mcq-result" id="practice-result"></div>
+      <div class="practice-solution" id="practice-solution">
+        <h4>Step-by-step solution</h4>
+        <div class="practice-solution-steps">
+            ${(problem.s || []).map((step) => `
+            <div class="solution-step">
+                <p>${renderInlineMath(step)}</p>
+            </div>
+            `).join('')}
+        </div>
+        <div class="practice-answer">
+            <strong>Answer:</strong> ${renderInlineMath(problem.a)}
+        </div>
+        ${problem.shortcut ? renderCallout('Shortcut', problem.shortcut, 'tip') : ''}
+        ${problem.pattern ? renderCallout('Pattern to spot', problem.pattern, 'pattern') : ''}
+        <button class="btn btn-success btn-sm mt-2" onclick="APP.markPracticeDone('${topic.id}','${state.currentPracticeFormulaId}',${idx})">
+            Mark as Done
+        </button>
+      </div>
+    </div>`;
+  } else {
+    html += `
     <button class="btn btn-primary mt-2" onclick="APP.toggleSolution('${state.currentPracticeFormulaId}',${idx})">Show Solution</button>
     <div class="practice-solution" id="solution-${state.currentPracticeFormulaId}-${idx}">
         <h4>Step-by-Step Solution:</h4>
         <div class="practice-solution-steps">
-            ${problem.s.map((step, i) => `
+            ${problem.s.map((step) => `
             <div class="solution-step">
                 <p>${renderInlineMath(step)}</p>
             </div>
@@ -798,8 +853,9 @@ function renderPractice(topic) {
         <button class="btn btn-success btn-sm mt-2" onclick="APP.markPracticeDone('${topic.id}','${state.currentPracticeFormulaId}',${idx})">
             Mark as Done
         </button>
-    </div>
-  </div>`;
+    </div>`;
+  }
+  html += '</div>';
   return html;
 }
 
@@ -811,8 +867,14 @@ function renderMcq(topic) {
   if (state.currentMcqFilter !== 'all') {
     filtered = mcqs.filter(m => m.t === state.currentMcqFilter);
   }
+  if (state.currentMcqDifficulty !== 'all') {
+    filtered = filtered.filter(m => (m.d || 'easy') === state.currentMcqDifficulty);
+  }
+  const diffWeight = { easy: 0, medium: 1, hard: 2 };
+  filtered = [...filtered].sort((a, b) => (diffWeight[a.d] || 0) - (diffWeight[b.d] || 0));
 
   const subtopics = [...new Set((mcqs.map(m => m.t)).filter(Boolean))];
+  const difficulties = [...new Set((mcqs.map(m => m.d)).filter(Boolean))];
 
   const idx = Math.min(state.currentMcqIndex, filtered.length - 1);
   const mcq = filtered[idx];
@@ -821,13 +883,7 @@ function renderMcq(topic) {
   const p = getTopicProgress(topic.id);
   const totalAttempted = state.mcqCorrectTotal + state.mcqWrongTotal;
   const scorePct = totalAttempted ? Math.round(state.mcqCorrectTotal / totalAttempted * 100) : 0;
-  var grade, gradeColor;
-  if (scorePct >= 90) { grade = 'A+'; gradeColor = 'var(--color-success)'; }
-  else if (scorePct >= 80) { grade = 'A'; gradeColor = 'var(--color-success)'; }
-  else if (scorePct >= 70) { grade = 'B'; gradeColor = '#3B82F6'; }
-  else if (scorePct >= 60) { grade = 'C'; gradeColor = '#F59E0B'; }
-  else if (scorePct >= 40) { grade = 'D'; gradeColor = '#EF4444'; }
-  else { grade = 'F'; gradeColor = 'var(--color-error)'; }
+  const { grade, color: gradeColor } = getGrade(scorePct);
 
   let html = `
   <div class="mcq-controls-row">
@@ -845,6 +901,14 @@ function renderMcq(topic) {
       Reset
     </button>
   </div>
+  <div class="mcq-filter-chips">
+    <button class="chip ${state.currentMcqFilter==='all'?'chip-active':''}" onclick="APP.filterMcq('${topic.id}','all')">All</button>
+    ${subtopics.map(t => `<button class="chip ${state.currentMcqFilter===t?'chip-active':''}" onclick="APP.filterMcq('${topic.id}','${t}')">${renderText(t)}</button>`).join('')}
+  </div>
+  ${difficulties.length ? `<div class="mcq-filter-chips diff-row">
+    ${['easy','medium','hard'].map(d => difficulties.indexOf(d)>=0 ? `<button class="chip chip-${d} ${state.currentMcqDifficulty===d?'chip-active':''}" onclick="APP.filterMcqDifficulty('${topic.id}','${d}')">${d}</button>` : '').join('')}
+    <button class="chip ${state.currentMcqDifficulty==='all'?'chip-active':''}" onclick="APP.filterMcqDifficulty('${topic.id}','all')">All levels</button>
+  </div>` : ''}
   <div class="mcq-nav">
     <button class="btn btn-outline" onclick="APP.prevMcq('${topic.id}')" ${idx===0?'disabled':''}>Prev</button>
     <span class="mcq-counter">${idx+1} / ${filtered.length}</span>
@@ -853,6 +917,8 @@ function renderMcq(topic) {
   <div class="mcq-card glass" id="mcq-card">
     <div class="mcq-header">
       <span class="badge primary">${renderText(topic.title || 'Number System')}</span>
+      <span class="badge ${mcq.d || 'easy'}">${mcq.d || 'easy'}</span>
+      ${mcq.source ? `<span class="mcq-source">${renderText(mcq.source)}</span>` : ''}
       <span class="mcq-number">Q${idx+1}</span>
     </div>
     <div class="mcq-question">${formatSteps(mcq.q)}</div>
@@ -886,7 +952,7 @@ function loadTopic(topicId, shouldPush) {
   document.getElementById('header-title').textContent = 'Loading...';
   setContent('<div class="page-content"><div class="empty-state">Loading topic...</div></div>');
 
-  fetch('data/topics/' + topicId + '.json')
+  fetch('/data/topics/' + topicId + '.json')
     .then(function(res) {
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json();
@@ -997,6 +1063,33 @@ function toggleSolution(formulaId, idx) {
   if (el) el.classList.toggle('expanded');
 }
 
+function checkPracticeAnswer(topicId, formulaId, idx, selected, el) {
+  const topic = getTopic(topicId);
+  if (!topic) return;
+  const problem = (topic.practiceProblems[formulaId] || [])[idx];
+  if (!problem || !Array.isArray(problem.opts)) return;
+
+  document.querySelectorAll('#practice-options .mcq-option').forEach(btn => {
+    btn.disabled = true;
+    const oi = parseInt(btn.dataset.index);
+    if (oi === problem.c) btn.classList.add('correct');
+    else if (oi === selected) btn.classList.add('wrong');
+  });
+
+  const feedback = document.getElementById('practice-feedback');
+  const result = document.getElementById('practice-result');
+  if (selected === problem.c) {
+    result.innerHTML = '<strong>Correct!</strong>';
+    result.style.color = 'var(--color-success)';
+  } else {
+    result.innerHTML = '<strong>Wrong!</strong> Correct answer: ' + String.fromCharCode(65 + problem.c);
+    result.style.color = 'var(--color-error)';
+  }
+  feedback.style.display = 'block';
+  renderMath();
+  window.scrollTo({ top: document.getElementById('practice-feedback').offsetTop - 80, behavior: 'smooth' });
+}
+
 function markPracticeDone(topicId, formulaId, idx) {
   updateTopicProgress(topicId, 'practice', formulaId+':'+idx, true);
   showToast('Practice problem completed!', 'success');
@@ -1059,20 +1152,21 @@ function checkMcqAnswer(topicId, idx, selected, el) {
     result.style.color = 'var(--color-error)';
   }
 
-  explanation.innerHTML = formatSteps(mcq.exp || 'No explanation available.', true);
+  let expHtml = '';
+  if (Array.isArray(mcq.exp) || typeof mcq.exp === 'string') {
+    expHtml += '<h4 class="explain-title">Step-by-step solution</h4>' + formatSteps(mcq.exp, true);
+  }
+  if (mcq.shortcut) expHtml += renderCallout('Shortcut', mcq.shortcut, 'tip');
+  if (mcq.pattern) expHtml += renderCallout('Pattern to spot', mcq.pattern, 'pattern');
+  if (mcq.wrongOptions) expHtml += renderCallout('Why the others are wrong', mcq.wrongOptions, 'warning');
+  explanation.innerHTML = expHtml || formatSteps(mcq.exp || 'No explanation available.', true);
   renderMath();
   feedback.style.display = 'block';
 
   const totalAttempted = state.mcqCorrectTotal + state.mcqWrongTotal;
   if (scoreDiv && totalAttempted > 0) {
     const scorePct = Math.round(state.mcqCorrectTotal / totalAttempted * 100);
-    var grade, gradeColor;
-    if (scorePct >= 90) { grade = 'A+'; gradeColor = 'var(--color-success)'; }
-    else if (scorePct >= 80) { grade = 'A'; gradeColor = 'var(--color-success)'; }
-    else if (scorePct >= 70) { grade = 'B'; gradeColor = '#3B82F6'; }
-    else if (scorePct >= 60) { grade = 'C'; gradeColor = '#F59E0B'; }
-    else if (scorePct >= 40) { grade = 'D'; gradeColor = '#EF4444'; }
-    else { grade = 'F'; gradeColor = 'var(--color-error)'; }
+    const { grade, color: gradeColor } = getGrade(scorePct);
 
     scoreDiv.style.display = 'block';
     scoreDiv.innerHTML = `
@@ -1113,12 +1207,18 @@ function filterMcq(topicId, filter) {
   if (topic) renderTopic(topic);
 }
 
+function filterMcqDifficulty(topicId, difficulty) {
+  state.currentMcqDifficulty = difficulty;
+  state.currentMcqIndex = 0;
+  const topic = getTopic(topicId);
+  if (topic) renderTopic(topic);
+}
+
 function resetMcqProgress(topicId) {
   if (!confirm('Reset all MCQ progress for this topic? This cannot be undone.')) return;
   var p = getTopicProgress(topicId);
   p.mcq = 0;
   p.totalMcq = 0;
-  state.currentMcqResults = [];
   state.currentMcqIndex = 0;
   state.mcqCorrectTotal = 0;
   state.mcqWrongTotal = 0;
@@ -1134,13 +1234,7 @@ function updateMcqScoreBadge() {
   if (!badge) return;
   var totalAttempted = state.mcqCorrectTotal + state.mcqWrongTotal;
   var scorePct = totalAttempted ? Math.round(state.mcqCorrectTotal / totalAttempted * 100) : 0;
-  var grade, gradeColor;
-  if (scorePct >= 90) { grade = 'A+'; gradeColor = 'var(--color-success)'; }
-  else if (scorePct >= 80) { grade = 'A'; gradeColor = 'var(--color-success)'; }
-  else if (scorePct >= 70) { grade = 'B'; gradeColor = '#3B82F6'; }
-  else if (scorePct >= 60) { grade = 'C'; gradeColor = '#F59E0B'; }
-  else if (scorePct >= 40) { grade = 'D'; gradeColor = '#EF4444'; }
-  else { grade = 'F'; gradeColor = 'var(--color-error)'; }
+  var { grade, color: gradeColor } = getGrade(scorePct);
   badge.innerHTML = '<span>Correct: ' + state.mcqCorrectTotal + '</span><span>Wrong: ' + state.mcqWrongTotal + '</span><span class="mcq-grade" style="color:' + gradeColor + ';font-weight:700;">' + grade + '</span>';
 }
 
@@ -1281,6 +1375,7 @@ window.APP = {
   nextStep,
   prevStep,
   toggleSolution,
+  checkPracticeAnswer,
   markPracticeDone,
   nextPractice,
   prevPractice,
@@ -1288,6 +1383,7 @@ window.APP = {
   nextMcq,
   prevMcq,
   filterMcq,
+  filterMcqDifficulty,
   resetMcqProgress,
   toggleSidebar,
   toggleTheme,

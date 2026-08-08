@@ -1,0 +1,92 @@
+- generic [ref=f21e3]:
+  - complementary [ref=f21e4]:
+    - generic [ref=f21e5]: ApArena
+    - navigation [ref=f21e11]:
+      - generic [ref=f21e12]: Logical Reasoning
+      - button "B Blood Relations" [ref=f21e13] [cursor=pointer]:
+        - generic [ref=f21e14]: B
+        - generic [ref=f21e15]: Blood Relations
+      - button "D Direction Sense" [ref=f21e17] [cursor=pointer]:
+        - generic [ref=f21e18]: D
+        - generic [ref=f21e19]: Direction Sense
+      - button "S Statements & Conclusions" [ref=f21e21] [cursor=pointer]:
+        - generic [ref=f21e22]: S
+        - generic [ref=f21e23]: Statements & Conclusions
+      - button "C Clock & Calendar" [ref=f21e25] [cursor=pointer]:
+        - generic [ref=f21e26]: C
+        - generic [ref=f21e27]: Clock & Calendar
+    - generic [ref=f21e30]:
+      - generic [ref=f21e31]: Progress
+      - generic [ref=f21e33]: 0%
+  - generic [ref=f21e34]:
+    - banner [ref=f21e35]:
+      - heading "Dashboard" [level=1] [ref=f21e36]
+      - generic [ref=f21e37]:
+        - button "Toggle sidebar" [ref=f21e38] [cursor=pointer]: Close
+        - button "Toggle theme" [ref=f21e39] [cursor=pointer]
+    - main [ref=f21e42]:
+      - generic [ref=f21e44]:
+        - generic [ref=f21e45]:
+          - generic [ref=f21e46]:
+            - heading "Placement Preparation Hub" [level=1] [ref=f21e47]
+            - paragraph [ref=f21e48]: Logical Reasoning — Complete Campus Placement Training
+          - generic [ref=f21e49]:
+            - generic [ref=f21e50]:
+              - generic [ref=f21e51]: 0/4
+              - text: Topics Completed
+            - generic [ref=f21e52]:
+              - generic [ref=f21e53]: 0%
+              - text: Overall Progress
+        - generic [ref=f21e54]:
+          - heading "? Logical Reasoning" [level=2] [ref=f21e55]
+          - paragraph [ref=f21e56]: Blood Relations, Direction Sense & Statement Logic
+          - generic [ref=f21e57]:
+            - generic [ref=f21e58] [cursor=pointer]:
+              - generic [ref=f21e59]:
+                - generic [ref=f21e60]: B
+                - generic [ref=f21e61]: 1-2
+              - heading "Blood Relations" [level=3] [ref=f21e62]
+              - list [ref=f21e63]:
+                - listitem [ref=f21e64]: • Direct Blood Relations
+                - listitem [ref=f21e65]: • Coded Blood Relations
+                - listitem [ref=f21e66]: • Puzzle-Based Blood Relations
+              - generic [ref=f21e68]:
+                - generic [ref=f21e69]: 15h
+                - generic [ref=f21e70]: 0%
+            - generic [ref=f21e71] [cursor=pointer]:
+              - generic [ref=f21e72]:
+                - generic [ref=f21e73]: D
+                - generic [ref=f21e74]: 1-2
+              - heading "Direction Sense" [level=3] [ref=f21e75]
+              - list [ref=f21e76]:
+                - listitem [ref=f21e77]: • Cardinal & Intermediate Directions
+                - listitem [ref=f21e78]: • Left/Right Turns
+                - listitem [ref=f21e79]: • Distance Calculation (Pythagoras)
+              - generic [ref=f21e81]:
+                - generic [ref=f21e82]: 12h
+                - generic [ref=f21e83]: 0%
+            - generic [ref=f21e84] [cursor=pointer]:
+              - generic [ref=f21e85]:
+                - generic [ref=f21e86]: S
+                - generic [ref=f21e87]: 1-2
+              - heading "Statements & Conclusions" [level=3] [ref=f21e88]
+              - list [ref=f21e89]:
+                - listitem [ref=f21e90]: • Direct Conclusions
+                - listitem [ref=f21e91]: • Assumed Conclusions
+                - listitem [ref=f21e92]: • Irrelevant Conclusions
+              - generic [ref=f21e94]:
+                - generic [ref=f21e95]: 10h
+                - generic [ref=f21e96]: 0%
+            - generic [ref=f21e97] [cursor=pointer]:
+              - generic [ref=f21e98]:
+                - generic [ref=f21e99]: C
+                - generic [ref=f21e100]: 2-3
+              - heading "Clock & Calendar" [level=3] [ref=f21e101]
+              - list [ref=f21e102]:
+                - listitem [ref=f21e103]: • Clock Basics (Hand Speeds & Angles)
+                - listitem [ref=f21e104]: • Angle Between the Hands
+                - listitem [ref=f21e105]: • Coincidence, Opposite & Right-Angle Positions
+              - generic [ref=f21e107]:
+                - generic [ref=f21e108]: 20h
+                - generic [ref=f21e109]: 0%
+    - contentinfo [ref=f21e110]: Made Specially for Siri.

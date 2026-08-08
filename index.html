@@ -1,92 +1,185 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aptitude Mastery - Number System</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ApArena — Landing</title>
+<meta name="description" content="ApArena — navigation hub for Accenture Preparation Arena and ApArena Classic aptitude dashboards.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23a100ff'/%3E%3Ctext x='32' y='43' font-family='Arial' font-size='32' font-weight='bold' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0d0d12;
+    --panel: #16161e;
+    --panel-2: #1b1b25;
+    --border: #262633;
+    --text: #e8e8f0;
+    --muted: #9b9bab;
+    --acc: #a100ff;
+    --acc-2: #7c3aed;
+    --green: #34d399;
+    --amber: #fbbf24;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html[data-theme="light"] {
+    --bg: #f4f4f8; --panel: #ffffff; --panel-2: #fafafe;
+    --border: #e4e4ef; --text: #17171f; --muted: #5d5d70;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg); color: var(--text);
+    min-height: 100vh; display: flex; flex-direction: column;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 48px 24px; width: 100%; flex: 1; }
+
+  .eyebrow { color: var(--acc); font-weight: 600; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+  h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(30px, 5vw, 44px); font-weight: 700; margin: 10px 0 8px; }
+  .sub { color: var(--muted); font-size: 16px; max-width: 640px; }
+
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 36px 0 28px; }
+  .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; }
+  .stat-num { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; display: block; }
+  .stat-label { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .stat-sub { color: var(--muted); font-size: 12px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .card {
+    display: block; text-decoration: none; color: var(--text);
+    background: var(--panel); border: 1px solid var(--border); border-radius: 18px;
+    padding: 24px; transition: transform .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: var(--acc); background: var(--panel-2); }
+  .card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .card-icon {
+    width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center;
+    font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; color: #fff; flex-shrink: 0;
+  }
+  .card-name { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; }
+  .card-tag { font-size: 12px; color: var(--muted); }
+  .card p { color: var(--muted); font-size: 14px; line-height: 1.55; }
+  .card-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .pill { font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--text); }
+  .pill.g { color: var(--green); border-color: color-mix(in srgb, var(--green) 35%, transparent); }
+  .pill.a { color: var(--amber); border-color: color-mix(in srgb, var(--amber) 35%, transparent); }
+  .go { margin-top: 16px; font-weight: 600; font-size: 14px; color: var(--acc); display: flex; align-items: center; gap: 6px; }
+
+  footer { color: var(--muted); font-size: 13px; text-align: center; padding: 24px; border-top: 1px solid var(--border); }
+</style>
 </head>
 <body>
-  <div id="app">
-    <div class="app-shell">
-      <aside class="sidebar" id="sidebar">
-        <div class="sidebar-brand">
-          <span class="brand-icon">
-            <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 18v28l16 8 16-8V18" fill="currentColor" fill-opacity="0.08"/>
-              <path d="M16 18l16-8 16 8v28l-16 8-16-8V18z"/>
-              <path d="M32 14v36"/>
-              <path d="M22 28h20"/>
-              <path d="M22 38h20"/>
-            </svg>
-          </span>
-          <span class="brand-text">ApArena</span>
-          <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">&#10005;</button>
-        </div>
-        <nav class="sidebar-nav" id="sidebar-nav"></nav>
-        <div class="sidebar-footer">
-          <div id="sidebar-progress">
-            <div class="sidebar-progress-label">Progress</div>
-            <div class="progress-bar"><div id="sidebar-progress-fill" style="width:0%"></div></div>
-            <span id="sidebar-progress-text">0%</span>
-          </div>
-        </div>
-      </aside>
+<div class="wrap">
+  <p class="eyebrow">ApArena · Prep Hub</p>
+  <h1>Navigation Landing</h1>
+  <p class="sub">Pick a dashboard. Every section, topic and practice problem lives inside the app you choose.</p>
 
-      <div class="main-area">
-        <header class="topbar">
-          <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
-          <button class="back-button" id="back-button" type="button" aria-label="Go back" hidden>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/><path d="M9 12h11"/></svg>
-            <span>Back</span>
-          </button>
-          <h1 class="topbar-title" id="header-title">Dashboard</h1>
-          <div class="topbar-actions">
-            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle sidebar">Menu</button>
-            <div id="toast-container" class="toast-container"></div>
-            <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-            </button>
-          </div>
-        </header>
-
-        <main class="content" id="app-content"></main>
-        <footer class="app-footer">Made Specially for Siri.</footer>
-      </div>
-    </div>
-
-    <nav class="bottom-nav" id="bottom-nav">
-      <button class="bottom-nav-item active" data-view="dashboard"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>Home</span></button>
-      <button class="bottom-nav-item" data-view="roadmap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Roadmap</span></button>
-      <button class="bottom-nav-item" data-view="learn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg><span>Learn</span></button>
-      <button class="bottom-nav-item" data-view="verbal"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg><span>Verbal</span></button>
-      <button class="bottom-nav-item" data-view="mcq"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>MCQ</span></button>
-    </nav>
+  <div class="stats" id="stats">
+    <div class="stat"><span class="stat-num" id="st-sections">–</span><span class="stat-label">Accenture sections</span></div>
+    <div class="stat"><span class="stat-num" id="st-topics">–</span><span class="stat-label">Accenture topics</span></div>
+    <div class="stat"><span class="stat-num" id="st-ready">–</span><span class="stat-label">Accenture ready</span></div>
+    <div class="stat"><span class="stat-num" id="st-bank-topics">–</span><span class="stat-label">Bank topics</span></div>
+    <div class="stat"><span class="stat-num" id="st-bank-sub">–</span><span class="stat-label">Bank subtopics</span></div>
   </div>
-  <script>
-    (async function() {
-      try {
-        const res = await fetch('data/topics.json');
-        window.TOPICS_INDEX = await res.json();
-      } catch(e) {
-        console.error('Failed to load topics index', e);
+
+  <div class="grid">
+    <a class="card" href="/accenture/">
+      <div class="card-top">
+        <span class="card-icon" style="background:linear-gradient(135deg,#a100ff,#7c3aed)">A</span>
+        <div><div class="card-name">Accenture Arena</div><div class="card-tag">ASE · AASE Software Engineer</div></div>
+      </div>
+      <p>Syllabus-driven prep for the Accenture recruitment test — behavioral, cognitive, pseudocode, core CS, coding and communication rounds. Reasoning and verbal topics load from the banks in-app.</p>
+      <div class="card-meta"><span class="pill" id="pill-sections">10 sections</span><span class="pill g" id="pill-ready">1 ready</span><span class="pill">2026 AXIS pattern</span></div>
+      <div class="go">Open dashboard <span aria-hidden="true">→</span></div>
+    </a>
+
+    <a class="card" href="/aptitude/">
+      <div class="card-top">
+        <span class="card-icon" style="background:linear-gradient(135deg,#4F46E5,#0ea5e9)">Σ</span>
+        <div><div class="card-name">Aptitude Bank</div><div class="card-tag">Quantitative Aptitude</div></div>
+      </div>
+      <p>Number System, Simplification, Percentages, Work &amp; Time, Profit &amp; Loss, Ratio &amp; Proportion — learn, formulas, formula practice and MCQs per topic.</p>
+      <div class="card-meta"><span class="pill" id="pill-aptitude">6 topics</span><span class="pill" id="pill-apt-sub">– subtopics</span></div>
+      <div class="go">Open bank <span aria-hidden="true">→</span></div>
+    </a>
+
+    <a class="card" href="/reasoning/">
+      <div class="card-top">
+        <span class="card-icon" style="background:linear-gradient(135deg,#DC2626,#F97316)">?</span>
+        <div><div class="card-name">Reasoning Bank</div><div class="card-tag">Logical Reasoning</div></div>
+      </div>
+      <p>Blood Relations, Direction Sense, Statements &amp; Conclusions, Clock &amp; Calendar — puzzles, patterns and statement logic with full practice sets.</p>
+      <div class="card-meta"><span class="pill" id="pill-reasoning">4 topics</span><span class="pill" id="pill-rea-sub">– subtopics</span></div>
+      <div class="go">Open bank <span aria-hidden="true">→</span></div>
+    </a>
+
+    <a class="card" href="/verbal/">
+      <div class="card-top">
+        <span class="card-icon" style="background:linear-gradient(135deg,#059669,#22d3ee)">A</span>
+        <div><div class="card-name">Verbal Bank</div><div class="card-tag">Verbal &amp; English</div></div>
+      </div>
+      <p>Analogies and Coding-Decoding — word relationships and letter patterns with formula practice and MCQs.</p>
+      <div class="card-meta"><span class="pill" id="pill-verbal">2 topics</span><span class="pill" id="pill-ver-sub">– subtopics</span></div>
+      <div class="go">Open bank <span aria-hidden="true">→</span></div>
+    </a>
+
+    <a class="card" href="/programming/">
+      <div class="card-top">
+        <span class="card-icon" style="background:linear-gradient(135deg,#2563eb,#a100ff)">&lt;/&gt;</span>
+        <div><div class="card-name">Programming Bank</div><div class="card-tag">DSA · SQL · Puzzles</div></div>
+      </div>
+      <p>DSA patterns, SQL and coding puzzles — the next bank being built with the same topic flow.</p>
+      <div class="card-meta"><span class="pill a">Coming soon</span></div>
+      <div class="go">Peek <span aria-hidden="true">→</span></div>
+    </a>
+
+    <a class="card" href="/tcs/">
+      <div class="card-top">
+        <span class="card-icon" style="background:linear-gradient(135deg,#22d3ee,#2563eb)">T</span>
+        <div><div class="card-name">TCS Arena</div><div class="card-tag">TCS NQT</div></div>
+      </div>
+      <p>The TCS NQT dashboard — same syllabus-driven approach, bank topics open inside the relevant bank.</p>
+      <div class="card-meta"><span class="pill a">Coming soon</span></div>
+      <div class="go">Peek <span aria-hidden="true">→</span></div>
+    </a>
+  </div>
+</div>
+
+<footer>ApArena — all preparation content in one place.</footer>
+
+<script>
+  (async function () {
+    function fmt(n) { return Number(n).toLocaleString('en-IN'); }
+    try {
+      var syl = await (await fetch('/accenture/data/syllabus.json', { cache: 'no-store' })).json();
+      var all = syl.sections.reduce(function (a, s) { return a.concat(s.topics); }, []);
+      var ready = all.filter(function (t) { return t.status !== 'pending' && t.status !== 'outline'; }).length;
+      document.getElementById('st-sections').textContent = fmt(syl.sections.length);
+      document.getElementById('st-topics').textContent = fmt(all.length);
+      document.getElementById('st-ready').textContent = fmt(ready);
+      document.getElementById('pill-sections').textContent = syl.sections.length + ' sections';
+      document.getElementById('pill-ready').textContent = ready + ' ready';
+    } catch (e) { /* stats stay as placeholders */ }
+    try {
+      var banks = ['aptitude', 'reasoning', 'verbal'];
+      var totalTopics = 0, totalSubs = 0;
+      var pills = { aptitude: ['pill-aptitude', 'pill-apt-sub'], reasoning: ['pill-reasoning', 'pill-rea-sub'], verbal: ['pill-verbal', 'pill-ver-sub'] };
+      for (var i = 0; i < banks.length; i++) {
+        var idx = await (await fetch('/data/' + banks[i] + '.json', { cache: 'no-store' })).json();
+        totalTopics += idx.topics.length;
+        totalSubs += idx.topics.reduce(function (a, t) { return a + (t.subtopics || []).length; }, 0);
+        if (pills[banks[i]]) {
+          document.getElementById(pills[banks[i]][0]).textContent = idx.topics.length + ' topics';
+          document.getElementById(pills[banks[i]][1]).textContent = idx.topics.reduce(function (a, t) { return a + (t.subtopics || []).length; }, 0) + ' subtopics';
+        }
       }
-      // Load prose renderer first (must be before app.js)
-      var proseScript = document.createElement('script');
-      proseScript.src = 'js/renderer/prose.js';
-      proseScript.onload = function() {
-        var appScript = document.createElement('script');
-        appScript.src = 'js/app.js';
-        document.body.appendChild(appScript);
-      };
-      document.body.appendChild(proseScript);
-    })();
-  </script>
+      document.getElementById('st-bank-topics').textContent = fmt(totalTopics);
+      document.getElementById('st-bank-sub').textContent = fmt(totalSubs);
+    } catch (e) { /* stats stay as placeholders */ }
+  })();
+</script>
 </body>
 </html>

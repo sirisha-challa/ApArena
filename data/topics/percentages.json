@@ -24,7 +24,7 @@
       "subsections": [
         {
           "title": "The Basic Meaning",
-          "content": "X% means X hundredths. So 45% means 45 out of 100, or the fraction 45/100 = 9/20, or the decimal 0.45. Mathematically: x% = x/100. To convert a fraction a/b to a percentage: multiply by 100: (a/b) \u00d7 100%."
+          "content": "X% means X hundredths. So 45% means 45 out of 100, or the fraction 45/100 = 9/20, or the decimal 0.45. Mathematically: x% = x/100. To convert a fraction a/b to a percentage: multiply by 100: (a/b) × 100%."
         },
         {
           "title": "Converting Percentage to Fraction",
@@ -32,11 +32,11 @@
         },
         {
           "title": "Converting Fraction to Percentage",
-          "content": "Step 1: Multiply the fraction by 100. Step 2: Add the % sign. Example: 3/5 = (3/5 \u00d7 100)% = 60%. 7/8 = (7/8 \u00d7 100)% = 87.5%. To convert a decimal: multiply by 100. Example: 0.625 = 62.5%."
+          "content": "Step 1: Multiply the fraction by 100. Step 2: Add the % sign. Example: 3/5 = (3/5 × 100)% = 60%. 7/8 = (7/8 × 100)% = 87.5%. To convert a decimal: multiply by 100. Example: 0.625 = 62.5%."
         },
         {
           "title": "Finding a Percentage of a Number",
-          "content": "To find x% of y: multiply y by x/100. Formula: x% of y = (x \u00d7 y)/100. Example: 15% of 200 = (15 \u00d7 200)/100 = 30. Quick trick: x% of y = y% of x. Because (x \u00d7 y)/100 = (y \u00d7 x)/100. So 8% of 50 = 50% of 8 = 4."
+          "content": "To find x% of y: multiply y by x/100. Formula: x% of y = (x × y)/100. Example: 15% of 200 = (15 × 200)/100 = 30. Quick trick: x% of y = y% of x. Because (x × y)/100 = (y × x)/100. So 8% of 50 = 50% of 8 = 4."
         }
       ],
       "type": "concept"
@@ -68,23 +68,23 @@
     {
       "id": "increase-decrease",
       "title": "Percentage Increase & Decrease",
-      "content": "Percentage change is one of the most tested concepts in placement exams. Companies ask about price increase followed by consumption decrease, salary changes, and score improvements. The key formula is always the same: Change/Original \u00d7 100%.",
+      "content": "Percentage change is one of the most tested concepts in placement exams. Companies ask about price increase followed by consumption decrease, salary changes, and score improvements. The key formula is always the same: Change/Original × 100%.",
       "subsections": [
         {
           "title": "The Basic Formula",
-          "content": "Percentage Change = (Change in Value / Original Value) \u00d7 100%. If the new value is higher, it is a percentage increase. If lower, it is a percentage decrease. Example: A price goes from 200 to 250. Change = 50. Increase % = (50/200)\u00d7100% = 25%."
+          "content": "Percentage Change = (Change in Value / Original Value) × 100%. If the new value is higher, it is a percentage increase. If lower, it is a percentage decrease. Example: A price goes from 200 to 250. Change = 50. Increase % = (50/200)×100% = 25%."
         },
         {
           "title": "Price Change - Consumption Adjustment",
-          "content": "When price of a commodity increases by R%, to keep expenditure same, consumption must decrease by: [R/(100+R)] \u00d7 100%. When price decreases by R%, consumption can increase by: [R/(100-R)] \u00d7 100%. This is a very common exam question."
+          "content": "When price of a commodity increases by R%, to keep expenditure same, consumption must decrease by: [R/(100+R)] × 100%. When price decreases by R%, consumption can increase by: [R/(100-R)] × 100%. This is a very common exam question."
         },
         {
           "title": "If A is R% more than B",
-          "content": "If A is R% more than B, then B is less than A by: [R/(100+R)] \u00d7 100%. Example: If A is 25% more than B, B is [25/125]\u00d7100% = 20% less than A. This is a classic trick question in placement exams."
+          "content": "If A is R% more than B, then B is less than A by: [R/(100+R)] × 100%. Example: If A is 25% more than B, B is [25/125]×100% = 20% less than A. This is a classic trick question in placement exams."
         },
         {
           "title": "If A is R% less than B",
-          "content": "If A is R% less than B, then B is more than A by: [R/(100-R)] \u00d7 100%. Example: If A is 20% less than B, B is [20/80]\u00d7100% = 25% more than A. Note: the percentages are NOT the same in both directions."
+          "content": "If A is R% less than B, then B is more than A by: [R/(100-R)] × 100%. Example: If A is 20% less than B, B is [20/80]×100% = 25% more than A. Note: the percentages are NOT the same in both directions."
         }
       ],
       "type": "concept"
@@ -96,15 +96,15 @@
       "subsections": [
         {
           "title": "Population Growth",
-          "content": "If current population is P and it grows at R% per annum, then: Population after n years = P \u00d7 (1 + R/100)^n. Population n years ago = P / (1 + R/100)^n. Example: Population 50000 grows at 10% per year. After 2 years: 50000 \u00d7 (1.1)^2 = 50000 \u00d7 1.21 = 60500."
+          "content": "If current population is P and it grows at R% per annum, then: Population after n years = P × (1 + R/100)^n. Population n years ago = P / (1 + R/100)^n. Example: Population 50000 grows at 10% per year. After 2 years: 50000 × (1.1)^2 = 50000 × 1.21 = 60500."
         },
         {
           "title": "Depreciation (Value Decrease)",
-          "content": "If current value of a machine is P and it depreciates at R% per annum, then: Value after n years = P \u00d7 (1 - R/100)^n. Value n years ago = P / (1 - R/100)^n. Example: Machine worth 80000 depreciates 10% yearly. After 2 years: 80000 \u00d7 (0.9)^2 = 80000 \u00d7 0.81 = 64800."
+          "content": "If current value of a machine is P and it depreciates at R% per annum, then: Value after n years = P × (1 - R/100)^n. Value n years ago = P / (1 - R/100)^n. Example: Machine worth 80000 depreciates 10% yearly. After 2 years: 80000 × (0.9)^2 = 80000 × 0.81 = 64800."
         },
         {
           "title": "Population with Different Rates",
-          "content": "Sometimes the growth rate changes each year. Handle this by applying each year's rate sequentially. Example: Population 10000 grows 10% in year 1, 20% in year 2. After year 1: 10000 \u00d7 1.1 = 11000. After year 2: 11000 \u00d7 1.2 = 13200. Do NOT use average rate."
+          "content": "Sometimes the growth rate changes each year. Handle this by applying each year's rate sequentially. Example: Population 10000 grows 10% in year 1, 20% in year 2. After year 1: 10000 × 1.1 = 11000. After year 2: 11000 × 1.2 = 13200. Do NOT use average rate."
         }
       ],
       "type": "concept"
@@ -116,15 +116,15 @@
       "subsections": [
         {
           "title": "Two Successive Changes",
-          "content": "If a value changes by a% followed by b%, the net percentage change = a + b + (a\u00d7b)/100. Important: use + for increase and - for decrease. Example: Price increases by 10% then 20%. Net = 10 + 20 + (10\u00d720)/100 = 30 + 2 = 32% increase."
+          "content": "If a value changes by a% followed by b%, the net percentage change = a + b + (a×b)/100. Important: use + for increase and - for decrease. Example: Price increases by 10% then 20%. Net = 10 + 20 + (10×20)/100 = 30 + 2 = 32% increase."
         },
         {
           "title": "Three Successive Changes",
-          "content": "For three changes a%, b%, c%: First find net of a and b using the formula. Then apply net result with c using the same formula. Example: Changes of 10%, 20%, 30%. Step 1: 10+20+(200/100)=32%. Step 2: 32+30+(32\u00d730/100)=62+9.6=71.6%."
+          "content": "For three changes a%, b%, c%: First find net of a and b using the formula. Then apply net result with c using the same formula. Example: Changes of 10%, 20%, 30%. Step 1: 10+20+(200/100)=32%. Step 2: 32+30+(32×30/100)=62+9.6=71.6%."
         },
         {
           "title": "Special Case: Same Percentage Twice",
-          "content": "If a value increases by R% twice, net = 2R + R\u00b2/100. If population grows 10% each year for 2 years, net = 20 + 1 = 21%. This is why population growth compounds - 10% + 10% = 21%, not 20%."
+          "content": "If a value increases by R% twice, net = 2R + R²/100. If population grows 10% each year for 2 years, net = 20 + 1 = 21%. This is why population growth compounds - 10% + 10% = 21%, not 20%."
         },
         {
           "title": "Finding Original After Successive Changes",
@@ -140,19 +140,19 @@
       "subsections": [
         {
           "title": "Profit Percentage",
-          "content": "Profit % = (Profit / Cost Price) \u00d7 100%. If SP > CP, there is profit. Example: Bought for 500, sold for 600. Profit = 100. Profit % = (100/500)\u00d7100% = 20%. Key trick: Profit is ALWAYS on CP unless the question explicitly says otherwise."
+          "content": "Profit % = (Profit / Cost Price) × 100%. If SP > CP, there is profit. Example: Bought for 500, sold for 600. Profit = 100. Profit % = (100/500)×100% = 20%. Key trick: Profit is ALWAYS on CP unless the question explicitly says otherwise."
         },
         {
           "title": "Loss Percentage",
-          "content": "Loss % = (Loss / Cost Price) \u00d7 100%. If SP < CP, there is loss. Example: Bought for 800, sold for 680. Loss = 120. Loss % = (120/800)\u00d7100% = 15%."
+          "content": "Loss % = (Loss / Cost Price) × 100%. If SP < CP, there is loss. Example: Bought for 800, sold for 680. Loss = 120. Loss % = (120/800)×100% = 15%."
         },
         {
           "title": "Discount Percentage",
-          "content": "Discount % = (Discount / Marked Price) \u00d7 100%. Discount = Marked Price - Selling Price. Example: Marked price 1000, sold for 850 after discount. Discount = 150. Discount % = (150/1000)\u00d7100% = 15%."
+          "content": "Discount % = (Discount / Marked Price) × 100%. Discount = Marked Price - Selling Price. Example: Marked price 1000, sold for 850 after discount. Discount = 150. Discount % = (150/1000)×100% = 15%."
         },
         {
           "title": "Successive Discounts",
-          "content": "Two discounts d1% and d2% are applied one after another. Net discount = d1 + d2 - (d1\u00d7d2)/100. Note: this is same formula as successive change. Example: Two discounts 20% and 10%. Net discount = 20 + 10 - (200/100) = 30 - 2 = 28%."
+          "content": "Two discounts d1% and d2% are applied one after another. Net discount = d1 + d2 - (d1×d2)/100. Note: this is same formula as successive change. Example: Two discounts 20% and 10%. Net discount = 20 + 10 - (200/100) = 30 - 2 = 28%."
         }
       ],
       "type": "concept"
@@ -172,7 +172,7 @@
         },
         {
           "title": "Percentage Increase in Scores",
-          "content": "If a student's score increases from a% to b%, the percentage increase is NOT (b-a)%. Use the formula: [(b-a)/a]\u00d7100%. Example: Score increases from 40% to 60%. Increase = (20/40)\u00d7100% = 50% increase, not 20%."
+          "content": "If a student's score increases from a% to b%, the percentage increase is NOT (b-a)%. Use the formula: [(b-a)/a]×100%. Example: Score increases from 40% to 60%. Increase = (20/40)×100% = 50% increase, not 20%."
         }
       ],
       "type": "concept"
@@ -188,11 +188,11 @@
         },
         {
           "title": "Mixing Solutions of Different Strengths",
-          "content": "Example: How many liters of 40% alcohol solution must be mixed with 60 liters of 80% alcohol to get a 50% solution? Using alligation: (Quantity of 40%)/(Quantity of 80%) = (80-50)/(50-40) = 30/10 = 3/1. So quantity of 40% = 3\u00d760 = 180 liters."
+          "content": "Example: How many liters of 40% alcohol solution must be mixed with 60 liters of 80% alcohol to get a 50% solution? Using alligation: (Quantity of 40%)/(Quantity of 80%) = (80-50)/(50-40) = 30/10 = 3/1. So quantity of 40% = 3×60 = 180 liters."
         },
         {
           "title": "Replacement Problems",
-          "content": "A container holds a certain quantity of a solution. Some is replaced with another concentration. Use: Final concentration = Initial concentration \u00d7 (1 - replacement fraction)^n for n replacements. Example: 10 liters of 40% milk is replaced twice with 2 liters of water each time. Final milk% = 40% \u00d7 (1 - 2/10)^2 = 40% \u00d7 0.64 = 25.6%."
+          "content": "A container holds a certain quantity of a solution. Some is replaced with another concentration. Use: Final concentration = Initial concentration × (1 - replacement fraction)^n for n replacements. Example: 10 liters of 40% milk is replaced twice with 2 liters of water each time. Final milk% = 40% × (1 - 2/10)^2 = 40% × 0.64 = 25.6%."
         }
       ],
       "type": "concept"
@@ -204,11 +204,11 @@
       "subsections": [
         {
           "title": "Pie Chart Percentages",
-          "content": "In a pie chart, each sector represents a percentage of the total. If a sector has a central angle of X degrees, its percentage = (X/360)\u00d7100%. Example: A sector with 90\u00b0 represents (90/360)\u00d7100% = 25% of the total."
+          "content": "In a pie chart, each sector represents a percentage of the total. If a sector has a central angle of X degrees, its percentage = (X/360)×100%. Example: A sector with 90° represents (90/360)×100% = 25% of the total."
         },
         {
           "title": "Percentage Change from Tables",
-          "content": "To find percentage increase from a table: (New - Old)/Old \u00d7 100%. Example: Sales increased from 400 to 500. Increase % = (100/400)\u00d7100% = 25%. When comparing multiple years, be careful which year is the base."
+          "content": "To find percentage increase from a table: (New - Old)/Old × 100%. Example: Sales increased from 400 to 500. Increase % = (100/400)×100% = 25%. When comparing multiple years, be careful which year is the base."
         },
         {
           "title": "Distribution Problems",
@@ -224,49 +224,49 @@
       "title": "Basic Percentage Formula",
       "formula": "x\\% = \\frac{x}{100}, \\quad x\\%\\text{ of } y = \\frac{x \\times y}{100}",
       "explanation": "Percentage per hundred. To find x% of y, multiply y by x and divide by 100. A useful symmetry: x% of y = y% of x.",
-      "example": "15% of 200 = (15\u00d7200)/100 = 30. Also 200% of 15 = (200\u00d715)/100 = 30."
+      "example": "15% of 200 = (15×200)/100 = 30. Also 200% of 15 = (200×15)/100 = 30."
     },
     {
       "id": "fraction-to-percent",
       "title": "Fraction to Percentage Conversion",
       "formula": "\\frac{a}{b} = \\left(\\frac{a}{b} \\times 100\\right)\\% \\quad \\text{and} \\quad x\\% = \\frac{x}{100}",
       "explanation": "To convert a fraction to a percentage, multiply by 100. To convert a percentage to a fraction, divide by 100 and simplify.",
-      "example": "3/5 = (3/5\u00d7100)% = 60%. 45% = 45/100 = 9/20."
+      "example": "3/5 = (3/5×100)% = 60%. 45% = 45/100 = 9/20."
     },
     {
       "id": "percent-change",
       "title": "Percentage Change",
       "formula": "\\%\\text{ Change} = \\frac{\\text{New Value} - \\text{Original Value}}{\\text{Original Value}} \\times 100\\%",
       "explanation": "The fundamental formula for all percentage change problems. Positive result means increase, negative means decrease. Always divide by the ORIGINAL value, not the new value.",
-      "example": "Price rises from 200 to 250. Change = (50/200)\u00d7100% = 25% increase."
+      "example": "Price rises from 200 to 250. Change = (50/200)×100% = 25% increase."
     },
     {
       "id": "price-consumption",
       "title": "Price Change - Consumption Adjustment",
       "formula": "\\text{Reduction in consumption} = \\frac{R}{100+R} \\times 100\\% \\quad \\text{(for price increase)}",
-      "explanation": "When price increases by R%, to keep total expenditure same, consumption must decrease by this percentage. For price decrease by R%, consumption can increase by R/(100-R)\u00d7100%.",
-      "example": "Price increases 25%. Reduction in consumption = 25/125 \u00d7 100% = 20%."
+      "explanation": "When price increases by R%, to keep total expenditure same, consumption must decrease by this percentage. For price decrease by R%, consumption can increase by R/(100-R)×100%.",
+      "example": "Price increases 25%. Reduction in consumption = 25/125 × 100% = 20%."
     },
     {
       "id": "more-than-less",
       "title": "If A is R% more/less than B",
       "formula": "\\text{If A is R\\% more than B, B is } \\frac{R}{100+R} \\times 100\\% \\text{ less than A}",
       "explanation": "This is a classic trick. The reverse percentage is NEVER the same. If A > B by R% of B, then B < A by a different percentage of A. Always use the formula.",
-      "example": "A is 25% more than B. B is 25/125\u00d7100% = 20% less than A."
+      "example": "A is 25% more than B. B is 25/125×100% = 20% less than A."
     },
     {
       "id": "population-growth",
       "title": "Population Growth Formula",
       "formula": "\\text{After } n \\text{ years} = P \\left(1 + \\frac{R}{100}\\right)^n, \\quad \\text{Before } n \\text{ years} = \\frac{P}{\\left(1 + \\frac{R}{100}\\right)^n}",
       "explanation": "Same as compound interest. P is current population, R is growth rate per annum, n is number of years. For depreciation, replace + with -.",
-      "example": "Population 50000, growth 10% p.a. After 2 years: 50000\u00d7(1.1)^2 = 60500."
+      "example": "Population 50000, growth 10% p.a. After 2 years: 50000×(1.1)^2 = 60500."
     },
     {
       "id": "depreciation",
       "title": "Depreciation Formula",
       "formula": "\\text{Value after } n \\text{ years} = P \\left(1 - \\frac{R}{100}\\right)^n, \\quad \\text{Value } n \\text{ years ago} = \\frac{P}{\\left(1 - \\frac{R}{100}\\right)^n}",
       "explanation": "When value decreases by a fixed percentage each year (depreciation), use this formula. P is current value, R is depreciation rate.",
-      "example": "Machine 80000 depreciates 10% yearly. After 2 years: 80000\u00d7(0.9)^2 = 64800."
+      "example": "Machine 80000 depreciates 10% yearly. After 2 years: 80000×(0.9)^2 = 64800."
     },
     {
       "id": "successive-change",
@@ -287,14 +287,14 @@
       "title": "Profit & Loss Percentage",
       "formula": "\\text{Profit }\\% = \\frac{SP - CP}{CP} \\times 100\\%, \\quad \\text{Loss }\\% = \\frac{CP - SP}{CP} \\times 100\\%",
       "explanation": "Profit and loss percentages are ALWAYS calculated on Cost Price unless the question explicitly says 'on Selling Price'.",
-      "example": "CP=500, SP=600: Profit% = (100/500)\u00d7100% = 20%."
+      "example": "CP=500, SP=600: Profit% = (100/500)×100% = 20%."
     },
     {
       "id": "discount-percent",
       "title": "Discount Percentage",
       "formula": "\\text{Discount }\\% = \\frac{MP - SP}{MP} \\times 100\\%",
-      "explanation": "Discount is always calculated on the Marked Price (list price). SP = MP \u00d7 (1 - Discount%/100). For successive discounts, apply each discount sequentially.",
-      "example": "MP=1000, SP=850: Discount% = (150/1000)\u00d7100% = 15%."
+      "explanation": "Discount is always calculated on the Marked Price (list price). SP = MP × (1 - Discount%/100). For successive discounts, apply each discount sequentially.",
+      "example": "MP=1000, SP=850: Discount% = (150/1000)×100% = 15%."
     },
     {
       "id": "alligation-percent",
@@ -308,14 +308,14 @@
       "title": "Pass Marks Formula",
       "formula": "\\text{Pass\\%} = \\text{Obtained\\%} + \\frac{\\text{Fail Marks}}{\\text{Total Marks}} \\times 100\\%",
       "explanation": "If a student gets a% and fails by X marks, pass marks = (a% of total) + X. If another student gets b% and gets Y marks above pass, pass marks = (b% of total) - Y. Equate to find total marks.",
-      "example": "If 30% fails by 20 marks and 40% gets 10 above pass, let total=T. 0.3T+20 = 0.4T-10. So 0.1T=30, T=300. Pass marks = 0.3\u00d7300+20 = 110."
+      "example": "If 30% fails by 20 marks and 40% gets 10 above pass, let total=T. 0.3T+20 = 0.4T-10. So 0.1T=30, T=300. Pass marks = 0.3×300+20 = 110."
     },
     {
       "id": "replacement",
       "title": "Replacement Formula",
       "formula": "\\text{Final concentration} = \\text{Initial concentration} \\times \\left(1 - \\frac{\\text{replaced quantity}}{\\text{total quantity}}\\right)^n",
       "explanation": "When some solution is repeatedly replaced with another (usually water), the concentration reduces by this factor each time.",
-      "example": "10L of 40% milk, 2L replaced twice with water: 40%\u00d7(1-0.2)^2 = 40%\u00d70.64 = 25.6%."
+      "example": "10L of 40% milk, 2L replaced twice with water: 40%×(1-0.2)^2 = 40%×0.64 = 25.6%."
     }
   ],
   "practiceProblems": {
@@ -323,8 +323,8 @@
       {
         "q": "Find 15% of 200.",
         "s": [
-          "Use formula: x% of y = (x\u00d7y)/100",
-          "15% of 200 = (15\u00d7200)/100 = 3000/100 = 30"
+          "Use formula: x% of y = (x×y)/100",
+          "15% of 200 = (15×200)/100 = 3000/100 = 30"
         ],
         "a": "30"
       },
@@ -347,8 +347,8 @@
       {
         "q": "What percent of 80 is 20?",
         "s": [
-          "Required % = (20/80)\u00d7100%",
-          "= 0.25\u00d7100% = 25%"
+          "Required % = (20/80)×100%",
+          "= 0.25×100% = 25%"
         ],
         "a": "25%"
       },
@@ -356,7 +356,7 @@
         "q": "Express 7/20 as a percentage.",
         "s": [
           "To convert fraction to %, multiply by 100",
-          "(7/20)\u00d7100% = 7\u00d75% = 35%"
+          "(7/20)×100% = 7×5% = 35%"
         ],
         "a": "35%"
       },
@@ -364,14 +364,14 @@
         "q": "Find 37.5% of 480.",
         "s": [
           "37.5% = 3/8 (from fraction table)",
-          "3/8 of 480 = 3\u00d760 = 180"
+          "3/8 of 480 = 3×60 = 180"
         ],
         "a": "180"
       },
       {
         "q": "What is 0.625 as a percentage?",
         "s": [
-          "Multiply by 100: 0.625\u00d7100 = 62.5",
+          "Multiply by 100: 0.625×100 = 62.5",
           "So 0.625 = 62.5%"
         ],
         "a": "62.5%"
@@ -381,16 +381,16 @@
         "s": [
           "Let the number be x.",
           "35% of x = 70",
-          "So (35/100)\u00d7x = 70",
-          "x = 70\u00d7100/35 = 7000/35 = 200"
+          "So (35/100)×x = 70",
+          "x = 70×100/35 = 7000/35 = 200"
         ],
         "a": "200"
       },
       {
         "q": "What percent of 150 is 45?",
         "s": [
-          "Required % = (45/150)\u00d7100%",
-          "= 0.3\u00d7100% = 30%"
+          "Required % = (45/150)×100%",
+          "= 0.3×100% = 30%"
         ],
         "a": "30%"
       },
@@ -408,7 +408,7 @@
         "q": "A price increases from 200 to 250. Find the percentage increase.",
         "s": [
           "Increase = 250 - 200 = 50",
-          "% increase = (50/200)\u00d7100% = 25%"
+          "% increase = (50/200)×100% = 25%"
         ],
         "a": "25%"
       },
@@ -416,7 +416,7 @@
         "q": "A salary decreases from 50000 to 42500. Find the percentage decrease.",
         "s": [
           "Decrease = 50000 - 42500 = 7500",
-          "% decrease = (7500/50000)\u00d7100% = 15%"
+          "% decrease = (7500/50000)×100% = 15%"
         ],
         "a": "15%"
       },
@@ -425,7 +425,7 @@
         "s": [
           "Let original = x. New = 3x.",
           "Increase = 3x - x = 2x",
-          "% increase = (2x/x)\u00d7100% = 200%"
+          "% increase = (2x/x)×100% = 200%"
         ],
         "a": "200%"
       },
@@ -434,41 +434,41 @@
         "s": [
           "Let original = x. New = x/4.",
           "Decrease = x - x/4 = 3x/4",
-          "% decrease = (3x/4 \u00f7 x)\u00d7100% = 75%"
+          "% decrease = (3x/4 ÷ x)×100% = 75%"
         ],
         "a": "75%"
       },
       {
         "q": "If the price of petrol increases by 25%, by what percent must consumption be reduced to keep expenditure same?",
         "s": [
-          "Use formula: Reduction = R/(100+R)\u00d7100%",
+          "Use formula: Reduction = R/(100+R)×100%",
           "Here R = 25%",
-          "Reduction = 25/125\u00d7100% = 20%"
+          "Reduction = 25/125×100% = 20%"
         ],
         "a": "20%"
       },
       {
         "q": "If price of sugar falls by 20%, by what percent can consumption be increased to keep expenditure same?",
         "s": [
-          "Use formula: Increase = R/(100-R)\u00d7100%",
+          "Use formula: Increase = R/(100-R)×100%",
           "Here R = 20%",
-          "Increase = 20/80\u00d7100% = 25%"
+          "Increase = 20/80×100% = 25%"
         ],
         "a": "25%"
       },
       {
         "q": "A is 25% more than B. By what percent is B less than A?",
         "s": [
-          "If A is R% more than B, B is R/(100+R)\u00d7100% less than A",
-          "= 25/125\u00d7100% = 20%"
+          "If A is R% more than B, B is R/(100+R)×100% less than A",
+          "= 25/125×100% = 20%"
         ],
         "a": "20%"
       },
       {
         "q": "A is 20% less than B. By what percent is B more than A?",
         "s": [
-          "If A is R% less than B, B is R/(100-R)\u00d7100% more than A",
-          "= 20/80\u00d7100% = 25%"
+          "If A is R% less than B, B is R/(100-R)×100% more than A",
+          "= 20/80×100% = 25%"
         ],
         "a": "25%"
       },
@@ -486,7 +486,7 @@
         "q": "The population of a town increased from 50000 to 60000 in one year. Find the percentage increase.",
         "s": [
           "Increase = 60000-50000 = 10000",
-          "% increase = (10000/50000)\u00d7100% = 20%"
+          "% increase = (10000/50000)×100% = 20%"
         ],
         "a": "20%"
       }
@@ -496,7 +496,7 @@
         "q": "A price increases by 10% and then by 20%. Find net percentage change.",
         "s": [
           "Use formula: Net = a + b + ab/100",
-          "10 + 20 + (10\u00d720)/100 = 30 + 2 = 32% increase"
+          "10 + 20 + (10×20)/100 = 30 + 2 = 32% increase"
         ],
         "a": "32% increase"
       },
@@ -504,7 +504,7 @@
         "q": "A salary increases by 15% and then decreases by 10%. Find net change.",
         "s": [
           "Use formula with signs: +15 and -10",
-          "Net = 15 + (-10) + (15\u00d7(-10))/100",
+          "Net = 15 + (-10) + (15×(-10))/100",
           "= 5 + (-150/100) = 5 - 1.5 = 3.5% increase"
         ],
         "a": "3.5% increase"
@@ -513,14 +513,14 @@
         "q": "Population of a town increases by 5% each year. Find net increase after 2 years.",
         "s": [
           "Two successive increases of 5%",
-          "Net = 5 + 5 + (5\u00d75)/100 = 10 + 0.25 = 10.25%"
+          "Net = 5 + 5 + (5×5)/100 = 10 + 0.25 = 10.25%"
         ],
         "a": "10.25%"
       },
       {
         "q": "A number is increased by 30% and then decreased by 30%. Find net change.",
         "s": [
-          "Net = 30 + (-30) + (30\u00d7(-30))/100",
+          "Net = 30 + (-30) + (30×(-30))/100",
           "= 0 + (-900/100) = -9%",
           "So net 9% decrease"
         ],
@@ -530,7 +530,7 @@
         "q": "Three successive increases of 10%, 20% and 30%. Find net % increase.",
         "s": [
           "First two: 10+20+(200/100)=32%",
-          "Then 32% and 30%: 32+30+(32\u00d730)/100",
+          "Then 32% and 30%: 32+30+(32×30)/100",
           "= 62 + 9.6 = 71.6%"
         ],
         "a": "71.6%"
@@ -548,9 +548,9 @@
       {
         "q": "After two successive discounts, a shirt is sold for 720. If marked price is 1000 and first discount is 10%, find second discount.",
         "s": [
-          "After first discount: 1000\u00d70.9 = 900",
+          "After first discount: 1000×0.9 = 900",
           "Let second discount = d%",
-          "900\u00d7(1-d/100) = 720",
+          "900×(1-d/100) = 720",
           "1-d/100 = 720/900 = 0.8",
           "d/100 = 0.2, d = 20%"
         ],
@@ -559,7 +559,7 @@
       {
         "q": "Find the single discount equivalent to two successive discounts of 20% and 10%.",
         "s": [
-          "Net discount = d1 + d2 - (d1\u00d7d2)/100",
+          "Net discount = d1 + d2 - (d1×d2)/100",
           "= 20 + 10 - (200/100) = 30 - 2 = 28%"
         ],
         "a": "28%"
@@ -575,7 +575,7 @@
       {
         "q": "The price of an item is increased by 10% and then decreased by 10%. Find the net change. Is it increase or decrease?",
         "s": [
-          "Net = 10 + (-10) + (10\u00d7(-10))/100",
+          "Net = 10 + (-10) + (10×(-10))/100",
           "= 0 - 1 = -1%",
           "It is a 1% decrease",
           "So increasing then decreasing by same % always results in a net decrease!"
@@ -588,8 +588,8 @@
         "q": "The population of a town is 50000. It grows at 10% per annum. Find population after 2 years.",
         "s": [
           "Using formula: P(1+R/100)^n",
-          "= 50000\u00d7(1+10/100)^2",
-          "= 50000\u00d7(1.1)^2 = 50000\u00d71.21 = 60500"
+          "= 50000×(1+10/100)^2",
+          "= 50000×(1.1)^2 = 50000×1.21 = 60500"
         ],
         "a": "60500"
       },
@@ -606,32 +606,32 @@
         "q": "A machine worth 80000 depreciates at 10% per annum. Find its value after 2 years.",
         "s": [
           "Value = P(1-R/100)^n",
-          "= 80000\u00d7(0.9)^2",
-          "= 80000\u00d70.81 = 64800"
+          "= 80000×(0.9)^2",
+          "= 80000×0.81 = 64800"
         ],
         "a": "64800"
       },
       {
         "q": "A machine was bought for 50000. Its value depreciates at 20% per annum. Find its value after 3 years.",
         "s": [
-          "Value = 50000\u00d7(0.8)^3",
-          "= 50000\u00d70.512 = 25600"
+          "Value = 50000×(0.8)^3",
+          "= 50000×0.512 = 25600"
         ],
         "a": "25600"
       },
       {
         "q": "Population of a town increases by 5% in first year and 10% in second year. If initial population was 20000, find population after 2 years.",
         "s": [
-          "After year 1: 20000\u00d71.05 = 21000",
-          "After year 2: 21000\u00d71.10 = 23100"
+          "After year 1: 20000×1.05 = 21000",
+          "After year 2: 21000×1.10 = 23100"
         ],
         "a": "23100"
       },
       {
         "q": "A city's population is 100000. It increases by 20% in first year and decreases by 10% in second year. Find population after 2 years.",
         "s": [
-          "After year 1: 100000\u00d71.20 = 120000",
-          "After year 2: 120000\u00d70.90 = 108000"
+          "After year 1: 100000×1.20 = 120000",
+          "After year 2: 120000×0.90 = 108000"
         ],
         "a": "108000"
       },
@@ -647,8 +647,8 @@
         "q": "A town's population doubles every 10 years. Find the annual growth rate (approximately).",
         "s": [
           "If population doubles in 10 years: (1+R/100)^10 = 2",
-          "Taking 10th root: 1+R/100 \u2248 1.0718",
-          "R \u2248 7.18% per annum"
+          "Taking 10th root: 1+R/100 ≈ 1.0718",
+          "R ≈ 7.18% per annum"
         ],
         "a": "7.18%"
       },
@@ -657,7 +657,7 @@
         "s": [
           "92480 = 80000(1+R/100)^2",
           "(1+R/100)^2 = 92480/80000 = 1.156",
-          "1+R/100 = \u221a1.156 = 1.075",
+          "1+R/100 = √1.156 = 1.075",
           "R = 7.5%"
         ],
         "a": "7.5%"
@@ -667,7 +667,7 @@
         "s": [
           "57600 = 62500(1-R/100)^2",
           "(1-R/100)^2 = 57600/62500 = 0.9216",
-          "1-R/100 = \u221a0.9216 = 0.96",
+          "1-R/100 = √0.9216 = 0.96",
           "R/100 = 0.04, R = 4%"
         ],
         "a": "4%"
@@ -678,7 +678,7 @@
         "q": "A man buys an item for 500 and sells it for 600. Find profit percentage.",
         "s": [
           "Profit = SP - CP = 600-500 = 100",
-          "Profit% = (Profit/CP)\u00d7100% = (100/500)\u00d7100% = 20%"
+          "Profit% = (Profit/CP)×100% = (100/500)×100% = 20%"
         ],
         "a": "20%"
       },
@@ -686,15 +686,15 @@
         "q": "A shopkeeper buys an article for 800 and sells it for 680. Find loss percentage.",
         "s": [
           "Loss = CP - SP = 800-680 = 120",
-          "Loss% = (Loss/CP)\u00d7100% = (120/800)\u00d7100% = 15%"
+          "Loss% = (Loss/CP)×100% = (120/800)×100% = 15%"
         ],
         "a": "15%"
       },
       {
         "q": "If selling price is 450 and profit is 12.5%, find cost price.",
         "s": [
-          "Profit% = (SP-CP)/CP\u00d7100",
-          "12.5% = (450-CP)/CP\u00d7100",
+          "Profit% = (SP-CP)/CP×100",
+          "12.5% = (450-CP)/CP×100",
           "0.125 = (450-CP)/CP",
           "0.125CP = 450 - CP",
           "1.125CP = 450",
@@ -723,7 +723,7 @@
       {
         "q": "A trader sells an item at a profit of 20%. If CP is 250, find SP.",
         "s": [
-          "Profit% = 20% of CP = 0.2\u00d7250 = 50",
+          "Profit% = 20% of CP = 0.2×250 = 50",
           "SP = CP + Profit = 250 + 50 = 300"
         ],
         "a": "300"
@@ -731,8 +731,8 @@
       {
         "q": "If SP = 360 and loss% = 10%, find CP.",
         "s": [
-          "Loss% = (CP-SP)/CP\u00d7100",
-          "10 = (CP-360)/CP\u00d7100",
+          "Loss% = (CP-SP)/CP×100",
+          "10 = (CP-360)/CP×100",
           "0.1CP = CP - 360",
           "0.9CP = 360, CP = 400"
         ],
@@ -743,15 +743,15 @@
         "s": [
           "Let CP = 100",
           "MP = 100+40 = 140",
-          "Discount 20%: SP = 140\u00d70.8 = 112",
-          "Profit% = (112-100)/100\u00d7100% = 12%"
+          "Discount 20%: SP = 140×0.8 = 112",
+          "Profit% = (112-100)/100×100% = 12%"
         ],
         "a": "12%"
       },
       {
         "q": "Find the single discount equivalent to two successive discounts of 30% and 10%.",
         "s": [
-          "Net discount = d1+d2 - (d1\u00d7d2)/100",
+          "Net discount = d1+d2 - (d1×d2)/100",
           "= 30+10 - (300/100) = 40-3 = 37%"
         ],
         "a": "37%"
@@ -760,7 +760,7 @@
         "q": "A person buys 20 items for 2000 and sells them at a profit of 25%. Find SP per item.",
         "s": [
           "CP per item = 2000/20 = 100",
-          "Profit% = 25%, so SP per item = 100\u00d71.25 = 125"
+          "Profit% = 25%, so SP per item = 100×1.25 = 125"
         ],
         "a": "125"
       }
@@ -769,7 +769,7 @@
       {
         "q": "In an election, the winner got 55% of the valid votes and won by 2000 votes. If total votes were 50000 and 10% were invalid, find the winner's votes.",
         "s": [
-          "Valid votes = 50000\u00d70.9 = 45000",
+          "Valid votes = 50000×0.9 = 45000",
           "Winner's votes = 55% of 45000 = 24750",
           "Loser's votes = 45000-24750 = 20250",
           "Difference = 24750-20250 = 4500, not 2000.",
@@ -781,7 +781,7 @@
           "Hmm, there's inconsistency. Let me re-read.",
           "The winner got 55% of valid votes and won by 2000.",
           "Let valid votes = V. 0.55V - 0.45V = 0.1V = 2000",
-          "V = 20000. Winner = 0.55\u00d720000 = 11000 votes."
+          "V = 20000. Winner = 0.55×20000 = 11000 votes."
         ],
         "a": "11000"
       },
@@ -799,9 +799,9 @@
       {
         "q": "In the above problem, find the pass percentage.",
         "s": [
-          "From first: 0.3\u00d7300 = P - 20",
+          "From first: 0.3×300 = P - 20",
           "90 = P - 20, P = 110",
-          "Pass% = (110/300)\u00d7100% = 36.66%"
+          "Pass% = (110/300)×100% = 36.66%"
         ],
         "a": "36.66%"
       },
@@ -813,15 +813,15 @@
           "Winner = 0.6(0.9T) = 0.54T",
           "Loser = 0.9T - 0.54T = 0.36T",
           "Difference = 0.54T - 0.36T = 0.18T = 2400",
-          "T = 2400/0.18 = 13333.33 \u2248 13334"
+          "T = 2400/0.18 = 13333.33 ≈ 13334"
         ],
         "a": "13334"
       },
       {
         "q": "A student's marks increase from 40% to 60%. Find the percentage increase in marks.",
         "s": [
-          "% increase = (60-40)/40\u00d7100%",
-          "= (20/40)\u00d7100% = 50%",
+          "% increase = (60-40)/40×100%",
+          "= (20/40)×100% = 50%",
           "Note: marks increased by 20 percentage points = 50% increase"
         ],
         "a": "50%"
@@ -867,8 +867,8 @@
         "q": "The price of a ticket is increased by 20%. By what percent must attendance decrease to keep revenue same?",
         "s": [
           "This is price-consumption problem",
-          "Reduction = R/(100+R)\u00d7100%",
-          "= 20/120\u00d7100% = 16.66%"
+          "Reduction = R/(100+R)×100%",
+          "= 20/120×100% = 16.66%"
         ],
         "a": "16.66%"
       }
@@ -879,7 +879,7 @@
         "s": [
           "Using alligation: Ratio = (80-50)/(50-40) = 30/10 = 3:1",
           "40% solution : 80% solution = 3:1",
-          "Quantity of 40% = 3\u00d760 = 180 liters"
+          "Quantity of 40% = 3×60 = 180 liters"
         ],
         "a": "180 liters"
       },
@@ -887,7 +887,7 @@
         "q": "A milkman mixes water with milk. He mixes 10L of water with 40L of pure milk. Find the percentage of milk in the mixture.",
         "s": [
           "Total mixture = 10+40 = 50L",
-          "Milk% = (40/50)\u00d7100% = 80%"
+          "Milk% = (40/50)×100% = 80%"
         ],
         "a": "80%"
       },
@@ -902,16 +902,16 @@
       {
         "q": "10 liters of 40% milk is mixed with 15 liters of 60% milk. Find milk percentage in the mixture.",
         "s": [
-          "Total milk = 10\u00d70.4 + 15\u00d70.6 = 4+9 = 13L",
+          "Total milk = 10×0.4 + 15×0.6 = 4+9 = 13L",
           "Total mixture = 10+15 = 25L",
-          "Milk% = (13/25)\u00d7100% = 52%"
+          "Milk% = (13/25)×100% = 52%"
         ],
         "a": "52%"
       },
       {
         "q": "In a 20L mixture of milk and water, milk is 40%. How much milk must be added to make milk 60%?",
         "s": [
-          "Initial milk = 20\u00d70.4 = 8L, water = 12L",
+          "Initial milk = 20×0.4 = 8L, water = 12L",
           "Let milk added = x L",
           "New milk = 8+x, new total = 20+x",
           "(8+x)/(20+x) = 0.6",
@@ -923,16 +923,16 @@
       {
         "q": "From a 10L container of 40% milk, 2L is replaced with water. Find new milk%.",
         "s": [
-          "Remaining milk after removing 2L: 8\u00d70.4 = 3.2L",
+          "Remaining milk after removing 2L: 8×0.4 = 3.2L",
           "Water added = 2L, total = 10L",
-          "New milk% = 3.2/10\u00d7100% = 32%"
+          "New milk% = 3.2/10×100% = 32%"
         ],
         "a": "32%"
       },
       {
         "q": "In a mixture of 60L, milk and water are in ratio 2:1. How much water must be added to make milk 40%?",
         "s": [
-          "Milk = (2/3)\u00d760 = 40L, Water = 20L",
+          "Milk = (2/3)×60 = 40L, Water = 20L",
           "Let water added = x L",
           "New milk%: 40/(60+x) = 0.4",
           "40 = 24+0.4x",
@@ -944,10 +944,10 @@
         "q": "Two solutions of 30% and 50% concentration are mixed in ratio 3:2. Find the concentration of the mixture.",
         "s": [
           "Let volumes be 3L and 2L",
-          "Solute from first = 3\u00d70.3 = 0.9L",
-          "Solute from second = 2\u00d70.5 = 1.0L",
+          "Solute from first = 3×0.3 = 0.9L",
+          "Solute from second = 2×0.5 = 1.0L",
           "Total solute = 1.9L, total volume = 5L",
-          "Concentration = (1.9/5)\u00d7100% = 38%"
+          "Concentration = (1.9/5)×100% = 38%"
         ],
         "a": "38%"
       },
@@ -962,9 +962,9 @@
       {
         "q": "From a 20L mixture of 60% alcohol, 5L is replaced by water. Find new alcohol%.",
         "s": [
-          "Remaining after removing 5L: 15\u00d70.6 = 9L alcohol",
+          "Remaining after removing 5L: 15×0.6 = 9L alcohol",
           "Total = 20L (5L water added)",
-          "New alcohol% = (9/20)\u00d7100% = 45%"
+          "New alcohol% = (9/20)×100% = 45%"
         ],
         "a": "45%"
       }
@@ -981,8 +981,9 @@
         "35"
       ],
       "c": 2,
-      "exp": "15% of 200 = (15\u00d7200)/100 = 3000/100 = 30.",
-      "t": "basic"
+      "exp": "15% of 200 = (15×200)/100 = 3000/100 = 30.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 1,
@@ -994,8 +995,9 @@
         "90"
       ],
       "c": 2,
-      "exp": "12.5% = 1/8. So (1/8)\u00d7640 = 640/8 = 80.",
-      "t": "basic"
+      "exp": "12.5% = 1/8. So (1/8)×640 = 640/8 = 80.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 2,
@@ -1007,8 +1009,9 @@
         "95"
       ],
       "c": 2,
-      "exp": "33.33% = 1/3. So (1/3)\u00d7270 = 90.",
-      "t": "basic"
+      "exp": "33.33% = 1/3. So (1/3)×270 = 90.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 3,
@@ -1020,8 +1023,9 @@
         "40%"
       ],
       "c": 2,
-      "exp": "(7/20)\u00d7100% = 7\u00d75% = 35%.",
-      "t": "basic"
+      "exp": "(7/20)×100% = 7×5% = 35%.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 4,
@@ -1033,8 +1037,9 @@
         "40%"
       ],
       "c": 1,
-      "exp": "(20/80)\u00d7100% = 25%.",
-      "t": "basic"
+      "exp": "(20/80)×100% = 25%.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 5,
@@ -1046,8 +1051,9 @@
         "190"
       ],
       "c": 2,
-      "exp": "37.5% = 3/8. (3/8)\u00d7480 = 3\u00d760 = 180.",
-      "t": "basic"
+      "exp": "37.5% = 3/8. (3/8)×480 = 3×60 = 180.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 6,
@@ -1059,8 +1065,9 @@
         "0.625%"
       ],
       "c": 1,
-      "exp": "0.625\u00d7100 = 62.5%.",
-      "t": "basic"
+      "exp": "0.625×100 = 62.5%.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 7,
@@ -1073,7 +1080,8 @@
       ],
       "c": 2,
       "exp": "Let x be the number. 0.35x = 70, x = 70/0.35 = 200.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 8,
@@ -1085,8 +1093,9 @@
         "65"
       ],
       "c": 2,
-      "exp": "8.33% = 1/12. (1/12)\u00d7720 = 60.",
-      "t": "basic"
+      "exp": "8.33% = 1/12. (1/12)×720 = 60.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 9,
@@ -1098,8 +1107,9 @@
         "210"
       ],
       "c": 2,
-      "exp": "62.5% = 5/8. (5/8)\u00d7320 = 5\u00d740 = 200.",
-      "t": "basic"
+      "exp": "62.5% = 5/8. (5/8)×320 = 5×40 = 200.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 10,
@@ -1111,8 +1121,9 @@
         "50%"
       ],
       "c": 1,
-      "exp": "Increase = 50. % increase = (50/200)\u00d7100% = 25%.",
-      "t": "change"
+      "exp": "Increase = 50. % increase = (50/200)×100% = 25%.",
+      "t": "change",
+      "d": "medium"
     },
     {
       "id": 11,
@@ -1124,8 +1135,9 @@
         "18%"
       ],
       "c": 2,
-      "exp": "Decrease = 7500. % = (7500/50000)\u00d7100% = 15%.",
-      "t": "change"
+      "exp": "Decrease = 7500. % = (7500/50000)×100% = 15%.",
+      "t": "change",
+      "d": "medium"
     },
     {
       "id": 12,
@@ -1137,8 +1149,9 @@
         "400%"
       ],
       "c": 1,
-      "exp": "Let original = x, new = 3x. Increase = 2x. % = (2x/x)\u00d7100% = 200%.",
-      "t": "change"
+      "exp": "Let original = x, new = 3x. Increase = 2x. % = (2x/x)×100% = 200%.",
+      "t": "change",
+      "d": "easy"
     },
     {
       "id": 13,
@@ -1150,8 +1163,9 @@
         "80%"
       ],
       "c": 2,
-      "exp": "Let original = x, new = x/4. Decrease = 3x/4. % = (3x/4\u00f7x)\u00d7100% = 75%.",
-      "t": "change"
+      "exp": "Let original = x, new = x/4. Decrease = 3x/4. % = (3x/4÷x)×100% = 75%.",
+      "t": "change",
+      "d": "easy"
     },
     {
       "id": 14,
@@ -1163,8 +1177,9 @@
         "30%"
       ],
       "c": 1,
-      "exp": "Reduction = R/(100+R)\u00d7100% = 25/125\u00d7100% = 20%.",
-      "t": "change"
+      "exp": "Reduction = R/(100+R)×100% = 25/125×100% = 20%.",
+      "t": "change",
+      "d": "easy"
     },
     {
       "id": 15,
@@ -1176,8 +1191,9 @@
         "30%"
       ],
       "c": 2,
-      "exp": "Increase = R/(100-R)\u00d7100% = 20/80\u00d7100% = 25%.",
-      "t": "change"
+      "exp": "Increase = R/(100-R)×100% = 20/80×100% = 25%.",
+      "t": "change",
+      "d": "easy"
     },
     {
       "id": 16,
@@ -1189,8 +1205,9 @@
         "30%"
       ],
       "c": 1,
-      "exp": "B is less by R/(100+R)\u00d7100% = 25/125\u00d7100% = 20%.",
-      "t": "change"
+      "exp": "B is less by R/(100+R)×100% = 25/125×100% = 20%.",
+      "t": "change",
+      "d": "easy"
     },
     {
       "id": 17,
@@ -1202,8 +1219,9 @@
         "30%"
       ],
       "c": 2,
-      "exp": "B is more by R/(100-R)\u00d7100% = 20/80\u00d7100% = 25%.",
-      "t": "change"
+      "exp": "B is more by R/(100-R)×100% = 20/80×100% = 25%.",
+      "t": "change",
+      "d": "easy"
     },
     {
       "id": 18,
@@ -1216,7 +1234,8 @@
       ],
       "c": 2,
       "exp": "Let original = 100. After +20% = 120. After -20% = 96. Net = -4, so 4% decrease.",
-      "t": "change"
+      "t": "change",
+      "d": "medium"
     },
     {
       "id": 19,
@@ -1228,8 +1247,9 @@
         "25%"
       ],
       "c": 2,
-      "exp": "Increase = 10000. % = (10000/50000)\u00d7100% = 20%.",
-      "t": "change"
+      "exp": "Increase = 10000. % = (10000/50000)×100% = 20%.",
+      "t": "change",
+      "d": "medium"
     },
     {
       "id": 20,
@@ -1242,7 +1262,8 @@
       ],
       "c": 1,
       "exp": "Net = a+b+ab/100 = 10+20+(200/100) = 32% increase.",
-      "t": "successive"
+      "t": "successive",
+      "d": "medium"
     },
     {
       "id": 21,
@@ -1254,8 +1275,9 @@
         "5% decrease"
       ],
       "c": 0,
-      "exp": "Net = 15+(-10)+(15\u00d7-10)/100 = 5-1.5 = 3.5% increase.",
-      "t": "successive"
+      "exp": "Net = 15+(-10)+(15×-10)/100 = 5-1.5 = 3.5% increase.",
+      "t": "successive",
+      "d": "medium"
     },
     {
       "id": 22,
@@ -1268,7 +1290,8 @@
       ],
       "c": 1,
       "exp": "Net = 5+5+(25/100) = 10.25%.",
-      "t": "successive"
+      "t": "successive",
+      "d": "medium"
     },
     {
       "id": 23,
@@ -1280,8 +1303,9 @@
         "3% decrease"
       ],
       "c": 1,
-      "exp": "Net = 30+(-30)+(30\u00d7-30)/100 = 0-9 = -9% (9% decrease).",
-      "t": "successive"
+      "exp": "Net = 30+(-30)+(30×-30)/100 = 0-9 = -9% (9% decrease).",
+      "t": "successive",
+      "d": "medium"
     },
     {
       "id": 24,
@@ -1294,7 +1318,8 @@
       ],
       "c": 2,
       "exp": "First two: 10+20+(200/100)=32%. Then 32+30+(960/100)=62+9.6=71.6%.",
-      "t": "successive"
+      "t": "successive",
+      "d": "hard"
     },
     {
       "id": 25,
@@ -1307,7 +1332,8 @@
       ],
       "c": 0,
       "exp": "20+b+0.2b=44, 1.2b=24, b=20%.",
-      "t": "successive"
+      "t": "successive",
+      "d": "hard"
     },
     {
       "id": 26,
@@ -1320,7 +1346,8 @@
       ],
       "c": 0,
       "exp": "Net = 20+10-(200/100) = 30-2 = 28%.",
-      "t": "successive"
+      "t": "successive",
+      "d": "hard"
     },
     {
       "id": 27,
@@ -1333,7 +1360,8 @@
       ],
       "c": 2,
       "exp": "2 years: 10+10+1=21%. 3 years: 21+10+(210/100)=31+2.1=33.1%.",
-      "t": "successive"
+      "t": "successive",
+      "d": "medium"
     },
     {
       "id": 28,
@@ -1346,7 +1374,8 @@
       ],
       "c": 2,
       "exp": "Net = 10-10-1 = -1%. Always a 1% decrease when same % increase then decrease.",
-      "t": "successive"
+      "t": "successive",
+      "d": "medium"
     },
     {
       "id": 29,
@@ -1359,7 +1388,8 @@
       ],
       "c": 2,
       "exp": "40+60+(2400/100)=100+24=124%.",
-      "t": "successive"
+      "t": "successive",
+      "d": "hard"
     },
     {
       "id": 30,
@@ -1371,8 +1401,9 @@
         "61000"
       ],
       "c": 2,
-      "exp": "50000\u00d7(1.1)^2 = 50000\u00d71.21 = 60500.",
-      "t": "population"
+      "exp": "50000×(1.1)^2 = 50000×1.21 = 60500.",
+      "t": "population",
+      "d": "medium"
     },
     {
       "id": 31,
@@ -1385,7 +1416,8 @@
       ],
       "c": 1,
       "exp": "P = 133100/(1.1)^2 = 133100/1.21 = 110000.",
-      "t": "population"
+      "t": "population",
+      "d": "medium"
     },
     {
       "id": 32,
@@ -1394,11 +1426,12 @@
         "64800",
         "64000",
         "72000",
-        "64800"
+        "66000"
       ],
       "c": 0,
-      "exp": "80000\u00d7(0.9)^2 = 80000\u00d70.81 = 64800.",
-      "t": "population"
+      "exp": "80000×(0.9)^2 = 80000×0.81 = 64800.",
+      "t": "population",
+      "d": "hard"
     },
     {
       "id": 33,
@@ -1410,8 +1443,9 @@
         "32000"
       ],
       "c": 1,
-      "exp": "50000\u00d7(0.8)^3 = 50000\u00d70.512 = 25600.",
-      "t": "population"
+      "exp": "50000×(0.8)^3 = 50000×0.512 = 25600.",
+      "t": "population",
+      "d": "hard"
     },
     {
       "id": 34,
@@ -1423,8 +1457,9 @@
         "24000"
       ],
       "c": 2,
-      "exp": "Year 1: 20000\u00d71.05=21000. Year 2: 21000\u00d71.10=23100.",
-      "t": "population"
+      "exp": "Year 1: 20000×1.05=21000. Year 2: 21000×1.10=23100.",
+      "t": "population",
+      "d": "medium"
     },
     {
       "id": 35,
@@ -1436,8 +1471,9 @@
         "112000"
       ],
       "c": 1,
-      "exp": "Year 1: 100000\u00d71.2=120000. Year 2: 120000\u00d70.9=108000.",
-      "t": "population"
+      "exp": "Year 1: 100000×1.2=120000. Year 2: 120000×0.9=108000.",
+      "t": "population",
+      "d": "medium"
     },
     {
       "id": 36,
@@ -1450,7 +1486,8 @@
       ],
       "c": 2,
       "exp": "340000/0.85 = 400000.",
-      "t": "population"
+      "t": "population",
+      "d": "hard"
     },
     {
       "id": 37,
@@ -1463,7 +1500,8 @@
       ],
       "c": 1,
       "exp": "(1+R/100)^2 = 92480/80000 = 1.156. 1+R/100 = 1.075, R=7.5%.",
-      "t": "population"
+      "t": "population",
+      "d": "medium"
     },
     {
       "id": 38,
@@ -1476,7 +1514,8 @@
       ],
       "c": 1,
       "exp": "(1-R/100)^2 = 57600/62500 = 0.9216. 1-R/100 = 0.96, R=4%.",
-      "t": "population"
+      "t": "population",
+      "d": "hard"
     },
     {
       "id": 39,
@@ -1488,8 +1527,9 @@
         "6%"
       ],
       "c": 2,
-      "exp": "(1+R/100)^20 = 3. 1+R/100 = 3^(1/20) \u2248 1.0565, R\u22485.65%.",
-      "t": "population"
+      "exp": "(1+R/100)^20 = 3. 1+R/100 = 3^(1/20) ≈ 1.0565, R≈5.65%.",
+      "t": "population",
+      "d": "medium"
     },
     {
       "id": 40,
@@ -1501,8 +1541,9 @@
         "25%"
       ],
       "c": 2,
-      "exp": "Profit = 100. Profit% = (100/500)\u00d7100% = 20%.",
-      "t": "profit"
+      "exp": "Profit = 100. Profit% = (100/500)×100% = 20%.",
+      "t": "profit",
+      "d": "medium"
     },
     {
       "id": 41,
@@ -1514,8 +1555,9 @@
         "18%"
       ],
       "c": 2,
-      "exp": "Loss = 120. Loss% = (120/800)\u00d7100% = 15%.",
-      "t": "profit"
+      "exp": "Loss = 120. Loss% = (120/800)×100% = 15%.",
+      "t": "profit",
+      "d": "medium"
     },
     {
       "id": 42,
@@ -1527,8 +1569,9 @@
         "420"
       ],
       "c": 2,
-      "exp": "SP = CP\u00d71.125. CP = 450/1.125 = 400.",
-      "t": "profit"
+      "exp": "SP = CP×1.125. CP = 450/1.125 = 400.",
+      "t": "profit",
+      "d": "medium"
     },
     {
       "id": 43,
@@ -1541,7 +1584,8 @@
       ],
       "c": 2,
       "exp": "Discount = 15% of 1000 = 150. SP = 1000-150 = 850.",
-      "t": "profit"
+      "t": "profit",
+      "d": "hard"
     },
     {
       "id": 44,
@@ -1553,8 +1597,9 @@
         "1100"
       ],
       "c": 2,
-      "exp": "Let MP=x. 0.8\u00d70.9\u00d7x=720, 0.72x=720, x=1000.",
-      "t": "profit"
+      "exp": "Let MP=x. 0.8×0.9×x=720, 0.72x=720, x=1000.",
+      "t": "profit",
+      "d": "hard"
     },
     {
       "id": 45,
@@ -1566,8 +1611,9 @@
         "420"
       ],
       "c": 2,
-      "exp": "SP = CP\u00d70.9. CP = 360/0.9 = 400.",
-      "t": "profit"
+      "exp": "SP = CP×0.9. CP = 360/0.9 = 400.",
+      "t": "profit",
+      "d": "medium"
     },
     {
       "id": 46,
@@ -1579,8 +1625,9 @@
         "300"
       ],
       "c": 3,
-      "exp": "SP = 250\u00d71.2 = 300.",
-      "t": "profit"
+      "exp": "SP = 250×1.2 = 300.",
+      "t": "profit",
+      "d": "medium"
     },
     {
       "id": 47,
@@ -1592,8 +1639,9 @@
         "15%"
       ],
       "c": 2,
-      "exp": "Let CP=100, MP=140, SP=140\u00d70.8=112. Profit% = 12%.",
-      "t": "profit"
+      "exp": "Let CP=100, MP=140, SP=140×0.8=112. Profit% = 12%.",
+      "t": "profit",
+      "d": "hard"
     },
     {
       "id": 48,
@@ -1606,7 +1654,8 @@
       ],
       "c": 2,
       "exp": "30+10-(300/100)=40-3=37%.",
-      "t": "profit"
+      "t": "profit",
+      "d": "hard"
     },
     {
       "id": 49,
@@ -1618,8 +1667,9 @@
         "125"
       ],
       "c": 3,
-      "exp": "CP per item=100. SP=100\u00d71.25=125.",
-      "t": "profit"
+      "exp": "CP per item=100. SP=100×1.25=125.",
+      "t": "profit",
+      "d": "medium"
     },
     {
       "id": 50,
@@ -1632,7 +1682,8 @@
       ],
       "c": 2,
       "exp": "0.3T+20 = 0.4T-10, 0.1T=30, T=300.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 51,
@@ -1644,8 +1695,9 @@
         "40%"
       ],
       "c": 2,
-      "exp": "Pass marks = 0.3\u00d7300+20 = 110. Pass% = (110/300)\u00d7100% = 36.66%.",
-      "t": "election"
+      "exp": "Pass marks = 0.3×300+20 = 110. Pass% = (110/300)×100% = 36.66%.",
+      "t": "election",
+      "d": "easy"
     },
     {
       "id": 52,
@@ -1658,7 +1710,8 @@
       ],
       "c": 2,
       "exp": "Winner=0.54T, Loser=0.36T, Diff=0.18T=2400, T=13334.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 53,
@@ -1670,8 +1723,9 @@
         "66.66%"
       ],
       "c": 2,
-      "exp": "(60-40)/40\u00d7100% = 20/40\u00d7100% = 50%.",
-      "t": "election"
+      "exp": "(60-40)/40×100% = 20/40×100% = 50%.",
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 54,
@@ -1684,7 +1738,8 @@
       ],
       "c": 2,
       "exp": "20% failed = 120. Total = 120/0.2 = 600.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 55,
@@ -1697,7 +1752,8 @@
       ],
       "c": 2,
       "exp": "Valid votes V: 0.2V=3800, V=19000. Total = 19000/0.95=20000.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 56,
@@ -1710,7 +1766,8 @@
       ],
       "c": 2,
       "exp": "Pass = 200. 40% of total = 200. Total = 500.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 57,
@@ -1723,7 +1780,8 @@
       ],
       "c": 2,
       "exp": "Failed at least one = 35+42-15=62%. Pass both = 100-62=38%.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 58,
@@ -1735,8 +1793,9 @@
         "25%"
       ],
       "c": 1,
-      "exp": "20/120\u00d7100% = 16.66%.",
-      "t": "election"
+      "exp": "20/120×100% = 16.66%.",
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 59,
@@ -1748,8 +1807,9 @@
         "15000"
       ],
       "c": 2,
-      "exp": "Valid votes=0.85T. Winner=0.6(0.85T)=0.51T, Loser=0.4(0.85T)=0.34T. Diff=0.17T=1500, T=8823.5 approx. Need recheck: actually let valid=V. Winner=0.6V, Loser=0.4V, diff=0.2V=1500, V=7500. Total=7500/0.85\u22488824.",
-      "t": "election"
+      "exp": "Valid votes=0.85T. Winner=0.6(0.85T)=0.51T, Loser=0.4(0.85T)=0.34T. Diff=0.17T=1500, T=8823.5 approx. Need recheck: actually let valid=V. Winner=0.6V, Loser=0.4V, diff=0.2V=1500, V=7500. Total=7500/0.85≈8824.",
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 60,
@@ -1761,8 +1821,9 @@
         "200"
       ],
       "c": 2,
-      "exp": "Ratio = (80-50)/(50-40)=30/10=3:1. Quantity=3\u00d760=180L.",
-      "t": "alligation"
+      "exp": "Ratio = (80-50)/(50-40)=30/10=3:1. Quantity=3×60=180L.",
+      "t": "alligation",
+      "d": "medium"
     },
     {
       "id": 61,
@@ -1774,8 +1835,9 @@
         "90%"
       ],
       "c": 2,
-      "exp": "Mixture = 50L. Milk% = (40/50)\u00d7100% = 80%.",
-      "t": "alligation"
+      "exp": "Mixture = 50L. Milk% = (40/50)×100% = 80%.",
+      "t": "alligation",
+      "d": "hard"
     },
     {
       "id": 62,
@@ -1788,7 +1850,8 @@
       ],
       "c": 0,
       "exp": "(45-40)/(40-30)=5/10=1:2 (Cheaper:Dearer).",
-      "t": "alligation"
+      "t": "alligation",
+      "d": "hard"
     },
     {
       "id": 63,
@@ -1800,8 +1863,9 @@
         "54%"
       ],
       "c": 2,
-      "exp": "Milk = 10\u00d70.4+15\u00d70.6=4+9=13L. Total=25L. %=13/25\u00d7100%=52%.",
-      "t": "alligation"
+      "exp": "Milk = 10×0.4+15×0.6=4+9=13L. Total=25L. %=13/25×100%=52%.",
+      "t": "alligation",
+      "d": "hard"
     },
     {
       "id": 64,
@@ -1814,7 +1878,8 @@
       ],
       "c": 1,
       "exp": "Milk=8L, Water=12L. Let x=added milk. (8+x)/(20+x)=0.6, x=10L.",
-      "t": "alligation"
+      "t": "alligation",
+      "d": "hard"
     },
     {
       "id": 65,
@@ -1826,8 +1891,9 @@
         "34%"
       ],
       "c": 2,
-      "exp": "Remaining milk=8\u00d70.4=3.2L. Total=10L. % = 32%.",
-      "t": "alligation"
+      "exp": "Remaining milk=8×0.4=3.2L. Total=10L. % = 32%.",
+      "t": "alligation",
+      "d": "medium"
     },
     {
       "id": 66,
@@ -1840,7 +1906,8 @@
       ],
       "c": 2,
       "exp": "Milk=40L, Water=20L. 40/(60+x)=0.4, x=40L.",
-      "t": "alligation"
+      "t": "alligation",
+      "d": "hard"
     },
     {
       "id": 67,
@@ -1852,8 +1919,9 @@
         "40%"
       ],
       "c": 2,
-      "exp": "Solute=3\u00d70.3+2\u00d70.5=0.9+1=1.9. Total=5. %=38%.",
-      "t": "alligation"
+      "exp": "Solute=3×0.3+2×0.5=0.9+1=1.9. Total=5. %=38%.",
+      "t": "alligation",
+      "d": "medium"
     },
     {
       "id": 68,
@@ -1866,7 +1934,8 @@
       ],
       "c": 1,
       "exp": "(60-55)/(55-40)=5/15=1:3 (Cheaper:Dearer).",
-      "t": "alligation"
+      "t": "alligation",
+      "d": "medium"
     },
     {
       "id": 69,
@@ -1878,8 +1947,9 @@
         "48%"
       ],
       "c": 2,
-      "exp": "Remaining alcohol = 15\u00d70.6=9L. Total=20L. %=45%.",
-      "t": "alligation"
+      "exp": "Remaining alcohol = 15×0.6=9L. Total=20L. %=45%.",
+      "t": "alligation",
+      "d": "medium"
     },
     {
       "id": 70,
@@ -1891,8 +1961,9 @@
         "35%"
       ],
       "c": 2,
-      "exp": "(45/150)\u00d7100% = 30%.",
-      "t": "basic"
+      "exp": "(45/150)×100% = 30%.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 71,
@@ -1904,8 +1975,9 @@
         "290"
       ],
       "c": 2,
-      "exp": "87.5% = 7/8. (7/8)\u00d7320 = 280.",
-      "t": "basic"
+      "exp": "87.5% = 7/8. (7/8)×320 = 280.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 72,
@@ -1917,8 +1989,9 @@
         "0.08%"
       ],
       "c": 1,
-      "exp": "0.08\u00d7100 = 8%.",
-      "t": "basic"
+      "exp": "0.08×100 = 8%.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 73,
@@ -1931,7 +2004,8 @@
       ],
       "c": 3,
       "exp": "0.2x = 36, x = 180.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 74,
@@ -1944,7 +2018,8 @@
       ],
       "c": 2,
       "exp": "6.25% = 1/16. 1600/16 = 100.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 75,
@@ -1956,8 +2031,9 @@
         "10%"
       ],
       "c": 1,
-      "exp": "200 g = 0.2 kg. (0.2/5)\u00d7100% = 4%.",
-      "t": "basic"
+      "exp": "200 g = 0.2 kg. (0.2/5)×100% = 4%.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 76,
@@ -1969,8 +2045,9 @@
         "20"
       ],
       "c": 1,
-      "exp": "(x/100)\u00d780 = 12, 0.8x=12, x=15.",
-      "t": "basic"
+      "exp": "(x/100)×80 = 12, 0.8x=12, x=15.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 77,
@@ -1982,8 +2059,9 @@
         "40%"
       ],
       "c": 1,
-      "exp": "(3/8)\u00d7100% = 37.5%.",
-      "t": "basic"
+      "exp": "(3/8)×100% = 37.5%.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 78,
@@ -1996,7 +2074,8 @@
       ],
       "c": 2,
       "exp": "14.28% = 1/7. 490/7 = 70.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 79,
@@ -2008,8 +2087,9 @@
         "1/8"
       ],
       "c": 1,
-      "exp": "16.66% \u2248 1/6.",
-      "t": "basic"
+      "exp": "16.66% ≈ 1/6.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 80,
@@ -2021,8 +2101,9 @@
         "90%"
       ],
       "c": 1,
-      "exp": "(200/250)\u00d7100% = 80%.",
-      "t": "basic"
+      "exp": "(200/250)×100% = 80%.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 81,
@@ -2035,7 +2116,8 @@
       ],
       "c": 3,
       "exp": "0.45x=135, x=300. 60% of 300 = 180.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 82,
@@ -2048,7 +2130,8 @@
       ],
       "c": 2,
       "exp": "9.09% = 1/11. 660/11 = 60.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 83,
@@ -2061,7 +2144,8 @@
       ],
       "c": 3,
       "exp": "0.2% = 0.002. 0.002x = 5, x = 2500.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 84,
@@ -2069,12 +2153,13 @@
       "opts": [
         "5/8, 62.5%",
         "3/5, 60%",
-        "5/8, 62.5%",
+        "4/5, 80%",
         "7/8, 87.5%"
       ],
       "c": 0,
       "exp": "0.625 = 5/8 = 62.5%.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 85,
@@ -2086,8 +2171,9 @@
         "25%"
       ],
       "c": 2,
-      "exp": "(10/50)\u00d7100% = 20%.",
-      "t": "change"
+      "exp": "(10/50)×100% = 20%.",
+      "t": "change",
+      "d": "medium"
     },
     {
       "id": 86,
@@ -2099,8 +2185,9 @@
         "33.33%"
       ],
       "c": 1,
-      "exp": "(20/80)\u00d7100% = 25%.",
-      "t": "change"
+      "exp": "(20/80)×100% = 25%.",
+      "t": "change",
+      "d": "medium"
     },
     {
       "id": 87,
@@ -2113,7 +2200,8 @@
       ],
       "c": 1,
       "exp": "Net = 10-10-1 = -1% (1% decrease).",
-      "t": "change"
+      "t": "change",
+      "d": "medium"
     },
     {
       "id": 88,
@@ -2126,7 +2214,8 @@
       ],
       "c": 2,
       "exp": "20+25+(500/100)=45+5=50%.",
-      "t": "successive"
+      "t": "successive",
+      "d": "medium"
     },
     {
       "id": 89,
@@ -2139,7 +2228,8 @@
       ],
       "c": 0,
       "exp": "20+20-(400/100)=40-4=36%.",
-      "t": "successive"
+      "t": "successive",
+      "d": "hard"
     },
     {
       "id": 90,
@@ -2152,7 +2242,8 @@
       ],
       "c": 1,
       "exp": "20+b+0.2b=32, 1.2b=12, b=10%.",
-      "t": "successive"
+      "t": "successive",
+      "d": "hard"
     },
     {
       "id": 91,
@@ -2165,7 +2256,8 @@
       ],
       "c": 1,
       "exp": "Net = 50-50-(2500/100)=0-25=-25%. 25% decrease.",
-      "t": "successive"
+      "t": "successive",
+      "d": "medium"
     },
     {
       "id": 92,
@@ -2178,7 +2270,8 @@
       ],
       "c": 2,
       "exp": "0.4x-0.25x=0.15x=45, x=300.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 93,
@@ -2191,7 +2284,8 @@
       ],
       "c": 2,
       "exp": "Savings% = 100-30-20=50%. 0.5x=15000, x=30000.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 94,
@@ -2203,8 +2297,9 @@
         "100"
       ],
       "c": 3,
-      "exp": "Let x = original. x\u00d71.2\u00d70.8=0.96x=96, x=100.",
-      "t": "successive"
+      "exp": "Let x = original. x×1.2×0.8=0.96x=96, x=100.",
+      "t": "successive",
+      "d": "medium"
     },
     {
       "id": 95,
@@ -2216,8 +2311,9 @@
         "18%"
       ],
       "c": 1,
-      "exp": "A=0.3B, B=0.4C. A=0.3\u00d70.4C=0.12C=12% of C.",
-      "t": "basic"
+      "exp": "A=0.3B, B=0.4C. A=0.3×0.4C=0.12C=12% of C.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 96,
@@ -2230,7 +2326,8 @@
       ],
       "c": 0,
       "exp": "100%-52% = 48%.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 97,
@@ -2243,7 +2340,8 @@
       ],
       "c": 2,
       "exp": "Saves 25%. 0.25x=4000, x=16000.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 98,
@@ -2256,7 +2354,8 @@
       ],
       "c": 2,
       "exp": "Girls = 40% = 24. Total = 24/0.4 = 60.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 99,
@@ -2268,8 +2367,9 @@
         "25%"
       ],
       "c": 2,
-      "exp": "Increase=5000. %=(5000/25000)\u00d7100%=20%.",
-      "t": "change"
+      "exp": "Increase=5000. %=(5000/25000)×100%=20%.",
+      "t": "change",
+      "d": "medium"
     },
     {
       "id": 100,
@@ -2281,8 +2381,9 @@
         "800"
       ],
       "c": 3,
-      "exp": "SP = MP\u00d70.8, MP = 640/0.8 = 800.",
-      "t": "profit"
+      "exp": "SP = MP×0.8, MP = 640/0.8 = 800.",
+      "t": "profit",
+      "d": "hard"
     },
     {
       "id": 101,
@@ -2295,7 +2396,8 @@
       ],
       "c": 1,
       "exp": "10+10-(100/100)=20-1=19%.",
-      "t": "profit"
+      "t": "profit",
+      "d": "hard"
     },
     {
       "id": 102,
@@ -2307,8 +2409,9 @@
         "35%"
       ],
       "c": 1,
-      "exp": "Profit=100. %=(100/400)\u00d7100%=25%.",
-      "t": "profit"
+      "exp": "Profit=100. %=(100/400)×100%=25%.",
+      "t": "profit",
+      "d": "medium"
     },
     {
       "id": 103,
@@ -2320,8 +2423,9 @@
         "300"
       ],
       "c": 2,
-      "exp": "SP = 250\u00d71.12 = 280.",
-      "t": "profit"
+      "exp": "SP = 250×1.12 = 280.",
+      "t": "profit",
+      "d": "medium"
     },
     {
       "id": 104,
@@ -2334,7 +2438,8 @@
       ],
       "c": 2,
       "exp": "CP = 540/1.08 = 500.",
-      "t": "profit"
+      "t": "profit",
+      "d": "medium"
     },
     {
       "id": 105,
@@ -2346,8 +2451,9 @@
         "14800"
       ],
       "c": 1,
-      "exp": "20000\u00d7(0.9)^3 = 20000\u00d70.729 = 14580.",
-      "t": "population"
+      "exp": "20000×(0.9)^3 = 20000×0.729 = 14580.",
+      "t": "population",
+      "d": "hard"
     },
     {
       "id": 106,
@@ -2359,8 +2465,9 @@
         "220500"
       ],
       "c": 3,
-      "exp": "200000\u00d7(1.05)^2 = 200000\u00d71.1025 = 220500.",
-      "t": "population"
+      "exp": "200000×(1.05)^2 = 200000×1.1025 = 220500.",
+      "t": "population",
+      "d": "medium"
     },
     {
       "id": 107,
@@ -2373,7 +2480,8 @@
       ],
       "c": 2,
       "exp": "500000(1-R/100)^2=405000. (1-R/100)^2=0.81. 1-R/100=0.9. R=10%.",
-      "t": "population"
+      "t": "population",
+      "d": "hard"
     },
     {
       "id": 108,
@@ -2386,7 +2494,8 @@
       ],
       "c": 0,
       "exp": "0.08x=0.04y, 8x=4y, x:y=1:2.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 109,
@@ -2398,8 +2507,9 @@
         "300"
       ],
       "c": 3,
-      "exp": "x\u00d71.15=345, x=300.",
-      "t": "basic"
+      "exp": "x×1.15=345, x=300.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 110,
@@ -2412,7 +2522,8 @@
       ],
       "c": 2,
       "exp": "11.11% = 1/9. 810/9 = 90.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 111,
@@ -2424,8 +2535,9 @@
         "400"
       ],
       "c": 3,
-      "exp": "0.3\u00d7Total=120, Total=400.",
-      "t": "basic"
+      "exp": "0.3×Total=120, Total=400.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 112,
@@ -2437,8 +2549,9 @@
         "35%"
       ],
       "c": 1,
-      "exp": "He gives 800g for price of 1000g. Profit = 200/800\u00d7100% = 25%.",
-      "t": "profit"
+      "exp": "He gives 800g for price of 1000g. Profit = 200/800×100% = 25%.",
+      "t": "profit",
+      "d": "medium"
     },
     {
       "id": 113,
@@ -2451,20 +2564,22 @@
       ],
       "c": 2,
       "exp": "Total = 18/0.6 = 30. Girls = 30-18 = 12.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 114,
       "q": "A man spends 60% of his income. If his income increases by 20% and his expenditure increases by 10%, find the percentage increase in his savings.",
       "opts": [
         "25%",
-        "30%",
+        "32.5%",
         "35%",
         "40%"
       ],
-      "c": 1,
-      "exp": "Let income=100, expenditure=60, savings=40. New income=120, new exp=66, new savings=54. Increase=14/40\u00d7100%=35%.",
-      "t": "change"
+      "c": 2,
+      "exp": "Let income=100, expenditure=60, savings=40. New income=120, new exp=66, new savings=54. Increase=14/40×100%=35%.",
+      "t": "change",
+      "d": "medium"
     },
     {
       "id": 115,
@@ -2476,8 +2591,9 @@
         "30%"
       ],
       "c": 1,
-      "exp": "Reduction = 30/130\u00d7100% = 23.07%.",
-      "t": "change"
+      "exp": "Reduction = 30/130×100% = 23.07%.",
+      "t": "change",
+      "d": "easy"
     },
     {
       "id": 116,
@@ -2490,7 +2606,8 @@
       ],
       "c": 2,
       "exp": "Valid V: 0.2V=3800, V=19000. Total=19000/0.95=20000.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 117,
@@ -2502,8 +2619,9 @@
         "160"
       ],
       "c": 1,
-      "exp": "x\u00d70.9=135, x=150.",
-      "t": "basic"
+      "exp": "x×0.9=135, x=150.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 118,
@@ -2515,8 +2633,9 @@
         "55"
       ],
       "c": 2,
-      "exp": "7.69% \u2248 1/13. 650/13 = 50.",
-      "t": "basic"
+      "exp": "7.69% ≈ 1/13. 650/13 = 50.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 119,
@@ -2529,7 +2648,8 @@
       ],
       "c": 0,
       "exp": "Second=250. First/Second=200/250=80%.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 120,
@@ -2541,8 +2661,9 @@
         "40%"
       ],
       "c": 1,
-      "exp": "B is more by R/(100-R)\u00d7100% = 20/80\u00d7100% = 25%.",
-      "t": "change"
+      "exp": "B is more by R/(100-R)×100% = 20/80×100% = 25%.",
+      "t": "change",
+      "d": "easy"
     },
     {
       "id": 121,
@@ -2554,8 +2675,9 @@
         "36%"
       ],
       "c": 1,
-      "exp": "Fiction=40% of total. Novels=60% of fiction=0.6\u00d740%=24% of total.",
-      "t": "basic"
+      "exp": "Fiction=40% of total. Novels=60% of fiction=0.6×40%=24% of total.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 122,
@@ -2567,8 +2689,9 @@
         "30% increase"
       ],
       "c": 2,
-      "exp": "Let income=100, exp=70, savings=30. New income=115, new exp=77, new savings=38. Increase=8/30\u00d7100%=26.66%.",
-      "t": "change"
+      "exp": "Let income=100, exp=70, savings=30. New income=115, new exp=77, new savings=38. Increase=8/30×100%=26.66%.",
+      "t": "change",
+      "d": "medium"
     },
     {
       "id": 123,
@@ -2581,7 +2704,8 @@
       ],
       "c": 1,
       "exp": "Net = 25-25-(625/100)=0-6.25 = -6.25%. 6.25% decrease.",
-      "t": "successive"
+      "t": "successive",
+      "d": "medium"
     },
     {
       "id": 124,
@@ -2593,8 +2717,9 @@
         "22%"
       ],
       "c": 2,
-      "exp": "Profit=160. %=(160/800)\u00d7100%=20%.",
-      "t": "profit"
+      "exp": "Profit=160. %=(160/800)×100%=20%.",
+      "t": "profit",
+      "d": "medium"
     },
     {
       "id": 125,
@@ -2606,8 +2731,9 @@
         "40%"
       ],
       "c": 1,
-      "exp": "Increase = 20/80\u00d7100% = 25%.",
-      "t": "change"
+      "exp": "Increase = 20/80×100% = 25%.",
+      "t": "change",
+      "d": "easy"
     },
     {
       "id": 126,
@@ -2620,7 +2746,8 @@
       ],
       "c": 3,
       "exp": "Loser=40%, Winner=60%. Diff=20%=1500. Valid votes=1500/0.2=7500.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 127,
@@ -2633,7 +2760,8 @@
       ],
       "c": 1,
       "exp": "Failed at least one=15+20-10=25%. Pass both=100-25=75%. Wait: actual formula - 15+20-10=25% failed, 100-25=75% passed.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 128,
@@ -2645,8 +2773,9 @@
         "40%"
       ],
       "c": 1,
-      "exp": "Reduction = 40/140\u00d7100% = 28.57%.",
-      "t": "change"
+      "exp": "Reduction = 40/140×100% = 28.57%.",
+      "t": "change",
+      "d": "medium"
     },
     {
       "id": 129,
@@ -2658,8 +2787,9 @@
         "42"
       ],
       "c": 2,
-      "exp": "37.5%=3/8. So x\u00d7(11/8)=55, x=40.",
-      "t": "basic"
+      "exp": "37.5%=3/8. So x×(11/8)=55, x=40.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 130,
@@ -2671,8 +2801,9 @@
         "12%"
       ],
       "c": 2,
-      "exp": "Let CP=100, MP=125, SP=125\u00d70.88=110. Profit=10%.",
-      "t": "profit"
+      "exp": "Let CP=100, MP=125, SP=125×0.88=110. Profit=10%.",
+      "t": "profit",
+      "d": "hard"
     },
     {
       "id": 131,
@@ -2685,7 +2816,8 @@
       ],
       "c": 3,
       "exp": "16.66%=1/6. (1/6)x=30, x=180.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 132,
@@ -2697,8 +2829,9 @@
         "50%"
       ],
       "c": 2,
-      "exp": "50/150\u00d7100%=33.33%.",
-      "t": "change"
+      "exp": "50/150×100%=33.33%.",
+      "t": "change",
+      "d": "easy"
     },
     {
       "id": 133,
@@ -2711,7 +2844,8 @@
       ],
       "c": 0,
       "exp": "0.125 = 1/8 = 12.5%.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 134,
@@ -2719,12 +2853,13 @@
       "opts": [
         "40000",
         "42000",
-        "44000",
+        "22222",
         "45000"
       ],
       "c": 2,
-      "exp": "Winner=55%. Diff=10%=2000. Valid=20000. Total=20000/0.9\u224822222? Let me recalc: Actually 0.55V-0.45V=0.1V=2000, V=20000. Total=20000/0.9=22222, not matching options. Hmm. Let valid=90% of total T. 0.1(0.9T)=2000, 0.09T=2000, T=22222. Let me try: total=T, valid=0.9T. Diff=0.1(0.9T)=0.09T=2000, T\u224822222. Seems off from options. Let me just use: total=20000/0.9\u224822222. But none match. Let me re-approach: Let valid=V, diff=0.1V=2000, V=20000. Total=20000/0.9=22222. The closest option is 44000? That's double. Hmm maybe I misread. Actually let me reconsider question: '45% of valid votes' => loser got 45%, winner 55%. Diff=10% of V=2000, V=20000. Total=20000/0.9=22222. The options don't have this. Maybe total invalid is 10% so valid=90% => 0.9T=20000, T=22222. Not matching. Let me just check: if total=44000, valid=39600, diff=3960, not 2000. Something's off with the problem statement.",
-      "t": "election"
+      "exp": "Winner=55%. Diff=10%=2000. Valid=20000. Total=20000/0.9≈22222? Let me recalc: Actually 0.55V-0.45V=0.1V=2000, V=20000. Total=20000/0.9=22222, not matching options. Hmm. Let valid=90% of total T. 0.1(0.9T)=2000, 0.09T=2000, T=22222. Let me try: total=T, valid=0.9T. Diff=0.1(0.9T)=0.09T=2000, T≈22222. Seems off from options. Let me just use: total=20000/0.9≈22222. But none match. Let me re-approach: Let valid=V, diff=0.1V=2000, V=20000. Total=20000/0.9=22222. The closest option is 44000? That's double. Hmm maybe I misread. Actually let me reconsider question: '45% of valid votes' => loser got 45%, winner 55%. Diff=10% of V=2000, V=20000. Total=20000/0.9=22222. The options don't have this. Maybe total invalid is 10% so valid=90% => 0.9T=20000, T=22222. Not matching. Let me just check: if total=44000, valid=39600, diff=3960, not 2000. Something's off with the problem statement.",
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 135,
@@ -2737,7 +2872,8 @@
       ],
       "c": 3,
       "exp": "85% of bill=340. Bill=340/0.85=400.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 136,
@@ -2749,8 +2885,9 @@
         "400"
       ],
       "c": 3,
-      "exp": "x\u00d71.25=500, x=400.",
-      "t": "basic"
+      "exp": "x×1.25=500, x=400.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 137,
@@ -2763,7 +2900,8 @@
       ],
       "c": 2,
       "exp": "Milk=48L. 48/(80+x)=0.4, 48=32+0.4x, 0.4x=16, x=40L.",
-      "t": "alligation"
+      "t": "alligation",
+      "d": "hard"
     },
     {
       "id": 138,
@@ -2775,8 +2913,9 @@
         "130"
       ],
       "c": 2,
-      "exp": "18.75% = 3/16. (3/16)\u00d7640 = 3\u00d740 = 120.",
-      "t": "basic"
+      "exp": "18.75% = 3/16. (3/16)×640 = 3×40 = 120.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 139,
@@ -2789,7 +2928,8 @@
       ],
       "c": 2,
       "exp": "x+0.4x=1.4x=420, x=300.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 140,
@@ -2801,8 +2941,9 @@
         "12%"
       ],
       "c": 2,
-      "exp": "SI = P\u00d7R\u00d7T/100. If amount=2P, SI=P. P=P\u00d7R\u00d710/100, R=10%.",
-      "t": "basic"
+      "exp": "SI = P×R×T/100. If amount=2P, SI=P. P=P×R×10/100, R=10%.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 141,
@@ -2814,8 +2955,9 @@
         "150"
       ],
       "c": 2,
-      "exp": "43.75% = 7/16. (7/16)\u00d7320 = 7\u00d720 = 140.",
-      "t": "basic"
+      "exp": "43.75% = 7/16. (7/16)×320 = 7×20 = 140.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 142,
@@ -2828,7 +2970,8 @@
       ],
       "c": 3,
       "exp": "25% failed=480. Total=480/0.25=1920.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 143,
@@ -2840,8 +2983,9 @@
         "18750"
       ],
       "c": 3,
-      "exp": "Spends=40+20+15=75%. Saves=25%. Savings=75000\u00d70.25=18750.",
-      "t": "basic"
+      "exp": "Spends=40+20+15=75%. Saves=25%. Savings=75000×0.25=18750.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 144,
@@ -2854,7 +2998,8 @@
       ],
       "c": 3,
       "exp": "0.15x=12, x=80. 45% of 80 = 36.",
-      "t": "basic"
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 145,
@@ -2866,8 +3011,9 @@
         "60%"
       ],
       "c": 1,
-      "exp": "Boundary runs=6\u00d74+4\u00d76=24+24=48. %=(48/72)\u00d7100%=66.66%? Wait let me recalc: 6\u00d74=24, 4\u00d76=24, total=48. 48/72=0.6666=66.66%. Not in options. By running: 72-48=24. % by running=24/72=33.33%. But options have 50% which is 36 runs. Let me check: maybe 'boundaries' means only fours? 6\u00d74=24, 24/72=33.33%. Hmm none match options. Let me check: maybe it's 4 sixes and 6 fours: boundaries = 4\u00d76+6\u00d74=24+24=48. 48/72=66.66%. Not in options. The question says 'from boundaries' - 6 fours=24, so boundaries=24, 24/72=33.33%. Still not matching. Maybe total runs=72, boundaries=6 fours=24+4 sixes=24, total=48 from boundaries. 48/72=66.66%... hmm.",
-      "t": "basic"
+      "exp": "Boundary runs=6×4+4×6=24+24=48. %=(48/72)×100%=66.66%? Wait let me recalc: 6×4=24, 4×6=24, total=48. 48/72=0.6666=66.66%. Not in options. By running: 72-48=24. % by running=24/72=33.33%. But options have 50% which is 36 runs. Let me check: maybe 'boundaries' means only fours? 6×4=24, 24/72=33.33%. Hmm none match options. Let me check: maybe it's 4 sixes and 6 fours: boundaries = 4×6+6×4=24+24=48. 48/72=66.66%. Not in options. The question says 'from boundaries' - 6 fours=24, so boundaries=24, 24/72=33.33%. Still not matching. Maybe total runs=72, boundaries=6 fours=24+4 sixes=24, total=48 from boundaries. 48/72=66.66%... hmm.",
+      "t": "basic",
+      "d": "medium"
     },
     {
       "id": 146,
@@ -2880,7 +3026,8 @@
       ],
       "c": 1,
       "exp": "Loss=15% of 12000=1800. SP=12000-1800=10200.",
-      "t": "profit"
+      "t": "profit",
+      "d": "medium"
     },
     {
       "id": 147,
@@ -2892,8 +3039,9 @@
         "18%"
       ],
       "c": 2,
-      "exp": "Let CP=100, MP=130, SP=130\u00d70.9=117. Profit=17%.",
-      "t": "profit"
+      "exp": "Let CP=100, MP=130, SP=130×0.9=117. Profit=17%.",
+      "t": "profit",
+      "d": "hard"
     },
     {
       "id": 148,
@@ -2906,7 +3054,8 @@
       ],
       "c": 2,
       "exp": "Voters who voted=0.8T. Winner=0.5(0.8T)=0.4T. Loser=0.4T. That gives tie? Actually if winner got 50% of valid votes and won by 600, then winner=50%, loser=50%? That can't be right. Let me re-read: 'winner got 50% of remaining valid votes' means winner got 50% of 80% votes = 40% of total. Loser also 40% of total? That's 80% total. The remaining 20% went... hmm. Actually '50% of remaining valid votes' might mean 50% of those who voted. So winner=50% of voters, loser=the rest. But then winner would have 50% and loser 50%, diff=0. Something's unclear. Let me skip.",
-      "t": "election"
+      "t": "election",
+      "d": "medium"
     },
     {
       "id": 149,
@@ -2918,8 +3067,9 @@
         "360"
       ],
       "c": 3,
-      "exp": "56.25% = 9/16. (9/16)\u00d7640 = 9\u00d740 = 360.",
-      "t": "basic"
+      "exp": "56.25% = 9/16. (9/16)×640 = 9×40 = 360.",
+      "t": "basic",
+      "d": "medium"
     }
   ]
 }

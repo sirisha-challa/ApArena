@@ -4,25 +4,13 @@
   'use strict';
 
   var R = window.ArenaRenderer;
-  var state = { syllabus: null, section: null, topic: null, viewed: {} };
+  var state = { syllabus: null, section: null, topic: null, viewed: {}, bankTopicCache: {}, mcqIdx: 0 };
 
   var $ = function (sel, root) { return (root || document).querySelector(sel); };
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
 
-  var ICONS = {
-    person: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
-    puzzle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h3a2 2 0 0 0 2-2V3a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1z"/><path d="M4 21h3a2 2 0 0 0 2-2v-2a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1z"/><path d="M17 4h3a1 1 0 0 1 1 1v3a2 2 0 0 1-2 2h-2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M21 17h-3a2 2 0 0 0-2 2v2a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/><path d="M12 4v16"/></svg>',
-    book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5v15z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg>',
-    brain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44A2.5 2.5 0 0 1 4 17.5a2.5 2.5 0 0 1-2-4.09 2.5 2.5 0 0 1 2-6.41A2.5 2.5 0 0 1 6.5 2h3z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44A2.5 2.5 0 0 0 20 17.5a2.5 2.5 0 0 0 2-4.09 2.5 2.5 0 0 0-2-6.41A2.5 2.5 0 0 0 17.5 2h-3z"/></svg>',
-    shape: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><rect x="13" y="3" width="8" height="6" rx="1.5"/><path d="M4 14l4 6h8l4-6z"/></svg>',
-    calc: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h.01M12 19h.01M16 19h.01"/></svg>',
-    office: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-4h6v4M9 10h.01M12 10h.01M15 10h.01M9 14h.01M12 14h.01M15 14h.01"/></svg>',
-    code: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>',
-    cloud: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19a4.5 4.5 0 1 0-.4-9A7 7 0 1 0 4 14.5 4.5 4.5 0 0 0 5 19h12.5z"/></svg>',
-    chip: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>',
-    terminal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 17 6-5-6-5"/><path d="M12 19h8"/></svg>',
-    mic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5"/></svg>'
-  };
+  /* Professional icon set (Lucide, MIT) — shared via ArenaRenderer.ICONS */
+  var ICONS = R.ICONS || {};
 
   var STATUS_META = {
     pending: { label: 'Content pending', cls: 'pending' },
@@ -56,8 +44,8 @@
     var btn = $('[data-action="theme"]');
     if (btn) btn.innerHTML = t === 'dark' ? sunIco() : moonIco();
   }
-  function sunIco() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'; }
-  function moonIco() { return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>'; }
+  function sunIco() { return ICONS.sun; }
+  function moonIco() { return ICONS.moon; }
 
   /* ---------- helpers ---------- */
 
@@ -101,7 +89,7 @@
     html += statCard(allTopics.length, 'Topics', 'syllabus items');
     html += statCard(ready, 'Ready', 'content loaded so far');
     html += statCard(viewed, 'Reviewed', 'by you');
-    html += statCard(5, 'Rounds', 'behavioral → coding → comm');
+    html += statCard(5, 'Rounds', 'behavioral · coding · comm');
     html += '</section>';
 
     html += '<section class="pattern-card"><header><h2>Exam pattern <span class="muted">' + esc(s.examPattern.current.label) + '</span></h2><p>' +
@@ -174,7 +162,9 @@
       html += badge(t.status);
       html += '<span class="topic-chev" aria-hidden="true">&#9654;</span>';
       html += '</button>';
-      if (!t.content) {
+      if (t.bankTopicId) {
+        html += '<div class="topic-empty"><p><strong>Bank topic.</strong> Content loads in-app from the ' + esc(t.bank) + ' — Learn, Formulas, Practice &amp; MCQ tabs.</p></div>';
+      } else if (!t.content) {
         html += '<div class="topic-empty"><div class="empty-art" aria-hidden="true">' + ICONS.book + '</div><p><strong>Content pending.</strong> This topic is queued for upload — the outline is final, the lesson is on its way.</p></div>';
       }
       html += '</div>';
@@ -201,55 +191,168 @@
     var html = '';
     html += '<nav class="crumbs"><a href="#/">Dashboard</a><span class="sep">/</span><a href="#/section/' + esc(sid) + '">' + esc(sec.name) + '</a><span class="sep">/</span><span>' + esc(t.title) + '</span></nav>';
 
+    if (t.bankTopicId) { loadBankTopic(t); return; }
+
     if (!t.content) {
       html += '<section class="topic-empty-lg"><div class="empty-art">' + ICONS.book + '</div><h1>' + esc(t.title) + '</h1><p>This topic has not been uploaded yet. It will appear here with premium math rendering, pseudocode analysis and step-by-step explanations.</p><a class="btn primary" href="#/section/' + esc(sid) + '">Back to ' + esc(sec.name) + '</a></section>';
       $('#main').innerHTML = html;
       return;
     }
 
-    var c = t.content;
+    renderTopicContent(sec, t, t.content);
+  }
+
+  /* Bank-linked topics: fetch the bank topic JSON and render it in-app with the
+   * same Learn / Formulas / Practice / MCQ tab flow the banks use. */
+  function loadBankTopic(t) {
+    var cached = state.bankTopicCache[t.bankTopicId];
+    if (cached) { renderTopicContent(state.section, t, cached); return; }
+    $('#main').innerHTML = '<section class="topic-empty-lg"><div class="boot-spinner" aria-hidden="true"></div><h1>' + esc(t.title) + '</h1><p>Loading from ' + esc(t.bank) + '…</p></section>';
+    fetch('/data/topics/' + encodeURIComponent(t.bankTopicId) + '.json', { cache: 'no-store' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (json) {
+        state.bankTopicCache[t.bankTopicId] = bankTopicToContent(json);
+        renderTopicContent(state.section, t, state.bankTopicCache[t.bankTopicId]);
+      })
+      .catch(function (err) {
+        var shell = t.bank === 'Verbal Bank' ? 'verbal' : 'reasoning';
+        $('#main').innerHTML = '<section class="topic-empty-lg"><div class="empty-art">' + ICONS.warn + '</div><h1>' + esc(t.title) + '</h1><p>Could not load this topic from the bank (' + esc(err.message) + '). It lives in the ' + esc(t.bank) + '.</p><a class="btn primary" href="/' + shell + '/">Open ' + esc(t.bank) + '</a></section>';
+      });
+  }
+
+  /* Adapt bank topic schema (readingSections / formulas / practiceProblems /
+   * mcqs) to the accenture content schema the topic renderer expects. */
+  function bankTopicToContent(bt) {
+    var c = { introduction: [], sections: [], practiceQuestions: [], practiceGroups: [], quickRevision: bt.quickRevision || [], mcqs: bt.mcqs || [] };
+    (bt.readingSections || []).forEach(function (rs) {
+      if (rs.id === 'formulas') return; // rendered as the dedicated Formulas section below
+      var blocks = [];
+      if (rs.content) blocks.push({ type: 'p', text: rs.content });
+      if (rs.quickSummary) blocks.push({ type: 'p', text: rs.quickSummary });
+      (rs.subsections || []).forEach(function (sub) {
+        blocks.push({ type: 'p', text: '**' + sub.title + '** — ' + sub.content });
+      });
+      if (rs.tricks && rs.tricks.length) blocks.push({ type: 'callout', kind: 'tip', title: 'Tricks', content: rs.tricks });
+      c.sections.push({ id: rs.id, title: rs.title, blocks: blocks });
+    });
+    if (bt.formulas && bt.formulas.length) {
+      c.sections.push({ id: 'formulas', title: 'Formulas', blocks: bt.formulas.map(function (f) {
+        var ex = f.example;
+        return {
+          type: 'formula', title: f.title, latex: f.formula, text: f.explanation,
+          whenToUse: f.whenToUse, memoryTip: f.memoryTip, commonMistake: f.commonMistake,
+          example: ex ? { prompt: ex.prompt, steps: (ex.steps || []).map(function (s) { return { text: s, reason: '' }; }), answer: ex.answer } : null
+        };
+      }) });
+    }
+    var titles = {};
+    (bt.formulas || []).forEach(function (f) { titles[f.id] = f.title; });
+    var pp = bt.practiceProblems || {};
+    Object.keys(pp).forEach(function (fid) {
+      c.practiceGroups.push({
+        title: titles[fid] || fid,
+        problems: pp[fid].map(function (p) {
+          return {
+            prompt: p.q,
+            options: p.opts || [],
+            answer: String.fromCharCode(65 + (p.c || 0)),
+            explanation: (p.a ? 'Correct answer: ' + p.a + '. ' : '') + (p.s || []).join(' ')
+          };
+        })
+      });
+    });
+    return c;
+  }
+
+  function renderTopicContent(sec, t, c) {
+    var sid = sec.id, tid = t.id;
+    state.topicTab = state.topicTab || 'learn';
+
+    var formulaBlocks = [];
+    (c.sections || []).forEach(function (sec_) {
+      (sec_.blocks || []).forEach(function (b) { if (b.type === 'formula') formulaBlocks.push(b); });
+    });
+    var practiceCount = c.practiceGroups ? c.practiceGroups.reduce(function (a, g) { return a + g.problems.length; }, 0) : (c.practiceQuestions ? c.practiceQuestions.length : 0);
+
+    var html = '';
     html += '<div class="topic-layout">';
     html += '<article class="topic-article" id="topic-article">';
     html += '<header class="topic-head"><h1>' + esc(t.title) + '</h1>' +
-      '<div class="topic-actions"><button class="btn ghost small" data-action="review" data-on="' + (isViewed(sid, tid) ? '1' : '0') + '">' + (isViewed(sid, tid) ? '✓ Reviewed' : 'Mark as reviewed') + '</button>' +
+      '<div class="topic-actions"><button class="btn ghost small" data-action="review" data-on="' + (isViewed(sid, tid) ? '1' : '0') + '">' + (isViewed(sid, tid) ? '<span class="svg-ico">' + ICONS.check + '</span>Reviewed' : 'Mark as reviewed') + '</button>' +
       '<a class="btn ghost small" href="#/section/' + esc(sid) + '">Back to section</a></div></header>';
 
-    (c.introduction || []).forEach(function (p) { html += R.richPara(p).replace(/<p>/g, '<p class="intro-p">'); });
-
-    (c.sections || []).forEach(function (sec_, i) {
-      html += '<section class="topic-section" id="sec-' + (sec_.id || i) + '">';
-      html += '<h2><span class="sec-idx">' + String(i + 1).padStart(2, '0') + '</span>' + esc(sec_.title) + '</h2>';
-      (sec_.blocks || []).forEach(function (b) { html += R.renderBlock(b); });
-      html += '</section>';
-    });
-
+    html += '<div class="topic-tabs">';
+    html += '<button class="tab-btn' + (state.topicTab === 'learn' ? ' active' : '') + '" data-tab="learn">Learn</button>';
+    html += '<button class="tab-btn' + (state.topicTab === 'formulas' ? ' active' : '') + '" data-tab="formulas">Formulas (' + formulaBlocks.length + ')</button>';
+    html += '<button class="tab-btn' + (state.topicTab === 'practice' ? ' active' : '') + '" data-tab="practice">Practice (' + practiceCount + ')</button>';
+    if (c.mcqs && c.mcqs.length) {
+      html += '<button class="tab-btn' + (state.topicTab === 'mcq' ? ' active' : '') + '" data-tab="mcq">MCQ (' + c.mcqs.length + ')</button>';
+    }
     if (c.quickRevision && c.quickRevision.length) {
-      html += '<section class="quick-revision" id="sec-quick"><h2><span class="sec-idx">QR</span>Quick revision</h2><ul>';
+      html += '<button class="tab-btn' + (state.topicTab === 'quick' ? ' active' : '') + '" data-tab="quick">Quick revision</button>';
+    }
+    html += '</div>';
+
+    html += '<div class="topic-section" id="topic-section">';
+
+    if (state.topicTab === 'formulas') {
+      if (formulaBlocks.length) {
+        html += '<div class="formulas-grid">';
+        formulaBlocks.forEach(function (b) { html += R.renderBlock(b); });
+        html += '</div>';
+      } else {
+        html += '<div class="empty-state">No formulas in this topic yet.</div>';
+      }
+    } else if (state.topicTab === 'practice') {
+      var groups = c.practiceGroups && c.practiceGroups.length
+        ? c.practiceGroups
+        : (c.practiceQuestions && c.practiceQuestions.length ? [{ title: null, problems: c.practiceQuestions }] : []);
+      if (groups.length) {
+        groups.forEach(function (g) {
+          if (g.title) html += '<h3 class="pq-group-title">' + esc(g.title) + '</h3>';
+          g.problems.forEach(function (pq, i) {
+            html += '<div class="pq-item"><div class="pq-q"><span class="pq-num">Q' + (i + 1) + '</span><p>' + R.rich(pq.prompt) + '</p></div>';
+            if (pq.options && pq.options.length) {
+              html += '<div class="pq-options">';
+              pq.options.forEach(function (o, oi) {
+                var letter = String.fromCharCode(65 + oi);
+                html += '<span class="pq-option" data-answer="' + letter + '" data-correct="' + (pq.answer === letter ? '1' : '0') + '">' + letter + '. ' + R.rich(o) + '</span>';
+              });
+              html += '</div>';
+            }
+            html += '<div class="pq-reveal" hidden><span class="mini-label">Answer: ' + esc(pq.answer) + '</span><p>' + R.rich(pq.explanation) + '</p></div>';
+            if (!(pq.options && pq.options.length)) html += '<button class="btn ghost small" data-action="toggle-answer">Show answer</button>';
+            html += '</div>';
+          });
+        });
+      } else {
+        html += '<div class="empty-state">No practice questions in this topic yet.</div>';
+      }
+    } else if (state.topicTab === 'mcq') {
+      html += renderMcqTab(c.mcqs);
+    } else if (state.topicTab === 'quick') {
+      html += '<section class="quick-revision"><ul>';
       c.quickRevision.forEach(function (q) { html += '<li>' + R.rich(q) + '</li>'; });
       html += '</ul></section>';
-    }
+    } else {
+      (c.introduction || []).forEach(function (p) { html += R.richPara(p).replace(/<p>/g, '<p class="intro-p">'); });
 
-    if (c.practiceQuestions && c.practiceQuestions.length) {
-      html += '<section class="practice" id="sec-practice"><h2><span class="sec-idx">PQ</span>Practice</h2>';
-      c.practiceQuestions.forEach(function (pq, i) {
-        html += '<div class="pq-item"><div class="pq-q"><span class="pq-num">Q' + (i + 1) + '</span><p>' + R.rich(pq.prompt) + '</p></div>';
-        if (pq.options && pq.options.length) {
-          html += '<div class="pq-options">';
-          pq.options.forEach(function (o, oi) {
-            var letter = String.fromCharCode(65 + oi);
-            html += '<span class="pq-option" data-answer="' + letter + '" data-correct="' + (pq.answer === letter ? '1' : '0') + '">' + letter + '. ' + R.rich(o) + '</span>';
-          });
-          html += '</div>';
-        }
-        html += '<div class="pq-reveal" hidden><span class="mini-label">Answer: ' + esc(pq.answer) + '</span><p>' + R.rich(pq.explanation) + '</p></div>';
-        html += '</div>';
+      (c.sections || []).forEach(function (sec_, i) {
+        html += '<section class="topic-section-inner" id="sec-' + (sec_.id || i) + '">';
+        html += '<h2><span class="sec-idx">' + String(i + 1).padStart(2, '0') + '</span>' + esc(sec_.title) + '</h2>';
+        (sec_.blocks || []).forEach(function (b) { html += R.renderBlock(b); });
+        html += '</section>';
       });
-      html += '</section>';
+
+      if (c.companyNote) {
+        html += '<aside class="company-note"><header>' + R.icon('bomb') + '<strong>Accenture interview note</strong></header><p>' + R.rich(c.companyNote) + '</p></aside>';
+      }
     }
 
-    if (c.companyNote) {
-      html += '<aside class="company-note"><header>' + R.icon('bomb') + '<strong>Accenture interview note</strong></header><p>' + R.rich(c.companyNote) + '</p></aside>';
-    }
+    html += '</div>';
 
     var idx = sec.topics.indexOf(t);
     var prevT = sec.topics[idx - 1], nextT = sec.topics[idx + 1];
@@ -261,28 +364,44 @@
     html += '</nav>';
 
     html += '</article>';
-
-    var toc = (c.sections || []).map(function (sec_, i) {
-      return '<a href="#sec-' + esc(sec_.id || i) + '"><span class="toc-idx">' + String(i + 1).padStart(2, '0') + '</span>' + esc(sec_.title) + '</a>';
-    }).join('');
-    if (c.quickRevision) toc += '<a href="#sec-quick"><span class="toc-idx">QR</span>Quick revision</a>';
-    if (c.practiceQuestions) toc += '<a href="#sec-practice"><span class="toc-idx">PQ</span>Practice</a>';
-    html += '<aside class="toc"><div class="toc-inner"><p class="toc-label">On this page</p>' + toc + '</div></aside>';
     html += '</div>';
 
     $('#main').innerHTML = html;
     setupTopicInteractions();
   }
 
+  /* Simple one-at-a-time MCQ flow reusing the practice option styles. */
+  function renderMcqTab(mcqs) {
+    if (!mcqs || !mcqs.length) return '<div class="empty-state">No MCQs in this topic yet.</div>';
+    var mi = Math.min(state.mcqIdx || 0, mcqs.length - 1);
+    var m = mcqs[mi];
+    var html = '<div class="mcq-controls-row">';
+    html += '<span class="mcq-counter">Question ' + (mi + 1) + ' of ' + mcqs.length + '</span>';
+    html += '<span class="mcq-tag">' + esc(m.t || 'General') + (m.d ? ' &middot; ' + esc(m.d) : '') + '</span>';
+    html += '<button class="btn ghost small" data-mcq-prev' + (mi === 0 ? ' disabled' : '') + '>Prev</button>';
+    html += '<button class="btn ghost small" data-mcq-next' + (mi >= mcqs.length - 1 ? ' disabled' : '') + '>Next</button>';
+    html += '</div>';
+    html += '<div class="pq-item mcq-item">';
+    html += '<div class="pq-q"><span class="pq-num">Q' + (mi + 1) + '</span><p>' + R.rich(m.q) + '</p></div>';
+    html += '<div class="pq-options">';
+    m.opts.forEach(function (o, oi) {
+      var letter = String.fromCharCode(65 + oi);
+      html += '<span class="pq-option" data-answer="' + letter + '" data-correct="' + (m.c === oi ? '1' : '0') + '">' + letter + '. ' + R.rich(o) + '</span>';
+    });
+    html += '</div>';
+    html += '<div class="pq-reveal" hidden><span class="mini-label">Answer: ' + esc(m.opts[m.c] != null ? m.opts[m.c] : String.fromCharCode(65 + m.c)) + '</span><p>' + R.rich(m.exp) + '</p></div>';
+    html += '</div>';
+    return html;
+  }
+
   function setupTopicInteractions() {
-    var art = $('#topic-article');
     var reviewBtn = $('[data-action="review"]');
     if (reviewBtn) {
       reviewBtn.addEventListener('click', function () {
         var on = this.getAttribute('data-on') === '1';
         markViewed(state.section.id, state.topic.id, !on);
         this.setAttribute('data-on', on ? '0' : '1');
-        this.textContent = on ? 'Mark as reviewed' : '✓ Reviewed';
+        this.innerHTML = on ? 'Mark as reviewed' : '<span class="svg-ico">' + ICONS.check + '</span>Reviewed';
       });
     }
 
@@ -299,20 +418,34 @@
       });
     });
 
-    // TOC scrollspy
-    var links = $$('.toc a');
-    if ('IntersectionObserver' in window && links.length) {
-      var map = {};
-      var obs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) map[e.target.id] = true;
-        });
-        var current = Object.keys(map).filter(function (k) { return map[k]; }).pop();
-        if (current) {
-          links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === '#' + current); });
-        }
-      }, { rootMargin: '-20% 0px -70% 0px' });
-      $$('.topic-section, .quick-revision, .practice', art).forEach(function (secEl) { obs.observe(secEl); });
+    $$('[data-action="toggle-answer"]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var reveal = $('.pq-reveal', this.closest('.pq-item'));
+        if (reveal) reveal.hidden = !reveal.hidden;
+      });
+    });
+
+    $$('.tab-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        state.topicTab = this.getAttribute('data-tab');
+        viewTopic(state.section.id, state.topic.id);
+        window.scrollTo(0, 0);
+      });
+    });
+
+    var prevBtn = $('[data-mcq-prev]');
+    if (prevBtn && !prevBtn.disabled) {
+      prevBtn.addEventListener('click', function () {
+        state.mcqIdx = Math.max(0, (state.mcqIdx || 0) - 1);
+        viewTopic(state.section.id, state.topic.id);
+      });
+    }
+    var nextBtn = $('[data-mcq-next]');
+    if (nextBtn && !nextBtn.disabled) {
+      nextBtn.addEventListener('click', function () {
+        state.mcqIdx = (state.mcqIdx || 0) + 1;
+        viewTopic(state.section.id, state.topic.id);
+      });
     }
   }
 

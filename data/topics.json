@@ -214,6 +214,28 @@
         "Mixed Patterns"
       ],
       "estimatedHours": 12
+    },
+    {
+      "id": "clock-calendar",
+      "title": "Clock & Calendar",
+      "icon": "🕐",
+      "category": "reasoning",
+      "color": "#0D9488",
+      "days": "2-3",
+      "subtopics": [
+        "Clock Basics (Hand Speeds & Angles)",
+        "Angle Between the Hands",
+        "Coincidence, Opposite & Right-Angle Positions",
+        "Mirror Image of a Clock",
+        "Fast & Slow Clocks (Gain/Loss)",
+        "Leap Year Rules & Odd Days",
+        "Odd Days in Years & Centuries",
+        "Day of the Week Calculation",
+        "Calendar Repetition (6/11/28 Years)",
+        "Month Codes & Date Tricks"
+      ],
+      "estimatedHours": 20,
+      "subtitle": "Angles, Mirror & Fast/Slow Clocks, Leap Years, Odd Days & Day of Week"
     }
   ]
 }

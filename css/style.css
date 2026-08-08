@@ -2294,3 +2294,48 @@ table .highlight td {
         padding: var(--space-2);
     }
 }
+
+/* ---- MCQ filter chips & difficulty ---- */
+.mcq-filter-chips { display:flex; flex-wrap:wrap; gap:var(--space-2); margin:var(--space-3) 0; }
+.mcq-filter-chips.diff-row { margin-top:calc(-1 * var(--space-2)); }
+.chip {
+  padding:4px 14px; border-radius:999px; border:1px solid var(--color-border);
+  background:var(--color-surface); color:var(--color-text-secondary);
+  font-size:var(--text-xs); font-weight:500; cursor:pointer;
+  transition:all var(--transition-fast);
+}
+.chip:hover { border-color:var(--color-primary); color:var(--color-primary); }
+.chip-active { background:var(--color-primary); border-color:var(--color-primary); color:#fff; }
+.chip-active:hover { color:#fff; }
+.chip-easy { border-color:#22c55e; color:#16a34a; }
+.chip-medium { border-color:#f59e0b; color:#d97706; }
+.chip-hard { border-color:#ef4444; color:#dc2626; }
+.chip-active.chip-easy { background:#22c55e; color:#fff; }
+.chip-active.chip-medium { background:#f59e0b; color:#fff; }
+.chip-active.chip-hard { background:#ef4444; color:#fff; }
+.mcq-header { gap:var(--space-2); flex-wrap:wrap; }
+.mcq-source { margin-left:auto; font-size:var(--text-xs); color:var(--color-text-secondary); font-style:italic; }
+.explain-title { font-size:var(--text-sm); font-weight:600; color:var(--color-primary); margin:var(--space-3) 0 var(--space-2); }
+
+/* ---- Reading: tricks / patterns / previous-year ---- */
+.tricks-card { border-left:4px solid #8b5cf6; }
+.patterns-card { border-left:4px solid #0284c7; }
+.pyq-block { margin:var(--space-3) 0; }
+.pyq-item {
+  border:1px solid var(--color-border); border-radius:var(--radius-md);
+  padding:var(--space-3) var(--space-4); margin:var(--space-3) 0;
+  background:var(--color-surface);
+}
+.pyq-item strong { display:block; font-size:var(--text-xs); color:var(--color-primary); text-transform:uppercase; letter-spacing:.05em; margin-bottom:var(--space-2); }
+.pyq-item p { margin:.25rem 0; color:var(--color-text-secondary); }
+.pyq-approach { font-size:var(--text-sm); }
+
+/* ---- Practice: formula how-to ---- */
+.formula-howto { margin-top:var(--space-3); }
+.formula-howto .example-label {
+  display:block; font-size:var(--text-xs); font-weight:600;
+  color:var(--color-secondary); text-transform:uppercase; letter-spacing:.05em;
+  margin-bottom:var(--space-2);
+}
+.practice-formula-card .solution-steps { margin-top:var(--space-2); }
+.practice-solution { margin-top:var(--space-4); }
