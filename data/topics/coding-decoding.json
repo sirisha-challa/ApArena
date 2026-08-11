@@ -1,7 +1,7 @@
 {
   "id": "coding-decoding",
   "title": "Coding-Decoding",
-  "icon": "⌂",
+  "icon": "\u2302",
   "category": "verbal",
   "subtitle": "Letter Shifts, Number Coding, Mirror Coding & Substitution",
   "days": "1-2",
@@ -694,7 +694,7 @@
       "d": "medium"
     },
     {
-      "q": "If TOP=USQ, then BOT=?",
+      "q": "If TOP=UPQ, then BOT=?",
       "opts": [
         "CPU",
         "CQU",
@@ -864,14 +864,14 @@
     {
       "q": "If CONSTANT=DPOTUBOU, then BEAUTIFUL=?",
       "opts": [
-        "CFBUVJGVM",
+        "CFBVUJGVM",
         "CFBUVJGVL",
         "CFBUVJHVN",
         "CFAUVJGVM"
       ],
       "c": 0,
       "t": "shift",
-      "exp": "Step 1: All +1. Step 2: B->C,E->F,A->B,U->V,T->U,I->J,F->G,U->V,L->M. Step 3: CFBUVJGVM correct.",
+      "exp": "Step 1: All letters +1: C->D, O->P, N->O, S->T, T->U, A->B, N->O, T->U. Step 2: B->C, E->F, A->B, U->V, T->U, I->J, F->G, U->V, L->M. Step 3: CFBVUJGVM correct.",
       "id": 22,
       "d": "medium"
     },
@@ -925,7 +925,7 @@
         "DKUF",
         "EGUG"
       ],
-      "c": 0,
+      "c": 3,
       "t": "alternating",
       "exp": "Step 1: K->N(+3),I->G(-2),T->W(+3),E->H(+3). Pattern +3,-2,+3,+3. Step 2: B+3=E,I-2=G,R+3=U,D+3=G. Step 3: EGUG correct.",
       "id": 26,
@@ -1966,6 +1966,62 @@
       "t": "mirror",
       "exp": "Step 1: Mirror each letter (27-pos): L(12)->O(15), I(9)->R(18), O(15)->L(12), N(14)->M(13). Step 2: LION -> ORLM. Step 3: ORLM correct.",
       "d": "medium"
+    },
+    {
+      "q": "In a certain language, vowels are replaced by the next consonant and consonants by the previous vowel. What is the code for RING?",
+      "opts": [
+        "OJIE",
+        "OEKH",
+        "OEMH",
+        "PJNH"
+      ],
+      "c": 0,
+      "t": "vowel-consonant",
+      "exp": "Step 1: Rule: vowels -> next consonant, consonants -> previous vowel. Step 2: R->O, I->J, N->I, G->E. Step 3: OJIE correct.",
+      "d": "medium",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "If MIRROR is written as 123343 and ERROR as 53343, how is RIMMER written?",
+      "opts": [
+        "312345",
+        "321153",
+        "213345",
+        "123345"
+      ],
+      "c": 1,
+      "t": "substitution",
+      "exp": "Step 1: From MIRROR=123343: M=1, I=2, R=3, O=4. From ERROR=53343: E=5. Step 2: RIMMER: R=3, I=2, M=1, M=1, E=5, R=3 -> 321153. Step 3: 321153 correct.",
+      "d": "medium",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "If STOP is coded as [35,35] (S+P=19+16, T+O=20+15), what is the code for WORD?",
+      "opts": [
+        "[27,33,33,27]",
+        "[27,33]",
+        "[31,31]",
+        "[41,34]"
+      ],
+      "c": 1,
+      "t": "mirror-sum",
+      "exp": "Step 1: Sum positions of the outer pair: W(23)+D(4)=27. Step 2: Sum positions of the inner pair: O(15)+R(18)=33. Step 3: [27,33] correct.",
+      "d": "medium",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "If LION is coded as PLQO, how is BEAR coded?",
+      "opts": [
+        "FIOV",
+        "FHDV",
+        "FIPV",
+        "FHCS"
+      ],
+      "c": 3,
+      "t": "alternating",
+      "exp": "Step 1: LION shifts +4,+3,+2,+1: L->P, I->L, O->Q, N->O. Step 2: BEAR: B+4=F, E+3=H, A+2=C, R+1=S. Step 3: FHCS correct.",
+      "d": "medium",
+      "source": "Auto-verified"
     }
   ],
   "learningPath": [

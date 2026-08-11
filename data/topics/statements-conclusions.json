@@ -448,10 +448,10 @@
         "s": [
           "Step 1: The statement says 'All cats are animals'.",
           "Step 2: Conclusion I: 'All animals are cats' - Extreme reversal. Invalid.",
-          "Step 3: Conclusion II: 'Some animals are not cats' - This follows because if cats are a subset of animals, there may be animals that are not cats. Valid.",
-          "Step 4: Only Conclusion II follows."
+          "Step 3: Conclusion II: 'Some animals are not cats' - Not guaranteed. The sets of cats and animals could be exactly equal. Invalid.",
+          "Step 4: Neither conclusion follows."
         ],
-        "a": "Only II follows"
+        "a": "Neither follows"
       },
       {
         "q": "Statement: The company will never hire unqualified candidates. Conclusions: I. All candidates hired by the company are qualified. II. The company may hire some unqualified candidates. Which conclusion follows?",
@@ -672,11 +672,12 @@
         "q": "Statement: Some A are B. Conclusions: I. All A are B. II. Some A are not B. Which conclusion follows?",
         "s": [
           "Step 1: The statement says 'Some A are B'.",
-          "Step 2: Conclusion I: 'All A are B' - 'Some' does not mean 'All'. Invalid.",
-          "Step 3: Conclusion II: 'Some A are not B' - It is possible, but not guaranteed. If all A are B, then no A are not B. Cannot be determined.",
-          "Step 4: Neither conclusion follows definitively."
+          "Step 2: Conclusion I: 'All A are B' - 'Some' does not mean 'All'. Not guaranteed on its own.",
+          "Step 3: Conclusion II: 'Some A are not B' - Also not guaranteed; all A could be B.",
+          "Step 4: Neither follows individually, but the two conclusions are contradictory - exactly one of them must be true.",
+          "Step 5: Either I or II follows."
         ],
-        "a": "Neither follows"
+        "a": "Either I or II follows"
       }
     ],
     "possibility-conclusion": [
@@ -1148,11 +1149,11 @@
         "Both follow",
         "Neither follows"
       ],
-      "c": 0,
+      "c": 3,
       "t": "some-all-rule",
-      "exp": "Step 1: 'All dogs are animals' means dogs are a subset of animals. Step 2: Conclusion I: 'Some animals are not dogs' - Since dogs are only a subset, there may be animals that are not dogs. Valid. Step 3: Conclusion II: 'All animals are dogs' - Invalid. Step 4: Only Conclusion I follows.",
-      "elimination": "The second conclusion reverses the statement.",
-      "trap": "All A are B means there could be B that are not A.",
+      "exp": "Step 1: 'All dogs are animals' means dogs are a subset of animals. Step 2: Conclusion I: 'Some animals are not dogs' - Not guaranteed. The sets of dogs and animals could be exactly equal, with every animal being a dog. Invalid. Step 3: Conclusion II: 'All animals are dogs' - Not guaranteed either, since animals may include things other than dogs. Invalid. Step 4: Neither conclusion follows.",
+      "elimination": "Neither conclusion can be guaranteed from the statement.",
+      "trap": "'All A are B' allows A and B to be equal sets, so 'Some B are not A' does not follow.",
       "time": "25 seconds",
       "d": "easy"
     },
@@ -1847,7 +1848,7 @@
       ],
       "c": 0,
       "t": "syllogism",
-      "exp": "Step 1: 'Some graduates are engineers' and 'Some engineers are doctors' → No guaranteed link between graduates and doctors. But wait: some graduates are engineers, and some engineers are doctors - these could be different engineers, so no guaranteed link. However, some doctors are engineers, and some engineers are graduates? No, the overlap between engineers and doctors may not be the same engineers who are graduates. So I does not follow. Let me re-evaluate: 'Some graduates are engineers' and 'Some engineers are doctors' - we cannot guarantee any doctor is a graduate. So none follow.",
+      "exp": "Step 1: 'Some graduates are engineers' and 'Some engineers are doctors' - two 'some' statements give no guaranteed overlap between graduates and doctors, because the engineers who are graduates may differ from the engineers who are doctors. Step 2: Conclusion I: 'Some doctors are graduates' - Not guaranteed. Invalid. Step 3: 'All teachers are graduates' and 'Some graduates are engineers' - the graduate-engineer overlap may or may not include teachers. Step 4: Conclusion II: 'Some teachers are engineers' - Not guaranteed. Invalid. Step 5: Conclusion III: 'Some doctors are teachers' - No chain connects doctors and teachers. Invalid. Step 6: None of the conclusions follow.",
       "elimination": "None of the conclusions are guaranteed.",
       "trap": "Multiple 'some' statements do not create guaranteed chains.",
       "time": "35 seconds",
@@ -1862,11 +1863,11 @@
         "Both follow",
         "Neither follows"
       ],
-      "c": 2,
+      "c": 1,
       "t": "negative-statement",
-      "exp": "Step 1: 'No A is B' means A and B are separate. Step 2: 'All B are C' means B is a subset of C. Step 3: Since B is a subset of C and no A is B, some C (the B's) are not A. Step 4: Conclusion II follows. Step 5: 'Some C are D' → Some D are C (reversible). The D's that are C may or may not be B, so we cannot guarantee they are not A. Step 6: Only Conclusion II follows.",
-      "elimination": "Only the conclusion about C not being A is guaranteed.",
-      "trap": "D's that are C may or may not be B.",
+      "exp": "Step 1: 'No A is B' means A and B are separate sets. 'All B are C' means B is a subset of C. Step 2: Every element of B is in C and is not in A, so some C are not A. Conclusion II is valid. Step 3: Conclusion I: 'Some D are not A' - Not guaranteed. The D's that are C could all lie in the part of C that overlaps A, since A and C may overlap outside B. Invalid. Step 4: Only Conclusion II follows.",
+      "elimination": "Only the conclusion about C and A is guaranteed.",
+      "trap": "The C-D overlap may fall entirely inside the part of C that overlaps A.",
       "time": "40 seconds",
       "d": "easy"
     },
@@ -2015,11 +2016,11 @@
         "Both follow",
         "Neither follows"
       ],
-      "c": 1,
+      "c": 3,
       "t": "syllogism",
-      "exp": "Step 1: 'All fruits are healthy' means fruits are a subset of healthy. Step 2: 'Some healthy are sweet' means there is an overlap between healthy and sweet. Step 3: The overlap between healthy and sweet may or may not include fruits (I invalid). Step 4: 'No sweet is sour' → The fruits that are sweet (if any) would not be sour, but we don't know if any fruits are sweet. However, some healthy are sweet, and fruits are healthy. Could fruits be sweet? Possibly, but not guaranteed. What about 'some fruits are not sour'? Since fruits are healthy, and some healthy are sweet, and sweet is not sour, the healthy-sweet overlap (if it includes fruits) would be not sour. But we don't know if fruits are in that overlap. So II is also not guaranteed. Let me re-evaluate: 'All fruits are healthy' and 'No sweet is sour' - fruits could be sweet or not. If they are sweet, they are not sour. If they are not sweet, they still might be sour or not. So we cannot guarantee any fruit is not sour. Neither follows.",
-      "elimination": "Neither conclusion is guaranteed.",
-      "trap": "Do not assume fruits are in the healthy-sweet overlap.",
+      "exp": "Step 1: 'All fruits are healthy' means fruits are a subset of healthy. Step 2: 'Some healthy are sweet' - the healthy-sweet overlap may or may not include fruits. Conclusion I is not guaranteed. Invalid. Step 3: 'No sweet is sour' - a fruit is known to be not sour only if it is sweet. Since no fruit is guaranteed to be sweet, no fruit is proven to be not sour. Conclusion II is invalid. Step 4: Neither conclusion follows.",
+      "elimination": "Neither conclusion can be guaranteed.",
+      "trap": "Fruits need not overlap sweet, so no fruit is proven not sour.",
       "time": "40 seconds",
       "d": "easy"
     },
@@ -2413,6 +2414,40 @@
       "trap": "Do not reverse 'All A are B' to 'All B are A'.",
       "time": "30 seconds",
       "d": "easy"
+    },
+    {
+      "q": "Statement: Only a few tables are fish. No fish is a desktop. All desktops are pens. Conclusions: I. Some tables are not desktops. II. All tables being fish is a possibility. Which conclusion follows?",
+      "opts": [
+        "Only I follows",
+        "Only II follows",
+        "Both follow",
+        "Neither follows"
+      ],
+      "c": 0,
+      "t": "syllogism",
+      "exp": "Step 1: 'Only a few tables are fish' means some tables are fish and some tables are not fish. Step 2: 'No fish is a desktop' means fish and desktops are separate sets. Step 3: The tables that are fish cannot be desktops, so some tables are not desktops. Conclusion I follows. Step 4: Conclusion II: 'All tables being fish is a possibility' - Contradicts 'only a few', which guarantees some tables are not fish. Invalid. Step 5: Only Conclusion I follows.",
+      "elimination": "Only the negative chain from fish to tables is guaranteed.",
+      "trap": "'Only a few A are B' means some A are NOT B, so 'All A being B' is not a possibility.",
+      "time": "35 seconds",
+      "d": "medium",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "Statement: All powder is chili. Some chili is nasty. Conclusions: I. Some powder can be nasty. II. All nasty is powder. Which conclusion follows?",
+      "opts": [
+        "Only I follows",
+        "Only II follows",
+        "Both follow",
+        "Neither follows"
+      ],
+      "c": 0,
+      "t": "syllogism",
+      "exp": "Step 1: 'All powder is chili' means powder is a subset of chili. Step 2: 'Some chili is nasty' means there is an overlap between chili and nasty. Step 3: Conclusion I: 'Some powder can be nasty' - It is possible for the powder-chili subset to overlap the nasty chili. No contradiction exists, so the possibility is valid. Step 4: Conclusion II: 'All nasty is powder' - Not guaranteed; nasty may include things outside powder. Invalid. Step 5: Only Conclusion I follows.",
+      "elimination": "Only the possibility conclusion is valid, the reversal is not.",
+      "trap": "A possibility conclusion is valid unless the statement contradicts it.",
+      "time": "30 seconds",
+      "d": "easy",
+      "source": "Auto-verified"
     }
   ]
 }

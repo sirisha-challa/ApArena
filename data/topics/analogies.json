@@ -1,7 +1,7 @@
 {
   "id": "analogies",
   "title": "Analogies",
-  "icon": "≈",
+  "icon": "\u2248",
   "category": "verbal",
   "subtitle": "Word, Letter, Number Analogies & Relationship Patterns",
   "days": "1-2",
@@ -1558,7 +1558,7 @@
       ],
       "c": 0,
       "t": "function",
-      "exp": "Step 1: Catacombs are for burial. Step 2: Archives are for storing records. Step 3: Records is correct.",
+      "exp": "Step 1: Catacombs are for burial. Step 2: Archives are for storage. Step 3: Storage is correct.",
       "id": 49,
       "d": "medium"
     },
@@ -3675,6 +3675,34 @@
       "t": "letter-shift",
       "exp": "Step 1: K to L is +1 shift. Step 2: N+1=O. Step 3: O is correct.",
       "d": "medium"
+    },
+    {
+      "q": "Paw : Cat :: Hoof : ?",
+      "opts": [
+        "Lamb",
+        "Elephant",
+        "Lion",
+        "Horse"
+      ],
+      "c": 3,
+      "t": "animal-body-part",
+      "exp": "Step 1: A paw is a body part of a cat. Step 2: A hoof is a body part of a horse. Step 3: Horse is correct.",
+      "d": "medium",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "Peacock : India :: Bear : ?",
+      "opts": [
+        "Australia",
+        "America",
+        "Russia",
+        "England"
+      ],
+      "c": 2,
+      "t": "national-symbol",
+      "exp": "Step 1: Peacock is the national bird of India. Step 2: Bear is the national animal of Russia. Step 3: Russia is correct.",
+      "d": "medium",
+      "source": "Auto-verified"
     }
   ],
   "learningPath": [

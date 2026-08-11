@@ -212,7 +212,7 @@
         },
         {
           "title": "Expenditure Ratio",
-          "content": "When income and expenditure ratios are given, pick income = ax + e and expenditure = by + e, then saving = (a - b)x. Matching the saving ratio gives one equation for x and one unknown."
+          "content": "When income and expenditure ratios are given, set incomes as ax and bx, and expenditures as cy and dy. Savings are then ax − cy and bx − dy; use the given savings (equal or in a ratio) to form equations and solve for x."
         }
       ],
       "type": "guided"
@@ -422,14 +422,13 @@
         "Verify sum of counts agrees with total told in the question."
       ],
       "example": {
-        "prompt": "Coins in a purse have 1 Rs, 50p, 25p with values in ratio 11 : 25. There are 342 coins total.",
+        "prompt": "Coins in a purse are 1 rupee, 50p and 25p with values in ratio 11 : 9 : 5. There are 490 coins in total. Find the number of 50p coins.",
         "steps": [
-          "Counts = 11 : 18 : 20",
-          "Totally 49 units = 342.",
-          "k = 342/49 = ... (kept in decimals in problem).",
-          "Count for 50p = 18 x k."
+          "Counts = 11/1 : 9/0.5 : 5/0.25 = 11 : 18 : 20.",
+          "Total units = 49 = 490 coins, so 1 unit = 10.",
+          "50p coins = 18 x 10 = 180."
         ],
-        "answer": "Use the counts 11 : 18 : 20."
+        "answer": "180."
       },
       "memoryTip": "Divide value by coin size, then use total to fix the multiplier.",
       "commonMistake": "Treating the value ratio directly as a count ratio."
@@ -586,11 +585,11 @@
     ],
     "coin-ratio-formula": [
       {
-        "q": "In part : find coins of 50p, 25p, 10p in values ratio 2 : 5 : 3, total value Rs 510.",
+        "q": "A bag contains 50p, 25p and 10p coins in the ratio 2 : 5 : 3 by count. Total value is Rs 510. Find the number of coins of each type.",
         "s": [
-          "Use counts: spend value ratio fit in numbers",
-          "Only totals keep the value: let be scripted numbers",
-          "Solve: 50p coins 400, 25p 1000, 10p 600"
+          "Counts = 2k, 5k, 3k",
+          "Value = 0.5×2k + 0.25×5k + 0.1×3k = 2.55k = 510, so k = 200",
+          "50p = 400, 25p = 1000, 10p = 600"
         ],
         "a": "400, 1000, 600"
       }
@@ -2765,6 +2764,48 @@
       "c": 2,
       "exp": "Step 1: Fewer days → more workers (inverse). Step 2: Work = 15 × 20 = 300 worker-days. Step 3: Workers = 300/12 = 25. Answer is option C.",
       "d": "medium"
+    },
+    {
+      "t": "types",
+      "q": "If 2A = 3B = 4C, then A : B : C is:",
+      "opts": [
+        "3 : 4 : 2",
+        "4 : 3 : 2",
+        "6 : 4 : 3",
+        "2 : 3 : 4"
+      ],
+      "c": 2,
+      "exp": "Step 1: Let 2A = 3B = 4C = 12k. Step 2: A = 6k, B = 4k, C = 3k. Step 3: A : B : C = 6 : 4 : 3. Answer is option C.",
+      "d": "medium",
+      "source": "Auto-verified"
+    },
+    {
+      "t": "types",
+      "q": "If a : b : c = 3 : 4 : 5 and 2a - 3b + 4c = 56, then the value of c is:",
+      "opts": [
+        "15",
+        "20",
+        "24",
+        "25"
+      ],
+      "c": 1,
+      "exp": "Step 1: Let a = 3k, b = 4k, c = 5k. Step 2: 2(3k) - 3(4k) + 4(5k) = 56 gives 6k - 12k + 20k = 14k = 56. Step 3: k = 4, so c = 5 × 4 = 20. Answer is option B.",
+      "d": "medium",
+      "source": "Auto-verified"
+    },
+    {
+      "t": "types",
+      "q": "Three numbers are in the ratio 2 : 3 : 5 and the sum of their squares is 608. The numbers are:",
+      "opts": [
+        "4, 6, 10",
+        "8, 12, 20",
+        "10, 15, 25",
+        "12, 18, 30"
+      ],
+      "c": 1,
+      "exp": "Step 1: Let the numbers be 2k, 3k, 5k. Step 2: Sum of squares = 4k² + 9k² + 25k² = 38k² = 608. Step 3: k² = 16, so k = 4 and the numbers are 8, 12, 20. Answer is option B.",
+      "d": "medium",
+      "source": "Auto-verified"
     }
   ]
 }

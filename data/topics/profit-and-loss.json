@@ -3319,6 +3319,76 @@
       "c": 2,
       "exp": "Step 1: Total CP = 10×30 + 10×50 = ₹300 + ₹500 = ₹800. Total qty = 20 kg. Total SP = 20×44 = ₹880. Profit = ₹80. Step 2: Profit % = (80/800) × 100 = 10%. Answer is 10% (option C).",
       "d": "hard"
+    },
+    {
+      "q": "The ratio of the marked price to cost price of an article is 13:10. A discount of ₹54 is given on the article and it is sold at a profit of 20%. Find the marked price.",
+      "opts": [
+        "₹648",
+        "₹702",
+        "₹540",
+        "₹620"
+      ],
+      "c": 1,
+      "exp": "Step 1: Let CP = 10k and MP = 13k. SP = MP − 54 = 13k − 54. Step 2: Profit is 20%, so SP = 10k × 120/100 = 12k. Step 3: 13k − 54 = 12k → k = 54. MP = 13 × 54 = ₹702. Answer is ₹702 (option B).",
+      "d": "medium",
+      "t": "discount",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "The cost price of 7 articles is equal to the selling price of 8 articles. If the loss incurred on selling 1 article is ₹75, find the cost price of 1 article.",
+      "opts": [
+        "₹540",
+        "₹960",
+        "₹600",
+        "₹400"
+      ],
+      "c": 2,
+      "exp": "Step 1: Let CP of 1 article = ₹c and SP = ₹s. CP of 7 = SP of 8 → 7c = 8s → s = 7c/8. Step 2: Loss per article = c − 7c/8 = c/8 = 75 → c = ₹600. Answer is ₹600 (option C).",
+      "d": "medium",
+      "t": "cost-price",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "An article was sold at a loss of 8%. If it had been sold for ₹460 more, it would have been sold at a profit of 15%. If the same article was sold for ₹2,440, what would be the profit percentage?",
+      "opts": [
+        "28%",
+        "18%",
+        "22%",
+        "16%"
+      ],
+      "c": 2,
+      "exp": "Step 1: Let CP = ₹c. Selling at 8% loss gives SP = 0.92c. Selling for ₹460 more gives 15% profit: 0.92c + 460 = 1.15c → 0.23c = 460 → c = ₹2,000. Step 2: At SP = ₹2,440, profit = ₹440. Profit % = 440/2000 × 100 = 22%. Answer is 22% (option C).",
+      "d": "hard",
+      "t": "profit-percent",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "Suraj bought an article at a 40% discount on the marked price and sold it after allowing a 25% discount on the marked price. Find his gain percentage.",
+      "opts": [
+        "15%",
+        "25%",
+        "20%",
+        "7.5%"
+      ],
+      "c": 1,
+      "exp": "Step 1: Let MP = ₹100. CP = 100 × (100 − 40)/100 = ₹60. SP = 100 × (100 − 25)/100 = ₹75. Step 2: Gain = 75 − 60 = ₹15. Gain % = 15/60 × 100 = 25%. Answer is 25% (option B).",
+      "d": "medium",
+      "t": "discount",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "The profit earned on selling 5 articles for ₹120 is the same as the loss incurred on selling 8 articles for ₹114. Find the cost price of each article.",
+      "opts": [
+        "₹12",
+        "₹16",
+        "₹24",
+        "₹18"
+      ],
+      "c": 3,
+      "exp": "Step 1: Let CP of 1 article = ₹c. Profit on 5 articles = 120 − 5c. Loss on 8 articles = 8c − 114. Step 2: Given they are equal: 120 − 5c = 8c − 114 → 13c = 234 → c = ₹18. Answer is ₹18 (option D).",
+      "d": "medium",
+      "t": "cost-price",
+      "source": "Auto-verified"
     }
   ]
 }

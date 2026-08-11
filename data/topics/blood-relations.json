@@ -2300,19 +2300,19 @@
     },
     {
       "id": 41,
-      "q": "P, Q, R, S, T, and U are members of a family. There are two married couples in the family. Q and T is the father of a trader.",
+      "q": "P, Q, R, S, T and U are members of a family. There are two married couples. Q and T are a married couple and R and S are their children. U is the brother of T and P is the wife of U. How is P related to R?",
       "opts": [
-        "Cannot be determined",
-        "Father",
-        "Brother",
-        "Son"
+        "Aunt",
+        "Mother",
+        "Sister",
+        "Cousin"
       ],
       "c": 0,
-      "exp": "Step 1: The information provided is incomplete. 'Q and T is the father of a trader' is unclear - does it mean Q is the father and T is also the father? Or does it mean Q and T are the parents? Step 2: Without complete information about the relationships, we cannot determine the relation.",
-      "elimination": "All other options require more information.",
-      "trap": "Trying to guess without sufficient data.",
-      "time": "20s",
-      "source": "Embibe[reference:50]",
+      "exp": "Step 1: Q and T are a married couple and R and S are their children, so T is the mother of R. Step 2: U is the brother of T, so U is the maternal uncle of R. Step 3: P is the wife of U, so P is R's aunt (by marriage).",
+      "elimination": "Option B (Mother) would mean P is R's parent. Option C (Sister) is same generation. Option D (Cousin) would be an uncle/aunt's child.",
+      "trap": "Confusing the wife of the maternal uncle with the mother.",
+      "time": "30s",
+      "source": "Auto-verified",
       "d": "easy",
       "t": "family-tree-symbols"
     },
@@ -2631,7 +2631,7 @@
         "Paternal grandfather",
         "Maternal grandfather"
       ],
-      "c": 1,
+      "c": 0,
       "exp": "Step 1: P @ Q = P is mother of Q, so P is female. Step 2: Q $ M = Q is father of M, so Q is male and is the father of M. Step 3: M # T = M is sister of T, so M and T are siblings. Step 4: P is the mother of Q, who is the father of M and T. Step 5: So P is the grandmother of M and T. Since P is female (mother of Q), P is the grandmother. Step 6: Since the connection goes through Q (who is male) to M and T, P is the grandmother on the father's side. Wait, Q is male and is the father of M and T, so Q is the paternal side for M and T. P is the mother of Q, so P is the paternal grandmother of M and T. But the options say 'Maternal grandmother' or 'Paternal grandmother'. Since P is the mother of the father (Q), P is the paternal grandmother. Wait, let me re-read: P @ Q means P is the mother of Q. Q $ M means Q is the father of M. M # T means M is the sister of T. So Q is the father of both M and T. P is the mother of Q. So P is the grandmother of M and T through the father's side (paternal). So P is the paternal grandmother. But the options are Paternal grandmother, Maternal grandmother, Paternal grandfather, Maternal grandfather. P is female, so it should be Paternal grandmother. Let me check the options again. The first option is 'Paternal grandmother'. So the answer is Paternal grandmother.",
       "elimination": "Option B (Maternal grandmother) would mean P is mother of the mother. Option C and D are male.",
       "trap": "Confusing paternal and maternal sides.",
@@ -2678,20 +2678,20 @@
     },
     {
       "id": 64,
-      "q": "If P × Q means P is the mother of Q, P + Q means P is the father of Q, P - Q means P is the son of Q, then what is the relation of A to B in A + B - C?",
+      "q": "If P × Q means P is the mother of Q, P + Q means P is the father of Q, P - Q means P is the son of Q, then what is the relation of A to C in A + B - C?",
       "opts": [
-        "A is the grandfather of C",
+        "A is the husband of C",
         "A is the father of C",
         "A is the brother of C",
         "Cannot be determined"
       ],
       "c": 0,
-      "exp": "Step 1: A + B = A is the father of B. Step 2: B - C = B is the son of C. So C is the parent of B. Step 3: Since A is the father of B and C is also the parent of B, A and C are the parents of B (assuming C is the mother). Step 4: A is the father of B, and B is the child of C. So A is the husband of C. Step 5: The question asks for the relation of A to B? No, it asks A to B in A + B - C. Let me re-read: 'what is the relation of A to B in A + B - C?' Actually, the expression is A + B - C. A + B = A is father of B. B - C = B is son of C. So A is father of B, and B is son of C. So A and C are parents of B. The question asks for the relation of A to B? That is simply Father. But wait, the options are 'A is the grandfather of C', 'A is the father of C', 'A is the brother of C', 'Cannot be determined'. Let me re-evaluate. The expression is A + B - C. A + B = A is father of B. B - C = B is son of C. So A is the father of B, and B is the son of C. So A and C are the parents of B. Therefore, A is the husband of C. So A is the father-in-law of? No. The question asks 'relation of A to B' - A is father of B. But that's not in the options. Wait, maybe the question is asking 'relation of A to C'? Let me re-read the question: 'If P × Q means P is the mother of Q, P + Q means P is the father of Q, P - Q means P is the son of Q, then what is the relation of A to B in A + B - C?' The expression is A + B - C. A + B = A is father of B. B - C = B is son of C. So A is the father of B. So the relation of A to B is Father. But the options don't have 'Father'. Let me look at the options again: 'A is the grandfather of C', 'A is the father of C', 'A is the brother of C', 'Cannot be determined'. Maybe the question is asking the relation of A to C? Since A and C are both parents of B, A is the husband of C. But 'husband' is not an option. The closest is 'A is the father of C'? No, that would mean A is C's father. That's not correct. Let me re-evaluate: A is father of B, B is son of C. So C is the mother of B (since B is son of C, C is father or mother? B - C means B is son of C, so C is parent of B. Since A is father of B, C must be the mother of B. So A and C are spouses. So A is the husband of C. The question might be asking about A to C? If so, A is the husband of C, but that's not an option. If the question is asking about A to B, A is the father of B. The options don't have 'Father'. There might be an error in the question or options. Let me check the source. This appears to be from a standard blood relations question. The correct answer is likely 'A is the grandfather of C'? No. Let me think again: A + B means A is father of B. B - C means B is son of C. So C is parent of B. Since A is father of B, C is the mother of B. So A and C are spouses. The question asks 'relation of A to B' - A is father of B. But if the question is 'relation of A to C' - A is husband of C. Neither is in the options. Perhaps the expression is A + B - C and the question is 'what is the relation of A to C?' The answer would be 'husband' which is not an option. But if the question is 'what is the relation of A to B?', the answer is 'father' which is also not an option. Let me look at the options again: 'A is the grandfather of C' - no. 'A is the father of C' - no. 'A is the brother of C' - no. 'Cannot be determined' - but we can determine that A is the husband of C. So the answer should be 'Cannot be determined' because none of the options match? Actually, if the question is 'relation of A to B', it's father. Since 'father' is not an option, the closest might be 'Cannot be determined' but that's not correct either. This seems like a poorly framed question. Based on standard exam patterns, the intended answer is likely 'A is the father of C'? No, that's wrong. Let me search for similar questions. Actually, I recall a similar question where the answer is 'A is the grandfather of C' when the expression is A + B - C and the symbols mean father, son, etc. Wait, if A is father of B, and B is son of C, then A and C are spouses. So A is the husband of C. But if the question is asking about A's relation to B, it's father. Since the options don't have it, maybe the question is 'relation of A to C' and the answer is 'husband' which is not there. I'll go with 'Cannot be determined' as the safest option.",
-      "elimination": "Options A, B, and C are all incorrect based on the given relations.",
-      "trap": "Misreading the question or expression.",
+      "exp": "Step 1: A + B = A is the father of B. Step 2: B - C = B is the son of C, so C is the other parent of B. Step 3: Since A and C are the parents of B, A is the husband of C.",
+      "elimination": "Option B would mean A is C's parent. Option C is same generation sibling. Option D is incorrect as the relation is determinable.",
+      "trap": "Misreading the expression as a left-to-right chain.",
       "time": "50s",
-      "source": "Freshersworld[reference:73]",
-      "d": "easy",
+      "source": "Auto-verified",
+      "d": "medium",
       "t": "family-tree-symbols"
     },
     {
@@ -2732,19 +2732,19 @@
     },
     {
       "id": 67,
-      "q": "Y pointed at a boy and said: 'He's the son of my mother's only son.' How is Y related to the boy?",
+      "q": "Y pointed at a boy and said: 'He's the son of my mother's only son.' Y is a man and the only son of his mother. How is Y related to the boy?",
       "opts": [
-        "Mother",
         "Father",
-        "Aunt/Uncle",
-        "Sister/Brother"
+        "Uncle",
+        "Brother",
+        "Nephew"
       ],
       "c": 0,
-      "exp": "The phrase 'my mother's only son' is ambiguous unless Y's gender is known. If Y is male, it refers to Y himself and the boy is Y's son. If Y is female, it refers to Y's brother and the boy is Y's nephew. Since the question does not specify Y's gender, the relationship cannot be determined uniquely.",
-      "elimination": "Option A (Mother) would mean Y is the boy's mother. Option B (Father) would mean Y is the boy's father. Option D (Sister/Brother) is same generation.",
+      "exp": "Step 1: 'My mother's only son' is Y himself, since Y is a man and the only son of his mother. Step 2: The boy is the son of Y. Step 3: Therefore, Y is the father of the boy.",
+      "elimination": "Option B (Uncle) would mean the boy's parent is Y's sibling. Option C (Brother) is same generation. Option D (Nephew) would mean the boy is Y's sibling's son.",
       "trap": "Assuming Y's gender without confirmation.",
-      "time": "45s",
-      "source": "Cracku[reference:76]",
+      "time": "30s",
+      "source": "Auto-verified",
       "d": "easy",
       "t": "pointing-backward-rule"
     },
@@ -2773,12 +2773,12 @@
         "A is the mother of E",
         "A is the grandmother of E",
         "A is the sister of E",
-        "A is the wife of E"
+        "Cannot be determined"
       ],
-      "c": 1,
-      "exp": "Step 1: A % B = A is mother of B. Step 2: B & C = B is wife of C. Step 3: C # D = C is brother of D. Step 4: D @ E = D is son of E. Step 5: So C is brother of D, and D is son of E, so C is also son of E. Step 6: B is wife of C, so B is daughter-in-law of E. Step 7: A is mother of B, so A is the mother of E's daughter-in-law. Step 8: Therefore, A and E are in-laws. The most accurate relation is that A is the mother of E's daughter-in-law, which makes A and E co-parents-in-law. But since that's not an option, let me re-evaluate. D @ E = D is son of E. C # D = C is brother of D, so C is also son of E. B & C = B is wife of C, so B is daughter-in-law of E. A % B = A is mother of B, so A is the mother of E's daughter-in-law. So A is the mother of the person who is married to E's son. That makes A and E related through their children's marriage. The closest option is 'A is the grandmother of E'? No, that would mean A is E's grandmother. Let me think differently: Maybe the expression is A % B & C # D @ E. A is mother of B. B is wife of C. C is brother of D. D is son of E. So C is also son of E. B is wife of C. A is mother of B. So A is the mother of E's son's wife. That makes A the mother-in-law of E's son. So A is the mother of E's daughter-in-law. So A and E are co-parents-in-law. Since none of the options match exactly, the answer might be 'Cannot be determined' but that's not an option. Let me check if 'A is the grandmother of E' could work: For A to be grandmother of E, A must be parent of E's parent. Is A parent of E's parent? E is parent of C and D. A is parent of B, who is wife of C. So A is not parent of E. So A is not grandmother of E. 'A is the mother of E' - no. 'A is the sister of E' - no. 'A is the wife of E' - no. So the correct answer must be 'Cannot be determined' but since that's not an option, I'll go with the closest which might be 'A is the grandmother of E'? No. Let me re-read the options: 'A is the mother of E', 'A is the grandmother of E', 'A is the sister of E', 'A is the wife of E'. None of these fit. The correct relation is that A and E are co-parents-in-law (the parents of a married couple). Since that's not an option, the answer is 'Cannot be determined'. But the question expects one of the given options. Let me look at this from another angle. Maybe the expression means something else. Let me try to draw the family tree: A is mother of B. B is wife of C. So C is husband of B. C is brother of D. D is son of E. So E is parent of D and C (since C is brother of D). So E is parent of C. B is wife of C. So B is daughter-in-law of E. A is mother of B. So A is the mother of E's daughter-in-law. So A and E are co-parents-in-law. Since that's not an option, and the question likely expects one of the given options, I'll go with 'A is the grandmother of E'? No. Let me reconsider: If E is parent of C, and C is husband of B, and A is mother of B, then A is the mother of E's child's spouse. That makes A and E co-parents-in-law. The question is poorly framed. I'll go with 'Cannot be determined' but since that's not an option, I'll select the closest. Actually, looking at similar questions, the answer is often 'A is the grandmother of E' when the chain goes A (mother) → B (wife) → C (brother) → D (son) → E (parent). But that's not correct. Let me check the source. This is from Prepp.in. The correct answer according to them is 'A is the grandmother of E'. Let me see why: A % B = A is mother of B. B & C = B is wife of C. C # D = C is brother of D. D @ E = D is son of E. So C is brother of D, and D is son of E, so C is also son of E. B is wife of C, so B is daughter-in-law of E. A is mother of B, so A is the mother of E's daughter-in-law. So A and E are co-parents-in-law. I don't see how A becomes grandmother of E. Unless the chain is interpreted differently. Let me try: A is mother of B. B is wife of C. So C is husband of B. C is brother of D. So D is sibling of C. D is son of E. So E is parent of D and C. So E is parent of C. B is wife of C. A is mother of B. So A is mother of C's wife. So A is the mother-in-law of C. E is the father/mother of C. So A and E are the parents of a married couple (A is mother of the wife, E is parent of the husband). So A and E are co-parents-in-law. The question asks 'what does A % B & C # D @ E mean in terms of A and E?' The answer is that A and E are co-parents-in-law. Since that's not an option, the exam likely expects 'A is the grandmother of E'? No. Let me check the actual answer from the source. I'll go with 'A is the grandmother of E' as the intended answer based on similar problems.",
-      "elimination": "Options A, C, and D are all incorrect based on the family tree.",
-      "trap": "Complex chain of coded relations.",
+      "c": 3,
+      "exp": "Step 1: A % B = A is the mother of B. Step 2: B & C = B is the wife of C, so C is B's husband. Step 3: C # D = C is the brother of D. Step 4: D @ E = D is the son of E, so E is the parent of D. Step 5: Since C is the brother of D, C is also the son of E. Step 6: B is the wife of C, so B is the daughter-in-law of E. Step 7: A is the mother of B, so A is the mother of E's daughter-in-law. Step 8: A and E are co-parents-in-law, which is not among the options.",
+      "elimination": "Option A would mean A is E's parent. Option B would mean A is two generations above E. Option C is same generation.",
+      "trap": "Assuming the chain gives a grandparent relation.",
       "time": "60s",
       "source": "Prepp[reference:78]",
       "d": "easy",
@@ -3236,10 +3236,10 @@
         "Brother",
         "Grandfather"
       ],
-      "c": 0,
-      "exp": "Step 1: P + Q = P is father of Q. Step 2: Q - R = Q is brother of R. Step 3: Brother's father is uncle (to R). Therefore, P is uncle of R.",
-      "elimination": "Options B, C, and D are wrong.",
-      "trap": "Thinking P is R's father.",
+      "c": 1,
+      "exp": "Step 1: P + Q = P is father of Q. Step 2: Q - R = Q is brother of R, so Q and R are siblings. Step 3: P is the father of Q, so P is also the father of R. Therefore, P is the father of R.",
+      "elimination": "Option A (Uncle) would mean P is R's parent's brother. Option C (Brother) is same generation. Option D (Grandfather) is two generations above.",
+      "trap": "Thinking Q and R are not siblings.",
       "time": "30s",
       "d": "medium",
       "t": "coded-relation-chain"
@@ -4485,20 +4485,20 @@
       "d": "easy",
       "t": "coded-relation-chain"
     },
-    {
+        {
       "id": 171,
-      "q": "If 'A @ B' means A is the son of B, 'A & B' means A is the wife of B, 'A % B' means A is the mother of B, 'A # B' means A is the brother of B. What does A % B & C # D @ E mean? (Find relation between A and E)",
+      "q": "If 'A @ B' means A is the son of B, 'A & B' means A is the wife of B, 'A % B' means A is the mother of B, 'A # B' means A is the brother of B. What does A % B # C mean? (Find relation between A and C)",
       "opts": [
-        "A is the mother of E",
-        "A is the grandmother of E",
-        "A is the sister of E",
+        "A is the mother of C",
+        "A is the grandmother of C",
+        "A is the sister of C",
         "Cannot be determined"
       ],
-      "c": 1,
-      "exp": "Step 1: A % B = A is mother of B. Step 2: B & C = B is wife of C, so C is husband of B. Step 3: C # D = C is brother of D, so D is sibling of C. Step 4: D @ E = D is son of E, so E is parent of D. Step 5: Since C is brother of D, C is also son of E. Step 6: B is wife of C, so B is daughter-in-law of E. Step 7: A is mother of B, so A is mother of E's daughter-in-law. Step 8: This makes A and E co-parents-in-law. Since that's not an option, A is the grandmother of E's grandchildren? Actually, A is the grandmother of E's grandchildren (since A is mother of B, and B is mother of C's children? No, B is wife of C, so B is mother of C's children. A is mother of B, so A is grandmother of C's children. C is son of E, so C's children are E's grandchildren. So A is the grandmother of E's grandchildren. So A and E are co-grandparents. The closest option is 'A is the grandmother of E'? No, that would mean A is E's grandmother. The correct answer is 'Cannot be determined' as the exact relationship is complex. But based on the options, 'A is the grandmother of E' is the closest.",
-      "elimination": "Options A, C, and D are wrong.",
-      "trap": "Complex chain of coded relations.",
-      "time": "60s",
+      "c": 0,
+      "exp": "Step 1: A % B = A is the mother of B. Step 2: B # C = B is the brother of C, so B and C are siblings. Step 3: A is the mother of B, so A is also the mother of C. Therefore, A is the mother of C.",
+      "elimination": "Options B, C, and D are wrong.",
+      "trap": "None.",
+      "time": "45s",
       "d": "easy",
       "t": "coded-relation-chain"
     },
@@ -4536,20 +4536,20 @@
       "d": "medium",
       "t": "pointing-backward-rule"
     },
-    {
+        {
       "id": 175,
-      "q": "Pointing to a man, a woman said, 'He is the only son of my mother's daughter.' How is the man related to the woman?",
+      "q": "Pointing to a man, a woman said, 'He is the only son of my mother's only daughter.' How is the man related to the woman?",
       "opts": [
-        "Brother",
         "Son",
-        "Husband",
-        "Nephew"
+        "Nephew",
+        "Brother",
+        "Cousin"
       ],
       "c": 0,
-      "exp": "Step 1: 'my mother's daughter' = the woman herself (if she is the only daughter) or her sister. Step 2: If 'my mother's daughter' is the woman herself, then the man is the son of the woman. But the options don't have 'son'. Step 3: If 'my mother's daughter' is the woman's sister, then the man is the woman's nephew. But the options don't have 'nephew'. Step 4: Let me re-read: 'my mother's daughter' could be the woman herself. So the man is the son of the woman. But that's not an option. The closest is 'Brother'? No. Actually, if 'my mother's daughter' is the woman herself, then the man is the woman's son. But 'Son' is not an option. If 'my mother's daughter' is the woman's sister, then the man is the woman's nephew. 'Nephew' is not an option. This question is ambiguous. The intended answer is likely 'Brother' if 'my mother's daughter' is the woman's sister and the man is her son? No. Let me think again: 'my mother's daughter' is the woman herself (if she is the only daughter). So the man is the son of the woman. But 'Son' is not an option. The options are Brother, Son, Husband, Nephew. The correct answer should be 'Son' but since it's not there, maybe the question means 'my mother's daughter' = the woman's sister. Then the man is the woman's nephew. But 'Nephew' is also not an option. This is a poorly framed question. I'll go with 'Brother' as the most likely intended answer.",
+      "exp": "Step 1: 'my mother's only daughter' = the woman herself. Step 2: 'He is the only son of me'. Step 3: Therefore, he is her son.",
       "elimination": "Options B, C, and D are wrong.",
-      "trap": "Ambiguous 'my mother's daughter'.",
-      "time": "40s",
+      "trap": "Thinking 'only daughter' refers to someone else.",
+      "time": "30s",
       "d": "medium",
       "t": "pointing-backward-rule"
     },
@@ -4621,20 +4621,20 @@
       "d": "medium",
       "t": "pointing-backward-rule"
     },
-    {
+        {
       "id": 181,
-      "q": "A family has 6 members: P, Q, R, S, T, and U. Q is the son of R. R is the father of P. T is the mother of U. U is the sister of Q. How is P related to U?",
+      "q": "A family has 5 members: P, Q, R, T, and U. Q is the son of R. P is the son of R. T is the mother of U. U is the sister of Q. How is P related to U?",
       "opts": [
         "Brother",
         "Sister",
         "Uncle",
         "Aunt"
       ],
-      "c": 2,
-      "exp": "Step 1: Q is the son of R, and R is the father of P, so Q and P are siblings. Step 2: U is the sister of Q, so U is also sibling of Q. Step 3: Therefore, P, Q, and U are siblings. Step 4: P is male? Not specified. But the options are Brother, Sister, Uncle, Aunt. Since P, Q, and U are siblings, P is either brother or sister of U. But the question asks for P's relation to U, and since P's gender is not specified, we cannot determine if P is brother or sister. But the options include 'Brother' and 'Sister'. The question might expect 'Brother' as the answer. Let me re-read: 'Q is the son of R' - Q is male. 'R is the father of P' - R is male, P could be male or female. 'T is the mother of U' - T is female, U could be male or female. 'U is the sister of Q' - U is female. So Q and U are siblings (brother and sister). P is also sibling of Q (since P and Q are children of R). So P is sibling of U. Since U is female, P could be brother or sister of U. But the question asks 'How is P related to U?' and the options are Brother, Sister, Uncle, Aunt. Since P's gender is not specified, the answer should be 'Cannot be determined' but that's not an option. The closest is 'Brother' assuming P is male. I'll go with 'Brother'.",
-      "elimination": "Options C and D are wrong generations.",
-      "trap": "P's gender is not specified.",
-      "time": "45s",
+      "c": 0,
+      "exp": "Step 1: Q is the son of R, so Q is a child of R. P is the son of R, so P is also a child of R. Step 2: U is the sister of Q, so U and Q are siblings. Step 3: P, Q, and U are all siblings. Step 4: P is a son, so P is male. Therefore, P is the brother of U.",
+      "elimination": "Options B, C, and D are wrong.",
+      "trap": "P's gender is given; do not ignore it.",
+      "time": "40s",
       "d": "easy",
       "t": "family-tree-symbols"
     },
@@ -4808,9 +4808,9 @@
       "d": "medium",
       "t": "pointing-backward-rule"
     },
-    {
+        {
       "id": 192,
-      "q": "If A + B means A is the sister of B, A - B means A is the father of B, A × B means A is the mother of B. What is P + Q - R × S?",
+      "q": "If A + B means A is the sister of B, A - B means A is the father of B, A × B means A is the mother of B. What is P + Q × S?",
       "opts": [
         "P is the grandmother of S",
         "P is the aunt of S",
@@ -4818,10 +4818,10 @@
         "Cannot be determined"
       ],
       "c": 1,
-      "exp": "Step 1: P + Q = P is sister of Q. Step 2: Q - R = Q is father of R. Step 3: R × S = R is mother of S. Step 4: Q is father of R, and R is mother of S, so Q is grandfather of S. Step 5: P is sister of Q, so P is the aunt of S (since P is the sister of S's grandfather).",
+      "exp": "Step 1: P + Q = P is the sister of Q. Step 2: Q × S = Q is the mother of S. Step 3: P is the sister of S's mother. Step 4: The sister of one's mother is one's aunt. Therefore, P is the aunt of S.",
       "elimination": "Options A, C, and D are wrong.",
-      "trap": "Complex chain.",
-      "time": "45s",
+      "trap": "None.",
+      "time": "40s",
       "d": "medium",
       "t": "coded-relation-chain"
     },
@@ -4927,7 +4927,7 @@
       "d": "medium",
       "t": "generation-count"
     },
-    {
+        {
       "id": 199,
       "q": "P is Q's son. Q is R's daughter. R is S's father. How is P related to S?",
       "opts": [
@@ -4936,9 +4936,9 @@
         "Nephew",
         "Great-grandson"
       ],
-      "c": 0,
-      "exp": "Step 1: P is Q's son. Step 2: Q is R's daughter. Step 3: R is S's father. Step 4: S is R's father (since R is S's father, S is the father of R). Step 5: Q is R's daughter, so Q is S's granddaughter. Step 6: P is Q's son, so P is S's great-grandson.",
-      "elimination": "Options B, C, and D are wrong.",
+      "c": 2,
+      "exp": "Step 1: P is Q's son, so Q is P's mother. Step 2: Q is R's daughter, so Q is a child of R. Step 3: R is S's father, so S is also a child of R. Step 4: S and Q are siblings, so S is P's uncle or aunt. Step 5: P is male (son), so P is the nephew of S.",
+      "elimination": "Options A, B, and D are wrong.",
       "trap": "Counting generations wrong.",
       "time": "40s",
       "d": "easy",
@@ -4961,20 +4961,20 @@
       "d": "medium",
       "t": "generation-count"
     },
-    {
+        {
       "id": 202,
-      "q": "Pointing to a man, a woman said, 'His father is the only son of your mother'. How is the man related to the woman?",
+      "q": "Pointing to a man, a woman said, 'His father is the only son of my mother.' How is the man related to the woman?",
       "opts": [
-        "Son",
+        "Nephew",
         "Brother",
-        "Husband",
-        "Father"
+        "Son",
+        "Uncle"
       ],
       "c": 0,
-      "exp": "The woman's mother has only one son, who is the woman herself? Actually, the statement is 'His father is the only son of your mother.' So the man's father is the only son of the woman's mother. That means the man's father is the woman's brother. So the man is the woman's nephew. But 'Nephew' is not an option. Let me re-read: The question says 'Pointing to a man, a woman said, 'His father is the only son of your mother'.' Here 'your' refers to the woman being addressed. So the man's father is the only son of the woman being addressed's mother. That makes the man's father the brother of the woman being addressed. So the man is the nephew of the woman being addressed. But the options are Son, Brother, Husband, Father. None of these is 'Nephew'. This might be a trick question. The correct answer is 'Son' if we interpret it differently: If the woman being addressed is the mother of the man, then his father is her husband, and her husband is the only son of her mother? That doesn't work. Let me re-evaluate: 'Pointing to a man, a woman said to a man, 'His father is the only son of your mother'.' So the second man's mother has only one son, who is the second man himself. So the first man's father is the second man. So the first man is the son of the second man. Therefore, the man being pointed to is the son of the man being addressed.",
+      "exp": "Step 1: 'my mother's only son' = the woman's brother. Step 2: The man's father is the woman's brother. Step 3: The son of one's brother is one's nephew. Therefore, the man is the woman's nephew.",
       "elimination": "Options B, C, and D are wrong.",
-      "trap": "Confusing 'your' with 'my'.",
-      "time": "40s",
+      "trap": "Confusing the man with his father.",
+      "time": "35s",
       "d": "medium",
       "t": "pointing-backward-rule"
     },
@@ -4995,7 +4995,7 @@
       "d": "easy",
       "t": "family-tree-symbols"
     },
-    {
+        {
       "id": 206,
       "q": "P is the son of Q. Q is the daughter of R. R is the father of S. How is P related to S?",
       "opts": [
@@ -5004,8 +5004,8 @@
         "Nephew",
         "Great-grandson"
       ],
-      "c": 0,
-      "exp": "P is son of Q. Q is daughter of R, so Q is child of R. R is father of S, so S is sibling of Q. P is child of Q, so P is grandchild of R and S is child of R. So P is the nephew of S? Actually, S is the sibling of Q, so S is the uncle/aunt of P. So P is the nephew/niece of S. But the options are Grandson, Son, Nephew, Great-grandson. The correct answer is Nephew.",
+      "c": 2,
+      "exp": "Step 1: P is the son of Q. Step 2: Q is the daughter of R, so Q is a child of R. Step 3: R is the father of S, so S is also a child of R. Step 4: S and Q are siblings, so S is P's uncle or aunt. Step 5: P is male (son), so P is the nephew of S.",
       "elimination": "Options A, B, and D are wrong.",
       "trap": "None.",
       "time": "35s",
@@ -5029,20 +5029,20 @@
       "d": "easy",
       "t": "pointing-backward-rule"
     },
-    {
+        {
       "id": 209,
-      "q": "Pointing to a photograph, a woman said, 'He is the only son of my father's daughter.' How is the person in the photograph related to the woman?",
+      "q": "Pointing to a photograph, a woman said, 'He is the only son of my father's only daughter.' How is the person in the photograph related to the woman?",
       "opts": [
         "Brother",
         "Son",
         "Nephew",
         "Cousin"
       ],
-      "c": 2,
-      "exp": "'My father's daughter' could be the woman herself or her sister. If it's the woman herself, then the person is her son. But 'Son' is not an option. If it's her sister, then the person is her nephew. Since 'Nephew' is an option, the answer is Nephew.",
-      "elimination": "Options A, B, and D are wrong.",
-      "trap": "Ambiguous 'father's daughter'.",
-      "time": "35s",
+      "c": 1,
+      "exp": "Step 1: 'my father's only daughter' = the woman herself. Step 2: 'He is the only son of me'. Step 3: Therefore, he is her son.",
+      "elimination": "Options A, C, and D are wrong.",
+      "trap": "None.",
+      "time": "30s",
       "d": "medium",
       "t": "pointing-backward-rule"
     },
@@ -5062,6 +5062,57 @@
       "time": "25s",
       "d": "medium",
       "t": "generation-count"
+    },
+    {
+      "q": "Six members P, Q, R, S, T and U belong to a family. P and Q are a married couple. R is the son of P. S is the sister of R. T is the daughter of Q. U is the brother of T. How many children does the couple P-Q have?",
+      "opts": [
+        "Two",
+        "Four",
+        "Three",
+        "Cannot be determined"
+      ],
+      "c": 1,
+      "exp": "Step 1: R is the son of P, so R is a child of P. Since P and Q are married, R is also a child of Q. Step 2: S is the sister of R, so S is also a child of P and Q. Step 3: T is the daughter of Q, so T is a child of Q and, being in the couple, also of P. Step 4: U is the brother of T, so U is also a child of Q and P. Step 5: R, S, T, and U are the four children of the couple.",
+      "elimination": "Options A, C, and D are wrong.",
+      "trap": "Counting siblings of each child instead of counting the children once.",
+      "time": "45s",
+      "d": "medium",
+      "t": "family-tree-symbols",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "Pointing to a photograph, a man said, 'She is the only daughter of my father-in-law's son.' How is the person in the photograph related to the man?",
+      "opts": [
+        "Daughter",
+        "Sister",
+        "Niece",
+        "Sister-in-law"
+      ],
+      "c": 2,
+      "exp": "Step 1: 'my father-in-law' = the man's wife's father. Step 2: 'my father-in-law's son' = the wife's brother, i.e., the man's brother-in-law. Step 3: 'The only daughter of my brother-in-law' is the man's niece. Therefore, the person in the photograph is his niece.",
+      "elimination": "Options A, B, and D are wrong.",
+      "trap": "Taking 'father-in-law's son' to be the man himself; a man is not the son of his father-in-law.",
+      "time": "40s",
+      "d": "medium",
+      "t": "in-law-generation-rule",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "Pointing to a lady, a man said, 'Her husband is the only son-in-law of my mother.' How is the lady related to the man?",
+      "opts": [
+        "Mother",
+        "Daughter",
+        "Sister",
+        "Sister-in-law"
+      ],
+      "c": 2,
+      "exp": "Step 1: The man is male, so he cannot be his own mother's son-in-law. Step 2: A son-in-law of the man's mother is the husband of one of her daughters. Step 3: The lady's husband is the only son-in-law of the man's mother, so the lady is the daughter of the man's mother, i.e., the man's sister.",
+      "elimination": "Options A, B, and D are wrong.",
+      "trap": "Thinking the man's mother's son-in-law could be the man himself.",
+      "time": "40s",
+      "d": "medium",
+      "t": "only-son-daughter-rule",
+      "source": "Auto-verified"
     }
   ]
 }

@@ -5291,12 +5291,12 @@
       "q": "Which is divisible by 9?",
       "opts": [
         "123",
-        "234",
+        "235",
         "345",
         "459"
       ],
       "c": 3,
-      "exp": "Step 1: Divisible by 9: sum of digits divisible by 9. Step 2: 123: 1+2+3=6 (no). 234: 2+3+4=9 (yes - wait 9/9=1, so yes, but wait... actually 9 is divisible by 9 but also by 3. 9 IS divisible by 9, so 234 IS divisible by 9. 234/9=26. 345: 3+4+5=12 (no). 459: 4+5+9=18 (yes, 18/9=2). Step 3: Both 234 and 459 are divisible by 9. But wait, checking: 234 = 9x26 = 234. And 459 = 9x51 = 459. So actually two options work. But looking at the options: 459 has sum 18 which is divisible by 9. Let me recheck 234: 2+3+4=9, 9 is divisible by 9. So 234 is also divisible by 9. The question asks \"which is divisible by 9\" and both 234 and 459 work. Since the options are single-select, let me choose 459 as it has a more obvious sum of 18.",
+      "exp": "Step 1: Divisibility by 9: sum of digits must be divisible by 9. Step 2: 123: 1+2+3=6 (not divisible by 9). 235: 2+3+5=10 (not divisible by 9). 345: 3+4+5=12 (not divisible by 9). 459: 4+5+9=18 (18 is divisible by 9). Step 3: Therefore 459 is the only option divisible by 9 (459 = 9 x 51).",
       "d": "medium",
       "t": "Speed Math (Divisibility)"
     },
@@ -6065,8 +6065,8 @@
         "8",
         "12"
       ],
-      "c": 1,
-      "exp": "Step 1: 60 = 2^2 x 3 x 5. Total factors = (2+1)(1+1)(1+1)=12. Step 2: Odd factors (ignore 2^2) = (1+1)(1+1)=4. Step 3: Even factors = 12-4 = 8. Wait, let me recount. Step 4: Odd factors: 1,3,5,15 = 4. Even: total-odd=12-4=8. Answer: 8. Correction: option 2 (index 1) is 6? Let me recheck. Step 5: Actually 60=2^2x3x5. Factors: 1,2,3,4,5,6,10,12,15,20,30,60. Even: 2,4,6,10,12,20,30,60 = 8 even factors. Hmm, but options are 4,6,8,12. Index 2 = 8.",
+      "c": 2,
+      "exp": "Step 1: 60 = 2^2 x 3 x 5. Total factors = (2+1)(1+1)(1+1) = 12. Step 2: Odd factors (ignore 2^2) = (1+1)(1+1) = 4: 1, 3, 5, 15. Step 3: Even factors = 12 - 4 = 8: 2, 4, 6, 10, 12, 20, 30, 60. Answer: 8.",
       "d": "medium",
       "t": "Primes & Composites"
     },
@@ -6205,7 +6205,7 @@
         "7",
         "9"
       ],
-      "c": 2,
+      "c": 1,
       "exp": "Step 1: 2^50: cycle [2,4,8,6], 50 mod 4 = 2, unit digit = 4. Step 2: 3^50: cycle [3,9,7,1], 50 mod 4 = 2, unit digit = 9. Step 3: 4+9=13, unit digit = 3.",
       "d": "easy",
       "t": "Cyclicity & Unit Digit"
@@ -8296,8 +8296,8 @@
       "d": "hard",
       "t": "Cyclicity & Unit Digit",
       "exp": [
-        "Base ends in 1: last two digits of $(100a + 1)^{n}$ depend on $1 + 24 \\times 3$.",
-        "$$1 + 24 \\times 3 = 73 \\equiv 21 \\pmod{100}$$"
+        "Base ends in 1: last two digits of $(10a + 1)^{n}$ are $1 + 10an \\pmod{100}$.",
+        "$$1 + 10 \\times 24 \\times 3 = 721 \\equiv 21 \\pmod{100}$$"
       ],
       "source": "Auto-verified"
     },
@@ -8313,8 +8313,8 @@
       "d": "hard",
       "t": "Cyclicity & Unit Digit",
       "exp": [
-        "Base ends in 1: last two digits of $(100a + 1)^{n}$ depend on $1 + 18 \\times 7$.",
-        "$$1 + 18 \\times 7 = 127 \\equiv 61 \\pmod{100}$$"
+        "Base ends in 1: last two digits of $(10a + 1)^{n}$ are $1 + 10an \\pmod{100}$.",
+        "$$1 + 10 \\times 18 \\times 7 = 1261 \\equiv 61 \\pmod{100}$$"
       ],
       "source": "Auto-verified"
     },
@@ -8347,8 +8347,8 @@
       "d": "hard",
       "t": "Cyclicity & Unit Digit",
       "exp": [
-        "Base ends in 1: last two digits of $(100a + 1)^{n}$ depend on $1 + 30 \\times 4$.",
-        "$$1 + 30 \\times 4 = 121 \\equiv 1 \\pmod{100}$$"
+        "Base ends in 1: last two digits of $(10a + 1)^{n}$ are $1 + 10an \\pmod{100}$.",
+        "$$1 + 10 \\times 30 \\times 4 = 1201 \\equiv 1 \\pmod{100}$$"
       ],
       "source": "Auto-verified"
     },
@@ -8739,6 +8739,150 @@
       "t": "Remainder Theorems",
       "exp": [
         "$$2916 = 54^2,\\ 3025 = 55^2,\\ 3136 = 56^2$$"
+      ],
+      "source": "Auto-verified"
+    },
+    {
+      "q": "If the five-digit number 457ab is divisible by 3, 7 and 11, then what is the value of $a^2 + b^2 - ab$?",
+      "opts": [
+        "49",
+        "24",
+        "36",
+        "33"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "Divisibility",
+      "exp": [
+        "3, 7 and 11 are pairwise coprime, so the number must be a multiple of $3 \\times 7 \\times 11 = 231$.",
+        "$$45700 \\div 231 \\approx 197.8 \\Rightarrow 198 \\times 231 = 45738$$",
+        "So $a = 3$, $b = 8$: $a^2 + b^2 - ab = 9 + 64 - 24 = 49$."
+      ],
+      "source": "Auto-verified"
+    },
+    {
+      "q": "If the nine-digit number 23541y49x is divisible by 72, then $(3x + 5y) : (5x + 3y)$ is equal to:",
+      "opts": [
+        "7 : 9",
+        "4 : 3",
+        "9 : 7",
+        "3 : 4"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "Divisibility",
+      "exp": [
+        "72 = 8 × 9, and 8, 9 are coprime, so the number must be divisible by both.",
+        "Divisible by 8: last three digits $49x$ must be divisible by 8. Only $496 = 8 \\times 62$ works, so $x = 6$.",
+        "Divisible by 9: digit sum $= 2+3+5+4+1+y+4+9+6 = 34+y$ must be a multiple of 9, so $y = 2$.",
+        "$$(3x+5y) : (5x+3y) = (18+10) : (30+6) = 28 : 36 = 7 : 9$$"
+      ],
+      "source": "Auto-verified"
+    },
+    {
+      "q": "If the number 583p2310q2 is divisible by 11, then what is the value of $p \\times q$, where $p > q$?",
+      "opts": [
+        "0",
+        "4",
+        "6",
+        "2"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "Divisibility",
+      "exp": [
+        "For divisibility by 11, the difference of the sums of digits at odd and even positions must be 0 or 11.",
+        "Odd positions (from left): $5+3+2+1+q = 11+q$; even positions: $8+p+3+0+2 = 13+p$.",
+        "Difference $= (13+p) - (11+q) = p - q + 2$. Since $p > q$, this is at least 3, so it must equal 11: $p - q = 9$.",
+        "Only $p = 9$, $q = 0$ work, so $p \\times q = 0$."
+      ],
+      "source": "Auto-verified"
+    },
+    {
+      "q": "2^25 + 2^26 + 2^27 is divisible by:",
+      "opts": [
+        "5",
+        "7",
+        "9",
+        "11"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Divisibility",
+      "exp": [
+        "$$2^{25} + 2^{26} + 2^{27} = 2^{25}(1 + 2 + 4) = 2^{25} \\times 7$$",
+        "So the expression is divisible by 7."
+      ],
+      "source": "Auto-verified"
+    },
+    {
+      "q": "When $2^{24} - 1$ is divided by 7, the remainder is:",
+      "opts": [
+        "4",
+        "2",
+        "0",
+        "1"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "Remainder Theorems",
+      "exp": [
+        "$$2^3 = 8 \\equiv 1 \\pmod 7$$",
+        "$$2^{24} = (2^3)^8 \\equiv 1^8 = 1 \\pmod 7$$",
+        "So $2^{24} - 1 \\equiv 0 \\pmod 7$, remainder is 0."
+      ],
+      "source": "Auto-verified"
+    },
+    {
+      "q": "What is the least number that should be added to $11 \\times 12 \\times 13 \\times 14$ to make it a perfect square?",
+      "opts": [
+        "1",
+        "311",
+        "5",
+        "0"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "Classification",
+      "exp": [
+        "$$11 \\times 12 \\times 13 \\times 14 = 24024$$",
+        "The nearest perfect square is $155^2 = 24025$, so $24025 - 24024 = 1$ must be added."
+      ],
+      "source": "Auto-verified"
+    },
+    {
+      "q": "The six-digit number 537xy5 is divisible by 125. How many such six-digit numbers are there?",
+      "opts": [
+        "2",
+        "5",
+        "3",
+        "4"
+      ],
+      "c": 3,
+      "d": "medium",
+      "t": "Divisibility",
+      "exp": [
+        "A number is divisible by 125 if its last three digits form a multiple of 125.",
+        "The last three digits are $xy5$, ending in 5. Multiples of 125 ending in 5: 125, 375, 625, 875.",
+        "So $xy \\in \\{12, 37, 62, 87\\}$: 4 such numbers."
+      ],
+      "source": "Auto-verified"
+    },
+    {
+      "q": "Given that $2^{20} + 1$ is completely divisible by a whole number, which of the following is completely divisible by the same number?",
+      "opts": [
+        "$5 \\times 2^{30}$",
+        "$2^{90} + 1$",
+        "$2^{15} + 1$",
+        "$2^{60} + 1$"
+      ],
+      "c": 3,
+      "d": "hard",
+      "t": "Divisibility",
+      "exp": [
+        "Using $a^3 + b^3 = (a+b)(a^2 - ab + b^2)$:",
+        "$$2^{60} + 1 = (2^{20})^3 + 1^3 = (2^{20} + 1)(2^{40} - 2^{20} + 1)$$",
+        "So any divisor of $2^{20} + 1$ also divides $2^{60} + 1$."
       ],
       "source": "Auto-verified"
     }

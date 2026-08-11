@@ -1,7 +1,7 @@
 {
   "id": "clock-calendar",
   "title": "Clock & Calendar",
-  "icon": "🕐",
+  "icon": "\ud83d\udd50",
   "subtitle": "Angles between Hands, Mirror & Slow/Fast Clocks, Leap Years, Odd Days & Day of Week",
   "category": "reasoning",
   "days": "2-3",
@@ -511,8 +511,8 @@
         "q": "Mirror image of 2:28?",
         "s": [
           "11:60 - 2:28",
-          "60 - 28 = 32, 11 - 2 - 1 = 8",
-          "8:32"
+          "60 - 28 = 32, 11 - 2 = 9",
+          "9:32"
         ],
         "a": "9:32"
       },
@@ -717,7 +717,7 @@
         "$6^\\circ$"
       ],
       "c": 0,
-      "exp": "Step 1: The hour hand covers a full circle of 360 degrees in 12 hours. Step 2: Degrees per hour = 360 ÷ 12 = 30 degrees. Answer is option A.",
+      "exp": "Step 1: The hour hand covers a full circle of 360 degrees in 12 hours. Step 2: Degrees per hour = 360 \u00f7 12 = 30 degrees. Answer is option A.",
       "d": "medium"
     },
     {
@@ -731,7 +731,7 @@
         "$12^\\circ$"
       ],
       "c": 1,
-      "exp": "Step 1: The minute hand covers 360 degrees in 60 minutes. Step 2: Degrees per minute = 360 ÷ 60 = 6 degrees. Answer is option B.",
+      "exp": "Step 1: The minute hand covers 360 degrees in 60 minutes. Step 2: Degrees per minute = 360 \u00f7 60 = 6 degrees. Answer is option B.",
       "d": "medium"
     },
     {
@@ -745,7 +745,7 @@
         "$0.1^\\circ$"
       ],
       "c": 2,
-      "exp": "Step 1: The hour hand moves 30 degrees in 60 minutes. Step 2: Degrees per minute = 30 ÷ 60 = 0.5 degrees. Answer is option C.",
+      "exp": "Step 1: The hour hand moves 30 degrees in 60 minutes. Step 2: Degrees per minute = 30 \u00f7 60 = 0.5 degrees. Answer is option C.",
       "d": "medium"
     },
     {
@@ -773,7 +773,7 @@
         "$180^\\circ$"
       ],
       "c": 2,
-      "exp": "Step 1: At 3:00 the hour hand is at 3 and the minute hand is at 12. Step 2: On a clock face, 3 hour-markers separate them. Step 3: Each hour-marker is 30 degrees, so angle = 3 × 30 = 90 degrees. Answer is option C.",
+      "exp": "Step 1: At 3:00 the hour hand is at 3 and the minute hand is at 12. Step 2: On a clock face, 3 hour-markers separate them. Step 3: Each hour-marker is 30 degrees, so angle = 3 \u00d7 30 = 90 degrees. Answer is option C.",
       "d": "medium"
     },
     {
@@ -787,7 +787,7 @@
         "$180^\\circ$"
       ],
       "c": 3,
-      "exp": "Step 1: At 6:00 the hour hand is at 6 and the minute hand is at 12. Step 2: They are 6 hour-markers apart. Step 3: 6 × 30 = 180 degrees, a straight line. Answer is option D.",
+      "exp": "Step 1: At 6:00 the hour hand is at 6 and the minute hand is at 12. Step 2: They are 6 hour-markers apart. Step 3: 6 \u00d7 30 = 180 degrees, a straight line. Answer is option D.",
       "d": "medium"
     },
     {
@@ -801,7 +801,7 @@
         "$270^\\circ$"
       ],
       "c": 0,
-      "exp": "Step 1: At 9:00 the hour hand is at 9 and the minute hand is at 12. Step 2: They are 3 hour-markers apart. Step 3: 3 × 30 = 90 degrees. The smaller angle is 90 degrees. Answer is option A.",
+      "exp": "Step 1: At 9:00 the hour hand is at 9 and the minute hand is at 12. Step 2: They are 3 hour-markers apart. Step 3: 3 \u00d7 30 = 90 degrees. The smaller angle is 90 degrees. Answer is option A.",
       "d": "medium"
     },
     {
@@ -815,7 +815,7 @@
         "$120^\\circ$"
       ],
       "c": 1,
-      "exp": "Step 1: Use the formula Angle = |30H - 5.5M| where H is the hour and M is minutes. Step 2: At 12:30, H = 0 (12 is treated as 0) and M = 30. Step 3: |30 × 0 - 5.5 × 30| = |0 - 165| = 165 degrees. Answer is option B.",
+      "exp": "Step 1: Use the formula Angle = |30H - 5.5M| where H is the hour and M is minutes. Step 2: At 12:30, H = 0 (12 is treated as 0) and M = 30. Step 3: |30 \u00d7 0 - 5.5 \u00d7 30| = |0 - 165| = 165 degrees. Answer is option B.",
       "d": "medium"
     },
     {
@@ -829,7 +829,7 @@
         "$60^\\circ$"
       ],
       "c": 2,
-      "exp": "Step 1: At 1:00 the hour hand is at 1 and the minute hand is at 12. Step 2: They are 1 hour-marker apart. Step 3: 1 × 30 = 30 degrees. Answer is option C.",
+      "exp": "Step 1: At 1:00 the hour hand is at 1 and the minute hand is at 12. Step 2: They are 1 hour-marker apart. Step 3: 1 \u00d7 30 = 30 degrees. Answer is option C.",
       "d": "medium"
     },
     {
@@ -843,7 +843,7 @@
         "$75^\\circ$"
       ],
       "c": 1,
-      "exp": "Step 1: Angle = |30H - 5.5M|. Step 2: At 2:30, H = 2 and M = 30: |30 × 2 - 5.5 × 30| = |60 - 165| = 105 degrees. Answer is option B.",
+      "exp": "Step 1: Angle = |30H - 5.5M|. Step 2: At 2:30, H = 2 and M = 30: |30 \u00d7 2 - 5.5 \u00d7 30| = |60 - 165| = 105 degrees. Answer is option B.",
       "d": "medium"
     },
     {
@@ -983,7 +983,7 @@
         "60 hours"
       ],
       "c": 1,
-      "exp": "Step 1: The hour hand moves 30 degrees per hour. Step 2: Time for 360 degrees = 360 ÷ 30 = 12 hours. Answer is option B.",
+      "exp": "Step 1: The hour hand moves 30 degrees per hour. Step 2: Time for 360 degrees = 360 \u00f7 30 = 12 hours. Answer is option B.",
       "d": "medium"
     },
     {
@@ -1277,7 +1277,7 @@
         "$3:14\\frac{6}{11}$"
       ],
       "c": 0,
-      "exp": "Step 1: At 3:00 the minute hand is 15 minute-spaces behind the hour hand. Step 2: Time to gain 15 spaces = 15 × 12/11 = 180/11 = 16 4/11 minutes. Step 3: Coincidence time = 3:16 4/11. Answer is option A.",
+      "exp": "Step 1: At 3:00 the minute hand is 15 minute-spaces behind the hour hand. Step 2: Time to gain 15 spaces = 15 \u00d7 12/11 = 180/11 = 16 4/11 minutes. Step 3: Coincidence time = 3:16 4/11. Answer is option A.",
       "d": "medium"
     },
     {
@@ -1291,7 +1291,7 @@
         "$4:22\\frac{9}{11}$"
       ],
       "c": 1,
-      "exp": "Step 1: At 4:00 the minute hand is 20 minute-spaces behind the hour hand. Step 2: Time to gain 20 spaces = 20 × 12/11 = 240/11 = 21 9/11 minutes. Step 3: Coincidence time = 4:21 9/11. Answer is option B.",
+      "exp": "Step 1: At 4:00 the minute hand is 20 minute-spaces behind the hour hand. Step 2: Time to gain 20 spaces = 20 \u00d7 12/11 = 240/11 = 21 9/11 minutes. Step 3: Coincidence time = 4:21 9/11. Answer is option B.",
       "d": "medium"
     },
     {
@@ -1305,7 +1305,7 @@
         "$5:25\\frac{5}{11}$"
       ],
       "c": 2,
-      "exp": "Step 1: At 5:00 the minute hand is 25 minute-spaces behind the hour hand. Step 2: Time to gain 25 spaces = 25 × 12/11 = 300/11 = 27 3/11 minutes. Step 3: Coincidence time = 5:27 3/11. Answer is option C.",
+      "exp": "Step 1: At 5:00 the minute hand is 25 minute-spaces behind the hour hand. Step 2: Time to gain 25 spaces = 25 \u00d7 12/11 = 300/11 = 27 3/11 minutes. Step 3: Coincidence time = 5:27 3/11. Answer is option C.",
       "d": "medium"
     },
     {
@@ -1319,7 +1319,7 @@
         "$2:10\\frac{2}{11}$"
       ],
       "c": 0,
-      "exp": "Step 1: At 2:00 the minute hand is 10 minute-spaces behind the hour hand. Step 2: Time to gain 10 spaces = 10 × 12/11 = 120/11 = 10 10/11 minutes. Step 3: Coincidence time = 2:10 10/11. Answer is option A.",
+      "exp": "Step 1: At 2:00 the minute hand is 10 minute-spaces behind the hour hand. Step 2: Time to gain 10 spaces = 10 \u00d7 12/11 = 120/11 = 10 10/11 minutes. Step 3: Coincidence time = 2:10 10/11. Answer is option A.",
       "d": "medium"
     },
     {
@@ -1333,7 +1333,7 @@
         "$1:05\\frac{10}{11}$"
       ],
       "c": 1,
-      "exp": "Step 1: At 1:00 the minute hand is 5 minute-spaces behind the hour hand. Step 2: Time to gain 5 spaces = 5 × 12/11 = 60/11 = 5 5/11 minutes. Step 3: Coincidence time = 1:05 5/11. Answer is option B.",
+      "exp": "Step 1: At 1:00 the minute hand is 5 minute-spaces behind the hour hand. Step 2: Time to gain 5 spaces = 5 \u00d7 12/11 = 60/11 = 5 5/11 minutes. Step 3: Coincidence time = 1:05 5/11. Answer is option B.",
       "d": "medium"
     },
     {
@@ -1347,7 +1347,7 @@
         "$7:36\\frac{4}{11}$"
       ],
       "c": 2,
-      "exp": "Step 1: At 7:00 the minute hand is 35 minute-spaces behind the hour hand. Step 2: Time to gain 35 spaces = 35 × 12/11 = 420/11 = 38 2/11 minutes. Step 3: Coincidence time = 7:38 2/11. Answer is option C.",
+      "exp": "Step 1: At 7:00 the minute hand is 35 minute-spaces behind the hour hand. Step 2: Time to gain 35 spaces = 35 \u00d7 12/11 = 420/11 = 38 2/11 minutes. Step 3: Coincidence time = 7:38 2/11. Answer is option C.",
       "d": "medium"
     },
     {
@@ -1361,7 +1361,7 @@
         "$8:41\\frac{9}{11}$"
       ],
       "c": 0,
-      "exp": "Step 1: At 8:00 the minute hand is 40 minute-spaces behind the hour hand. Step 2: Time to gain 40 spaces = 40 × 12/11 = 480/11 = 43 7/11 minutes. Step 3: Coincidence time = 8:43 7/11. Answer is option A.",
+      "exp": "Step 1: At 8:00 the minute hand is 40 minute-spaces behind the hour hand. Step 2: Time to gain 40 spaces = 40 \u00d7 12/11 = 480/11 = 43 7/11 minutes. Step 3: Coincidence time = 8:43 7/11. Answer is option A.",
       "d": "medium"
     },
     {
@@ -1375,7 +1375,7 @@
         "$9:49\\frac{1}{11}$"
       ],
       "c": 3,
-      "exp": "Step 1: At 9:00 the minute hand is 45 minute-spaces behind the hour hand. Step 2: Time to gain 45 spaces = 45 × 12/11 = 540/11 = 49 1/11 minutes. Step 3: Coincidence time = 9:49 1/11. Answer is option D.",
+      "exp": "Step 1: At 9:00 the minute hand is 45 minute-spaces behind the hour hand. Step 2: Time to gain 45 spaces = 45 \u00d7 12/11 = 540/11 = 49 1/11 minutes. Step 3: Coincidence time = 9:49 1/11. Answer is option D.",
       "d": "medium"
     },
     {
@@ -1389,7 +1389,7 @@
         "$10:54\\frac{6}{11}$"
       ],
       "c": 3,
-      "exp": "Step 1: At 10:00 the minute hand is 50 minute-spaces behind the hour hand. Step 2: Time to gain 50 spaces = 50 × 12/11 = 600/11 = 54 6/11 minutes. Step 3: Coincidence time = 10:54 6/11. Answer is option D.",
+      "exp": "Step 1: At 10:00 the minute hand is 50 minute-spaces behind the hour hand. Step 2: Time to gain 50 spaces = 50 \u00d7 12/11 = 600/11 = 54 6/11 minutes. Step 3: Coincidence time = 10:54 6/11. Answer is option D.",
       "d": "medium"
     },
     {
@@ -1403,7 +1403,7 @@
         "11:58"
       ],
       "c": 2,
-      "exp": "Step 1: At 11:00 the minute hand is 55 minute-spaces behind the hour hand. Step 2: Time to gain 55 spaces = 55 × 12/11 = 60 minutes = 1 hour. Step 3: 11:00 + 1 hour = 12:00, when both hands are at 12. Answer is option C.",
+      "exp": "Step 1: At 11:00 the minute hand is 55 minute-spaces behind the hour hand. Step 2: Time to gain 55 spaces = 55 \u00d7 12/11 = 60 minutes = 1 hour. Step 3: 11:00 + 1 hour = 12:00, when both hands are at 12. Answer is option C.",
       "d": "medium"
     },
     {
@@ -1417,7 +1417,7 @@
         "$4:54\\frac{6}{11}$"
       ],
       "c": 3,
-      "exp": "Step 1: Hands are opposite when the minute hand is 30 minute-spaces ahead of the hour hand. Step 2: At 4:00 the minute hand is 20 spaces behind the hour hand, so it must gain 20 + 30 = 50 spaces. Step 3: 50 × 12/11 = 600/11 = 54 6/11 minutes. Step 4: Time = 4:54 6/11. Answer is option D.",
+      "exp": "Step 1: Hands are opposite when the minute hand is 30 minute-spaces ahead of the hour hand. Step 2: At 4:00 the minute hand is 20 spaces behind the hour hand, so it must gain 20 + 30 = 50 spaces. Step 3: 50 \u00d7 12/11 = 600/11 = 54 6/11 minutes. Step 4: Time = 4:54 6/11. Answer is option D.",
       "d": "medium"
     },
     {
@@ -1431,7 +1431,7 @@
         "6:05"
       ],
       "c": 1,
-      "exp": "Step 1: Hands are opposite when the minute hand is 30 minute-spaces ahead of the hour hand. Step 2: At 5:00 the minute hand is 25 spaces behind the hour hand, so it must gain 25 + 30 = 55 spaces. Step 3: 55 × 12/11 = 60 minutes = 1 hour. Step 4: Time = 5:00 + 1 hour = 6:00. Answer is option B.",
+      "exp": "Step 1: Hands are opposite when the minute hand is 30 minute-spaces ahead of the hour hand. Step 2: At 5:00 the minute hand is 25 spaces behind the hour hand, so it must gain 25 + 30 = 55 spaces. Step 3: 55 \u00d7 12/11 = 60 minutes = 1 hour. Step 4: Time = 5:00 + 1 hour = 6:00. Answer is option B.",
       "d": "medium"
     },
     {
@@ -1445,7 +1445,7 @@
         "$7:03\\frac{9}{11}$"
       ],
       "c": 0,
-      "exp": "Step 1: Hands are opposite when the minute hand is 30 minute-spaces ahead of the hour hand. Step 2: At 7:00 the minute hand is 35 spaces behind the hour hand; to be opposite it must come 30 spaces behind, i.e., gain 5 spaces. Step 3: 5 × 12/11 = 60/11 = 5 5/11 minutes. Step 4: Time = 7:05 5/11. Answer is option A.",
+      "exp": "Step 1: Hands are opposite when the minute hand is 30 minute-spaces ahead of the hour hand. Step 2: At 7:00 the minute hand is 35 spaces behind the hour hand; to be opposite it must come 30 spaces behind, i.e., gain 5 spaces. Step 3: 5 \u00d7 12/11 = 60/11 = 5 5/11 minutes. Step 4: Time = 7:05 5/11. Answer is option A.",
       "d": "medium"
     },
     {
@@ -1459,7 +1459,7 @@
         "$8:12\\frac{2}{11}$"
       ],
       "c": 2,
-      "exp": "Step 1: At 8:00 the minute hand is 40 spaces behind the hour hand; for opposite hands it must come 30 spaces behind, i.e., gain 10 spaces. Step 2: 10 × 12/11 = 120/11 = 10 10/11 minutes. Step 3: Time = 8:10 10/11. Answer is option C.",
+      "exp": "Step 1: At 8:00 the minute hand is 40 spaces behind the hour hand; for opposite hands it must come 30 spaces behind, i.e., gain 10 spaces. Step 2: 10 \u00d7 12/11 = 120/11 = 10 10/11 minutes. Step 3: Time = 8:10 10/11. Answer is option C.",
       "d": "medium"
     },
     {
@@ -1473,7 +1473,7 @@
         "$4:07\\frac{1}{11}$"
       ],
       "c": 1,
-      "exp": "Step 1: Hands are at right angles when they are 15 minute-spaces apart. Step 2: At 4:00 the minute hand is 20 spaces behind the hour hand; it must come 15 spaces behind, i.e., gain 5 spaces. Step 3: 5 × 12/11 = 60/11 = 5 5/11 minutes. Step 4: Time = 4:05 5/11. Answer is option B.",
+      "exp": "Step 1: Hands are at right angles when they are 15 minute-spaces apart. Step 2: At 4:00 the minute hand is 20 spaces behind the hour hand; it must come 15 spaces behind, i.e., gain 5 spaces. Step 3: 5 \u00d7 12/11 = 60/11 = 5 5/11 minutes. Step 4: Time = 4:05 5/11. Answer is option B.",
       "d": "medium"
     },
     {
@@ -1487,7 +1487,7 @@
         "$9:32\\frac{8}{11}$"
       ],
       "c": 3,
-      "exp": "Step 1: At 9:00 the minute hand is 45 spaces behind the hour hand; for a right angle it must come 15 spaces behind, i.e., gain 45 - 15 = 30 spaces. Step 2: 30 × 12/11 = 360/11 = 32 8/11 minutes. Step 3: Time = 9:32 8/11. Answer is option D.",
+      "exp": "Step 1: At 9:00 the minute hand is 45 spaces behind the hour hand; for a right angle it must come 15 spaces behind, i.e., gain 45 - 15 = 30 spaces. Step 2: 30 \u00d7 12/11 = 360/11 = 32 8/11 minutes. Step 3: Time = 9:32 8/11. Answer is option D.",
       "d": "medium"
     },
     {
@@ -1501,7 +1501,7 @@
         "$2:03\\frac{3}{11}$"
       ],
       "c": 2,
-      "exp": "Step 1: At 2:00 the minute hand is 10 spaces behind the hour hand; for a right angle it must come 15 spaces behind, i.e., gain 5 spaces. Step 2: 5 × 12/11 = 60/11 = 5 5/11 minutes. Step 3: Time = 2:05 5/11. Answer is option C.",
+      "exp": "Step 1: At 2:00 the minute hand is 10 spaces behind the hour hand; for a right angle it must come 15 spaces behind, i.e., gain 5 spaces. Step 2: 5 \u00d7 12/11 = 60/11 = 5 5/11 minutes. Step 3: Time = 2:05 5/11. Answer is option C.",
       "d": "medium"
     },
     {
@@ -1515,7 +1515,7 @@
         "13"
       ],
       "c": 1,
-      "exp": "Step 1: The hands coincide 11 times in 12 hours. Step 2: They coincide once every 65 5/11 minutes; 12 hours = 720 minutes = 720 ÷ (720/11) = 11 times (including 12:00 counted once). Answer is option B.",
+      "exp": "Step 1: The hands coincide 11 times in 12 hours. Step 2: They coincide once every 65 5/11 minutes; 12 hours = 720 minutes = 720 \u00f7 (720/11) = 11 times (including 12:00 counted once). Answer is option B.",
       "d": "medium"
     },
     {
@@ -1725,7 +1725,7 @@
         "12:25"
       ],
       "c": 1,
-      "exp": "Step 1: Time elapsed from 8 AM to 12 noon = 4 hours. Step 2: Gain = 4 × 5 = 20 minutes. Step 3: Shown time = 12:00 + 20 min = 12:20. Answer is option B.",
+      "exp": "Step 1: Time elapsed from 8 AM to 12 noon = 4 hours. Step 2: Gain = 4 \u00d7 5 = 20 minutes. Step 3: Shown time = 12:00 + 20 min = 12:20. Answer is option B.",
       "d": "medium"
     },
     {
@@ -1739,7 +1739,7 @@
         "1:48"
       ],
       "c": 0,
-      "exp": "Step 1: Time elapsed from 10 AM to 2 PM = 4 hours. Step 2: Loss = 4 × 4 = 16 minutes. Step 3: Shown time = 2:00 - 16 min = 1:44. Answer is option A.",
+      "exp": "Step 1: Time elapsed from 10 AM to 2 PM = 4 hours. Step 2: Loss = 4 \u00d7 4 = 16 minutes. Step 3: Shown time = 2:00 - 16 min = 1:44. Answer is option A.",
       "d": "medium"
     },
     {
@@ -1753,7 +1753,7 @@
         "2.5 hours"
       ],
       "c": 2,
-      "exp": "Step 1: The clock must recover a deficit of 10 minutes. Step 2: It gains 5 minutes per hour. Step 3: Time needed = 10 ÷ 5 = 2 hours. Answer is option C.",
+      "exp": "Step 1: The clock must recover a deficit of 10 minutes. Step 2: It gains 5 minutes per hour. Step 3: Time needed = 10 \u00f7 5 = 2 hours. Answer is option C.",
       "d": "medium"
     },
     {
@@ -1767,7 +1767,7 @@
         "6:08"
       ],
       "c": 1,
-      "exp": "Step 1: Time elapsed from 12 noon to 6 PM = 6 hours. Step 2: Gain = 6 × 2 = 12 minutes. Step 3: Shown time = 6:00 + 12 min = 6:12. Answer is option B.",
+      "exp": "Step 1: Time elapsed from 12 noon to 6 PM = 6 hours. Step 2: Gain = 6 \u00d7 2 = 12 minutes. Step 3: Shown time = 6:00 + 12 min = 6:12. Answer is option B.",
       "d": "medium"
     },
     {
@@ -1781,7 +1781,7 @@
         "12:44"
       ],
       "c": 0,
-      "exp": "Step 1: Time elapsed from 9 AM to 1 PM = 4 hours. Step 2: Loss = 4 × 3 = 12 minutes. Step 3: Shown time = 1:00 - 12 min = 12:48. Answer is option A.",
+      "exp": "Step 1: Time elapsed from 9 AM to 1 PM = 4 hours. Step 2: Loss = 4 \u00d7 3 = 12 minutes. Step 3: Shown time = 1:00 - 12 min = 12:48. Answer is option A.",
       "d": "medium"
     },
     {
@@ -1795,7 +1795,7 @@
         "6 min/hour"
       ],
       "c": 2,
-      "exp": "Step 1: Time elapsed = 4 hours; gain shown = 16 minutes. Step 2: Gain per hour = 16 ÷ 4 = 4 minutes. Answer is option C.",
+      "exp": "Step 1: Time elapsed = 4 hours; gain shown = 16 minutes. Step 2: Gain per hour = 16 \u00f7 4 = 4 minutes. Answer is option C.",
       "d": "medium"
     },
     {
@@ -1809,7 +1809,7 @@
         "Fast by 4 min/hour"
       ],
       "c": 1,
-      "exp": "Step 1: Time elapsed = 4 hours; shown gain = 12 minutes. Step 2: Gain per hour = 12 ÷ 4 = 3 minutes. Step 3: Since it shows more than the correct time, it is fast by 3 min/hour. Answer is option B.",
+      "exp": "Step 1: Time elapsed = 4 hours; shown gain = 12 minutes. Step 2: Gain per hour = 12 \u00f7 4 = 3 minutes. Step 3: Since it shows more than the correct time, it is fast by 3 min/hour. Answer is option B.",
       "d": "medium"
     },
     {
@@ -1823,7 +1823,7 @@
         "$11\\frac{5}{11}$ min"
       ],
       "c": 0,
-      "exp": "Step 1: Gain per day = gain per hour × 24. Step 2: (5/11) × 24 = 120/11 = 10 10/11 minutes. Answer is option A.",
+      "exp": "Step 1: Gain per day = gain per hour \u00d7 24. Step 2: (5/11) \u00d7 24 = 120/11 = 10 10/11 minutes. Answer is option A.",
       "d": "medium"
     },
     {
@@ -1837,7 +1837,7 @@
         "12:12"
       ],
       "c": 1,
-      "exp": "Step 1: From noon to midnight is 12 hours = half a day. Step 2: Gain in 12 hours = 10 ÷ 2 = 5 minutes. Step 3: Shown time = 12:00 + 5 min = 12:05. Answer is option B.",
+      "exp": "Step 1: From noon to midnight is 12 hours = half a day. Step 2: Gain in 12 hours = 10 \u00f7 2 = 5 minutes. Step 3: Shown time = 12:00 + 5 min = 12:05. Answer is option B.",
       "d": "medium"
     },
     {
@@ -1851,7 +1851,7 @@
         "11:48"
       ],
       "c": 1,
-      "exp": "Step 1: From noon to midnight is 12 hours = half a day. Step 2: Loss in 12 hours = 10 ÷ 2 = 5 minutes. Step 3: Shown time = 12:00 - 5 min = 11:55. Answer is option B.",
+      "exp": "Step 1: From noon to midnight is 12 hours = half a day. Step 2: Loss in 12 hours = 10 \u00f7 2 = 5 minutes. Step 3: Shown time = 12:00 - 5 min = 11:55. Answer is option B.",
       "d": "medium"
     },
     {
@@ -1907,7 +1907,7 @@
         "Cannot be determined"
       ],
       "c": 1,
-      "exp": "Step 1: 1900 is a century year, so it is a leap year only if divisible by 400. Step 2: 1900 ÷ 400 = 4.75, not an integer. Step 3: So 1900 is NOT a leap year. Answer is option B.",
+      "exp": "Step 1: 1900 is a century year, so it is a leap year only if divisible by 400. Step 2: 1900 \u00f7 400 = 4.75, not an integer. Step 3: So 1900 is NOT a leap year. Answer is option B.",
       "d": "medium"
     },
     {
@@ -1991,7 +1991,7 @@
         "3"
       ],
       "c": 1,
-      "exp": "Step 1: A leap year has 366 days. Step 2: 366 ÷ 7 = 52 weeks + 2 days. Step 3: So a leap year has 2 odd days. Answer is option B.",
+      "exp": "Step 1: A leap year has 366 days. Step 2: 366 \u00f7 7 = 52 weeks + 2 days. Step 3: So a leap year has 2 odd days. Answer is option B.",
       "d": "medium"
     },
     {
@@ -2005,7 +2005,7 @@
         "3"
       ],
       "c": 2,
-      "exp": "Step 1: An ordinary year has 365 days. Step 2: 365 ÷ 7 = 52 weeks + 1 day. Step 3: So an ordinary year has 1 odd day. Answer is option C.",
+      "exp": "Step 1: An ordinary year has 365 days. Step 2: 365 \u00f7 7 = 52 weeks + 1 day. Step 3: So an ordinary year has 1 odd day. Answer is option C.",
       "d": "medium"
     },
     {
@@ -2061,7 +2061,7 @@
         "7"
       ],
       "c": 0,
-      "exp": "Step 1: 100 years = 76 ordinary years + 24 leap years. Step 2: Odd days = 76 × 1 + 24 × 2 = 76 + 48 = 124. Step 3: 124 ÷ 7 = 17 weeks + 5 days, so 5 odd days. Answer is option A.",
+      "exp": "Step 1: 100 years = 76 ordinary years + 24 leap years. Step 2: Odd days = 76 \u00d7 1 + 24 \u00d7 2 = 76 + 48 = 124. Step 3: 124 \u00f7 7 = 17 weeks + 5 days, so 5 odd days. Answer is option A.",
       "d": "medium"
     },
     {
@@ -2075,7 +2075,7 @@
         "6"
       ],
       "c": 1,
-      "exp": "Step 1: 100 years have 5 odd days. Step 2: 200 years = 2 × 5 = 10 odd days. Step 3: 10 ÷ 7 = 1 week + 3 days, so 3 odd days. Answer is option B.",
+      "exp": "Step 1: 100 years have 5 odd days. Step 2: 200 years = 2 \u00d7 5 = 10 odd days. Step 3: 10 \u00f7 7 = 1 week + 3 days, so 3 odd days. Answer is option B.",
       "d": "medium"
     },
     {
@@ -2089,7 +2089,7 @@
         "4"
       ],
       "c": 2,
-      "exp": "Step 1: 100 years have 5 odd days, so 300 years = 3 × 5 = 15 odd days. Step 2: 15 ÷ 7 = 2 weeks + 1 day. Step 3: So 300 years have 1 odd day. Answer is option C.",
+      "exp": "Step 1: 100 years have 5 odd days, so 300 years = 3 \u00d7 5 = 15 odd days. Step 2: 15 \u00f7 7 = 2 weeks + 1 day. Step 3: So 300 years have 1 odd day. Answer is option C.",
       "d": "medium"
     },
     {
@@ -2103,7 +2103,7 @@
         "5"
       ],
       "c": 0,
-      "exp": "Step 1: 400 years = 4 × 100 years, but the 400th year is a leap year, adding one extra day. Step 2: Odd days = 4 × 5 + 1 = 21 (the extra day comes from the leap year adjustment). Step 3: 21 ÷ 7 = 3 weeks + 0 days, so 400 years have 0 odd days. Answer is option A.",
+      "exp": "Step 1: 400 years = 4 \u00d7 100 years, but the 400th year is a leap year, adding one extra day. Step 2: Odd days = 4 \u00d7 5 + 1 = 21 (the extra day comes from the leap year adjustment). Step 3: 21 \u00f7 7 = 3 weeks + 0 days, so 400 years have 0 odd days. Answer is option A.",
       "d": "medium"
     },
     {
@@ -2117,7 +2117,7 @@
         "5"
       ],
       "c": 2,
-      "exp": "Step 1: Each ordinary year has 1 odd day. Step 2: 25 ordinary years = 25 odd days. Step 3: 25 ÷ 7 = 3 weeks + 4 days, so 4 odd days. Answer is option C.",
+      "exp": "Step 1: Each ordinary year has 1 odd day. Step 2: 25 ordinary years = 25 odd days. Step 3: 25 \u00f7 7 = 3 weeks + 4 days, so 4 odd days. Answer is option C.",
       "d": "medium"
     },
     {
@@ -2131,7 +2131,7 @@
         "3"
       ],
       "c": 1,
-      "exp": "Step 1: Odd days from 8 ordinary years = 8 × 1 = 8. Step 2: Odd days from 2 leap years = 2 × 2 = 4. Step 3: Total = 8 + 4 = 12; 12 ÷ 7 = 1 week + 5 days, so 5 odd days. Answer is option B.",
+      "exp": "Step 1: Odd days from 8 ordinary years = 8 \u00d7 1 = 8. Step 2: Odd days from 2 leap years = 2 \u00d7 2 = 4. Step 3: Total = 8 + 4 = 12; 12 \u00f7 7 = 1 week + 5 days, so 5 odd days. Answer is option B.",
       "d": "medium"
     },
     {
@@ -2145,7 +2145,7 @@
         "3"
       ],
       "c": 0,
-      "exp": "Step 1: Each ordinary year has 1 odd day. Step 2: 5 × 1 = 5 odd days. Step 3: 5 < 7, so the answer is 5. Answer is option A.",
+      "exp": "Step 1: Each ordinary year has 1 odd day. Step 2: 5 \u00d7 1 = 5 odd days. Step 3: 5 < 7, so the answer is 5. Answer is option A.",
       "d": "medium"
     },
     {
@@ -2159,7 +2159,7 @@
         "3"
       ],
       "c": 2,
-      "exp": "Step 1: Each leap year has 2 odd days. Step 2: 7 × 2 = 14 odd days. Step 3: 14 ÷ 7 = 2 weeks + 0 days, so 0 odd days. Answer is option C.",
+      "exp": "Step 1: Each leap year has 2 odd days. Step 2: 7 \u00d7 2 = 14 odd days. Step 3: 14 \u00f7 7 = 2 weeks + 0 days, so 0 odd days. Answer is option C.",
       "d": "medium"
     },
     {
@@ -2173,7 +2173,7 @@
         "3"
       ],
       "c": 1,
-      "exp": "Step 1: Odd days from 11 ordinary years = 11 × 1 = 11. Step 2: Odd days from 4 leap years = 4 × 2 = 8. Step 3: Total = 11 + 8 = 19; 19 ÷ 7 = 2 weeks + 5 days, so 5 odd days. Answer is option B.",
+      "exp": "Step 1: Odd days from 11 ordinary years = 11 \u00d7 1 = 11. Step 2: Odd days from 4 leap years = 4 \u00d7 2 = 8. Step 3: Total = 11 + 8 = 19; 19 \u00f7 7 = 2 weeks + 5 days, so 5 odd days. Answer is option B.",
       "d": "medium"
     },
     {
@@ -2187,7 +2187,7 @@
         "3"
       ],
       "c": 2,
-      "exp": "Step 1: 365 ÷ 7 = 52 weeks + 1 day. Step 2: The leftover 1 day is the odd day. Step 3: So 365 days have 1 odd day. Answer is option C.",
+      "exp": "Step 1: 365 \u00f7 7 = 52 weeks + 1 day. Step 2: The leftover 1 day is the odd day. Step 3: So 365 days have 1 odd day. Answer is option C.",
       "d": "medium"
     },
     {
@@ -2201,7 +2201,7 @@
         "3"
       ],
       "c": 0,
-      "exp": "Step 1: 366 ÷ 7 = 52 weeks + 2 days. Step 2: The leftover 2 days are the odd days. Step 3: So 366 days have 2 odd days. Answer is option A.",
+      "exp": "Step 1: 366 \u00f7 7 = 52 weeks + 2 days. Step 2: The leftover 2 days are the odd days. Step 3: So 366 days have 2 odd days. Answer is option A.",
       "d": "medium"
     },
     {
@@ -2215,7 +2215,7 @@
         "1"
       ],
       "c": 1,
-      "exp": "Step 1: 500 ÷ 7 = 71 weeks + 3 days. Step 2: The leftover 3 days are the odd days. Step 3: So 500 days have 3 odd days. Answer is option B.",
+      "exp": "Step 1: 500 \u00f7 7 = 71 weeks + 3 days. Step 2: The leftover 3 days are the odd days. Step 3: So 500 days have 3 odd days. Answer is option B.",
       "d": "medium"
     },
     {
@@ -2229,7 +2229,7 @@
         "3"
       ],
       "c": 1,
-      "exp": "Step 1: 700 ÷ 7 = 100 weeks exactly. Step 2: There are no leftover days. Step 3: So 700 days have 0 odd days. Answer is option B.",
+      "exp": "Step 1: 700 \u00f7 7 = 100 weeks exactly. Step 2: There are no leftover days. Step 3: So 700 days have 0 odd days. Answer is option B.",
       "d": "medium"
     },
     {
@@ -2243,7 +2243,7 @@
         "5"
       ],
       "c": 0,
-      "exp": "Step 1: Odd days from 11 ordinary years = 11 × 1 = 11. Step 2: Odd days from 3 leap years = 3 × 2 = 6. Step 3: Total = 11 + 6 = 17; 17 ÷ 7 = 2 weeks + 3 days, so 3 odd days. Answer is option A.",
+      "exp": "Step 1: Odd days from 11 ordinary years = 11 \u00d7 1 = 11. Step 2: Odd days from 3 leap years = 3 \u00d7 2 = 6. Step 3: Total = 11 + 6 = 17; 17 \u00f7 7 = 2 weeks + 3 days, so 3 odd days. Answer is option A.",
       "d": "medium"
     },
     {
@@ -2257,7 +2257,7 @@
         "3"
       ],
       "c": 0,
-      "exp": "Step 1: 124 ÷ 7 = 17 weeks + 5 days. Step 2: The leftover days are the odd days. Step 3: So 124 days leave 5 odd days. Answer is option A.",
+      "exp": "Step 1: 124 \u00f7 7 = 17 weeks + 5 days. Step 2: The leftover days are the odd days. Step 3: So 124 days leave 5 odd days. Answer is option A.",
       "d": "medium"
     },
     {
@@ -2271,7 +2271,7 @@
         "5"
       ],
       "c": 1,
-      "exp": "Step 1: Odd days from 6 ordinary years = 6 × 1 = 6. Step 2: Odd days from 2 leap years = 2 × 2 = 4. Step 3: Total = 6 + 4 = 10; 10 ÷ 7 = 1 week + 3 days, so 3 odd days. Answer is option B.",
+      "exp": "Step 1: Odd days from 6 ordinary years = 6 \u00d7 1 = 6. Step 2: Odd days from 2 leap years = 2 \u00d7 2 = 4. Step 3: Total = 6 + 4 = 10; 10 \u00f7 7 = 1 week + 3 days, so 3 odd days. Answer is option B.",
       "d": "medium"
     },
     {
@@ -2383,7 +2383,7 @@
         "Friday"
       ],
       "c": 2,
-      "exp": "Step 1: 100 ÷ 7 = 14 weeks + 2 odd days. Step 2: Tuesday + 2 days = Thursday. Answer is option C.",
+      "exp": "Step 1: 100 \u00f7 7 = 14 weeks + 2 odd days. Step 2: Tuesday + 2 days = Thursday. Answer is option C.",
       "d": "medium"
     },
     {
@@ -2397,7 +2397,7 @@
         "Thursday"
       ],
       "c": 1,
-      "exp": "Step 1: 50 ÷ 7 = 7 weeks + 1 odd day. Step 2: Monday + 1 day = Tuesday. Answer is option B.",
+      "exp": "Step 1: 50 \u00f7 7 = 7 weeks + 1 odd day. Step 2: Monday + 1 day = Tuesday. Answer is option B.",
       "d": "medium"
     },
     {
@@ -2425,7 +2425,7 @@
         "Friday"
       ],
       "c": 3,
-      "exp": "Step 1: 30 ÷ 7 = 4 weeks + 2 odd days. Step 2: Wednesday + 2 days = Friday. Answer is option D.",
+      "exp": "Step 1: 30 \u00f7 7 = 4 weeks + 2 odd days. Step 2: Wednesday + 2 days = Friday. Answer is option D.",
       "d": "medium"
     },
     {
@@ -2439,7 +2439,7 @@
         "Wednesday"
       ],
       "c": 0,
-      "exp": "Step 1: Days between 10th and 25th = 25 - 10 = 15 days. Step 2: 15 ÷ 7 = 2 weeks + 1 odd day. Step 3: Sunday + 1 day = Monday. Answer is option A.",
+      "exp": "Step 1: Days between 10th and 25th = 25 - 10 = 15 days. Step 2: 15 \u00f7 7 = 2 weeks + 1 odd day. Step 3: Sunday + 1 day = Monday. Answer is option A.",
       "d": "medium"
     },
     {
@@ -2453,7 +2453,7 @@
         "Friday"
       ],
       "c": 0,
-      "exp": "Step 1: Days between 5th and 26th = 26 - 5 = 21 days. Step 2: 21 ÷ 7 = 3 weeks + 0 odd days. Step 3: The same day, Wednesday. Answer is option A.",
+      "exp": "Step 1: Days between 5th and 26th = 26 - 5 = 21 days. Step 2: 21 \u00f7 7 = 3 weeks + 0 odd days. Step 3: The same day, Wednesday. Answer is option A.",
       "d": "medium"
     },
     {
@@ -2495,7 +2495,7 @@
         "Friday"
       ],
       "c": 2,
-      "exp": "Step 1: Use the date-to-day method: last two digits of year = 03, month code for May = 1, date = 25, quotient of 03/4 = 0, century code for 2000s = 6. Step 2: Sum = 3 + 1 + 25 + 0 + 6 = 35. Step 3: 35 ÷ 7 = 5 weeks + 0, and code 0 = Sunday. Answer is option C.",
+      "exp": "Step 1: Use the date-to-day method: last two digits of year = 03, month code for May = 1, date = 25, quotient of 03/4 = 0, century code for 2000s = 6. Step 2: Sum = 3 + 1 + 25 + 0 + 6 = 35. Step 3: 35 \u00f7 7 = 5 weeks + 0, and code 0 = Sunday. Answer is option C.",
       "d": "medium"
     },
     {
@@ -2551,7 +2551,7 @@
         "2036"
       ],
       "c": 0,
-      "exp": "Step 1: An ordinary year calendar repeats after 6 or 11 years. Step 2: Check 2023 + 11 = 2034: years 2023-2033 have 3 leap years (2024, 2028, 2032), giving odd days 3 × 2 + 8 = 14 = 0 odd days. Step 3: So the calendar repeats in 2034. Answer is option A.",
+      "exp": "Step 1: An ordinary year calendar repeats after 6 or 11 years. Step 2: Check 2023 + 11 = 2034: years 2023-2033 have 3 leap years (2024, 2028, 2032), giving odd days 3 \u00d7 2 + 8 = 14 = 0 odd days. Step 3: So the calendar repeats in 2034. Answer is option A.",
       "d": "medium"
     },
     {
@@ -2579,7 +2579,7 @@
         "2014"
       ],
       "c": 1,
-      "exp": "Step 1: An ordinary year calendar repeats after 6 or 11 years. Step 2: Check 2009 + 6 = 2015: years 2009-2014 have 1 leap year (2012), giving odd days 1 × 2 + 5 = 7 = 0 odd days. Step 3: So the calendar repeats in 2015. Answer is option B.",
+      "exp": "Step 1: An ordinary year calendar repeats after 6 or 11 years. Step 2: Check 2009 + 6 = 2015: years 2009-2014 have 1 leap year (2012), giving odd days 1 \u00d7 2 + 5 = 7 = 0 odd days. Step 3: So the calendar repeats in 2015. Answer is option B.",
       "d": "medium"
     },
     {
@@ -2593,7 +2593,7 @@
         "2000"
       ],
       "c": 0,
-      "exp": "Step 1: Check 1990 + 11 = 2001: years 1990-2000 have 3 leap years (1992, 1996, 2000), giving odd days 3 × 2 + 8 = 14 = 0 odd days. Step 2: Also 1990 + 6 = 1996: years 1990-1995 have 2 leap years (1992, 1996 excluded as it is the repeat year itself), odd days = 1 × 2 + 4 = 6, not 0. Step 3: So the calendar repeats in 2001. Answer is option A.",
+      "exp": "Step 1: Check 1990 + 6 = 1996: years 1990-1995 have 1 leap year (1992), giving odd days 1 \u00d7 2 + 5 = 7, i.e. 0 mod 7. But 1996 is a leap year, so the calendar of an ordinary year (1990) cannot repeat in it. Step 2: Check 1990 + 11 = 2001: years 1990-2000 have 3 leap years (1992, 1996, 2000), giving odd days 3 \u00d7 2 + 8 = 14, i.e. 0 mod 7. Step 3: So the calendar repeats in 2001. Answer is option A.",
       "d": "medium"
     },
     {
@@ -2621,7 +2621,7 @@
         "2027"
       ],
       "c": 2,
-      "exp": "Step 1: Check 2015 + 11 = 2026: years 2015-2025 have 3 leap years (2016, 2020, 2024), giving odd days 3 × 2 + 8 = 14 = 0 odd days. Step 2: 2015 + 6 = 2021 gives odd days 2 × 2 + 4 = 8, not 0. Step 3: So the calendar repeats in 2026. Answer is option C.",
+      "exp": "Step 1: Check 2015 + 11 = 2026: years 2015-2025 have 3 leap years (2016, 2020, 2024), giving odd days 3 \u00d7 2 + 8 = 14 = 0 odd days. Step 2: 2015 + 6 = 2021 gives odd days 2 \u00d7 2 + 4 = 8, not 0. Step 3: So the calendar repeats in 2026. Answer is option C.",
       "d": "medium"
     },
     {
@@ -2635,7 +2635,7 @@
         "2023"
       ],
       "c": 2,
-      "exp": "Step 1: Check 2011 + 11 = 2022: years 2011-2021 have 3 leap years (2012, 2016, 2020), giving odd days 3 × 2 + 8 = 14 = 0 odd days. Step 2: 2011 + 6 = 2017 gives odd days 2 × 2 + 4 = 8, not 0. Step 3: So the calendar repeats in 2022. Answer is option C.",
+      "exp": "Step 1: Check 2011 + 11 = 2022: years 2011-2021 have 3 leap years (2012, 2016, 2020), giving odd days 3 \u00d7 2 + 8 = 14 = 0 odd days. Step 2: 2011 + 6 = 2017 gives odd days 2 \u00d7 2 + 4 = 8, not 0. Step 3: So the calendar repeats in 2022. Answer is option C.",
       "d": "medium"
     },
     {
@@ -2649,7 +2649,7 @@
         "2016"
       ],
       "c": 0,
-      "exp": "Step 1: Check 2005 + 6 = 2011: years 2005-2010 have 1 leap year (2008), giving odd days 1 × 2 + 5 = 7 = 0 odd days. Step 2: So the calendar repeats in 2011. Answer is option A.",
+      "exp": "Step 1: Check 2005 + 6 = 2011: years 2005-2010 have 1 leap year (2008), giving odd days 1 \u00d7 2 + 5 = 7 = 0 odd days. Step 2: So the calendar repeats in 2011. Answer is option A.",
       "d": "medium"
     },
     {
@@ -2677,7 +2677,7 @@
         "2028"
       ],
       "c": 1,
-      "exp": "Step 1: Check 2018 + 11 = 2029: years 2018-2028 have 3 leap years (2020, 2024, 2028), giving odd days 3 × 2 + 8 = 14 = 0 odd days. Step 2: 2018 + 6 = 2024 is a leap year, so it cannot repeat a 2018 calendar. Step 3: So the calendar repeats in 2029. Answer is option B.",
+      "exp": "Step 1: Check 2018 + 11 = 2029: years 2018-2028 have 3 leap years (2020, 2024, 2028), giving odd days 3 \u00d7 2 + 8 = 14 = 0 odd days. Step 2: 2018 + 6 = 2024 is a leap year, so it cannot repeat a 2018 calendar. Step 3: So the calendar repeats in 2029. Answer is option B.",
       "d": "medium"
     },
     {
@@ -2719,7 +2719,7 @@
         "24"
       ],
       "c": 1,
-      "exp": "Step 1: In 12 hours the hands form a straight line 11 times (once when coinciding, counted once at 12:00). Step 2: In 24 hours this doubles: 2 × 22 = 44. Wait, check: 11 per 12 hours means 22 per 24 hours? Step 3: Correct count: 22 times per day (11 coincidences + 11 opposites = 22 straight lines). Answer is option B.",
+      "exp": "Step 1: In 12 hours the hands form a straight line 22 times: 11 coincidences and 11 opposite positions. Step 2: In 24 hours this doubles: 2 \u00d7 22 = 44. Step 3: So the hands form a straight line 44 times in a day. Answer is option B.",
       "d": "medium"
     },
     {
@@ -2761,7 +2761,7 @@
         "$6:33\\frac{6}{11}$"
       ],
       "c": 2,
-      "exp": "Step 1: At 6:00 the minute hand is 30 minute-spaces behind the hour hand. Step 2: Time to gain 30 spaces = 30 × 12/11 = 360/11 = 32 8/11 minutes. Step 3: Coincidence time = 6:32 8/11. Answer is option C.",
+      "exp": "Step 1: At 6:00 the minute hand is 30 minute-spaces behind the hour hand. Step 2: Time to gain 30 spaces = 30 \u00d7 12/11 = 360/11 = 32 8/11 minutes. Step 3: Coincidence time = 6:32 8/11. Answer is option C.",
       "d": "medium"
     },
     {
@@ -2777,6 +2777,62 @@
       "c": 1,
       "exp": "Step 1: 2000 was a leap year with 2 odd days. Step 2: Saturday + 2 days = Monday. Step 3: So 1 January 2001 was Monday. Answer is option B.",
       "d": "medium"
+    },
+    {
+      "q": "How many times in a day (24 hours) do the hour and minute hands of a clock coincide?",
+      "opts": [
+        "11",
+        "12",
+        "22",
+        "24"
+      ],
+      "c": 2,
+      "t": "coincide",
+      "exp": "Step 1: In 12 hours the hands coincide 11 times (once every 65 5/11 minutes, with 12:00 counted once). Step 2: In 24 hours this doubles: 2 x 11 = 22. Step 3: So the hands coincide 22 times in a day. Answer is option C.",
+      "d": "medium",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "If day before yesterday was Thursday, what day will it be 11 days from today?",
+      "opts": [
+        "Sunday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday"
+      ],
+      "c": 2,
+      "t": "weekday",
+      "exp": "Step 1: If day before yesterday was Thursday, today = Thursday + 2 = Saturday. Step 2: 11 days from today = Saturday + 11 = Saturday + 4 (11 mod 7) = Wednesday. Step 3: So it will be Wednesday. Answer is option C.",
+      "d": "medium",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "How many odd days are there in 1200 years?",
+      "opts": [
+        "1",
+        "0",
+        "2",
+        "3"
+      ],
+      "c": 1,
+      "t": "odddays",
+      "exp": "Step 1: 400 years have 0 odd days (400-year Gregorian cycle repeats exactly). Step 2: 1200 years = 3 x 400 = 3 x 0 odd days. Step 3: So 1200 years have 0 odd days. Answer is option B.",
+      "d": "medium",
+      "source": "Auto-verified"
+    },
+    {
+      "q": "If 6 September 2009 was a Sunday, what day was 3 November 2011?",
+      "opts": [
+        "Thursday",
+        "Wednesday",
+        "Monday",
+        "Friday"
+      ],
+      "c": 0,
+      "t": "weekday",
+      "exp": "Step 1: Days from 6 Sep 2009 to 3 Nov 2011: 116 days in 2009 (Sep 6 to Dec 31) + 365 in 2010 + 307 in 2011 (Jan 1 to Nov 3) = 788 days. Step 2: 788 mod 7 = 4 odd days. Step 3: Sunday + 4 = Thursday. Answer is option A.",
+      "d": "medium",
+      "source": "Auto-verified"
     }
   ]
 }
