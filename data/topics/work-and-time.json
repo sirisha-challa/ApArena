@@ -1,7 +1,7 @@
 {
   "id": "work-and-time",
   "title": "Work and Time",
-  "icon": "⏱️",
+  "icon": "\u23f1\ufe0f",
   "subtitle": "Work Rates, Efficiency, Man-Days, Pipes & Cisterns, Alternate Days",
   "days": "2-3",
   "color": "#059669",
@@ -42,15 +42,15 @@
     {
       "id": "intro-work-time",
       "title": "What is Work and Time?",
-      "content": "Work and Time problems are about finding how long it takes for one or more people to complete a task. The key relationship is: Work Done = Time × Rate of Work. If a person completes a work in X days, then in 1 day they complete 1/X of the work.",
+      "content": "Work and Time problems are about finding how long it takes for one or more people to complete a task. The key relationship is: Work Done = Time \u00d7 Rate of Work. If a person completes a work in X days, then in 1 day they complete 1/X of the work.",
       "subsections": [
         {
-          "title": "The Golden Rule: Work = Time × Rate",
+          "title": "The Golden Rule: Work = Time \u00d7 Rate",
           "content": "Every Work and Time problem reduces to one step: express each worker's output as a fraction of the job per day, then add or subtract the fractions."
         },
         {
           "title": "The LCM Method (Shortcut)",
-          "content": "To avoid fractions, take the LCM of all individual times as the total work. Then find each person's efficiency as: LCM ÷ individual time."
+          "content": "To avoid fractions, take the LCM of all individual times as the total work. Then find each person's efficiency as: LCM \u00f7 individual time."
         },
         {
           "title": "Efficiency = 1/Time",
@@ -58,7 +58,7 @@
         },
         {
           "title": "Man-Days Concept",
-          "content": "Total work can be measured in Man-Days (or Man-Hours). If M men work for D days, total work = M × D man-days."
+          "content": "Total work can be measured in Man-Days (or Man-Hours). If M men work for D days, total work = M \u00d7 D man-days."
         }
       ],
       "type": "concept"
@@ -110,7 +110,7 @@
       "subsections": [
         {
           "title": "Inlet and Outlet Pipes",
-          "content": "Inlet pipe: fills the tank → positive rate. Outlet pipe: empties the tank → negative rate. Net rate = Sum(Inlet) - Sum(Outlet)."
+          "content": "Inlet pipe: fills the tank \u2192 positive rate. Outlet pipe: empties the tank \u2192 negative rate. Net rate = Sum(Inlet) - Sum(Outlet)."
         },
         {
           "title": "Alternate Pipes",
@@ -140,37 +140,37 @@
     {
       "id": "basic-work-rate",
       "title": "Basic Work Rate Formula",
-      "formula": "Work = Rate × Time | Rate = 1/Time | Time = 1/Rate",
+      "formula": "Work = Rate \u00d7 Time | Rate = 1/Time | Time = 1/Rate",
       "explanation": "If a person completes work in X days, their one-day work = 1/X. Work done and time taken are inversely proportional.",
-      "example": "A completes work in 10 days → A's rate = 1/10 per day."
+      "example": "A completes work in 10 days \u2192 A's rate = 1/10 per day."
     },
     {
       "id": "combined-work",
       "title": "Combined Work Formula",
       "formula": "1/T = 1/A + 1/B + 1/C + ...",
       "explanation": "If A takes 'a' days and B takes 'b' days, together they take ab/(a+b) days.",
-      "example": "A takes 10 days, B takes 15 days → Together = (10×15)/(10+15) = 150/25 = 6 days."
+      "example": "A takes 10 days, B takes 15 days \u2192 Together = (10\u00d715)/(10+15) = 150/25 = 6 days."
     },
     {
       "id": "man-days",
       "title": "Man-Days Formula",
-      "formula": "Total Work = M₁ × D₁ = M₂ × D₂",
-      "explanation": "If M men take D days, total work = M × D man-days. If workforce changes, M₁D₁ = M₂D₂.",
-      "example": "25 men take 12 days → Total = 300 man-days. 30 men will take 300/30 = 10 days."
+      "formula": "Total Work = M\u2081 \u00d7 D\u2081 = M\u2082 \u00d7 D\u2082",
+      "explanation": "If M men take D days, total work = M \u00d7 D man-days. If workforce changes, M\u2081D\u2081 = M\u2082D\u2082.",
+      "example": "25 men take 12 days \u2192 Total = 300 man-days. 30 men will take 300/30 = 10 days."
     },
     {
       "id": "efficiency-ratio",
       "title": "Efficiency Ratio Formula",
-      "formula": "Efficiency ∝ 1/Time | Efficiency(A) : Efficiency(B) = Time(B) : Time(A)",
+      "formula": "Efficiency \u221d 1/Time | Efficiency(A) : Efficiency(B) = Time(B) : Time(A)",
       "explanation": "If A is twice as efficient as B, A takes half the time of B. Efficiency ratio is the reverse of time ratio.",
-      "example": "A is 3 times as efficient as B. B takes 12 days → A takes 12/3 = 4 days."
+      "example": "A is 3 times as efficient as B. B takes 12 days \u2192 A takes 12/3 = 4 days."
     },
     {
       "id": "pipes-cisterns",
       "title": "Pipes & Cisterns Formula",
       "formula": "Net Rate = Sum(Inlet Rates) - Sum(Outlet Rates)",
       "explanation": "If an inlet fills in A hours, rate = 1/A. If an outlet empties in B hours, rate = -1/B.",
-      "example": "Pipe A fills in 4 hours, Pipe B empties in 6 hours. Net = 1/4 - 1/6 = 1/12 → 12 hours to fill."
+      "example": "Pipe A fills in 4 hours, Pipe B empties in 6 hours. Net = 1/4 - 1/6 = 1/12 \u2192 12 hours to fill."
     },
     {
       "id": "alternate-days",
@@ -182,7 +182,7 @@
     {
       "id": "men-women-children",
       "title": "Men-Women-Children Formula",
-      "formula": "Equate work done: M₁ × E₁ = M₂ × E₂ (where E = efficiency)",
+      "formula": "Equate work done: M\u2081 \u00d7 E\u2081 = M\u2082 \u00d7 E\u2082 (where E = efficiency)",
       "explanation": "Find the efficiency ratio between different categories first, then convert all workers to a common unit.",
       "example": "2 men = 3 women in efficiency. Convert all to men (or women) then solve."
     }
@@ -202,7 +202,7 @@
         "q": "B can complete a work in 15 days. How much work does B complete in 3 days?",
         "s": [
           "B's 1 day work = 1/15.",
-          "Work done in 3 days = 3 × 1/15.",
+          "Work done in 3 days = 3 \u00d7 1/15.",
           "= 3/15 = 1/5."
         ],
         "a": "1/5"
@@ -211,7 +211,7 @@
         "q": "A does 1/4 of a work in 5 days. In how many days will A complete the full work?",
         "s": [
           "If 1/4 work takes 5 days.",
-          "Full work (1) takes 5 × 4 = 20 days."
+          "Full work (1) takes 5 \u00d7 4 = 20 days."
         ],
         "a": "20 days"
       },
@@ -219,7 +219,7 @@
         "q": "A does a work in 8 days. What part of work does A do in 2 days?",
         "s": [
           "A's 1 day work = 1/8.",
-          "In 2 days = 2 × 1/8 = 2/8 = 1/4."
+          "In 2 days = 2 \u00d7 1/8 = 2/8 = 1/4."
         ],
         "a": "1/4"
       },
@@ -236,7 +236,7 @@
         "q": "A alone does 60% of a work in 12 days. How many days will A take to complete the full work?",
         "s": [
           "60% = 12 days.",
-          "100% = 12 × 100/60 = 20 days."
+          "100% = 12 \u00d7 100/60 = 20 days."
         ],
         "a": "20 days"
       },
@@ -261,7 +261,7 @@
         "q": "A completes 2/5 of a work in 8 days. In how many days will A complete the full work?",
         "s": [
           "If 2/5 work takes 8 days.",
-          "Full work (1) takes 8 × 5/2 = 20 days."
+          "Full work (1) takes 8 \u00d7 5/2 = 20 days."
         ],
         "a": "20 days"
       },
@@ -288,8 +288,8 @@
       {
         "q": "A takes 10 days and B takes 15 days to complete a work. In how many days will they complete it together?",
         "s": [
-          "Together time = (A × B)/(A + B).",
-          "= (10 × 15)/(10 + 15).",
+          "Together time = (A \u00d7 B)/(A + B).",
+          "= (10 \u00d7 15)/(10 + 15).",
           "= 150/25 = 6 days."
         ],
         "a": "6 days"
@@ -334,7 +334,7 @@
       {
         "q": "A can do a work in 8 days. B can do it in 12 days. In how many days can they complete it together?",
         "s": [
-          "Together = (8 × 12)/(8 + 12).",
+          "Together = (8 \u00d7 12)/(8 + 12).",
           "= 96/20 = 4.8 days."
         ],
         "a": "4.8 days"
@@ -370,7 +370,7 @@
       {
         "q": "If 10 men can complete a work in 20 days, how many men are needed to complete it in 10 days?",
         "s": [
-          "Total work = 10 × 20 = 200 man-days.",
+          "Total work = 10 \u00d7 20 = 200 man-days.",
           "For 10 days: men = 200/10 = 20 men."
         ],
         "a": "20 men"
@@ -378,15 +378,15 @@
       {
         "q": "20 men can complete a work in 15 days. How many man-days are required for the work?",
         "s": [
-          "Man-days = Men × Days.",
-          "= 20 × 15 = 300."
+          "Man-days = Men \u00d7 Days.",
+          "= 20 \u00d7 15 = 300."
         ],
         "a": "300"
       },
       {
         "q": "If 5 men can complete a work in 12 days, how many days will 6 men take?",
         "s": [
-          "Total work = 5 × 12 = 60 man-days.",
+          "Total work = 5 \u00d7 12 = 60 man-days.",
           "6 men: days = 60/6 = 10 days."
         ],
         "a": "10 days"
@@ -394,7 +394,7 @@
       {
         "q": "8 men can complete a work in 15 days. How many men are required to complete it in 12 days?",
         "s": [
-          "Total work = 8 × 15 = 120 man-days.",
+          "Total work = 8 \u00d7 15 = 120 man-days.",
           "For 12 days: men = 120/12 = 10 men."
         ],
         "a": "10 men"
@@ -402,8 +402,8 @@
       {
         "q": "10 men can complete a work in 20 days. After 10 days, 5 more men join. How many more days will it take to complete the work?",
         "s": [
-          "Total work = 10 × 20 = 200 man-days.",
-          "In 10 days, work done = 10 × 10 = 100.",
+          "Total work = 10 \u00d7 20 = 200 man-days.",
+          "In 10 days, work done = 10 \u00d7 10 = 100.",
           "Remaining = 100. Now 15 men.",
           "Days = 100/15 = 6.67 days."
         ],
@@ -412,7 +412,7 @@
       {
         "q": "25 men can complete a work in 20 days. How many men are needed to complete it in 10 days?",
         "s": [
-          "Total work = 25 × 20 = 500 man-days.",
+          "Total work = 25 \u00d7 20 = 500 man-days.",
           "For 10 days: men = 500/10 = 50 men."
         ],
         "a": "50 men"
@@ -420,7 +420,7 @@
       {
         "q": "15 men can complete a work in 24 days. How many days will 20 men take?",
         "s": [
-          "Total work = 15 × 24 = 360 man-days.",
+          "Total work = 15 \u00d7 24 = 360 man-days.",
           "20 men: days = 360/20 = 18 days."
         ],
         "a": "18 days"
@@ -428,8 +428,8 @@
       {
         "q": "30 men can complete a work in 12 days. After 4 days, 10 more men join. How many more days will it take?",
         "s": [
-          "Total work = 30 × 12 = 360 man-days.",
-          "In 4 days, work done = 30 × 4 = 120.",
+          "Total work = 30 \u00d7 12 = 360 man-days.",
+          "In 4 days, work done = 30 \u00d7 4 = 120.",
           "Remaining = 240. Now 40 men.",
           "Days = 240/40 = 6 days."
         ],
@@ -438,7 +438,7 @@
       {
         "q": "12 men can complete a work in 20 days. How many days will 15 men take?",
         "s": [
-          "Total work = 12 × 20 = 240 man-days.",
+          "Total work = 12 \u00d7 20 = 240 man-days.",
           "15 men: days = 240/15 = 16 days."
         ],
         "a": "16 days"
@@ -446,8 +446,8 @@
       {
         "q": "20 men can complete a work in 30 days. After 10 days, 5 men leave. How many more days will the remaining men take?",
         "s": [
-          "Total work = 20 × 30 = 600 man-days.",
-          "In 10 days, work done = 20 × 10 = 200.",
+          "Total work = 20 \u00d7 30 = 600 man-days.",
+          "In 10 days, work done = 20 \u00d7 10 = 200.",
           "Remaining = 400. Now 15 men.",
           "Days = 400/15 = 26.67 days."
         ],
@@ -458,7 +458,7 @@
       {
         "q": "A is twice as efficient as B. B takes 24 days to complete a work. How many days does A take?",
         "s": [
-          "A is twice efficient → A takes half the time of B.",
+          "A is twice efficient \u2192 A takes half the time of B.",
           "A = 24/2 = 12 days."
         ],
         "a": "12 days"
@@ -466,7 +466,7 @@
       {
         "q": "A is 3 times as efficient as B. If B takes 12 days, how many days does A take?",
         "s": [
-          "A is 3 times efficient → A takes 1/3 of B's time.",
+          "A is 3 times efficient \u2192 A takes 1/3 of B's time.",
           "A = 12/3 = 4 days."
         ],
         "a": "4 days"
@@ -474,9 +474,9 @@
       {
         "q": "A is 4 times as efficient as B and finishes work 90 days less than B. How many days does A take alone?",
         "s": [
-          "Efficiency ratio A:B = 4:1 → Time ratio A:B = 1:4.",
+          "Efficiency ratio A:B = 4:1 \u2192 Time ratio A:B = 1:4.",
           "Let A take x days, B take 4x days.",
-          "4x - x = 3x = 90 → x = 30 days."
+          "4x - x = 3x = 90 \u2192 x = 30 days."
         ],
         "a": "30 days"
       },
@@ -524,8 +524,8 @@
         "q": "A is thrice as efficient as B. Together they complete a work in 6 days. In how many days can A complete the work alone?",
         "s": [
           "A = 3B.",
-          "A+B = 4B = 1/6 → B = 1/24.",
-          "A = 3/24 = 1/8 → A takes 8 days."
+          "A+B = 4B = 1/6 \u2192 B = 1/24.",
+          "A = 3/24 = 1/8 \u2192 A takes 8 days."
         ],
         "a": "8 days"
       },
@@ -533,8 +533,8 @@
         "q": "A is twice as efficient as B. Together they complete a work in 12 days. In how many days can A alone complete it?",
         "s": [
           "A = 2B.",
-          "A+B = 3B = 1/12 → B = 1/36.",
-          "A = 2/36 = 1/18 → A takes 18 days."
+          "A+B = 3B = 1/12 \u2192 B = 1/36.",
+          "A = 2/36 = 1/18 \u2192 A takes 18 days."
         ],
         "a": "18 days"
       }
@@ -544,7 +544,7 @@
         "q": "A pipe can fill a tank in 6 hours. How much of the tank does it fill in 1 hour?",
         "s": [
           "If a pipe fills in X hours, in 1 hour it fills 1/X.",
-          "Here X = 6 → 1/6."
+          "Here X = 6 \u2192 1/6."
         ],
         "a": "1/6"
       },
@@ -642,8 +642,8 @@
           "LCM = 30. A = 3, B = 2 units/day.",
           "2 days cycle = 5 units.",
           "5 cycles (10 days) = 25 units. Remaining = 5 units.",
-          "Day 11: A does 3 → remaining 2.",
-          "Day 12: B does 2 → completes.",
+          "Day 11: A does 3 \u2192 remaining 2.",
+          "Day 12: B does 2 \u2192 completes.",
           "Total = 12 days."
         ],
         "a": "12 days"
@@ -672,7 +672,7 @@
           "LCM = 60. A = 4, B = 3 units/day.",
           "2 days cycle = 7 units.",
           "8 cycles (16 days) = 56 units. Remaining = 4 units.",
-          "Day 17: A does 4 → completes.",
+          "Day 17: A does 4 \u2192 completes.",
           "Total = 17 days."
         ],
         "a": "17 days"
@@ -691,7 +691,7 @@
       {
         "q": "5 men can complete a work in 16 days. 8 women can complete the same work in 20 days. In how many days can 10 men and 4 women complete the work?",
         "s": [
-          "5 men × 16 = 80 man-days. 8 women × 20 = 160 woman-days.",
+          "5 men \u00d7 16 = 80 man-days. 8 women \u00d7 20 = 160 woman-days.",
           "So 1 man = 2 women in efficiency.",
           "10 men + 4 women = 10 men + 2 men = 12 men.",
           "Days = 80/12 = 6.67 days."
@@ -701,7 +701,7 @@
       {
         "q": "A man is twice as efficient as a woman. A woman is thrice as efficient as a child. If 2 men can complete a work in 6 days, how many days will 4 women take?",
         "s": [
-          "Man = 2W, Woman = 3C → Man = 6C.",
+          "Man = 2W, Woman = 3C \u2192 Man = 6C.",
           "2 men = 4 women (since man = 2 women).",
           "4 women = 4 women.",
           "Efficiency ratio = 4:4 = 1:1.",
@@ -759,7 +759,7 @@
         "3/5"
       ],
       "c": 1,
-      "exp": "B's 1 day work = 1/15. In 3 days = 3 × 1/15 = 3/15 = 1/5.",
+      "exp": "B's 1 day work = 1/15. In 3 days = 3 \u00d7 1/15 = 3/15 = 1/5.",
       "d": "medium",
       "t": "basic-work-rate"
     },
@@ -773,7 +773,7 @@
         "30 days"
       ],
       "c": 1,
-      "exp": "If 1/4 work takes 5 days, full work (1) takes 5 × 4 = 20 days.",
+      "exp": "If 1/4 work takes 5 days, full work (1) takes 5 \u00d7 4 = 20 days.",
       "d": "medium",
       "t": "basic-work-rate"
     },
@@ -801,7 +801,7 @@
         "8 days"
       ],
       "c": 1,
-      "exp": "Together time = (10×15)/(10+15) = 150/25 = 6 days.",
+      "exp": "Together time = (10\u00d715)/(10+15) = 150/25 = 6 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -815,7 +815,7 @@
         "20 days"
       ],
       "c": 1,
-      "exp": "B is twice as efficient → B takes half the time of A. B's time = 20/2 = 10 days.",
+      "exp": "B is twice as efficient \u2192 B takes half the time of A. B's time = 20/2 = 10 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -829,7 +829,7 @@
         "30 men"
       ],
       "c": 1,
-      "exp": "Total work = 10 × 20 = 200 man-days. For 10 days: men = 200/10 = 20 men.",
+      "exp": "Total work = 10 \u00d7 20 = 200 man-days. For 10 days: men = 200/10 = 20 men.",
       "d": "medium",
       "t": "man-days"
     },
@@ -871,7 +871,7 @@
         "12 days"
       ],
       "c": 1,
-      "exp": "A is 3 times efficient → A takes 1/3 of B's time. A = 24/3 = 8 days.",
+      "exp": "A is 3 times efficient \u2192 A takes 1/3 of B's time. A = 24/3 = 8 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -927,7 +927,7 @@
         "350"
       ],
       "c": 2,
-      "exp": "Man-days = Men × Days = 20 × 15 = 300.",
+      "exp": "Man-days = Men \u00d7 Days = 20 \u00d7 15 = 300.",
       "d": "medium",
       "t": "man-days"
     },
@@ -955,7 +955,7 @@
         "15 days"
       ],
       "c": 1,
-      "exp": "Total work = 5 × 12 = 60 man-days. 6 men: days = 60/6 = 10 days.",
+      "exp": "Total work = 5 \u00d7 12 = 60 man-days. 6 men: days = 60/6 = 10 days.",
       "d": "medium",
       "t": "man-days"
     },
@@ -993,11 +993,11 @@
       "opts": [
         "16 days",
         "18 days",
-        "20.57 days",
+        "20 days",
         "22 days"
       ],
       "c": 2,
-      "exp": "60% = 12 days, so 100% = 12 × 100/60 = 20 days.",
+      "exp": "60% = 12 days, so 100% = 12 \u00d7 100/60 = 20 days.",
       "d": "medium",
       "t": "basic-work-rate"
     },
@@ -1025,7 +1025,7 @@
         "13.33 days"
       ],
       "c": 0,
-      "exp": "B takes 20 days → B's rate = 1/20. A is twice efficient → A's rate = 2/20 = 1/10. Together = 1/10 + 1/20 = 3/20. Time = 20/3 = 6.67 days.",
+      "exp": "B takes 20 days \u2192 B's rate = 1/20. A is twice efficient \u2192 A's rate = 2/20 = 1/10. Together = 1/10 + 1/20 = 3/20. Time = 20/3 = 6.67 days.",
       "d": "hard",
       "t": "efficiency-ratio"
     },
@@ -1039,7 +1039,7 @@
         "20 days"
       ],
       "c": 1,
-      "exp": "B is 50% more efficient → B's efficiency = 1.5 × A's efficiency. B's time = 24/1.5 = 16 days.",
+      "exp": "B is 50% more efficient \u2192 B's efficiency = 1.5 \u00d7 A's efficiency. B's time = 24/1.5 = 16 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1081,7 +1081,7 @@
         "15 days"
       ],
       "c": 1,
-      "exp": "Total work = 10 × 20 = 200 man-days. In 10 days, work done = 10 × 10 = 100. Remaining = 100. Now 15 men: days = 100/15 = 6.67 days.",
+      "exp": "Total work = 10 \u00d7 20 = 200 man-days. In 10 days, work done = 10 \u00d7 10 = 100. Remaining = 100. Now 15 men: days = 100/15 = 6.67 days.",
       "d": "medium",
       "t": "man-days"
     },
@@ -1095,7 +1095,7 @@
         "6 days"
       ],
       "c": 0,
-      "exp": "Together = (8×12)/(8+12) = 96/20 = 4.8 days.",
+      "exp": "Together = (8\u00d712)/(8+12) = 96/20 = 4.8 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -1109,7 +1109,7 @@
         "7 days"
       ],
       "c": 1,
-      "exp": "Efficiency ratio A:B = 4:1 → Time ratio = 1:4. Let A take x days, B take 4x days. 4x - x = 15 → 3x = 15 → x = 5 days.",
+      "exp": "Efficiency ratio A:B = 4:1 \u2192 Time ratio = 1:4. Let A take x days, B take 4x days. 4x - x = 15 \u2192 3x = 15 \u2192 x = 5 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1151,7 +1151,7 @@
         "15 men"
       ],
       "c": 1,
-      "exp": "Total work = 8 × 15 = 120 man-days. For 12 days: men = 120/12 = 10 men.",
+      "exp": "Total work = 8 \u00d7 15 = 120 man-days. For 12 days: men = 120/12 = 10 men.",
       "d": "medium",
       "t": "man-days"
     },
@@ -1179,7 +1179,7 @@
         "22 days"
       ],
       "c": 2,
-      "exp": "A is 25% more efficient = 1.25 × B's efficiency. A's time = 25/1.25 = 20 days.",
+      "exp": "A is 25% more efficient = 1.25 \u00d7 B's efficiency. A's time = 25/1.25 = 20 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1193,7 +1193,7 @@
         "35 min"
       ],
       "c": 2,
-      "exp": "Fill rate = 1/12, Empty rate = 1/20. Net = 1/12 - 1/20 = (5-3)/60 = 2/60 = 1/30. Time = 30 minutes.",
+      "exp": "Fill rate = 1/12, Empty rate = 1/20. Net = 1/12 - 1/20 = (5-3)/60 = 2/60 = 1/30. Time = 30 minutes. So the answer is 30 min.",
       "d": "hard",
       "t": "pipes-cisterns"
     },
@@ -1206,7 +1206,7 @@
         "1/4",
         "1/3"
       ],
-      "c": 2,
+      "c": 0,
       "exp": "A+B = 1/20, A = 1/30. B = 1/20 - 1/30 = (3-2)/60 = 1/60. B's 10 days work = 10/60 = 1/6.",
       "d": "medium",
       "t": "combined-work"
@@ -1263,7 +1263,7 @@
         "14 hours"
       ],
       "c": 2,
-      "exp": "Fill rate = 1/6, Empty rate = 1/8. Net = 1/6 - 1/8 = (4-3)/24 = 1/24. Half tank remains → time = (1/2)/(1/24) = 12 hours.",
+      "exp": "Fill rate = 1/6, Empty rate = 1/8. Net = 1/6 - 1/8 = (4-3)/24 = 1/24. Half tank remains \u2192 time = (1/2)/(1/24) = 12 hours.",
       "d": "medium",
       "t": "pipes-cisterns"
     },
@@ -1291,7 +1291,7 @@
         "24 days"
       ],
       "c": 1,
-      "exp": "A is 40% more efficient = 1.4 × B. A's time = 28/1.4 = 20 days.",
+      "exp": "A is 40% more efficient = 1.4 \u00d7 B. A's time = 28/1.4 = 20 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1302,9 +1302,9 @@
         "4/9",
         "5/9",
         "2/3",
-        "7/9"
+        "5/6"
       ],
-      "c": 1,
+      "c": 3,
       "exp": "A+B = 1/24+1/36 = 5/72. In 12 days = 60/72 = 5/6.",
       "d": "medium",
       "t": "combined-work"
@@ -1333,7 +1333,7 @@
         "18 days"
       ],
       "c": 2,
-      "exp": "LCM=72. A=6,B=4,C=3. 3-day cycle=13. 5 cycles(15 days)=65. Remaining=7. Day16: A does 6→remaining1. Day17: B→1/4 day. Total=16.25.",
+      "exp": "LCM=72. A=6,B=4,C=3. 3-day cycle=13. 5 cycles(15 days)=65. Remaining=7. Day16: A does 6\u2192remaining1. Day17: B\u21921/4 day. Total=16.25.",
       "d": "medium",
       "t": "alternate-days"
     },
@@ -1361,7 +1361,7 @@
         "26 days"
       ],
       "c": 2,
-      "exp": "A is 60% more efficient = 1.6 × B. Time ratio A:B = 1:1.6 = 5:8. B's time = 15 × 8/5 = 24 days.",
+      "exp": "A is 60% more efficient = 1.6 \u00d7 B. Time ratio A:B = 1:1.6 = 5:8. B's time = 15 \u00d7 8/5 = 24 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1375,7 +1375,7 @@
         "22 days"
       ],
       "c": 2,
-      "exp": "B is 50% more efficient → B = 1.5 × A. B's time = 30/1.5 = 20 days.",
+      "exp": "B is 50% more efficient \u2192 B = 1.5 \u00d7 A. B's time = 30/1.5 = 20 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1431,7 +1431,7 @@
         "20 days"
       ],
       "c": 2,
-      "exp": "LCM(16,24)=48. A=3,B=2. 2-day cycle=5. 9 cycles(18 days)=45. Remaining=3. Next day A does 3→completes. Total=19 days.",
+      "exp": "LCM(16,24)=48. A=3,B=2. 2-day cycle=5. 9 cycles(18 days)=45. Remaining=3. Next day A does 3\u2192completes. Total=19 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -1459,13 +1459,13 @@
         "6 days"
       ],
       "c": 2,
-      "exp": "Efficiency: A = 2B, B = 3C → A = 6C. Time ratio A:C = 1:6. A's time = 30/6 = 5 days.",
+      "exp": "Efficiency: A = 2B, B = 3C \u2192 A = 6C. Time ratio A:C = 1:6. A's time = 30/6 = 5 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
     {
       "id": 53,
-      "q": "A pipe can fill a tank in 6 hours. A leak can empty it in 10 hours. If the tank is 2/3 full and both are opened, how long will it take to empty the tank?",
+      "q": "A leak can empty a tank in 6 hours. A pipe can fill it in 10 hours. The tank is 2/3 full. If both are opened, how long will it take to empty the tank completely?",
       "opts": [
         "5 hours",
         "6 hours",
@@ -1473,7 +1473,7 @@
         "10 hours"
       ],
       "c": 3,
-      "exp": "Fill=1/6, Empty=1/10. Net empty=1/10-1/6=-1/15. Time=(2/3)/(1/15)=10 hours.",
+      "exp": "Step 1: Leak emptying rate = 1/6 tank per hour. Step 2: Pipe filling rate = 1/10 tank per hour. Step 3: Net emptying rate = 1/6 - 1/10 = 5/30 - 3/30 = 2/30 = 1/15. Step 4: Amount to empty = 2/3 tank. Step 5: Time = (2/3) \u00f7 (1/15) = (2/3) \u00d7 15 = 10 hours. Step 6: The answer is 10 hours.",
       "d": "hard",
       "t": "pipes-cisterns"
     },
@@ -1501,7 +1501,7 @@
         "18 days"
       ],
       "c": 1,
-      "exp": "A=1.25B=5/4B. A+B=9/4B=1/8→B=1/18. A=5/4×1/18=5/72. A alone=72/5=14.4 days.",
+      "exp": "A=1.25B=5/4B. A+B=9/4B=1/8\u2192B=1/18. A=5/4\u00d71/18=5/72. A alone=72/5=14.4 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1529,7 +1529,7 @@
         "12 days"
       ],
       "c": 0,
-      "exp": "5 men×16=80 man-days. 8 women×20=160 woman-days. 1 man=2 women. 10 men+4 women=12 men. Days=80/12=6.67.",
+      "exp": "5 men\u00d716=80 man-days. 8 women\u00d720=160 woman-days. 1 man=2 women. 10 men+4 women=12 men. Days=80/12=6.67.",
       "d": "medium",
       "t": "men-women-children"
     },
@@ -1543,7 +1543,7 @@
         "72 days"
       ],
       "c": 3,
-      "exp": "A+B=1/24. In 8 days=1/3. Remaining=2/3. B does 2/3 in 24 days→B alone=36 days. A=1/24-1/36=1/72. A takes 72 days.",
+      "exp": "A+B=1/24. In 8 days=1/3. Remaining=2/3. B does 2/3 in 24 days\u2192B alone=36 days. A=1/24-1/36=1/72. A takes 72 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -1585,7 +1585,7 @@
         "22 days"
       ],
       "c": 1,
-      "exp": "33.33%=1/3. A=4/3 B. A's time=24×3/4=18 days.",
+      "exp": "33.33%=1/3. A=4/3 B. A's time=24\u00d73/4=18 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1599,7 +1599,7 @@
         "36 days"
       ],
       "c": 0,
-      "exp": "In 6 days=6/12=1/2. Remaining=1/2. B does 1/2 in 18 days→B alone=36 days. A=1/12-1/36=1/18. A takes 18 days.",
+      "exp": "In 6 days=6/12=1/2. Remaining=1/2. B does 1/2 in 18 days\u2192B alone=36 days. A=1/12-1/36=1/18. A takes 18 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -1613,7 +1613,7 @@
         "22.5 days"
       ],
       "c": 1,
-      "exp": "LCM=72. A=4,B=3. 2-day cycle=7. 10 cycles(20)=70. Remaining=2. Day21: A does 4→2/4=0.5. Total=20.5 days.",
+      "exp": "LCM=72. A=4,B=3. 2-day cycle=7. 10 cycles(20)=70. Remaining=2. Day21: A does 4\u21922/4=0.5. Total=20.5 days.",
       "d": "medium",
       "t": "alternate-days"
     },
@@ -1641,7 +1641,7 @@
         "24 days"
       ],
       "c": 2,
-      "exp": "A=1.2B=6/5B. A+B=11/5B=1/10→B=5/110=1/22. B takes 22 days.",
+      "exp": "A=1.2B=6/5B. A+B=11/5B=1/10\u2192B=5/110=1/22. B takes 22 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1697,7 +1697,7 @@
         "12 days"
       ],
       "c": 1,
-      "exp": "A=3B. A+B=4B=1/6→B=1/24. A=3/24=1/8. A takes 8 days.",
+      "exp": "A=3B. A+B=4B=1/6\u2192B=1/24. A=3/24=1/8. A takes 8 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1739,7 +1739,7 @@
         "42 days"
       ],
       "c": 2,
-      "exp": "A=1.5B, C=0.5B. A+B+C=3B=1/12 → B=1/36. B alone = 36 days.",
+      "exp": "A=1.5B, C=0.5B. A+B+C=3B=1/12 \u2192 B=1/36. B alone = 36 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1767,7 +1767,7 @@
         "18.5 days"
       ],
       "c": 3,
-      "exp": "2(A+B+C)=1/20+1/30+1/40=13/120. A+B+C=13/240. Time=240/13=18.46 days.",
+      "exp": "2(A+B+C)=1/20+1/30+1/40=13/120. A+B+C=13/240. Time=240/13=18.46 days. So the answer is 18.5 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -1781,7 +1781,7 @@
         "12.67 days"
       ],
       "c": 0,
-      "exp": "LCM=48. A=6,B=4,C=3. 3-day=13. 3 cycles(9)=39. Remaining=9. Day10:A→6, rem3. Day11:B→3/4=0.75. Total=10.75.",
+      "exp": "LCM=48. A=6,B=4,C=3. 3-day=13. 3 cycles(9)=39. Remaining=9. Day10:A\u21926, rem3. Day11:B\u21923/4=0.75. Total=10.75. So the answer is 10.75 days.",
       "d": "medium",
       "t": "alternate-days"
     },
@@ -1795,7 +1795,7 @@
         "22 days"
       ],
       "c": 2,
-      "exp": "A=1.6B=8/5B. A+B=13/5B=1/8→B=5/104=1/20.8. B takes 20.8 days.",
+      "exp": "A=1.6B=8/5B. A+B=13/5B=1/8\u2192B=5/104=1/20.8. B takes 20.8 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1809,7 +1809,7 @@
         "15 days"
       ],
       "c": 2,
-      "exp": "B=0.8×A. Time ratio A:B=0.8:1=4:5. B's time=10×5/4=12.5 days.",
+      "exp": "B=0.8\u00d7A. Time ratio A:B=0.8:1=4:5. B's time=10\u00d75/4=12.5 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1837,7 +1837,7 @@
         "45 days"
       ],
       "c": 2,
-      "exp": "In 6 days=1/4. Remaining=3/4. B does 3/4 in 30 days→B alone=40 days. A=1/24-1/40=1/60. A takes 60 days.",
+      "exp": "In 6 days=1/4. Remaining=3/4. B does 3/4 in 30 days\u2192B alone=40 days. A=1/24-1/40=1/60. A takes 60 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -1851,7 +1851,7 @@
         "16 days"
       ],
       "c": 1,
-      "exp": "B=1.25×A. B's time=15/1.25=12 days.",
+      "exp": "B=1.25\u00d7A. B's time=15/1.25=12 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1879,7 +1879,7 @@
         "60 days"
       ],
       "c": 3,
-      "exp": "A=2B, B=3C→A=6C. A+B+C=10C=1/6→C=1/60. C takes 60 days.",
+      "exp": "A=2B, B=3C\u2192A=6C. A+B+C=10C=1/6\u2192C=1/60. C takes 60 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1921,7 +1921,7 @@
         "32 days"
       ],
       "c": 3,
-      "exp": "A=0.6B=3/5B. A+B=8/5B=1/12→B=5/96. A=3/5×5/96=3/96=1/32. A takes 32 days.",
+      "exp": "A=0.6B=3/5B. A+B=8/5B=1/12\u2192B=5/96. A=3/5\u00d75/96=3/96=1/32. A takes 32 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1935,7 +1935,7 @@
         "11 days"
       ],
       "c": 2,
-      "exp": "LCM=36. A=3,B=2. 2-day=5. 3/4 of 36=27. 5 cycles(10)=25. Rem=2. A→2/3 day. Total=10.67.",
+      "exp": "LCM=36. A=3,B=2. 2-day=5. 3/4 of 36=27. 5 cycles(10)=25. Rem=2. A\u21922/3 day. Total=10.67. So the answer is 10.67 days.",
       "d": "medium",
       "t": "alternate-days"
     },
@@ -1963,7 +1963,7 @@
         "6.5 days"
       ],
       "c": 0,
-      "exp": "LCM=240. A=20,B=15,C=12. A+B+C=47/d. 3d=141. B+C=27/d. 2d=54. Total=195. Rem=45. C=12/d. Time=45/12=3.75.",
+      "exp": "LCM=240. A=20,B=15,C=12. A+B+C=47/d. 3d=141. B+C=27/d. 2d=54. Total=195. Rem=45. C=12/d. Time=45/12=3.75. So the answer is 3.75 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -1976,8 +1976,8 @@
         "28 days",
         "32 days"
       ],
-      "c": 1,
-      "exp": "A=0.75B=3/4B. A+B=7/4B=1/16→B=4/112=1/28. B takes 28 days.",
+      "c": 2,
+      "exp": "A=0.75B=3/4B. A+B=7/4B=1/16\u2192B=4/112=1/28. B takes 28 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -1991,7 +1991,7 @@
         "30 days"
       ],
       "c": 3,
-      "exp": "In 5 days=1/3. Rem=2/3. B does 2/3 in 20 days→B=30 days. A=1/15-1/30=1/30. A takes 30 days.",
+      "exp": "In 5 days=1/3. Rem=2/3. B does 2/3 in 20 days\u2192B=30 days. A=1/15-1/30=1/30. A takes 30 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -2005,7 +2005,7 @@
         "16 days"
       ],
       "c": 2,
-      "exp": "33.33%=1/3. B=4/3A. B's time=20×3/4=15 days.",
+      "exp": "33.33%=1/3. B=4/3A. B's time=20\u00d73/4=15 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -2019,7 +2019,7 @@
         "8.75 days"
       ],
       "c": 1,
-      "exp": "LCM=24. A=4,B=3,C=2. 3-day=9. 2 cycles(6)=18. Rem=6. Day7:A→4, rem2. Day8:B→2/3. Total=7.67.",
+      "exp": "LCM=24. A=4,B=3,C=2. 3-day=9. 2 cycles(6)=18. Rem=6. Day7:A\u21924, rem2. Day8:B\u21922/3. Total=7.67. So the answer is 7.67 days.",
       "d": "medium",
       "t": "alternate-days"
     },
@@ -2061,7 +2061,7 @@
         "21 days"
       ],
       "c": 1,
-      "exp": "A=1.3B=13/10B. A+B=23/10B=1/10→B=10/230=1/23. A=13/230. A takes 230/13=17.69.",
+      "exp": "A=1.3B=13/10B. A+B=23/10B=1/10\u2192B=10/230=1/23. A=13/230. A takes 230/13=17.69. So the answer is 17.69 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -2117,7 +2117,7 @@
         "54 days"
       ],
       "c": 3,
-      "exp": "A=0.5B=1/2B. A+B=3/2B=1/18→B=2/54=1/27. A=1/2×1/27=1/54. A takes 54 days.",
+      "exp": "A=0.5B=1/2B. A+B=3/2B=1/18\u2192B=2/54=1/27. A=1/2\u00d71/27=1/54. A takes 54 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -2131,7 +2131,7 @@
         "16 days"
       ],
       "c": 1,
-      "exp": "B=1.2×A. B's time=16/1.2=13.33 days.",
+      "exp": "B=1.2\u00d7A. B's time=16/1.2=13.33 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -2145,7 +2145,7 @@
         "65 days"
       ],
       "c": 2,
-      "exp": "Work done in 20 days=20/30=2/3. Remaining=1/3. A does 1/3 in 20 days→A alone=60 days.",
+      "exp": "Work done in 20 days=20/30=2/3. Remaining=1/3. A does 1/3 in 20 days\u2192A alone=60 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -2159,7 +2159,7 @@
         "55%"
       ],
       "c": 1,
-      "exp": "Total work=20×50=1000 man-days. Work done=70×5=350. Percentage=350/1000×100=35%.",
+      "exp": "Total work=20\u00d750=1000 man-days. Work done=70\u00d75=350. Percentage=350/1000\u00d7100=35%.",
       "d": "medium",
       "t": "basic-work-rate"
     },
@@ -2173,7 +2173,7 @@
         "12%"
       ],
       "c": 0,
-      "exp": "Total work=54×12=648. Work done=5×12=60. Percentage=60/648×100=9.25%≈9%.",
+      "exp": "Total work=54\u00d712=648. Work done=5\u00d712=60. Percentage=60/648\u00d7100=9.25%\u22489%.",
       "d": "medium",
       "t": "basic-work-rate"
     },
@@ -2187,7 +2187,7 @@
         "132%"
       ],
       "c": 0,
-      "exp": "Total work=43×89=3827. Work done=90×55=4950. Percentage=4950/3827×100=129.34%≈129%.",
+      "exp": "Total work=43\u00d789=3827. Work done=90\u00d755=4950. Percentage=4950/3827\u00d7100=129.34%\u2248129%.",
       "d": "medium",
       "t": "basic-work-rate"
     },
@@ -2201,7 +2201,7 @@
         "85%"
       ],
       "c": 0,
-      "exp": "Total work=64×90=5760. Work done=95×50=4750. Percentage=4750/5760×100=82.46%≈82%.",
+      "exp": "Total work=64\u00d790=5760. Work done=95\u00d750=4750. Percentage=4750/5760\u00d7100=82.46%\u224882%.",
       "d": "medium",
       "t": "basic-work-rate"
     },
@@ -2215,7 +2215,7 @@
         "22%"
       ],
       "c": 1,
-      "exp": "Total work=65×87=5655. Work done=9×125=1125. Percentage=1125/5655×100=19.89%≈20%.",
+      "exp": "Total work=65\u00d787=5655. Work done=9\u00d7125=1125. Percentage=1125/5655\u00d7100=19.89%\u224820%.",
       "d": "medium",
       "t": "basic-work-rate"
     },
@@ -2257,7 +2257,7 @@
         "12 days"
       ],
       "c": 1,
-      "exp": "60%=12 days→100%=20 days. Remaining=20-12=8 days.",
+      "exp": "60%=12 days\u2192100%=20 days. Remaining=20-12=8 days.",
       "d": "medium",
       "t": "basic-work-rate"
     },
@@ -2299,7 +2299,7 @@
         "127%"
       ],
       "c": 1,
-      "exp": "Total=123×21=2583. Work done=32×99=3168. %=3168/2583×100=122.64%≈123%.",
+      "exp": "Total=123\u00d721=2583. Work done=32\u00d799=3168. %=3168/2583\u00d7100=122.64%\u2248123%.",
       "d": "medium",
       "t": "basic-work-rate"
     },
@@ -2313,7 +2313,7 @@
         "27%"
       ],
       "c": 1,
-      "exp": "Total=9×45=405. Work done=5×20=100. %=100/405×100=24.69%≈25%.",
+      "exp": "Total=9\u00d745=405. Work done=5\u00d720=100. %=100/405\u00d7100=24.69%\u224825%.",
       "d": "medium",
       "t": "basic-work-rate"
     },
@@ -2369,7 +2369,7 @@
         "36 days"
       ],
       "c": 3,
-      "exp": "A=2B. A+B=3B=1/12→B=1/36. B takes 36 days.",
+      "exp": "A=2B. A+B=3B=1/12\u2192B=1/36. B takes 36 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -2383,7 +2383,7 @@
         "65 days"
       ],
       "c": 2,
-      "exp": "In 20 days=20/30=2/3. Rem=1/3. A does 1/3 in 20 days→A alone=60 days.",
+      "exp": "In 20 days=20/30=2/3. Rem=1/3. A does 1/3 in 20 days\u2192A alone=60 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -2411,13 +2411,13 @@
         "24 days"
       ],
       "c": 2,
-      "exp": "A=5/4B. A+B=9/4B=1/10→B=4/90=2/45. B takes 22.5.",
+      "exp": "A=5/4B. A+B=9/4B=1/10\u2192B=4/90=2/45. B takes 22.5. So the answer is 22.5 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
     {
       "id": 121,
-      "q": "A pipe can fill a tank in 8 hours. Another pipe can empty it in 12 hours. The tank is 1/2 full. If both pipes are opened, how long will it take to empty the tank completely?",
+      "q": "A pipe can fill a tank in 8 hours. Another pipe can empty it in 12 hours. The tank is 1/2 full. If both pipes are opened, how long will it take to fill the tank completely?",
       "opts": [
         "6 hours",
         "8 hours",
@@ -2425,7 +2425,7 @@
         "12 hours"
       ],
       "c": 3,
-      "exp": "Fill=1/8, Empty=1/12. Net empty=1/12-1/8=-1/24. Time=(1/2)/(1/24)=12 hours.",
+      "exp": "Step 1: Pipe filling rate = 1/8 tank per hour. Step 2: Other pipe emptying rate = 1/12 tank per hour. Step 3: Net filling rate = 1/8 - 1/12 = 3/24 - 2/24 = 1/24. Step 4: Remaining part to fill = 1 - 1/2 = 1/2. Step 5: Time = (1/2) \u00f7 (1/24) = 12 hours. Step 6: The answer is 12 hours.",
       "d": "medium",
       "t": "pipes-cisterns"
     },
@@ -2453,7 +2453,7 @@
         "16.8 days"
       ],
       "c": 1,
-      "exp": "2(A+B+C)=1/16+1/24+1/32=13/96. A+B+C=13/192. Time=192/13=14.77.",
+      "exp": "2(A+B+C)=1/16+1/24+1/32=13/96. A+B+C=13/192. Time=192/13=14.77. So the answer is 14.77 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -2463,11 +2463,11 @@
       "opts": [
         "16 days",
         "18 days",
-        "20 days",
+        "20.57 days",
         "22 days"
       ],
       "c": 2,
-      "exp": "A=7/5B. A+B=12/5B=1/12→B=5/144. A=7/5×5/144=7/144. A takes 144/7=20.57.",
+      "exp": "A=7/5B. A+B=12/5B=1/12\u2192B=5/144. A=7/5\u00d75/144=7/144. A takes 144/7=20.57. So the answer is 20.57 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -2481,7 +2481,7 @@
         "12.5 hours"
       ],
       "c": 0,
-      "exp": "Fill=1/5, Empty=1/7. Net=2/35. Need to fill 3/4. Time=(3/4)/(2/35)=105/8=13.125.",
+      "exp": "Fill=1/5, Empty=1/7. Net=2/35. Need to fill 3/4. Time=(3/4)/(2/35)=105/8=13.125. So the answer is 13.125 hours.",
       "d": "medium",
       "t": "pipes-cisterns"
     },
@@ -2494,8 +2494,8 @@
         "36 days",
         "42 days"
       ],
-      "c": 1,
-      "exp": "In 6d=1/3. Rem=2/3. B does 2/3 in 24d→B=36d. A=1/18-1/36=1/36. A takes 36 days.",
+      "c": 2,
+      "exp": "In 6d=1/3. Rem=2/3. B does 2/3 in 24d\u2192B=36d. A=1/18-1/36=1/36. A takes 36 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -2509,13 +2509,13 @@
         "16.5 days"
       ],
       "c": 1,
-      "exp": "LCM=36. A=3,B=2. 2-day=5. 7 cycles(14)=35. Rem=1. A→1/3. Total=14.33.",
+      "exp": "LCM=36. A=3,B=2. 2-day=5. 7 cycles(14)=35. Rem=1. A\u21921/3. Total=14.33. So the answer is 14.33 days.",
       "d": "medium",
       "t": "alternate-days"
     },
     {
       "id": 128,
-      "q": "A pipe can fill a tank in 6 hours. Another pipe can empty it in 8 hours. The tank is 1/3 full. If both pipes are opened, how long will it take to empty the tank completely?",
+      "q": "A leak can empty a tank in 6 hours. A pipe can fill it in 8 hours. The tank is 1/3 full. If both are opened, how long will it take to empty the tank completely?",
       "opts": [
         "8 hours",
         "10 hours",
@@ -2523,7 +2523,7 @@
         "16 hours"
       ],
       "c": 0,
-      "exp": "Fill=1/6, Empty=1/8. Net empty=1/8-1/6=-1/24. Time=(1/3)/(1/24)=8 hours.",
+      "exp": "Step 1: Leak emptying rate = 1/6 tank per hour. Step 2: Pipe filling rate = 1/8 tank per hour. Step 3: Net emptying rate = 1/6 - 1/8 = 4/24 - 3/24 = 1/24. Step 4: Amount to empty = 1/3 tank. Step 5: Time = (1/3) \u00f7 (1/24) = 8 hours. Step 6: The answer is 8 hours.",
       "d": "medium",
       "t": "pipes-cisterns"
     },
@@ -2537,7 +2537,7 @@
         "3 days"
       ],
       "c": 0,
-      "exp": "A=1/8, B=1/12, C=1/24. Together=1/8+1/12+1/24=6/24=1/4 per day. In 3 days=3/4 done. B+C=1/12+1/24=3/24=1/8 per day. In 2 days=2/8=1/4. Total=3/4+1/4=1. Work completed exactly! No more days needed.",
+      "exp": "A=1/8, B=1/12, C=1/24. Together=1/8+1/12+1/24=6/24=1/4 per day. In 3 days=3/4 done. B+C=1/12+1/24=3/24=1/8 per day. In 2 days=2/8=1/4. Total=3/4+1/4=1. Work completed exactly! No more days needed. So the answer is 0 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -2551,7 +2551,7 @@
         "33 days"
       ],
       "c": 1,
-      "exp": "A=0.8B=4/5B. A+B=9/5B=1/15→B=5/135=1/27. B takes 27 days.",
+      "exp": "A=0.8B=4/5B. A+B=9/5B=1/15\u2192B=5/135=1/27. B takes 27 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -2565,7 +2565,7 @@
         "60 days"
       ],
       "c": 3,
-      "exp": "In 8d=8/20=2/5. Rem=3/5. B does 3/5 in 18d→B=30d. A=1/20-1/30=1/60. A takes 60 days.",
+      "exp": "In 8d=8/20=2/5. Rem=3/5. B does 3/5 in 18d\u2192B=30d. A=1/20-1/30=1/60. A takes 60 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -2579,7 +2579,7 @@
         "15 days"
       ],
       "c": 2,
-      "exp": "B=1.5×A. B's time=18/1.5=12 days.",
+      "exp": "B=1.5\u00d7A. B's time=18/1.5=12 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -2593,7 +2593,7 @@
         "40.8 days"
       ],
       "c": 0,
-      "exp": "A+B=1/12,B+C=1/18,A+C=1/24. 2(A+B+C)=13/72. A+B+C=13/144. A=13/144-1/18=5/144. A takes 28.8.",
+      "exp": "A+B=1/12,B+C=1/18,A+C=1/24. 2(A+B+C)=13/72. A+B+C=13/144. A=13/144-1/18=5/144. A takes 28.8. So the answer is 28.8 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -2607,13 +2607,13 @@
         "42 days"
       ],
       "c": 1,
-      "exp": "A=0.7B=7/10B. A+B=17/10B=1/14→B=10/238. A=7/238. A takes 238/7=34 days.",
+      "exp": "A=0.7B=7/10B. A+B=17/10B=1/14\u2192B=10/238. A=7/238. A takes 238/7=34 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
     {
       "id": 135,
-      "q": "A pipe can fill a tank in 4 hours. Another pipe can empty it in 6 hours. The tank is 5/6 full. If both pipes are opened, how long will it take to empty the tank completely?",
+      "q": "A leak can empty a tank in 4 hours. A pipe can fill it in 6 hours. The tank is 5/6 full. If both are opened, how long will it take to empty the tank completely?",
       "opts": [
         "5 hours",
         "6 hours",
@@ -2621,7 +2621,7 @@
         "8 hours"
       ],
       "c": 2,
-      "exp": "Fill=1/4, Empty=1/6. Net empty=1/6-1/4=-1/12. Time=(5/6)/(1/12)=10 hours.",
+      "exp": "Step 1: Leak emptying rate = 1/4 tank per hour. Step 2: Pipe filling rate = 1/6 tank per hour. Step 3: Net emptying rate = 1/4 - 1/6 = 3/12 - 2/12 = 1/12. Step 4: Amount to empty = 5/6 tank. Step 5: Time = (5/6) \u00f7 (1/12) = (5/6) \u00d7 12 = 10 hours. Step 6: The answer is 10 hours.",
       "d": "medium",
       "t": "pipes-cisterns"
     },
@@ -2649,7 +2649,7 @@
         "22 days"
       ],
       "c": 2,
-      "exp": "A=1.6B=8/5B. A+B=13/5B=1/8→B=5/104. B takes 104/5=20.8.",
+      "exp": "A=1.6B=8/5B. A+B=13/5B=1/8\u2192B=5/104. B takes 104/5=20.8. So the answer is 20.8 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -2663,7 +2663,7 @@
         "30 days"
       ],
       "c": 1,
-      "exp": "In 10d=2/3. Rem=1/3. B does 1/3 in 15d→B=45d. A=1/15-1/45=2/45. A takes 22.5.",
+      "exp": "In 10d=2/3. Rem=1/3. B does 1/3 in 15d\u2192B=45d. A=1/15-1/45=2/45. A takes 22.5. So the answer is 22.5 days.",
       "d": "medium",
       "t": "combined-work"
     },
@@ -2677,7 +2677,7 @@
         "18 days"
       ],
       "c": 2,
-      "exp": "B=1.25×A. B's time=20/1.25=16 days.",
+      "exp": "B=1.25\u00d7A. B's time=20/1.25=16 days.",
       "d": "medium",
       "t": "efficiency-ratio"
     },
@@ -2705,7 +2705,7 @@
         "60 days"
       ],
       "c": 2,
-      "exp": "Total=20×50=1000. 25 men: days=1000/25=40 days.",
+      "exp": "Total=20\u00d750=1000. 25 men: days=1000/25=40 days.",
       "d": "medium",
       "t": "man-days"
     },
@@ -2718,7 +2718,7 @@
         "10 days",
         "11 days"
       ],
-      "c": 2,
+      "c": 3,
       "exp": "A+B=1/25+1/20=9/100. In 5d=45/100=9/20. Rem=11/20. B=1/20. Time=(11/20)/(1/20)=11 days.",
       "d": "medium",
       "t": "combined-work"
@@ -2817,7 +2817,7 @@
         "16.5 days"
       ],
       "c": 1,
-      "exp": "LCM=36. A=3,B=2. 2-day=5. 7 cycles(14)=35. Rem=1. B does 2 units next→0.5 day. Total=14.5.",
+      "exp": "LCM=36. A=3,B=2. 2-day=5. 7 cycles(14)=35. Rem=1. B does 2 units next\u21920.5 day. Total=14.5. So the answer is 14.5 days.",
       "d": "medium",
       "t": "alternate-days"
     },
@@ -2836,29 +2836,29 @@
       "t": "combined-work"
     },
     {
-      "q": "A and B undertook a work for ₹7200. A alone can complete it in 5 days, B alone in 4 days. Working together, what is the difference in the amounts they receive?",
+      "q": "A and B undertook a work for \u20b97200. A alone can complete it in 5 days, B alone in 4 days. Working together, what is the difference in the amounts they receive?",
       "opts": [
-        "₹600",
-        "₹800",
-        "₹1000",
-        "₹1200"
+        "\u20b9600",
+        "\u20b9800",
+        "\u20b91000",
+        "\u20b91200"
       ],
       "c": 1,
-      "exp": "Share ratio = 1/5 : 1/4 = 4 : 5. A gets 4/9×7200=3200, B gets 5/9×7200=4000. Difference=800.",
+      "exp": "Share ratio = 1/5 : 1/4 = 4 : 5. A gets 4/9\u00d77200=3200, B gets 5/9\u00d77200=4000. Difference=800.",
       "d": "medium",
       "t": "combined-work",
       "source": "Auto-verified"
     },
     {
-      "q": "P and Q undertook a work for ₹7200. P alone can complete it in 20 days, Q alone in 12 days. With R's assistance they finished it in 5 days. What is R's share?",
+      "q": "P and Q undertook a work for \u20b97200. P alone can complete it in 20 days, Q alone in 12 days. With R's assistance they finished it in 5 days. What is R's share?",
       "opts": [
-        "₹1800",
-        "₹2000",
-        "₹2400",
-        "₹3000"
+        "\u20b91800",
+        "\u20b92000",
+        "\u20b92400",
+        "\u20b93000"
       ],
       "c": 2,
-      "exp": "P+Q+R=1/5. R=1/5-1/20-1/12=1/15. R's share=(1/15)/(1/5)×7200=2400.",
+      "exp": "P+Q+R=1/5. R=1/5-1/20-1/12=1/15. R's share=(1/15)/(1/5)\u00d77200=2400.",
       "d": "hard",
       "t": "combined-work",
       "source": "Auto-verified"
@@ -2872,7 +2872,7 @@
         "18 days"
       ],
       "c": 2,
-      "exp": "M1D1H1=M2D2H2: 24×15×8=20×D×9. D=2880/180=16 days.",
+      "exp": "M1D1H1=M2D2H2: 24\u00d715\u00d78=20\u00d7D\u00d79. D=2880/180=16 days.",
       "d": "medium",
       "t": "man-days",
       "source": "Auto-verified"

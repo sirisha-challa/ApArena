@@ -876,7 +876,7 @@
       "d": "medium"
     },
     {
-      "q": "If SCHOOL=SDIPPM, then COLLEGE=?",
+      "q": "If SCHOOL is coded as TDIPPM, then how is COLLEGE coded?",
       "opts": [
         "DPMMFHF",
         "DPMMFHG",
@@ -885,7 +885,7 @@
       ],
       "c": 0,
       "t": "alternating",
-      "exp": "Step 1: S->S(+0),C->D(+1),H->I(+1),O->P(+1),O->P(+1),L->M(+1). Step 2: C->C(+0),O->P(+1),L->M(+1),L->M(+1),E->F(+1),G->H(+1),E->F(+1). Step 3: DPMMFHF correct.",
+      "exp": "Step 1: SCHOOL is coded as TDIPPM. Each letter is shifted forward by 1: S -> T, C -> D, H -> I, O -> P, O -> P, L -> M. Step 2: Apply the same +1 shift to COLLEGE. Step 3: C -> D, O -> P, L -> M, L -> M, E -> F, G -> H, E -> F. Step 4: The code is DPMMFHF.",
       "id": 23,
       "d": "medium"
     },
@@ -1977,7 +1977,7 @@
       ],
       "c": 0,
       "t": "vowel-consonant",
-      "exp": "Step 1: Rule: vowels -> next consonant, consonants -> previous vowel. Step 2: R->O, I->J, N->I, G->E. Step 3: OJIE correct.",
+      "exp": "Step 1: Vowels are replaced by the next consonant. Step 2: Consonants are replaced by the nearest previous vowel. Step 3: For RING: R -> nearest previous vowel is O. I is a vowel, so I -> next consonant J. N -> nearest previous vowel is I. G -> nearest previous vowel is E. Step 4: Therefore, RING is coded as OJIE.",
       "d": "medium",
       "source": "Auto-verified"
     },

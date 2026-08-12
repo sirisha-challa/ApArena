@@ -1409,6 +1409,7 @@
       "d": "medium"
     },
     {
+      "id": 39,
       "q": "Sleep : Tired :: Eat : ?",
       "opts": [
         "Hungry",
@@ -1418,8 +1419,7 @@
       ],
       "c": 0,
       "t": "cause-effect",
-      "exp": "Step 1: Sleep cures tiredness. Step 2: Eating cures hunger. Step 3: Hungry is correct.",
-      "id": 39,
+      "exp": "Step 1: Being tired causes sleep. Step 2: Being hungry causes eating. Step 3: Hungry is correct.",
       "d": "medium"
     },
     {
@@ -1587,7 +1587,7 @@
       ],
       "c": 1,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Big is Large. Step 3: Large is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Big is Large. Step 3: large is correct.",
       "d": "medium"
     },
     {
@@ -1601,7 +1601,7 @@
       ],
       "c": 1,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Small is Tiny. Step 3: Tiny is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Small is Tiny. Step 3: tiny is correct.",
       "d": "medium"
     },
     {
@@ -1615,7 +1615,7 @@
       ],
       "c": 1,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Fast is Quick. Step 3: Quick is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Fast is Quick. Step 3: quick is correct.",
       "d": "medium"
     },
     {
@@ -1629,7 +1629,7 @@
       ],
       "c": 2,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Brave is Courageous. Step 3: Courageous is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Brave is Courageous. Step 3: courageous is correct.",
       "d": "medium"
     },
     {
@@ -1643,7 +1643,7 @@
       ],
       "c": 2,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Afraid is Scared. Step 3: Scared is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Afraid is Scared. Step 3: scared is correct.",
       "d": "medium"
     },
     {
@@ -1657,7 +1657,7 @@
       ],
       "c": 3,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Pretty is Beautiful. Step 3: Beautiful is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Pretty is Beautiful. Step 3: beautiful is correct.",
       "d": "medium"
     },
     {
@@ -1671,7 +1671,7 @@
       ],
       "c": 3,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Smart is Intelligent. Step 3: Intelligent is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Smart is Intelligent. Step 3: intelligent is correct.",
       "d": "medium"
     },
     {
@@ -1685,7 +1685,7 @@
       ],
       "c": 3,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Angry is Furious. Step 3: Furious is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Angry is Furious. Step 3: furious is correct.",
       "d": "medium"
     },
     {
@@ -1699,7 +1699,7 @@
       ],
       "c": 3,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Calm is Serene. Step 3: Serene is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Calm is Serene. Step 3: serene is correct.",
       "d": "medium"
     },
     {
@@ -1713,7 +1713,7 @@
       ],
       "c": 0,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Rich is Wealthy. Step 3: Wealthy is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Rich is Wealthy. Step 3: wealthy is correct.",
       "d": "medium"
     },
     {
@@ -1727,7 +1727,7 @@
       ],
       "c": 3,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Poor is Destitute. Step 3: Destitute is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Poor is Destitute. Step 3: destitute is correct.",
       "d": "medium"
     },
     {
@@ -1741,7 +1741,7 @@
       ],
       "c": 3,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Old is Ancient. Step 3: Ancient is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Old is Ancient. Step 3: ancient is correct.",
       "d": "medium"
     },
     {
@@ -1755,7 +1755,7 @@
       ],
       "c": 0,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of New is Novel. Step 3: Novel is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of New is Novel. Step 3: novel is correct.",
       "d": "medium"
     },
     {
@@ -1769,7 +1769,7 @@
       ],
       "c": 2,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Cold is Frigid. Step 3: Frigid is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Cold is Frigid. Step 3: frigid is correct.",
       "d": "medium"
     },
     {
@@ -1783,7 +1783,7 @@
       ],
       "c": 3,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Hot is Scorching. Step 3: Scorching is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Hot is Scorching. Step 3: scorching is correct.",
       "d": "medium"
     },
     {
@@ -1797,7 +1797,7 @@
       ],
       "c": 3,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Sad is Melancholy. Step 3: Melancholy is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Sad is Melancholy. Step 3: melancholy is correct.",
       "d": "medium"
     },
     {
@@ -1811,7 +1811,7 @@
       ],
       "c": 2,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Bright is Luminous. Step 3: Luminous is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Bright is Luminous. Step 3: luminous is correct.",
       "d": "medium"
     },
     {
@@ -1825,7 +1825,7 @@
       ],
       "c": 0,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Dark is Gloomy. Step 3: Gloomy is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Dark is Gloomy. Step 3: gloomy is correct.",
       "d": "medium"
     },
     {
@@ -1839,7 +1839,7 @@
       ],
       "c": 2,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Loud is Noisy. Step 3: Noisy is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Loud is Noisy. Step 3: noisy is correct.",
       "d": "medium"
     },
     {
@@ -1853,7 +1853,7 @@
       ],
       "c": 2,
       "t": "synonym",
-      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Thin is Slender. Step 3: Slender is correct.",
+      "exp": "Step 1: Happy and Joyful are synonyms. Step 2: The synonym of Thin is Slender. Step 3: slender is correct.",
       "d": "medium"
     },
     {
@@ -1867,7 +1867,7 @@
       ],
       "c": 3,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Light is Dark. Step 3: Dark is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Light is Dark. Step 3: dark is correct.",
       "d": "medium"
     },
     {
@@ -1881,7 +1881,7 @@
       ],
       "c": 0,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Up is Down. Step 3: Down is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Up is Down. Step 3: down is correct.",
       "d": "medium"
     },
     {
@@ -1895,7 +1895,7 @@
       ],
       "c": 3,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Good is Bad. Step 3: Bad is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Good is Bad. Step 3: bad is correct.",
       "d": "medium"
     },
     {
@@ -1909,7 +1909,7 @@
       ],
       "c": 3,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Happy is Sad. Step 3: Sad is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Happy is Sad. Step 3: sad is correct.",
       "d": "medium"
     },
     {
@@ -1923,7 +1923,7 @@
       ],
       "c": 3,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Fast is Slow. Step 3: Slow is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Fast is Slow. Step 3: slow is correct.",
       "d": "medium"
     },
     {
@@ -1937,7 +1937,7 @@
       ],
       "c": 2,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Strong is Weak. Step 3: Weak is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Strong is Weak. Step 3: weak is correct.",
       "d": "medium"
     },
     {
@@ -1951,7 +1951,7 @@
       ],
       "c": 2,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Day is Night. Step 3: Night is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Day is Night. Step 3: night is correct.",
       "d": "medium"
     },
     {
@@ -1965,7 +1965,7 @@
       ],
       "c": 2,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Summer is Winter. Step 3: Winter is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Summer is Winter. Step 3: winter is correct.",
       "d": "medium"
     },
     {
@@ -1979,7 +1979,7 @@
       ],
       "c": 0,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Rich is Poor. Step 3: Poor is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Rich is Poor. Step 3: poor is correct.",
       "d": "medium"
     },
     {
@@ -1993,7 +1993,7 @@
       ],
       "c": 1,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Tall is Short. Step 3: Short is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Tall is Short. Step 3: short is correct.",
       "d": "medium"
     },
     {
@@ -2007,7 +2007,7 @@
       ],
       "c": 3,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Big is Small. Step 3: Small is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Big is Small. Step 3: small is correct.",
       "d": "medium"
     },
     {
@@ -2021,7 +2021,7 @@
       ],
       "c": 0,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Wet is Dry. Step 3: Dry is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Wet is Dry. Step 3: dry is correct.",
       "d": "medium"
     },
     {
@@ -2035,7 +2035,7 @@
       ],
       "c": 1,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Clean is Dirty. Step 3: Dirty is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Clean is Dirty. Step 3: dirty is correct.",
       "d": "medium"
     },
     {
@@ -2049,7 +2049,7 @@
       ],
       "c": 0,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of High is Low. Step 3: Low is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of High is Low. Step 3: low is correct.",
       "d": "medium"
     },
     {
@@ -2063,7 +2063,7 @@
       ],
       "c": 1,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Thick is Thin. Step 3: Thin is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Thick is Thin. Step 3: thin is correct.",
       "d": "medium"
     },
     {
@@ -2077,7 +2077,7 @@
       ],
       "c": 1,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Bright is Dim. Step 3: Dim is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Bright is Dim. Step 3: dim is correct.",
       "d": "medium"
     },
     {
@@ -2091,7 +2091,7 @@
       ],
       "c": 2,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Sharp is Blunt. Step 3: Blunt is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Sharp is Blunt. Step 3: blunt is correct.",
       "d": "medium"
     },
     {
@@ -2105,7 +2105,7 @@
       ],
       "c": 0,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Full is Empty. Step 3: Empty is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Full is Empty. Step 3: empty is correct.",
       "d": "medium"
     },
     {
@@ -2119,7 +2119,7 @@
       ],
       "c": 1,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Hard is Soft. Step 3: Soft is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Hard is Soft. Step 3: soft is correct.",
       "d": "medium"
     },
     {
@@ -2133,7 +2133,7 @@
       ],
       "c": 0,
       "t": "antonym",
-      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Loud is Quiet. Step 3: Quiet is correct.",
+      "exp": "Step 1: Hot and Cold are opposites. Step 2: The opposite of Loud is Quiet. Step 3: quiet is correct.",
       "d": "medium"
     },
     {
@@ -2147,7 +2147,7 @@
       ],
       "c": 1,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Fire causes Smoke. Step 3: Smoke is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Fire causes Smoke. Step 3: smoke is correct.",
       "d": "medium"
     },
     {
@@ -2161,7 +2161,7 @@
       ],
       "c": 0,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Study causes Success. Step 3: Success is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Study causes Success. Step 3: success is correct.",
       "d": "medium"
     },
     {
@@ -2175,7 +2175,7 @@
       ],
       "c": 2,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Neglect causes Failure. Step 3: Failure is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Neglect causes Failure. Step 3: failure is correct.",
       "d": "medium"
     },
     {
@@ -2189,7 +2189,7 @@
       ],
       "c": 1,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Eating causes Energy. Step 3: Energy is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Eating causes Energy. Step 3: energy is correct.",
       "d": "medium"
     },
     {
@@ -2203,7 +2203,7 @@
       ],
       "c": 1,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Sleep causes Rest. Step 3: Rest is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Sleep causes Rest. Step 3: rest is correct.",
       "d": "medium"
     },
     {
@@ -2217,7 +2217,7 @@
       ],
       "c": 0,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Seed causes Plant. Step 3: Plant is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Seed causes Plant. Step 3: plant is correct.",
       "d": "medium"
     },
     {
@@ -2231,7 +2231,7 @@
       ],
       "c": 1,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Egg causes Chick. Step 3: Chick is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Egg causes Chick. Step 3: chick is correct.",
       "d": "medium"
     },
     {
@@ -2245,7 +2245,7 @@
       ],
       "c": 3,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Practice causes Perfection. Step 3: Perfection is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Practice causes Perfection. Step 3: perfection is correct.",
       "d": "medium"
     },
     {
@@ -2259,7 +2259,7 @@
       ],
       "c": 3,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Training causes Fitness. Step 3: Fitness is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Training causes Fitness. Step 3: fitness is correct.",
       "d": "medium"
     },
     {
@@ -2273,7 +2273,7 @@
       ],
       "c": 1,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Watering causes Growth. Step 3: Growth is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Watering causes Growth. Step 3: growth is correct.",
       "d": "medium"
     },
     {
@@ -2287,7 +2287,7 @@
       ],
       "c": 3,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Heat causes Expansion. Step 3: Expansion is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Heat causes Expansion. Step 3: expansion is correct.",
       "d": "medium"
     },
     {
@@ -2301,7 +2301,7 @@
       ],
       "c": 3,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Cold causes Contraction. Step 3: Contraction is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Cold causes Contraction. Step 3: contraction is correct.",
       "d": "medium"
     },
     {
@@ -2315,7 +2315,7 @@
       ],
       "c": 0,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Friction causes Heat. Step 3: Heat is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Friction causes Heat. Step 3: heat is correct.",
       "d": "medium"
     },
     {
@@ -2329,7 +2329,7 @@
       ],
       "c": 0,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Exercise causes Sweat. Step 3: Sweat is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Exercise causes Sweat. Step 3: sweat is correct.",
       "d": "medium"
     },
     {
@@ -2343,7 +2343,7 @@
       ],
       "c": 0,
       "t": "cause-effect",
-      "exp": "Step 1: Rain causes Flood. Step 2: Overeating causes Obesity. Step 3: Obesity is correct.",
+      "exp": "Step 1: Rain causes Flood. Step 2: Overeating causes Obesity. Step 3: obesity is correct.",
       "d": "medium"
     },
     {
@@ -2357,7 +2357,7 @@
       ],
       "c": 2,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A knife is used to cut. Step 3: Cut is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: A knife is used to cut. Step 3: cut is correct.",
       "d": "medium"
     },
     {
@@ -2371,7 +2371,7 @@
       ],
       "c": 1,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A brush is used to paint. Step 3: Paint is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: A brush is used to paint. Step 3: paint is correct.",
       "d": "medium"
     },
     {
@@ -2385,7 +2385,7 @@
       ],
       "c": 1,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A phone is used to call. Step 3: Call is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: A phone is used to call. Step 3: call is correct.",
       "d": "medium"
     },
     {
@@ -2399,7 +2399,7 @@
       ],
       "c": 2,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A car is used to transport. Step 3: Transport is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: A car is used to transport. Step 3: transport is correct.",
       "d": "medium"
     },
     {
@@ -2413,7 +2413,7 @@
       ],
       "c": 2,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A clock is used to time. Step 3: Time is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: A clock is used to show time. Step 3: time is correct.",
       "d": "medium"
     },
     {
@@ -2427,7 +2427,7 @@
       ],
       "c": 0,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A thermometer is used to temperature. Step 3: Temperature is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: A thermometer is used to measure temperature. Step 3: temperature is correct.",
       "d": "medium"
     },
     {
@@ -2441,7 +2441,7 @@
       ],
       "c": 1,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A key is used to lock. Step 3: Lock is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: A key is used to lock. Step 3: lock is correct.",
       "d": "medium"
     },
     {
@@ -2455,7 +2455,7 @@
       ],
       "c": 3,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A password is used to account. Step 3: Account is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: A password is used to access an account. Step 3: account is correct.",
       "d": "medium"
     },
     {
@@ -2469,7 +2469,7 @@
       ],
       "c": 3,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A book is used to read. Step 3: Read is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: A book is used to read. Step 3: read is correct.",
       "d": "medium"
     },
     {
@@ -2483,7 +2483,7 @@
       ],
       "c": 2,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A music is used to listen. Step 3: Listen is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: Music is meant to be listened to. Step 3: listen is correct.",
       "d": "medium"
     },
     {
@@ -2497,7 +2497,7 @@
       ],
       "c": 2,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A shoes is used to walk. Step 3: Walk is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: Shoes are used for walking. Step 3: walk is correct.",
       "d": "medium"
     },
     {
@@ -2511,7 +2511,7 @@
       ],
       "c": 3,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A glasses is used to see. Step 3: See is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: Glasses help you see. Step 3: see is correct.",
       "d": "medium"
     },
     {
@@ -2525,7 +2525,7 @@
       ],
       "c": 0,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A chair is used to sit. Step 3: Sit is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: A chair is used to sit. Step 3: sit is correct.",
       "d": "medium"
     },
     {
@@ -2539,7 +2539,7 @@
       ],
       "c": 1,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A spoon is used to eat. Step 3: Eat is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: A spoon is used to eat. Step 3: eat is correct.",
       "d": "medium"
     },
     {
@@ -2553,7 +2553,7 @@
       ],
       "c": 0,
       "t": "function",
-      "exp": "Step 1: A pen is used to write. Step 2: A fork is used to pierce. Step 3: Pierce is correct.",
+      "exp": "Step 1: A pen is used to write. Step 2: A fork is used to pierce. Step 3: pierce is correct.",
       "d": "medium"
     },
     {
@@ -2567,7 +2567,7 @@
       ],
       "c": 3,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A page is part of a book. Step 3: Book is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A page is part of a book. Step 3: book is correct.",
       "d": "medium"
     },
     {
@@ -2581,7 +2581,7 @@
       ],
       "c": 2,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A leaf is part of a tree. Step 3: Tree is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A leaf is part of a tree. Step 3: tree is correct.",
       "d": "medium"
     },
     {
@@ -2595,7 +2595,7 @@
       ],
       "c": 3,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A wheel is part of a car. Step 3: Car is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A wheel is part of a car. Step 3: car is correct.",
       "d": "medium"
     },
     {
@@ -2609,7 +2609,7 @@
       ],
       "c": 0,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A brick is part of a wall. Step 3: Wall is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A brick is part of a wall. Step 3: wall is correct.",
       "d": "medium"
     },
     {
@@ -2623,7 +2623,7 @@
       ],
       "c": 1,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A engine is part of a car. Step 3: Car is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: An engine is part of a car. Step 3: car is correct.",
       "d": "medium"
     },
     {
@@ -2637,7 +2637,7 @@
       ],
       "c": 1,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A cpu is part of a computer. Step 3: Computer is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A CPU is part of a computer. Step 3: computer is correct.",
       "d": "medium"
     },
     {
@@ -2651,7 +2651,7 @@
       ],
       "c": 3,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A stanza is part of a poem. Step 3: Poem is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A stanza is part of a poem. Step 3: poem is correct.",
       "d": "medium"
     },
     {
@@ -2665,7 +2665,7 @@
       ],
       "c": 0,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A chapter is part of a book. Step 3: Book is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A chapter is part of a book. Step 3: book is correct.",
       "d": "medium"
     },
     {
@@ -2679,7 +2679,7 @@
       ],
       "c": 2,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A branch is part of a tree. Step 3: Tree is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A branch is part of a tree. Step 3: tree is correct.",
       "d": "medium"
     },
     {
@@ -2693,7 +2693,7 @@
       ],
       "c": 3,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A petal is part of a flower. Step 3: Flower is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A petal is part of a flower. Step 3: flower is correct.",
       "d": "medium"
     },
     {
@@ -2707,7 +2707,7 @@
       ],
       "c": 3,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A key is part of a piano. Step 3: Piano is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A key is part of a piano. Step 3: piano is correct.",
       "d": "medium"
     },
     {
@@ -2721,7 +2721,7 @@
       ],
       "c": 1,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A letter is part of a alphabet. Step 3: Alphabet is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A letter is part of the alphabet. Step 3: alphabet is correct.",
       "d": "medium"
     },
     {
@@ -2735,7 +2735,7 @@
       ],
       "c": 3,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A string is part of a guitar. Step 3: Guitar is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A string is part of a guitar. Step 3: guitar is correct.",
       "d": "medium"
     },
     {
@@ -2749,7 +2749,7 @@
       ],
       "c": 1,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A scene is part of a movie. Step 3: Movie is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A scene is part of a movie. Step 3: movie is correct.",
       "d": "medium"
     },
     {
@@ -2763,7 +2763,7 @@
       ],
       "c": 2,
       "t": "part-whole",
-      "exp": "Step 1: A finger is part of a hand. Step 2: A paragraph is part of a essay. Step 3: Essay is correct.",
+      "exp": "Step 1: A finger is part of a hand. Step 2: A paragraph is part of a essay. Step 3: essay is correct.",
       "d": "medium"
     },
     {
@@ -2777,7 +2777,7 @@
       ],
       "c": 1,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A teacher uses a chalk. Step 3: Chalk is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A teacher uses a chalk. Step 3: chalk is correct.",
       "d": "medium"
     },
     {
@@ -2791,7 +2791,7 @@
       ],
       "c": 2,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A chef uses a knife. Step 3: Knife is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A chef uses a knife. Step 3: knife is correct.",
       "d": "medium"
     },
     {
@@ -2805,7 +2805,7 @@
       ],
       "c": 1,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A painter uses a brush. Step 3: Brush is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A painter uses a brush. Step 3: brush is correct.",
       "d": "medium"
     },
     {
@@ -2819,7 +2819,7 @@
       ],
       "c": 2,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A farmer uses a plough. Step 3: Plough is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A farmer uses a plough. Step 3: plough is correct.",
       "d": "medium"
     },
     {
@@ -2833,7 +2833,7 @@
       ],
       "c": 3,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A mechanic uses a wrench. Step 3: Wrench is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A mechanic uses a wrench. Step 3: wrench is correct.",
       "d": "medium"
     },
     {
@@ -2847,7 +2847,7 @@
       ],
       "c": 3,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A surgeon uses a scalpel. Step 3: Scalpel is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A surgeon uses a scalpel. Step 3: scalpel is correct.",
       "d": "medium"
     },
     {
@@ -2861,7 +2861,7 @@
       ],
       "c": 3,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A photographer uses a camera. Step 3: Camera is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A photographer uses a camera. Step 3: camera is correct.",
       "d": "medium"
     },
     {
@@ -2875,7 +2875,7 @@
       ],
       "c": 1,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A astronomer uses a telescope. Step 3: Telescope is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: An astronomer uses a telescope. Step 3: telescope is correct.",
       "d": "medium"
     },
     {
@@ -2889,7 +2889,7 @@
       ],
       "c": 0,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A tailor uses a needle. Step 3: Needle is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A tailor uses a needle. Step 3: needle is correct.",
       "d": "medium"
     },
     {
@@ -2903,7 +2903,7 @@
       ],
       "c": 1,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A barber uses a scissors. Step 3: Scissors is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A barber uses a scissors. Step 3: scissors is correct.",
       "d": "medium"
     },
     {
@@ -2917,7 +2917,7 @@
       ],
       "c": 2,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A gardener uses a shears. Step 3: Shears is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A gardener uses a shears. Step 3: shears is correct.",
       "d": "medium"
     },
     {
@@ -2931,7 +2931,7 @@
       ],
       "c": 1,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A fisherman uses a net. Step 3: Net is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A fisherman uses a net. Step 3: net is correct.",
       "d": "medium"
     },
     {
@@ -2945,7 +2945,7 @@
       ],
       "c": 2,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A artist uses a canvas. Step 3: Canvas is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: An artist works on a canvas. Step 3: canvas is correct.",
       "d": "medium"
     },
     {
@@ -2959,7 +2959,7 @@
       ],
       "c": 1,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A soldier uses a gun. Step 3: Gun is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A soldier uses a gun. Step 3: gun is correct.",
       "d": "medium"
     },
     {
@@ -2973,7 +2973,7 @@
       ],
       "c": 1,
       "t": "profession-tool",
-      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A nurse uses a syringe. Step 3: Syringe is correct.",
+      "exp": "Step 1: A doctor uses a stethoscope. Step 2: A nurse uses a syringe. Step 3: syringe is correct.",
       "d": "medium"
     },
     {
@@ -2987,7 +2987,7 @@
       ],
       "c": 3,
       "t": "animal-young",
-      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby cow is called a calf. Step 3: Calf is correct.",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby cow is called a calf. Step 3: calf is correct.",
       "d": "medium"
     },
     {
@@ -3001,7 +3001,7 @@
       ],
       "c": 0,
       "t": "animal-young",
-      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby lion is called a cub. Step 3: Cub is correct.",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby lion is called a cub. Step 3: cub is correct.",
       "d": "medium"
     },
     {
@@ -3015,7 +3015,7 @@
       ],
       "c": 0,
       "t": "animal-young",
-      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby sheep is called a lamb. Step 3: Lamb is correct.",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby sheep is called a lamb. Step 3: lamb is correct.",
       "d": "medium"
     },
     {
@@ -3029,7 +3029,7 @@
       ],
       "c": 3,
       "t": "animal-young",
-      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby horse is called a foal. Step 3: Foal is correct.",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby horse is called a foal. Step 3: foal is correct.",
       "d": "medium"
     },
     {
@@ -3043,7 +3043,7 @@
       ],
       "c": 1,
       "t": "animal-young",
-      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby duck is called a duckling. Step 3: Duckling is correct.",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby duck is called a duckling. Step 3: duckling is correct.",
       "d": "medium"
     },
     {
@@ -3057,7 +3057,7 @@
       ],
       "c": 2,
       "t": "animal-young",
-      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby frog is called a tadpole. Step 3: Tadpole is correct.",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby frog is called a tadpole. Step 3: tadpole is correct.",
       "d": "medium"
     },
     {
@@ -3071,7 +3071,7 @@
       ],
       "c": 0,
       "t": "animal-young",
-      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby goat is called a kid. Step 3: Kid is correct.",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby goat is called a kid. Step 3: kid is correct.",
       "d": "medium"
     },
     {
@@ -3085,7 +3085,7 @@
       ],
       "c": 2,
       "t": "animal-young",
-      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby hen is called a chick. Step 3: Chick is correct.",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby hen is called a chick. Step 3: chick is correct.",
       "d": "medium"
     },
     {
@@ -3099,7 +3099,7 @@
       ],
       "c": 0,
       "t": "animal-young",
-      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby deer is called a fawn. Step 3: Fawn is correct.",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby deer is called a fawn. Step 3: fawn is correct.",
       "d": "medium"
     },
     {
@@ -3113,7 +3113,7 @@
       ],
       "c": 0,
       "t": "animal-young",
-      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby elephant is called a calf. Step 3: Calf is correct.",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby elephant is called a calf. Step 3: calf is correct.",
       "d": "medium"
     },
     {
@@ -3127,7 +3127,7 @@
       ],
       "c": 3,
       "t": "animal-young",
-      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby bear is called a cub. Step 3: Cub is correct.",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby bear is called a cub. Step 3: cub is correct.",
       "d": "medium"
     },
     {
@@ -3141,7 +3141,7 @@
       ],
       "c": 1,
       "t": "animal-young",
-      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby wolf is called a cub. Step 3: Cub is correct.",
+      "exp": "Step 1: A baby cat is called a kitten. Step 2: A baby wolf is called a cub. Step 3: cub is correct.",
       "d": "medium"
     },
     {
@@ -3155,7 +3155,7 @@
       ],
       "c": 2,
       "t": "animal-home",
-      "exp": "Step 1: A dog lives in a kennel. Step 2: A lion lives in a den. Step 3: Den is correct.",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A lion lives in a den. Step 3: den is correct.",
       "d": "medium"
     },
     {
@@ -3169,7 +3169,7 @@
       ],
       "c": 2,
       "t": "animal-home",
-      "exp": "Step 1: A dog lives in a kennel. Step 2: A rabbit lives in a burrow. Step 3: Burrow is correct.",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A rabbit lives in a burrow. Step 3: burrow is correct.",
       "d": "medium"
     },
     {
@@ -3183,7 +3183,7 @@
       ],
       "c": 3,
       "t": "animal-home",
-      "exp": "Step 1: A dog lives in a kennel. Step 2: A bee lives in a hive. Step 3: Hive is correct.",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A bee lives in a hive. Step 3: hive is correct.",
       "d": "medium"
     },
     {
@@ -3197,7 +3197,7 @@
       ],
       "c": 0,
       "t": "animal-home",
-      "exp": "Step 1: A dog lives in a kennel. Step 2: A horse lives in a stable. Step 3: Stable is correct.",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A horse lives in a stable. Step 3: stable is correct.",
       "d": "medium"
     },
     {
@@ -3211,7 +3211,7 @@
       ],
       "c": 3,
       "t": "animal-home",
-      "exp": "Step 1: A dog lives in a kennel. Step 2: A pig lives in a sty. Step 3: Sty is correct.",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A pig lives in a sty. Step 3: sty is correct.",
       "d": "medium"
     },
     {
@@ -3225,7 +3225,7 @@
       ],
       "c": 0,
       "t": "animal-home",
-      "exp": "Step 1: A dog lives in a kennel. Step 2: A cow lives in a shed. Step 3: Shed is correct.",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A cow lives in a shed. Step 3: shed is correct.",
       "d": "medium"
     },
     {
@@ -3239,7 +3239,7 @@
       ],
       "c": 0,
       "t": "animal-home",
-      "exp": "Step 1: A dog lives in a kennel. Step 2: A spider lives in a web. Step 3: Web is correct.",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A spider lives in a web. Step 3: web is correct.",
       "d": "medium"
     },
     {
@@ -3253,7 +3253,7 @@
       ],
       "c": 2,
       "t": "animal-home",
-      "exp": "Step 1: A dog lives in a kennel. Step 2: A hen lives in a coop. Step 3: Coop is correct.",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A hen lives in a coop. Step 3: coop is correct.",
       "d": "medium"
     },
     {
@@ -3267,7 +3267,7 @@
       ],
       "c": 3,
       "t": "animal-home",
-      "exp": "Step 1: A dog lives in a kennel. Step 2: A bear lives in a cave. Step 3: Cave is correct.",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A bear lives in a cave. Step 3: cave is correct.",
       "d": "medium"
     },
     {
@@ -3281,7 +3281,7 @@
       ],
       "c": 0,
       "t": "animal-home",
-      "exp": "Step 1: A dog lives in a kennel. Step 2: A fish lives in a aquarium. Step 3: Aquarium is correct.",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A fish lives in an aquarium. Step 3: aquarium is correct.",
       "d": "medium"
     },
     {
@@ -3295,7 +3295,7 @@
       ],
       "c": 2,
       "t": "animal-home",
-      "exp": "Step 1: A dog lives in a kennel. Step 2: A ant lives in a anthill. Step 3: Anthill is correct.",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: An ant lives in an anthill. Step 3: anthill is correct.",
       "d": "medium"
     },
     {
@@ -3309,7 +3309,7 @@
       ],
       "c": 0,
       "t": "animal-home",
-      "exp": "Step 1: A dog lives in a kennel. Step 2: A fox lives in a den. Step 3: Den is correct.",
+      "exp": "Step 1: A dog lives in a kennel. Step 2: A fox lives in a den. Step 3: den is correct.",
       "d": "medium"
     },
     {

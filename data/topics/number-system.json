@@ -20,7 +20,7 @@
       "type": "concept",
       "quickSummary": "Every exam number question starts with knowing which family a number belongs to: natural, whole, integer, rational, irrational, real, complex.",
       "content": [
-        "Numbers are grouped into nested families. Each family adds new members, and the key to classification questions is knowing exactly which family a given number falls into — and which it does NOT.",
+        "Numbers are grouped into nested families. Each family adds new members, and the key to classification questions is knowing exactly which family a given number falls into \u2014 and which it does NOT.",
         "The nesting from inside out:",
         "$$\\mathbb{N} \\subset \\mathbb{W} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R} \\subset \\mathbb{C}$$"
       ],
@@ -29,7 +29,7 @@
           "title": "Natural numbers",
           "content": [
             "Counting numbers starting from 1: $1, 2, 3, 4, \\ldots$",
-            "There is no largest natural number — the set is infinite. Note that $0$ is NOT a natural number (it is the first whole number)."
+            "There is no largest natural number \u2014 the set is infinite. Note that $0$ is NOT a natural number (it is the first whole number)."
           ]
         },
         {
@@ -59,16 +59,16 @@
           "title": "Rational and irrational numbers",
           "content": [
             "Rational: any number expressible as $\\frac{p}{q}$ with integers $p, q$ and $q \\neq 0$. Terminating decimals ($0.5$) and repeating decimals ($0.\\overline{3}$) are rational.",
-            "Irrational: cannot be written as a fraction — non-terminating, non-repeating decimals. Examples: $\\sqrt{2}, \\pi, e$.",
-            "Key fact: between any two rationals there is another rational (and an irrational too) — the rationals are dense, but so are the irrationals."
+            "Irrational: cannot be written as a fraction \u2014 non-terminating, non-repeating decimals. Examples: $\\sqrt{2}, \\pi, e$.",
+            "Key fact: between any two rationals there is another rational (and an irrational too) \u2014 the rationals are dense, but so are the irrationals."
           ],
           "example": {
             "prompt": "Which of the following is irrational? $\\frac{3}{4},\\ \\sqrt{81},\\ \\sqrt{2},\\ 2.5$",
             "steps": [
-              "$\\frac{3}{4} = 0.75$ terminates — rational.",
-              "$\\sqrt{81} = 9$ — rational.",
-              "$\\sqrt{2}$ cannot be written as a fraction — irrational.",
-              "$2.5 = \\frac{5}{2}$ — rational."
+              "$\\frac{3}{4} = 0.75$ terminates \u2014 rational.",
+              "$\\sqrt{81} = 9$ \u2014 rational.",
+              "$\\sqrt{2}$ cannot be written as a fraction \u2014 irrational.",
+              "$2.5 = \\frac{5}{2}$ \u2014 rational."
             ],
             "answer": "$\\sqrt{2}$"
           }
@@ -76,7 +76,7 @@
         {
           "title": "Real and complex numbers",
           "content": [
-            "Real = rational $\\cup$ irrational — everything on the number line.",
+            "Real = rational $\\cup$ irrational \u2014 everything on the number line.",
             "Complex = $a + bi$ where $i = \\sqrt{-1}$. Every real number is complex with $b = 0$.",
             "Numbers with no real square root like $\\sqrt{-4}$ live in the complex family."
           ]
@@ -99,8 +99,8 @@
         }
       ],
       "tricks": [
-        "Memorize one chain: natural ⊂ whole ⊂ integer ⊂ rational ⊂ real ⊂ complex.",
-        "0 and negative numbers are the usual 'trick' answers — check the boundary.",
+        "Memorize one chain: natural \u2282 whole \u2282 integer \u2282 rational \u2282 real \u2282 complex.",
+        "0 and negative numbers are the usual 'trick' answers \u2014 check the boundary.",
         "A square root of a perfect square ($\\sqrt{81}$) is rational; a square root of a non-perfect square ($\\sqrt{2}$) is irrational.",
         "Every integer is rational (write it as $\\frac{n}{1}$), but not every rational is an integer."
       ],
@@ -113,36 +113,36 @@
         {
           "source": "Placement pattern (TCS/Wipro)",
           "question": "Which is the smallest whole number? (Options: 0, 1, -1, none)",
-          "approach": "Whole numbers start at 0 — pick 0. Only integers include negatives."
+          "approach": "Whole numbers start at 0 \u2014 pick 0. Only integers include negatives."
         },
         {
           "source": "Placement pattern (Cognizant)",
           "question": "How many rational numbers lie between 3 and 4?",
-          "approach": "Infinitely many — rationals are dense. Never pick a finite count."
+          "approach": "Infinitely many \u2014 rationals are dense. Never pick a finite count."
         }
       ],
       "quickRevision": [
         "Natural: 1,2,3,...  |  Whole: add 0  |  Integer: add negatives",
         "Rational = p/q form or terminating/repeating decimal",
-        "Irrational = non-terminating, non-repeating decimal (√2, π)",
+        "Irrational = non-terminating, non-repeating decimal (\u221a2, \u03c0)",
         "Real = rational + irrational; every real is complex (b=0)"
       ],
-      "companyNote": "Classification questions appear in nearly every placement test as the first 'easy' question — do not lose it."
+      "companyNote": "Classification questions appear in nearly every placement test as the first 'easy' question \u2014 do not lose it."
     },
     {
       "id": "primes-composites",
-      "title": "Primes & Composites — The Building Blocks",
+      "title": "Primes & Composites \u2014 The Building Blocks",
       "type": "concept",
       "quickSummary": "A prime has exactly 2 factors. Every composite is a product of primes. Mastering primality tests and the prime checklist solves a huge share of number-system questions.",
       "content": [
         "Think of primes as the atoms of the number world: every composite number is built from primes, and every question about factors, divisibility or LCM/HCF ultimately runs on primes.",
-        "Prime: a natural number $> 1$ with exactly two factors — $1$ and itself. Composite: a natural number $> 1$ with more than two factors."
+        "Prime: a natural number $> 1$ with exactly two factors \u2014 $1$ and itself. Composite: a natural number $> 1$ with more than two factors."
       ],
       "subsections": [
         {
           "title": "The prime checklist",
           "content": [
-            "$2$ is the smallest prime and the ONLY even prime — every other even number is composite.",
+            "$2$ is the smallest prime and the ONLY even prime \u2014 every other even number is composite.",
             "The first ten primes:",
             "$$2,\\ 3,\\ 5,\\ 7,\\ 11,\\ 13,\\ 17,\\ 19,\\ 23,\\ 29$$",
             "$1$ is neither prime nor composite. $0$ is neither."
@@ -151,7 +151,7 @@
             "prompt": "Which is the only even prime number?",
             "steps": [
               "Every even number $> 2$ is divisible by $2$, so it has more than two factors.",
-              "Only $2$ itself escapes — its factors are $1$ and $2$."
+              "Only $2$ itself escapes \u2014 its factors are $1$ and $2$."
             ],
             "answer": "$2$"
           }
@@ -185,10 +185,10 @@
           "example": {
             "prompt": "Which pair is NOT co-prime? (a) (4,9) (b) (6,35) (c) (14,21) (d) (8,15)",
             "steps": [
-              "$(4,9)$: HCF is $1$ — co-prime.",
-              "$(6,35)$: HCF is $1$ — co-prime.",
-              "$(14,21)$: $14$ and $21$ share factor $7$ — HCF is $7$, NOT co-prime.",
-              "$(8,15)$: HCF is $1$ — co-prime."
+              "$(4,9)$: HCF is $1$ \u2014 co-prime.",
+              "$(6,35)$: HCF is $1$ \u2014 co-prime.",
+              "$(14,21)$: $14$ and $21$ share factor $7$ \u2014 HCF is $7$, NOT co-prime.",
+              "$(8,15)$: HCF is $1$ \u2014 co-prime."
             ],
             "answer": "$(14,21)$"
           }
@@ -202,35 +202,35 @@
         }
       ],
       "tricks": [
-        "Primes up to 100 — memorize the list: 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97 (25 primes).",
+        "Primes up to 100 \u2014 memorize the list: 2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97 (25 primes).",
         "Quick filters in order: even? ends in 5? digit sum divisible by 3? then check 7, 11, 13.",
-        "For 'how many primes between a and b', list the candidates after applying the 2/3/5 filters — rarely need to test all.",
+        "For 'how many primes between a and b', list the candidates after applying the 2/3/5 filters \u2014 rarely need to test all.",
         "2 and 3 are the only consecutive primes. (2,3) is the only twin-prime pair involving 2."
       ],
       "patterns": [
-        "'Which is NOT a prime' — test 2 (even), digit sum 3, ends in 5 first.",
-        "Product/sum of primes questions: remember 2 is the only even prime — sum of two primes is odd unless one of them is 2.",
-        "If two primes differ by 2 (twins), and the middle number is between them — the middle is always even (and composite if > 4)."
+        "'Which is NOT a prime' \u2014 test 2 (even), digit sum 3, ends in 5 first.",
+        "Product/sum of primes questions: remember 2 is the only even prime \u2014 sum of two primes is odd unless one of them is 2.",
+        "If two primes differ by 2 (twins), and the middle number is between them \u2014 the middle is always even (and composite if > 4)."
       ],
       "pyqPatterns": [
         {
           "source": "Campus placement PYQ set",
           "question": "How many prime numbers exist between 1 and 100?",
-          "approach": "25 primes. Known list — memorize rather than sieve in exam."
+          "approach": "25 primes. Known list \u2014 memorize rather than sieve in exam."
         },
         {
           "source": "Placement pattern (Infosys)",
           "question": "Product of the first 25 primes is even or odd?",
-          "approach": "Contains 2, so the product is even — and divisible by every prime on the list."
+          "approach": "Contains 2, so the product is even \u2014 and divisible by every prime on the list."
         }
       ],
       "quickRevision": [
         "Prime = exactly 2 factors; smallest is 2; only even prime is 2",
         "1 is neither prime nor composite",
-        "Test: √n, divide by primes ≤ √n",
+        "Test: \u221an, divide by primes \u2264 \u221an",
         "Twin primes differ by 2; co-prime = HCF 1 (need not be prime)"
       ],
-      "companyNote": "Primality checks up to 100 (and 100–200) are direct exam favourites — TCS, Infosys and Cognizant have all repeated them."
+      "companyNote": "Primality checks up to 100 (and 100\u2013200) are direct exam favourites \u2014 TCS, Infosys and Cognizant have all repeated them."
     },
     {
       "id": "divisibility",
@@ -255,7 +255,7 @@
             "steps": [
               "Digit sums: $4+5+1+2 = 12$; $4+5+1+3 = 13$; $4+5+1+5 = 15$.",
               "Divisible by 9 requires digit sum divisible by 9.",
-              "None of $12, 13, 15$ is divisible by $9$ — so NONE of them is divisible by 9."
+              "None of $12, 13, 15$ is divisible by $9$ \u2014 so NONE of them is divisible by 9."
             ],
             "answer": "None"
           }
@@ -273,15 +273,15 @@
               "$$34 - 2 \\times 3 = 34 - 6 = 28$$",
               "$28$ is divisible by $7$."
             ],
-            "answer": "Yes — 343 = 7 × 49"
+            "answer": "Yes \u2014 343 = 7 \u00d7 49"
           }
         },
         {
           "title": "Rule for 11 in detail",
           "content": [
-            "From the RIGHT, mark digits alternately +, −, +, − … then add them with signs. Or from the left — the rule is the same, sign flips are consistent.",
+            "From the RIGHT, mark digits alternately +, \u2212, +, \u2212 \u2026 then add them with signs. Or from the left \u2014 the rule is the same, sign flips are consistent.",
             "$$N = 918082: (9 - 1 + 8 - 0 + 8 - 2) = 22$$",
-            "$22$ is a multiple of $11$ — so $918082$ is divisible by $11$."
+            "$22$ is a multiple of $11$ \u2014 so $918082$ is divisible by $11$."
           ],
           "example": {
             "prompt": "Is 123456789 divisible by 11?",
@@ -297,12 +297,12 @@
           "title": "Composite rules: build from factors",
           "content": [
             "Divisible by $ab$ (with co-prime $a, b$) iff divisible by both $a$ and $b$: $6 = 2 \\times 3$, $12 = 3 \\times 4$, $15 = 3 \\times 5$, $18 = 2 \\times 9$.",
-            "Caveat: $a, b$ must be co-prime — $36 = 4 \\times 9$ works, but you cannot use $36 = 6 \\times 6$ as a test."
+            "Caveat: $a, b$ must be co-prime \u2014 $36 = 4 \\times 9$ works, but you cannot use $36 = 6 \\times 6$ as a test."
           ],
           "example": {
             "prompt": "Which number is divisible by 12? (a) 314 (b) 312 (c) 322",
             "steps": [
-              "$12 = 3 \\times 4$ with $(3,4)$ co-prime — check both.",
+              "$12 = 3 \\times 4$ with $(3,4)$ co-prime \u2014 check both.",
               "$314$: digit sum $8$, not div by 3.",
               "$312$: digit sum $6$ (div by 3); last two digits $12$ (div by 4).",
               "$322$: last two digits $22$ not div by 4."
@@ -312,22 +312,22 @@
         }
       ],
       "tricks": [
-        "3 and 9 use the SAME digit-sum idea — if divisible by 9 then by 3, never the reverse.",
+        "3 and 9 use the SAME digit-sum idea \u2014 if divisible by 9 then by 3, never the reverse.",
         "For 6: test 2 first (cheaper), then 3.",
         "For 7, 11, 13 combined: $7 \\times 11 \\times 13 = 1001$. Any number of form $abcabc$ (e.g. $217217$) is divisible by 7, 11 and 13.",
-        "When a question asks 'divisible by 8', only the last three digits matter — ignore everything to the left.",
+        "When a question asks 'divisible by 8', only the last three digits matter \u2014 ignore everything to the left.",
         "Digit sum trick for remainder: remainder of $N \\div 9$ equals digit-sum of $N$ mod 9 (casting out nines)."
       ],
       "patterns": [
-        "'Replace * in 23*4 to make divisible by 9' — solve from the digit-sum equation.",
-        "'Smallest number to add/subtract to make divisible by 9' — use remainder from digit sum.",
-        "Tests like 12, 15, 18 decompose into co-prime pairs — always decompose, never test directly."
+        "'Replace * in 23*4 to make divisible by 9' \u2014 solve from the digit-sum equation.",
+        "'Smallest number to add/subtract to make divisible by 9' \u2014 use remainder from digit sum.",
+        "Tests like 12, 15, 18 decompose into co-prime pairs \u2014 always decompose, never test directly."
       ],
       "pyqPatterns": [
         {
           "source": "TCS NQT / campus PYQ",
           "question": "If 451*603 (star = one digit) is divisible by 9, what digit replaces *?",
-          "approach": "Digit sum $4+5+1+*+6+0+3 = 19+*$ must be divisible by 9 → $* = 8$. (Several published answers say 7 — verified: 27 is the only multiple in range, and $19+8=27$.)"
+          "approach": "Digit sum $4+5+1+*+6+0+3 = 19+*$ must be divisible by 9 \u2192 $* = 8$. (Several published answers say 7 \u2014 verified: 27 is the only multiple in range, and $19+8=27$.)"
         },
         {
           "source": "Placement pattern",
@@ -339,16 +339,16 @@
         "2/5/10: last digit | 4: last two | 8: last three",
         "3/9: digit sum | 6: 2 and 3 | 12: 3 and 4 | 15: 3 and 5",
         "11: alternate-sum difference is 0 or multiple of 11",
-        "7: n → ⌊n/10⌋ − 2×last digit, repeat",
+        "7: n \u2192 \u230an/10\u230b \u2212 2\u00d7last digit, repeat",
         "abcabc is always divisible by 7, 11, 13"
       ],
-      "companyNote": "Digit-replacement divisibility questions are a certified TCS NQT repeat — always solve via digit sum."
+      "companyNote": "Digit-replacement divisibility questions are a certified TCS NQT repeat \u2014 always solve via digit sum."
     },
     {
       "id": "hcf-lcm",
       "title": "HCF & LCM",
       "type": "concept",
-      "quickSummary": "HCF is the largest common divisor; LCM is the smallest common multiple. Their product identity — HCF × LCM = product of the numbers — is the single most tested relation.",
+      "quickSummary": "HCF is the largest common divisor; LCM is the smallest common multiple. Their product identity \u2014 HCF \u00d7 LCM = product of the numbers \u2014 is the single most tested relation.",
       "content": [
         "HCF (GCD): the largest number that divides all given numbers. LCM: the smallest number divisible by all given numbers.",
         "The master identity for two numbers $a, b$:",
@@ -374,9 +374,9 @@
             "prompt": "Find HCF and LCM of 40 and 56.",
             "steps": [
               "$$40 = 2^3 \\times 5, \\qquad 56 = 2^3 \\times 7$$",
-              "Common factor: $2^3$ → $HCF = 8$.",
-              "All factors max exponent: $2^3 \\times 5 \\times 7 = 280$ → $LCM = 280$.",
-              "Check: $8 \\times 280 = 2240 = 40 \\times 56$ ✓"
+              "Common factor: $2^3$ \u2192 $HCF = 8$.",
+              "All factors max exponent: $2^3 \\times 5 \\times 7 = 280$ \u2192 $LCM = 280$.",
+              "Check: $8 \\times 280 = 2240 = 40 \\times 56$ \u2713"
             ],
             "answer": "HCF 8, LCM 280"
           }
@@ -414,30 +414,30 @@
         {
           "title": "n numbers: pairwise identity caveat",
           "content": [
-            "For THREE or more numbers, HCF × LCM ≠ product — the identity holds only for two numbers.",
+            "For THREE or more numbers, HCF \u00d7 LCM \u2260 product \u2014 the identity holds only for two numbers.",
             "$$HCF \\text{ of } (a, b, c) \\times LCM(a, b, c) \\neq a \\times b \\times c \\quad \\text{(in general)}$$",
             "This is a classic trap: the two-number identity gets misapplied."
           ]
         }
       ],
       "tricks": [
-        "HCF × LCM = a × b — use it to find any one unknown from the other three.",
+        "HCF \u00d7 LCM = a \u00d7 b \u2014 use it to find any one unknown from the other three.",
         "Co-prime numbers: HCF = 1, LCM = product.",
         "HCF of fractions: HCF of numerators / LCM of denominators (swap!).",
         "Greatest number dividing all of them = HCF; smallest number divisible by all = LCM.",
         "HCF of consecutive numbers = 1; LCM of consecutive numbers = their product (they are co-prime)."
       ],
       "patterns": [
-        "Ratio + HCF questions: numbers = ratio × HCF.",
+        "Ratio + HCF questions: numbers = ratio \u00d7 HCF.",
         "'Least number divisible by a,b,c' = LCM.",
-        "'Greatest number that divides a,b,c leaving same remainder r' = HCF(a−r, b−r, c−r) or HCF(a,b,c) if remainder 0.",
+        "'Greatest number that divides a,b,c leaving same remainder r' = HCF(a\u2212r, b\u2212r, c\u2212r) or HCF(a,b,c) if remainder 0.",
         "Bell-ringing / traffic-light / circular-track questions = LCM of the intervals."
       ],
       "pyqPatterns": [
         {
           "source": "Campus placement PYQ",
           "question": "HCF of two numbers is 12 and their product is 2880. Find LCM.",
-          "approach": "$LCM = \\frac{2880}{12} = 240$ — direct identity application."
+          "approach": "$LCM = \\frac{2880}{12} = 240$ \u2014 direct identity application."
         },
         {
           "source": "Placement pattern (Wipro)",
@@ -448,7 +448,7 @@
       "quickRevision": [
         "HCF: common primes, smallest exponents",
         "LCM: all primes, largest exponents",
-        "HCF × LCM = a × b (two numbers only!)",
+        "HCF \u00d7 LCM = a \u00d7 b (two numbers only!)",
         "Fractions: LCM = LCM(nums)/HCF(dens); HCF = HCF(nums)/LCM(dens)",
         "Co-prime: HCF 1, LCM = product"
       ],
@@ -458,7 +458,7 @@
       "id": "cyclicity",
       "title": "Cyclicity & Unit Digit Patterns",
       "type": "concept",
-      "quickSummary": "The unit digit of powers repeats in cycles. Find the cycle length, divide the exponent by it, and read the answer from the remainder — no big powers needed.",
+      "quickSummary": "The unit digit of powers repeats in cycles. Find the cycle length, divide the exponent by it, and read the answer from the remainder \u2014 no big powers needed.",
       "content": [
         "The unit digit of $a^n$ depends only on the unit digit of $a$, and repeats in a fixed cycle. This turns 'unit digit of $7^{345}$' into a small division problem."
       ],
@@ -466,7 +466,7 @@
         {
           "title": "The four cycle families",
           "content": [
-            "Cycle 1 (always same): $0, 1, 5, 6$ — unit digit never changes: $6^n$ ends in 6 for every $n \\geq 1$.",
+            "Cycle 1 (always same): $0, 1, 5, 6$ \u2014 unit digit never changes: $6^n$ ends in 6 for every $n \\geq 1$.",
             "Cycle 2: $4^n$ alternates $4, 6$; $9^n$ alternates $9, 1$.",
             "Cycle 4: $2, 3, 7, 8$ repeat every 4 powers.",
             "$$2: 2, 4, 8, 6 \\qquad 3: 3, 9, 7, 1 \\qquad 7: 7, 9, 3, 1 \\qquad 8: 8, 4, 2, 6$$"
@@ -499,48 +499,48 @@
           "example": {
             "prompt": "Unit digit of $7^{23} \\times 3^{45}$?",
             "steps": [
-              "$7^{23}$: $23 \\bmod 4 = 3$ → cycle member $3$.",
-              "$3^{45}$: $45 \\bmod 4 = 1$ → cycle member $3$.",
+              "$7^{23}$: $23 \\bmod 4 = 3$ \u2192 cycle member $3$.",
+              "$3^{45}$: $45 \\bmod 4 = 1$ \u2192 cycle member $3$.",
               "$$3 \\times 3 = 9$$"
             ],
             "answer": "$9$"
           }
         },
         {
-          "title": "Negative exponents? No — but negative bases",
+          "title": "Negative exponents? No \u2014 but negative bases",
           "content": [
             "If base is negative, use the unit digit of |base| and fix the sign: $(-7)^n$ has unit digit of $7^n$, sign depends on parity of $n$.",
-            "When the base itself ends in 0 or 1 (like $2026^{2026}$), answer is immediately 6 or 1 — no cycle needed."
+            "When the base itself ends in 0 or 1 (like $2026^{2026}$), answer is immediately 6 or 1 \u2014 no cycle needed."
           ]
         }
       ],
       "tricks": [
-        "0, 1, 5, 6: any power → same unit digit. 4/9: alternate. 2/3/7/8: cycle of 4.",
-        "If exponent is a multiple of 4, unit digit is the 4th member: 2→6, 3→1, 7→1, 8→6.",
-        "For a number ending in digit d raised to n, ONLY d matters — strip the rest.",
-        "Unit digit of (a × b × c) = unit digit of (unit(a) × unit(b) × unit(c))."
+        "0, 1, 5, 6: any power \u2192 same unit digit. 4/9: alternate. 2/3/7/8: cycle of 4.",
+        "If exponent is a multiple of 4, unit digit is the 4th member: 2\u21926, 3\u21921, 7\u21921, 8\u21926.",
+        "For a number ending in digit d raised to n, ONLY d matters \u2014 strip the rest.",
+        "Unit digit of (a \u00d7 b \u00d7 c) = unit digit of (unit(a) \u00d7 unit(b) \u00d7 unit(c))."
       ],
       "patterns": [
-        "Huge exponents with bases ending in 2/3/7/8 → exponent mod 4.",
-        "Exponents with bases ending 4/9 → parity of exponent (mod 2).",
-        "Bases ending 0/1/5/6 → trivial, answer is the base's last digit.",
-        "Product/sum of powers → solve each factor's unit digit, then combine."
+        "Huge exponents with bases ending in 2/3/7/8 \u2192 exponent mod 4.",
+        "Exponents with bases ending 4/9 \u2192 parity of exponent (mod 2).",
+        "Bases ending 0/1/5/6 \u2192 trivial, answer is the base's last digit.",
+        "Product/sum of powers \u2192 solve each factor's unit digit, then combine."
       ],
       "pyqPatterns": [
         {
           "source": "hitbullseye / TCS NQT",
           "question": "Unit digit of $7^{345}$?",
-          "approach": "Cycle 4 → $345 \\bmod 4 = 1$ → unit digit 7."
+          "approach": "Cycle 4 \u2192 $345 \\bmod 4 = 1$ \u2192 unit digit 7."
         },
         {
           "source": "Placement pattern (Infosys)",
           "question": "Unit digit of $8314 \\times 8415$?",
-          "approach": "$4 \\times 5 = 20$ → unit digit 0."
+          "approach": "$4 \\times 5 = 20$ \u2192 unit digit 0."
         }
       ],
       "quickRevision": [
         "Cycle 1: 0,1,5,6 | Cycle 2: 4,9 | Cycle 4: 2,3,7,8",
-        "Exponent mod cycle-length; remainder 0 → last member",
+        "Exponent mod cycle-length; remainder 0 \u2192 last member",
         "2: 2,4,8,6 | 3: 3,9,7,1 | 7: 7,9,3,1 | 8: 8,4,2,6",
         "Product: multiply unit digits only"
       ],
@@ -548,17 +548,17 @@
     },
     {
       "id": "remainders",
-      "title": "Remainders — Wilson, Euler, Fermat & CRT",
+      "title": "Remainders \u2014 Wilson, Euler, Fermat & CRT",
       "type": "concept",
-      "quickSummary": "Big-power remainders are solved with modular shortcuts: binomial splitting for 1±mod patterns, Fermat for prime moduli, Wilson for factorials, Euler for general moduli, and CRT to combine congruences.",
+      "quickSummary": "Big-power remainders are solved with modular shortcuts: binomial splitting for 1\u00b1mod patterns, Fermat for prime moduli, Wilson for factorials, Euler for general moduli, and CRT to combine congruences.",
       "content": [
-        "Remainder questions with enormous exponents are impossible by brute force — they are solved by modular arithmetic. The four tools cover the exam universe of remainder problems."
+        "Remainder questions with enormous exponents are impossible by brute force \u2014 they are solved by modular arithmetic. The four tools cover the exam universe of remainder problems."
       ],
       "subsections": [
         {
           "title": "Binomial splitting: the workhorse",
           "content": [
-            "Split the base as (multiple of modulus ± 1) or (multiple ± small k), then expand: only the last term survives.",
+            "Split the base as (multiple of modulus \u00b1 1) or (multiple \u00b1 small k), then expand: only the last term survives.",
             "$$\\text{Rem}\\left(\\frac{8^{103}}{7}\\right) = \\text{Rem}\\left(\\frac{(7+1)^{103}}{7}\\right) = \\text{Rem}\\left(\\frac{1^{103}}{7}\\right) = 1$$"
           ],
           "example": {
@@ -580,7 +580,7 @@
           "example": {
             "prompt": "Find the remainder when $5^{100}$ is divided by 13.",
             "steps": [
-              "13 is prime → $5^{12} \\equiv 1 \\pmod{13}$ (Fermat).",
+              "13 is prime \u2192 $5^{12} \\equiv 1 \\pmod{13}$ (Fermat).",
               "$$100 = 12 \\times 8 + 4 \\Rightarrow 5^{100} \\equiv 5^4 \\pmod{13}$$",
               "$$5^4 = 625 = 13 \\times 48 + 1 \\Rightarrow 5^4 \\equiv 1 \\pmod{13}$$"
             ],
@@ -628,7 +628,7 @@
             "prompt": "Find the smallest $x$ with $x \\equiv 1 \\pmod 3$ and $x \\equiv 2 \\pmod 5$.",
             "steps": [
               "List $x = 2, 7, 12, \\ldots$ from $x \\equiv 2 \\pmod 5$.",
-              "First value with $x \\equiv 1 \\pmod 3$: $2 \\bmod 3 = 2$, $7 \\bmod 3 = 1$ ✓",
+              "First value with $x \\equiv 1 \\pmod 3$: $2 \\bmod 3 = 2$, $7 \\bmod 3 = 1$ \u2713",
               "Smallest $x = 7$."
             ],
             "answer": "$7$"
@@ -637,24 +637,24 @@
         {
           "title": "Remainder of a number by 9 (casting out nines)",
           "content": [
-            "Remainder of $N \\div 9$ = digit-sum of $N$ reduced mod 9 (0 → 9).",
+            "Remainder of $N \\div 9$ = digit-sum of $N$ reduced mod 9 (0 \u2192 9).",
             "$$\\text{Rem}\\left(\\frac{123456789}{9}\\right): \\quad 1+2+3+4+5+6+7+8+9 = 45 \\equiv 0 \\pmod 9$$"
           ]
         }
       ],
       "tricks": [
-        "Try binomial split (base = multiple of modulus ± k) FIRST — it solves most problems in one line.",
-        "If modulus is prime and exponent ≥ modulus − 1, Fermat applies: reduce exponent mod (p−1).",
-        "Remainder of N ÷ 9 = digit sum mod 9; remainder of N ÷ 11 = alternate-sum difference mod 11.",
+        "Try binomial split (base = multiple of modulus \u00b1 k) FIRST \u2014 it solves most problems in one line.",
+        "If modulus is prime and exponent \u2265 modulus \u2212 1, Fermat applies: reduce exponent mod (p\u22121).",
+        "Remainder of N \u00f7 9 = digit sum mod 9; remainder of N \u00f7 11 = alternate-sum difference mod 11.",
         "For (a + b) mod m with huge a: compute a mod m, then add.",
-        "When a and m share a factor, Fermat/Euler do NOT apply — factor out the common divisor first."
+        "When a and m share a factor, Fermat/Euler do NOT apply \u2014 factor out the common divisor first."
       ],
       "patterns": [
-        "Base ≡ ±1 mod m → answer ±1 by parity of exponent.",
-        "Exponent huge + prime modulus → exponent mod (p−1) via Fermat.",
-        "Two simultaneous congruences with co-prime moduli → CRT (or just list from the bigger modulus).",
-        "Factorial mod prime p → Wilson.",
-        "Remainder by 9/11 → digit tricks, not long division."
+        "Base \u2261 \u00b11 mod m \u2192 answer \u00b11 by parity of exponent.",
+        "Exponent huge + prime modulus \u2192 exponent mod (p\u22121) via Fermat.",
+        "Two simultaneous congruences with co-prime moduli \u2192 CRT (or just list from the bigger modulus).",
+        "Factorial mod prime p \u2192 Wilson.",
+        "Remainder by 9/11 \u2192 digit tricks, not long division."
       ],
       "pyqPatterns": [
         {
@@ -665,18 +665,18 @@
         {
           "source": "Placement pattern (TCS)",
           "question": "A number divided by 56 leaves remainder 29. What is the remainder when divided by 8?",
-          "approach": "$29 \\bmod 8 = 5$ — the quotient part is divisible by 8, only the remainder matters."
+          "approach": "$29 \\bmod 8 = 5$ \u2014 the quotient part is divisible by 8, only the remainder matters."
         }
       ],
       "quickRevision": [
-        "Binomial: (km ± 1)^n → ±1; (km ± r)^n → r^n",
-        "Fermat: p prime, a^(p−1) ≡ 1 (mod p)",
-        "Euler: a^φ(m) ≡ 1 (mod m) when gcd(a,m)=1",
-        "Wilson: (p−1)! ≡ −1 (mod p)",
+        "Binomial: (km \u00b1 1)^n \u2192 \u00b11; (km \u00b1 r)^n \u2192 r^n",
+        "Fermat: p prime, a^(p\u22121) \u2261 1 (mod p)",
+        "Euler: a^\u03c6(m) \u2261 1 (mod m) when gcd(a,m)=1",
+        "Wilson: (p\u22121)! \u2261 \u22121 (mod p)",
         "CRT: combine congruences, co-prime moduli",
         "N mod 9 = digit sum mod 9"
       ],
-      "companyNote": "Fermat- and binomial-based remainders are the hardest routinely-asked number-system questions in TCS NQT — worth mastering fully."
+      "companyNote": "Fermat- and binomial-based remainders are the hardest routinely-asked number-system questions in TCS NQT \u2014 worth mastering fully."
     }
   ],
   "formulas": [
@@ -694,8 +694,8 @@
         "answer": "$5050$"
       },
       "whenToUse": "Any question summing $1 + 2 + \\cdots + n$ or a consecutive range 1 to n.",
-      "memoryTip": "n(n+1) over 2 — 'nn plus one, cut in two'.",
-      "commonMistake": "Do NOT use n/2×… on the last term: for 1..n the sum is always n(n+1)/2. For a range a..b, subtract: S(b) − S(a−1)."
+      "memoryTip": "n(n+1) over 2 \u2014 'nn plus one, cut in two'.",
+      "commonMistake": "Do NOT use n/2\u00d7\u2026 on the last term: for 1..n the sum is always n(n+1)/2. For a range a..b, subtract: S(b) \u2212 S(a\u22121)."
     },
     {
       "id": "sum-odd",
@@ -710,8 +710,8 @@
         ],
         "answer": "$2500$"
       },
-      "whenToUse": "Sum of odd numbers 1,3,5,… up to n terms, or 1..n where n is odd.",
-      "memoryTip": "Sum of first n odds = n². The nth odd number is 2n−1.",
+      "whenToUse": "Sum of odd numbers 1,3,5,\u2026 up to n terms, or 1..n where n is odd.",
+      "memoryTip": "Sum of first n odds = n\u00b2. The nth odd number is 2n\u22121.",
       "commonMistake": "Using the odd count as (last+1)/2 wrongly when the sequence does not start at 1."
     },
     {
@@ -727,7 +727,7 @@
         ],
         "answer": "$2550$"
       },
-      "whenToUse": "Sum of even numbers 2,4,6,… up to n terms.",
+      "whenToUse": "Sum of even numbers 2,4,6,\u2026 up to n terms.",
       "memoryTip": "Sum of first n evens = n(n+1). The nth even number is 2n.",
       "commonMistake": "Confusing the count n with the last term: for evens up to 100, n = 50, not 100."
     },
@@ -745,7 +745,7 @@
         "answer": "$385$"
       },
       "whenToUse": "Sum $1^2+2^2+\\cdots+n^2$.",
-      "memoryTip": "n(n+1)(2n+1) over 6 — 'two friends in the middle'.",
+      "memoryTip": "n(n+1)(2n+1) over 6 \u2014 'two friends in the middle'.",
       "commonMistake": "Forgetting the (2n+1) factor, or using the natural-sum formula."
     },
     {
@@ -762,12 +762,12 @@
         "answer": "$3025$"
       },
       "whenToUse": "Sum $1^3+2^3+\\cdots+n^3$.",
-      "memoryTip": "Sum of cubes = (sum of numbers)² — the beautiful identity.",
-      "commonMistake": "Writing n²(n+1)²/4 as n(n+1)²/4 — keep BOTH squares."
+      "memoryTip": "Sum of cubes = (sum of numbers)\u00b2 \u2014 the beautiful identity.",
+      "commonMistake": "Writing n\u00b2(n+1)\u00b2/4 as n(n+1)\u00b2/4 \u2014 keep BOTH squares."
     },
     {
       "id": "hcf-lcm-product",
-      "title": "HCF × LCM = Product of Two Numbers",
+      "title": "HCF \u00d7 LCM = Product of Two Numbers",
       "formula": "a \\times b = \\text{HCF}(a,b) \\times \\text{LCM}(a,b)",
       "explanation": "For any two positive integers $a$ and $b$, the product of the numbers equals the product of their HCF and LCM.",
       "example": {
@@ -778,9 +778,9 @@
         ],
         "answer": "$24$"
       },
-      "whenToUse": "Whenever two numbers, their HCF and their LCM appear — find the fourth from any three.",
-      "memoryTip": "h times l equals a times b — one equation, four unknowns.",
-      "commonMistake": "Applying it to 3+ numbers — it fails there."
+      "whenToUse": "Whenever two numbers, their HCF and their LCM appear \u2014 find the fourth from any three.",
+      "memoryTip": "h times l equals a times b \u2014 one equation, four unknowns.",
+      "commonMistake": "Applying it to 3+ numbers \u2014 it fails there."
     },
     {
       "id": "num-factors",
@@ -810,7 +810,7 @@
         "steps": [
           "$$12 = 2^2 \\times 3$$",
           "$$\\frac{2^3-1}{2-1} \\times \\frac{3^2-1}{3-1} = 7 \\times 4 = 28$$",
-          "Check: $1+2+3+4+6+12 = 28$ ✓"
+          "Check: $1+2+3+4+6+12 = 28$ \u2713"
         ],
         "answer": "$28$"
       },
@@ -833,8 +833,8 @@
         "answer": "$1$"
       },
       "whenToUse": "Remainder of $a^n \\bmod p$ with prime $p$ and $p \\nmid a$: reduce exponent mod $p-1$.",
-      "memoryTip": "For prime p, a^(p−1) ≡ 1 (mod p). Exponent modulo p−1.",
-      "commonMistake": "Using it when p and a share a factor — it breaks. Reduce the exponent correctly."
+      "memoryTip": "For prime p, a^(p\u22121) \u2261 1 (mod p). Exponent modulo p\u22121.",
+      "commonMistake": "Using it when p and a share a factor \u2014 it breaks. Reduce the exponent correctly."
     },
     {
       "id": "euler",
@@ -845,13 +845,13 @@
         "prompt": "Remainder of $3^{100} \\div 10$?",
         "steps": [
           "$\\varphi(10) = 10 \\cdot \\frac{1}{2} \\cdot \\frac{4}{5} = 4$.",
-          "$3^4 \\equiv 1 \\pmod{10}$ → $3^{100} = 3^{4 \\times 25} \\equiv 1$."
+          "$3^4 \\equiv 1 \\pmod{10}$ \u2192 $3^{100} = 3^{4 \\times 25} \\equiv 1$."
         ],
         "answer": "$1$"
       },
       "whenToUse": "Remainder of $a^n \\bmod m$ when $m$ is composite but $\\gcd(a,m)=1$.",
-      "memoryTip": "φ(m) = m·Π(1−1/p) over distinct primes of m; then a^φ ≡ 1 (mod m).",
-      "commonMistake": "Forgetting the 1−1/p factors or using distinct primes instead of prime powers."
+      "memoryTip": "\u03c6(m) = m\u00b7\u03a0(1\u22121/p) over distinct primes of m; then a^\u03c6 \u2261 1 (mod m).",
+      "commonMistake": "Forgetting the 1\u22121/p factors or using distinct primes instead of prime powers."
     },
     {
       "id": "cyclicity",
@@ -867,7 +867,7 @@
         ],
         "answer": "$7$"
       },
-      "whenToUse": "Unit digit of $a^n$ — cycles of length 1, 2 or 4.",
+      "whenToUse": "Unit digit of $a^n$ \u2014 cycles of length 1, 2 or 4.",
       "memoryTip": "2,3,7,8 cycle in 4; 4,9 in 2; 0,1,5,6 forever.",
       "commonMistake": "Using mod 4 when the cycle is 2 (4 and 9)."
     },
@@ -885,8 +885,8 @@
         "answer": "$24$"
       },
       "whenToUse": "Count of zeros at the end of $n!$ = number of factors of 10 = count of 5s (since 2s are plentiful).",
-      "memoryTip": "Keep dividing by 5, 25, 125, … and add the quotients.",
-      "commonMistake": "Counting 2s instead of 5s, or stopping at n/5 without n/25, n/125…"
+      "memoryTip": "Keep dividing by 5, 25, 125, \u2026 and add the quotients.",
+      "commonMistake": "Counting 2s instead of 5s, or stopping at n/5 without n/25, n/125\u2026"
     },
     {
       "id": "digital-root",
@@ -900,8 +900,8 @@
         ],
         "answer": "$6$"
       },
-      "whenToUse": "Remainder of N ÷ 9 (with 0 mapped to 9): sum digits until a single digit.",
-      "memoryTip": "Digital root of N = N mod 9 (9 instead of 0). Works for sums, products, differences — mod 9 arithmetic.",
+      "whenToUse": "Remainder of N \u00f7 9 (with 0 mapped to 9): sum digits until a single digit.",
+      "memoryTip": "Digital root of N = N mod 9 (9 instead of 0). Works for sums, products, differences \u2014 mod 9 arithmetic.",
       "commonMistake": "Mixing up 'digital root 9' with 'remainder 0'."
     },
     {
@@ -912,13 +912,13 @@
       "example": {
         "prompt": "Last two digits of $31^{24}$?",
         "steps": [
-          "$31 \\equiv 31 \\pmod{100}$, powers of …1: $(1 + 24 \\times 30) \\bmod 100$",
+          "$31 \\equiv 31 \\pmod{100}$, powers of \u20261: $(1 + 24 \\times 30) \\bmod 100$",
           "$$1 + 720 \\equiv 21 \\pmod{100}$$"
         ],
         "answer": "$21$"
       },
-      "whenToUse": "Last two digits of powers — work mod 100; cycles of length 20 for most bases, binomial for 1- and -1-ending bases.",
-      "memoryTip": "For bases ending in 1: last two digits of (…1)^n = last two of (1 + n×tens part).",
+      "whenToUse": "Last two digits of powers \u2014 work mod 100; cycles of length 20 for most bases, binomial for 1- and -1-ending bases.",
+      "memoryTip": "For bases ending in 1: last two digits of (\u20261)^n = last two of (1 + n\u00d7tens part).",
       "commonMistake": "Applying single-digit cyclicity to last-two-digits problems."
     },
     {
@@ -934,9 +934,9 @@
         ],
         "answer": "$1$"
       },
-      "whenToUse": "Remainder of (km ± r)^n ÷ m — only the last binomial term survives.",
+      "whenToUse": "Remainder of (km \u00b1 r)^n \u00f7 m \u2014 only the last binomial term survives.",
       "memoryTip": "Expand (km+r)^n; every term except r^n is divisible by m.",
-      "commonMistake": "Ignoring the ± sign: (−1)^n flips with parity."
+      "commonMistake": "Ignoring the \u00b1 sign: (\u22121)^n flips with parity."
     },
     {
       "id": "chinese-remainder",
@@ -947,12 +947,12 @@
         "prompt": "Smallest x with $x \\equiv 1 \\pmod 3$, $x \\equiv 2 \\pmod 5$?",
         "steps": [
           "From $x \\equiv 2 \\pmod 5$: $2,7,12,\\ldots$",
-          "$7 \\equiv 1 \\pmod 3$ ✓"
+          "$7 \\equiv 1 \\pmod 3$ \u2713"
         ],
         "answer": "$7$"
       },
       "whenToUse": "Smallest x satisfying several congruences with co-prime moduli.",
-      "memoryTip": "List from the largest modulus and check — fast for 2 congruences in exams.",
+      "memoryTip": "List from the largest modulus and check \u2014 fast for 2 congruences in exams.",
       "commonMistake": "Forgetting the solution must be least positive; or moduli not co-prime."
     },
     {
@@ -963,7 +963,7 @@
       "example": {
         "prompt": "Product of all factors of 12?",
         "steps": [
-          "Factors of $12$: $1,2,3,4,6,12$ → count 6.",
+          "Factors of $12$: $1,2,3,4,6,12$ \u2192 count 6.",
           "$$12^{6/2} = 12^3 = 1728$$"
         ],
         "answer": "$1728$"
@@ -987,7 +987,7 @@
         "answer": "$6$"
       },
       "whenToUse": "Count factors that are odd or even separately.",
-      "memoryTip": "Odd factors = drop the 2-power: (b+1)(c+1)…; even factors = total − odd.",
+      "memoryTip": "Odd factors = drop the 2-power: (b+1)(c+1)\u2026; even factors = total \u2212 odd.",
       "commonMistake": "Counting even factors as just the 2-exponent options."
     },
     {
@@ -1000,12 +1000,12 @@
         "steps": [
           "$$180 = 2^2 \\times 3^2 \\times 5$$",
           "Only $5$ has odd exponent.",
-          "Multiply by $5$ → $900 = 30^2$."
+          "Multiply by $5$ \u2192 $900 = 30^2$."
         ],
         "answer": "$5$"
       },
       "whenToUse": "Least multiplier/divisor to turn N into a perfect square.",
-      "memoryTip": "Every prime exponent must become even — multiply by the odd-exponent primes.",
+      "memoryTip": "Every prime exponent must become even \u2014 multiply by the odd-exponent primes.",
       "commonMistake": "Multiplying by the whole square-root instead of the missing factor."
     },
     {
@@ -1017,12 +1017,12 @@
         "prompt": "In how many ways can 48 be written as a product of two co-prime factors?",
         "steps": [
           "$$48 = 2^4 \\times 3$$",
-          "Co-prime split: put $2^4$ and $3$ in different boxes → $2$ ways: $1 \\times 48$, $3 \\times 16$."
+          "Co-prime split: put $2^4$ and $3$ in different boxes \u2192 $2$ ways: $1 \\times 48$, $3 \\times 16$."
         ],
         "answer": "$2$"
       },
       "whenToUse": "Count ordered/unordered factor pairs of N.",
-      "memoryTip": "Unordered pairs: ⌈factors/2⌉ for non-square; (factors+1)/2 … use ceil(factors/2) — covers both.",
+      "memoryTip": "Unordered pairs: \u2308factors/2\u2309 for non-square; (factors+1)/2 \u2026 use ceil(factors/2) \u2014 covers both.",
       "commonMistake": "Forgetting the (n, n) pair for perfect squares."
     },
     {
@@ -1039,8 +1039,8 @@
         "answer": "Yes"
       },
       "whenToUse": "Deciding if n is prime quickly.",
-      "memoryTip": "Check √n with primes only. 2,3,5 filters first.",
-      "commonMistake": "Testing all numbers up to n, or all numbers up to √n instead of primes only."
+      "memoryTip": "Check \u221an with primes only. 2,3,5 filters first.",
+      "commonMistake": "Testing all numbers up to n, or all numbers up to \u221an instead of primes only."
     },
     {
       "id": "digital-root-square",
@@ -1051,13 +1051,13 @@
         "prompt": "Can $123456$ be a perfect square? (digital root check)",
         "steps": [
           "Digit sum: $1+2+3+4+5+6 = 21 \\to 3$.",
-          "Squares have digital root $1,4,7,9$ — $3$ is impossible."
+          "Squares have digital root $1,4,7,9$ \u2014 $3$ is impossible."
         ],
         "answer": "No"
       },
-      "whenToUse": "Checking if N can be a perfect square — squares have digital root 1, 4, 7 or 9.",
-      "memoryTip": "Square mod 9 ∈ {0,1,4,7} (digital root 9,1,4,7). Quick reject filter.",
-      "commonMistake": "Treating digital root 1 as proof of square — it is only a filter."
+      "whenToUse": "Checking if N can be a perfect square \u2014 squares have digital root 1, 4, 7 or 9.",
+      "memoryTip": "Square mod 9 \u2208 {0,1,4,7} (digital root 9,1,4,7). Quick reject filter.",
+      "commonMistake": "Treating digital root 1 as proof of square \u2014 it is only a filter."
     },
     {
       "id": "last-two-five",
@@ -1067,13 +1067,13 @@
       "example": {
         "prompt": "Last two digits of $5^{50}$?",
         "steps": [
-          "$5^2 = 25$, $5^3 = 125$ → last two 25.",
+          "$5^2 = 25$, $5^3 = 125$ \u2192 last two 25.",
           "All $n \\geq 2$: last two digits $25$."
         ],
         "answer": "$25$"
       },
-      "whenToUse": "Last two digits of $5^n$ for n ≥ 2 — always 25.",
-      "memoryTip": "5² = 25; multiplying by 5 keeps …25 forever.",
+      "whenToUse": "Last two digits of $5^n$ for n \u2265 2 \u2014 always 25.",
+      "memoryTip": "5\u00b2 = 25; multiplying by 5 keeps \u202625 forever.",
       "commonMistake": "Answering 25 for n=1 (that's 5)."
     }
   ],
@@ -4391,7 +4391,7 @@
         "q": "How many ways can 24 be written as product of two coprime factors?",
         "s": [
           "$24 = 2^3 \\times 3$.",
-          "Co-prime split: put $2^3$ and $3$ in different boxes → $2$ ways: $1 \\times 24$, $3 \\times 8$."
+          "Co-prime split: put $2^3$ and $3$ in different boxes \u2192 $2$ ways: $1 \\times 24$, $3 \\times 8$."
         ],
         "a": "2",
         "opts": [
@@ -4846,7 +4846,7 @@
         "q": "Find last two digits of $65^2$.",
         "s": [
           "$65^2 = 4225$.",
-          "Last two digits are $25$ — any square of a number ending in 5 ends in 25."
+          "Last two digits are $25$ \u2014 any square of a number ending in 5 ends in 25."
         ],
         "a": "25",
         "opts": [
@@ -4936,7 +4936,7 @@
         "q": "For which $n$ does $5^n$ always end in 25?",
         "s": [
           "$5^1 = 5$, $5^2 = 25$, $5^3 = 125$, $5^4 = 625$.",
-          "From $n \\geq 2$ onward, multiplying by 5 only shifts the tens digit — last two digits stay $25$."
+          "From $n \\geq 2$ onward, multiplying by 5 only shifts the tens digit \u2014 last two digits stay $25$."
         ],
         "a": "$n \\geq 2$",
         "opts": [
@@ -5226,7 +5226,7 @@
         "Only when squared"
       ],
       "c": 0,
-      "exp": "Step 1: Divisible by 11: difference of alternate digit sums must be 0 or multiple of 11. Step 2: Sum of digits at odd positions (from left): 1+1=2. Sum at even positions: 2. Step 3: Difference = 2-2 = 0. Step 4: Since 0 is a multiple of 11, 121 is divisible by 11. Step 5: In fact, 121 = 11^2.",
+      "exp": "Step 1: Divisible by 11: difference of alternate digit sums must be 0 or multiple of 11. Step 2: Sum of digits at odd positions (from left): 1+1=2. Sum at even positions: 2. Step 3: Difference = 2-2 = 0. Step 4: Since 0 is a multiple of 11, 121 is divisible by 11. Step 5: In fact, 121 = 11^2. So the answer is Yes.",
       "d": "medium",
       "t": "Speed Math (Divisibility)"
     },
@@ -5366,7 +5366,7 @@
         "Never"
       ],
       "c": 0,
-      "exp": "Step 1: Sum of digits = 9+9+9+9 = 36. Step 2: 36 is divisible by 9 (36/9=4). Step 3: Therefore 9999 is divisible by 9. 9999/9 = 1111.",
+      "exp": "Step 1: Sum of digits = 9+9+9+9 = 36. Step 2: 36 is divisible by 9 (36/9=4). Step 3: Therefore 9999 is divisible by 9. 9999/9 = 1111. So the answer is Yes.",
       "d": "medium",
       "t": "Speed Math (Divisibility)"
     },
@@ -5394,7 +5394,7 @@
         "16"
       ],
       "c": 2,
-      "exp": "Step 1: 8 = 2^3. If a number is divisible by 2^3, it is divisible by 2^1 and 2^2. Step 2: Divisible by 8 implies divisible by 2 and 4. Step 3: Example: 24 is divisible by 8, and also by 2 (24/2=12) and by 4 (24/4=6).",
+      "exp": "Step 1: 8 = 2^3. If a number is divisible by 2^3, it is divisible by 2^1 and 2^2. Step 2: Divisible by 8 implies divisible by 2 and 4. Step 3: Example: 24 is divisible by 8, and also by 2 (24/2=12) and by 4 (24/4=6). So the answer is Both 2 and 4.",
       "d": "medium",
       "t": "Speed Math (Divisibility)"
     },
@@ -6108,7 +6108,7 @@
         "12"
       ],
       "c": 2,
-      "exp": "Step 1: 60 = 2^2 × 3 × 5, so 60 has 3 distinct primes. Step 2: In a coprime factor pair, each prime must go entirely to one factor. Step 3: Each of the 3 primes has 2 choices (factor A or factor B): 2^3 = 8 ordered pairs.",
+      "exp": "Step 1: 60 = 2^2 \u00d7 3 \u00d7 5, so 60 has 3 distinct primes. Step 2: In a coprime factor pair, each prime must go entirely to one factor. Step 3: Each of the 3 primes has 2 choices (factor A or factor B): 2^3 = 8 ordered pairs.",
       "d": "medium",
       "t": "Primes & Composites"
     },
@@ -6192,7 +6192,7 @@
         "All of these"
       ],
       "c": 3,
-      "exp": "Step 1: 1111: (1+1)-(1+1)=0, divisible. Step 2: 1221: (1+2)-(2+1)=0, divisible. Step 3: 1331: (1+3)-(3+1)=0, divisible. Step 4: All are divisible by 11. 1111=101x11, 1221=111x11, 1331=121x11.",
+      "exp": "Step 1: 1111: (1+1)-(1+1)=0, divisible. Step 2: 1221: (1+2)-(2+1)=0, divisible. Step 3: 1331: (1+3)-(3+1)=0, divisible. Step 4: All are divisible by 11. 1111=101x11, 1221=111x11, 1331=121x11. So the answer is All of these.",
       "d": "medium",
       "t": "Speed Math (Divisibility)"
     },
@@ -6220,7 +6220,7 @@
         "No, divisible by 13"
       ],
       "c": 0,
-      "exp": "Step 1: sqrt(233) ~ 15.3. Step 2: Check 2: odd, not divisible. 3: 2+3+3=8, not divisible. 5: not ending in 0/5. 7: 7x33=231, 233 mod 7=2. 11: 11x21=231, remainder 2. 13: 13x17=221, 233-221=12. Step 3: None divide, so 233 is prime.",
+      "exp": "Step 1: sqrt(233) ~ 15.3. Step 2: Check 2: odd, not divisible. 3: 2+3+3=8, not divisible. 5: not ending in 0/5. 7: 7x33=231, 233 mod 7=2. 11: 11x21=231, remainder 2. 13: 13x17=221, 233-221=12. Step 3: None divide, so 233 is prime. So the answer is Yes.",
       "d": "medium",
       "t": "Primes & Composites"
     },
@@ -6505,8 +6505,8 @@
       "d": "easy",
       "t": "Number Family Tree",
       "exp": [
-        "$$\\frac{3}{4} = 0.75, \\quad \\sqrt{81} = 9, \\quad 2.5 = \\frac{5}{2}$$ — all rational.",
-        "$\\sqrt{2}$ cannot be written as a fraction → irrational."
+        "$$\\frac{3}{4} = 0.75, \\quad \\sqrt{81} = 9, \\quad 2.5 = \\frac{5}{2}$$ \u2014 all rational.",
+        "$\\sqrt{2}$ cannot be written as a fraction \u2192 irrational."
       ],
       "source": "Auto-verified"
     },
@@ -6522,7 +6522,7 @@
       "d": "easy",
       "t": "Number Family Tree",
       "exp": [
-        "Rationals are dense — between any two rationals there is another.",
+        "Rationals are dense \u2014 between any two rationals there is another.",
         "$$\\text{infinitely many}$$"
       ],
       "source": "Auto-verified"
@@ -6539,7 +6539,7 @@
       "d": "easy",
       "t": "Number Family Tree",
       "exp": [
-        "$$\\sqrt{64} = 8$$ — an integer, so rational."
+        "$$\\sqrt{64} = 8$$ \u2014 an integer, so rational."
       ],
       "source": "Auto-verified"
     },
@@ -6604,7 +6604,7 @@
       "d": "easy",
       "t": "Number Family Tree",
       "exp": [
-        "$-2, -1, 0, 1, 2$ → 5 integers."
+        "$-2, -1, 0, 1, 2$ \u2192 5 integers."
       ],
       "source": "Auto-verified"
     },
@@ -6620,7 +6620,7 @@
       "d": "easy",
       "t": "Number Family Tree",
       "exp": [
-        "$$n \\times 1 = n$$ — multiplicative identity."
+        "$$n \\times 1 = n$$ \u2014 multiplicative identity. So the answer is The number itself."
       ],
       "source": "Auto-verified"
     },
@@ -6706,7 +6706,7 @@
       "exp": [
         "Let the primes be $x$ and $y$ with $x + y = 40$, $x - y = 6$.",
         "$$x = \\frac{total + d}{2} = a, \\quad y = \\frac{total - d}{2} = b$$",
-        "Both are prime ✓, so the larger is $23$."
+        "Both are prime \u2713, so the larger is $23$."
       ],
       "source": "Auto-verified"
     },
@@ -8738,7 +8738,7 @@
       "d": "easy",
       "t": "Remainder Theorems",
       "exp": [
-        "$$2916 = 54^2,\\ 3025 = 55^2,\\ 3136 = 56^2$$"
+        "$$2916 = 54^2,\\ 3025 = 55^2,\\ 3136 = 56^2$$ So the answer is All of them."
       ],
       "source": "Auto-verified"
     },
@@ -8772,7 +8772,7 @@
       "d": "hard",
       "t": "Divisibility",
       "exp": [
-        "72 = 8 × 9, and 8, 9 are coprime, so the number must be divisible by both.",
+        "72 = 8 \u00d7 9, and 8, 9 are coprime, so the number must be divisible by both.",
         "Divisible by 8: last three digits $49x$ must be divisible by 8. Only $496 = 8 \\times 62$ works, so $x = 6$.",
         "Divisible by 9: digit sum $= 2+3+5+4+1+y+4+9+6 = 34+y$ must be a multiple of 9, so $y = 2$.",
         "$$(3x+5y) : (5x+3y) = (18+10) : (30+6) = 28 : 36 = 7 : 9$$"

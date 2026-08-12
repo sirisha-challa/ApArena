@@ -1,7 +1,7 @@
 {
   "id": "profit-and-loss",
   "title": "Profit and Loss",
-  "icon": "₹",
+  "icon": "\u20b9",
   "subtitle": "Cost Price, Selling Price, Profit %, Loss %, Discount, Marked Price, Successive Discounts & More",
   "days": "2-4",
   "color": "#EAB308",
@@ -12,7 +12,7 @@
     "Successive Discounts",
     "Dishonest Dealer (False Weight)",
     "Profit % on SP vs CP",
-    "Two Items — Same SP",
+    "Two Items \u2014 Same SP",
     "Partnership & Ratio in P&L",
     "Miscellaneous Problems"
   ],
@@ -43,27 +43,27 @@
     {
       "id": "intro-pnl",
       "title": "What is Profit and Loss?",
-      "content": "Every day we buy and sell things. When you buy a chocolate for $5 and sell it for $8, you made a profit of $3. When you buy a pen for $10 and sell it for $7, you made a loss of $3. Profit and Loss problems are all about comparing the buying price (Cost Price) and the selling price (Selling Price). Companies love these questions because they test your ability to calculate percentages quickly and think in terms of money — an essential skill for business!",
+      "content": "Every day we buy and sell things. When you buy a chocolate for $5 and sell it for $8, you made a profit of $3. When you buy a pen for $10 and sell it for $7, you made a loss of $3. Profit and Loss problems are all about comparing the buying price (Cost Price) and the selling price (Selling Price). Companies love these questions because they test your ability to calculate percentages quickly and think in terms of money \u2014 an essential skill for business!",
       "subsections": [
         {
           "title": "What is Cost Price (CP)?",
-          "content": "Cost Price is the price at which an article is purchased. It includes the actual price plus any extra money spent (like repair costs, transportation, etc.). Example: If you buy a phone for ₹10,000 and spend ₹500 on a screen guard, your total CP = ₹10,500."
+          "content": "Cost Price is the price at which an article is purchased. It includes the actual price plus any extra money spent (like repair costs, transportation, etc.). Example: If you buy a phone for \u20b910,000 and spend \u20b9500 on a screen guard, your total CP = \u20b910,500."
         },
         {
           "title": "What is Selling Price (SP)?",
-          "content": "Selling Price is the price at which an article is sold. It is the money the buyer pays to the seller. Example: If you sell that phone for ₹12,000, SP = ₹12,000."
+          "content": "Selling Price is the price at which an article is sold. It is the money the buyer pays to the seller. Example: If you sell that phone for \u20b912,000, SP = \u20b912,000."
         },
         {
           "title": "Profit = SP - CP (When SP > CP)",
-          "content": "If you sell at a higher price than you bought, you make a profit. Profit = Selling Price - Cost Price. Example: CP = ₹500, SP = ₹600 → Profit = ₹600 - ₹500 = ₹100. Think: You earned ₹100 extra!"
+          "content": "If you sell at a higher price than you bought, you make a profit. Profit = Selling Price - Cost Price. Example: CP = \u20b9500, SP = \u20b9600 \u2192 Profit = \u20b9600 - \u20b9500 = \u20b9100. Think: You earned \u20b9100 extra!"
         },
         {
           "title": "Loss = CP - SP (When CP > SP)",
-          "content": "If you sell at a lower price than you bought, you incur a loss. Loss = Cost Price - Selling Price. Example: CP = ₹500, SP = ₹400 → Loss = ₹500 - ₹400 = ₹100. Think: You lost ₹100."
+          "content": "If you sell at a lower price than you bought, you incur a loss. Loss = Cost Price - Selling Price. Example: CP = \u20b9500, SP = \u20b9400 \u2192 Loss = \u20b9500 - \u20b9400 = \u20b9100. Think: You lost \u20b9100."
         },
         {
           "title": "Real-Life Example",
-          "content": "Riya bought a bicycle for ₹2,000. She spent ₹500 on repairs (so total CP = ₹2,500). She sold it for ₹3,000. Profit = ₹3,000 - ₹2,500 = ₹500. She made ₹500 profit! If she had sold it for ₹2,000, her loss would be ₹2,500 - ₹2,000 = ₹500."
+          "content": "Riya bought a bicycle for \u20b92,000. She spent \u20b9500 on repairs (so total CP = \u20b92,500). She sold it for \u20b93,000. Profit = \u20b93,000 - \u20b92,500 = \u20b9500. She made \u20b9500 profit! If she had sold it for \u20b92,000, her loss would be \u20b92,500 - \u20b92,000 = \u20b9500."
         },
         {
           "title": "Key Formula Summary",
@@ -75,31 +75,31 @@
     {
       "id": "profit-loss-percentage",
       "title": "Profit and Loss Percentage",
-      "content": "Profit or loss in rupees alone doesn't tell the full story. A ₹100 profit on a ₹200 item is huge (50%), but the same ₹100 profit on a ₹10,000 item is tiny (1%). That's why we use percentages — they show the real impact!",
+      "content": "Profit or loss in rupees alone doesn't tell the full story. A \u20b9100 profit on a \u20b9200 item is huge (50%), but the same \u20b9100 profit on a \u20b910,000 item is tiny (1%). That's why we use percentages \u2014 they show the real impact!",
       "subsections": [
         {
           "title": "Profit Percentage Formula",
-          "content": "Profit % = (Profit / CP) × 100. It tells you how much profit you made for every ₹100 invested. Example: CP = ₹500, SP = ₹600 → Profit = ₹100. Profit % = (100/500) × 100 = 20%. That means for every ₹100 spent, you earned ₹20 profit."
+          "content": "Profit % = (Profit / CP) \u00d7 100. It tells you how much profit you made for every \u20b9100 invested. Example: CP = \u20b9500, SP = \u20b9600 \u2192 Profit = \u20b9100. Profit % = (100/500) \u00d7 100 = 20%. That means for every \u20b9100 spent, you earned \u20b920 profit."
         },
         {
           "title": "Loss Percentage Formula",
-          "content": "Loss % = (Loss / CP) × 100. Example: CP = ₹500, SP = ₹400 → Loss = ₹100. Loss % = (100/500) × 100 = 20%. You lost ₹20 for every ₹100 you invested."
+          "content": "Loss % = (Loss / CP) \u00d7 100. Example: CP = \u20b9500, SP = \u20b9400 \u2192 Loss = \u20b9100. Loss % = (100/500) \u00d7 100 = 20%. You lost \u20b920 for every \u20b9100 you invested."
         },
         {
           "title": "Finding SP when CP and Profit% are Given",
-          "content": "SP = CP × (100 + Profit%)/100. Think: If profit is 20%, SP is 120% of CP. Multiply CP by 120/100 = 1.2. Example: CP = ₹800, Profit = 25% → SP = 800 × 125/100 = 800 × 1.25 = ₹1,000."
+          "content": "SP = CP \u00d7 (100 + Profit%)/100. Think: If profit is 20%, SP is 120% of CP. Multiply CP by 120/100 = 1.2. Example: CP = \u20b9800, Profit = 25% \u2192 SP = 800 \u00d7 125/100 = 800 \u00d7 1.25 = \u20b91,000."
         },
         {
           "title": "Finding SP when CP and Loss% are Given",
-          "content": "SP = CP × (100 - Loss%)/100. If loss is 20%, SP is 80% of CP. Example: CP = ₹800, Loss = 25% → SP = 800 × 75/100 = 800 × 0.75 = ₹600."
+          "content": "SP = CP \u00d7 (100 - Loss%)/100. If loss is 20%, SP is 80% of CP. Example: CP = \u20b9800, Loss = 25% \u2192 SP = 800 \u00d7 75/100 = 800 \u00d7 0.75 = \u20b9600."
         },
         {
           "title": "Finding CP when SP and Profit% are Given",
-          "content": "CP = SP × 100/(100 + Profit%). Example: SP = ₹1,200, Profit = 20% → CP = 1200 × 100/120 = 1200 × 5/6 = ₹1,000."
+          "content": "CP = SP \u00d7 100/(100 + Profit%). Example: SP = \u20b91,200, Profit = 20% \u2192 CP = 1200 \u00d7 100/120 = 1200 \u00d7 5/6 = \u20b91,000."
         },
         {
           "title": "Finding CP when SP and Loss% are Given",
-          "content": "CP = SP × 100/(100 - Loss%). Example: SP = ₹800, Loss = 20% → CP = 800 × 100/80 = 800 × 5/4 = ₹1,000."
+          "content": "CP = SP \u00d7 100/(100 - Loss%). Example: SP = \u20b9800, Loss = 20% \u2192 CP = 800 \u00d7 100/80 = 800 \u00d7 5/4 = \u20b91,000."
         }
       ],
       "type": "concept"
@@ -115,19 +115,19 @@
         },
         {
           "title": "Discount Percentage Formula",
-          "content": "Discount % = (Discount / MP) × 100. Example: An item marked at ₹1,000 is sold at ₹800. Discount = ₹200. Discount % = (200/1000) × 100 = 20%."
+          "content": "Discount % = (Discount / MP) \u00d7 100. Example: An item marked at \u20b91,000 is sold at \u20b9800. Discount = \u20b9200. Discount % = (200/1000) \u00d7 100 = 20%."
         },
         {
           "title": "Finding SP when MP and Discount% are Given",
-          "content": "SP = MP × (100 - Discount%)/100. Example: MP = ₹2,000, Discount = 10% → SP = 2000 × 90/100 = ₹1,800."
+          "content": "SP = MP \u00d7 (100 - Discount%)/100. Example: MP = \u20b92,000, Discount = 10% \u2192 SP = 2000 \u00d7 90/100 = \u20b91,800."
         },
         {
-          "title": "Chain of CP → MP → Discount → SP → Profit/Loss",
-          "content": "Some problems connect everything: A shopkeeper marks goods 30% above CP and gives 10% discount. First find MP = CP × 130/100. Then find SP = MP × 90/100. Then compare SP with CP to find profit/loss %."
+          "title": "Chain of CP \u2192 MP \u2192 Discount \u2192 SP \u2192 Profit/Loss",
+          "content": "Some problems connect everything: A shopkeeper marks goods 30% above CP and gives 10% discount. First find MP = CP \u00d7 130/100. Then find SP = MP \u00d7 90/100. Then compare SP with CP to find profit/loss %."
         },
         {
           "title": "Profit % when Marking Above CP and Giving Discount",
-          "content": "A common pattern: Mark up by x%, give discount of y%. Net profit % = ( (100 + x)(100 - y)/100 ) - 100. Example: Mark up 30%, discount 10% → Net = (130 × 90)/100 - 100 = 117 - 100 = 17% profit."
+          "content": "A common pattern: Mark up by x%, give discount of y%. Net profit % = ( (100 + x)(100 - y)/100 ) - 100. Example: Mark up 30%, discount 10% \u2192 Net = (130 \u00d7 90)/100 - 100 = 117 - 100 = 17% profit."
         }
       ],
       "type": "concept"
@@ -135,7 +135,7 @@
     {
       "id": "successive-discounts",
       "title": "Successive Discounts",
-      "content": "Sometimes shops offer '20% + 10% extra off!' This doesn't mean 30% total discount. Successive discounts are applied one after another — the second discount applies to the already discounted price, not the original marked price.",
+      "content": "Sometimes shops offer '20% + 10% extra off!' This doesn't mean 30% total discount. Successive discounts are applied one after another \u2014 the second discount applies to the already discounted price, not the original marked price.",
       "subsections": [
         {
           "title": "What is a Successive Discount?",
@@ -143,15 +143,15 @@
         },
         {
           "title": "Formula for Two Successive Discounts",
-          "content": "If discounts are d₁% and d₂%, Single Equivalent Discount = d₁ + d₂ - (d₁ × d₂)/100. Example: 10% + 20% = 10 + 20 - (10×20)/100 = 30 - 2 = 28% total discount (NOT 30%!)."
+          "content": "If discounts are d\u2081% and d\u2082%, Single Equivalent Discount = d\u2081 + d\u2082 - (d\u2081 \u00d7 d\u2082)/100. Example: 10% + 20% = 10 + 20 - (10\u00d720)/100 = 30 - 2 = 28% total discount (NOT 30%!)."
         },
         {
           "title": "Net SP after Successive Discounts",
-          "content": "SP = MP × (100 - d₁)/100 × (100 - d₂)/100 × (100 - d₃)/100 ... Example: MP = ₹10,000, discounts = 20% and 10% → SP = 10,000 × 80/100 × 90/100 = 10,000 × 0.8 × 0.9 = ₹7,200."
+          "content": "SP = MP \u00d7 (100 - d\u2081)/100 \u00d7 (100 - d\u2082)/100 \u00d7 (100 - d\u2083)/100 ... Example: MP = \u20b910,000, discounts = 20% and 10% \u2192 SP = 10,000 \u00d7 80/100 \u00d7 90/100 = 10,000 \u00d7 0.8 \u00d7 0.9 = \u20b97,200."
         },
         {
           "title": "Finding Overall Profit% with Successive Discounts",
-          "content": "If a shopkeeper marks up by m% and then gives successive discounts d₁% and d₂%, combine markup and discounts: Net = (100 + m)/100 × (100 - d₁)/100 × (100 - d₂)/100. Multiply by 100 to get net % (subtract 100 for profit%)."
+          "content": "If a shopkeeper marks up by m% and then gives successive discounts d\u2081% and d\u2082%, combine markup and discounts: Net = (100 + m)/100 \u00d7 (100 - d\u2081)/100 \u00d7 (100 - d\u2082)/100. Multiply by 100 to get net % (subtract 100 for profit%)."
         }
       ],
       "type": "concept"
@@ -163,15 +163,15 @@
       "subsections": [
         {
           "title": "The False Weight Concept",
-          "content": "If a shopkeeper uses a weight of W grams instead of 1000 grams (1 kg), his profit comes from saving the extra goods. He sells W grams but charges for 1000 grams. Gain % = [Error / (True Value - Error)] × 100."
+          "content": "If a shopkeeper uses a weight of W grams instead of 1000 grams (1 kg), his profit comes from saving the extra goods. He sells W grams but charges for 1000 grams. Gain % = [Error / (True Value - Error)] \u00d7 100."
         },
         {
           "title": "Formula for False Weight Gain",
-          "content": "If a shopkeeper uses a weight of x grams instead of 1000 grams (1 kg), Gain % = [(1000 - x) / x] × 100. Example: Uses 900g instead of 1000g → Gain % = (100/900) × 100 = 11.11%."
+          "content": "If a shopkeeper uses a weight of x grams instead of 1000 grams (1 kg), Gain % = [(1000 - x) / x] \u00d7 100. Example: Uses 900g instead of 1000g \u2192 Gain % = (100/900) \u00d7 100 = 11.11%."
         },
         {
           "title": "Dishonest Dealer with Additional Profit%",
-          "content": "If the dealer also sells at a profit of p%, total gain = [ (100 + p) × (1000/x) - 100 ]%. x = false weight used. Example: Uses 800g weight and sells at 20% profit → Total = [120 × 1000/800 - 100] = [150 - 100] = 50% gain."
+          "content": "If the dealer also sells at a profit of p%, total gain = [ (100 + p) \u00d7 (1000/x) - 100 ]%. x = false weight used. Example: Uses 800g weight and sells at 20% profit \u2192 Total = [120 \u00d7 1000/800 - 100] = [150 - 100] = 50% gain."
         }
       ],
       "type": "concept"
@@ -183,35 +183,35 @@
       "subsections": [
         {
           "title": "Profit % on SP",
-          "content": "Profit % (on SP) = (Profit / SP) × 100. Example: CP = ₹800, SP = ₹1,000, Profit = ₹200. Profit % on CP = 200/800 × 100 = 25%. Profit % on SP = 200/1000 × 100 = 20%. Same profit, different percentages!"
+          "content": "Profit % (on SP) = (Profit / SP) \u00d7 100. Example: CP = \u20b9800, SP = \u20b91,000, Profit = \u20b9200. Profit % on CP = 200/800 \u00d7 100 = 25%. Profit % on SP = 200/1000 \u00d7 100 = 20%. Same profit, different percentages!"
         },
         {
           "title": "Converting Between the Two",
-          "content": "If profit % on CP = p%, then profit % on SP = p/(100+p) × 100%. If profit % on SP = q%, then profit % on CP = q/(100-q) × 100%. Example: 25% profit on CP → 25/125 × 100 = 20% profit on SP."
+          "content": "If profit % on CP = p%, then profit % on SP = p/(100+p) \u00d7 100%. If profit % on SP = q%, then profit % on CP = q/(100-q) \u00d7 100%. Example: 25% profit on CP \u2192 25/125 \u00d7 100 = 20% profit on SP."
         },
         {
           "title": "Same for Loss",
-          "content": "Loss % on SP = (Loss/SP) × 100. Loss % on CP = (Loss/CP) × 100. The same conversion formulas work with appropriate signs."
+          "content": "Loss % on SP = (Loss/SP) \u00d7 100. Loss % on CP = (Loss/CP) \u00d7 100. The same conversion formulas work with appropriate signs."
         }
       ],
       "type": "concept"
     },
     {
       "id": "two-items-same-sp",
-      "title": "Two Items — Same Selling Price",
+      "title": "Two Items \u2014 Same Selling Price",
       "content": "A very popular exam question: A person sells two items at the SAME price. One is sold at a profit of x%, the other at a loss of x%. What is the overall profit or loss? The surprising answer: there is ALWAYS a loss!",
       "subsections": [
         {
           "title": "The Classic Formula",
-          "content": "When two items are sold at the same price, one at a gain of x% and the other at a loss of x%, there is always an overall loss. Loss % = (x²/100)%. Example: If x = 10%, Loss % = 100/100 = 1%."
+          "content": "When two items are sold at the same price, one at a gain of x% and the other at a loss of x%, there is always an overall loss. Loss % = (x\u00b2/100)%. Example: If x = 10%, Loss % = 100/100 = 1%."
         },
         {
           "title": "Why is There Always a Loss?",
           "content": "The profit is earned on a smaller CP, while the loss is incurred on a larger CP. Since the loss is on a bigger number and the profit on a smaller number, the loss always outweighs the profit. That's why the net result is always a loss."
         },
         {
-          "title": "When Profit% ≠ Loss%",
-          "content": "If one item is sold at p% profit and the other at q% loss (at same SP), find each CP separately: CP₁ = SP × 100/(100+p), CP₂ = SP × 100/(100-q). Total CP and total SP give the overall result."
+          "title": "When Profit% \u2260 Loss%",
+          "content": "If one item is sold at p% profit and the other at q% loss (at same SP), find each CP separately: CP\u2081 = SP \u00d7 100/(100+p), CP\u2082 = SP \u00d7 100/(100-q). Total CP and total SP give the overall result."
         }
       ],
       "type": "concept"
@@ -223,15 +223,15 @@
       "subsections": [
         {
           "title": "Simple Partnership (Same Time Period)",
-          "content": "If partners invest for the same duration, profit/loss is shared in the ratio of their investments. A invests ₹X, B invests ₹Y → Profit ratio = X : Y. Example: A puts ₹10,000, B puts ₹20,000 for 1 year. Profit of ₹3,000 is split 1:2."
+          "content": "If partners invest for the same duration, profit/loss is shared in the ratio of their investments. A invests \u20b9X, B invests \u20b9Y \u2192 Profit ratio = X : Y. Example: A puts \u20b910,000, B puts \u20b920,000 for 1 year. Profit of \u20b93,000 is split 1:2."
         },
         {
           "title": "Compound Partnership (Different Time Periods)",
-          "content": "If partners invest for different durations, profit is shared in the ratio of (Investment × Time). A invests ₹X for T₁ months, B invests ₹Y for T₂ months → Ratio = XT₁ : YT₂."
+          "content": "If partners invest for different durations, profit is shared in the ratio of (Investment \u00d7 Time). A invests \u20b9X for T\u2081 months, B invests \u20b9Y for T\u2082 months \u2192 Ratio = XT\u2081 : YT\u2082."
         },
         {
           "title": "Partners Joining or Leaving Midway",
-          "content": "Calculate each partner's 'effective investment' = Amount × Time period. Then divide total profit in that ratio."
+          "content": "Calculate each partner's 'effective investment' = Amount \u00d7 Time period. Then divide total profit in that ratio."
         }
       ],
       "type": "concept"
@@ -266,19 +266,19 @@
         "text": "Profit is what you earn when SP exceeds CP. Loss is what you lose when CP exceeds SP."
       },
       "explanation": [
-        "Profit = Selling Price − Cost Price (when SP > CP)",
-        "Loss = Cost Price − Selling Price (when CP > SP)",
-        "SP = CP + Profit = CP − Loss"
+        "Profit = Selling Price \u2212 Cost Price (when SP > CP)",
+        "Loss = Cost Price \u2212 Selling Price (when CP > SP)",
+        "SP = CP + Profit = CP \u2212 Loss"
       ],
       "example": {
-        "prompt": "CP = ₹500, SP = ₹600. Find profit.",
+        "prompt": "CP = \u20b9500, SP = \u20b9600. Find profit.",
         "steps": [
-          "Profit = SP − CP = 600 − 500 = ₹100",
-          "Since SP > CP, it's a profit of ₹100."
+          "Profit = SP \u2212 CP = 600 \u2212 500 = \u20b9100",
+          "Since SP > CP, it's a profit of \u20b9100."
         ],
-        "answer": "₹100 profit"
+        "answer": "\u20b9100 profit"
       },
-      "memoryTip": "Profit → + (more money in your pocket). Loss → − (less money in your pocket).",
+      "memoryTip": "Profit \u2192 + (more money in your pocket). Loss \u2192 \u2212 (less money in your pocket).",
       "commonMistake": "Don't subtract the smaller from the larger without checking which is CP and which is SP!"
     },
     {
@@ -289,15 +289,15 @@
         "text": "Profit or loss percentage is always calculated on Cost Price (unless specified otherwise)."
       },
       "explanation": [
-        "Profit % = (Profit × 100) / CP",
-        "Loss % = (Loss × 100) / CP",
-        "These tell you the profit/loss per ₹100 invested."
+        "Profit % = (Profit \u00d7 100) / CP",
+        "Loss % = (Loss \u00d7 100) / CP",
+        "These tell you the profit/loss per \u20b9100 invested."
       ],
       "example": {
-        "prompt": "CP = ₹500, SP = ₹600. Find profit %.",
+        "prompt": "CP = \u20b9500, SP = \u20b9600. Find profit %.",
         "steps": [
-          "Profit = 600 − 500 = ₹100",
-          "Profit % = (100/500) × 100 = 20%"
+          "Profit = 600 \u2212 500 = \u20b9100",
+          "Profit % = (100/500) \u00d7 100 = 20%"
         ],
         "answer": "20% profit"
       },
@@ -309,21 +309,21 @@
       "title": "Finding SP when CP and Profit%/Loss% are Given",
       "formula": {
         "latex": "SP = CP \\times \\frac{100 + \\text{Profit}\\%}{100} \\quad \\text{or} \\quad SP = CP \\times \\frac{100 - \\text{Loss}\\%}{100}",
-        "text": "For profit: SP is (100 + profit%)% of CP. For loss: SP is (100 − loss%)% of CP."
+        "text": "For profit: SP is (100 + profit%)% of CP. For loss: SP is (100 \u2212 loss%)% of CP."
       },
       "explanation": [
-        "Think: If profit is p%, SP = (100 + p)% of CP → multiply CP by (100 + p)/100",
-        "If loss is l%, SP = (100 − l)% of CP → multiply CP by (100 − l)/100"
+        "Think: If profit is p%, SP = (100 + p)% of CP \u2192 multiply CP by (100 + p)/100",
+        "If loss is l%, SP = (100 \u2212 l)% of CP \u2192 multiply CP by (100 \u2212 l)/100"
       ],
       "example": {
-        "prompt": "CP = ₹800, profit = 25%. Find SP.",
+        "prompt": "CP = \u20b9800, profit = 25%. Find SP.",
         "steps": [
-          "SP = CP × (100 + 25)/100 = 800 × 125/100",
-          "= 800 × 1.25 = ₹1,000"
+          "SP = CP \u00d7 (100 + 25)/100 = 800 \u00d7 125/100",
+          "= 800 \u00d7 1.25 = \u20b91,000"
         ],
-        "answer": "₹1,000"
+        "answer": "\u20b91,000"
       },
-      "memoryTip": "Profit → add to 100 (100 + p). Loss → subtract from 100 (100 − l).",
+      "memoryTip": "Profit \u2192 add to 100 (100 + p). Loss \u2192 subtract from 100 (100 \u2212 l).",
       "commonMistake": "Don't add the percentage directly to CP. First convert the percentage to a decimal factor."
     },
     {
@@ -334,18 +334,18 @@
         "text": "CP is SP scaled down by the profit/loss factor."
       },
       "explanation": [
-        "If profit is p%, CP = SP × 100/(100 + p)",
-        "If loss is l%, CP = SP × 100/(100 − l)"
+        "If profit is p%, CP = SP \u00d7 100/(100 + p)",
+        "If loss is l%, CP = SP \u00d7 100/(100 \u2212 l)"
       ],
       "example": {
-        "prompt": "SP = ₹1,200, profit = 20%. Find CP.",
+        "prompt": "SP = \u20b91,200, profit = 20%. Find CP.",
         "steps": [
-          "CP = 1200 × 100/(100 + 20) = 1200 × 100/120",
-          "= 1200 × 5/6 = ₹1,000"
+          "CP = 1200 \u00d7 100/(100 + 20) = 1200 \u00d7 100/120",
+          "= 1200 \u00d7 5/6 = \u20b91,000"
         ],
-        "answer": "₹1,000"
+        "answer": "\u20b91,000"
       },
-      "memoryTip": "CP is the 'base' — it's always smaller than SP when there's profit, larger than SP when there's loss.",
+      "memoryTip": "CP is the 'base' \u2014 it's always smaller than SP when there's profit, larger than SP when there's loss.",
       "commonMistake": "Don't subtract 20% of SP to find CP! The percentage is on CP, not SP."
     },
     {
@@ -356,17 +356,17 @@
         "text": "Discount is always calculated on Marked Price (unless specified)."
       },
       "explanation": [
-        "Discount = MP − SP",
-        "Discount % = (Discount × 100) / MP",
-        "SP = MP × (100 − d%)/100"
+        "Discount = MP \u2212 SP",
+        "Discount % = (Discount \u00d7 100) / MP",
+        "SP = MP \u00d7 (100 \u2212 d%)/100"
       ],
       "example": {
-        "prompt": "MP = ₹2,000, discount = 10%. Find SP.",
+        "prompt": "MP = \u20b92,000, discount = 10%. Find SP.",
         "steps": [
-          "SP = 2000 × (100 − 10)/100 = 2000 × 90/100",
-          "= ₹1,800"
+          "SP = 2000 \u00d7 (100 \u2212 10)/100 = 2000 \u00d7 90/100",
+          "= \u20b91,800"
         ],
-        "answer": "₹1,800"
+        "answer": "\u20b91,800"
       },
       "memoryTip": "Discount is always on MP (the tag price). Think: shopkeeper cuts from the tag price.",
       "commonMistake": "Discount % is on MP, NOT on CP. Don't confuse discount % with loss %!"
@@ -379,16 +379,16 @@
         "text": "When an item is marked up by m% above CP and then sold at d% discount, the net profit percentage is given by this formula."
       },
       "explanation": [
-        "First: MP = CP × (100 + m)/100 (markup m% on CP)",
-        "Then: SP = MP × (100 − d)/100 (discount d% on MP)",
-        "Combine: SP = CP × (100 + m)(100 − d)/10000",
-        "Net profit % = (SP/CP − 1) × 100 = ((100 + m)(100 − d)/100) − 100"
+        "First: MP = CP \u00d7 (100 + m)/100 (markup m% on CP)",
+        "Then: SP = MP \u00d7 (100 \u2212 d)/100 (discount d% on MP)",
+        "Combine: SP = CP \u00d7 (100 + m)(100 \u2212 d)/10000",
+        "Net profit % = (SP/CP \u2212 1) \u00d7 100 = ((100 + m)(100 \u2212 d)/100) \u2212 100"
       ],
       "example": {
         "prompt": "A shopkeeper marks goods 30% above CP and gives 10% discount. Find profit %.",
         "steps": [
-          "Net = (130 × 90)/100 − 100",
-          "= 117 − 100 = 17% profit"
+          "Net = (130 \u00d7 90)/100 \u2212 100",
+          "= 117 \u2212 100 = 17% profit"
         ],
         "answer": "17%"
       },
@@ -400,20 +400,20 @@
       "title": "Successive Discounts (Two or More)",
       "formula": {
         "latex": "\\text{Single Equivalent Discount} = d_1 + d_2 - \\frac{d_1 \\times d_2}{100} \\\\ SP = MP \\times \\frac{100 - d_1}{100} \\times \\frac{100 - d_2}{100} \\times \\dots",
-        "text": "Two successive discounts of d₁% and d₂% are NOT equal to (d₁ + d₂)%."
+        "text": "Two successive discounts of d\u2081% and d\u2082% are NOT equal to (d\u2081 + d\u2082)%."
       },
       "explanation": [
-        "Single Equivalent Discount = d₁ + d₂ − (d₁ × d₂)/100",
-        "SP = MP × (100 − d₁)/100 × (100 − d₂)/100 × ...",
+        "Single Equivalent Discount = d\u2081 + d\u2082 \u2212 (d\u2081 \u00d7 d\u2082)/100",
+        "SP = MP \u00d7 (100 \u2212 d\u2081)/100 \u00d7 (100 \u2212 d\u2082)/100 \u00d7 ...",
         "The order of discounts doesn't matter."
       ],
       "example": {
-        "prompt": "MP = ₹10,000, discounts = 20% and 10%. Find SP and single equivalent discount.",
+        "prompt": "MP = \u20b910,000, discounts = 20% and 10%. Find SP and single equivalent discount.",
         "steps": [
-          "SP = 10000 × 80/100 × 90/100 = 10000 × 0.8 × 0.9 = ₹7,200",
-          "Single equivalent = 20 + 10 − (20×10)/100 = 30 − 2 = 28%"
+          "SP = 10000 \u00d7 80/100 \u00d7 90/100 = 10000 \u00d7 0.8 \u00d7 0.9 = \u20b97,200",
+          "Single equivalent = 20 + 10 \u2212 (20\u00d710)/100 = 30 \u2212 2 = 28%"
         ],
-        "answer": "SP = ₹7,200, Equivalent discount = 28%"
+        "answer": "SP = \u20b97,200, Equivalent discount = 28%"
       },
       "memoryTip": "Two discounts of 20% and 10% give 28% total, not 30%! The '2%' is lost because the second discount applies to an already reduced price.",
       "commonMistake": "Never add successive discounts directly! Always use the formula."
@@ -426,87 +426,87 @@
         "text": "If a dealer uses a weight of x grams instead of 1000 grams (1 kg), his gain percentage is given by this formula."
       },
       "explanation": [
-        "Error = True Weight − False Weight = 1000 − x",
-        "Gain % = Error/(True Weight − Error) × 100 = (1000 − x)/x × 100",
-        "If he also sells at profit p%, Total Gain % = [(100 + p) × (1000/x) − 100]%"
+        "Error = True Weight \u2212 False Weight = 1000 \u2212 x",
+        "Gain % = Error/(True Weight \u2212 Error) \u00d7 100 = (1000 \u2212 x)/x \u00d7 100",
+        "If he also sells at profit p%, Total Gain % = [(100 + p) \u00d7 (1000/x) \u2212 100]%"
       ],
       "example": {
         "prompt": "A dealer uses 900g weight instead of 1kg. Find gain %.",
         "steps": [
-          "Error = 1000 − 900 = 100g",
-          "Gain % = (100/900) × 100 = 11.11%"
+          "Error = 1000 \u2212 900 = 100g",
+          "Gain % = (100/900) \u00d7 100 = 11.11%"
         ],
         "answer": "11.11%"
       },
-      "memoryTip": "He sells x grams but charges for 1000 grams — he gains (1000 − x) grams for free!",
+      "memoryTip": "He sells x grams but charges for 1000 grams \u2014 he gains (1000 \u2212 x) grams for free!",
       "commonMistake": "Don't calculate gain % on 1000g. The cost is for x grams, so base is x."
     },
     {
       "id": "two-items-same-sp-formula",
-      "title": "Two Items Sold at Same Price — One Profit, One Loss",
+      "title": "Two Items Sold at Same Price \u2014 One Profit, One Loss",
       "formula": {
         "latex": "\\text{Loss}\\% = \\left(\\frac{x}{10}\\right)^2 \\% \\quad \\text{when profit\\% = loss\\% = x\\%}",
-        "text": "When two items are sold at the same SP, one at x% profit and the other at x% loss, there is always an overall loss of (x/10)²%."
+        "text": "When two items are sold at the same SP, one at x% profit and the other at x% loss, there is always an overall loss of (x/10)\u00b2%."
       },
       "explanation": [
-        "Let SP of each item = ₹S. Let profit% = loss% = x%.",
-        "CP₁ = S × 100/(100 + x), CP₂ = S × 100/(100 − x)",
-        "Total CP = S × 100[1/(100+x) + 1/(100−x)] = S × 20000/(100² − x²)",
-        "Total SP = 2S. Loss = Total CP − Total SP.",
-        "Loss % = (x²/100)%."
+        "Let SP of each item = \u20b9S. Let profit% = loss% = x%.",
+        "CP\u2081 = S \u00d7 100/(100 + x), CP\u2082 = S \u00d7 100/(100 \u2212 x)",
+        "Total CP = S \u00d7 100[1/(100+x) + 1/(100\u2212x)] = S \u00d7 20000/(100\u00b2 \u2212 x\u00b2)",
+        "Total SP = 2S. Loss = Total CP \u2212 Total SP.",
+        "Loss % = (x\u00b2/100)%."
       ],
       "example": {
-        "prompt": "Two items sold at ₹1,000 each. One at 10% profit, other at 10% loss. Find overall gain/loss %.",
+        "prompt": "Two items sold at \u20b91,000 each. One at 10% profit, other at 10% loss. Find overall gain/loss %.",
         "steps": [
-          "Loss % = (10²/100)% = 100/100 = 1% loss",
+          "Loss % = (10\u00b2/100)% = 100/100 = 1% loss",
           "Overall loss of 1%"
         ],
         "answer": "1% loss"
       },
-      "memoryTip": "(x/10)² — take the profit%, divide by 10, then square it! E.g., 10% → (10/10)² = 1² = 1% loss.",
-      "commonMistake": "Many think profit and loss cancel out (net 0%). But they DON'T — there's always a loss!"
+      "memoryTip": "(x/10)\u00b2 \u2014 take the profit%, divide by 10, then square it! E.g., 10% \u2192 (10/10)\u00b2 = 1\u00b2 = 1% loss.",
+      "commonMistake": "Many think profit and loss cancel out (net 0%). But they DON'T \u2014 there's always a loss!"
     },
     {
       "id": "partnership-formula",
       "title": "Profit Sharing in Partnership",
       "formula": {
         "latex": "\\text{Profit Ratio} = I_1T_1 : I_2T_2 : I_3T_3 \\dots",
-        "text": "When partners invest for different time periods, profit is shared in the ratio of (Investment × Time)."
+        "text": "When partners invest for different time periods, profit is shared in the ratio of (Investment \u00d7 Time)."
       },
       "explanation": [
         "Simple Partnership (equal time): Profit ratio = Investment ratio",
-        "Compound Partnership (different times): Profit ratio = (Investment₁ × Time₁) : (Investment₂ × Time₂)",
+        "Compound Partnership (different times): Profit ratio = (Investment\u2081 \u00d7 Time\u2081) : (Investment\u2082 \u00d7 Time\u2082)",
         "If a partner joins later, calculate his product from the joining date."
       ],
       "example": {
-        "prompt": "A invests ₹10,000 for 12 months. B invests ₹20,000 for 6 months. Profit = ₹3,000. Find each share.",
+        "prompt": "A invests \u20b910,000 for 12 months. B invests \u20b920,000 for 6 months. Profit = \u20b93,000. Find each share.",
         "steps": [
-          "A's product = 10000 × 12 = 1,20,000",
-          "B's product = 20000 × 6 = 1,20,000",
+          "A's product = 10000 \u00d7 12 = 1,20,000",
+          "B's product = 20000 \u00d7 6 = 1,20,000",
           "Ratio = 1,20,000 : 1,20,000 = 1:1",
-          "Each gets ₹1,500"
+          "Each gets \u20b91,500"
         ],
-        "answer": "A = ₹1,500, B = ₹1,500"
+        "answer": "A = \u20b91,500, B = \u20b91,500"
       },
-      "memoryTip": "Think of it as 'money-months': ₹10,000 × 12 months = 1,20,000 'money-months' contribution.",
+      "memoryTip": "Think of it as 'money-months': \u20b910,000 \u00d7 12 months = 1,20,000 'money-months' contribution.",
       "commonMistake": "Don't just take the investment amount! Multiply by time too."
     },
     {
       "id": "profit-percent-on-sp-formula",
-      "title": "Profit % on SP vs CP — Conversion",
+      "title": "Profit % on SP vs CP \u2014 Conversion",
       "formula": {
         "latex": "\\text{Profit\\% (on SP)} = \\frac{\\text{Profit\\% (on CP)}}{100 + \\text{Profit\\% (on CP)}} \\times 100 \\\\ \\text{Profit\\% (on CP)} = \\frac{\\text{Profit\\% (on SP)}}{100 - \\text{Profit\\% (on SP)}} \\times 100",
         "text": "Conversion formulas between profit% on CP and profit% on SP."
       },
       "explanation": [
-        "Profit % on CP → Profit % on SP: p_sp = (p_cp × 100)/(100 + p_cp)",
-        "Profit % on SP → Profit % on CP: p_cp = (p_sp × 100)/(100 − p_sp)",
+        "Profit % on CP \u2192 Profit % on SP: p_sp = (p_cp \u00d7 100)/(100 + p_cp)",
+        "Profit % on SP \u2192 Profit % on CP: p_cp = (p_sp \u00d7 100)/(100 \u2212 p_sp)",
         "Same formulas work for loss with appropriate signs."
       ],
       "example": {
         "prompt": "Profit on CP = 25%. Find profit on SP.",
         "steps": [
-          "Profit on SP = (25 × 100)/(100 + 25) = 2500/125 = 20%"
+          "Profit on SP = (25 \u00d7 100)/(100 + 25) = 2500/125 = 20%"
         ],
         "answer": "20%"
       },
@@ -524,15 +524,15 @@
         "Step 1: Find CP of each item individually using the given SP and profit/loss %.",
         "Step 2: Add all CPs to get Total CP.",
         "Step 3: Add all SPs to get Total SP.",
-        "Step 4: Overall % = (Total SP − Total CP) × 100 / Total CP."
+        "Step 4: Overall % = (Total SP \u2212 Total CP) \u00d7 100 / Total CP."
       ],
       "example": {
-        "prompt": "Item A sold at ₹840 at 20% profit. Item B sold at ₹960 at 4% loss. Find overall profit/loss %.",
+        "prompt": "Item A sold at \u20b9840 at 20% profit. Item B sold at \u20b9960 at 4% loss. Find overall profit/loss %.",
         "steps": [
-          "CP of A = 840 × 100/120 = ₹700",
-          "CP of B = 960 × 100/96 = ₹1,000",
-          "Total CP = ₹1,700, Total SP = ₹1,800",
-          "Profit = ₹100, Profit % = 100/1700 × 100 = 5.88%"
+          "CP of A = 840 \u00d7 100/120 = \u20b9700",
+          "CP of B = 960 \u00d7 100/96 = \u20b91,000",
+          "Total CP = \u20b91,700, Total SP = \u20b91,800",
+          "Profit = \u20b9100, Profit % = 100/1700 \u00d7 100 = 5.88%"
         ],
         "answer": "5.88% profit"
       },
@@ -543,257 +543,257 @@
   "practiceProblems": {
     "basic-profit-loss": [
       {
-        "q": "CP = ₹200, SP = ₹250. Find profit.",
+        "q": "CP = \u20b9200, SP = \u20b9250. Find profit.",
         "s": [
-          "Profit = SP − CP",
-          "= 250 − 200 = ₹50"
+          "Profit = SP \u2212 CP",
+          "= 250 \u2212 200 = \u20b950"
         ],
-        "a": "₹50"
+        "a": "\u20b950"
       },
       {
-        "q": "CP = ₹1,000, SP = ₹850. Find loss.",
+        "q": "CP = \u20b91,000, SP = \u20b9850. Find loss.",
         "s": [
-          "Loss = CP − SP",
-          "= 1000 − 850 = ₹150"
+          "Loss = CP \u2212 SP",
+          "= 1000 \u2212 850 = \u20b9150"
         ],
-        "a": "₹150"
+        "a": "\u20b9150"
       },
       {
-        "q": "CP = ₹500, SP = ₹600. Is there profit or loss and by how much?",
+        "q": "CP = \u20b9500, SP = \u20b9600. Is there profit or loss and by how much?",
         "s": [
-          "SP(₹600) > CP(₹500), so it's a profit",
-          "Profit = 600 − 500 = ₹100"
+          "SP(\u20b9600) > CP(\u20b9500), so it's a profit",
+          "Profit = 600 \u2212 500 = \u20b9100"
         ],
-        "a": "Profit of ₹100"
+        "a": "Profit of \u20b9100"
       },
       {
-        "q": "An article is bought for ₹1,200 and sold for ₹1,080. Find the loss.",
+        "q": "An article is bought for \u20b91,200 and sold for \u20b91,080. Find the loss.",
         "s": [
-          "Loss = CP − SP",
-          "= 1200 − 1080 = ₹120"
+          "Loss = CP \u2212 SP",
+          "= 1200 \u2212 1080 = \u20b9120"
         ],
-        "a": "₹120"
+        "a": "\u20b9120"
       },
       {
-        "q": "Alfred buys a scooter for ₹4,700 and spends ₹800 on repairs. He sells it for ₹5,800. Find profit.",
+        "q": "Alfred buys a scooter for \u20b94,700 and spends \u20b9800 on repairs. He sells it for \u20b95,800. Find profit.",
         "s": [
-          "Total CP = 4700 + 800 = ₹5,500",
-          "SP = ₹5,800",
-          "Profit = 5800 − 5500 = ₹300"
+          "Total CP = 4700 + 800 = \u20b95,500",
+          "SP = \u20b95,800",
+          "Profit = 5800 \u2212 5500 = \u20b9300"
         ],
-        "a": "₹300"
+        "a": "\u20b9300"
       },
       {
-        "q": "A shopkeeper buys a TV for ₹12,000 and sells it at a profit of ₹1,500. Find SP.",
+        "q": "A shopkeeper buys a TV for \u20b912,000 and sells it at a profit of \u20b91,500. Find SP.",
         "s": [
           "SP = CP + Profit",
-          "= 12000 + 1500 = ₹13,500"
+          "= 12000 + 1500 = \u20b913,500"
         ],
-        "a": "₹13,500"
+        "a": "\u20b913,500"
       },
       {
-        "q": "A man sells a watch for ₹2,400 and loses ₹300. Find CP.",
+        "q": "A man sells a watch for \u20b92,400 and loses \u20b9300. Find CP.",
         "s": [
           "CP = SP + Loss",
-          "= 2400 + 300 = ₹2,700"
+          "= 2400 + 300 = \u20b92,700"
         ],
-        "a": "₹2,700"
+        "a": "\u20b92,700"
       },
       {
-        "q": "If SP = ₹3,600 and CP = ₹3,000, find profit %.",
+        "q": "If SP = \u20b93,600 and CP = \u20b93,000, find profit %.",
         "s": [
-          "Profit = 3600 − 3000 = ₹600",
-          "Profit % = (600/3000) × 100 = 20%"
+          "Profit = 3600 \u2212 3000 = \u20b9600",
+          "Profit % = (600/3000) \u00d7 100 = 20%"
         ],
         "a": "20%"
       },
       {
-        "q": "If CP = ₹2,500 and loss = ₹300, find loss %.",
+        "q": "If CP = \u20b92,500 and loss = \u20b9300, find loss %.",
         "s": [
-          "Loss % = (300/2500) × 100 = 12%"
+          "Loss % = (300/2500) \u00d7 100 = 12%"
         ],
         "a": "12%"
       },
       {
-        "q": "A trader bought 20 kg of rice at ₹40/kg and sold it at ₹45/kg. Find total profit.",
+        "q": "A trader bought 20 kg of rice at \u20b940/kg and sold it at \u20b945/kg. Find total profit.",
         "s": [
-          "CP per kg = ₹40, SP per kg = ₹45",
-          "Profit per kg = 5, Total = 20 × 5 = ₹100"
+          "CP per kg = \u20b940, SP per kg = \u20b945",
+          "Profit per kg = 5, Total = 20 \u00d7 5 = \u20b9100"
         ],
-        "a": "₹100"
+        "a": "\u20b9100"
       }
     ],
     "profit-loss-percentage": [
       {
-        "q": "CP = ₹500, profit = 20%. Find SP.",
+        "q": "CP = \u20b9500, profit = 20%. Find SP.",
         "s": [
-          "SP = CP × (100 + 20)/100 = 500 × 120/100",
-          "= 500 × 1.2 = ₹600"
+          "SP = CP \u00d7 (100 + 20)/100 = 500 \u00d7 120/100",
+          "= 500 \u00d7 1.2 = \u20b9600"
         ],
-        "a": "₹600"
+        "a": "\u20b9600"
       },
       {
-        "q": "CP = ₹800, loss = 25%. Find SP.",
+        "q": "CP = \u20b9800, loss = 25%. Find SP.",
         "s": [
-          "SP = CP × (100 − 25)/100 = 800 × 75/100",
-          "= 800 × 0.75 = ₹600"
+          "SP = CP \u00d7 (100 \u2212 25)/100 = 800 \u00d7 75/100",
+          "= 800 \u00d7 0.75 = \u20b9600"
         ],
-        "a": "₹600"
+        "a": "\u20b9600"
       },
       {
-        "q": "SP = ₹1,200, profit = 20%. Find CP.",
+        "q": "SP = \u20b91,200, profit = 20%. Find CP.",
         "s": [
-          "CP = SP × 100/(100 + 20) = 1200 × 100/120",
-          "= 1200 × 5/6 = ₹1,000"
+          "CP = SP \u00d7 100/(100 + 20) = 1200 \u00d7 100/120",
+          "= 1200 \u00d7 5/6 = \u20b91,000"
         ],
-        "a": "₹1,000"
+        "a": "\u20b91,000"
       },
       {
-        "q": "SP = ₹900, loss = 10%. Find CP.",
+        "q": "SP = \u20b9900, loss = 10%. Find CP.",
         "s": [
-          "CP = SP × 100/(100 − 10) = 900 × 100/90",
-          "= 900 × 10/9 = ₹1,000"
+          "CP = SP \u00d7 100/(100 \u2212 10) = 900 \u00d7 100/90",
+          "= 900 \u00d7 10/9 = \u20b91,000"
         ],
-        "a": "₹1,000"
+        "a": "\u20b91,000"
       },
       {
-        "q": "A man sold an article for ₹1,980 and lost 10%. Find CP.",
+        "q": "A man sold an article for \u20b91,980 and lost 10%. Find CP.",
         "s": [
-          "CP = 1980 × 100/(100 − 10) = 1980 × 100/90",
-          "= 1980 × 10/9 = ₹2,200"
+          "CP = 1980 \u00d7 100/(100 \u2212 10) = 1980 \u00d7 100/90",
+          "= 1980 \u00d7 10/9 = \u20b92,200"
         ],
-        "a": "₹2,200"
+        "a": "\u20b92,200"
       },
       {
-        "q": "A shopkeeper sold a table for ₹2,400 at a profit of 20%. Find CP.",
+        "q": "A shopkeeper sold a table for \u20b92,400 at a profit of 20%. Find CP.",
         "s": [
-          "CP = 2400 × 100/(100 + 20) = 2400 × 100/120",
-          "= 2400 × 5/6 = ₹2,000"
+          "CP = 2400 \u00d7 100/(100 + 20) = 2400 \u00d7 100/120",
+          "= 2400 \u00d7 5/6 = \u20b92,000"
         ],
-        "a": "₹2,000"
+        "a": "\u20b92,000"
       },
       {
-        "q": "A dealer sold a radio for ₹600 at a loss of 25%. Find CP.",
+        "q": "A dealer sold a radio for \u20b9600 at a loss of 25%. Find CP.",
         "s": [
-          "CP = 600 × 100/(100 − 25) = 600 × 100/75",
-          "= 600 × 4/3 = ₹800"
+          "CP = 600 \u00d7 100/(100 \u2212 25) = 600 \u00d7 100/75",
+          "= 600 \u00d7 4/3 = \u20b9800"
         ],
-        "a": "₹800"
+        "a": "\u20b9800"
       },
       {
-        "q": "By selling a book for ₹272, a man loses 15%. Find CP.",
+        "q": "By selling a book for \u20b9272, a man loses 15%. Find CP.",
         "s": [
-          "CP = 272 × 100/(100 − 15) = 272 × 100/85",
-          "= 272 × 20/17 = ₹320"
+          "CP = 272 \u00d7 100/(100 \u2212 15) = 272 \u00d7 100/85",
+          "= 272 \u00d7 20/17 = \u20b9320"
         ],
-        "a": "₹320"
+        "a": "\u20b9320"
       },
       {
-        "q": "A sells a cycle for ₹1,760 and gains 10%. Find CP.",
+        "q": "A sells a cycle for \u20b91,760 and gains 10%. Find CP.",
         "s": [
-          "CP = 1760 × 100/(100 + 10) = 1760 × 100/110",
-          "= 1760 × 10/11 = ₹1,600"
+          "CP = 1760 \u00d7 100/(100 + 10) = 1760 \u00d7 100/110",
+          "= 1760 \u00d7 10/11 = \u20b91,600"
         ],
-        "a": "₹1,600"
+        "a": "\u20b91,600"
       },
       {
-        "q": "If CP = ₹400 and SP = ₹500, find profit %.",
+        "q": "If CP = \u20b9400 and SP = \u20b9500, find profit %.",
         "s": [
-          "Profit = 500 − 400 = ₹100",
-          "Profit % = (100/400) × 100 = 25%"
+          "Profit = 500 \u2212 400 = \u20b9100",
+          "Profit % = (100/400) \u00d7 100 = 25%"
         ],
         "a": "25%"
       }
     ],
     "discount-formula": [
       {
-        "q": "MP = ₹2,000, discount = 10%. Find SP.",
+        "q": "MP = \u20b92,000, discount = 10%. Find SP.",
         "s": [
-          "SP = MP × (100 − 10)/100 = 2000 × 90/100 = ₹1,800"
+          "SP = MP \u00d7 (100 \u2212 10)/100 = 2000 \u00d7 90/100 = \u20b91,800"
         ],
-        "a": "₹1,800"
+        "a": "\u20b91,800"
       },
       {
-        "q": "A shopkeeper marks an item at ₹1,500 and gives a discount of 20%. Find SP.",
+        "q": "A shopkeeper marks an item at \u20b91,500 and gives a discount of 20%. Find SP.",
         "s": [
-          "SP = 1500 × 80/100 = ₹1,200"
+          "SP = 1500 \u00d7 80/100 = \u20b91,200"
         ],
-        "a": "₹1,200"
+        "a": "\u20b91,200"
       },
       {
-        "q": "MP = ₹3,600, SP = ₹3,060. Find discount %.",
+        "q": "MP = \u20b93,600, SP = \u20b93,060. Find discount %.",
         "s": [
-          "Discount = 3600 − 3060 = ₹540",
-          "Discount % = (540/3600) × 100 = 15%"
+          "Discount = 3600 \u2212 3060 = \u20b9540",
+          "Discount % = (540/3600) \u00d7 100 = 15%"
         ],
         "a": "15%"
       },
       {
-        "q": "SP = ₹960, discount = 20%. Find MP.",
+        "q": "SP = \u20b9960, discount = 20%. Find MP.",
         "s": [
-          "MP = SP × 100/(100 − 20) = 960 × 100/80",
-          "= 960 × 5/4 = ₹1,200"
+          "MP = SP \u00d7 100/(100 \u2212 20) = 960 \u00d7 100/80",
+          "= 960 \u00d7 5/4 = \u20b91,200"
         ],
-        "a": "₹1,200"
+        "a": "\u20b91,200"
       },
       {
-        "q": "A shopkeeper marks a TV at ₹15,000 and gives 10% discount. What is SP?",
+        "q": "A shopkeeper marks a TV at \u20b915,000 and gives 10% discount. What is SP?",
         "s": [
-          "SP = 15000 × 90/100 = ₹13,500"
+          "SP = 15000 \u00d7 90/100 = \u20b913,500"
         ],
-        "a": "₹13,500"
+        "a": "\u20b913,500"
       },
       {
-        "q": "SP after 25% discount is ₹3,000. Find MP.",
+        "q": "SP after 25% discount is \u20b93,000. Find MP.",
         "s": [
-          "MP = 3000 × 100/(100 − 25) = 3000 × 100/75",
-          "= 3000 × 4/3 = ₹4,000"
+          "MP = 3000 \u00d7 100/(100 \u2212 25) = 3000 \u00d7 100/75",
+          "= 3000 \u00d7 4/3 = \u20b94,000"
         ],
-        "a": "₹4,000"
+        "a": "\u20b94,000"
       },
       {
-        "q": "MP = ₹8,000, discount = 30%. Find SP.",
+        "q": "MP = \u20b98,000, discount = 30%. Find SP.",
         "s": [
-          "SP = 8000 × 70/100 = ₹5,600"
+          "SP = 8000 \u00d7 70/100 = \u20b95,600"
         ],
-        "a": "₹5,600"
+        "a": "\u20b95,600"
       },
       {
-        "q": "A fan marked at ₹2,500 is sold at ₹2,125. Find discount %.",
+        "q": "A fan marked at \u20b92,500 is sold at \u20b92,125. Find discount %.",
         "s": [
-          "Discount = 2500 − 2125 = ₹375",
-          "Discount % = (375/2500) × 100 = 15%"
+          "Discount = 2500 \u2212 2125 = \u20b9375",
+          "Discount % = (375/2500) \u00d7 100 = 15%"
         ],
         "a": "15%"
       },
       {
-        "q": "SP after 12% discount is ₹3,520. Find MP.",
+        "q": "SP after 12% discount is \u20b93,520. Find MP.",
         "s": [
-          "MP = 3520 × 100/(100 − 12) = 3520 × 100/88",
-          "= 3520 × 25/22 = ₹4,000"
+          "MP = 3520 \u00d7 100/(100 \u2212 12) = 3520 \u00d7 100/88",
+          "= 3520 \u00d7 25/22 = \u20b94,000"
         ],
-        "a": "₹4,000"
+        "a": "\u20b94,000"
       },
       {
-        "q": "A dealer offers 15% discount on an item marked at ₹2,800. Find SP.",
+        "q": "A dealer offers 15% discount on an item marked at \u20b92,800. Find SP.",
         "s": [
-          "SP = 2800 × 85/100 = ₹2,380"
+          "SP = 2800 \u00d7 85/100 = \u20b92,380"
         ],
-        "a": "₹2,380"
+        "a": "\u20b92,380"
       }
     ],
     "markup-and-discount": [
       {
         "q": "A shopkeeper marks goods 30% above CP and gives 10% discount. Find profit %.",
         "s": [
-          "Net = (130 × 90)/100 − 100 = 117 − 100 = 17%"
+          "Net = (130 \u00d7 90)/100 \u2212 100 = 117 \u2212 100 = 17%"
         ],
         "a": "17%"
       },
       {
         "q": "Marked 25% above CP and sold at 20% discount. Find profit/loss %.",
         "s": [
-          "Net = (125 × 80)/100 − 100 = 100 − 100 = 0%",
+          "Net = (125 \u00d7 80)/100 \u2212 100 = 100 \u2212 100 = 0%",
           "No profit, no loss."
         ],
         "a": "0% (no profit, no loss)"
@@ -801,419 +801,419 @@
       {
         "q": "A trader marks his goods 40% above CP and allows a discount of 25%. Find profit %.",
         "s": [
-          "Net = (140 × 75)/100 − 100 = 105 − 100 = 5% profit"
+          "Net = (140 \u00d7 75)/100 \u2212 100 = 105 \u2212 100 = 5% profit"
         ],
         "a": "5%"
       },
       {
         "q": "Marked 20% above CP, sold at 10% discount. Find profit %.",
         "s": [
-          "Net = (120 × 90)/100 − 100 = 108 − 100 = 8% profit"
+          "Net = (120 \u00d7 90)/100 \u2212 100 = 108 \u2212 100 = 8% profit"
         ],
         "a": "8%"
       },
       {
         "q": "A dealer marks his goods at 50% above CP and gives 40% discount. Find gain/loss %.",
         "s": [
-          "Net = (150 × 60)/100 − 100 = 90 − 100 = −10%",
+          "Net = (150 \u00d7 60)/100 \u2212 100 = 90 \u2212 100 = \u221210%",
           "10% loss"
         ],
         "a": "10% loss"
       },
       {
-        "q": "If CP = ₹600, marked 25% above CP, sold at 8% discount. Find SP.",
+        "q": "If CP = \u20b9600, marked 25% above CP, sold at 8% discount. Find SP.",
         "s": [
-          "MP = 600 × 125/100 = ₹750",
-          "SP = 750 × 92/100 = ₹690"
+          "MP = 600 \u00d7 125/100 = \u20b9750",
+          "SP = 750 \u00d7 92/100 = \u20b9690"
         ],
-        "a": "₹690"
+        "a": "\u20b9690"
       },
       {
-        "q": "CP = ₹800, marked 30% above CP, sold at 10% discount. Find profit/loss %.",
+        "q": "CP = \u20b9800, marked 30% above CP, sold at 10% discount. Find profit/loss %.",
         "s": [
-          "Net = (130 × 90)/100 − 100 = 117 − 100 = 17% profit"
+          "Net = (130 \u00d7 90)/100 \u2212 100 = 117 \u2212 100 = 17% profit"
         ],
         "a": "17%"
       },
       {
         "q": "What profit % does a shopkeeper earn if he marks 20% above CP and gives 15% discount?",
         "s": [
-          "Net = (120 × 85)/100 − 100 = 102 − 100 = 2% profit"
+          "Net = (120 \u00d7 85)/100 \u2212 100 = 102 \u2212 100 = 2% profit"
         ],
         "a": "2%"
       },
       {
         "q": "A merchant marks his goods 60% above CP and allows 37.5% discount. Find profit %.",
         "s": [
-          "Net = (160 × 62.5)/100 − 100 = 100 − 100 = 0%"
+          "Net = (160 \u00d7 62.5)/100 \u2212 100 = 100 \u2212 100 = 0%"
         ],
         "a": "0%"
       },
       {
-        "q": "CP = ₹400, MP is 50% above CP, sold at 20% discount. Find profit rupees.",
+        "q": "CP = \u20b9400, MP is 50% above CP, sold at 20% discount. Find profit rupees.",
         "s": [
-          "MP = 400 × 150/100 = ₹600",
-          "SP = 600 × 80/100 = ₹480",
-          "Profit = 480 − 400 = ₹80"
+          "MP = 400 \u00d7 150/100 = \u20b9600",
+          "SP = 600 \u00d7 80/100 = \u20b9480",
+          "Profit = 480 \u2212 400 = \u20b980"
         ],
-        "a": "₹80"
+        "a": "\u20b980"
       }
     ],
     "successive-discount": [
       {
         "q": "Find single equivalent discount for 20% and 10%.",
         "s": [
-          "d = 20 + 10 − (20×10)/100 = 30 − 2 = 28%"
+          "d = 20 + 10 \u2212 (20\u00d710)/100 = 30 \u2212 2 = 28%"
         ],
         "a": "28%"
       },
       {
-        "q": "MP = ₹10,000, discounts 20% and 10%. Find SP.",
+        "q": "MP = \u20b910,000, discounts 20% and 10%. Find SP.",
         "s": [
-          "SP = 10000 × 80/100 × 90/100 = 10000 × 0.8 × 0.9 = ₹7,200"
+          "SP = 10000 \u00d7 80/100 \u00d7 90/100 = 10000 \u00d7 0.8 \u00d7 0.9 = \u20b97,200"
         ],
-        "a": "₹7,200"
+        "a": "\u20b97,200"
       },
       {
         "q": "Find single equivalent discount for 30% and 10%.",
         "s": [
-          "d = 30 + 10 − (30×10)/100 = 40 − 3 = 37%"
+          "d = 30 + 10 \u2212 (30\u00d710)/100 = 40 \u2212 3 = 37%"
         ],
         "a": "37%"
       },
       {
         "q": "Two discounts of 15% and 10% are offered. Find equivalent discount.",
         "s": [
-          "d = 15 + 10 − (15×10)/100 = 25 − 1.5 = 23.5%"
+          "d = 15 + 10 \u2212 (15\u00d710)/100 = 25 \u2212 1.5 = 23.5%"
         ],
         "a": "23.5%"
       },
       {
-        "q": "MP = ₹5,000, discounts 10% and 20%. Find SP.",
+        "q": "MP = \u20b95,000, discounts 10% and 20%. Find SP.",
         "s": [
-          "SP = 5000 × 90/100 × 80/100 = 5000 × 0.9 × 0.8 = ₹3,600"
+          "SP = 5000 \u00d7 90/100 \u00d7 80/100 = 5000 \u00d7 0.9 \u00d7 0.8 = \u20b93,600"
         ],
-        "a": "₹3,600"
+        "a": "\u20b93,600"
       },
       {
         "q": "Find single equivalent for 25% and 20%.",
         "s": [
-          "d = 25 + 20 − (25×20)/100 = 45 − 5 = 40%"
+          "d = 25 + 20 \u2212 (25\u00d720)/100 = 45 \u2212 5 = 40%"
         ],
         "a": "40%"
       },
       {
-        "q": "Find SP if MP = ₹2,000 and discounts are 10% and 5%.",
+        "q": "Find SP if MP = \u20b92,000 and discounts are 10% and 5%.",
         "s": [
-          "SP = 2000 × 90/100 × 95/100 = 2000 × 0.9 × 0.95 = ₹1,710"
+          "SP = 2000 \u00d7 90/100 \u00d7 95/100 = 2000 \u00d7 0.9 \u00d7 0.95 = \u20b91,710"
         ],
-        "a": "₹1,710"
+        "a": "\u20b91,710"
       },
       {
-        "q": "Three successive discounts: 20%, 10%, and 5%. Find SP if MP = ₹5,000.",
+        "q": "Three successive discounts: 20%, 10%, and 5%. Find SP if MP = \u20b95,000.",
         "s": [
-          "SP = 5000 × 80/100 × 90/100 × 95/100",
-          "= 5000 × 0.8 × 0.9 × 0.95 = ₹3,420"
+          "SP = 5000 \u00d7 80/100 \u00d7 90/100 \u00d7 95/100",
+          "= 5000 \u00d7 0.8 \u00d7 0.9 \u00d7 0.95 = \u20b93,420"
         ],
-        "a": "₹3,420"
+        "a": "\u20b93,420"
       },
       {
         "q": "Find single equivalent for 40% and 10%.",
         "s": [
-          "d = 40 + 10 − (40×10)/100 = 50 − 4 = 46%"
+          "d = 40 + 10 \u2212 (40\u00d710)/100 = 50 \u2212 4 = 46%"
         ],
         "a": "46%"
       },
       {
-        "q": "MP = ₹8,000, discounts 30% and 10%. Find SP.",
+        "q": "MP = \u20b98,000, discounts 30% and 10%. Find SP.",
         "s": [
-          "SP = 8000 × 70/100 × 90/100 = 8000 × 0.7 × 0.9 = ₹5,040"
+          "SP = 8000 \u00d7 70/100 \u00d7 90/100 = 8000 \u00d7 0.7 \u00d7 0.9 = \u20b95,040"
         ],
-        "a": "₹5,040"
+        "a": "\u20b95,040"
       }
     ],
     "false-weight": [
       {
         "q": "A dealer uses 900g weight instead of 1kg. Find gain %.",
         "s": [
-          "Gain % = (100/900) × 100 = 11.11%"
+          "Gain % = (100/900) \u00d7 100 = 11.11%"
         ],
         "a": "11.11%"
       },
       {
         "q": "A shopkeeper uses 800g weight instead of 1kg. Find gain %.",
         "s": [
-          "Gain % = (200/800) × 100 = 25%"
+          "Gain % = (200/800) \u00d7 100 = 25%"
         ],
         "a": "25%"
       },
       {
         "q": "A merchant uses 950g instead of 1kg. Find gain %.",
         "s": [
-          "Gain % = (50/950) × 100 = 5.26%"
+          "Gain % = (50/950) \u00d7 100 = 5.26%"
         ],
         "a": "5.26%"
       },
       {
         "q": "If a trader uses a weight of 960g instead of 1kg, what is his gain %?",
         "s": [
-          "Gain % = (40/960) × 100 = 4.17%"
+          "Gain % = (40/960) \u00d7 100 = 4.17%"
         ],
         "a": "4.17%"
       },
       {
         "q": "A dealer uses 750g weight instead of 1kg. Find gain %.",
         "s": [
-          "Gain % = (250/750) × 100 = 33.33%"
+          "Gain % = (250/750) \u00d7 100 = 33.33%"
         ],
         "a": "33.33%"
       },
       {
         "q": "A seller uses 850g weight and also sells at 20% profit. Find total gain %.",
         "s": [
-          "Total = [(100 + 20) × (1000/850) − 100]%",
-          "= [120 × 1.176 − 100] = [141.18 − 100] = 41.18%"
+          "Total = [(100 + 20) \u00d7 (1000/850) \u2212 100]%",
+          "= [120 \u00d7 1.176 \u2212 100] = [141.18 \u2212 100] = 41.18%"
         ],
         "a": "41.18%"
       },
       {
         "q": "A dishonest dealer uses 900g weight and also sells at 10% profit. Find total gain %.",
         "s": [
-          "Total = [110 × 1000/900 − 100]%",
-          "= [122.22 − 100] = 22.22%"
+          "Total = [110 \u00d7 1000/900 \u2212 100]%",
+          "= [122.22 \u2212 100] = 22.22%"
         ],
         "a": "22.22%"
       },
       {
         "q": "A shopkeeper uses 880g weight instead of 1kg. Find gain %.",
         "s": [
-          "Gain % = (120/880) × 100 = 13.64%"
+          "Gain % = (120/880) \u00d7 100 = 13.64%"
         ],
         "a": "13.64%"
       },
       {
         "q": "If a trader uses 700g weight, what is his gain %?",
         "s": [
-          "Gain % = (300/700) × 100 = 42.86%"
+          "Gain % = (300/700) \u00d7 100 = 42.86%"
         ],
         "a": "42.86%"
       },
       {
         "q": "A dealer uses 980g weight and claims to sell at CP. Find gain %.",
         "s": [
-          "Gain % = (20/980) × 100 = 2.04%"
+          "Gain % = (20/980) \u00d7 100 = 2.04%"
         ],
         "a": "2.04%"
       }
     ],
     "two-items-same-sp-formula": [
       {
-        "q": "Two items sold at ₹1,000 each. One at 10% profit, other at 10% loss. Find overall gain/loss %.",
+        "q": "Two items sold at \u20b91,000 each. One at 10% profit, other at 10% loss. Find overall gain/loss %.",
         "s": [
-          "Loss % = (10²/100)% = 100/100 = 1% loss"
+          "Loss % = (10\u00b2/100)% = 100/100 = 1% loss"
         ],
         "a": "1% loss"
       },
       {
         "q": "If two items are sold at same price at 20% profit and 20% loss respectively, find overall %.",
         "s": [
-          "Loss % = (20²/100)% = 400/100 = 4% loss"
+          "Loss % = (20\u00b2/100)% = 400/100 = 4% loss"
         ],
         "a": "4% loss"
       },
       {
-        "q": "A man sells two watches at ₹2,400 each. One at 20% profit, other at 20% loss. Find overall %.",
+        "q": "A man sells two watches at \u20b92,400 each. One at 20% profit, other at 20% loss. Find overall %.",
         "s": [
-          "Loss % = (20²/100)% = 4% loss"
+          "Loss % = (20\u00b2/100)% = 4% loss"
         ],
         "a": "4% loss"
       },
       {
-        "q": "Two articles sold at ₹3,000 each. One at 30% profit, other at 30% loss. Find overall %.",
+        "q": "Two articles sold at \u20b93,000 each. One at 30% profit, other at 30% loss. Find overall %.",
         "s": [
-          "Loss % = (30²/100)% = 900/100 = 9% loss"
+          "Loss % = (30\u00b2/100)% = 900/100 = 9% loss"
         ],
         "a": "9% loss"
       },
       {
         "q": "Find overall gain/loss % if two items are sold at same price at 5% profit and 5% loss.",
         "s": [
-          "Loss % = (5²/100)% = 25/100 = 0.25% loss"
+          "Loss % = (5\u00b2/100)% = 25/100 = 0.25% loss"
         ],
         "a": "0.25% loss"
       },
       {
-        "q": "Two chairs sold at ₹2,000 each. One at 25% profit, other at 25% loss. Find overall %.",
+        "q": "Two chairs sold at \u20b92,000 each. One at 25% profit, other at 25% loss. Find overall %.",
         "s": [
-          "Loss % = (25²/100)% = 625/100 = 6.25% loss"
+          "Loss % = (25\u00b2/100)% = 625/100 = 6.25% loss"
         ],
         "a": "6.25% loss"
       },
       {
         "q": "If x = 40% (one profit, one loss at same SP), find overall loss %.",
         "s": [
-          "Loss % = (40²/100)% = 1600/100 = 16% loss"
+          "Loss % = (40\u00b2/100)% = 1600/100 = 16% loss"
         ],
         "a": "16% loss"
       },
       {
-        "q": "A dealer sells two TVs at ₹12,000 each. One at 15% profit, other at 15% loss. Find overall %.",
+        "q": "A dealer sells two TVs at \u20b912,000 each. One at 15% profit, other at 15% loss. Find overall %.",
         "s": [
-          "Loss % = (15²/100)% = 225/100 = 2.25% loss"
+          "Loss % = (15\u00b2/100)% = 225/100 = 2.25% loss"
         ],
         "a": "2.25% loss"
       },
       {
-        "q": "Two books sold at ₹500 each. One at 12% profit, other at 12% loss. Find overall %.",
+        "q": "Two books sold at \u20b9500 each. One at 12% profit, other at 12% loss. Find overall %.",
         "s": [
-          "Loss % = (12²/100)% = 144/100 = 1.44% loss"
+          "Loss % = (12\u00b2/100)% = 144/100 = 1.44% loss"
         ],
         "a": "1.44% loss"
       },
       {
-        "q": "A fruit seller sells two baskets at ₹640 each. One at 4% profit, other at 4% loss. Find gain/loss %.",
+        "q": "A fruit seller sells two baskets at \u20b9640 each. One at 4% profit, other at 4% loss. Find gain/loss %.",
         "s": [
-          "Loss % = (4²/100)% = 16/100 = 0.16% loss"
+          "Loss % = (4\u00b2/100)% = 16/100 = 0.16% loss"
         ],
         "a": "0.16% loss"
       }
     ],
     "partnership-formula": [
       {
-        "q": "A invests ₹10,000, B invests ₹20,000 for the same period. Profit = ₹3,000. Find each share.",
+        "q": "A invests \u20b910,000, B invests \u20b920,000 for the same period. Profit = \u20b93,000. Find each share.",
         "s": [
           "Ratio = 10000:20000 = 1:2",
-          "A = 3000 × 1/3 = ₹1,000",
-          "B = 3000 × 2/3 = ₹2,000"
+          "A = 3000 \u00d7 1/3 = \u20b91,000",
+          "B = 3000 \u00d7 2/3 = \u20b92,000"
         ],
-        "a": "A = ₹1,000, B = ₹2,000"
+        "a": "A = \u20b91,000, B = \u20b92,000"
       },
       {
-        "q": "A invests ₹50,000 for 12 months, B invests ₹1,00,000 for 6 months. Profit = ₹24,000. Find each share.",
+        "q": "A invests \u20b950,000 for 12 months, B invests \u20b91,00,000 for 6 months. Profit = \u20b924,000. Find each share.",
         "s": [
-          "A = 50000×12 = 6,00,000",
-          "B = 100000×6 = 6,00,000",
+          "A = 50000\u00d712 = 6,00,000",
+          "B = 100000\u00d76 = 6,00,000",
           "Ratio = 1:1",
-          "Each gets ₹12,000"
+          "Each gets \u20b912,000"
         ],
-        "a": "A = ₹12,000, B = ₹12,000"
+        "a": "A = \u20b912,000, B = \u20b912,000"
       },
       {
-        "q": "A puts ₹30,000, B puts ₹40,000 for 1 year. Profit = ₹14,000. Find B's share.",
+        "q": "A puts \u20b930,000, B puts \u20b940,000 for 1 year. Profit = \u20b914,000. Find B's share.",
         "s": [
           "Ratio = 30000:40000 = 3:4",
-          "B = 14000 × 4/7 = ₹8,000"
+          "B = 14000 \u00d7 4/7 = \u20b98,000"
         ],
-        "a": "₹8,000"
+        "a": "\u20b98,000"
       },
       {
-        "q": "A invests ₹20,000 for 8 months, B invests ₹30,000 for 10 months. Profit = ₹23,000. Find A's share.",
+        "q": "A invests \u20b920,000 for 8 months, B invests \u20b930,000 for 10 months. Profit = \u20b923,000. Find A's share.",
         "s": [
-          "A = 20000×8 = 1,60,000",
-          "B = 30000×10 = 3,00,000",
+          "A = 20000\u00d78 = 1,60,000",
+          "B = 30000\u00d710 = 3,00,000",
           "Ratio = 160000:300000 = 8:15",
-          "A = 23000 × 8/23 = ₹8,000"
+          "A = 23000 \u00d7 8/23 = \u20b98,000"
         ],
-        "a": "₹8,000"
+        "a": "\u20b98,000"
       },
       {
-        "q": "A invests ₹12,000 for 12 months. B invests ₹16,000. After 4 months, B withdraws ₹4,000. Profit = ₹8,100. Find B's share.",
+        "q": "A invests \u20b912,000 for 12 months. B invests \u20b916,000. After 4 months, B withdraws \u20b94,000. Profit = \u20b98,100. Find B's share.",
         "s": [
-          "A = 12000×12 = 1,44,000",
-          "B = 16000×4 + 12000×8 = 64000+96000 = 1,60,000",
+          "A = 12000\u00d712 = 1,44,000",
+          "B = 16000\u00d74 + 12000\u00d78 = 64000+96000 = 1,60,000",
           "Ratio = 144000:160000 = 9:10",
-          "B = 8100 × 10/19 = ₹4,263.16"
+          "B = 8100 \u00d7 10/19 = \u20b94,263.16"
         ],
-        "a": "₹4,263.16"
+        "a": "\u20b94,263.16"
       },
       {
-        "q": "Three partners A, B, C invest ₹10,000, ₹15,000, ₹25,000 for 1 year. Profit = ₹15,000. Find C's share.",
+        "q": "Three partners A, B, C invest \u20b910,000, \u20b915,000, \u20b925,000 for 1 year. Profit = \u20b915,000. Find C's share.",
         "s": [
           "Ratio = 10000:15000:25000 = 2:3:5",
-          "C = 15000 × 5/10 = ₹7,500"
+          "C = 15000 \u00d7 5/10 = \u20b97,500"
         ],
-        "a": "₹7,500"
+        "a": "\u20b97,500"
       },
       {
-        "q": "A starts business with ₹35,000. After 5 months, B joins with ₹42,000. Profit at year end = ₹32,000. Find A's share.",
+        "q": "A starts business with \u20b935,000. After 5 months, B joins with \u20b942,000. Profit at year end = \u20b932,000. Find A's share.",
         "s": [
-          "A = 35000×12 = 4,20,000",
-          "B = 42000×7 = 2,94,000",
+          "A = 35000\u00d712 = 4,20,000",
+          "B = 42000\u00d77 = 2,94,000",
           "Ratio = 420000:294000 = 10:7",
-          "A = 32000 × 10/17 = ₹18,823.53"
+          "A = 32000 \u00d7 10/17 = \u20b918,823.53"
         ],
-        "a": "₹18,823.53"
+        "a": "\u20b918,823.53"
       },
       {
-        "q": "A invests ₹24,000, B invests ₹36,000 for 1 year. If profit is ₹15,000, find A's share.",
+        "q": "A invests \u20b924,000, B invests \u20b936,000 for 1 year. If profit is \u20b915,000, find A's share.",
         "s": [
           "Ratio = 24000:36000 = 2:3",
-          "A = 15000 × 2/5 = ₹6,000"
+          "A = 15000 \u00d7 2/5 = \u20b96,000"
         ],
-        "a": "₹6,000"
+        "a": "\u20b96,000"
       },
       {
-        "q": "A invests for 6 months, B invests for 8 months. Their investments are in ratio 5:4. Profit = ₹22,000. Find B's share.",
+        "q": "A invests for 6 months, B invests for 8 months. Their investments are in ratio 5:4. Profit = \u20b922,000. Find B's share.",
         "s": [
-          "A's product = 5×6 = 30",
-          "B's product = 4×8 = 32",
+          "A's product = 5\u00d76 = 30",
+          "B's product = 4\u00d78 = 32",
           "Ratio = 30:32 = 15:16",
-          "B = 22000 × 16/31 = ₹11,354.84"
+          "B = 22000 \u00d7 16/31 = \u20b911,354.84"
         ],
-        "a": "₹11,354.84"
+        "a": "\u20b911,354.84"
       },
       {
-        "q": "A, B, C invest in ratio 2:3:5. C's profit share is ₹10,000. Find total profit.",
+        "q": "A, B, C invest in ratio 2:3:5. C's profit share is \u20b910,000. Find total profit.",
         "s": [
           "Total ratio = 2+3+5 = 10",
           "C's share = 5/10 = 1/2 of total",
-          "Total profit = 10000 × 2 = ₹20,000"
+          "Total profit = 10000 \u00d7 2 = \u20b920,000"
         ],
-        "a": "₹20,000"
+        "a": "\u20b920,000"
       }
     ],
     "overall-profit-loss-multiple": [
       {
-        "q": "Item A sold at ₹840 at 20% profit. Item B sold at ₹960 at 4% loss. Find overall gain/loss %.",
+        "q": "Item A sold at \u20b9840 at 20% profit. Item B sold at \u20b9960 at 4% loss. Find overall gain/loss %.",
         "s": [
-          "CP of A = 840 × 100/120 = ₹700",
-          "CP of B = 960 × 100/96 = ₹1,000",
-          "Total CP = ₹1,700, Total SP = ₹1,800",
-          "Profit = ₹100, Profit % = 100/1700 × 100 = 5.88%"
+          "CP of A = 840 \u00d7 100/120 = \u20b9700",
+          "CP of B = 960 \u00d7 100/96 = \u20b91,000",
+          "Total CP = \u20b91,700, Total SP = \u20b91,800",
+          "Profit = \u20b9100, Profit % = 100/1700 \u00d7 100 = 5.88%"
         ],
         "a": "5.88% profit"
       },
       {
-        "q": "A shopkeeper sells one item for ₹1,200 at 20% profit and another for ₹1,200 at 25% loss. Find overall %.",
+        "q": "A shopkeeper sells one item for \u20b91,200 at 20% profit and another for \u20b91,200 at 25% loss. Find overall %.",
         "s": [
-          "CP₁ = 1200 × 100/120 = ₹1,000",
-          "CP₂ = 1200 × 100/75 = ₹1,600",
-          "Total CP = ₹2,600, Total SP = ₹2,400",
-          "Loss = ₹200, Loss % = 200/2600 × 100 = 7.69%"
+          "CP\u2081 = 1200 \u00d7 100/120 = \u20b91,000",
+          "CP\u2082 = 1200 \u00d7 100/75 = \u20b91,600",
+          "Total CP = \u20b92,600, Total SP = \u20b92,400",
+          "Loss = \u20b9200, Loss % = 200/2600 \u00d7 100 = 7.69%"
         ],
         "a": "7.69% loss"
       },
       {
-        "q": "A man sells two articles for ₹1,000 each. One at 25% profit, other at 25% loss. Find overall %.",
+        "q": "A man sells two articles for \u20b91,000 each. One at 25% profit, other at 25% loss. Find overall %.",
         "s": [
-          "Loss % = (25²/100)% = 6.25% loss"
+          "Loss % = (25\u00b2/100)% = 6.25% loss"
         ],
         "a": "6.25% loss"
       },
       {
-        "q": "A trader sells item X at ₹400 at 20% profit and item Y at ₹600 at 10% profit. Find overall profit %.",
+        "q": "A trader sells item X at \u20b9400 at 20% profit and item Y at \u20b9600 at 10% profit. Find overall profit %.",
         "s": [
-          "CP of X = 400 × 100/120 = ₹333.33",
-          "CP of Y = 600 × 100/110 = ₹545.45",
-          "Total CP = ₹878.78, Total SP = ₹1,000",
-          "Profit = ₹121.22, Profit % = 121.22/878.78 × 100 = 13.79%"
+          "CP of X = 400 \u00d7 100/120 = \u20b9333.33",
+          "CP of Y = 600 \u00d7 100/110 = \u20b9545.45",
+          "Total CP = \u20b9878.78, Total SP = \u20b91,000",
+          "Profit = \u20b9121.22, Profit % = 121.22/878.78 \u00d7 100 = 13.79%"
         ],
         "a": "13.79%"
       },
       {
-        "q": "A shopkeeper sells two T-shirts at ₹800 each. One at 10% profit, other at 10% loss. Find overall %.",
+        "q": "A shopkeeper sells two T-shirts at \u20b9800 each. One at 10% profit, other at 10% loss. Find overall %.",
         "s": [
-          "Loss % = (10²/100)% = 1% loss"
+          "Loss % = (10\u00b2/100)% = 1% loss"
         ],
         "a": "1% loss"
       }
@@ -1223,7 +1223,7 @@
     {
       "id": 1,
       "t": "basic-concepts",
-      "q": "Alfred buys an old scooter for ₹4,700 and spends ₹800 on repairs. If he sells it for ₹5,800, his gain percent is:",
+      "q": "Alfred buys an old scooter for \u20b94,700 and spends \u20b9800 on repairs. If he sells it for \u20b95,800, his gain percent is:",
       "opts": [
         "$4\\frac{4}{7}\\%$",
         "$5\\frac{5}{11}\\%$",
@@ -1231,7 +1231,7 @@
         "12%"
       ],
       "c": 1,
-      "exp": "Step 1: Total CP = ₹4,700 + ₹800 = ₹5,500. Step 2: SP = ₹5,800, so Profit = ₹5,800 − ₹5,500 = ₹300. Step 3: Gain % = (300/5500) × 100 = (3/55) × 100 = 300/55 = 60/11 = $5\\frac{5}{11}\\%$. Answer is option B.",
+      "exp": "Step 1: Total CP = \u20b94,700 + \u20b9800 = \u20b95,500. Step 2: SP = \u20b95,800, so Profit = \u20b95,800 \u2212 \u20b95,500 = \u20b9300. Step 3: Gain % = (300/5500) \u00d7 100 = (3/55) \u00d7 100 = 300/55 = 60/11 = $5\\frac{5}{11}\\%$. Answer is option B.",
       "d": "medium"
     },
     {
@@ -1245,7 +1245,7 @@
         "25"
       ],
       "c": 1,
-      "exp": "Step 1: Let CP of 1 article = ₹1. Then CP of 20 articles = ₹20, which equals SP of x articles. Step 2: SP of 1 article = ₹20/x. Step 3: Profit % = 25%, so SP = CP × 125/100 = 1 × 5/4 = 5/4. Step 4: So 20/x = 5/4, cross multiply: 20 × 4 = 5x, so x = 80/5 = 16. Answer is 16 (option B).",
+      "exp": "Step 1: Let CP of 1 article = \u20b91. Then CP of 20 articles = \u20b920, which equals SP of x articles. Step 2: SP of 1 article = \u20b920/x. Step 3: Profit % = 25%, so SP = CP \u00d7 125/100 = 1 \u00d7 5/4 = 5/4. Step 4: So 20/x = 5/4, cross multiply: 20 \u00d7 4 = 5x, so x = 80/5 = 16. Answer is 16 (option B).",
       "d": "medium"
     },
     {
@@ -1259,7 +1259,7 @@
         "120%"
       ],
       "c": 1,
-      "exp": "Step 1: Let CP = ₹C, SP = ₹S. Profit = S − C. Step 2: If SP is doubled, new SP = ₹2S. New profit = 2S − C. Step 3: Given new profit triples: 2S − C = 3(S − C). Step 4: 2S − C = 3S − 3C → 2C = S → S = 2C. Step 5: Profit % = ((2C − C)/C) × 100 = 100%. Answer is 100% (option B).",
+      "exp": "Step 1: Let CP = \u20b9C, SP = \u20b9S. Profit = S \u2212 C. Step 2: If SP is doubled, new SP = \u20b92S. New profit = 2S \u2212 C. Step 3: Given new profit triples: 2S \u2212 C = 3(S \u2212 C). Step 4: 2S \u2212 C = 3S \u2212 3C \u2192 2C = S \u2192 S = 2C. Step 5: Profit % = ((2C \u2212 C)/C) \u00d7 100 = 100%. Answer is 100% (option B).",
       "d": "easy"
     },
     {
@@ -1273,7 +1273,7 @@
         "250%"
       ],
       "c": 1,
-      "exp": "Step 1: Let CP = ₹100. Profit = 320% of CP = ₹320. So SP = CP + Profit = ₹100 + ₹320 = ₹420. Step 2: New CP = ₹100 + 25% = ₹125. SP remains ₹420. New profit = ₹420 − ₹125 = ₹295. Step 3: Profit % of SP = (295/420) × 100 ≈ 70.24% ≈ 70%. Answer is 70% (option B).",
+      "exp": "Step 1: Let CP = \u20b9100. Profit = 320% of CP = \u20b9320. So SP = CP + Profit = \u20b9100 + \u20b9320 = \u20b9420. Step 2: New CP = \u20b9100 + 25% = \u20b9125. SP remains \u20b9420. New profit = \u20b9420 \u2212 \u20b9125 = \u20b9295. Step 3: Profit % of SP = (295/420) \u00d7 100 \u2248 70.24% \u2248 70%. Answer is 70% (option B).",
       "d": "medium"
     },
     {
@@ -1287,55 +1287,55 @@
         "6"
       ],
       "c": 2,
-      "exp": "Step 1: CP of 6 toffees = ₹1, so CP of 1 toffee = ₹1/6. Step 2: He wants 20% profit, so SP of 1 toffee = CP × (100+20)/100 = (1/6) × 120/100 = (1/6) × 6/5 = ₹1/5. Step 3: So for ₹1, he gives 5 toffees (since 1 toffee costs ₹1/5). Answer is 5 (option C).",
+      "exp": "Step 1: CP of 6 toffees = \u20b91, so CP of 1 toffee = \u20b91/6. Step 2: He wants 20% profit, so SP of 1 toffee = CP \u00d7 (100+20)/100 = (1/6) \u00d7 120/100 = (1/6) \u00d7 6/5 = \u20b91/5. Step 3: So for \u20b91, he gives 5 toffees (since 1 toffee costs \u20b91/5). Answer is 5 (option C).",
       "d": "medium"
     },
     {
       "id": 6,
       "t": "profit-percent",
-      "q": "The percentage profit earned by selling an article for ₹1,920 is equal to the percentage loss incurred by selling the same article for ₹1,280. At what price should the article be sold to make 25% profit?",
+      "q": "The percentage profit earned by selling an article for \u20b91,920 is equal to the percentage loss incurred by selling the same article for \u20b91,280. At what price should the article be sold to make 25% profit?",
       "opts": [
-        "₹2,000",
-        "₹2,200",
-        "₹2,400",
+        "\u20b92,000",
+        "\u20b92,200",
+        "\u20b92,400",
         "Data inadequate"
       ],
       "c": 0,
-      "exp": "Step 1: Let CP = C. Profit % at SP=1920: (1920−C)/C × 100. Loss % at SP=1280: (C−1280)/C × 100. Step 2: Given they're equal: (1920−C)/C = (C−1280)/C → 1920−C = C−1280 → 2C = 3200 → C = ₹1,600. Step 3: For 25% profit, SP = 1600 × 125/100 = ₹2,000. Answer is ₹2,000 (option A).",
+      "exp": "Step 1: Let CP = C. Profit % at SP=1920: (1920\u2212C)/C \u00d7 100. Loss % at SP=1280: (C\u22121280)/C \u00d7 100. Step 2: Given they're equal: (1920\u2212C)/C = (C\u22121280)/C \u2192 1920\u2212C = C\u22121280 \u2192 2C = 3200 \u2192 C = \u20b91,600. Step 3: For 25% profit, SP = 1600 \u00d7 125/100 = \u20b92,000. Answer is \u20b92,000 (option A).",
       "d": "medium"
     },
     {
       "id": 7,
       "t": "profit-percent",
-      "q": "A shopkeeper expects a gain of 22.5% on his cost price. If in a week, his sale was of ₹392, what was his profit?",
+      "q": "A shopkeeper expects a gain of 22.5% on his cost price. If in a week, his sale was of \u20b9392, what was his profit?",
       "opts": [
-        "₹18.20",
-        "₹70",
-        "₹72",
-        "₹88.25"
+        "\u20b918.20",
+        "\u20b970",
+        "\u20b972",
+        "\u20b988.25"
       ],
       "c": 2,
-      "exp": "Step 1: SP = ₹392, Gain % = 22.5% = 45/2%. Step 2: CP = SP × 100/(100 + 45/2) = 392 × 100/(245/2) = 392 × 200/245 = 392 × 40/49 = ₹320. Step 3: Profit = SP − CP = 392 − 320 = ₹72. Answer is ₹72 (option C).",
+      "exp": "Step 1: SP = \u20b9392, Gain % = 22.5% = 45/2%. Step 2: CP = SP \u00d7 100/(100 + 45/2) = 392 \u00d7 100/(245/2) = 392 \u00d7 200/245 = 392 \u00d7 40/49 = \u20b9320. Step 3: Profit = SP \u2212 CP = 392 \u2212 320 = \u20b972. Answer is \u20b972 (option C).",
       "d": "medium"
     },
     {
       "id": 8,
       "t": "profit-percent",
-      "q": "A man buys a cycle for ₹1,400 and sells it at a loss of 15%. What is the selling price of the cycle?",
+      "q": "A man buys a cycle for \u20b91,400 and sells it at a loss of 15%. What is the selling price of the cycle?",
       "opts": [
-        "₹1,090",
-        "₹1,160",
-        "₹1,190",
-        "₹1,202"
+        "\u20b91,090",
+        "\u20b91,160",
+        "\u20b91,190",
+        "\u20b91,202"
       ],
       "c": 2,
-      "exp": "Step 1: CP = ₹1,400, Loss = 15%. Step 2: SP = CP × (100 − 15)/100 = 1400 × 85/100 = 14 × 85 = ₹1,190. Answer is ₹1,190 (option C).",
+      "exp": "Step 1: CP = \u20b91,400, Loss = 15%. Step 2: SP = CP \u00d7 (100 \u2212 15)/100 = 1400 \u00d7 85/100 = 14 \u00d7 85 = \u20b91,190. Answer is \u20b91,190 (option C).",
       "d": "medium"
     },
     {
       "id": 9,
       "t": "profit-percent",
-      "q": "Sam purchased 20 dozens of toys at the rate of ₹375 per dozen. He sold each one of them at the rate of ₹33. What was his percentage profit?",
+      "q": "Sam purchased 20 dozens of toys at the rate of \u20b9375 per dozen. He sold each one of them at the rate of \u20b933. What was his percentage profit?",
       "opts": [
         "3.5%",
         "4.5%",
@@ -1343,13 +1343,13 @@
         "6.5%"
       ],
       "c": 2,
-      "exp": "Step 1: Total CP = 20 × ₹375 = ₹7,500. Step 2: Number of toys = 20 × 12 = 240 toys. SP per toy = ₹33, so Total SP = 240 × ₹33 = ₹7,920. Step 3: Profit = ₹7,920 − ₹7,500 = ₹420. Profit % = (420/7500) × 100 = 420/75 = 5.6%. Answer is 5.6% (option C).",
+      "exp": "Step 1: Total CP = 20 \u00d7 \u20b9375 = \u20b97,500. Step 2: Number of toys = 20 \u00d7 12 = 240 toys. SP per toy = \u20b933, so Total SP = 240 \u00d7 \u20b933 = \u20b97,920. Step 3: Profit = \u20b97,920 \u2212 \u20b97,500 = \u20b9420. Profit % = (420/7500) \u00d7 100 = 420/75 = 5.6%. Answer is 5.6% (option C).",
       "d": "medium"
     },
     {
       "id": 10,
       "t": "profit-percent",
-      "q": "Some articles were bought at 6 articles for ₹5 and sold at 5 articles for ₹6. Gain percent is:",
+      "q": "Some articles were bought at 6 articles for \u20b95 and sold at 5 articles for \u20b96. Gain percent is:",
       "opts": [
         "30%",
         "$33\\frac{1}{3}\\%$",
@@ -1357,41 +1357,41 @@
         "44%"
       ],
       "c": 3,
-      "exp": "Step 1: CP of 6 articles = ₹5, SP of 5 articles = ₹6. Let's make quantities equal. Take LCM of 6 and 5 = 30. CP of 30 articles = 5 × 5 = ₹25. SP of 30 articles = 6 × 6 = ₹36. Step 2: Profit on 30 articles = ₹36 − ₹25 = ₹11. Profit % = (11/25) × 100 = 44%. Answer is 44% (option D).",
+      "exp": "Step 1: CP of 6 articles = \u20b95, SP of 5 articles = \u20b96. Let's make quantities equal. Take LCM of 6 and 5 = 30. CP of 30 articles = 5 \u00d7 5 = \u20b925. SP of 30 articles = 6 \u00d7 6 = \u20b936. Step 2: Profit on 30 articles = \u20b936 \u2212 \u20b925 = \u20b911. Profit % = (11/25) \u00d7 100 = 44%. Answer is 44% (option D).",
       "d": "medium"
     },
     {
       "id": 11,
       "t": "cost-price",
-      "q": "On selling 17 balls at ₹720, there is a loss equal to the cost price of 5 balls. The cost price of a ball is:",
+      "q": "On selling 17 balls at \u20b9720, there is a loss equal to the cost price of 5 balls. The cost price of a ball is:",
       "opts": [
-        "₹45",
-        "₹50",
-        "₹55",
-        "₹60"
+        "\u20b945",
+        "\u20b950",
+        "\u20b955",
+        "\u20b960"
       ],
       "c": 3,
-      "exp": "Step 1: Let CP of 1 ball = ₹x. Then SP of 17 balls = ₹720. Step 2: Loss = CP of 17 balls − SP of 17 balls = 17x − 720. Step 3: Given loss = CP of 5 balls = 5x. So 17x − 720 = 5x → 12x = 720 → x = ₹60. Check: CP of 17 = 17×60 = ₹1,020. Loss = ₹1,020 − ₹720 = ₹300 = 5×60 = ₹300. ✓ Answer is ₹60 (option D).",
+      "exp": "Step 1: Let CP of 1 ball = \u20b9x. Then SP of 17 balls = \u20b9720. Step 2: Loss = CP of 17 balls \u2212 SP of 17 balls = 17x \u2212 720. Step 3: Given loss = CP of 5 balls = 5x. So 17x \u2212 720 = 5x \u2192 12x = 720 \u2192 x = \u20b960. Check: CP of 17 = 17\u00d760 = \u20b91,020. Loss = \u20b91,020 \u2212 \u20b9720 = \u20b9300 = 5\u00d760 = \u20b9300. \u2713 Answer is \u20b960 (option D).",
       "d": "medium"
     },
     {
       "id": 12,
       "t": "cost-price",
-      "q": "When a plot is sold for ₹18,700, the owner loses 15%. At what price must that plot be sold in order to gain 15%?",
+      "q": "When a plot is sold for \u20b918,700, the owner loses 15%. At what price must that plot be sold in order to gain 15%?",
       "opts": [
-        "₹21,000",
-        "₹22,500",
-        "₹25,300",
-        "₹25,800"
+        "\u20b921,000",
+        "\u20b922,500",
+        "\u20b925,300",
+        "\u20b925,800"
       ],
       "c": 2,
-      "exp": "Step 1: SP at loss of 15% = ₹18,700. CP = SP × 100/(100−15) = 18700 × 100/85 = 18700 × 20/17 = ₹22,000. Step 2: For 15% gain, SP = CP × 115/100 = 22000 × 115/100 = ₹25,300. Answer is ₹25,300 (option C).",
+      "exp": "Step 1: SP at loss of 15% = \u20b918,700. CP = SP \u00d7 100/(100\u221215) = 18700 \u00d7 100/85 = 18700 \u00d7 20/17 = \u20b922,000. Step 2: For 15% gain, SP = CP \u00d7 115/100 = 22000 \u00d7 115/100 = \u20b925,300. Answer is \u20b925,300 (option C).",
       "d": "medium"
     },
     {
       "id": 13,
       "t": "profit-percent",
-      "q": "100 oranges are bought at the rate of ₹350 and sold at the rate of ₹48 per dozen. The percentage of profit or loss is:",
+      "q": "100 oranges are bought at the rate of \u20b9350 and sold at the rate of \u20b948 per dozen. The percentage of profit or loss is:",
       "opts": [
         "$14\\frac{2}{7}\\%$ gain",
         "15% gain",
@@ -1399,13 +1399,13 @@
         "15% loss"
       ],
       "c": 0,
-      "exp": "Step 1: CP of 100 oranges = ₹350. CP of 1 orange = ₹3.50. Step 2: SP per dozen = ₹48. SP of 1 orange = ₹48/12 = ₹4. Step 3: Profit per orange = ₹4 − ₹3.50 = ₹0.50. Profit % = (0.50/3.50) × 100 = 1/7 × 100 = $14\\frac{2}{7}\\%$. Answer is $14\\frac{2}{7}\\%$ gain (option A).",
+      "exp": "Step 1: CP of 100 oranges = \u20b9350. CP of 1 orange = \u20b93.50. Step 2: SP per dozen = \u20b948. SP of 1 orange = \u20b948/12 = \u20b94. Step 3: Profit per orange = \u20b94 \u2212 \u20b93.50 = \u20b90.50. Profit % = (0.50/3.50) \u00d7 100 = 1/7 \u00d7 100 = $14\\frac{2}{7}\\%$. Answer is $14\\frac{2}{7}\\%$ gain (option A).",
       "d": "medium"
     },
     {
       "id": 14,
       "t": "overall-profit-loss",
-      "q": "A shopkeeper sells one transistor for ₹840 at a gain of 20% and another for ₹960 at a loss of 4%. His total gain or loss percent is:",
+      "q": "A shopkeeper sells one transistor for \u20b9840 at a gain of 20% and another for \u20b9960 at a loss of 4%. His total gain or loss percent is:",
       "opts": [
         "$5\\frac{15}{17}\\%$ loss",
         "$5\\frac{15}{17}\\%$ gain",
@@ -1413,13 +1413,13 @@
         "None of these"
       ],
       "c": 1,
-      "exp": "Step 1: CP of transistor 1 = 840 × 100/120 = ₹700. CP of transistor 2 = 960 × 100/96 = ₹1,000. Step 2: Total CP = ₹700 + ₹1,000 = ₹1,700. Total SP = ₹840 + ₹960 = ₹1,800. Step 3: Profit = ₹100. Profit % = (100/1700) × 100 = 100/17 = $5\\frac{15}{17}\\%$ gain. Answer is option B.",
+      "exp": "Step 1: CP of transistor 1 = 840 \u00d7 100/120 = \u20b9700. CP of transistor 2 = 960 \u00d7 100/96 = \u20b91,000. Step 2: Total CP = \u20b9700 + \u20b91,000 = \u20b91,700. Total SP = \u20b9840 + \u20b9960 = \u20b91,800. Step 3: Profit = \u20b9100. Profit % = (100/1700) \u00d7 100 = 100/17 = $5\\frac{15}{17}\\%$ gain. Answer is option B.",
       "d": "medium"
     },
     {
       "id": 15,
       "t": "profit-percent",
-      "q": "A trader mixes 26 kg of rice at ₹20 per kg with 30 kg of rice of other variety at ₹36 per kg and sells the mixture at ₹30 per kg. His profit percent is:",
+      "q": "A trader mixes 26 kg of rice at \u20b920 per kg with 30 kg of rice of other variety at \u20b936 per kg and sells the mixture at \u20b930 per kg. His profit percent is:",
       "opts": [
         "No profit, no loss",
         "5%",
@@ -1427,21 +1427,21 @@
         "10%"
       ],
       "c": 1,
-      "exp": "Step 1: CP of mixture = (26×20) + (30×36) = 520 + 1080 = ₹1,600. Total quantity = 26+30 = 56 kg. CP per kg = 1600/56 = ₹28.57. Step 2: SP per kg = ₹30. Profit per kg = ₹1.43. Profit % = (1.43/28.57) × 100 ≈ 5%. Answer is 5% (option B).",
+      "exp": "Step 1: CP of mixture = (26\u00d720) + (30\u00d736) = 520 + 1080 = \u20b91,600. Total quantity = 26+30 = 56 kg. CP per kg = 1600/56 = \u20b928.57. Step 2: SP per kg = \u20b930. Profit per kg = \u20b91.43. Profit % = (1.43/28.57) \u00d7 100 \u2248 5%. Answer is 5% (option B).",
       "d": "hard"
     },
     {
       "id": 16,
       "t": "discount",
-      "q": "A shopkeeper gives 10% discount on an item marked at ₹500. Find the selling price.",
+      "q": "A shopkeeper gives 10% discount on an item marked at \u20b9500. Find the selling price.",
       "opts": [
-        "₹400",
-        "₹450",
-        "₹475",
-        "₹500"
+        "\u20b9400",
+        "\u20b9450",
+        "\u20b9475",
+        "\u20b9500"
       ],
       "c": 1,
-      "exp": "Step 1: Discount = 10% of MP = 10% of ₹500 = ₹50. Step 2: SP = MP − Discount = ₹500 − ₹50 = ₹450. Or directly: SP = 500 × 90/100 = ₹450. Answer is ₹450 (option B).",
+      "exp": "Step 1: Discount = 10% of MP = 10% of \u20b9500 = \u20b950. Step 2: SP = MP \u2212 Discount = \u20b9500 \u2212 \u20b950 = \u20b9450. Or directly: SP = 500 \u00d7 90/100 = \u20b9450. Answer is \u20b9450 (option B).",
       "d": "hard"
     },
     {
@@ -1455,7 +1455,7 @@
         "12%"
       ],
       "c": 0,
-      "exp": "Step 1: Let CP = ₹100. MP = ₹100 + 20% = ₹120. Step 2: Discount = 10% of ₹120 = ₹12. SP = ₹120 − ₹12 = ₹108. Step 3: Profit = ₹108 − ₹100 = ₹8. Profit % = 8%. Answer is 8% (option A).",
+      "exp": "Step 1: Let CP = \u20b9100. MP = \u20b9100 + 20% = \u20b9120. Step 2: Discount = 10% of \u20b9120 = \u20b912. SP = \u20b9120 \u2212 \u20b912 = \u20b9108. Step 3: Profit = \u20b9108 \u2212 \u20b9100 = \u20b98. Profit % = 8%. Answer is 8% (option A).",
       "d": "hard"
     },
     {
@@ -1469,7 +1469,7 @@
         "15%"
       ],
       "c": 1,
-      "exp": "Step 1: Let CP = ₹100. MP = ₹130. Discount = 15% of ₹130 = ₹19.50. SP = ₹130 − ₹19.50 = ₹110.50. Step 2: Profit = ₹110.50 − ₹100 = ₹10.50. Profit % = 10.5%. Answer is 10.5% (option B).",
+      "exp": "Step 1: Let CP = \u20b9100. MP = \u20b9130. Discount = 15% of \u20b9130 = \u20b919.50. SP = \u20b9130 \u2212 \u20b919.50 = \u20b9110.50. Step 2: Profit = \u20b9110.50 \u2212 \u20b9100 = \u20b910.50. Profit % = 10.5%. Answer is 10.5% (option B).",
       "d": "hard"
     },
     {
@@ -1483,35 +1483,35 @@
         "32%"
       ],
       "c": 0,
-      "exp": "Step 1: Formula: d = d₁ + d₂ − (d₁×d₂)/100. Step 2: d = 20 + 10 − (20×10)/100 = 30 − 2 = 28%. Answer is 28% (option A).",
+      "exp": "Step 1: Formula: d = d\u2081 + d\u2082 \u2212 (d\u2081\u00d7d\u2082)/100. Step 2: d = 20 + 10 \u2212 (20\u00d710)/100 = 30 \u2212 2 = 28%. Answer is 28% (option A).",
       "d": "hard"
     },
     {
       "id": 20,
       "t": "successive-discount",
-      "q": "An article is marked at ₹10,000. Two successive discounts of 20% and 10% are offered. Find the selling price.",
+      "q": "An article is marked at \u20b910,000. Two successive discounts of 20% and 10% are offered. Find the selling price.",
       "opts": [
-        "₹7,000",
-        "₹7,200",
-        "₹7,400",
-        "₹7,600"
+        "\u20b97,000",
+        "\u20b97,200",
+        "\u20b97,400",
+        "\u20b97,600"
       ],
       "c": 1,
-      "exp": "Step 1: After 20% discount: 10000 × 80/100 = ₹8,000. Step 2: After 10% discount on ₹8,000: 8000 × 90/100 = ₹7,200. Answer is ₹7,200 (option B).",
+      "exp": "Step 1: After 20% discount: 10000 \u00d7 80/100 = \u20b98,000. Step 2: After 10% discount on \u20b98,000: 8000 \u00d7 90/100 = \u20b97,200. Answer is \u20b97,200 (option B).",
       "d": "hard"
     },
     {
       "id": 21,
       "t": "successive-discount",
-      "q": "Three successive discounts of 20%, 10% and 5% are offered on an item marked at ₹5,000. Find the selling price.",
+      "q": "Three successive discounts of 20%, 10% and 5% are offered on an item marked at \u20b95,000. Find the selling price.",
       "opts": [
-        "₹3,240",
-        "₹3,360",
-        "₹3,420",
-        "₹3,500"
+        "\u20b93,240",
+        "\u20b93,360",
+        "\u20b93,420",
+        "\u20b93,500"
       ],
       "c": 2,
-      "exp": "Step 1: After 20%: 5000 × 0.8 = ₹4,000. After 10%: 4000 × 0.9 = ₹3,600. After 5%: 3600 × 0.95 = ₹3,420. Answer is ₹3,420 (option C).",
+      "exp": "Step 1: After 20%: 5000 \u00d7 0.8 = \u20b94,000. After 10%: 4000 \u00d7 0.9 = \u20b93,600. After 5%: 3600 \u00d7 0.95 = \u20b93,420. Answer is \u20b93,420 (option C).",
       "d": "hard"
     },
     {
@@ -1525,13 +1525,13 @@
         "30%"
       ],
       "c": 1,
-      "exp": "Step 1: Let CP = ₹100. Desired SP = ₹108 (8% gain). Step 2: SP = MP × 90/100, so MP = SP × 100/90 = 108 × 100/90 = ₹120. Step 3: Markup % = (120−100)/100 × 100 = 20%. Answer is 20% (option B).",
+      "exp": "Step 1: Let CP = \u20b9100. Desired SP = \u20b9108 (8% gain). Step 2: SP = MP \u00d7 90/100, so MP = SP \u00d7 100/90 = 108 \u00d7 100/90 = \u20b9120. Step 3: Markup % = (120\u2212100)/100 \u00d7 100 = 20%. Answer is 20% (option B).",
       "d": "hard"
     },
     {
       "id": 23,
       "t": "discount",
-      "q": "The marked price of a table is ₹3,000. It is sold for ₹2,400. What is the discount percentage?",
+      "q": "The marked price of a table is \u20b93,000. It is sold for \u20b92,400. What is the discount percentage?",
       "opts": [
         "15%",
         "18%",
@@ -1539,7 +1539,7 @@
         "25%"
       ],
       "c": 2,
-      "exp": "Step 1: Discount = MP − SP = ₹3,000 − ₹2,400 = ₹600. Step 2: Discount % = (600/3000) × 100 = 20%. Answer is 20% (option C).",
+      "exp": "Step 1: Discount = MP \u2212 SP = \u20b93,000 \u2212 \u20b92,400 = \u20b9600. Step 2: Discount % = (600/3000) \u00d7 100 = 20%. Answer is 20% (option C).",
       "d": "hard"
     },
     {
@@ -1553,21 +1553,21 @@
         "43%"
       ],
       "c": 1,
-      "exp": "Step 1: d = 30 + 10 − (30×10)/100 = 40 − 3 = 37%. Answer is 37% (option B).",
+      "exp": "Step 1: d = 30 + 10 \u2212 (30\u00d710)/100 = 40 \u2212 3 = 37%. Answer is 37% (option B).",
       "d": "hard"
     },
     {
       "id": 25,
       "t": "successive-discount",
-      "q": "A shopkeeper offers 20% discount on an item and then an additional 10% discount on the reduced price. If the marked price is ₹2,500, find the final selling price.",
+      "q": "A shopkeeper offers 20% discount on an item and then an additional 10% discount on the reduced price. If the marked price is \u20b92,500, find the final selling price.",
       "opts": [
-        "₹1,700",
-        "₹1,750",
-        "₹1,800",
-        "₹1,850"
+        "\u20b91,700",
+        "\u20b91,750",
+        "\u20b91,800",
+        "\u20b91,850"
       ],
       "c": 2,
-      "exp": "Step 1: After 20%: 2500 × 0.8 = ₹2,000. Step 2: After 10%: 2000 × 0.9 = ₹1,800. Answer is ₹1,800 (option C).",
+      "exp": "Step 1: After 20%: 2500 \u00d7 0.8 = \u20b92,000. Step 2: After 10%: 2000 \u00d7 0.9 = \u20b91,800. Answer is \u20b91,800 (option C).",
       "d": "hard"
     },
     {
@@ -1581,7 +1581,7 @@
         "15%"
       ],
       "c": 1,
-      "exp": "Step 1: Error = 1000 − 900 = 100g. Gain % = Error/(True Value − Error) × 100 = 100/900 × 100 = 11.11%. Answer is 11.11% (option B).",
+      "exp": "Step 1: Error = 1000 \u2212 900 = 100g. Gain % = Error/(True Value \u2212 Error) \u00d7 100 = 100/900 \u00d7 100 = 11.11%. Answer is 11.11% (option B).",
       "d": "medium"
     },
     {
@@ -1595,7 +1595,7 @@
         "30%"
       ],
       "c": 2,
-      "exp": "Step 1: Error = 200g. Gain % = 200/800 × 100 = 25%. Answer is 25% (option C).",
+      "exp": "Step 1: Error = 200g. Gain % = 200/800 \u00d7 100 = 25%. Answer is 25% (option C).",
       "d": "medium"
     },
     {
@@ -1609,7 +1609,7 @@
         "6%"
       ],
       "c": 1,
-      "exp": "Step 1: Error = 50g. Gain % = 50/950 × 100 = 5.26%. Answer is 5.26% (option B).",
+      "exp": "Step 1: Error = 50g. Gain % = 50/950 \u00d7 100 = 5.26%. Answer is 5.26% (option B).",
       "d": "medium"
     },
     {
@@ -1623,7 +1623,7 @@
         "5.5%"
       ],
       "c": 0,
-      "exp": "Step 1: Error = 40g. Gain % = 40/960 × 100 = 4.17%. Answer is 4.17% (option A).",
+      "exp": "Step 1: Error = 40g. Gain % = 40/960 \u00d7 100 = 4.17%. Answer is 4.17% (option A).",
       "d": "medium"
     },
     {
@@ -1637,7 +1637,7 @@
         "65%"
       ],
       "c": 2,
-      "exp": "Step 1: Total gain % = [(100 + 20) × (1000/750) − 100]% = [120 × 1.333 − 100] = [160 − 100] = 60%. Answer is 60% (option C).",
+      "exp": "Step 1: Total gain % = [(100 + 20) \u00d7 (1000/750) \u2212 100]% = [120 \u00d7 1.333 \u2212 100] = [160 \u2212 100] = 60%. Answer is 60% (option C).",
       "d": "medium"
     },
     {
@@ -1651,7 +1651,7 @@
         "30%"
       ],
       "c": 1,
-      "exp": "Step 1: Formula: Profit % on SP = (p_cp × 100)/(100 + p_cp)%. Step 2: = (25 × 100)/(125) = 2500/125 = 20%. Answer is 20% (option B).",
+      "exp": "Step 1: Formula: Profit % on SP = (p_cp \u00d7 100)/(100 + p_cp)%. Step 2: = (25 \u00d7 100)/(125) = 2500/125 = 20%. Answer is 20% (option B).",
       "d": "medium"
     },
     {
@@ -1665,7 +1665,7 @@
         "40%"
       ],
       "c": 1,
-      "exp": "Step 1: Formula: Profit % on CP = (p_sp × 100)/(100 − p_sp)%. Step 2: = (20 × 100)/(80) = 2000/80 = 25%. Answer is 25% (option B).",
+      "exp": "Step 1: Formula: Profit % on CP = (p_sp \u00d7 100)/(100 \u2212 p_sp)%. Step 2: = (20 \u00d7 100)/(80) = 2000/80 = 25%. Answer is 25% (option B).",
       "d": "medium"
     },
     {
@@ -1679,7 +1679,7 @@
         "$33\\frac{1}{3}\\%$"
       ],
       "c": 0,
-      "exp": "Step 1: Profit % on SP = (20 × 100)/(100 + 20) = 2000/120 = 50/3 = $16\\frac{2}{3}\\%$. Answer is option A.",
+      "exp": "Step 1: Profit % on SP = (20 \u00d7 100)/(100 + 20) = 2000/120 = 50/3 = $16\\frac{2}{3}\\%$. Answer is option A.",
       "d": "easy"
     },
     {
@@ -1693,13 +1693,13 @@
         "2% loss"
       ],
       "c": 2,
-      "exp": "Step 1: Formula: Loss % = (x²/100)%. Here x = 10. Step 2: Loss % = 100/100 = 1% loss. Answer is 1% loss (option C).",
+      "exp": "Step 1: Formula: Loss % = (x\u00b2/100)%. Here x = 10. Step 2: Loss % = 100/100 = 1% loss. Answer is 1% loss (option C).",
       "d": "medium"
     },
     {
       "id": 35,
       "t": "two-items-same-sp",
-      "q": "A man sells two watches for ₹2,400 each. One at 20% profit and the other at 20% loss. Find the overall percentage.",
+      "q": "A man sells two watches for \u20b92,400 each. One at 20% profit and the other at 20% loss. Find the overall percentage.",
       "opts": [
         "2% loss",
         "4% loss",
@@ -1707,7 +1707,7 @@
         "No gain no loss"
       ],
       "c": 1,
-      "exp": "Step 1: Loss % = (20²/100)% = 400/100 = 4% loss. Answer is 4% loss (option B).",
+      "exp": "Step 1: Loss % = (20\u00b2/100)% = 400/100 = 4% loss. Answer is 4% loss (option B).",
       "d": "medium"
     },
     {
@@ -1721,13 +1721,13 @@
         "15% loss"
       ],
       "c": 1,
-      "exp": "Step 1: Loss % = (30²/100)% = 900/100 = 9% loss. Answer is 9% loss (option B).",
+      "exp": "Step 1: Loss % = (30\u00b2/100)% = 900/100 = 9% loss. Answer is 9% loss (option B).",
       "d": "medium"
     },
     {
       "id": 37,
       "t": "two-items-same-sp",
-      "q": "If two items are sold at ₹3,000 each, one at 25% profit and the other at 25% loss, find the overall %.",
+      "q": "If two items are sold at \u20b93,000 each, one at 25% profit and the other at 25% loss, find the overall %.",
       "opts": [
         "6.25% loss",
         "6.25% gain",
@@ -1735,55 +1735,55 @@
         "5% loss"
       ],
       "c": 0,
-      "exp": "Step 1: Loss % = (25²/100)% = 625/100 = 6.25% loss. Answer is 6.25% loss (option A).",
+      "exp": "Step 1: Loss % = (25\u00b2/100)% = 625/100 = 6.25% loss. Answer is 6.25% loss (option A).",
       "d": "medium"
     },
     {
       "id": 38,
       "t": "partnership",
-      "q": "A invests ₹10,000 and B invests ₹20,000 in a business for the same period. If the profit is ₹3,000, what is B's share?",
+      "q": "A invests \u20b910,000 and B invests \u20b920,000 in a business for the same period. If the profit is \u20b93,000, what is B's share?",
       "opts": [
-        "₹1,000",
-        "₹1,500",
-        "₹2,000",
-        "₹2,500"
+        "\u20b91,000",
+        "\u20b91,500",
+        "\u20b92,000",
+        "\u20b92,500"
       ],
       "c": 2,
-      "exp": "Step 1: Ratio of investments = 10000:20000 = 1:2. Step 2: B's share = 3000 × 2/3 = ₹2,000. Answer is ₹2,000 (option C).",
+      "exp": "Step 1: Ratio of investments = 10000:20000 = 1:2. Step 2: B's share = 3000 \u00d7 2/3 = \u20b92,000. Answer is \u20b92,000 (option C).",
       "d": "medium"
     },
     {
       "id": 39,
       "t": "partnership",
-      "q": "A invests ₹50,000 for 12 months and B invests ₹1,00,000 for 6 months. If the total profit is ₹24,000, find A's share.",
+      "q": "A invests \u20b950,000 for 12 months and B invests \u20b91,00,000 for 6 months. If the total profit is \u20b924,000, find A's share.",
       "opts": [
-        "₹8,000",
-        "₹10,000",
-        "₹12,000",
-        "₹14,000"
+        "\u20b98,000",
+        "\u20b910,000",
+        "\u20b912,000",
+        "\u20b914,000"
       ],
       "c": 2,
-      "exp": "Step 1: A's product = 50000×12 = 6,00,000. B's product = 100000×6 = 6,00,000. Ratio = 1:1. Step 2: A's share = 24000 × 1/2 = ₹12,000. Answer is ₹12,000 (option C).",
+      "exp": "Step 1: A's product = 50000\u00d712 = 6,00,000. B's product = 100000\u00d76 = 6,00,000. Ratio = 1:1. Step 2: A's share = 24000 \u00d7 1/2 = \u20b912,000. Answer is \u20b912,000 (option C).",
       "d": "medium"
     },
     {
       "id": 40,
       "t": "partnership",
-      "q": "A starts a business with ₹20,000. After 4 months, B joins with ₹30,000. At the end of the year, profit is ₹20,000. Find B's share.",
+      "q": "A starts a business with \u20b920,000. After 4 months, B joins with \u20b930,000. At the end of the year, profit is \u20b920,000. Find B's share.",
       "opts": [
-        "₹8,000",
-        "₹10,000",
-        "₹12,000",
-        "₹14,000"
+        "\u20b98,000",
+        "\u20b910,000",
+        "\u20b912,000",
+        "\u20b914,000"
       ],
       "c": 1,
-      "exp": "Step 1: A's product = 20000×12 = 2,40,000. B's product = 30000×8 = 2,40,000. Ratio = 240000:240000 = 1:1. Step 2: B's share = 20000 × 1/2 = ₹10,000. Answer is ₹10,000 (option B).",
+      "exp": "Step 1: A's product = 20000\u00d712 = 2,40,000. B's product = 30000\u00d78 = 2,40,000. Ratio = 240000:240000 = 1:1. Step 2: B's share = 20000 \u00d7 1/2 = \u20b910,000. Answer is \u20b910,000 (option B).",
       "d": "medium"
     },
     {
       "id": 41,
       "t": "basic-concepts",
-      "q": "A man bought an article for ₹2,000 and spent ₹200 on its repairs. He sold it for ₹2,640. Find his gain %.",
+      "q": "A man bought an article for \u20b92,000 and spent \u20b9200 on its repairs. He sold it for \u20b92,640. Find his gain %.",
       "opts": [
         "15%",
         "18%",
@@ -1791,13 +1791,13 @@
         "22%"
       ],
       "c": 2,
-      "exp": "Step 1: Total CP = ₹2,000 + ₹200 = ₹2,200. Step 2: SP = ₹2,640. Profit = ₹440. Step 3: Gain % = (440/2200) × 100 = 20%. Answer is 20% (option C).",
+      "exp": "Step 1: Total CP = \u20b92,000 + \u20b9200 = \u20b92,200. Step 2: SP = \u20b92,640. Profit = \u20b9440. Step 3: Gain % = (440/2200) \u00d7 100 = 20%. Answer is 20% (option C).",
       "d": "medium"
     },
     {
       "id": 42,
       "t": "basic-concepts",
-      "q": "A shopkeeper bought 200 eggs for ₹600. 20 eggs were broken. He sold the remaining at ₹48 per dozen. Find his profit or loss %.",
+      "q": "A shopkeeper bought 200 eggs for \u20b9600. 20 eggs were broken. He sold the remaining at \u20b948 per dozen. Find his profit or loss %.",
       "opts": [
         "20% profit",
         "25% profit",
@@ -1805,7 +1805,7 @@
         "$33\\frac{1}{3}\\%$ loss"
       ],
       "c": 0,
-      "exp": "Step 1: CP of 200 eggs = ₹600. CP per egg = ₹3. Step 2: Good eggs = 200 − 20 = 180 eggs = 15 dozens. SP = 15 × ₹48 = ₹720. Step 3: Profit = ₹720 − ₹600 = ₹120. Profit % = (120/600) × 100 = 20%. Answer is 20% profit (option A).",
+      "exp": "Step 1: CP of 200 eggs = \u20b9600. CP per egg = \u20b93. Step 2: Good eggs = 200 \u2212 20 = 180 eggs = 15 dozens. SP = 15 \u00d7 \u20b948 = \u20b9720. Step 3: Profit = \u20b9720 \u2212 \u20b9600 = \u20b9120. Profit % = (120/600) \u00d7 100 = 20%. Answer is 20% profit (option A).",
       "d": "medium"
     },
     {
@@ -1819,21 +1819,21 @@
         "15%"
       ],
       "c": 0,
-      "exp": "Step 1: Let CP = ₹100. MP = ₹140. Discount = 25% of ₹140 = ₹35. SP = ₹140 − ₹35 = ₹105. Step 2: Profit = ₹5. Profit % = 5%. Answer is 5% (option A).",
+      "exp": "Step 1: Let CP = \u20b9100. MP = \u20b9140. Discount = 25% of \u20b9140 = \u20b935. SP = \u20b9140 \u2212 \u20b935 = \u20b9105. Step 2: Profit = \u20b95. Profit % = 5%. Answer is 5% (option A).",
       "d": "hard"
     },
     {
       "id": 44,
       "t": "discount",
-      "q": "A shopkeeper gives two successive discounts of 10% and 10% on an item marked at ₹2,000. Find the selling price.",
+      "q": "A shopkeeper gives two successive discounts of 10% and 10% on an item marked at \u20b92,000. Find the selling price.",
       "opts": [
-        "₹1,600",
-        "₹1,620",
-        "₹1,640",
-        "₹1,660"
+        "\u20b91,600",
+        "\u20b91,620",
+        "\u20b91,640",
+        "\u20b91,660"
       ],
       "c": 1,
-      "exp": "Step 1: After 10%: 2000 × 0.9 = ₹1,800. After 10%: 1800 × 0.9 = ₹1,620. Answer is ₹1,620 (option B).",
+      "exp": "Step 1: After 10%: 2000 \u00d7 0.9 = \u20b91,800. After 10%: 1800 \u00d7 0.9 = \u20b91,620. Answer is \u20b91,620 (option B).",
       "d": "hard"
     },
     {
@@ -1847,7 +1847,7 @@
         "30%"
       ],
       "c": 0,
-      "exp": "Step 1: Profit % on CP = (p_sp × 100)/(100 − p_sp). Step 2: = (25 × 100)/(100 − 25) = 2500/75 = $33\\frac{1}{3}\\%$. Answer is option A.",
+      "exp": "Step 1: Profit % on CP = (p_sp \u00d7 100)/(100 \u2212 p_sp). Step 2: = (25 \u00d7 100)/(100 \u2212 25) = 2500/75 = $33\\frac{1}{3}\\%$. Answer is option A.",
       "d": "medium"
     },
     {
@@ -1861,77 +1861,77 @@
         "15%"
       ],
       "c": 1,
-      "exp": "Step 1: Error = 120g. Gain % = 120/880 × 100 = 13.64%. Answer is 13.64% (option B).",
+      "exp": "Step 1: Error = 120g. Gain % = 120/880 \u00d7 100 = 13.64%. Answer is 13.64% (option B).",
       "d": "medium"
     },
     {
       "id": 47,
       "t": "basic-concepts",
-      "q": "A man sold an article at a loss of 20%. If he had sold it for ₹150 more, he would have gained 5%. Find the cost price.",
+      "q": "A man sold an article at a loss of 20%. If he had sold it for \u20b9150 more, he would have gained 5%. Find the cost price.",
       "opts": [
-        "₹500",
-        "₹550",
-        "₹600",
-        "₹650"
+        "\u20b9500",
+        "\u20b9550",
+        "\u20b9600",
+        "\u20b9650"
       ],
       "c": 2,
-      "exp": "Step 1: Let CP = x. SP at 20% loss = 0.8x. SP at 5% gain = 1.05x. Step 2: Difference = 1.05x − 0.8x = 0.25x = ₹150. Step 3: x = 150/0.25 = ₹600. Answer is ₹600 (option C).",
+      "exp": "Step 1: Let CP = x. SP at 20% loss = 0.8x. SP at 5% gain = 1.05x. Step 2: Difference = 1.05x \u2212 0.8x = 0.25x = \u20b9150. Step 3: x = 150/0.25 = \u20b9600. Answer is \u20b9600 (option C).",
       "d": "medium"
     },
     {
       "id": 48,
       "t": "basic-concepts",
-      "q": "A shopkeeper sells an article for ₹114 and loses 5%. What should be the selling price to gain 5%?",
+      "q": "A shopkeeper sells an article for \u20b9114 and loses 5%. What should be the selling price to gain 5%?",
       "opts": [
-        "₹120",
-        "₹124",
-        "₹126",
-        "₹130"
+        "\u20b9120",
+        "\u20b9124",
+        "\u20b9126",
+        "\u20b9130"
       ],
       "c": 2,
-      "exp": "Step 1: CP = 114 × 100/95 = 114 × 20/19 = ₹120. Step 2: SP for 5% gain = 120 × 105/100 = ₹126. Answer is ₹126 (option C).",
+      "exp": "Step 1: CP = 114 \u00d7 100/95 = 114 \u00d7 20/19 = \u20b9120. Step 2: SP for 5% gain = 120 \u00d7 105/100 = \u20b9126. Answer is \u20b9126 (option C).",
       "d": "medium"
     },
     {
       "id": 49,
       "t": "basic-concepts",
-      "q": "A man sells his old car for ₹1,80,000 and loses 10%. What was the cost price?",
+      "q": "A man sells his old car for \u20b91,80,000 and loses 10%. What was the cost price?",
       "opts": [
-        "₹1,90,000",
-        "₹1,95,000",
-        "₹2,00,000",
-        "₹2,10,000"
+        "\u20b91,90,000",
+        "\u20b91,95,000",
+        "\u20b92,00,000",
+        "\u20b92,10,000"
       ],
       "c": 2,
-      "exp": "Step 1: Loss = 10%, SP = ₹1,80,000. Step 2: CP = SP × 100/(100 − 10) = 180000 × 100/90 = ₹2,00,000. Answer is ₹2,00,000 (option C).",
+      "exp": "Step 1: Loss = 10%, SP = \u20b91,80,000. Step 2: CP = SP \u00d7 100/(100 \u2212 10) = 180000 \u00d7 100/90 = \u20b92,00,000. Answer is \u20b92,00,000 (option C).",
       "d": "medium"
     },
     {
       "id": 50,
       "t": "profit-percent",
-      "q": "A shopkeeper sold an article for ₹1,200 at a profit of 20%. Find the cost price.",
+      "q": "A shopkeeper sold an article for \u20b91,200 at a profit of 20%. Find the cost price.",
       "opts": [
-        "₹900",
-        "₹950",
-        "₹1,000",
-        "₹1,050"
+        "\u20b9900",
+        "\u20b9950",
+        "\u20b91,000",
+        "\u20b91,050"
       ],
       "c": 2,
-      "exp": "Step 1: Let CP = x. SP = ₹1,200, Profit = 20%. Step 2: CP = SP × 100/(100 + 20) = 1200 × 100/120 = ₹1,000. Answer is ₹1,000 (option C).",
+      "exp": "Step 1: Let CP = x. SP = \u20b91,200, Profit = 20%. Step 2: CP = SP \u00d7 100/(100 + 20) = 1200 \u00d7 100/120 = \u20b91,000. Answer is \u20b91,000 (option C).",
       "d": "medium"
     },
     {
       "id": 51,
       "t": "discount",
-      "q": "A shopkeeper allows a discount of 10% on the marked price. He still gains 8%. Find the marked price if the cost price is ₹500.",
+      "q": "A shopkeeper allows a discount of 10% on the marked price. He still gains 8%. Find the marked price if the cost price is \u20b9500.",
       "opts": [
-        "₹580",
-        "₹590",
-        "₹600",
-        "₹610"
+        "\u20b9580",
+        "\u20b9590",
+        "\u20b9600",
+        "\u20b9610"
       ],
       "c": 2,
-      "exp": "Step 1: SP = CP × 108/100 = 500 × 1.08 = ₹540. Step 2: Discount = 10%, so SP = MP × 90/100. MP = 540 × 100/90 = ₹600. Answer is ₹600 (option C).",
+      "exp": "Step 1: SP = CP \u00d7 108/100 = 500 \u00d7 1.08 = \u20b9540. Step 2: Discount = 10%, so SP = MP \u00d7 90/100. MP = 540 \u00d7 100/90 = \u20b9600. Answer is \u20b9600 (option C).",
       "d": "hard"
     },
     {
@@ -1945,21 +1945,21 @@
         "25%"
       ],
       "c": 1,
-      "exp": "Step 1: d = 15 + 10 − (15×10)/100 = 25 − 1.5 = 23.5%. Answer is 23.5% (option B).",
+      "exp": "Step 1: d = 15 + 10 \u2212 (15\u00d710)/100 = 25 \u2212 1.5 = 23.5%. Answer is 23.5% (option B).",
       "d": "hard"
     },
     {
       "id": 53,
       "t": "profit-percent",
-      "q": "A trader bought 50 kg of wheat at ₹25 per kg and 40 kg at ₹30 per kg. He mixed them and sold the mixture at ₹35 per kg. Find his profit percent.",
+      "q": "A trader bought 50 kg of wheat at \u20b925 per kg and 40 kg at \u20b930 per kg. He mixed them and sold the mixture at \u20b935 per kg. Find his profit percent.",
       "opts": [
         "25%",
-        "28%",
+        "28.57%",
         "30%",
         "32%"
       ],
       "c": 1,
-      "exp": "Step 1: Total CP = 50×25 + 40×30 = 1250 + 1200 = ₹2,450. Total quantity = 90 kg. Total SP = 90×35 = ₹3,150. Step 2: Profit = ₹3,150 − ₹2,450 = ₹700. Step 3: Profit % = (700/2450) × 100 = 28.57% ≈ 28%. Answer is 28% (option B).",
+      "exp": "Step 1: Total cost price = 50 \u00d7 25 + 40 \u00d7 30 = 1250 + 1200 = \u20b92,450. Step 2: Total quantity = 50 + 40 = 90 kg. Step 3: Total selling price = 90 \u00d7 35 = \u20b93,150. Step 4: Profit = 3150 - 2450 = \u20b9700. Step 5: Profit % = (700 / 2450) \u00d7 100 = 28.57%. So the answer is 28.57%.",
       "d": "hard"
     },
     {
@@ -1973,7 +1973,7 @@
         "25%"
       ],
       "c": 2,
-      "exp": "Step 1: Let SP of 1 article = ₹x. SP of 12 articles = ₹12x. Gain = SP of 2 articles = ₹2x. Step 2: CP of 12 articles = SP − Gain = 12x − 2x = ₹10x. Step 3: Gain % = (2x/10x) × 100 = 20%. Answer is 20% (option C).",
+      "exp": "Step 1: Let SP of 1 article = \u20b9x. SP of 12 articles = \u20b912x. Gain = SP of 2 articles = \u20b92x. Step 2: CP of 12 articles = SP \u2212 Gain = 12x \u2212 2x = \u20b910x. Step 3: Gain % = (2x/10x) \u00d7 100 = 20%. Answer is 20% (option C).",
       "d": "medium"
     },
     {
@@ -1987,55 +1987,55 @@
         "25% loss"
       ],
       "c": 2,
-      "exp": "Step 1: Let CP of 1 article = ₹1. CP of 20 = ₹20 = SP of 16. So SP of 1 = ₹20/16 = ₹5/4 = ₹1.25. Step 2: Profit per article = ₹0.25. Profit % = (0.25/1) × 100 = 25% gain. Answer is 25% gain (option C).",
+      "exp": "Step 1: Let CP of 1 article = \u20b91. CP of 20 = \u20b920 = SP of 16. So SP of 1 = \u20b920/16 = \u20b95/4 = \u20b91.25. Step 2: Profit per article = \u20b90.25. Profit % = (0.25/1) \u00d7 100 = 25% gain. Answer is 25% gain (option C).",
       "d": "medium"
     },
     {
       "id": 56,
       "t": "discount",
-      "q": "A man buys a shirt for ₹480 after a discount of 20%. Find the marked price.",
+      "q": "A man buys a shirt for \u20b9480 after a discount of 20%. Find the marked price.",
       "opts": [
-        "₹560",
-        "₹580",
-        "₹600",
-        "₹620"
+        "\u20b9560",
+        "\u20b9580",
+        "\u20b9600",
+        "\u20b9620"
       ],
       "c": 2,
-      "exp": "Step 1: SP = ₹480, Discount = 20%. Step 2: SP = MP × 80/100, so MP = SP × 100/80 = 480 × 5/4 = ₹600. Answer is ₹600 (option C).",
+      "exp": "Step 1: SP = \u20b9480, Discount = 20%. Step 2: SP = MP \u00d7 80/100, so MP = SP \u00d7 100/80 = 480 \u00d7 5/4 = \u20b9600. Answer is \u20b9600 (option C).",
       "d": "hard"
     },
     {
       "id": 57,
       "t": "basic-concepts",
-      "q": "A man sold an article at a gain of 15%. Had he sold it for ₹45 more, his gain would be 20%. Find the cost price.",
+      "q": "A man sold an article at a gain of 15%. Had he sold it for \u20b945 more, his gain would be 20%. Find the cost price.",
       "opts": [
-        "₹600",
-        "₹700",
-        "₹800",
-        "₹900"
+        "\u20b9600",
+        "\u20b9700",
+        "\u20b9800",
+        "\u20b9900"
       ],
       "c": 3,
-      "exp": "Step 1: Let CP = x. SP₁ = 1.15x. SP₂ = 1.20x. Step 2: Difference = 1.20x − 1.15x = 0.05x = ₹45. Step 3: x = 45/0.05 = ₹900. Answer is ₹900 (option D).",
+      "exp": "Step 1: Let CP = x. SP\u2081 = 1.15x. SP\u2082 = 1.20x. Step 2: Difference = 1.20x \u2212 1.15x = 0.05x = \u20b945. Step 3: x = 45/0.05 = \u20b9900. Answer is \u20b9900 (option D).",
       "d": "medium"
     },
     {
       "id": 58,
       "t": "basic-concepts",
-      "q": "A man bought an article for ₹900 and sold it at a gain of 15%. Find the selling price.",
+      "q": "A man bought an article for \u20b9900 and sold it at a gain of 15%. Find the selling price.",
       "opts": [
-        "₹1,005",
-        "₹1,015",
-        "₹1,025",
-        "₹1,035"
+        "\u20b91,005",
+        "\u20b91,015",
+        "\u20b91,025",
+        "\u20b91,035"
       ],
       "c": 3,
-      "exp": "Step 1: Gain = 15% of ₹900 = ₹135. Step 2: SP = CP + Gain = ₹900 + ₹135 = ₹1,035. Answer is ₹1,035 (option D).",
+      "exp": "Step 1: Gain = 15% of \u20b9900 = \u20b9135. Step 2: SP = CP + Gain = \u20b9900 + \u20b9135 = \u20b91,035. Answer is \u20b91,035 (option D).",
       "d": "medium"
     },
     {
       "id": 59,
       "t": "profit-percent",
-      "q": "A dealer bought a TV for ₹15,000 and sold it for ₹18,000. What is his profit percentage?",
+      "q": "A dealer bought a TV for \u20b915,000 and sold it for \u20b918,000. What is his profit percentage?",
       "opts": [
         "15%",
         "18%",
@@ -2043,7 +2043,7 @@
         "25%"
       ],
       "c": 2,
-      "exp": "Step 1: Profit = ₹18,000 − ₹15,000 = ₹3,000. Step 2: Profit % = (3000/15000) × 100 = 20%. Answer is 20% (option C).",
+      "exp": "Step 1: Profit = \u20b918,000 \u2212 \u20b915,000 = \u20b93,000. Step 2: Profit % = (3000/15000) \u00d7 100 = 20%. Answer is 20% (option C).",
       "d": "medium"
     },
     {
@@ -2057,13 +2057,13 @@
         "50%"
       ],
       "c": 1,
-      "exp": "Step 1: Error = 300g. Gain % = 300/700 × 100 = 42.86%. Answer is 42.86% (option B).",
+      "exp": "Step 1: Error = 300g. Gain % = 300/700 \u00d7 100 = 42.86%. Answer is 42.86% (option B).",
       "d": "medium"
     },
     {
       "id": 61,
       "t": "overall-profit-loss",
-      "q": "A shopkeeper sells two items for ₹1,200 each. On one he gains 20%, on the other he loses 20%. Find his total gain or loss %.",
+      "q": "A shopkeeper sells two items for \u20b91,200 each. On one he gains 20%, on the other he loses 20%. Find his total gain or loss %.",
       "opts": [
         "2% loss",
         "4% loss",
@@ -2071,7 +2071,7 @@
         "No gain no loss"
       ],
       "c": 1,
-      "exp": "Step 1: CP₁ = 1200 × 100/120 = ₹1,000. CP₂ = 1200 × 100/80 = ₹1,500. Step 2: Total CP = ₹2,500, Total SP = ₹2,400. Loss = ₹100. Loss % = (100/2500) × 100 = 4%. Answer is 4% loss (option B).",
+      "exp": "Step 1: CP\u2081 = 1200 \u00d7 100/120 = \u20b91,000. CP\u2082 = 1200 \u00d7 100/80 = \u20b91,500. Step 2: Total CP = \u20b92,500, Total SP = \u20b92,400. Loss = \u20b9100. Loss % = (100/2500) \u00d7 100 = 4%. Answer is 4% loss (option B).",
       "d": "medium"
     },
     {
@@ -2085,7 +2085,7 @@
         "40%"
       ],
       "c": 1,
-      "exp": "Step 1: CP of 25 articles = SP of 20 articles. Let CP of 1 = ₹1. CP of 25 = ₹25 = SP of 20. Step 2: SP of 1 = ₹25/20 = ₹1.25. Profit per article = ₹0.25. Profit % = 25%. Answer is 25% (option B).",
+      "exp": "Step 1: CP of 25 articles = SP of 20 articles. Let CP of 1 = \u20b91. CP of 25 = \u20b925 = SP of 20. Step 2: SP of 1 = \u20b925/20 = \u20b91.25. Profit per article = \u20b90.25. Profit % = 25%. Answer is 25% (option B).",
       "d": "medium"
     },
     {
@@ -2099,21 +2099,21 @@
         "No gain no loss"
       ],
       "c": 1,
-      "exp": "Step 1: Let CP = ₹100. MP = ₹150. Discount = 40% of ₹150 = ₹60. SP = ₹150 − ₹60 = ₹90. Step 2: Loss = ₹10. Loss % = 10%. Answer is 10% loss (option B).",
+      "exp": "Step 1: Let CP = \u20b9100. MP = \u20b9150. Discount = 40% of \u20b9150 = \u20b960. SP = \u20b9150 \u2212 \u20b960 = \u20b990. Step 2: Loss = \u20b910. Loss % = 10%. Answer is 10% loss (option B).",
       "d": "hard"
     },
     {
       "id": 64,
       "t": "profit-percent",
-      "q": "A man bought a cycle for ₹1,200 and sold it at a gain of 15%. What was the selling price?",
+      "q": "A man bought a cycle for \u20b91,200 and sold it at a gain of 15%. What was the selling price?",
       "opts": [
-        "₹1,360",
-        "₹1,370",
-        "₹1,380",
-        "₹1,390"
+        "\u20b91,360",
+        "\u20b91,370",
+        "\u20b91,380",
+        "\u20b91,390"
       ],
       "c": 2,
-      "exp": "Step 1: Gain = 15% of ₹1,200 = ₹180. Step 2: SP = CP + Gain = ₹1,200 + ₹180 = ₹1,380. Answer is ₹1,380 (option C).",
+      "exp": "Step 1: Gain = 15% of \u20b91,200 = \u20b9180. Step 2: SP = CP + Gain = \u20b91,200 + \u20b9180 = \u20b91,380. Answer is \u20b91,380 (option C).",
       "d": "medium"
     },
     {
@@ -2127,49 +2127,49 @@
         "75%"
       ],
       "c": 1,
-      "exp": "Step 1: Profit % on SP = (100 × 100)/(100 + 100) = 10000/200 = 50%. Answer is 50% (option B).",
+      "exp": "Step 1: Profit % on SP = (100 \u00d7 100)/(100 + 100) = 10000/200 = 50%. Answer is 50% (option B).",
       "d": "medium"
     },
     {
       "id": 66,
       "t": "basic-concepts",
-      "q": "A man sold an article for ₹2,400 and gained 20%. Find the cost price.",
+      "q": "A man sold an article for \u20b92,400 and gained 20%. Find the cost price.",
       "opts": [
-        "₹1,800",
-        "₹1,900",
-        "₹2,000",
-        "₹2,100"
+        "\u20b91,800",
+        "\u20b91,900",
+        "\u20b92,000",
+        "\u20b92,100"
       ],
       "c": 2,
-      "exp": "Step 1: CP = SP × 100/(100 + 20) = 2400 × 100/120 = 2400 × 5/6 = ₹2,000. Answer is ₹2,000 (option C).",
+      "exp": "Step 1: CP = SP \u00d7 100/(100 + 20) = 2400 \u00d7 100/120 = 2400 \u00d7 5/6 = \u20b92,000. Answer is \u20b92,000 (option C).",
       "d": "medium"
     },
     {
       "id": 67,
       "t": "basic-concepts",
-      "q": "A shopkeeper sold a radio for ₹680 at a loss of 15%. Find the cost price.",
+      "q": "A shopkeeper sold a radio for \u20b9680 at a loss of 15%. Find the cost price.",
       "opts": [
-        "₹760",
-        "₹780",
-        "₹790",
-        "₹800"
+        "\u20b9760",
+        "\u20b9780",
+        "\u20b9790",
+        "\u20b9800"
       ],
       "c": 3,
-      "exp": "Step 1: CP = SP × 100/(100 − 15) = 680 × 100/85 = 680 × 20/17 = ₹800. Answer is ₹800 (option D).",
+      "exp": "Step 1: CP = SP \u00d7 100/(100 \u2212 15) = 680 \u00d7 100/85 = 680 \u00d7 20/17 = \u20b9800. Answer is \u20b9800 (option D).",
       "d": "medium"
     },
     {
       "id": 68,
       "t": "discount",
-      "q": "The marked price of a book is ₹500. A shopkeeper offers a discount of 12%. Find the selling price.",
+      "q": "The marked price of a book is \u20b9500. A shopkeeper offers a discount of 12%. Find the selling price.",
       "opts": [
-        "₹420",
-        "₹435",
-        "₹440",
-        "₹460"
+        "\u20b9420",
+        "\u20b9435",
+        "\u20b9440",
+        "\u20b9460"
       ],
       "c": 2,
-      "exp": "Step 1: Discount = 12% of ₹500 = ₹60. SP = ₹500 − ₹60 = ₹440. Or SP = 500 × 88/100 = ₹440. Answer is ₹440 (option C).",
+      "exp": "Step 1: Discount = 12% of \u20b9500 = \u20b960. SP = \u20b9500 \u2212 \u20b960 = \u20b9440. Or SP = 500 \u00d7 88/100 = \u20b9440. Answer is \u20b9440 (option C).",
       "d": "hard"
     },
     {
@@ -2183,13 +2183,13 @@
         "10.25%"
       ],
       "c": 1,
-      "exp": "Step 1: Let CP = ₹100. MP = ₹115. Discount = 5% of ₹115 = ₹5.75. SP = ₹115 − ₹5.75 = ₹109.25. Step 2: Profit = ₹9.25. Profit % = 9.25%. Answer is 9.25% (option B).",
+      "exp": "Step 1: Let CP = \u20b9100. MP = \u20b9115. Discount = 5% of \u20b9115 = \u20b95.75. SP = \u20b9115 \u2212 \u20b95.75 = \u20b9109.25. Step 2: Profit = \u20b99.25. Profit % = 9.25%. Answer is 9.25% (option B).",
       "d": "hard"
     },
     {
       "id": 70,
       "t": "profit-percent",
-      "q": "A man bought 50 kg of sugar for ₹3,000. He sold it at ₹70 per kg. Find his profit or loss percent.",
+      "q": "A man bought 50 kg of sugar for \u20b93,000. He sold it at \u20b970 per kg. Find his profit or loss percent.",
       "opts": [
         "$16\\frac{2}{3}\\%$ profit",
         "$16\\frac{2}{3}\\%$ loss",
@@ -2197,13 +2197,13 @@
         "20% loss"
       ],
       "c": 0,
-      "exp": "Step 1: CP per kg = ₹3,000/50 = ₹60. SP per kg = ₹70. Profit per kg = ₹10. Step 2: Profit % = (10/60) × 100 = $16\\frac{2}{3}\\%$. Answer is option A.",
+      "exp": "Step 1: CP per kg = \u20b93,000/50 = \u20b960. SP per kg = \u20b970. Profit per kg = \u20b910. Step 2: Profit % = (10/60) \u00d7 100 = $16\\frac{2}{3}\\%$. Answer is option A.",
       "d": "medium"
     },
     {
       "id": 71,
       "t": "cost-price",
-      "q": "A man sold two articles for ₹1,200 each. On one he gained 20% and on the other he lost 20%. Find his total loss or gain percent.",
+      "q": "A man sold two articles for \u20b91,200 each. On one he gained 20% and on the other he lost 20%. Find his total loss or gain percent.",
       "opts": [
         "2% loss",
         "4% loss",
@@ -2211,27 +2211,27 @@
         "No gain no loss"
       ],
       "c": 1,
-      "exp": "Step 1: CP₁ = 1200 × 100/120 = ₹1,000. CP₂ = 1200 × 100/80 = ₹1,500. Step 2: Total CP = ₹2,500, Total SP = ₹2,400. Loss = ₹100. Loss % = (100/2500) × 100 = 4%. Answer is 4% loss (option B).",
+      "exp": "Step 1: CP\u2081 = 1200 \u00d7 100/120 = \u20b91,000. CP\u2082 = 1200 \u00d7 100/80 = \u20b91,500. Step 2: Total CP = \u20b92,500, Total SP = \u20b92,400. Loss = \u20b9100. Loss % = (100/2500) \u00d7 100 = 4%. Answer is 4% loss (option B).",
       "d": "medium"
     },
     {
       "id": 72,
       "t": "basic-concepts",
-      "q": "A man sells his scooter at a profit of 25%. If the cost price was ₹40,000, find the selling price.",
+      "q": "A man sells his scooter at a profit of 25%. If the cost price was \u20b940,000, find the selling price.",
       "opts": [
-        "₹45,000",
-        "₹48,000",
-        "₹50,000",
-        "₹52,000"
+        "\u20b945,000",
+        "\u20b948,000",
+        "\u20b950,000",
+        "\u20b952,000"
       ],
       "c": 2,
-      "exp": "Step 1: Profit = 25% of ₹40,000 = ₹10,000. Step 2: SP = CP + Profit = ₹40,000 + ₹10,000 = ₹50,000. Answer is ₹50,000 (option C).",
+      "exp": "Step 1: Profit = 25% of \u20b940,000 = \u20b910,000. Step 2: SP = CP + Profit = \u20b940,000 + \u20b910,000 = \u20b950,000. Answer is \u20b950,000 (option C).",
       "d": "medium"
     },
     {
       "id": 73,
       "t": "profit-percent",
-      "q": "A trader mixes 26 kg of rice at ₹20 per kg with 30 kg of rice at ₹36 per kg and sells the mixture at ₹30 per kg. Find his profit %.",
+      "q": "A trader mixes 26 kg of rice at \u20b920 per kg with 30 kg of rice at \u20b936 per kg and sells the mixture at \u20b930 per kg. Find his profit %.",
       "opts": [
         "5%",
         "6%",
@@ -2239,7 +2239,7 @@
         "8%"
       ],
       "c": 0,
-      "exp": "Step 1: Total CP = 26×20 + 30×36 = 520 + 1080 = ₹1,600. Total qty = 56 kg. Step 2: Total SP = 56×30 = ₹1,680. Profit = ₹80. Step 3: Profit % = (80/1600) × 100 = 5%. Answer is 5% (option A).",
+      "exp": "Step 1: Total CP = 26\u00d720 + 30\u00d736 = 520 + 1080 = \u20b91,600. Total qty = 56 kg. Step 2: Total SP = 56\u00d730 = \u20b91,680. Profit = \u20b980. Step 3: Profit % = (80/1600) \u00d7 100 = 5%. Answer is 5% (option A).",
       "d": "hard"
     },
     {
@@ -2253,55 +2253,55 @@
         "45%"
       ],
       "c": 2,
-      "exp": "Step 1: d = 25 + 20 − (25×20)/100 = 45 − 5 = 40%. Answer is 40% (option C).",
+      "exp": "Step 1: d = 25 + 20 \u2212 (25\u00d720)/100 = 45 \u2212 5 = 40%. Answer is 40% (option C).",
       "d": "hard"
     },
     {
       "id": 75,
       "t": "basic-concepts",
-      "q": "A man sold an article for ₹720 and gained 20%. Find the cost price.",
+      "q": "A man sold an article for \u20b9720 and gained 20%. Find the cost price.",
       "opts": [
-        "₹560",
-        "₹580",
-        "₹600",
-        "₹620"
+        "\u20b9560",
+        "\u20b9580",
+        "\u20b9600",
+        "\u20b9620"
       ],
       "c": 2,
-      "exp": "Step 1: CP = SP × 100/(100 + 20) = 720 × 100/120 = 720 × 5/6 = ₹600. Answer is ₹600 (option C).",
+      "exp": "Step 1: CP = SP \u00d7 100/(100 + 20) = 720 \u00d7 100/120 = 720 \u00d7 5/6 = \u20b9600. Answer is \u20b9600 (option C).",
       "d": "medium"
     },
     {
       "id": 76,
       "t": "basic-concepts",
-      "q": "A shopkeeper sold a watch for ₹2,160 at a loss of 10%. Find the cost price.",
+      "q": "A shopkeeper sold a watch for \u20b92,160 at a loss of 10%. Find the cost price.",
       "opts": [
-        "₹2,200",
-        "₹2,300",
-        "₹2,350",
-        "₹2,400"
+        "\u20b92,200",
+        "\u20b92,300",
+        "\u20b92,350",
+        "\u20b92,400"
       ],
       "c": 3,
-      "exp": "Step 1: CP = SP × 100/(100 − 10) = 2160 × 100/90 = 2160 × 10/9 = ₹2,400. Answer is ₹2,400 (option D).",
+      "exp": "Step 1: CP = SP \u00d7 100/(100 \u2212 10) = 2160 \u00d7 100/90 = 2160 \u00d7 10/9 = \u20b92,400. Answer is \u20b92,400 (option D).",
       "d": "medium"
     },
     {
       "id": 77,
       "t": "discount",
-      "q": "After allowing a discount of 15% on the marked price, an article is sold for ₹680. Find the marked price.",
+      "q": "After allowing a discount of 15% on the marked price, an article is sold for \u20b9680. Find the marked price.",
       "opts": [
-        "₹725",
-        "₹750",
-        "₹775",
-        "₹800"
+        "\u20b9725",
+        "\u20b9750",
+        "\u20b9775",
+        "\u20b9800"
       ],
       "c": 3,
-      "exp": "Step 1: SP = MP × 85/100, so MP = SP × 100/85 = 680 × 20/17 = ₹800. Answer is ₹800 (option D).",
+      "exp": "Step 1: SP = MP \u00d7 85/100, so MP = SP \u00d7 100/85 = 680 \u00d7 20/17 = \u20b9800. Answer is \u20b9800 (option D).",
       "d": "hard"
     },
     {
       "id": 78,
       "t": "two-items-same-sp",
-      "q": "Two articles are sold at ₹800 each. One at 15% profit, other at 15% loss. Find overall gain/loss %.",
+      "q": "Two articles are sold at \u20b9800 each. One at 15% profit, other at 15% loss. Find overall gain/loss %.",
       "opts": [
         "1.25% loss",
         "2.25% loss",
@@ -2309,55 +2309,55 @@
         "4% loss"
       ],
       "c": 1,
-      "exp": "Step 1: Loss % = (15²/100)% = 225/100 = 2.25% loss. Answer is 2.25% loss (option B).",
+      "exp": "Step 1: Loss % = (15\u00b2/100)% = 225/100 = 2.25% loss. Answer is 2.25% loss (option B).",
       "d": "medium"
     },
     {
       "id": 79,
       "t": "profit-percent",
-      "q": "A man sold an article for ₹1,200 at a profit of 25%. At what price should he sell it to gain 40%?",
+      "q": "A man sold an article for \u20b91,200 at a profit of 25%. At what price should he sell it to gain 40%?",
       "opts": [
-        "₹1,300",
-        "₹1,320",
-        "₹1,340",
-        "₹1,344"
+        "\u20b91,300",
+        "\u20b91,320",
+        "\u20b91,340",
+        "\u20b91,344"
       ],
       "c": 3,
-      "exp": "Step 1: CP = 1200 × 100/125 = ₹960. Step 2: Required SP = 960 × 140/100 = ₹1,344. Answer is ₹1,344 (option D).",
+      "exp": "Step 1: CP = 1200 \u00d7 100/125 = \u20b9960. Step 2: Required SP = 960 \u00d7 140/100 = \u20b91,344. Answer is \u20b91,344 (option D).",
       "d": "medium"
     },
     {
       "id": 80,
       "t": "partnership",
-      "q": "A and B invest ₹15,000 and ₹25,000 in a business. The profit at the end of the year is ₹8,000. Find A's share.",
+      "q": "A and B invest \u20b915,000 and \u20b925,000 in a business. The profit at the end of the year is \u20b98,000. Find A's share.",
       "opts": [
-        "₹3,000",
-        "₹3,500",
-        "₹4,000",
-        "₹5,000"
+        "\u20b93,000",
+        "\u20b93,500",
+        "\u20b94,000",
+        "\u20b95,000"
       ],
       "c": 0,
-      "exp": "Step 1: Ratio = 15000:25000 = 3:5. Step 2: A's share = 8000 × 3/8 = ₹3,000. Answer is ₹3,000 (option A).",
+      "exp": "Step 1: Ratio = 15000:25000 = 3:5. Step 2: A's share = 8000 \u00d7 3/8 = \u20b93,000. Answer is \u20b93,000 (option A).",
       "d": "medium"
     },
     {
       "id": 81,
       "t": "successive-discount",
-      "q": "An item is marked at ₹2,000. Two discounts of 10% and 5% are offered. Find the selling price.",
+      "q": "An item is marked at \u20b92,000. Two discounts of 10% and 5% are offered. Find the selling price.",
       "opts": [
-        "₹1,690",
-        "₹1,710",
-        "₹1,720",
-        "₹1,750"
+        "\u20b91,690",
+        "\u20b91,710",
+        "\u20b91,720",
+        "\u20b91,750"
       ],
       "c": 1,
-      "exp": "Step 1: After 10%: 2000 × 0.9 = ₹1,800. After 5%: 1800 × 0.95 = ₹1,710. Answer is ₹1,710 (option B).",
+      "exp": "Step 1: After 10%: 2000 \u00d7 0.9 = \u20b91,800. After 5%: 1800 \u00d7 0.95 = \u20b91,710. Answer is \u20b91,710 (option B).",
       "d": "medium"
     },
     {
       "id": 82,
       "t": "basic-concepts",
-      "q": "A fruit seller buys 100 oranges for ₹400. He sells them at ₹60 per dozen. Find his profit or loss %.",
+      "q": "A fruit seller buys 100 oranges for \u20b9400. He sells them at \u20b960 per dozen. Find his profit or loss %.",
       "opts": [
         "15% gain",
         "20% gain",
@@ -2365,7 +2365,7 @@
         "30% gain"
       ],
       "c": 2,
-      "exp": "Step 1: CP per orange = ₹4. SP per dozen = ₹60, so SP per orange = ₹5. Step 2: Profit per orange = ₹1. Profit % = (1/4) × 100 = 25% gain. Answer is 25% gain (option C).",
+      "exp": "Step 1: CP per orange = \u20b94. SP per dozen = \u20b960, so SP per orange = \u20b95. Step 2: Profit per orange = \u20b91. Profit % = (1/4) \u00d7 100 = 25% gain. Answer is 25% gain (option C).",
       "d": "medium"
     },
     {
@@ -2379,13 +2379,13 @@
         "20%"
       ],
       "c": 1,
-      "exp": "Step 1: Error = 150g. Gain % = 150/850 × 100 = 1500/85 = 300/17 = $17\\frac{11}{17}\\%$. Answer is option B.",
+      "exp": "Step 1: Error = 150g. Gain % = 150/850 \u00d7 100 = 1500/85 = 300/17 = $17\\frac{11}{17}\\%$. Answer is option B.",
       "d": "medium"
     },
     {
       "id": 84,
       "t": "profit-percent",
-      "q": "A shopkeeper bought 50 kg of wheat at ₹35 per kg and sold it at ₹42 per kg. Find his profit %.",
+      "q": "A shopkeeper bought 50 kg of wheat at \u20b935 per kg and sold it at \u20b942 per kg. Find his profit %.",
       "opts": [
         "15%",
         "18%",
@@ -2393,7 +2393,7 @@
         "25%"
       ],
       "c": 2,
-      "exp": "Step 1: CP per kg = ₹35, SP per kg = ₹42. Profit per kg = ₹7. Step 2: Profit % = (7/35) × 100 = 20%. Answer is 20% (option C).",
+      "exp": "Step 1: CP per kg = \u20b935, SP per kg = \u20b942. Profit per kg = \u20b97. Step 2: Profit % = (7/35) \u00d7 100 = 20%. Answer is 20% (option C).",
       "d": "medium"
     },
     {
@@ -2407,7 +2407,7 @@
         "125%"
       ],
       "c": 2,
-      "exp": "Step 1: Profit % on CP = (50 × 100)/(100 − 50) = 5000/50 = 100%. Answer is 100% (option C).",
+      "exp": "Step 1: Profit % on CP = (50 \u00d7 100)/(100 \u2212 50) = 5000/50 = 100%. Answer is 100% (option C).",
       "d": "medium"
     },
     {
@@ -2421,55 +2421,55 @@
         "15%"
       ],
       "c": 1,
-      "exp": "Step 1: Let CP = ₹100. MP = ₹125. Discount = 12% of 125 = ₹15. SP = ₹110. Step 2: Profit = ₹10. Profit % = 10%. Answer is 10% (option B).",
+      "exp": "Step 1: Let CP = \u20b9100. MP = \u20b9125. Discount = 12% of 125 = \u20b915. SP = \u20b9110. Step 2: Profit = \u20b910. Profit % = 10%. Answer is 10% (option B).",
       "d": "hard"
     },
     {
       "id": 87,
       "t": "basic-concepts",
-      "q": "A man sold a fan for ₹2,000 at a profit of 25%. What was the cost price of the fan?",
+      "q": "A man sold a fan for \u20b92,000 at a profit of 25%. What was the cost price of the fan?",
       "opts": [
-        "₹1,500",
-        "₹1,550",
-        "₹1,600",
-        "₹1,650"
+        "\u20b91,500",
+        "\u20b91,550",
+        "\u20b91,600",
+        "\u20b91,650"
       ],
       "c": 2,
-      "exp": "Step 1: CP = SP × 100/(100 + 25) = 2000 × 100/125 = 2000 × 4/5 = ₹1,600. Answer is ₹1,600 (option C).",
+      "exp": "Step 1: CP = SP \u00d7 100/(100 + 25) = 2000 \u00d7 100/125 = 2000 \u00d7 4/5 = \u20b91,600. Answer is \u20b91,600 (option C).",
       "d": "medium"
     },
     {
       "id": 88,
       "t": "profit-percent",
-      "q": "A dealer sold a refrigerator for ₹18,000 at a loss of 10%. Find the cost price.",
+      "q": "A dealer sold a refrigerator for \u20b918,000 at a loss of 10%. Find the cost price.",
       "opts": [
-        "₹18,000",
-        "₹19,000",
-        "₹20,000",
-        "₹22,000"
+        "\u20b918,000",
+        "\u20b919,000",
+        "\u20b920,000",
+        "\u20b922,000"
       ],
       "c": 2,
-      "exp": "Step 1: CP = SP × 100/(100 − 10) = 18000 × 100/90 = ₹20,000. Answer is ₹20,000 (option C).",
+      "exp": "Step 1: CP = SP \u00d7 100/(100 \u2212 10) = 18000 \u00d7 100/90 = \u20b920,000. Answer is \u20b920,000 (option C).",
       "d": "medium"
     },
     {
       "id": 89,
       "t": "discount",
-      "q": "A shopkeeper marks his goods at ₹800 and gives a discount of 25%. Find the selling price.",
+      "q": "A shopkeeper marks his goods at \u20b9800 and gives a discount of 25%. Find the selling price.",
       "opts": [
-        "₹560",
-        "₹580",
-        "₹600",
-        "₹620"
+        "\u20b9560",
+        "\u20b9580",
+        "\u20b9600",
+        "\u20b9620"
       ],
       "c": 2,
-      "exp": "Step 1: Discount = 25% of ₹800 = ₹200. SP = ₹800 − ₹200 = ₹600. Answer is ₹600 (option C).",
+      "exp": "Step 1: Discount = 25% of \u20b9800 = \u20b9200. SP = \u20b9800 \u2212 \u20b9200 = \u20b9600. Answer is \u20b9600 (option C).",
       "d": "hard"
     },
     {
       "id": 90,
       "t": "profit-percent",
-      "q": "A man bought 80 kg of wheat at ₹30 per kg. He sold 40 kg at ₹36 per kg and the remaining at ₹33 per kg. Find his total profit %.",
+      "q": "A man bought 80 kg of wheat at \u20b930 per kg. He sold 40 kg at \u20b936 per kg and the remaining at \u20b933 per kg. Find his total profit %.",
       "opts": [
         "15%",
         "17.5%",
@@ -2477,7 +2477,7 @@
         "22.5%"
       ],
       "c": 0,
-      "exp": "Step 1: Total CP = 80 × ₹30 = ₹2,400. Step 2: SP of first 40 kg = 40 × ₹36 = ₹1,440. SP of next 40 kg = 40 × ₹33 = ₹1,320. Total SP = ₹2,760. Step 3: Profit = ₹2,760 − ₹2,400 = ₹360. Profit % = (360/2400) × 100 = 15%. Answer is 15% (option A).",
+      "exp": "Step 1: Total CP = 80 \u00d7 \u20b930 = \u20b92,400. Step 2: SP of first 40 kg = 40 \u00d7 \u20b936 = \u20b91,440. SP of next 40 kg = 40 \u00d7 \u20b933 = \u20b91,320. Total SP = \u20b92,760. Step 3: Profit = \u20b92,760 \u2212 \u20b92,400 = \u20b9360. Profit % = (360/2400) \u00d7 100 = 15%. Answer is 15% (option A).",
       "d": "medium"
     },
     {
@@ -2491,13 +2491,13 @@
         "3.5%"
       ],
       "c": 0,
-      "exp": "Step 1: Error = 20g. Gain % = 20/980 × 100 = 2.04%. Answer is 2.04% (option A).",
+      "exp": "Step 1: Error = 20g. Gain % = 20/980 \u00d7 100 = 2.04%. Answer is 2.04% (option A).",
       "d": "medium"
     },
     {
       "id": 92,
       "t": "two-items-same-sp",
-      "q": "A man sells two pens for ₹50 each. One at 12% profit, other at 12% loss. Find overall loss %.",
+      "q": "A man sells two pens for \u20b950 each. One at 12% profit, other at 12% loss. Find overall loss %.",
       "opts": [
         "1.44%",
         "2%",
@@ -2505,55 +2505,55 @@
         "3%"
       ],
       "c": 0,
-      "exp": "Step 1: Loss % = (12²/100)% = 144/100 = 1.44% loss. Answer is 1.44% (option A).",
+      "exp": "Step 1: Loss % = (12\u00b2/100)% = 144/100 = 1.44% loss. Answer is 1.44% (option A).",
       "d": "medium"
     },
     {
       "id": 93,
       "t": "partnership",
-      "q": "A invests ₹20,000 for 12 months. B invests ₹30,000 for 8 months. Profit = ₹24,000. Find B's share.",
+      "q": "A invests \u20b920,000 for 12 months. B invests \u20b930,000 for 8 months. Profit = \u20b924,000. Find B's share.",
       "opts": [
-        "₹10,000",
-        "₹12,000",
-        "₹14,000",
-        "₹16,000"
+        "\u20b910,000",
+        "\u20b912,000",
+        "\u20b914,000",
+        "\u20b916,000"
       ],
       "c": 1,
-      "exp": "Step 1: A's product = 20000×12 = 2,40,000. B's product = 30000×8 = 2,40,000. Ratio = 1:1. Step 2: B's share = ₹24,000 × 1/2 = ₹12,000. Answer is ₹12,000 (option B).",
+      "exp": "Step 1: A's product = 20000\u00d712 = 2,40,000. B's product = 30000\u00d78 = 2,40,000. Ratio = 1:1. Step 2: B's share = \u20b924,000 \u00d7 1/2 = \u20b912,000. Answer is \u20b912,000 (option B).",
       "d": "medium"
     },
     {
       "id": 94,
       "t": "basic-concepts",
-      "q": "A shopkeeper sells a shirt for ₹450 at a loss of 10%. Find the cost price.",
+      "q": "A shopkeeper sells a shirt for \u20b9450 at a loss of 10%. Find the cost price.",
       "opts": [
-        "₹450",
-        "₹480",
-        "₹495",
-        "₹500"
+        "\u20b9450",
+        "\u20b9480",
+        "\u20b9495",
+        "\u20b9500"
       ],
       "c": 3,
-      "exp": "Step 1: CP = SP × 100/(100 − 10) = 450 × 100/90 = 450 × 10/9 = ₹500. Answer is ₹500 (option D).",
+      "exp": "Step 1: CP = SP \u00d7 100/(100 \u2212 10) = 450 \u00d7 100/90 = 450 \u00d7 10/9 = \u20b9500. Answer is \u20b9500 (option D).",
       "d": "medium"
     },
     {
       "id": 95,
       "t": "discount",
-      "q": "A shopkeeper allows a discount of 20% on the marked price. If the selling price is ₹640, find the marked price.",
+      "q": "A shopkeeper allows a discount of 20% on the marked price. If the selling price is \u20b9640, find the marked price.",
       "opts": [
-        "₹720",
-        "₹750",
-        "₹780",
-        "₹800"
+        "\u20b9720",
+        "\u20b9750",
+        "\u20b9780",
+        "\u20b9800"
       ],
       "c": 3,
-      "exp": "Step 1: SP = MP × 80/100, so MP = SP × 100/80 = 640 × 5/4 = ₹800. Answer is ₹800 (option D).",
+      "exp": "Step 1: SP = MP \u00d7 80/100, so MP = SP \u00d7 100/80 = 640 \u00d7 5/4 = \u20b9800. Answer is \u20b9800 (option D).",
       "d": "hard"
     },
     {
       "id": 96,
       "t": "profit-percent",
-      "q": "A trader bought 8 kg of rice at ₹25 per kg and 12 kg at ₹30 per kg. He mixed them and sold at ₹35 per kg. Find his profit %.",
+      "q": "A trader bought 8 kg of rice at \u20b925 per kg and 12 kg at \u20b930 per kg. He mixed them and sold at \u20b935 per kg. Find his profit %.",
       "opts": [
         "25%",
         "27.5%",
@@ -2561,13 +2561,13 @@
         "30%"
       ],
       "c": 0,
-      "exp": "Step 1: Total CP = 8×25 + 12×30 = ₹200 + ₹360 = ₹560. Total qty = 20 kg. Total SP = 20×35 = ₹700. Step 2: Profit = ₹700 − ₹560 = ₹140. Profit % = (140/560) × 100 = 25%. Answer is 25% (option A).",
+      "exp": "Step 1: Total CP = 8\u00d725 + 12\u00d730 = \u20b9200 + \u20b9360 = \u20b9560. Total qty = 20 kg. Total SP = 20\u00d735 = \u20b9700. Step 2: Profit = \u20b9700 \u2212 \u20b9560 = \u20b9140. Profit % = (140/560) \u00d7 100 = 25%. Answer is 25% (option A).",
       "d": "medium"
     },
     {
       "id": 97,
       "t": "basic-concepts",
-      "q": "A man buys a watch for ₹800 and sells it for ₹1,000. Find his profit %.",
+      "q": "A man buys a watch for \u20b9800 and sells it for \u20b91,000. Find his profit %.",
       "opts": [
         "20%",
         "22%",
@@ -2575,7 +2575,7 @@
         "25%"
       ],
       "c": 3,
-      "exp": "Step 1: Profit = ₹1,000 − ₹800 = ₹200. Step 2: Profit % = (200/800) × 100 = 25%. Answer is 25% (option D).",
+      "exp": "Step 1: Profit = \u20b91,000 \u2212 \u20b9800 = \u20b9200. Step 2: Profit % = (200/800) \u00d7 100 = 25%. Answer is 25% (option D).",
       "d": "medium"
     },
     {
@@ -2589,27 +2589,27 @@
         "35%"
       ],
       "c": 0,
-      "exp": "Step 1: d = 10 + 20 − (10×20)/100 = 30 − 2 = 28%. Answer is 28% (option A).",
+      "exp": "Step 1: d = 10 + 20 \u2212 (10\u00d720)/100 = 30 \u2212 2 = 28%. Answer is 28% (option A).",
       "d": "hard"
     },
     {
       "id": 99,
       "t": "profit-percent",
-      "q": "By selling an article for ₹600, a man loses 20%. What should be the selling price to gain 20%?",
+      "q": "By selling an article for \u20b9600, a man loses 20%. What should be the selling price to gain 20%?",
       "opts": [
-        "₹750",
-        "₹800",
-        "₹850",
-        "₹900"
+        "\u20b9750",
+        "\u20b9800",
+        "\u20b9850",
+        "\u20b9900"
       ],
       "c": 3,
-      "exp": "Step 1: CP = 600 × 100/80 = ₹750. Step 2: Required SP = 750 × 120/100 = ₹900. Answer is ₹900 (option D).",
+      "exp": "Step 1: CP = 600 \u00d7 100/80 = \u20b9750. Step 2: Required SP = 750 \u00d7 120/100 = \u20b9900. Answer is \u20b9900 (option D).",
       "d": "medium"
     },
     {
       "id": 100,
       "t": "basic-concepts",
-      "q": "A shopkeeper bought a TV for ₹8,000 and spent ₹500 on repairs. He sold it for ₹10,200. Find his gain %.",
+      "q": "A shopkeeper bought a TV for \u20b98,000 and spent \u20b9500 on repairs. He sold it for \u20b910,200. Find his gain %.",
       "opts": [
         "16%",
         "18%",
@@ -2617,7 +2617,7 @@
         "22%"
       ],
       "c": 2,
-      "exp": "Step 1: Total CP = ₹8,000 + ₹500 = ₹8,500. SP = ₹10,200. Profit = ₹1,700. Step 2: Gain % = (1700/8500) × 100 = 20%. Answer is 20% (option C).",
+      "exp": "Step 1: Total CP = \u20b98,000 + \u20b9500 = \u20b98,500. SP = \u20b910,200. Profit = \u20b91,700. Step 2: Gain % = (1700/8500) \u00d7 100 = 20%. Answer is 20% (option C).",
       "d": "medium"
     },
     {
@@ -2631,7 +2631,7 @@
         "10% gain"
       ],
       "c": 0,
-      "exp": "Step 1: Let CP = ₹100. MP = ₹160. Discount = 37.5% of 160 = ₹60. SP = ₹100. Step 2: No profit, no loss. Answer is 'No gain no loss' (option A).",
+      "exp": "Step 1: Let CP = \u20b9100. MP = \u20b9160. Discount = 37.5% of 160 = \u20b960. SP = \u20b9100. Step 2: No profit, no loss. Answer is 'No gain no loss' (option A).",
       "d": "hard"
     },
     {
@@ -2645,21 +2645,21 @@
         "20%"
       ],
       "c": 0,
-      "exp": "Step 1: Error = 250g. Gain % = 250/750 × 100 = $33\\frac{1}{3}\\%$. Answer is option A.",
+      "exp": "Step 1: Error = 250g. Gain % = 250/750 \u00d7 100 = $33\\frac{1}{3}\\%$. Answer is option A.",
       "d": "medium"
     },
     {
       "id": 103,
       "t": "basic-concepts",
-      "q": "A shopkeeper sold an article for ₹880 at a profit of 10%. Find the cost price.",
+      "q": "A shopkeeper sold an article for \u20b9880 at a profit of 10%. Find the cost price.",
       "opts": [
-        "₹790",
-        "₹795",
-        "₹800",
-        "₹805"
+        "\u20b9790",
+        "\u20b9795",
+        "\u20b9800",
+        "\u20b9805"
       ],
       "c": 2,
-      "exp": "Step 1: CP = SP × 100/(100 + 10) = 880 × 100/110 = 880 × 10/11 = ₹800. Answer is ₹800 (option C).",
+      "exp": "Step 1: CP = SP \u00d7 100/(100 + 10) = 880 \u00d7 100/110 = 880 \u00d7 10/11 = \u20b9800. Answer is \u20b9800 (option C).",
       "d": "medium"
     },
     {
@@ -2673,13 +2673,13 @@
         "20%"
       ],
       "c": 0,
-      "exp": "Step 1: CP of 50 = SP of 42. Let CP of 1 = ₹1. CP of 50 = ₹50 = SP of 42. SP of 1 = ₹50/42 = ₹25/21. Profit per article = 25/21 − 1 = 4/21. Step 2: Profit % = (4/21)/1 × 100 = 400/21 = 19 + 1/21 = $19\\frac{1}{21}\\%$. Answer is option A.",
+      "exp": "Step 1: CP of 50 = SP of 42. Let CP of 1 = \u20b91. CP of 50 = \u20b950 = SP of 42. SP of 1 = \u20b950/42 = \u20b925/21. Profit per article = 25/21 \u2212 1 = 4/21. Step 2: Profit % = (4/21)/1 \u00d7 100 = 400/21 = 19 + 1/21 = $19\\frac{1}{21}\\%$. Answer is option A.",
       "d": "medium"
     },
     {
       "id": 105,
       "t": "two-items-same-sp",
-      "q": "A man sells two chairs for ₹1,200 each. One at 5% profit, other at 5% loss. Find overall loss %.",
+      "q": "A man sells two chairs for \u20b91,200 each. One at 5% profit, other at 5% loss. Find overall loss %.",
       "opts": [
         "0.25%",
         "0.5%",
@@ -2687,41 +2687,41 @@
         "2%"
       ],
       "c": 0,
-      "exp": "Step 1: Loss % = (5²/100)% = 25/100 = 0.25% loss. Answer is 0.25% (option A).",
+      "exp": "Step 1: Loss % = (5\u00b2/100)% = 25/100 = 0.25% loss. Answer is 0.25% (option A).",
       "d": "medium"
     },
     {
       "id": 106,
       "t": "basic-concepts",
-      "q": "Riya bought a chair for ₹1,200 and sold it at a profit of 15%. What was the selling price?",
+      "q": "Riya bought a chair for \u20b91,200 and sold it at a profit of 15%. What was the selling price?",
       "opts": [
-        "₹1,320",
-        "₹1,350",
-        "₹1,380",
-        "₹1,420"
+        "\u20b91,320",
+        "\u20b91,350",
+        "\u20b91,380",
+        "\u20b91,420"
       ],
       "c": 2,
-      "exp": "Step 1: Profit = 15% of ₹1,200 = ₹180. Step 2: SP = CP + Profit = ₹1,200 + ₹180 = ₹1,380. Answer is ₹1,380 (option C).",
+      "exp": "Step 1: Profit = 15% of \u20b91,200 = \u20b9180. Step 2: SP = CP + Profit = \u20b91,200 + \u20b9180 = \u20b91,380. Answer is \u20b91,380 (option C).",
       "d": "medium"
     },
     {
       "id": 107,
       "t": "basic-concepts",
-      "q": "A man sold a watch for ₹1,500, incurring a loss of 10%. What was the cost price?",
+      "q": "A man sold a watch for \u20b91,500, incurring a loss of 10%. What was the cost price?",
       "opts": [
-        "₹1,550",
-        "₹1,600",
-        "₹1,650",
+        "\u20b91,550",
+        "\u20b91,600",
+        "\u20b91,650",
         "$1,666\\frac{2}{3}$"
       ],
       "c": 3,
-      "exp": "Step 1: SP = ₹1,500, Loss = 10%. Step 2: CP = SP × 100/(100 − 10) = 1500 × 100/90 = 1500 × 10/9 = ₹1,666.67 = $1,666\\frac{2}{3}$. Answer is option D.",
+      "exp": "Step 1: SP = \u20b91,500, Loss = 10%. Step 2: CP = SP \u00d7 100/(100 \u2212 10) = 1500 \u00d7 100/90 = 1500 \u00d7 10/9 = \u20b91,666.67 = $1,666\\frac{2}{3}$. Answer is option D.",
       "d": "medium"
     },
     {
       "id": 108,
       "t": "basic-concepts",
-      "q": "A fruit seller bought 100 oranges at ₹5 each. He sold 60 oranges at ₹6 each and the rest at ₹5 each. Find his profit percent.",
+      "q": "A fruit seller bought 100 oranges at \u20b95 each. He sold 60 oranges at \u20b96 each and the rest at \u20b95 each. Find his profit percent.",
       "opts": [
         "5%",
         "8%",
@@ -2729,27 +2729,27 @@
         "12%"
       ],
       "c": 3,
-      "exp": "Step 1: Total CP = 100 × ₹5 = ₹500. Step 2: SP of 60 oranges = 60 × ₹6 = ₹360. SP of 40 oranges = 40 × ₹5 = ₹200. Total SP = ₹560. Step 3: Profit = ₹560 − ₹500 = ₹60. Profit % = (60/500) × 100 = 12%. Answer is 12% (option D).",
+      "exp": "Step 1: Total CP = 100 \u00d7 \u20b95 = \u20b9500. Step 2: SP of 60 oranges = 60 \u00d7 \u20b96 = \u20b9360. SP of 40 oranges = 40 \u00d7 \u20b95 = \u20b9200. Total SP = \u20b9560. Step 3: Profit = \u20b9560 \u2212 \u20b9500 = \u20b960. Profit % = (60/500) \u00d7 100 = 12%. Answer is 12% (option D).",
       "d": "medium"
     },
     {
       "id": 109,
       "t": "basic-concepts",
-      "q": "A trader bought 50 pens for ₹500. He sold 30 pens at ₹12 each and the remaining at ₹9 each. Find his total profit.",
+      "q": "A trader bought 50 pens for \u20b9500. He sold 30 pens at \u20b912 each and the remaining at \u20b99 each. Find his total profit.",
       "opts": [
-        "₹20",
-        "₹30",
-        "₹40",
-        "₹50"
+        "\u20b920",
+        "\u20b930",
+        "\u20b940",
+        "\u20b950"
       ],
       "c": 2,
-      "exp": "Step 1: CP of 50 pens = ₹500. Step 2: SP of 30 pens = 30 × ₹12 = ₹360. SP of 20 pens = 20 × ₹9 = ₹180. Total SP = ₹540. Step 3: Profit = ₹540 − ₹500 = ₹40. Answer is ₹40 (option C).",
+      "exp": "Step 1: CP of 50 pens = \u20b9500. Step 2: SP of 30 pens = 30 \u00d7 \u20b912 = \u20b9360. SP of 20 pens = 20 \u00d7 \u20b99 = \u20b9180. Total SP = \u20b9540. Step 3: Profit = \u20b9540 \u2212 \u20b9500 = \u20b940. Answer is \u20b940 (option C).",
       "d": "medium"
     },
     {
       "id": 110,
       "t": "basic-concepts",
-      "q": "A fruit seller bought 100 oranges at ₹4 each. He sold 60 oranges at ₹5 each and the remaining at ₹4 each. Find his profit percent.",
+      "q": "A fruit seller bought 100 oranges at \u20b94 each. He sold 60 oranges at \u20b95 each and the remaining at \u20b94 each. Find his profit percent.",
       "opts": [
         "10%",
         "12%",
@@ -2757,63 +2757,63 @@
         "18%"
       ],
       "c": 2,
-      "exp": "Step 1: Total CP = 100 × ₹4 = ₹400. Step 2: SP of 60 oranges = 60 × ₹5 = ₹300. SP of 40 oranges = 40 × ₹4 = ₹160. Total SP = ₹460. Step 3: Profit = ₹460 − ₹400 = ₹60. Profit % = (60/400) × 100 = 15%. Answer is 15% (option C).",
+      "exp": "Step 1: Total CP = 100 \u00d7 \u20b94 = \u20b9400. Step 2: SP of 60 oranges = 60 \u00d7 \u20b95 = \u20b9300. SP of 40 oranges = 40 \u00d7 \u20b94 = \u20b9160. Total SP = \u20b9460. Step 3: Profit = \u20b9460 \u2212 \u20b9400 = \u20b960. Profit % = (60/400) \u00d7 100 = 15%. Answer is 15% (option C).",
       "d": "medium"
     },
     {
       "id": 111,
       "t": "basic-concepts",
-      "q": "A trader sold a chair for ₹540 at a loss of 10%. What was the cost price?",
+      "q": "A trader sold a chair for \u20b9540 at a loss of 10%. What was the cost price?",
       "opts": [
-        "₹570",
-        "₹590",
-        "₹600",
-        "₹620"
+        "\u20b9570",
+        "\u20b9590",
+        "\u20b9600",
+        "\u20b9620"
       ],
       "c": 2,
-      "exp": "Step 1: SP = ₹540, Loss = 10%. Step 2: CP = SP × 100/(100 − 10) = 540 × 100/90 = 540 × 10/9 = ₹600. Answer is ₹600 (option C).",
+      "exp": "Step 1: SP = \u20b9540, Loss = 10%. Step 2: CP = SP \u00d7 100/(100 \u2212 10) = 540 \u00d7 100/90 = 540 \u00d7 10/9 = \u20b9600. Answer is \u20b9600 (option C).",
       "d": "medium"
     },
     {
       "id": 112,
       "t": "profit-percent",
-      "q": "A shopkeeper sold an article for ₹960 at a profit of 20%. Find the cost price.",
+      "q": "A shopkeeper sold an article for \u20b9960 at a profit of 20%. Find the cost price.",
       "opts": [
-        "₹750",
-        "₹780",
-        "₹800",
-        "₹820"
+        "\u20b9750",
+        "\u20b9780",
+        "\u20b9800",
+        "\u20b9820"
       ],
       "c": 2,
-      "exp": "Step 1: SP = ₹960, Profit = 20%. Step 2: CP = SP × 100/(100 + 20) = 960 × 100/120 = 960 × 5/6 = ₹800. Answer is ₹800 (option C).",
+      "exp": "Step 1: SP = \u20b9960, Profit = 20%. Step 2: CP = SP \u00d7 100/(100 + 20) = 960 \u00d7 100/120 = 960 \u00d7 5/6 = \u20b9800. Answer is \u20b9800 (option C).",
       "d": "medium"
     },
     {
       "id": 113,
       "t": "profit-percent",
-      "q": "By selling a table for ₹1,260, a trader gains 5%. Find the cost price.",
+      "q": "By selling a table for \u20b91,260, a trader gains 5%. Find the cost price.",
       "opts": [
-        "₹1,180",
-        "₹1,190",
-        "₹1,200",
-        "₹1,210"
+        "\u20b91,180",
+        "\u20b91,190",
+        "\u20b91,200",
+        "\u20b91,210"
       ],
       "c": 2,
-      "exp": "Step 1: SP = ₹1,260, Gain = 5%. Step 2: CP = SP × 100/(100 + 5) = 1260 × 100/105 = 1260 × 20/21 = ₹1,200. Answer is ₹1,200 (option C).",
+      "exp": "Step 1: SP = \u20b91,260, Gain = 5%. Step 2: CP = SP \u00d7 100/(100 + 5) = 1260 \u00d7 100/105 = 1260 \u00d7 20/21 = \u20b91,200. Answer is \u20b91,200 (option C).",
       "d": "medium"
     },
     {
       "id": 114,
       "t": "profit-percent",
-      "q": "A man sold a book for ₹550 at a loss of 12%. Find the cost price.",
+      "q": "A man sold a book for \u20b9550 at a loss of 12%. Find the cost price.",
       "opts": [
-        "₹600",
-        "₹615",
-        "₹620",
-        "₹625"
+        "\u20b9600",
+        "\u20b9615",
+        "\u20b9620",
+        "\u20b9625"
       ],
       "c": 3,
-      "exp": "Step 1: SP = ₹550, Loss = 12%. Step 2: CP = SP × 100/(100 − 12) = 550 × 100/88 = 550 × 25/22 = ₹625. Answer is ₹625 (option D).",
+      "exp": "Step 1: SP = \u20b9550, Loss = 12%. Step 2: CP = SP \u00d7 100/(100 \u2212 12) = 550 \u00d7 100/88 = 550 \u00d7 25/22 = \u20b9625. Answer is \u20b9625 (option D).",
       "d": "medium"
     },
     {
@@ -2827,13 +2827,13 @@
         "$33\\frac{1}{3}\\%$"
       ],
       "c": 1,
-      "exp": "Step 1: CP of 15 = SP of 12. Let CP of 1 = ₹1. CP of 15 = ₹15 = SP of 12. SP of 1 = ₹15/12 = ₹5/4 = ₹1.25. Step 2: Profit per article = ₹0.25. Profit % = (0.25/1) × 100 = 25%. Answer is 25% (option B).",
+      "exp": "Step 1: CP of 15 = SP of 12. Let CP of 1 = \u20b91. CP of 15 = \u20b915 = SP of 12. SP of 1 = \u20b915/12 = \u20b95/4 = \u20b91.25. Step 2: Profit per article = \u20b90.25. Profit % = (0.25/1) \u00d7 100 = 25%. Answer is 25% (option B).",
       "d": "medium"
     },
     {
       "id": 116,
       "t": "profit-percent",
-      "q": "A man bought 2 dozen oranges for ₹240. He sold them at ₹15 per orange. Find his profit percent.",
+      "q": "A man bought 2 dozen oranges for \u20b9240. He sold them at \u20b915 per orange. Find his profit percent.",
       "opts": [
         "25%",
         "40%",
@@ -2841,49 +2841,49 @@
         "60%"
       ],
       "c": 2,
-      "exp": "Step 1: 2 dozen = 24 oranges. CP = ₹240, CP per orange = ₹10. Step 2: SP per orange = ₹15. Profit per orange = ₹5. Profit % = (5/10) × 100 = 50%. Answer is 50% (option C).",
+      "exp": "Step 1: 2 dozen = 24 oranges. CP = \u20b9240, CP per orange = \u20b910. Step 2: SP per orange = \u20b915. Profit per orange = \u20b95. Profit % = (5/10) \u00d7 100 = 50%. Answer is 50% (option C).",
       "d": "medium"
     },
     {
       "id": 117,
       "t": "profit-percent",
-      "q": "A trader sold an article at a loss of 15%. If the CP was ₹2,000, what was the SP?",
+      "q": "A trader sold an article at a loss of 15%. If the CP was \u20b92,000, what was the SP?",
       "opts": [
-        "₹1,500",
-        "₹1,600",
-        "₹1,700",
-        "₹1,800"
+        "\u20b91,500",
+        "\u20b91,600",
+        "\u20b91,700",
+        "\u20b91,800"
       ],
       "c": 2,
-      "exp": "Step 1: Loss = 15% of ₹2,000 = ₹300. Step 2: SP = CP − Loss = ₹2,000 − ₹300 = ₹1,700. Answer is ₹1,700 (option C).",
+      "exp": "Step 1: Loss = 15% of \u20b92,000 = \u20b9300. Step 2: SP = CP \u2212 Loss = \u20b92,000 \u2212 \u20b9300 = \u20b91,700. Answer is \u20b91,700 (option C).",
       "d": "medium"
     },
     {
       "id": 118,
       "t": "discount",
-      "q": "The marked price of an article is ₹1,000. A discount of 15% is offered. Find the selling price.",
+      "q": "The marked price of an article is \u20b91,000. A discount of 15% is offered. Find the selling price.",
       "opts": [
-        "₹800",
-        "₹820",
-        "₹840",
-        "₹850"
+        "\u20b9800",
+        "\u20b9820",
+        "\u20b9840",
+        "\u20b9850"
       ],
       "c": 3,
-      "exp": "Step 1: Discount = 15% of ₹1,000 = ₹150. SP = ₹1,000 − ₹150 = ₹850. Or SP = 1000 × 85/100 = ₹850. Answer is ₹850 (option D).",
+      "exp": "Step 1: Discount = 15% of \u20b91,000 = \u20b9150. SP = \u20b91,000 \u2212 \u20b9150 = \u20b9850. Or SP = 1000 \u00d7 85/100 = \u20b9850. Answer is \u20b9850 (option D).",
       "d": "hard"
     },
     {
       "id": 119,
       "t": "discount",
-      "q": "A dealer marks an article at ₹2,500 and sells it at a discount of 8%. Find the selling price.",
+      "q": "A dealer marks an article at \u20b92,500 and sells it at a discount of 8%. Find the selling price.",
       "opts": [
-        "₹2,200",
-        "₹2,250",
-        "₹2,280",
-        "₹2,300"
+        "\u20b92,200",
+        "\u20b92,250",
+        "\u20b92,280",
+        "\u20b92,300"
       ],
       "c": 3,
-      "exp": "Step 1: Discount = 8% of ₹2,500 = ₹200. SP = ₹2,500 − ₹200 = ₹2,300. Or directly: SP = 2500 × 92/100 = ₹2,300. Answer is ₹2,300 (option D).",
+      "exp": "Step 1: Discount = 8% of \u20b92,500 = \u20b9200. SP = \u20b92,500 \u2212 \u20b9200 = \u20b92,300. Or directly: SP = 2500 \u00d7 92/100 = \u20b92,300. Answer is \u20b92,300 (option D).",
       "d": "hard"
     },
     {
@@ -2897,35 +2897,35 @@
         "10%"
       ],
       "c": 2,
-      "exp": "Step 1: Let CP = ₹100. MP = ₹135. Discount = 20% of ₹135 = ₹27. SP = ₹135 − ₹27 = ₹108. Step 2: Profit = ₹8. Profit % = 8%. Answer is 8% (option C).",
+      "exp": "Step 1: Let CP = \u20b9100. MP = \u20b9135. Discount = 20% of \u20b9135 = \u20b927. SP = \u20b9135 \u2212 \u20b927 = \u20b9108. Step 2: Profit = \u20b98. Profit % = 8%. Answer is 8% (option C).",
       "d": "hard"
     },
     {
       "id": 121,
       "t": "discount",
-      "q": "A trader allows a discount of 15% on the marked price. He still gains 19%. Find the marked price if CP is ₹500.",
+      "q": "A trader allows a discount of 15% on the marked price. He still gains 19%. Find the marked price if CP is \u20b9500.",
       "opts": [
-        "₹650",
-        "₹680",
-        "₹700",
-        "₹720"
+        "\u20b9650",
+        "\u20b9680",
+        "\u20b9700",
+        "\u20b9720"
       ],
       "c": 2,
-      "exp": "Step 1: SP = CP × 119/100 = 500 × 1.19 = ₹595. Step 2: SP = MP × 85/100, so MP = 595 × 100/85 = 595 × 20/17 = ₹700. Answer is ₹700 (option C).",
+      "exp": "Step 1: SP = CP \u00d7 119/100 = 500 \u00d7 1.19 = \u20b9595. Step 2: SP = MP \u00d7 85/100, so MP = 595 \u00d7 100/85 = 595 \u00d7 20/17 = \u20b9700. Answer is \u20b9700 (option C).",
       "d": "hard"
     },
     {
       "id": 122,
       "t": "discount",
-      "q": "The marked price of a shirt is ₹800. After a discount of 12%, what is the selling price?",
+      "q": "The marked price of a shirt is \u20b9800. After a discount of 12%, what is the selling price?",
       "opts": [
-        "₹690",
-        "₹696",
-        "₹704",
-        "₹710"
+        "\u20b9690",
+        "\u20b9696",
+        "\u20b9704",
+        "\u20b9710"
       ],
       "c": 2,
-      "exp": "Step 1: Discount = 12% of ₹800 = ₹96. SP = ₹800 − ₹96 = ₹704. Or SP = 800 × 88/100 = ₹704. Answer is ₹704 (option C).",
+      "exp": "Step 1: Discount = 12% of \u20b9800 = \u20b996. SP = \u20b9800 \u2212 \u20b996 = \u20b9704. Or SP = 800 \u00d7 88/100 = \u20b9704. Answer is \u20b9704 (option C).",
       "d": "hard"
     },
     {
@@ -2939,21 +2939,21 @@
         "42%"
       ],
       "c": 0,
-      "exp": "Step 1: d = 20 + 20 − (20×20)/100 = 40 − 4 = 36%. Answer is 36% (option A).",
+      "exp": "Step 1: d = 20 + 20 \u2212 (20\u00d720)/100 = 40 \u2212 4 = 36%. Answer is 36% (option A).",
       "d": "hard"
     },
     {
       "id": 124,
       "t": "successive-discount",
-      "q": "MP = ₹6,000. Successive discounts of 10% and 15% are offered. Find the SP.",
+      "q": "MP = \u20b96,000. Successive discounts of 10% and 15% are offered. Find the SP.",
       "opts": [
-        "₹4,500",
-        "₹4,590",
-        "₹4,650",
-        "₹4,700"
+        "\u20b94,500",
+        "\u20b94,590",
+        "\u20b94,650",
+        "\u20b94,700"
       ],
       "c": 1,
-      "exp": "Step 1: After 10%: 6000 × 0.9 = ₹5,400. After 15%: 5400 × 0.85 = ₹4,590. Answer is ₹4,590 (option B).",
+      "exp": "Step 1: After 10%: 6000 \u00d7 0.9 = \u20b95,400. After 15%: 5400 \u00d7 0.85 = \u20b94,590. Answer is \u20b94,590 (option B).",
       "d": "hard"
     },
     {
@@ -2967,21 +2967,21 @@
         "35%"
       ],
       "c": 0,
-      "exp": "Step 1: d = 10 + 20 − (10×20)/100 = 30 − 2 = 28%. Answer is 28% (option A).",
+      "exp": "Step 1: d = 10 + 20 \u2212 (10\u00d720)/100 = 30 \u2212 2 = 28%. Answer is 28% (option A).",
       "d": "hard"
     },
     {
       "id": 126,
       "t": "successive-discount",
-      "q": "MP = ₹4,000. Discounts of 15% and 10% are offered. Find the final SP.",
+      "q": "MP = \u20b94,000. Discounts of 15% and 10% are offered. Find the final SP.",
       "opts": [
-        "₹3,000",
-        "₹3,040",
-        "₹3,060",
-        "₹3,080"
+        "\u20b93,000",
+        "\u20b93,040",
+        "\u20b93,060",
+        "\u20b93,080"
       ],
       "c": 2,
-      "exp": "Step 1: After 15%: 4000 × 0.85 = ₹3,400. After 10%: 3400 × 0.9 = ₹3,060. Answer is ₹3,060 (option C).",
+      "exp": "Step 1: After 15%: 4000 \u00d7 0.85 = \u20b93,400. After 10%: 3400 \u00d7 0.9 = \u20b93,060. Answer is \u20b93,060 (option C).",
       "d": "medium"
     },
     {
@@ -2995,7 +2995,7 @@
         "$9\\frac{1}{2}\\%$"
       ],
       "c": 0,
-      "exp": "Step 1: Error = 80g. Gain % = 80/920 × 100 = 8000/920 = 800/92 = 200/23 = $8\\frac{16}{23}\\%$. Answer is option A.",
+      "exp": "Step 1: Error = 80g. Gain % = 80/920 \u00d7 100 = 8000/920 = 800/92 = 200/23 = $8\\frac{16}{23}\\%$. Answer is option A.",
       "d": "medium"
     },
     {
@@ -3009,7 +3009,7 @@
         "15%"
       ],
       "c": 0,
-      "exp": "Step 1: Total gain % = [105 × 1000/940 − 100]% = [105 × 1.0638 − 100]% = [111.7 − 100]% = 11.7%. Answer is 11.7% (option A).",
+      "exp": "Step 1: Total gain % = [105 \u00d7 1000/940 \u2212 100]% = [105 \u00d7 1.0638 \u2212 100]% = [111.7 \u2212 100]% = 11.7%. Answer is 11.7% (option A).",
       "d": "medium"
     },
     {
@@ -3023,7 +3023,7 @@
         "25%"
       ],
       "c": 1,
-      "exp": "Step 1: Error = 180g. Gain % = 180/820 × 100 = 18000/820 = 1800/82 = 900/41 = 21.95%. Answer is 21.95% (option B).",
+      "exp": "Step 1: Error = 180g. Gain % = 180/820 \u00d7 100 = 18000/820 = 1800/82 = 900/41 = 21.95%. Answer is 21.95% (option B).",
       "d": "medium"
     },
     {
@@ -3037,7 +3037,7 @@
         "35%"
       ],
       "c": 0,
-      "exp": "Step 1: Total gain % = [110 × 1000/860 − 100]% = [110 × 1.1628 − 100]% = [127.9 − 100]% ≈ 28%. Answer is 28% (option A).",
+      "exp": "Step 1: The dealer uses 860 g instead of 1000 g and also sells at 10% profit. Step 2: Total gain % = [(100 + 10) \u00d7 1000/860 - 100]%. Step 3: = [110 \u00d7 1.16279 - 100]% \u2248 127.91% - 100% = 27.91%. Step 4: This rounds to 28%. So the answer is 28%.",
       "d": "medium"
     },
     {
@@ -3051,7 +3051,7 @@
         "42.5%"
       ],
       "c": 1,
-      "exp": "Step 1: Profit % on SP = (60 × 100)/(100 + 60) = 6000/160 = 37.5%. Answer is 37.5% (option B).",
+      "exp": "Step 1: Profit % on SP = (60 \u00d7 100)/(100 + 60) = 6000/160 = 37.5%. Answer is 37.5% (option B).",
       "d": "medium"
     },
     {
@@ -3065,7 +3065,7 @@
         "$50\\frac{1}{7}\\%$"
       ],
       "c": 0,
-      "exp": "Step 1: Profit % on CP = (30 × 100)/(100 − 30) = 3000/70 = 300/7 = $42\\frac{6}{7}\\%$. Answer is option A.",
+      "exp": "Step 1: Profit % on CP = (30 \u00d7 100)/(100 \u2212 30) = 3000/70 = 300/7 = $42\\frac{6}{7}\\%$. Answer is option A.",
       "d": "medium"
     },
     {
@@ -3079,13 +3079,13 @@
         "12.5%"
       ],
       "c": 0,
-      "exp": "Step 1: Loss % on CP = (10 × 100)/(100 + 10) = 1000/110 = 9.09%. Answer is 9.09% (option A).",
+      "exp": "Step 1: Loss % on CP = (10 \u00d7 100)/(100 + 10) = 1000/110 = 9.09%. Answer is 9.09% (option A).",
       "d": "medium"
     },
     {
       "id": 134,
       "t": "two-items-same-sp",
-      "q": "Two items sold at ₹600 each. One at 25% profit, other at 25% loss. Find overall %.",
+      "q": "Two items sold at \u20b9600 each. One at 25% profit, other at 25% loss. Find overall %.",
       "opts": [
         "5.25% loss",
         "6.25% loss",
@@ -3093,13 +3093,13 @@
         "No gain no loss"
       ],
       "c": 1,
-      "exp": "Step 1: Loss % = (25²/100)% = 625/100 = 6.25% loss. Answer is 6.25% loss (option B).",
+      "exp": "Step 1: Loss % = (25\u00b2/100)% = 625/100 = 6.25% loss. Answer is 6.25% loss (option B).",
       "d": "medium"
     },
     {
       "id": 135,
       "t": "two-items-same-sp",
-      "q": "A man sells two TVs for ₹9,000 each. One at 10% profit, other at 10% loss. Find overall gain/loss %.",
+      "q": "A man sells two TVs for \u20b99,000 each. One at 10% profit, other at 10% loss. Find overall gain/loss %.",
       "opts": [
         "0.5% loss",
         "1% loss",
@@ -3107,7 +3107,7 @@
         "2% loss"
       ],
       "c": 1,
-      "exp": "Step 1: Loss % = (10²/100)% = 100/100 = 1% loss. Answer is 1% loss (option B).",
+      "exp": "Step 1: Loss % = (10\u00b2/100)% = 100/100 = 1% loss. Answer is 1% loss (option B).",
       "d": "medium"
     },
     {
@@ -3121,63 +3121,63 @@
         "0.8% loss"
       ],
       "c": 0,
-      "exp": "Step 1: Loss % = (8²/100)% = 64/100 = 0.64% loss. Answer is 0.64% loss (option A).",
+      "exp": "Step 1: Loss % = (8\u00b2/100)% = 64/100 = 0.64% loss. Answer is 0.64% loss (option A).",
       "d": "medium"
     },
     {
       "id": 137,
       "t": "partnership",
-      "q": "A invests ₹12,000 and B invests ₹18,000 for the same period. Profit = ₹10,000. Find A's share.",
+      "q": "A invests \u20b912,000 and B invests \u20b918,000 for the same period. Profit = \u20b910,000. Find A's share.",
       "opts": [
-        "₹3,000",
-        "₹4,000",
-        "₹5,000",
-        "₹6,000"
+        "\u20b93,000",
+        "\u20b94,000",
+        "\u20b95,000",
+        "\u20b96,000"
       ],
       "c": 1,
-      "exp": "Step 1: Ratio = 12000:18000 = 2:3. Step 2: A's share = 10000 × 2/5 = ₹4,000. Answer is ₹4,000 (option B).",
+      "exp": "Step 1: Ratio = 12000:18000 = 2:3. Step 2: A's share = 10000 \u00d7 2/5 = \u20b94,000. Answer is \u20b94,000 (option B).",
       "d": "medium"
     },
     {
       "id": 138,
       "t": "partnership",
-      "q": "A invests ₹25,000 for 12 months. B invests ₹20,000 for 9 months. Profit = ₹19,000. Find B's share.",
+      "q": "A invests \u20b925,000 for 12 months. B invests \u20b920,000 for 9 months. Profit = \u20b919,000. Find B's share.",
       "opts": [
-        "₹6,000",
-        "₹7,125",
-        "₹8,000",
-        "₹9,000"
+        "\u20b96,000",
+        "\u20b97,125",
+        "\u20b98,000",
+        "\u20b99,000"
       ],
       "c": 1,
-      "exp": "Step 1: A's product = 25000×12 = 3,00,000. B's product = 20000×9 = 1,80,000. Ratio = 300000:180000 = 5:3. Step 2: B's share = 19000 × 3/8 = ₹7,125. Answer is ₹7,125 (option B).",
+      "exp": "Step 1: A's product = 25000\u00d712 = 3,00,000. B's product = 20000\u00d79 = 1,80,000. Ratio = 300000:180000 = 5:3. Step 2: B's share = 19000 \u00d7 3/8 = \u20b97,125. Answer is \u20b97,125 (option B).",
       "d": "medium"
     },
     {
       "id": 139,
       "t": "partnership",
-      "q": "A invests ₹24,000 for 12 months. B invests ₹16,000 for 9 months. Profit = ₹18,000. Find B's share.",
+      "q": "A invests \u20b924,000 for 12 months. B invests \u20b916,000 for 9 months. Profit = \u20b918,000. Find B's share.",
       "opts": [
-        "₹6,000",
-        "₹7,000",
-        "₹8,000",
-        "₹9,000"
+        "\u20b96,000",
+        "\u20b97,000",
+        "\u20b98,000",
+        "\u20b99,000"
       ],
       "c": 0,
-      "exp": "Step 1: A's product = 24000×12 = 2,88,000. B's product = 16000×9 = 1,44,000. Ratio = 288000:144000 = 2:1. Step 2: B's share = 18000 × 1/3 = ₹6,000. Answer is ₹6,000 (option A).",
+      "exp": "Step 1: A's product = 24000\u00d712 = 2,88,000. B's product = 16000\u00d79 = 1,44,000. Ratio = 288000:144000 = 2:1. Step 2: B's share = 18000 \u00d7 1/3 = \u20b96,000. Answer is \u20b96,000 (option A).",
       "d": "medium"
     },
     {
       "id": 140,
       "t": "partnership",
-      "q": "A, B and C invest in ratio 3:4:5. C's profit share is ₹7,500. Find total profit.",
+      "q": "A, B and C invest in ratio 3:4:5. C's profit share is \u20b97,500. Find total profit.",
       "opts": [
-        "₹15,000",
-        "₹16,000",
-        "₹18,000",
-        "₹20,000"
+        "\u20b915,000",
+        "\u20b916,000",
+        "\u20b918,000",
+        "\u20b920,000"
       ],
       "c": 2,
-      "exp": "Step 1: C's ratio = 5. Total ratio = 3+4+5 = 12. C's share of total = 5/12. Step 2: Total profit = 7500 × 12/5 = ₹18,000. Answer is ₹18,000 (option C).",
+      "exp": "Step 1: C's ratio = 5. Total ratio = 3+4+5 = 12. C's share of total = 5/12. Step 2: Total profit = 7500 \u00d7 12/5 = \u20b918,000. Answer is \u20b918,000 (option C).",
       "d": "medium"
     },
     {
@@ -3191,7 +3191,7 @@
         "$22\\frac{2}{9}\\%$"
       ],
       "c": 2,
-      "exp": "Step 1: Let SP of 1 article = ₹x. SP of 18 = ₹18x. Gain = SP of 3 = ₹3x. CP of 18 = SP − Gain = 18x − 3x = ₹15x. Step 2: Gain % = (3x/15x) × 100 = 20%. Answer is 20% (option C).",
+      "exp": "Step 1: Let SP of 1 article = \u20b9x. SP of 18 = \u20b918x. Gain = SP of 3 = \u20b93x. CP of 18 = SP \u2212 Gain = 18x \u2212 3x = \u20b915x. Step 2: Gain % = (3x/15x) \u00d7 100 = 20%. Answer is 20% (option C).",
       "d": "medium"
     },
     {
@@ -3205,7 +3205,7 @@
         "20%"
       ],
       "c": 1,
-      "exp": "Step 1: Let SP of 1 article = ₹x. SP of 24 = ₹24x. Loss = SP of 4 = ₹4x. CP of 24 = SP + Loss = 24x + 4x = ₹28x. Step 2: Loss % = (4x/28x) × 100 = 100/7 = $14\\frac{2}{7}\\%$. Answer is option B.",
+      "exp": "Step 1: Let SP of 1 article = \u20b9x. SP of 24 = \u20b924x. Loss = SP of 4 = \u20b94x. CP of 24 = SP + Loss = 24x + 4x = \u20b928x. Step 2: Loss % = (4x/28x) \u00d7 100 = 100/7 = $14\\frac{2}{7}\\%$. Answer is option B.",
       "d": "medium"
     },
     {
@@ -3219,7 +3219,7 @@
         "$14\\frac{2}{7}\\%$"
       ],
       "c": 1,
-      "exp": "Step 1: CP of 40 = SP of 36. Let CP of 1 = ₹1. CP of 40 = ₹40 = SP of 36. SP of 1 = ₹40/36 = ₹10/9. Profit per article = 10/9 − 1 = 1/9. Step 2: Profit % = (1/9)/1 × 100 = 100/9 = $11\\frac{1}{9}\\%$. Answer is option B.",
+      "exp": "Step 1: CP of 40 = SP of 36. Let CP of 1 = \u20b91. CP of 40 = \u20b940 = SP of 36. SP of 1 = \u20b940/36 = \u20b910/9. Profit per article = 10/9 \u2212 1 = 1/9. Step 2: Profit % = (1/9)/1 \u00d7 100 = 100/9 = $11\\frac{1}{9}\\%$. Answer is option B.",
       "d": "medium"
     },
     {
@@ -3233,13 +3233,13 @@
         "40%"
       ],
       "c": 1,
-      "exp": "Step 1: CP of 30 = SP of 24. Let CP of 1 = ₹1. CP of 30 = ₹30 = SP of 24. SP of 1 = ₹30/24 = ₹5/4 = ₹1.25. Profit per article = ₹0.25. Step 2: Profit % = (0.25/1) × 100 = 25%. Answer is 25% (option B).",
+      "exp": "Step 1: CP of 30 = SP of 24. Let CP of 1 = \u20b91. CP of 30 = \u20b930 = SP of 24. SP of 1 = \u20b930/24 = \u20b95/4 = \u20b91.25. Profit per article = \u20b90.25. Step 2: Profit % = (0.25/1) \u00d7 100 = 25%. Answer is 25% (option B).",
       "d": "medium"
     },
     {
       "id": 145,
       "t": "overall-profit-loss",
-      "q": "A shopkeeper sells two items for ₹750 each. On one he gains 25% and on the other he loses 25%. Find overall gain/loss %.",
+      "q": "A shopkeeper sells two items for \u20b9750 each. On one he gains 25% and on the other he loses 25%. Find overall gain/loss %.",
       "opts": [
         "4.25% loss",
         "6.25% loss",
@@ -3247,13 +3247,13 @@
         "No gain no loss"
       ],
       "c": 1,
-      "exp": "Step 1: CP₁ = 750 × 100/125 = ₹600. CP₂ = 750 × 100/75 = ₹1,000. Total CP = ₹1,600, Total SP = ₹1,500. Loss = ₹100. Loss % = (100/1600) × 100 = 6.25%. Answer is 6.25% loss (option B).",
+      "exp": "Step 1: CP\u2081 = 750 \u00d7 100/125 = \u20b9600. CP\u2082 = 750 \u00d7 100/75 = \u20b91,000. Total CP = \u20b91,600, Total SP = \u20b91,500. Loss = \u20b9100. Loss % = (100/1600) \u00d7 100 = 6.25%. Answer is 6.25% loss (option B).",
       "d": "medium"
     },
     {
       "id": 146,
       "t": "overall-profit-loss",
-      "q": "Item P sold at ₹800 at 25% profit. Item Q sold at ₹800 at 20% loss. Find overall gain/loss %.",
+      "q": "Item P sold at \u20b9800 at 25% profit. Item Q sold at \u20b9800 at 20% loss. Find overall gain/loss %.",
       "opts": [
         "2.44% loss",
         "3.33% loss",
@@ -3261,13 +3261,13 @@
         "5% loss"
       ],
       "c": 0,
-      "exp": "Step 1: CP of P = 800 × 100/125 = ₹640. CP of Q = 800 × 100/80 = ₹1,000. Total CP = ₹1,640, Total SP = ₹1,600. Loss = ₹40. Step 2: Loss % = (40/1640) × 100 = 2.44%. Answer is 2.44% loss (option A).",
+      "exp": "Step 1: CP of P = 800 \u00d7 100/125 = \u20b9640. CP of Q = 800 \u00d7 100/80 = \u20b91,000. Total CP = \u20b91,640, Total SP = \u20b91,600. Loss = \u20b940. Step 2: Loss % = (40/1640) \u00d7 100 = 2.44%. Answer is 2.44% loss (option A).",
       "d": "medium"
     },
     {
       "id": 147,
       "t": "overall-profit-loss",
-      "q": "A trader sells item X for ₹360 at 20% profit and item Y for ₹260 at 30% profit. Find his total gain percent.",
+      "q": "A trader sells item X for \u20b9360 at 20% profit and item Y for \u20b9260 at 30% profit. Find his total gain percent.",
       "opts": [
         "20%",
         "22%",
@@ -3275,27 +3275,27 @@
         "25%"
       ],
       "c": 2,
-      "exp": "Step 1: CP of X = 360 × 100/120 = ₹300. CP of Y = 260 × 100/130 = ₹200. Total CP = ₹500. Total SP = ₹360 + ₹260 = ₹620. Gain = ₹120. Step 2: Gain % = (120/500) × 100 = 24%. Answer is 24% (option C).",
+      "exp": "Step 1: CP of X = 360 \u00d7 100/120 = \u20b9300. CP of Y = 260 \u00d7 100/130 = \u20b9200. Total CP = \u20b9500. Total SP = \u20b9360 + \u20b9260 = \u20b9620. Gain = \u20b9120. Step 2: Gain % = (120/500) \u00d7 100 = 24%. Answer is 24% (option C).",
       "d": "medium"
     },
     {
       "id": 148,
       "t": "misc",
-      "q": "A shopkeeper marks an article at ₹1,200 and gives a discount of 10%. He still gains 20%. Find the cost price.",
+      "q": "A shopkeeper marks an article at \u20b91,200 and gives a discount of 10%. He still gains 20%. Find the cost price.",
       "opts": [
-        "₹800",
-        "₹850",
-        "₹900",
-        "₹950"
+        "\u20b9800",
+        "\u20b9850",
+        "\u20b9900",
+        "\u20b9950"
       ],
       "c": 2,
-      "exp": "Step 1: SP = MP × 90/100 = 1200 × 0.9 = ₹1,080. Step 2: CP = SP × 100/(100 + 20) = 1080 × 100/120 = 1080 × 5/6 = ₹900. Answer is ₹900 (option C).",
+      "exp": "Step 1: SP = MP \u00d7 90/100 = 1200 \u00d7 0.9 = \u20b91,080. Step 2: CP = SP \u00d7 100/(100 + 20) = 1080 \u00d7 100/120 = 1080 \u00d7 5/6 = \u20b9900. Answer is \u20b9900 (option C).",
       "d": "hard"
     },
     {
       "id": 149,
       "t": "misc",
-      "q": "A man bought 5 kg of tea at ₹400 per kg and 5 kg at ₹500 per kg. He mixed them and sold at ₹450 per kg. Find profit or loss percent.",
+      "q": "A man bought 5 kg of tea at \u20b9400 per kg and 5 kg at \u20b9500 per kg. He mixed them and sold at \u20b9450 per kg. Find profit or loss percent.",
       "opts": [
         "No gain no loss",
         "2% loss",
@@ -3303,13 +3303,13 @@
         "5% loss"
       ],
       "c": 0,
-      "exp": "Step 1: Total CP = 5×400 + 5×500 = ₹2,000 + ₹2,500 = ₹4,500. Total qty = 10 kg. Total SP = 10×450 = ₹4,500. Step 2: CP = SP, so no gain no loss. Answer is 'No gain no loss' (option A).",
+      "exp": "Step 1: Total CP = 5\u00d7400 + 5\u00d7500 = \u20b92,000 + \u20b92,500 = \u20b94,500. Total qty = 10 kg. Total SP = 10\u00d7450 = \u20b94,500. Step 2: CP = SP, so no gain no loss. Answer is 'No gain no loss' (option A).",
       "d": "medium"
     },
     {
       "id": 150,
       "t": "misc",
-      "q": "A trader mixes 10 kg of tea at ₹30 per kg with 10 kg of tea at ₹50 per kg. He sells the mixture at ₹44 per kg. Find his profit percent.",
+      "q": "A trader mixes 10 kg of tea at \u20b930 per kg with 10 kg of tea at \u20b950 per kg. He sells the mixture at \u20b944 per kg. Find his profit percent.",
       "opts": [
         "5%",
         "8%",
@@ -3317,39 +3317,39 @@
         "12%"
       ],
       "c": 2,
-      "exp": "Step 1: Total CP = 10×30 + 10×50 = ₹300 + ₹500 = ₹800. Total qty = 20 kg. Total SP = 20×44 = ₹880. Profit = ₹80. Step 2: Profit % = (80/800) × 100 = 10%. Answer is 10% (option C).",
+      "exp": "Step 1: Total CP = 10\u00d730 + 10\u00d750 = \u20b9300 + \u20b9500 = \u20b9800. Total qty = 20 kg. Total SP = 20\u00d744 = \u20b9880. Profit = \u20b980. Step 2: Profit % = (80/800) \u00d7 100 = 10%. Answer is 10% (option C).",
       "d": "hard"
     },
     {
-      "q": "The ratio of the marked price to cost price of an article is 13:10. A discount of ₹54 is given on the article and it is sold at a profit of 20%. Find the marked price.",
+      "q": "The ratio of the marked price to cost price of an article is 13:10. A discount of \u20b954 is given on the article and it is sold at a profit of 20%. Find the marked price.",
       "opts": [
-        "₹648",
-        "₹702",
-        "₹540",
-        "₹620"
+        "\u20b9648",
+        "\u20b9702",
+        "\u20b9540",
+        "\u20b9620"
       ],
       "c": 1,
-      "exp": "Step 1: Let CP = 10k and MP = 13k. SP = MP − 54 = 13k − 54. Step 2: Profit is 20%, so SP = 10k × 120/100 = 12k. Step 3: 13k − 54 = 12k → k = 54. MP = 13 × 54 = ₹702. Answer is ₹702 (option B).",
+      "exp": "Step 1: Let CP = 10k and MP = 13k. SP = MP \u2212 54 = 13k \u2212 54. Step 2: Profit is 20%, so SP = 10k \u00d7 120/100 = 12k. Step 3: 13k \u2212 54 = 12k \u2192 k = 54. MP = 13 \u00d7 54 = \u20b9702. Answer is \u20b9702 (option B).",
       "d": "medium",
       "t": "discount",
       "source": "Auto-verified"
     },
     {
-      "q": "The cost price of 7 articles is equal to the selling price of 8 articles. If the loss incurred on selling 1 article is ₹75, find the cost price of 1 article.",
+      "q": "The cost price of 7 articles is equal to the selling price of 8 articles. If the loss incurred on selling 1 article is \u20b975, find the cost price of 1 article.",
       "opts": [
-        "₹540",
-        "₹960",
-        "₹600",
-        "₹400"
+        "\u20b9540",
+        "\u20b9960",
+        "\u20b9600",
+        "\u20b9400"
       ],
       "c": 2,
-      "exp": "Step 1: Let CP of 1 article = ₹c and SP = ₹s. CP of 7 = SP of 8 → 7c = 8s → s = 7c/8. Step 2: Loss per article = c − 7c/8 = c/8 = 75 → c = ₹600. Answer is ₹600 (option C).",
+      "exp": "Step 1: Let CP of 1 article = \u20b9c and SP = \u20b9s. CP of 7 = SP of 8 \u2192 7c = 8s \u2192 s = 7c/8. Step 2: Loss per article = c \u2212 7c/8 = c/8 = 75 \u2192 c = \u20b9600. Answer is \u20b9600 (option C).",
       "d": "medium",
       "t": "cost-price",
       "source": "Auto-verified"
     },
     {
-      "q": "An article was sold at a loss of 8%. If it had been sold for ₹460 more, it would have been sold at a profit of 15%. If the same article was sold for ₹2,440, what would be the profit percentage?",
+      "q": "An article was sold at a loss of 8%. If it had been sold for \u20b9460 more, it would have been sold at a profit of 15%. If the same article was sold for \u20b92,440, what would be the profit percentage?",
       "opts": [
         "28%",
         "18%",
@@ -3357,7 +3357,7 @@
         "16%"
       ],
       "c": 2,
-      "exp": "Step 1: Let CP = ₹c. Selling at 8% loss gives SP = 0.92c. Selling for ₹460 more gives 15% profit: 0.92c + 460 = 1.15c → 0.23c = 460 → c = ₹2,000. Step 2: At SP = ₹2,440, profit = ₹440. Profit % = 440/2000 × 100 = 22%. Answer is 22% (option C).",
+      "exp": "Step 1: Let CP = \u20b9c. Selling at 8% loss gives SP = 0.92c. Selling for \u20b9460 more gives 15% profit: 0.92c + 460 = 1.15c \u2192 0.23c = 460 \u2192 c = \u20b92,000. Step 2: At SP = \u20b92,440, profit = \u20b9440. Profit % = 440/2000 \u00d7 100 = 22%. Answer is 22% (option C).",
       "d": "hard",
       "t": "profit-percent",
       "source": "Auto-verified"
@@ -3371,21 +3371,21 @@
         "7.5%"
       ],
       "c": 1,
-      "exp": "Step 1: Let MP = ₹100. CP = 100 × (100 − 40)/100 = ₹60. SP = 100 × (100 − 25)/100 = ₹75. Step 2: Gain = 75 − 60 = ₹15. Gain % = 15/60 × 100 = 25%. Answer is 25% (option B).",
+      "exp": "Step 1: Let MP = \u20b9100. CP = 100 \u00d7 (100 \u2212 40)/100 = \u20b960. SP = 100 \u00d7 (100 \u2212 25)/100 = \u20b975. Step 2: Gain = 75 \u2212 60 = \u20b915. Gain % = 15/60 \u00d7 100 = 25%. Answer is 25% (option B).",
       "d": "medium",
       "t": "discount",
       "source": "Auto-verified"
     },
     {
-      "q": "The profit earned on selling 5 articles for ₹120 is the same as the loss incurred on selling 8 articles for ₹114. Find the cost price of each article.",
+      "q": "The profit earned on selling 5 articles for \u20b9120 is the same as the loss incurred on selling 8 articles for \u20b9114. Find the cost price of each article.",
       "opts": [
-        "₹12",
-        "₹16",
-        "₹24",
-        "₹18"
+        "\u20b912",
+        "\u20b916",
+        "\u20b924",
+        "\u20b918"
       ],
       "c": 3,
-      "exp": "Step 1: Let CP of 1 article = ₹c. Profit on 5 articles = 120 − 5c. Loss on 8 articles = 8c − 114. Step 2: Given they are equal: 120 − 5c = 8c − 114 → 13c = 234 → c = ₹18. Answer is ₹18 (option D).",
+      "exp": "Step 1: Let CP of 1 article = \u20b9c. Profit on 5 articles = 120 \u2212 5c. Loss on 8 articles = 8c \u2212 114. Step 2: Given they are equal: 120 \u2212 5c = 8c \u2212 114 \u2192 13c = 234 \u2192 c = \u20b918. Answer is \u20b918 (option D).",
       "d": "medium",
       "t": "cost-price",
       "source": "Auto-verified"
