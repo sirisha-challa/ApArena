@@ -250,6 +250,22 @@
         "Antonyms - Opposites"
       ],
       "estimatedHours": 10
+    },
+    {
+      "id": "idioms-phrases",
+      "title": "Idioms & Phrases",
+      "icon": "\u275d",
+      "category": "verbal",
+      "color": "#F59E0B",
+      "days": "1-2",
+      "subtopics": [
+        "Common Everyday Idioms",
+        "Animal & Nature Idioms",
+        "Body & Food Idioms",
+        "Sentence Context Questions",
+        "TCS NQT Patterns"
+      ],
+      "estimatedHours": 10
     }
   ]
 }

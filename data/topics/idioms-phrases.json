@@ -1,0 +1,726 @@
+{
+  "id": "idioms-phrases",
+  "title": "Idioms & Phrases",
+  "icon": "❝",
+  "category": "verbal",
+  "subtitle": "Common Idioms, Phrases & Their Meanings",
+  "days": "1-2",
+  "color": "#F59E0B",
+  "subtopics": [
+    "Common Everyday Idioms",
+    "Animal & Nature Idioms",
+    "Body & Food Idioms",
+    "Sentence Context Questions",
+    "TCS NQT Patterns"
+  ],
+  "estimatedHours": 10,
+  "readingSections": [
+    {
+      "id": "intro-idioms",
+      "title": "What Are Idioms & Phrases?",
+      "content": "An idiom is a group of words whose combined meaning is different from the literal meaning of the individual words. For example, 'spill the beans' has nothing to do with beans falling from a bowl; it means to reveal a secret. A phrase is a small group of words that forms a unit of meaning. In TCS NQT and other placement exams, 4 to 5 questions are asked from idioms and phrases, usually in the form 'what does this idiom mean?' or 'choose the option closest in meaning'. The best preparation is to learn idioms in small groups by theme: body parts, animals, food, and everyday actions, because themed learning helps memory.",
+      "subsections": [
+        {
+          "title": "Literal vs Figurative",
+          "content": "Every idiom has two levels: the literal picture (what the words say) and the figurative meaning (what the words actually communicate). Exam questions almost always test the figurative meaning. If an option describes the literal picture, it is a trap option."
+        },
+        {
+          "title": "How Questions Appear",
+          "content": "Two common formats: direct - 'What does the idiom X mean?'; and sentence-based - the idiom is used inside a sentence and you pick the meaning that fits the context. Both test the same knowledge, but sentence-based questions give you context clues to use."
+        }
+      ]
+    },
+    {
+      "id": "idiom-imagery",
+      "title": "Learn by Imagery",
+      "content": "Most idioms come from a mental picture. 'Burn the midnight oil' shows a student studying by lamplight late at night, so it means to work late into the night. 'Kick the bucket' pictures a hanging bucket being kicked away in an execution or suicide scene, so it means to die. 'By the skin of one's teeth' pictures a person escaping with only the thin enamel of the teeth remaining, so it means barely or narrowly. When you meet an unknown idiom, ask yourself: what picture do these words create, and what situation would someone use that picture for?",
+      "subsections": [
+        {
+          "title": "Animal Idioms",
+          "content": "Animal pictures are very common: 'let the cat out of the bag' (reveal a secret - a trickster hid a cat in a bag pretending to sell a pig), 'a mare's nest' (a false invention - a mare never builds a nest), 'crocodile tears' (false tears - crocodiles were once believed to weep while eating)."
+        },
+        {
+          "title": "Food & Body Idioms",
+          "content": "Food and body pictures are also frequent: 'a piece of cake' (very easy), 'a taste of your own medicine' (mistreated the same way you mistreat others), 'an iron hand' (by force), 'bite your tongue' (avoid talking). Grouping idioms by picture makes them easier to recall in the exam."
+        }
+      ]
+    },
+    {
+      "id": "context-clues",
+      "title": "Use Context Clues",
+      "content": "When the idiom appears inside a sentence, the surrounding words tell you the tone and the situation. If a sentence says 'The office was eerily quiet - the calm before the storm of tax season', the words 'eerily quiet' and 'tax season' suggest trouble is coming soon. That makes the meaning 'something bad is coming but right now it is calm'. Positive or negative tone is the quickest clue: 'to make matters worse' is clearly negative because 'worse' is negative.",
+      "subsections": [
+        {
+          "title": "Tone Check",
+          "content": "Decide whether the sentence sounds positive, negative, or neutral. Then keep only the options that match that tone. For 'caught a Tartar', the sentence 'Now they will realize' warns of trouble, so the meaning must be negative: dealing with a troublesome person."
+        },
+        {
+          "title": "Collocation Check",
+          "content": "Some idioms combine with particular words. 'Get wind of something' always pairs with hearing news indirectly; 'call it a day' pairs with stopping work. If an option does not fit the pattern of the sentence, reject it."
+        }
+      ]
+    },
+    {
+      "id": "elimination-strategy",
+      "title": "Elimination Strategy",
+      "content": "Step 1: read the idiom and picture it. Step 2: identify the tone of the sentence (positive, negative, or neutral). Step 3: reject any option that describes the literal picture, because exam options frequently use the literal meaning as a trap. Step 4: reject options whose tone is opposite to the sentence. Step 5: from the remaining options, pick the one that fits the situation; it is usually the answer. Even for an idiom you have never seen, elimination can still lead you to the correct option.",
+      "subsections": [
+        {
+          "title": "Worked Example",
+          "content": "Q: What does 'to bell the cat' mean? Options: be victorious / take a risk for the benefit of others / lead a luxurious life / question someone's authority. The picture: mice decide to tie a bell on the cat so they can hear it coming - a brave mouse must do a dangerous job for everyone's safety. The only option matching this picture is 'take a risk for the benefit of others'."
+        }
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "id": "imagery-rule",
+      "title": "Imagery Rule",
+      "formula": "PICTURE of the idiom -> SITUATION it is used for",
+      "explanation": "Convert the words of the idiom into a mental picture, then ask which real-life situation that picture represents. The situation is the meaning.",
+      "example": "KICK THE BUCKET -> picture of a bucket kicked away -> situation of death -> means TO DIE"
+    },
+    {
+      "id": "context-rule",
+      "title": "Context Rule",
+      "formula": "TONE of sentence + SITUATION described -> MEANING",
+      "explanation": "Use the mood of the sentence and the situation being described to pin down the idiom's meaning. Match the option that fits both.",
+      "example": "The news was 'the calm before the storm' -> calm now, trouble coming -> means SOMETHING BAD IS COMING BUT RIGHT NOW IT IS CALM"
+    },
+    {
+      "id": "elimination-rule",
+      "title": "Elimination Rule",
+      "formula": "4 OPTIONS - literal reading - opposite tone - unrelated idea = ANSWER",
+      "explanation": "Cut the option that reads the idiom literally, cut the option with the wrong tone, cut the unrelated option. The survivor is the meaning.",
+      "example": "AT THE DROP OF A HAT -> reject 'a hat falls' (literal) and 'after much thought' (opposite) -> answer IMMEDIATELY"
+    }
+  ],
+  "practiceProblems": {
+    "imagery-rule": [
+      {
+        "q": "What does the idiom \"burn the midnight oil\" mean?",
+        "s": [
+          "Step 1: Picture a student studying by an oil lamp when everyone else is asleep.",
+          "Step 2: The lamp burns late into the night because the person is working hard.",
+          "Step 3: So the idiom means to work late into the night."
+        ],
+        "a": "TO WORK LATE INTO THE NIGHT"
+      },
+      {
+        "q": "What does the idiom \"a piece of cake\" mean?",
+        "s": [
+          "Step 1: Picture eating a slice of cake - it takes no effort and is enjoyable.",
+          "Step 2: The picture shows something that is easy to do.",
+          "Step 3: So the idiom means it is very easy."
+        ],
+        "a": "IT IS VERY EASY"
+      },
+      {
+        "q": "What does the idiom \"a chip on your shoulder\" mean?",
+        "s": [
+          "Step 1: Picture a person carrying a chip of wood on the shoulder as a challenge to fight.",
+          "Step 2: The chip stays because the person still carries the old grievance.",
+          "Step 3: So it means being upset about something from the past."
+        ],
+        "a": "BEING UPSET ABOUT SOMETHING FROM THE PAST"
+      }
+    ],
+    "context-rule": [
+      {
+        "q": "In the sentence \"The leaked email added fuel to the fire during the meeting.\", what does \"added fuel to the fire\" mean?",
+        "s": [
+          "Step 1: The meeting already had a problem, and the email made it bigger.",
+          "Step 2: Fuel makes a fire burn more strongly.",
+          "Step 3: So the phrase means to worsen an existing problem."
+        ],
+        "a": "TO WORSEN AN EXISTING PROBLEM"
+      },
+      {
+        "q": "In the sentence \"She was green with envy when her friend won the prize.\", what does \"green with envy\" mean?",
+        "s": [
+          "Step 1: The sentence tells us she reacted to someone else winning.",
+          "Step 2: Green is the colour traditionally linked with jealousy.",
+          "Step 3: So the phrase means very jealous."
+        ],
+        "a": "VERY JEALOUS"
+      },
+      {
+        "q": "In the sentence \"He got cold feet before the interview and almost cancelled it.\", what does \"got cold feet\" mean?",
+        "s": [
+          "Step 1: The interview made him nervous enough to cancel.",
+          "Step 2: Cold feet picture a person backing away from a challenge.",
+          "Step 3: So the phrase means to lose courage to do something."
+        ],
+        "a": "TO LOSE COURAGE TO DO SOMETHING"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "q": "What does the idiom \"Spill the beans\" mean?",
+      "opts": ["TO REVEAL A SECRET", "TO MAKE A MESS", "TO RUIN A PLAN", "TO CONFUSE SOMEONE"],
+      "c": 0,
+      "t": "food",
+      "d": "easy",
+      "id": 1,
+      "exp": "Step 1: The idiom 'Spill the beans' creates a picture of beans falling out of a container. Step 2: In old voting customs, beans were used as votes and spilling them revealed the result before the official count. Step 3: So the idiom means to disclose information that was supposed to remain confidential. Step 4: 'To make a mess', 'to ruin a plan' and 'to confuse someone' all describe other situations, not the idea of disclosing a hidden fact. Step 5: The answer is TO REVEAL A SECRET."
+    },
+    {
+      "q": "What does the idiom \"Break the ice\" mean?",
+      "opts": ["TO OVERCOME SOCIAL AWKWARDNESS", "TO START A FIGHT", "TO SOLVE A DIFFICULT PROBLEM", "TO BREAK AN OBJECT"],
+      "c": 0,
+      "t": "action",
+      "d": "easy",
+      "id": 2,
+      "exp": "Step 1: 'Break the ice' pictures a frozen river being cracked open so boats can move. Step 2: In a conversation, the 'ice' is the coldness or shyness between strangers. Step 3: Breaking that coldness means initiating conversation or activity to reduce tension or shyness. Step 4: It has nothing to do with fighting, solving problems, or physically breaking objects, so those options are literal traps. Step 5: The answer is TO OVERCOME SOCIAL AWKWARDNESS."
+    },
+    {
+      "q": "What does the idiom \"It's a piece of cake\" mean?",
+      "opts": ["IT IS VERY EXPENSIVE", "IT IS VERY EASY", "IT IS VERY TASTY", "IT IS VERY DIFFICULT"],
+      "c": 1,
+      "t": "food",
+      "d": "easy",
+      "id": 3,
+      "exp": "Step 1: The idiom 'It's a piece of cake' pictures eating a small slice of cake. Step 2: Eating cake requires no effort and gives pleasure, so the picture stands for an effortless task. Step 3: When someone says a task is a piece of cake, they mean it is easy to do. Step 4: Expensive and tasty describe the cake itself, and difficult is the opposite of the meaning, so all three are wrong. Step 5: The answer is IT IS VERY EASY."
+    },
+    {
+      "q": "What does the idiom \"Call it a day\" mean?",
+      "opts": ["TO START A NEW TASK", "TO DECLARE A HOLIDAY", "TO END WORK OR ACTIVITY", "TO POSTPONE A DECISION"],
+      "c": 2,
+      "t": "action",
+      "d": "easy",
+      "id": 4,
+      "exp": "Step 1: 'Call it a day' is used when people decide that the work of the day is complete. Step 2: The word 'call' here means to declare, and the 'day' stands for the day's work. Step 3: So the idiom means to end work or activity for the time being. Step 4: Starting a new task and declaring a holiday are different ideas, and postponing a decision is unrelated, so all three are wrong. Step 5: The answer is TO END WORK OR ACTIVITY."
+    },
+    {
+      "q": "What does the idiom \"Burn the midnight oil\" mean?",
+      "opts": ["TO WASTE RESOURCES", "TO CELEBRATE ALL NIGHT", "TO DELAY DECISIONS", "TO WORK LATE INTO THE NIGHT"],
+      "c": 3,
+      "t": "action",
+      "d": "easy",
+      "id": 5,
+      "exp": "Step 1: 'Burn the midnight oil' pictures a student studying by the light of an oil lamp at midnight. Step 2: In the past, lamps had to be kept burning when people worked after dark. Step 3: So the idiom describes staying up late to study or work hard on something. Step 4: Wasting resources, celebrating all night, and delaying decisions do not match the picture of late-night hard work. Step 5: The answer is TO WORK LATE INTO THE NIGHT."
+    },
+    {
+      "q": "What does the idiom \"Kick the bucket\" mean?",
+      "opts": ["TO DIE", "TO KICK A BUCKET", "TO RESIGN FROM A JOB", "TO WIN A GAME"],
+      "c": 0,
+      "t": "action",
+      "d": "easy",
+      "id": 6,
+      "exp": "Step 1: 'Kick the bucket' creates a strange picture of someone kicking a bucket. Step 2: One old story says a person standing on a bucket to hang himself kicked the bucket away at the moment of death. Step 3: So the idiom is a gentle, informal way of saying to die. Step 4: 'To kick a bucket' is the literal reading and a classic trap, while resigning and winning are unrelated. Step 5: The answer is TO DIE."
+    },
+    {
+      "q": "What does the idiom \"Once in a blue moon\" refer to?",
+      "opts": ["VERY OFTEN", "AT NIGHT", "VERY RARELY", "REGULARLY"],
+      "c": 2,
+      "t": "nature",
+      "d": "easy",
+      "id": 7,
+      "exp": "Step 1: 'Once in a blue moon' pictures a rare event in the sky, since a blue moon is a rare extra full moon. Step 2: A blue moon appears only every two or three years. Step 3: So the phrase refers to something that happens very rarely. Step 4: 'Very often' and 'regularly' are the opposites of rare, and 'at night' is a literal reading, so all three are wrong. Step 5: The answer is VERY RARELY."
+    },
+    {
+      "q": "In the sentence \"The leaked email added fuel to the fire during the meeting.\", what does \"added fuel to the fire\" mean?",
+      "opts": ["TO CALM A SITUATION", "TO WORSEN AN EXISTING PROBLEM", "TO SOLVE A CONFLICT", "TO DELAY AN ARGUMENT"],
+      "c": 1,
+      "t": "action",
+      "d": "easy",
+      "id": 8,
+      "exp": "Step 1: In the sentence, the meeting already had a problem and the leaked email made it bigger. Step 2: Picture a fire: throwing fuel on it makes it burn more strongly. Step 3: So the idiom means to worsen an existing problem. Step 4: Calming a situation and solving a conflict are the opposite ideas, and delaying an argument is unrelated to the sentence. Step 5: The answer is TO WORSEN AN EXISTING PROBLEM."
+    },
+    {
+      "q": "The idiom \"the ball is in your court\" implies:",
+      "opts": ["YOU ARE UNDER PRESSURE", "IT IS YOUR TURN TO ACT", "YOU HAVE LOST AN OPPORTUNITY", "YOU ARE BEING JUDGED"],
+      "c": 1,
+      "t": "sport",
+      "d": "easy",
+      "id": 9,
+      "exp": "Step 1: 'The ball is in your court' comes from games like tennis where the ball sits in one player's court. Step 2: That player must now play the ball, so the next move belongs to them. Step 3: In business and conversation, the idiom means it is your turn to act or decide. Step 4: Pressure, lost opportunity, and being judged are not part of the game picture, so they are wrong. Step 5: The answer is IT IS YOUR TURN TO ACT."
+    },
+    {
+      "q": "If someone \"hits the nail on the head\", he:",
+      "opts": ["MAKES A MISTAKE", "CAUSES DAMAGE", "SAYS SOMETHING EXACTLY RIGHT", "SAYS SOMETHING IRRELEVANT"],
+      "c": 2,
+      "t": "action",
+      "d": "easy",
+      "id": 10,
+      "exp": "Step 1: 'Hit the nail on the head' pictures a carpenter striking the nail dead centre. Step 2: Hitting the centre of the nail is the precise and correct action. Step 3: So the idiom means to state or do something exactly right. Step 4: Making a mistake, causing damage, and saying something irrelevant are all the opposite of precision. Step 5: The answer is SAYS SOMETHING EXACTLY RIGHT."
+    },
+    {
+      "q": "What does the idiom \"At the drop of a hat\" mean?",
+      "opts": ["IMMEDIATELY AND WITHOUT HESITATION", "AFTER A LOT OF THOUGHT", "UNDER PRESSURE", "ACCIDENTALLY"],
+      "c": 0,
+      "t": "action",
+      "d": "easy",
+      "id": 11,
+      "exp": "Step 1: 'At the drop of a hat' pictures a signal: in the past, dropping a hat was the signal to start a race or fight. Step 2: The action begins the instant the hat falls, with no delay. Step 3: So the idiom means doing something immediately and without hesitation. Step 4: 'After a lot of thought' is the opposite of instant, and the other two do not match the signal picture. Step 5: The answer is IMMEDIATELY AND WITHOUT HESITATION."
+    },
+    {
+      "q": "What does the idiom \"Let the cat out of the bag\" mean?",
+      "opts": ["TO DISCLOSE CONFIDENTIAL INFORMATION", "TO MAKE A SERIOUS MISTAKE", "TO LOSE SOMETHING IMPORTANT", "TO CREATE A MESS"],
+      "c": 0,
+      "t": "animal",
+      "d": "easy",
+      "id": 12,
+      "exp": "Step 1: 'Let the cat out of the bag' comes from old markets where a trickster hid a cat in a bag pretending to sell a pig. Step 2: When the cat came out of the bag, the trick was exposed. Step 3: So the idiom means revealing a secret or letting others know something that was hidden. Step 4: Making a mistake, losing something, and creating a mess are unrelated to exposing a hidden trick. Step 5: The answer is TO DISCLOSE CONFIDENTIAL INFORMATION."
+    },
+    {
+      "q": "In the sentence \"Take his advice with a pinch of salt; he exaggerates a lot.\", what does \"with a pinch of salt\" mean?",
+      "opts": ["TO BELIEVE IT COMPLETELY", "TO BE SKEPTICAL ABOUT IT", "TO IGNORE IT TOTALLY", "TO ACCEPT IT WITHOUT DOUBT"],
+      "c": 1,
+      "t": "food",
+      "d": "easy",
+      "id": 13,
+      "exp": "Step 1: In the sentence, the man exaggerates, so his advice should not be trusted fully. Step 2: 'With a pinch of salt' comes from the idea that medicine is easier to take with a little salt. Step 3: So the idiom means to be skeptical about something and not believe it completely. Step 4: Believing completely and accepting without doubt are the opposite ideas, and ignoring totally is too extreme. Step 5: The answer is TO BE SKEPTICAL ABOUT IT."
+    },
+    {
+      "q": "What does the idiom \"Throw in the towel\" mean?",
+      "opts": ["TO ACCEPT DEFEAT", "TO SURRENDER TO TEMPTATION", "TO GIVE UP A JOB", "TO MAKE A SACRIFICE"],
+      "c": 0,
+      "t": "sport",
+      "d": "easy",
+      "id": 14,
+      "exp": "Step 1: 'Throw in the towel' comes from boxing, where a coach throws a towel into the ring to stop the fight. Step 2: That action shows the boxer can no longer continue. Step 3: So the phrase signifies conceding defeat or accepting that you cannot win. Step 4: Surrendering to temptation, giving up a job, and making a sacrifice describe different situations. Step 5: The answer is TO ACCEPT DEFEAT."
+    },
+    {
+      "q": "In the sentence \"Missing the train was a blessing in disguise because I met my old friend on the next one.\", what does \"a blessing in disguise\" mean?",
+      "opts": ["A SITUATION THAT REQUIRES CAUTION", "AN EVENT THAT IS UNFORTUNATE", "A WARNING TO AVOID MISTAKES", "AN APPARENT MISFORTUNE THAT TURNS OUT TO BE GOOD"],
+      "c": 3,
+      "t": "situation",
+      "d": "easy",
+      "id": 15,
+      "exp": "Step 1: In the sentence, missing the train seemed bad at first. Step 2: But meeting the old friend on the next train turned the misfortune into something good. Step 3: So the idiom describes something that seems bad at first but proves beneficial later. Step 4: A caution, a warning, or a plain unfortunate event do not capture the turn into something good. Step 5: The answer is AN APPARENT MISFORTUNE THAT TURNS OUT TO BE GOOD."
+    },
+    {
+      "q": "What does the idiom \"By the skin of one's teeth\" mean?",
+      "opts": ["EASILY AND COMFORTABLY", "BARELY OR NARROWLY", "WITHOUT EFFORT", "ACCIDENTALLY"],
+      "c": 1,
+      "t": "body",
+      "d": "easy",
+      "id": 16,
+      "exp": "Step 1: 'By the skin of one's teeth' pictures a person escaping with only the thin enamel of the teeth left. Step 2: The picture shows a margin so tiny that almost nothing remains. Step 3: So the idiom refers to barely or narrowly escaping failure or difficulty. Step 4: 'Easily and comfortably' and 'without effort' are the opposite ideas, and 'accidentally' does not fit the picture. Step 5: The answer is BARELY OR NARROWLY."
+    },
+    {
+      "q": "What does the idiom \"Know the ropes\" mean?",
+      "opts": ["TO UNDERSTAND THE DETAILS", "TO CLIMB A ROPE", "TO BE CONFUSED", "TO FOLLOW RULES"],
+      "c": 0,
+      "t": "action",
+      "d": "easy",
+      "id": 17,
+      "exp": "Step 1: 'Know the ropes' comes from sailing, where sailors had to know every rope on the ship. Step 2: Knowing the ropes meant being familiar with how everything works. Step 3: So the idiom means to understand the details of a job or situation. Step 4: Climbing a rope is the literal trap, and being confused is the opposite of understanding. Step 5: The answer is TO UNDERSTAND THE DETAILS."
+    },
+    {
+      "q": "What does the idiom \"A dime a dozen\" mean?",
+      "opts": ["COMMON AND EASY TO GET", "VERY RARE AND VALUABLE", "VERY EXPENSIVE", "DIFFICULT TO FIND"],
+      "c": 0,
+      "t": "situation",
+      "d": "easy",
+      "id": 18,
+      "exp": "Step 1: 'A dime a dozen' pictures something sold for ten cents per dozen. Step 2: Such a low price means the item is found everywhere and costs almost nothing. Step 3: So the idiom refers to anything that is common and easy to get. Step 4: 'Very rare and valuable', 'very expensive', and 'difficult to find' are all the opposite of cheap and plentiful. Step 5: The answer is COMMON AND EASY TO GET."
+    },
+    {
+      "q": "What does the idiom \"On the ball\" mean?",
+      "opts": ["ON PROBATION", "DOING A GOOD JOB", "GOING TO SLEEP", "ABOUT TO FAIL"],
+      "c": 1,
+      "t": "sport",
+      "d": "easy",
+      "id": 19,
+      "exp": "Step 1: 'On the ball' comes from sports, where a player focused on the ball is alert and ready. Step 2: Being on the ball means paying attention and performing well. Step 3: So the idiom means doing a good job, as in finishing work ahead of schedule. Step 4: Probation, sleeping, and failing are all the opposite of alert and performing well. Step 5: The answer is DOING A GOOD JOB."
+    },
+    {
+      "q": "What does the idiom \"Don't count your chickens before they hatch\" mean?",
+      "opts": ["DO NOT RAISE BIRDS", "DO NOT MAKE PLANS", "DO NOT RELY ON SOMETHING UNTIL YOU ARE SURE", "DO NOT SHARE YOUR IDEAS"],
+      "c": 2,
+      "t": "animal",
+      "d": "easy",
+      "id": 20,
+      "exp": "Step 1: 'Don't count your chickens before they hatch' pictures a farmer counting chicks while they are still eggs. Step 2: The eggs may never hatch, so the counting is premature. Step 3: So the idiom means do not rely on something until you are sure of it. Step 4: Raising birds is the literal trap, and the other options are unrelated to premature hope. Step 5: The answer is DO NOT RELY ON SOMETHING UNTIL YOU ARE SURE."
+    },
+    {
+      "q": "What does the idiom \"Bite off more than you can chew\" mean?",
+      "opts": ["TO EAT TOO FAST", "TO TAKE ON A TASK THAT IS TOO BIG TO HANDLE", "TO REFUSE HELP", "TO FINISH EARLY"],
+      "c": 1,
+      "t": "food",
+      "d": "easy",
+      "id": 21,
+      "exp": "Step 1: 'Bite off more than you can chew' pictures a person stuffing a huge mouthful of food. Step 2: The mouthful is too big to chew comfortably, just like the task is too big to manage. Step 3: So the idiom means to take on a task that is way too big to handle. Step 4: 'To eat too fast' is the literal reading, and the other two options are unrelated. Step 5: The answer is TO TAKE ON A TASK THAT IS TOO BIG TO HANDLE."
+    },
+    {
+      "q": "In the sentence \"He is rude to everyone, so one day he will get a taste of his own medicine.\", what does \"a taste of his own medicine\" mean?",
+      "opts": ["TO TAKE MEDICINE DAILY", "TO BE MISTREATED THE SAME WAY YOU MISTREAT OTHERS", "TO FOLLOW DOCTOR'S ADVICE", "TO TREAT OTHERS POLITELY"],
+      "c": 1,
+      "t": "body",
+      "d": "easy",
+      "id": 22,
+      "exp": "Step 1: In the sentence, the man is rude to everyone, so the speaker expects him to be treated rudely too. Step 2: 'Medicine' here stands for the harsh treatment the man gives others. Step 3: So the idiom means being mistreated the same way you mistreat others. Step 4: Taking medicine and following a doctor's advice are literal traps, and treating others politely is the opposite idea. Step 5: The answer is TO BE MISTREATED THE SAME WAY YOU MISTREAT OTHERS."
+    },
+    {
+      "q": "Select the option closest in meaning to: \"Slow and steady wins the race\".",
+      "opts": ["MONEY SAVED TODAY CAN BE SPENT LATER", "RELIABILITY IS MORE IMPORTANT THAN SPEED", "BELIEVE ACTIONS NOT WORDS", "GOOD THINGS COME AFTER BAD THINGS"],
+      "c": 1,
+      "t": "situation",
+      "d": "easy",
+      "id": 23,
+      "exp": "Step 1: The saying 'Slow and steady wins the race' comes from the fable of the tortoise and the hare. Step 2: The fast hare lost because it stopped, while the slow tortoise kept moving steadily. Step 3: So the saying means reliability is more important than speed. Step 4: Saving money, believing actions, and good things after bad are all different proverbs, not this meaning. Step 5: The answer is RELIABILITY IS MORE IMPORTANT THAN SPEED."
+    },
+    {
+      "q": "In the sentence \"The sales manager tried every trick in the book to sell the flat to my uncle, but they failed.\", what does \"every trick in the book\" mean?",
+      "opts": ["EVERY POSSIBLE WAY", "NOT READY TO BARGAIN", "THE LEAST DISCOUNT", "STUCK IN THE MIDDLE"],
+      "c": 0,
+      "t": "action",
+      "d": "easy",
+      "id": 24,
+      "exp": "Step 1: In the sentence, the sales manager wanted to sell the flat and kept trying different methods. Step 2: 'The book' stands for all known methods of persuasion. Step 3: So the phrase means trying every possible way to achieve something. Step 4: Refusing to bargain, giving the least discount, and being stuck are unrelated to trying many methods. Step 5: The answer is EVERY POSSIBLE WAY."
+    },
+    {
+      "q": "What does the phrase \"at loggerheads\" mean?",
+      "opts": ["WORKING TOGETHER", "IN COMPLETE AGREEMENT", "UNDER STRICT SUPERVISION", "IN SERIOUS DISAGREEMENT"],
+      "c": 3,
+      "t": "situation",
+      "d": "medium",
+      "id": 25,
+      "exp": "Step 1: 'At loggerheads' comes from the loggerhead, an old iron tool used as a weapon in fights. Step 2: Two people at loggerheads are pictured hitting each other with these tools. Step 3: So the phrase means in serious disagreement or conflict with each other. Step 4: Working together, complete agreement, and strict supervision are all peaceful ideas, the opposite of fighting. Step 5: The answer is IN SERIOUS DISAGREEMENT."
+    },
+    {
+      "q": "What does the idiom \"Go out on a limb\" mean?",
+      "opts": ["TO ACT CAUTIOUSLY", "TO TAKE A RISKY STAND", "TO ESCAPE RESPONSIBILITY", "TO SEEK HELP"],
+      "c": 1,
+      "t": "body",
+      "d": "medium",
+      "id": 26,
+      "exp": "Step 1: 'Go out on a limb' pictures a person climbing far out on a tree branch. Step 2: The further out you go, the thinner the branch and the greater the danger of falling. Step 3: So the idiom means to take a risky stand or support an opinion that may fail. Step 4: Acting cautiously is the opposite of taking a risk, and the other options do not match the branch picture. Step 5: The answer is TO TAKE A RISKY STAND."
+    },
+    {
+      "q": "What does the idiom \"Burn bridges\" mean?",
+      "opts": ["TO DESTROY RELATIONSHIPS", "TO BE VERY BUSY", "TO STOP WORKING ON SOMETHING", "TO MOVE TO A NEW CITY"],
+      "c": 0,
+      "t": "action",
+      "d": "medium",
+      "id": 27,
+      "exp": "Step 1: 'Burn bridges' pictures an army burning the bridge behind it after crossing. Step 2: With the bridge destroyed, there is no way to go back. Step 3: So the idiom means to destroy relationships or cut off the possibility of returning. Step 4: Being busy, stopping work, and moving city are all unrelated to cutting off a way back. Step 5: The answer is TO DESTROY RELATIONSHIPS."
+    },
+    {
+      "q": "What does the idiom \"Play devil's advocate\" mean?",
+      "opts": ["TO SUPPORT THE DEVIL", "TO ARGUE THE OPPOSITE FOR THE SAKE OF ARGUMENT", "TO DEFEND A WRONG PERSON", "TO AVOID ARGUMENTS"],
+      "c": 1,
+      "t": "situation",
+      "d": "medium",
+      "id": 28,
+      "exp": "Step 1: 'Play devil's advocate' comes from the church official who argued against a candidate for sainthood. Step 2: The official did not support evil; he tested the case by arguing the other side. Step 3: So the idiom means to argue the opposite view, just for the sake of argument. Step 4: Supporting the devil is a literal trap, and the other options miss the testing purpose. Step 5: The answer is TO ARGUE THE OPPOSITE FOR THE SAKE OF ARGUMENT."
+    },
+    {
+      "q": "What does the idiom \"Get wind of something\" mean?",
+      "opts": ["TO STOP DISCUSSING AN ISSUE", "TO FOLLOW A TREND", "TO HEAR NEWS OF SOMETHING SECRET", "TO FORGET SOMETHING"],
+      "c": 2,
+      "t": "nature",
+      "d": "medium",
+      "id": 29,
+      "exp": "Step 1: 'Get wind of something' pictures the wind carrying a smell or sound from far away. Step 2: The person does not hear the news directly; it reaches them indirectly like the wind. Step 3: So the idiom means to hear news of something secret before it is official. Step 4: Stopping a discussion, following a trend, and forgetting are all unrelated to indirect news. Step 5: The answer is TO HEAR NEWS OF SOMETHING SECRET."
+    },
+    {
+      "q": "What does the idiom \"Calm before the storm\" mean?",
+      "opts": ["THE WEATHER IS CLEARING", "SOMETHING BAD IS COMING BUT RIGHT NOW IT IS CALM", "A CELEBRATION IS NEAR", "EVERYTHING IS GOING WRONG"],
+      "c": 1,
+      "t": "nature",
+      "d": "medium",
+      "id": 30,
+      "exp": "Step 1: 'Calm before the storm' describes the unnatural quiet that comes just before a storm hits. Step 2: The quiet is not peace; it is the stillness before violent weather. Step 3: So the idiom means something bad is coming, but right now it is calm. Step 4: 'The weather is clearing' and 'a celebration is near' are opposite ideas, and 'everything is going wrong' does not match the calm. Step 5: The answer is SOMETHING BAD IS COMING BUT RIGHT NOW IT IS CALM."
+    },
+    {
+      "q": "In the sentence \"The car broke down and, to make matters worse, it started raining.\", what does \"to make matters worse\" mean?",
+      "opts": ["TO SOLVE A PROBLEM", "TO ARGUE FOR FUN", "TO MAKE A PROBLEM WORSE", "TO PREPARE FOR THE WORST"],
+      "c": 2,
+      "t": "action",
+      "d": "medium",
+      "id": 31,
+      "exp": "Step 1: In the sentence, the car breaking down is already a problem. Step 2: The rain adds a second problem on top of the first. Step 3: So the phrase means to make a problem worse. Step 4: Solving a problem is the opposite idea, arguing for fun is unrelated, and preparing for the worst is a different action. Step 5: The answer is TO MAKE A PROBLEM WORSE."
+    },
+    {
+      "q": "What does the idiom \"To bell the cat\" mean?",
+      "opts": ["TO BE VICTORIOUS", "TO TAKE A RISK FOR THE BENEFIT OF OTHERS", "TO LEAD A LUXURIOUS LIFE", "TO QUESTION SOMEONE'S AUTHORITY"],
+      "c": 1,
+      "t": "animal",
+      "d": "medium",
+      "id": 32,
+      "exp": "Step 1: 'To bell the cat' comes from the fable of the mice who decided to tie a bell on the cat. Step 2: The bell would warn the mice, but no mouse dared to do the dangerous job. Step 3: So the idiom means to undertake a dangerous task for the greater good of others. Step 4: Being victorious, living luxuriously, and questioning authority are unrelated to the brave mouse's task. Step 5: The answer is TO TAKE A RISK FOR THE BENEFIT OF OTHERS."
+    },
+    {
+      "q": "In the sentence \"Funny how you can get a bee in your bonnet about the most unlikely matters.\", what does \"a bee in your bonnet\" mean?",
+      "opts": ["TO GO WILD", "TO SPEAK SUCCINCTLY", "TO STAY UP LATE", "TO BE OBSESSED WITH AN IDEA"],
+      "c": 3,
+      "t": "animal",
+      "d": "medium",
+      "id": 33,
+      "exp": "Step 1: 'A bee in your bonnet' pictures a bee buzzing inside a hat, impossible to ignore. Step 2: The buzzing keeps buzzing until the person acts on it. Step 3: So the idiom means to be obsessed with an idea that keeps occupying your mind. Step 4: Going wild, speaking succinctly, and staying up late do not match the buzzing picture. Step 5: The answer is TO BE OBSESSED WITH AN IDEA."
+    },
+    {
+      "q": "In the sentence \"It is a gift, so please don't look a gift horse in the mouth.\", what does \"don't look a gift horse in the mouth\" mean?",
+      "opts": ["DO NOT JUDGE IT BY PRICE", "DO NOT FIND FAULT WITH A GIFT", "DO NOT COMPARE GIFTS", "DO NOT EXPECT TOO MUCH"],
+      "c": 1,
+      "t": "animal",
+      "d": "medium",
+      "id": 34,
+      "exp": "Step 1: 'Don't look a gift horse in the mouth' comes from checking a horse's teeth to know its age. Step 2: Examining a gift horse's teeth would insult the giver by judging the present. Step 3: So the idiom means do not find fault with a gift. Step 4: Judging by price, comparing gifts, and expecting too much are related ideas but not the core warning about finding faults. Step 5: The answer is DO NOT FIND FAULT WITH A GIFT."
+    },
+    {
+      "q": "In the sentence \"They thought Ria would give up, but now they realize they have caught a Tartar!\", what does \"caught a Tartar\" mean?",
+      "opts": ["DEALING WITH AN EXPERT", "DEALING WITH A TROUBLESOME PERSON", "FORCED TO LEAVE SOMETHING", "WASTING TIME"],
+      "c": 1,
+      "t": "action",
+      "d": "medium",
+      "id": 35,
+      "exp": "Step 1: In the sentence, Ria did not give up, so the opponents got something they could not handle. Step 2: 'A Tartar' historically meant a fierce warrior who is harder to control than expected. Step 3: So the idiom means dealing with a troublesome person who fights back. Step 4: An expert, leaving something, and wasting time do not match the fierce warrior picture. Step 5: The answer is DEALING WITH A TROUBLESOME PERSON."
+    },
+    {
+      "q": "What does the idiom \"A chip on your shoulder\" mean?",
+      "opts": ["CARRYING A HEAVY LOAD", "HAVING A SHOULDER INJURY", "BEING UPSET ABOUT SOMETHING FROM THE PAST", "BEING VERY PROUD"],
+      "c": 2,
+      "t": "body",
+      "d": "medium",
+      "id": 36,
+      "exp": "Step 1: 'A chip on your shoulder' comes from the old custom of placing a wood chip on the shoulder as a challenge. Step 2: Whoever knocked it off was challenged to a fight, so the chip meant a quarrel was remembered. Step 3: So the idiom means being upset about something that happened in the past. Step 4: A heavy load and a shoulder injury are literal traps, and pride is a different attitude. Step 5: The answer is BEING UPSET ABOUT SOMETHING FROM THE PAST."
+    },
+    {
+      "q": "What does the idiom \"A man of straw\" mean?",
+      "opts": ["A RICH PERSON", "A WEAK PERSON", "A HARDWORKING FARMER", "AN HONEST PERSON"],
+      "c": 1,
+      "t": "nature",
+      "d": "medium",
+      "id": 37,
+      "exp": "Step 1: 'A man of straw' pictures a scarecrow made of straw, which looks like a person from afar. Step 2: Straw has no strength and cannot stand firm against pressure. Step 3: So the idiom means a weak person who has no real strength or substance. Step 4: A rich person, a farmer, and an honest person are all positive or neutral, not weak. Step 5: The answer is A WEAK PERSON."
+    },
+    {
+      "q": "What does the idiom \"A toss-up\" mean?",
+      "opts": ["A WINNING RESULT", "A RESULT THAT IS STILL UNCLEAR", "A TOSSING GAME", "A FIXED OUTCOME"],
+      "c": 1,
+      "t": "situation",
+      "d": "medium",
+      "id": 38,
+      "exp": "Step 1: 'A toss-up' pictures a coin tossed into the air, where the outcome depends on the flip. Step 2: Until the coin lands, nobody knows which side will face up. Step 3: So the idiom means a result that is still unclear and can go either way. Step 4: A winning result and a fixed outcome say the result is already known, and 'a tossing game' is the literal trap. Step 5: The answer is A RESULT THAT IS STILL UNCLEAR."
+    },
+    {
+      "q": "What does the idiom \"At sixes and sevens\" mean?",
+      "opts": ["BEING CONFUSED ABOUT NUMBERS", "HAVING DIFFERENT OPINIONS", "COUNTING CAREFULLY", "AGREEING WITH EACH OTHER"],
+      "c": 1,
+      "t": "number",
+      "d": "medium",
+      "id": 39,
+      "exp": "Step 1: 'At sixes and sevens' comes from an old dice game where the numbers six and seven were risky bets. Step 2: The phrase came to describe people whose views clash like risky bets. Step 3: So the idiom means persons who are having different opinions and cannot agree. Step 4: Confusion about numbers is the literal trap, and counting and agreeing are unrelated. Step 5: The answer is HAVING DIFFERENT OPINIONS."
+    },
+    {
+      "q": "What does the idiom \"An eyewash\" mean?",
+      "opts": ["EYE MEDICINE", "A PRETENCE", "A CLEANING LIQUID", "A COSMETIC PRODUCT"],
+      "c": 1,
+      "t": "body",
+      "d": "medium",
+      "id": 40,
+      "exp": "Step 1: 'An eyewash' literally names the liquid used to wash the eyes. Step 2: Washing the eyes only cleans the surface, so the word came to mean something that only looks good on the surface. Step 3: So the idiom means a pretence or a show put up to deceive. Step 4: Eye medicine, cleaning liquid, and cosmetic product are all literal uses of the words. Step 5: The answer is A PRETENCE."
+    },
+    {
+      "q": "What does the idiom \"Call a spade a spade\" mean?",
+      "opts": ["TO USE TOOLS PROPERLY", "TO SPEAK INDIRECTLY", "TO TALK STRAIGHT AND FRANKLY", "TO GIVE UP EASILY"],
+      "c": 2,
+      "t": "action",
+      "d": "medium",
+      "id": 41,
+      "exp": "Step 1: 'Call a spade a spade' pictures a gardener naming the digging tool by its real name. Step 2: There is no fancy word to hide what the tool is. Step 3: So the idiom means to talk straight and frankly, without hiding the truth. Step 4: Using tools properly is the literal trap, speaking indirectly is the opposite, and giving up is unrelated. Step 5: The answer is TO TALK STRAIGHT AND FRANKLY."
+    },
+    {
+      "q": "What does the idiom \"Decked up\" mean?",
+      "opts": ["DRESSED IN SPECIAL CLOTHES TO APPEAR ATTRACTIVE", "FALLEN DOWN", "COMPLETELY DESTROYED", "READY TO LEAVE"],
+      "c": 0,
+      "t": "action",
+      "d": "medium",
+      "id": 42,
+      "exp": "Step 1: 'Decked up' pictures a person decorated like a ship decked with flags and flowers. Step 2: The decoration is for a special occasion, making the person look appealing. Step 3: So the idiom means to put on special clothes to appear particularly appealing and attractive. Step 4: Falling down, being destroyed, and ready to leave are all unrelated to dressing up. Step 5: The answer is DRESSED IN SPECIAL CLOTHES TO APPEAR ATTRACTIVE."
+    },
+    {
+      "q": "In the sentence \"The much-awaited concert turned out to be a damp squib.\", what does \"a damp squib\" mean?",
+      "opts": ["A GREAT SUCCESS", "A WET FIREWORK", "A SMALL SURPRISE", "A COMPLETE FAILURE"],
+      "c": 3,
+      "t": "action",
+      "d": "medium",
+      "id": 43,
+      "exp": "Step 1: 'A damp squib' pictures a firework that got wet and cannot explode. Step 2: People wait for the bang, but nothing happens at all. Step 3: So the idiom means a complete failure or an event that disappoints. Step 4: A great success is the opposite idea, 'a wet firework' is the literal trap, and a small surprise is not a failure. Step 5: The answer is A COMPLETE FAILURE."
+    },
+    {
+      "q": "What does the idiom \"Between the cup and the lips\" mean?",
+      "opts": ["ABOUT TO DRINK", "ON THE POINT OF ACHIEVEMENT", "VERY THIRSTY", "AT THE BEGINNING"],
+      "c": 1,
+      "t": "food",
+      "d": "medium",
+      "id": 44,
+      "exp": "Step 1: 'Between the cup and the lips' pictures a person raising a cup to drink. Step 2: The cup can still slip and spill even at this final moment. Step 3: So the idiom means being on the point of achievement, where anything can still go wrong. Step 4: 'About to drink' is the literal picture, and thirst and beginning are unrelated to the final moment. Step 5: The answer is ON THE POINT OF ACHIEVEMENT."
+    },
+    {
+      "q": "What does the idiom \"A mare's nest\" mean?",
+      "opts": ["A HORSE STABLE", "A FALSE INVENTION", "A BIRD'S NEST", "A HIDDEN TREASURE"],
+      "c": 1,
+      "t": "animal",
+      "d": "medium",
+      "id": 45,
+      "exp": "Step 1: 'A mare's nest' pictures a nest built by a female horse. Step 2: A horse can never build a nest, so the thing found cannot be real. Step 3: So the idiom means a false invention or a discovery that turns out to be imaginary. Step 4: A horse stable, a bird's nest, and a hidden treasure are all real things, not false discoveries. Step 5: The answer is A FALSE INVENTION."
+    },
+    {
+      "q": "What does the idiom \"An iron hand\" mean?",
+      "opts": ["GENTLY", "BY FORCE", "WITH KINDNESS", "BY REQUEST"],
+      "c": 1,
+      "t": "body",
+      "d": "medium",
+      "id": 46,
+      "exp": "Step 1: 'An iron hand' pictures a hand made of hard iron instead of soft flesh. Step 2: Iron is hard and unbending, so control through an iron hand is harsh. Step 3: So the idiom means ruling or acting by force, not by persuasion. Step 4: Gently, with kindness, and by request all describe soft and willing control, the opposite of force. Step 5: The answer is BY FORCE."
+    },
+    {
+      "q": "What does the idiom \"Bite your tongue\" mean?",
+      "opts": ["TO EAT QUICKLY", "TO SPEAK LOUDLY", "TO AVOID TALKING", "TO TELL THE TRUTH"],
+      "c": 2,
+      "t": "body",
+      "d": "medium",
+      "id": 47,
+      "exp": "Step 1: 'Bite your tongue' pictures a person physically stopping the tongue from moving. Step 2: The tongue is the organ of speech, so holding it back stops the words. Step 3: So the idiom means to avoid talking, especially when you want to say something. Step 4: Eating quickly, speaking loudly, and telling the truth all involve the tongue being active, not held back. Step 5: The answer is TO AVOID TALKING."
+    },
+    {
+      "q": "What does the idiom \"Can't cut the mustard\" mean?",
+      "opts": ["UNABLE TO COOK", "NOT ADEQUATE ENOUGH TO COMPETE", "NOT HUNGRY", "TOO TIRED TO WORK"],
+      "c": 1,
+      "t": "food",
+      "d": "medium",
+      "id": 48,
+      "exp": "Step 1: 'Can't cut the mustard' comes from the idea of cutting a mustard plant at its peak, a job needing sharpness and skill. Step 2: A person who cannot do even that job lacks the required standard. Step 3: So the idiom means someone who is not adequate enough to compete or participate. Step 4: Cooking, hunger, and tiredness are all literal or unrelated readings of the words. Step 5: The answer is NOT ADEQUATE ENOUGH TO COMPETE."
+    },
+    {
+      "q": "What does the idiom \"Crocodile tears\" mean?",
+      "opts": ["TEARS OF JOY", "FALSE TEARS", "DEEP SADNESS", "HEAVY RAIN"],
+      "c": 1,
+      "t": "animal",
+      "d": "hard",
+      "id": 49,
+      "exp": "Step 1: 'Crocodile tears' comes from the old belief that crocodiles weep while eating their prey. Step 2: The tears appear while the crocodile is harming its victim, so they cannot be sincere. Step 3: So the idiom means false tears, or sadness that is pretended. Step 4: Tears of joy and deep sadness are genuine feelings, and heavy rain is a literal reading. Step 5: The answer is FALSE TEARS."
+    },
+    {
+      "q": "What does the idiom \"Dog days of summer\" refer to?",
+      "opts": ["THE DAYS WHEN DOGS GROW", "THE COLDEST DAYS OF THE YEAR", "THE HOTTEST DAYS OF THE SUMMER", "THE FIRST DAYS OF SPRING"],
+      "c": 2,
+      "t": "animal",
+      "d": "hard",
+      "id": 50,
+      "exp": "Step 1: 'Dog days of summer' comes from the star Sirius, the Dog Star, which rises with the sun in July and August. Step 2: Ancient people believed this star added heat to the sun. Step 3: So the idiom refers to the hottest days of the summer season. Step 4: Days when dogs grow is a literal trap, and the coldest days and first days of spring are the wrong seasons. Step 5: The answer is THE HOTTEST DAYS OF THE SUMMER."
+    },
+    {
+      "q": "What does the idiom \"Ever and anon\" mean?",
+      "opts": ["FOREVER AND ALWAYS", "NOW AND THEN OCCASIONALLY", "NEVER AGAIN", "EVERY SINGLE DAY"],
+      "c": 1,
+      "t": "time",
+      "d": "hard",
+      "id": 51,
+      "exp": "Step 1: 'Ever and anon' is an old English phrase where 'anon' means soon or at times. Step 2: The two words together describe something that happens at scattered moments. Step 3: So the idiom means now and then, occasionally. Step 4: 'Forever and always' and 'every single day' mean constantly, the opposite of occasional. Step 5: The answer is NOW AND THEN OCCASIONALLY."
+    },
+    {
+      "q": "What does the idiom \"Latin and Greek\" mean?",
+      "opts": ["FLUENT IN FOREIGN LANGUAGES", "FOND OF ANCIENT HISTORY", "GOOD AT LANGUAGES", "UNABLE TO UNDERSTAND"],
+      "c": 3,
+      "t": "language",
+      "d": "hard",
+      "id": 52,
+      "exp": "Step 1: 'Latin and Greek' pictures the ancient languages that most people cannot read. Step 2: Hearing such languages leaves a listener completely lost. Step 3: So the idiom means being unable to understand what is said or written. Step 4: Being fluent, fond of history, or good at languages are all the opposite of being lost. Step 5: The answer is UNABLE TO UNDERSTAND."
+    },
+    {
+      "q": "What does the idiom \"Cast iron stomach\" mean?",
+      "opts": ["ABLE TO EAT ANYTHING WITHOUT PROBLEMS", "A STOMACH DISEASE", "VERY HUNGRY ALWAYS", "A METAL STOMACH"],
+      "c": 0,
+      "t": "body",
+      "d": "hard",
+      "id": 53,
+      "exp": "Step 1: 'Cast iron stomach' pictures a stomach as strong as cast iron. Step 2: Cast iron is tough and does not break down easily. Step 3: So the idiom means someone who has no problems, complications or ill effects with eating anything. Step 4: A stomach disease and being always hungry are the opposite of a trouble-free stomach, and 'a metal stomach' is literal. Step 5: The answer is ABLE TO EAT ANYTHING WITHOUT PROBLEMS."
+    },
+    {
+      "q": "What does the idiom \"Doing the rounds\" mean?",
+      "opts": ["WALKING IN A CIRCLE", "BEING PASSED FROM ONE PERSON TO ANOTHER", "CIRCULATING IN CIRCLES", "ROUNDING OFF NUMBERS"],
+      "c": 1,
+      "t": "action",
+      "d": "hard",
+      "id": 54,
+      "exp": "Step 1: 'Doing the rounds' pictures an object travelling around a group, from hand to hand. Step 2: News or objects that do the rounds visit each person in turn. Step 3: So the idiom means to be passed from one person to another. Step 4: Walking in a circle and rounding off numbers are literal readings, and circulating in circles repeats the same idea wrongly. Step 5: The answer is BEING PASSED FROM ONE PERSON TO ANOTHER."
+    },
+    {
+      "q": "In the sentence \"He ran around the office like a chicken with its head cut off looking for the file.\", what does \"like a chicken with its head cut off\" mean?",
+      "opts": ["BEING VERY CALM", "ACTING IN A FRENZIED MANNER", "MOVING SLOWLY", "THINKING DEEPLY"],
+      "c": 1,
+      "t": "animal",
+      "d": "hard",
+      "id": 55,
+      "exp": "Step 1: In the sentence, the man ran around the office wildly while searching for the file. Step 2: The picture comes from a chicken that runs frantically after its head is cut off. Step 3: So the idiom means to act in a frenzied manner, crazily and without direction. Step 4: Being calm, moving slowly, and thinking deeply are all the opposite of frantic running. Step 5: The answer is ACTING IN A FRENZIED MANNER."
+    },
+    {
+      "q": "What does the idiom \"Field day\" mean?",
+      "opts": ["A DAY OF HARD WORK", "AN ENJOYABLE DAY OR CIRCUMSTANCE", "A DAY ON THE FARM", "A DAY OF REST"],
+      "c": 1,
+      "t": "action",
+      "d": "hard",
+      "id": 56,
+      "exp": "Step 1: 'Field day' originally meant a day of outdoor military exercises and fun. Step 2: Over time it came to mean a day when people enjoy themselves to the fullest. Step 3: So the idiom means an enjoyable day or circumstance. Step 4: Hard work, farming, and rest are all possible days, but they miss the idea of enjoyment. Step 5: The answer is AN ENJOYABLE DAY OR CIRCUMSTANCE."
+    },
+    {
+      "q": "What does the idiom \"Bits and pieces\" mean?",
+      "opts": ["PARTS OF A MACHINE", "FRAGMENTS OF GLASS", "SMALL THINGS OF DIFFERENT TYPES", "COMPLETE SETS"],
+      "c": 2,
+      "t": "action",
+      "d": "hard",
+      "id": 57,
+      "exp": "Step 1: 'Bits and pieces' pictures a collection of small, separate objects. Step 2: The word 'bits' and 'pieces' both mean small parts of different kinds. Step 3: So the idiom means small things of different types gathered together. Step 4: Parts of a machine and fragments of glass are specific literal readings, and complete sets are the opposite. Step 5: The answer is SMALL THINGS OF DIFFERENT TYPES."
+    },
+    {
+      "q": "What does the idiom \"Go to the dogs\" mean?",
+      "opts": ["TO IMPROVE", "TO STAY THE SAME", "TO GET RICH", "TO WORSEN"],
+      "c": 3,
+      "t": "animal",
+      "d": "hard",
+      "id": 58,
+      "exp": "Step 1: 'Go to the dogs' pictures something being thrown away to the dogs as worthless. Step 2: What is given to the dogs is ruined and beyond saving. Step 3: So the idiom means to worsen or decline in quality. Step 4: To improve, stay the same, and get rich are all positive or neutral outcomes, the opposite of decline. Step 5: The answer is TO WORSEN."
+    },
+    {
+      "q": "In the sentence \"She was green with envy when her friend won the prize.\", what does \"green with envy\" mean?",
+      "opts": ["VERY ILL", "VERY HAPPY", "VERY JEALOUS", "VERY TIRED"],
+      "c": 2,
+      "t": "body",
+      "d": "hard",
+      "id": 59,
+      "exp": "Step 1: In the sentence, the speaker reacted to a friend winning the prize that she wanted. Step 2: Green is the colour traditionally linked with jealousy and envy in English. Step 3: So the idiom means very jealous of someone else's success. Step 4: Being ill, happy, or tired are not connected to the colour green in this way. Step 5: The answer is VERY JEALOUS."
+    },
+    {
+      "q": "In the sentence \"He got cold feet before the interview and almost cancelled it.\", what does \"got cold feet\" mean?",
+      "opts": ["TO FEEL VERY COLD", "TO BE ILL WITH FEVER", "TO WEAR WARM SHOES", "TO LOSE COURAGE TO DO SOMETHING"],
+      "c": 3,
+      "t": "body",
+      "d": "hard",
+      "id": 60,
+      "exp": "Step 1: In the sentence, the man almost cancelled the interview, which shows fear at the last moment. Step 2: 'Cold feet' pictures a person's feet going cold when they back away from a challenge. Step 3: So the idiom means to lose courage to do something you had decided to do. Step 4: Feeling cold, having fever, and wearing warm shoes are all literal readings of the words. Step 5: The answer is TO LOSE COURAGE TO DO SOMETHING."
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "intro-idioms"
+    },
+    {
+      "type": "concept",
+      "sectionId": "idiom-imagery"
+    },
+    {
+      "type": "concept",
+      "sectionId": "context-clues"
+    },
+    {
+      "type": "example",
+      "sectionId": "elimination-strategy"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}
