@@ -1,0 +1,730 @@
+{
+  "id": "fill-blanks",
+  "title": "Fill in the Blanks",
+  "icon": "✎",
+  "category": "verbal",
+  "subtitle": "Grammar & Vocabulary Based Blanks",
+  "days": "1-2",
+  "color": "#3B82F6",
+  "subtopics": [
+    "Articles & Determiners",
+    "Tenses & Subject-Verb Agreement",
+    "Prepositions & Conjunctions",
+    "Vocabulary & Double Blanks",
+    "Company Patterns (Accenture, Infosys, Cognizant, Capgemini, Tech Mahindra)"
+  ],
+  "estimatedHours": 10,
+  "readingSections": [
+    {
+      "id": "intro-blanks",
+      "title": "What Are Fill in the Blanks Questions?",
+      "content": "A fill in the blanks question shows a sentence with one or more missing words, marked as ___, and asks you to pick the word that completes it correctly. These questions test two things: grammar (articles, tenses, subject-verb agreement, prepositions, conjunctions) and vocabulary (word choice, collocations). Every major campus recruiter asks them: Accenture, Infosys, TCS, Tech Mahindra, Cognizant and Capgemini all include fill in the blanks in their English or verbal ability section. The good news: the sentence itself gives you the clues. Time words decide the tense, the subject decides the verb form, and the words around the blank decide the preposition or article.",
+      "subsections": [
+        {
+          "title": "Grammar-Based Blanks",
+          "content": "Grammar blanks test rules: 'She ___ to the office every day' needs GOES because 'every day' signals present tense and 'she' needs the -s form. 'He has been working here ___ 2019' needs SINCE because 'since' is used with a starting point. Learn the rules in groups and the blanks become predictable."
+        },
+        {
+          "title": "Vocabulary-Based Blanks",
+          "content": "Vocabulary blanks test word meaning and collocation: 'attractive tax ___' is completed by INCENTIVES because incentives are what governments offer to encourage action. Companies like Accenture and Capgemini frequently use two-blank questions where a pair of words must fit the sentence together."
+        }
+      ]
+    },
+    {
+      "id": "grammar-blanks",
+      "title": "Grammar Rules for Blanks",
+      "content": "Rule 1 - Subject-verb agreement: the verb must match the subject. Singular subjects take singular verbs: 'Either of the two answers IS correct', 'The news WAS shocking'. Watch the traps: with 'as well as' and 'along with', the verb follows the FIRST subject ('The boys as well as their coach ARE present'), but with 'neither...nor' it follows the NEAREST subject. Rule 2 - Tense signals: 'yesterday' means past, 'every day' means present, 'since 2019' and 'for two hours' mean present perfect continuous, 'by next year' means future perfect. Rule 3 - Articles: 'a' before consonant sounds, 'an' before vowel sounds, 'the' for specific things already known.",
+      "subsections": [
+        {
+          "title": "Subject-Verb Traps",
+          "content": "The most tested traps: collective nouns like 'committee' are singular ('The committee HAS decided'); words ending in -s like 'news' are singular; 'each of' and 'either of' are singular; phrases after 'along with', 'as well as', 'together with' do not change the number of the subject."
+        },
+        {
+          "title": "Tense Signal Words",
+          "content": "Memorize the signal words: every day / always (simple present), yesterday / last week (simple past), since / for (perfect), now / at the moment (continuous), by next year (future perfect), had + past participle (past perfect - earlier of two past actions)."
+        }
+      ]
+    },
+    {
+      "id": "preposition-conjunction",
+      "title": "Prepositions & Conjunctions",
+      "content": "Many blanks test fixed word partners. Adjectives and verbs take specific prepositions: good AT, afraid OF, accused OF, angry WITH, insist ON, senior TO, divided INTO, prefer A TO B. Conjunctions link parts of sentences: 'I will call you WHEN I reach home', 'Work hard OR you will fail'. Some conjunctions come in fixed pairs used with inversion: 'Scarcely had I left WHEN the phone rang', 'No sooner did he see me THAN he ran away', 'Hardly had we reached the station WHEN the train left'.",
+      "subsections": [
+        {
+          "title": "Fixed Preposition Partners",
+          "content": "The fastest way to score: learn word + preposition pairs as one unit. Good at, afraid of, accused of, angry with, insist on, senior to, junior to, prefer X to Y, divided into, married to, familiar with, fond of. Exams repeat these exact pairs."
+        },
+        {
+          "title": "Correlative Conjunctions",
+          "content": "Fixed pairs: scarcely...when, hardly...when, no sooner...than, so...that, too...to, such...that, either...or, neither...nor. When a blank follows 'scarcely' or 'hardly', the answer is WHEN; after 'no sooner', the answer is THAN."
+        }
+      ]
+    },
+    {
+      "id": "vocab-strategy",
+      "title": "Vocabulary & Double Blank Strategy",
+      "content": "For vocabulary blanks, do not look at options first - read the sentence and predict the meaning of the missing word, then match it. 'Suresh has trouble falling asleep, so he suffers from ___' predicts a sleep disorder: INSOMNIA. For double blanks, check each blank against all options: the pair must fit BOTH blanks. A quick collocation test kills wrong options: 'tax revenue' exists, 'tax structure' exists, but 'attractive tax INCENTIVES' is the natural phrase. Accenture and Capgemini double blanks like 'pulled out all the stops' test idiom knowledge too: when an option contains a known idiom, test it against the sentence.",
+      "subsections": [
+        {
+          "title": "Predict Before You Peek",
+          "content": "Cover the options, read the sentence, and write in your head what the missing word should mean. Then find the option matching that meaning. This prevents the options from confusing you and works for both single and double blanks."
+        },
+        {
+          "title": "Collocation Test",
+          "content": "A word is correct only if it sounds natural with its neighbours. 'Melodious voice' and 'voice wafted' are natural; 'euphonious voice' is rare and 'drifted voice' is odd. When unsure, read the completed sentence aloud mentally - the natural pairing usually wins."
+        }
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "id": "subject-verb-rule",
+      "title": "Subject-Verb Agreement Rule",
+      "formula": "SUBJECT (singular/plural) -> VERB (matches subject)",
+      "explanation": "Find the real subject and match the verb to it. Ignore phrases like 'as well as' and 'along with' between the subject and the verb; they do not change the number.",
+      "example": "The boys as well as their coach ARE present. | Either of the two answers IS correct."
+    },
+    {
+      "id": "tense-signal-rule",
+      "title": "Tense Signal Rule",
+      "formula": "TIME SIGNAL in sentence -> TENSE of verb",
+      "explanation": "Spot the time word (yesterday, every day, since, for, by next year, when I arrived) and choose the verb form that matches that tense.",
+      "example": "By next year, she WILL HAVE COMPLETED her degree. | I HAVE KNOWN him since childhood."
+    },
+    {
+      "id": "collocation-rule",
+      "title": "Collocation Rule",
+      "formula": "WORD + fixed partner (preposition / article / word)",
+      "explanation": "Many blanks test fixed partners. Learn word + partner as one unit: good AT, afraid OF, insist ON, accused OF, senior TO, prefer X TO Y, scarcely WHEN, no sooner THAN.",
+      "example": "She is good AT playing the piano. | No sooner did he see me THAN he ran away."
+    }
+  ],
+  "practiceProblems": {
+    "tense-signal-rule": [
+      {
+        "q": "Fill in the blank: \"I ___ him since childhood.\"",
+        "s": [
+          "Step 1: The signal word 'since' connects the past to the present.",
+          "Step 2: 'Since childhood' needs the present perfect tense.",
+          "Step 3: So the correct form is 'have known'."
+        ],
+        "a": "HAVE KNOWN"
+      },
+      {
+        "q": "Fill in the blank: \"By next year, she ___ her degree.\"",
+        "s": [
+          "Step 1: The signal 'by next year' points to a future deadline.",
+          "Step 2: An action finished before a future time uses the future perfect.",
+          "Step 3: So the correct form is 'will have completed'."
+        ],
+        "a": "WILL HAVE COMPLETED"
+      },
+      {
+        "q": "Fill in the blank: \"When I arrived, the meeting ___ already started.\"",
+        "s": [
+          "Step 1: Two past actions are compared: arriving and starting.",
+          "Step 2: The starting happened before the arriving, so it needs the past perfect.",
+          "Step 3: So the correct form is 'had started'."
+        ],
+        "a": "HAD STARTED"
+      }
+    ],
+    "collocation-rule": [
+      {
+        "q": "Fill in the blank: \"She insisted ___ paying the bill herself.\"",
+        "s": [
+          "Step 1: 'Insist' takes a fixed preposition partner.",
+          "Step 2: The correct pair is 'insist on'.",
+          "Step 3: So the blank needs 'on'."
+        ],
+        "a": "ON"
+      },
+      {
+        "q": "Fill in the blank: \"He was accused ___ stealing the money.\"",
+        "s": [
+          "Step 1: 'Accuse' takes a fixed preposition partner.",
+          "Step 2: The correct pair is 'accused of'.",
+          "Step 3: So the blank needs 'of'."
+        ],
+        "a": "OF"
+      },
+      {
+        "q": "Fill in the blank: \"No sooner did he see me ___ he ran away.\"",
+        "s": [
+          "Step 1: 'No sooner' begins an inverted sentence.",
+          "Step 2: The fixed partner of 'no sooner' is 'than'.",
+          "Step 3: So the blank needs 'than'."
+        ],
+        "a": "THAN"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "q": "Fill in the blank: \"Tom ___ only fruits on Thursdays.\"",
+      "opts": ["EAT", "EATEN", "EATS", "EATING"],
+      "c": 2,
+      "t": "subject-verb",
+      "d": "easy",
+      "id": 1,
+      "exp": "Step 1: The subject 'Tom' is one person, so he is third-person singular. Step 2: The sentence talks about a habit on Thursdays, which needs the simple present tense. Step 3: In simple present, third-person singular verbs take -s: eat becomes eats. Step 4: 'Eat' is used with I/you/we/they, 'eaten' needs a helping verb, and 'eating' needs 'is'. Step 5: The answer is EATS."
+    },
+    {
+      "q": "Fill in the blank: \"She ___ to the office every day.\"",
+      "opts": ["GO", "GOES", "GONE", "WENT"],
+      "c": 1,
+      "t": "tense",
+      "d": "easy",
+      "id": 2,
+      "exp": "Step 1: The signal 'every day' shows a habitual action, so the tense is simple present. Step 2: The subject 'She' is third-person singular. Step 3: In simple present, third-person singular verbs take -s, so go becomes goes. Step 4: 'Go' is used with I/you/we/they, 'went' is past, and 'gone' needs a helping verb like has. Step 5: The answer is GOES."
+    },
+    {
+      "q": "Fill in the blank: \"I have ___ apple and two bananas.\"",
+      "opts": ["AN", "A", "THE", "SOME"],
+      "c": 0,
+      "t": "article",
+      "d": "easy",
+      "id": 3,
+      "exp": "Step 1: The blank comes before the singular countable noun 'apple'. Step 2: 'Apple' starts with a vowel sound, so the article must be 'an'. Step 3: The rule is: 'a' before consonant sounds and 'an' before vowel sounds. Step 4: 'The' would mean a specific apple already known, and 'some' does not fit a single apple. Step 5: The answer is AN."
+    },
+    {
+      "q": "Fill in the blank: \"The sun ___ in the east.\"",
+      "opts": ["RISE", "RISES", "RISING", "ROSE"],
+      "c": 1,
+      "t": "subject-verb",
+      "d": "easy",
+      "id": 4,
+      "exp": "Step 1: This sentence states a scientific fact, so it uses the simple present tense. Step 2: The subject 'the sun' is third-person singular. Step 3: Simple present with a singular subject takes -s, so rise becomes rises. Step 4: 'Rise' is used with plural subjects, 'rising' needs 'is', and 'rose' is the past tense. Step 5: The answer is RISES."
+    },
+    {
+      "q": "Fill in the blank: \"He is afraid ___ spiders.\"",
+      "opts": ["OF", "FROM", "ABOUT", "AT"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 5,
+      "exp": "Step 1: The adjective 'afraid' has a fixed preposition partner. Step 2: The correct pairing is 'afraid of' - we say afraid of something. Step 3: 'From' is used with 'safe from', 'about' with 'worried about', and 'at' is not used with afraid. Step 4: So the blank needs the fixed partner 'of'. Step 5: The answer is OF."
+    },
+    {
+      "q": "Fill in the blank: \"We ___ the movie yesterday.\"",
+      "opts": ["WATCH", "WATCHED", "WATCHES", "WATCHING"],
+      "c": 1,
+      "t": "tense",
+      "d": "easy",
+      "id": 6,
+      "exp": "Step 1: The signal word 'yesterday' places the action in the past. Step 2: A completed action in the past uses the simple past tense. Step 3: The past form of 'watch' is 'watched'. Step 4: 'Watch' is present, 'watches' is present with a singular subject, and 'watching' needs a helping verb. Step 5: The answer is WATCHED."
+    },
+    {
+      "q": "Fill in the blank: \"She is really good ___ playing the piano.\"",
+      "opts": ["ON", "AT", "IN", "WITH"],
+      "c": 1,
+      "t": "preposition",
+      "d": "easy",
+      "id": 7,
+      "exp": "Step 1: The adjective 'good' takes a fixed preposition when talking about skills. Step 2: We say 'good at' an activity: good at playing, good at cooking. Step 3: 'On' is used with days or surfaces, 'in' with places, and 'with' with tools or people. Step 4: None of those fit the skill meaning here. Step 5: The answer is AT."
+    },
+    {
+      "q": "Fill in the blank: \"There is ___ water in the glass.\"",
+      "opts": ["MUCH", "MANY", "SEVERAL", "A FEW"],
+      "c": 0,
+      "t": "determiner",
+      "d": "easy",
+      "id": 8,
+      "exp": "Step 1: 'Water' is an uncountable noun, so it needs an uncountable quantifier. Step 2: 'Much' is used with uncountable nouns like water, milk, and time. Step 3: 'Many', 'several', and 'a few' are all used only with countable plural nouns. Step 4: Since the glass contains water, only 'much' fits. Step 5: The answer is MUCH."
+    },
+    {
+      "q": "Fill in the blank: \"Would you like ___ coffee?\"",
+      "opts": ["SOME", "ANY", "A FEW", "MANY"],
+      "c": 0,
+      "t": "determiner",
+      "d": "easy",
+      "id": 9,
+      "exp": "Step 1: 'Coffee' is uncountable, so the quantifier must be uncountable. Step 2: In offers and polite requests, 'some' is used: would you like some coffee. Step 3: 'Any' is used in questions about existence or in negative sentences, not in friendly offers. Step 4: 'A few' and 'many' only go with countable nouns. Step 5: The answer is SOME."
+    },
+    {
+      "q": "Fill in the blank: \"I will call you ___ I reach home.\"",
+      "opts": ["WHEN", "BECAUSE", "ALTHOUGH", "UNLESS"],
+      "c": 0,
+      "t": "conjunction",
+      "d": "easy",
+      "id": 10,
+      "exp": "Step 1: The sentence links two actions: calling and reaching home. Step 2: The calling depends on the time of reaching, so the link is a time conjunction. Step 3: 'When' shows the time: I will call you when I reach home. Step 4: 'Because' shows a reason, 'although' shows contrast, and 'unless' means 'if not' - none fit the time link. Step 5: The answer is WHEN."
+    },
+    {
+      "q": "Fill in the blank: \"___ honest man is trusted by all.\"",
+      "opts": ["AN", "A", "THE", "NO ARTICLE"],
+      "c": 0,
+      "t": "article",
+      "d": "easy",
+      "id": 11,
+      "exp": "Step 1: The blank comes before the adjective 'honest' and the noun 'man'. Step 2: 'Honest' starts with a vowel sound even though the letter is a consonant, so the article is 'an'. Step 3: The rule: use 'an' before vowel sounds, and 'honest' has the vowel sound of 'o'. Step 4: 'A' is wrong for vowel sounds, 'the' would need a specific man, and omitting the article is wrong for a singular noun. Step 5: The answer is AN."
+    },
+    {
+      "q": "Fill in the blank: \"She ___ her homework before dinner every day.\"",
+      "opts": ["DO", "DOES", "DID", "DONE"],
+      "c": 1,
+      "t": "subject-verb",
+      "d": "easy",
+      "id": 12,
+      "exp": "Step 1: 'Every day' signals the simple present tense. Step 2: The subject 'She' is third-person singular, so the verb needs -es. Step 3: The correct form is 'does': she does her homework. Step 4: 'Do' is used with I/you/we/they, 'did' is past, and 'done' needs a helping verb. Step 5: The answer is DOES."
+    },
+    {
+      "q": "Fill in the blank: \"They ___ playing cricket now.\"",
+      "opts": ["ARE", "IS", "AM", "BE"],
+      "c": 0,
+      "t": "subject-verb",
+      "d": "easy",
+      "id": 13,
+      "exp": "Step 1: 'Now' signals a continuous action happening at this moment. Step 2: Continuous tenses need be + ing, so the blank needs a form of 'be'. Step 3: The subject 'They' is plural, so the correct form is 'are'. Step 4: 'Is' is singular, 'am' goes with 'I', and 'be' is the base form without tense. Step 5: The answer is ARE."
+    },
+    {
+      "q": "Fill in the blank: \"He has been working here ___ 2019.\"",
+      "opts": ["SINCE", "FOR", "FROM", "BY"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 14,
+      "exp": "Step 1: The sentence uses the present perfect continuous with 'has been working'. Step 2: With this tense, 'since' is used before a starting point in time like 2019. Step 3: 'For' is used before a duration like 'two years', not a year. Step 4: 'From' and 'by' do not combine with the present perfect continuous. Step 5: The answer is SINCE."
+    },
+    {
+      "q": "Fill in the blank: \"She has been waiting ___ two hours.\"",
+      "opts": ["FOR", "SINCE", "DURING", "UNTIL"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 15,
+      "exp": "Step 1: The sentence uses the present perfect continuous with 'has been waiting'. Step 2: 'Two hours' is a duration, and durations take 'for'. Step 3: 'Since' is used with starting points like 'since 9 o'clock', not durations. Step 4: 'During' is used inside a period, and 'until' shows an endpoint with different tenses. Step 5: The answer is FOR."
+    },
+    {
+      "q": "Fill in the blank: \"If you heat ice, it ___.\"",
+      "opts": ["MELTS", "MELT", "WOULD MELT", "HAS MELTED"],
+      "c": 0,
+      "t": "tense",
+      "d": "easy",
+      "id": 16,
+      "exp": "Step 1: This is a zero conditional - a general scientific truth. Step 2: In zero conditionals, both clauses use the simple present tense. Step 3: The subject 'it' is singular, so the verb takes -s: melts. Step 4: 'Melt' is for plural subjects, 'would melt' belongs to second conditionals, and 'has melted' is a completed action. Step 5: The answer is MELTS."
+    },
+    {
+      "q": "Fill in the blank: \"The boys as well as their coach ___ present.\"",
+      "opts": ["ARE", "IS", "WAS", "HAS"],
+      "c": 0,
+      "t": "subject-verb",
+      "d": "easy",
+      "id": 17,
+      "exp": "Step 1: Find the real subject of the verb. Step 2: With 'as well as', the verb agrees with the subject BEFORE the phrase, which is 'The boys'. Step 3: 'The boys' is plural, so the verb must be plural: 'are'. Step 4: 'Is' and 'was' are singular, and 'has' is also singular - all three would need the subject to be singular. Step 5: The answer is ARE."
+    },
+    {
+      "q": "Fill in the blank: \"Either of the two answers ___ correct.\"",
+      "opts": ["IS", "ARE", "HAVE", "WERE"],
+      "c": 0,
+      "t": "subject-verb",
+      "d": "easy",
+      "id": 18,
+      "exp": "Step 1: The subject is 'Either', not 'the two answers'. Step 2: 'Either' means one of the two, so it is singular. Step 3: A singular subject takes a singular verb: 'is'. Step 4: 'Are', 'have', and 'were' are all plural forms and would need a plural subject. Step 5: The answer is IS."
+    },
+    {
+      "q": "Fill in the blank: \"She did not ___ the answer.\"",
+      "opts": ["KNOW", "KNEW", "KNOWN", "KNOWING"],
+      "c": 0,
+      "t": "tense",
+      "d": "easy",
+      "id": 19,
+      "exp": "Step 1: The sentence has the auxiliary 'did' in the negative form 'did not'. Step 2: After 'did' and 'did not', the main verb returns to its base form. Step 3: The base form of 'knew' is 'know'. Step 4: 'Knew' is the past form, 'known' needs 'has', and 'knowing' needs a helping verb. Step 5: The answer is KNOW."
+    },
+    {
+      "q": "Fill in the blank: \"I am looking forward to ___ you.\"",
+      "opts": ["MEETING", "MEET", "MEETS", "MEETED"],
+      "c": 0,
+      "t": "tense",
+      "d": "easy",
+      "id": 20,
+      "exp": "Step 1: 'Look forward to' is a fixed phrase, and 'to' here is a preposition. Step 2: After a preposition, the verb takes the -ing form. Step 3: So the correct form is 'meeting': looking forward to meeting you. Step 4: 'Meet', 'meets', and 'meeted' are not -ing forms and cannot follow the preposition. Step 5: The answer is MEETING."
+    },
+    {
+      "q": "Fill in the blank: \"Work hard ___ you will fail.\"",
+      "opts": ["OR", "AND", "BUT", "SO"],
+      "c": 0,
+      "t": "conjunction",
+      "d": "easy",
+      "id": 21,
+      "exp": "Step 1: The sentence connects a command with its negative result. Step 2: 'Or' shows the consequence of not following the command: work hard or you will fail. Step 3: 'And' would add a positive result, 'but' shows contrast, and 'so' shows the result of working hard. Step 4: Only 'or' gives the warning meaning. Step 5: The answer is OR."
+    },
+    {
+      "q": "Fill in the blank: \"He is too weak ___ walk.\"",
+      "opts": ["TO", "THAT", "FOR", "SO"],
+      "c": 0,
+      "t": "conjunction",
+      "d": "easy",
+      "id": 22,
+      "exp": "Step 1: The sentence uses the fixed structure 'too + adjective + to + verb'. Step 2: 'Too weak' is followed by the infinitive with 'to': too weak to walk. Step 3: 'That' needs a full clause after it, 'for' is followed by a noun or pronoun, and 'so' needs 'that' later. Step 4: Only 'to' completes the fixed structure correctly. Step 5: The answer is TO."
+    },
+    {
+      "q": "Fill in the blank: \"She sings ___ than her sister.\"",
+      "opts": ["BETTER", "GOOD", "BEST", "WELL"],
+      "c": 0,
+      "t": "adjective",
+      "d": "easy",
+      "id": 23,
+      "exp": "Step 1: The word 'than' signals a comparison between two people. Step 2: Comparisons between two things use the comparative degree. Step 3: The comparative of 'good' is 'better'. Step 4: 'Good' is the positive degree, 'best' is the superlative used for three or more, and 'well' is an adverb. Step 5: The answer is BETTER."
+    },
+    {
+      "q": "Fill in the blank: \"This is the ___ interesting book I have ever read.\"",
+      "opts": ["MOST", "MORE", "VERY", "MUCH"],
+      "c": 0,
+      "t": "adjective",
+      "d": "easy",
+      "id": 24,
+      "exp": "Step 1: 'I have ever read' compares this book with all other books the speaker has read. Step 2: Comparing one thing with all others needs the superlative degree. Step 3: The superlative of long adjectives uses 'most': the most interesting. Step 4: 'More' is for comparing two things, and 'very' and 'much' do not form superlatives. Step 5: The answer is MOST."
+    },
+    {
+      "q": "Fill in the blank: \"She insisted ___ paying the bill herself.\"",
+      "opts": ["ON", "AT", "IN", "TO"],
+      "c": 0,
+      "t": "preposition",
+      "d": "medium",
+      "id": 25,
+      "exp": "Step 1: The verb 'insist' has a fixed preposition partner. Step 2: The correct pairing is 'insist on' - we insist on something or on doing something. Step 3: 'At' is used with 'insist' only in the phrase 'insist at' which is not standard; 'in' and 'to' do not pair with insist. Step 4: So the blank needs the fixed partner 'on'. Step 5: The answer is ON."
+    },
+    {
+      "q": "Fill in the blank: \"The teacher divided the students ___ four groups.\"",
+      "opts": ["INTO", "BETWEEN", "AMONG", "WITH"],
+      "c": 0,
+      "t": "preposition",
+      "d": "medium",
+      "id": 26,
+      "exp": "Step 1: The verb 'divide' takes 'into' when something is split to form new groups. Step 2: We say 'divide into groups', 'divide into parts', 'divide into teams'. Step 3: 'Between' is for two things, 'among' is for distribution without forming groups, and 'with' is not used after divide. Step 4: So the blank needs 'into'. Step 5: The answer is INTO."
+    },
+    {
+      "q": "Fill in the blank: \"He was accused ___ stealing the money.\"",
+      "opts": ["OF", "FOR", "WITH", "AT"],
+      "c": 0,
+      "t": "preposition",
+      "d": "medium",
+      "id": 27,
+      "exp": "Step 1: The verb 'accuse' has a fixed preposition partner. Step 2: The correct pairing is 'accuse of': to be accused of a crime or of doing something. Step 3: 'For' is used with 'blame for', 'with' is used with 'charged with', and 'at' is never used after accused. Step 4: So the blank needs the fixed partner 'of'. Step 5: The answer is OF."
+    },
+    {
+      "q": "Fill in the blank: \"I am angry ___ him for lying to me.\"",
+      "opts": ["WITH", "ON", "AT", "OF"],
+      "c": 0,
+      "t": "preposition",
+      "d": "medium",
+      "id": 28,
+      "exp": "Step 1: 'Angry' takes different prepositions for people and things. Step 2: With a person, the correct pairing is 'angry with': angry with him. Step 3: 'Angry at' can be used with situations or things, 'on' and 'of' are never correct after angry. Step 4: Since the anger is directed at a person, the blank needs 'with'. Step 5: The answer is WITH."
+    },
+    {
+      "q": "Fill in the blank: \"The meeting was put ___ until next Monday.\"",
+      "opts": ["OFF", "ON", "UP", "DOWN"],
+      "c": 0,
+      "t": "phrasal",
+      "d": "medium",
+      "id": 29,
+      "exp": "Step 1: The sentence needs a phrasal verb with 'put'. Step 2: 'Put off' means to postpone or delay something to a later time. Step 3: 'Put on' means to wear, 'put up' means to tolerate or display, and 'put down' means to place or insult. Step 4: Only 'put off' matches the meaning of delaying the meeting. Step 5: The answer is OFF."
+    },
+    {
+      "q": "Fill in the blank: \"She takes ___ her mother in looks.\"",
+      "opts": ["AFTER", "OVER", "UP", "IN"],
+      "c": 0,
+      "t": "phrasal",
+      "d": "medium",
+      "id": 30,
+      "exp": "Step 1: The sentence needs a phrasal verb with 'take' meaning to resemble. Step 2: 'Take after' means to look or behave like an older family member. Step 3: 'Take over' means to gain control, 'take up' means to start a hobby, and 'take in' means to understand or deceive. Step 4: Only 'take after' matches the meaning of resembling the mother. Step 5: The answer is AFTER."
+    },
+    {
+      "q": "Fill in the blank: \"If you ___ now, you will reach on time.\"",
+      "opts": ["LEAVE", "LEFT", "WOULD LEAVE", "HAD LEFT"],
+      "c": 0,
+      "t": "conditional",
+      "d": "medium",
+      "id": 31,
+      "exp": "Step 1: The second half uses 'will reach', which marks a first conditional. Step 2: First conditionals use the pattern: if + simple present, will + base verb. Step 3: So the blank needs the simple present 'leave'. Step 4: 'Left' and 'had left' are past forms that would need 'would have' or 'would' later, and 'would leave' belongs to second conditionals. Step 5: The answer is LEAVE."
+    },
+    {
+      "q": "Fill in the blank: \"If I ___ rich, I would travel the world.\"",
+      "opts": ["WERE", "AM", "WAS", "BE"],
+      "c": 0,
+      "t": "conditional",
+      "d": "medium",
+      "id": 32,
+      "exp": "Step 1: The second half uses 'would travel', which marks a second conditional. Step 2: Second conditionals use the pattern: if + past form, would + base verb. Step 3: For 'I', the hypothetical form in this structure is 'were' - if I were rich. Step 4: 'Am' is present, 'was' is accepted in speech but not in exams, and 'be' is the base form. Step 5: The answer is WERE."
+    },
+    {
+      "q": "Fill in the blank: \"Had I known, I ___ have come earlier.\"",
+      "opts": ["WOULD", "WILL", "SHALL", "CAN"],
+      "c": 0,
+      "t": "conditional",
+      "d": "medium",
+      "id": 33,
+      "exp": "Step 1: 'Had I known' is an inverted third conditional - it means 'if I had known'. Step 2: Third conditionals use the pattern: if + past perfect, would have + past participle. Step 3: So the blank needs 'would' to complete 'would have come'. Step 4: 'Will' and 'shall' belong to real future sentences, and 'can' expresses ability, not this regret about the past. Step 5: The answer is WOULD."
+    },
+    {
+      "q": "Fill in the blank: \"By next year, she ___ her degree.\"",
+      "opts": ["WILL HAVE COMPLETED", "COMPLETED", "COMPLETES", "HAS COMPLETED"],
+      "c": 0,
+      "t": "tense",
+      "d": "medium",
+      "id": 34,
+      "exp": "Step 1: The signal 'by next year' sets a deadline in the future. Step 2: An action finished before a future time uses the future perfect tense. Step 3: The future perfect form is 'will have + past participle': will have completed. Step 4: 'Completed' is past, 'completes' is present, and 'has completed' is present perfect - none fit a future deadline. Step 5: The answer is WILL HAVE COMPLETED."
+    },
+    {
+      "q": "Fill in the blank: \"When I arrived, the meeting ___ already started.\"",
+      "opts": ["HAD STARTED", "HAS STARTED", "STARTED", "WILL START"],
+      "c": 0,
+      "t": "tense",
+      "d": "medium",
+      "id": 35,
+      "exp": "Step 1: The sentence describes two past events: arriving and starting. Step 2: The starting happened before the arriving, so the earlier event needs the past perfect. Step 3: The past perfect form is 'had + past participle': had started. Step 4: 'Has started' is present perfect, 'started' is simple past without showing the earlier time, and 'will start' is future. Step 5: The answer is HAD STARTED."
+    },
+    {
+      "q": "Fill in the blank: \"I ___ him since childhood.\"",
+      "opts": ["HAVE KNOWN", "KNOW", "KNEW", "AM KNOWING"],
+      "c": 0,
+      "t": "tense",
+      "d": "medium",
+      "id": 36,
+      "exp": "Step 1: The signal 'since childhood' connects a past starting point to the present. Step 2: Actions starting in the past and continuing till now use the present perfect. Step 3: 'Know' is a stative verb, so the form is 'have known'. Step 4: 'Know' is present without the connection, 'knew' is past only, and stative verbs like know are not used in continuous forms. Step 5: The answer is HAVE KNOWN."
+    },
+    {
+      "q": "Fill in the blank: \"The government should provide attractive tax ___ to create the market of quality goods.\"",
+      "opts": ["REVENUES", "STRUCTURES", "INCENTIVES", "CONTROLS"],
+      "c": 2,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 37,
+      "exp": "Step 1: Read the sentence and predict: the government wants to encourage the market of quality goods. Step 2: The word must mean something the government offers to encourage action. Step 3: 'Incentives' are benefits given to encourage people or businesses to do something. Step 4: 'Revenues' are money collected, 'structures' are arrangements, and 'controls' would restrict the market, not create it. Step 5: The answer is INCENTIVES."
+    },
+    {
+      "q": "Fill in the blank: \"The boy, along with his friends, ___ going to the party.\"",
+      "opts": ["IS", "ARE", "WERE", "HAVE"],
+      "c": 0,
+      "t": "subject-verb",
+      "d": "medium",
+      "id": 38,
+      "exp": "Step 1: Find the real subject of the verb. Step 2: With 'along with', the verb agrees with the subject BEFORE the phrase, which is 'The boy'. Step 3: 'The boy' is singular, so the verb must be singular: 'is'. Step 4: 'Are', 'were', and 'have' are plural forms and would need a plural subject like 'The boys'. Step 5: The answer is IS."
+    },
+    {
+      "q": "Fill in the blanks: \"They were having ___ debate on ___ role of girl empowerment in ___ auditorium.\"",
+      "opts": ["THE, THE, AN", "A, THE, THE", "A, AN, THE", "AN, THE, THE"],
+      "c": 1,
+      "t": "article",
+      "d": "medium",
+      "id": 39,
+      "exp": "Step 1: Look at the first blank: 'a debate' introduces the debate for the first time, so it needs the indefinite article 'a'. Step 2: Look at the second blank: 'the role' is specific - the known role of girl empowerment, so it needs 'the'. Step 3: Look at the third blank: 'the auditorium' is a specific known place, so it needs 'the'. Step 4: The only option with 'a, the, the' in that order fits all three blanks. Step 5: The answer is A, THE, THE."
+    },
+    {
+      "q": "Fill in the blank: \"Suresh has trouble falling or staying asleep. I guess, he suffers from ___.\"",
+      "opts": ["INSOMNIA", "ANXIETY", "FEVER", "COUGH"],
+      "c": 0,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 40,
+      "exp": "Step 1: Read the sentence and predict: the condition makes it hard to fall or stay asleep. Step 2: The medical word for difficulty in sleeping is 'insomnia'. Step 3: 'Anxiety' is worry, 'fever' is high body temperature, and 'cough' is a throat condition - none match the sleep symptom. Step 4: So the blank needs 'insomnia'. Step 5: The answer is INSOMNIA."
+    },
+    {
+      "q": "Fill in the blank: \"Scarcely had I left ___ the phone rang.\"",
+      "opts": ["WHEN", "THAN", "THAT", "THEN"],
+      "c": 0,
+      "t": "conjunction",
+      "d": "medium",
+      "id": 41,
+      "exp": "Step 1: The sentence begins with 'Scarcely had I', which is an inverted structure. Step 2: The fixed partner of 'scarcely' is 'when': scarcely had I left when the phone rang. Step 3: 'Than' pairs with 'no sooner', 'that' follows 'so' or 'such', and 'then' is not part of this structure. Step 4: So the blank needs the fixed partner 'when'. Step 5: The answer is WHEN."
+    },
+    {
+      "q": "Fill in the blank: \"No sooner did he see me ___ he ran away.\"",
+      "opts": ["THAN", "WHEN", "THAT", "AS"],
+      "c": 0,
+      "t": "conjunction",
+      "d": "medium",
+      "id": 42,
+      "exp": "Step 1: The sentence begins with 'No sooner did he', which is an inverted structure. Step 2: The fixed partner of 'no sooner' is 'than': no sooner did he see me than he ran away. Step 3: 'When' pairs with 'scarcely' and 'hardly', 'that' follows 'so' or 'such', and 'as' is not used here. Step 4: So the blank needs the fixed partner 'than'. Step 5: The answer is THAN."
+    },
+    {
+      "q": "Fill in the blank: \"Hardly had we reached the station ___ the train left.\"",
+      "opts": ["WHEN", "THAN", "THAT", "BEFORE"],
+      "c": 0,
+      "t": "conjunction",
+      "d": "medium",
+      "id": 43,
+      "exp": "Step 1: The sentence begins with 'Hardly had we', which is an inverted structure. Step 2: The fixed partner of 'hardly' is 'when': hardly had we reached the station when the train left. Step 3: 'Than' pairs with 'no sooner', 'that' follows 'so' or 'such', and 'before' is not used in this fixed structure. Step 4: So the blank needs the fixed partner 'when'. Step 5: The answer is WHEN."
+    },
+    {
+      "q": "Fill in the blank: \"He is senior ___ me by two years.\"",
+      "opts": ["TO", "THAN", "FROM", "THEN"],
+      "c": 0,
+      "t": "preposition",
+      "d": "medium",
+      "id": 44,
+      "exp": "Step 1: The word 'senior' looks like a comparative, but it does not take 'than'. Step 2: Words like senior, junior, superior, and inferior take 'to': senior to me. Step 3: 'Than' is used with regular comparatives like older than, but not with these words. Step 4: 'From' and 'then' are never used after senior. Step 5: The answer is TO."
+    },
+    {
+      "q": "Fill in the blank: \"She prefers tea ___ coffee.\"",
+      "opts": ["TO", "THAN", "FROM", "OVER"],
+      "c": 0,
+      "t": "preposition",
+      "d": "medium",
+      "id": 45,
+      "exp": "Step 1: The verb 'prefer' has a fixed structure when comparing two things. Step 2: The correct structure is 'prefer A to B': she prefers tea to coffee. Step 3: 'Than' is used after comparatives like 'better than', not after prefer. Step 4: 'From' and 'over' are never used in this structure with prefer. Step 5: The answer is TO."
+    },
+    {
+      "q": "Fill in the blank: \"I am not sure ___ he will come.\"",
+      "opts": ["WHETHER", "THAT", "WHY", "WHICH"],
+      "c": 0,
+      "t": "conjunction",
+      "d": "medium",
+      "id": 46,
+      "exp": "Step 1: The sentence expresses uncertainty about a future event. Step 2: When there is doubt about alternatives, the link word is 'whether': not sure whether he will come. Step 3: 'That' is used when there is no doubt, 'why' would need a reason to follow, and 'which' needs a choice among items. Step 4: Only 'whether' fits the uncertainty. Step 5: The answer is WHETHER."
+    },
+    {
+      "q": "Fill in the blank: \"The medicine ___ his pain within minutes.\"",
+      "opts": ["RELIEVED", "RELEASED", "REMOVED", "RELENTED"],
+      "c": 0,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 47,
+      "exp": "Step 1: Read the sentence and predict: the medicine made the pain go away. Step 2: 'Relieve' is the correct word for making pain or suffering less: relieved his pain. Step 3: 'Released' means set free, 'removed' means taken away physically, and 'relented' means became less strict. Step 4: Only 'relieved' pairs naturally with pain. Step 5: The answer is RELIEVED."
+    },
+    {
+      "q": "Fill in the blanks: \"The argument that the need for a new monetary policy to ___ demand outweighs the need to ___ budget deficits is persuasive.\"",
+      "opts": ["ASSESS, MINIMIZE", "OUTSTRIP, ELIMINATE", "STIMULATE, CONTROL", "RESTRAINT, CONCEAL"],
+      "c": 2,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 48,
+      "exp": "Step 1: Look at the first blank: a monetary policy is a tool to boost economic activity. Step 2: 'Stimulate demand' is the natural pair - policies stimulate demand. Step 3: Look at the second blank: budget deficits must be kept in check, so 'control budget deficits' fits. Step 4: 'Assess' and 'outstrip' do not fit policy action on demand, and 'restraint' is not a verb form. Step 5: The answer is STIMULATE, CONTROL."
+    },
+    {
+      "q": "Fill in the blanks: \"We ___ to inform you that we cannot include your thesis in our library, on the ___ of not receiving permission from your supervisor.\"",
+      "opts": ["SADDEN, REASON", "LAMENT, PRETEXT", "REPENT, JUSTIFICATION", "REGRET, GROUNDS"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "hard",
+      "id": 49,
+      "exp": "Step 1: Look at the first blank: a formal letter begins with a polite expression of disappointment. Step 2: 'Regret to inform' is the fixed formal phrase: we regret to inform you. Step 3: Look at the second blank: the reason for the refusal is official, so 'on the grounds of' is the fixed formal phrase. Step 4: 'Lament' is mourning, 'repent' is remorse for one's own wrong, and 'pretext' is a false reason - none fit the formal tone. Step 5: The answer is REGRET, GROUNDS."
+    },
+    {
+      "q": "Fill in the blanks: \"When her illness took a turn for the worse, the doctors took ___ to ___ the situation.\"",
+      "opts": ["STEPS, AMELIORATE", "APPROACHES, BETTER", "MODES, IMPROVE", "MEASURES, ENHANCE"],
+      "c": 0,
+      "t": "vocabulary",
+      "d": "hard",
+      "id": 50,
+      "exp": "Step 1: Look at the first blank: doctors act to help a patient, so 'took steps' is the natural pair. Step 2: Look at the second blank: the doctors wanted to improve the situation. Step 3: 'Ameliorate' means to make something better or improve it - the formal word for improving a medical situation. Step 4: 'Modes' does not fit the first blank, 'better' is not a verb, and 'enhance' usually applies to quality or value. Step 5: The answer is STEPS, AMELIORATE."
+    },
+    {
+      "q": "Fill in the blanks: \"The public relations agency ___ out all the stops to ensure a ___ attendance at the gala.\"",
+      "opts": ["GAVE, PHENOMENAL", "TOOK, MARVELLOUS", "PULLED, SPECTACULAR", "FORKED, STAGGERING"],
+      "c": 2,
+      "t": "idiom",
+      "d": "hard",
+      "id": 51,
+      "exp": "Step 1: Look at the first blank: 'pull out all the stops' is a fixed idiom meaning to make every possible effort. Step 2: The agency made every effort, so 'pulled' is the only word forming this idiom. Step 3: Look at the second blank: the effort was for a huge, impressive attendance. Step 4: 'Spectacular' means impressive and grand, matching the gala context; 'phenomenal' and 'staggering' could fit alone, but their first words are wrong. Step 5: The answer is PULLED, SPECTACULAR."
+    },
+    {
+      "q": "Fill in the blanks: \"The ___ and hypnotically soothing voice chanting from the Vedas ___ over a flood of old memories.\"",
+      "opts": ["DULCET, FLOATED", "EUPHONIOUS, GLIDED", "MELODIOUS, WAFTED", "TUNEFUL, DRIFTED"],
+      "c": 2,
+      "t": "vocabulary",
+      "d": "hard",
+      "id": 52,
+      "exp": "Step 1: Look at the first blank: the voice is soothing and hypnotic, so it is sweet-sounding. Step 2: 'Melodious' means sweet and musical, the most natural word for a chanting voice. Step 3: Look at the second blank: the sound travelled gently through the air. Step 4: 'Wafted' means carried gently through the air, perfect for sound and smell; 'floated' and 'drifted' are used for objects, and 'glided' for smooth movement. Step 5: The answer is MELODIOUS, WAFTED."
+    },
+    {
+      "q": "Fill in the blank: \"If she ___ harder, she would have passed.\"",
+      "opts": ["HAD WORKED", "WORKED", "WORKS", "HAS WORKED"],
+      "c": 0,
+      "t": "conditional",
+      "d": "hard",
+      "id": 53,
+      "exp": "Step 1: The second half uses 'would have passed', which marks a third conditional. Step 2: Third conditionals describe unreal past situations with the pattern: if + past perfect, would have + past participle. Step 3: So the blank needs 'had worked'. Step 4: 'Worked' and 'works' are not past perfect, and 'has worked' is present perfect, which never appears in third conditionals. Step 5: The answer is HAD WORKED."
+    },
+    {
+      "q": "Fill in the blank: \"He speaks as if he ___ everything.\"",
+      "opts": ["KNEW", "KNOWS", "KNOW", "HAS KNOWN"],
+      "c": 0,
+      "t": "mood",
+      "d": "hard",
+      "id": 54,
+      "exp": "Step 1: 'As if' introduces an unreal or hypothetical comparison. Step 2: After 'as if', the verb moves one step back into the past: 'knows' becomes 'knew'. Step 3: So the blank needs 'knew' - he speaks as if he knew everything. Step 4: 'Knows' and 'know' stay in the present, which is wrong for the unreal structure, and 'has known' is not the pattern. Step 5: The answer is KNEW."
+    },
+    {
+      "q": "Fill in the blank: \"I wish I ___ her before she left.\"",
+      "opts": ["HAD MET", "MET", "HAVE MET", "MEET"],
+      "c": 0,
+      "t": "mood",
+      "d": "hard",
+      "id": 55,
+      "exp": "Step 1: The sentence expresses regret about a past action - meeting her before she left. Step 2: After 'wish', regret about the past uses the past perfect: wish I had met. Step 3: So the blank needs 'had met'. Step 4: 'Met' is simple past, used for regrets about the present, and 'have met' and 'meet' are not used after wish for past regret. Step 5: The answer is HAD MET."
+    },
+    {
+      "q": "Fill in the blank: \"The committee, along with the staff, ___ in favor of the proposal.\"",
+      "opts": ["WAS", "WERE", "HAVE", "ARE"],
+      "c": 0,
+      "t": "subject-verb",
+      "d": "hard",
+      "id": 56,
+      "exp": "Step 1: Find the real subject of the verb. Step 2: With 'along with', the verb agrees with the subject BEFORE the phrase, which is 'The committee'. Step 3: 'Committee' is a collective noun treated as singular. Step 4: So the verb must be singular: 'was'. Step 5: The answer is WAS."
+    },
+    {
+      "q": "Fill in the blank: \"Neither the manager nor his assistants ___ present at the meeting.\"",
+      "opts": ["WERE", "WAS", "IS", "HAS"],
+      "c": 0,
+      "t": "subject-verb",
+      "d": "hard",
+      "id": 57,
+      "exp": "Step 1: With 'neither...nor', the verb agrees with the subject nearest to it. Step 2: The nearest subject is 'his assistants', which is plural. Step 3: A plural subject takes a plural verb: 'were'. Step 4: 'Was', 'is', and 'has' are singular and would be correct only if the nearest subject were singular. Step 5: The answer is WERE."
+    },
+    {
+      "q": "Fill in the blank: \"The principal, as well as the teachers, ___ agreed to the new schedule.\"",
+      "opts": ["HAS", "HAVE", "ARE", "WERE"],
+      "c": 0,
+      "t": "subject-verb",
+      "d": "hard",
+      "id": 58,
+      "exp": "Step 1: Find the real subject of the verb. Step 2: With 'as well as', the verb agrees with the subject BEFORE the phrase, which is 'The principal'. Step 3: 'The principal' is singular, so the verb must be singular: 'has'. Step 4: 'Have' is plural, and 'are' and 'were' are plural forms that would need a plural subject. Step 5: The answer is HAS."
+    },
+    {
+      "q": "Fill in the blank: \"The news ___ so shocking that everyone fell silent.\"",
+      "opts": ["WAS", "WERE", "HAVE", "HAS"],
+      "c": 0,
+      "t": "subject-verb",
+      "d": "hard",
+      "id": 59,
+      "exp": "Step 1: The subject is 'The news'. Step 2: 'News' ends in -s but is an uncountable singular noun. Step 3: A singular subject takes a singular verb, and the past tense of be is 'was'. Step 4: 'Were' is plural, 'have' is plural, and 'has' would need a different sentence structure like 'has been'. Step 5: The answer is WAS."
+    },
+    {
+      "q": "Fill in the blank: \"Each of the students ___ given a certificate.\"",
+      "opts": ["WAS", "WERE", "HAVE", "ARE"],
+      "c": 0,
+      "t": "subject-verb",
+      "d": "hard",
+      "id": 60,
+      "exp": "Step 1: The subject is 'Each', not 'the students'. Step 2: 'Each of' always takes a singular verb because it considers the group one by one. Step 3: So the verb must be singular: 'was'. Step 4: 'Were', 'have', and 'are' are plural forms and would need a plural subject. Step 5: The answer is WAS."
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "intro-blanks"
+    },
+    {
+      "type": "concept",
+      "sectionId": "grammar-blanks"
+    },
+    {
+      "type": "concept",
+      "sectionId": "preposition-conjunction"
+    },
+    {
+      "type": "example",
+      "sectionId": "vocab-strategy"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}

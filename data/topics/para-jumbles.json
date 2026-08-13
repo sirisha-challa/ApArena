@@ -1,0 +1,729 @@
+{
+  "id": "para-jumbles",
+  "title": "Para Jumbles (Sentence Rearrangement)",
+  "icon": "⇆",
+  "category": "verbal",
+  "subtitle": "Rearrange jumbled sentences into a coherent paragraph — a staple of every campus placement verbal round.",
+  "days": "1-2",
+  "color": "#10B981",
+  "subtopics": [
+    "Simple Sentence Rearrangement",
+    "Fixed First & Last Sentence (S1/S6)",
+    "Connectors, Pronouns & Chronological Markers",
+    "Opening & Closing Sentence Strategy",
+    "Company Patterns (TCS, Infosys, Accenture, Wipro, Cognizant, Capgemini)"
+  ],
+  "estimatedHours": 10,
+  "readingSections": [
+    {
+      "id": "intro-parajumbles",
+      "title": "What Are Para Jumbles?",
+      "content": "A para jumble gives you 4 to 6 sentences in a scrambled order. Your task is to arrange them into a paragraph that reads naturally and logically. These questions appear in the verbal section of TCS, Infosys, Accenture, Wipro, Cognizant, Capgemini and virtually every campus placement test. They come in two forms: (1) Simple rearrangement, where ALL sentences are jumbled and you pick the correct sequence from four options; (2) Fixed anchor type, where the first sentence (S1) and the last sentence (S6) are already placed, and you arrange the middle sentences labelled P, Q, R, S. Both forms test the same skills: understanding the topic, following the logical flow, and spotting the links between consecutive sentences.",
+      "subsections": [
+        {
+          "id": "type-simple",
+          "title": "Type 1: Simple Rearrangement",
+          "content": "You get 4-5 sentences labelled A-E or 1-5, all jumbled. The four options show different sequences. Pick the one that forms a coherent paragraph. Questions for TCS, Infosys and Accenture often use this form with business, environment, education or general-interest topics."
+        },
+        {
+          "id": "type-anchor",
+          "title": "Type 2: Fixed First and Last Sentence",
+          "content": "You get six sentences: S1 and S6 are fixed, and the middle four (P, Q, R, S) are jumbled. The task is to order only the middle four. This form appears in the papers of Cognizant, Capgemini and Wipro, and in moderate-to-difficult sets of other companies."
+        }
+      ]
+    },
+    {
+      "id": "opening-closing",
+      "title": "Find the Opening and Closing Sentences",
+      "content": "Every paragraph starts with a sentence that introduces the topic and ends with one that concludes it. The opening sentence usually: introduces the subject without assuming earlier context, and does NOT begin with pronouns like he, she, it, they, this, or with linking words like however, but, therefore, as a result. The closing sentence usually: rounds off the idea, or gives a conclusion, a result, or a final thought, and often contains words like finally, thus, therefore, ultimately, or a summary of the paragraph. In a 5-sentence question, if you identify the first and last sentences first, you can usually eliminate two options and choose between the remaining two.",
+      "subsections": [
+        {
+          "id": "open-pronoun-test",
+          "title": "The Pronoun Test",
+          "content": "A sentence that begins with 'It', 'This', 'They' or 'He' cannot be the opening sentence, because the pronoun must refer to something already mentioned. Example: 'This leads to improved performance' cannot start a paragraph — 'this' needs an earlier idea to refer to."
+        }
+      ]
+    },
+    {
+      "id": "connector-pronoun",
+      "title": "Follow the Links: Connectors and Pronouns",
+      "content": "Consecutive sentences are joined by words that point backward or forward. Pronouns (he, she, it, they, this, these) refer to a noun in an earlier sentence, so a sentence with 'it' or 'this' must come AFTER the sentence it refers to. Connectors show the relationship: 'however', 'but' show contrast; 'therefore', 'consequently', 'as a result' show cause and effect; 'also', 'moreover', 'and' add information; 'first, next, then, finally, after' show time order. Repeated nouns also link sentences: if sentence X mentions 'the committee' and sentence Y talks about 'the chairman', X likely sets up Y. Read each sentence and ask: which sentence does this one logically follow?",
+      "subsections": [
+        {
+          "id": "chrono-order",
+          "title": "Chronological Order",
+          "content": "When a passage describes a sequence of events, the time markers give the order. Words like 'first', 'then', 'after', 'later', 'finally' place sentences in sequence. Story-style paragraphs (a student applying for an internship, a scientist conducting an experiment) are almost always chronological."
+        }
+      ]
+    },
+    {
+      "id": "anchor-strategy",
+      "title": "Strategy for Fixed Anchor (S1/S6) Questions",
+      "content": "When S1 and S6 are given, treat them as anchors. Read S1 and ask which middle sentence continues its idea most naturally — that sentence comes first. Read S6 and ask which middle sentence leads into it — that sentence comes last. Then arrange the remaining two in the middle by their links. Finally, re-read the full paragraph mentally: if the flow feels natural and each sentence connects to the next, the sequence is correct. A quick verification trick: read only the first few words of each sentence in your chosen order — the paragraph should read like normal prose, not like disconnected statements.",
+      "subsections": [
+        {
+          "id": "verify-reread",
+          "title": "Re-read and Verify",
+          "content": "After choosing a sequence, read the whole paragraph once in your head. Check the tone: sentences should flow from general to specific, or problem to solution, or event to consequence. If any sentence feels out of place, reconsider."
+        }
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "id": "opening-rule",
+      "title": "Opening Sentence Rule",
+      "formula": "Opening sentence = introduces topic + starts with a noun or name, NOT a pronoun or connector",
+      "explanation": "The easiest sentence to identify is the opener. It introduces the subject ('A good work environment fosters employee satisfaction') and never starts with he, she, it, this, they, however, therefore or 'as a result'. Spot the opener first, lock it in, and eliminate every option that starts with a different sentence.",
+      "example": "Sentences: (1) As a result, people have been left with a high cost of living. (2) The Indian economy has not shown desirable growth in recent years. (3) Economists have expressed anxiety in this regard. (4) The grim global scenario has also contributed. Opening candidate: (2) — it introduces the topic. Sentence (1) starts with 'As a result' and (3) with a plain noun but states an opinion that follows facts, so (2)-(4)-(3)-(1) reads correctly."
+    },
+    {
+      "id": "link-rule",
+      "title": "Link Rule",
+      "formula": "Sentence with a pronoun/connector must come AFTER the sentence it refers to / contrasts with",
+      "explanation": "Walk sentence by sentence. 'This leads to improved performance' must follow the sentence that describes the thing 'this' refers to. 'However, it also means we depend heavily' must follow the positive statement it contrasts with. 'So no grain could be sown' follows the cause ('the monsoon failed'). Build the chain by asking: which sentence does each one depend on?",
+      "example": "Sentences: (1) Employees feel valued for their contributions. (2) This leads to improved performance. (3) A good work environment fosters satisfaction. (4) As a result, they are more motivated. Chain: (3) opens; (1) explains what a good environment does (feel valued); (4) 'as a result' follows from feeling valued; (2) 'this' follows from motivation. Order: 3, 1, 4, 2."
+    },
+    {
+      "id": "anchor-rule",
+      "title": "Anchor Rule (S1/S6 type)",
+      "formula": "First middle sentence must follow S1; last middle sentence must lead into S6",
+      "explanation": "With S1 and S6 fixed, test each middle sentence against the anchors. The correct first middle sentence continues S1's idea; the correct last middle sentence sets up S6. Eliminate options that cannot connect at either end, then order the rest by pronoun and connector links.",
+      "example": "S1: A balanced diet is important for health. P: Nutrients provide energy. Q: Fruits and vegetables are rich in vitamins. R: Too much junk food causes obesity. S: Water keeps the body hydrated. S6: Healthy choices prevent many illnesses. Q follows S1 (example of a balanced diet), S follows Q (drinking water continues healthy examples), R contrasts, P explains nutrient value: Q, P, S, R."
+    }
+  ],
+  "practiceProblems": {
+    "opening-rule": [
+      {
+        "q": "Arrange the sentences: (1) As a result, sales have doubled this quarter. (2) The new marketing campaign reached millions of viewers. (3) It focused on young audiences through social media. (4) The company decided to revamp its brand image.",
+        "s": [
+          "Step 1: Find the opener — (4) introduces the company's decision and starts with a noun phrase, so it opens.",
+          "Step 2: (2) describes the campaign that followed the decision.",
+          "Step 3: (3) expands on the campaign ('It' refers to the campaign).",
+          "Step 4: (1) closes with the result ('As a result' signals the conclusion)."
+        ],
+        "a": "4 2 3 1"
+      },
+      {
+        "q": "Arrange the sentences: (1) Pune, Bengaluru and Hyderabad are leading examples. (2) Indian cities are emerging as global IT hubs. (3) They attract talent and investment from across the world. (4) However, infrastructure must keep pace with growth.",
+        "s": [
+          "Step 1: (2) is the opener — it introduces the topic.",
+          "Step 2: (1) gives examples of the hubs.",
+          "Step 3: (3) tells what these cities do ('They' refers to the cities).",
+          "Step 4: (4) closes with the contrast ('However')."
+        ],
+        "a": "2 1 3 4"
+      },
+      {
+        "q": "Arrange the sentences: (1) Therefore, students should be taught financial basics early. (2) Most graduates today lack money-management skills. (3) Schools rarely include personal finance in their curriculum. (4) Budgeting and saving are simple once the basics are clear.",
+        "s": [
+          "Step 1: (2) states the problem and opens the paragraph.",
+          "Step 2: (3) gives the reason for the problem.",
+          "Step 3: (4) explains why basics matter.",
+          "Step 4: (1) closes with the recommendation ('Therefore')."
+        ],
+        "a": "2 3 4 1"
+      }
+    ],
+    "link-rule": [
+      {
+        "q": "Arrange the sentences: (1) This reduces the load on overloaded trains. (2) Commuters are shifting to the metro in large numbers. (3) The metro network has expanded across the city. (4) Consequently, road traffic has also eased noticeably.",
+        "s": [
+          "Step 1: (3) opens — it states the fact about the metro network.",
+          "Step 2: (2) follows — commuters shift because of the expanded network.",
+          "Step 3: (1)'s 'This' refers to commuters shifting to the metro.",
+          "Step 4: (4)'s 'Consequently' closes the result chain."
+        ],
+        "a": "3 2 1 4"
+      },
+      {
+        "q": "Arrange the sentences: (1) It also helps improve memory and focus. (2) Reading is one of the best habits a student can build. (3) Regular readers tend to score better in exams. (4) This is because books stretch the mind in ways screens do not.",
+        "s": [
+          "Step 1: (2) is the opener — it introduces the habit.",
+          "Step 3: (3) states the effect of the habit.",
+          "Step 4: (4) explains the cause ('This is because'), and (1) adds another benefit ('It also').",
+          "Step 2 (check): (1)'s 'It' refers to reading, which comes in (2); so after (2), (3), then (4), and (1) closes."
+        ],
+        "a": "2 3 4 1"
+      },
+      {
+        "q": "Arrange the sentences: (1) They must grasp cloud, AI and data fundamentals. (2) The role of a software engineer has changed completely. (3) However, core logic and problem-solving still matter most. (4) Today's engineers build systems, not just features.",
+        "s": [
+          "Step 1: (2) opens — it announces the changed role.",
+          "Step 2: (4) explains what engineers do today.",
+          "Step 3: (1)'s 'They' refers to today's engineers.",
+          "Step 4: (3) closes with the contrasting point ('However')."
+        ],
+        "a": "2 4 1 3"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) She couldn't put it down.\n2) She opened the book.\n3) She found it very interesting.\n4) She began to read.",
+      "opts": ["2 4 3 1", "3 1 2 4", "4 1 3 2", "4 2 3 1"],
+      "c": 0,
+      "t": "narrative",
+      "d": "easy",
+      "id": 1,
+      "exp": "The paragraph is a simple reading sequence: she opened the book, began to read, found it interesting, and could not put it down. The correct sequence is 2 4 3 1. The answer is 2 4 3 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Everyone enjoyed the delicious cake.\n2) She baked a cake.\n3) She added some sprinkles on top.\n4) She decorated it with frosting.",
+      "opts": ["2 4 3 1", "3 1 2 4", "4 1 3 2", "4 2 3 1"],
+      "c": 0,
+      "t": "narrative",
+      "d": "easy",
+      "id": 2,
+      "exp": "The events flow in time order: bake the cake, decorate with frosting, add sprinkles, and finally everyone enjoyed it. The correct sequence is 2 4 3 1. The answer is 2 4 3 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) He published his findings in a renowned journal.\n2) The scientist conducted an experiment.\n3) He analyzed the data thoroughly.\n4) He recorded the results meticulously.",
+      "opts": ["2 4 3 1", "3 1 2 4", "4 1 3 2", "4 2 3 1"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 3,
+      "exp": "The scientific process runs in order: conduct the experiment, record the results, analyze the data, then publish the findings. The correct sequence is 2 4 3 1. The answer is 2 4 3 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) The patient was prescribed medication and advised rest.\n2) The patient visited the doctor.\n3) He diagnosed the illness.\n4) The doctor conducted a thorough examination.",
+      "opts": ["2 4 3 1", "3 1 2 4", "4 1 3 2", "4 2 3 1"],
+      "c": 0,
+      "t": "narrative",
+      "d": "easy",
+      "id": 4,
+      "exp": "The medical visit follows a clear order: visit the doctor, get examined, get the diagnosis, then receive the prescription. The correct sequence is 2 4 3 1. The answer is 2 4 3 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Thousands of participants ran through the city streets.\n2) The marathon was announced.\n3) The race day arrived.\n4) Runners registered enthusiastically.",
+      "opts": ["2 4 3 1", "3 1 2 4", "4 1 3 2", "4 2 3 1"],
+      "c": 0,
+      "t": "narrative",
+      "d": "easy",
+      "id": 5,
+      "exp": "The marathon story moves in time: announcement, registration, race day, and finally the run through the streets. The correct sequence is 2 4 3 1. The answer is 2 4 3 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) She gained valuable experience and skills.\n2) The student applied for an internship.\n3) She was offered the position.\n4) She went through multiple rounds of interviews.",
+      "opts": ["2 4 3 1", "3 1 2 4", "4 1 3 2", "4 2 3 1"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 6,
+      "exp": "The internship journey is chronological: apply, face interviews, get the offer, then gain experience. The correct sequence is 2 4 3 1. The answer is 2 4 3 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) The park was opened to the public with a grand ceremony.\n2) The city announced a new park project.\n3) Construction teams began their work.\n4) Architects designed the layout.",
+      "opts": ["2 4 3 1", "3 1 2 4", "4 1 3 2", "4 2 3 1"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 7,
+      "exp": "The project unfolds in order: announcement, design by architects, construction, and finally the opening ceremony. The correct sequence is 2 4 3 1. The answer is 2 4 3 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) The findings were published in a prestigious academic journal.\n2) The ancient manuscript was discovered in a cave.\n3) Researchers translated the text and uncovered new historical insights.\n4) Historians carefully restored the fragile pages.",
+      "opts": ["2 4 3 1", "3 1 2 4", "4 1 3 2", "4 2 3 1"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 8,
+      "exp": "The manuscript's story is sequential: discovered in the cave, restored by historians, translated by researchers, then published. The correct sequence is 2 4 3 1. The answer is 2 4 3 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Their findings reshaped historical understanding.\n2) The expedition set out to explore uncharted territories.\n3) They discovered ancient artifacts and remnants of a lost civilization.\n4) They faced extreme weather conditions and rugged terrain.",
+      "opts": ["2 4 3 1", "3 1 2 4", "4 1 3 2", "4 2 3 1"],
+      "c": 0,
+      "t": "narrative",
+      "d": "easy",
+      "id": 9,
+      "exp": "The expedition narrative is chronological: set out, face harsh conditions, discover artifacts, then the findings reshape history. The correct sequence is 2 4 3 1. The answer is 2 4 3 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) He sat down with his laptop.\n2) Rahul woke up early.\n3) He finished his breakfast quickly.\n4) He began preparing for the interview.",
+      "opts": ["2 3 1 4", "2 1 3 4", "3 2 1 4", "2 3 4 1"],
+      "c": 0,
+      "t": "narrative",
+      "d": "easy",
+      "id": 10,
+      "exp": "Rahul's morning is described in time order: woke up, finished breakfast, sat with the laptop, and began interview preparation. The correct sequence is 2 3 1 4. The answer is 2 3 1 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) She chopped the vegetables.\n2) Meera decided to cook dinner.\n3) She served the food to her family.\n4) She cooked everything in a large pan.",
+      "opts": ["2 1 4 3", "1 2 4 3", "2 4 1 3", "2 1 3 4"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 11,
+      "exp": "Cooking follows a fixed order: decide to cook, chop the vegetables, cook in the pan, and serve the family. The correct sequence is 2 1 4 3. The answer is 2 1 4 3."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) He reached the station early.\n2) Arjun decided to travel by train.\n3) He boarded the train.\n4) He bought a ticket from the counter.",
+      "opts": ["2 1 4 3", "1 2 4 3", "2 4 1 3", "2 1 3 4"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 12,
+      "exp": "The train journey is sequential: decide to travel, reach the station, buy a ticket, and board the train. The correct sequence is 2 1 4 3. The answer is 2 1 4 3."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) The sapling was planted in the soil.\n2) The children decided to plant a tree.\n3) Water was poured around the roots.\n4) They dug a small pit in the garden.",
+      "opts": ["2 4 1 3", "2 1 4 3", "4 2 1 3", "2 4 3 1"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 13,
+      "exp": "Planting a tree is ordered: decide to plant, dig the pit, place the sapling, and pour water around the roots. The correct sequence is 2 4 1 3. The answer is 2 4 1 3."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) She was offered the job the next day.\n2) Priya applied for a software engineer role.\n3) She cleared the technical round.\n4) She attended the HR discussion.",
+      "opts": ["2 3 4 1", "3 4 2 1", "2 4 3 1", "2 3 1 4"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 14,
+      "exp": "The hiring process is chronological: apply, clear the technical round, attend HR, then receive the offer. The correct sequence is 2 3 4 1. The answer is 2 3 4 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) He turned to the sports page.\n2) Ravi picked up the morning newspaper.\n3) He read about the cricket match.\n4) He finished with the crossword.",
+      "opts": ["2 1 3 4", "1 3 2 4", "2 3 1 4", "2 1 4 3"],
+      "c": 0,
+      "t": "narrative",
+      "d": "easy",
+      "id": 15,
+      "exp": "The reading routine flows: pick up the paper, turn to sports, read the cricket news, and finish with the crossword. The correct sequence is 2 1 3 4. The answer is 2 1 3 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) They packed some snacks, water and a map before starting their journey.\nB) It was a bright sunny day when the children decided to go on an adventure in the nearby forest.\nC) Along the way, they spotted various birds and colorful flowers, which made their trip even more enjoyable.\nD) After a long walk, they finally reached a beautiful clearing where they rested and enjoyed the picnic.",
+      "opts": ["B A C D", "A B C D", "B A D C", "C A B D"],
+      "c": 0,
+      "t": "narrative",
+      "d": "easy",
+      "id": 16,
+      "exp": "The adventure runs from start to finish: the decision on a sunny day, packing, enjoying the walk, and finally the picnic at the clearing. The correct sequence is B A C D. The answer is B A C D."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) The results were announced in the evening.\n2) Sara studied hard for the final exam.\n3) She revised all the chapters twice.\n4) She was happy to see her score.",
+      "opts": ["2 3 1 4", "3 2 1 4", "2 1 3 4", "2 3 4 1"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 17,
+      "exp": "The exam story is ordered: study hard, revise twice, see the results, and feel happy about the score. The correct sequence is 2 3 1 4. The answer is 2 3 1 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) She made a list of items to buy.\n2) Anitha went to the supermarket.\n3) She paid at the billing counter.\n4) She filled her cart with groceries.",
+      "opts": ["2 1 4 3", "1 2 4 3", "2 4 1 3", "2 1 3 4"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 18,
+      "exp": "The shopping trip is sequential: go to the store, make the list, fill the cart, and pay at the counter. The correct sequence is 2 1 4 3. The answer is 2 1 4 3."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) The crowd cheered loudly.\n2) The final match began at noon.\n3) The batsman hit a six on the last ball.\n4) The home team won the trophy.",
+      "opts": ["2 1 3 4", "1 2 3 4", "2 3 1 4", "3 2 1 4"],
+      "c": 0,
+      "t": "narrative",
+      "d": "easy",
+      "id": 19,
+      "exp": "The match narrative flows: the match begins, the crowd cheers, the last-ball six is hit, and the home team lifts the trophy. The correct sequence is 2 1 3 4. The answer is 2 1 3 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) The roads were blocked with water.\n2) It rained heavily all night.\n3) Students stayed at home.\n4) School was declared a holiday.",
+      "opts": ["2 1 4 3", "1 2 4 3", "2 4 1 3", "2 1 3 4"],
+      "c": 0,
+      "t": "narrative",
+      "d": "easy",
+      "id": 20,
+      "exp": "The rainy-day chain is causal: heavy rain, blocked roads, a declared holiday, and students staying home. The correct sequence is 2 1 4 3. The answer is 2 1 4 3."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) He adjusted the camera settings.\n2) The photographer arrived at the venue.\n3) He captured the bride and groom.\n4) He reviewed the pictures on his screen.",
+      "opts": ["2 1 3 4", "1 2 3 4", "2 3 1 4", "2 1 4 3"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 21,
+      "exp": "The photographer's work is ordered: arrive at the venue, adjust the settings, capture the couple, and review the pictures. The correct sequence is 2 1 3 4. The answer is 2 1 3 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) The stall owner boiled the milk.\n2) Customers queued up early in the morning.\n3) He added tea leaves and sugar.\n4) Fresh cups of tea were served quickly.",
+      "opts": ["2 1 3 4", "1 3 2 4", "2 3 1 4", "1 2 3 4"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 22,
+      "exp": "The tea-stall scene is chronological: customers queue up, the milk is boiled, tea leaves and sugar are added, and fresh cups are served. The correct sequence is 2 1 3 4. The answer is 2 1 3 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) She borrowed two books.\n2) Kavya visited the library after class.\n3) She browsed the new arrivals section.\n4) She issued them with her library card.",
+      "opts": ["2 3 1 4", "2 1 3 4", "3 2 1 4", "2 3 4 1"],
+      "c": 0,
+      "t": "narrative",
+      "d": "easy",
+      "id": 23,
+      "exp": "The library visit is ordered: visit the library, browse the new arrivals, choose the books, and issue them with the card. The correct sequence is 2 3 1 4. The answer is 2 3 1 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) The flowers bloomed beautifully.\n2) She watered the plants daily.\n3) Riya planted seeds in pots.\n4) The leaves sprouted within a week.",
+      "opts": ["3 2 4 1", "2 3 4 1", "3 4 2 1", "3 2 1 4"],
+      "c": 0,
+      "t": "process",
+      "d": "easy",
+      "id": 24,
+      "exp": "The gardening process runs: plant the seeds, water daily, watch leaves sprout, and finally see the flowers bloom. The correct sequence is 3 2 4 1. The answer is 3 2 4 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) As a result, they are more motivated to work hard.\n2) This leads to improved performance in their tasks.\n3) Employees feel valued and recognized for their contributions.\n4) A good work environment fosters employee satisfaction.",
+      "opts": ["4 3 1 2", "3 1 4 2", "4 2 1 3", "1 4 2 3"],
+      "c": 0,
+      "t": "cause-effect",
+      "d": "medium",
+      "id": 25,
+      "exp": "A good work environment (4) makes employees feel valued (3), which motivates them (1) and results in improved performance (2). The correct sequence is 4 3 1 2. The answer is 4 3 1 2."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Such efforts help in reducing the carbon footprint.\n2) Recycling and reusing materials can make a significant impact.\n3) Awareness about environmental sustainability is growing rapidly.\n4) It also contributes to the conservation of natural resources.",
+      "opts": ["3 2 1 4", "2 4 1 3", "3 4 2 1", "4 2 3 1"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 26,
+      "exp": "Awareness about sustainability (3) sets up the discussion of recycling (2), which reduces the carbon footprint (1) and conserves resources (4). The correct sequence is 3 2 1 4. The answer is 3 2 1 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) However, challenges such as accessibility and affordability remain.\n2) Healthcare is a basic right for every individual.\n3) Governments and organizations must work to bridge these gaps.\n4) In recent years, many initiatives have aimed to provide universal healthcare.",
+      "opts": ["2 4 1 3", "4 3 1 2", "3 2 4 1", "1 2 3 4"],
+      "c": 0,
+      "t": "cause-effect",
+      "d": "medium",
+      "id": 27,
+      "exp": "The paragraph starts with the principle (2), moves to the initiatives (4), notes the challenges (1), and ends with the call to action (3). The correct sequence is 2 4 1 3. The answer is 2 4 1 3."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Technology plays a pivotal role in addressing these issues.\n2) Food security remains a global challenge.\n3) Innovations like precision farming and biotechnology are game changers.\n4) They help optimize resources and increase crop yields.",
+      "opts": ["2 1 3 4", "1 4 3 2", "2 3 4 1", "3 1 4 2"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 28,
+      "exp": "The paragraph starts with the problem of food security (2), highlights technology's role (1), gives examples of innovations (3), and explains their impact (4). The correct sequence is 2 1 3 4. The answer is 2 1 3 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) By engaging in these activities, they build a sense of community.\n2) Volunteering and participating in local events have numerous benefits.\n3) It also improves their social skills and networks.\n4) People often find these experiences deeply rewarding.",
+      "opts": ["2 4 1 3", "2 1 3 4", "1 3 4 2", "4 2 1 3"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 29,
+      "exp": "The passage starts with the benefits (2), moves to personal rewards (4), community building (1), and ends with improved social skills (3). The correct sequence is 2 4 1 3. The answer is 2 4 1 3."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Over time, these habits contribute to long-term success.\n2) Discipline and consistency are vital for achieving goals.\n3) Small, daily efforts compound into significant results.\n4) They form the foundation of personal growth and development.",
+      "opts": ["2 4 3 1", "1 3 2 4", "4 1 3 2", "3 2 4 1"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 30,
+      "exp": "Discipline and consistency (2) form the foundation of growth (4), followed by daily efforts (3) and long-term success (1). The correct sequence is 2 4 3 1. The answer is 2 4 3 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) It also enhances their problem-solving skills.\n2) Critical thinking is a vital skill for individuals in the modern world.\n3) It helps them analyze situations effectively.\n4) Educational systems must incorporate methods to nurture this skill.",
+      "opts": ["2 3 1 4", "4 2 1 3", "2 4 3 1", "3 1 2 4"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 31,
+      "exp": "Critical thinking is introduced (2), its benefits follow (3 and 1), and the passage closes with the call for action in education (4). The correct sequence is 2 3 1 4. The answer is 2 3 1 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Art transcends cultural and geographical barriers.\n2) It has the power to evoke emotions and inspire people.\n3) Throughout history, it has played a significant role in shaping societies.\n4) This universal appeal makes it a tool for communication and unity.",
+      "opts": ["3 1 2 4", "1 2 4 3", "3 4 1 2", "2 1 3 4"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 32,
+      "exp": "The passage starts with art's historical role (3), its universal nature (1), its emotional power (2), and ends with its role in unity (4). The correct sequence is 3 1 2 4. The answer is 3 1 2 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) They often depict vivid landscapes and intricate details.\n2) Impressionist paintings are celebrated for their unique techniques.\n3) The use of light and color in these works is remarkable.\n4) Many of these artworks capture fleeting moments in time.",
+      "opts": ["2 4 1 3", "2 1 3 4", "4 3 2 1", "1 2 3 4"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 33,
+      "exp": "The subject is introduced (2), the theme follows (4), the details come next (1), and the passage ends with the technique (3). The correct sequence is 2 4 1 3. The answer is 2 4 1 3."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) These efforts include strict monitoring and community engagement.\n2) Conserving wildlife is critical for maintaining ecological balance.\n3) Various organizations are working tirelessly toward this goal.\n4) This requires collaborative efforts from governments and citizens alike.",
+      "opts": ["2 3 4 1", "4 1 2 3", "3 2 1 4", "2 4 1 3"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 34,
+      "exp": "The need for conservation opens (2), the organizations follow (3), collaboration is emphasized (4), and the specific efforts close (1). The correct sequence is 2 3 4 1. The answer is 2 3 4 1."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) Scientists study animal behavior to understand ecosystems better.\nB) Observations help identify how species interact with each other.\nC) This knowledge supports conservation efforts worldwide.\nD) Many animals display complex social behaviors that surprise researchers.",
+      "opts": ["A D B C", "A B D C", "D A B C", "A D C B"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 35,
+      "exp": "Scientists study behavior (A), many animals display surprising behaviors (D), observations reveal species interactions (B), and this knowledge supports conservation (C). The correct sequence is A D B C. The answer is A D B C."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) Modern smartphones combine many functions into a single device.\nB) From communication to entertainment, they have changed how we live.\nC) This integration has made daily tasks more convenient and faster.\nD) However, it also means we depend heavily on these gadgets.",
+      "opts": ["A B C D", "A C B D", "B A C D", "A B D C"],
+      "c": 0,
+      "t": "contrast",
+      "d": "medium",
+      "id": 36,
+      "exp": "Smartphones are introduced (A), their impact follows (B), the convenience of integration (C), and the closing note of caution (D) with 'However'. The correct sequence is A B C D. The answer is A B C D."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) The festival is celebrated with colorful decorations and music.\nB) People from different communities come together during this event.\nC) It marks the beginning of the harvest season in many regions.\nD) Traditional dances and food add to the festive atmosphere.",
+      "opts": ["C B A D", "A B C D", "C A B D", "B C A D"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 37,
+      "exp": "The festival's significance opens (C), the coming together of communities follows (B), the celebrations (A), and the traditional dances and food close (D). The correct sequence is C B A D. The answer is C B A D."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Remote work has become common in the IT industry.\n2) Companies now provide laptops and internet allowances to employees.\n3) However, it also demands strong self-discipline.\n4) Many developers find it more productive than office work.",
+      "opts": ["1 2 4 3", "2 1 4 3", "1 4 2 3", "1 2 3 4"],
+      "c": 0,
+      "t": "contrast",
+      "d": "medium",
+      "id": 38,
+      "exp": "Remote work is introduced (1), company support follows (2), developer experience (4), and the closing contrast with 'However' (3). The correct sequence is 1 2 4 3. The answer is 1 2 4 3."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Digital payment apps have changed the way people shop.\n2) Even small street vendors now accept UPI payments.\n3) Customers simply scan a code and pay instantly.\n4) This shift has reduced the need to carry cash.",
+      "opts": ["1 2 3 4", "2 1 3 4", "1 3 2 4", "1 2 4 3"],
+      "c": 0,
+      "t": "process",
+      "d": "medium",
+      "id": 39,
+      "exp": "The apps are introduced (1), vendor adoption follows (2), the customer action (3), and the closing result about cash (4). The correct sequence is 1 2 3 4. The answer is 1 2 3 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Online learning platforms offer courses on every subject.\n2) Students can watch recorded lectures at their own pace.\n3) Therefore, thousands of graduates are upskilling through them.\n4) Many of these courses also provide certificates.",
+      "opts": ["1 2 4 3", "2 1 4 3", "1 4 2 3", "1 2 3 4"],
+      "c": 0,
+      "t": "cause-effect",
+      "d": "medium",
+      "id": 40,
+      "exp": "The platforms open (1), self-paced lectures follow (2), certificates add value (4), and 'Therefore' closes with the upskilling result (3). The correct sequence is 1 2 4 3. The answer is 1 2 4 3."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Electric vehicles are becoming popular in Indian cities.\n2) They produce no exhaust fumes and run quietly.\n3) Charging stations are being installed in many areas.\n4) Consequently, more families are considering them for daily travel.",
+      "opts": ["1 2 3 4", "2 1 3 4", "1 3 2 4", "1 2 4 3"],
+      "c": 0,
+      "t": "cause-effect",
+      "d": "medium",
+      "id": 41,
+      "exp": "EVs are introduced (1), their clean running (2), the growing charging network (3), and 'Consequently' closes with family adoption (4). The correct sequence is 1 2 3 4. The answer is 1 2 3 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Teamwork is essential in modern workplaces.\n2) Regular meetings help the team stay aligned.\n3) When members share ideas openly, better solutions emerge.\n4) This collaboration ultimately boosts the company's growth.",
+      "opts": ["1 3 2 4", "1 2 3 4", "3 1 2 4", "1 3 4 2"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 42,
+      "exp": "Teamwork opens (1), meetings keep the team aligned (2), open sharing yields better solutions (3), and the closing result is the company's growth (4). The correct sequence is 1 3 2 4. The answer is 1 3 2 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Solar energy is a clean and renewable source of power.\n2) Many households have reduced their electricity bills this way.\n3) Solar panels on rooftops convert sunlight into electricity.\n4) The government also offers subsidies for installing panels.",
+      "opts": ["1 3 2 4", "1 2 3 4", "3 1 2 4", "1 3 4 2"],
+      "c": 0,
+      "t": "process",
+      "d": "medium",
+      "id": 43,
+      "exp": "Solar energy opens (1), rooftop panels convert sunlight (3), households benefit (2), and the closing line adds the subsidy support (4). The correct sequence is 1 3 2 4. The answer is 1 3 2 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Good customer service builds long-term trust with clients.\n2) A complaint handled quickly often turns into a loyal customer.\n3) Therefore, companies train their staff to respond politely.\n4) They also follow up after every resolution.",
+      "opts": ["1 2 3 4", "2 1 3 4", "1 3 2 4", "1 2 4 3"],
+      "c": 0,
+      "t": "cause-effect",
+      "d": "medium",
+      "id": 44,
+      "exp": "Customer service opens (1), the handled complaint follows (2), 'Therefore' leads to staff training (3), and the follow-up closes (4). The correct sequence is 1 2 3 4. The answer is 1 2 3 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Traffic congestion is a growing problem in metro cities.\n2) Carpooling can also reduce the number of cars on the road.\n3) Long queues of vehicles waste hours every day.\n4) Metro rail projects are being expanded to ease the pressure.",
+      "opts": ["1 3 4 2", "1 2 3 4", "1 3 2 4", "3 1 4 2"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 45,
+      "exp": "Congestion opens (1), wasted hours follow (3), metro expansion addresses it (4), and carpooling adds another solution (2). The correct sequence is 1 3 4 2. The answer is 1 3 4 2."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Indian startups are attracting huge investments.\n2) They are creating thousands of jobs for young graduates.\n3) Many of them focus on technology and e-commerce.\n4) However, several startups fail within the first few years.",
+      "opts": ["1 3 2 4", "1 2 3 4", "3 1 2 4", "1 3 4 2"],
+      "c": 0,
+      "t": "contrast",
+      "d": "medium",
+      "id": 46,
+      "exp": "Startups open (1), their tech focus follows (3), job creation (2), and the closing caution starts with 'However' (4). The correct sequence is 1 3 2 4. The answer is 1 3 2 4."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) Reading regularly improves vocabulary and concentration.\n2) Parents should also read to their kids at bedtime.\n3) Children who read daily perform better in school.\n4) Libraries and book clubs encourage this habit.",
+      "opts": ["1 3 4 2", "1 2 3 4", "1 4 3 2", "3 1 4 2"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 47,
+      "exp": "Reading's benefit opens (1), school performance follows (3), libraries and book clubs encourage it (4), and parents' role closes (2). The correct sequence is 1 3 4 2. The answer is 1 3 4 2."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\n1) A healthy lifestyle includes proper diet and regular exercise.\n2) Consistency matters more than occasional effort.\n3) Small changes like walking daily bring big benefits.\n4) Avoiding junk food and sugary drinks also helps.",
+      "opts": ["1 3 4 2", "1 2 3 4", "1 4 3 2", "3 1 4 2"],
+      "c": 0,
+      "t": "topic",
+      "d": "medium",
+      "id": 48,
+      "exp": "The healthy lifestyle opens (1), small daily changes follow (3), avoiding junk food adds on (4), and the closing point about consistency (2). The correct sequence is 1 3 4 2. The answer is 1 3 4 2."
+    },
+    {
+      "q": "Each passage consists of six sentences. S1 and S6 are fixed. Arrange P, Q, R and S between them.\nS1: In the middle of one side of the square sits the Chairman of the committee, the most important person in the room.\nP: A committee is not just a mere collection of individuals.\nQ: On him rests much of the responsibility for the success or failure of the committee.\nR: While this is happening, we have an opportunity to get the 'feel' of this committee.\nS: As the meeting opens, he runs briskly through several formalities.\nS6: From the moment its members meet, it begins to have a sort of nebulous life of its own.",
+      "opts": ["Q S R P", "P Q S R", "S Q R P", "Q R S P"],
+      "c": 0,
+      "t": "anchor",
+      "d": "hard",
+      "id": 49,
+      "exp": "Q continues S1 ('On him' refers to the Chairman), S follows with the meeting opening, R observes the committee in action, and P closes by contrasting with S6's idea. The correct sequence is Q S R P. The answer is Q S R P."
+    },
+    {
+      "q": "Each passage consists of six sentences. S1 and S6 are fixed. Arrange P, Q, R and S between them.\nS1: The process of photosynthesis is vital for all life on Earth.\nP: It involves the conversion of sunlight into chemical energy.\nQ: Chlorophyll in the leaves captures sunlight.\nR: This energy is used to convert carbon dioxide and water into glucose.\nS: Oxygen is released as a by-product during this process.\nS6: Photosynthesis sustains the energy flow in almost all ecosystems.",
+      "opts": ["Q P R S", "P Q R S", "Q R P S", "Q P S R"],
+      "c": 0,
+      "t": "anchor",
+      "d": "hard",
+      "id": 50,
+      "exp": "Q follows S1 by naming chlorophyll's role, P explains the energy conversion, R uses that energy ('This energy'), S adds the oxygen by-product, and S6 closes. The correct sequence is Q P R S. The answer is Q P R S."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) The pudding seems to have two principal forms.\nB) There were mainly bulwarks against winters, the hoarded dregs of more plentiful seasons.\nC) Subsequently people baked them into a kind of pie, adding bread crumbs for bulk, eggs to bind it and upping the dried fruits, and called it plum pudding.\nD) The first were the earliest mince pies, which saw cooked, shredded meat, dried fruits, alcohol with its preservative qualities and perhaps a few spices or herbs, all encased in larger pies.\nE) The second main pudding was porridge or soup called frumenty, a fast dish of cracked wheat, currants and almonds, ladled out at the start of a meal.",
+      "opts": ["A D B E C", "A B C D E", "C E D A B", "A D E C B"],
+      "c": 0,
+      "t": "process",
+      "d": "hard",
+      "id": 51,
+      "exp": "The passage opens with the two forms of pudding (A), describes the first form, the mince pies (D), notes they were bulwarks against winters (B), moves to the second form, frumenty (E), and closes with how these became plum pudding (C). The correct sequence is A D B E C. The answer is A D B E C."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) The new publication on this subject is an attempt to lend teachers a helping hand.\nB) The environment education unit of the Centre for Science and Environment has always worked towards providing easy-to-understand reading material.\nC) And natural resources — how to share and care.\nD) It unfolds in two sections — climate change: how to make sense of it all.\nE) However, they are introduced to students not as a paragraph to memorize but as an activity to do.",
+      "opts": ["B A D C E", "D E A C B", "A C B D E", "C B E A D"],
+      "c": 0,
+      "t": "topic",
+      "d": "hard",
+      "id": 52,
+      "exp": "The unit's work opens (B), its new publication follows (A), the two sections are named (D and C), and the closing contrast explains the teaching approach (E). The correct sequence is B A D C E. The answer is B A D C E."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) As the situation escalated with rapes, murders, burning of property, looting and displacement of thousands of people throughout the country, the international community was urged to act.\nB) Many countries responded, providing essential humanitarian assistance and logistical support.\nC) The post-election crisis in Kenya remains unsolved.\nD) The damage being done to the country's economy is severe — tourism, horticulture and other industries that depend on trade beyond the Kenyan border are reeling.\nE) Thousands of livelihoods, along with investments throughout the region, are threatened and collapsing.",
+      "opts": ["C D E A B", "D E A C B", "B E A D C", "A E D C B"],
+      "c": 0,
+      "t": "cause-effect",
+      "d": "hard",
+      "id": 53,
+      "exp": "The unsolved crisis opens (C), the economic damage follows (D), collapsing livelihoods (E), the escalating situation that urged international action (A), and the countries' response closes (B). The correct sequence is C D E A B. The answer is C D E A B."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) As a result, Indian people have been left subjected to a high cost of living and inflation.\nB) Economists all over the world have expressed anxiety in this regard.\nC) But one of the primary reasons for such a situation has been the Indian Government's inability to take tough decisions.\nD) The Indian economy has not shown desirable growth in recent years.\nE) The grim global economic scenario has also contributed to this problem, and a quick-fix solution seems far away.",
+      "opts": ["D E B C A", "B C A D E", "A C B E D", "E D C B A"],
+      "c": 0,
+      "t": "cause-effect",
+      "d": "hard",
+      "id": 54,
+      "exp": "The economy's slow growth opens (D), the global scenario adds to it (E), economists express anxiety (B), the primary internal reason follows with 'But' (C), and 'As a result' closes with the cost-of-living effect (A). The correct sequence is D E B C A. The answer is D E B C A."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) People started fearing a famine.\nB) The monsoon failed and water tanks became almost empty.\nC) The monsoon turned out to be unusually abundant and the danger was averted.\nD) So no grain could be sown by the farmers in their fields.\nE) Farmers looked anxiously for the next monsoon.",
+      "opts": ["B D A E C", "E D A C B", "C D E A B", "D B C E A"],
+      "c": 0,
+      "t": "cause-effect",
+      "d": "hard",
+      "id": 55,
+      "exp": "The failed monsoon opens (B), so grain could not be sown (D), people feared a famine (A), farmers anxiously awaited the next monsoon (E), which turned out abundant and averted the danger (C). The correct sequence is B D A E C. The answer is B D A E C."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) It involves seeing and realizing a vision of future markets, products and other opportunities.\nB) Entrepreneurial knowledge is essentially intuitive.\nC) To deal with uncertainty and ignorance, economists have recognized the entrepreneur as possessing this non-rational form of knowledge.\nD) Like some ancient priest-king, the entrepreneur knows the future and leads the way.\nE) Ignorance is the opposite of knowledge, i.e., want of knowledge.",
+      "opts": ["B A E C D", "A E D C B", "D C B E A", "C E B A D"],
+      "c": 0,
+      "t": "topic",
+      "d": "hard",
+      "id": 56,
+      "exp": "Entrepreneurial knowledge is declared intuitive (B), its vision follows (A), the meaning of ignorance (E), economists' recognition of this knowledge (C), and the priest-king comparison closes (D). The correct sequence is B A E C D. The answer is B A E C D."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) In 1999, two-thirds of the debt rated triple B by Standard and Poor's was priced within 20 basis points of the average bond with the same rating.\nB) It seems a bond rating tells you even less about the price that investors are willing to pay.\nC) Lately, the credit rating agencies have struggled to keep up.\nD) Their meticulous reports, giving ratings for corporate bonds, are designed to give an accurate picture of a bond's riskiness and ultimately the probability of default.\nE) The credit rating agencies use legions of highly trained analysts with access to top management.",
+      "opts": ["E D C B A", "D E A C B", "B C D E A", "A D E C B"],
+      "c": 0,
+      "t": "topic",
+      "d": "hard",
+      "id": 57,
+      "exp": "The agencies and their analysts open (E), their meticulous reports follow (D), the recent struggle (C), the conclusion about what ratings reveal (B), and the 1999 pricing evidence closes (A). The correct sequence is E D C B A. The answer is E D C B A."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) We have paid a terrible price for our education, such as it is.\nB) Wonder is marvelous, but it is also cruel, cruel, cruel.\nC) We have educated ourselves into a world from which wonder has been banished.\nD) Of course, wonder is costly because it is the antithesis of the anxiously worshipped security.\nE) The magician's worldview, in so far as it exists, has taken flight into science.",
+      "opts": ["D B A C E", "C A D E B", "B A C D E", "A E D C B"],
+      "c": 0,
+      "t": "topic",
+      "d": "hard",
+      "id": 58,
+      "exp": "Wonder's costliness opens (D), its cruel side follows (B), the price we paid for education (A), the world we were educated into (C), and the flight of wonder into science closes (E). The correct sequence is D B A C E. The answer is D B A C E."
+    },
+    {
+      "q": "Arrange the following sentences to form a coherent paragraph.\nA) Like a driver changing a tire in the middle of the highway, they hope an oncoming vehicle will not hit them before their work is done.\nB) Some business executives have adopted a 'wait and see' attitude.\nC) Others are too busy bailing themselves out of trouble caused by the changes around them to have any time to reflect on the future.\nD) Like deer caught in the headlights of an oncoming truck, they risk being run over.\nE) Discussion with several executives in both situations shows that they recognize the danger of not applying themselves to understanding the shape of the future.",
+      "opts": ["B D C A E", "D E A C B", "E A D C B", "B C D E A"],
+      "c": 0,
+      "t": "topic",
+      "d": "hard",
+      "id": 59,
+      "exp": "The wait-and-see executives open (B), the deer-in-headlights simile follows (D), the firefighting executives contrast (C), the highway-tire simile (A), and the closing observation from discussions (E). The correct sequence is B D C A E. The answer is B D C A E."
+    },
+    {
+      "q": "Each passage consists of six sentences. S1 and S6 are fixed. Arrange P, Q, R and S between them.\nS1: Eating a balanced diet is important for maintaining good health.\nP: Nutrients like vitamins, minerals, proteins and carbohydrates provide energy and support bodily functions.\nQ: Fruits and vegetables are rich sources of essential vitamins and antioxidants.\nR: Consuming too much junk food can lead to health problems such as obesity and heart disease.\nS: Drinking plenty of water also helps keep the body hydrated and functioning properly.\nS6: By making healthy food choices, we can improve our overall well-being and prevent many illnesses.",
+      "opts": ["Q P S R", "P Q R S", "Q S P R", "Q P R S"],
+      "c": 0,
+      "t": "anchor",
+      "d": "hard",
+      "id": 60,
+      "exp": "Q follows S1 with an example of a healthy diet, P explains the nutrient value, S adds hydration, R warns against junk food, and S6 closes with the benefit of healthy choices. The correct sequence is Q P S R. The answer is Q P S R."
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "intro-parajumbles"
+    },
+    {
+      "type": "concept",
+      "sectionId": "opening-closing"
+    },
+    {
+      "type": "concept",
+      "sectionId": "connector-pronoun"
+    },
+    {
+      "type": "example",
+      "sectionId": "anchor-strategy"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}

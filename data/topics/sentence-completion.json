@@ -1,0 +1,718 @@
+{
+  "id": "sentence-completion",
+  "title": "Sentence Completion",
+  "icon": "✍",
+  "category": "verbal",
+  "subtitle": "Complete sentences with the right word or phrase — testing grammar, vocabulary and logic in campus verbal rounds.",
+  "days": "1-2",
+  "color": "#8B5CF6",
+  "subtopics": [
+    "Single-Blank Completions",
+    "Double-Blank Word Pairs",
+    "Prepositions & Fixed Phrases",
+    "Idioms & Collocations",
+    "Company Patterns (Accenture, Infosys, TCS, Cognizant, Capgemini)"
+  ],
+  "estimatedHours": 10,
+  "readingSections": [
+    {
+      "id": "intro-completion",
+      "title": "What Are Sentence Completion Questions?",
+      "content": "A sentence completion question shows a sentence with one or two blanks, marked with ______, and asks you to pick the word or phrase that completes it correctly. The single-blank form tests grammar (prepositions, fixed phrases) or vocabulary; the double-blank form tests your ability to choose two words that work together. This question type is asked by Accenture, Infosys, TCS, Cognizant, Wipro and Capgemini in their verbal sections. The best strategy is simple: read the full sentence, understand its tone, spot the clue words, and test each option in the blank.",
+      "subsections": [
+        {
+          "id": "single-vs-double",
+          "title": "Single Blank vs Double Blank",
+          "content": "Single blank: pick one word/phrase, e.g. 'We had lunch ____ a restaurant' -> AT. Double blank: pick a pair, e.g. 'Challenges must be ____ to realize the ____ of integration' -> OVERCOME...POTENTIAL. In double blanks, test the EASIER blank first to eliminate options."
+        }
+      ]
+    },
+    {
+      "id": "clue-words",
+      "title": "Read the Clue Words and the Tone",
+      "content": "Every sentence gives you clues. Transition words set the logic: 'but', 'however', 'although', 'despite' signal a CONTRAST, so the blank should take the opposite of what precedes; 'therefore', 'as a result', 'so' signal CAUSE AND EFFECT; 'and', 'also', 'moreover' signal agreement or continuation. The tone also matters: if the sentence is positive, pick a positive word; if it criticizes, pick a negative one. Example: 'He went solely by his ____ and somehow succeeded' uses 'no rationale' as the clue — the blank must oppose rationality, so INTUITION fits.",
+      "subsections": [
+        {
+          "id": "contrast-signals",
+          "title": "Contrast and Cause-Effect Signals",
+          "content": "Contrast markers: but, however, although, despite, far from, while. Cause-effect markers: therefore, consequently, as a result, so, hence. Time markers: since, for, by, until. Spotting the marker tells you whether the blank continues or reverses the idea."
+        }
+      ]
+    },
+    {
+      "id": "collocation-preposition",
+      "title": "Fixed Phrases, Prepositions and Collocations",
+      "content": "Many blanks are completed by a fixed expression or a natural word partnership, not by logic alone. Prepositions come in fixed pairs: fond OF, insist ON, prefer TO, accused OF, afraid OF, apologize FOR, good AT, angry WITH. Idioms are fixed to: a sharp TONGUE, at a DISADVANTAGE, a bed of ROSES, on cloud NINE, see eye to EYE, actions speak louder than WORDS. Collocations are natural word pairs: quench THIRST, ignite SPARK, reach a CONSENSUS, demolish an ALIBI. If you know the partnership, you can pick the answer quickly; if not, eliminate the options that are grammatically impossible.",
+      "subsections": [
+        {
+          "id": "too-to-pattern",
+          "title": "Special Patterns: too...to, neither...nor",
+          "content": "Some patterns force a meaning. 'The news is too good to be true' (too + adjective + to-infinitive). 'It neither outlined a vision nor offered a plan' (neither...nor makes both halves negative). Recognizing the pattern often leaves only one correct option."
+        }
+      ]
+    },
+    {
+      "id": "elimination-strategy",
+      "title": "The Elimination Strategy",
+      "content": "Work in steps. Step 1: Reject any option that is grammatically wrong in the blank (wrong preposition partner, wrong word form). Step 2: Reject options that break the sentence's logic or tone (positive word in a negative sentence). Step 3: If two options remain, prefer the more natural collocation, and check the double blank by inserting BOTH words and reading the full sentence aloud. Finally re-read the completed sentence; if it reads naturally and matches the clue words, your answer is right.",
+      "subsections": [
+        {
+          "id": "double-blank-tip",
+          "title": "Double-Blank Tip",
+          "content": "In a double blank, pick the blank with the stronger clue first. Often one blank has an almost obvious answer (e.g. 'quench the ____' -> thirst); use it to eliminate options, then confirm the second word fits."
+        }
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "id": "clue-rule",
+      "title": "The Clue Word Rule",
+      "formula": "Clue word -> Logic of blank (contrast, cause-effect, tone)",
+      "explanation": "The word that unlocks a blank is usually a transition marker or a tone-setting phrase. 'But' and 'although' flip the meaning, so the blank takes the opposite idea. 'Therefore' and 'as a result' continue a cause. A phrase like 'no rationale' tells you the blank opposes rationality. Find the clue first, then match the option to it.",
+      "example": "Sentence: 'He went solely by his ____ and somehow succeeded.' Clues: 'no rationale behind his act' and 'somehow'. Since there was no reason, he used INTUITION, not logic or analysis. Answer: INTUITION."
+    },
+    {
+      "id": "collocation-rule",
+      "title": "The Collocation & Fixed Phrase Rule",
+      "formula": "Natural word partnership / fixed preposition-preposition pair -> fills the blank",
+      "explanation": "English has fixed partnerships. Prepositions attach to specific words (fond of, insist on, prefer to, accused of). Verbs pair with specific nouns (quench thirst, ignite spark, demolish an alibi, reach a consensus). Idioms are fixed phrases (sharp tongue, at a disadvantage, too good to be true). Knowing the pair answers the blank without deep logic.",
+      "example": "Sentence: 'Our job as teachers is to ____ the thirst for knowledge and ____ the spark of enthusiasm.' Partnerships: thirst is QUENCHED, a spark is IGNITED. Answer: QUENCH...IGNITE."
+    },
+    {
+      "id": "elimination-rule",
+      "title": "The Elimination Rule",
+      "formula": "Reject grammatically wrong -> reject logically/tone wrong -> pick natural pair",
+      "explanation": "When you are unsure, eliminate instead of choosing. First cut options that do not even fit the grammar of the blank. Next cut options that contradict the clue words or the tone. With double blanks, also eliminate any pair whose words do not sit together naturally. What remains is the answer.",
+      "example": "Sentence: 'Vinod is clearly ____ when it comes to speaking English.' Options with 'to/in/from/on a disadvantage' are grammatically wrong; only 'at a disadvantage' is a valid expression. Answer: AT A DISADVANTAGE."
+    }
+  ],
+  "practiceProblems": {
+    "clue-rule": [
+      {
+        "q": "Complete the sentence: \"The news of the promotion was too good to be ______.\"",
+        "s": [
+          "Step 1: Spot the pattern 'too good to be...'.",
+          "Step 2: 'Too...to' usually carries the sense of exceeding belief.",
+          "Step 3: The fixed phrase is 'too good to be true'."
+        ],
+        "a": "TRUE"
+      },
+      {
+        "q": "Complete the sentence: \"He went solely by his ______ and somehow succeeded, since there was no rationale behind his act.\"",
+        "s": [
+          "Step 1: The clue 'no rationale' means the blank must oppose logic.",
+          "Step 2: 'Interpretation' and 'analysis' are rational processes, so eliminate them.",
+          "Step 3: 'Intuition' is a hunch without reason — the right fit."
+        ],
+        "a": "INTUITION"
+      },
+      {
+        "q": "Complete the sentence: \"Far from being ______, the young manager proved extremely effective in handling the crisis.\"",
+        "s": [
+          "Step 1: The signal 'far from' introduces a contrast.",
+          "Step 2: The second half says 'extremely effective'.",
+          "Step 3: The blank therefore takes the opposite of effective — 'inept'."
+        ],
+        "a": "INEPT"
+      }
+    ],
+    "collocation-rule": [
+      {
+        "q": "Complete the sentence: \"She is very fond ______ classical music.\"",
+        "s": [
+          "Step 1: Identify the fixed adjective-preposition pair.",
+          "Step 2: 'Fond' always takes 'of' (fond of).",
+          "Step 3: The answer is 'of'."
+        ],
+        "a": "OF"
+      },
+      {
+        "q": "Complete the sentence: \"The company's new app was delayed because the developers could not ______ the bugs.\"",
+        "s": [
+          "Step 1: Look for a natural verb pairing with 'bugs'.",
+          "Step 2: Bugs are 'ironed out' or 'fixed'.",
+          "Step 3: The natural collocation here is 'iron out'."
+        ],
+        "a": "IRON OUT"
+      },
+      {
+        "q": "Complete the sentence: \"Every minister must be made ______ to the public for his acts of omission and commission.\"",
+        "s": [
+          "Step 1: The clue is 'for his acts', meaning he must answer for them.",
+          "Step 2: 'Menacing', 'acceptable' and 'dispensable' do not fit this sense.",
+          "Step 3: 'Accountable' means responsible for one's actions."
+        ],
+        "a": "ACCOUNTABLE"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "q": "Complete the sentence: \"We had lunch ______ a Chinese restaurant yesterday.\"",
+      "opts": ["AT", "IN", "ON", "FROM"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 1,
+      "exp": "We use 'at' for a specific restaurant or place. 'In' would be used for a larger area, 'on' needs a surface, and 'from' does not fit. The answer is AT."
+    },
+    {
+      "q": "Complete the sentence: \"He's got a sharp ______; he might get into trouble if he isn't careful.\"",
+      "opts": ["MOUTH", "TONGUE", "BRAIN", "VISION"],
+      "c": 1,
+      "t": "idiom",
+      "d": "easy",
+      "id": 2,
+      "exp": "A 'sharp tongue' is a fixed idiom meaning a tendency to say harsh or biting things, which explains why he might get into trouble. The answer is TONGUE."
+    },
+    {
+      "q": "Complete the sentence: \"Vinod is clearly ______ when it comes to speaking English.\"",
+      "opts": ["TO A DISADVANTAGE", "AT A DISADVANTAGE", "FROM A DISADVANTAGE", "IN A DISADVANTAGE"],
+      "c": 1,
+      "t": "idiom",
+      "d": "easy",
+      "id": 3,
+      "exp": "The fixed expression is 'at a disadvantage'; the other prepositions do not form a valid phrase. The answer is AT A DISADVANTAGE."
+    },
+    {
+      "q": "Complete the sentence: \"The news is too good ______.\"",
+      "opts": ["TO BE TRUE", "TO BE BAD", "TO BE ACCEPTABLE", "AND CAN BE CREDIBLE"],
+      "c": 0,
+      "t": "idiom",
+      "d": "easy",
+      "id": 4,
+      "exp": "'Too good to be true' is a fixed phrase used when something seems impossibly positive. The other options break the 'too...to' pattern. The answer is TO BE TRUE."
+    },
+    {
+      "q": "Complete the sentence: \"Every minister must be made ______ to the public for his acts of omission and commission.\"",
+      "opts": ["ACCOUNTABLE", "MENACING", "ACCEPTABLE", "DISPENSABLE"],
+      "c": 0,
+      "t": "vocabulary",
+      "d": "easy",
+      "id": 5,
+      "exp": "Being made 'accountable to the public' means being answerable for one's decisions. 'Menacing' means threatening and does not fit. The answer is ACCOUNTABLE."
+    },
+    {
+      "q": "Complete the sentence: \"She is very fond ______ classical music.\"",
+      "opts": ["OF", "IN", "WITH", "ABOUT"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 6,
+      "exp": "The adjective 'fond' always takes the preposition 'of' — fond of something. The answer is OF."
+    },
+    {
+      "q": "Complete the sentence: \"He was accused ______ cheating in the exam.\"",
+      "opts": ["OF", "WITH", "FOR", "IN"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 7,
+      "exp": "The verb 'accuse' takes the preposition 'of' — accused of doing something. The answer is OF."
+    },
+    {
+      "q": "Complete the sentence: \"She insisted ______ coming with us.\"",
+      "opts": ["ON", "FOR", "ABOUT", "IN"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 8,
+      "exp": "The verb 'insist' takes 'on' — insist on doing something. The answer is ON."
+    },
+    {
+      "q": "Complete the sentence: \"I prefer tea ______ coffee.\"",
+      "opts": ["TO", "THAN", "OVER", "FROM"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 9,
+      "exp": "The verb 'prefer' is followed by 'to' when comparing two things — prefer X to Y. The answer is TO."
+    },
+    {
+      "q": "Complete the sentence: \"The child was deprived ______ his toys as punishment.\"",
+      "opts": ["OF", "FROM", "WITH", "OFF"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 10,
+      "exp": "The verb 'deprive' takes 'of' — deprived of something. The answer is OF."
+    },
+    {
+      "q": "Complete the sentence: \"Suresh is a ______ who can dupe even the not so gullible.\"",
+      "opts": ["PERFECT GENTLEMAN", "KNOWLEDGEABLE PERSON", "SMOOTH OPERATOR", "BLABBERMOUTH"],
+      "c": 2,
+      "t": "idiom",
+      "d": "easy",
+      "id": 11,
+      "exp": "'Smooth operator' is an idiom for a person who is skilled at convincing or deceiving others, matching the clue 'dupe even the not so gullible'. The answer is SMOOTH OPERATOR."
+    },
+    {
+      "q": "Complete the sentence: \"She is always generous and caring; she has a heart of ______.\"",
+      "opts": ["GOLD", "STEEL", "STONE", "WOOD"],
+      "c": 0,
+      "t": "idiom",
+      "d": "easy",
+      "id": 12,
+      "exp": "'A heart of gold' is a fixed idiom meaning a very kind and generous nature. The answer is GOLD."
+    },
+    {
+      "q": "Complete the sentence: \"The report is due ______ Friday.\"",
+      "opts": ["BY", "IN", "ON", "AT"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 13,
+      "exp": "'Due by Friday' means on or before Friday; 'by' sets the deadline. The answer is BY."
+    },
+    {
+      "q": "Complete the sentence: \"He looked ______ his notes before the exam.\"",
+      "opts": ["THROUGH", "AT", "OVER", "DOWN"],
+      "c": 0,
+      "t": "phrasal",
+      "d": "easy",
+      "id": 14,
+      "exp": "'Look through' is a phrasal verb meaning to examine or review something quickly. The answer is THROUGH."
+    },
+    {
+      "q": "Complete the sentence: \"She is afraid ______ spiders.\"",
+      "opts": ["OF", "FROM", "WITH", "TO"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 15,
+      "exp": "The adjective 'afraid' takes 'of' — afraid of something. The answer is OF."
+    },
+    {
+      "q": "Complete the sentence: \"The cat jumped ______ the table.\"",
+      "opts": ["ONTO", "INTO", "OVER", "ACROSS"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 16,
+      "exp": "The cat moved from outside to on top of the table, so 'onto' is correct. The answer is ONTO."
+    },
+    {
+      "q": "Complete the sentence: \"We have been friends ______ many years.\"",
+      "opts": ["FOR", "SINCE", "FROM", "DURING"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 17,
+      "exp": "'For' is used with a period of time (many years); 'since' needs a point in time. The answer is FOR."
+    },
+    {
+      "q": "Complete the sentence: \"He apologized ______ being late.\"",
+      "opts": ["FOR", "ABOUT", "OF", "AT"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 18,
+      "exp": "The verb 'apologize' takes 'for' — apologize for something. The answer is FOR."
+    },
+    {
+      "q": "Complete the sentence: \"The manager praised the team ______ their hard work.\"",
+      "opts": ["FOR", "WITH", "OF", "ABOUT"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 19,
+      "exp": "The verb 'praise' takes 'for' when stating the reason — praised for something. The answer is FOR."
+    },
+    {
+      "q": "Complete the sentence: \"Life is not a bed of ______; you must work hard for success.\"",
+      "opts": ["THORNS", "ROSES", "LEAVES", "STONES"],
+      "c": 1,
+      "t": "idiom",
+      "d": "easy",
+      "id": 20,
+      "exp": "'A bed of roses' is an idiom for an easy, pleasant situation. The sentence says life is not that easy. The answer is ROSES."
+    },
+    {
+      "q": "Complete the sentence: \"She was on cloud ______ after hearing the good news.\"",
+      "opts": ["NINE", "SEVEN", "EIGHT", "TEN"],
+      "c": 0,
+      "t": "idiom",
+      "d": "easy",
+      "id": 21,
+      "exp": "'On cloud nine' is a fixed idiom meaning extremely happy. The answer is NINE."
+    },
+    {
+      "q": "Complete the sentence: \"The two brothers rarely agree; they do not see ______ to eye.\"",
+      "opts": ["EYE", "HEAD", "HAND", "NOSE"],
+      "c": 0,
+      "t": "idiom",
+      "d": "easy",
+      "id": 22,
+      "exp": "'See eye to eye' is a fixed idiom meaning to agree with someone. The answer is EYE."
+    },
+    {
+      "q": "Complete the sentence: \"Actions speak louder than ______.\"",
+      "opts": ["WORDS", "VOICES", "SOUNDS", "PROMISES"],
+      "c": 0,
+      "t": "idiom",
+      "d": "easy",
+      "id": 23,
+      "exp": "'Actions speak louder than words' is a fixed proverb meaning what you do matters more than what you say. The answer is WORDS."
+    },
+    {
+      "q": "Complete the sentence: \"Please be ______ time for the interview.\"",
+      "opts": ["ON", "IN", "AT", "WITH"],
+      "c": 0,
+      "t": "preposition",
+      "d": "easy",
+      "id": 24,
+      "exp": "The fixed phrase is 'on time' meaning punctually, while 'in time' means before a deadline. For an appointment, 'on time' fits. The answer is ON."
+    },
+    {
+      "q": "Complete the sentence: \"Challenges must be ______ to realize the ______ of greater regional economic integration.\"",
+      "opts": ["OVERCOME POTENTIAL", "SUPPRESS POWER", "IGNORE BENEFITS", "SUSTAIN ADVANTAGE"],
+      "c": 0,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 25,
+      "exp": "Challenges are 'overcome', and what is realized in integration is its 'potential'. The other pairs do not fit the logic. The answer is OVERCOME POTENTIAL."
+    },
+    {
+      "q": "Complete the sentence: \"For silent movies to succeed, the quality of acting has to be ______ as there are no ______ dialogues or music for support.\"",
+      "opts": ["MEDIOCRE ENGAGING", "REALISTIC MELODRAMATIC", "SUBSTANTIAL VEHEMENT", "EXTRAORDINARY MESMERIZING"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 26,
+      "exp": "With no dialogues or music, the acting must carry the whole film, so it has to be 'extraordinary' — taking the place of 'mesmerizing' support that is absent. The answer is EXTRAORDINARY MESMERIZING."
+    },
+    {
+      "q": "Complete the sentence: \"Sports for the visually challenged ______ their confidence and help them to mingle with the ______ of society.\"",
+      "opts": ["ENRICH STALWARTS", "PLUMMET ELITE", "BOOST MAINSTREAM", "CURB BEST"],
+      "c": 2,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 27,
+      "exp": "Sports 'boost' confidence, and such activities help people join the 'mainstream' of society — the common flowing majority. The answer is BOOST MAINSTREAM."
+    },
+    {
+      "q": "Complete the sentence: \"I have never ______ such a problem and therefore I confess I have no ______ to it.\"",
+      "opts": ["LEFT ALONE INHIBITIONS", "SHIED AWAY AT SOLUTION", "DREADED PANACEA", "COME ACROSS READY-MADE ANSWER"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 28,
+      "exp": "Having never 'come across' such a problem, he has no 'ready-made answer' to it. The other pairs do not fit the logic. The answer is COME ACROSS READY-MADE ANSWER."
+    },
+    {
+      "q": "Complete the sentence: \"Our job as teachers is to ______ the thirst for knowledge and ______ the spark of enthusiasm.\"",
+      "opts": ["QUENCH IGNITE", "SUBSTANTIATE QUELL", "SENSITIZE DOUSE", "SUSTAIN MITIGATE"],
+      "c": 0,
+      "t": "collocation",
+      "d": "medium",
+      "id": 29,
+      "exp": "Natural collocations: we 'quench' a thirst and 'ignite' a spark. The other pairs do not pair with these nouns. The answer is QUENCH IGNITE."
+    },
+    {
+      "q": "Complete the sentence: \"At a time when most charities think of ______ increasing their capital, Warren Buffett's stipulation that what he gifts must be spent within ten years comes as a ______ announcement.\"",
+      "opts": ["PERENNIALLY CONTRADICTORY", "MERELY SURPRISE", "SPORADICALLY REFRESHING", "CONSTANTLY LANDMARK"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 30,
+      "exp": "Charities 'constantly' think of increasing capital, and Buffett's demand is a 'landmark' announcement — an important one. The answer is CONSTANTLY LANDMARK."
+    },
+    {
+      "q": "Complete the sentence: \"Technology may have changed the way alliances are fixed in India, but the ______ still is arranged marriages, with even most youngsters ______ the practice.\"",
+      "opts": ["PREFERENCE LOATHING", "PRACTICE CUSTOMIZING", "CONVENTION DISDAINING", "NORM ENDORSING"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 31,
+      "exp": "'But' signals that the old way persists, so arranged marriages are still the 'norm', and youngsters are 'endorsing' the practice. The answer is NORM ENDORSING."
+    },
+    {
+      "q": "Complete the sentence: \"The Maruti has become so ______ that snobbish customers, who believe their tastes are superior to others, are ______ to buy this car of the masses.\"",
+      "opts": ["REPUTED SHIRKING", "AFFORDABLE WAITING", "UBIQUITOUS DISINCLINED", "SOUGHT AFTER QUEUING"],
+      "c": 2,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 32,
+      "exp": "The car is 'ubiquitous' (found everywhere), so snobbish buyers are 'disinclined' (unwilling) to buy what everyone owns. The answer is UBIQUITOUS DISINCLINED."
+    },
+    {
+      "q": "Complete the sentence: \"Despite repeated warnings, the driver ______ the traffic rules.\"",
+      "opts": ["FLOUTED", "FOLLOWED", "OBSERVED", "RESPECTED"],
+      "c": 0,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 33,
+      "exp": "'Despite repeated warnings' shows defiance; 'flouted' means to openly disobey, fitting the tone of the sentence. The answer is FLOUTED."
+    },
+    {
+      "q": "Complete the sentence: \"The manager's ______ remarks during the review left the new intern quite upset.\"",
+      "opts": ["WARM", "KINDLY", "SCATHING", "GENTLE"],
+      "c": 2,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 34,
+      "exp": "The intern was 'upset', so the remarks must have been harsh; 'scathing' means severely critical. The answer is SCATHING."
+    },
+    {
+      "q": "Complete the sentence: \"The ______ between the two nations eased after the trade agreement was signed.\"",
+      "opts": ["FRIENDSHIP", "TENSION", "RELATIONSHIP", "DISPUTE"],
+      "c": 1,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 35,
+      "exp": "'Tension eased' is the natural collocation for a situation improving; a friendship or relationship does not 'ease'. The answer is TENSION."
+    },
+    {
+      "q": "Complete the sentence: \"She gave a very ______ explanation of the complex theory, making it easy for everyone to understand.\"",
+      "opts": ["VAGUE", "LENGTHY", "LUCID", "CONFUSING"],
+      "c": 2,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 36,
+      "exp": "Since everyone understood easily, the explanation was 'lucid' — clear and easy to follow. The answer is LUCID."
+    },
+    {
+      "q": "Complete the sentence: \"The new policy was met with ______ from employees, who feared it would ______ their benefits.\"",
+      "opts": ["ENTHUSIASM RESTORE", "APPRECIATION BOOST", "INDIFFERENCE PRESERVE", "RESISTANCE ERODE"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 37,
+      "exp": "People who fear losing benefits show 'resistance', and the policy could 'erode' (gradually reduce) their benefits. The answer is RESISTANCE ERODE."
+    },
+    {
+      "q": "Complete the sentence: \"The company's ______ profits surprised analysts, who had expected a ______ quarter.\"",
+      "opts": ["DWINDLING ROBUST", "STAGNANT BOOMING", "MODEST THRIVING", "SOARING SLUGGISH"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 38,
+      "exp": "Analysts were surprised, so results were better than expected: 'soaring' profits versus a 'sluggish' (slow) quarter. The answer is SOARING SLUGGISH."
+    },
+    {
+      "q": "Complete the sentence: \"Reading is a ______ habit; it sharpens the mind and ______ the imagination.\"",
+      "opts": ["HARMFUL DULLS", "TEDIOUS BLUNTS", "FUTILE CONSTRICTS", "VALUABLE STIMULATES"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 39,
+      "exp": "Reading sharpens the mind, so the habit is 'valuable' and it 'stimulates' the imagination. The answer is VALUABLE STIMULATES."
+    },
+    {
+      "q": "Complete the sentence: \"The teacher's ______ tone made the students realize they had made a serious ______.\"",
+      "opts": ["JOVIAL ERROR", "MEEK BLUNDER", "STERN MISTAKE", "LENIENT FAILURE"],
+      "c": 2,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 40,
+      "exp": "A 'stern' (serious and strict) tone signals that something is wrong — a serious 'mistake'. The answer is STERN MISTAKE."
+    },
+    {
+      "q": "Complete the sentence: \"Despite the heavy rain, the match continued ______, thanks to the players' determination.\"",
+      "opts": ["HALF-HEARTEDLY", "RELUCTANTLY", "HAPHAZARDLY", "UNPERTURBED"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 41,
+      "exp": "'Despite the heavy rain' and 'determination' show calm persistence; 'unperturbed' means not disturbed or worried. The answer is UNPERTURBED."
+    },
+    {
+      "q": "Complete the sentence: \"His ______ approach to planning saved the company from a major financial crisis.\"",
+      "opts": ["RECKLESS", "HASTY", "CARELESS", "PRUDENT"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 42,
+      "exp": "Avoiding a crisis means the planning was wise and careful; 'prudent' means showing care and foresight. The answer is PRUDENT."
+    },
+    {
+      "q": "Complete the sentence: \"The ______ leader inspired his team to ______ even the toughest challenges.\"",
+      "opts": ["TIMID AVOID", "SOLITARY IGNORE", "APATHETIC ENDURE", "CHARISMATIC CONQUER"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 43,
+      "exp": "A leader who inspires people is 'charismatic', and such a team can 'conquer' tough challenges. The answer is CHARISMATIC CONQUER."
+    },
+    {
+      "q": "Complete the sentence: \"The old building was ______ to make way for a new shopping mall.\"",
+      "opts": ["RENOVATED", "PRESERVED", "RESTORED", "DEMOLISHED"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 44,
+      "exp": "To 'make way' for a new mall, the old building had to be 'demolished' (torn down). The answer is DEMOLISHED."
+    },
+    {
+      "q": "Complete the sentence: \"The ______ of the river caused flooding in the nearby villages, and the residents were forced to ______.\"",
+      "opts": ["RECEDE CELEBRATE", "FREEZE SHELTER", "DRY PROTEST", "SWELL EVACUATE"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 45,
+      "exp": "Flooding is caused when the river 'swells' (rises), forcing residents to 'evacuate' the area. The answer is SWELL EVACUATE."
+    },
+    {
+      "q": "Complete the sentence: \"He was known for his ______ memory; he could recall numbers years after first hearing them.\"",
+      "opts": ["FEEBLE", "UNRELIABLE", "SHORT", "PHENOMENAL"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 46,
+      "exp": "Recalling numbers after years shows an amazing memory, so it is 'phenomenal' — extraordinary. The answer is PHENOMENAL."
+    },
+    {
+      "q": "Complete the sentence: \"The ______ debate lasted for hours, yet the panel could not reach a ______.\"",
+      "opts": ["BRIEF AGREEMENT", "LIVELY OUTCOME", "TEDIOUS ACCORD", "PROTRACTED CONSENSUS"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 47,
+      "exp": "A debate lasting for hours is 'protracted' (lengthy), and the panel could not reach a 'consensus' (common agreement). The answer is PROTRACTED CONSENSUS."
+    },
+    {
+      "q": "Complete the sentence: \"She ______ her sister's advice and reaped the benefits of the wise decision.\"",
+      "opts": ["IGNORED", "DEFIED", "SCORNED", "HEEDED"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "medium",
+      "id": 48,
+      "exp": "Reaping the benefits means she paid attention to the advice; 'heeded' means followed or paid attention to. The answer is HEEDED."
+    },
+    {
+      "q": "Complete the sentence: \"The government's ______ response to the crisis only ______ the public's distrust.\"",
+      "opts": ["ROBUST ALLAYED", "PROMPT MITIGATED", "DECISIVE PACIFIED", "INSIPID WORSENED"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "hard",
+      "id": 49,
+      "exp": "'Only' shows a negative result; a weak, characterless ('insipid') response would 'worsen' distrust. The other pairs would improve the situation. The answer is INSIPID WORSENED."
+    },
+    {
+      "q": "Complete the sentence: \"His ______ comments during the meeting were widely criticized for being both ______ and offensive.\"",
+      "opts": ["INSIGHTFUL PERCEPTIVE", "RELEVANT CONSTRUCTIVE", "DIPLOMATIC TACTFUL", "SCURRILOUS IGNORANT"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "hard",
+      "id": 50,
+      "exp": "The comments were 'criticized' and 'offensive', so they were 'scurrilous' (abusive) and 'ignorant'. The other pairs are positive. The answer is SCURRILOUS IGNORANT."
+    },
+    {
+      "q": "Complete the sentence: \"The author's ______ prose, filled with unnecessary details, made the novel a ______ to read.\"",
+      "opts": ["CONCISE PLEASURE", "LUCID JOY", "SPARSE DELIGHT", "VERBOSE CHORE"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "hard",
+      "id": 51,
+      "exp": "'Filled with unnecessary details' means the prose is 'verbose' (wordy), making the novel a 'chore' (tedious task) to read. The answer is VERBOSE CHORE."
+    },
+    {
+      "q": "Complete the sentence: \"Far from being ______, the young manager proved to be ______ in handling the crisis.\"",
+      "opts": ["COMPETENT EFFECTIVE", "TIMID BRAVE", "RECKLESS PRUDENT", "INEPT CAPABLE"],
+      "c": 3,
+      "t": "logic",
+      "d": "hard",
+      "id": 52,
+      "exp": "'Far from' signals a contrast: he was not 'inept' (unskilled) but actually 'capable'. The pair must be opposites with the positive second. The answer is INEPT CAPABLE."
+    },
+    {
+      "q": "Complete the sentence: \"The ______ evidence gathered by the detective ______ the suspect's alibi completely.\"",
+      "opts": ["FLAKY CORROBORATED", "ANECDOTAL SUPPORTED", "SCANT STRENGTHENED", "IRREFUTABLE DEMOLISHED"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "hard",
+      "id": 53,
+      "exp": "Such evidence 'completely' destroys the alibi, so it must be 'irrefutable' (impossible to deny) and it 'demolished' it. The answer is IRREFUTABLE DEMOLISHED."
+    },
+    {
+      "q": "Complete the sentence: \"The CEO's speech was remarkably ______; it neither outlined a clear vision nor offered any ______ plan.\"",
+      "opts": ["DIRECT PRACTICAL", "INSPIRING ACTIONABLE", "CANDID DETAILED", "EVASIVE CONCRETE"],
+      "c": 3,
+      "t": "logic",
+      "d": "hard",
+      "id": 54,
+      "exp": "'Neither...nor' makes the sentence negative: no vision, no plan. A speech that avoids giving either is 'evasive' and lacks a 'concrete' plan. The answer is EVASIVE CONCRETE."
+    },
+    {
+      "q": "Complete the sentence: \"Far from ______ results, the updated algorithm produced ______ outputs across all test cases.\"",
+      "opts": ["DELIVERING ACCURATE", "ACHIEVING RELIABLE", "DEGRADING CONSISTENT", "IMPROVING ERRONEOUS"],
+      "c": 3,
+      "t": "logic",
+      "d": "hard",
+      "id": 55,
+      "exp": "'Far from' signals failure: instead of 'improving' results, it produced 'erroneous' (wrong) outputs. The pair must contrast positively then negatively. The answer is IMPROVING ERRONEOUS."
+    },
+    {
+      "q": "Complete the sentence: \"The ______ climate of the company, marked by constant layoffs, made employees ______ about their future.\"",
+      "opts": ["STABLE CONFIDENT", "VIBRANT OPTIMISTIC", "FRIENDLY EAGER", "PRECARIOUS ANXIOUS"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "hard",
+      "id": 56,
+      "exp": "Constant layoffs create a 'precarious' (unstable) climate, making employees 'anxious' about the future. The answer is PRECARIOUS ANXIOUS."
+    },
+    {
+      "q": "Complete the sentence: \"Although he appeared ______ on the surface, his inner ______ made him unpredictable.\"",
+      "opts": ["AGITATED SERENITY", "SERENE COMPOSURE", "EXCITED PEACE", "CALM TURBULENCE"],
+      "c": 3,
+      "t": "logic",
+      "d": "hard",
+      "id": 57,
+      "exp": "'Although' signals contrast between surface and inside; appearing 'calm' outside while inner 'turbulence' (disorder) exists explains the unpredictability. The answer is CALM TURBULENCE."
+    },
+    {
+      "q": "Complete the sentence: \"The ______ of the ancient scroll proved difficult because the fragile ink had ______ over centuries.\"",
+      "opts": ["PRESERVATION DARKENED", "TRANSLATION AGED", "RESTORATION SPREAD", "DECIPHERMENT FADED"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "hard",
+      "id": 58,
+      "exp": "Reading the scroll was hard because the ink had 'faded' with time; the act of reading ancient script is 'decipherment'. The answer is DECIPHERMENT FADED."
+    },
+    {
+      "q": "Complete the sentence: \"His ______ refusal to compromise, even when the cost was high, earned him a reputation for ______.\"",
+      "opts": ["FLEXIBLE ACCOMMODATION", "PRINCIPLED INTEGRITY", "HASTY IMPULSIVENESS", "STUBBORN INFLEXIBILITY"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "hard",
+      "id": 59,
+      "exp": "Refusing to compromise even at high cost suggests a 'stubborn' nature and 'inflexibility', which that reputation implies. The answer is STUBBORN INFLEXIBILITY."
+    },
+    {
+      "q": "Complete the sentence: \"The panel ______ the proposal, calling it both financially ______ and operationally unviable.\"",
+      "opts": ["APPROVED ROBUST", "DEFERRED PRUDENT", "ENDORSED SOLID", "REJECTED UNSOUND"],
+      "c": 3,
+      "t": "vocabulary",
+      "d": "hard",
+      "id": 60,
+      "exp": "Calling the proposal 'operationally unviable' means the panel 'rejected' it as financially 'unsound'. The answer is REJECTED UNSOUND."
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "intro-completion"
+    },
+    {
+      "type": "concept",
+      "sectionId": "clue-words"
+    },
+    {
+      "type": "concept",
+      "sectionId": "collocation-preposition"
+    },
+    {
+      "type": "example",
+      "sectionId": "elimination-strategy"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}

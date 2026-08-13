@@ -266,6 +266,53 @@
         "TCS NQT Patterns"
       ],
       "estimatedHours": 10
+    },
+    {
+      "id": "fill-blanks",
+      "title": "Fill in the Blanks",
+      "icon": "\u270e",
+      "category": "verbal",
+      "color": "#3B82F6",
+      "days": "1-2",
+      "subtopics": [
+        "Articles & Determiners",
+        "Tenses & Subject-Verb Agreement",
+        "Prepositions & Conjunctions",
+        "Vocabulary & Double Blanks",
+        "Company Patterns (Accenture, Infosys, Cognizant, Capgemini, Tech Mahindra)"
+      ],
+      "estimatedHours": 10
+    },
+    {
+      "id": "para-jumbles",
+      "title": "Para Jumbles (Sentence Rearrangement)",
+      "icon": "\u21c6",
+      "category": "verbal",
+      "color": "#10B981",
+      "days": "1-2",
+      "subtopics": [
+        "Simple Sentence Rearrangement",
+        "Fixed First & Last Sentence (S1/S6)",
+        "Connectors, Pronouns & Chronological Markers",
+        "Opening & Closing Sentence Strategy",
+        "Company Patterns (TCS, Infosys, Accenture, Wipro, Cognizant, Capgemini)"
+      ],
+      "estimatedHours": 10
+    },
+    {
+      "id": "sentence-completion",
+      "title": "Sentence Completion",
+      "icon": "\u270d",
+      "category": "verbal",
+      "color": "#8B5CF6",
+      "days": 7,
+      "subtopics": [
+        "Intro & types",
+        "Clue words",
+        "Collocations & prepositions",
+        "Elimination strategy"
+      ],
+      "estimatedHours": 10
     }
   ]
 }
