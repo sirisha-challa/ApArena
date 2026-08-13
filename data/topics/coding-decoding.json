@@ -1,7 +1,7 @@
 {
   "id": "coding-decoding",
   "title": "Coding-Decoding",
-  "icon": "\u2302",
+  "icon": "⌂",
   "category": "verbal",
   "subtitle": "Letter Shifts, Number Coding, Mirror Coding & Substitution",
   "days": "1-2",
@@ -1979,7 +1979,8 @@
       "t": "vowel-consonant",
       "exp": "Step 1: Vowels are replaced by the next consonant. Step 2: Consonants are replaced by the nearest previous vowel. Step 3: For RING: R -> nearest previous vowel is O. I is a vowel, so I -> next consonant J. N -> nearest previous vowel is I. G -> nearest previous vowel is E. Step 4: Therefore, RING is coded as OJIE.",
       "d": "medium",
-      "source": "Auto-verified"
+      "source": "Auto-verified",
+      "id": 101
     },
     {
       "q": "If MIRROR is written as 123343 and ERROR as 53343, how is RIMMER written?",
@@ -1993,7 +1994,8 @@
       "t": "substitution",
       "exp": "Step 1: From MIRROR=123343: M=1, I=2, R=3, O=4. From ERROR=53343: E=5. Step 2: RIMMER: R=3, I=2, M=1, M=1, E=5, R=3 -> 321153. Step 3: 321153 correct.",
       "d": "medium",
-      "source": "Auto-verified"
+      "source": "Auto-verified",
+      "id": 102
     },
     {
       "q": "If STOP is coded as [35,35] (S+P=19+16, T+O=20+15), what is the code for WORD?",
@@ -2007,7 +2009,8 @@
       "t": "mirror-sum",
       "exp": "Step 1: Sum positions of the outer pair: W(23)+D(4)=27. Step 2: Sum positions of the inner pair: O(15)+R(18)=33. Step 3: [27,33] correct.",
       "d": "medium",
-      "source": "Auto-verified"
+      "source": "Auto-verified",
+      "id": 103
     },
     {
       "q": "If LION is coded as PLQO, how is BEAR coded?",
@@ -2021,7 +2024,8 @@
       "t": "alternating",
       "exp": "Step 1: LION shifts +4,+3,+2,+1: L->P, I->L, O->Q, N->O. Step 2: BEAR: B+4=F, E+3=H, A+2=C, R+1=S. Step 3: FHCS correct.",
       "d": "medium",
-      "source": "Auto-verified"
+      "source": "Auto-verified",
+      "id": 104
     }
   ],
   "learningPath": [

@@ -43,7 +43,7 @@
     {
       "id": "simplification",
       "title": "Simplification & Approximation",
-      "icon": "Σ",
+      "icon": "\u03a3",
       "category": "aptitude",
       "color": "#059669",
       "days": "4-6",
@@ -79,7 +79,7 @@
     {
       "id": "work-and-time",
       "title": "Work and Time",
-      "icon": "⏱️",
+      "icon": "\u23f1\ufe0f",
       "category": "aptitude",
       "color": "#059669",
       "days": "2-3",
@@ -98,7 +98,7 @@
     {
       "id": "profit-and-loss",
       "title": "Profit and Loss",
-      "icon": "₹",
+      "icon": "\u20b9",
       "category": "aptitude",
       "color": "#EAB308",
       "days": "2-4",
@@ -109,7 +109,7 @@
         "Successive Discounts",
         "Dishonest Dealer (False Weight)",
         "Profit % on SP vs CP",
-        "Two Items — Same SP",
+        "Two Items \u2014 Same SP",
         "Partnership & Ratio in P&L",
         "Miscellaneous Problems"
       ],
@@ -118,7 +118,7 @@
     {
       "id": "ratio-and-proportion",
       "title": "Ratio & Proportion",
-      "icon": "÷",
+      "icon": "\u00f7",
       "category": "aptitude",
       "color": "#F97316",
       "days": "3-4",
@@ -138,7 +138,7 @@
     {
       "id": "blood-relations",
       "title": "Blood Relations",
-      "icon": "👨‍👩‍👧‍👦",
+      "icon": "\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d\udc66",
       "category": "reasoning",
       "color": "#DC2626",
       "days": "1-2",
@@ -154,7 +154,7 @@
     {
       "id": "direction-sense",
       "title": "Direction Sense",
-      "icon": "🧭",
+      "icon": "\ud83e\udded",
       "category": "reasoning",
       "color": "#2563EB",
       "days": "1-2",
@@ -170,7 +170,7 @@
     {
       "id": "statements-conclusions",
       "title": "Statements & Conclusions",
-      "icon": "📊",
+      "icon": "\ud83d\udcca",
       "category": "reasoning",
       "color": "#7C3AED",
       "days": "1-2",
@@ -186,7 +186,7 @@
     {
       "id": "analogies",
       "title": "Analogies",
-      "icon": "≈",
+      "icon": "\u2248",
       "category": "verbal",
       "color": "#059669",
       "days": "1-2",
@@ -202,7 +202,7 @@
     {
       "id": "coding-decoding",
       "title": "Coding-Decoding",
-      "icon": "⌂",
+      "icon": "\u2302",
       "category": "verbal",
       "color": "#0284C7",
       "days": "1-2",
@@ -218,7 +218,7 @@
     {
       "id": "clock-calendar",
       "title": "Clock & Calendar",
-      "icon": "🕐",
+      "icon": "\ud83d\udd50",
       "category": "reasoning",
       "color": "#0D9488",
       "days": "2-3",
@@ -236,6 +236,20 @@
       ],
       "estimatedHours": 20,
       "subtitle": "Angles, Mirror & Fast/Slow Clocks, Leap Years, Odd Days & Day of Week"
+    },
+    {
+      "id": "synonyms-antonyms",
+      "title": "Synonyms & Antonyms",
+      "icon": "\u21c4",
+      "category": "verbal",
+      "color": "#D946EF",
+      "days": "1-2",
+      "subtopics": [
+        "Word Meanings",
+        "Synonyms - Same Meaning",
+        "Antonyms - Opposites"
+      ],
+      "estimatedHours": 10
     }
   ]
 }

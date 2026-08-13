@@ -1,0 +1,706 @@
+{
+  "id": "synonyms-antonyms",
+  "title": "Synonyms & Antonyms",
+  "icon": "⇄",
+  "category": "verbal",
+  "subtitle": "Vocabulary - Synonyms, Antonyms & Word Meanings",
+  "days": "1-2",
+  "color": "#D946EF",
+  "subtopics": [
+    "Word Meanings",
+    "Synonyms - Same Meaning",
+    "Antonyms - Opposites",
+    "Elimination Strategy",
+    "TCS NQT Patterns"
+  ],
+  "estimatedHours": 10,
+  "readingSections": [
+    {
+      "id": "intro-syn-anton",
+      "title": "What are Synonyms and Antonyms?",
+      "content": "A synonym is a word that means the same or nearly the same as another word. An antonym is a word that means the opposite of another word. Placement companies like TCS, Infosys, Wipro and Accenture ask 1-3 vocabulary questions in their verbal rounds. Most of these are direct synonym or antonym questions where you pick the closest or most opposite word from four options.",
+      "subsections": [
+        {
+          "title": "Why Companies Ask Vocabulary Questions",
+          "content": "Vocabulary questions measure the size of your English word bank. A wide vocabulary signals that you can read documents, understand emails, and communicate with international clients. Choosing the correct synonym or antonym quickly is a skill that can be practised daily."
+        },
+        {
+          "title": "How Questions Appear",
+          "content": "Typical formats are: (1) 'Choose the word closest in meaning to ROOMY.', (2) 'Choose the word most opposite in meaning to STURDY.', (3) One-word substitution inside a sentence. The options are always four single words, one of which is the exact answer."
+        }
+      ]
+    },
+    {
+      "id": "synonym-technique",
+      "title": "Synonyms - Same Meaning",
+      "content": "To solve a synonym question, first recall the meaning of the given word in your head. Then test every option by putting it into the same sentence as the given word. The option that keeps the sentence meaning unchanged is the synonym.",
+      "subsections": [
+        {
+          "title": "Example",
+          "content": "GORGEOUS means extremely beautiful. The word MAGNIFICENT also means extremely beautiful or impressive. So GORGEOUS and MAGNIFICENT are synonyms."
+        },
+        {
+          "title": "Common Trap",
+          "content": "Examiners place words that sound related but mean the opposite. Example: FRAGILE sounds delicate, so students may pick it as the synonym of RESILIENT. FRAGILE is the opposite. Always confirm the meaning, never decide by sound."
+        }
+      ]
+    },
+    {
+      "id": "antonym-technique",
+      "title": "Antonyms - Opposites",
+      "content": "For an antonym question, think of the exact opposite idea of the given word first. Then check which option matches that opposite idea. If the word is negative, the answer is usually a positive word, and vice-versa.",
+      "subsections": [
+        {
+          "title": "Example",
+          "content": "LENIENT means gentle and less strict. The opposite idea is being firm and demanding. STRICT means exactly that, so STRICT is the antonym of LENIENT."
+        },
+        {
+          "title": "Common Trap",
+          "content": "Options that mean almost the same as the given word are distractors. For example, in the antonym of LENIENT, the words GENTLE, MILD and KIND all mean nearly the same as LENIENT. Only STRICT is the opposite."
+        }
+      ]
+    },
+    {
+      "id": "elimination-strategy",
+      "title": "Elimination Strategy",
+      "content": "When you do not know the word, eliminate wrong options first. (1) Remove options that clearly mean the opposite of your guess. (2) Remove options that are synonyms of each other - only one option can be right. (3) Choose from the remaining two by matching the exact idea of the headword.",
+      "subsections": [
+        {
+          "title": "Root Word Help",
+          "content": "Many words carry meaning in their parts. AMBI- means both (ambiguous = both meanings possible), MAL- means bad (malevolent = wishing bad), TRANS- means across or passing (transient = passing quickly)."
+        },
+        {
+          "title": "TCS NQT Pattern",
+          "content": "TCS NQT repeats a fixed set of words across years. RESILIENT, LENIENT, AMBIGUOUS, VULNERABLE, PRUDENT, SCARCITY, APATHETIC, RIGID, ERUDITE and OBSCURE are among the most repeated. Learn these before the exam."
+        }
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "id": "synonym-rule",
+      "title": "Synonym Rule",
+      "formula": "Word ~ Synonym (same meaning)",
+      "explanation": "If W means X, find the option that also means X.",
+      "example": "GORGEOUS ~ MAGNIFICENT, EAGER ~ KEEN"
+    },
+    {
+      "id": "antonym-rule",
+      "title": "Antonym Rule",
+      "formula": "Word = opposite of ?",
+      "explanation": "If W means X, find the option that means the opposite of X.",
+      "example": "LENIENT opposite is STRICT, CALM opposite is STORMY"
+    },
+    {
+      "id": "elimination-rule",
+      "title": "Elimination Rule",
+      "formula": "Both-options-synonym rule",
+      "explanation": "If two options both mean nearly the same thing, neither can be the only correct answer.",
+      "example": "In the antonym of HAUGHTY, HUMBLE and PLAIN are not synonyms, but HUMBLE is the opposite - pick it."
+    }
+  ],
+  "practiceProblems": {
+    "synonym-rule": [
+      {
+        "q": "Choose the word closest in meaning to ABUNDANT.",
+        "s": ["Step 1: ABUNDANT means present in large quantity.", "Step 2: PLENTIFUL means more than enough, existing in large amounts.", "Step 3: PLENTIFUL matches ABUNDANT."],
+        "a": "PLENTIFUL"
+      },
+      {
+        "q": "Choose the word closest in meaning to CANDID.",
+        "s": ["Step 1: CANDID means honest and direct.", "Step 2: FRANK means honest and open in speech.", "Step 3: FRANK matches CANDID."],
+        "a": "FRANK"
+      },
+      {
+        "q": "Choose the word closest in meaning to STURDY.",
+        "s": ["Step 1: STURDY means strong and steady.", "Step 2: ROBUST means strong and healthy.", "Step 3: ROBUST matches STURDY."],
+        "a": "ROBUST"
+      }
+    ],
+    "antonym-rule": [
+      {
+        "q": "Choose the word most opposite in meaning to MEAGRE.",
+        "s": ["Step 1: MEAGRE means very small in amount.", "Step 2: The opposite idea is a large amount.", "Step 3: AMPLE means more than enough."],
+        "a": "AMPLE"
+      },
+      {
+        "q": "Choose the word most opposite in meaning to STALE.",
+        "s": ["Step 1: STALE means old and no longer fresh.", "Step 2: The opposite idea is fresh and new.", "Step 3: FRESH is the opposite."],
+        "a": "FRESH"
+      },
+      {
+        "q": "Choose the word most opposite in meaning to SOAR.",
+        "s": ["Step 1: SOAR means to rise high quickly.", "Step 2: The opposite idea is falling or coming down.", "Step 3: PLUMMET means to fall sharply."],
+        "a": "PLUMMET"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "q": "Choose the word closest in meaning to RESILIENT.",
+      "opts": ["FLEXIBLE", "FRAGILE", "WEAK", "DELICATE"],
+      "c": 0,
+      "t": "synonym",
+      "d": "easy",
+      "id": 1,
+      "exp": "Step 1: RESILIENT describes something that recovers quickly after damage, difficulty or pressure. Step 2: A rubber band that springs back to shape after stretching is resilient. Step 3: FLEXIBLE means able to bend or adapt without breaking, which matches the idea of recovering easily. Step 4: FRAGILE and DELICATE both mean easily broken, and WEAK means lacking strength, so all three are the opposite idea. Step 5: The answer is FLEXIBLE."
+    },
+    {
+      "q": "Choose the word closest in meaning to EAGER.",
+      "opts": ["KEEN", "RELUCTANT", "BORED", "APATHETIC"],
+      "c": 0,
+      "t": "synonym",
+      "d": "easy",
+      "id": 2,
+      "exp": "Step 1: EAGER means very interested and excited to do something. Step 2: A student eager to learn raises their hand first in class. Step 3: KEEN means enthusiastic and strongly interested, which is the same as eager. Step 4: RELUCTANT means unwilling, BORED means uninterested, and APATHETIC means having no feelings about anything, so all three are the opposite idea. Step 5: The answer is KEEN."
+    },
+    {
+      "q": "Choose the word closest in meaning to GLOOM.",
+      "opts": ["JOY", "BRIGHTNESS", "DARKNESS", "SUCCESS"],
+      "c": 2,
+      "t": "synonym",
+      "d": "easy",
+      "id": 3,
+      "exp": "Step 1: GLOOM means partial or total darkness, and also a state of sadness. Step 2: When clouds cover the sky before a storm, the sky is full of gloom. Step 3: DARKNESS means the absence of light, which is the direct meaning of gloom. Step 4: JOY and SUCCESS are positive ideas, and BRIGHTNESS is the opposite of darkness. Step 5: The answer is DARKNESS."
+    },
+    {
+      "q": "Choose the word closest in meaning to GATHER.",
+      "opts": ["CONVERGE", "SEPARATE", "SCATTER", "DISPERSE"],
+      "c": 0,
+      "t": "synonym",
+      "d": "easy",
+      "id": 4,
+      "exp": "Step 1: GATHER means to bring things or people together into one place. Step 2: We gather flowers from the garden into a basket. Step 3: CONVERGE means to come together from different directions to one point, which is the same as gather. Step 4: SEPARATE, SCATTER and DISPERSE all mean to spread apart, which is the opposite idea. Step 5: The answer is CONVERGE."
+    },
+    {
+      "q": "Choose the word closest in meaning to GORGEOUS.",
+      "opts": ["MAGNIFICENT", "UGLY", "PLAIN", "ORDINARY"],
+      "c": 0,
+      "t": "synonym",
+      "d": "easy",
+      "id": 5,
+      "exp": "Step 1: GORGEOUS means extremely beautiful or attractive. Step 2: A sunset with brilliant colours is called gorgeous. Step 3: MAGNIFICENT means impressively beautiful and grand, which is the same as gorgeous. Step 4: UGLY, PLAIN and ORDINARY all describe something without beauty, which is the opposite idea. Step 5: The answer is MAGNIFICENT."
+    },
+    {
+      "q": "Choose the word closest in meaning to GRACIOUS.",
+      "opts": ["COURTEOUS", "RUDE", "HARSH", "CRUEL"],
+      "c": 0,
+      "t": "synonym",
+      "d": "easy",
+      "id": 6,
+      "exp": "Step 1: GRACIOUS means polite, kind and pleasant, especially towards people who are lower in rank. Step 2: A gracious host welcomes every guest warmly. Step 3: COURTEOUS means showing good manners and politeness, which is the same as gracious. Step 4: RUDE means impolite, HARSH means rough in manner, and CRUEL means deliberately causing pain, so all three are opposite ideas. Step 5: The answer is COURTEOUS."
+    },
+    {
+      "q": "Choose the word closest in meaning to GLORY.",
+      "opts": ["RENOWN", "SHAME", "DISGRACE", "FAILURE"],
+      "c": 0,
+      "t": "synonym",
+      "d": "easy",
+      "id": 7,
+      "exp": "Step 1: GLORY means great honour, praise and admiration earned through achievement. Step 2: Winning soldiers return home with glory. Step 3: RENOWN means fame and honour earned by great achievement, which is the same as glory. Step 4: SHAME, DISGRACE and FAILURE all mean loss of honour, the opposite idea. Step 5: The answer is RENOWN."
+    },
+    {
+      "q": "Choose the word closest in meaning to HUMBLE.",
+      "opts": ["MEEK", "PROUD", "ARROGANT", "BOASTFUL"],
+      "c": 0,
+      "t": "synonym",
+      "d": "easy",
+      "id": 8,
+      "exp": "Step 1: HUMBLE means modest and not showing pride, even after success. Step 2: A humble star thanks the whole team instead of taking all credit. Step 3: MEEK means quiet, gentle and not assertive, which carries the same humble idea. Step 4: PROUD, ARROGANT and BOASTFUL all describe showing off one's importance, the opposite idea. Step 5: The answer is MEEK."
+    },
+    {
+      "q": "Choose the word closest in meaning to JOVIAL.",
+      "opts": ["CHEERFUL", "SOLEMN", "GRIM", "DULL"],
+      "c": 0,
+      "t": "synonym",
+      "d": "easy",
+      "id": 9,
+      "exp": "Step 1: JOVIAL means full of high spirits and good humour. Step 2: A jovial uncle jokes and laughs at every family gathering. Step 3: CHEERFUL means happy and optimistic, which is the same as jovial. Step 4: SOLEMN means serious, GRIM means gloomy, and DULL means boring, so all three are opposite ideas. Step 5: The answer is CHEERFUL."
+    },
+    {
+      "q": "Choose the word closest in meaning to PLACID.",
+      "opts": ["CALM", "STORMY", "FURIOUS", "WILD"],
+      "c": 0,
+      "t": "synonym",
+      "d": "easy",
+      "id": 10,
+      "exp": "Step 1: PLACID means calm and peaceful, with no disturbance. Step 2: A placid lake has no waves at all. Step 3: CALM means free from agitation and quiet, which is the same as placid. Step 4: STORMY, FURIOUS and WILD all describe strong disturbance or anger, the opposite idea. Step 5: The answer is CALM."
+    },
+    {
+      "q": "Choose the word closest in meaning to BOLD.",
+      "opts": ["ADVENTUROUS", "TIMID", "SHY", "COWARDLY"],
+      "c": 0,
+      "t": "synonym",
+      "d": "easy",
+      "id": 11,
+      "exp": "Step 1: BOLD means brave, confident and willing to take risks. Step 2: A bold speaker walks on stage without hesitation. Step 3: ADVENTUROUS means willing to take risks and try new things, which is the same as bold. Step 4: TIMID, SHY and COWARDLY all mean lacking courage, the opposite idea. Step 5: The answer is ADVENTUROUS."
+    },
+    {
+      "q": "Choose the word closest in meaning to PRUDENT.",
+      "opts": ["WISE", "RECKLESS", "CARELESS", "RASH"],
+      "c": 0,
+      "t": "synonym",
+      "d": "easy",
+      "id": 12,
+      "exp": "Step 1: PRUDENT means careful and sensible in making decisions, thinking about the future. Step 2: A prudent person saves money before spending. Step 3: WISE means having good judgement and experience, which is the same as prudent. Step 4: RECKLESS, CARELESS and RASH all mean acting without thought, the opposite idea. Step 5: The answer is WISE."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to LENIENT.",
+      "opts": ["STRICT", "GENTLE", "MILD", "KIND"],
+      "c": 0,
+      "t": "antonym",
+      "d": "easy",
+      "id": 13,
+      "exp": "Step 1: LENIENT means gentle and not punishing harshly. Step 2: A lenient teacher gives extra time for homework. Step 3: The opposite idea is being firm and demanding full obedience. Step 4: STRICT means demanding rules to be followed exactly, which is the opposite of lenient. Step 5: GENTLE, MILD and KIND all mean the same as lenient, not the opposite. The answer is STRICT."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to SCARCITY.",
+      "opts": ["ABUNDANCE", "SHORTAGE", "LACK", "DEFICIENCY"],
+      "c": 0,
+      "t": "antonym",
+      "d": "easy",
+      "id": 14,
+      "exp": "Step 1: SCARCITY means a situation where something is not enough, there is very little of it. Step 2: Water scarcity means water is hard to find. Step 3: The opposite idea is having plenty of something. Step 4: ABUNDANCE means a very large quantity of something, which is the opposite of scarcity. Step 5: SHORTAGE, LACK and DEFICIENCY all mean the same as scarcity. The answer is ABUNDANCE."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to RIGID.",
+      "opts": ["FLEXIBLE", "STIFF", "HARD", "SOLID"],
+      "c": 0,
+      "t": "antonym",
+      "d": "easy",
+      "id": 15,
+      "exp": "Step 1: RIGID means stiff, firm and unable to bend. Step 2: An iron rod is rigid because it does not bend. Step 3: The opposite idea is able to bend easily. Step 4: FLEXIBLE means able to bend without breaking, which is the opposite of rigid. Step 5: STIFF, HARD and SOLID all mean the same as rigid. The answer is FLEXIBLE."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to CALM.",
+      "opts": ["STORMY", "PEACEFUL", "QUIET", "SERENE"],
+      "c": 0,
+      "t": "antonym",
+      "d": "easy",
+      "id": 16,
+      "exp": "Step 1: CALM means peaceful, quiet and without disturbance. Step 2: The sea is calm on a windless day. Step 3: The opposite idea is violent or disturbed. Step 4: STORMY means full of storms and strong disturbance, which is the opposite of calm. Step 5: PEACEFUL, QUIET and SERENE all mean the same as calm. The answer is STORMY."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to CEASE.",
+      "opts": ["BEGIN", "STOP", "HALT", "END"],
+      "c": 0,
+      "t": "antonym",
+      "d": "easy",
+      "id": 17,
+      "exp": "Step 1: CEASE means to stop happening or stop doing something. Step 2: When the music ceases, the auditorium becomes silent. Step 3: The opposite idea is to start something. Step 4: BEGIN means to start, which is the opposite of cease. Step 5: STOP, HALT and END all mean the same as cease. The answer is BEGIN."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to GLOOMY.",
+      "opts": ["BRIGHT", "DARK", "DULL", "SOMBRE"],
+      "c": 0,
+      "t": "antonym",
+      "d": "easy",
+      "id": 18,
+      "exp": "Step 1: GLOOMY means dark, dim or sad without hope. Step 2: A gloomy room has very little light. Step 3: The opposite idea is full of light and cheerfulness. Step 4: BRIGHT means full of light and cheerful, which is the opposite of gloomy. Step 5: DARK, DULL and SOMBRE all mean the same as gloomy. The answer is BRIGHT."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to HASTY.",
+      "opts": ["CAUTIOUS", "RASH", "QUICK", "SWIFT"],
+      "c": 0,
+      "t": "antonym",
+      "d": "easy",
+      "id": 19,
+      "exp": "Step 1: HASTY means acting too quickly without enough thought. Step 2: A hasty decision is made within seconds and often regretted. Step 3: The opposite idea is thinking carefully before acting. Step 4: CAUTIOUS means careful and avoiding risk, which is the opposite of hasty. Step 5: RASH, QUICK and SWIFT all mean hurried action, similar to hasty. The answer is CAUTIOUS."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to HAUGHTY.",
+      "opts": ["HUMBLE", "ARROGANT", "PROUD", "VAIN"],
+      "c": 0,
+      "t": "antonym",
+      "d": "easy",
+      "id": 20,
+      "exp": "Step 1: HAUGHTY means behaving as if you are superior to others, with excessive pride. Step 2: A haughty manager looks down on every junior. Step 3: The opposite idea is being modest about oneself. Step 4: HUMBLE means modest and not proud, which is the opposite of haughty. Step 5: ARROGANT, PROUD and VAIN all mean the same as haughty. The answer is HUMBLE."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to MODEST.",
+      "opts": ["ARROGANT", "HUMBLE", "SHY", "PLAIN"],
+      "c": 0,
+      "t": "antonym",
+      "d": "easy",
+      "id": 21,
+      "exp": "Step 1: MODEST means not talking proudly about your abilities or achievements. Step 2: A modest winner thanks everyone and says the match was close. Step 3: The opposite idea is showing too much pride. Step 4: ARROGANT means having an exaggerated sense of one's importance, which is the opposite of modest. Step 5: HUMBLE means the same as modest, and SHY and PLAIN are not its opposites. The answer is ARROGANT."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to OBVIOUS.",
+      "opts": ["OBSCURE", "EVIDENT", "APPARENT", "PLAIN"],
+      "c": 0,
+      "t": "antonym",
+      "d": "easy",
+      "id": 22,
+      "exp": "Step 1: OBVIOUS means easy to see or understand, clearly visible. Step 2: An obvious mistake is spotted by everyone immediately. Step 3: The opposite idea is something difficult to see or understand. Step 4: OBSCURE means not clearly seen or known, which is the opposite of obvious. Step 5: EVIDENT, APPARENT and PLAIN all mean the same as obvious. The answer is OBSCURE."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to PROMPT.",
+      "opts": ["SLOW", "SWIFT", "RAPID", "PUNCTUAL"],
+      "c": 0,
+      "t": "antonym",
+      "d": "easy",
+      "id": 23,
+      "exp": "Step 1: PROMPT means done without delay, on time. Step 2: A prompt reply comes within minutes of receiving the message. Step 3: The opposite idea is taking too much time. Step 4: SLOW means moving or happening at a low speed, which is the opposite of prompt. Step 5: SWIFT and RAPID mean the same as prompt, and PUNCTUAL means on time like prompt. The answer is SLOW."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to THRIFTY.",
+      "opts": ["EXTRAVAGANT", "FRUGAL", "PRUDENT", "ECONOMICAL"],
+      "c": 0,
+      "t": "antonym",
+      "d": "easy",
+      "id": 24,
+      "exp": "Step 1: THRIFTY means careful with money, spending only when necessary. Step 2: A thrifty shopper compares prices before every purchase. Step 3: The opposite idea is spending money without care. Step 4: EXTRAVAGANT means spending much more than is necessary, which is the opposite of thrifty. Step 5: FRUGAL, PRUDENT and ECONOMICAL all mean the same as thrifty. The answer is EXTRAVAGANT."
+    },
+    {
+      "q": "Choose the word closest in meaning to AMBIGUOUS.",
+      "opts": ["VAGUE", "CLEAR", "PRECISE", "DEFINITE"],
+      "c": 0,
+      "t": "synonym",
+      "d": "medium",
+      "id": 25,
+      "exp": "Step 1: AMBIGUOUS means having more than one possible meaning, open to different interpretations. Step 2: The sentence 'I saw her duck' is ambiguous - it can mean the bird or the action. Step 3: VAGUE means not clearly expressed, which matches the uncertain idea of ambiguous. Step 4: CLEAR, PRECISE and DEFINITE all mean exactly stated, the opposite idea. Step 5: The answer is VAGUE."
+    },
+    {
+      "q": "Choose the word closest in meaning to APATHETIC.",
+      "opts": ["INDIFFERENT", "ENTHUSIASTIC", "PASSIONATE", "ENERGETIC"],
+      "c": 0,
+      "t": "synonym",
+      "d": "medium",
+      "id": 26,
+      "exp": "Step 1: APATHETIC means having no interest, enthusiasm or concern. Step 2: An apathetic voter does not care which party wins. Step 3: INDIFFERENT means having no interest in something, which is the same as apathetic. Step 4: ENTHUSIASTIC, PASSIONATE and ENERGETIC all describe strong interest and excitement, the opposite idea. Step 5: The answer is INDIFFERENT."
+    },
+    {
+      "q": "Choose the word closest in meaning to ABATE.",
+      "opts": ["DECREASE", "INCREASE", "AGGRAVATE", "INTENSIFY"],
+      "c": 0,
+      "t": "synonym",
+      "d": "medium",
+      "id": 27,
+      "exp": "Step 1: ABATE means to become less strong, intense or severe. Step 2: When the storm abates, the winds calm down. Step 3: DECREASE means to become smaller in amount or strength, which is the same as abate. Step 4: INCREASE, AGGRAVATE and INTENSIFY all mean to make stronger or worse, the opposite idea. Step 5: The answer is DECREASE."
+    },
+    {
+      "q": "Choose the word closest in meaning to ADAMANT.",
+      "opts": ["STUBBORN", "FLEXIBLE", "YIELDING", "SOFT"],
+      "c": 0,
+      "t": "synonym",
+      "d": "medium",
+      "id": 28,
+      "exp": "Step 1: ADAMANT means refusing to change your mind or be persuaded. Step 2: The manager was adamant that the deadline could not move. Step 3: STUBBORN means refusing to change opinion or behaviour, which is the same as adamant. Step 4: FLEXIBLE, YIELDING and SOFT all describe willingness to change, the opposite idea. Step 5: The answer is STUBBORN."
+    },
+    {
+      "q": "Choose the word closest in meaning to ALLEVIATE.",
+      "opts": ["RELIEVE", "WORSEN", "AGGRAVATE", "INCREASE"],
+      "c": 0,
+      "t": "synonym",
+      "d": "medium",
+      "id": 29,
+      "exp": "Step 1: ALLEVIATE means to make pain, suffering or a problem less severe. Step 2: Medicine alleviates the patient's headache quickly. Step 3: RELIEVE means to reduce or remove pain or difficulty, which is the same as alleviate. Step 4: WORSEN, AGGRAVATE and INCREASE all mean making things more severe, the opposite idea. Step 5: The answer is RELIEVE."
+    },
+    {
+      "q": "Choose the word closest in meaning to AMPLIFY.",
+      "opts": ["AUGMENT", "LESSEN", "CONTRACT", "REDUCE"],
+      "c": 0,
+      "t": "synonym",
+      "d": "medium",
+      "id": 30,
+      "exp": "Step 1: AMPLIFY means to make something larger, louder or stronger. Step 2: A microphone amplifies the singer's voice. Step 3: AUGMENT means to make something greater by adding to it, which is the same as amplify. Step 4: LESSEN, CONTRACT and REDUCE all mean making something smaller, the opposite idea. Step 5: The answer is AUGMENT."
+    },
+    {
+      "q": "Choose the word closest in meaning to AUDACITY.",
+      "opts": ["BOLDNESS", "COWARDICE", "MILDNESS", "FEAR"],
+      "c": 0,
+      "t": "synonym",
+      "d": "medium",
+      "id": 31,
+      "exp": "Step 1: AUDACITY means daring courage, willingness to take bold risks. Step 2: Asking the CEO a direct question requires audacity. Step 3: BOLDNESS means courage and confidence in taking risks, which is the same as audacity. Step 4: COWARDICE, MILDNESS and FEAR all describe the absence of courage, the opposite idea. Step 5: The answer is BOLDNESS."
+    },
+    {
+      "q": "Choose the word closest in meaning to AUTHENTIC.",
+      "opts": ["CREDIBLE", "FICTITIOUS", "UNREAL", "FAKE"],
+      "c": 0,
+      "t": "synonym",
+      "d": "medium",
+      "id": 32,
+      "exp": "Step 1: AUTHENTIC means real, genuine and trustworthy. Step 2: An authentic painting is confirmed by experts to be the original. Step 3: CREDIBLE means believable and trustworthy, which is the same as authentic. Step 4: FICTITIOUS, UNREAL and FAKE all mean not genuine, the opposite idea. Step 5: The answer is CREDIBLE."
+    },
+    {
+      "q": "Choose the word closest in meaning to BENEVOLENT.",
+      "opts": ["GENEROUS", "MALEVOLENT", "CRUEL", "MISERLY"],
+      "c": 0,
+      "t": "synonym",
+      "d": "medium",
+      "id": 33,
+      "exp": "Step 1: BENEVOLENT means kind, well-meaning and wishing to help others. Step 2: A benevolent foundation funds schools for poor children. Step 3: GENEROUS means giving freely to others, which matches the kind spirit of benevolent. Step 4: MALEVOLENT means wishing evil, CRUEL means causing pain, and MISERLY means unwilling to give, all opposite ideas. Step 5: The answer is GENEROUS."
+    },
+    {
+      "q": "Choose the word closest in meaning to CONSPICUOUS.",
+      "opts": ["PROMINENT", "HIDDEN", "CONCEALED", "INVISIBLE"],
+      "c": 0,
+      "t": "synonym",
+      "d": "medium",
+      "id": 34,
+      "exp": "Step 1: CONSPICUOUS means very easy to notice, standing out clearly. Step 2: A red car in a white parking lot is conspicuous. Step 3: PROMINENT means easily seen and standing out, which is the same as conspicuous. Step 4: HIDDEN, CONCEALED and INVISIBLE all mean not able to be seen, the opposite idea. Step 5: The answer is PROMINENT."
+    },
+    {
+      "q": "Choose the word closest in meaning to IMMERSE.",
+      "opts": ["SUBMERGE", "EMERGE", "RISE", "SURFACE"],
+      "c": 0,
+      "t": "synonym",
+      "d": "medium",
+      "id": 35,
+      "exp": "Step 1: IMMERSE means to put something completely under the surface of a liquid. Step 2: Immerse the vegetables in water to clean them. Step 3: SUBMERGE means to go under the surface of water, which is the same as immerse. Step 4: EMERGE, RISE and SURFACE all mean to come above the water level, the opposite idea. Step 5: The answer is SUBMERGE."
+    },
+    {
+      "q": "Choose the word closest in meaning to LURE.",
+      "opts": ["ENTICE", "REPEL", "DISSUADE", "DISCOURAGE"],
+      "c": 0,
+      "t": "synonym",
+      "d": "medium",
+      "id": 36,
+      "exp": "Step 1: LURE means to attract someone by offering something tempting. Step 2: The shop lures customers with free samples. Step 3: ENTICE means to attract by offering pleasure or advantage, which is the same as lure. Step 4: REPEL means to push away, DISSUADE means to talk out of, and DISCOURAGE means to reduce enthusiasm, all opposite ideas. Step 5: The answer is ENTICE."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to VULNERABLE.",
+      "opts": ["SECURE", "WEAK", "EXPOSED", "FRAGILE"],
+      "c": 0,
+      "t": "antonym",
+      "d": "medium",
+      "id": 37,
+      "exp": "Step 1: VULNERABLE means easily harmed, attacked or hurt. Step 2: A system without a password is vulnerable to hackers. Step 3: The opposite idea is being protected from harm. Step 4: SECURE means safe, protected and free from danger, which is the opposite of vulnerable. Step 5: WEAK, EXPOSED and FRAGILE all mean the same as vulnerable. The answer is SECURE."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to OBSCURE.",
+      "opts": ["CLEAR", "HIDDEN", "VAGUE", "COMPLEX"],
+      "c": 0,
+      "t": "antonym",
+      "d": "medium",
+      "id": 38,
+      "exp": "Step 1: OBSCURE means not clearly seen or easily understood. Step 2: The instructions were so obscure that nobody could follow them. Step 3: The opposite idea is easy to see and understand. Step 4: CLEAR means easy to understand and free from confusion, which is the opposite of obscure. Step 5: HIDDEN, VAGUE and COMPLEX all mean the same as obscure. The answer is CLEAR."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to BARREN.",
+      "opts": ["FERTILE", "STERILE", "DRY", "EMPTY"],
+      "c": 0,
+      "t": "antonym",
+      "d": "medium",
+      "id": 39,
+      "exp": "Step 1: BARREN means land that cannot grow plants, producing nothing. Step 2: A barren desert has no crops at all. Step 3: The opposite idea is land rich enough to grow plants well. Step 4: FERTILE means land that produces abundant crops, which is the opposite of barren. Step 5: STERILE means the same as barren, and DRY and EMPTY are not its opposites. The answer is FERTILE."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to BRITTLE.",
+      "opts": ["TOUGH", "BREAKABLE", "CRISP", "FRAGILE"],
+      "c": 0,
+      "t": "antonym",
+      "d": "medium",
+      "id": 40,
+      "exp": "Step 1: BRITTLE means hard but easy to break or shatter. Step 2: Glass is brittle - one knock and it breaks into pieces. Step 3: The opposite idea is being hard to break. Step 4: TOUGH means strong and difficult to break, which is the opposite of brittle. Step 5: BREAKABLE, CRISP and FRAGILE all mean the same as brittle. The answer is TOUGH."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to DOCILE.",
+      "opts": ["HEADSTRONG", "OBEDIENT", "GENTLE", "PLIABLE"],
+      "c": 0,
+      "t": "antonym",
+      "d": "medium",
+      "id": 41,
+      "exp": "Step 1: DOCILE means easy to teach, control or manage. Step 2: A docile student follows every instruction quietly. Step 3: The opposite idea is refusing to be controlled. Step 4: HEADSTRONG means determined to have your own way, which is the opposite of docile. Step 5: OBEDIENT, GENTLE and PLIABLE all mean the same as docile. The answer is HEADSTRONG."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to CLANDESTINE.",
+      "opts": ["OPEN", "COVERT", "SECRET", "HIDDEN"],
+      "c": 0,
+      "t": "antonym",
+      "d": "medium",
+      "id": 42,
+      "exp": "Step 1: CLANDESTINE means done secretly and kept hidden from others. Step 2: A clandestine meeting is arranged in an undisclosed location. Step 3: The opposite idea is done in full view of everyone. Step 4: OPEN means not closed or secret, visible to all, which is the opposite of clandestine. Step 5: COVERT, SECRET and HIDDEN all mean the same as clandestine. The answer is OPEN."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to COMPACT.",
+      "opts": ["LOOSE", "DENSE", "TIGHT", "BUNCHED"],
+      "c": 0,
+      "t": "antonym",
+      "d": "medium",
+      "id": 43,
+      "exp": "Step 1: COMPACT means closely and firmly packed together. Step 2: A compact bag fits everything in a small space. Step 3: The opposite idea is not tightly packed. Step 4: LOOSE means not firmly fastened or packed, which is the opposite of compact. Step 5: DENSE, TIGHT and BUNCHED all mean the same as compact. The answer is LOOSE."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to MURKY.",
+      "opts": ["BRIGHT", "DUSKY", "DARK", "DIM"],
+      "c": 0,
+      "t": "antonym",
+      "d": "medium",
+      "id": 44,
+      "exp": "Step 1: MURKY means dark, unclear and difficult to see through. Step 2: The murky pond water hides the bottom completely. Step 3: The opposite idea is full of light and clear. Step 4: BRIGHT means giving out or reflecting much light, which is the opposite of murky. Step 5: DUSKY, DARK and DIM all mean the same as murky. The answer is BRIGHT."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to NOVICE.",
+      "opts": ["VETERAN", "BEGINNER", "TYRO", "LEARNER"],
+      "c": 0,
+      "t": "antonym",
+      "d": "medium",
+      "id": 45,
+      "exp": "Step 1: NOVICE means a person who is new and inexperienced in a field. Step 2: A novice driver needs more practice before highways. Step 3: The opposite idea is a person with long experience. Step 4: VETERAN means a person with long experience in a field, which is the opposite of novice. Step 5: BEGINNER, TYRO and LEARNER all mean the same as novice. The answer is VETERAN."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to OPAQUE.",
+      "opts": ["TRANSPARENT", "CLOUDY", "MISTY", "SOLID"],
+      "c": 0,
+      "t": "antonym",
+      "d": "medium",
+      "id": 46,
+      "exp": "Step 1: OPAQUE means not able to be seen through at all. Step 2: An opaque glass hides everything behind it. Step 3: The opposite idea is allowing light and sight to pass through. Step 4: TRANSPARENT means fully able to be seen through, which is the opposite of opaque. Step 5: CLOUDY and MISTY are partially see-through, and SOLID means the same as opaque. The answer is TRANSPARENT."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to TRANQUIL.",
+      "opts": ["AGITATED", "PEACEFUL", "SERENE", "CALM"],
+      "c": 0,
+      "t": "antonym",
+      "d": "medium",
+      "id": 47,
+      "exp": "Step 1: TRANQUIL means calm, quiet and peaceful. Step 2: A tranquil garden gives rest to the mind. Step 3: The opposite idea is being disturbed and restless. Step 4: AGITATED means feeling nervous, worried or disturbed, which is the opposite of tranquil. Step 5: PEACEFUL, SERENE and CALM all mean the same as tranquil. The answer is AGITATED."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to WANE.",
+      "opts": ["RISE", "DECLINE", "DIMINISH", "FADE"],
+      "c": 0,
+      "t": "antonym",
+      "d": "medium",
+      "id": 48,
+      "exp": "Step 1: WANE means to become gradually less in strength or amount. Step 2: The moon wanes after the full moon, becoming smaller each night. Step 3: The opposite idea is becoming greater. Step 4: RISE means to move upwards or increase, which is the opposite of wane. Step 5: DECLINE, DIMINISH and FADE all mean the same as wane. The answer is RISE."
+    },
+    {
+      "q": "Choose the word closest in meaning to ERUDITE.",
+      "opts": ["SCHOLARLY", "IGNORANT", "FOOLISH", "ILLITERATE"],
+      "c": 0,
+      "t": "synonym",
+      "d": "hard",
+      "id": 49,
+      "exp": "Step 1: ERUDITE means having or showing great knowledge, especially from studying books. Step 2: An erudite professor quotes ancient texts from memory. Step 3: SCHOLARLY means involving serious study and deep knowledge, which is the same as erudite. Step 4: IGNORANT means lacking knowledge, FOOLISH means lacking sense, and ILLITERATE means unable to read, all opposite ideas. Step 5: The answer is SCHOLARLY."
+    },
+    {
+      "q": "Choose the word closest in meaning to SYCOPHANT.",
+      "opts": ["FLATTERER", "CRITIC", "STRANGER", "WORKER"],
+      "c": 0,
+      "t": "synonym",
+      "d": "hard",
+      "id": 50,
+      "exp": "Step 1: SYCOPHANT means a person who praises powerful people insincerely to gain advantage. Step 2: A sycophant laughs loudly at every joke of the boss. Step 3: FLATTERER means a person who gives excessive, insincere praise, which is the same as sycophant. Step 4: CRITIC points out faults, STRANGER is an unknown person, and WORKER does a job, none match the idea. Step 5: The answer is FLATTERER."
+    },
+    {
+      "q": "Choose the word closest in meaning to SUBTERFUGE.",
+      "opts": ["DECEIT", "FRANKNESS", "OPENNESS", "HONESTY"],
+      "c": 0,
+      "t": "synonym",
+      "d": "hard",
+      "id": 51,
+      "exp": "Step 1: SUBTERFUGE means a trick or deceitful method used to hide the truth or escape a situation. Step 2: The spy used subterfuge to cross the border without documents. Step 3: DECEIT means the action of hiding the truth, which is the same as subterfuge. Step 4: FRANKNESS, OPENNESS and HONESTY all mean telling the truth plainly, the opposite idea. Step 5: The answer is DECEIT."
+    },
+    {
+      "q": "Choose the word closest in meaning to TACITURN.",
+      "opts": ["RESERVED", "TALKATIVE", "CHATTY", "NOISY"],
+      "c": 0,
+      "t": "synonym",
+      "d": "hard",
+      "id": 52,
+      "exp": "Step 1: TACITURN means tending to speak very little, habitually quiet. Step 2: A taciturn guard answers with only yes or no. Step 3: RESERVED means slow to reveal feelings or opinions, keeping to oneself, which matches taciturn. Step 4: TALKATIVE, CHATTY and NOISY all mean speaking a lot, the opposite idea. Step 5: The answer is RESERVED."
+    },
+    {
+      "q": "Choose the word closest in meaning to NIGGARDLY.",
+      "opts": ["MISERLY", "GENEROUS", "LAVISH", "MUNIFICENT"],
+      "c": 0,
+      "t": "synonym",
+      "d": "hard",
+      "id": 53,
+      "exp": "Step 1: NIGGARDLY means unwilling to spend money, giving very little. Step 2: A niggardly host serves the smallest portions at dinner. Step 3: MISERLY means hating to spend money, which is the same as niggardly. Step 4: GENEROUS, LAVISH and MUNIFICENT all mean giving large amounts freely, the opposite idea. Step 5: The answer is MISERLY."
+    },
+    {
+      "q": "Choose the word closest in meaning to DEROGATORY.",
+      "opts": ["CRITICAL", "COMPLIMENTARY", "PRAISING", "APPROVING"],
+      "c": 0,
+      "t": "synonym",
+      "d": "hard",
+      "id": 54,
+      "exp": "Step 1: DEROGATORY means showing a critical or disrespectful attitude, intended to lower someone's value. Step 2: Derogatory remarks about a colleague are unprofessional. Step 3: CRITICAL in this context means expressing disapproval and fault-finding, which is the same as derogatory. Step 4: COMPLIMENTARY, PRAISING and APPROVING all mean expressing admiration, the opposite idea. Step 5: The answer is CRITICAL."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to TRANSIENT.",
+      "opts": ["LASTING", "TEMPORARY", "BRIEF", "MOMENTARY"],
+      "c": 0,
+      "t": "antonym",
+      "d": "hard",
+      "id": 55,
+      "exp": "Step 1: TRANSIENT means lasting for only a short time, passing quickly. Step 2: The rainbow is transient, vanishing within minutes. Step 3: The opposite idea is continuing for a very long time. Step 4: LASTING means continuing for a long period, which is the opposite of transient. Step 5: TEMPORARY, BRIEF and MOMENTARY all mean the same as transient. The answer is LASTING."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to ZENITH.",
+      "opts": ["NADIR", "SUMMIT", "PEAK", "APEX"],
+      "c": 0,
+      "t": "antonym",
+      "d": "hard",
+      "id": 56,
+      "exp": "Step 1: ZENITH means the highest point, the peak of success or position. Step 2: The singer reached her zenith at the world tour. Step 3: The opposite idea is the lowest point. Step 4: NADIR means the lowest point, which is the opposite of zenith. Step 5: SUMMIT, PEAK and APEX all mean the same as zenith, the highest point. The answer is NADIR."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to SPURIOUS.",
+      "opts": ["GENUINE", "FAKE", "COUNTERFEIT", "FALSE"],
+      "c": 0,
+      "t": "antonym",
+      "d": "hard",
+      "id": 57,
+      "exp": "Step 1: SPURIOUS means not genuine, appearing real but actually false. Step 2: The officer rejected the spurious currency note. Step 3: The opposite idea is being real and original. Step 4: GENUINE means truly what it appears to be, which is the opposite of spurious. Step 5: FAKE, COUNTERFEIT and FALSE all mean the same as spurious. The answer is GENUINE."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to VILIFY.",
+      "opts": ["COMMEND", "MALIGN", "DEFAME", "SLANDER"],
+      "c": 0,
+      "t": "antonym",
+      "d": "hard",
+      "id": 58,
+      "exp": "Step 1: VILIFY means to speak badly about someone, saying false and harmful things. Step 2: The article vilified the honest official with lies. Step 3: The opposite idea is speaking well of someone. Step 4: COMMEND means to praise formally, which is the opposite of vilify. Step 5: MALIGN, DEFAME and SLANDER all mean the same as vilify. The answer is COMMEND."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to MUNIFICENT.",
+      "opts": ["FRUGAL", "GENEROUS", "LIBERAL", "LAVISH"],
+      "c": 0,
+      "t": "antonym",
+      "d": "hard",
+      "id": 59,
+      "exp": "Step 1: MUNIFICENT means extremely generous in giving large amounts. Step 2: A munificent donor funded the entire hospital building. Step 3: The opposite idea is giving very little. Step 4: FRUGAL means careful and economical with money, which is the opposite of munificent. Step 5: GENEROUS, LIBERAL and LAVISH all mean the same as munificent. The answer is FRUGAL."
+    },
+    {
+      "q": "Choose the word most opposite in meaning to ACRIMONY.",
+      "opts": ["COURTESY", "BITTERNESS", "HARSHNESS", "HOSTILITY"],
+      "c": 0,
+      "t": "antonym",
+      "d": "hard",
+      "id": 60,
+      "exp": "Step 1: ACRIMONY means bitterness and harshness in speech or manner. Step 2: The meeting ended in acrimony as both sides shouted. Step 3: The opposite idea is polite and pleasant behaviour. Step 4: COURTESY means polite, respectful behaviour, which is the opposite of acrimony. Step 5: BITTERNESS, HARSHNESS and HOSTILITY all mean the same as acrimony. The answer is COURTESY."
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "intro-syn-anton"
+    },
+    {
+      "type": "concept",
+      "sectionId": "synonym-technique"
+    },
+    {
+      "type": "concept",
+      "sectionId": "antonym-technique"
+    },
+    {
+      "type": "example",
+      "sectionId": "elimination-strategy"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}
