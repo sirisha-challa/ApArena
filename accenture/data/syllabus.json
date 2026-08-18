@@ -755,7 +755,10 @@
         {
           "id": "output-tracing",
           "title": "Output Tracing (Sequence)",
-          "status": "pending",
+          "status": "complete",
+          "bank": "Pseudocode Bank",
+          "bankTopicId": "output-tracing",
+          "bankUrl": null,
           "content": null
         },
         {
