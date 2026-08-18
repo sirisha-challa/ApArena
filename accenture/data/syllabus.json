@@ -761,7 +761,10 @@
         {
           "id": "while-loop",
           "title": "While Loop",
-          "status": "pending",
+          "status": "complete",
+          "bank": "Pseudocode Bank",
+          "bankTopicId": "while-loop",
+          "bankUrl": null,
           "content": null
         },
         {

@@ -1,0 +1,825 @@
+{
+  "id": "while-loop",
+  "title": "While Loop",
+  "icon": "⟳",
+  "category": "Pseudocode",
+  "subtitle": "Master the condition-first loop: trace iterations, counters and accumulators",
+  "days": "4-6",
+  "color": "#A855F7",
+  "subtopics": [
+    "Condition-Check-First Execution",
+    "Counters & Iteration Counting",
+    "Accumulators (Sum, Product, Factorial)",
+    "Digit Extraction with MOD & DIV",
+    "Euclidean GCD & Subtraction GCD",
+    "Infinite Loops & Break Conditions"
+  ],
+  "estimatedHours": 8,
+  "readingSections": [
+    {
+      "id": "intro-while",
+      "title": "What Is a While Loop?",
+      "content": "A WHILE loop repeats a block of instructions as long as (WHILE) a condition is TRUE. The condition is checked BEFORE every run of the body — so if the condition is false at the very start, the body never runs even once. This is called condition-first (pre-test) execution, and it is the single most important idea in this topic.",
+      "subsections": [
+        {
+          "title": "The shape of a WHILE loop",
+          "content": "SET i = 1\nWHILE i <= 3\n  PRINT i\n  SET i = i + 1\nENDWHILE\n\nThe keyword WHILE opens the loop and ENDWHILE closes it. Everything between them is the body. The condition (i <= 3) is re-evaluated before every pass; the moment it becomes false, control jumps past ENDWHILE and the loop ends."
+        },
+        {
+          "title": "Why it is called condition-first",
+          "content": "Unlike a REPEAT-UNTIL loop (which always runs once), a WHILE loop can run zero times. If the starting value already fails the condition, the body is skipped completely. Placement tests hide this as a trap: a loop that 'looks' like it prints something may print nothing at all."
+        },
+        {
+          "title": "What actually changes between iterations",
+          "content": "The loop body must eventually make the condition false, otherwise the loop runs forever (infinite loop). The variable that changes is called the loop-control variable — usually incremented (i = i + 1), decremented (n = n - 1), halved (n = n DIV 2) or multiplied (a = a * 2). Tracing means watching only this variable and the condition."
+        }
+      ]
+    },
+    {
+      "id": "trace-while",
+      "title": "How to Trace a While Loop",
+      "content": "Every while-loop MCQ is solved with the same three-column trace: write the current value of the control variable, ask 'is the condition true now?', and if yes run the body once. Table 1 ends exactly when the condition turns false — that decides both the printed output and the number of iterations.",
+      "subsections": [
+        {
+          "title": "The trace table",
+          "content": "For SET i = 1; WHILE i <= 5: i = i + 2:\ni=1: true -> body, i becomes 3\ni=3: true -> body, i becomes 5\ni=5: true -> body, i becomes 7\ni=7: false -> stop\n\nIterations: 3. Final value of i: 7. Never count the check that fails — it is not an iteration."
+        },
+        {
+          "title": "Counting iterations vs final value",
+          "content": "The question may ask either. 'How many times does the loop run?' counts TRUE checks. 'What is the value printed after the loop?' needs the value of the variable AFTER the last body run (or after the final failed check, if the variable is printed after ENDWHILE). Read the question words carefully."
+        },
+        {
+          "title": "The off-by-one trap",
+          "content": "i <= 3 with i starting at 1 gives 3 iterations (1, 2, 3). Rewrite it as i < 3 and you get 2 iterations (1, 2). The <= vs < comparison and the step size (i = i+1 vs i = i+2) are the two most common deliberate mistakes in exam options."
+        }
+      ]
+    },
+    {
+      "id": "counter-patterns",
+      "title": "Counters and Accumulators",
+      "content": "Almost every placement while-loop question is one of two patterns. A COUNTER counts iterations (c = c + 1 inside the body, printed after the loop = number of passes). An ACCUMULATOR builds a total (s = s + i), product (p = p * i) or factorial (f = f * i) across passes.",
+      "subsections": [
+        {
+          "title": "Counter pattern",
+          "content": "SET c = 0\nSET i = 2\nWHILE i < 10\n  SET c = c + 1\n  SET i = i + 2\nENDWHILE\nPRINT c\n\ni: 2, 4, 6, 8 true; i=10 false. c counts 4 true checks -> prints 4."
+        },
+        {
+          "title": "Accumulator (sum) pattern",
+          "content": "SET s = 0\nSET i = 1\nWHILE i <= 4\n  SET s = s + i\n  SET i = i + 1\nENDWHILE\nPRINT s\n\ns = 1 + 2 + 3 + 4 = 10. This is the classic 'sum of first N numbers' question."
+        },
+        {
+          "title": "Product / factorial pattern",
+          "content": "SET f = 1\nSET i = 5\nWHILE i > 1\n  SET f = f * i\n  SET i = i - 1\nENDWHILE\nPRINT f\n\nf = 5 * 4 * 3 * 2 = 120, which is 5! (factorial of 5)."
+        },
+        {
+          "title": "Conditional counting",
+          "content": "When the body contains an IF, count only the passes where the IF fires: 'how many even numbers' = count passes where i MOD 2 == 0. The loop runs fully; the counter increments selectively."
+        }
+      ]
+    },
+    {
+      "id": "digit-mod",
+      "title": "Digit Extraction with MOD and DIV",
+      "content": "The most repeated while-loop pattern in campus papers is digit processing. Two operators do everything: n MOD 10 peels off the last digit, n DIV 10 drops the last digit. Repeating them inside a WHILE n > 0 loop visits every digit of the number, right to left.",
+      "subsections": [
+        {
+          "title": "The extraction recipe",
+          "content": "WHILE n > 0\n  d = n MOD 10   (pick last digit)\n  ...use d...    (sum it, compare it, count it)\n  n = n DIV 10   (drop last digit)\nENDWHILE\n\nFor n = 123: d = 3, 2, 1. The loop stops exactly when no digits remain (n becomes 0). Each pass handles exactly one digit, so the number of iterations equals the number of digits."
+        },
+        {
+          "title": "Sum of digits",
+          "content": "n = 123: s = 0 + 3 = 3, n = 12; s = 3 + 2 = 5, n = 1; s = 5 + 1 = 6, n = 0. Prints 6."
+        },
+        {
+          "title": "Count of digits",
+          "content": "A counter in the same loop counts digits: 4567 has 4 digits -> counter prints 4. Works for any integer."
+        },
+        {
+          "title": "Reverse a number",
+          "content": "rev = rev * 10 + d rebuilds the number backwards. n = 365: rev = 5, n = 36; rev = 56, n = 3; rev = 563, n = 0. Prints 563."
+        },
+        {
+          "title": "Digit cubes (Armstrong-style)",
+          "content": "s = s + d * d * d over all digits. For n = 153: 1 + 125 + 27 = 153 — the number equals its digit-cube sum, hence the term Armstrong number."
+        }
+      ]
+    },
+    {
+      "id": "loop-safety",
+      "title": "Infinite Loops and Break Conditions",
+      "content": "A while loop that never makes its condition false never ends. Exams test this in two ways: spotting the infinite loop (x = x + 1 while x > 0 only grows), and reading the EXIT / break that stops a deliberately never-false loop early.",
+      "subsections": [
+        {
+          "title": "Spotting the infinite loop",
+          "content": "SET x = 5\nWHILE x > 0\n  SET x = x + 1\nENDWHILE\n\nx grows 5, 6, 7, 8... and stays > 0 forever — the loop never terminates. Opposite trap: the condition never becomes true (x < 0 when x starts at 0 and increases) — the loop never runs."
+        },
+        {
+          "title": "The break pattern (infinite condition + exit)",
+          "content": "WHILE TRUE\n  IF i > 5 THEN EXIT ENDIF\n  PRINT i\n  SET i = i + 1\nENDWHILE\n\nThe loop condition can never fail, so the program relies on the IF...EXIT inside to stop. It prints 1 2 3 4 5 and exits when i reaches 6."
+        },
+        {
+          "title": "Bit-shift halving",
+          "content": "value >> 1 shifts bits right, which halves the value. WHILE value >= n with value halving each pass terminates exactly like n = n DIV 2 — for 32 it hits 0 after 6 shifts, and 0 >= 1 fails."
+        },
+        {
+          "title": "Euclidean GCD loop",
+          "content": "WHILE q <> 0\n  r = p MOD q\n  p = q\n  q = r\nENDWHILE\n\nRepeated MOD until the remainder is 0; the last non-zero remainder (p) is the GCD. For (4, 2): 4 MOD 2 = 0 immediately -> GCD = 2. For (48, 18): 48 mod 18 = 12, 18 mod 12 = 6, 12 mod 6 = 0 -> GCD = 6."
+        }
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "id": "while-condition-check",
+      "title": "Condition-Check-First Rule",
+      "formula": "Check condition -> if TRUE run body -> re-check -> stop when FALSE",
+      "explanation": "The condition is evaluated before every pass. A false condition at entry means zero iterations. The loop ends only when the condition turns false, and the check that fails is not counted as an iteration.",
+      "example": "WHILE i <= 3 with i = 1, step i = i + 1: checks 1<=3, 2<=3, 3<=3, 4<=3(false). Iterations = 3, final i = 4."
+    },
+    {
+      "id": "iteration-counter",
+      "title": "Iteration Counter Rule",
+      "formula": "iterations = (last passing value - first value) / step + 1",
+      "explanation": "Count how many values of the control variable satisfy the condition. With start s, step k and values that pass up to the limit, iterations = number of terms in the arithmetic run of passing values.",
+      "example": "i = 2, WHILE i < 10, step i = i + 2: passing values 2, 4, 6, 8 -> 4 iterations."
+    },
+    {
+      "id": "mod-div-extraction",
+      "title": "Digit Extraction Rule",
+      "formula": "last digit = n MOD 10; drop it with n = n DIV 10; repeat WHILE n > 0",
+      "explanation": "Each pass extracts one digit from the right. Sum of digits accumulates with s = s + d. Reverse rebuilds with rev = rev * 10 + d. Iterations equal the number of digits.",
+      "example": "n = 123: digits 3, 2, 1 -> sum 6, reverse 321."
+    },
+    {
+      "id": "gcd-loop",
+      "title": "Euclidean GCD Loop",
+      "formula": "WHILE q <> 0: r = p MOD q; p = q; q = r -> GCD is final p",
+      "explanation": "Replace the larger number by the remainder of dividing it by the smaller, until the remainder is 0. The last non-zero remainder is the GCD of the original pair.",
+      "example": "p = 48, q = 18: 48 mod 18 = 12; 18 mod 12 = 6; 12 mod 6 = 0 -> GCD 6."
+    },
+    {
+      "id": "accumulator-sum",
+      "title": "Accumulator Rule",
+      "formula": "s = s + i (sum), p = p * i (product), f = f * i (factorial), each inside the loop",
+      "explanation": "An accumulator is a variable read and rewritten each pass. Sum of 1..n = n(n+1)/2, but the loop always performs the step-by-step total, so trace pass by pass.",
+      "example": "s = 0; WHILE i <= 4: s = s + i -> 1 + 2 + 3 + 4 = 10."
+    }
+  ],
+  "practiceProblems": {
+    "while-condition-check": [
+      {
+        "q": "Trace: SET i = 4; WHILE i <= 6: PRINT i; SET i = i + 1; ENDWHILE",
+        "s": [
+          "Step 1: i = 4; check 4 <= 6 (true) -> print 4, i becomes 5.",
+          "Step 2: check 5 <= 6 (true) -> print 5, i becomes 6.",
+          "Step 3: check 6 <= 6 (true) -> print 6, i becomes 7.",
+          "Step 4: check 7 <= 6 (false) -> loop ends."
+        ],
+        "a": "4 5 6"
+      },
+      {
+        "q": "Trace: SET n = 0; WHILE n < 5: PRINT 'X'; SET n = n + 3; ENDWHILE",
+        "s": [
+          "Step 1: n = 0; 0 < 5 is true -> print X, n = 3.",
+          "Step 2: 3 < 5 is true -> print X, n = 6.",
+          "Step 3: 6 < 5 is false -> stop. Two passes."
+        ],
+        "a": "XX (2 prints)"
+      }
+    ],
+    "iteration-counter": [
+      {
+        "q": "How many times does this loop run? SET i = 1; WHILE i <= 9: SET i = i + 2; ENDWHILE",
+        "s": [
+          "Step 1: passing values of i: 1, 3, 5, 7, 9.",
+          "Step 2: after the 9 pass, i = 11 and 11 <= 9 is false.",
+          "Step 3: count = 5 passes."
+        ],
+        "a": "5"
+      },
+      {
+        "q": "How many times does this loop run? SET i = 10; WHILE i >= 5: SET i = i - 2; ENDWHILE",
+        "s": [
+          "Step 1: passing values: 10, 8, 6.",
+          "Step 2: after 6 pass, i = 4 and 4 >= 5 is false.",
+          "Step 3: count = 3 passes."
+        ],
+        "a": "3"
+      }
+    ],
+    "mod-div-extraction": [
+      {
+        "q": "Trace: n = 482; SET s = 0; WHILE n > 0: SET s = s + (n MOD 10); SET n = n DIV 10; ENDWHILE; PRINT s",
+        "s": [
+          "Step 1: n = 482 -> d = 2, s = 2, n = 48.",
+          "Step 2: n = 48 -> d = 8, s = 10, n = 4.",
+          "Step 3: n = 4 -> d = 4, s = 14, n = 0.",
+          "Step 4: n = 0 so loop stops; s = 2 + 8 + 4 = 14."
+        ],
+        "a": "14"
+      },
+      {
+        "q": "Trace: n = 365; SET rev = 0; WHILE n > 0: SET rev = rev * 10 + (n MOD 10); SET n = n DIV 10; ENDWHILE; PRINT rev",
+        "s": [
+          "Step 1: rev = 0*10 + 5 = 5, n = 36.",
+          "Step 2: rev = 5*10 + 6 = 56, n = 3.",
+          "Step 3: rev = 56*10 + 3 = 563, n = 0 → stop."
+        ],
+        "a": "563"
+      }
+    ],
+    "gcd-loop": [
+      {
+        "q": "Trace: SET p = 18, q = 12; WHILE q <> 0: SET r = p MOD q; SET p = q; SET q = r; ENDWHILE; PRINT p",
+        "s": [
+          "Step 1: r = 18 MOD 12 = 6; p = 12; q = 6.",
+          "Step 2: r = 12 MOD 6 = 0; p = 6; q = 0.",
+          "Step 3: q = 0 so loop stops; p = 6."
+        ],
+        "a": "6"
+      },
+      {
+        "q": "Trace: SET a = 24, b = 15; WHILE b <> 0: SET t = b; SET b = a MOD b; SET a = t; ENDWHILE; PRINT a",
+        "s": [
+          "Step 1: t = 15, b = 24 MOD 15 = 9, a = 15.",
+          "Step 2: t = 9, b = 15 MOD 9 = 6, a = 9.",
+          "Step 3: t = 6, b = 9 MOD 6 = 3, a = 6.",
+          "Step 4: t = 3, b = 6 MOD 3 = 0, a = 3 → stop, GCD = 3."
+        ],
+        "a": "3"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "q": "What is printed by:\nSET i = 1\nWHILE i <= 3\n  PRINT i\n  SET i = i + 1\nENDWHILE",
+      "opts": ["1 2 3", "1 2", "2 3 4", "1 1 1"],
+      "c": 0,
+      "t": "iteration",
+      "d": "easy",
+      "id": 1,
+      "exp": "i starts at 1. Check 1 <= 3 (true), print 1, i = 2. Check 2 <= 3 (true), print 2, i = 3. Check 3 <= 3 (true), print 3, i = 4. Check 4 <= 3 (false), loop ends. Printed output is 1 2 3. The answer is 1 2 3."
+    },
+    {
+      "q": "How many times does the loop body run?\nSET i = 0\nWHILE i < 5\n  SET i = i + 1\nENDWHILE",
+      "opts": ["5", "4", "6", "0"],
+      "c": 0,
+      "t": "iteration",
+      "d": "easy",
+      "id": 2,
+      "exp": "The passing values of i are 0, 1, 2, 3, 4 — each satisfies i < 5, so the body runs once per pass. After i = 5 the condition 5 < 5 is false and the loop stops. The body ran 5 times. The answer is 5."
+    },
+    {
+      "q": "What is printed at the end?\nSET n = 5\nWHILE n > 0\n  SET n = n - 1\nENDWHILE\nPRINT n",
+      "opts": ["5", "1", "0", "-1"],
+      "c": 2,
+      "t": "iteration",
+      "d": "easy",
+      "id": 3,
+      "exp": "n falls 5 → 4 → 3 → 2 → 1 → 0, each pass checking n > 0 (true). At n = 0 the check 0 > 0 is false, so the loop stops and control reaches PRINT n. n is 0. The answer is 0."
+    },
+    {
+      "q": "What is printed?\nSET n = 10\nWHILE n >= 5\n  PRINT n\n  SET n = n - 2\nENDWHILE",
+      "opts": ["10 8 6", "10 8 6 5", "10 8 6 4", "10 8 6 5 4"],
+      "c": 0,
+      "t": "iteration",
+      "d": "easy",
+      "id": 4,
+      "exp": "Trace: n = 10 → print 10, n = 8; print 8, n = 6; print 6, n = 4. Check 4 >= 5 is false, loop stops. Only 10, 8 and 6 appear because the check happens before each print. The answer is 10 8 6."
+    },
+    {
+      "q": "What is printed?\nSET s = 0\nSET i = 1\nWHILE i <= 4\n  SET s = s + i\n  SET i = i + 1\nENDWHILE\nPRINT s",
+      "opts": ["15", "10", "11", "9"],
+      "c": 1,
+      "t": "accumulator",
+      "d": "easy",
+      "id": 5,
+      "exp": "The accumulator s adds each passing i: s = 0+1 = 1, then 1+2 = 3, then 3+3 = 6, then 6+4 = 10. i becomes 5, the check 5 <= 4 fails, and s is printed as 10. The answer is 10."
+    },
+    {
+      "q": "What is printed?\nSET a = 2\nWHILE a < 10\n  SET a = a * 2\nENDWHILE\nPRINT a",
+      "opts": ["16", "8", "10", "14"],
+      "c": 0,
+      "t": "iteration",
+      "d": "easy",
+      "id": 6,
+      "exp": "a doubles each pass: 2 → 4 → 8 → 16. At a = 16 the check 16 < 10 is false, so the loop stops. The loop-control variable a is printed after ENDWHILE as 16. The answer is 16."
+    },
+    {
+      "q": "What is printed?\nSET i = 1\nWHILE i <= 6\n  IF i MOD 2 = 0 THEN\n    PRINT i\n  ENDIF\n  SET i = i + 1\nENDWHILE",
+      "opts": ["2 4 6", "1 3 5", "1 2 3 4 5 6", "2 4"],
+      "c": 0,
+      "t": "counter",
+      "d": "easy",
+      "id": 7,
+      "exp": "The loop passes i = 1 through 6. The IF fires only when i MOD 2 = 0, i.e. the even values: 2, 4, 6. Odd values are skipped silently. The printed sequence is 2 4 6. The answer is 2 4 6."
+    },
+    {
+      "q": "What is the final value printed?\nSET x = 7\nWHILE x > 2\n  SET x = x - 3\nENDWHILE\nPRINT x",
+      "opts": ["2", "1", "4", "-2"],
+      "c": 1,
+      "t": "iteration",
+      "d": "easy",
+      "id": 8,
+      "exp": "x = 7 → check 7 > 2 (true), x = 4. Check 4 > 2 (true), x = 1. Check 1 > 2 (false), stop. The body ran only 2 times and the final value of x, printed after the loop, is 1. The answer is 1."
+    },
+    {
+      "q": "What is printed?\nSET p = 1\nSET i = 1\nWHILE i <= 3\n  SET p = p * i\n  SET i = i + 1\nENDWHILE\nPRINT p",
+      "opts": ["6", "3", "9", "12"],
+      "c": 0,
+      "t": "accumulator",
+      "d": "easy",
+      "id": 9,
+      "exp": "p is a product accumulator: p = 1*1 = 1, then 1*2 = 2, then 2*3 = 6. i reaches 4, the check 4 <= 3 fails, and p is printed as 6. The answer is 6."
+    },
+    {
+      "q": "What does this loop print?\nSET i = 10\nWHILE i < 5\n  PRINT i\n  SET i = i + 1\nENDWHILE",
+      "opts": ["10 11 12", "nothing", "10", "10 9 8 7 6"],
+      "c": 1,
+      "t": "iteration",
+      "d": "easy",
+      "id": 10,
+      "exp": "The condition is checked first: is 10 < 5? No. Because a WHILE loop is condition-first, the body never runs even once, so nothing is printed. The answer is nothing."
+    },
+    {
+      "q": "How many times is 'HI' printed?\nSET n = 0\nWHILE n < 3\n  PRINT 'HI'\n  SET n = n + 1\nENDWHILE",
+      "opts": ["2", "4", "3", "1"],
+      "c": 2,
+      "t": "iteration",
+      "d": "easy",
+      "id": 11,
+      "exp": "n passes 0, 1, 2 — three values satisfy n < 3, and each pass prints HI. After n = 3 the check fails and the loop ends. HI is printed 3 times. The answer is 3."
+    },
+    {
+      "q": "What is printed?\nSET y = 1\nWHILE y <= 16\n  SET y = y * 2\nENDWHILE\nPRINT y",
+      "opts": ["16", "32", "8", "64"],
+      "c": 1,
+      "t": "iteration",
+      "d": "easy",
+      "id": 12,
+      "exp": "y doubles each pass: 1 → 2 → 4 → 8 → 16 → 32. At y = 32 the check 32 <= 16 is false, so the loop stops. The final y printed is 32, and note the loop ran 4 times (values 1, 2, 4, 8 passed). The answer is 32."
+    },
+    {
+      "q": "What is printed?\nSET count = 0\nSET i = 1\nWHILE i <= 10\n  IF i > 7 THEN\n    SET count = count + 1\n  ENDIF\n  SET i = i + 1\nENDWHILE\nPRINT count",
+      "opts": ["3", "4", "7", "10"],
+      "c": 0,
+      "t": "counter",
+      "d": "easy",
+      "id": 13,
+      "exp": "i runs from 1 to 10. The IF fires only when i > 7, i.e. for i = 8, 9, 10. count is incremented 3 times, once per firing, and printed after the loop as 3. The answer is 3."
+    },
+    {
+      "q": "What is printed?\nSET k = 5\nWHILE k >= 1\n  PRINT k\n  SET k = k - 2\nENDWHILE",
+      "opts": ["5 3 1", "5 3 1 -1", "5 4 3 2 1", "5 3"],
+      "c": 0,
+      "t": "iteration",
+      "d": "easy",
+      "id": 14,
+      "exp": "Passing values of k: 5 (print, k = 3), 3 (print, k = 1), 1 (print, k = -1). Check -1 >= 1 is false, stop. Only 5, 3 and 1 are printed. The answer is 5 3 1."
+    },
+    {
+      "q": "What is printed?\nSET s = 0\nSET i = 2\nWHILE i <= 8\n  SET s = s + i\n  SET i = i + 2\nENDWHILE\nPRINT s",
+      "opts": ["20", "24", "18", "30"],
+      "c": 0,
+      "t": "accumulator",
+      "d": "easy",
+      "id": 15,
+      "exp": "i passes 2, 4, 6, 8 (each <= 8 true); s adds all of them: 2+4+6+8 = 20. After i = 10 the check fails. The answer is 20."
+    },
+    {
+      "q": "What is printed?\nSET c = 0\nSET m = 3\nWHILE m > 0\n  SET c = c + 1\n  SET m = m - 1\nENDWHILE\nPRINT c",
+      "opts": ["2", "3", "4", "1"],
+      "c": 1,
+      "t": "counter",
+      "d": "easy",
+      "id": 16,
+      "exp": "m passes 3, 2, 1 — each satisfies m > 0, and each pass bumps c. At m = 0 the check fails. c counts exactly 3 passes and is printed as 3. The answer is 3."
+    },
+    {
+      "q": "What is printed?\nSET n = 12\nWHILE n MOD 2 = 0\n  SET n = n DIV 2\nENDWHILE\nPRINT n",
+      "opts": ["6", "3", "0", "1"],
+      "c": 1,
+      "t": "iteration",
+      "d": "easy",
+      "id": 17,
+      "exp": "n = 12: 12 MOD 2 = 0 (true), n = 6. n = 6: 6 MOD 2 = 0 (true), n = 3. n = 3: 3 MOD 2 = 1 so the condition is false and the loop stops. The final n printed is 3. The answer is 3."
+    },
+    {
+      "q": "What is the final value printed?\nSET i = 0\nWHILE i <= 10\n  SET i = i + 3\nENDWHILE\nPRINT i",
+      "opts": ["12", "10", "9", "13"],
+      "c": 0,
+      "t": "iteration",
+      "d": "easy",
+      "id": 18,
+      "exp": "i steps 0 → 3 → 6 → 9 → 12, each pass satisfying i <= 10. At i = 12 the check 12 <= 10 is false, so the loop stops. The final i printed is 12. The answer is 12."
+    },
+    {
+      "q": "What is printed?\nSET total = 0\nSET num = 4\nWHILE num > 0\n  SET total = total + num\n  SET num = num - 1\nENDWHILE\nPRINT total",
+      "opts": ["10", "15", "6", "4"],
+      "c": 0,
+      "t": "accumulator",
+      "d": "easy",
+      "id": 19,
+      "exp": "total accumulates num as it descends: 0+4 = 4, +3 = 7, +2 = 9, +1 = 10. num reaches 0 so the check fails and total prints as 10. The answer is 10."
+    },
+    {
+      "q": "What is the final value printed?\nSET x = 1\nWHILE x < 100\n  SET x = x + 10\nENDWHILE\nPRINT x",
+      "opts": ["101", "91", "100", "99"],
+      "c": 0,
+      "t": "iteration",
+      "d": "easy",
+      "id": 20,
+      "exp": "x rises 11, 21, 31, ..., 91, 101 — each pass adds 10 while x < 100. At x = 101 the check 101 < 100 fails. The loop ran 10 times and the final x is 101. The answer is 101."
+    },
+    {
+      "q": "What is printed?\nSET n = 4\nWHILE n >= 0\n  PRINT n\n  SET n = n - 1\nENDWHILE",
+      "opts": ["4 3 2 1 0", "4 3 2 1", "3 2 1 0", "4 3 2 1 0 -1"],
+      "c": 0,
+      "t": "iteration",
+      "d": "easy",
+      "id": 21,
+      "exp": "n passes 4, 3, 2, 1, 0, all satisfying n >= 0, printing each before decrementing. At n = -1 the check fails and the loop stops. Output: 4 3 2 1 0. The answer is 4 3 2 1 0."
+    },
+    {
+      "q": "What is printed?\nSET a = 0\nSET i = 1\nWHILE i <= 5\n  SET a = a + 2\n  SET i = i + 1\nENDWHILE\nPRINT a",
+      "opts": ["10", "12", "5", "11"],
+      "c": 0,
+      "t": "accumulator",
+      "d": "easy",
+      "id": 22,
+      "exp": "a starts at 0 and grows by 2 on each of the 5 passes (i = 1, 2, 3, 4, 5): 2, 4, 6, 8, 10. i = 6 fails the check, a is printed as 10. The answer is 10."
+    },
+    {
+      "q": "What is printed?\nSET c = 0\nSET i = 1\nWHILE i < 10\n  IF i MOD 3 = 0 THEN\n    SET c = c + 1\n  ENDIF\n  SET i = i + 1\nENDWHILE\nPRINT c",
+      "opts": ["3", "4", "2", "9"],
+      "c": 0,
+      "t": "counter",
+      "d": "easy",
+      "id": 23,
+      "exp": "i runs 1..9. The IF fires for multiples of 3 in that range: i = 3, 6, 9. c is incremented on those 3 passes and printed as 3. The answer is 3."
+    },
+    {
+      "q": "What is the final value printed?\nSET p = 10\nWHILE p > 1\n  SET p = p DIV 2\nENDWHILE\nPRINT p",
+      "opts": ["1", "0", "2", "5"],
+      "c": 0,
+      "t": "iteration",
+      "d": "easy",
+      "id": 24,
+      "exp": "p halves each pass: 10 → 5 → 2 → 1, each satisfying p > 1. At p = 1 the check 1 > 1 is false, so the loop stops. The final p printed is 1. The answer is 1."
+    },
+    {
+      "q": "What is printed? (digit sum)\nSET n = 123\nSET s = 0\nWHILE n > 0\n  SET s = s + (n MOD 10)\n  SET n = n DIV 10\nENDWHILE\nPRINT s",
+      "opts": ["6", "123", "3", "5"],
+      "c": 0,
+      "t": "digit",
+      "d": "medium",
+      "id": 25,
+      "exp": "Each pass peels the last digit: n = 123 → s = 0+3 = 3, n = 12; s = 3+2 = 5, n = 1; s = 5+1 = 6, n = 0. The digits are 1, 2, 3 and their sum is 6. The answer is 6."
+    },
+    {
+      "q": "How many digits does the number have? (count by loop)\nSET n = 4567\nSET c = 0\nWHILE n > 0\n  SET c = c + 1\n  SET n = n DIV 10\nENDWHILE\nPRINT c",
+      "opts": ["4", "5", "3", "4567"],
+      "c": 0,
+      "t": "digit",
+      "d": "medium",
+      "id": 26,
+      "exp": "Each pass removes one digit with n = n DIV 10: 4567 → 456 → 45 → 4 → 0. The counter c increments per pass, tallying 4 digits. When n = 0 the check fails and c prints as 4. The answer is 4."
+    },
+    {
+      "q": "What is printed? (digit reversal)\nSET n = 365\nSET rev = 0\nWHILE n > 0\n  SET rev = rev * 10 + (n MOD 10)\n  SET n = n DIV 10\nENDWHILE\nPRINT rev",
+      "opts": ["563", "365", "536", "653"],
+      "c": 0,
+      "t": "digit",
+      "d": "medium",
+      "id": 27,
+      "exp": "rev rebuilds the number backwards: n = 365 → rev = 0*10+5 = 5, n = 36; rev = 5*10+6 = 56, n = 3; rev = 56*10+3 = 563, n = 0. So 365 reverses to 563. The answer is 563."
+    },
+    {
+      "q": "What is printed? (factorial)\nSET f = 1\nSET i = 5\nWHILE i > 1\n  SET f = f * i\n  SET i = i - 1\nENDWHILE\nPRINT f",
+      "opts": ["120", "24", "720", "60"],
+      "c": 0,
+      "t": "accumulator",
+      "d": "medium",
+      "id": 28,
+      "exp": "f multiplies i descending from 5: f = 1*5 = 5, then *4 = 20, then *3 = 60, then *2 = 120. i = 1 fails i > 1, so f prints as 120, which is 5 factorial. The answer is 120."
+    },
+    {
+      "q": "What is printed? (product of digits)\nSET n = 24\nSET p = 1\nWHILE n > 0\n  SET p = p * (n MOD 10)\n  SET n = n DIV 10\nENDWHILE\nPRINT p",
+      "opts": ["8", "6", "12", "4"],
+      "c": 0,
+      "t": "digit",
+      "d": "medium",
+      "id": 29,
+      "exp": "Digit by digit: n = 24 → p = 1*4 = 4, n = 2; p = 4*2 = 8, n = 0. The digits 2 and 4 multiply to 8, which prints. The answer is 8."
+    },
+    {
+      "q": "What is printed? (nested loops)\nSET i = 1\nWHILE i <= 2\n  SET j = 1\n  WHILE j <= 3\n    PRINT '*'\n    SET j = j + 1\n  ENDWHILE\n  SET i = i + 1\nENDWHILE",
+      "opts": ["6 stars", "5 stars", "2 stars", "3 stars"],
+      "c": 0,
+      "t": "nested",
+      "d": "medium",
+      "id": 30,
+      "exp": "The inner loop prints a star for j = 1, 2, 3 — 3 stars — and runs completely for each value of the outer i. Outer passes: i = 1 and i = 2, so total stars = 2 × 3 = 6. The answer is 6 stars."
+    },
+    {
+      "q": "What is printed? (sum 1 to 100)\nSET s = 0\nSET i = 1\nWHILE i <= 100\n  SET s = s + i\n  SET i = i + 1\nENDWHILE\nPRINT s",
+      "opts": ["5050", "5000", "5151", "4950"],
+      "c": 0,
+      "t": "accumulator",
+      "d": "medium",
+      "id": 31,
+      "exp": "This adds every integer from 1 to 100. The formula n(n+1)/2 gives 100×101/2 = 5050, and the loop performs exactly that sum step by step. The answer is 5050."
+    },
+    {
+      "q": "What is printed? (count of odd numbers)\nSET c = 0\nSET i = 1\nWHILE i <= 7\n  IF i MOD 2 = 1 THEN\n    SET c = c + 1\n  ENDIF\n  SET i = i + 1\nENDWHILE\nPRINT c",
+      "opts": ["4", "3", "7", "5"],
+      "c": 0,
+      "t": "counter",
+      "d": "medium",
+      "id": 32,
+      "exp": "i runs 1..7 and the IF fires when i MOD 2 = 1, i.e. odd values: 1, 3, 5, 7. c counts 4 firings and prints as 4. The answer is 4."
+    },
+    {
+      "q": "What is printed? (largest digit)\nSET n = 529\nSET max = 0\nWHILE n > 0\n  IF (n MOD 10) > max THEN\n    SET max = n MOD 10\n  ENDIF\n  SET n = n DIV 10\nENDWHILE\nPRINT max",
+      "opts": ["9", "5", "2", "529"],
+      "c": 0,
+      "t": "digit",
+      "d": "medium",
+      "id": 33,
+      "exp": "Digits arrive right to left: 9 (max becomes 9), then 2 (9 > 2 so no change), then 5 (9 > 5 no change). After the loop, max holds 9, the largest digit of 529. The answer is 9."
+    },
+    {
+      "q": "What is printed? (sum of even numbers)\nSET s = 0\nSET i = 2\nWHILE i <= 10\n  SET s = s + i\n  SET i = i + 2\nENDWHILE\nPRINT s",
+      "opts": ["30", "25", "35", "20"],
+      "c": 0,
+      "t": "accumulator",
+      "d": "medium",
+      "id": 34,
+      "exp": "i passes 2, 4, 6, 8, 10 and s sums them: 2+4+6+8+10 = 30. i = 12 fails the check and s prints as 30. The answer is 30."
+    },
+    {
+      "q": "What is printed? (Euclidean GCD)\nSET a = 18\nSET b = 12\nWHILE b > 0\n  SET t = b\n  SET b = a MOD b\n  SET a = t\nENDWHILE\nPRINT a",
+      "opts": ["6", "3", "18", "12"],
+      "c": 0,
+      "t": "gcd",
+      "d": "medium",
+      "id": 35,
+      "exp": "Euclid: a = 18, b = 12 → t = 12, b = 18 MOD 12 = 6, a = 12. Next: t = 6, b = 12 MOD 6 = 0, a = 6. b = 0 ends the loop and the GCD 6 prints. The answer is 6."
+    },
+    {
+      "q": "What is printed?\nSET c = 0\nWHILE c < 3\n  PRINT 'ONE'\n  SET c = c + 1\nENDWHILE",
+      "opts": ["ONE ONE ONE", "ONE ONE", "ONE ONE ONE ONE", "ONE"],
+      "c": 0,
+      "t": "iteration",
+      "d": "medium",
+      "id": 36,
+      "exp": "c passes 0, 1, 2 and each pass prints ONE. At c = 3 the check 3 < 3 fails. ONE is printed 3 times, once per pass. The answer is ONE ONE ONE."
+    },
+    {
+      "q": "What is printed? (multiples of 3)\nSET s = 0\nSET i = 3\nWHILE i <= 15\n  SET s = s + i\n  SET i = i + 3\nENDWHILE\nPRINT s",
+      "opts": ["45", "48", "42", "54"],
+      "c": 0,
+      "t": "accumulator",
+      "d": "medium",
+      "id": 37,
+      "exp": "i steps 3, 6, 9, 12, 15 and s sums them: 3+6+9+12+15 = 45. i = 18 fails the check and s prints as 45. The answer is 45."
+    },
+    {
+      "q": "What is printed? (string length by loop)\nSET w = 'HELLO'\nSET c = 0\nWHILE c < length(w)\n  SET c = c + 1\nENDWHILE\nPRINT c",
+      "opts": ["5", "4", "6", "HELLO"],
+      "c": 0,
+      "t": "iteration",
+      "d": "medium",
+      "id": 38,
+      "exp": "length('HELLO') is 5, so the loop passes while c < 5: c = 0, 1, 2, 3, 4. Each pass increments c, ending at 5 when the check 5 < 5 fails. c prints as 5. The answer is 5."
+    },
+    {
+      "q": "What is printed? (halving count)\nSET n = 64\nSET c = 0\nWHILE n > 1\n  SET n = n DIV 2\n  SET c = c + 1\nENDWHILE\nPRINT c",
+      "opts": ["6", "5", "7", "64"],
+      "c": 0,
+      "t": "iteration",
+      "d": "medium",
+      "id": 39,
+      "exp": "n halves 64 → 32 → 16 → 8 → 4 → 2 → 1 while n > 1. That is 6 passes: 32, 16, 8, 4, 2, 1 each satisfy > 1. At n = 1 the check fails, c counts 6. The answer is 6."
+    },
+    {
+      "q": "What is printed? (sum of squares)\nSET s = 0\nSET i = 1\nWHILE i <= 4\n  SET s = s + (i * i)\n  SET i = i + 1\nENDWHILE\nPRINT s",
+      "opts": ["30", "10", "20", "16"],
+      "c": 0,
+      "t": "accumulator",
+      "d": "medium",
+      "id": 40,
+      "exp": "s accumulates the squares 1, 4, 9, 16: 0+1 = 1, +4 = 5, +9 = 14, +16 = 30. i = 5 fails the check and s prints as 30. The answer is 30."
+    },
+    {
+      "q": "What is printed? (countdown by 3)\nSET c = 0\nSET i = 20\nWHILE i >= 5\n  SET c = c + 1\n  SET i = i - 3\nENDWHILE\nPRINT c",
+      "opts": ["6", "5", "7", "4"],
+      "c": 0,
+      "t": "iteration",
+      "d": "medium",
+      "id": 41,
+      "exp": "i passes 20, 17, 14, 11, 8, 5 — six values satisfy i >= 5. After the last pass i = 2 and the check fails. c counts 6 passes and prints as 6. The answer is 6."
+    },
+    {
+      "q": "What is printed? (power by loop)\nSET p = 1\nSET b = 2\nSET e = 4\nWHILE e > 0\n  SET p = p * b\n  SET e = e - 1\nENDWHILE\nPRINT p",
+      "opts": ["16", "8", "32", "2"],
+      "c": 0,
+      "t": "accumulator",
+      "d": "medium",
+      "id": 42,
+      "exp": "p multiplies by b (2) for each of the 4 passes as e counts 4 → 3 → 2 → 1: p = 2, 4, 8, 16. e = 0 fails and p prints as 16, i.e. 2 raised to 4. The answer is 16."
+    },
+    {
+      "q": "What is printed? (count even digits)\nSET n = 248\nSET c = 0\nWHILE n > 0\n  IF (n MOD 10) MOD 2 = 0 THEN\n    SET c = c + 1\n  ENDIF\n  SET n = n DIV 10\nENDWHILE\nPRINT c",
+      "opts": ["3", "2", "1", "0"],
+      "c": 0,
+      "t": "digit",
+      "d": "medium",
+      "id": 43,
+      "exp": "Digits of 248: 8 (even, c = 1), 4 (even, c = 2), 2 (even, c = 3). Every digit is even, so c prints as 3. The answer is 3."
+    },
+    {
+      "q": "What is printed? (sum of odds)\nSET s = 0\nSET i = 1\nWHILE i <= 9\n  SET s = s + i\n  SET i = i + 2\nENDWHILE\nPRINT s",
+      "opts": ["25", "20", "45", "30"],
+      "c": 0,
+      "t": "accumulator",
+      "d": "medium",
+      "id": 44,
+      "exp": "i passes 1, 3, 5, 7, 9 and s sums them: 1+3+5+7+9 = 25. i = 11 fails the check and s prints as 25. The answer is 25."
+    },
+    {
+      "q": "What is printed? (nested counting)\nSET total = 0\nSET i = 1\nWHILE i <= 3\n  SET j = 1\n  WHILE j <= 2\n    SET total = total + 1\n    SET j = j + 1\n  ENDWHILE\n  SET i = i + 1\nENDWHILE\nPRINT total",
+      "opts": ["6", "5", "3", "9"],
+      "c": 0,
+      "t": "nested",
+      "d": "medium",
+      "id": 45,
+      "exp": "The inner loop runs 2 passes (j = 1, 2) for every outer pass, and the outer runs 3 passes (i = 1, 2, 3). total increments 3 × 2 = 6 times and prints as 6. The answer is 6."
+    },
+    {
+      "q": "What is printed? (count 1-bits of 10)\nSET n = 10\nSET c = 0\nWHILE n > 0\n  IF n MOD 2 = 1 THEN\n    SET c = c + 1\n  ENDIF\n  SET n = n DIV 2\nENDWHILE\nPRINT c",
+      "opts": ["2", "3", "1", "10"],
+      "c": 0,
+      "t": "digit",
+      "d": "medium",
+      "id": 46,
+      "exp": "n steps 10 → 5 → 2 → 1 → 0. Remainders (n MOD 2) are 0, 1, 0, 1; the IF fires twice. 10 in binary is 1010 with two 1-bits, so c prints as 2. The answer is 2."
+    },
+    {
+      "q": "What is printed? (sum of even values 10 down)\nSET s = 0\nSET n = 10\nWHILE n >= 1\n  IF n MOD 2 = 0 THEN\n    SET s = s + n\n  ENDIF\n  SET n = n - 1\nENDWHILE\nPRINT s",
+      "opts": ["30", "25", "20", "35"],
+      "c": 0,
+      "t": "counter",
+      "d": "medium",
+      "id": 47,
+      "exp": "n runs 10 down to 1 and the IF adds the even values: 10 + 8 + 6 + 4 + 2 = 30. n = 0 fails the check and s prints as 30. The answer is 30."
+    },
+    {
+      "q": "What is printed? (digit count of 1000)\nSET n = 1000\nSET c = 0\nWHILE n >= 1\n  SET c = c + 1\n  SET n = n DIV 10\nENDWHILE\nPRINT c",
+      "opts": ["4", "3", "5", "1000"],
+      "c": 0,
+      "t": "digit",
+      "d": "medium",
+      "id": 48,
+      "exp": "n passes 1000 → 100 → 10 → 1 → 0, four passes satisfying n >= 1. Each pass strips one digit, so the 4-digit number 1000 tallies c = 4. The answer is 4."
+    },
+    {
+      "q": "What is returned? (Capgemini-style GCD)\nFUNCTION solve(p, q)\n  WHILE q <> 0\n    SET v = p MOD q\n    SET p = q\n    SET q = v\n  ENDWHILE\n  RETURN p\nENDFUNCTION\nCALL solve(4, 2)",
+      "opts": ["2", "1", "4", "0"],
+      "c": 0,
+      "t": "gcd",
+      "d": "hard",
+      "id": 49,
+      "exp": "This is the Euclidean GCD algorithm. p = 4, q = 2: v = 4 MOD 2 = 0, p = 2, q = 0. The check q <> 0 fails immediately and p = 2 is returned, the GCD of 4 and 2. The answer is 2."
+    },
+    {
+      "q": "What is printed? (right-shift halving)\nSET value = 32\nSET n = 1\nWHILE value >= n\n  SET value = value >> 1\nENDWHILE\nPRINT value",
+      "opts": ["0", "16", "1", "32"],
+      "c": 0,
+      "t": "iteration",
+      "d": "hard",
+      "id": 50,
+      "exp": "The right shift >> 1 halves the value: 32 → 16 → 8 → 4 → 2 → 1 → 0, each satisfying value >= 1. At value = 0 the check 0 >= 1 fails, and 0 prints. The answer is 0."
+    },
+    {
+      "q": "What is printed? (Armstrong check)\nSET n = 153\nSET s = 0\nWHILE n > 0\n  SET d = n MOD 10\n  SET s = s + d * d * d\n  SET n = n DIV 10\nENDWHILE\nPRINT s",
+      "opts": ["153", "27", "35", "351"],
+      "c": 0,
+      "t": "digit",
+      "d": "hard",
+      "id": 51,
+      "exp": "Digit cubes of 153: d = 3 → 27, s = 27; d = 5 → 125, s = 152; d = 1 → 1, s = 153. n = 0 ends the loop and s prints as 153 — the number equals the sum of its digits' cubes. The answer is 153."
+    },
+    {
+      "q": "What is printed? (palindrome check)\nSET n = 121\nSET orig = n\nSET rev = 0\nWHILE n > 0\n  SET rev = rev * 10 + (n MOD 10)\n  SET n = n DIV 10\nENDWHILE\nIF orig = rev THEN\n  PRINT 'PALINDROME'\nELSE\n  PRINT 'NOT PALINDROME'\nENDIF",
+      "opts": ["PALINDROME", "NOT PALINDROME", "121", "0"],
+      "c": 0,
+      "t": "digit",
+      "d": "hard",
+      "id": 52,
+      "exp": "The loop reverses n = 121 into rev = 121: rev = 0*10+1 = 1, then 1*10+2 = 12, then 12*10+1 = 121. Since orig = 121 equals rev = 121, the comparison is true and PALINDROME prints. The answer is PALINDROME."
+    },
+    {
+      "q": "What is printed? (Fibonacci run)\nSET a = 0\nSET b = 1\nWHILE b < 20\n  SET t = a + b\n  SET a = b\n  SET b = t\nENDWHILE\nPRINT b",
+      "opts": ["21", "13", "34", "20"],
+      "c": 0,
+      "t": "iteration",
+      "d": "hard",
+      "id": 53,
+      "exp": "Fibonacci walk: (a,b) = (0,1) → (1,1) → (1,2) → (2,3) → (3,5) → (5,8) → (8,13) → (13,21). The last pass makes b = 21 and the check 21 < 20 fails, so b prints as 21. The answer is 21."
+    },
+    {
+      "q": "What happens to this loop?\nSET x = 5\nWHILE x > 0\n  SET x = x + 1\nENDWHILE",
+      "opts": ["It never ends", "It prints 5", "It runs 5 times", "It prints 0"],
+      "c": 0,
+      "t": "iteration",
+      "d": "hard",
+      "id": 54,
+      "exp": "x only grows: 5, 6, 7, 8, ... The condition x > 0 stays true forever because nothing makes x fall to 0 or below. The body contains no decrement, no break and no exit, so this is an infinite loop that never ends. The answer is It never ends."
+    },
+    {
+      "q": "What is printed? (break condition)\nSET i = 1\nWHILE i <= 10\n  IF i > 5 THEN\n    EXIT LOOP\n  ENDIF\n  PRINT i\n  SET i = i + 1\nENDWHILE",
+      "opts": ["1 2 3 4 5", "1 2 3 4 5 6", "1 2 3 4", "6 7 8 9 10"],
+      "c": 0,
+      "t": "iteration",
+      "d": "hard",
+      "id": 55,
+      "exp": "i prints while i <= 5: 1, 2, 3, 4, 5 each pass the print. When i becomes 6 the IF i > 5 is true and EXIT LOOP jumps out immediately, so 6 is never printed. Output: 1 2 3 4 5. The answer is 1 2 3 4 5."
+    },
+    {
+      "q": "What is printed? (Armstrong flag)\nSET n = 370\nSET s = 0\nSET t = n\nWHILE t > 0\n  SET d = t MOD 10\n  SET s = s + d * d * d\n  SET t = t DIV 10\nENDWHILE\nIF s = n THEN\n  PRINT 'ARMSTRONG'\nELSE\n  PRINT 'NOT ARMSTRONG'\nENDIF",
+      "opts": ["ARMSTRONG", "NOT ARMSTRONG", "370", "27"],
+      "c": 0,
+      "t": "digit",
+      "d": "hard",
+      "id": 56,
+      "exp": "Digit cubes of 370: 0³ = 0, 7³ = 343, 3³ = 27; s = 0 + 343 + 27 = 370. The original n is 370 and s equals it, so the comparison is true and ARMSTRONG prints. The answer is ARMSTRONG."
+    },
+    {
+      "q": "How many stars print? (descending inner)\nSET i = 3\nWHILE i >= 1\n  SET j = i\n  WHILE j >= 1\n    PRINT '*'\n    SET j = j - 1\n  ENDWHILE\n  SET i = i - 1\nENDWHILE",
+      "opts": ["6", "3", "9", "5"],
+      "c": 0,
+      "t": "nested",
+      "d": "hard",
+      "id": 57,
+      "exp": "The inner loop starts j at i and counts down to 1, printing i stars: outer i = 3 prints 3, i = 2 prints 2, i = 1 prints 1. Total stars = 3 + 2 + 1 = 6. The answer is 6."
+    },
+    {
+      "q": "What is printed? (XOR accumulation)\nSET value = 0\nSET i = 1\nWHILE i <= 4\n  SET value = value XOR i\n  SET i = i + 1\nENDWHILE\nPRINT value",
+      "opts": ["4", "0", "2", "7"],
+      "c": 0,
+      "t": "iteration",
+      "d": "hard",
+      "id": 58,
+      "exp": "XOR chains: value = 0 XOR 1 = 1; 1 XOR 2 = 3; 3 XOR 3 = 0; 0 XOR 4 = 4. i = 5 fails the check and the running XOR value prints as 4. The answer is 4."
+    },
+    {
+      "q": "What is returned? (Euclidean GCD)\nFUNCTION solve(a, b)\n  WHILE b <> 0\n    SET r = a MOD b\n    SET a = b\n    SET b = r\n  ENDWHILE\n  RETURN a\nENDFUNCTION\nCALL solve(48, 18)",
+      "opts": ["6", "3", "12", "48"],
+      "c": 0,
+      "t": "gcd",
+      "d": "hard",
+      "id": 59,
+      "exp": "Euclid: r = 48 MOD 18 = 12, a = 18, b = 12. r = 18 MOD 12 = 6, a = 12, b = 6. r = 12 MOD 6 = 0, a = 6, b = 0. The loop ends with a = 6, the GCD of 48 and 18. The answer is 6."
+    },
+    {
+      "q": "What is printed? (subtraction GCD)\nSET a = 4\nSET b = 6\nWHILE a <> b\n  IF a > b THEN\n    SET a = a - b\n  ELSE\n    SET b = b - a\n  ENDIF\nENDWHILE\nPRINT a",
+      "opts": ["2", "4", "6", "1"],
+      "c": 0,
+      "t": "gcd",
+      "d": "hard",
+      "id": 60,
+      "exp": "Subtraction GCD: a = 4, b = 6 → a < b so b = 6-4 = 2. a = 4, b = 2 → a > b so a = 4-2 = 2. Now a = b = 2, the while condition a <> b fails and 2 prints — the GCD of 4 and 6. The answer is 2."
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "intro-while"
+    },
+    {
+      "type": "concept",
+      "sectionId": "trace-while"
+    },
+    {
+      "type": "concept",
+      "sectionId": "counter-patterns"
+    },
+    {
+      "type": "concept",
+      "sectionId": "digit-mod"
+    },
+    {
+      "type": "concept",
+      "sectionId": "loop-safety"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}

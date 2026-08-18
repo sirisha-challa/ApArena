@@ -1,45 +1,122 @@
 {
-  "categories": [
-    {
-      "id": "verbal",
-      "title": "Verbal & English",
-      "icon": "A",
-      "color": "#059669",
-      "subtitle": "Verbal Reasoning, Analogies & Coding-Decoding"
-    }
-  ],
-  "topics": [
-    {
-      "id": "analogies",
-      "title": "Analogies",
-      "icon": "≈",
-      "category": "verbal",
-      "color": "#059669",
-      "days": "1-2",
-      "subtopics": [
-        "Word Analogies",
-        "Letter & Number Analogies",
-        "Relationship Types",
-        "Pattern Recognition",
-        "Company Patterns"
-      ],
-      "estimatedHours": 12
-    },
-    {
-      "id": "coding-decoding",
-      "title": "Coding-Decoding",
-      "icon": "⌂",
-      "category": "verbal",
-      "color": "#0284C7",
-      "days": "1-2",
-      "subtopics": [
-        "Letter Shifts",
-        "Number Coding",
-        "Mirror Coding",
-        "Substitution",
-        "Mixed Patterns"
-      ],
-      "estimatedHours": 12
-    }
-  ]
+ "categories": [
+  {
+   "id": "verbal",
+   "title": "Verbal & English",
+   "icon": "A",
+   "color": "#059669",
+   "subtitle": "Verbal Reasoning, Analogies & Coding-Decoding"
+  }
+ ],
+ "topics": [
+  {
+   "id": "analogies",
+   "title": "Analogies",
+   "icon": "≈",
+   "category": "verbal",
+   "color": "#059669",
+   "days": "1-2",
+   "subtopics": [
+    "Word Analogies",
+    "Letter & Number Analogies",
+    "Relationship Types",
+    "Pattern Recognition",
+    "Company Patterns"
+   ],
+   "estimatedHours": 12
+  },
+  {
+   "id": "coding-decoding",
+   "title": "Coding-Decoding",
+   "icon": "⌂",
+   "category": "verbal",
+   "color": "#0284C7",
+   "days": "1-2",
+   "subtopics": [
+    "Letter Shifts",
+    "Number Coding",
+    "Mirror Coding",
+    "Substitution",
+    "Mixed Patterns"
+   ],
+   "estimatedHours": 12
+  },
+  {
+   "id": "synonyms-antonyms",
+   "title": "Synonyms & Antonyms",
+   "icon": "⇄",
+   "category": "verbal",
+   "color": "#D946EF",
+   "days": "1-2",
+   "subtopics": [
+    "Word Meanings",
+    "Synonyms - Same Meaning",
+    "Antonyms - Opposites"
+   ],
+   "estimatedHours": 10
+  },
+  {
+   "id": "idioms-phrases",
+   "title": "Idioms & Phrases",
+   "icon": "❝",
+   "category": "verbal",
+   "color": "#F59E0B",
+   "days": "1-2",
+   "subtopics": [
+    "Common Everyday Idioms",
+    "Animal & Nature Idioms",
+    "Body & Food Idioms",
+    "Sentence Context Questions",
+    "TCS NQT Patterns"
+   ],
+   "estimatedHours": 10
+  },
+  {
+   "id": "fill-blanks",
+   "title": "Fill in the Blanks",
+   "icon": "✎",
+   "category": "verbal",
+   "color": "#3B82F6",
+   "days": "1-2",
+   "subtopics": [
+    "Articles & Determiners",
+    "Tenses & Subject-Verb Agreement",
+    "Prepositions & Conjunctions",
+    "Vocabulary & Double Blanks",
+    "Company Patterns (Accenture, Infosys, Cognizant, Capgemini, Tech Mahindra)"
+   ],
+   "estimatedHours": 10
+  },
+  {
+   "id": "para-jumbles",
+   "title": "Para Jumbles (Sentence Rearrangement)",
+   "icon": "⇆",
+   "category": "verbal",
+   "color": "#10B981",
+   "days": "1-2",
+   "subtopics": [
+    "Simple Sentence Rearrangement",
+    "Fixed First & Last Sentence (S1/S6)",
+    "Connectors, Pronouns & Chronological Markers",
+    "Opening & Closing Sentence Strategy",
+    "Company Patterns (TCS, Infosys, Accenture, Wipro, Cognizant, Capgemini)"
+   ],
+   "estimatedHours": 10
+  },
+  {
+   "id": "sentence-completion",
+   "title": "Sentence Completion",
+   "icon": "✍",
+   "category": "verbal",
+   "color": "#8B5CF6",
+   "days": 7,
+   "subtopics": [
+    "Intro & types",
+    "Clue words",
+    "Collocations & prepositions",
+    "Elimination strategy"
+   ],
+   "estimatedHours": 10
+  }
+ ]
 }
