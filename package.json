@@ -1,0 +1,17 @@
+{
+  "name": "aparena",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ApArena — 9 modular preparation banks with glassmorphism, indexed-but-hidden topics",
+  "scripts": {
+    "build:banks": "node scripts/build-banks.mjs",
+    "build:css": "python3 -c \"import re,pathlib; p=pathlib.Path('css/style.css'); c=p.read_text(); c=re.sub(r'/\\*.*?\\*/','',c,flags=re.S); c=re.sub(r'\\s+',' ',c); c=re.sub(r'\\s*([{}:;,])\\s*',r'\\1',c); pathlib.Path('css/style.min.css').write_text(c); print(f'minified {len(c)}')\"",
+    "build": "npm run build:banks && npm run build:css",
+    "dev": "python3 -m http.server 3000",
+    "test": "npx playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1"
+  }
+}

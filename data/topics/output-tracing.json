@@ -1,25 +1,1361 @@
 {
-  "id": 13,
+  "id": "output-tracing",
   "title": "Output Tracing (Sequence)",
-  "icon": "🧠",
-  "category": "Pseudocode",
-  "subtitle": "Simulate simple code sequences line by line",
-  "days": 4,
+  "icon": "▤",
+  "category": "pseudocode",
+  "subtitle": "Trace, debug and predict output — sequences, swaps, division & MOD, digit loops, strings",
+  "days": "4",
   "color": "#7C3AED",
   "subtopics": [
-    "Simple Assignments",
-    "Overwrites & Chains",
-    "Swaps",
-    "MOD & Integer Division",
-    "Digit Extraction",
-    "String Operations"
+    "Assignments & Overwrites",
+    "Swaps (Temp & Arithmetic)",
+    "Operator Precedence",
+    "Integer Division & MOD",
+    "Digit Extraction Loops",
+    "String Concatenation"
   ],
   "estimatedHours": 6,
-  "readingSections": [],
-  "formulas": [],
-  "practiceProblems": [],
+  "readingSections": [
+    {
+      "id": "intro-output-tracing",
+      "title": "What Is Output Tracing?",
+      "type": "concept",
+      "quickSummary": "Output tracing is executing short pseudocode on paper and predicting exactly what it prints.",
+      "content": [
+        "Output tracing (also called \"predict the output\" or dry running) asks you to act as the computer: read the pseudocode line by line, track every variable, and state exactly what gets printed.",
+        "These questions appear in TCS NQT, Infosys, Wipro, Capgemini, Accenture and Cocubes tests. They look like programming but are really bookkeeping: no creativity is needed, only careful tracking.",
+        "The whole skill reduces to one discipline — never do two lines in your head at once."
+      ],
+      "subsections": [
+        {
+          "title": "What a computer actually does",
+          "content": "It keeps one box per variable holding the CURRENT value. Every assignment evaluates the right-hand side completely, then overwrites the box on the left. Every print reports the boxes AT THAT MOMENT. Nothing is remembered beyond that."
+        },
+        {
+          "title": "The two failure modes",
+          "content": "Candidates fail tracing in exactly two ways. First, direction errors: reading x = y as \"y becomes x\". Second, staleness errors: using an outdated value after a variable was overwritten. Both vanish when you write states down instead of memorising them."
+        },
+        {
+          "title": "Why examiners love this topic",
+          "content": "One small snippet separates careful readers from fast guessers in under a minute. That is why the same six or seven patterns — assignment chains, swaps, division/MOD, digit loops, string glue, condition branches — recur in every drive."
+        }
+      ],
+      "quickRevision": [
+        "Trace = execute, do not read holistically.",
+        "One line per row; record every change.",
+        "Print shows the current value, never the history."
+      ],
+      "companyNote": "Expect 3-6 output-tracing questions in service-company exams; they are among the fastest marks available if you write the trace out."
+    },
+    {
+      "id": "trace-table-method",
+      "title": "The Trace Table Method",
+      "type": "concept",
+      "quickSummary": "A four-step paper routine that turns any trace into mechanical bookkeeping.",
+      "content": [
+        "A trace table is a scratch grid with one column per changing variable plus one column for output. You fill one row per executed line (or per loop pass). It is slower than guessing for one line and much faster than repairing a wrong answer.",
+        "THE ROUTINE:\nStep 1 — List every variable that appears as columns.\nStep 2 — Execute one line at a time. After each line, cross out changed values and write the new ones.\nStep 3 — When a print runs, copy the exact current values into an OUTPUT column.\nStep 4 — Answer from the output column, never from memory."
+      ],
+      "subsections": [
+        {
+          "title": "Worked trace table",
+          "content": "a = 5\nb = 2\na = a * b\nb = a - b\nprint a, b\n\nRow-by-row:\na=5, b=2  (after line 1)\na=5, b=2  (after line 2)\na=10, b=2 (line 3: a = 5 * 2)\na=10, b=8 (line 4: b = 10 - 2)\nOUTPUT: 10, 8"
+        },
+        {
+          "title": "Loop rows: one row per PASS",
+          "content": "WHILE n > 0\n  print n MOD 10\n  n = n / 10\nENDWHILE\nwith n = 47:\nn=47 -> prints 7, n becomes 4\nn=4  -> prints 4, n becomes 0\nstop (0 > 0 is false).\nOUTPUT: 7 then 4. Two passes, two rows — never merge them."
+        },
+        {
+          "title": "Mark conventions before you start",
+          "content": "Circle whether \"/\" is integer division here. Note whether indices start at 0 or 1 if arrays appear. Underline the exact print statement being asked about — some snippets print several things and ask for only one."
+        }
+      ],
+      "quickRevision": [
+        "Columns = variables. Rows = lines or passes.",
+        "Copy print outputs verbatim into an OUTPUT column.",
+        "Answer from paper, not from your head."
+      ],
+      "patterns": [
+        "Predict-the-output: trace until the print.",
+        "Count-iterations: count TRUE condition checks.",
+        "Final-variable-value: read the column after the last executed line."
+      ]
+    },
+    {
+      "id": "sequence-precedence",
+      "title": "Assignments, Overwrites & Operator Order",
+      "type": "concept",
+      "quickSummary": "Right side first, left side last; multiplication binds tighter than addition.",
+      "content": [
+        "Assignment is not algebra. x = x + 3 means \"take the current x, add 3, store back into x\". The old x disappears the instant the store completes.",
+        "Direction test: in A = B, only A changes. Read it as \"A receives B\". If you catch yourself thinking \"B becomes A\", stop and re-read."
+      ],
+      "subsections": [
+        {
+          "title": "Precedence ladder for arithmetic",
+          "content": "Highest to lowest: brackets ( ), then unary minus, then * / MOD (equal rank, evaluated left to right), then + - (left to right).\na = 2 + 3 * 4       -> 2 + 12 = 14\nb = 20 / 2 / 5      -> 10 / 5 = 2 (left to right!)\nc = 2 + 3 MOD 4     -> 2 + 3 = 5 (MOD before +)"
+        },
+        {
+          "title": "Chained overwrites",
+          "content": "x = 10\ny = x + 5\nx = x + 20\nz = x + y\nLine by line: y uses OLD x -> y = 15. Then x grows to 30. Finally z = 30 + 15 = 45. z mixes the new x with the y frozen earlier — a classic exam shape."
+        },
+        {
+          "title": "Self-reference shortcuts",
+          "content": "n = n * 2 doubles. s = s + v accumulates. These are safe ONLY because the right side finishes evaluating before the store happens. If you ever need the old value AFTER overwriting, you needed a temp variable."
+        }
+      ],
+      "quickRevision": [
+        "A = B changes only A.",
+        "* / MOD before + -, equal ranks go left to right.",
+        "Each print sees the latest values only."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Pattern seen in TCS NQT-style papers",
+          "question": "Three-variable chain ending in a mixed sum (new + frozen values)",
+          "approach": "Freeze y at its creation moment; only x continues to evolve."
+        }
+      ]
+    },
+    {
+      "id": "div-mod-digits",
+      "title": "Division, MOD & Digit Loops",
+      "type": "concept",
+      "quickSummary": "Integer division truncates; MOD keeps the remainder; together they walk a number digit by digit.",
+      "content": [
+        "Placement pseudocode uses integer division: both operands are whole numbers, the fraction is thrown away. 17 / 5 = 3, never 3.4, never rounded.",
+        "MOD answers \"what is left after removing all whole ks\": 17 MOD 5 = 2. If the left value is smaller, the remainder is itself: 3 MOD 5 = 3.",
+        "Identity to memorise: k * (n / k) + (n MOD k) = n. Questions love printing this rebuilt form — it always collapses to the original n."
+      ],
+      "subsections": [
+        {
+          "title": "Base-10 superpowers",
+          "content": "n MOD 10 = last digit. n / 10 = number minus its last digit. n MOD 100 = last two digits. n / 100 = number minus its last two digits.\nn = 3407: n MOD 10 = 7, n / 10 = 340, n MOD 100 = 7 (since 3407 MOD 100 looks at 07), n / 100 = 34."
+        },
+        {
+          "title": "The digit-walk loop",
+          "content": "WHILE n > 0\n  d = n MOD 10\n  n = n / 10\nENDWHILE\nruns exactly (digit count of n) times. Inside the loop, d walks the digits right to left: for 592 you see 2, 9, 5."
+        },
+        {
+          "title": "Four standard accumulators",
+          "content": "sum = sum + d      -> digit sum (592 -> 16)\nprod = prod * d    -> digit product (start prod = 1; 592 -> 90)\ncount = count + 1  -> digit count (592 -> 3)\nrev = rev*10 + d   -> reversed number (592 -> 295)\nAll four finish when n hits 0. The failed final check is NOT an iteration."
+        }
+      ],
+      "quickRevision": [
+        "7 / 2 = 3 and 3 MOD 5 = 3.",
+        "Loop passes = digit count.",
+        "rev = rev * 10 + d reverses; s = s + d sums."
+      ],
+      "companyNote": "Digit-sum and reversal traces are the two most repeated output questions across TCS, Infosys and Accenture papers."
+    },
+    {
+      "id": "swaps-strings-checklist",
+      "title": "Swaps, String Glue & the Exam Checklist",
+      "type": "concept",
+      "quickSummary": "Recognise the swap family instantly; treat quoted values as untouchable text.",
+      "content": [
+        "Swap questions come in two costumes. With temp: temp = a; a = b; b = temp genuinely exchanges. Without temp: a = a+b; b = a-b; a = a-b also exchanges. Fake swap: m = n; n = m leaves BOTH holding the old n.",
+        "Fast tell: after a REAL swap, a+b is unchanged. Compute the sum mentally — if a variant breaks the sum, someone overwrote a value early."
+      ],
+      "subsections": [
+        {
+          "title": "String glue rules",
+          "content": "Anything in quotes is text. + between texts joins them: \"go\" + \"ld\" = \"gold\". Numbers inside quotes are inert: \"5\" + \"3\" = \"53\", while 5 + 3 = 8. LEN(\"gold\") = 4; gluing adds lengths."
+        },
+        {
+          "title": "Branch discipline for IF questions",
+          "content": "Evaluate conditions top-down and enter exactly ONE branch. Boundary values satisfy >= checks: score = 75 enters \"score >= 75\", not \"score >= 90\". Never execute two branches."
+        },
+        {
+          "title": "The 30-second pre-flight checklist",
+          "content": "Before tracing any snippet:\n1. Is / integer division here? (Almost always yes.)\n2. Any quoted values? Mark them TEXT.\n3. Which print is the question asking about?\n4. Loop bounds: does it start at 0 or 1, end at n or n-1?\n5. Direction check on every assignment: left receives right."
+        }
+      ],
+      "quickRevision": [
+        "Real swap preserves a + b; fake swap duplicates.",
+        "Quotes = glue, no quotes = arithmetic.",
+        "One branch per IF chain; >= swallows the boundary."
+      ],
+      "patterns": [
+        "Swap variants differing by one line — spot which move is missing.",
+        "Mixed prints: string result and numeric result of \"similar\" inputs.",
+        "Boundary-value branches (exactly equal to the threshold)."
+      ]
+    }
+  ],
+  "formulas": [
+    {
+      "id": "seq-overwrite",
+      "title": "Sequential Overwrite Rule",
+      "formula": "Read top to bottom. Each assignment uses the CURRENT values and immediately replaces the old ones.",
+      "whenToUse": "Any trace where variables are assigned and reassigned down the page.",
+      "explanation": [
+        "Execute lines strictly in order. On every assignment, first evaluate the right-hand side with the CURRENT variable values.",
+        "Only after the whole right side is evaluated does the result replace the left-side variable. Old values are gone instantly.",
+        "$x = y$ copies the value of $y$ INTO $x$. $y$ keeps its value. The direction matters: $x = y$ and $y = x$ are different.",
+        "A later $\\text{print}$ always reports the latest value, never a historical one."
+      ],
+      "example": {
+        "prompt": "x = 3\ny = x + 4\nx = y * 2\nprint x, y",
+        "steps": [
+          "$x = 3$.",
+          "$y = x + 4 = 3 + 4 = 7$ (uses current $x = 3$).",
+          "$x = y \\times 2 = 7 \\times 2 = 14$ (uses current $y = 7$; old $x = 3$ is gone).",
+          "print shows $x = 14$, $y = 7$."
+        ],
+        "answer": "14, 7"
+      },
+      "memoryTip": "Right side first, left side last. A variable never remembers its past.",
+      "commonMistake": "Using the NEW value of the left-side variable while evaluating its own right side, e.g. treating x = y * 2 with stale y. Always evaluate fully, then store."
+    },
+    {
+      "id": "swap-temp",
+      "title": "Temp-Swap Rule",
+      "formula": "temp = a; a = b; b = temp  =>  values exchange",
+      "whenToUse": "Traces that copy one variable into a temporary holder before exchanging two values.",
+      "explanation": [
+        "A real swap needs three moves: save ONE old value in temp, overwrite it with the other variable, then restore the saved value into the second slot.",
+        "$b = a$ (without temp) destroys the original $b$: afterwards both hold the old $a$. Two identical values usually means the trap was $m = n;\\ n = m$.",
+        "After any genuine swap of $a$ and $b$: $a + b$ and $a \\times b$ are unchanged, because addition and multiplication ignore order."
+      ],
+      "example": {
+        "prompt": "a = 4\nb = 9\ntemp = a\na = b\nb = temp\nprint a + b",
+        "steps": [
+          "$temp = 4$ saves the old $a$.",
+          "$a = 9$, so now $a$ holds the old $b$.",
+          "$b = temp = 4$ restores the old $a$.",
+          "The pair swapped: $(9, 4)$. Sum $= 13$."
+        ],
+        "answer": "13"
+      },
+      "memoryTip": "Save one, move the other, put the saved one back.",
+      "commonMistake": "Believing m = n followed by n = m swaps anything. After those two lines both variables hold the old n."
+    },
+    {
+      "id": "arith-swap",
+      "title": "Arithmetic Swap Rule",
+      "formula": "a = a + b;  b = a - b;  a = a - b   =>   a and b exchange",
+      "whenToUse": "Swaps done with plus/minus instead of a third variable — very common in placement papers.",
+      "explanation": [
+        "After $a = a + b$, the variable $a$ holds the sum $S = a_{old} + b_{old}$.",
+        "$b = a - b = S - b_{old} = a_{old}$: the first slot is recovered into $b$.",
+        "$a = a - b = S - a_{old} = b_{old}$: the second slot lands back in $a$. Swapped.",
+        "The multiply version works identically: $a{=}a{\\times}b;\\ b{=}a{/}b;\\ a{=}a{/}b$ (needs all values nonzero)."
+      ],
+      "example": {
+        "prompt": "p = 12\nq = 5\np = p + q\nq = p - q\np = p - q\nprint p, q",
+        "steps": [
+          "$p = 12 + 5 = 17$ (the sum).",
+          "$q = 17 - 5 = 12$ (old $p$).",
+          "$p = 17 - 12 = 5$ (old $q$).",
+          "Final: $p = 5$, $q = 12$."
+        ],
+        "answer": "5, 12"
+      },
+      "memoryTip": "Sum stores both. Subtract to peel off first one, then the other.",
+      "commonMistake": "Stopping after two lines, or subtracting in the wrong order. Line 2 recovers the OLD FIRST value, line 3 the OLD SECOND."
+    },
+    {
+      "id": "div-mod-pair",
+      "title": "DIV-MOD Pairing Rule",
+      "formula": "n = k * (n / k) + (n MOD k)",
+      "whenToUse": "Any trace using integer division and MOD together, especially splitting numbers by 10 or 100.",
+      "explanation": [
+        "In placement pseudocode, $/$ between integers discards the fractional part: $17 / 5 = 3$. MOD keeps only the remainder: $17 \\bmod 5 = 2$.",
+        "Quotient and remainder always recombine exactly: $k \\times (n / k) + (n \\bmod k) = n$. If a trace builds an expression of this shape, the printed value equals the original number.",
+        "With $k = 10$: $n / 10$ chops the last digit, $n \\bmod 10$ IS the last digit.",
+        "With $k = 100$: $n / 100$ removes the last TWO digits, $n \\bmod 100$ keeps the last two.",
+        "Division and MOD bind at the same strength as multiplication — evaluate them left to right with $\\times$ and $+$."
+      ],
+      "example": {
+        "prompt": "n = 456\na = n / 10\nb = n MOD 10\nc = a * 10 + b\nprint c",
+        "steps": [
+          "$a = 456 / 10 = 45$ (last digit dropped).",
+          "$b = 456 \\bmod 10 = 6$ (last digit kept).",
+          "$c = 45 \\times 10 + 6 = 456$ — the original number rebuilt.",
+          "print shows 456."
+        ],
+        "answer": "456"
+      },
+      "memoryTip": "/ deletes digits from the right; MOD harvests them.",
+      "commonMistake": "Treating 7 / 2 as 3.5 or rounding 3.5 up to 4. Integer division truncates: 7 / 2 = 3, and 3 MOD 5 = 3 (remainder equals the number itself when it is smaller)."
+    },
+    {
+      "id": "digit-loop",
+      "title": "Digit Loop Accumulators",
+      "formula": "WHILE n > 0: digit = n MOD 10; acc = f(acc, digit); n = n / 10",
+      "whenToUse": "Traces that loop over digits to build a sum, product, count or reversed number.",
+      "explanation": [
+        "Every pass peels the LAST digit ($n \\bmod 10$) and shrinks $n$ by one digit ($n / 10$). The loop ends when $n = 0$ — the final pass processes the leading digit.",
+        "Sum accumulator: $s = s + digit$. Product: $p = p \\times digit$ (start $p$ at 1, not 0). Count: $c = c + 1$ counts digits.",
+        "Reversal accumulator: $rev = rev \\times 10 + digit$ appends each new digit to the right. Tracing 1234 gives $4 \\to 43 \\to 432 \\to 4321$.",
+        "Number of iterations = number of digits. A $d$-digit number loops exactly $d$ times."
+      ],
+      "example": {
+        "prompt": "n = 231\nrev = 0\nWHILE n > 0\n  d = n MOD 10\n  rev = rev * 10 + d\n  n = n / 10\nENDWHILE\nprint rev",
+        "steps": [
+          "Pass 1: $d = 1$, $rev = 0 \\times 10 + 1 = 1$, $n = 23$.",
+          "Pass 2: $d = 3$, $rev = 1 \\times 10 + 3 = 13$, $n = 2$.",
+          "Pass 3: $d = 2$, $rev = 13 \\times 10 + 2 = 132$, $n = 0$. Loop ends.",
+          "print shows 132."
+        ],
+        "answer": "132"
+      },
+      "memoryTip": "MOD grabs, DIV shrinks, accumulator rebuilds.",
+      "commonMistake": "Starting a product accumulator at 0 (it stays 0 forever), or forgetting the loop also runs for the last (single-digit) value of n — that final digit IS processed."
+    },
+    {
+      "id": "string-concat",
+      "title": "String Concatenation Rule",
+      "formula": "\"a\" + \"b\" = \"ab\"   (glue, never add)",
+      "whenToUse": "Traces where quoted text values are combined or compared with numeric results.",
+      "explanation": [
+        "Values written in quotes are TEXT. Joining two texts glues them character by character: $\"12\" + \"3\" = \"123\"$, not $15$.",
+        "Gluing never simplifies: leading zeros survive ($\"07\" + \"5\" = \"075\"$) and order matters ($\"ab\" + \"c\" \\ne \"c\" + \"ab\"$).",
+        "The length of a concatenation is the sum of lengths: $LEN(s + t) = LEN(s) + LEN(t)$.",
+        "If a question mixes both, it prints the STRING result in one branch and the NUMBER result in another — evaluate each branch separately."
+      ],
+      "example": {
+        "prompt": "a = \"9\"\nb = \"10\"\nc = a + b\nd = 9 + 10\nprint c, d",
+        "steps": [
+          "$c = \"9\" + \"10\" = \"910\"$ (text glue).",
+          "$d = 9 + 10 = 19$ (numeric add).",
+          "Same digits, different meaning — print shows both.",
+          ""
+        ],
+        "answer": "910, 19"
+      },
+      "memoryTip": "Quotes mean glue. No quotes means add.",
+      "commonMistake": "Adding glued text numerically (\"910\" read as 19), or dropping a leading zero when it is part of the text."
+    }
+  ],
+  "practiceProblems": {
+    "seq-overwrite": [
+      {
+        "q": "a = 7\nb = a + 5\na = b - 2\nprint a, b",
+        "opts": [
+          "10, 12",
+          "12, 12",
+          "10, 10",
+          "12, 10"
+        ],
+        "c": 0,
+        "s": [
+          "$a = 7$.",
+          "$b = a + 5 = 7 + 5 = 12$ — uses the current $a$.",
+          "$a = b - 2 = 12 - 2 = 10$ — uses the new $b$; old $a = 7$ is gone.",
+          "print: $a = 10$, $b = 12$."
+        ],
+        "a": "10, 12",
+        "d": "easy"
+      },
+      {
+        "q": "x = 3\ny = x * x\nx = y + x\nprint x",
+        "opts": [
+          "18",
+          "12",
+          "9",
+          "6"
+        ],
+        "c": 1,
+        "s": [
+          "$x = 3$.",
+          "$y = 3 \\times 3 = 9$.",
+          "$x = y + x = 9 + 3 = 12$.",
+          "Output is 12."
+        ],
+        "a": "12",
+        "d": "easy"
+      },
+      {
+        "q": "p = 2\nq = p * p * p\nq = q - p\nprint q",
+        "opts": [
+          "4",
+          "2",
+          "6",
+          "8"
+        ],
+        "c": 2,
+        "s": [
+          "$p = 2$, so $q = 2 \\times 2 \\times 2 = 8$.",
+          "$q = 8 - 2 = 6$.",
+          "Output is 6."
+        ],
+        "a": "6",
+        "d": "easy"
+      },
+      {
+        "q": "n = 20\nm = n / 4\nn = m * 5\nprint n, m",
+        "opts": [
+          "5, 5",
+          "25, 25",
+          "20, 5",
+          "25, 5"
+        ],
+        "c": 3,
+        "s": [
+          "$m = 20 / 4 = 5$.",
+          "$n = m \\times 5 = 5 \\times 5 = 25$.",
+          "print: $n = 25$, $m = 5$."
+        ],
+        "a": "25, 5",
+        "d": "easy"
+      },
+      {
+        "q": "t = 9\nt = t - 4\nt = t * t\nprint t",
+        "opts": [
+          "25",
+          "81",
+          "45",
+          "5"
+        ],
+        "c": 0,
+        "s": [
+          "$t = 9$.",
+          "$t = 9 - 4 = 5$.",
+          "$t = 5 \\times 5 = 25$."
+        ],
+        "a": "25",
+        "d": "easy"
+      },
+      {
+        "q": "a = 1\nb = 2\nc = 3\na = a + b\nc = c - a\nprint c",
+        "opts": [
+          "2",
+          "0",
+          "3",
+          "-1"
+        ],
+        "c": 1,
+        "s": [
+          "$a = 1$, $b = 2$, $c = 3$.",
+          "$a = a + b = 1 + 2 = 3$ — $a$ is updated FIRST.",
+          "$c = c - a = 3 - 3 = 0$ — uses the UPDATED $a$, not the old 1.",
+          "Output is 0."
+        ],
+        "a": "0",
+        "d": "medium"
+      },
+      {
+        "q": "x = 15\ny = x / 2\nz = x MOD 2\nw = y + z\nprint w",
+        "opts": [
+          "7.5",
+          "1",
+          "8",
+          "7"
+        ],
+        "c": 2,
+        "s": [
+          "$y = 15 / 2 = 7$ — integer division drops the 0.5.",
+          "$z = 15 \\bmod 2 = 1$.",
+          "$w = 7 + 1 = 8$."
+        ],
+        "a": "8",
+        "d": "medium"
+      },
+      {
+        "q": "v = 100\nv = v / 2\nv = v / 5\nv = v + 30\nprint v",
+        "opts": [
+          "50",
+          "70",
+          "130",
+          "40"
+        ],
+        "c": 3,
+        "s": [
+          "$v = 100 / 2 = 50$.",
+          "$v = 50 / 5 = 10$.",
+          "$v = 10 + 30 = 40$."
+        ],
+        "a": "40",
+        "d": "easy"
+      },
+      {
+        "q": "a = 6\nb = 8\na = a * b\nb = b - a\nprint b",
+        "opts": [
+          "-40",
+          "40",
+          "-48",
+          "48"
+        ],
+        "c": 0,
+        "s": [
+          "$a = 6 \\times 8 = 48$.",
+          "$b = b - a = 8 - 48 = -40$ — the new huge $a$ is used.",
+          "Output is $-40$."
+        ],
+        "a": "-40",
+        "d": "medium"
+      },
+      {
+        "q": "r = 5\ns = r + 1\nr = s - 1\ns = r + 1\nprint r + s",
+        "opts": [
+          "9",
+          "11",
+          "10",
+          "12"
+        ],
+        "c": 1,
+        "s": [
+          "$s = 5 + 1 = 6$.",
+          "$r = 6 - 1 = 5$.",
+          "$s = 5 + 1 = 6$.",
+          "$r + s = 5 + 6 = 11$."
+        ],
+        "a": "11",
+        "d": "medium"
+      }
+    ],
+    "swap-temp": [
+      {
+        "q": "a = 4\nb = 11\ntemp = a\na = b\nb = temp\nprint a, b",
+        "opts": [
+          "11, 11",
+          "4, 4",
+          "11, 4",
+          "4, 11"
+        ],
+        "c": 2,
+        "s": [
+          "$temp = 4$ saves the old $a$.",
+          "$a = b = 11$.",
+          "$b = temp = 4$ restores the old $a$.",
+          "Values exchanged: $11, 4$."
+        ],
+        "a": "11, 4",
+        "d": "easy"
+      },
+      {
+        "q": "x = 8\ny = 3\nz = x\nx = y\ny = z\nprint x + y",
+        "opts": [
+          "16",
+          "5",
+          "6",
+          "11"
+        ],
+        "c": 3,
+        "s": [
+          "$z = 8$ saves old $x$.",
+          "$x = 3$, $y = 8$: swapped.",
+          "$x + y = 3 + 8 = 11$."
+        ],
+        "a": "11",
+        "d": "easy"
+      },
+      {
+        "q": "m = 5\nn = 9\nm = n\nn = m\nprint m, n",
+        "opts": [
+          "9, 9",
+          "9, 5",
+          "5, 9",
+          "5, 5"
+        ],
+        "c": 0,
+        "s": [
+          "$m = n = 9$ — old $m = 5$ is destroyed.",
+          "$n = m = 9$ — copies the same 9 back.",
+          "No swap happened: both print 9. This is the classic fake-swap trap."
+        ],
+        "a": "9, 9",
+        "d": "easy"
+      },
+      {
+        "q": "p = 7\nq = 2\ntemp = q\nq = p\np = temp\nprint p * q",
+        "opts": [
+          "9",
+          "14",
+          "49",
+          "4"
+        ],
+        "c": 1,
+        "s": [
+          "$temp = 2$ saves old $q$.",
+          "$q = 7$, $p = 2$: swapped.",
+          "$p \\times q = 2 \\times 7 = 14$."
+        ],
+        "a": "14",
+        "d": "medium"
+      },
+      {
+        "q": "a = 10\nb = 20\nc = a\na = b\nb = c\nc = a + b\nprint c",
+        "opts": [
+          "40",
+          "10",
+          "30",
+          "20"
+        ],
+        "c": 2,
+        "s": [
+          "$c = 10$ (old $a$), then $a = 20$, $b = 10$.",
+          "Now $c$ is OVERWRITTEN: $c = a + b = 20 + 10 = 30$.",
+          "Output is 30."
+        ],
+        "a": "30",
+        "d": "medium"
+      },
+      {
+        "q": "x = 3\ny = 8\nt = x\nx = y\ny = t\nprint x - y",
+        "opts": [
+          "-5",
+          "11",
+          "-11",
+          "5"
+        ],
+        "c": 3,
+        "s": [
+          "Swap first: $x = 8$, $y = 3$.",
+          "$x - y = 8 - 3 = 5$."
+        ],
+        "a": "5",
+        "d": "easy"
+      },
+      {
+        "q": "a = 6\nb = 6\ntemp = a\na = b\nb = temp\nprint a + b",
+        "opts": [
+          "12",
+          "0",
+          "6",
+          "36"
+        ],
+        "c": 0,
+        "s": [
+          "Swapping equal values changes nothing: $a = 6$, $b = 6$.",
+          "$a + b = 12$."
+        ],
+        "a": "12",
+        "d": "easy"
+      },
+      {
+        "q": "n1 = 15\nn2 = 4\nt = n1\nn1 = n2\nn2 = t\nprint n1 / n2",
+        "opts": [
+          "4",
+          "0",
+          "3",
+          "2"
+        ],
+        "c": 1,
+        "s": [
+          "After the swap: $n1 = 4$, $n2 = 15$.",
+          "$4 / 15 = 0$ — integer division of a smaller number.",
+          "Output is 0."
+        ],
+        "a": "0",
+        "d": "medium"
+      },
+      {
+        "q": "a = 5\nb = 9\nswap = a\na = b\nb = swap\nprint b - a",
+        "opts": [
+          "14",
+          "-14",
+          "-4",
+          "4"
+        ],
+        "c": 2,
+        "s": [
+          "After the swap: $a = 9$, $b = 5$.",
+          "$b - a = 5 - 9 = -4$."
+        ],
+        "a": "-4",
+        "d": "medium"
+      },
+      {
+        "q": "x = 1\ny = 2\nz = 3\nt = x\nx = y\ny = z\nz = t\nprint x * 100 + y * 10 + z",
+        "opts": [
+          "123",
+          "321",
+          "213",
+          "231"
+        ],
+        "c": 3,
+        "s": [
+          "$t = 1$; $x = 2$; $y = 3$; $z = 1$ — values rotate one slot.",
+          "$x \\times 100 + y \\times 10 + z = 200 + 30 + 1 = 231$."
+        ],
+        "a": "231",
+        "d": "medium"
+      }
+    ],
+    "arith-swap": [
+      {
+        "q": "a = 12\nb = 5\na = a + b\nb = a - b\na = a - b\nprint a, b",
+        "opts": [
+          "5, 12",
+          "12, 5",
+          "17, 12",
+          "5, 5"
+        ],
+        "c": 0,
+        "s": [
+          "$a = 12 + 5 = 17$ (the sum).",
+          "$b = 17 - 5 = 12$ (old $a$).",
+          "$a = 17 - 12 = 5$ (old $b$).",
+          "Swapped: $5, 12$."
+        ],
+        "a": "5, 12",
+        "d": "easy"
+      },
+      {
+        "q": "x = 7\ny = 2\nx = x + y\ny = x - y\nx = x - y\nprint x + y",
+        "opts": [
+          "18",
+          "9",
+          "14",
+          "4"
+        ],
+        "c": 1,
+        "s": [
+          "The routine swaps the values: $x = 2$, $y = 7$.",
+          "A swap never changes the sum: $2 + 7 = 9$."
+        ],
+        "a": "9",
+        "d": "easy"
+      },
+      {
+        "q": "p = 4\nq = 6\np = p + q\nq = p - q\np = p - q\nprint p * q",
+        "opts": [
+          "2",
+          "20",
+          "24",
+          "10"
+        ],
+        "c": 2,
+        "s": [
+          "After the swap: $p = 6$, $q = 4$.",
+          "$6 \\times 4 = 24$."
+        ],
+        "a": "24",
+        "d": "easy"
+      },
+      {
+        "q": "a = 9\nb = 3\na = a + b\nb = a - b\na = a - b\nprint a / b",
+        "opts": [
+          "3",
+          "1",
+          "2",
+          "0"
+        ],
+        "c": 3,
+        "s": [
+          "After the swap: $a = 3$, $b = 9$.",
+          "$a / b = 3 / 9 = 0$ — integer division.",
+          "Output is 0."
+        ],
+        "a": "0",
+        "d": "medium"
+      },
+      {
+        "q": "x = 20\ny = 8\nx = x - y\ny = x + y\nx = y - x\nprint x, y",
+        "opts": [
+          "8, 20",
+          "20, 8",
+          "12, 20",
+          "8, 12"
+        ],
+        "c": 0,
+        "s": [
+          "$x = 20 - 8 = 12$ (difference).",
+          "$y = 12 + 8 = 20$ (old $x$).",
+          "$x = 20 - 12 = 8$ (old $y$).",
+          "Subtract-flavoured swap: $8, 20$."
+        ],
+        "a": "8, 20",
+        "d": "hard"
+      },
+      {
+        "q": "a = 5\nb = 10\na = a + b\nb = a - b\nprint a, b",
+        "opts": [
+          "10, 5",
+          "15, 5",
+          "5, 10",
+          "15, 10"
+        ],
+        "c": 1,
+        "s": [
+          "$a = 5 + 10 = 15$.",
+          "$b = 15 - 10 = 5$.",
+          "Only two lines ran — the third ($a = a - b$) is missing, so $a$ still holds the sum 15. Output: $15, 5$."
+        ],
+        "a": "15, 5",
+        "d": "medium"
+      },
+      {
+        "q": "m = 3\nn = 4\nm = m * n\nn = m / n\nm = m / n\nprint m, n",
+        "opts": [
+          "12, 3",
+          "4, 4",
+          "4, 3",
+          "3, 4"
+        ],
+        "c": 2,
+        "s": [
+          "$m = 3 \\times 4 = 12$ (the product).",
+          "$n = 12 / 4 = 3$ (old $m$).",
+          "$m = 12 / 3 = 4$ (old $n$).",
+          "Multiply/divide swap: $4, 3$."
+        ],
+        "a": "4, 3",
+        "d": "medium"
+      },
+      {
+        "q": "a = 2\nb = 6\na = a + b\nb = a - b\na = a - b\nb = b + 1\nprint a, b",
+        "opts": [
+          "2, 3",
+          "6, 2",
+          "3, 6",
+          "6, 3"
+        ],
+        "c": 3,
+        "s": [
+          "Lines 1-3 swap: $a = 6$, $b = 2$.",
+          "$b = 2 + 1 = 3$ — the extra line runs AFTER the swap.",
+          "Output: $6, 3$."
+        ],
+        "a": "6, 3",
+        "d": "medium"
+      },
+      {
+        "q": "x = 30\ny = 10\nx = x + y\ny = x - y\nx = x - y\nprint y / x",
+        "opts": [
+          "3",
+          "0",
+          "1",
+          "30"
+        ],
+        "c": 0,
+        "s": [
+          "After the swap: $x = 10$, $y = 30$.",
+          "$y / x = 30 / 10 = 3$."
+        ],
+        "a": "3",
+        "d": "easy"
+      },
+      {
+        "q": "a = 8\nb = 3\na = a + b\nb = a - b\na = a - b\nc = a * 10 + b\nprint c",
+        "opts": [
+          "11",
+          "38",
+          "83",
+          "110"
+        ],
+        "c": 1,
+        "s": [
+          "Swap first: $a = 3$, $b = 8$.",
+          "$c = 3 \\times 10 + 8 = 38$."
+        ],
+        "a": "38",
+        "d": "medium"
+      }
+    ],
+    "div-mod-pair": [
+      {
+        "q": "n = 17\nq = n / 5\nr = n MOD 5\nprint q, r",
+        "opts": [
+          "3.4, 2",
+          "3, 3",
+          "3, 2",
+          "2, 3"
+        ],
+        "c": 2,
+        "s": [
+          "$q = 17 / 5 = 3$ — fraction dropped.",
+          "$r = 17 \\bmod 5 = 2$.",
+          "print: $3, 2$."
+        ],
+        "a": "3, 2",
+        "d": "easy"
+      },
+      {
+        "q": "a = 9\nb = 2\nc = a / b\nd = a MOD b\nprint c * 10 + d",
+        "opts": [
+          "45",
+          "14",
+          "40",
+          "41"
+        ],
+        "c": 3,
+        "s": [
+          "$c = 9 / 2 = 4$, $d = 9 \\bmod 2 = 1$.",
+          "$c \\times 10 + d = 40 + 1 = 41$."
+        ],
+        "a": "41",
+        "d": "easy"
+      },
+      {
+        "q": "n = 456\na = n MOD 10\nb = n / 10\nprint a * 100 + b",
+        "opts": [
+          "645",
+          "456",
+          "654",
+          "465"
+        ],
+        "c": 0,
+        "s": [
+          "$a = 6$ (last digit), $b = 45$ (rest).",
+          "$6 \\times 100 + 45 = 645$ — last digit moved to the front."
+        ],
+        "a": "645",
+        "d": "medium"
+      },
+      {
+        "q": "n = 60\nk = 8\nq = n / k\nr = n MOD k\nprint q * r",
+        "opts": [
+          "7",
+          "28",
+          "56",
+          "4"
+        ],
+        "c": 1,
+        "s": [
+          "$q = 60 / 8 = 7$ — eight goes into sixty seven times.",
+          "$r = 60 \\bmod 8 = 4$ — remainder after $8 \\times 7 = 56$.",
+          "$q \\times r = 7 \\times 4 = 28$."
+        ],
+        "a": "28",
+        "d": "easy"
+      },
+      {
+        "q": "x = 100\ny = 13\nq = x / y\nr = x MOD y\nprint q + r",
+        "opts": [
+          "10",
+          "17",
+          "16",
+          "9"
+        ],
+        "c": 2,
+        "s": [
+          "$q = 100 / 13 = 7$, $r = 100 \\bmod 13 = 9$.",
+          "$7 + 9 = 16$."
+        ],
+        "a": "16",
+        "d": "medium"
+      },
+      {
+        "q": "n = 8\nprint n / 10, n MOD 10",
+        "opts": [
+          "8, 0",
+          "0.8, 8",
+          "1, 8",
+          "0, 8"
+        ],
+        "c": 3,
+        "s": [
+          "$8 / 10 = 0$ — integer division of a smaller number.",
+          "$8 \\bmod 10 = 8$ — remainder is the number itself.",
+          "print: $0, 8$."
+        ],
+        "a": "0, 8",
+        "d": "medium"
+      },
+      {
+        "q": "n = 3407\na = n / 100\nb = n MOD 100\nprint a, b",
+        "opts": [
+          "34, 7",
+          "34, 07",
+          "3, 407",
+          "340, 7"
+        ],
+        "c": 0,
+        "s": [
+          "$a = 3407 / 100 = 34$ — last two digits removed.",
+          "$b = 3407 \\bmod 100 = 7$ — remainder after removing 34 hundreds.",
+          "print: $34, 7$."
+        ],
+        "a": "34, 7",
+        "d": "hard"
+      },
+      {
+        "q": "n = 25\na = n / 10\nb = n MOD 10\nprint b * 10 + a",
+        "opts": [
+          "22",
+          "52",
+          "25",
+          "55"
+        ],
+        "c": 1,
+        "s": [
+          "$a = 2$, $b = 5$.",
+          "$b \\times 10 + a = 50 + 2 = 52$ — digits reversed."
+        ],
+        "a": "52",
+        "d": "easy"
+      },
+      {
+        "q": "n = 83\nk = 9\nq = n / k\nr = n MOD k\nprint q * k + r",
+        "opts": [
+          "2",
+          "74",
+          "83",
+          "81"
+        ],
+        "c": 2,
+        "s": [
+          "$q = 9$, $r = 2$.",
+          "$q \\times k + r = 9 \\times 9 + 2 = 83$ — the DIV-MOD identity always rebuilds $n$."
+        ],
+        "a": "83",
+        "d": "medium"
+      },
+      {
+        "q": "a = 7\nb = 2\nc = a / b\nd = a - c * b\nprint c, d",
+        "opts": [
+          "3.5, 0",
+          "3, 0",
+          "2, 1",
+          "3, 1"
+        ],
+        "c": 3,
+        "s": [
+          "$c = 7 / 2 = 3$.",
+          "$d = 7 - 3 \\times 2 = 7 - 6 = 1$ — this is exactly $7 \\bmod 2$ computed by hand.",
+          "print: $3, 1$."
+        ],
+        "a": "3, 1",
+        "d": "hard"
+      }
+    ],
+    "digit-loop": [
+      {
+        "q": "n = 231\nrev = 0\nWHILE n > 0\n  d = n MOD 10\n  rev = rev * 10 + d\n  n = n / 10\nENDWHILE\nprint rev",
+        "opts": [
+          "132",
+          "231",
+          "123",
+          "213"
+        ],
+        "c": 0,
+        "s": [
+          "Pass 1: $d = 1$, $rev = 1$, $n = 23$.",
+          "Pass 2: $d = 3$, $rev = 13$, $n = 2$.",
+          "Pass 3: $d = 2$, $rev = 132$, $n = 0$ — loop ends.",
+          "Output is 132."
+        ],
+        "a": "132",
+        "d": "medium"
+      },
+      {
+        "q": "n = 592\ns = 0\nWHILE n > 0\n  s = s + n MOD 10\n  n = n / 10\nENDWHILE\nprint s",
+        "opts": [
+          "5",
+          "16",
+          "15",
+          "17"
+        ],
+        "c": 1,
+        "s": [
+          "Pass 1: $s = 2$, $n = 59$.",
+          "Pass 2: $s = 2 + 9 = 11$, $n = 5$.",
+          "Pass 3: $s = 11 + 5 = 16$, $n = 0$.",
+          "Digit sum is 16."
+        ],
+        "a": "16",
+        "d": "easy"
+      },
+      {
+        "q": "n = 7\ns = 0\nWHILE n > 0\n  s = s + n MOD 10\n  n = n / 10\nENDWHILE\nprint s",
+        "opts": [
+          "1",
+          "14",
+          "7",
+          "0"
+        ],
+        "c": 2,
+        "s": [
+          "Single-digit $n = 7$: one pass — $s = 7$, $n = 0$.",
+          "The loop DOES run for the last digit. Output is 7."
+        ],
+        "a": "7",
+        "d": "medium"
+      },
+      {
+        "q": "n = 444\nc = 0\nWHILE n > 0\n  c = c + 1\n  n = n / 10\nENDWHILE\nprint c",
+        "opts": [
+          "4",
+          "2",
+          "444",
+          "3"
+        ],
+        "c": 3,
+        "s": [
+          "Each pass removes one digit: $444 \\to 44 \\to 4 \\to 0$.",
+          "Three passes, counter ends at 3."
+        ],
+        "a": "3",
+        "d": "easy"
+      },
+      {
+        "q": "n = 254\np = 1\nWHILE n > 0\n  p = p * (n MOD 10)\n  n = n / 10\nENDWHILE\nprint p",
+        "opts": [
+          "40",
+          "11",
+          "0",
+          "250"
+        ],
+        "c": 0,
+        "s": [
+          "Pass 1: $p = 1 \\times 4 = 4$, $n = 25$.",
+          "Pass 2: $p = 4 \\times 5 = 20$, $n = 2$.",
+          "Pass 3: $p = 20 \\times 2 = 40$, $n = 0$.",
+          "Digit product is 40."
+        ],
+        "a": "40",
+        "d": "medium"
+      },
+      {
+        "q": "n = 100\ns = 0\nWHILE n > 0\n  d = n MOD 10\n  s = s + d\n  n = n / 10\nENDWHILE\nprint s",
+        "opts": [
+          "3",
+          "1",
+          "0",
+          "100"
+        ],
+        "c": 1,
+        "s": [
+          "Pass 1: $d = 0$, $s = 0$, $n = 10$.",
+          "Pass 2: $d = 0$, $s = 0$, $n = 1$.",
+          "Pass 3: $d = 1$, $s = 1$, $n = 0$.",
+          "Zeros add nothing: digit sum is 1."
+        ],
+        "a": "1",
+        "d": "medium"
+      },
+      {
+        "q": "n = 1234\nrev = 0\nWHILE n > 0\n  rev = rev * 10 + n MOD 10\n  n = n / 10\nENDWHILE\nprint rev",
+        "opts": [
+          "3412",
+          "2143",
+          "4321",
+          "1234"
+        ],
+        "c": 2,
+        "s": [
+          "Pass 1: $rev = 4$, $n = 123$.",
+          "Pass 2: $rev = 43$, $n = 12$.",
+          "Pass 3: $rev = 432$, $n = 1$.",
+          "Pass 4: $rev = 4321$, $n = 0$."
+        ],
+        "a": "4321",
+        "d": "medium"
+      },
+      {
+        "q": "n = 36\nc = 0\nWHILE n > 1\n  n = n / 2\n  c = c + 1\nENDWHILE\nprint c",
+        "opts": [
+          "4",
+          "6",
+          "3",
+          "5"
+        ],
+        "c": 3,
+        "s": [
+          "This loop halves, not digit-walks: $36 \\to 18 \\to 9 \\to 4 \\to 2 \\to 1$.",
+          "Five passes until $n = 1$ fails $n > 1$. Counter is 5."
+        ],
+        "a": "5",
+        "d": "medium"
+      },
+      {
+        "q": "n = 9\nWHILE n > 0\n  print n MOD 10\n  n = n / 10\nENDWHILE\nprint \"done\"",
+        "opts": [
+          "9, done",
+          "9",
+          "0, done",
+          "done, 9"
+        ],
+        "c": 0,
+        "s": [
+          "Pass 1: print $9$, then $n = 0$.",
+          "$0 > 0$ fails — loop ends.",
+          "Then prints \"done\". Output lines: 9, done."
+        ],
+        "a": "9, done",
+        "d": "medium"
+      },
+      {
+        "q": "n = 128\ns = 0\nc = 0\nWHILE n > 0\n  s = s + n MOD 10\n  c = c + 1\n  n = n / 10\nENDWHILE\nprint s * c",
+        "opts": [
+          "24",
+          "33",
+          "11",
+          "99"
+        ],
+        "c": 1,
+        "s": [
+          "Digits of 128: sum $= 1 + 2 + 8 = 11$, count $= 3$.",
+          "$s \\times c = 11 \\times 3 = 33$."
+        ],
+        "a": "33",
+        "d": "hard"
+      }
+    ],
+    "string-concat": [
+      {
+        "q": "a = \"6\"\nb = \"4\"\nc = a + b\nprint c",
+        "opts": [
+          "46",
+          "24",
+          "64",
+          "10"
+        ],
+        "c": 2,
+        "s": [
+          "Both values are TEXT (quotes).",
+          "$\"6\" + \"4\"$ glues: $\"64\"$.",
+          "Output is 64."
+        ],
+        "a": "64",
+        "d": "easy"
+      },
+      {
+        "q": "x = 4\ny = 5\nprint \"sum\" , x + y",
+        "opts": [
+          "sum9",
+          "sum, 45",
+          "9",
+          "sum, 9"
+        ],
+        "c": 3,
+        "s": [
+          "print with a comma prints two values: the text $sum$ then $4 + 5 = 9$.",
+          "Output: $sum, 9$."
+        ],
+        "a": "sum, 9",
+        "d": "easy"
+      },
+      {
+        "q": "a = \"12\"\nb = \"3\"\nc = a + b\nd = 12 + 3\nprint c, d",
+        "opts": [
+          "123, 15",
+          "15, 123",
+          "123, 123",
+          "15, 15"
+        ],
+        "c": 0,
+        "s": [
+          "$c = \"12\" + \"3\" = \"123\"$ (glue).",
+          "$d = 12 + 3 = 15$ (add).",
+          "print: $123, 15$."
+        ],
+        "a": "123, 15",
+        "d": "medium"
+      },
+      {
+        "q": "s = \"go\"\nt = \"ld\"\nw = s + t\nprint w",
+        "opts": [
+          "g o l d",
+          "gold",
+          "ldgo",
+          "go ld"
+        ],
+        "c": 1,
+        "s": [
+          "$w = \"go\" + \"ld\" = \"gold\"$ — glue keeps order.",
+          "Output is gold."
+        ],
+        "a": "gold",
+        "d": "easy"
+      },
+      {
+        "q": "a = \"0\"\nb = \"7\"\nc = a + b\nprint c",
+        "opts": [
+          "0",
+          "70",
+          "07",
+          "7"
+        ],
+        "c": 2,
+        "s": [
+          "$\"0\" + \"7\" = \"07\"$ — glue never drops leading zeros.",
+          "Output is 07."
+        ],
+        "a": "07",
+        "d": "medium"
+      },
+      {
+        "q": "w1 = \"data\"\nw2 = \"base\"\nw = w1 + w2\nprint w",
+        "opts": [
+          "basedata",
+          "data base",
+          "databse",
+          "database"
+        ],
+        "c": 3,
+        "s": [
+          "$\"data\" + \"base\" = \"database\"$ — no space is added by glue.",
+          "Output is database."
+        ],
+        "a": "database",
+        "d": "easy"
+      },
+      {
+        "q": "a = \"ab\"\nb = \"cd\"\nprint b + a",
+        "opts": [
+          "cdab",
+          "abcd",
+          "abdc",
+          "dcba"
+        ],
+        "c": 0,
+        "s": [
+          "Glue order follows the expression: $b + a$ puts $cd$ first.",
+          "Output is cdab."
+        ],
+        "a": "cdab",
+        "d": "medium"
+      },
+      {
+        "q": "n = 2\ns = \"ha\"\nprint s + s + s",
+        "opts": [
+          "6",
+          "hahaha",
+          "ha6",
+          "ha ha ha"
+        ],
+        "c": 1,
+        "s": [
+          "The number 2 is never used — no repeat operator exists here.",
+          "$\"ha\" + \"ha\" + \"ha\" = \"hahaha\"$."
+        ],
+        "a": "hahaha",
+        "d": "medium"
+      },
+      {
+        "q": "a = \"10\"\nb = \"5\"\nc = a + b\nd = 10 + 5\nprint d, c",
+        "opts": [
+          "15, 155",
+          "155, 15",
+          "15, 105",
+          "105, 15"
+        ],
+        "c": 2,
+        "s": [
+          "$d = 10 + 5 = 15$ (numbers).",
+          "$c = \"10\" + \"5\" = \"105\"$ (glue).",
+          "print order is $d$ then $c$: $15, 105$."
+        ],
+        "a": "15, 105",
+        "d": "medium"
+      },
+      {
+        "q": "x = \"1\"\ny = \"2\"\nz = x + y\nw = z + z\nprint w",
+        "opts": [
+          "24",
+          "121",
+          "1122",
+          "1212"
+        ],
+        "c": 3,
+        "s": [
+          "$z = \"1\" + \"2\" = \"12\"$.",
+          "$w = \"12\" + \"12\" = \"1212\"$ — glue twice.",
+          "Output is 1212."
+        ],
+        "a": "1212",
+        "d": "hard"
+      }
+    ]
+  },
   "mcqs": [
     {
+      "id": 1,
       "q": "a = 6\nb = 4\nc = a * b\nprint c",
       "opts": [
         "24",
@@ -28,54 +1364,68 @@
         "12"
       ],
       "c": 0,
+      "d": "easy",
       "t": "basic-assignment",
-      "exp": "Step 1: a = 6 and b = 4 are simple stores. Step 2: The right side of c = a * b is evaluated first: a * b means 6 * 4 = 24. Step 3: The result 24 is stored into c. Step 4: print c shows the current value of c, which is 24. Step 5: The answer is 24.",
-      "id": 1,
-      "d": "easy"
+      "exp": [
+        "$a = 6$, $b = 4$.",
+        "$c = 6 \\times 4 = 24$.",
+        "print shows 24."
+      ]
     },
     {
+      "id": 2,
       "q": "a = 5\na = a + 3\nprint a",
       "opts": [
+        "3",
         "8",
         "5",
-        "15",
-        "3"
+        "15"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "easy",
       "t": "overwrite",
-      "exp": "Step 1: a = 5 puts 5 into the box named a. Step 2: In a = a + 3, read the current value of a (which is 5), add 3, and store 8 back into a. The old value 5 is gone forever. Note: the right side is always calculated first, using the current value of a. Step 3: print a shows 8. Step 4: The answer is 8.",
-      "id": 2,
-      "d": "easy"
+      "exp": [
+        "$a = 5$.",
+        "$a = 5 + 3 = 8$.",
+        "Output is 8."
+      ]
     },
     {
+      "id": 3,
       "q": "a = 2 + 3 * 4\nprint a",
       "opts": [
-        "14",
-        "20",
         "24",
-        "11"
+        "11",
+        "14",
+        "20"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "easy",
       "t": "precedence",
-      "exp": "Step 1: In one line there are two operations: addition and multiplication. Step 2: Multiplication is done BEFORE addition (BODMAS rule). So first compute 3 * 4 = 12. Step 3: Then add 2: 2 + 12 = 14. Step 4: print a shows 14. Step 5: If you added first you would wrongly get 20. The answer is 14.",
-      "id": 3,
-      "d": "easy"
+      "exp": [
+        "Multiplication first: $3 \\times 4 = 12$.",
+        "Then $2 + 12 = 14$."
+      ]
     },
     {
+      "id": 4,
       "q": "a = 7 / 2\nprint a",
       "opts": [
-        "3",
         "3.5",
         "4",
-        "2"
+        "2",
+        "3"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "easy",
       "t": "integer-division",
-      "exp": "Step 1: In placement pseudocode, dividing two whole numbers gives a whole number: the decimal part is dropped. Step 2: 7 / 2 = 3.5, but the decimal .5 is dropped, leaving 3. Step 3: print a shows 3. Step 4: (3.5 would only be correct if fractional division were allowed.) The answer is 3.",
-      "id": 4,
-      "d": "easy"
+      "exp": [
+        "Integer division drops the fraction.",
+        "$7 / 2 = 3$ (not 3.5, no rounding)."
+      ]
     },
     {
+      "id": 5,
       "q": "a = 15 MOD 4\nprint a",
       "opts": [
         "3",
@@ -84,54 +1434,67 @@
         "1"
       ],
       "c": 0,
+      "d": "easy",
       "t": "mod",
-      "exp": "Step 1: MOD gives the REMAINDER when we divide. Step 2: 15 divided by 4: 4 goes into 15 three times (4 * 3 = 12) and 15 - 12 = 3 is left over. Step 3: So 15 MOD 4 = 3. Step 4: print a shows 3. Step 5: MOD is the remainder, NOT the quotient. The answer is 3.",
-      "id": 5,
-      "d": "easy"
+      "exp": [
+        "$4 \\times 3 = 12$ fits into 15.",
+        "Remainder $= 15 - 12 = 3$."
+      ]
     },
     {
+      "id": 6,
       "q": "a = 10\nb = 20\ntemp = a\na = b\nb = temp\nprint a, b",
       "opts": [
+        "10, 10",
         "20, 10",
         "10, 20",
-        "20, 20",
-        "10, 10"
+        "20, 20"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "easy",
       "t": "swap",
-      "exp": "Step 1: a = 10, b = 20. Step 2: temp = a saves a copy of a into temp: temp = 10. Step 3: a = b makes a = 20 (the value 20). Step 4: b = temp puts the saved 10 into b. Now b = 10. Step 5: print a, b shows 20, 10. Step 6: This is the classic swap using a temporary helper variable. The answer is 20, 10.",
-      "id": 6,
-      "d": "easy"
+      "exp": [
+        "$temp = 10$ saves old $a$.",
+        "$a = 20$, then $b = temp = 10$.",
+        "Swapped: $20, 10$."
+      ]
     },
     {
+      "id": 7,
       "q": "sum = 0\nsum = sum + 1\nsum = sum + 2\nsum = sum + 3\nsum = sum + 4\nprint sum",
       "opts": [
-        "10",
-        "24",
         "4",
-        "25"
+        "25",
+        "10",
+        "24"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "easy",
       "t": "accumulation",
-      "exp": "Step 1: sum starts at 0. Step 2: Each line adds one more number to sum: 0 -> 1 -> 3 -> 6 -> 10. Step 3: After the four additions, sum = 10. Step 4: print sum shows 10. Step 5: This is the sum 1 + 2 + 3 + 4; the shortcut formula n(n+1)/2 gives the same result. The answer is 10.",
-      "id": 7,
-      "d": "easy"
+      "exp": [
+        "Running total: $0+1=1$, $1+2=3$, $3+3=6$, $6+4=10$.",
+        "Output is 10."
+      ]
     },
     {
+      "id": 8,
       "q": "product = 1\nproduct = product * 2\nproduct = product * 3\nproduct = product * 4\nprint product",
       "opts": [
-        "24",
         "10",
         "8",
-        "12"
+        "12",
+        "24"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "easy",
       "t": "accumulation",
-      "exp": "Step 1: product starts at 1. Step 2: Multiply at each step: 1 * 2 = 2, 2 * 3 = 6, 6 * 4 = 24. Step 3: print product shows 24. Step 4: This is exactly 1 * 2 * 3 * 4 = 4! = 24, the factorial pattern. The answer is 24.",
-      "id": 8,
-      "d": "easy"
+      "exp": [
+        "$1 \\times 2 = 2$, $2 \\times 3 = 6$, $6 \\times 4 = 24$.",
+        "Output is 24."
+      ]
     },
     {
+      "id": 9,
       "q": "x = 10\ny = x + 5\nx = x + 20\nz = x + y\nprint z",
       "opts": [
         "45",
@@ -140,54 +1503,69 @@
         "50"
       ],
       "c": 0,
+      "d": "easy",
       "t": "chain",
-      "exp": "Step 1: x = 10. Step 2: y = x + 5 uses the CURRENT x (10): y = 10 + 5 = 15. Step 3: x = x + 20: x is now 10 + 20 = 30, NOT 10 anymore. Step 4: z = x + y uses the UPDATED x = 30 and y = 15: z = 30 + 15 = 45. Step 5: print z shows 45. Step 6: Using the old x (10) to get 25 is the classic trap. The answer is 45.",
-      "id": 9,
-      "d": "easy"
+      "exp": [
+        "$y = 15$ (old $x$ frozen).",
+        "$x = 30$.",
+        "$z = 30 + 15 = 45$."
+      ]
     },
     {
+      "id": 10,
       "q": "x = 2\nprint x\nx = x * 3\nprint x\nx = x + 4\nprint x\nx = x * 2\nprint x",
       "opts": [
+        "2, 6, 10, 12",
         "2, 6, 10, 20",
         "2, 6, 16, 32",
-        "2, 5, 9, 18",
-        "2, 6, 10, 12"
+        "2, 5, 9, 18"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "easy",
       "t": "multi-print",
-      "exp": "Step 1: Each print captures the value of x AT THAT MOMENT, not the final value. Step 2: x = 2, first print: 2. Step 3: x = 2 * 3 = 6, second print: 6. Step 4: x = 6 + 4 = 10, third print: 10. Step 5: x = 10 * 2 = 20, fourth print: 20. Step 6: All four outputs must be reported in order. The answer is 2, 6, 10, 20.",
-      "id": 10,
-      "d": "easy"
+      "exp": [
+        "$x = 2$, print 2.",
+        "$x = 6$, print 6.",
+        "$x = 10$, print 10.",
+        "$x = 20$, print 20."
+      ]
     },
     {
+      "id": 11,
       "q": "a = 10\na = a + 5\na = a * 2\nprint a",
       "opts": [
-        "30",
-        "15",
         "20",
-        "25"
+        "25",
+        "30",
+        "15"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "easy",
       "t": "overwrite",
-      "exp": "Step 1: a = 10. Step 2: a = a + 5, with the right side read first: 10 + 5 = 15. Now a = 15. Step 3: a = a * 2 uses the CURRENT a = 15: 15 * 2 = 30. Step 4: print a shows 30. Step 5: Each line works with the newest value of a. The answer is 30.",
-      "id": 11,
-      "d": "easy"
+      "exp": [
+        "$a = 10 + 5 = 15$.",
+        "$a = 15 \\times 2 = 30$."
+      ]
     },
     {
+      "id": 12,
       "q": "a = 4\nb = a * a + a\nprint b",
       "opts": [
-        "20",
         "16",
         "24",
-        "32"
+        "32",
+        "20"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "easy",
       "t": "chain",
-      "exp": "Step 1: a = 4. Step 2: In b = a * a + a, every a stands for the CURRENT value 4. Step 3: a * a = 4 * 4 = 16; then add the last a: 16 + 4 = 20. Step 4: print b shows 20. Step 5: Do not simplify algebraically - just substitute the number 4 and calculate. The answer is 20.",
-      "id": 12,
-      "d": "easy"
+      "exp": [
+        "$a \\times a = 16$.",
+        "$16 + 4 = 20$."
+      ]
     },
     {
+      "id": 13,
       "q": "m = 5\nn = 9\nm = n\nn = m\nprint m + n",
       "opts": [
         "18",
@@ -196,54 +1574,70 @@
         "10"
       ],
       "c": 0,
+      "d": "easy",
       "t": "swap",
-      "exp": "Step 1: m = 5, n = 9. Step 2: m = n copies n into m: m = 9. The old value 5 of m is now LOST. Step 3: n = m copies the current m (= 9) into n: n = 9. Both variables are now 9. Step 4: m + n = 18. Step 5: This is the BROKEN swap: without a temp variable, m's original value 5 disappears, so the values do NOT swap. The answer is 18.",
-      "id": 13,
-      "d": "easy"
+      "exp": [
+        "$m = 9$ (old $m$ destroyed).",
+        "$n = m = 9$.",
+        "$9 + 9 = 18$ — fake swap."
+      ]
     },
     {
+      "id": 14,
       "q": "a = 20\nb = a - 5\na = a + b\nb = a - b\nprint a - b",
       "opts": [
+        "10",
         "15",
         "20",
-        "5",
-        "10"
+        "5"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "easy",
       "t": "overwrite",
-      "exp": "Step 1: a = 20. Step 2: b = a - 5 = 20 - 5 = 15. Step 3: a = a + b = 20 + 15 = 35. Step 4: b = a - b uses a = 35 and b = 15: 35 - 15 = 20. Step 5: a - b = 35 - 20 = 15. Step 6: print shows 15. Step 7: Always track which values are current at each line. The answer is 15.",
-      "id": 14,
-      "d": "easy"
+      "exp": [
+        "$b = 15$.",
+        "$a = 20 + 15 = 35$.",
+        "$b = 35 - 15 = 20$.",
+        "$a - b = 35 - 20 = 15$."
+      ]
     },
     {
+      "id": 15,
       "q": "n = 13\na = n MOD 2\nprint a",
       "opts": [
-        "1",
-        "0",
         "6",
-        "2"
+        "2",
+        "1",
+        "0"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "easy",
       "t": "mod",
-      "exp": "Step 1: MOD 2 asks: what is the remainder when 13 is divided by 2? Step 2: 13 = 6 * 2 + 1, so the remainder is 1. Step 3: print a shows 1. Step 4: Rule to remember: any number MOD 2 is 0 when even and 1 when odd. The answer is 1.",
-      "id": 15,
-      "d": "easy"
+      "exp": [
+        "13 is odd.",
+        "$13 \\bmod 2 = 1$."
+      ]
     },
     {
+      "id": 16,
       "q": "a = 5\nb = 3\nc = a + b * 2\nd = (a + b) * 2\nprint c + d",
       "opts": [
-        "27",
         "32",
         "50",
-        "21"
+        "21",
+        "27"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "easy",
       "t": "precedence",
-      "exp": "Step 1: a = 5, b = 3. Step 2: c = a + b * 2: multiplication first, b * 2 = 6, then a + 6 = 11. Step 3: d = (a + b) * 2: brackets first, a + b = 8, then 8 * 2 = 16. Step 4: c + d = 11 + 16 = 27. Step 5:  Notice how the brackets completely change the result. The answer is 27.",
-      "id": 16,
-      "d": "easy"
+      "exp": [
+        "$c = 5 + 6 = 11$.",
+        "$d = 8 \\times 2 = 16$.",
+        "$11 + 16 = 27$."
+      ]
     },
     {
+      "id": 17,
       "q": "a = 10\nb = a / 3\nc = a MOD 3\nd = b * 3 + c\nprint d",
       "opts": [
         "10",
@@ -252,54 +1646,68 @@
         "1"
       ],
       "c": 0,
+      "d": "easy",
       "t": "identity-reconstruction",
-      "exp": "Step 1: a = 10. Step 2: b = a / 3: 10 / 3 = 3 because integer division drops the decimal. Step 3: c = a MOD 3: 10 = 3 * 3 + 1, so the remainder is 1. Step 4: d = b * 3 + c = 3 * 3 + 1 = 10. Step 5: print d shows 10. Step 6:  This is the identity: (n / k) * k + (n MOD k) always gives back n. The answer is 10.",
-      "id": 17,
-      "d": "easy"
+      "exp": [
+        "$b = 3$, $c = 1$.",
+        "$3 \\times 3 + 1 = 10$ — DIV/MOD identity."
+      ]
     },
     {
+      "id": 18,
       "q": "n = 1234\nlast_digit = n MOD 10\nn = n / 10\nsecond_last = n MOD 10\nprint last_digit + second_last",
       "opts": [
+        "10",
         "7",
         "34",
-        "4",
-        "10"
+        "4"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "easy",
       "t": "digit-extraction",
-      "exp": "Step 1: n = 1234. Step 2: last_digit = n MOD 10: MOD 10 always gives the last digit, so last_digit = 4. Step 3: n = n / 10: integer division drops the last digit, n = 123. Step 4: second_last = n MOD 10 = 3. Step 5: last_digit + second_last = 4 + 3 = 7. Step 6:  Remember: MOD 10 takes the last digit, / 10 removes it. The answer is 7.",
-      "id": 18,
-      "d": "easy"
+      "exp": [
+        "Last digit $= 4$.",
+        "$n = 123$; second-last $= 3$.",
+        "$4 + 3 = 7$."
+      ]
     },
     {
+      "id": 19,
       "q": "a = 12\nb = 24\na = a + b\nb = a - b\na = a - b\nprint a + b",
       "opts": [
-        "36",
-        "24",
         "48",
-        "12"
+        "12",
+        "36",
+        "24"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "easy",
       "t": "swap",
-      "exp": "Step 1: a = 12, b = 24. Step 2: a = a + b = 12 + 24 = 36. Step 3: b = a - b = 36 - 24 = 12 (back to the original a). Step 4: a = a - b = 36 - 12 = 24 (now the original b). The two numbers have been swapped WITHOUT a temp variable. Step 5: a + b = 24 + 12 = 36. Step 6:  Shortcut: in this swap trick, the final a + b always equals the original a + b. The answer is 36.",
-      "id": 19,
-      "d": "easy"
+      "exp": [
+        "The routine swaps: $a = 24$, $b = 12$.",
+        "Sum unchanged: $36$."
+      ]
     },
     {
+      "id": 20,
       "q": "p = 3\nq = 7\nr = p * q\np = r - p\nq = r - q\ns = p + q\nprint s",
       "opts": [
-        "32",
         "10",
         "28",
-        "21"
+        "21",
+        "32"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "medium",
       "t": "overwrite",
-      "exp": "Step 1: p = 3, q = 7. Step 2: r = p * q = 3 * 7 = 21. Step 3: p = r - p = 21 - 3 = 18. Step 4: q = r - q = 21 - 7 = 14. Note r is still 21, it never changed. Step 5: s = p + q = 18 + 14 = 32. Step 6:  Track each variable's current value in a table to avoid confusion. The answer is 32.",
-      "id": 20,
-      "d": "medium"
+      "exp": [
+        "$r = 21$.",
+        "$p = 21 - 3 = 18$, $q = 21 - 7 = 14$.",
+        "$s = 32$."
+      ]
     },
     {
+      "id": 21,
       "q": "a = 10\nb = 3\nc = 2\nd = 20\ne = 4\nx = a + b * c - d / e\nprint x",
       "opts": [
         "11",
@@ -308,54 +1716,67 @@
         "5"
       ],
       "c": 0,
+      "d": "medium",
       "t": "precedence",
-      "exp": "Step 1: After the assignments, the working line is x = 10 + 3 * 2 - 20 / 4. Step 2: Do multiplication and division first: 3 * 2 = 6 and 20 / 4 = 5. Step 3: Now only addition and subtraction are left, done left to right: 10 + 6 - 5 = 11. Step 4: print x shows 11. Step 5:  Skipping the precedence rules is the most common mistake here. The answer is 11.",
-      "id": 21,
-      "d": "medium"
+      "exp": [
+        "$b \\times c = 6$, $d / e = 5$.",
+        "$10 + 6 - 5 = 11$."
+      ]
     },
     {
+      "id": 22,
       "q": "n = 4728\na = n MOD 10\nn = n / 10\nb = n MOD 10\nn = n / 10\nc = n MOD 10\nprint a + b + c",
       "opts": [
+        "15",
         "17",
         "21",
-        "10",
-        "15"
+        "10"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "medium",
       "t": "digit-extraction",
-      "exp": "Step 1: n = 4728. Step 2: a = n MOD 10 = 8, then n = 4728 / 10 = 472. Step 3: b = n MOD 10 = 2, then n = 472 / 10 = 47. Step 4: c = n MOD 10 = 7. Step 5: a + b + c = 8 + 2 + 7 = 17. Step 6:  This extracts the last three digits one at a time and adds them. The answer is 17.",
-      "id": 22,
-      "d": "medium"
+      "exp": [
+        "Digits peeled: 8, 2, 7.",
+        "$8 + 2 + 7 = 17$."
+      ]
     },
     {
+      "id": 23,
       "q": "n = 5678\na = n MOD 10\nn = n / 10\nb = n MOD 10\nn = n / 10\nc = n MOD 10\nn = n / 10\nd = n MOD 10\nprint a + b + c + d",
       "opts": [
-        "26",
-        "20",
         "24",
-        "30"
+        "30",
+        "26",
+        "20"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "medium",
       "t": "digit-extraction",
-      "exp": "Step 1: n = 5678. Step 2: Pull out the digits one by one, always with MOD 10, then remove the digit with / 10: Step 3: a = 8, n = 567; b = 7, n = 56; c = 6, n = 5; d = 5. Step 4: a + b + c + d = 8 + 7 + 6 + 5 = 26. Step 5: print shows 26. Step 6:  This is the digit-sum pattern: add all digits of the number. The answer is 26.",
-      "id": 23,
-      "d": "medium"
+      "exp": [
+        "Digits peeled: 8, 7, 6, 5.",
+        "$8 + 7 + 6 + 5 = 26$."
+      ]
     },
     {
+      "id": 24,
       "q": "x = 3\ny = x * x\nz = y + x\nx = z\ny = x + z\nprint y",
       "opts": [
-        "24",
         "15",
         "21",
-        "36"
+        "36",
+        "24"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "medium",
       "t": "overwrite",
-      "exp": "Step 1: x = 3. Step 2: y = x * x = 3 * 3 = 9. Step 3: z = y + x = 9 + 3 = 12. Step 4: x = z, so x becomes 12. Step 5: y = x + z = 12 + 12 = 24. Step 6: print y shows 24. Step 7:  The trap: x no longer holds 3 when y is recomputed, it holds 12. The answer is 24.",
-      "id": 24,
-      "d": "medium"
+      "exp": [
+        "$y = 9$, $z = 12$.",
+        "$x = 12$.",
+        "$y = 12 + 12 = 24$."
+      ]
     },
     {
+      "id": 25,
       "q": "p = 2\nq = 3\nr = p\np = q\nq = r\nr = p + q\nprint r",
       "opts": [
         "5",
@@ -364,54 +1785,65 @@
         "2"
       ],
       "c": 0,
+      "d": "easy",
       "t": "swap",
-      "exp": "Step 1: p = 2, q = 3. Step 2: r = p saves 2 into r. Step 3: p = q makes p = 3. Step 4: q = r puts the saved 2 back: q = 2. This is a normal swap using r as temp. Step 5: r = p + q = 3 + 2 = 5. Step 6: print r shows 5. Step 7: The answer is 5.",
-      "id": 25,
-      "d": "easy"
+      "exp": [
+        "$r = 2$; swap makes $p = 3$, $q = 2$.",
+        "$r = 3 + 2 = 5$."
+      ]
     },
     {
+      "id": 26,
       "q": "n = 123\na = n MOD 10\nn = n / 10\nb = n MOD 10\nn = n / 10\nc = n\nprint a * 100 + b * 10 + c",
       "opts": [
+        "231",
         "321",
         "123",
-        "312",
-        "231"
+        "312"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "medium",
       "t": "digit-extraction",
-      "exp": "Step 1: n = 123. Step 2: a = 123 MOD 10 = 3; n becomes 12. Step 3: b = 12 MOD 10 = 2; n becomes 1. Step 4: c = n = 1. Step 5: a * 100 + b * 10 + c = 3 * 100 + 2 * 10 + 1 = 321. Step 6:  This reverses the digits: 123 becomes 321. The answer is 321.",
-      "id": 26,
-      "d": "medium"
+      "exp": [
+        "$a = 3$, $b = 2$, $c = 1$.",
+        "$300 + 20 + 1 = 321$ — reversed."
+      ]
     },
     {
+      "id": 27,
       "q": "n = 17\nq = n / 4\nr = n MOD 4\nprint q * 4 + r",
       "opts": [
-        "17",
-        "4",
         "1",
-        "5"
+        "5",
+        "17",
+        "4"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "easy",
       "t": "identity-reconstruction",
-      "exp": "Step 1: n = 17. Step 2: q = n / 4 = 17 / 4 = 4 (integer division). Step 3: r = n MOD 4: 17 = 4 * 4 + 1, remainder 1. Step 4: q * 4 + r = 4 * 4 + 1 = 17. Step 5:  Quotient times divisor plus remainder always rebuilds the original number. The answer is 17.",
-      "id": 27,
-      "d": "easy"
+      "exp": [
+        "$q = 4$, $r = 1$.",
+        "$16 + 1 = 17$ — identity rebuilds $n$."
+      ]
     },
     {
+      "id": 28,
       "q": "a = 5\nb = a * a + 2 * a + 1\nprint b",
       "opts": [
-        "36",
         "31",
         "30",
-        "35"
+        "35",
+        "36"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "medium",
       "t": "chain",
-      "exp": "Step 1: a = 5. Step 2: In b = a * a + 2 * a + 1, substitute a = 5 everywhere. Step 3: a * a = 5 * 5 = 25. Step 4: 2 * a = 2 * 5 = 10. Step 5: 25 + 10 + 1 = 36. Step 6: print b shows 36. Step 7:  Substitute the number, never do algebra. The answer is 36.",
-      "id": 28,
-      "d": "medium"
+      "exp": [
+        "$25 + 10 + 1 = 36$ — this is $(a+1)^2$."
+      ]
     },
     {
+      "id": 29,
       "q": "x = 5\ny = 2 * x\nx = y + x\nprint x",
       "opts": [
         "15",
@@ -420,54 +1852,66 @@
         "25"
       ],
       "c": 0,
+      "d": "easy",
       "t": "overwrite",
-      "exp": "Step 1: x = 5. Step 2: y = 2 * x = 2 * 5 = 10. Step 3: x = y + x uses the CURRENT y = 10 and CURRENT x = 5: 10 + 5 = 15. Step 4: print x shows 15. Step 5:  x is reassigned, so its old value 5 is only used on this one line. The answer is 15.",
-      "id": 29,
-      "d": "easy"
+      "exp": [
+        "$y = 10$.",
+        "$x = 10 + 5 = 15$."
+      ]
     },
     {
+      "id": 30,
       "q": "a = \"5\"\nb = \"3\"\nc = a + b\nprint c",
       "opts": [
+        "15",
         "53",
         "8",
-        "35",
-        "15"
+        "35"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "easy",
       "t": "string-concatenation",
-      "exp": "Step 1: The quotes around 5 and 3 mean these are TEXT (strings), not numbers. Step 2: For text, the + sign joins the pieces together, it does NOT add. Step 3: c = a + b glues '5' and '3' together: 53. Step 4: print c shows 53. Step 5:  If the quotes were absent, 5 + 3 would be 8 - always check for quotes! The answer is 53.",
-      "id": 30,
-      "d": "easy"
+      "exp": [
+        "Quoted values are text.",
+        "$\"5\" + \"3\" = \"53\"$ — glue, not add."
+      ]
     },
     {
+      "id": 31,
       "q": "n = 649\na = n MOD 10\nn = n / 10\nb = n MOD 10\nn = n / 10\nc = n\nprint a - b + c",
       "opts": [
-        "11",
-        "9",
         "5",
-        "7"
+        "7",
+        "11",
+        "9"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "medium",
       "t": "digit-extraction",
-      "exp": "Step 1: n = 649. Step 2: a = n MOD 10 = 9, then n = 64. Step 3: b = n MOD 10 = 4, then n = 6. Step 4: c = n = 6. Step 5: a - b + c = 9 - 4 + 6 = 11. Step 6: print shows 11. Step 7: The answer is 11.",
-      "id": 31,
-      "d": "medium"
+      "exp": [
+        "$a = 9$, $b = 4$, $c = 6$.",
+        "$9 - 4 + 6 = 11$."
+      ]
     },
     {
+      "id": 32,
       "q": "balance = 100\nbalance = balance + 50\nbalance = balance - 30\nbalance = balance * 2\nbalance = balance + 15\nprint balance",
       "opts": [
-        "255",
         "145",
         "210",
-        "160"
+        "160",
+        "255"
       ],
-      "c": 0,
-      "t": "bank-account",
-      "exp": "Step 1: balance = 100. Step 2: + 50, so balance = 150. Step 3: - 30, so balance = 120. Step 4: * 2, so balance = 240. Step 5: + 15, so balance = 255. Step 6: print balance shows 255. Step 7: Each line works with the value from the previous line. The answer is 255.",
-      "id": 32,
-      "d": "easy"
+      "c": 3,
+      "d": "easy",
+      "t": "accumulation",
+      "exp": [
+        "$150 \\to 120 \\to 240 \\to 255$.",
+        "Output is 255."
+      ]
     },
     {
+      "id": 33,
       "q": "x = 3\ny = x * 2\nz = x + y\nx = z\ny = x - 3\nprint y",
       "opts": [
         "6",
@@ -476,54 +1920,68 @@
         "12"
       ],
       "c": 0,
+      "d": "easy",
       "t": "overwrite",
-      "exp": "Step 1: x = 3. Step 2: y = x * 2 = 3 * 2 = 6. Step 3: z = x + y = 3 + 6 = 9. Step 4: x = z, so x becomes 9. Step 5: y = x - 3 uses the NEW x, which is 9: 9 - 3 = 6. Step 6: print y shows 6. Step 7: The old x = 3 is gone after Step 4. The answer is 6.",
-      "id": 33,
-      "d": "easy"
+      "exp": [
+        "$y = 6$, $z = 9$, $x = 9$.",
+        "$y = 9 - 3 = 6$."
+      ]
     },
     {
+      "id": 34,
       "q": "a = 25\nb = 7\nc = a MOD b\nd = a / b\ne = d * b\nf = a - e\nprint c + f",
       "opts": [
+        "1",
         "8",
         "2",
-        "0",
-        "1"
+        "0"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "medium",
       "t": "precedence",
-      "exp": "Step 1: a = 25, b = 7. Step 2: c = 25 MOD 7: 25 = 7 * 3 + 4, so c = 4. Step 3: d = 25 / 7 = 3 (integer division drops the decimal). Step 4: e = d * b = 3 * 7 = 21. Step 5: f = a - e = 25 - 21 = 4. Step 6: c + f = 4 + 4 = 8. Step 7: print shows 8. The answer is 8.",
-      "id": 34,
-      "d": "medium"
+      "exp": [
+        "$c = 25 \\bmod 7 = 4$, $d = 25 / 7 = 3$.",
+        "$e = 3 \\times 7 = 21$, $f = 25 - 21 = 4$.",
+        "$c + f = 4 + 4 = 8$ — remainder + rebuilt remainder."
+      ]
     },
     {
+      "id": 35,
       "q": "n = 537\na = n MOD 10\nn = n / 10\nb = n MOD 10\nn = n / 10\nc = n\nprint a * 100 + b * 10 + c",
       "opts": [
-        "735",
-        "537",
         "357",
-        "753"
+        "753",
+        "735",
+        "537"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "medium",
       "t": "digit-extraction",
-      "exp": "Step 1: n = 537. Step 2: a = n MOD 10 = 7; n becomes 53. Step 3: b = n MOD 10 = 3; n becomes 5. Step 4: c = n = 5. Step 5: a * 100 + b * 10 + c = 7 * 100 + 3 * 10 + 5 = 735. Step 6: print shows 735. Step 7: The answer is 735.",
-      "id": 35,
-      "d": "medium"
+      "exp": [
+        "$a = 7$, $b = 3$, $c = 5$.",
+        "$700 + 30 + 5 = 735$."
+      ]
     },
     {
+      "id": 36,
       "q": "a = 2\nb = a * 3\na = b + 1\nc = a - b\nb = c * a\na = b + c\nprint a",
       "opts": [
-        "8",
         "7",
         "6",
-        "1"
+        "1",
+        "8"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "hard",
       "t": "overwrite",
-      "exp": "Step 1: a = 2. Step 2: b = a * 3 = 2 * 3 = 6. Step 3: a = b + 1 = 6 + 1 = 7. Step 4: c = a - b = 7 - 6 = 1. Step 5: b = c * a = 1 * 7 = 7. Step 6: a = b + c = 7 + 1 = 8. Step 7: print a shows 8. Step 8: Track each variable line by line; a is reused at Steps 3 and 6. The answer is 8.",
-      "id": 36,
-      "d": "hard"
+      "exp": [
+        "$b = 6$, $a = 7$, $c = 1$.",
+        "$b = 1 \\times 7 = 7$.",
+        "$a = 7 + 1 = 8$."
+      ]
     },
     {
+      "id": 37,
       "q": "x = 100\ny = 30\nz = 7\nr = x MOD y\nq = x / y\ns = q * z + r\nprint s",
       "opts": [
         "31",
@@ -532,54 +1990,67 @@
         "34"
       ],
       "c": 0,
+      "d": "medium",
       "t": "precedence",
-      "exp": "Step 1: x = 100, y = 30, z = 7. Step 2: r = 100 MOD 30: 100 = 30 * 3 + 10, so r = 10. Step 3: q = 100 / 30 = 3 (integer division). Step 4: s = q * z + r = 3 * 7 + 10 = 21 + 10 = 31. Step 5: print s shows 31. Step 6: The answer is 31.",
-      "id": 37,
-      "d": "medium"
+      "exp": [
+        "$r = 10$, $q = 3$.",
+        "$3 \\times 7 + 10 = 31$."
+      ]
     },
     {
+      "id": 38,
       "q": "a = \"12\"\nb = \"3\"\nc = a + b\nd = 12 + 3\nprint c",
       "opts": [
+        "33",
         "123",
         "15",
-        "12315",
-        "33"
+        "12315"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "easy",
       "t": "string-concatenation",
-      "exp": "Step 1: a and b have quotes, so they are TEXT. Step 2: c = a + b joins the text: '12' + '3' = 123. Step 3: d = 12 + 3 has NO quotes, so the numbers add normally: d = 15. Step 4: print c shows 123. Step 5: The answer is 123.",
-      "id": 38,
-      "d": "easy"
+      "exp": [
+        "$c$ glues text: $\"123\"$.",
+        "$d$ is never printed."
+      ]
     },
     {
+      "id": 39,
       "q": "a = 45\nb = 20\na = a - b\nb = b + a\na = b - a\nprint a, b",
       "opts": [
-        "20, 45",
-        "45, 20",
         "25, 45",
-        "20, 25"
+        "20, 25",
+        "20, 45",
+        "45, 20"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "medium",
       "t": "swap",
-      "exp": "Step 1: a = 45, b = 20. Step 2: a = a - b = 45 - 20 = 25. Step 3: b = b + a = 20 + 25 = 45. Step 4: a = b - a = 45 - 25 = 20. The values have swapped without any temp variable. Step 5: print a, b shows 20, 45. Step 6: The answer is 20, 45.",
-      "id": 39,
-      "d": "medium"
+      "exp": [
+        "$a = 25$ (difference).",
+        "$b = 20 + 25 = 45$ (old $a$).",
+        "$a = 45 - 25 = 20$ (old $b$)."
+      ]
     },
     {
+      "id": 40,
       "q": "n = 9876\na = n MOD 10\nn = n / 10\nb = n MOD 10\nn = n / 10\nc = n MOD 10\nn = n / 10\nd = n MOD 10\nprint a + b + c + d",
       "opts": [
-        "30",
         "27",
         "33",
-        "24"
+        "24",
+        "30"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "easy",
       "t": "digit-extraction",
-      "exp": "Step 1: n = 9876. Step 2: Pull digits with MOD 10, remove with / 10: a = 6, b = 7, c = 8, d = 9. Step 3: a + b + c + d = 6 + 7 + 8 + 9 = 30. Step 4: print shows 30. Step 5: The answer is 30.",
-      "id": 40,
-      "d": "easy"
+      "exp": [
+        "Digits: 6, 7, 8, 9.",
+        "$6 + 7 + 8 + 9 = 30$."
+      ]
     },
     {
+      "id": 41,
       "q": "n = 1234\nsum = 0\nsum = sum + n MOD 10\nn = n / 10\nsum = sum + n MOD 10\nn = n / 10\nsum = sum + n MOD 10\nn = n / 10\nsum = sum + n\nprint sum",
       "opts": [
         "10",
@@ -588,54 +2059,67 @@
         "12"
       ],
       "c": 0,
+      "d": "medium",
       "t": "accumulation",
-      "exp": "Step 1: n = 1234, sum = 0. Step 2: sum = 0 + (1234 MOD 10) = 4; n = 123. Step 3: sum = 4 + (123 MOD 10) = 3; n = 12. Step 4: sum = 7 + (12 MOD 10) = 2; n = 1. Step 5: sum = 9 + 1 = 1. Step 6: print sum shows 10. Step 7: The answer is 10.",
-      "id": 41,
-      "d": "medium"
+      "exp": [
+        "$1 + 2 + 3 = 6$, final $n = 1$.",
+        "$6 + 1 = 10$."
+      ]
     },
     {
+      "id": 42,
       "q": "n = 83\nk = 9\nq = n / k\nr = n MOD k\nprint q, r",
       "opts": [
+        "9, 1",
         "9, 2",
         "2, 9",
-        "8, 3",
-        "9, 1"
+        "8, 3"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "easy",
       "t": "identity-reconstruction",
-      "exp": "Step 1: n = 83, k = 9. Step 2: q = 83 / 9 = 9 (integer division: 83 / 9 = 9.22, so 9). Step 3: r = 83 MOD 9: 83 = 9 * 9 + 2, so r = 2. Step 4: print q, r shows 9, 2. Step 5: The answer is 9, 2.",
-      "id": 42,
-      "d": "easy"
+      "exp": [
+        "$9 \\times 9 = 81$, remainder 2.",
+        "print: $9, 2$."
+      ]
     },
     {
+      "id": 43,
       "q": "x = 4\ny = x + 2\nz = y * 2\nw = z - x\nprint w",
       "opts": [
-        "8",
-        "16",
         "12",
-        "6"
+        "6",
+        "8",
+        "16"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "medium",
       "t": "chain",
-      "exp": "Step 1: x = 4 and x NEVER changes. Step 2: y = x + 2 = 4 + 2 = 6. Step 3: z = y * 2 = 6 * 2 = 12. Step 4: w = z - x = 12 - 4 = 8. Step 5: print w shows 8. Step 6: The answer is 8.",
-      "id": 43,
-      "d": "medium"
+      "exp": [
+        "$y = 6$, $z = 12$, $w = 12 - 4 = 8$."
+      ]
     },
     {
+      "id": 44,
       "q": "a = 5\nb = 10\nc = a + b\na = c - b\nb = c - a\nc = a * b\na = c / 5\nprint a, b, c",
       "opts": [
-        "10, 10, 50",
         "5, 10, 15",
         "10, 10, 15",
-        "5, 10, 50"
+        "5, 10, 50",
+        "10, 10, 50"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "hard",
       "t": "overwrite",
-      "exp": "Step 1: a = 5, b = 10. Step 2: c = a + b = 5 + 10 = 15. Step 3: a = c - b = 15 - 10 = 5. Step 4: b = c - a = 15 - 5 = 10. Step 5: c = a * b = 5 * 10 = 50. Step 6: a = c / 5 = 50 / 5 = 10. Step 7: print a, b, c shows 10, 10, 50. Step 8: The answer is 10, 10, 50.",
-      "id": 44,
-      "d": "hard"
+      "exp": [
+        "$c = 15$.",
+        "$a = 5$, $b = 15 - 5 = 10$.",
+        "$c = 50$; $a = 50 / 5 = 10$.",
+        "print: $10, 10, 50$."
+      ]
     },
     {
+      "id": 45,
       "q": "x = 7\ny = 2\nz = x / y\nw = x MOD y\np = z * w\nq = z + w\nprint p + q",
       "opts": [
         "7",
@@ -644,54 +2128,66 @@
         "10"
       ],
       "c": 0,
+      "d": "hard",
       "t": "precedence",
-      "exp": "Step 1: x = 7, y = 2. Step 2: z = 7 / 2 = 3 (integer division). Step 3: w = 7 MOD 2: 7 = 2 * 3 + 1, so w = 1. Step 4: p = z * w = 3 * 1 = 3. Step 5: q = z + w = 3 + 1 = 4. Step 6: p + q = 3 + 4 = 7. Step 7: print shows 7. Step 8: The answer is 7.",
-      "id": 45,
-      "d": "hard"
+      "exp": [
+        "$z = 3$, $w = 1$.",
+        "$p = 3$, $q = 4$.",
+        "$3 + 4 = 7$."
+      ]
     },
     {
+      "id": 46,
       "q": "a = \"7\"\nb = \"77\"\nc = a + b\nprint c",
       "opts": [
+        "7",
         "777",
         "84",
-        "77",
-        "7"
+        "77"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "easy",
       "t": "string-concatenation",
-      "exp": "Step 1: Both a and b are TEXT because of the quotes. Step 2: The + sign joins text, it does not add. Step 3: c = '7' + '77' = 777. Step 4: print c shows 777. Step 5: The answer is 777.",
-      "id": 46,
-      "d": "easy"
+      "exp": [
+        "Glue: $\"7\" + \"77\" = \"777\"$."
+      ]
     },
     {
+      "id": 47,
       "q": "n = 2468\na = n MOD 10\nn = n / 10\nb = n MOD 10\nn = n / 10\nc = n MOD 10\nn = n / 10\nd = n MOD 10\nprint a + b + c + d",
       "opts": [
-        "20",
-        "18",
         "22",
-        "16"
+        "16",
+        "20",
+        "18"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "medium",
       "t": "digit-extraction",
-      "exp": "Step 1: n = 2468. Step 2: MOD 10 takes the last digit, / 10 drops it: a = 8, then n = 246; b = 6, then n = 24; c = 4, then n = 2; d = 2. Step 3: a + b + c + d = 8 + 6 + 4 + 2 = 20. Step 4: print shows 20. Step 5: The answer is 20.",
-      "id": 47,
-      "d": "medium"
+      "exp": [
+        "Digits: 8, 6, 4, 2.",
+        "$8 + 6 + 4 + 2 = 20$."
+      ]
     },
     {
+      "id": 48,
       "q": "n = 100\nk = 13\nq = n / k\nr = n MOD k\nprint q, r",
       "opts": [
-        "7, 9",
         "9, 7",
         "7, 10",
-        "8, 9"
+        "8, 9",
+        "7, 9"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "medium",
       "t": "identity-reconstruction",
-      "exp": "Step 1: n = 100, k = 13. Step 2: q = 100 / 13 = 7 (13 * 7 = 91, and 13 * 8 = 104 which is too big, so integer division gives 7). Step 3: r = 100 MOD 13 = 100 - 91 = 9. Step 4: print q, r shows 7, 9. Step 5: The answer is 7, 9.",
-      "id": 48,
-      "d": "medium"
+      "exp": [
+        "$13 \\times 7 = 91$, remainder 9.",
+        "print: $7, 9$."
+      ]
     },
     {
+      "id": 49,
       "q": "a = 1\nb = 2\na = b\nb = 3\nprint a\nprint b",
       "opts": [
         "2, 3",
@@ -700,54 +2196,66 @@
         "2, 2"
       ],
       "c": 0,
+      "d": "hard",
       "t": "multi-print",
-      "exp": "Step 1: a = 1, b = 2. Step 2: a = b copies b into a: a = 2. Step 3: b = 3 overwrites b: b = 3. Step 4: print a outputs 2, then print b outputs 3. Step 5: Both outputs are reported in order, first a then b: 2, 3. Step 6: The answer is 2, 3.",
-      "id": 49,
-      "d": "hard"
+      "exp": [
+        "$a = 2$ (copy of $b$).",
+        "$b = 3$.",
+        "Two prints: $2$ then $3$."
+      ]
     },
     {
+      "id": 50,
       "q": "p = 1\np = p * 3\np = p * 4\np = p * 5\nprint p",
       "opts": [
+        "15",
         "60",
         "12",
-        "120",
-        "15"
+        "120"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "easy",
       "t": "accumulation",
-      "exp": "Step 1: p = 1. Step 2: p = 1 * 3 = 3. Step 3: p = 3 * 4 = 12. Step 4: p = 12 * 5 = 60. Step 5: print p shows 60. Step 6: The answer is 60.",
-      "id": 50,
-      "d": "easy"
+      "exp": [
+        "$3 \\times 4 = 12$, $12 \\times 5 = 60$."
+      ]
     },
     {
+      "id": 51,
       "q": "x = 10\ny = 5\nx = x - y\ny = x + y\nprint y",
       "opts": [
-        "10",
-        "5",
         "15",
-        "20"
+        "20",
+        "10",
+        "5"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "medium",
       "t": "swap",
-      "exp": "Step 1: x = 10, y = 5. Step 2: x = x - y = 10 - 5 = 5. Step 3: y = x + y = 5 + 5 = 10. Step 4: print y shows 10. Step 5: Note that only y is printed; x currently holds 5. The answer is 10.",
-      "id": 51,
-      "d": "medium"
+      "exp": [
+        "$x = 5$.",
+        "$y = 5 + 5 = 10$."
+      ]
     },
     {
+      "id": 52,
       "q": "a = 4\nb = 6\nr = a * b / a + b\nprint r",
       "opts": [
-        "12",
         "6",
         "10",
-        "30"
+        "30",
+        "12"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "medium",
       "t": "precedence",
-      "exp": "Step 1: a = 4, b = 6. Step 2: In r = a * b / a + b, multiplication and division come first, left to right: a * b = 4 * 6 = 24, then 24 / a = 24 / 4 = 6. Step 3: Now add b: 6 + 6 = 12. Step 4: print r shows 12. Step 5: The answer is 12.",
-      "id": 52,
-      "d": "medium"
+      "exp": [
+        "Equal ranks go LEFT TO RIGHT: $4 \\times 6 = 24$, then $24 / 4 = 6$.",
+        "Only then $+: 6 + 6 = 12$."
+      ]
     },
     {
+      "id": 53,
       "q": "a = 10\nb = 20\nc = 30\na = b\nb = c\nc = a\nprint a, b, c",
       "opts": [
         "20, 30, 20",
@@ -756,54 +2264,68 @@
         "30, 30, 20"
       ],
       "c": 0,
+      "d": "hard",
       "t": "overwrite",
-      "exp": "Step 1: a = 10, b = 20, c = 30. Step 2: a = b copies b into a: a = 20. Step 3: b = c copies c into b: b = 30. Note c is still 30, b is now 30 too. Step 4: c = a copies the NEW a, which is 20, into c: c = 20. Step 5: print a, b, c shows 20, 30, 20. Step 6: The answer is 20, 30, 20.",
-      "id": 53,
-      "d": "hard"
+      "exp": [
+        "$a = 20$.",
+        "$b = 30$.",
+        "$c = a = 20$ — $a$ was ALREADY overwritten."
+      ]
     },
     {
+      "id": 54,
       "q": "n = 5555\na = n MOD 10\nn = n / 10\nb = n MOD 10\nn = n / 10\nc = n MOD 10\nn = n / 10\nd = n MOD 10\nprint a + b + c + d",
       "opts": [
+        "5",
         "20",
         "4",
-        "25",
-        "5"
+        "25"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "easy",
       "t": "digit-extraction",
-      "exp": "Step 1: n = 5555. Step 2: MOD 10 pulls the last digit, / 10 drops it. Every digit is 5, so a = 5, b = 5, c = 5, d = 5. Step 3: a + b + c + d = 5 + 5 + 5 + 5 = 20. Step 4: print shows 20. Step 5: The answer is 20.",
-      "id": 54,
-      "d": "easy"
+      "exp": [
+        "Four 5s: $5 \\times 4 = 20$."
+      ]
     },
     {
+      "id": 55,
       "q": "n = 50\nk = 7\nq = n / k\nr = n MOD k\nprint q * r",
       "opts": [
-        "7",
-        "8",
         "1",
-        "14"
+        "14",
+        "7",
+        "8"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "medium",
       "t": "identity-reconstruction",
-      "exp": "Step 1: n = 50, k = 7. Step 2: q = 50 / 7 = 7 (7 * 7 = 49, 7 * 8 = 56 is too big). Step 3: r = 50 MOD 7 = 50 - 49 = 1. Step 4: q * r = 7 * 1 = 7. Step 5: print shows 7. Step 6: The answer is 7.",
-      "id": 55,
-      "d": "medium"
+      "exp": [
+        "$q = 7$, $r = 1$.",
+        "$7 \\times 1 = 7$."
+      ]
     },
     {
+      "id": 56,
       "q": "m = 2\nn = 5\nm = m * n\nn = m - n\nm = m - n\nn = m + n\nprint m, n",
       "opts": [
-        "5, 10",
         "10, 5",
         "10, 10",
-        "5, 5"
+        "5, 5",
+        "5, 10"
       ],
-      "c": 0,
+      "c": 3,
+      "d": "hard",
       "t": "swap",
-      "exp": "Step 1: m = 2, n = 5. Step 2: m = m * n = 2 * 5 = 10. Step 3: n = m - n = 10 - 5 = 5. Step 4: m = m - n = 10 - 5 = 5. Step 5: n = m + n = 5 + 5 = 10. The values have swapped: m holds the old 5 and n holds the old 10. Step 6: print m, n shows 5, 10. Step 7: The answer is 5, 10.",
-      "id": 56,
-      "d": "hard"
+      "exp": [
+        "$m = 10$.",
+        "$n = 10 - 5 = 5$ (old $m$).",
+        "$m = 10 - 5 = 5$ (old $n$).",
+        "$n = 5 + 5 = 10$ — extra line re-doubles."
+      ]
     },
     {
+      "id": 57,
       "q": "a = \"1\"\nb = \"2\"\nc = \"3\"\nd = a + b + c\nprint d",
       "opts": [
         "123",
@@ -812,53 +2334,94 @@
         "12"
       ],
       "c": 0,
+      "d": "easy",
       "t": "string-concatenation",
-      "exp": "Step 1: a, b and c are TEXT because of the quotes. Step 2: The + sign joins text: '1' + '2' + '3' = 123. Step 3: print d shows 123. Step 4: The answer is 123.",
-      "id": 57,
-      "d": "easy"
+      "exp": [
+        "Glue in order: $\"123\"$."
+      ]
     },
     {
-      "q": "a = 99\nb = a / 10\nc = a MOD 10\nd = b + c\nprint d",
-      "opts": [
-        "18",
-        "9",
-        "99",
-        "90"
-      ],
-      "c": 0,
-      "t": "digit-extraction",
-      "exp": "Step 1: a = 99. Step 2: b = 99 / 10 = 9 (integer division drops the decimal). Step 3: c = 99 MOD 10 = 9, the last digit. Step 4: d = b + c = 9 + 9 = 18. Step 5: print d shows 18. Step 6: The answer is 18.",
       "id": 58,
-      "d": "medium"
-    },
-    {
-      "q": "score = 75\nif score >= 90 then\n    print \"A\"\nelse if score >= 75 then\n    print \"B\"\nelse\n    print \"C\"\nend if",
+      "q": "score = 75\nif score >= 90 then\n  print \"A\"\nelse if score >= 75 then\n  print \"B\"\nelse\n  print \"C\"\nend if",
       "opts": [
+        "75",
         "B",
         "A",
-        "C",
-        "75"
+        "C"
       ],
-      "c": 0,
+      "c": 1,
+      "d": "hard",
       "t": "condition",
-      "exp": "Step 1: score = 75. Step 2: Check the first condition: is 75 >= 90? No, so skip 'A'. Step 3: Check the second condition: is 75 >= 75? Yes, the boundary counts, so this branch runs. Step 4: 'B' is printed. Step 5: A score of exactly 75 is high enough, so the 'B' branch is chosen, not 'C'. The answer is B.",
-      "id": 59,
-      "d": "hard"
+      "exp": [
+        "First test: $75 \\geq 90$? No.",
+        "Second test: $75 \\geq 75$? Yes — boundary values satisfy $\\geq$.",
+        "Prints B."
+      ]
     },
     {
+      "id": 59,
       "q": "a = 8\nb = 3\nq = a / b\nr = a MOD b\ns = q * 10 + r\nprint s",
       "opts": [
-        "22",
-        "8",
         "23",
-        "12"
+        "12",
+        "22",
+        "8"
       ],
-      "c": 0,
+      "c": 2,
+      "d": "medium",
       "t": "precedence",
-      "exp": "Step 1: a = 8, b = 3. Step 2: q = 8 / 3 = 2 (integer division: 3 goes into 8 twice). Step 3: r = 8 MOD 3 = 3 * 2 = 6, remainder 8 - 6 = 2. Step 4: s = q * 10 + r = 2 * 10 + 2 = 20 + 2 = 22. Step 5: print s shows 22. Step 6: The answer is 22.",
+      "exp": [
+        "$q = 2$, $r = 2$.",
+        "$20 + 2 = 22$."
+      ]
+    },
+    {
       "id": 60,
-      "d": "hard"
+      "q": "x = 6\ny = 4\nz = (x + y) / 2\nw = x * y / 2\nprint z + w",
+      "opts": [
+        "15",
+        "18",
+        "16",
+        "17"
+      ],
+      "c": 3,
+      "d": "medium",
+      "t": "precedence",
+      "exp": [
+        "$z = 10 / 2 = 5$.",
+        "$w = 24 / 2 = 12$.",
+        "$5 + 12 = 17$."
+      ]
     }
   ],
-  "learningPath": []
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "intro-output-tracing"
+    },
+    {
+      "type": "concept",
+      "sectionId": "trace-table-method"
+    },
+    {
+      "type": "concept",
+      "sectionId": "sequence-precedence"
+    },
+    {
+      "type": "concept",
+      "sectionId": "div-mod-digits"
+    },
+    {
+      "type": "concept",
+      "sectionId": "swaps-strings-checklist"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
 }

@@ -1,0 +1,126 @@
+{
+  "categories": [
+    {
+      "id": "behavioural",
+      "title": "Behavioural",
+      "icon": "👥",
+      "color": "#4F46E5",
+      "subtitle": "Personality & work-style — no elimination, consistency matters"
+    }
+  ],
+  "topics": [
+    {
+      "id": "work-style",
+      "title": "Work Style & Teamwork",
+      "icon": "👥",
+      "category": "behavioural",
+      "color": "#4F46E5",
+      "days": "1",
+      "subtopics": [
+        "Team preferences",
+        "Collaboration"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "leadership",
+      "title": "Leadership & Ownership",
+      "icon": "♔",
+      "category": "behavioural",
+      "color": "#2563EB",
+      "days": "1",
+      "subtopics": [
+        "Initiative",
+        "Ownership",
+        "Decision making"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "stress-coping",
+      "title": "Stress & Pressure Handling",
+      "icon": "◎",
+      "category": "behavioural",
+      "color": "#DC2626",
+      "days": "1",
+      "subtopics": [
+        "Stress scenarios",
+        "Coping strategies"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "ethics",
+      "title": "Workplace Ethics & Integrity",
+      "icon": "⚖",
+      "category": "behavioural",
+      "color": "#059669",
+      "days": "1",
+      "subtopics": [
+        "Ethics scenarios",
+        "Integrity choices"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "adaptability",
+      "title": "Adaptability & Learning Agility",
+      "icon": "⟡",
+      "category": "behavioural",
+      "color": "#7C3AED",
+      "days": "1",
+      "subtopics": [
+        "Learning",
+        "Adaptability"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "communication-style",
+      "title": "Communication Style",
+      "icon": "💬",
+      "category": "behavioural",
+      "color": "#0284C7",
+      "days": "1",
+      "subtopics": [
+        "Verbal style",
+        "Active listening"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "situational-judgment",
+      "title": "Situational Judgment",
+      "icon": "⚖",
+      "category": "behavioural",
+      "color": "#0D9488",
+      "days": "1",
+      "subtopics": [
+        "SJ scenarios",
+        "Judgment calls"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "response-strategy",
+      "title": "Response Strategy (avoid extremes)",
+      "icon": "◉",
+      "category": "behavioural",
+      "color": "#EAB308",
+      "days": "1",
+      "subtopics": [
+        "Avoid extremes",
+        "Consistency"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    }
+  ]
+}

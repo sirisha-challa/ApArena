@@ -1,0 +1,434 @@
+{
+  "categories": [
+    {
+      "id": "core",
+      "title": "Core",
+      "icon": "◈",
+      "color": "#0D9488",
+      "subtitle": "OOPs, DBMS, OS, Networking, Cloud & Office — the technical MCQ core"
+    }
+  ],
+  "topics": [
+    {
+      "id": "oops",
+      "title": "OOPs (Abstraction/Inheritance/Polymorphism)",
+      "icon": "◈",
+      "category": "core",
+      "color": "#4F46E5",
+      "days": "2",
+      "subtopics": [
+        "Abstraction",
+        "Inheritance",
+        "Polymorphism",
+        "Encapsulation"
+      ],
+      "estimatedHours": 10,
+      "status": "pending"
+    },
+    {
+      "id": "dbms-basics",
+      "title": "DBMS Basics (Keys/ER/ACID)",
+      "icon": "⧉",
+      "category": "core",
+      "color": "#0D9488",
+      "days": "2",
+      "subtopics": [
+        "Keys",
+        "ER model",
+        "ACID"
+      ],
+      "estimatedHours": 8,
+      "status": "pending"
+    },
+    {
+      "id": "sql-queries",
+      "title": "SQL Queries & JOINs",
+      "icon": "⧉",
+      "category": "core",
+      "color": "#0284C7",
+      "days": "2",
+      "subtopics": [
+        "SELECT & WHERE",
+        "JOINs",
+        "Subqueries"
+      ],
+      "estimatedHours": 8,
+      "status": "pending"
+    },
+    {
+      "id": "normalization",
+      "title": "Normalization (1NF–3NF)",
+      "icon": "≡",
+      "category": "core",
+      "color": "#059669",
+      "days": "1",
+      "subtopics": [
+        "1NF",
+        "2NF",
+        "3NF"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "os-basics",
+      "title": "OS Basics (Process/Thread/Memory)",
+      "icon": "⬢",
+      "category": "core",
+      "color": "#7C3AED",
+      "days": "2",
+      "subtopics": [
+        "Process vs thread",
+        "Scheduling",
+        "Memory management"
+      ],
+      "estimatedHours": 8,
+      "status": "pending"
+    },
+    {
+      "id": "javascript",
+      "title": "JavaScript & Frontend Basics",
+      "icon": "JS",
+      "category": "core",
+      "color": "#EAB308",
+      "days": "2",
+      "subtopics": [
+        "Closures",
+        "Event loop",
+        "DOM"
+      ],
+      "estimatedHours": 8,
+      "status": "pending"
+    },
+    {
+      "id": "data-structures-algo",
+      "title": "Data Structures & Algorithms Concepts",
+      "icon": "⛓",
+      "category": "core",
+      "color": "#DC2626",
+      "days": "2",
+      "subtopics": [
+        "Arrays & lists",
+        "Trees & graphs",
+        "Complexity"
+      ],
+      "estimatedHours": 10,
+      "status": "pending"
+    },
+    {
+      "id": "html-css",
+      "title": "HTML & CSS",
+      "icon": "◫",
+      "category": "core",
+      "color": "#DB2777",
+      "days": "1",
+      "subtopics": [
+        "Semantics",
+        "Flexbox",
+        "Grid"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "osi-tcpip",
+      "title": "OSI & TCP/IP Model",
+      "icon": "≋",
+      "category": "core",
+      "color": "#2563EB",
+      "days": "1",
+      "subtopics": [
+        "7 layers",
+        "TCP vs UDP",
+        "Encapsulation"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "ip-addressing",
+      "title": "IP Addressing & Subnetting",
+      "icon": "#",
+      "category": "core",
+      "color": "#4F46E5",
+      "days": "1",
+      "subtopics": [
+        "IPv4",
+        "Subnet mask",
+        "CIDR"
+      ],
+      "estimatedHours": 7,
+      "status": "pending"
+    },
+    {
+      "id": "protocols",
+      "title": "Protocols (TCP/UDP/HTTP/HTTPS/FTP/SMTP)",
+      "icon": "⇄",
+      "category": "core",
+      "color": "#0D9488",
+      "days": "1",
+      "subtopics": [
+        "TCP handshake",
+        "HTTP",
+        "FTP/SMTP"
+      ],
+      "estimatedHours": 7,
+      "status": "pending"
+    },
+    {
+      "id": "dns-dhcp",
+      "title": "DNS & DHCP",
+      "icon": "◎",
+      "category": "core",
+      "color": "#0284C7",
+      "days": "1",
+      "subtopics": [
+        "DNS resolution",
+        "DHCP lease",
+        "Records"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "network-devices",
+      "title": "Network Devices (Router/Switch/Hub)",
+      "icon": "⬡",
+      "category": "core",
+      "color": "#059669",
+      "days": "1",
+      "subtopics": [
+        "Router",
+        "Switch",
+        "Hub vs bridge"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "topologies",
+      "title": "Network Topologies",
+      "icon": "⬢",
+      "category": "core",
+      "color": "#7C3AED",
+      "days": "1",
+      "subtopics": [
+        "Star",
+        "Mesh",
+        "Bus & ring"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "cybersecurity-basics",
+      "title": "Cybersecurity Fundamentals",
+      "icon": "🛡",
+      "category": "core",
+      "color": "#DC2626",
+      "days": "1",
+      "subtopics": [
+        "CIA triad",
+        "Threats",
+        "Mitigation"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "encryption",
+      "title": "Encryption & Cryptography",
+      "icon": "🔑",
+      "category": "core",
+      "color": "#6B7280",
+      "days": "1",
+      "subtopics": [
+        "Symmetric vs asymmetric",
+        "Hashing",
+        "TLS"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "firewalls-vpn",
+      "title": "Firewalls & VPN",
+      "icon": "⛨",
+      "category": "core",
+      "color": "#374151",
+      "days": "1",
+      "subtopics": [
+        "Firewall rules",
+        "VPN tunnel",
+        "Proxy"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "cloud-computing",
+      "title": "Cloud Computing Basics (IaaS/PaaS/SaaS)",
+      "icon": "☁",
+      "category": "core",
+      "color": "#06B6D4",
+      "days": "1",
+      "subtopics": [
+        "IaaS",
+        "PaaS",
+        "SaaS & deployment"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "virtualization",
+      "title": "Virtualization & Containers",
+      "icon": "⬣",
+      "category": "core",
+      "color": "#0891B2",
+      "days": "1",
+      "subtopics": [
+        "VM vs container",
+        "Docker basics",
+        "Hypervisor"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "security-attacks",
+      "title": "Common Attacks (Phishing/DDoS/SQLi/XSS)",
+      "icon": "⚠",
+      "category": "core",
+      "color": "#EF4444",
+      "days": "1",
+      "subtopics": [
+        "Phishing",
+        "DDoS",
+        "SQL injection & XSS"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "ms-word",
+      "title": "MS Word",
+      "icon": "W",
+      "category": "core",
+      "color": "#2563EB",
+      "days": "1",
+      "subtopics": [
+        "Formatting",
+        "Tables",
+        "Mail merge"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "ms-excel",
+      "title": "MS Excel (Formulas & Functions)",
+      "icon": "X",
+      "category": "core",
+      "color": "#059669",
+      "days": "1",
+      "subtopics": [
+        "VLOOKUP",
+        "Pivot tables",
+        "Formulas"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "ms-powerpoint",
+      "title": "MS PowerPoint",
+      "icon": "P",
+      "category": "core",
+      "color": "#EA580C",
+      "days": "1",
+      "subtopics": [
+        "Slides",
+        "Animations",
+        "Master"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "ms-outlook",
+      "title": "MS Outlook",
+      "icon": "O",
+      "category": "core",
+      "color": "#0284C7",
+      "days": "1",
+      "subtopics": [
+        "Email",
+        "Calendar",
+        "Rules"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "internet-browser",
+      "title": "Internet & Browser Basics",
+      "icon": "◯",
+      "category": "core",
+      "color": "#7C3AED",
+      "days": "1",
+      "subtopics": [
+        "Browser",
+        "Cookies & cache",
+        "HTTP"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "shortcut-keys",
+      "title": "Shortcut Keys (Windows & Office)",
+      "icon": "⌘",
+      "category": "core",
+      "color": "#4F46E5",
+      "days": "1",
+      "subtopics": [
+        "Windows keys",
+        "Office keys",
+        "Browser keys"
+      ],
+      "estimatedHours": 3,
+      "status": "pending"
+    },
+    {
+      "id": "file-extensions",
+      "title": "File Extensions & Formats",
+      "icon": "⧉",
+      "category": "core",
+      "color": "#6B7280",
+      "days": "1",
+      "subtopics": [
+        "Document formats",
+        "Image formats",
+        "Executable"
+      ],
+      "estimatedHours": 3,
+      "status": "pending"
+    },
+    {
+      "id": "computer-fundamentals",
+      "title": "Computer Fundamentals",
+      "icon": "💻",
+      "category": "core",
+      "color": "#374151",
+      "days": "1",
+      "subtopics": [
+        "Hardware",
+        "Software",
+        "Memory"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    }
+  ]
+}

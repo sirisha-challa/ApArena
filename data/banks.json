@@ -1,0 +1,85 @@
+{
+  "banks": [
+    {
+      "id": "aptitude",
+      "title": "Aptitude",
+      "subtitle": "Quantitative Aptitude — Number System to Ratio & Proportion",
+      "icon": "Σ",
+      "color": "#4F46E5",
+      "href": "/aptitude/",
+      "accent": "aptitude"
+    },
+    {
+      "id": "reasoning",
+      "title": "Reasoning",
+      "subtitle": "Logical Reasoning — Blood Relations, Direction, Statements & Clock",
+      "icon": "◈",
+      "color": "#DC2626",
+      "href": "/reasoning/",
+      "accent": "reasoning"
+    },
+    {
+      "id": "verbal",
+      "title": "Verbal",
+      "subtitle": "Verbal & English — Analogies, Coding-Decoding, Grammar & Jumbles",
+      "icon": "A",
+      "color": "#059669",
+      "href": "/verbal/",
+      "accent": "verbal"
+    },
+    {
+      "id": "pseudocode",
+      "title": "Pseudocode",
+      "subtitle": "Trace & predict output — loops, conditions, bitwise & structures",
+      "icon": "</>",
+      "color": "#7C3AED",
+      "href": "/pseudocode/",
+      "accent": "pseudocode"
+    },
+    {
+      "id": "programming",
+      "title": "Programming",
+      "subtitle": "DSA, SQL & UI tasks — the coding round playbook",
+      "icon": "{}",
+      "color": "#2563EB",
+      "href": "/programming/",
+      "accent": "programming"
+    },
+    {
+      "id": "core",
+      "title": "Core",
+      "subtitle": "Core CS, Networking, Cloud & Office — the technical MCQ core",
+      "icon": "⬢",
+      "color": "#0D9488",
+      "href": "/core/",
+      "accent": "core"
+    },
+    {
+      "id": "behavioural",
+      "title": "Behavioural",
+      "subtitle": "Personality & work-style — consistency over extremes",
+      "icon": "♥",
+      "color": "#4F46E5",
+      "href": "/behavioural/",
+      "accent": "behavioural"
+    },
+    {
+      "id": "gamified",
+      "title": "Gamified Assessment",
+      "subtitle": "Memory, quick math & pattern games — speed under pressure",
+      "icon": "◐",
+      "color": "#F59E0B",
+      "href": "/gamified/",
+      "accent": "gamified"
+    },
+    {
+      "id": "communication",
+      "title": "Communication",
+      "subtitle": "Fluency, clarity & pronunciation — AI-scored speaking",
+      "icon": "🎤",
+      "color": "#0284C7",
+      "href": "/communication/",
+      "accent": "communication"
+    }
+  ]
+}

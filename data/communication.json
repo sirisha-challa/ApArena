@@ -1,0 +1,169 @@
+{
+  "categories": [
+    {
+      "id": "communication",
+      "title": "Communication",
+      "icon": "👤",
+      "color": "#0284C7",
+      "subtitle": "Fluency, clarity and pronunciation — AI-scored speaking"
+    }
+  ],
+  "topics": [
+    {
+      "id": "self-introduction",
+      "title": "Self Introduction",
+      "icon": "👤",
+      "category": "communication",
+      "color": "#4F46E5",
+      "days": "1",
+      "subtopics": [
+        "Introduce yourself",
+        "STAR method"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "fluency",
+      "title": "Fluency & Coherence",
+      "icon": "💬",
+      "category": "communication",
+      "color": "#2563EB",
+      "days": "1",
+      "subtopics": [
+        "Flow",
+        "Coherence"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "pronunciation",
+      "title": "Pronunciation & Accent Clarity",
+      "icon": "🔊",
+      "category": "communication",
+      "color": "#7C3AED",
+      "days": "1",
+      "subtopics": [
+        "Accent",
+        "Clarity"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "grammar-accuracy",
+      "title": "Grammar & Accuracy",
+      "icon": "✎",
+      "category": "communication",
+      "color": "#059669",
+      "days": "1",
+      "subtopics": [
+        "Grammar",
+        "Accuracy"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "vocabulary-usage",
+      "title": "Vocabulary Usage",
+      "icon": "Ab",
+      "category": "communication",
+      "color": "#0284C7",
+      "days": "1",
+      "subtopics": [
+        "Word choice",
+        "Range"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "topic-speaking",
+      "title": "Speaking on a Given Topic",
+      "icon": "🎤",
+      "category": "communication",
+      "color": "#DC2626",
+      "days": "1",
+      "subtopics": [
+        "Topic talk",
+        "Structure"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "structured-answers",
+      "title": "Structured Answers (P.E.E.L.)",
+      "icon": "≡",
+      "category": "communication",
+      "color": "#0D9488",
+      "days": "1",
+      "subtopics": [
+        "Point",
+        "Evidence",
+        "Explain",
+        "Link"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "confidence",
+      "title": "Confidence & Pace Control",
+      "icon": "★",
+      "category": "communication",
+      "color": "#EAB308",
+      "days": "1",
+      "subtopics": [
+        "Confidence",
+        "Pace"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "mock-practice",
+      "title": "Mock Practice & Self-Recording",
+      "icon": "◎",
+      "category": "communication",
+      "color": "#374151",
+      "days": "1",
+      "subtopics": [
+        "Mock test",
+        "Record & review"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "listening",
+      "title": "Listening & Repeat",
+      "icon": "🎧",
+      "category": "communication",
+      "color": "#6B7280",
+      "days": "1",
+      "subtopics": [
+        "Listening",
+        "Repeat"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sentence-building",
+      "title": "Sentence Building & Jumble",
+      "icon": "⇆",
+      "category": "communication",
+      "color": "#9333EA",
+      "days": "1",
+      "subtopics": [
+        "Jumble",
+        "Building"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    }
+  ]
+}

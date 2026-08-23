@@ -499,7 +499,7 @@ function renderTopic(topicOrId) {
       <button class="tab-btn ${state.currentSection==='mcq'?'active':''}" data-section="mcq" onclick="APP.switchSection('mcq')">MCQ (${topic.mcqs.length})</button>
     </div>
 
-    <div class="topic-section" id="topic-section">`;
+    <div class="topic-section ${state.currentSection}" id="topic-section">`;
 
   html += renderSectionContent(topic.id);
   html += `</div></div>`;
@@ -957,7 +957,7 @@ function loadTopic(topicId, shouldPush) {
   document.getElementById('header-title').textContent = 'Loading...';
   setContent('<div class="page-content"><div class="empty-state">Loading topic...</div></div>');
 
-  fetch('/data/topics/' + topicId + '.json')
+  fetch('/data/topics/' + topicId + '.json?cb=' + Date.now())
     .then(function(res) {
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json();

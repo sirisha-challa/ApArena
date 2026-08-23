@@ -1,12 +1,42 @@
 {
   "version": 2,
   "outputDirectory": ".",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
-      "source": "/data.json",
+      "source": "/data/banks.json",
       "headers": [
-        { "key": "Content-Type", "value": "application/json" },
-        { "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=60" }
+      ]
+    },
+    {
+      "source": "/data/(aptitude|reasoning|verbal|pseudocode|programming|core|behavioural|gamified|communication).json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=60" }
+      ]
+    },
+    {
+      "source": "/data/topics/(.*).json",
+      "headers": [
+        { "key": "Content-Type", "value": "application/json; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=300, immutable" }
+      ]
+    },
+    {
+      "source": "/js/(.*).js",
+      "headers": [
+        { "key": "Content-Type", "value": "application/javascript; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/css/(.*).css",
+      "headers": [
+        { "key": "Content-Type", "value": "text/css; charset=utf-8" },
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
     },
     {
@@ -14,8 +44,20 @@
       "headers": [
         { "key": "X-Content-Type-Options", "value": "nosniff" },
         { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "X-DNS-Prefetch-Control", "value": "on" }
       ]
     }
+  ],
+  "rewrites": [
+    { "source": "/aptitude/:path*", "destination": "/aptitude/index.html" },
+    { "source": "/reasoning/:path*", "destination": "/reasoning/index.html" },
+    { "source": "/verbal/:path*", "destination": "/verbal/index.html" },
+    { "source": "/pseudocode/:path*", "destination": "/pseudocode/index.html" },
+    { "source": "/programming/:path*", "destination": "/programming/index.html" },
+    { "source": "/core/:path*", "destination": "/core/index.html" },
+    { "source": "/behavioural/:path*", "destination": "/behavioural/index.html" },
+    { "source": "/gamified/:path*", "destination": "/gamified/index.html" },
+    { "source": "/communication/:path*", "destination": "/communication/index.html" }
   ]
 }

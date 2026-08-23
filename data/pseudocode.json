@@ -1,0 +1,245 @@
+{
+  "categories": [
+    {
+      "id": "pseudocode",
+      "title": "Pseudocode",
+      "icon": "▤",
+      "color": "#7C3AED",
+      "subtitle": "Trace, debug and predict output — loops, conditions, bitwise & more"
+    }
+  ],
+  "topics": [
+    {
+      "id": "output-tracing",
+      "title": "Output Tracing (Sequence)",
+      "icon": "▤",
+      "category": "pseudocode",
+      "color": "#7C3AED",
+      "days": "4",
+      "subtopics": [
+        "Simple Assignments",
+        "Overwrites & Chains",
+        "Swaps",
+        "MOD & Integer Division",
+        "Digit Extraction",
+        "String Operations"
+      ],
+      "estimatedHours": 6,
+      "status": "ready"
+    },
+    {
+      "id": "while-loop",
+      "title": "While Loop",
+      "icon": "⟳",
+      "category": "pseudocode",
+      "color": "#A855F7",
+      "days": "4-6",
+      "subtopics": [
+        "Condition-Check-First Execution",
+        "Counters & Iteration Counting",
+        "Accumulators (Sum, Product, Factorial)",
+        "Digit Extraction with MOD & DIV",
+        "Euclidean GCD & Subtraction GCD",
+        "Infinite Loops & Break Conditions"
+      ],
+      "estimatedHours": 8,
+      "status": "ready"
+    },
+    {
+      "id": "repeat-until",
+      "title": "Repeat-Until Loop",
+      "icon": "⟲",
+      "category": "pseudocode",
+      "color": "#8B5CF6",
+      "days": "5",
+      "subtopics": [
+        "Post-test execution",
+        "At-least-once guarantee",
+        "REPEAT-UNTIL vs WHILE"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "for-loop",
+      "title": "For Loop (Step variant)",
+      "icon": "⇄",
+      "category": "pseudocode",
+      "color": "#6D28D9",
+      "days": "5",
+      "subtopics": [
+        "FOR i = a TO b STEP k",
+        "Inclusive bounds",
+        "Negative step"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "if-else",
+      "title": "If-Then-Else",
+      "icon": "◐",
+      "category": "pseudocode",
+      "color": "#7C3AED",
+      "days": "5",
+      "subtopics": [
+        "Simple condition",
+        "Nested IF",
+        "IF-ELSEIF chain"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "case-statement",
+      "title": "Case (Switch) Statement",
+      "icon": "☰",
+      "category": "pseudocode",
+      "color": "#9333EA",
+      "days": "5",
+      "subtopics": [
+        "CASE value OF",
+        "DEFAULT branch",
+        "Fall-through trap"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "functions",
+      "title": "Functions & Return",
+      "icon": "ƒ",
+      "category": "pseudocode",
+      "color": "#A855F7",
+      "days": "6",
+      "subtopics": [
+        "CALL & RETURN",
+        "Parameters by value",
+        "Recursion entry"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "arrays",
+      "title": "Arrays & Indexing",
+      "icon": "▦",
+      "category": "pseudocode",
+      "color": "#7C3AED",
+      "days": "6",
+      "subtopics": [
+        "0 vs 1-based indexing",
+        "Bounds errors",
+        "Linear scan"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "recursion",
+      "title": "Recursion",
+      "icon": "↻",
+      "category": "pseudocode",
+      "color": "#6D28D9",
+      "days": "6",
+      "subtopics": [
+        "Base case",
+        "Recursive call stack",
+        "Infinite recursion"
+      ],
+      "estimatedHours": 7,
+      "status": "pending"
+    },
+    {
+      "id": "increment-decrement",
+      "title": "Increment / Decrement",
+      "icon": "±",
+      "category": "pseudocode",
+      "color": "#9333EA",
+      "days": "4",
+      "subtopics": [
+        "Pre vs post",
+        "Inside loops",
+        "Operator precedence"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "bitwise-operators",
+      "title": "Bitwise Operators (AND/OR/XOR/SHIFT)",
+      "icon": "⩓",
+      "category": "pseudocode",
+      "color": "#A855F7",
+      "days": "7",
+      "subtopics": [
+        "Truth tables",
+        "Left shift *2^k",
+        "Right shift /2^k",
+        "Masking"
+      ],
+      "estimatedHours": 8,
+      "status": "pending"
+    },
+    {
+      "id": "logical-operators",
+      "title": "Logical Operators (AND/OR/NOT)",
+      "icon": "﹠",
+      "category": "pseudocode",
+      "color": "#7C3AED",
+      "days": "5",
+      "subtopics": [
+        "Truth tables",
+        "Short-circuit",
+        "De Morgan"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "data-structures-basics",
+      "title": "Linked List, Stack, Queue Basics",
+      "icon": "⛓",
+      "category": "pseudocode",
+      "color": "#6D28D9",
+      "days": "6",
+      "subtopics": [
+        "Singly linked list",
+        "Stack LIFO",
+        "Queue FIFO"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "pointers-references",
+      "title": "Pointers & References (C-style)",
+      "icon": "➦",
+      "category": "pseudocode",
+      "color": "#9333EA",
+      "days": "6",
+      "subtopics": [
+        "Address & dereference",
+        "Null pointer",
+        "Pointer arithmetic"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "string-operations",
+      "title": "String Operations in Pseudocode",
+      "icon": "Ab",
+      "category": "pseudocode",
+      "color": "#A855F7",
+      "days": "5",
+      "subtopics": [
+        "Concatenation",
+        "LENGTH",
+        "Substring"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    }
+  ]
+}

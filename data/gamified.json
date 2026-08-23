@@ -1,0 +1,97 @@
+{
+  "categories": [
+    {
+      "id": "gamified",
+      "title": "Gamified Assessment",
+      "icon": "👁",
+      "color": "#F59E0B",
+      "subtitle": "Memory, quick math and pattern games — speed & accuracy"
+    }
+  ],
+  "topics": [
+    {
+      "id": "memory-task",
+      "title": "Memory / Observation Task",
+      "icon": "👁",
+      "category": "gamified",
+      "color": "#7C3AED",
+      "days": "1",
+      "subtopics": [
+        "Sequence recall",
+        "Observation"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "quick-math",
+      "title": "Quick Mental Arithmetic",
+      "icon": "⚡",
+      "category": "gamified",
+      "color": "#F59E0B",
+      "days": "1",
+      "subtopics": [
+        "Speed math",
+        "Time pressure"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "pattern-task",
+      "title": "Pattern & Grid Navigation Task",
+      "icon": "▦",
+      "category": "gamified",
+      "color": "#2563EB",
+      "days": "1",
+      "subtopics": [
+        "Grid path",
+        "Minimum steps"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "spatial-reasoning",
+      "title": "Spatial & Shape Reasoning",
+      "icon": "⬢",
+      "category": "gamified",
+      "color": "#0D9488",
+      "days": "1",
+      "subtopics": [
+        "Shape rotation",
+        "Spatial puzzle"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "sequence-recall",
+      "title": "Sequence Recall Games",
+      "icon": "⟳",
+      "category": "gamified",
+      "color": "#4F46E5",
+      "days": "1",
+      "subtopics": [
+        "Recall sequence",
+        "Pattern match"
+      ],
+      "estimatedHours": 4,
+      "status": "pending"
+    },
+    {
+      "id": "game-strategy",
+      "title": "Game Strategy & Practice",
+      "icon": "♟",
+      "category": "gamified",
+      "color": "#059669",
+      "days": "1",
+      "subtopics": [
+        "Strategy",
+        "Practice games"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    }
+  ]
+}

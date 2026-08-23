@@ -35,3 +35,19 @@ __pycache__/
 
 .codebase-memory/
 temp.json
+
+# Agent/session scratch
+.agres/
+.commandcode/
+.playwright-mcp/
+session-ses_*.md
+_metrics.html
+_shots/
+_shots.html
+_probe*.html
+_direct*.html
+
+# Local dev / build artifacts
+test-results/
+css/style.min.css
+js/app.min.js

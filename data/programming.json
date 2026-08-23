@@ -1,0 +1,193 @@
+{
+  "categories": [
+    {
+      "id": "programming",
+      "title": "Programming",
+      "icon": "⇅",
+      "color": "#2563EB",
+      "subtitle": "DSA, SQL and UI tasks — the coding round"
+    }
+  ],
+  "topics": [
+    {
+      "id": "array-patterns",
+      "title": "Array Rotation, Large-Small Sum, Merge Sorted",
+      "icon": "⇅",
+      "category": "programming",
+      "color": "#2563EB",
+      "days": "2-3",
+      "subtopics": [
+        "Array Rotation",
+        "Large-Small Sum",
+        "Merge Sorted Arrays"
+      ],
+      "estimatedHours": 10,
+      "status": "pending"
+    },
+    {
+      "id": "two-pointer",
+      "title": "Two Pointer & Equilibrium Point",
+      "icon": "⇔",
+      "category": "programming",
+      "color": "#059669",
+      "days": "2",
+      "subtopics": [
+        "Two-pointer scan",
+        "Equilibrium index",
+        "Prefix sums"
+      ],
+      "estimatedHours": 8,
+      "status": "pending"
+    },
+    {
+      "id": "string-patterns",
+      "title": "Anagram Check, Longest Unique Substring",
+      "icon": "Ab",
+      "category": "programming",
+      "color": "#7C3AED",
+      "days": "2",
+      "subtopics": [
+        "Anagram frequency",
+        "Sliding window",
+        "Unique substring"
+      ],
+      "estimatedHours": 8,
+      "status": "pending"
+    },
+    {
+      "id": "number-theory",
+      "title": "Prime Summation, Max Product Pair",
+      "icon": "#",
+      "category": "programming",
+      "color": "#DC2626",
+      "days": "2",
+      "subtopics": [
+        "Sieve",
+        "Prime summation",
+        "Max product pair"
+      ],
+      "estimatedHours": 8,
+      "status": "pending"
+    },
+    {
+      "id": "greedy",
+      "title": "Chocolate Distribution (Greedy)",
+      "icon": "☆",
+      "category": "programming",
+      "color": "#EA580C",
+      "days": "2",
+      "subtopics": [
+        "Sort + window",
+        "Greedy choice",
+        "Min difference"
+      ],
+      "estimatedHours": 7,
+      "status": "pending"
+    },
+    {
+      "id": "linked-list",
+      "title": "Palindromic Linked List",
+      "icon": "⛓",
+      "category": "programming",
+      "color": "#0D9488",
+      "days": "2",
+      "subtopics": [
+        "Reverse list",
+        "Palindrome check",
+        "Slow-fast pointers"
+      ],
+      "estimatedHours": 8,
+      "status": "pending"
+    },
+    {
+      "id": "time-complexity",
+      "title": "Time Complexity Analysis",
+      "icon": "◷",
+      "category": "programming",
+      "color": "#4F46E5",
+      "days": "1",
+      "subtopics": [
+        "Big-O",
+        "Loops & nested loops",
+        "Recurrence"
+      ],
+      "estimatedHours": 6,
+      "status": "pending"
+    },
+    {
+      "id": "space-complexity",
+      "title": "Space Complexity",
+      "icon": "▭",
+      "category": "programming",
+      "color": "#6366F1",
+      "days": "1",
+      "subtopics": [
+        "Auxiliary space",
+        "In-place vs extra",
+        "Recursion stack"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "sql-coding",
+      "title": "SQL JOINs & Aggregation Queries",
+      "icon": "⧉",
+      "category": "programming",
+      "color": "#0284C7",
+      "days": "2-3",
+      "subtopics": [
+        "INNER/LEFT JOIN",
+        "GROUP BY & HAVING",
+        "Aggregation"
+      ],
+      "estimatedHours": 10,
+      "status": "pending"
+    },
+    {
+      "id": "ui-task",
+      "title": "HTML/CSS/JS UI Task",
+      "icon": "◫",
+      "category": "programming",
+      "color": "#DB2777",
+      "days": "2",
+      "subtopics": [
+        "Flexbox & Grid",
+        "Event handling",
+        "DOM task"
+      ],
+      "estimatedHours": 8,
+      "status": "pending"
+    },
+    {
+      "id": "contest-strategy",
+      "title": "Contest Strategy & Partial Scoring",
+      "icon": "♔",
+      "category": "programming",
+      "color": "#F59E0B",
+      "days": "1",
+      "subtopics": [
+        "Test cases",
+        "Partial scoring",
+        "Time management"
+      ],
+      "estimatedHours": 5,
+      "status": "pending"
+    },
+    {
+      "id": "hashing",
+      "title": "Hashing & Frequency Counting",
+      "icon": "#",
+      "category": "programming",
+      "color": "#7C3AED",
+      "days": "2",
+      "subtopics": [
+        "Hash map",
+        "Duplicate detection",
+        "Frequency"
+      ],
+      "estimatedHours": 7,
+      "status": "pending"
+    }
+  ]
+}

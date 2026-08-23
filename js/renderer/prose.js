@@ -32,7 +32,7 @@
     return String(value == null ? '' : value)
       .replace(/[\u{1F000}-\u{1FAFF}\u{2300}-\u{23FF}\u{2600}-\u{27BF}\u200D]/gu, '')
       .replace(/[\uFE0F\uFE0E]/g, '')
-      .replace(/\s{2,}/g, ' ')
+      .replace(/[ \t]{2,}/g, ' ')
       .trim();
   }
 
@@ -40,8 +40,67 @@
     return String(value == null ? '' : value).replace(/\[reference:\d+\]/gi, '');
   }
 
+  // --- Math isolation: extract $...$ and $$...$$ before cleaning, restore after
+  var MATH_PLACEHOLDER = '\u0000MATH\u0000';
+  function extractMathPlaceholders (str) {
+    var placeholders = [];
+    var out = '';
+    var i=0, n=str.length;
+    while(i<n){
+      if(str.slice(i,i+2)==='$$'){
+        var end=str.indexOf('$$',i+2);
+        if(end!==-1){ placeholders.push(str.slice(i,end+2)); out+= MATH_PLACEHOLDER+(placeholders.length-1)+MATH_PLACEHOLDER; i=end+2; continue; }
+      }
+      if(str[i]==='$'){
+        // avoid escaped \$ and currency
+        if(i>0 && str[i-1]==='\\'){ out+=str[i]; i++; continue; }
+        var j=str.indexOf('$',i+1);
+        if(j!==-1 && j!==i+1){
+          // avoid $$ case already handled, and single $ with no newline
+          var inner=str.slice(i+1,j);
+          if(inner.trim() && !inner.includes('\n') && !inner.includes('$$')){
+            placeholders.push(str.slice(i,j+1)); out+= MATH_PLACEHOLDER+(placeholders.length-1)+MATH_PLACEHOLDER; i=j+1; continue;
+          }
+        }
+      }
+      out+=str[i]; i++;
+    }
+    return {text:out, placeholders:placeholders};
+  }
+  function restoreMathPlaceholders (str, placeholders){
+    return str.replace(new RegExp(MATH_PLACEHOLDER+'(\\d+)'+MATH_PLACEHOLDER,'g'), function(_,idx){ return placeholders[+idx]; });
+  }
+  function normalizePunctuationSpacing (str){
+    // ensure space after comma/semicolon/colon when followed by alphanum, but not inside math (already placeholdered)
+    // fix missing space after , . ; : when next char is letter/digit and not already space
+    str = str.replace(/,([A-Za-z0-9])/g, ', $1');
+    str = str.replace(/;([A-Za-z0-9])/g, '; $1');
+    str = str.replace(/:([A-Za-z0-9])/g, ': $1');
+    // for period: avoid decimal numbers like 3.14, and abbreviations like e.g., but ensure sentence period followed by capital
+    str = str.replace(/\.([A-Z])/g, '. $1');
+    // ensure double spaces collapsed but preserve paragraph breaks (\n\n)
+    return str;
+  }
   function cleanText (value) {
-    return stripEmoji(stripReferences(value == null ? '' : value));
+    if(value==null) return '';
+    var raw = String(value);
+    var math = extractMathPlaceholders(raw);
+    var t = math.text;
+    // preserve paragraph breaks: protect \n\n
+    t = t.replace(/\r\n/g,'\n');
+    t = t.replace(/\n{2,}/g, '\u0001PARA\u0001');
+    t = stripEmoji(stripReferences(t));
+    t = t.replace(/\u0001PARA\u0001/g, '\n\n');
+    t = normalizePunctuationSpacing(t);
+    // preserve leading indentation for code lines — only collapse mid-line double spaces
+    t = t.split('\n').map(function(line){
+      var m=line.match(/^(\s*)(.*)$/);
+      var indent=m[1], rest=m[2].replace(/[ \t]{2,}/g,' ');
+      return indent+rest;
+    }).join('\n');
+    // restore math untouched
+    t = restoreMathPlaceholders(t, math.placeholders);
+    return t.trim();
   }
 
   /* ── inline parser state machine ─────────────────────── */
@@ -199,6 +258,25 @@
     return result;
   }
 
+  // --- pseudocode detection (for MCQs like "a=6\nb=4\nprint c")
+  function looksLikePseudocodeLines (lines){
+    if(!lines || lines.length<2) return false;
+    var keywords = /^\s*(SET|DECLARE|WHILE|ENDWHILE|IF|ELSE|ELSE\s*IF|ENDIF|THEN|PRINT|FOR|ENDFOR|INPUT|OUTPUT|RETURN|FUNCTION|END\s*FUNCTION)\b/i;
+    var assign = /^\s*[a-zA-Z_][a-zA-Z0-9_]*\s*=\s*.+/;
+    var hits=0;
+    for(var i=0;i<lines.length;i++){
+      var t=lines[i].trim();
+      if(!t) continue;
+      if(keywords.test(t) || assign.test(t) || /MOD|DIV/.test(t)) hits++;
+    }
+    // at least 2 hits or 60% of lines look like code
+    return hits>=2 || (hits>=1 && lines.length>=2 && hits/lines.length>=0.5);
+  }
+  function looksLikePseudocodeText (text){
+    if(!text || text.indexOf('\n')===-1) return false;
+    return looksLikePseudocodeLines(text.split('\n'));
+  }
+
   /* ── block-level parser ──────────────────────────────── */
 
   /**
@@ -315,7 +393,12 @@
         i++;
       }
       if (paraLines.length) {
-        blocks.push({ type: 'paragraph', lines: paraLines });
+        // ponytail: pseudocode lines like "a = 6\nb = 4\nprint c" should not become a congealed paragraph — render as code
+        if(looksLikePseudocodeLines(paraLines)){
+          blocks.push({ type: 'code', lang: 'pseudocode', content: paraLines.join('\n') });
+        } else {
+          blocks.push({ type: 'paragraph', lines: paraLines });
+        }
       }
     }
 
@@ -323,12 +406,25 @@
   }
 
   /**
-   * Render a block descriptor to HTML
-   */
+    * Render a block descriptor to HTML — digital article feel: airy paragraphs, isolated math, derivation rhythm
+    */
   function renderBlock (block) {
     switch (block.type) {
       case 'paragraph':
-        return '<p>' + renderInline(block.lines.join('\n')) + '</p>';
+        // for digital article, break paragraph into sentences with breathing room if it's long (math-heavy derivations)
+        // if paragraph contains '→' or '⇒' or multiple ' = ' with ';' we render as derivation steps
+        var rawPara = block.lines.join(' ');
+        // derivation heuristic: contains → or ⇒ or at least 2 ' = ' and ';' or line-break-like 'Step'
+        if(/[→⇒]/.test(rawPara) || ( (rawPara.match(/\s=\s/g)||[]).length>=2 && /;/.test(rawPara) )){
+          // split on → ⇒ ; and render each piece as a derivation line with new line + indent
+          var parts = rawPara.split(/\s*[→⇒;]\s*/).filter(Boolean);
+          if(parts.length>=2){
+            return '<div class="derivation-block">' + parts.map(function(p,i){
+              return '<div class="derivation-line"><span class="derivation-idx">'+(i+1)+'</span><span class="derivation-text">'+renderInline(p.trim())+'</span></div>';
+            }).join('') + '</div>';
+          }
+        }
+        return '<p class="prose-para">' + renderInline(rawPara) + '</p>';
 
       case 'heading':
         return '<h' + block.level + '>' + renderInline(block.content) + '</h' + block.level + '>';
@@ -353,6 +449,23 @@
           '</ol>';
 
       case 'code':
+        var lang = (block.lang||'').toLowerCase();
+        var isPseudo = lang==='pseudocode' || looksLikePseudocodeText(block.content);
+        if(isPseudo){
+          // preserve indentation, add line numbers, keep math placeholders outside code? code should not be math-rendered
+          var lines = block.content.split('\n');
+          var html = '<div class="pseudocode-block"><div class="pseudocode-head"><span class="pseudocode-label">pseudocode</span><span class="pseudocode-lines">'+lines.length+' lines</span></div><pre class="pseudocode-pre"><code>';
+          for(var li=0; li<lines.length; li++){
+            var line=lines[li];
+            // keep leading spaces as &nbsp; for visual indent, but preserve for copy
+            var indent = line.match(/^\s*/)[0].length;
+            var pad = '';
+            for(var s=0;s<indent;s++) pad+=' ';
+            html += '<span class="pseudocode-line"><span class="ln">'+(li+1)+'</span><span class="code-text">'+escapeHtml(line)+'</span></span>\n';
+          }
+          html += '</code></pre></div>';
+          return html;
+        }
         var langClass = block.lang ? ' class="code-lang-' + escapeHtml(block.lang) + '"' : '';
         return '<pre' + langClass + '><code>' + escapeHtml(block.content) + '</code></pre>';
 
@@ -442,10 +555,26 @@
       return asWhiteboard
         ? renderNumberedSteps(text)
         : text.filter(Boolean).map(function (para) {
+            // ponytail: if array item looks like pseudocode line, render as code block not paragraph
+            if(para && para.indexOf('\n')!==-1 && looksLikePseudocodeText(para)){
+              return renderProse('```pseudocode\n'+para+'\n```');
+            }
             return '<p class="prose-para">' + formatInline(para) + '</p>';
           }).join('');
     }
-    var raw = cleanText(String(text));
+    var rawOrig = String(text);
+    // early pseudocode bypass: only for short pure pseudocode (MCQ), not for reading sections that mix code + prose
+    // require: no long explanatory sentence (>100 chars) and total length <400 and at least 2 code lines
+    var isPurePseudo = looksLikePseudocodeText(rawOrig) && rawOrig.length < 500 && !/[A-Z][a-z]{2,}\s+[a-z]{3,}\s+[a-z]{3,}/.test(rawOrig.slice(rawOrig.indexOf('\n\n')+2 || 0));
+    // also check that no line is a long prose sentence (>90 chars)
+    if(isPurePseudo){
+      var lines = rawOrig.split('\n').filter(function(l){return l.trim();});
+      var longLines = lines.filter(function(l){return l.length>90;});
+      if(longLines.length===0){
+        return renderProse('```pseudocode\n'+rawOrig+'\n```');
+      }
+    }
+    var raw = cleanText(rawOrig);
     if (!raw) return '';
 
     var stepPattern = /(?:^|\s)(?:step\s*(\d+)\s*(?:\([^)]*\))?|\(?\s*(\d+)\s*\))\s*[:.\-]\s*/gi;

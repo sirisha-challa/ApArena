@@ -1,34 +1,67 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Programming Bank — ApArena</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root { --bg:#0d0d12; --panel:#16161e; --panel-2:#1b1b25; --border:#262633; --text:#e8e8f0; --muted:#9b9bab; --acc:#a100ff; }
-  html[data-theme="light"] { --bg:#f4f4f8; --panel:#fff; --panel-2:#fafafe; --border:#e4e4ef; --text:#17171f; --muted:#5d5d70; }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:'Inter',system-ui,sans-serif; background:var(--bg); color:var(--text); min-height:100vh; display:flex; flex-direction:column; }
-  .wrap { max-width:720px; margin:0 auto; padding:64px 24px; text-align:center; flex:1; }
-  .icon { width:64px; height:64px; margin:0 auto 20px; border-radius:16px; display:grid; place-items:center; background:linear-gradient(135deg,#2563eb,#a100ff); font-size:28px; font-weight:700; color:#fff; }
-  h1 { font-family:'Space Grotesk',sans-serif; font-size:32px; margin-bottom:8px; }
-  p { color:var(--muted); line-height:1.6; margin-bottom:24px; }
-  .chips { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:32px; }
-  .chip { font-size:12px; font-weight:600; padding:6px 12px; border-radius:999px; border:1px solid var(--border); color:var(--muted); }
-  a.back { display:inline-block; color:var(--acc); font-weight:600; text-decoration:none; }
-  a.back:hover { text-decoration:underline; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programming — ApArena</title>
+  <meta name="description" content="DSA, SQL & UI tasks — the coding round playbook — ApArena Programming bank with Learn, Formulas, Practice and MCQ tabs.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <meta name="color-scheme" content="light dark">
 </head>
-<body>
-<div class="wrap">
-  <div class="icon">&lt;/&gt;</div>
-  <h1>Programming Bank</h1>
-  <p>DSA patterns, SQL and coding-puzzle topics will land here as their own bank — learn, formulas, practice and MCQs for every topic, just like the other banks.</p>
-  <div class="chips"><span class="chip">DSA Patterns</span><span class="chip">SQL</span><span class="chip">Puzzles</span><span class="chip">Coming soon</span></div>
-  <a class="back" href="/">← Back to landing</a>
-</div>
+<body data-bank="programming">
+  <div id="app">
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <span class="brand-icon" aria-hidden="true">A</span>
+          <a class="brand-text" href="/" style="text-decoration:none;color:inherit">ApArena</a>
+          <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">&#10005;</button>
+        </div>
+        <nav class="sidebar-nav" id="sidebar-nav" aria-label="Bank navigation"></nav>
+        <div class="sidebar-footer">
+          <div id="sidebar-progress">
+            <div class="sidebar-progress-label">Progress</div>
+            <div class="progress-bar"><div id="sidebar-progress-fill" style="width:0%"></div></div>
+            <span id="sidebar-progress-text">0%</span>
+          </div>
+        </div>
+      </aside>
+      <div class="main-area">
+        <header class="topbar">
+          <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+          <button class="back-button" id="back-button" type="button" aria-label="Go back" hidden>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/><path d="M9 12h11"/></svg>
+            <span>Back</span>
+          </button>
+          <h1 class="topbar-title" id="header-title">Dashboard</h1>
+          <div class="topbar-actions">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle sidebar">Menu</button>
+            <div id="toast-container" class="toast-container"></div>
+            <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            </button>
+          </div>
+        </header>
+        <main class="content" id="app-content"></main>
+        <footer class="app-footer">ApArena — <a href="/">All Banks</a> · <span id="bank-footer-meta">Programming Bank</span></footer>
+      </div>
+    </div>
+    <nav class="bottom-nav" id="bottom-nav" aria-label="Primary">
+      <button class="bottom-nav-item active" data-view="dashboard"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg><span>Home</span></button>
+      <button class="bottom-nav-item" data-view="roadmap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg><span>Roadmap</span></button>
+      <button class="bottom-nav-item" data-view="learn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg><span>Learn</span></button>
+      <button class="bottom-nav-item" data-view="mcq"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>MCQ</span></button>
+    </nav>
+  </div>
+  <script>
+    window.AP_BANK_ID = "programming";
+  </script>
+  <script src="/js/bank-boot.js"></script>
 </body>
 </html>
