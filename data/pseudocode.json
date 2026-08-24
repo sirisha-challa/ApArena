@@ -53,12 +53,15 @@
       "color": "#8B5CF6",
       "days": "5",
       "subtopics": [
-        "Post-test execution",
-        "At-least-once guarantee",
-        "REPEAT-UNTIL vs WHILE"
+        "Post-Test Execution",
+        "At-Least-Once Guarantee",
+        "Exit-on-TRUE Polarity",
+        "Trace & Iteration Counting",
+        "WHILE-UNTIL Conversion",
+        "Infinite Loop Traps"
       ],
       "estimatedHours": 6,
-      "status": "pending"
+      "status": "ready"
     },
     {
       "id": "for-loop",
