@@ -47,8 +47,8 @@
     },
     {
       "id": "core",
-      "title": "Core",
-      "subtitle": "Core CS, Networking, Cloud & Office — the technical MCQ core",
+      "title": "Technical",
+      "subtitle": "AXIS 2026 Technical — MS Office, Networking, Security & Cloud, CS foundations",
       "icon": "⬢",
       "color": "#0D9488",
       "href": "/core/",

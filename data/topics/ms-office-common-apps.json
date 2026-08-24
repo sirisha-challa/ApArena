@@ -1,0 +1,2343 @@
+{
+  "id": "ms-office-common-apps",
+  "title": "Common Applications & MS Office",
+  "icon": "MS",
+  "category": "ms-office",
+  "subtitle": "AXIS 2026 section: Word, Excel, PowerPoint, Outlook, browsers, shortcut keys & command prompt — about 12 exam questions",
+  "days": "4",
+  "color": "#0D9488",
+  "subtopics": [
+    "Universal Shortcuts",
+    "MS Word (Views & Formatting)",
+    "MS Excel (Formulas & Ranges)",
+    "MS PowerPoint (Slides & Shows)",
+    "Outlook & Email Fields",
+    "Browsers & Command Prompt"
+  ],
+  "estimatedHours": 8,
+  "readingSections": [
+    {
+      "id": "axis-msoffice-intel",
+      "title": "The MS Office Section: What to Expect",
+      "type": "concept",
+      "quickSummary": "About 12 questions, Medium-Hard: MS Office ~5Q, browsers ~2Q, shortcut keys ~2Q, command prompt ~2Q, key workflows ~1Q. No negative marking.",
+      "content": [
+        "Common Applications and MS Office is the first sub-section of the AXIS Technical Assessment - roughly 12 of the 45 shared questions. Published breakdowns weight it as: MS Office (Word, Excel, PowerPoint, Outlook) about 5 questions, browser fundamentals about 2, shortcut keys about 2, command prompt about 2, and key workflows about 1.",
+        "The questions are pure product knowledge: shortcut keys, file formats, view names, formula results, mail-field meanings. They reward people who have actually used Office - every fact below is a published-PYQ or standard-document fact.",
+        "Because the timer is shared (45 minutes for all 45 technical questions), this section should take you under 8 minutes - it is the fastest scoring area once the tables in this topic are memorised."
+      ],
+      "subsections": [
+        {
+          "title": "Question style",
+          "content": "Three recurring styles:\n1. Shortcut recall - 'Which shortcut underlines selected text?' (Ctrl+U).\n2. Feature/result recall - 'What does =AVERAGE(5,10,15) return?' (10) or 'Which view shows bulleted points?' (Outline).\n3. Concept recall - 'What is the CC field for?' (awareness recipients) or 'What is the blank space outside the print area?' (margin)."
+        },
+        {
+          "title": "Preparation strategy",
+          "content": "Memorise the shortcut tables (they cover 4-5 questions alone), then the one-line definitions (margin, CC, hyperlink, outline view). Practice reading formula questions slowly: AVERAGE, CONCATENATE and range syntax (B8:B10) have all appeared verbatim."
+        }
+      ],
+      "quickRevision": [
+        "12 questions: Office ~5, browsers ~2, shortcuts ~2, command prompt ~2, workflows ~1.",
+        "Shortcut tables are the highest-density marks in the whole Technical Assessment.",
+        "No negative marking - answer everything.",
+        "Target under 8 minutes for this sub-section."
+      ],
+      "tricks": [
+        "Ctrl+letter shortcuts are identical across Word, Excel, PowerPoint and Outlook for the universal set (N/O/S/P/W/Z/Y) - learn once, answer four applications' questions.",
+        "Excel formula questions: mentally evaluate the innermost function first, then read options.",
+        "Outlook calendar shortcuts follow Ctrl+Shift+initial: A for Appointment, Q for meeting (Q after 'schedule'), K for tasK.",
+        "Command prompt questions in PYQs love cd navigation - cd .. goes up one level, cd../.. goes up two."
+      ],
+      "patterns": [
+        "'Which shortcut key...' - answer is almost always a Ctrl combo from the tables.",
+        "'What is the result of the formula...' - evaluate the function; watch text vs number results.",
+        "'Which view shows...' - Word: Outline (bulleted), Print Layout (default), Web Layout, Draft.",
+        "'The blank space outside the printing area' - margin."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "placementpreparation.io Accenture PYQ set",
+          "question": "What is the result of =CONCATENATE(\"Good\", \" \", \"Morning\")?",
+          "approach": "CONCATENATE joins arguments verbatim: Good + space + Morning = 'Good Morning'."
+        },
+        {
+          "source": "TalentBattle Accenture MS Office PYQ set",
+          "question": "While using formulas in Excel, the notation B8:B10 indicates:",
+          "approach": "All cells from B8 to B10 inclusive - the colon is a RANGE operator, not multiplication."
+        },
+        {
+          "source": "PrepInsta AXIS MS Office syllabus",
+          "question": "Keyboard shortcut to create a new meeting request from any folder in Outlook:",
+          "approach": "Ctrl+Shift+Q (appointment = Ctrl+Shift+A, task = Ctrl+Shift+K)."
+        }
+      ],
+      "companyNote": "This sub-section exists only in the AXIS pattern (2024+ batches) and carries a sub-sectional cut-off - the shortcut tables here are non-negotiable."
+    },
+    {
+      "id": "word-powerpoint-essentials",
+      "title": "MS Word & PowerPoint Essentials",
+      "type": "concept",
+      "quickSummary": "Word: four views, formatting shortcuts, margins. PowerPoint: five views, Ctrl+M inserts a slide, F5 starts the show, hyperlinks jump between slides.",
+      "content": [
+        "MS Word questions test views, formatting and page setup. The four Word views: Print Layout (default, shows page boundaries), Web Layout (browser-like), Outline (document as bulleted heading structure - a published PYQ), and Draft (plain text, no images). Margins are the blank space outside the printing area - another verbatim PYQ.",
+        "Formatting shortcuts follow a logic: Ctrl+B/I/U for bold/italic/underline; Ctrl+L/E/R/J align left/centre/right/justify; Ctrl+= subscript; Ctrl+Shift+= superscript; Ctrl+1/Ctrl+2 single/double line spacing.",
+        "PowerPoint questions test views and show control. Views: Normal (editing), Slide Sorter (thumbnails - reorder here), Reading, Slide Show. Ctrl+M inserts a NEW SLIDE (published PYQ). F5 starts the slideshow from the beginning; Shift+F5 from the current slide; Esc ends it. Hyperlinks navigate between slides within or across presentations - another verbatim PYQ."
+      ],
+      "subsections": [
+        {
+          "title": "Word views table",
+          "content": "Print Layout - default; page boundaries, headers, margins visible.\nWeb Layout - no page breaks; browser-like flow.\nOutline - headings as bulleted structure; reorganise by dragging.\nDraft - text only; hides images and page furniture for fast editing."
+        },
+        {
+          "title": "Word formatting shortcuts",
+          "content": "Ctrl+B bold | Ctrl+I italic | Ctrl+U underline\nCtrl+L / Ctrl+E / Ctrl+R / Ctrl+J - align left / centre / right / justify\nCtrl+= subscript | Ctrl+Shift+= superscript\nCtrl+1 single spacing | Ctrl+2 double spacing\nShift+Tab outdents a list level (published PYQ); Tab indents."
+        },
+        {
+          "title": "PowerPoint control table",
+          "content": "Ctrl+M - insert new slide\nF5 - show from beginning; Shift+F5 - from current slide; Esc - end show\nSlide Sorter view - drag to reorder thumbnails\nHyperlink (Ctrl+K) - jump to another slide, file or web page\nB key - black screen during show; W - white screen"
+        }
+      ],
+      "quickRevision": [
+        "Word views: Print Layout (default), Web, Outline (bulleted), Draft.",
+        "Ctrl+E centres; Ctrl+U underlines; Ctrl+= subscript; Ctrl+Shift+= superscript.",
+        "Margin = blank space outside the printing area.",
+        "Ctrl+M = new slide; F5 = show from start; Esc = end show; hyperlinks jump slides."
+      ],
+      "tricks": [
+        "Alignment shortcut letters spell their direction: L-eft, E-centEr, R-ight, J-ustify.",
+        "Subscript vs superscript: plain Ctrl+= pushes DOWN (sub), adding Shift pushes UP (super).",
+        "Outline view question: the phrase 'bulleted points' or 'heading structure' in the stem is the giveaway.",
+        "PowerPoint 'insert new slide' is Ctrl+M - M for 'make slide', not Ctrl+N (new presentation)."
+      ],
+      "patterns": [
+        "'Shows the contents as bulleted points' - Outline view.",
+        "'Blank space outside the printing area' - margin (header/footer live inside margins' edges).",
+        "'Move this line one level to the left' - Shift+Tab (outdent).",
+        "'Navigate from one slide to another within or across presentations' - Hyperlink."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Accenture MS Office PYQ sets (Testbook/Scribd)",
+          "question": "In MS PowerPoint, the shortcut Ctrl+M helps the user to:",
+          "approach": "Insert a new slide. Ctrl+N would create a whole new presentation."
+        },
+        {
+          "source": "Accenture MS Office PYQ sets",
+          "question": "Which Word view shows the document's contents as bulleted points?",
+          "approach": "Outline view - it renders the heading hierarchy as bullets."
+        },
+        {
+          "source": "placementpreparation.io Accenture PYQ set",
+          "question": "Cursor is before 'I' in 'Introduction' - which option moves the line one level LEFT?",
+          "approach": "Shift+Tab outdents; plain Tab indents; Alt+Tab switches windows."
+        }
+      ],
+      "companyNote": "Word views + PowerPoint Ctrl+M are repeat PYQs - both appeared in published Accenture practice sets."
+    },
+    {
+      "id": "excel-essentials",
+      "title": "MS Excel Essentials",
+      "type": "concept",
+      "quickSummary": "Formulas start with '='; B8:B10 is a range; AVERAGE/SUM/COUNT/MAX evaluate to single values; Ctrl+PgUp switches worksheets.",
+      "content": [
+        "Every Excel formula begins with '=' - a published PYQ asks exactly this (options: @, =, &, #). After the equals sign come function names, cell references and operators. The colon is the RANGE operator: B8:B10 means ALL cells from B8 through B10 inclusive - another verbatim PYQ.",
+        "Core functions returning single values: SUM adds, AVERAGE divides the sum by the count, COUNT counts NUMERIC cells only (text is ignored), MAX/MIN pick extremes, CONCATENATE glues text arguments verbatim.",
+        "Worksheet navigation: Ctrl+PgUp moves to the PREVIOUS worksheet and Ctrl+PgDn to the next - a published PYQ. Ctrl+Home jumps to A1; F2 edits the active cell."
+      ],
+      "subsections": [
+        {
+          "title": "Formula evaluation - worked PYQs",
+          "content": "=AVERAGE(5, 10, 15) -> (5+10+15)/3 = 10 (published PYQ).\n=CONCATENATE(\"Good\", \" \", \"Morning\") -> 'Good Morning' (space argument included verbatim - published PYQ).\n=SUM(2, 3) -> 5.  =MAX(4, 9, 2) -> 9.\n=COUNT(1, 2, \"abc\") -> 2 - text is not counted."
+        },
+        {
+          "title": "References and ranges",
+          "content": "B8 - one cell.  B8:B10 - the range B8 to B10 (published PYQ: 'all cells from B8 to B10').\nB8,D10 - a UNION of two cells (comma).  $B$8 - absolute reference (does not shift on copy).\nA1 vs R1C1 - the two reference styles; A1 is default."
+        },
+        {
+          "title": "Navigation and structure",
+          "content": "Ctrl+PgUp / Ctrl+PgDn - previous / next worksheet (published PYQ).\nCtrl+Home - cell A1.  Ctrl+End - last used cell.  F2 - edit cell.\nA worksheet is a grid of 1,048,576 rows x 16,384 columns (XFD); a workbook holds many worksheets saved as one .xlsx file."
+        }
+      ],
+      "quickRevision": [
+        "Formulas start with '='. Range operator is ':' (B8:B10 = B8 through B10).",
+        "AVERAGE = sum/count; COUNT ignores text; CONCATENATE joins verbatim.",
+        "Ctrl+PgUp = previous sheet; Ctrl+PgDn = next sheet.",
+        "Ctrl+Home = A1; F2 = edit cell."
+      ],
+      "tricks": [
+        "Evaluate function questions arithmetically on paper - AVERAGE(5,10,15) is (5+10+15)/3, not the middle value.",
+        "CONCATENATE includes EVERY argument exactly as typed - count the quote-wrapped spaces.",
+        "COUNT vs COUNTA: COUNT = numbers only; COUNTA = all non-empty cells. PYQ options love this swap.",
+        "Worksheet-switch questions: PgUp goes BACK (previous), PgDn goes FORWARD (next)."
+      ],
+      "patterns": [
+        "'What should come before the formula?' - '=' (published PYQ; distractors @, &, #).",
+        "'B8:B10 indicates...' - all cells B8 to B10 (published PYQ; distractor: product of B8 and B10).",
+        "'Shortcut to move to the previous worksheet' - Ctrl+PgUp (published PYQ).",
+        "'=AVERAGE(5,10,15)' - 10."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Accenture MS Office PYQ sets",
+          "question": "When working on an MS Excel sheet, to enter a formula in a cell, what should come before the formula?",
+          "approach": "The equals sign '=' - options typically offer @, =, &, #."
+        },
+        {
+          "source": "placementpreparation.io Accenture PYQ set",
+          "question": "Result of =AVERAGE(5, 10, 15)?",
+          "approach": "(5+10+15)/3 = 10."
+        }
+      ],
+      "companyNote": "Excel formula-evaluation questions appeared verbatim in published Accenture sets - practise reading them slowly rather than pattern-matching."
+    },
+    {
+      "id": "outlook-browser-essentials",
+      "title": "Outlook, Email & Browser Essentials",
+      "type": "concept",
+      "quickSummary": "Outlook: Ctrl+Shift+A/Q/K for appointment/meeting/task; deleted mail lands in Trash/Deleted Items. Email: CC informs, BCC hides. Browser: Ctrl+W closes a tab.",
+      "content": [
+        "Outlook organises work into Mail, Calendar, Tasks, Contacts and Notes. The calendar shortcuts follow Ctrl+Shift+initial: Ctrl+Shift+A creates an APPOINTMENT, Ctrl+Shift+Q schedules a MEETING (from any folder), Ctrl+Shift+K creates a TASK - all three are syllabus-listed facts.",
+        "Email fields: To = primary recipients who must act; CC (carbon copy) = recipients kept AWARE but not expected to act (published PYQ); BCC (blind carbon copy) = hidden recipients invisible to everyone else. A mail deleted by accident lands in Trash / Deleted Items - another published PYQ.",
+        "Browser basics: Ctrl+W closes the current TAB (published PYQ; Ctrl+T OPENS one), Ctrl+T new tab, Ctrl+Shift+T reopens a closed tab, Ctrl+D bookmarks, F5 refreshes, Ctrl+H history. A URL's domain identifies the site; HTTPS means TLS-encrypted transport."
+      ],
+      "subsections": [
+        {
+          "title": "Outlook calendar & task shortcuts",
+          "content": "Ctrl+Shift+A - new Appointment (Calendar folder, or right-click a time block)\nCtrl+Shift+Q - new Meeting request (works from any folder)\nCtrl+Shift+K - new Task\nCtrl+N - new item (context-dependent: mail, appointment, contact, task)\nCtrl+O - open selected item"
+        },
+        {
+          "title": "Mail fields decoded",
+          "content": "To - must read/act.\nCC (carbon copy) - awareness only, visible to all (published PYQ: 'include recipients who should be aware but don't need to act').\nBCC (blind carbon copy) - hidden from other recipients; protects privacy on mass mails.\nSubject + attachment etiquette: meaningful subject, files attached not embedded."
+        },
+        {
+          "title": "Folder and browser facts",
+          "content": "Deleted mail -> Trash / Deleted Items folder (published PYQ; options: Draft, Spam, Inbox).\nDraft = unsent mail being written; Spam/Junk = filtered suspicious mail.\nBrowser: Ctrl+W close tab (published PYQ), Ctrl+T new tab, Ctrl+D bookmark, Ctrl+H history, F5 reload.\nCtrl+P prints - universal across Office and browsers."
+        }
+      ],
+      "quickRevision": [
+        "Outlook: Ctrl+Shift+A appointment, Ctrl+Shift+Q meeting, Ctrl+Shift+K task.",
+        "CC = aware-but-no-action; BCC = hidden recipients.",
+        "Deleted mail -> Trash/Deleted Items.",
+        "Ctrl+W closes a browser tab; Ctrl+T opens one."
+      ],
+      "tricks": [
+        "Outlook calendar trio = Ctrl+Shift + first letter of the OUTCOME: Appointment, meeting(Q), tasK - memorise Q and K as the odd two.",
+        "CC vs BCC: the B is 'blind' - BCC recipients are invisible to everyone.",
+        "Tab questions: W = close (Window), T = open (Tab).",
+        "Deleted-mail questions: Trash is the safety net; Draft never held the mail."
+      ],
+      "patterns": [
+        "'Recipients who should be aware but need not act' - CC.",
+        "'Accidentally deleted mail is saved in which folder?' - Trash/Deleted Items.",
+        "'Close a tab on a browser' - Ctrl+W (published PYQ; distractors Ctrl+T/A/X).",
+        "'Schedule a meeting from any folder' - Ctrl+Shift+Q."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "If by accident a mail is deleted, which folder saves it?",
+          "approach": "Trash (Deleted Items). Draft holds unsent drafts, Spam holds filtered mail."
+        },
+        {
+          "source": "placementpreparation.io Accenture PYQ set",
+          "question": "Purpose of the CC field in email?",
+          "approach": "Include recipients who should be aware of the message but don't need to act."
+        },
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "Which of the following can close a tab on a browser?",
+          "approach": "Ctrl+W. Ctrl+T opens a new tab; Ctrl+A selects all; Ctrl+X cuts."
+        }
+      ],
+      "companyNote": "The Outlook Ctrl+Shift trio and the CC/BCC definitions are syllabus-listed verbatim - free marks if memorised."
+    },
+    {
+      "id": "shortcuts-command-prompt",
+      "title": "Universal Shortcuts & Command Prompt Basics",
+      "type": "concept",
+      "quickSummary": "One universal Ctrl set spans all Office apps; command prompt PYQs test cd navigation, ipconfig and file commands.",
+      "content": [
+        "The universal Windows/Office shortcut set is identical across Word, Excel, PowerPoint, Outlook and most Windows programs: Ctrl+N new, Ctrl+O open, Ctrl+S save, F12 save as, Ctrl+P print, Ctrl+W close, Ctrl+Z undo, Ctrl+Y redo, Ctrl+C copy, Ctrl+X cut, Ctrl+V paste, Ctrl+A select all, Ctrl+F find. Learning this one table answers shortcut questions for four applications at once.",
+        "Command prompt carries about 2 questions per published breakdown. Navigation: cd changes directory, cd .. up one level, cd../.. (or cd ..\\..) up TWO levels - a published PYQ asked exactly this with mixed-slash distractors. dir lists contents; cls clears screen.",
+        "Network commands: ipconfig shows the machine's IP configuration; ping tests reachability of a host; tracert traces the route packets take. File operations: copy, move, del (delete), mkdir (make directory)."
+      ],
+      "subsections": [
+        {
+          "title": "The universal table (learn once, answer everywhere)",
+          "content": "Ctrl+N new | Ctrl+O open | Ctrl+S save | F12 save as\nCtrl+P print | Ctrl+W close | Ctrl+Z undo | Ctrl+Y redo\nCtrl+C copy | Ctrl+X cut | Ctrl+V paste | Ctrl+A select all\nCtrl+F find | Ctrl+B bold | Ctrl+I italic | Ctrl+U underline\nCtrl+Home start of document | Ctrl+End end of document"
+        },
+        {
+          "title": "Command prompt navigation",
+          "content": "cd folder - enter folder; cd .. - up one level; cd../.. - up two levels (published PYQ answer; distractors mixed \\ and /).\ndir - list directory contents.  cls - clear screen.  exit - close prompt.\nDrives: C:, D: switch drives; paths use \\ (backslash) in Windows."
+        },
+        {
+          "title": "Network & file commands",
+          "content": "ipconfig - show IP configuration (ipconfig /all for details).\nping host - test reachability and latency.\ntracert host - hop-by-hop route.\ncopy, move, del file - file operations; mkdir/rmdir - make/remove directory."
+        }
+      ],
+      "quickRevision": [
+        "Universal set: N O S P W Z Y + C X V A F - one table, all apps.",
+        "cd .. = up one; cd../.. = up two; dir = list; cls = clear.",
+        "ipconfig = my IP config; ping = reachable?; tracert = route.",
+        "F12 = Save As (not Ctrl+Shift+S)."
+      ],
+      "tricks": [
+        "Shortcut questions with identical options across apps: pick from the universal table - Office apps share it.",
+        "cd PYQ: two levels up = cd../.. - the distractor with backslashes (cd..\\..) is the trap; the published answer used forward slashes.",
+        "ipconfig vs ping: ipconfig SHOWS your config; ping TESTS another host. Stems asking 'show my IP' -> ipconfig.",
+        "Undo/Redo pair: Z back, Y forward - works in every Office app."
+      ],
+      "patterns": [
+        "'Which command takes you two steps backward from any directory?' - cd../.. (published PYQ).",
+        "'Shortcut to save' - Ctrl+S; 'Save As' - F12.",
+        "'Show IP configuration' - ipconfig.",
+        "'Which key held down while selecting a word/phrase in Word?' - Shift (published PYQ)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "Which command takes you two steps backward from any particular directory?",
+          "approach": "cd../.. - each .. climbs one level; the mixed-backslash distractor is wrong for the published answer."
+        },
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "Which key is held down to select a word or phrase in MS Word?",
+          "approach": "Shift - hold Shift and arrow/click to extend the selection."
+        }
+      ],
+      "companyNote": "Command prompt carries ~2 questions per published breakdown - the cd-navigation PYQ alone has appeared in multiple Accenture sets."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "universal-shortcuts",
+      "title": "The Universal Ctrl Table (All Office Apps)",
+      "formula": {
+        "latex": "\\text{Ctrl+N/O/S/P/W/Z/Y/C/X/V/A/F}",
+        "text": "New, Open, Save, Print, Close, Undo, Redo, Copy, Cut, Paste, Select-all, Find - identical across Word, Excel, PowerPoint, Outlook."
+      },
+      "whenToUse": "Any 'which shortcut does X' question about basic file/edit operations.",
+      "explanation": [
+        "File row: N new, O open, S save, F12 save-as, P print, W close.",
+        "Edit row: Z undo, Y redo, C copy, X cut, V paste, A select all, F find.",
+        "These bindings predate Office and are shared by virtually every Windows program.",
+        "Excel adds navigation on top: Ctrl+PgUp/PgDn switch worksheets."
+      ],
+      "example": {
+        "prompt": "Which shortcut saves the current document in Word, Excel AND Outlook alike?",
+        "steps": [
+          "Saving is a file operation.",
+          "The universal save shortcut is Ctrl+S."
+        ],
+        "answer": "Ctrl+S"
+      },
+      "memoryTip": "NO SPoWZY: New Open Save Print close Undo Redo + CXVAF.",
+      "commonMistake": "Answering F12 for plain 'save' - F12 is Save As."
+    },
+    {
+      "id": "word-format-shortcuts",
+      "title": "Word Formatting Shortcut Map",
+      "formula": {
+        "latex": "\\text{B/I/U} + \\text{L/E/R/J} + \\text{Ctrl+= sub} + \\text{Ctrl+Shift+= super}",
+        "text": "Bold-Italic-Underline, align Left-centEr-Right-Justify, subscript/superscript on the = key."
+      },
+      "whenToUse": "Formatting shortcut questions in Word (and mostly PowerPoint too).",
+      "explanation": [
+        "Ctrl+B bold, Ctrl+I italic, Ctrl+U underline.",
+        "Ctrl+L left, Ctrl+E centre, Ctrl+R right, Ctrl+J justify - E is the only non-obvious one (centEr).",
+        "Ctrl+= subscript; Ctrl+Shift+= superscript - same key, Shift flips direction.",
+        "Ctrl+1 / Ctrl+2 single / double line spacing; Shift+Tab outdents list levels."
+      ],
+      "example": {
+        "prompt": "Which shortcut centre-aligns the selected text?",
+        "steps": [
+          "Centre = the E mnemonic.",
+          "Ctrl+E."
+        ],
+        "answer": "Ctrl+E"
+      },
+      "memoryTip": "L-E-R-J: left, cEntEr, right, justify.",
+      "commonMistake": "Ctrl+J for centre - J is justify; centre is Ctrl+E."
+    },
+    {
+      "id": "excel-formula-syntax",
+      "title": "Excel Formula Grammar",
+      "formula": {
+        "latex": "=\\text{FUNC}(\\text{args}) \\qquad \\text{B8:B10} = \\text{range}",
+        "text": "Formulas start with '='; the colon builds an inclusive range; functions return single values."
+      },
+      "whenToUse": "Every 'result of the formula' or 'what does this notation mean' Excel question.",
+      "explanation": [
+        "Start every formula with '=' (published PYQ: options @, =, &, #).",
+        "B8:B10 = all cells from B8 to B10 inclusive; comma = union of separate cells.",
+        "SUM adds; AVERAGE = sum/count; COUNT counts NUMERIC cells only; MAX/MIN extremes; CONCATENATE joins text verbatim.",
+        "$B$8 = absolute reference - does not shift when copied."
+      ],
+      "example": {
+        "prompt": "Evaluate =COUNT(5, \"abc\", 7, \"\")",
+        "steps": [
+          "COUNT counts numeric values only.",
+          "5 and 7 are numeric -> 2; the text and empty string are ignored."
+        ],
+        "answer": "2"
+      },
+      "memoryTip": "= starts it, : spans it, COUNT skips text.",
+      "commonMistake": "Reading B8:B10 as 'product of B8 and B10' - a published PYQ distractor."
+    },
+    {
+      "id": "ppt-show-control",
+      "title": "PowerPoint Views & Show Control",
+      "formula": {
+        "latex": "\\text{Ctrl+M new slide};\\; \\text{F5 show};\\; \\text{Esc end};\\; \\text{Ctrl+K link}",
+        "text": "Ctrl+M inserts a slide, F5 starts the show, Esc ends it, Ctrl+K inserts a hyperlink."
+      },
+      "whenToUse": "PowerPoint shortcut and view questions.",
+      "explanation": [
+        "Ctrl+M = insert NEW SLIDE (Ctrl+N would create a whole new presentation).",
+        "F5 show from beginning; Shift+F5 from current slide; Esc end; B black / W white screen during show.",
+        "Views: Normal (edit), Slide Sorter (reorder thumbnails), Reading, Slide Show.",
+        "Hyperlink (Ctrl+K) navigates between slides in the same or another presentation."
+      ],
+      "example": {
+        "prompt": "Which shortcut inserts a new slide?",
+        "steps": [
+          "'New slide' is not 'new file'.",
+          "Ctrl+M inserts a slide; Ctrl+N opens a new presentation."
+        ],
+        "answer": "Ctrl+M"
+      },
+      "memoryTip": "M = 'more slide'. F5 fires the show.",
+      "commonMistake": "Ctrl+N for a new slide - that opens a new PRESENTATION."
+    },
+    {
+      "id": "outlook-workflows",
+      "title": "Outlook Calendar & Mail Field Rules",
+      "formula": {
+        "latex": "\\text{Ctrl+Shift+A/Q/K} = \\text{Appointment / meeting / tasK}",
+        "text": "Outlook calendar shortcuts are Ctrl+Shift plus the initial of the outcome; CC informs, BCC hides."
+      },
+      "whenToUse": "Outlook shortcut and mail-field questions.",
+      "explanation": [
+        "Ctrl+Shift+A - new Appointment (Calendar folder).",
+        "Ctrl+Shift+Q - new Meeting request from ANY folder.",
+        "Ctrl+Shift+K - new Task.",
+        "To = act; CC = aware but no action needed (visible); BCC = hidden from all recipients.",
+        "Deleted mail lands in Trash / Deleted Items; Drafts hold unsent compositions."
+      ],
+      "example": {
+        "prompt": "Which shortcut schedules a meeting request from any folder?",
+        "steps": [
+          "Meeting = the Q shortcut (works anywhere in Outlook).",
+          "Ctrl+Shift+Q."
+        ],
+        "answer": "Ctrl+Shift+Q"
+      },
+      "memoryTip": "A-Q-K: Appointment, meeting(Q), tasK - only Q and K need memorising.",
+      "commonMistake": "CC for hidden recipients - hidden is BCC's job."
+    },
+    {
+      "id": "command-prompt-essentials",
+      "title": "Command Prompt Essentials",
+      "formula": {
+        "latex": "\\text{cd ..} = \\text{up 1};\\; \\text{cd../..} = \\text{up 2};\\; \\text{dir} = \\text{list}",
+        "text": "Navigation: cd moves, .. climbs, dir lists; network: ipconfig shows, ping tests."
+      },
+      "whenToUse": "Command prompt questions - about 2 per published AXIS breakdown.",
+      "explanation": [
+        "cd folder enters; cd .. up one level; cd../.. up two levels (published PYQ).",
+        "dir lists contents; cls clears the screen; exit closes the prompt.",
+        "ipconfig shows YOUR IP configuration; ping tests ANOTHER host's reachability; tracert shows the route.",
+        "copy/move/del handle files; mkdir/rmdir make/remove directories."
+      ],
+      "example": {
+        "prompt": "Which command shows your machine's IP configuration?",
+        "steps": [
+          "'Show MY config' points at the configuration display tool.",
+          "ipconfig (ping tests others, it doesn't show yours)."
+        ],
+        "answer": "ipconfig"
+      },
+      "memoryTip": "Two dots = one floor up. ipconfig = mine, ping = theirs.",
+      "commonMistake": "ping for 'show my IP' - ping probes remote hosts."
+    }
+  ],
+  "practiceProblems": {
+    "universal-shortcuts": [
+      {
+        "q": "Which shortcut OPENS an existing file?",
+        "opts": [
+          "Ctrl+O",
+          "Ctrl+N",
+          "Ctrl+S",
+          "F12"
+        ],
+        "c": 0,
+        "s": [
+          "O = Open; N = New; S = save; F12 = Save As."
+        ],
+        "a": "Ctrl+O"
+      },
+      {
+        "q": "Ctrl+W does what in any Office app or browser?",
+        "opts": [
+          "Closes the current document/tab",
+          "Opens print",
+          "Saves",
+          "Undoes"
+        ],
+        "c": 0,
+        "s": [
+          "W = close the window/tab."
+        ],
+        "a": "Closes the current document/tab"
+      },
+      {
+        "q": "Which shortcut SELECTS ALL content?",
+        "opts": [
+          "Ctrl+A",
+          "Ctrl+S",
+          "Ctrl+Shift+A",
+          "Ctrl+All"
+        ],
+        "c": 0,
+        "s": [
+          "A = All."
+        ],
+        "a": "Ctrl+A"
+      },
+      {
+        "q": "Which shortcut CUTS the selection?",
+        "opts": [
+          "Ctrl+C",
+          "Ctrl+X",
+          "Ctrl+V",
+          "Ctrl+Z"
+        ],
+        "c": 1,
+        "s": [
+          "X looks like scissors - cut removes and holds on clipboard."
+        ],
+        "a": "Ctrl+X"
+      },
+      {
+        "q": "F7 in Word launches:",
+        "opts": [
+          "Spell check",
+          "Save",
+          "Print",
+          "Find"
+        ],
+        "c": 0,
+        "s": [
+          "F7 = spelling/grammar; F12 = Save As."
+        ],
+        "a": "Spell check"
+      },
+      {
+        "q": "Ctrl+F opens:",
+        "opts": [
+          "Find/Replace",
+          "Format painter",
+          "Font dialog",
+          "Footer"
+        ],
+        "c": 0,
+        "s": [
+          "F = Find."
+        ],
+        "a": "Find/Replace"
+      },
+      {
+        "q": "Which shortcut PRINTS the document?",
+        "opts": [
+          "Ctrl+P",
+          "Ctrl+O",
+          "Ctrl+PrtSc",
+          "F4"
+        ],
+        "c": 0,
+        "s": [
+          "P = Print - universal."
+        ],
+        "a": "Ctrl+P"
+      },
+      {
+        "q": "Undo and Redo are:",
+        "opts": [
+          "Ctrl+U / Ctrl+R",
+          "Ctrl+Z / Ctrl+Y",
+          "Ctrl+X / Ctrl+C",
+          "Alt+Z / Alt+Y"
+        ],
+        "c": 1,
+        "s": [
+          "Z back, Y forward."
+        ],
+        "a": "Ctrl+Z / Ctrl+Y"
+      },
+      {
+        "q": "Ctrl+N creates:",
+        "opts": [
+          "A new file (document/workbook/presentation)",
+          "A new folder on desktop",
+          "A network",
+          "A note only"
+        ],
+        "c": 0,
+        "s": [
+          "N = New - context decides what kind."
+        ],
+        "a": "A new file"
+      },
+      {
+        "q": "Ctrl+Home in Word moves the cursor to:",
+        "opts": [
+          "The start of the document",
+          "The end",
+          "The next page",
+          "The clipboard"
+        ],
+        "c": 0,
+        "s": [
+          "Ctrl+Home = document start; Ctrl+End = end."
+        ],
+        "a": "Start of the document"
+      }
+    ],
+    "word-format-shortcuts": [
+      {
+        "q": "Ctrl+B applies:",
+        "opts": [
+          "Bold",
+          "Blue",
+          "Bullet",
+          "Border"
+        ],
+        "c": 0,
+        "s": [
+          "B = Bold; I = italic; U = underline."
+        ],
+        "a": "Bold"
+      },
+      {
+        "q": "Which shortcut RIGHT-aligns text?",
+        "opts": [
+          "Ctrl+R",
+          "Ctrl+E",
+          "Ctrl+J",
+          "Ctrl+T"
+        ],
+        "c": 0,
+        "s": [
+          "R = Right; E = cEntEr; J = Justify."
+        ],
+        "a": "Ctrl+R"
+      },
+      {
+        "q": "Which shortcut JUSTIFIES text (flush both sides)?",
+        "opts": [
+          "Ctrl+J",
+          "Ctrl+E",
+          "Ctrl+R",
+          "Ctrl+F"
+        ],
+        "c": 0,
+        "s": [
+          "J = Justify."
+        ],
+        "a": "Ctrl+J"
+      },
+      {
+        "q": "Subscript (H2O's 2) uses:",
+        "opts": [
+          "Ctrl+=",
+          "Ctrl+Shift+=",
+          "Ctrl+D",
+          "Ctrl+-"
+        ],
+        "c": 0,
+        "s": [
+          "Ctrl+= drops text below the line."
+        ],
+        "a": "Ctrl+="
+      },
+      {
+        "q": "Superscript (x squared's 2) uses:",
+        "opts": [
+          "Ctrl+=",
+          "Ctrl+Shift+=",
+          "Ctrl+U",
+          "Ctrl+^"
+        ],
+        "c": 1,
+        "s": [
+          "Shift variant raises text above the line."
+        ],
+        "a": "Ctrl+Shift+="
+      },
+      {
+        "q": "Double line spacing uses:",
+        "opts": [
+          "Ctrl+2",
+          "Ctrl+D",
+          "Ctrl+Shift+2",
+          "Alt+2"
+        ],
+        "c": 0,
+        "s": [
+          "Ctrl+1 single, Ctrl+2 double, Ctrl+5 = 1.5 lines."
+        ],
+        "a": "Ctrl+2"
+      },
+      {
+        "q": "To OUTDENT a bullet one level:",
+        "opts": [
+          "Tab",
+          "Shift+Tab",
+          "Ctrl+T",
+          "Space"
+        ],
+        "c": 1,
+        "s": [
+          "Shift+Tab moves left; Tab indents right."
+        ],
+        "a": "Shift+Tab"
+      },
+      {
+        "q": "Which shortcut moves one whole WORD right?",
+        "opts": [
+          "Ctrl+Right",
+          "Alt+Right",
+          "Shift+Right",
+          "Tab"
+        ],
+        "c": 0,
+        "s": [
+          "Ctrl+arrows hop words; Shift+arrows select."
+        ],
+        "a": "Ctrl+Right"
+      },
+      {
+        "q": "Selecting from cursor to line START uses:",
+        "opts": [
+          "Shift+Home",
+          "Ctrl+Home",
+          "Alt+Home",
+          "Home alone"
+        ],
+        "c": 0,
+        "s": [
+          "Shift extends selection; Home = line start; Ctrl+Home = document start."
+        ],
+        "a": "Shift+Home"
+      },
+      {
+        "q": "Ctrl+E aligns text:",
+        "opts": [
+          "Left",
+          "centEr",
+          "Right",
+          "Justified"
+        ],
+        "c": 1,
+        "s": [
+          "E is the only non-obvious alignment letter - cEntEr."
+        ],
+        "a": "Centre"
+      }
+    ],
+    "excel-formula-syntax": [
+      {
+        "q": "=SUM(10, 20, 30) returns:",
+        "opts": [
+          "20",
+          "30",
+          "60",
+          "10"
+        ],
+        "c": 2,
+        "s": [
+          "10+20+30 = 60."
+        ],
+        "a": "60"
+      },
+      {
+        "q": "=AVERAGE(4, 8) returns:",
+        "opts": [
+          "4",
+          "6",
+          "8",
+          "12"
+        ],
+        "c": 1,
+        "s": [
+          "(4+8)/2 = 6."
+        ],
+        "a": "6"
+      },
+      {
+        "q": "=MAX(3, 7, 5) returns:",
+        "opts": [
+          "3",
+          "5",
+          "7",
+          "15"
+        ],
+        "c": 2,
+        "s": [
+          "MAX picks the largest."
+        ],
+        "a": "7"
+      },
+      {
+        "q": "=MIN(9, 2, 6) returns:",
+        "opts": [
+          "9",
+          "6",
+          "2",
+          "17"
+        ],
+        "c": 2,
+        "s": [
+          "MIN picks the smallest."
+        ],
+        "a": "2"
+      },
+      {
+        "q": "=COUNT(1, \"x\", 3, \"y\", 5) returns:",
+        "opts": [
+          "5",
+          "3",
+          "2",
+          "1"
+        ],
+        "c": 1,
+        "s": [
+          "COUNT counts numbers only: 1, 3, 5 -> 3."
+        ],
+        "a": "3"
+      },
+      {
+        "q": "Which operator builds an inclusive cell range?",
+        "opts": [
+          "+",
+          "&",
+          ":",
+          "#"
+        ],
+        "c": 2,
+        "s": [
+          "Colon = range (B8:B10); comma = union."
+        ],
+        "a": ":"
+      },
+      {
+        "q": "C5:C10 means:",
+        "opts": [
+          "Cells C5 and C10 only",
+          "All cells C5 through C10",
+          "Product of C5 and C10",
+          "Column C only"
+        ],
+        "c": 1,
+        "s": [
+          "Range operator spans everything between the endpoints inclusive."
+        ],
+        "a": "All cells C5 through C10"
+      },
+      {
+        "q": "=CONCATENATE(\"Sun\", \"day\") returns:",
+        "opts": [
+          "Sun day",
+          "Sunday",
+          "Sun,day",
+          "DAY SUN"
+        ],
+        "c": 1,
+        "s": [
+          "Arguments join verbatim: Sun + day = Sunday."
+        ],
+        "a": "Sunday"
+      },
+      {
+        "q": "$A$1 copied to another cell:",
+        "opts": [
+          "Shifts rows and columns",
+          "Stays pointing at A1",
+          "Becomes A2",
+          "Deletes"
+        ],
+        "c": 1,
+        "s": [
+          "Dollar signs = absolute reference - frozen on copy."
+        ],
+        "a": "Stays pointing at A1"
+      },
+      {
+        "q": "Ctrl+PgDn in Excel moves to:",
+        "opts": [
+          "Previous worksheet",
+          "NEXT worksheet",
+          "Cell A1",
+          "Print preview"
+        ],
+        "c": 1,
+        "s": [
+          "PgUp = previous, PgDn = next sheet."
+        ],
+        "a": "Next worksheet"
+      }
+    ],
+    "ppt-show-control": [
+      {
+        "q": "Which shortcut inserts a NEW SLIDE?",
+        "opts": [
+          "Ctrl+N",
+          "Ctrl+M",
+          "Ctrl+S",
+          "Ctrl+D"
+        ],
+        "c": 1,
+        "s": [
+          "Ctrl+M = new slide; Ctrl+N = new presentation."
+        ],
+        "a": "Ctrl+M"
+      },
+      {
+        "q": "Esc during a slideshow:",
+        "opts": [
+          "Ends the show",
+          "Starts the show",
+          "Goes to slide 1",
+          "Opens notes"
+        ],
+        "c": 0,
+        "s": [
+          "Esc exits; F5 starts."
+        ],
+        "a": "Ends the show"
+      },
+      {
+        "q": "Shift+F5 starts the show:",
+        "opts": [
+          "From the beginning",
+          "From the CURRENT slide",
+          "In reading view",
+          "Muted"
+        ],
+        "c": 1,
+        "s": [
+          "F5 from start; Shift+F5 from current."
+        ],
+        "a": "From the current slide"
+      },
+      {
+        "q": "Slide Sorter view is used to:",
+        "opts": [
+          "Edit text in slides",
+          "Reorder slides as thumbnails",
+          "Print handouts",
+          "Record audio"
+        ],
+        "c": 1,
+        "s": [
+          "Thumbnails make drag-reordering easy."
+        ],
+        "a": "Reorder slides as thumbnails"
+      },
+      {
+        "q": "Ctrl+K in PowerPoint inserts:",
+        "opts": [
+          "A slide",
+          "A hyperlink",
+          "A table",
+          "A chart"
+        ],
+        "c": 1,
+        "s": [
+          "Ctrl+K = hyperlink - navigates between slides/files/web."
+        ],
+        "a": "A hyperlink"
+      },
+      {
+        "q": "Pressing B during a show gives a:",
+        "opts": [
+          "Black screen",
+          "White screen",
+          "Blue screen",
+          "Backup dialog"
+        ],
+        "c": 0,
+        "s": [
+          "B = black; W = white."
+        ],
+        "a": "Black screen"
+      },
+      {
+        "q": "Which view is PowerPoint's default editing view?",
+        "opts": [
+          "Normal",
+          "Slide Sorter",
+          "Reading",
+          "Outline"
+        ],
+        "c": 0,
+        "s": [
+          "Normal = edit one slide with notes pane."
+        ],
+        "a": "Normal"
+      },
+      {
+        "q": "PowerPoint's default file extension is:",
+        "opts": [
+          ".pptx",
+          ".ppt",
+          ".ppx",
+          ".slx"
+        ],
+        "c": 0,
+        "s": [
+          ".pptx (Open XML); .ppt is the legacy format."
+        ],
+        "a": ".pptx"
+      },
+      {
+        "q": "Notes for the presenter are typed in:",
+        "opts": [
+          "The Notes pane (Normal view)",
+          "The slide footer",
+          "Slide Sorter",
+          "The title box"
+        ],
+        "c": 0,
+        "s": [
+          "Notes pane sits under the slide in Normal view; visible to presenter only."
+        ],
+        "a": "The Notes pane"
+      },
+      {
+        "q": "Which key ends the slideshow AND is universal for closing dialogs?",
+        "opts": [
+          "Esc",
+          "F1",
+          "Tab",
+          "Insert"
+        ],
+        "c": 0,
+        "s": [
+          "Esc cancels/exits almost anything."
+        ],
+        "a": "Esc"
+      }
+    ],
+    "outlook-workflows": [
+      {
+        "q": "Ctrl+Shift+A in Outlook creates a new:",
+        "opts": [
+          "Appointment",
+          "Meeting",
+          "Task",
+          "Mail"
+        ],
+        "c": 0,
+        "s": [
+          "A = Appointment (Calendar folder or right-click a time block)."
+        ],
+        "a": "Appointment"
+      },
+      {
+        "q": "Ctrl+Shift+Q creates a meeting request:",
+        "opts": [
+          "Only in the Calendar folder",
+          "From ANY folder",
+          "Only in Mail",
+          "Only offline"
+        ],
+        "c": 1,
+        "s": [
+          "Syllabus: 'from any folder in Outlook press Ctrl+Shift+Q'."
+        ],
+        "a": "From any folder"
+      },
+      {
+        "q": "Ctrl+Shift+K creates a new:",
+        "opts": [
+          "Kitchen timer",
+          "Task",
+          "Keyboard shortcut",
+          "Knowledge base"
+        ],
+        "c": 1,
+        "s": [
+          "K = tasK."
+        ],
+        "a": "Task"
+      },
+      {
+        "q": "The To field holds recipients who:",
+        "opts": [
+          "Must act/read",
+          "Are hidden",
+          "Get auto-archived",
+          "Are optional observers"
+        ],
+        "c": 0,
+        "s": [
+          "To = action expected; CC = awareness."
+        ],
+        "a": "Must act/read"
+      },
+      {
+        "q": "BCC recipients:",
+        "opts": [
+          "Appear to everyone",
+          "Are hidden from all recipients",
+          "Must reply",
+          "Get flagged"
+        ],
+        "c": 1,
+        "s": [
+          "B = blind - invisible to everyone else."
+        ],
+        "a": "Are hidden from all recipients"
+      },
+      {
+        "q": "Unsent, half-written mail sits in:",
+        "opts": [
+          "Drafts",
+          "Trash",
+          "Spam",
+          "Sent"
+        ],
+        "c": 0,
+        "s": [
+          "Drafts hold compositions; Trash holds deleted mail."
+        ],
+        "a": "Drafts"
+      },
+      {
+        "q": "Mail flagged as suspicious lands in:",
+        "opts": [
+          "Inbox",
+          "Spam/Junk",
+          "Drafts",
+          "Outbox"
+        ],
+        "c": 1,
+        "s": [
+          "Spam/Junk = filtered suspicious mail."
+        ],
+        "a": "Spam/Junk"
+      },
+      {
+        "q": "Ctrl+N in Outlook creates:",
+        "opts": [
+          "A context-dependent new item (mail/appointment/contact/task)",
+          "Only notes",
+          "A new profile",
+          "Nothing"
+        ],
+        "c": 0,
+        "s": [
+          "Ctrl+N respects the folder you're in."
+        ],
+        "a": "A context-dependent new item"
+      },
+      {
+        "q": "Ctrl+O in Outlook:",
+        "opts": [
+          "Opens the selected item",
+          "Orders mail",
+          "Offers a meeting",
+          "Outputs mail"
+        ],
+        "c": 0,
+        "s": [
+          "O = Open - universal."
+        ],
+        "a": "Opens the selected item"
+      },
+      {
+        "q": "Which folder is the safety net for accidentally deleted mail?",
+        "opts": [
+          "Trash / Deleted Items",
+          "Outbox",
+          "RSS Feeds",
+          "Journal"
+        ],
+        "c": 0,
+        "s": [
+          "Published PYQ: deleted mail is recoverable from Trash/Deleted Items."
+        ],
+        "a": "Trash / Deleted Items"
+      }
+    ],
+    "command-prompt-essentials": [
+      {
+        "q": "cd .. moves:",
+        "opts": [
+          "Up one level",
+          "Up two levels",
+          "Into a folder",
+          "To C:\\"
+        ],
+        "c": 0,
+        "s": [
+          "One '..' = one floor up."
+        ],
+        "a": "Up one level"
+      },
+      {
+        "q": "Which climbs TWO levels?",
+        "opts": [
+          "cd../..",
+          "cd ..",
+          "cd//",
+          "dir.."
+        ],
+        "c": 0,
+        "s": [
+          "Two '..' climbs = two levels (published PYQ)."
+        ],
+        "a": "cd../.."
+      },
+      {
+        "q": "dir does what?",
+        "opts": [
+          "Lists directory contents",
+          "Deletes a directory",
+          "Renames files",
+          "Dials a modem"
+        ],
+        "c": 0,
+        "s": [
+          "dir = directory listing; del deletes files."
+        ],
+        "a": "Lists directory contents"
+      },
+      {
+        "q": "cls:",
+        "opts": [
+          "Clears the screen",
+          "Closes the prompt",
+          "Lists classes",
+          "Copies files"
+        ],
+        "c": 0,
+        "s": [
+          "cls = clear screen; exit closes."
+        ],
+        "a": "Clears the screen"
+      },
+      {
+        "q": "ping google.com:",
+        "opts": [
+          "Shows your own IP",
+          "Tests reachability of google.com",
+          "Deletes cookies",
+          "Prints the page"
+        ],
+        "c": 1,
+        "s": [
+          "ping probes a REMOTE host; ipconfig shows yours."
+        ],
+        "a": "Tests reachability of google.com"
+      },
+      {
+        "q": "ipconfig displays:",
+        "opts": [
+          "Your machine's IP configuration",
+          "Google's servers",
+          "The routing hop list",
+          "Directory contents"
+        ],
+        "c": 0,
+        "s": [
+          "ipconfig = MY config (use /all for details)."
+        ],
+        "a": "Your machine's IP configuration"
+      },
+      {
+        "q": "tracert shows:",
+        "opts": [
+          "The hop-by-hop route to a host",
+          "Active tasks",
+          "Open ports only",
+          "Disk traces"
+        ],
+        "c": 0,
+        "s": [
+          "tracert = trace route, hop by hop."
+        ],
+        "a": "The hop-by-hop route to a host"
+      },
+      {
+        "q": "Which command makes a new directory?",
+        "opts": [
+          "mkdir",
+          "makedir",
+          "new-dir",
+          "create"
+        ],
+        "c": 0,
+        "s": [
+          "mkdir (md) makes; rmdir (rd) removes."
+        ],
+        "a": "mkdir"
+      },
+      {
+        "q": "Windows paths separate folders using:",
+        "opts": [
+          "/ (forward slash)",
+          "\\ (backslash)",
+          "| (pipe)",
+          "~ (tilde)"
+        ],
+        "c": 1,
+        "s": [
+          "Windows = backslash; URLs use forward slash - the PYQ distractor swaps them."
+        ],
+        "a": "\\ (backslash)"
+      },
+      {
+        "q": "Which command deletes a FILE?",
+        "opts": [
+          "del",
+          "dlt",
+          "drop",
+          "cut"
+        ],
+        "c": 0,
+        "s": [
+          "del (erase) removes files."
+        ],
+        "a": "del"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "id": 1,
+      "q": "Which shortcut saves the current document in Word, Excel and PowerPoint alike?",
+      "opts": [
+        "Ctrl+S",
+        "Ctrl+P",
+        "Ctrl+N",
+        "F7"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "universal-shortcuts",
+      "exp": [
+        "Ctrl+S = save across every Office app.",
+        "F12 is Save As; Ctrl+P prints; Ctrl+N creates a new file."
+      ]
+    },
+    {
+      "id": 2,
+      "q": "Which key opens the 'Save As' dialog?",
+      "opts": [
+        "F12",
+        "F5",
+        "F2",
+        "F7"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "universal-shortcuts",
+      "exp": [
+        "F12 = Save As in Word, Excel and PowerPoint."
+      ]
+    },
+    {
+      "id": 3,
+      "q": "Ctrl+Z and Ctrl+Y perform:",
+      "opts": [
+        "Zoom in / Zoom out",
+        "Undo / Redo",
+        "Cut / Copy",
+        "Sleep / Restart"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "universal-shortcuts",
+      "exp": [
+        "Z steps BACK (undo), Y steps FORWARD (redo) - universal in Office."
+      ]
+    },
+    {
+      "id": 4,
+      "q": "Which shortcut copies the selection?",
+      "opts": [
+        "Ctrl+X",
+        "Ctrl+C",
+        "Ctrl+V",
+        "Ctrl+P"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "universal-shortcuts",
+      "exp": [
+        "C = Copy (original stays), X = Cut (original removed), V = Paste."
+      ]
+    },
+    {
+      "id": 5,
+      "q": "In MS Word, which shortcut UNDERLINES the selected text?",
+      "opts": [
+        "Ctrl+B",
+        "Ctrl+I",
+        "Ctrl+U",
+        "Ctrl+S"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "word-shortcuts",
+      "source": "placementpreparation.io Accenture PYQ set",
+      "exp": [
+        "B = Bold, I = Italic, U = Underline - the formatting trio."
+      ]
+    },
+    {
+      "id": 6,
+      "q": "Which shortcut CENTRE-aligns the selected text in Word?",
+      "opts": [
+        "Ctrl+E",
+        "Ctrl+R",
+        "Ctrl+L",
+        "Ctrl+J"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "word-shortcuts",
+      "source": "placementpreparation.io Accenture PYQ set",
+      "exp": [
+        "Ctrl+E = cEntEr; L = left, R = right, J = justify."
+      ]
+    },
+    {
+      "id": 7,
+      "q": "Which shortcut applies SUBSCRIPT formatting in Word?",
+      "opts": [
+        "Ctrl+=",
+        "Ctrl+Shift+=",
+        "Ctrl+U",
+        "Ctrl+D"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "word-shortcuts",
+      "source": "placementpreparation.io Accenture PYQ set",
+      "exp": [
+        "Ctrl+= pushes text DOWN (subscript); adding Shift (Ctrl+Shift+=) raises it (superscript)."
+      ]
+    },
+    {
+      "id": 8,
+      "q": "Which shortcut applies SUPERSCRIPT formatting?",
+      "opts": [
+        "Ctrl+=",
+        "Ctrl+Shift+=",
+        "Ctrl+U",
+        "Ctrl+Shift+S"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "word-shortcuts",
+      "exp": [
+        "Same = key as subscript but with Shift: Ctrl+Shift+= raises the text."
+      ]
+    },
+    {
+      "id": 9,
+      "q": "Which MS Word view shows the document's contents as bulleted points (heading structure)?",
+      "opts": [
+        "Print Layout",
+        "Web Layout",
+        "Outline",
+        "Draft"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "word-views",
+      "source": "Accenture MS Office PYQ set",
+      "exp": [
+        "Outline view renders headings as a bulleted structure you can drag to reorganise.",
+        "Print Layout is the default page view."
+      ]
+    },
+    {
+      "id": 10,
+      "q": "The blank space outside the printing area on a page is called:",
+      "opts": [
+        "Header",
+        "Footer",
+        "Margin",
+        "Clip art"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "word-views",
+      "source": "Accenture MS Office PYQ set",
+      "exp": [
+        "Margins frame the printable area; headers/footers live inside the page, at its edges."
+      ]
+    },
+    {
+      "id": 11,
+      "q": "Which key held down lets you SELECT a word or phrase with the mouse/arrows in Word?",
+      "opts": [
+        "Alt",
+        "Shift",
+        "Ctrl",
+        "Tab"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "word-shortcuts",
+      "source": "TalentBattle Accenture PYQ set",
+      "exp": [
+        "Shift EXTENDS the selection from the anchor point; Ctrl selects whole words per click."
+      ]
+    },
+    {
+      "id": 12,
+      "q": "In MS PowerPoint, Ctrl+M:",
+      "opts": [
+        "Opens a new blank presentation",
+        "Applies bold",
+        "Inserts a new slide",
+        "Centres the selection"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "ppt-shortcuts",
+      "source": "Accenture MS Office PYQ set (Testbook)",
+      "exp": [
+        "Ctrl+M inserts a NEW SLIDE.",
+        "Ctrl+N would open a whole new presentation."
+      ]
+    },
+    {
+      "id": 13,
+      "q": "Which key starts a slideshow from the BEGINNING in PowerPoint?",
+      "opts": [
+        "F2",
+        "F5",
+        "F12",
+        "Esc"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ppt-shortcuts",
+      "exp": [
+        "F5 = show from the start; Shift+F5 = from the current slide; Esc ends it."
+      ]
+    },
+    {
+      "id": 14,
+      "q": "Which feature navigates from one slide to another slide in the same or another presentation?",
+      "opts": [
+        "Footer",
+        "Header",
+        "Hyperlink",
+        "Attachment"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "ppt-shortcuts",
+      "source": "TalentBattle Accenture PYQ set",
+      "exp": [
+        "Hyperlinks (Ctrl+K) jump between slides within or across presentations."
+      ]
+    },
+    {
+      "id": 15,
+      "q": "To enter a formula in an Excel cell, what must come FIRST?",
+      "opts": [
+        "@",
+        "=",
+        "&",
+        "#"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "excel-formulas",
+      "source": "Accenture MS Office PYQ set",
+      "exp": [
+        "Every Excel formula starts with '='.",
+        "@ heads structured references in tables, not basic formulas."
+      ]
+    },
+    {
+      "id": 16,
+      "q": "In Excel, the notation B8:B10 indicates:",
+      "opts": [
+        "All cells from B8 to B10",
+        "The product of B8 and B10",
+        "Only cells B8 and B10",
+        "Cell B8 only"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "excel-formulas",
+      "source": "TalentBattle Accenture PYQ set",
+      "exp": [
+        "The colon is the RANGE operator: every cell B8 through B10 inclusive.",
+        "The 'product' option is the classic distractor."
+      ]
+    },
+    {
+      "id": 17,
+      "q": "What does =AVERAGE(5, 10, 15) return?",
+      "opts": [
+        "5",
+        "10",
+        "15",
+        "30"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "excel-formulas",
+      "source": "placementpreparation.io Accenture PYQ set",
+      "exp": [
+        "AVERAGE = (5+10+15)/3 = 30/3 = 10."
+      ]
+    },
+    {
+      "id": 18,
+      "q": "What does =CONCATENATE(\"Good\", \" \", \"Morning\") return?",
+      "opts": [
+        "GoodMorning",
+        "Good Morning",
+        "Good, Morning",
+        "Morning Good"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "excel-formulas",
+      "source": "placementpreparation.io Accenture PYQ set",
+      "exp": [
+        "CONCATENATE joins arguments verbatim: 'Good' + ' ' + 'Morning' = 'Good Morning' - the middle space argument matters."
+      ]
+    },
+    {
+      "id": 19,
+      "q": "Which shortcut moves to the PREVIOUS worksheet in Excel?",
+      "opts": [
+        "Ctrl+PgUp",
+        "Ctrl+PgDn",
+        "Alt+PgUp",
+        "Shift+Tab"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "excel-formulas",
+      "source": "Accenture MS Office PYQ set",
+      "exp": [
+        "Ctrl+PgUp = previous sheet; Ctrl+PgDn = next sheet."
+      ]
+    },
+    {
+      "id": 20,
+      "q": "The CC field in an email is used to:",
+      "opts": [
+        "Hide recipients from everyone",
+        "Include recipients who should be aware but need not act",
+        "Attach files",
+        "Mark the mail urgent"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "outlook-browser",
+      "source": "placementpreparation.io Accenture PYQ set",
+      "exp": [
+        "CC (carbon copy) = visibility without action expectation.",
+        "Hiding recipients is BCC's job."
+      ]
+    },
+    {
+      "id": 21,
+      "q": "A mail deleted by accident is recoverable from which folder?",
+      "opts": [
+        "Draft",
+        "Spam",
+        "Inbox",
+        "Trash"
+      ],
+      "c": 3,
+      "d": "easy",
+      "t": "outlook-browser",
+      "source": "TalentBattle Accenture PYQ set",
+      "exp": [
+        "Deleted mail lands in Trash / Deleted Items.",
+        "Draft holds unsent compositions; Spam holds filtered mail."
+      ]
+    },
+    {
+      "id": 22,
+      "q": "Which shortcut closes a browser TAB?",
+      "opts": [
+        "Ctrl+T",
+        "Ctrl+A",
+        "Ctrl+W",
+        "Ctrl+X"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "outlook-browser",
+      "source": "TalentBattle Accenture PYQ set",
+      "exp": [
+        "Ctrl+W closes the current tab; Ctrl+T OPENS a new tab."
+      ]
+    },
+    {
+      "id": 23,
+      "q": "Which command shows your computer's IP configuration?",
+      "opts": [
+        "ping",
+        "ipconfig",
+        "tracert",
+        "dir"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "command-prompt",
+      "exp": [
+        "ipconfig displays the local IP setup; ping TESTS another host."
+      ]
+    },
+    {
+      "id": 24,
+      "q": "Which command lists the contents of the current directory?",
+      "opts": [
+        "cls",
+        "cd",
+        "dir",
+        "exit"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "command-prompt",
+      "exp": [
+        "dir lists; cls clears the screen; cd changes directory."
+      ]
+    },
+    {
+      "id": 25,
+      "q": "Ctrl+Shift+= (with Shift) applies:",
+      "opts": [
+        "Subscript",
+        "Superscript",
+        "Double underline",
+        "Small caps"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "word-shortcuts",
+      "exp": [
+        "Ctrl+= is subscript; the Shift variant Ctrl+Shift+= is superscript - same key, opposite direction."
+      ]
+    },
+    {
+      "id": 26,
+      "q": "Cursor is before 'I' in the line 'Introduction'. Which option moves this line ONE LEVEL LEFT?",
+      "opts": [
+        "Tab",
+        "Shift+Tab",
+        "Alt+Shift+Left",
+        "Alt+Tab"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "word-shortcuts",
+      "source": "placementpreparation.io Accenture PYQ set",
+      "exp": [
+        "Shift+Tab OUTDENTS (left); plain Tab indents right; Alt+Tab switches applications."
+      ]
+    },
+    {
+      "id": 27,
+      "q": "Ctrl+1 and Ctrl+2 control:",
+      "opts": [
+        "Bold levels",
+        "Single and double line spacing",
+        "Margins",
+        "Font size"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "word-shortcuts",
+      "exp": [
+        "Ctrl+1 = single spacing; Ctrl+2 = double spacing; Ctrl+5 = 1.5 lines."
+      ]
+    },
+    {
+      "id": 28,
+      "q": "Which Word view is the DEFAULT editing view showing page boundaries?",
+      "opts": [
+        "Draft",
+        "Outline",
+        "Print Layout",
+        "Web Layout"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "word-views",
+      "exp": [
+        "Print Layout is default - it shows pages, margins, headers exactly as printed."
+      ]
+    },
+    {
+      "id": 29,
+      "q": "Which Word view hides images and page furniture for fast text editing?",
+      "opts": [
+        "Outline",
+        "Draft",
+        "Print Layout",
+        "Reading"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "word-views",
+      "exp": [
+        "Draft strips down to text for speed.",
+        "Outline shows the heading structure."
+      ]
+    },
+    {
+      "id": 30,
+      "q": "In PowerPoint, which view shows slide THUMBNAILS for easy reordering?",
+      "opts": [
+        "Normal",
+        "Slide Sorter",
+        "Reading",
+        "Notes"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "ppt-views",
+      "exp": [
+        "Slide Sorter lays out all slides as thumbnails - drag to reorder."
+      ]
+    },
+    {
+      "id": 31,
+      "q": "Shift+F5 in PowerPoint:",
+      "opts": [
+        "Starts the show from the beginning",
+        "Starts the show from the CURRENT slide",
+        "Ends the show",
+        "Opens the sorter"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "ppt-shortcuts",
+      "exp": [
+        "F5 = from beginning; Shift+F5 = from the slide you're on."
+      ]
+    },
+    {
+      "id": 32,
+      "q": "During a slideshow, pressing B shows:",
+      "opts": [
+        "A blue screen",
+        "A black screen",
+        "The first slide",
+        "Notes"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "ppt-shortcuts",
+      "exp": [
+        "B blanks to BLACK; W blanks to WHITE - handy for pauses."
+      ]
+    },
+    {
+      "id": 33,
+      "q": "=SUM(2, 3, \"5\") in Excel returns:",
+      "opts": [
+        "10",
+        "5",
+        "Error",
+        "2"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "excel-formulas",
+      "exp": [
+        "SUM ignores text arguments: 2+3 = 5. Text like \"5\" is not coerced by SUM."
+      ]
+    },
+    {
+      "id": 34,
+      "q": "=COUNT(1, 2, \"abc\", 4) returns:",
+      "opts": [
+        "4",
+        "3",
+        "2",
+        "1"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "excel-formulas",
+      "exp": [
+        "COUNT counts NUMERIC values only: 1, 2 and 4 -> 3; \"abc\" is skipped."
+      ]
+    },
+    {
+      "id": 35,
+      "q": "=MAX(4, 9, 2) returns:",
+      "opts": [
+        "4",
+        "9",
+        "2",
+        "15"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "excel-formulas",
+      "exp": [
+        "MAX returns the largest argument: 9."
+      ]
+    },
+    {
+      "id": 36,
+      "q": "$B$8 in Excel is:",
+      "opts": [
+        "A relative reference",
+        "An absolute reference that does not shift when copied",
+        "A range",
+        "A comment"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "excel-formulas",
+      "exp": [
+        "Dollar signs lock the column AND row - absolute reference."
+      ]
+    },
+    {
+      "id": 37,
+      "q": "Ctrl+Home in Excel jumps to:",
+      "opts": [
+        "The last used cell",
+        "Cell A1",
+        "The next sheet",
+        "The formula bar"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "excel-formulas",
+      "exp": [
+        "Ctrl+Home = A1; Ctrl+End = last used cell."
+      ]
+    },
+    {
+      "id": 38,
+      "q": "In Outlook, Ctrl+Shift+A creates a new:",
+      "opts": [
+        "Meeting request",
+        "Appointment",
+        "Task",
+        "Contact list"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "outlook-shortcuts",
+      "source": "PrepInsta AXIS MS Office syllabus",
+      "exp": [
+        "Ctrl+Shift+A = Appointment (Calendar folder; or right-click a time block)."
+      ]
+    },
+    {
+      "id": 39,
+      "q": "In Outlook, Ctrl+Shift+K creates a new:",
+      "opts": [
+        "Meeting",
+        "Appointment",
+        "Task",
+        "Note"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "outlook-shortcuts",
+      "source": "PrepInsta AXIS MS Office syllabus",
+      "exp": [
+        "Ctrl+Shift+K = tasK - the K mnemonic."
+      ]
+    },
+    {
+      "id": 40,
+      "q": "In Outlook, Ctrl+Shift+Q (works from any folder) creates a:",
+      "opts": [
+        "New task",
+        "New meeting request",
+        "New contact",
+        "New note"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "outlook-shortcuts",
+      "source": "PrepInsta AXIS MS Office syllabus",
+      "exp": [
+        "Ctrl+Shift+Q schedules a meeting from ANY folder - the syllabus' exact phrasing."
+      ]
+    },
+    {
+      "id": 41,
+      "q": "BCC recipients are:",
+      "opts": [
+        "Visible to all",
+        "Hidden from all other recipients",
+        "Required to reply",
+        "Automatically CC'd"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "outlook-browser",
+      "exp": [
+        "Blind carbon copy hides the BCC list from everyone - privacy for mass mails."
+      ]
+    },
+    {
+      "id": 42,
+      "q": "Ctrl+Shift+T in a browser:",
+      "opts": [
+        "Opens a new tab",
+        "Reopens the last closed tab",
+        "Closes the window",
+        "Toggles themes"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "outlook-browser",
+      "exp": [
+        "Ctrl+Shift+T resurrects the last closed tab - a lifesaver after Ctrl+W."
+      ]
+    },
+    {
+      "id": 43,
+      "q": "Ctrl+D in a browser:",
+      "opts": [
+        "Downloads page",
+        "Bookmarks the page",
+        "Deletes history",
+        "Duplicates tab"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "outlook-browser",
+      "exp": [
+        "Ctrl+D bookmarks the current page; Ctrl+J opens downloads."
+      ]
+    },
+    {
+      "id": 44,
+      "q": "Which command moves UP TWO directory levels in the command prompt?",
+      "opts": [
+        "cd../..",
+        "cd ..",
+        "dir /w",
+        "up 2"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "command-prompt",
+      "source": "TalentBattle Accenture PYQ set",
+      "exp": [
+        "Each '..' climbs one level; two climbs = cd../.. - the published PYQ answer."
+      ]
+    },
+    {
+      "id": 45,
+      "q": "Which command tests whether another host is reachable?",
+      "opts": [
+        "ipconfig",
+        "ping",
+        "cls",
+        "cd"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "command-prompt",
+      "exp": [
+        "ping probes a remote host for reachability/latency; ipconfig only shows YOUR config."
+      ]
+    },
+    {
+      "id": 46,
+      "q": "Which command shows the hop-by-hop route to a host?",
+      "opts": [
+        "ping",
+        "tracert",
+        "ipconfig /all",
+        "net start"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "command-prompt",
+      "exp": [
+        "tracert traces each router hop; ping only confirms arrival."
+      ]
+    },
+    {
+      "id": 47,
+      "q": "Which command DELETES a file from the command prompt?",
+      "opts": [
+        "del",
+        "rm-rf only",
+        "erase-only",
+        "remove"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "command-prompt",
+      "exp": [
+        "del (erase) removes files; rmdir removes directories."
+      ]
+    },
+    {
+      "id": 48,
+      "q": "Starting with Microsoft Office 2003, Photo Editor was renamed to:",
+      "opts": [
+        "Picture Manager",
+        "Paint Editor",
+        "Photo Viewer",
+        "Manager"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "office-trivia",
+      "source": "TalentBattle Accenture PYQ set",
+      "exp": [
+        "Office 2003 renamed Photo Editor to Microsoft Office Picture Manager - a trivia PYQ."
+      ]
+    },
+    {
+      "id": 49,
+      "q": "Which is Microsoft Works' relationship to the Microsoft Office suite?",
+      "opts": [
+        "It is a core part of Office",
+        "It is NOT part of the Office suite",
+        "It replaced Office in 2003",
+        "It is Office's cloud version"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "office-trivia",
+      "source": "TalentBattle Accenture PYQ set",
+      "exp": [
+        "Microsoft Works was a separate consumer suite - never a component of Office."
+      ]
+    },
+    {
+      "id": 50,
+      "q": "A feature of MS Office that saves the document automatically after certain intervals is:",
+      "opts": [
+        "AutoRecover/AutoSave",
+        "FrontPage",
+        "Explorer",
+        "Web Page"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "office-trivia",
+      "source": "TalentBattle Accenture PYQ set (as published)",
+      "exp": [
+        "AutoSave/AutoRecover periodically saves work - the published answer keys this feature against FrontPage/Explorer distractors."
+      ]
+    },
+    {
+      "id": 51,
+      "q": "Which Excel formula returns 'GoodMorning' (no space)?",
+      "opts": [
+        "=CONCATENATE(\"Good\", \" \", \"Morning\")",
+        "=CONCATENATE(\"Good\", \"Morning\")",
+        "=Good & \" \" & Morning",
+        "=JOIN(Good, Morning)"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "excel-formulas",
+      "exp": [
+        "Dropping the space argument glues the words: 'GoodMorning'.",
+        "Option C is invalid - text literals need quotes."
+      ]
+    },
+    {
+      "id": 52,
+      "q": "=AVERAGE(10, 20, 30, 40) equals:",
+      "opts": [
+        "20",
+        "25",
+        "30",
+        "100"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "excel-formulas",
+      "exp": [
+        "(10+20+30+40)/4 = 100/4 = 25."
+      ]
+    },
+    {
+      "id": 53,
+      "q": "Which shortcut JUMPS between slide shows as a live hyperlink target (insert hyperlink dialog)?",
+      "opts": [
+        "Ctrl+K",
+        "Ctrl+H",
+        "Ctrl+L",
+        "Ctrl+J"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "ppt-shortcuts",
+      "exp": [
+        "Ctrl+K inserts the hyperlink that navigates between slides/files/web - the published PYQ's 'Hyperlink' feature."
+      ]
+    },
+    {
+      "id": 54,
+      "q": "In Excel, =CONCATENATE(\"A\",\"-\",\"B\") returns:",
+      "opts": [
+        "A-B",
+        "AB",
+        "A B",
+        "B-A"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "excel-formulas",
+      "exp": [
+        "Arguments join verbatim including the \"-\" literal: A-B."
+      ]
+    },
+    {
+      "id": 55,
+      "q": "Which pair of Word shortcuts moves one WHOLE WORD left/right?",
+      "opts": [
+        "Ctrl+Left / Ctrl+Right",
+        "Alt+Left / Alt+Right",
+        "Shift+Left / Shift+Right",
+        "Tab / Shift+Tab"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "word-shortcuts",
+      "exp": [
+        "Ctrl+arrows hop word-by-word; Shift+arrows select character-by-character."
+      ]
+    },
+    {
+      "id": 56,
+      "q": "Which statement about Office file extensions is CORRECT?",
+      "opts": [
+        "Word = .xlsx, Excel = .docx",
+        "Word = .docx, Excel = .xlsx, PowerPoint = .pptx",
+        "All Office files use .odp",
+        "PowerPoint = .ppl"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "office-trivia",
+      "exp": [
+        "Modern (Open XML) formats: .docx / .xlsx / .pptx - legacy were .doc/.xls/.ppt."
+      ]
+    },
+    {
+      "id": 57,
+      "q": "A colleague must REVIEW but never EDIT; another hidden reviewer must stay invisible. Which field pair?",
+      "opts": [
+        "To for reviewer, BCC for hidden",
+        "CC for reviewer, CC for hidden",
+        "BCC for reviewer, To for hidden",
+        "To for both"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "outlook-browser",
+      "exp": [
+        "Reviewer-awareness = CC/To; invisibility = BCC - only option A pairs them correctly."
+      ]
+    },
+    {
+      "id": 58,
+      "q": "Which command-prompt sequence lists contents, then clears the screen?",
+      "opts": [
+        "dir then cls",
+        "cls then dir",
+        "cd then exit",
+        "ipconfig then ping"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "command-prompt",
+      "exp": [
+        "dir lists; cls clears - order matters for the stated sequence."
+      ]
+    },
+    {
+      "id": 59,
+      "q": "Which Excel shortcut EDITS the active cell in place?",
+      "opts": [
+        "F2",
+        "F4",
+        "F12",
+        "Ctrl+E"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "excel-formulas",
+      "exp": [
+        "F2 enters edit mode at the cell; F4 toggles absolute references; F12 = Save As."
+      ]
+    },
+    {
+      "id": 60,
+      "q": "Which Outlook shortcut pair is CORRECT?",
+      "opts": [
+        "Ctrl+Shift+Q task; Ctrl+Shift+K meeting",
+        "Ctrl+Shift+Q meeting; Ctrl+Shift+K task",
+        "Ctrl+Shift+A meeting; Ctrl+Shift+Q task",
+        "Ctrl+Shift+K appointment; Ctrl+Shift+A task"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "outlook-shortcuts",
+      "exp": [
+        "A = Appointment, Q = meeting, K = tasK - option B alone matches."
+      ]
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "axis-msoffice-intel"
+    },
+    {
+      "type": "concept",
+      "sectionId": "word-powerpoint-essentials"
+    },
+    {
+      "type": "concept",
+      "sectionId": "excel-essentials"
+    },
+    {
+      "type": "concept",
+      "sectionId": "outlook-browser-essentials"
+    },
+    {
+      "type": "concept",
+      "sectionId": "shortcuts-command-prompt"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}

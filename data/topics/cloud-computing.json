@@ -1,0 +1,2397 @@
+{
+  "id": "cloud-computing",
+  "title": "Cloud Computing (IaaS/PaaS/SaaS)",
+  "icon": "Cl",
+  "category": "networking-cloud",
+  "subtitle": "AXIS deep-dive: NIST traits, service & deployment models, providers, cloud vs data centre, virtualization",
+  "days": "3",
+  "color": "#0891B2",
+  "subtopics": [
+    "NIST Traits & Cloud Basics",
+    "IaaS/PaaS/SaaS Ladder",
+    "Deployment Models",
+    "Providers & PYQ Facts",
+    "Cloud vs Data Centre",
+    "Virtualization & Containers"
+  ],
+  "estimatedHours": 6,
+  "readingSections": [
+    {
+      "id": "what-is-cloud",
+      "title": "What Is Cloud Computing?",
+      "type": "concept",
+      "quickSummary": "Renting computing over the Internet on a pay-per-use basis: five NIST traits, provider-run hardware, instant scalability.",
+      "content": [
+        "Cloud computing delivers computing services - servers, storage, databases, networking, software - over the Internet ('the cloud') on a pay-as-per-use model. Instead of buying and housing physical hardware in an on-premises data centre, organisations rent remote hardware from a provider.",
+        "NIST defines five essential characteristics: on-demand self-service (provision without human interaction), broad network access (reach from standard devices), resource pooling (multi-tenant hardware sharing), rapid elasticity (scale up/down instantly), and measured service (metered, pay-per-use billing).",
+        "The economics: capital expenditure (CAPEX - buying servers) shifts to operational expenditure (OPEX - paying for what you use). This single shift explains most cloud-vs-data-centre PYQ contrasts."
+      ],
+      "subsections": [
+        {
+          "title": "The published PYQ contrast",
+          "content": "On-premises hardware -> DATA CENTRE. Remote hardware rented over the Internet -> CLOUD.\nInstant scalability -> cloud. Scalability challenges and delays -> data centre.\nDowntime and repairs: OWNER in a data centre, PROVIDER in the cloud.\nPay as per use -> cloud."
+        },
+        {
+          "title": "Why organisations move to cloud",
+          "content": "No upfront hardware cost; global reach in minutes; elasticity absorbs traffic spikes; provider-managed maintenance, security patches and redundancy; measured billing ties cost to usage. Trade-offs: ongoing subscription cost, connectivity dependence, and data-governance questions."
+        }
+      ],
+      "quickRevision": [
+        "Five traits: on-demand, broad access, pooled, elastic, measured.",
+        "CAPEX (buy) becomes OPEX (rent) in the cloud.",
+        "Provider fixes cloud hardware; owner fixes data-centre hardware.",
+        "Pay-per-use + instant scale = cloud, never data centre."
+      ],
+      "tricks": [
+        "Any option pairing 'instant scalable' with 'data centre' is wrong - the published PYQ maps it to cloud.",
+        "Statement-pair questions: assign 'owner repairs' to the data centre side and everything else falls into place.",
+        "'Remote hardware' in the stem = cloud; 'on-premises' = data centre - verbatim PYQ mapping."
+      ],
+      "patterns": [
+        "'Which is true about cloud and data centre?' - downtime responsibility belongs to the data-centre OWNER.",
+        "'Pay as per use' - cloud billing, metered service.",
+        "'Rapid elasticity' - scale without buying hardware."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "Which statement is true about cloud and data centre (downtime)?",
+          "approach": "Only 'in data centre, the owner is responsible for downtime and repairs' is true - in cloud the provider handles it."
+        },
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "Correctly mapped attributes of cloud vs data centre?",
+          "approach": "On-premises -> data centre; remote hardware -> cloud. Instant scalability belongs with cloud."
+        }
+      ],
+      "companyNote": "Cloud-vs-data-centre contrasts appear in every published AXIS PYQ batch - usually as a statement-pair question."
+    },
+    {
+      "id": "service-models",
+      "title": "Service Models: IaaS, PaaS, SaaS",
+      "type": "concept",
+      "quickSummary": "IaaS = rent infrastructure (you manage OS up); PaaS = rent platform (you bring code); SaaS = rent software (you just use it).",
+      "content": [
+        "Cloud services stack in three layers. IaaS (Infrastructure as a Service) rents raw compute, storage and network - you install the OS, runtimes and applications (AWS EC2, Azure Virtual Machines, Google Compute Engine).",
+        "PaaS (Platform as a Service) adds the OS, runtime and middleware - you deploy only your code and data (Azure App Service, Heroku, Google App Engine). SaaS (Software as a Service) delivers the finished application through a browser - the provider manages everything (Microsoft 365, Gmail, Salesforce, Dropbox).",
+        "The responsibility ladder: On-premises (customer manages EVERYTHING) > IaaS > PaaS > SaaS (customer manages almost nothing). Every PYQ on this topic tests one rung of that ladder."
+      ],
+      "subsections": [
+        {
+          "title": "Recognition phrases",
+          "content": "'Rent virtual machines and install your own OS' -> IaaS.\n'Deploy code without managing servers or OS' -> PaaS.\n'Use the software in a browser, nothing to install' -> SaaS."
+        },
+        {
+          "title": "Everyday examples",
+          "content": "IaaS: EC2 instances, Azure VMs, GCE.\nPaaS: Azure App Service, Google App Engine, Heroku.\nSaaS: Gmail, Microsoft 365, Salesforce, Zoom, Dropbox."
+        }
+      ],
+      "quickRevision": [
+        "I install (IaaS), P just program (PaaS), S just sit-and-use (SaaS).",
+        "Responsibility shrinks upward: on-prem > IaaS > PaaS > SaaS.",
+        "EC2/Azure VMs = IaaS; App Service/Heroku = PaaS; M365/Gmail = SaaS."
+      ],
+      "tricks": [
+        "Match the question's 'you manage...' phrase: OS -> IaaS; only code -> PaaS; nothing -> SaaS.",
+        "SaaS distractors often claim the customer patches the OS - in SaaS even the app is provider-managed."
+      ],
+      "patterns": [
+        "'Which model gives VMs where you install the OS?' - IaaS.",
+        "'Which model would a developer choose to deploy without managing servers?' - PaaS.",
+        "'Browser-based email/office suite' - SaaS."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Accenture AXIS PYQ pattern",
+          "question": "Map the customer-managed stack from most to least responsibility.",
+          "approach": "On-premises > IaaS > PaaS > SaaS - monotonic ladder."
+        }
+      ],
+      "companyNote": "One service-model question appears in nearly every AXIS networking/security/cloud slot."
+    },
+    {
+      "id": "deployment-models",
+      "title": "Deployment Models: Public, Private, Hybrid, Community",
+      "type": "concept",
+      "quickSummary": "Public = shared provider infra; Private = one organisation; Hybrid = both orchestrated; Community = shared by similar organisations.",
+      "content": [
+        "Public cloud runs on provider-owned infrastructure shared by many customers (multi-tenant) - AWS, Microsoft Azure, Google Cloud Platform, Oracle Cloud, IBM Cloud. Cheapest, most elastic, least control.",
+        "Private cloud dedicates infrastructure to ONE organisation - hosted on-premises or by a third party - for maximum control and compliance. Hybrid cloud combines public and private with orchestration, letting data and apps move between them (sensitive workloads private, bursty workloads public).",
+        "Community cloud shares infrastructure among organisations with common concerns (regulation, security posture) - e.g., government clouds."
+      ],
+      "subsections": [
+        {
+          "title": "Selection logic",
+          "content": "Cost-first, general workloads -> public.\nStrict compliance/data sovereignty -> private.\nSensitive core + elastic web tier -> hybrid.\nRegulated sector peers sharing a platform -> community."
+        }
+      ],
+      "quickRevision": [
+        "Public = shared, cheap, elastic. Private = dedicated, controlled.",
+        "Hybrid = best of both, orchestrated. Community = shared by peers with common rules."
+      ],
+      "tricks": [
+        "'Government agencies sharing one platform' -> community, not private.",
+        "'Burst to public for peak load while keeping data private' -> hybrid."
+      ],
+      "patterns": [
+        "'Combines public and private' -> hybrid.",
+        "'Multi-tenant, provider-owned' -> public.",
+        "'Single organisation, maximum control' -> private."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Accenture AXIS PYQ pattern",
+          "question": "Which deployment model combines public and private clouds?",
+          "approach": "Hybrid - orchestrated movement between the two."
+        }
+      ],
+      "companyNote": "Deployment-model identification is a one-mark freebie if the four definitions are memorised."
+    },
+    {
+      "id": "providers-comparison",
+      "title": "Major Providers & Their PYQ Facts",
+      "type": "concept",
+      "quickSummary": "AWS, Azure, GCP, Oracle, IBM. Published PYQ facts: Azure spans Linux/Windows Server/SQL Server with enterprise security; GCP is the no-backup-support pick in the published set.",
+      "content": [
+        "The big three: Amazon Web Services (AWS) - the market leader with the deepest service catalogue; Microsoft Azure - strongest enterprise/hybrid integration, natively spanning Linux, Windows Server and SQL Server workloads with enhanced security (a published PYQ answer); Google Cloud Platform (GCP) - data analytics and ML strengths.",
+        "Others in PYQ options: Oracle Cloud (database-centric), IBM Cloud (enterprise/legacy), Alibaba Cloud (Asia-Pacific). Provider-trivia questions come straight from published sets - memorise the mappings rather than re-deriving them.",
+        "Caution: a few published provider-trivia answers (e.g., backup-support or hybrid-storage claims per provider) reflect dated marketing comparisons. Learn them as PYQ facts, but don't treat them as permanent truths."
+      ],
+      "subsections": [
+        {
+          "title": "The PYQ mappings",
+          "content": "Linux + Windows Server + SQL Server + enhanced security -> AZURE (published PYQ).\nNo backup support wanted (published set) -> Google Cloud.\nBinary large objects (BLOB) emphasis (published set) -> Azure.\nHybrid storage absence (published set) -> Google Cloud Platform.\nMarket leader by catalogue and share -> AWS."
+        }
+      ],
+      "quickRevision": [
+        "Azure = Linux + Windows + SQL Server enterprise story.",
+        "AWS = market leader. GCP = analytics/ML.",
+        "Oracle = databases. IBM = enterprise legacy."
+      ],
+      "tricks": [
+        "Provider questions in AXIS come from a small published pool - memorise the five mappings above rather than reasoning.",
+        "If the stem lists Microsoft products (Windows Server, SQL Server), the answer is Azure by elimination."
+      ],
+      "patterns": [
+        "'Support for Linux, Windows Server and SQL Server with enhanced security' -> Azure.",
+        "'Choose a provider WITHOUT backup support' -> Google Cloud (published set)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "Which provider for Linux, Windows Server and SQL Server support with enhanced security?",
+          "approach": "Microsoft Azure - the published answer."
+        },
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "Which provider if you do NOT want backup support?",
+          "approach": "Google Cloud - published answer (dated trivia, learn as PYQ fact)."
+        }
+      ],
+      "companyNote": "Provider-trivia is pure recall from published sets - five facts cover every instance seen publicly."
+    },
+    {
+      "id": "cloud-vs-dc-virtualization",
+      "title": "Virtualization, Containers & the Data Centre Contrast",
+      "type": "concept",
+      "quickSummary": "Virtualization splits one machine into many VMs via a hypervisor; containers share the host OS. Data centre = owner-run hardware; cloud = provider-run.",
+      "content": [
+        "Virtualization is the technology under ALL cloud computing: a hypervisor (VMware ESXi, Hyper-V, KVM) slices one physical machine into multiple virtual machines, each with its own OS. Resource pooling and multi-tenancy are hypervisor tricks at heart.",
+        "Containers (Docker, Kubernetes) go lighter: they share the HOST operating system kernel, packaging only the app and its dependencies - start in milliseconds versus minutes for VMs. VMs isolate more; containers are denser and faster.",
+        "The data-centre contrast completes the picture: on-premises means YOU buy, house, power, cool, patch and repair the hardware - the owner owns every failure. In the cloud the provider carries that burden while you consume metered service."
+      ],
+      "subsections": [
+        {
+          "title": "VM vs container",
+          "content": "VM: hypervisor + full guest OS per VM - heavy, minutes to boot, strong isolation.\nContainer: shares host kernel - lightweight, seconds/milliseconds, denser packing.\nOrchestration: Kubernetes schedules and scales containers across hosts."
+        },
+        {
+          "title": "Type-1 vs Type-2 hypervisors",
+          "content": "Type-1 (bare-metal) runs directly on hardware - ESXi, Hyper-V, KVM - data-centre grade.\nType-2 runs ON a host OS - VirtualBox, VMware Workstation - desktop grade."
+        }
+      ],
+      "quickRevision": [
+        "Hypervisor slices hardware into VMs; Type-1 bare-metal, Type-2 desktop.",
+        "Containers share the host OS - faster, denser; Kubernetes orchestrates.",
+        "Data centre: owner's hardware, owner's repairs. Cloud: provider's hardware, provider's repairs."
+      ],
+      "tricks": [
+        "'Shares the host kernel' in the stem -> container, not VM.",
+        "'Runs directly on hardware' -> Type-1 hypervisor.",
+        "Downtime-responsibility statement pairs: owner -> data centre, provider -> cloud."
+      ],
+      "patterns": [
+        "'Software layer creating virtual machines' - hypervisor.",
+        "'Lightweight, shares host OS, starts in seconds' - containers.",
+        "'Multi-tenant resource pooling' - virtualization enabling public cloud."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Accenture AXIS PYQ pattern",
+          "question": "Cloud vs data centre responsibility statements.",
+          "approach": "Owner repairs = data centre only; provider repairs = cloud only."
+        }
+      ],
+      "companyNote": "Virtualization questions appear in the broader AXIS pool (and in interviews) - VM/container distinction is the one to know cold."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "five-traits",
+      "title": "NIST Five Essential Characteristics",
+      "formula": {
+        "latex": "\\text{on-demand} + \\text{broad access} + \\text{pooling} + \\text{elasticity} + \\text{measured}",
+        "text": "On-demand self-service, broad network access, resource pooling, rapid elasticity, measured service."
+      },
+      "whenToUse": "'Which are the essential characteristics of cloud computing?' questions.",
+      "explanation": [
+        "On-demand: provision without human negotiation.",
+        "Broad access: any standard device over the network.",
+        "Pooling: multi-tenant hardware abstraction.",
+        "Elasticity: scale out/in on demand.",
+        "Measured: usage is metered and billed."
+      ],
+      "example": {
+        "prompt": "Which trait bills only for what you consume?",
+        "steps": [
+          "Metering drives billing.",
+          "Measured service."
+        ],
+        "answer": "Measured service"
+      },
+      "memoryTip": "A-B-P-E-M: All Bytes Pay Eventually, Metered.",
+      "commonMistake": "Listing 'security' as an essential CHARACTERISTIC - it is a concern, not a NIST trait."
+    },
+    {
+      "id": "service-ladder",
+      "title": "IaaS/PaaS/SaaS Responsibility Ladder",
+      "formula": {
+        "latex": "\\text{On-prem} > \\text{IaaS} > \\text{PaaS} > \\text{SaaS}",
+        "text": "Customer-managed stack shrinks as the model rises."
+      },
+      "whenToUse": "Mapping 'you manage...' statements to service models.",
+      "explanation": [
+        "On-prem: customer manages everything including hardware.",
+        "IaaS: customer manages OS and above (EC2, Azure VMs).",
+        "PaaS: customer manages code and data only (App Service, Heroku).",
+        "SaaS: customer just uses the app (M365, Gmail)."
+      ],
+      "example": {
+        "prompt": "Team deploys code without touching servers. Model?",
+        "steps": [
+          "No server management = platform hides infrastructure.",
+          "PaaS."
+        ],
+        "answer": "PaaS"
+      },
+      "memoryTip": "I Install, P Program, S Sit.",
+      "commonMistake": "SaaS customers 'patching the OS' - never; even the app is provider-run."
+    },
+    {
+      "id": "deployment-models",
+      "title": "Four Deployment Models",
+      "formula": {
+        "latex": "\\text{Public} \\mid \\text{Private} \\mid \\text{Hybrid} \\mid \\text{Community}",
+        "text": "Shared provider infra; dedicated single org; orchestrated mix; peers with common concerns."
+      },
+      "whenToUse": "Deployment-model identification questions.",
+      "explanation": [
+        "Public: multi-tenant, cheapest, most elastic.",
+        "Private: dedicated, maximum control/compliance.",
+        "Hybrid: public + private orchestrated together.",
+        "Community: shared by organisations with common requirements."
+      ],
+      "example": {
+        "prompt": "Agencies with shared compliance needs pool one platform. Model?",
+        "steps": [
+          "Shared by peers with common concerns.",
+          "Community cloud."
+        ],
+        "answer": "Community cloud"
+      },
+      "memoryTip": "PPHC: Public-Private-Hybrid-Community.",
+      "commonMistake": "Calling a single-org hosted cloud 'public' - public means multi-tenant."
+    },
+    {
+      "id": "provider-strengths",
+      "title": "Provider PYQ Mappings",
+      "formula": {
+        "latex": "\\text{Azure} = \\text{Linux+Win+SQL};\\; \\text{AWS} = \\text{leader};\\; \\text{GCP} = \\text{data/ML}",
+        "text": "Azure: Linux, Windows Server, SQL Server + enterprise security. AWS: market leader. GCP: analytics/ML."
+      },
+      "whenToUse": "Provider-selection PYQs from the published pool.",
+      "explanation": [
+        "Azure natively spans the Microsoft enterprise stack - published PYQ answer.",
+        "AWS leads on catalogue and market share.",
+        "GCP leads on data analytics/ML; Oracle on databases; IBM on enterprise legacy.",
+        "Dated published trivia: 'no backup support' and 'no hybrid storage' mapped to Google Cloud - learn as PYQ facts."
+      ],
+      "example": {
+        "prompt": "Need Linux + Windows Server + SQL Server with enhanced security. Provider?",
+        "steps": [
+          "The Microsoft stack in the stem points to one provider.",
+          "Azure."
+        ],
+        "answer": "Microsoft Azure"
+      },
+      "memoryTip": "Microsoft stem -> Azure. Leader -> AWS. Data/ML -> GCP.",
+      "commonMistake": "Over-reasoning provider trivia - these come from a fixed published pool."
+    },
+    {
+      "id": "cloud-vs-dc",
+      "title": "Cloud vs Data Centre Contrast Table",
+      "formula": {
+        "latex": "\\text{owner repairs} = \\text{DC};\\; \\text{provider repairs} = \\text{cloud}",
+        "text": "On-premises/owner-run = data centre; remote rented hardware = cloud; instant scale and pay-per-use = cloud."
+      },
+      "whenToUse": "Every cloud-vs-data-centre statement-pair question.",
+      "explanation": [
+        "Hardware ownership: DC = you; cloud = provider.",
+        "Downtime/repairs: DC = owner; cloud = provider.",
+        "Scalability: instant (cloud) vs challenging/delayed (DC).",
+        "Billing: pay-per-use metered (cloud) vs capital purchase (DC)."
+      ],
+      "example": {
+        "prompt": "True statement about downtime responsibility?",
+        "steps": [
+          "Assign owner-repairs to the DC side.",
+          "Only 'data centre owner is responsible' is true."
+        ],
+        "answer": "In a data centre the owner handles downtime and repairs."
+      },
+      "memoryTip": "Owner owns the data centre's problems.",
+      "commonMistake": "Saying the cloud customer repairs hardware - that is the DC side."
+    },
+    {
+      "id": "capex-opex",
+      "title": "CAPEX to OPEX Shift",
+      "formula": {
+        "latex": "\\text{CAPEX (buy hardware)} \\to \\text{OPEX (pay per use)}",
+        "text": "Cloud converts upfront capital expenditure into metered operational expenditure."
+      },
+      "whenToUse": "'Why do organisations adopt cloud?' economics questions.",
+      "explanation": [
+        "Buying servers = CAPEX with depreciation and over-provisioning.",
+        "Cloud = OPEX: pay for consumed capacity, scale to zero in quiet periods.",
+        "Elasticity removes capacity-guessing; measured service ties cost to usage."
+      ],
+      "example": {
+        "prompt": "Which cost model does cloud introduce?",
+        "steps": [
+          "No upfront hardware purchase.",
+          "Metered operational spending."
+        ],
+        "answer": "OPEX - pay as per use"
+      },
+      "memoryTip": "Buy = CAPEX; consume = OPEX.",
+      "commonMistake": "Claiming cloud eliminates ALL IT cost - it shifts and meters it."
+    }
+  ],
+  "practiceProblems": {
+    "five-traits": [
+      {
+        "q": "Provisioning servers via a web console without calling support demonstrates:",
+        "opts": [
+          "On-demand self-service",
+          "Measured service",
+          "Pooling",
+          "Private cloud"
+        ],
+        "c": 0,
+        "s": [
+          "Self-service without human interaction = on-demand."
+        ],
+        "a": "On-demand self-service"
+      },
+      {
+        "q": "Accessing services from laptop, tablet and phone demonstrates:",
+        "opts": [
+          "Broad network access",
+          "Elasticity",
+          "Measured service",
+          "Pooling"
+        ],
+        "c": 0,
+        "s": [
+          "Standard devices over the network = broad access."
+        ],
+        "a": "Broad network access"
+      },
+      {
+        "q": "Many customers safely sharing provider hardware demonstrates:",
+        "opts": [
+          "Resource pooling",
+          "Measured service",
+          "On-demand",
+          "Hybrid"
+        ],
+        "c": 0,
+        "s": [
+          "Multi-tenant hardware abstraction = pooling."
+        ],
+        "a": "Resource pooling"
+      },
+      {
+        "q": "Scaling from 2 to 200 servers during a sale demonstrates:",
+        "opts": [
+          "Rapid elasticity",
+          "Broad access",
+          "Measured service",
+          "On-prem"
+        ],
+        "c": 0,
+        "s": [
+          "Capacity follows demand = elasticity."
+        ],
+        "a": "Rapid elasticity"
+      },
+      {
+        "q": "Being billed only for gigabytes stored demonstrates:",
+        "opts": [
+          "Measured service",
+          "Pooling",
+          "Elasticity",
+          "Private cloud"
+        ],
+        "c": 0,
+        "s": [
+          "Metering ties cost to consumption."
+        ],
+        "a": "Measured service"
+      },
+      {
+        "q": "Which is NOT a NIST essential characteristic?",
+        "opts": [
+          "On-demand self-service",
+          "Rapid elasticity",
+          "Guaranteed zero cost",
+          "Measured service"
+        ],
+        "c": 2,
+        "s": [
+          "Cloud costs money - 'zero cost' is not a trait."
+        ],
+        "a": "Guaranteed zero cost"
+      },
+      {
+        "q": "Multi-tenancy is enabled by:",
+        "opts": [
+          "Resource pooling with logical isolation",
+          "Buying separate DCs",
+          "Removing virtualization",
+          "Sharing logins"
+        ],
+        "c": 0,
+        "s": [
+          "Pooling + isolation = safe multi-tenancy."
+        ],
+        "a": "Resource pooling with logical isolation"
+      },
+      {
+        "q": "Rapid elasticity primarily removes:",
+        "opts": [
+          "Security",
+          "Capacity guesswork",
+          "Networking",
+          "Applications"
+        ],
+        "c": 1,
+        "s": [
+          "No hardware bought for imagined peaks."
+        ],
+        "a": "Capacity guesswork"
+      },
+      {
+        "q": "Metered service enables which billing model?",
+        "opts": [
+          "Pay as per use",
+          "Flat lifetime fee",
+          "Barter",
+          "Free forever"
+        ],
+        "c": 0,
+        "s": [
+          "Metering -> consumption-based billing."
+        ],
+        "a": "Pay as per use"
+      },
+      {
+        "q": "Which trait lets a customer order 50 VMs at 2am without human help?",
+        "opts": [
+          "On-demand self-service",
+          "Broad access",
+          "Pooling",
+          "Measured"
+        ],
+        "c": 0,
+        "s": [
+          "Self-service portal automation."
+        ],
+        "a": "On-demand self-service"
+      }
+    ],
+    "service-ladder": [
+      {
+        "q": "Customer manages EVERYTHING including hardware in:",
+        "opts": [
+          "On-premises",
+          "SaaS",
+          "PaaS",
+          "IaaS"
+        ],
+        "c": 0,
+        "s": [
+          "On-prem = own the whole stack."
+        ],
+        "a": "On-premises"
+      },
+      {
+        "q": "Customer installs the OS on rented VMs in:",
+        "opts": [
+          "IaaS",
+          "SaaS",
+          "PaaS",
+          "None"
+        ],
+        "c": 0,
+        "s": [
+          "Raw compute + customer OS = IaaS."
+        ],
+        "a": "IaaS"
+      },
+      {
+        "q": "Customer ships only code in:",
+        "opts": [
+          "PaaS",
+          "IaaS",
+          "On-prem",
+          "None"
+        ],
+        "c": 0,
+        "s": [
+          "Platform hides OS/runtime."
+        ],
+        "a": "PaaS"
+      },
+      {
+        "q": "Customer only USES the software in:",
+        "opts": [
+          "SaaS",
+          "PaaS",
+          "IaaS",
+          "All"
+        ],
+        "c": 0,
+        "s": [
+          "Finished app = SaaS."
+        ],
+        "a": "SaaS"
+      },
+      {
+        "q": "AWS EC2 is:",
+        "opts": [
+          "IaaS",
+          "PaaS",
+          "SaaS",
+          "FaaS"
+        ],
+        "c": 0,
+        "s": [
+          "Virtual machines = infrastructure."
+        ],
+        "a": "IaaS"
+      },
+      {
+        "q": "Azure App Service is:",
+        "opts": [
+          "PaaS",
+          "IaaS",
+          "SaaS",
+          "DC"
+        ],
+        "c": 0,
+        "s": [
+          "Deploy code; platform managed."
+        ],
+        "a": "PaaS"
+      },
+      {
+        "q": "Salesforce is:",
+        "opts": [
+          "SaaS",
+          "PaaS",
+          "IaaS",
+          "Hypervisor"
+        ],
+        "c": 0,
+        "s": [
+          "Finished CRM in the browser."
+        ],
+        "a": "SaaS"
+      },
+      {
+        "q": "Which model hides the OS from the customer?",
+        "opts": [
+          "PaaS and SaaS",
+          "IaaS only",
+          "On-prem",
+          "None"
+        ],
+        "c": 0,
+        "s": [
+          "PaaS starts above the OS; SaaS hides everything."
+        ],
+        "a": "PaaS and SaaS"
+      },
+      {
+        "q": "Correct ladder (most to least customer-managed):",
+        "opts": [
+          "On-prem > IaaS > PaaS > SaaS",
+          "SaaS > PaaS > IaaS > on-prem",
+          "IaaS > on-prem > SaaS > PaaS",
+          "PaaS > IaaS > on-prem > SaaS"
+        ],
+        "c": 0,
+        "s": [
+          "Responsibility shrinks as the model rises."
+        ],
+        "a": "On-prem > IaaS > PaaS > SaaS"
+      },
+      {
+        "q": "A DBA must tune the OS kernel. Best model?",
+        "opts": [
+          "IaaS (or on-prem)",
+          "SaaS",
+          "PaaS only",
+          "None allow it"
+        ],
+        "c": 0,
+        "s": [
+          "Kernel access needs infrastructure control."
+        ],
+        "a": "IaaS (or on-prem)"
+      }
+    ],
+    "deployment-models": [
+      {
+        "q": "Provider-owned, multi-tenant infrastructure:",
+        "opts": [
+          "Public",
+          "Private",
+          "Hybrid",
+          "Community"
+        ],
+        "c": 0,
+        "s": [
+          "Public = shared with the world's tenants."
+        ],
+        "a": "Public"
+      },
+      {
+        "q": "Dedicated to one organisation, maximum control:",
+        "opts": [
+          "Private",
+          "Public",
+          "Community",
+          "Hybrid"
+        ],
+        "c": 0,
+        "s": [
+          "Private = single tenant."
+        ],
+        "a": "Private"
+      },
+      {
+        "q": "Public + private orchestrated together:",
+        "opts": [
+          "Hybrid",
+          "Community",
+          "Public",
+          "Personal"
+        ],
+        "c": 0,
+        "s": [
+          "Hybrid = both worlds, orchestrated."
+        ],
+        "a": "Hybrid"
+      },
+      {
+        "q": "Shared by organisations with COMMON concerns:",
+        "opts": [
+          "Community",
+          "Public",
+          "Private",
+          "Hybrid"
+        ],
+        "c": 0,
+        "s": [
+          "Common regulatory/security posture = community."
+        ],
+        "a": "Community"
+      },
+      {
+        "q": "Government agencies pooling one compliant platform:",
+        "opts": [
+          "Community cloud",
+          "Public cloud",
+          "Private DC",
+          "Hybrid"
+        ],
+        "c": 0,
+        "s": [
+          "Peers + common rules = community."
+        ],
+        "a": "Community cloud"
+      },
+      {
+        "q": "E-commerce site bursting to rented capacity on Black Friday while data stays in-house:",
+        "opts": [
+          "Hybrid",
+          "Pure public",
+          "Pure private",
+          "Community"
+        ],
+        "c": 0,
+        "s": [
+          "Split placement = hybrid."
+        ],
+        "a": "Hybrid"
+      },
+      {
+        "q": "Cheapest entry for a standard workload:",
+        "opts": [
+          "Public cloud",
+          "Private DC",
+          "Community",
+          "Bare metal"
+        ],
+        "c": 0,
+        "s": [
+          "No hardware, elastic, metered."
+        ],
+        "a": "Public cloud"
+      },
+      {
+        "q": "Strict data-sovereignty law forces in-house hardware:",
+        "opts": [
+          "Private (on-prem)",
+          "Public",
+          "Community",
+          "None"
+        ],
+        "c": 0,
+        "s": [
+          "Control/compliance = private."
+        ],
+        "a": "Private (on-prem)"
+      },
+      {
+        "q": "Which model can be hosted by a THIRD party yet stay private?",
+        "opts": [
+          "Private cloud",
+          "Public cloud",
+          "Community only",
+          "None"
+        ],
+        "c": 0,
+        "s": [
+          "Private = dedicated, not necessarily on-prem."
+        ],
+        "a": "Private cloud"
+      },
+      {
+        "q": "'Best of both worlds' is the slogan of:",
+        "opts": [
+          "Hybrid",
+          "Public",
+          "Community",
+          "Type-1"
+        ],
+        "c": 0,
+        "s": [
+          "Hybrid mixes control with elasticity."
+        ],
+        "a": "Hybrid"
+      }
+    ],
+    "provider-strengths": [
+      {
+        "q": "Linux + Windows Server + SQL Server + enhanced security:",
+        "opts": [
+          "Azure",
+          "Oracle",
+          "Alibaba",
+          "Heroku"
+        ],
+        "c": 0,
+        "s": [
+          "Published PYQ: Azure spans the Microsoft enterprise stack."
+        ],
+        "a": "Azure"
+      },
+      {
+        "q": "Overall market leader:",
+        "opts": [
+          "AWS",
+          "GCP",
+          "Oracle",
+          "IBM"
+        ],
+        "c": 0,
+        "s": [
+          "AWS leads share and catalogue."
+        ],
+        "a": "AWS"
+      },
+      {
+        "q": "Data analytics and ML strengths:",
+        "opts": [
+          "GCP",
+          "Azure",
+          "Oracle",
+          "DigitalOcean"
+        ],
+        "c": 0,
+        "s": [
+          "BigQuery/Vertex = GCP's identity."
+        ],
+        "a": "GCP"
+      },
+      {
+        "q": "Database-centric cloud:",
+        "opts": [
+          "Oracle",
+          "Alibaba",
+          "Heroku",
+          "OVH"
+        ],
+        "c": 0,
+        "s": [
+          "Oracle = database franchise."
+        ],
+        "a": "Oracle"
+      },
+      {
+        "q": "Published PYQ 'no backup support' maps to:",
+        "opts": [
+          "Google Cloud",
+          "AWS",
+          "Azure",
+          "IBM"
+        ],
+        "c": 0,
+        "s": [
+          "Dated published trivia - learn as PYQ fact."
+        ],
+        "a": "Google Cloud"
+      },
+      {
+        "q": "Published PYQ BLOB-emphasis storage maps to:",
+        "opts": [
+          "Azure",
+          "Oracle",
+          "GCP",
+          "OVH"
+        ],
+        "c": 0,
+        "s": [
+          "Published set pairs BLOB-heavy data with Azure."
+        ],
+        "a": "Azure"
+      },
+      {
+        "q": "Published PYQ 'no hybrid storage' maps to:",
+        "opts": [
+          "GCP",
+          "AWS",
+          "Azure",
+          "VMware"
+        ],
+        "c": 0,
+        "s": [
+          "Published set maps this to Google Cloud Platform."
+        ],
+        "a": "GCP"
+      },
+      {
+        "q": "Enterprise/legacy workload cloud:",
+        "opts": [
+          "IBM",
+          "DigitalOcean",
+          "Heroku",
+          "Netlify"
+        ],
+        "c": 0,
+        "s": [
+          "IBM = enterprise/legacy integration."
+        ],
+        "a": "IBM"
+      },
+      {
+        "q": "Asia-Pacific focused major provider:",
+        "opts": [
+          "Alibaba Cloud",
+          "OVH",
+          "Rackspace",
+          "Linode"
+        ],
+        "c": 0,
+        "s": [
+          "Alibaba dominates APAC cloud."
+        ],
+        "a": "Alibaba Cloud"
+      },
+      {
+        "q": "A stem listing Windows Server and SQL Server should instantly suggest:",
+        "opts": [
+          "Azure",
+          "GCP",
+          "Alibaba",
+          "OVH"
+        ],
+        "c": 0,
+        "s": [
+          "Microsoft products -> Microsoft cloud."
+        ],
+        "a": "Azure"
+      }
+    ],
+    "cloud-vs-dc": [
+      {
+        "q": "Owner handles downtime in:",
+        "opts": [
+          "Data centre",
+          "Cloud",
+          "Both",
+          "Neither"
+        ],
+        "c": 0,
+        "s": [
+          "Owner-run hardware = owner-run repairs."
+        ],
+        "a": "Data centre"
+      },
+      {
+        "q": "Provider handles downtime in:",
+        "opts": [
+          "Cloud",
+          "Data centre",
+          "Neither",
+          "Both"
+        ],
+        "c": 0,
+        "s": [
+          "Provider-owned hardware = provider-run repairs."
+        ],
+        "a": "Cloud"
+      },
+      {
+        "q": "'Instant scalability' belongs to:",
+        "opts": [
+          "Cloud",
+          "Data centre",
+          "Tape",
+          "Fax"
+        ],
+        "c": 0,
+        "s": [
+          "Published mapping - elasticity = cloud."
+        ],
+        "a": "Cloud"
+      },
+      {
+        "q": "'Scalability challenges and delays' belong to:",
+        "opts": [
+          "Data centre",
+          "Cloud",
+          "Serverless",
+          "Edge"
+        ],
+        "c": 0,
+        "s": [
+          "Buying/racking hardware takes time."
+        ],
+        "a": "Data centre"
+      },
+      {
+        "q": "'Remote hardware' over the Internet =",
+        "opts": [
+          "Cloud",
+          "Data centre",
+          "Mainframe",
+          "Intranet"
+        ],
+        "c": 0,
+        "s": [
+          "Published PYQ mapping."
+        ],
+        "a": "Cloud"
+      },
+      {
+        "q": "'On-premises' hardware =",
+        "opts": [
+          "Data centre",
+          "Cloud",
+          "SaaS",
+          "Edge"
+        ],
+        "c": 0,
+        "s": [
+          "Published PYQ mapping."
+        ],
+        "a": "Data centre"
+      },
+      {
+        "q": "Buying racks is which cost type?",
+        "opts": [
+          "CAPEX",
+          "OPEX",
+          "PAYE",
+          "SaaS"
+        ],
+        "c": 0,
+        "s": [
+          "Capital expenditure = buying."
+        ],
+        "a": "CAPEX"
+      },
+      {
+        "q": "Metered monthly usage fees are:",
+        "opts": [
+          "OPEX",
+          "CAPEX",
+          "Depreciation",
+          "Equity"
+        ],
+        "c": 0,
+        "s": [
+          "Operational expenditure = consume-and-pay."
+        ],
+        "a": "OPEX"
+      },
+      {
+        "q": "Which removes capacity over-provisioning?",
+        "opts": [
+          "Elasticity",
+          "Bigger racks",
+          "Slower provisioning",
+          "Manual audits"
+        ],
+        "c": 0,
+        "s": [
+          "Scale on demand = no idle hardware."
+        ],
+        "a": "Elasticity"
+      },
+      {
+        "q": "'The cloud never fails' is:",
+        "opts": [
+          "False - providers still have outages",
+          "True always",
+          "True for AWS only",
+          "A NIST trait"
+        ],
+        "c": 0,
+        "s": [
+          "Providers DO have outages; responsibility just shifts to them."
+        ],
+        "a": "False - providers still have outages"
+      }
+    ],
+    "capex-opex": [
+      {
+        "q": "Cloud converts hardware spending from CAPEX to:",
+        "opts": [
+          "OPEX",
+          "Equity",
+          "Dividends",
+          "Barter"
+        ],
+        "c": 0,
+        "s": [
+          "Buy -> consume = capital -> operational."
+        ],
+        "a": "OPEX"
+      },
+      {
+        "q": "Paying only for consumed capacity demonstrates:",
+        "opts": [
+          "Measured service",
+          "On-prem buying",
+          "Depreciation",
+          "Leasing racks"
+        ],
+        "c": 0,
+        "s": [
+          "Metered billing = pay-per-use."
+        ],
+        "a": "Measured service"
+      },
+      {
+        "q": "Over-provisioning for imagined peaks is a symptom of:",
+        "opts": [
+          "On-prem capacity planning",
+          "Elasticity",
+          "Auto-scaling",
+          "Serverless"
+        ],
+        "c": 0,
+        "s": [
+          "Fixed hardware forces peak-size purchases."
+        ],
+        "a": "On-prem capacity planning"
+      },
+      {
+        "q": "Which benefit ties cost DIRECTLY to traffic?",
+        "opts": [
+          "Elastic metered billing",
+          "Flat licensing",
+          "Owned racks",
+          "Annual prepay"
+        ],
+        "c": 0,
+        "s": [
+          "Scale + meter = traffic-shaped cost."
+        ],
+        "a": "Elastic metered billing"
+      },
+      {
+        "q": "Zero upfront hardware cost mainly helps:",
+        "opts": [
+          "Startups and SMBs",
+          "Only governments",
+          "Only ISPs",
+          "Nobody"
+        ],
+        "c": 0,
+        "s": [
+          "No CAPEX wall to entry."
+        ],
+        "a": "Startups and SMBs"
+      },
+      {
+        "q": "Depreciation of owned servers is a:",
+        "opts": [
+          "CAPEX concern",
+          "OPEX line",
+          "Cloud bill",
+          "SaaS fee"
+        ],
+        "c": 0,
+        "s": [
+          "Owned assets depreciate - a CAPEX-world concept."
+        ],
+        "a": "CAPEX concern"
+      },
+      {
+        "q": "Scaling to zero in quiet periods saves:",
+        "opts": [
+          "OPEX",
+          "CAPEX",
+          "Staff",
+          "Electricity only"
+        ],
+        "c": 0,
+        "s": [
+          "No consumption = no operational charge."
+        ],
+        "a": "OPEX"
+      },
+      {
+        "q": "Which is an OPEX example?",
+        "opts": [
+          "Monthly cloud invoice",
+          "Purchased rack",
+          "Building a DC",
+          "Buying licences outright"
+        ],
+        "c": 0,
+        "s": [
+          "Recurring consumption = operational."
+        ],
+        "a": "Monthly cloud invoice"
+      },
+      {
+        "q": "Elasticity plus metering together deliver:",
+        "opts": [
+          "Cost shaped by demand",
+          "Fixed costs forever",
+          "Zero security",
+          "No internet"
+        ],
+        "c": 0,
+        "s": [
+          "Capacity and cost both follow usage."
+        ],
+        "a": "Cost shaped by demand"
+      },
+      {
+        "q": "Cloud adoption does NOT eliminate:",
+        "opts": [
+          "All IT spending",
+          "Rack purchases",
+          "Hardware repairs",
+          "Upfront server CAPEX"
+        ],
+        "c": 0,
+        "s": [
+          "Spend shifts and meters; it doesn't vanish."
+        ],
+        "a": "All IT spending"
+      }
+    ],
+    "virtualization-ladder": [
+      {
+        "q": "Which software layer creates VMs?",
+        "opts": [
+          "Hypervisor",
+          "Compiler",
+          "Browser",
+          "Shell"
+        ],
+        "c": 0,
+        "s": [
+          "Hypervisor slices physical hardware into VMs."
+        ],
+        "a": "Hypervisor"
+      },
+      {
+        "q": "Type-1 hypervisors run:",
+        "opts": [
+          "Directly on hardware",
+          "Inside Word",
+          "Only in clouds",
+          "On phones"
+        ],
+        "c": 0,
+        "s": [
+          "Bare-metal = Type-1 (ESXi, Hyper-V, KVM)."
+        ],
+        "a": "Directly on hardware"
+      },
+      {
+        "q": "VirtualBox is which type?",
+        "opts": [
+          "Type-2 (hosted)",
+          "Type-1",
+          "Type-3",
+          "Bare-metal"
+        ],
+        "c": 0,
+        "s": [
+          "Runs ON a desktop OS = Type-2."
+        ],
+        "a": "Type-2 (hosted)"
+      },
+      {
+        "q": "Containers share the:",
+        "opts": [
+          "Host OS kernel",
+          "Guest OS",
+          "Hypervisor licence",
+          "BIOS"
+        ],
+        "c": 0,
+        "s": [
+          "Containers package app+deps over the host kernel."
+        ],
+        "a": "Host OS kernel"
+      },
+      {
+        "q": "Which boots faster: VM or container?",
+        "opts": [
+          "Container",
+          "VM",
+          "Equal",
+          "Neither boots"
+        ],
+        "c": 0,
+        "s": [
+          "No guest-OS boot = milliseconds."
+        ],
+        "a": "Container"
+      },
+      {
+        "q": "Which isolates MORE strongly?",
+        "opts": [
+          "VM (separate guest OS)",
+          "Container",
+          "They're identical",
+          "Neither"
+        ],
+        "c": 0,
+        "s": [
+          "Separate guest OS = stronger boundary."
+        ],
+        "a": "VM (separate guest OS)"
+      },
+      {
+        "q": "Kubernetes is:",
+        "opts": [
+          "A container orchestrator",
+          "A hypervisor",
+          "A database",
+          "A firewall"
+        ],
+        "c": 0,
+        "s": [
+          "Schedules/scales/heals containers across hosts."
+        ],
+        "a": "A container orchestrator"
+      },
+      {
+        "q": "Docker packages:",
+        "opts": [
+          "App + dependencies into containers",
+          "Whole guest OSes",
+          "Hypervisors",
+          "Routers"
+        ],
+        "c": 0,
+        "s": [
+          "Container images = app + deps only."
+        ],
+        "a": "App + dependencies into containers"
+      },
+      {
+        "q": "VMware ESXi is:",
+        "opts": [
+          "Type-1 bare-metal hypervisor",
+          "Type-2",
+          "A container runtime",
+          "A cloud provider"
+        ],
+        "c": 0,
+        "s": [
+          "ESXi installs directly on the server."
+        ],
+        "a": "Type-1 bare-metal hypervisor"
+      },
+      {
+        "q": "Resource pooling in public cloud is enabled by:",
+        "opts": [
+          "Virtualization",
+          "Paper records",
+          "Fax",
+          "Sneakernet"
+        ],
+        "c": 0,
+        "s": [
+          "Hypervisors pool physical hardware into tenant slices."
+        ],
+        "a": "Virtualization"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "id": 1,
+      "q": "Cloud computing delivers computing services:",
+      "opts": [
+        "On purchased in-house racks only",
+        "Over the Internet on a pay-as-per-use basis",
+        "Via physical letters",
+        "Only offline"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cloud-basics",
+      "exp": [
+        "Definition: remote, metered services over the Internet.",
+        "Pay-per-use replaces upfront hardware purchase."
+      ]
+    },
+    {
+      "id": 2,
+      "q": "Which is an essential characteristic of cloud computing (NIST)?",
+      "opts": [
+        "Rapid elasticity",
+        "Permanent local storage",
+        "Manual provisioning by phone",
+        "Single-tenant only"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "cloud-basics",
+      "exp": [
+        "Five NIST traits include rapid elasticity - scale out/in on demand.",
+        "Provisioning is SELF-service, not manual."
+      ]
+    },
+    {
+      "id": 3,
+      "q": "'Pay as per use' billing belongs to:",
+      "opts": [
+        "Data centres",
+        "The cloud",
+        "Fax machines",
+        "Tape drives"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cloud-vs-dc",
+      "source": "Accenture AXIS PYQ pattern",
+      "exp": [
+        "Measured, metered billing = cloud economics."
+      ]
+    },
+    {
+      "id": 4,
+      "q": "Who is responsible for downtime and repairs in a traditional DATA CENTRE?",
+      "opts": [
+        "The cloud provider",
+        "The owner of the data centre",
+        "The ISP",
+        "Microsoft"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cloud-vs-dc",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Owner-run hardware means owner-run repairs - the published PYQ fact."
+      ]
+    },
+    {
+      "id": 5,
+      "q": "Who handles hardware repairs in the CLOUD?",
+      "opts": [
+        "The customer",
+        "The service provider",
+        "The landlord",
+        "Nobody"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cloud-vs-dc",
+      "exp": [
+        "The provider owns and operates cloud hardware.",
+        "Customers consume; they never rack and repair."
+      ]
+    },
+    {
+      "id": 6,
+      "q": "'On-premises: data centre; remote hardware: cloud' is:",
+      "opts": [
+        "A false pairing",
+        "The correct published mapping",
+        "Only true for banks",
+        "Reversed"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cloud-vs-dc",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Verbatim published PYQ mapping - on-prem = DC, remote = cloud."
+      ]
+    },
+    {
+      "id": 7,
+      "q": "Renting VMs where YOU install the OS is:",
+      "opts": [
+        "SaaS",
+        "PaaS",
+        "IaaS",
+        "None"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "service-models",
+      "exp": [
+        "Raw infrastructure + customer-managed OS = IaaS (EC2, Azure VMs)."
+      ]
+    },
+    {
+      "id": 8,
+      "q": "Gmail and Microsoft 365 are examples of:",
+      "opts": [
+        "IaaS",
+        "PaaS",
+        "SaaS",
+        "DaaS"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "service-models",
+      "exp": [
+        "Finished apps in a browser = SaaS."
+      ]
+    },
+    {
+      "id": 9,
+      "q": "Which model lets developers deploy code WITHOUT managing servers or OS?",
+      "opts": [
+        "IaaS",
+        "PaaS",
+        "SaaS",
+        "On-prem"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "service-models",
+      "exp": [
+        "PaaS hides OS/runtime - bring code only (Heroku, App Service)."
+      ]
+    },
+    {
+      "id": 10,
+      "q": "A cloud shared by MANY unrelated customers on provider hardware is:",
+      "opts": [
+        "Private cloud",
+        "Public cloud",
+        "Community cloud",
+        "Personal cloud"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "deployment",
+      "exp": [
+        "Public = multi-tenant provider infrastructure."
+      ]
+    },
+    {
+      "id": 11,
+      "q": "Cloud dedicated to a SINGLE organisation is:",
+      "opts": [
+        "Public cloud",
+        "Private cloud",
+        "Community cloud",
+        "Hybrid cloud"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "deployment",
+      "exp": [
+        "Private = dedicated, maximum control - on- or off-premises."
+      ]
+    },
+    {
+      "id": 12,
+      "q": "Public + private clouds working together in orchestration form:",
+      "opts": [
+        "Community cloud",
+        "Hybrid cloud",
+        "Distributed cloud",
+        "Edge cloud"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "deployment",
+      "exp": [
+        "Hybrid = orchestrated mix of both worlds."
+      ]
+    },
+    {
+      "id": 13,
+      "q": "Which provider is the overall market leader with the deepest service catalogue?",
+      "opts": [
+        "AWS",
+        "Oracle",
+        "Alibaba",
+        "DigitalOcean"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "providers",
+      "exp": [
+        "Amazon Web Services leads on share and catalogue breadth."
+      ]
+    },
+    {
+      "id": 14,
+      "q": "The software layer that splits one physical machine into many VMs is the:",
+      "opts": [
+        "Compiler",
+        "Hypervisor",
+        "Router",
+        "Loader"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "virtualization",
+      "exp": [
+        "Hypervisors (ESXi, Hyper-V, KVM) create and run VMs."
+      ]
+    },
+    {
+      "id": 15,
+      "q": "Containers differ from VMs because containers:",
+      "opts": [
+        "Include a full guest OS each",
+        "Share the host OS kernel",
+        "Cannot run web apps",
+        "Need no kernel at all"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "virtualization",
+      "exp": [
+        "Containers package app + deps over the shared host kernel - light and fast.",
+        "Each VM carries its own guest OS."
+      ]
+    },
+    {
+      "id": 16,
+      "q": "Which is a Type-1 (bare-metal) hypervisor?",
+      "opts": [
+        "VMware Workstation",
+        "VirtualBox",
+        "VMware ESXi",
+        "Word"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "virtualization",
+      "exp": [
+        "Type-1 runs directly on hardware (ESXi, Hyper-V, KVM).",
+        "Workstation/VirtualBox are Type-2 desktop hypervisors."
+      ]
+    },
+    {
+      "id": 17,
+      "q": "Instant scalability means the cloud can:",
+      "opts": [
+        "Never grow",
+        "Scale up/down quickly without buying hardware",
+        "Only shrink",
+        "Only grow yearly"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cloud-basics",
+      "exp": [
+        "Rapid elasticity = capacity on demand - a core published contrast vs DC delays."
+      ]
+    },
+    {
+      "id": 18,
+      "q": "Which is a SaaS collaboration suite?",
+      "opts": [
+        "VMware ESXi",
+        "Microsoft 365",
+        "Kubernetes",
+        "EC2"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "service-models",
+      "exp": [
+        "M365 = finished software consumed in the browser - SaaS.",
+        "ESXi = hypervisor; EC2 = IaaS; K8s = container orchestration."
+      ]
+    },
+    {
+      "id": 19,
+      "q": "Multi-tenant resource pooling means:",
+      "opts": [
+        "One customer per rack",
+        "Many customers share provider hardware safely isolated",
+        "No sharing ever",
+        "Sharing passwords"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cloud-basics",
+      "exp": [
+        "Pooling = the provider's hardware serves many tenants with logical isolation."
+      ]
+    },
+    {
+      "id": 20,
+      "q": "Measured service means:",
+      "opts": [
+        "Usage is metered and billed",
+        "Everything is free",
+        "Usage is unlimited",
+        "Billing is annual-only"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "cloud-basics",
+      "exp": [
+        "Metering enables the pay-as-per-use model."
+      ]
+    },
+    {
+      "id": 21,
+      "q": "Which provider natively supports Linux, Windows Server AND SQL Server with enterprise security?",
+      "opts": [
+        "Oracle",
+        "Microsoft Azure",
+        "Alibaba",
+        "Heroku"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "providers",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Azure's enterprise stack spans all three - the published PYQ answer."
+      ]
+    },
+    {
+      "id": 22,
+      "q": "Docker is a technology for:",
+      "opts": [
+        "Virtual machines",
+        "Containers",
+        "Databases",
+        "Firewalls"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "virtualization",
+      "exp": [
+        "Docker packages apps into containers sharing the host kernel."
+      ]
+    },
+    {
+      "id": 23,
+      "q": "Which orchestrates containers across many hosts?",
+      "opts": [
+        "Kubernetes",
+        "Excel",
+        "PowerPoint",
+        "BIND"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "virtualization",
+      "exp": [
+        "Kubernetes schedules, scales and heals container fleets."
+      ]
+    },
+    {
+      "id": 24,
+      "q": "Buying your own servers is which kind of cost?",
+      "opts": [
+        "OPEX",
+        "CAPEX",
+        "PAYE",
+        "SaaS"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cloud-vs-dc",
+      "exp": [
+        "Capital expenditure = buying hardware; cloud shifts it to OPEX."
+      ]
+    },
+    {
+      "id": 25,
+      "q": "Order the models from MOST to LEAST customer responsibility:",
+      "opts": [
+        "SaaS, PaaS, IaaS, on-prem",
+        "On-prem, IaaS, PaaS, SaaS",
+        "IaaS, on-prem, SaaS, PaaS",
+        "PaaS, SaaS, on-prem, IaaS"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "service-models",
+      "exp": [
+        "On-prem (everything) > IaaS (OS+) > PaaS (code+data) > SaaS (just use)."
+      ]
+    },
+    {
+      "id": 26,
+      "q": "A startup wants to deploy a web app without managing servers, runtimes or OS. Best model?",
+      "opts": [
+        "IaaS",
+        "PaaS",
+        "On-prem",
+        "Private DC"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "service-models",
+      "exp": [
+        "PaaS hides infra + runtime; the team ships code only."
+      ]
+    },
+    {
+      "id": 27,
+      "q": "A bank must keep customer data on hardware it fully controls, but burst web traffic to rented capacity. Model?",
+      "opts": [
+        "Public only",
+        "Hybrid",
+        "Community",
+        "Single public"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "deployment",
+      "exp": [
+        "Sensitive core private + elastic public = the hybrid definition."
+      ]
+    },
+    {
+      "id": 28,
+      "q": "Several hospitals with identical compliance rules share one platform. Model?",
+      "opts": [
+        "Public",
+        "Private",
+        "Community",
+        "Personal"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "deployment",
+      "exp": [
+        "Peers with common (regulatory) concerns = community cloud."
+      ]
+    },
+    {
+      "id": 29,
+      "q": "Which statement pair about cloud vs DC is TRUE?",
+      "opts": [
+        "Instant scalability: DC; pay-per-use: DC",
+        "Instant scalability: cloud; scalability challenges: DC",
+        "Owner repairs: cloud; provider repairs: DC",
+        "Both need on-prem racks"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "cloud-vs-dc",
+      "source": "Accenture AXIS PYQ pattern",
+      "exp": [
+        "Elasticity and pay-per-use = cloud; scale delays = data centre."
+      ]
+    },
+    {
+      "id": 30,
+      "q": "Which is an IaaS example?",
+      "opts": [
+        "Gmail",
+        "Azure Virtual Machines",
+        "Salesforce",
+        "Google Docs"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "service-models",
+      "exp": [
+        "Azure VMs = raw compute - IaaS.",
+        "Gmail/Docs/Salesforce = SaaS."
+      ]
+    },
+    {
+      "id": 31,
+      "q": "Which is a PaaS example?",
+      "opts": [
+        "AWS EC2",
+        "Heroku",
+        "Dropbox",
+        "ESXi"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "service-models",
+      "exp": [
+        "Heroku = deploy code, platform managed - PaaS.",
+        "EC2 = IaaS; Dropbox = SaaS/storage."
+      ]
+    },
+    {
+      "id": 32,
+      "q": "'Broad network access' as a NIST trait means:",
+      "opts": [
+        "Only office LANs",
+        "Services reachable over the network via standard devices",
+        "Bluetooth only",
+        "Sneakernet"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "cloud-basics",
+      "exp": [
+        "Capabilities are available over the network and accessed through standard mechanisms/devices."
+      ]
+    },
+    {
+      "id": 33,
+      "q": "'Resource pooling' means the provider:",
+      "opts": [
+        "Gives each customer a private rack",
+        "Serves multiple tenants from pooled hardware with isolation",
+        "Buys no hardware",
+        "Pools money from investors"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "cloud-basics",
+      "exp": [
+        "Multi-tenancy: physical resources pooled and dynamically assigned per demand."
+      ]
+    },
+    {
+      "id": 34,
+      "q": "Which is TRUE of private cloud?",
+      "opts": [
+        "Always multi-tenant public hardware",
+        "Dedicated to one organisation for maximum control",
+        "Cannot be off-premises",
+        "Is never compliant"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "deployment",
+      "exp": [
+        "Private = dedicated infrastructure - on-prem OR third-party hosted."
+      ]
+    },
+    {
+      "id": 35,
+      "q": "AWS EC2 is best classified as:",
+      "opts": [
+        "SaaS",
+        "PaaS",
+        "IaaS",
+        "Function-as-a-Service"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "service-models",
+      "exp": [
+        "EC2 = resizable virtual compute = infrastructure."
+      ]
+    },
+    {
+      "id": 36,
+      "q": "Which workload mapping made AZURE the published PYQ answer?",
+      "opts": [
+        "Only iOS apps",
+        "Linux, Windows Server and SQL Server with enhanced security",
+        "Only mainframes",
+        "Only game consoles"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "providers",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Azure spans the Microsoft enterprise trio natively."
+      ]
+    },
+    {
+      "id": 37,
+      "q": "VMs boot in minutes while containers boot in:",
+      "opts": [
+        "Hours",
+        "Seconds/milliseconds",
+        "Days",
+        "Never"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "virtualization",
+      "exp": [
+        "Sharing the host kernel removes the guest-OS boot cost."
+      ]
+    },
+    {
+      "id": 38,
+      "q": "Kubernetes primarily solves:",
+      "opts": [
+        "Container orchestration at scale",
+        "Spreadsheet formulas",
+        "Email routing",
+        "DNS naming"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "virtualization",
+      "exp": [
+        "K8s schedules, scales and self-heals container fleets."
+      ]
+    },
+    {
+      "id": 39,
+      "q": "In cloud economics, elasticity removes:",
+      "opts": [
+        "All electricity",
+        "Capacity-guessing and over-provisioning",
+        "The need for internet",
+        "Security"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "cloud-vs-dc",
+      "exp": [
+        "Scale on demand = no idle hardware bought for imagined peaks."
+      ]
+    },
+    {
+      "id": 40,
+      "q": "Which deployment model would a cost-first startup with standard workloads pick?",
+      "opts": [
+        "Public",
+        "Private on-prem",
+        "Community",
+        "Own DC"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "deployment",
+      "exp": [
+        "Public = cheapest entry, zero hardware, elastic."
+      ]
+    },
+    {
+      "id": 41,
+      "q": "Which is a measured-service consequence?",
+      "opts": [
+        "Flat yearly fees regardless of use",
+        "Costs track actual consumption",
+        "No billing exists",
+        "Billing by employee count"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "cloud-basics",
+      "exp": [
+        "Metered usage ties invoice to consumption - pay-as-per-use."
+      ]
+    },
+    {
+      "id": 42,
+      "q": "Oracle Cloud is most associated with:",
+      "opts": [
+        "Databases",
+        "Game streaming",
+        "Social networks",
+        "Routers"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "providers",
+      "exp": [
+        "Oracle's cloud strength is its database franchise."
+      ]
+    },
+    {
+      "id": 43,
+      "q": "GCP (Google Cloud Platform) is most associated with:",
+      "opts": [
+        "Data analytics and machine learning",
+        "Word processing",
+        "Cabling",
+        "Printers"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "providers",
+      "exp": [
+        "GCP's differentiators are data/ML services (BigQuery, Vertex)."
+      ]
+    },
+    {
+      "id": 44,
+      "q": "Which hypervisor type runs ON TOP of a host OS?",
+      "opts": [
+        "Type-1",
+        "Type-2",
+        "Type-3",
+        "Type-0"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "virtualization",
+      "exp": [
+        "Type-2 (VirtualBox, Workstation) sits on a desktop OS; Type-1 is bare-metal."
+      ]
+    },
+    {
+      "id": 45,
+      "q": "Multi-tenancy isolation in public cloud is achieved by:",
+      "opts": [
+        "Physical separation per customer",
+        "Logical isolation over pooled infrastructure",
+        "Sharing root passwords",
+        "Removing all security"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "cloud-basics",
+      "exp": [
+        "Pooling + logical isolation is what makes public cloud safe and cheap."
+      ]
+    },
+    {
+      "id": 46,
+      "q": "Which statement is FALSE?",
+      "opts": [
+        "Cloud shifts CAPEX to OPEX",
+        "Private cloud can be third-party hosted",
+        "Hybrid combines two deployment models",
+        "SaaS customers manage the underlying OS"
+      ],
+      "c": 3,
+      "d": "medium",
+      "t": "service-models",
+      "exp": [
+        "In SaaS the provider manages everything - the OS included."
+      ]
+    },
+    {
+      "id": 47,
+      "q": "Which cloud benefit directly absorbs a viral traffic spike?",
+      "opts": [
+        "Rapid elasticity",
+        "On-prem racks",
+        "Fax intake",
+        "Manual provisioning"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "cloud-basics",
+      "exp": [
+        "Elasticity scales capacity with demand automatically."
+      ]
+    },
+    {
+      "id": 48,
+      "q": "Which is the correct SaaS trait?",
+      "opts": [
+        "Customer installs the OS",
+        "Provider manages app, runtime, OS, hardware",
+        "Customer writes hypervisors",
+        "No internet needed"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "service-models",
+      "exp": [
+        "SaaS = fully provider-managed; the customer only uses the software."
+      ]
+    },
+    {
+      "id": 49,
+      "q": "A published AXIS PYQ asks for a provider WITHOUT backup support. The published answer is:",
+      "opts": [
+        "AWS",
+        "Oracle",
+        "Azure",
+        "Google Cloud"
+      ],
+      "c": 3,
+      "d": "hard",
+      "t": "providers",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "The published set maps 'no backup support' to Google Cloud - dated trivia; learn it as a PYQ fact, not current truth."
+      ]
+    },
+    {
+      "id": 50,
+      "q": "Published AXIS trivia maps Binary Large Object (BLOB) storage emphasis to:",
+      "opts": [
+        "Azure",
+        "Oracle",
+        "Alibaba",
+        "DigitalOcean"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "providers",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "The published set pairs BLOB-heavy data with Azure storage."
+      ]
+    },
+    {
+      "id": 51,
+      "q": "Published AXIS trivia maps 'does not provide hybrid storage' to:",
+      "opts": [
+        "AWS",
+        "Azure",
+        "Google Cloud Platform",
+        "IBM"
+      ],
+      "c": 2,
+      "d": "hard",
+      "t": "providers",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Published answer: GCP - again, dated trivia from the PYQ pool."
+      ]
+    },
+    {
+      "id": 52,
+      "q": "A team runs latency-sensitive apps on-premises but trains ML models on rented GPUs. Architecture?",
+      "opts": [
+        "Pure public",
+        "Pure private",
+        "Hybrid (edge/on-prem + cloud burst)",
+        "Community"
+      ],
+      "c": 2,
+      "d": "hard",
+      "t": "deployment",
+      "exp": [
+        "Split placement with orchestration = hybrid by definition."
+      ]
+    },
+    {
+      "id": 53,
+      "q": "Which ladder position does 'customer installs runtime but not OS' occupy?",
+      "opts": [
+        "Above IaaS",
+        "Between IaaS and SaaS (PaaS)",
+        "Below SaaS only",
+        "Equal to on-prem"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "service-models",
+      "exp": [
+        "OS hidden but runtime visible-ish = PaaS territory - between IaaS and SaaS."
+      ]
+    },
+    {
+      "id": 54,
+      "q": "Which NIST trait does auto-scaling groups directly implement?",
+      "opts": [
+        "Measured service",
+        "Rapid elasticity",
+        "Resource pooling",
+        "Broad access"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "cloud-basics",
+      "exp": [
+        "Auto-scaling = capacity follows demand = rapid elasticity."
+      ]
+    },
+    {
+      "id": 55,
+      "q": "Which statement about VMs and containers is TRUE?",
+      "opts": [
+        "Containers each carry a guest OS",
+        "VMs share the host kernel",
+        "Containers are lighter; VMs isolate more strongly",
+        "VMs boot faster than containers"
+      ],
+      "c": 2,
+      "d": "hard",
+      "t": "virtualization",
+      "exp": [
+        "Trade-off: containers = density/speed; VMs = stronger isolation via separate guest OSes."
+      ]
+    },
+    {
+      "id": 56,
+      "q": "A published PYQ statement says 'in cloud, the OWNER is responsible for downtime and repairs'. This is:",
+      "opts": [
+        "True",
+        "False - the provider is responsible",
+        "True only for AWS",
+        "True only for private cloud"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "cloud-vs-dc",
+      "source": "Accenture AXIS PYQ variant",
+      "exp": [
+        "Inverted-stem version of the published fact: provider, not owner, in the cloud."
+      ]
+    },
+    {
+      "id": 57,
+      "q": "Which cost behaviour matches cloud adoption?",
+      "opts": [
+        "Higher CAPEX, lower OPEX",
+        "Lower CAPEX, higher OPEX",
+        "No costs at all",
+        "Only CAPEX"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "cloud-vs-dc",
+      "exp": [
+        "Renting shifts spend from capital purchases to metered operations."
+      ]
+    },
+    {
+      "id": 58,
+      "q": "Which pairing of example to model is CORRECT?",
+      "opts": [
+        "EC2-PaaS, App Service-IaaS, M365-SaaS",
+        "EC2-IaaS, App Service-PaaS, M365-SaaS",
+        "EC2-SaaS, App Service-SaaS, M365-IaaS",
+        "EC2-IaaS, App Service-SaaS, M365-PaaS"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "service-models",
+      "exp": [
+        "EC2 = raw VMs (IaaS); App Service = code-only platform (PaaS); M365 = finished suite (SaaS)."
+      ]
+    },
+    {
+      "id": 59,
+      "q": "Which deployment model is MOST cost-efficient for a 3-person startup with unpredictable traffic?",
+      "opts": [
+        "Build a private DC",
+        "Public cloud pay-per-use",
+        "Community cloud",
+        "Buy fixed hardware"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "deployment",
+      "exp": [
+        "Zero upfront hardware + elastic metered billing = public cloud."
+      ]
+    },
+    {
+      "id": 60,
+      "q": "Which sequence lists cloud's five NIST characteristics completely?",
+      "opts": [
+        "Security, speed, storage, servers, software",
+        "On-demand, broad access, pooling, elasticity, measured service",
+        "CPU, RAM, disk, network, GPU",
+        "IaaS, PaaS, SaaS, DaaS, FaaS"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "cloud-basics",
+      "exp": [
+        "The five characteristics: on-demand self-service, broad network access, resource pooling, rapid elasticity, measured service.",
+        "Option D lists service MODELS, not characteristics."
+      ]
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "what-is-cloud"
+    },
+    {
+      "type": "concept",
+      "sectionId": "service-models"
+    },
+    {
+      "type": "concept",
+      "sectionId": "deployment-models"
+    },
+    {
+      "type": "concept",
+      "sectionId": "providers-comparison"
+    },
+    {
+      "type": "concept",
+      "sectionId": "cloud-vs-dc-virtualization"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}

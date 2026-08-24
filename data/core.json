@@ -1,434 +1,624 @@
 {
   "categories": [
     {
-      "id": "core",
-      "title": "Core",
-      "icon": "◈",
+      "id": "ms-office",
+      "title": "Common Apps & MS Office",
+      "icon": "Office",
       "color": "#0D9488",
-      "subtitle": "OOPs, DBMS, OS, Networking, Cloud & Office — the technical MCQ core"
+      "subtitle": "AXIS Technical: Word, Excel, PowerPoint, Outlook, browsers & shortcuts — about 12 questions"
+    },
+    {
+      "id": "networking-cloud",
+      "title": "Networking, Security & Cloud",
+      "icon": "Network",
+      "color": "#0891B2",
+      "subtitle": "AXIS Technical: client-server, auth, firewalls, attacks, encryption & cloud — about 10-11 questions"
+    },
+    {
+      "id": "cs-foundations",
+      "title": "CS Foundations",
+      "icon": "Core",
+      "color": "#475569",
+      "subtitle": "OOPs, DBMS, SQL, OS, DSA & web — powers the coding round and interviews"
     }
   ],
   "topics": [
     {
-      "id": "oops",
-      "title": "OOPs (Abstraction/Inheritance/Polymorphism)",
-      "icon": "◈",
-      "category": "core",
-      "color": "#4F46E5",
-      "days": "2",
+      "id": "ms-office-common-apps",
+      "title": "Common Applications & MS Office",
+      "icon": "MS",
+      "category": "ms-office",
+      "color": "#0D9488",
+      "days": "4",
       "subtopics": [
-        "Abstraction",
-        "Inheritance",
-        "Polymorphism",
-        "Encapsulation"
+        "Universal Shortcuts",
+        "MS Word (Views & Formatting)",
+        "MS Excel (Formulas & Ranges)",
+        "MS PowerPoint (Slides & Shows)",
+        "Outlook & Email Fields",
+        "Browsers & Command Prompt"
       ],
-      "estimatedHours": 10,
-      "status": "pending"
+      "estimatedHours": 8,
+      "status": "ready",
+      "axisSection": "Common Applications & MS Office"
     },
     {
-      "id": "dbms-basics",
-      "title": "DBMS Basics (Keys/ER/ACID)",
-      "icon": "⧉",
-      "category": "core",
+      "id": "computer-fundamentals",
+      "title": "Computer Fundamentals",
+      "icon": "CF",
+      "category": "ms-office",
       "color": "#0D9488",
       "days": "2",
       "subtopics": [
-        "Keys",
-        "ER model",
-        "ACID"
-      ],
-      "estimatedHours": 8,
-      "status": "pending"
-    },
-    {
-      "id": "sql-queries",
-      "title": "SQL Queries & JOINs",
-      "icon": "⧉",
-      "category": "core",
-      "color": "#0284C7",
-      "days": "2",
-      "subtopics": [
-        "SELECT & WHERE",
-        "JOINs",
-        "Subqueries"
-      ],
-      "estimatedHours": 8,
-      "status": "pending"
-    },
-    {
-      "id": "normalization",
-      "title": "Normalization (1NF–3NF)",
-      "icon": "≡",
-      "category": "core",
-      "color": "#059669",
-      "days": "1",
-      "subtopics": [
-        "1NF",
-        "2NF",
-        "3NF"
+        "Hardware vs Software",
+        "Memory Units",
+        "Input/Output Devices",
+        "OS Basics",
+        "Generations of Computers"
       ],
       "estimatedHours": 6,
-      "status": "pending"
-    },
-    {
-      "id": "os-basics",
-      "title": "OS Basics (Process/Thread/Memory)",
-      "icon": "⬢",
-      "category": "core",
-      "color": "#7C3AED",
-      "days": "2",
-      "subtopics": [
-        "Process vs thread",
-        "Scheduling",
-        "Memory management"
-      ],
-      "estimatedHours": 8,
-      "status": "pending"
-    },
-    {
-      "id": "javascript",
-      "title": "JavaScript & Frontend Basics",
-      "icon": "JS",
-      "category": "core",
-      "color": "#EAB308",
-      "days": "2",
-      "subtopics": [
-        "Closures",
-        "Event loop",
-        "DOM"
-      ],
-      "estimatedHours": 8,
-      "status": "pending"
-    },
-    {
-      "id": "data-structures-algo",
-      "title": "Data Structures & Algorithms Concepts",
-      "icon": "⛓",
-      "category": "core",
-      "color": "#DC2626",
-      "days": "2",
-      "subtopics": [
-        "Arrays & lists",
-        "Trees & graphs",
-        "Complexity"
-      ],
-      "estimatedHours": 10,
-      "status": "pending"
-    },
-    {
-      "id": "html-css",
-      "title": "HTML & CSS",
-      "icon": "◫",
-      "category": "core",
-      "color": "#DB2777",
-      "days": "1",
-      "subtopics": [
-        "Semantics",
-        "Flexbox",
-        "Grid"
-      ],
-      "estimatedHours": 6,
-      "status": "pending"
-    },
-    {
-      "id": "osi-tcpip",
-      "title": "OSI & TCP/IP Model",
-      "icon": "≋",
-      "category": "core",
-      "color": "#2563EB",
-      "days": "1",
-      "subtopics": [
-        "7 layers",
-        "TCP vs UDP",
-        "Encapsulation"
-      ],
-      "estimatedHours": 6,
-      "status": "pending"
-    },
-    {
-      "id": "ip-addressing",
-      "title": "IP Addressing & Subnetting",
-      "icon": "#",
-      "category": "core",
-      "color": "#4F46E5",
-      "days": "1",
-      "subtopics": [
-        "IPv4",
-        "Subnet mask",
-        "CIDR"
-      ],
-      "estimatedHours": 7,
-      "status": "pending"
-    },
-    {
-      "id": "protocols",
-      "title": "Protocols (TCP/UDP/HTTP/HTTPS/FTP/SMTP)",
-      "icon": "⇄",
-      "category": "core",
-      "color": "#0D9488",
-      "days": "1",
-      "subtopics": [
-        "TCP handshake",
-        "HTTP",
-        "FTP/SMTP"
-      ],
-      "estimatedHours": 7,
-      "status": "pending"
-    },
-    {
-      "id": "dns-dhcp",
-      "title": "DNS & DHCP",
-      "icon": "◎",
-      "category": "core",
-      "color": "#0284C7",
-      "days": "1",
-      "subtopics": [
-        "DNS resolution",
-        "DHCP lease",
-        "Records"
-      ],
-      "estimatedHours": 5,
-      "status": "pending"
-    },
-    {
-      "id": "network-devices",
-      "title": "Network Devices (Router/Switch/Hub)",
-      "icon": "⬡",
-      "category": "core",
-      "color": "#059669",
-      "days": "1",
-      "subtopics": [
-        "Router",
-        "Switch",
-        "Hub vs bridge"
-      ],
-      "estimatedHours": 5,
-      "status": "pending"
-    },
-    {
-      "id": "topologies",
-      "title": "Network Topologies",
-      "icon": "⬢",
-      "category": "core",
-      "color": "#7C3AED",
-      "days": "1",
-      "subtopics": [
-        "Star",
-        "Mesh",
-        "Bus & ring"
-      ],
-      "estimatedHours": 5,
-      "status": "pending"
-    },
-    {
-      "id": "cybersecurity-basics",
-      "title": "Cybersecurity Fundamentals",
-      "icon": "🛡",
-      "category": "core",
-      "color": "#DC2626",
-      "days": "1",
-      "subtopics": [
-        "CIA triad",
-        "Threats",
-        "Mitigation"
-      ],
-      "estimatedHours": 6,
-      "status": "pending"
-    },
-    {
-      "id": "encryption",
-      "title": "Encryption & Cryptography",
-      "icon": "🔑",
-      "category": "core",
-      "color": "#6B7280",
-      "days": "1",
-      "subtopics": [
-        "Symmetric vs asymmetric",
-        "Hashing",
-        "TLS"
-      ],
-      "estimatedHours": 6,
-      "status": "pending"
-    },
-    {
-      "id": "firewalls-vpn",
-      "title": "Firewalls & VPN",
-      "icon": "⛨",
-      "category": "core",
-      "color": "#374151",
-      "days": "1",
-      "subtopics": [
-        "Firewall rules",
-        "VPN tunnel",
-        "Proxy"
-      ],
-      "estimatedHours": 5,
-      "status": "pending"
-    },
-    {
-      "id": "cloud-computing",
-      "title": "Cloud Computing Basics (IaaS/PaaS/SaaS)",
-      "icon": "☁",
-      "category": "core",
-      "color": "#06B6D4",
-      "days": "1",
-      "subtopics": [
-        "IaaS",
-        "PaaS",
-        "SaaS & deployment"
-      ],
-      "estimatedHours": 6,
-      "status": "pending"
-    },
-    {
-      "id": "virtualization",
-      "title": "Virtualization & Containers",
-      "icon": "⬣",
-      "category": "core",
-      "color": "#0891B2",
-      "days": "1",
-      "subtopics": [
-        "VM vs container",
-        "Docker basics",
-        "Hypervisor"
-      ],
-      "estimatedHours": 5,
-      "status": "pending"
-    },
-    {
-      "id": "security-attacks",
-      "title": "Common Attacks (Phishing/DDoS/SQLi/XSS)",
-      "icon": "⚠",
-      "category": "core",
-      "color": "#EF4444",
-      "days": "1",
-      "subtopics": [
-        "Phishing",
-        "DDoS",
-        "SQL injection & XSS"
-      ],
-      "estimatedHours": 6,
-      "status": "pending"
+      "status": null,
+      "axisSection": "Common Applications & MS Office"
     },
     {
       "id": "ms-word",
       "title": "MS Word",
       "icon": "W",
-      "category": "core",
-      "color": "#2563EB",
-      "days": "1",
+      "category": "ms-office",
+      "color": "#0D9488",
+      "days": "3",
       "subtopics": [
-        "Formatting",
-        "Tables",
-        "Mail merge"
+        "Formatting & Fonts",
+        "Views (Print/Outline/Web)",
+        "Tabs & Ribbon",
+        "Page Layout & Margins",
+        "Tables & Mail Merge",
+        "Proofing & Review"
       ],
-      "estimatedHours": 5,
-      "status": "pending"
+      "estimatedHours": 8,
+      "status": null,
+      "axisSection": "Common Applications & MS Office"
     },
     {
       "id": "ms-excel",
       "title": "MS Excel (Formulas & Functions)",
       "icon": "X",
-      "category": "core",
-      "color": "#059669",
-      "days": "1",
+      "category": "ms-office",
+      "color": "#0D9488",
+      "days": "4",
       "subtopics": [
-        "VLOOKUP",
-        "Pivot tables",
-        "Formulas"
+        "Cells, Ranges & References",
+        "Core Functions (SUM/AVERAGE/COUNT)",
+        "Formula Syntax (= and operators)",
+        "Worksheets & Navigation",
+        "Formatting & Charts",
+        "Data Tools (Sort/Filter)"
       ],
-      "estimatedHours": 6,
-      "status": "pending"
+      "estimatedHours": 9,
+      "status": null,
+      "axisSection": "Common Applications & MS Office"
     },
     {
       "id": "ms-powerpoint",
       "title": "MS PowerPoint",
       "icon": "P",
-      "category": "core",
-      "color": "#EA580C",
-      "days": "1",
+      "category": "ms-office",
+      "color": "#0D9488",
+      "days": "2",
       "subtopics": [
-        "Slides",
-        "Animations",
-        "Master"
+        "Slides & Layouts",
+        "Views (Normal/Slide Sorter/Reading)",
+        "Transitions & Animations",
+        "Slide Shows & Navigation",
+        "Hyperlinks & Action Buttons",
+        "Master Slides"
       ],
-      "estimatedHours": 4,
-      "status": "pending"
+      "estimatedHours": 6,
+      "status": null,
+      "axisSection": "Common Applications & MS Office"
     },
     {
       "id": "ms-outlook",
       "title": "MS Outlook",
       "icon": "O",
-      "category": "core",
-      "color": "#0284C7",
-      "days": "1",
+      "category": "ms-office",
+      "color": "#0D9488",
+      "days": "2",
       "subtopics": [
-        "Email",
-        "Calendar",
-        "Rules"
+        "Mail Basics (CC/BCC/Attachments)",
+        "Calendar (Appointments & Meetings)",
+        "Tasks & Notes",
+        "Folders (Inbox/Drafts/Trash)",
+        "Signatures & Rules"
       ],
-      "estimatedHours": 4,
-      "status": "pending"
+      "estimatedHours": 5,
+      "status": null,
+      "axisSection": "Common Applications & MS Office"
     },
     {
       "id": "internet-browser",
       "title": "Internet & Browser Basics",
-      "icon": "◯",
-      "category": "core",
-      "color": "#7C3AED",
-      "days": "1",
+      "icon": "IB",
+      "category": "ms-office",
+      "color": "#0D9488",
+      "days": "2",
       "subtopics": [
-        "Browser",
-        "Cookies & cache",
-        "HTTP"
+        "Browsers & Search",
+        "Tabs, History & Bookmarks",
+        "Email Etiquette & Fields",
+        "URLs & Domains",
+        "Downloads & Plugins"
       ],
-      "estimatedHours": 4,
-      "status": "pending"
+      "estimatedHours": 5,
+      "status": null,
+      "axisSection": "Common Applications & MS Office"
     },
     {
       "id": "shortcut-keys",
       "title": "Shortcut Keys (Windows & Office)",
-      "icon": "⌘",
-      "category": "core",
-      "color": "#4F46E5",
-      "days": "1",
+      "icon": "Ctrl",
+      "category": "ms-office",
+      "color": "#0D9488",
+      "days": "2",
       "subtopics": [
-        "Windows keys",
-        "Office keys",
-        "Browser keys"
+        "Universal Shortcuts (Ctrl+C/V/X/Z)",
+        "Word Shortcuts",
+        "Excel Shortcuts",
+        "PowerPoint & Outlook Shortcuts",
+        "Windows Key Combos"
       ],
-      "estimatedHours": 3,
-      "status": "pending"
+      "estimatedHours": 5,
+      "status": null,
+      "axisSection": "Common Applications & MS Office"
     },
     {
       "id": "file-extensions",
       "title": "File Extensions & Formats",
-      "icon": "⧉",
-      "category": "core",
-      "color": "#6B7280",
+      "icon": "Ext",
+      "category": "ms-office",
+      "color": "#0D9488",
       "days": "1",
       "subtopics": [
-        "Document formats",
-        "Image formats",
-        "Executable"
+        "Office Formats (.docx/.xlsx/.pptx)",
+        "Images & Media",
+        "Executables & Archives",
+        "Web & Text Formats"
       ],
       "estimatedHours": 3,
-      "status": "pending"
+      "status": null,
+      "axisSection": "Common Applications & MS Office"
     },
     {
-      "id": "computer-fundamentals",
-      "title": "Computer Fundamentals",
-      "icon": "💻",
-      "category": "core",
-      "color": "#374151",
-      "days": "1",
+      "id": "command-prompt",
+      "title": "Command Prompt & CLI Basics",
+      "icon": "C:\\>",
+      "category": "ms-office",
+      "color": "#0D9488",
+      "days": "2",
       "subtopics": [
-        "Hardware",
-        "Software",
-        "Memory"
+        "Navigation (cd/dir)",
+        "File Operations (copy/move/del)",
+        "Network Commands (ipconfig/ping)",
+        "Drives & Paths"
       ],
       "estimatedHours": 4,
-      "status": "pending"
+      "status": null,
+      "axisSection": "Common Applications & MS Office"
+    },
+    {
+      "id": "networking-security-cloud",
+      "title": "Fundamentals of Networking, Security & Cloud",
+      "icon": "NSC",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "4",
+      "subtopics": [
+        "Client-Server & Shared Resources",
+        "Authentication vs Authorization",
+        "Firewalls (4 Types) & VPN",
+        "Network Attacks",
+        "Encryption Basics (DES/AES)",
+        "Cloud Models & Providers"
+      ],
+      "estimatedHours": 8,
+      "status": "ready",
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "client-server-sharing",
+      "title": "Client-Server Networks & Resource Sharing",
+      "icon": "CS",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "2",
+      "subtopics": [
+        "Client-Server vs P2P",
+        "Shared Resources & Mapping",
+        "Compatibility & Security Rules",
+        "LAN & Intranet Sharing"
+      ],
+      "estimatedHours": 4,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "authentication-authorization",
+      "title": "Authentication vs Authorization",
+      "icon": "AA",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "2",
+      "subtopics": [
+        "Identity Verification (Who are you?)",
+        "Permissions (What can you do?)",
+        "Factors (Password/Biometric/OTP)",
+        "MFA & SSO"
+      ],
+      "estimatedHours": 4,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "osi-tcpip",
+      "title": "OSI & TCP/IP Model",
+      "icon": "7L",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "3",
+      "subtopics": [
+        "7 Layers of OSI",
+        "TCP/IP 4-Layer Model",
+        "Layer Functions & Devices",
+        "Encapsulation & PDUs"
+      ],
+      "estimatedHours": 6,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "ip-addressing",
+      "title": "IP Addressing & Subnetting",
+      "icon": "IP",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "3",
+      "subtopics": [
+        "IPv4 Classes",
+        "Subnet Masks & CIDR",
+        "Private vs Public IPs",
+        "IPv6 Basics"
+      ],
+      "estimatedHours": 6,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "protocols",
+      "title": "Protocols & Ports",
+      "icon": "Pt",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "3",
+      "subtopics": [
+        "TCP vs UDP",
+        "HTTP/HTTPS & FTP",
+        "SMTP/POP3/IMAP",
+        "Well-Known Ports (0-1023)"
+      ],
+      "estimatedHours": 6,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "dns-dhcp",
+      "title": "DNS & DHCP",
+      "icon": "DH",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "2",
+      "subtopics": [
+        "Name Resolution (DNS Records)",
+        "DHCP DORA Process",
+        "DNS Hierarchy",
+        "Dynamic vs Static IP"
+      ],
+      "estimatedHours": 4,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "network-devices",
+      "title": "Network Devices",
+      "icon": "ND",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "2",
+      "subtopics": [
+        "Hub vs Switch vs Router",
+        "Access Points & Modems",
+        "Repeaters & Bridges",
+        "Gateways"
+      ],
+      "estimatedHours": 4,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "topologies",
+      "title": "Network Topologies",
+      "icon": "TP",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "2",
+      "subtopics": [
+        "Star, Bus, Ring",
+        "Mesh & Hybrid",
+        "Topology Trade-offs",
+        "LAN/MAN/WAN"
+      ],
+      "estimatedHours": 4,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "cybersecurity-basics",
+      "title": "Cybersecurity Fundamentals",
+      "icon": "CY",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "3",
+      "subtopics": [
+        "CIA Triad",
+        "Network Security Types (Physical/Technical/Admin)",
+        "Active vs Passive Devices",
+        "UTM & Zero Trust"
+      ],
+      "estimatedHours": 6,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "encryption",
+      "title": "Encryption & Cryptography",
+      "icon": "En",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "3",
+      "subtopics": [
+        "Symmetric vs Asymmetric",
+        "DES & AES Rounds",
+        "RSA & Key Exchange",
+        "Hashing vs Encryption",
+        "SSL/TLS Basics"
+      ],
+      "estimatedHours": 6,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "firewalls-vpn",
+      "title": "Firewalls & VPN",
+      "icon": "FW",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "2",
+      "subtopics": [
+        "Packet Filtering",
+        "Proxy & Stateful Inspection",
+        "Next-Gen Firewalls",
+        "VPN Tunnels & Uses"
+      ],
+      "estimatedHours": 5,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "security-attacks",
+      "title": "Common Attacks",
+      "icon": "AT",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "3",
+      "subtopics": [
+        "Phishing & Spoofing",
+        "DoS/DDoS & Smurfing",
+        "Email Bombing",
+        "Malware (Virus/Worm/Trojan/Ransomware)",
+        "SQLi & XSS"
+      ],
+      "estimatedHours": 6,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "cloud-computing",
+      "title": "Cloud Computing",
+      "icon": "Cl",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "3",
+      "subtopics": [
+        "NIST Traits & Cloud Basics",
+        "IaaS/PaaS/SaaS Ladder",
+        "Deployment Models",
+        "Providers & PYQ Facts",
+        "Cloud vs Data Centre",
+        "Virtualization & Containers"
+      ],
+      "estimatedHours": 6,
+      "status": "ready",
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "virtualization",
+      "title": "Virtualization & Containers",
+      "icon": "VM",
+      "category": "networking-cloud",
+      "color": "#0891B2",
+      "days": "2",
+      "subtopics": [
+        "Hypervisors",
+        "VMs vs Containers",
+        "Benefits & Use Cases"
+      ],
+      "estimatedHours": 4,
+      "status": null,
+      "axisSection": "Networking, Security & Cloud"
+    },
+    {
+      "id": "oops",
+      "title": "OOPs (Abstraction/Inheritance/Polymorphism)",
+      "icon": "OO",
+      "category": "cs-foundations",
+      "color": "#475569",
+      "days": "4",
+      "subtopics": [
+        "Classes & Objects",
+        "4 Pillars of OOP",
+        "Inheritance Types",
+        "Overloading vs Overriding"
+      ],
+      "estimatedHours": 8,
+      "status": null
+    },
+    {
+      "id": "dbms-basics",
+      "title": "DBMS Basics (Keys/ER/ACID)",
+      "icon": "DB",
+      "category": "cs-foundations",
+      "color": "#475569",
+      "days": "3",
+      "subtopics": [
+        "Keys (Primary/Foreign/Candidate)",
+        "ER Diagrams",
+        "ACID Properties",
+        "DDL vs DML"
+      ],
+      "estimatedHours": 6,
+      "status": null
+    },
+    {
+      "id": "sql-queries",
+      "title": "SQL Queries & JOINs",
+      "icon": "SQL",
+      "category": "cs-foundations",
+      "color": "#475569",
+      "days": "4",
+      "subtopics": [
+        "SELECT & WHERE",
+        "JOINs (Inner/Left/Right/Full)",
+        "GROUP BY & HAVING",
+        "Subqueries & Aggregates"
+      ],
+      "estimatedHours": 8,
+      "status": null
+    },
+    {
+      "id": "normalization",
+      "title": "Normalization (1NF-3NF)",
+      "icon": "NF",
+      "category": "cs-foundations",
+      "color": "#475569",
+      "days": "2",
+      "subtopics": [
+        "Functional Dependency",
+        "1NF, 2NF, 3NF",
+        "BCNF Overview",
+        "Anomalies"
+      ],
+      "estimatedHours": 5,
+      "status": null
+    },
+    {
+      "id": "os-basics",
+      "title": "OS Basics (Process/Thread/Memory)",
+      "icon": "OS",
+      "category": "cs-foundations",
+      "color": "#475569",
+      "days": "3",
+      "subtopics": [
+        "Process vs Thread",
+        "Scheduling",
+        "Deadlocks",
+        "Memory Management"
+      ],
+      "estimatedHours": 6,
+      "status": null
+    },
+    {
+      "id": "javascript",
+      "title": "JavaScript & Frontend Basics",
+      "icon": "JS",
+      "category": "cs-foundations",
+      "color": "#475569",
+      "days": "3",
+      "subtopics": [
+        "Variables & Types",
+        "Functions & Events",
+        "DOM Basics",
+        "ES6 Highlights"
+      ],
+      "estimatedHours": 5,
+      "status": null
+    },
+    {
+      "id": "html-css",
+      "title": "HTML & CSS",
+      "icon": "HC",
+      "category": "cs-foundations",
+      "color": "#475569",
+      "days": "3",
+      "subtopics": [
+        "Tags & Structure",
+        "Forms & Inputs",
+        "Selectors & Box Model",
+        "Flex/Grid Basics"
+      ],
+      "estimatedHours": 5,
+      "status": null
+    },
+    {
+      "id": "data-structures-algo",
+      "title": "Data Structures & Algorithms Concepts",
+      "icon": "DSA",
+      "category": "cs-foundations",
+      "color": "#475569",
+      "days": "5",
+      "subtopics": [
+        "Arrays & Strings",
+        "Stacks & Queues",
+        "Trees & Graphs",
+        "Sorting & Searching",
+        "Complexity (Big-O)"
+      ],
+      "estimatedHours": 9,
+      "status": null
     }
-  ]
+  ],
+  "examPattern": {
+    "source": "Accenture AXIS 2026 campus hiring - Technical Assessment",
+    "format": "45 MCQs in 45 minutes, shared timer; non-adaptive; no negative marking; sectional AND sub-sectional cut-offs; elimination round",
+    "subSections": [
+      {
+        "name": "Common Applications & MS Office",
+        "questions": 12,
+        "difficulty": "Medium-Hard",
+        "topics": "MS Office (Word/Excel/PowerPoint/Outlook ~5Q), browsers ~2Q, shortcut keys ~2Q, command prompt ~2Q, key workflows ~1Q"
+      },
+      {
+        "name": "Pseudo Code",
+        "questions": 18,
+        "difficulty": "Medium",
+        "topics": "Covered by the Pseudocode bank in ApArena"
+      },
+      {
+        "name": "Fundamentals of Networking, Security & Cloud",
+        "questions": 11,
+        "difficulty": "Moderate",
+        "topics": "Client-server resource sharing, authentication vs authorization, firewalls, network monitoring, encryption, cloud providers & models"
+      }
+    ],
+    "pace": "About 1 minute per question - skip and return; navigation between sections is allowed",
+    "rounds": "Round 1: Behavioural + Cognitive (gamified) -> Round 2: Technical Assessment + Coding (3 Q) -> Communication Assessment (non-elimination) -> Interview"
+  }
 }

@@ -1,0 +1,2399 @@
+{
+  "id": "networking-security-cloud",
+  "title": "Fundamentals of Networking, Security & Cloud",
+  "icon": "NSC",
+  "category": "networking-cloud",
+  "subtitle": "AXIS 2026 section: client-server sharing, authN vs authZ, firewalls, attacks, encryption & cloud — about 11 exam questions",
+  "days": "4",
+  "color": "#0891B2",
+  "subtopics": [
+    "Client-Server & Shared Resources",
+    "Authentication vs Authorization",
+    "Firewalls (4 Types) & VPN",
+    "Network Attacks",
+    "Encryption Basics (DES/AES)",
+    "Cloud Models & Providers"
+  ],
+  "estimatedHours": 8,
+  "readingSections": [
+    {
+      "id": "axis-exam-intel",
+      "title": "The AXIS Technical Section: What to Expect",
+      "type": "concept",
+      "quickSummary": "AXIS 2026 Technical Assessment: 45 MCQs in 45 shared minutes — MS Office (12Q), Pseudo Code (18Q), Networking/Security/Cloud (11Q). Sub-sectional cut-offs apply.",
+      "content": [
+        "The Accenture campus drive (AXIS pattern) opens with a Behavioural + Cognitive (gamified) round, then the Technical Assessment: 45 multiple-choice questions sharing a 45-minute clock, followed by a 3-question coding round. Every round except Communication Assessment is eliminatory.",
+        "The Technical Assessment splits into three sub-sections, and Accenture applies SUB-sectional cut-offs — you cannot bank a strong MS Office score to cover a weak Networking score. Roughly one minute per question; navigation between sections is allowed, so skip and return.",
+        "This topic covers the third sub-section — Fundamentals of Networking, Security and Cloud — which is pure recall: no coding, no tracing, just clean conceptual facts. It is the fastest section to make cut-off in once the fact base below is memorised."
+      ],
+      "subsections": [
+        {
+          "title": "Section blueprint",
+          "content": "Common Applications & MS Office: about 12 questions (Medium-Hard) - Word, Excel, PowerPoint, Outlook, browsers, shortcut keys, command prompt.\nPseudo Code: about 18 questions (Medium) - covered by the Pseudocode bank.\nNetworking, Security & Cloud: about 10-11 questions (Moderate) - this topic."
+        },
+        {
+          "title": "What the Networking/Security/Cloud questions look like",
+          "content": "Published PYQs cluster into six buckets: (1) client-server resource sharing, (2) authentication vs authorization, (3) firewall and VPN types, (4) attack identification (spoofing, email bombing, DDoS), (5) encryption basics (DES, AES rounds, symmetric vs asymmetric), (6) cloud models, providers and cloud-vs-data-centre comparisons."
+        },
+        {
+          "title": "Pacing strategy",
+          "content": "One minute per question across 45 questions. Answer the recall questions you know instantly (most of this section), flag anything computational (subnetting), and return. Never leave blanks - there is no negative marking, so a guessed answer is a free lottery ticket."
+        }
+      ],
+      "quickRevision": [
+        "45 questions / 45 minutes, three sub-sections, sub-sectional cut-offs.",
+        "No negative marking - always answer everything.",
+        "Networking/Security/Cloud is pure memorisation: six buckets, one fact each.",
+        "Skip computational items (subnetting) and return with spare minutes."
+      ],
+      "tricks": [
+        "Memorise the six question buckets - every PYQ seen publicly fits one of them.",
+        "Do MS Office and this section FIRST (fast recall), leave pseudo code tracing for the remaining time.",
+        "Cloud-vs-data-centre comparisons repeat almost verbatim: owner handles downtime in a DATA CENTRE, provider handles it in the CLOUD.",
+        "If an option says 'authentication' next to a PASSWORD and 'authorization' next to a PERMISSION, the mapping is always: password = authentication, permission = authorization."
+      ],
+      "patterns": [
+        "'Who is responsible for downtime/repairs?' - data centre: owner; cloud: provider.",
+        "'Process of verifying identity' = authentication; 'granting permission to access' = authorization.",
+        "'Which type of firewall inspects application-level data?' - Next-Generation Firewall (deep packet inspection).",
+        "'User receives unwanted volume of emails' - email bombing; 'packet appears to be something else' - spoofing."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Accenture AXIS Technical Assessment (published PYQ sets)",
+          "question": "How many processes turn plaintext into encrypted data in AES-128?",
+          "approach": "AES rounds = 10 (128-bit), 12 (192-bit), 14 (256-bit). AES-128 answer: 10."
+        },
+        {
+          "source": "Accenture AXIS Technical Assessment (published PYQ sets)",
+          "question": "An attack in which the user receives an unwanted amount of emails is:",
+          "approach": "Email bombing - flooding an inbox. Smurfing = ICMP flood via broadcast; DoS = service overwhelm; ping storm = ICMP flood."
+        },
+        {
+          "source": "Accenture AXIS Technical Assessment (published PYQ sets)",
+          "question": "Which statement is true about cloud and data centre downtime responsibility?",
+          "approach": "In a data centre the OWNER is responsible for downtime and repairs; in the cloud the PROVIDER is. Only statement II is true."
+        }
+      ],
+      "companyNote": "This section exists only in the Accenture AXIS pattern (introduced for 2024+ batches). It is elimination-grade: sub-sectional cut-offs mean you must clear this bucket, not just the overall total."
+    },
+    {
+      "id": "client-server-sharing",
+      "title": "Networks & Shared Resources",
+      "type": "concept",
+      "quickSummary": "A client requests, a server serves. Shared resources over a LAN/intranet follow three rules: organisational security, compatibility, and mapping.",
+      "content": [
+        "A network connects computers so they can share resources - files, printers, applications, storage. Two architectures dominate: the client-server model, where dedicated servers provide services that clients request, and peer-to-peer (P2P), where every machine is both client and server.",
+        "Client-server is the enterprise standard: centralised control, easier security administration, and scalable services (web servers, mail servers, file servers, print servers, DNS servers, authentication servers). P2P suits tiny setups - no central administration, but no central protection either.",
+        "Shared resources (also called network resources) are data, information, or hardware devices accessible from a remote computer over a LAN or workplace intranet. Sharing files and printers follows either P2P or the client-server paradigm, and it demands three disciplines."
+      ],
+      "subsections": [
+        {
+          "title": "The three sharing rules",
+          "content": "1. Organisational security - unauthorised access to shared resources is a constant threat, so security methods (permissions, authentication) must be defined.\n2. Compatibility - clients need a compatible OS or application to use the shared resource.\n3. Mapping - accessing a shared drive or file requires a shared destination address and naming conventions (e.g., mapping a network drive to a drive letter)."
+        },
+        {
+          "title": "Network sizes",
+          "content": "LAN - one building/campus. MAN - a city. WAN - countries/continents (the Internet is the largest WAN). An intranet is a private organisational network using Internet technologies; an extranet extends controlled access to trusted outsiders."
+        },
+        {
+          "title": "Network monitoring",
+          "content": "Network monitoring tracks traffic and usage to spot faults, bottlenecks and intrusions. Tools range from packet sniffers (Wireshark captures packets for analysis) to full network management systems that watch bandwidth, uptime and traffic patterns - a favourite PYQ theme under 'network monitoring, traffic usage'."
+        }
+      ],
+      "quickRevision": [
+        "Client = requests services; server = provides services; P2P = both roles on every machine.",
+        "Three sharing rules: security, compatibility, mapping.",
+        "Shared resource = file/printer/storage reachable over LAN or intranet.",
+        "Monitoring = watching traffic/usage for faults and intrusions."
+      ],
+      "tricks": [
+        "PYQ stem 'share resources in a client-server network' -> answer options almost always test the three rules; pick the one mentioning security, compatibility OR mapping.",
+        "Centralised control/security = client-server; no central admin = P2P.",
+        "Intranet = private company network; Internet = public global network."
+      ],
+      "patterns": [
+        "'Which guideline is needed to access shared OS hardware drives?' - mapping (destination address + naming conventions).",
+        "'Constant threat to shared resources' - unauthorised access, answered by organisational security.",
+        "'Every node acts as both client and server' - peer-to-peer."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "PrepInsta AXIS syllabus (official topic list)",
+          "question": "Share resources in a client-server network - which rule requires a shared destination address and naming conventions?",
+          "approach": "Mapping. Compatibility is about OS/application fit; organisational security is about permissions."
+        }
+      ],
+      "companyNote": "Client-server sharing is the FIRST named topic in Accenture's official syllabus for this section - expect at least one direct question."
+    },
+    {
+      "id": "auth-security-types",
+      "title": "Authentication, Authorization & Security Types",
+      "type": "concept",
+      "quickSummary": "Authentication proves WHO you are; authorization decides WHAT you may do. Security devices split into active, passive, preventative and UTM families.",
+      "content": [
+        "Authentication verifies identity - matching presented credentials (username/password, cards, retina scans, voice recognition, fingerprints) against an authorised user database. It answers 'who are you?' and has no bearing on which files or tasks the identity may touch.",
+        "Authorization grants permissions - a system administrator decides which users reach which directories, at which hours, with how much storage. It answers 'what may you do?', usually runs right after authentication, and in some systems does not exist at all (any requester gets the resource).",
+        "Network security itself is categorised three ways - physical (locks, guards), technical (firewalls, encryption), administrative (policies, training) - and its devices into families you must recognise for PYQs."
+      ],
+      "subsections": [
+        {
+          "title": "The authentication factor families",
+          "content": "Knowledge factor - something you KNOW (password, PIN).\nPossession factor - something you HAVE (smart card, OTP token, phone).\nInherence factor - something you ARE (fingerprint, retina, voice).\nMulti-factor authentication (MFA) combines factors from DIFFERENT families - password + OTP. Two passwords is still single-factor."
+        },
+        {
+          "title": "AuthN vs AuthZ - the exam mapping",
+          "content": "Authentication: identity verification, happens FIRST, credentials compared against a database, confirms the person or system.\nAuthorization: access rights, happens AFTER authentication, defines privileges (directories, hours, storage space).\nMost public web pages require neither; a server that must know exactly who is accessing uses authentication; a server checking whether the client may use a resource performs authorization."
+        },
+        {
+          "title": "Security device families",
+          "content": "Active devices - block/stop traffic threats: firewalls, antivirus scanning devices, content filters.\nPassive devices - identify and report: intrusion detection systems (IDS), network taps.\nPreventative devices - stop intrusions proactively: anti-virus gateways, anti-spoofing filters.\nUnified Threat Management (UTM) - one appliance bundling firewall + IDS/IPS + antivirus + content filtering."
+        },
+        {
+          "title": "The CIA triad",
+          "content": "Confidentiality - only authorised eyes see data (encryption, access control).\nIntegrity - data is not altered undetected (hashes, checksums).\nAvailability - data/services reachable when needed (redundancy, DDoS protection). Every security control maps to at least one leg of this triad."
+        }
+      ],
+      "quickRevision": [
+        "AuthN = who you are (password/biometric); AuthZ = what you may do (permissions); AuthN first.",
+        "Three factors: know / have / are. MFA mixes families.",
+        "Device families: active (block), passive (detect/report), preventative (proactive stop), UTM (all-in-one).",
+        "CIA = Confidentiality, Integrity, Availability."
+      ],
+      "tricks": [
+        "PYQ mapping: 'verifying a user's identity' -> authentication, always. 'Server assesses whether client has permission' -> authorization, always.",
+        "Antivirus scanning devices sit in the ACTIVE devices family in the standard taxonomy - a repeated PYQ.",
+        "Two passwords = single factor; password + fingerprint = multi-factor. Different FAMILIES, not different credentials.",
+        "Retina scans, voice recognition and fingerprints are authentication methods, never authorization methods."
+      ],
+      "patterns": [
+        "'Server wants to know exactly WHO is accessing' -> authentication.",
+        "'Server assesses whether client has PERMISSION to use a resource' -> authorization.",
+        "'Determines which users have access to which directories, hours, storage' -> authorization by system administrator.",
+        "'Combines firewall + IDS + antivirus in one appliance' -> UTM."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "PrepInsta AXIS syllabus + published PYQs",
+          "question": "Difference between authorization and authentication - which statement is TRUE?",
+          "approach": "Authentication verifies identity (username/password, biometrics); authorization grants rights after identity is known. Any option swapping the two is wrong."
+        },
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "Antivirus scanning devices fall under which type of network security device?",
+          "approach": "Active devices - the family that intercepts and blocks malicious objects (firewalls, antivirus scanners, content filters)."
+        }
+      ],
+      "companyNote": "Authentication-vs-authorization is the single most repeated conceptual PYQ of this section - PrepInsta names it explicitly in the official topic list."
+    },
+    {
+      "id": "firewall-attacks",
+      "title": "Firewalls, VPNs & Network Attacks",
+      "type": "concept",
+      "quickSummary": "Four firewall generations (packet filter, proxy, stateful, NGFW); a VPN builds an encrypted tunnel; attacks have a fixed name-and-definition table.",
+      "content": [
+        "A firewall is a network security device that monitors and filters incoming and outgoing traffic against an organisation's security rules - the barrier between a trusted private network and the public Internet. Four generations appear in PYQs.",
+        "A Virtual Private Network (VPN) extends a private network across a public one: your traffic travels inside an encrypted tunnel, so eavesdroppers see only ciphertext. VPNs secure remote access and site-to-site links; they encrypt, but the firewall is the device that filters and blocks.",
+        "Attacks are the third PYQ bucket. Each has a one-line definition; exams test exactly that line."
+      ],
+      "subsections": [
+        {
+          "title": "The four firewall generations",
+          "content": "1. Packet filtering - inspects small amounts of data (packet headers: IPs, ports) and permits/denies per filter standards. Fastest, least thorough.\n2. Proxy service - filters messages at the APPLICATION layer; an intermediary stands between client and server.\n3. Stateful inspection - dynamic packet filtering that monitors ACTIVE connections and allows packets belonging to established, legitimate sessions.\n4. Next-Generation Firewall (NGFW) - deep packet inspection plus application-level awareness."
+        },
+        {
+          "title": "VPN essentials",
+          "content": "Tunnel = encrypted path through the public Internet. Protocols: IPsec (network layer, site-to-site), SSL/TLS VPN (client-to-remote-access), OpenVPN/WireGuard (modern implementations). Use cases: remote work, branch offices, securing public-Wi-Fi traffic. VPN encrypts confidentiality; it does not replace the firewall's filtering job."
+        },
+        {
+          "title": "The attack table (memorise verbatim)",
+          "content": "Phishing - fraudulent messages tricking users into revealing credentials.\nSpoofing - attacker creates packets (or identities) that APPEAR to be something else.\nEmail bombing - flooding a user with massive unwanted email volume.\nDoS/DDoS - overwhelming a service with traffic; DDoS uses many distributed sources.\nSmurfing - ICMP echo requests to a broadcast address with a spoofed source; every host replies to the victim.\nMan-in-the-Middle - attacker secretly relays/alters communication between two parties.\nSQL injection - malicious SQL through input fields; XSS - malicious scripts injected into trusted pages.\nMalware: virus (attaches to files, needs a host), worm (self-replicates across networks), trojan (disguised as legitimate software), ransomware (encrypts data, demands payment)."
+        }
+      ],
+      "quickRevision": [
+        "Firewalls: packet filter (headers) -> proxy (application layer) -> stateful (active connections) -> NGFW (deep packet inspection).",
+        "VPN = encrypted tunnel over public network (IPsec, SSL/TLS).",
+        "Spoofing = fake identity/packet; email bombing = mail flood; DDoS = distributed overwhelm; smurfing = ICMP broadcast amplification.",
+        "Virus needs a host file; worm self-spreads; trojan disguises; ransomware extorts."
+      ],
+      "tricks": [
+        "Generation ladder trick: each generation inspects MORE - headers, then messages, then connections, then full payload. Match the question's inspection depth to the generation.",
+        "'Appears to be something else' in the stem -> spoofing, verbatim PYQ phrasing.",
+        "Unwanted EMAILS (not traffic) -> email bombing. Traffic/service overload -> DoS/DDoS.",
+        "Stateful = remembers CONNECTIONS. If the option mentions 'active connections' or 'established sessions', it is stateful inspection."
+      ],
+      "patterns": [
+        "'Barrier between private internal network and public Internet' - firewall (definition question).",
+        "'Filters messages at the application layer' - proxy service firewall.",
+        "'Deep packet inspection with application-level inspection' - NGFW.",
+        "'Ensures data confidentiality over public Wi-Fi' - VPN."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "Attack in which a user creates a packet that appears to be something else:",
+          "approach": "Spoofing - forged source identity. Trojan is disguised malware, not a packet trick."
+        },
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "An attack in which the user receives an unwanted amount of emails:",
+          "approach": "Email bombing. Options typically include smurfing, DoS and ping storm - all traffic attacks, not mail floods."
+        },
+        {
+          "source": "TalentBattle Accenture PYQ set (Cisco-flavoured)",
+          "question": "Which command shows whether an IP access list is enabled on a particular interface?",
+          "approach": "show ip interface - it displays the access groups applied per interface. show access-lists lists ACLs but not their interface binding."
+        }
+      ],
+      "companyNote": "Firewall-type and attack-identification questions appear in nearly every published AXIS PYQ set - the four generations and the attack table are non-negotiable memory items."
+    },
+    {
+      "id": "encryption-cloud",
+      "title": "Encryption Basics & Cloud Computing",
+      "type": "concept",
+      "quickSummary": "Symmetric = one shared key (DES/AES); asymmetric = key pair (RSA). AES rounds: 10/12/14. Cloud = provider-run, pay-per-use; data centre = owner-run.",
+      "content": [
+        "Encryption converts plaintext into unreadable ciphertext using a key. Symmetric cryptography uses ONE shared key for both encryption and decryption - fast, but key distribution is the weak link. Asymmetric cryptography uses a key PAIR: a public key to encrypt, a private key to decrypt - slow, but solves distribution.",
+        "The named algorithms are PYQ regulars. DES (Data Encryption Standard): symmetric, block cipher, 56-bit effective key, 16 rounds, a bit-oriented cipher. AES (Advanced Encryption Standard): symmetric block cipher with a 128-bit block and 128/192/256-bit keys running 10/12/14 rounds respectively. RSA: asymmetric, security resting on the difficulty of factoring large numbers. Hashing (MD5, SHA) is one-way - used for integrity, not confidentiality.",
+        "Cloud computing delivers computing (storage, servers, applications) over the Internet on a pay-as-you-use model. The provider owns the hardware and handles downtime and repairs; in a traditional on-premises data centre, the OWNER carries that burden. That single contrast powers a surprising number of PYQs."
+      ],
+      "subsections": [
+        {
+          "title": "AES rounds - the one numeric fact",
+          "content": "AES-128: 10 rounds. AES-192: 12 rounds. AES-256: 14 rounds. Pattern: key bits / 32 = rounds (128/32 = 10). Each round applies SubBytes, ShiftRows, MixColumns and AddRoundKey (final round skips MixColumns)."
+        },
+        {
+          "title": "Cloud service models",
+          "content": "IaaS - raw infrastructure: VMs, storage, networks; you manage OS and above (AWS EC2, Azure VMs).\nPaaS - platform + runtime; you bring code (Heroku, Azure App Service, Google App Engine).\nSaaS - finished software over the browser; provider manages everything (Gmail, Microsoft 365, Salesforce).\nResponsibility ladder: the higher the model, the less the customer manages. On-premises: customer manages everything."
+        },
+        {
+          "title": "Deployment models & the provider landscape",
+          "content": "Public cloud - shared provider infrastructure (AWS, Microsoft Azure, Google Cloud Platform, Oracle Cloud, IBM Cloud). Private cloud - dedicated to one organisation, on- or off-premises. Hybrid cloud - public + private working together with orchestration; community cloud - shared by organisations with common concerns."
+        },
+        {
+          "title": "Cloud vs data centre - the PYQ contrast",
+          "content": "On-premises hardware = data centre; remote hardware rented over the Internet = cloud.\nInstant scalability and pay-as-per-use = cloud traits; scalability challenges and delays = data centre traits.\nDowntime and repairs: owner's job in a data centre, provider's job in the cloud.\nAzure is known for supporting Linux, Windows Server and SQL Server workloads with enterprise security integration."
+        }
+      ],
+      "quickRevision": [
+        "Symmetric = one key, fast (DES, AES). Asymmetric = key pair (RSA). Hashing = one-way integrity.",
+        "DES: 56-bit key, 16 rounds, bit-oriented. AES-128/192/256 = 10/12/14 rounds.",
+        "IaaS < PaaS < SaaS on the customer-manages-less ladder.",
+        "Data centre: owner fixes downtime. Cloud: provider fixes downtime. Pay-per-use + instant scale = cloud."
+      ],
+      "tricks": [
+        "AES rounds = key bits / 32. 128->10, 192->12, 256->14. One formula, three possible questions.",
+        "16 rounds appears in BOTH DES (16 Feistel rounds) - do not confuse AES's 10/12/14 with DES's 16.",
+        "Cloud-vs-DC questions are statement-pairs: assign 'owner responsibility' to data centre and everything else falls into place.",
+        "SaaS = you only use it; PaaS = you only code; IaaS = you also run the OS. Match the question's 'you manage...' phrasing."
+      ],
+      "patterns": [
+        "'How many processes/rounds in AES-128?' - 10.",
+        "'DES is an example of which cipher?' - bit-oriented cipher (block, symmetric).",
+        "'Choose the provider if you need Linux, Windows Server and SQL Server support with enhanced security' - Microsoft Azure.",
+        "'Instant scalability: ___ , pay as per use: ___' - both are cloud, never data centre."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "Which provider would you choose for Linux, Windows Server and SQL Server support with enhanced security?",
+          "approach": "Microsoft Azure - its enterprise stack natively spans all three workloads."
+        },
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "Correctly mapped relationship between attributes and cloud or data centre?",
+          "approach": "On-premises -> data centre, remote hardware -> cloud. 'Instant scalable' belongs with cloud, not data centre."
+        },
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "DES encryption algorithm is an example of which option?",
+          "approach": "Bit-oriented cipher - DES encrypts 64-bit blocks with a 56-bit key over 16 Feistel rounds."
+        }
+      ],
+      "companyNote": "Cloud-vs-data-centre comparisons plus one AES/DES fact appear in essentially every published AXIS PYQ batch - highest ROI facts in the whole section."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "authn-authz-rule",
+      "title": "Authenticate First, Authorize Second",
+      "formula": {
+        "latex": "\\text{AuthN (who are you?)} \\;\\to\\; \\text{AuthZ (what may you do?)}",
+        "text": "Authentication verifies identity; authorization grants rights - always in that order."
+      },
+      "whenToUse": "Any question contrasting passwords/credentials with permissions/access rights.",
+      "explanation": [
+        "Authentication compares presented credentials against an authorised-user database: username/password, smart cards, retina scans, voice recognition, fingerprints.",
+        "Authorization decides privileges AFTER identity is known: which directories, which hours, how much storage.",
+        "Authorization may require fresh authentication in some cases; in others no authentication exists at all (public resources).",
+        "Most public web pages require neither."
+      ],
+      "example": {
+        "prompt": "A server checks whether a client may open a shared file. Which process is running?",
+        "steps": [
+          "The identity is already established.",
+          "The server evaluates permission to the resource.",
+          "That evaluation is authorization."
+        ],
+        "answer": "Authorization"
+      },
+      "memoryTip": "AuthenticatioN = identificatioN. AuthorizatioN = what may I do?",
+      "commonMistake": "Calling a fingerprint scan 'authorization' - biometrics prove IDENTITY, so they are authentication."
+    },
+    {
+      "id": "firewall-generations",
+      "title": "Four Firewall Generations (Inspection Depth Ladder)",
+      "formula": {
+        "latex": "\\text{Packet filter} < \\text{Proxy} < \\text{Stateful} < \\text{NGFW}",
+        "text": "Each generation inspects more: headers -> application messages -> active connections -> full payload."
+      },
+      "whenToUse": "Matching a firewall type to the inspection depth or layer named in the question.",
+      "explanation": [
+        "Packet filtering: analyses small amounts of data (headers) against filter standards; network layer.",
+        "Proxy service: filters messages at the application layer through an intermediary.",
+        "Stateful inspection: dynamic packet filtering monitoring ACTIVE connections to decide which packets pass.",
+        "NGFW: deep packet inspection with application-level awareness."
+      ],
+      "example": {
+        "prompt": "Which firewall monitors active connections to decide which packets to allow?",
+        "steps": [
+          "'Monitors active connections' is the signature phrase.",
+          "It matches stateful inspection (dynamic packet filtering)."
+        ],
+        "answer": "Stateful inspection firewall"
+      },
+      "memoryTip": "Headers, Messages, Connections, Payload - Packet, Proxy, Stateful, NGFW.",
+      "commonMistake": "Calling stateful inspection 'application layer' - that phrase belongs to proxy service."
+    },
+    {
+      "id": "aes-rounds",
+      "title": "AES Rounds Formula",
+      "formula": {
+        "latex": "\\text{rounds} = \\frac{\\text{key bits}}{32} \\quad (128 \\to 10,\\; 192 \\to 12,\\; 256 \\to 14)",
+        "text": "AES runs key-bits/32 rounds: 10 for AES-128, 12 for AES-192, 14 for AES-256."
+      },
+      "whenToUse": "Any 'how many rounds/processes in AES-xxx' question.",
+      "explanation": [
+        "AES uses a fixed 128-bit block; the KEY size selects the round count.",
+        "Each round: SubBytes, ShiftRows, MixColumns, AddRoundKey (final round skips MixColumns).",
+        "DES comparison: 56-bit effective key, 16 Feistel rounds - do not mix the two tables."
+      ],
+      "example": {
+        "prompt": "How many processes (rounds) turn plaintext into encrypted data in AES-128?",
+        "steps": [
+          "rounds = 128 / 32 = 4? No - AES defines exactly 10 rounds for the 128-bit key.",
+          "The bits/32 relation gives the Nb-based structure; the standard fixes 10."
+        ],
+        "answer": "10 rounds"
+      },
+      "memoryTip": "10-12-14 climbs with the key: 128, 192, 256.",
+      "commonMistake": "Answering 16 (that is DES) or 14 (that is AES-256) for AES-128."
+    },
+    {
+      "id": "subnet-mask",
+      "title": "CIDR to Mask & Host Count",
+      "formula": {
+        "latex": "/n \\Rightarrow \\text{mask bits } n{=}1, \\text{hosts} = 2^{32-n} - 2",
+        "text": "A /n prefix sets n mask bits; usable hosts in a subnet are 2 raised to the remaining bits, minus network and broadcast."
+      },
+      "whenToUse": "Subnetting questions: which network a host belongs to, its mask, or usable-host count.",
+      "explanation": [
+        "Example: /20 = 8 + 8 + 4 set bits -> 255.255.240.0 (third octet 11110000 = 240).",
+        "Block size in the third octet = 256 - 240 = 16 -> networks at .0, .16, .32, .48, .64 ...",
+        "172.16.50.172 falls between 172.16.48.0 and 172.16.63.255 -> its /20 subnet is 172.16.48.0.",
+        "A standard ACL denying that subnet starts: access-list 10 deny 172.16.48.0 0.0.15.255 (wildcard = inverse mask)."
+      ],
+      "example": {
+        "prompt": "Which subnet contains 172.16.50.172/20?",
+        "steps": [
+          "/20 mask = 255.255.240.0; block = 16 in the third octet.",
+          "50 / 16 -> floor = 3 -> 3 x 16 = 48.",
+          "Subnet = 172.16.48.0; wildcard = 0.0.15.255."
+        ],
+        "answer": "172.16.48.0 /20 (wildcard 0.0.15.255)"
+      },
+      "memoryTip": "Mask 240 -> block 16 -> wildcard 15. The wildcard is always block-minus-one.",
+      "commonMistake": "Using 172.16.64.0 - that is the NEXT block; 50 sits in 48-63."
+    },
+    {
+      "id": "well-known-ports",
+      "title": "Well-Known Ports Table (0-1023)",
+      "formula": {
+        "latex": "\\text{FTP } 21,\\; \\text{SSH } 22,\\; \\text{SMTP } 25,\\; \\text{DNS } 53,\\; \\text{HTTP } 80,\\; \\text{POP3 } 110,\\; \\text{IMAP } 143,\\; \\text{HTTPS } 443",
+        "text": "Memorise the eight exam ports; everything below 1024 is 'well-known'."
+      },
+      "whenToUse": "Protocol-to-port matching questions and mail-flow questions.",
+      "explanation": [
+        "Mail chain: SMTP sends (25), POP3/IMAP retrieve (110/143) - IMAP keeps server-side folders.",
+        "Web: HTTP 80 plain, HTTPS 443 encrypted via TLS.",
+        "Transport: TCP = connection-oriented & reliable; UDP = connectionless & fast (DNS queries typically ride UDP 53).",
+        "File transfer: FTP control 21 / data 20; secure shell 22."
+      ],
+      "example": {
+        "prompt": "Which protocol and port deliver email between mail servers?",
+        "steps": [
+          "Mail transfer uses the sending protocol.",
+          "SMTP on port 25."
+        ],
+        "answer": "SMTP, port 25"
+      },
+      "memoryTip": "'S' row: SSH 22, SMTP 25 (send), then 53 DNS, 80 HTTP, 110 POP, 143 IMAP, 443 HTTPS.",
+      "commonMistake": "Saying POP3 sends mail - it only retrieves. SMTP sends and relays."
+    },
+    {
+      "id": "cloud-responsibility",
+      "title": "IaaS / PaaS / SaaS Responsibility Ladder",
+      "formula": {
+        "latex": "\\text{On-prem} > \\text{IaaS} > \\text{PaaS} > \\text{SaaS} \\quad (\\text{customer-managed stack shrinks})",
+        "text": "The higher the service model, the less the customer manages; the provider always secures the physical layer in the cloud."
+      },
+      "whenToUse": "Questions mapping 'you manage the OS/app/data' statements to a service model, or cloud-vs-data-centre duties.",
+      "explanation": [
+        "On-premises data centre: customer manages EVERYTHING - hardware, downtime, repairs.",
+        "IaaS: provider runs hardware/network; customer installs OS, runtime, apps (AWS EC2, Azure VMs).",
+        "PaaS: provider adds OS + runtime; customer brings code and data (Azure App Service, Heroku).",
+        "SaaS: provider runs the finished application; customer only uses it (Microsoft 365, Gmail, Salesforce).",
+        "Cloud traits vs data centre: pay-as-per-use and instant scalability are cloud; scalability challenges and owner-run repairs are data centre."
+      ],
+      "example": {
+        "prompt": "A team rents virtual machines and installs its own OS and web server. Which model?",
+        "steps": [
+          "Provider supplies raw compute; customer manages OS upward.",
+          "That split defines infrastructure as a service."
+        ],
+        "answer": "IaaS"
+      },
+      "memoryTip": "I Install, P just Program, S just Sit-and-use.",
+      "commonMistake": "Saying SaaS customers patch the OS - in SaaS even the application is provider-managed."
+    }
+  ],
+  "practiceProblems": {
+    "authn-authz-rule": [
+      {
+        "q": "A login screen checks a username and password. Which process is this?",
+        "opts": [
+          "Authorization",
+          "Authentication",
+          "Accounting",
+          "Auditing"
+        ],
+        "c": 1,
+        "s": [
+          "Credentials prove identity.",
+          "Identity proof = authentication.",
+          "Authorization comes after, granting rights."
+        ],
+        "a": "Authentication"
+      },
+      {
+        "q": "After login, the system checks whether the user may open the payroll folder. Which process?",
+        "opts": [
+          "Authentication",
+          "Authorization",
+          "Encryption",
+          "Compression"
+        ],
+        "c": 1,
+        "s": [
+          "Identity already established at login.",
+          "Checking permission to a resource = authorization."
+        ],
+        "a": "Authorization"
+      },
+      {
+        "q": "Which of these is a POSSESSION authentication factor?",
+        "opts": [
+          "PIN",
+          "Fingerprint",
+          "OTP token",
+          "Mother's maiden name"
+        ],
+        "c": 2,
+        "s": [
+          "Something you HAVE = possession.",
+          "PIN/name = knowledge; fingerprint = inherence; OTP device = possession."
+        ],
+        "a": "OTP token"
+      },
+      {
+        "q": "A user logs in with a password AND approves a phone prompt. This is:",
+        "opts": [
+          "Single sign-on",
+          "Multi-factor authentication",
+          "No authentication",
+          "Authorization"
+        ],
+        "c": 1,
+        "s": [
+          "Password = knowledge factor; phone approval = possession factor.",
+          "Different families combined = MFA."
+        ],
+        "a": "Multi-factor authentication"
+      },
+      {
+        "q": "Using two DIFFERENT passwords for one login counts as multi-factor authentication because:",
+        "opts": [
+          "True - two secrets are always MFA",
+          "False - both passwords are the same factor family (knowledge)",
+          "True - passwords are possession factors",
+          "False - MFA needs biometrics only"
+        ],
+        "c": 1,
+        "s": [
+          "MFA requires factors from DIFFERENT families: know / have / are.",
+          "Two passwords are both knowledge factors - still single-factor authentication."
+        ],
+        "a": "False - both are knowledge factors"
+      },
+      {
+        "q": "'The server assesses whether a client has permission to use a resource.' This defines:",
+        "opts": [
+          "Authentication",
+          "Authorization",
+          "Identification",
+          "Notification"
+        ],
+        "c": 1,
+        "s": [
+          "Verbatim PrepInsta syllabus definition of authorization."
+        ],
+        "a": "Authorization"
+      },
+      {
+        "q": "Which authentication methods appear in the AXIS syllabus list?",
+        "opts": [
+          "Cards, retina scans, voice recognition, fingerprints",
+          "Firewall rules",
+          "Subnet masks",
+          "Port numbers"
+        ],
+        "c": 0,
+        "s": [
+          "The syllabus lists cards, retina scans, voice recognition and fingerprints alongside username/password."
+        ],
+        "a": "Cards, retina scans, voice, fingerprints"
+      },
+      {
+        "q": "Most public web pages on the Internet require:",
+        "opts": [
+          "Both authentication and authorization",
+          "Only authorization",
+          "Neither authentication nor authorization",
+          "Only smart cards"
+        ],
+        "c": 2,
+        "s": [
+          "Standard syllabus line: most public pages require neither."
+        ],
+        "a": "Neither"
+      },
+      {
+        "q": "Authorization may sometimes require:",
+        "opts": [
+          "New physical cabling",
+          "Additional authentication in certain circumstances",
+          "A new ISP",
+          "Disabling the firewall"
+        ],
+        "c": 1,
+        "s": [
+          "Syllabus: authorization may need different types of authentication - passwords necessary in some cases, not others."
+        ],
+        "a": "Additional authentication in some cases"
+      },
+      {
+        "q": "Which order is always correct?",
+        "opts": [
+          "Authorize, then authenticate",
+          "Authenticate, then authorize",
+          "Both simultaneously",
+          "Neither is needed"
+        ],
+        "c": 1,
+        "s": [
+          "You must know WHO before deciding WHAT they may do.",
+          "Authentication precedes authorization."
+        ],
+        "a": "Authenticate, then authorize"
+      }
+    ],
+    "firewall-generations": [
+      {
+        "q": "Which firewall analyses packet HEADERS only, against filter standards?",
+        "opts": [
+          "Packet filtering",
+          "Proxy",
+          "Stateful",
+          "NGFW"
+        ],
+        "c": 0,
+        "s": [
+          "First generation: inspects small amounts of data - the header - per filter standards."
+        ],
+        "a": "Packet filtering"
+      },
+      {
+        "q": "Which firewall filters at the APPLICATION layer via an intermediary?",
+        "opts": [
+          "Packet filtering",
+          "Proxy service",
+          "Stateful inspection",
+          "ACL"
+        ],
+        "c": 1,
+        "s": [
+          "Proxy service = application-layer filtering through an intermediary process."
+        ],
+        "a": "Proxy service"
+      },
+      {
+        "q": "'Dynamic packet filtering that monitors active connections' defines:",
+        "opts": [
+          "Stateful inspection",
+          "Packet filtering",
+          "Proxy",
+          "Screening router"
+        ],
+        "c": 0,
+        "s": [
+          "Verbatim syllabus definition of stateful inspection."
+        ],
+        "a": "Stateful inspection"
+      },
+      {
+        "q": "Which firewall performs DEEP packet inspection with application-level awareness?",
+        "opts": [
+          "Packet filtering",
+          "Stateful",
+          "NGFW",
+          "Hub"
+        ],
+        "c": 2,
+        "s": [
+          "NGFW = next-generation: deep packet inspection + application-level inspection."
+        ],
+        "a": "NGFW"
+      },
+      {
+        "q": "A firewall is best defined as:",
+        "opts": [
+          "A faster router",
+          "A barrier filtering traffic between a private network and the public Internet",
+          "A backup device",
+          "A mail server"
+        ],
+        "c": 1,
+        "s": [
+          "Standard definition - monitors and filters incoming/outgoing traffic per organisational security rules."
+        ],
+        "a": "Barrier between private network and Internet"
+      },
+      {
+        "q": "Order from LEAST to MOST inspection depth:",
+        "opts": [
+          "NGFW, proxy, packet, stateful",
+          "Packet filter, proxy, stateful, NGFW",
+          "Stateful, packet, NGFW, proxy",
+          "Proxy, NGFW, packet, stateful"
+        ],
+        "c": 1,
+        "s": [
+          "Headers -> application messages -> active connections -> full payload."
+        ],
+        "a": "Packet filter, proxy, stateful, NGFW"
+      },
+      {
+        "q": "Which firewall decides by tracking whether a packet belongs to an ESTABLISHED session?",
+        "opts": [
+          "Stateful inspection",
+          "Packet filtering",
+          "Proxy",
+          "None"
+        ],
+        "c": 0,
+        "s": [
+          "Established-session awareness is the stateful signature."
+        ],
+        "a": "Stateful inspection"
+      },
+      {
+        "q": "The firewall sits between:",
+        "opts": [
+          "Two monitors",
+          "A trusted private network and the public Internet",
+          "Keyboard and PC",
+          "Two users' mailboxes"
+        ],
+        "c": 1,
+        "s": [
+          "Definition: barrier between private internal network and the public Internet."
+        ],
+        "a": "Private network and public Internet"
+      },
+      {
+        "q": "Which generation would inspect the CONTENT of an HTTP request body?",
+        "opts": [
+          "Packet filtering",
+          "Stateful inspection only",
+          "NGFW",
+          "None can"
+        ],
+        "c": 2,
+        "s": [
+          "Payload inspection = deep packet inspection = NGFW territory."
+        ],
+        "a": "NGFW"
+      },
+      {
+        "q": "Firewall filtering decisions follow:",
+        "opts": [
+          "Random selection",
+          "Organisation-defined security rules",
+          "The user's mood",
+          "ISP advertisements"
+        ],
+        "c": 1,
+        "s": [
+          "Definition: filters incoming/outgoing traffic according to security regulations set by the organisation."
+        ],
+        "a": "Organisation-defined rules"
+      }
+    ],
+    "aes-rounds": [
+      {
+        "q": "How many rounds does AES-128 perform?",
+        "opts": [
+          "8",
+          "10",
+          "12",
+          "16"
+        ],
+        "c": 1,
+        "s": [
+          "AES-128 = 10 rounds (128-bit key)."
+        ],
+        "a": "10"
+      },
+      {
+        "q": "How many rounds does AES-256 perform?",
+        "opts": [
+          "10",
+          "12",
+          "14",
+          "16"
+        ],
+        "c": 2,
+        "s": [
+          "AES-256 = 14 rounds."
+        ],
+        "a": "14"
+      },
+      {
+        "q": "How many rounds does AES-192 perform?",
+        "opts": [
+          "10",
+          "12",
+          "14",
+          "8"
+        ],
+        "c": 1,
+        "s": [
+          "AES-192 = 12 rounds."
+        ],
+        "a": "12"
+      },
+      {
+        "q": "DES runs how many rounds with what effective key length?",
+        "opts": [
+          "10 rounds, 128-bit",
+          "16 rounds, 56-bit",
+          "12 rounds, 192-bit",
+          "14 rounds, 256-bit"
+        ],
+        "c": 1,
+        "s": [
+          "DES: 16 Feistel rounds, 56-bit effective key (64-bit block)."
+        ],
+        "a": "16 rounds, 56-bit"
+      },
+      {
+        "q": "AES operates on blocks of how many bits?",
+        "opts": [
+          "64",
+          "128",
+          "256",
+          "56"
+        ],
+        "c": 1,
+        "s": [
+          "AES block size is fixed at 128 bits; the KEY varies (128/192/256)."
+        ],
+        "a": "128-bit blocks"
+      },
+      {
+        "q": "Which operation does the FINAL AES round skip?",
+        "opts": [
+          "SubBytes",
+          "ShiftRows",
+          "MixColumns",
+          "AddRoundKey"
+        ],
+        "c": 2,
+        "s": [
+          "The last round omits MixColumns (it would add nothing invertible)."
+        ],
+        "a": "MixColumns"
+      },
+      {
+        "q": "Which algorithm is ASYMMETRIC?",
+        "opts": [
+          "DES",
+          "AES",
+          "RSA",
+          "IDEA"
+        ],
+        "c": 2,
+        "s": [
+          "RSA uses a public/private key pair - asymmetric.",
+          "DES, AES, IDEA are symmetric."
+        ],
+        "a": "RSA"
+      },
+      {
+        "q": "Hashing (MD5/SHA) is primarily used for:",
+        "opts": [
+          "Confidentiality",
+          "Integrity",
+          "Availability",
+          "Routing"
+        ],
+        "c": 1,
+        "s": [
+          "One-way fingerprints detect alteration - integrity, not secrecy."
+        ],
+        "a": "Integrity"
+      },
+      {
+        "q": "Symmetric cryptography's main weakness is:",
+        "opts": [
+          "Slow computation",
+          "Secure key distribution",
+          "Large ciphertext",
+          "No standard algorithms"
+        ],
+        "c": 1,
+        "s": [
+          "Both parties need the same secret key - distributing it safely is the problem asymmetric crypto solves."
+        ],
+        "a": "Key distribution"
+      },
+      {
+        "q": "SSLv3 padding bits are ______ with the secret key.",
+        "opts": [
+          "XORed",
+          "Concatenated",
+          "ANDed",
+          "Divided"
+        ],
+        "c": 1,
+        "s": [
+          "Standard SSLv3 description (Forouzan): padding bits are concatenated with the secret key - a published AXIS PYQ."
+        ],
+        "a": "Concatenated"
+      }
+    ],
+    "subnet-mask": [
+      {
+        "q": "What is the dotted mask for /20?",
+        "opts": [
+          "255.255.255.0",
+          "255.255.240.0",
+          "255.255.0.0",
+          "255.240.0.0"
+        ],
+        "c": 1,
+        "s": [
+          "/20 = 8+8+4 set bits; third octet 11110000 = 240."
+        ],
+        "a": "255.255.240.0"
+      },
+      {
+        "q": "The /20 block size in the third octet is:",
+        "opts": [
+          "8",
+          "16",
+          "32",
+          "64"
+        ],
+        "c": 1,
+        "s": [
+          "256 - 240 = 16 addresses per block in the third octet."
+        ],
+        "a": "16"
+      },
+      {
+        "q": "Which /20 subnet contains 172.16.50.172?",
+        "opts": [
+          "172.16.32.0",
+          "172.16.48.0",
+          "172.16.64.0",
+          "172.16.50.0"
+        ],
+        "c": 1,
+        "s": [
+          "Blocks: .0,.16,.32,.48,.64... 50 lies in 48-63 -> 172.16.48.0."
+        ],
+        "a": "172.16.48.0"
+      },
+      {
+        "q": "The wildcard mask for the 172.16.48.0/20 subnet is:",
+        "opts": [
+          "0.0.255.255",
+          "0.0.15.255",
+          "0.0.31.255",
+          "255.255.240.0"
+        ],
+        "c": 1,
+        "s": [
+          "Wildcard = inverse of mask: 0.0.15.255 (block 16 -> wildcard 15)."
+        ],
+        "a": "0.0.15.255"
+      },
+      {
+        "q": "A standard ACL denying that subnet starts with:",
+        "opts": [
+          "access-list 10 deny 172.16.48.0 0.0.15.255",
+          "access-list 110 permit tcp any any",
+          "access-list 10 permit 172.16.48.0",
+          "access-list 200 deny all"
+        ],
+        "c": 0,
+        "s": [
+          "Standard ACL (1-99), deny, subnet + wildcard - the published PYQ answer."
+        ],
+        "a": "access-list 10 deny 172.16.48.0 0.0.15.255"
+      },
+      {
+        "q": "Usable hosts in a /24 subnet:",
+        "opts": [
+          "256",
+          "254",
+          "128",
+          "62"
+        ],
+        "c": 1,
+        "s": [
+          "2^(32-24) - 2 = 256 - 2 (network + broadcast) = 254."
+        ],
+        "a": "254"
+      },
+      {
+        "q": "Which command shows ACLs bound to a specific interface?",
+        "opts": [
+          "show access-lists",
+          "show ip interface",
+          "show version",
+          "show users"
+        ],
+        "c": 1,
+        "s": [
+          "show ip interface displays per-interface access groups (published PYQ)."
+        ],
+        "a": "show ip interface"
+      },
+      {
+        "q": "Permitting SMTP to only host 1.1.1.1 needs which extended ACL line?",
+        "opts": [
+          "access-list 110 permit tcp any host 1.1.1.1 eq smtp",
+          "access-list 10 permit smtp host 1.1.1.1",
+          "access-list 110 permit ip host 1.1.1.1",
+          "access-list 10 deny tcp any eq smtp"
+        ],
+        "c": 0,
+        "s": [
+          "Extended ACL: protocol tcp + destination port eq smtp (published PYQ)."
+        ],
+        "a": "access-list 110 permit tcp any host 1.1.1.1 eq smtp"
+      },
+      {
+        "q": "Extended ACL numbers range from:",
+        "opts": [
+          "1-99",
+          "100-199",
+          "200-299",
+          "0-1023"
+        ],
+        "c": 1,
+        "s": [
+          "Standard ACLs 1-99; extended 100-199 (protocol/port filtering)."
+        ],
+        "a": "100-199"
+      },
+      {
+        "q": "SMTP mail delivery uses which port?",
+        "opts": [
+          "21",
+          "25",
+          "53",
+          "110"
+        ],
+        "c": 1,
+        "s": [
+          "SMTP = port 25 (sending/relaying); 110 = POP3 retrieval."
+        ],
+        "a": "25"
+      }
+    ],
+    "well-known-ports": [
+      {
+        "q": "HTTPS port?",
+        "opts": [
+          "80",
+          "443",
+          "8080",
+          "21"
+        ],
+        "c": 1,
+        "s": [
+          "HTTPS = HTTP over TLS on 443."
+        ],
+        "a": "443"
+      },
+      {
+        "q": "HTTP port?",
+        "opts": [
+          "80",
+          "443",
+          "25",
+          "22"
+        ],
+        "c": 0,
+        "s": [
+          "Plain HTTP = 80."
+        ],
+        "a": "80"
+      },
+      {
+        "q": "DNS typically rides which transport/port?",
+        "opts": [
+          "TCP 53 only",
+          "UDP 53 (TCP for zone transfers)",
+          "UDP 25",
+          "TCP 110"
+        ],
+        "c": 1,
+        "s": [
+          "Queries use UDP 53; TCP 53 for zone transfers/large responses."
+        ],
+        "a": "UDP 53"
+      },
+      {
+        "q": "POP3 port?",
+        "opts": [
+          "110",
+          "143",
+          "993",
+          "25"
+        ],
+        "c": 0,
+        "s": [
+          "POP3 = 110; IMAP = 143."
+        ],
+        "a": "110"
+      },
+      {
+        "q": "Which retrieval protocol keeps mail server-side and syncs across devices?",
+        "opts": [
+          "POP3",
+          "IMAP",
+          "SMTP",
+          "SNMP"
+        ],
+        "c": 1,
+        "s": [
+          "IMAP synchronises server-side folders - multi-device friendly."
+        ],
+        "a": "IMAP"
+      },
+      {
+        "q": "SSH port?",
+        "opts": [
+          "23",
+          "22",
+          "21",
+          "20"
+        ],
+        "c": 1,
+        "s": [
+          "SSH = 22 (secure shell); 23 = Telnet (insecure); 20/21 = FTP data/control."
+        ],
+        "a": "22"
+      },
+      {
+        "q": "TCP differs from UDP because TCP is:",
+        "opts": [
+          "Connectionless and fast",
+          "Connection-oriented and reliable",
+          "Only for video",
+          "Wireless-only"
+        ],
+        "c": 1,
+        "s": [
+          "TCP: handshake, ordering, retransmission. UDP: fire-and-forget speed."
+        ],
+        "a": "Connection-oriented and reliable"
+      },
+      {
+        "q": "FTP control port?",
+        "opts": [
+          "20",
+          "21",
+          "69",
+          "23"
+        ],
+        "c": 1,
+        "s": [
+          "FTP: 21 control, 20 data; 69 = TFTP."
+        ],
+        "a": "21"
+      },
+      {
+        "q": "'Well-known' ports occupy which range?",
+        "opts": [
+          "0-1023",
+          "1024-49151",
+          "49152-65535",
+          "1-80"
+        ],
+        "c": 0,
+        "s": [
+          "0-1023 well-known; 1024-49151 registered; the rest dynamic."
+        ],
+        "a": "0-1023"
+      },
+      {
+        "q": "Sending mail between servers uses:",
+        "opts": [
+          "POP3",
+          "SMTP",
+          "IMAP",
+          "HTTP"
+        ],
+        "c": 1,
+        "s": [
+          "SMTP sends and relays; POP3/IMAP retrieve."
+        ],
+        "a": "SMTP"
+      }
+    ],
+    "cloud-responsibility": [
+      {
+        "q": "Who handles hardware downtime and repairs in the CLOUD?",
+        "opts": [
+          "The customer",
+          "The provider",
+          "The ISP",
+          "The electrician"
+        ],
+        "c": 1,
+        "s": [
+          "Provider owns/runs cloud hardware - published PYQ fact."
+        ],
+        "a": "The provider"
+      },
+      {
+        "q": "Who handles downtime and repairs in an on-premises DATA CENTRE?",
+        "opts": [
+          "The provider",
+          "The owner",
+          "Google",
+          "Nobody"
+        ],
+        "c": 1,
+        "s": [
+          "Owner-run hardware = owner-run repairs (published PYQ fact)."
+        ],
+        "a": "The owner"
+      },
+      {
+        "q": "'Pay as per use' and 'instant scalability' describe:",
+        "opts": [
+          "Data centres",
+          "Cloud",
+          "Fax machines",
+          "Tape backup"
+        ],
+        "c": 1,
+        "s": [
+          "Cloud economics - the published PYQ maps both to cloud."
+        ],
+        "a": "Cloud"
+      },
+      {
+        "q": "Renting VMs and managing your own OS = which model?",
+        "opts": [
+          "SaaS",
+          "PaaS",
+          "IaaS",
+          "None"
+        ],
+        "c": 2,
+        "s": [
+          "Raw infrastructure + customer-managed OS = IaaS (EC2, Azure VMs)."
+        ],
+        "a": "IaaS"
+      },
+      {
+        "q": "Deploying code without managing OS or runtime = which model?",
+        "opts": [
+          "IaaS",
+          "PaaS",
+          "SaaS",
+          "On-prem"
+        ],
+        "c": 1,
+        "s": [
+          "PaaS hides OS/runtime; customer brings code (App Service, Heroku)."
+        ],
+        "a": "PaaS"
+      },
+      {
+        "q": "Using Gmail or Microsoft 365 in a browser = which model?",
+        "opts": [
+          "IaaS",
+          "PaaS",
+          "SaaS",
+          "NaaS"
+        ],
+        "c": 2,
+        "s": [
+          "Finished software over the browser = SaaS."
+        ],
+        "a": "SaaS"
+      },
+      {
+        "q": "Which provider supports Linux, Windows Server AND SQL Server with enterprise security?",
+        "opts": [
+          "Azure",
+          "Oracle",
+          "Alibaba",
+          "DigitalOcean"
+        ],
+        "c": 0,
+        "s": [
+          "Published AXIS PYQ: Azure spans all three workloads natively."
+        ],
+        "a": "Microsoft Azure"
+      },
+      {
+        "q": "Public + private clouds working together = which deployment?",
+        "opts": [
+          "Community",
+          "Hybrid",
+          "Private",
+          "Bare-metal"
+        ],
+        "c": 1,
+        "s": [
+          "Hybrid = orchestrated public + private."
+        ],
+        "a": "Hybrid"
+      },
+      {
+        "q": "Order from MOST to LEAST customer responsibility:",
+        "opts": [
+          "SaaS, PaaS, IaaS, on-prem",
+          "On-prem, IaaS, PaaS, SaaS",
+          "IaaS, on-prem, SaaS, PaaS",
+          "PaaS, on-prem, IaaS, SaaS"
+        ],
+        "c": 1,
+        "s": [
+          "On-prem (everything) > IaaS (OS+) > PaaS (code) > SaaS (just use)."
+        ],
+        "a": "On-prem, IaaS, PaaS, SaaS"
+      },
+      {
+        "q": "'Remote hardware' rented over the Internet is the PYQ definition of:",
+        "opts": [
+          "Data centre",
+          "Cloud",
+          "Mainframe",
+          "Intranet"
+        ],
+        "c": 1,
+        "s": [
+          "Published PYQ mapping: on-premises -> data centre; remote hardware -> cloud."
+        ],
+        "a": "Cloud"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "id": 1,
+      "q": "What does a CLIENT do in a client-server network?",
+      "opts": [
+        "Provides services to other machines",
+        "Requests services from a server",
+        "Stores all network passwords",
+        "Replaces the need for a router"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "client-server",
+      "exp": [
+        "The model is named after the roles: clients REQUEST, servers PROVIDE.",
+        "File servers, mail servers and print servers all wait for client requests."
+      ]
+    },
+    {
+      "id": 2,
+      "q": "Which network architecture makes every machine act as BOTH client and server?",
+      "opts": [
+        "Client-server",
+        "Peer-to-peer (P2P)",
+        "Mainframe",
+        "Ring"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "client-server",
+      "exp": [
+        "P2P gives every node both roles - no central administration.",
+        "Client-server separates the roles onto dedicated machines."
+      ]
+    },
+    {
+      "id": 3,
+      "q": "Authentication answers which question?",
+      "opts": [
+        "What may I do?",
+        "Who are you?",
+        "When did you log in?",
+        "Where is the server?"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "auth",
+      "exp": [
+        "Authentication verifies IDENTITY - who you are.",
+        "'What may I do?' is authorization, which runs after identity is known."
+      ],
+      "shortcut": "AuthenticatioN = IdentificatioN."
+    },
+    {
+      "id": 4,
+      "q": "Authorization decides:",
+      "opts": [
+        "Your password strength",
+        "Which resources you may access",
+        "Your IP address",
+        "The server's uptime"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "auth",
+      "exp": [
+        "Authorization = granted permissions: directories, hours of access, storage space.",
+        "Identity proof comes first - that is authentication."
+      ]
+    },
+    {
+      "id": 5,
+      "q": "Which of these is an authentication method?",
+      "opts": [
+        "Reading a folder permission list",
+        "Retina scan",
+        "Setting a firewall rule",
+        "Assigning disk quota"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "auth",
+      "exp": [
+        "Retina scans (with cards, voice recognition, fingerprints, passwords) prove identity.",
+        "Permissions, firewall rules and quotas are authorization/control mechanisms."
+      ]
+    },
+    {
+      "id": 6,
+      "q": "A firewall primarily acts as a barrier between:",
+      "opts": [
+        "Two routers",
+        "A private internal network and the public Internet",
+        "A monitor and CPU",
+        "Two users on the same PC"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "firewall",
+      "source": "Accenture AXIS PYQ pattern (definition stem)",
+      "exp": [
+        "Standard definition: the firewall monitors and filters traffic between the trusted internal network and the public Internet, per organisational rules."
+      ]
+    },
+    {
+      "id": 7,
+      "q": "Which firewall type inspects packet HEADERS against filter standards?",
+      "opts": [
+        "Proxy service",
+        "Packet filtering",
+        "Stateful inspection",
+        "NGFW"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "firewall",
+      "exp": [
+        "Packet filtering analyses a small amount of data - the header - and permits/denies per its standards.",
+        "Proxy works at the application layer; stateful tracks connections; NGFW deep-inspects payloads."
+      ]
+    },
+    {
+      "id": 8,
+      "q": "Which firewall type filters messages at the APPLICATION layer?",
+      "opts": [
+        "Packet filtering",
+        "Proxy service",
+        "Stateful inspection",
+        "Screened host"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "firewall",
+      "exp": [
+        "Proxy service firewalls stand between client and server, filtering at the application layer."
+      ]
+    },
+    {
+      "id": 9,
+      "q": "An encrypted tunnel carrying private traffic over a public network is:",
+      "opts": [
+        "A VLAN",
+        "A VPN",
+        "A LAN",
+        "A DMZ"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "vpn",
+      "exp": [
+        "VPN = Virtual Private Network: an encrypted tunnel extending a private network across public infrastructure.",
+        "VLAN segments a switch; a DMZ hosts public-facing servers."
+      ]
+    },
+    {
+      "id": 10,
+      "q": "AES-128 encrypts data using how many rounds?",
+      "opts": [
+        "8",
+        "10",
+        "12",
+        "16"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "encryption",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "AES key schedule: 128-bit key -> 10 rounds, 192 -> 12, 256 -> 14.",
+        "16 rounds is DES's count - the classic distractor."
+      ]
+    },
+    {
+      "id": 11,
+      "q": "DES is best described as:",
+      "opts": [
+        "An asymmetric algorithm",
+        "A symmetric bit-oriented block cipher",
+        "A hashing function",
+        "A VPN protocol"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "encryption",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "DES: symmetric, 64-bit blocks, 56-bit effective key, 16 rounds - a bit-oriented cipher.",
+        "RSA is the classic asymmetric algorithm; MD5/SHA are hashes."
+      ]
+    },
+    {
+      "id": 12,
+      "q": "An attack flooding a user with a massive volume of unwanted emails is:",
+      "opts": [
+        "Smurfing",
+        "Spoofing",
+        "Email bombing",
+        "Ping storm"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "attacks",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Email bombing = inbox flooded with unwanted mail.",
+        "Smurfing/ping storm are ICMP traffic floods; spoofing is fake identity."
+      ]
+    },
+    {
+      "id": 13,
+      "q": "Creating a packet that appears to come from somewhere else is:",
+      "opts": [
+        "Spoofing",
+        "Phishing",
+        "Ransomware",
+        "Eavesdropping"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "attacks",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Spoofing forges the source identity of packets or systems.",
+        "Phishing tricks HUMANS via fraudulent messages - different target."
+      ]
+    },
+    {
+      "id": 14,
+      "q": "In a cloud deployment, who is responsible for downtime and repairs?",
+      "opts": [
+        "The customer",
+        "The cloud service provider",
+        "The ISP",
+        "Nobody - clouds never fail"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cloud",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "The provider owns and runs the hardware, so the provider handles downtime and repairs.",
+        "In an on-premises data centre the OWNER carries that responsibility."
+      ]
+    },
+    {
+      "id": 15,
+      "q": "Which trait belongs to the CLOUD rather than a traditional data centre?",
+      "opts": [
+        "Scalability challenges and delays",
+        "Pay as per use",
+        "Owner-managed repairs",
+        "On-premises hardware"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cloud",
+      "source": "Accenture AXIS PYQ pattern",
+      "exp": [
+        "Pay-as-per-use and instant scalability are cloud economics.",
+        "Scalability delays, owner repairs and on-prem hardware describe data centres."
+      ]
+    },
+    {
+      "id": 16,
+      "q": "SaaS delivers:",
+      "opts": [
+        "Raw virtual machines",
+        "A finished application you simply use",
+        "Bare metal racks",
+        "Only network cables"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cloud",
+      "exp": [
+        "Software as a Service = provider runs everything; the user just uses it (Gmail, Microsoft 365).",
+        "Raw VMs are IaaS."
+      ]
+    },
+    {
+      "id": 17,
+      "q": "Which port does HTTPS use?",
+      "opts": [
+        "21",
+        "80",
+        "443",
+        "25"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "HTTPS = HTTP over TLS on port 443.",
+        "80 is plain HTTP; 21 is FTP control; 25 is SMTP."
+      ]
+    },
+    {
+      "id": 18,
+      "q": "Which protocol SENDS email between mail servers?",
+      "opts": [
+        "POP3",
+        "IMAP",
+        "SMTP",
+        "FTP"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "SMTP (port 25) sends and relays mail.",
+        "POP3 (110) and IMAP (143) only retrieve."
+      ]
+    },
+    {
+      "id": 19,
+      "q": "Shared resources in a workplace are typically accessed over:",
+      "opts": [
+        "A LAN or workplace intranet",
+        "The engineer's laptop only",
+        "Fax lines",
+        "Bluetooth only"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "client-server",
+      "source": "PrepInsta AXIS syllabus definition",
+      "exp": [
+        "Shared/network resources are defined as data or devices accessible from a remote computer over a LAN or workplace intranet."
+      ]
+    },
+    {
+      "id": 20,
+      "q": "Which rule for sharing resources requires a shared destination address and naming conventions?",
+      "opts": [
+        "Organisational security",
+        "Compatibility",
+        "Mapping",
+        "Redundancy"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "client-server",
+      "source": "PrepInsta AXIS syllabus",
+      "exp": [
+        "Mapping lets you reach a shared drive/file and needs the shared destination address plus naming conventions.",
+        "Security covers access threats; compatibility covers OS/application fit."
+      ]
+    },
+    {
+      "id": 21,
+      "q": "The CIA triad stands for:",
+      "opts": [
+        "Control, Internet, Access",
+        "Confidentiality, Integrity, Availability",
+        "Cache, Identity, Authentication",
+        "Cyber, Internal, Admin"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "security-types",
+      "exp": [
+        "Confidentiality (only authorised eyes), Integrity (no undetected changes), Availability (up when needed) - the three pillars every control maps to."
+      ]
+    },
+    {
+      "id": 22,
+      "q": "A DDoS attack overwhelms a service using:",
+      "opts": [
+        "One infected USB drive",
+        "Many distributed sources at once",
+        "A forged email signature",
+        "A weak Wi-Fi password"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "attacks",
+      "exp": [
+        "Distributed DoS coordinates many machines (botnets) to swamp the target.",
+        "The 'D' is the whole point versus single-source DoS."
+      ]
+    },
+    {
+      "id": 23,
+      "q": "Malware that disguises itself as legitimate software is a:",
+      "opts": [
+        "Worm",
+        "Trojan",
+        "Virus",
+        "Rootkit patch"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "attacks",
+      "exp": [
+        "Trojans ride inside seemingly useful programs (Greek-horse naming).",
+        "Worms self-replicate over networks; viruses attach to host files."
+      ]
+    },
+    {
+      "id": 24,
+      "q": "Which malware self-replicates across networks WITHOUT needing a host file?",
+      "opts": [
+        "Virus",
+        "Worm",
+        "Trojan",
+        "Adware"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "attacks",
+      "exp": [
+        "Worms spread autonomously over networks.",
+        "Viruses need a host file to attach to."
+      ]
+    },
+    {
+      "id": 25,
+      "q": "Which firewall generation uses DYNAMIC packet filtering by monitoring ACTIVE connections?",
+      "opts": [
+        "Packet filtering",
+        "Proxy service",
+        "Stateful inspection",
+        "Static NAT"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "firewall",
+      "exp": [
+        "Stateful inspection = dynamic packet filtering that tracks established sessions and allows packets belonging to legitimate active connections.",
+        "The phrase 'active connections' is its signature in PYQs."
+      ],
+      "shortcut": "'Monitors active connections' -> stateful. Always."
+    },
+    {
+      "id": 26,
+      "q": "A Next-Generation Firewall (NGFW) is defined by:",
+      "opts": [
+        "Filtering only port numbers",
+        "Deep packet inspection with application-level awareness",
+        "Being installed on the client PC",
+        "Blocking all outbound traffic"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "firewall",
+      "source": "Accenture AXIS PYQ pattern",
+      "exp": [
+        "NGFW = deep packet inspection plus application-level inspection - the fourth generation.",
+        "Port-number-only filtering describes first-generation packet filters."
+      ]
+    },
+    {
+      "id": 27,
+      "q": "Multi-factor authentication (MFA) requires:",
+      "opts": [
+        "Two passwords",
+        "Factors from different families (e.g., password + OTP)",
+        "A fingerprint only",
+        "The same key twice"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "auth",
+      "exp": [
+        "MFA mixes families: something you KNOW + something you HAVE/ARE.",
+        "Two passwords are both knowledge factors - still single-factor."
+      ]
+    },
+    {
+      "id": 28,
+      "q": "A system administrator deciding which users reach which directories, at which hours, with how much storage, is performing:",
+      "opts": [
+        "Authentication",
+        "Authorization",
+        "Encryption",
+        "Packet filtering"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "auth",
+      "source": "PrepInsta AXIS syllabus (verbatim definition)",
+      "exp": [
+        "That is the textbook authorization definition - privilege assignment in a multi-user system."
+      ]
+    },
+    {
+      "id": 29,
+      "q": "Which statement about authentication is TRUE?",
+      "opts": [
+        "It decides which files you may open",
+        "It has no bearing on the tasks or files you may access",
+        "It replaces the need for authorization",
+        "It only works with smart cards"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "auth",
+      "source": "PrepInsta AXIS syllabus (verbatim)",
+      "exp": [
+        "Authentication simply establishes and confirms identity - it does not govern access rights.",
+        "Authorization governs the rights."
+      ]
+    },
+    {
+      "id": 30,
+      "q": "Antivirus scanning devices fall under which network security device family?",
+      "opts": [
+        "Passive devices",
+        "Active devices",
+        "Physical controls",
+        "Backup appliances"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "security-types",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Active devices intercept and block malicious objects - firewalls, antivirus scanning devices, content filters.",
+        "Passive devices (IDS, taps) only identify and report."
+      ]
+    },
+    {
+      "id": 31,
+      "q": "A Unified Threat Management (UTM) appliance bundles:",
+      "opts": [
+        "Only a VPN",
+        "Firewall + IDS/IPS + antivirus + content filtering in one device",
+        "Just a packet filter",
+        "Only email servers"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "security-types",
+      "exp": [
+        "UTM = multiple security functions unified in one appliance - the defining phrase in PYQs."
+      ]
+    },
+    {
+      "id": 32,
+      "q": "Which attack sends ICMP echo requests to a broadcast address with a SPOOFED source, so every host replies to the victim?",
+      "opts": [
+        "Phishing",
+        "Smurfing",
+        "SQL injection",
+        "Keylogging"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "attacks",
+      "exp": [
+        "Smurfing = ICMP broadcast amplification with a forged source.",
+        "The reply-storm hits the spoofed victim."
+      ]
+    },
+    {
+      "id": 33,
+      "q": "Ransomware's defining behaviour is:",
+      "opts": [
+        "Self-replicating without a host",
+        "Encrypting data and demanding payment",
+        "Recording keystrokes only",
+        "Flooding an inbox"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "attacks",
+      "exp": [
+        "Ransom = payment demand after encrypting the victim's data.",
+        "Self-replication defines worms; inbox floods define email bombing."
+      ]
+    },
+    {
+      "id": 34,
+      "q": "Which pairing is CORRECT?",
+      "opts": [
+        "On-premises hardware: cloud; remote hardware: data centre",
+        "On-premises hardware: data centre; remote hardware: cloud",
+        "Instant scalability: data centre; pay per use: data centre",
+        "Owner-run repairs: cloud"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "cloud",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "On-premises = data centre; remote hardware rented over the Internet = cloud.",
+        "Instant scalability and pay-per-use belong to cloud; owner-run repairs to data centres."
+      ]
+    },
+    {
+      "id": 35,
+      "q": "Which cloud service model gives the customer VMs where they install and manage the OS themselves?",
+      "opts": [
+        "SaaS",
+        "PaaS",
+        "IaaS",
+        "DaaS"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "cloud",
+      "exp": [
+        "IaaS = raw infrastructure (VMs, storage); customer manages OS and above (AWS EC2, Azure VMs).",
+        "PaaS hides the OS; SaaS hides everything."
+      ]
+    },
+    {
+      "id": 36,
+      "q": "In PaaS, the customer primarily provides:",
+      "opts": [
+        "Physical servers",
+        "Their application code and data",
+        "Network cabling",
+        "Hypervisor patches"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "cloud",
+      "exp": [
+        "Platform as a Service supplies OS + runtime; the customer deploys code and data (Heroku, Azure App Service)."
+      ]
+    },
+    {
+      "id": 37,
+      "q": "Which deployment model combines public and private clouds working together?",
+      "opts": [
+        "Community cloud",
+        "Hybrid cloud",
+        "Personal cloud",
+        "Bare metal"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "cloud",
+      "exp": [
+        "Hybrid = public + private with orchestration between them.",
+        "Community cloud is shared by organisations with common concerns."
+      ]
+    },
+    {
+      "id": 38,
+      "q": "Which provider is known for supporting Linux, Windows Server AND SQL Server workloads with enhanced enterprise security?",
+      "opts": [
+        "Oracle",
+        "Google Cloud",
+        "Microsoft Azure",
+        "Alibaba Cloud"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "cloud",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Azure's enterprise stack natively spans Linux, Windows Server and SQL Server with Microsoft security integration."
+      ]
+    },
+    {
+      "id": 39,
+      "q": "Symmetric encryption means:",
+      "opts": [
+        "A public and private key pair",
+        "The same key encrypts and decrypts",
+        "No key at all",
+        "Keys exchanged by post only"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "encryption",
+      "exp": [
+        "One shared key does both jobs - fast, but key distribution is the weak link (DES, AES).",
+        "Key pairs define asymmetric cryptography (RSA)."
+      ]
+    },
+    {
+      "id": 40,
+      "q": "RSA's security rests on:",
+      "opts": [
+        "56-bit keys",
+        "Difficulty of factoring large numbers",
+        "16 rounds",
+        "Broadcast storms"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "encryption",
+      "exp": [
+        "RSA = asymmetric; factoring the product of two large primes is the hard problem.",
+        "56-bit keys belong to DES."
+      ]
+    },
+    {
+      "id": 41,
+      "q": "Hashing differs from encryption because hashing is:",
+      "opts": [
+        "Reversible with the key",
+        "One-way - not meant to be reversed",
+        "Only for images",
+        "Slower than RSA"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "encryption",
+      "exp": [
+        "Hashes (MD5, SHA) fingerprint data for INTEGRITY; there is no decrypt step.",
+        "Encryption is designed to be reversible with the right key."
+      ]
+    },
+    {
+      "id": 42,
+      "q": "Which command verifies whether an IP access list is applied to a specific router interface?",
+      "opts": [
+        "show access-lists",
+        "show ip interface",
+        "show running-config",
+        "show version"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "monitoring",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "show ip interface displays per-interface access groups.",
+        "show access-lists lists the ACLs themselves but not where they are bound."
+      ]
+    },
+    {
+      "id": 43,
+      "q": "An extended IP access list (100-199) permitting SMTP mail to only host 1.1.1.1 must specify:",
+      "opts": [
+        "Only the source IP",
+        "Protocol tcp with destination port eq smtp",
+        "Only the word 'email'",
+        "A MAC address"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "monitoring",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Extended ACL syntax: access-list 110 permit tcp any host 1.1.1.1 eq smtp - protocol plus destination port.",
+        "Standard lists (1-99) cannot filter by port."
+      ]
+    },
+    {
+      "id": 44,
+      "q": "Network monitoring primarily tracks:",
+      "opts": [
+        "Employee salaries",
+        "Traffic and usage patterns for faults and intrusions",
+        "Printer ink levels",
+        "Cafeteria menus"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "monitoring",
+      "source": "PrepInsta AXIS syllabus topic list",
+      "exp": [
+        "Monitoring = observing traffic/usage to catch bottlenecks, faults and intrusions - named explicitly in Accenture's topic list."
+      ]
+    },
+    {
+      "id": 45,
+      "q": "A packet sniffer such as Wireshark is used to:",
+      "opts": [
+        "Block all traffic",
+        "Capture and analyse packets passing the network",
+        "Encrypt emails",
+        "Assign IP addresses"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "monitoring",
+      "exp": [
+        "Sniffers capture packets for inspection - core monitoring/diagnosis tooling.",
+        "Blocking is a firewall's job; address assignment is DHCP's."
+      ]
+    },
+    {
+      "id": 46,
+      "q": "Which statement is TRUE for most public web pages on the Internet?",
+      "opts": [
+        "They require full MFA",
+        "They require neither authentication nor authorization",
+        "They require smart cards",
+        "They require client certificates"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "auth",
+      "source": "PrepInsta AXIS syllabus (verbatim)",
+      "exp": [
+        "The syllabus states most public web pages require neither - public resources, no gate."
+      ]
+    },
+    {
+      "id": 47,
+      "q": "In an SSLv3 record, the padding bits are ______ with the secret key.",
+      "opts": [
+        "ANDed",
+        "ORed",
+        "Concatenated",
+        "Subtracted"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "encryption",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Per the standard SSLv3 description, padding bits are concatenated with the secret key before MAC/encryption - a textbook (Forouzan) fact that surfaced verbatim in PYQs."
+      ]
+    },
+    {
+      "id": 48,
+      "q": "A peer-to-peer network's main drawback versus client-server is:",
+      "opts": [
+        "It needs a dedicated server room",
+        "No central administration or security control",
+        "It cannot share files",
+        "It requires fiber optics"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "client-server",
+      "exp": [
+        "P2P has no central admin - every user secures their own node.",
+        "That decentralisation is exactly why enterprises prefer client-server."
+      ]
+    },
+    {
+      "id": 49,
+      "q": "You must DENY the /20 subnet containing host 172.16.50.172 with a standard access list. The correct first line is:",
+      "opts": [
+        "access-list 10 deny 172.16.48.0 0.0.15.255",
+        "access-list 10 deny 172.16.0.0 0.0.255.255",
+        "access-list 10 deny 172.16.64.0 0.0.31.255",
+        "access-list 10 deny 172.16.50.0 0.0.0.255"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "subnetting",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "/20 mask = 255.255.240.0 -> third-octet block of 16: subnets .0, .16, .32, .48, .64 ...",
+        "50 falls in 48-63 -> subnet 172.16.48.0; wildcard = 0.0.15.255.",
+        "Option C's 64-block starts one block too high."
+      ],
+      "shortcut": "Mask 240 -> block 16 -> wildcard 15; floor(50/16)=48."
+    },
+    {
+      "id": 50,
+      "q": "AES-256 runs how many rounds, and which round operation is SKIPPED in the final round?",
+      "opts": [
+        "14 rounds; MixColumns skipped",
+        "10 rounds; SubBytes skipped",
+        "12 rounds; AddRoundKey skipped",
+        "14 rounds; ShiftRows skipped"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "encryption",
+      "exp": [
+        "AES-256 = 256/32 = 14 rounds; the final round omits MixColumns (it would be invertible-noise otherwise).",
+        "10 belongs to AES-128, 12 to AES-192."
+      ],
+      "shortcut": "key bits / 32 = rounds."
+    },
+    {
+      "id": 51,
+      "q": "Order the firewall generations from LEAST to MOST inspection depth:",
+      "opts": [
+        "NGFW, Stateful, Proxy, Packet filter",
+        "Packet filter, Proxy, Stateful, NGFW",
+        "Proxy, Packet filter, NGFW, Stateful",
+        "Stateful, Packet filter, Proxy, NGFW"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "firewall",
+      "exp": [
+        "Headers (packet filter) -> application messages (proxy) -> active connections (stateful) -> full payload + app awareness (NGFW)."
+      ]
+    },
+    {
+      "id": 52,
+      "q": "A company needs employees on public Wi-Fi to reach internal servers with confidentiality. The BEST fit is:",
+      "opts": [
+        "A proxy service firewall alone",
+        "A VPN tunnel (IPsec/SSL)",
+        "A packet-filtering ACL",
+        "Disabling the Wi-Fi"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "vpn",
+      "exp": [
+        "Confidential remote access over public networks = VPN's encrypted tunnel.",
+        "Firewalls filter; they do not create encrypted remote paths."
+      ]
+    },
+    {
+      "id": 53,
+      "q": "Which sequence correctly lists the authentication factor families?",
+      "opts": [
+        "Something you know / have / are",
+        "Something you type / print / scan",
+        "Password / port / protocol",
+        "User / group / role"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "auth",
+      "exp": [
+        "Knowledge (password, PIN), possession (card, OTP device), inherence (fingerprint, retina, voice).",
+        "MFA = factors from DIFFERENT families."
+      ]
+    },
+    {
+      "id": 54,
+      "q": "Which cloud statement pair is TRUE?",
+      "opts": [
+        "I. In cloud, the owner handles downtime. II. In data centre, the owner handles downtime.",
+        "I. Instant scalability: data centre. II. Pay per use: cloud.",
+        "I. On-premises: data centre. II. Remote hardware: cloud.",
+        "I. Cloud needs cabling. II. Data centre is always cheaper."
+      ],
+      "c": 2,
+      "d": "hard",
+      "t": "cloud",
+      "source": "Asked in Accenture AXIS Technical Assessment (variant)",
+      "exp": [
+        "Pair II of option C matches the published PYQ: on-premises -> data centre, remote hardware -> cloud.",
+        "Downtime responsibility in the cloud belongs to the provider, not the owner."
+      ]
+    },
+    {
+      "id": 55,
+      "q": "An attacker floods a victim by redirecting ICMP replies from thousands of broadcast hosts. The victim's IP was FORGED in the requests. Two techniques involved are:",
+      "opts": [
+        "Phishing and ransomware",
+        "Spoofing and smurfing",
+        "SQLi and XSS",
+        "Email bombing and worm"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "attacks",
+      "exp": [
+        "Forged source = spoofing; ICMP broadcast amplification = smurfing. The attack uses both."
+      ]
+    },
+    {
+      "id": 56,
+      "q": "Which mapping of device to OSI layer is CORRECT?",
+      "opts": [
+        "Hub - Layer 3; Switch - Layer 1",
+        "Switch - Layer 2; Router - Layer 3",
+        "Router - Layer 2; Hub - Layer 3",
+        "Switch - Layer 4; Router - Layer 7"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "monitoring",
+      "exp": [
+        "Hub repeats bits (L1), switch forwards frames by MAC (L2), router routes packets by IP (L3).",
+        "Classic three-device ladder - memorise it once, answer it forever."
+      ]
+    },
+    {
+      "id": 57,
+      "q": "Mail flow question: a user SENDS via SMTP, then reads mail from the SAME server folders on two different devices, keeping messages server-side. Which retrieval protocol fits?",
+      "opts": [
+        "POP3, because it downloads and deletes",
+        "IMAP, because it synchronises server-side folders",
+        "FTP, because it transfers files",
+        "SMTP again, for retrieval"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "ports",
+      "exp": [
+        "IMAP (143) keeps mail on the server and syncs folders across devices.",
+        "POP3 (110) typically downloads and removes - breaking multi-device sync."
+      ]
+    },
+    {
+      "id": 58,
+      "q": "A bank must let customers verify the site is genuine AND prove customer identity. Which pair does this?",
+      "opts": [
+        "Server-side TLS certificate (authenticates site) + customer login (authenticates user)",
+        "Firewall rule + subnet mask",
+        "DDoS protection + hashing",
+        "UTM + packet filter"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "auth",
+      "exp": [
+        "Both directions are AUTHENTICATION: server to client via TLS certificate, client to server via credentials.",
+        "Authorization only begins after both identities are established."
+      ]
+    },
+    {
+      "id": 59,
+      "q": "Which statement comparing cloud and on-premises data centre is FALSE?",
+      "opts": [
+        "Cloud offers pay-as-per-use billing",
+        "Data centre scalability involves challenges and delays",
+        "In cloud, the owner of the data is responsible for hardware repairs",
+        "On-premises means hardware you own and run"
+      ],
+      "c": 2,
+      "d": "hard",
+      "t": "cloud",
+      "source": "Accenture AXIS PYQ pattern (inverted stem)",
+      "exp": [
+        "The PROVIDER handles hardware repairs in the cloud - the false statement.",
+        "The other three match the published PYQ mappings exactly."
+      ]
+    },
+    {
+      "id": 60,
+      "q": "Arrange the customer-managed stack from MOST to LEAST customer responsibility:",
+      "opts": [
+        "SaaS, PaaS, IaaS, On-premises",
+        "On-premises, IaaS, PaaS, SaaS",
+        "IaaS, On-premises, SaaS, PaaS",
+        "PaaS, SaaS, On-premises, IaaS"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "cloud",
+      "exp": [
+        "On-premises (everything) > IaaS (OS and up) > PaaS (code and data) > SaaS (just use it).",
+        "The ladder shrinks monotonically - PYQs test any adjacent pair."
+      ]
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "axis-exam-intel"
+    },
+    {
+      "type": "concept",
+      "sectionId": "client-server-sharing"
+    },
+    {
+      "type": "concept",
+      "sectionId": "auth-security-types"
+    },
+    {
+      "type": "concept",
+      "sectionId": "firewall-attacks"
+    },
+    {
+      "type": "concept",
+      "sectionId": "encryption-cloud"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}
