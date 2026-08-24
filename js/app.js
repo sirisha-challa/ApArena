@@ -889,57 +889,61 @@ function renderMcq(topic) {
   const totalAttempted = state.mcqCorrectTotal + state.mcqWrongTotal;
   const scorePct = totalAttempted ? Math.round(state.mcqCorrectTotal / totalAttempted * 100) : 0;
   const { grade, color: gradeColor } = getGrade(scorePct);
+  const answeredPct = Math.min(Math.round((p.mcq || 0) / mcqs.length * 100), 100);
 
   let html = `
-  <div class="mcq-controls-row">
-    <div class="mcq-stats-bar">
-      <span>Questions: ${filtered.length}</span>
-      <span>Answered: ${p.mcq||0}</span>
-      <span>Progress: ${Math.min(Math.round((p.mcq||0)/mcqs.length*100),100)}%</span>
+  <div class="mcq-console">
+    <div class="mcq-toolbar">
+      <div class="mcq-progress">
+        <span class="mcq-progress-count">${String(idx + 1).padStart(2, '0')}<i> / ${String(filtered.length).padStart(2, '0')}</i></span>
+        <div class="mcq-progress-rail"><div class="mcq-progress-fill" style="width:${answeredPct}%"></div></div>
+        <span class="mcq-progress-pct">${answeredPct}%</span>
+      </div>
+      <div class="mcq-score-badge" title="Correct: ${state.mcqCorrectTotal} · Wrong: ${state.mcqWrongTotal} · Score ${scorePct}% (grade ${grade})">
+        <span class="mcq-score-ok">✓ ${state.mcqCorrectTotal}</span>
+        <span class="mcq-score-bad">✕ ${state.mcqWrongTotal}</span>
+        <span class="mcq-grade" style="color:${gradeColor}">${grade}</span>
+      </div>
+      <button class="mcq-reset" onclick="APP.resetMcqProgress('${topic.id}')" title="Reset MCQ progress" aria-label="Reset MCQ progress">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+      </button>
     </div>
-    <div class="mcq-score-badge" title="Correct:${state.mcqCorrectTotal} Wrong:${state.mcqWrongTotal}">
-      <span>Correct: ${state.mcqCorrectTotal}</span>
-      <span>Wrong: ${state.mcqWrongTotal}</span>
-      <span class="mcq-grade" style="color:${gradeColor};font-weight:700;">${grade}</span>
+    <div class="mcq-deck-nav">
+      <button class="mcq-nav-btn prev" onclick="APP.prevMcq('${topic.id}')" ${idx === 0 ? 'disabled' : ''}>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+        Prev
+      </button>
+      <div class="mcq-level-seg" role="group" aria-label="Difficulty filter">
+        ${['easy', 'medium', 'hard'].map(d => difficulties.indexOf(d) >= 0 ? `<button class="${state.currentMcqDifficulty === d ? 'seg-active' : ''}" onclick="APP.filterMcqDifficulty('${topic.id}','${d}')">${d[0].toUpperCase() + d.slice(1)}</button>` : '').join('')}
+        <button class="${state.currentMcqDifficulty === 'all' ? 'seg-active' : ''}" onclick="APP.filterMcqDifficulty('${topic.id}','all')">All</button>
+      </div>
+      <button class="mcq-nav-btn next" onclick="APP.nextMcq('${topic.id}')" ${idx >= filtered.length - 1 ? 'disabled' : ''}>
+        Next
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
     </div>
-    <button class="btn btn-reset-progress" onclick="APP.resetMcqProgress('${topic.id}')" title="Reset MCQ progress">
-      Reset
-    </button>
-  </div>
-  <div class="mcq-filter-chips">
-    <button class="chip ${state.currentMcqFilter==='all'?'chip-active':''}" onclick="APP.filterMcq('${topic.id}','all')">All</button>
-    ${subtopics.map(t => `<button class="chip ${state.currentMcqFilter===t?'chip-active':''}" onclick="APP.filterMcq('${topic.id}','${t}')">${renderText(t)}</button>`).join('')}
-  </div>
-  ${difficulties.length ? `<div class="mcq-filter-chips diff-row">
-    ${['easy','medium','hard'].map(d => difficulties.indexOf(d)>=0 ? `<button class="chip chip-${d} ${state.currentMcqDifficulty===d?'chip-active':''}" onclick="APP.filterMcqDifficulty('${topic.id}','${d}')">${d}</button>` : '').join('')}
-    <button class="chip ${state.currentMcqDifficulty==='all'?'chip-active':''}" onclick="APP.filterMcqDifficulty('${topic.id}','all')">All levels</button>
-  </div>` : ''}
-  <div class="mcq-nav">
-    <button class="btn btn-outline" onclick="APP.prevMcq('${topic.id}')" ${idx===0?'disabled':''}>Prev</button>
-    <span class="mcq-counter">${idx+1} / ${filtered.length}</span>
-    <button class="btn btn-outline" onclick="APP.nextMcq('${topic.id}')" ${idx>=filtered.length-1?'disabled':''}>Next</button>
-  </div>
-  <div class="mcq-card glass" id="mcq-card">
-    <div class="mcq-header">
-      <span class="badge primary">${renderText(topic.title || 'Number System')}</span>
-      <span class="badge ${mcq.d || 'easy'}">${mcq.d || 'easy'}</span>
-      ${mcq.source ? `<span class="mcq-source">${renderText(mcq.source)}</span>` : ''}
-      <span class="mcq-number">Q${idx+1}</span>
-    </div>
-    <div class="mcq-question">${formatSteps(mcq.q)}</div>
-    <div class="mcq-options" id="mcq-options">
-      ${mcq.opts.map((opt, oi) => `
-        <button class="mcq-option" data-index="${oi}" onclick="APP.checkMcqAnswer('${topic.id}', ${idx}, ${oi}, this)">
-          <span class="option-letter">${String.fromCharCode(65+oi)}</span>
-          <span class="option-text">${renderInlineMath(opt)}</span>
-        </button>
-      `).join('')}
-    </div>
-    <div class="mcq-feedback" id="mcq-feedback" style="display:none">
-      <div class="mcq-result" id="mcq-result"></div>
-      <div class="mcq-explanation" id="mcq-explanation"></div>
-      <div class="mcq-score" id="mcq-score" style="display:none"></div>
-      <button class="btn btn-primary mt-2" onclick="APP.nextMcq('${topic.id}')">Next Question</button>
+    <div class="mcq-card glass" id="mcq-card">
+      <div class="mcq-header">
+        <span class="badge primary">${renderText(topic.title || 'Number System')}</span>
+        <span class="badge ${mcq.d || 'easy'}">${mcq.d || 'easy'}</span>
+        ${mcq.source ? `<span class="mcq-source">${renderText(mcq.source)}</span>` : ''}
+        <span class="mcq-number">Q${idx + 1}</span>
+      </div>
+      <div class="mcq-question">${formatSteps(mcq.q)}</div>
+      <div class="mcq-options" id="mcq-options">
+        ${mcq.opts.map((opt, oi) => `
+          <button class="mcq-option" data-index="${oi}" onclick="APP.checkMcqAnswer('${topic.id}', ${idx}, ${oi}, this)">
+            <span class="option-letter">${String.fromCharCode(65 + oi)}</span>
+            <span class="option-text">${renderInlineMath(opt)}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="mcq-feedback" id="mcq-feedback" style="display:none">
+        <div class="mcq-result" id="mcq-result"></div>
+        <div class="mcq-explanation" id="mcq-explanation"></div>
+        <div class="mcq-score" id="mcq-score" style="display:none"></div>
+        <button class="btn btn-primary mt-2" onclick="APP.nextMcq('${topic.id}')">Next Question</button>
+      </div>
     </div>
   </div>`;
   return html;
@@ -1150,11 +1154,11 @@ function checkMcqAnswer(topicId, idx, selected, el) {
   const scoreDiv = document.getElementById('mcq-score');
 
   if (selected === mcq.c) {
-    result.innerHTML = '<strong>Correct!</strong>';
-    result.style.color = 'var(--color-success)';
+    result.className = 'mcq-result correct';
+    result.innerHTML = '<span class="mcq-result-icon">✓</span><span class="mcq-result-text"><strong>Correct!</strong><small>Exactly right — well traced.</small></span>';
   } else {
-    result.innerHTML = '<strong>Wrong!</strong> Correct answer: ' + String.fromCharCode(65+mcq.c);
-    result.style.color = 'var(--color-error)';
+    result.className = 'mcq-result wrong';
+    result.innerHTML = '<span class="mcq-result-icon">✕</span><span class="mcq-result-text"><strong>Not quite.</strong><small>Correct answer: ' + String.fromCharCode(65 + mcq.c) + '</small></span>';
   }
 
   let expHtml = '';
@@ -1175,9 +1179,11 @@ function checkMcqAnswer(topicId, idx, selected, el) {
 
     scoreDiv.style.display = 'block';
     scoreDiv.innerHTML = `
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);">
-        <span style="font-size:var(--text-sm);">Score: ${state.mcqCorrectTotal}/${totalAttempted} (${scorePct}%)</span>
-        <span style="font-weight:700;font-size:var(--text-xl);color:${gradeColor};">Grade: ${grade}</span>
+      <div class="mcq-score-strip">
+        <span class="mcq-score-label">Session</span>
+        <span class="mcq-score-value">${state.mcqCorrectTotal}<i>/${totalAttempted}</i></span>
+        <span class="mcq-score-pct">${scorePct}%</span>
+        <span class="mcq-score-grade" style="color:${gradeColor}">${grade}</span>
       </div>`;
   }
 
@@ -1240,7 +1246,10 @@ function updateMcqScoreBadge() {
   var totalAttempted = state.mcqCorrectTotal + state.mcqWrongTotal;
   var scorePct = totalAttempted ? Math.round(state.mcqCorrectTotal / totalAttempted * 100) : 0;
   var { grade, color: gradeColor } = getGrade(scorePct);
-  badge.innerHTML = '<span>Correct: ' + state.mcqCorrectTotal + '</span><span>Wrong: ' + state.mcqWrongTotal + '</span><span class="mcq-grade" style="color:' + gradeColor + ';font-weight:700;">' + grade + '</span>';
+  badge.innerHTML =
+    '<span class="mcq-score-ok">✓ ' + state.mcqCorrectTotal + '</span>' +
+    '<span class="mcq-score-bad">✕ ' + state.mcqWrongTotal + '</span>' +
+    '<span class="mcq-grade" style="color:' + gradeColor + '">' + grade + '</span>';
 }
 
 function toggleSidebar() {
