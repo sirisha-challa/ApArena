@@ -1,0 +1,2474 @@
+{
+  "id": "firewalls-vpn",
+  "title": "Firewalls & VPN",
+  "icon": "FW",
+  "category": "networking-cloud",
+  "subtitle": "Four firewall generations, ACL grammar, DMZ/NAT architecture, IPsec & SSL VPN modes",
+  "days": "3",
+  "color": "#0891B2",
+  "subtopics": [
+    "Firewall Basics & ACLs",
+    "Four Generations",
+    "Stateful Logic",
+    "DMZ, NAT & Architecture",
+    "IPsec Modes & Components",
+    "VPN Protocols & Use Cases"
+  ],
+  "estimatedHours": 6,
+  "readingSections": [
+    {
+      "id": "fw-role",
+      "title": "What a Firewall Actually Does",
+      "type": "concept",
+      "quickSummary": "A policy-enforcement point between trust zones: permits, denies, logs and alerts traffic based on organisation-defined rules.",
+      "content": [
+        "A firewall is a network security device (hardware, software, or both) that monitors and filters incoming and outgoing traffic according to security RULES the organisation defines. It is the barrier between a trusted internal network and untrusted external networks - the choke point where policy becomes enforcement.",
+        "Four core actions: PERMIT (allow matching traffic), DENY (silently drop), REJECT (drop and tell the sender), and LOG (record for audit). Rules evaluate in order - typically top-down, first-match-wins - ending in an implicit 'deny all' default on hardened systems.",
+        "Firewalls live at trust boundaries: Internet edge (perimeter), between internal segments (internal segmentation), and on hosts (personal/host-based firewalls). Placement questions test which boundary a description implies."
+      ],
+      "subsections": [
+        {
+          "title": "Rule anatomy",
+          "content": "A rule names: source IP, destination IP, protocol (TCP/UDP/ICMP), source/destination PORT, and the ACTION. Example: 'permit tcp any host 1.1.1.1 eq smtp' - the published AXIS ACL question is exactly this grammar."
+        },
+        {
+          "title": "Default stance",
+          "content": "Default deny (everything blocked unless permitted) is the secure stance; default allow is convenience-first. Exams frame 'most secure configuration' - the answer is default-deny with explicit permits."
+        }
+      ],
+      "quickRevision": [
+        "Firewall = policy enforcement at a trust boundary.",
+        "Actions: permit / deny / reject / log.",
+        "Rules: source, destination, protocol, port, action.",
+        "Most secure = default deny."
+      ],
+      "tricks": [
+        "ACL grammar questions map directly: access-list NUMBER ACTION PROTOCOL SOURCE DEST eq PORT.",
+        "Standard ACL (1-99) filters by SOURCE only; extended (100-199) adds protocol + destination + port - the published PYQ hinged on this.",
+        "'Reject' vs 'deny': reject replies (faster failure for users); deny stays silent (harder to scan)."
+      ],
+      "patterns": [
+        "'Barrier between private network and Internet' - the definition stem.",
+        "'Which rule permits mail to only one host?' - extended ACL with eq smtp."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Accenture AXIS Technical Assessment",
+          "question": "What command will permit SMTP mail to only host 1.1.1.1?",
+          "approach": "access-list 110 permit tcp any host 1.1.1.1 eq smtp - extended ACL, tcp protocol, destination port smtp."
+        }
+      ],
+      "companyNote": "Cisco-flavoured ACL questions appear verbatim in published AXIS sets - one grammar, three question variants."
+    },
+    {
+      "id": "fw-generations",
+      "title": "The Four Firewall Generations",
+      "type": "concept",
+      "quickSummary": "Packet filter (headers) -> Proxy (application messages) -> Stateful (active connections) -> NGFW (deep packet inspection + app awareness).",
+      "content": [
+        "Generation 1 - PACKET FILTERING: the first-generation firewall inspects small amounts of data - packet headers (source/destination IP, ports, protocol) - and permits or denies per filter standards. Fast and cheap, but blind to payload and to whether a packet belongs to an existing conversation. Implemented as router ACLs.",
+        "Generation 2 - PROXY SERVICE (application-level gateways): an intermediary stands between client and server, filtering messages at the APPLICATION layer. The proxy terminates each connection and re-originates it - real content awareness, but slower and per-protocol.",
+        "Generation 3 - STATEFUL INSPECTION: dynamic packet filtering that tracks ACTIVE connections in a state table. Packets belonging to established, legitimate sessions pass without explicit rules; unsolicited packets are dropped. The phrase 'monitors active connections' is its exam signature.",
+        "Generation 4 - NEXT-GENERATION FIREWALL (NGFW): deep packet inspection (full payload, not just headers) plus application-level identification, user-identity awareness, and integrated IPS. 'Deep packet inspection with application-level inspection' is the published definition."
+      ],
+      "subsections": [
+        {
+          "title": "The inspection ladder",
+          "content": "Headers (packet filter) -> full messages (proxy) -> connection context (stateful) -> payload + identity (NGFW). Each generation answers one question the previous could not: 'is this packet FROM a real conversation?' (stateful) and 'what application is this really?' (NGFW)."
+        }
+      ],
+      "quickRevision": [
+        "1: packet filter - headers only, fastest.",
+        "2: proxy - application layer, intermediary.",
+        "3: stateful - tracks active connections.",
+        "4: NGFW - deep packet inspection + app awareness."
+      ],
+      "tricks": [
+        "Signature phrases map 1:1: 'headers' -> packet filter; 'application layer' -> proxy; 'active connections' -> stateful; 'deep packet inspection' -> NGFW.",
+        "Stateful vs packet filter: only stateful knows a reply packet belongs to an existing session.",
+        "NGFW vs proxy: both see content, but NGFW inspects inline at wire speed with IPS integration."
+      ],
+      "patterns": [
+        "'Monitors active connections' -> stateful inspection.",
+        "'Filters messages at the application layer' -> proxy service.",
+        "'Deep packet inspection with application-level inspection' -> NGFW."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "PrepInsta AXIS syllabus (verbatim definitions)",
+          "question": "Match firewall type to description (all four generations).",
+          "approach": "The four syllabus definitions are quoted word-for-word in options - memorise the signature phrases."
+        }
+      ],
+      "companyNote": "All four generation definitions come straight from the official PrepInsta syllabus page - the highest-yield memorisation in this topic."
+    },
+    {
+      "id": "fw-architecture",
+      "title": "DMZ, NAT & Firewall Architecture",
+      "type": "concept",
+      "quickSummary": "A DMZ hosts public-facing servers between two firewall legs; NAT hides internal addresses; bastion hosts and screened subnets are the classic layouts.",
+      "content": [
+        "A DMZ (demilitarised zone) is a buffer subnetwork hosting PUBLIC-FACING servers (web, mail, DNS) so a compromise there cannot reach the internal LAN directly. Classic layouts: three-legged firewall (one box, three interfaces: LAN/WAN/DMZ) and screened subnet (two firewalls sandwiching the DMZ).",
+        "A bastion host is the hardened, exposed server that faces the Internet - nothing else runs on it. A screening router is the packet-filter at the edge.",
+        "NAT (Network Address Translation) rewrites private source addresses to the public IP at the gateway - hiding internal topology and letting many hosts share one public IP (PAT/NAT overload). NAT is not a firewall, but it obscures internal addressing, which helps.",
+        "Egress vs ingress filtering: ingress filters incoming traffic; egress filters OUTGOING traffic (stopping compromised machines from attacking others or leaking data)."
+      ],
+      "subsections": [
+        {
+          "title": "Layout comparison",
+          "content": "Screened router - one packet-filter at the edge (weakest).\nScreened host - router + bastion host inside.\nThree-legged (DMZ on a third interface) - one device, three zones.\nScreened subnet - two firewalls, DMZ sandwiched (strongest classic design)."
+        }
+      ],
+      "quickRevision": [
+        "DMZ = buffer zone for public servers.",
+        "Bastion host = hardened, exposed, minimal.",
+        "NAT hides internal addresses (not a security control by itself).",
+        "Egress filtering stops outbound attacks."
+      ],
+      "tricks": [
+        "'Public web server placed safely' -> DMZ, never the LAN.",
+        "Two firewalls sandwiching servers = screened subnet; one device with three legs = three-legged.",
+        "Egress vs ingress: OUT-going vs IN-coming filtering."
+      ],
+      "patterns": [
+        "'Buffer network between internal and Internet' - DMZ.",
+        "'Many private hosts share one public IP' - NAT/PAT."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement networking set",
+          "question": "Where should a public web server be placed?",
+          "approach": "DMZ - isolated from the internal LAN."
+        }
+      ],
+      "companyNote": "DMZ placement is a recurring one-mark question across placement papers."
+    },
+    {
+      "id": "vpn-deep",
+      "title": "VPN Protocols, Modes & Use Cases",
+      "type": "concept",
+      "quickSummary": "VPNs build encrypted tunnels over public networks: IPsec (site-to-site, network layer) vs SSL/TLS VPN (remote access, browser-friendly); tunnel vs transport modes.",
+      "content": [
+        "A Virtual Private Network extends a private network across a public one by wrapping traffic in an ENCRYPTED TUNNEL: confidentiality (nobody reads it), integrity (nobody alters it undetected), and authentication (both ends prove identity).",
+        "Two protocol families dominate. IPSEC operates at the network layer - the standard for SITE-TO-SITE links (office-to-office) with two modes: TUNNEL mode (encrypts the whole original IP packet, adds a new header - gateway-to-gateway) and TRANSPORT mode (encrypts only the payload - host-to-host). Components: AH (authentication header - integrity/auth), ESP (Encapsulating Security Payload - encryption + integrity), IKE (Internet Key Exchange - negotiates keys).",
+        "SSL/TLS VPN operates at the session/application layer - the REMOTE-ACCESS favourite because it needs no client software beyond a browser and filters through firewalls easily (it looks like HTTPS on 443). WireGuard and OpenVPN are modern open implementations.",
+        "Use cases: remote workers, branch-office site-to-site, securing public Wi-Fi, bypassing geo-restrictions (consumer framing). What a VPN does NOT do: stop malware, replace the firewall's filtering, or make you anonymous from your VPN provider."
+      ],
+      "subsections": [
+        {
+          "title": "Tunnel vs transport",
+          "content": "Tunnel mode: entire original IP packet encrypted + new IP header -> gateways/site-to-site.\nTransport mode: payload encrypted, original IP header intact -> end-to-end host communication."
+        }
+      ],
+      "quickRevision": [
+        "VPN = encrypted tunnel: confidentiality + integrity + authentication.",
+        "IPsec = network layer, site-to-site; ESP encrypts, AH authenticates, IKE negotiates.",
+        "SSL/TLS VPN = remote access, browser-based, 443-friendly.",
+        "Tunnel mode = whole packet; transport mode = payload only."
+      ],
+      "tricks": [
+        "'Site-to-site office link' -> IPsec tunnel mode; 'road warrior with a laptop' -> SSL VPN.",
+        "ESP encrypts; AH only authenticates - ESP+AH = the full IPsec suite.",
+        "VPN questions pair with MITM: the tunnel is the anti-interception answer."
+      ],
+      "patterns": [
+        "'Encrypted tunnel over public network' - VPN definition.",
+        "'Secure remote access from anywhere' - SSL/TLS VPN.",
+        "'Connect two office networks' - IPsec site-to-site."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TalentBattle Accenture PYQ set",
+          "question": "Which network security ensures attackers cannot infiltrate your network? (options included VPN)",
+          "approach": "The published answer keyed VPN - read carefully: standard doctrine credits the FIREWALL with infiltration prevention; VPN adds encrypted remote access. Know both framings."
+        }
+      ],
+      "companyNote": "VPN questions in published sets lean conceptual (tunnel, remote access) - IPsec component trivia (AH/ESP/IKE) is the stretch material."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "acl-grammar",
+      "title": "ACL Grammar (Cisco-style)",
+      "formula": {
+        "latex": "\\text{access-list } \\langle n \\rangle \\; \\text{action protocol src dest eq port}",
+        "text": "Standard ACLs 1-99 filter by source; extended 100-199 add protocol, destination and port."
+      },
+      "whenToUse": "Every Cisco-flavoured ACL question in the AXIS pool.",
+      "explanation": [
+        "Standard: access-list 10 deny 172.16.48.0 0.0.15.255 - source + wildcard only.",
+        "Extended: access-list 110 permit tcp any host 1.1.1.1 eq smtp - protocol + port.",
+        "Wildcard = inverse mask: /20 -> 0.0.15.255.",
+        "Implicit deny all at the end of every ACL."
+      ],
+      "example": {
+        "prompt": "Permit SMTP to only host 1.1.1.1.",
+        "steps": [
+          "Mail = tcp port 25 = eq smtp.",
+          "Extended list 110: permit tcp any host 1.1.1.1 eq smtp."
+        ],
+        "answer": "access-list 110 permit tcp any host 1.1.1.1 eq smtp"
+      },
+      "memoryTip": "1-99 source; 100-199 the full story.",
+      "commonMistake": "Using a standard ACL to filter ports - impossible by definition."
+    },
+    {
+      "id": "generation-ladder",
+      "title": "Firewall Generation Ladder",
+      "formula": {
+        "latex": "\\text{headers} < \\text{messages} < \\text{connections} < \\text{payload}",
+        "text": "Packet filter -> proxy -> stateful -> NGFW; each generation inspects one level deeper."
+      },
+      "whenToUse": "Firewall-type identification questions.",
+      "explanation": [
+        "Packet filter: header fields only; router ACLs.",
+        "Proxy: application-layer intermediary; per-protocol.",
+        "Stateful: connection state table; dynamic packet filtering.",
+        "NGFW: DPI + application identity + user awareness + IPS."
+      ],
+      "example": {
+        "prompt": "Tracks active connections to permit replies.",
+        "steps": [
+          "Connection context = state.",
+          "Stateful inspection."
+        ],
+        "answer": "Stateful inspection"
+      },
+      "memoryTip": "H-M-C-P: Headers, Messages, Connections, Payload.",
+      "commonMistake": "Calling stateful 'application layer' - that phrase belongs to proxy."
+    },
+    {
+      "id": "state-table",
+      "title": "Stateful Logic",
+      "formula": {
+        "latex": "\\text{reply allowed} \\iff \\text{session exists in state table}",
+        "text": "Outbound connections create state entries; only replies to established sessions pass inbound."
+      },
+      "whenToUse": "'How does the firewall know this reply is legitimate?' questions.",
+      "explanation": [
+        "Outbound SYN creates a table entry (src, dst, ports, seq).",
+        "Inbound packets are matched against the table.",
+        "No matching session -> dropped, even if rules would allow it.",
+        "State exhaustion is a DoS vector (SYN floods)."
+      ],
+      "example": {
+        "prompt": "Why did the unsolicited inbound packet drop despite an allow rule?",
+        "steps": [
+          "No matching session entry.",
+          "Stateful default: no session, no pass."
+        ],
+        "answer": "No established session in the state table"
+      },
+      "memoryTip": "No session, no entry, no entry, no pass.",
+      "commonMistake": "Assuming allow rules bypass state checking."
+    },
+    {
+      "id": "dmz-layouts",
+      "title": "DMZ Layout Selection",
+      "formula": {
+        "latex": "\\text{router} < \\text{screened host} < \\text{3-legged} < \\text{screened subnet}",
+        "text": "From weakest to strongest classic perimeter designs."
+      },
+      "whenToUse": "Architecture/placement questions.",
+      "explanation": [
+        "Screened router: single packet filter - weakest.",
+        "Screened host: router + bastion host.",
+        "Three-legged: one firewall, LAN/WAN/DMZ interfaces.",
+        "Screened subnet: two firewalls sandwich the DMZ - strongest classic."
+      ],
+      "example": {
+        "prompt": "Public web + mail servers isolated from LAN with two firewalls.",
+        "steps": [
+          "Two devices sandwiching the DMZ.",
+          "Screened subnet."
+        ],
+        "answer": "Screened subnet (two-firewall DMZ)"
+      },
+      "memoryTip": "More boxes between WAN and LAN = stronger.",
+      "commonMistake": "Placing public servers on the LAN 'behind the firewall' - that is what the DMZ exists to avoid."
+    },
+    {
+      "id": "vpn-modes",
+      "title": "IPsec Modes & Components",
+      "formula": {
+        "latex": "\\text{tunnel} = \\text{whole packet};\\; \\text{transport} = \\text{payload only};\\; \\text{ESP+AH+IKE}",
+        "text": "Tunnel mode for gateways, transport for hosts; ESP encrypts, AH authenticates, IKE negotiates keys."
+      },
+      "whenToUse": "IPsec component and mode questions.",
+      "explanation": [
+        "Tunnel mode: new IP header wraps encrypted original - site-to-site gateways.",
+        "Transport mode: original header intact - host-to-host.",
+        "ESP: encryption + integrity + authentication.",
+        "AH: authentication + integrity only (no encryption).",
+        "IKE: negotiates keys/SAs (Security Associations)."
+      ],
+      "example": {
+        "prompt": "Office-to-office link encrypting entire packets.",
+        "steps": [
+          "Gateway-to-gateway, full packet.",
+          "IPsec tunnel mode."
+        ],
+        "answer": "IPsec tunnel mode"
+      },
+      "memoryTip": "Tunnel = wrapped parcel; transport = padded envelope.",
+      "commonMistake": "AH encrypting - AH authenticates only; ESP encrypts."
+    },
+    {
+      "id": "vpn-protocol-map",
+      "title": "VPN Protocol Map",
+      "formula": {
+        "latex": "\\text{IPsec}=\\text{site-to-site};\\; \\text{SSL/TLS}=\\text{remote access};\\; \\text{OpenVPN/WireGuard}=\\text{modern}",
+        "text": "Pick the family by use case: gateway links vs road warriors."
+      },
+      "whenToUse": "VPN selection questions.",
+      "explanation": [
+        "IPsec: network layer; site-to-site; requires client/config.",
+        "SSL/TLS VPN: session/application layer; browser-based remote access; traverses firewalls on 443.",
+        "OpenVPN: open-source, TLS-based, flexible ports.",
+        "WireGuard: modern, minimal codebase, fast cryptography.",
+        "PPTP: legacy, broken - appears only as the 'insecure option'."
+      ],
+      "example": {
+        "prompt": "Remote employee with just a browser needs internal apps.",
+        "steps": [
+          "No client install, browser-based.",
+          "SSL/TLS VPN."
+        ],
+        "answer": "SSL/TLS VPN"
+      },
+      "memoryTip": "Sites = IPsec; people = SSL VPN.",
+      "commonMistake": "PPTP as a secure option - it is the deprecated wrong answer."
+    }
+  ],
+  "practiceProblems": {
+    "acl-grammar": [
+      {
+        "q": "Standard ACL number range:",
+        "opts": [
+          "1-99",
+          "100-199",
+          "200-299",
+          "0-1023"
+        ],
+        "c": 0,
+        "s": [
+          "Source-only filtering lives in 1-99."
+        ],
+        "a": "1-99"
+      },
+      {
+        "q": "Extended ACL number range:",
+        "opts": [
+          "100-199",
+          "1-99",
+          "53-69",
+          "0-15"
+        ],
+        "c": 0,
+        "s": [
+          "Protocol + port filtering = 100-199."
+        ],
+        "a": "100-199"
+      },
+      {
+        "q": "Permit SSH to host 2.2.2.2:",
+        "opts": [
+          "access-list 110 permit tcp any host 2.2.2.2 eq 22",
+          "access-list 10 permit ssh 2.2.2.2",
+          "deny tcp any any",
+          "permit icmp any 2.2.2.2"
+        ],
+        "c": 0,
+        "s": [
+          "SSH = tcp/22, extended grammar."
+        ],
+        "a": "access-list 110 permit tcp any host 2.2.2.2 eq 22"
+      },
+      {
+        "q": "Wildcard for /26:",
+        "opts": [
+          "0.0.0.63",
+          "0.0.0.255",
+          "255.255.255.192",
+          "0.0.15.255"
+        ],
+        "c": 0,
+        "s": [
+          "Inverse of 255.255.255.192."
+        ],
+        "a": "0.0.0.63"
+      },
+      {
+        "q": "Deny a /24 network 10.1.1.0:",
+        "opts": [
+          "access-list 10 deny 10.1.1.0 0.0.0.255",
+          "access-list 110 deny 10.1.1.0 eq 80",
+          "permit 10.1.1.0",
+          "access-list 200 deny all"
+        ],
+        "c": 0,
+        "s": [
+          "Standard list, source + wildcard."
+        ],
+        "a": "access-list 10 deny 10.1.1.0 0.0.0.255"
+      },
+      {
+        "q": "Implicit final rule of an ACL:",
+        "opts": [
+          "Deny all",
+          "Permit all",
+          "Log all",
+          "Reject all"
+        ],
+        "c": 0,
+        "s": [
+          "Unmatched traffic drops."
+        ],
+        "a": "Deny all"
+      },
+      {
+        "q": "ACL rules evaluate:",
+        "opts": [
+          "Top-down, first match wins",
+          "Bottom-up",
+          "Randomly",
+          "In parallel"
+        ],
+        "c": 0,
+        "s": [
+          "Order matters - specific rules go first."
+        ],
+        "a": "Top-down, first match wins"
+      },
+      {
+        "q": "eq smtp filters on:",
+        "opts": [
+          "Destination port 25",
+          "Source MAC",
+          "TTL",
+          "Subnet"
+        ],
+        "c": 0,
+        "s": [
+          "eq = the exact destination port."
+        ],
+        "a": "Destination port 25"
+      },
+      {
+        "q": "Which ACL permits ONLY web to server 3.3.3.3?",
+        "opts": [
+          "access-list 110 permit tcp any host 3.3.3.3 eq 80",
+          "access-list 10 permit ip any",
+          "access-list 110 permit tcp host 3.3.3.3 any eq 80",
+          "deny tcp any 3.3.3.3"
+        ],
+        "c": 0,
+        "s": [
+          "any = clients; host 3.3.3.3 = destination; eq 80 = web."
+        ],
+        "a": "access-list 110 permit tcp any host 3.3.3.3 eq 80"
+      },
+      {
+        "q": "Reject differs from deny because reject:",
+        "opts": [
+          "Sends an error back to the sender",
+          "Logs more",
+          "Is faster",
+          "Is implicit"
+        ],
+        "c": 0,
+        "s": [
+          "Reject = drop + notify; deny = silent drop."
+        ],
+        "a": "Sends an error back"
+      }
+    ],
+    "generation-ladder": [
+      {
+        "q": "Headers-only inspection:",
+        "opts": [
+          "Packet filter",
+          "Proxy",
+          "Stateful",
+          "NGFW"
+        ],
+        "c": 0,
+        "s": [
+          "Generation 1."
+        ],
+        "a": "Packet filter"
+      },
+      {
+        "q": "Application-layer intermediary:",
+        "opts": [
+          "Proxy service",
+          "Packet filter",
+          "Stateful",
+          "Switch"
+        ],
+        "c": 0,
+        "s": [
+          "Generation 2 - terminates and re-originates."
+        ],
+        "a": "Proxy service"
+      },
+      {
+        "q": "Connection state table:",
+        "opts": [
+          "Stateful inspection",
+          "Packet filter",
+          "Proxy",
+          "Hub"
+        ],
+        "c": 0,
+        "s": [
+          "Generation 3 - dynamic packet filtering."
+        ],
+        "a": "Stateful inspection"
+      },
+      {
+        "q": "Deep packet inspection + app awareness:",
+        "opts": [
+          "NGFW",
+          "Packet filter",
+          "Proxy",
+          "ACL"
+        ],
+        "c": 0,
+        "s": [
+          "Generation 4."
+        ],
+        "a": "NGFW"
+      },
+      {
+        "q": "Which knows a reply belongs to an existing session?",
+        "opts": [
+          "Stateful only",
+          "Packet filter",
+          "Both equally",
+          "Neither"
+        ],
+        "c": 0,
+        "s": [
+          "The state table provides context."
+        ],
+        "a": "Stateful only"
+      },
+      {
+        "q": "Fastest, least thorough:",
+        "opts": [
+          "Packet filter",
+          "NGFW",
+          "Proxy",
+          "Stateful"
+        ],
+        "c": 0,
+        "s": [
+          "Header checks are cheap."
+        ],
+        "a": "Packet filter"
+      },
+      {
+        "q": "Which inspects full PAYLOAD inline?",
+        "opts": [
+          "NGFW",
+          "Packet filter",
+          "Stateful (headers+state)",
+          "ACL"
+        ],
+        "c": 0,
+        "s": [
+          "DPI = generation 4 signature."
+        ],
+        "a": "NGFW"
+      },
+      {
+        "q": "Per-protocol application gateways are:",
+        "opts": [
+          "Proxy firewalls",
+          "Stateful tables",
+          "ACLs",
+          "Routers"
+        ],
+        "c": 0,
+        "s": [
+          "One proxy per service (HTTP proxy, FTP proxy)."
+        ],
+        "a": "Proxy firewalls"
+      },
+      {
+        "q": "'Monitors active connections' identifies:",
+        "opts": [
+          "Stateful inspection",
+          "Packet filtering",
+          "Proxy",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "Verbatim syllabus phrase."
+        ],
+        "a": "Stateful inspection"
+      },
+      {
+        "q": "'Deep packet inspection with application-level inspection' identifies:",
+        "opts": [
+          "NGFW",
+          "Packet filter",
+          "Proxy",
+          "Screening router"
+        ],
+        "c": 0,
+        "s": [
+          "Verbatim syllabus phrase."
+        ],
+        "a": "NGFW"
+      }
+    ],
+    "state-table": [
+      {
+        "q": "An inbound packet with no matching session entry is:",
+        "opts": [
+          "Dropped by a stateful firewall",
+          "Always permitted",
+          "NATed",
+          "Logged only"
+        ],
+        "c": 0,
+        "s": [
+          "No session = no pass."
+        ],
+        "a": "Dropped by a stateful firewall"
+      },
+      {
+        "q": "What creates a state entry?",
+        "opts": [
+          "An outbound connection opening",
+          "A DNS query only",
+          "A reboot",
+          "A subnet change"
+        ],
+        "c": 0,
+        "s": [
+          "SYN outbound -> table row."
+        ],
+        "a": "An outbound connection opening"
+      },
+      {
+        "q": "State tables enable:",
+        "opts": [
+          "Reply validation",
+          "Encryption",
+          "Name resolution",
+          "Routing"
+        ],
+        "c": 0,
+        "s": [
+          "Context for return traffic."
+        ],
+        "a": "Reply validation"
+      },
+      {
+        "q": "Which attack exhausts state tables?",
+        "opts": [
+          "SYN flood",
+          "Phishing",
+          "SQLi",
+          "Adware"
+        ],
+        "c": 0,
+        "s": [
+          "Half-open SYNs fill the table."
+        ],
+        "a": "SYN flood"
+      },
+      {
+        "q": "Stateful failover requires:",
+        "opts": [
+          "State synchronisation between peers",
+          "Two ISPs",
+          "No rules",
+          "Separate subnets"
+        ],
+        "c": 0,
+        "s": [
+          "Replicated tables keep sessions alive."
+        ],
+        "a": "State synchronisation between peers"
+      },
+      {
+        "q": "A packet-filter firewall sees a reply packet and:",
+        "opts": [
+          "Cannot tell it apart from a new connection",
+          "Drops it",
+          "Logs it as state",
+          "Encrypts it"
+        ],
+        "c": 0,
+        "s": [
+          "No context - the stateful advantage."
+        ],
+        "a": "Cannot tell it apart from a new connection"
+      },
+      {
+        "q": "UDP 'connections' in stateful firewalls are:",
+        "opts": [
+          "Pseudo-sessions from timeouts",
+          "Real handshakes",
+          "Impossible",
+          "TCP tunnels"
+        ],
+        "c": 0,
+        "s": [
+          "UDP has no handshake - state is timer-based."
+        ],
+        "a": "Pseudo-sessions from timeouts"
+      },
+      {
+        "q": "Which is NOT a firewall action?",
+        "opts": [
+          "Encrypt payload",
+          "Permit",
+          "Deny",
+          "Log"
+        ],
+        "c": 0,
+        "s": [
+          "Encryption is VPN/IPsec work."
+        ],
+        "a": "Encrypt payload"
+      },
+      {
+        "q": "First-match-wins means rules should be ordered:",
+        "opts": [
+          "Most specific first",
+          "Any-any first",
+          "Randomly",
+          "Alphabetically"
+        ],
+        "c": 0,
+        "s": [
+          "Specific permits/denies before broad ones."
+        ],
+        "a": "Most specific first"
+      },
+      {
+        "q": "A firewall LOG does:",
+        "opts": [
+          "Records matched traffic for audit",
+          "Blocks traffic",
+          "Encrypts traffic",
+          "Resolves names"
+        ],
+        "c": 0,
+        "s": [
+          "Observation, not enforcement."
+        ],
+        "a": "Records matched traffic for audit"
+      }
+    ],
+    "dmz-layouts": [
+      {
+        "q": "Public web server placement:",
+        "opts": [
+          "DMZ",
+          "LAN core",
+          "Domain controller",
+          "Any switch"
+        ],
+        "c": 0,
+        "s": [
+          "Buffer zone for exposed services."
+        ],
+        "a": "DMZ"
+      },
+      {
+        "q": "Two firewalls sandwiching a server zone:",
+        "opts": [
+          "Screened subnet",
+          "Screened router",
+          "Flat LAN",
+          "Bridge"
+        ],
+        "c": 0,
+        "s": [
+          "Strongest classic perimeter."
+        ],
+        "a": "Screened subnet"
+      },
+      {
+        "q": "One firewall with LAN/WAN/DMZ interfaces:",
+        "opts": [
+          "Three-legged",
+          "Screened subnet",
+          "Bastion",
+          "Dual-homed only"
+        ],
+        "c": 0,
+        "s": [
+          "Single-box DMZ."
+        ],
+        "a": "Three-legged"
+      },
+      {
+        "q": "Hardened exposed host:",
+        "opts": [
+          "Bastion host",
+          "File server",
+          "Print server",
+          "DNS client"
+        ],
+        "c": 0,
+        "s": [
+          "Minimal services, maximal hardening."
+        ],
+        "a": "Bastion host"
+      },
+      {
+        "q": "Weakest listed perimeter:",
+        "opts": [
+          "Screened router only",
+          "Screened subnet",
+          "Three-legged",
+          "Dual firewall"
+        ],
+        "c": 0,
+        "s": [
+          "One packet filter, no depth."
+        ],
+        "a": "Screened router only"
+      },
+      {
+        "q": "Outbound filtering is called:",
+        "opts": [
+          "Egress filtering",
+          "Ingress filtering",
+          "NAT",
+          "PAT"
+        ],
+        "c": 0,
+        "s": [
+          "Egress = exit path control."
+        ],
+        "a": "Egress filtering"
+      },
+      {
+        "q": "Many private hosts sharing one public IP:",
+        "opts": [
+          "NAT/PAT overload",
+          "DMZ",
+          "Bastion",
+          "Screening"
+        ],
+        "c": 0,
+        "s": [
+          "Port address translation."
+        ],
+        "a": "NAT/PAT overload"
+      },
+      {
+        "q": "Why keep mail servers out of the LAN?",
+        "opts": [
+          "A DMZ compromise must not reach internal assets",
+          "They are loud",
+          "They need more RAM",
+          "NAT forbids it"
+        ],
+        "c": 0,
+        "s": [
+          "Zoning limits blast radius."
+        ],
+        "a": "A DMZ compromise must not reach internal assets"
+      },
+      {
+        "q": "Strongest classic perimeter design:",
+        "opts": [
+          "Screened subnet (dual firewall)",
+          "Screened router",
+          "Flat network",
+          "Single-homed bastion"
+        ],
+        "c": 0,
+        "s": [
+          "Two devices, one zone between."
+        ],
+        "a": "Screened subnet (dual firewall)"
+      },
+      {
+        "q": "DMZ-to-LAN traffic should default to:",
+        "opts": [
+          "Denied",
+          "Permitted",
+          "Encrypted only",
+          "Logged only"
+        ],
+        "c": 0,
+        "s": [
+          "Zoning works only with default-deny between zones."
+        ],
+        "a": "Denied"
+      }
+    ],
+    "vpn-modes": [
+      {
+        "q": "Encrypts the ENTIRE original packet:",
+        "opts": [
+          "IPsec tunnel mode",
+          "Transport mode",
+          "AH alone",
+          "PPTP"
+        ],
+        "c": 0,
+        "s": [
+          "New header + wrapped parcel."
+        ],
+        "a": "IPsec tunnel mode"
+      },
+      {
+        "q": "Encrypts only the payload, header intact:",
+        "opts": [
+          "Transport mode",
+          "Tunnel mode",
+          "ESP only",
+          "WireGuard"
+        ],
+        "c": 0,
+        "s": [
+          "Host-to-host variant."
+        ],
+        "a": "Transport mode"
+      },
+      {
+        "q": "IPsec component providing ENCRYPTION:",
+        "opts": [
+          "ESP",
+          "AH",
+          "IKE",
+          "DNS"
+        ],
+        "c": 0,
+        "s": [
+          "Encapsulating Security Payload."
+        ],
+        "a": "ESP"
+      },
+      {
+        "q": "IPsec component AUTHENTICATING only:",
+        "opts": [
+          "AH",
+          "ESP",
+          "NAT",
+          "GRE"
+        ],
+        "c": 0,
+        "s": [
+          "Authentication Header - no encryption."
+        ],
+        "a": "AH"
+      },
+      {
+        "q": "Negotiates IPsec keys/SAs:",
+        "opts": [
+          "IKE",
+          "ESP",
+          "AH",
+          "ARP"
+        ],
+        "c": 0,
+        "s": [
+          "Internet Key Exchange."
+        ],
+        "a": "IKE"
+      },
+      {
+        "q": "Browser-based remote access VPN:",
+        "opts": [
+          "SSL/TLS VPN",
+          "IPsec tunnel",
+          "PPTP",
+          "GRE"
+        ],
+        "c": 0,
+        "s": [
+          "No client, port 443 friendly."
+        ],
+        "a": "SSL/TLS VPN"
+      },
+      {
+        "q": "Site-to-site standard:",
+        "opts": [
+          "IPsec",
+          "SSL portal",
+          "PPTP",
+          "Telnet"
+        ],
+        "c": 0,
+        "s": [
+          "Gateway-to-gateway tunnels."
+        ],
+        "a": "IPsec"
+      },
+      {
+        "q": "Legacy broken VPN protocol:",
+        "opts": [
+          "PPTP",
+          "WireGuard",
+          "OpenVPN",
+          "IPsec"
+        ],
+        "c": 0,
+        "s": [
+          "MS-CHAPv2 cracks - never use."
+        ],
+        "a": "PPTP"
+      },
+      {
+        "q": "Modern minimal-code VPN:",
+        "opts": [
+          "WireGuard",
+          "PPTP",
+          "L2TP alone",
+          "SSLv3"
+        ],
+        "c": 0,
+        "s": [
+          "Tiny audited codebase, fast crypto."
+        ],
+        "a": "WireGuard"
+      },
+      {
+        "q": "VPN counters which attack family?",
+        "opts": [
+          "Interception (MITM/sniffing)",
+          "Phishing",
+          "Ransomware",
+          "SQLi"
+        ],
+        "c": 0,
+        "s": [
+          "Encrypted tunnels blind eavesdroppers."
+        ],
+        "a": "Interception (MITM/sniffing)"
+      }
+    ],
+    "fw-scenarios": [
+      {
+        "q": "Mail server reachable from Internet, isolated from LAN:",
+        "opts": [
+          "Place in DMZ with DMZ->LAN denied",
+          "Place on LAN core",
+          "Share admin with DC",
+          "Open all ports"
+        ],
+        "c": 0,
+        "s": [
+          "Zoning + default deny."
+        ],
+        "a": "Place in DMZ with DMZ->LAN denied"
+      },
+      {
+        "q": "Employee tunnels forbidden apps over 443:",
+        "opts": [
+          "NGFW app-aware block",
+          "Packet filter",
+          "Bigger pipe",
+          "DHCP change"
+        ],
+        "c": 0,
+        "s": [
+          "DPI identifies the real application."
+        ],
+        "a": "NGFW app-aware block"
+      },
+      {
+        "q": "ACL permits web but replies never arrive:",
+        "opts": [
+          "Check return-path/state handling for ephemeral ports",
+          "Reboot DNS",
+          "Change wildcard",
+          "Add more NAT"
+        ],
+        "c": 0,
+        "s": [
+          "Replies go TO ephemeral client ports."
+        ],
+        "a": "Check return-path/state handling"
+      },
+      {
+        "q": "Two firewalls must not drop sessions during failover:",
+        "opts": [
+          "State synchronisation",
+          "Separate rule sets",
+          "No logging",
+          "Split DNS"
+        ],
+        "c": 0,
+        "s": [
+          "Replicated state tables."
+        ],
+        "a": "State synchronisation"
+      },
+      {
+        "q": "Stop compromised PCs from attacking the Internet:",
+        "opts": [
+          "Egress filtering",
+          "Ingress only",
+          "Disable NAT",
+          "Open port 25"
+        ],
+        "c": 0,
+        "s": [
+          "Exit-point control."
+        ],
+        "a": "Egress filtering"
+      },
+      {
+        "q": "Identify TeamViewer hiding on 443:",
+        "opts": [
+          "NGFW DPI",
+          "Packet filter",
+          "Proxy cache",
+          "ARP table"
+        ],
+        "c": 0,
+        "s": [
+          "Payload signatures beat port labels."
+        ],
+        "a": "NGFW DPI"
+      },
+      {
+        "q": "Any-any-permit firewall equals:",
+        "opts": [
+          "No enforcement, only logging",
+          "A DMZ",
+          "Zero Trust",
+          "A NGFW"
+        ],
+        "c": 0,
+        "s": [
+          "Policy requires denies."
+        ],
+        "a": "No enforcement, only logging"
+      },
+      {
+        "q": "Secure remote access with NO client install:",
+        "opts": [
+          "SSL/TLS VPN portal",
+          "IPsec client",
+          "PPTP",
+          "Telnet portal"
+        ],
+        "c": 0,
+        "s": [
+          "Browser portal on 443."
+        ],
+        "a": "SSL/TLS VPN portal"
+      },
+      {
+        "q": "Block telnet to server S, allow SSH:",
+        "opts": [
+          "deny tcp any S eq 23 + permit tcp any S eq 22",
+          "permit ip any any",
+          "deny icmp any S",
+          "permit udp any S eq 23"
+        ],
+        "c": 0,
+        "s": [
+          "Explicit rules, specific first."
+        ],
+        "a": "deny tcp any S eq 23 + permit tcp any S eq 22"
+      },
+      {
+        "q": "Which makes rules apply per USER not per IP?",
+        "opts": [
+          "Identity integration (directory/SSO)",
+          "Wildcard masks",
+          "State tables",
+          "NAT pools"
+        ],
+        "c": 0,
+        "s": [
+          "NGFW user-awareness needs identity feeds."
+        ],
+        "a": "Identity integration (directory/SSO)"
+      }
+    ],
+    "vpn-scenarios": [
+      {
+        "q": "Two branch offices link permanently:",
+        "opts": [
+          "IPsec site-to-site tunnel mode",
+          "SSL portal only",
+          "PPTP",
+          "Telnet"
+        ],
+        "c": 0,
+        "s": [
+          "Gateway-to-gateway, always-on."
+        ],
+        "a": "IPsec site-to-site tunnel mode"
+      },
+      {
+        "q": "Road warrior needs internal apps from a hotel:",
+        "opts": [
+          "SSL/TLS remote-access VPN",
+          "Site-to-site IPsec",
+          "ARP",
+          "NAT only"
+        ],
+        "c": 0,
+        "s": [
+          "Client or browser remote access."
+        ],
+        "a": "SSL/TLS remote-access VPN"
+      },
+      {
+        "q": "Recorded old sessions decrypted after a key theft - missing:",
+        "opts": [
+          "Forward secrecy (ECDHE)",
+          "Longer subnets",
+          "More NAT",
+          "Bigger MTU"
+        ],
+        "c": 0,
+        "s": [
+          "Static key exchange = retroactive risk."
+        ],
+        "a": "Forward secrecy (ECDHE)"
+      },
+      {
+        "q": "Captured tunnel packets re-sent later are dropped by:",
+        "opts": [
+          "Anti-replay sequence windows",
+          "NAT",
+          "The DMZ",
+          "Wildcard masks"
+        ],
+        "c": 0,
+        "s": [
+          "ESP/AH sequence numbers."
+        ],
+        "a": "Anti-replay sequence windows"
+      },
+      {
+        "q": "NAT breaks AH because:",
+        "opts": [
+          "AH authenticates immutable header fields NAT rewrites",
+          "AH is too fast",
+          "ESP is illegal",
+          "NAT strips ESP"
+        ],
+        "c": 0,
+        "s": [
+          "IP/port changes fail AH's integrity check."
+        ],
+        "a": "AH authenticates immutable header fields NAT rewrites"
+      },
+      {
+        "q": "VPN does NOT protect against:",
+        "opts": [
+          "Malware already on the device",
+          "MITM sniffing",
+          "Wi-Fi eavesdropping",
+          "ISP visibility of content"
+        ],
+        "c": 0,
+        "s": [
+          "Tunnels encrypt transit - endpoints stay their own risk."
+        ],
+        "a": "Malware already on the device"
+      },
+      {
+        "q": "Full-tunnel vs split-tunnel: full-tunnel forces:",
+        "opts": [
+          "All traffic through corporate inspection",
+          "Only mail through",
+          "No DNS",
+          "Split passwords"
+        ],
+        "c": 0,
+        "s": [
+          "Maximum control, less convenience."
+        ],
+        "a": "All traffic through corporate inspection"
+      },
+      {
+        "q": "IPsec at which OSI layer?",
+        "opts": [
+          "Network (Layer 3)",
+          "Application",
+          "Session",
+          "Physical"
+        ],
+        "c": 0,
+        "s": [
+          "IP-layer security."
+        ],
+        "a": "Network (Layer 3)"
+      },
+      {
+        "q": "SSL VPN at which layer(s)?",
+        "opts": [
+          "Session/Application (over TLS)",
+          "Physical",
+          "Network",
+          "Data link"
+        ],
+        "c": 0,
+        "s": [
+          "Rides TLS above transport."
+        ],
+        "a": "Session/Application (over TLS)"
+      },
+      {
+        "q": "Which VPN feature hides internal topology from the Internet?",
+        "opts": [
+          "Tunnel + NAT at the gateway",
+          "Split DNS",
+          "Logs",
+          "Wildcard masks"
+        ],
+        "c": 0,
+        "s": [
+          "Only the gateway address is visible."
+        ],
+        "a": "Tunnel + NAT at the gateway"
+      }
+    ],
+    "vpn-protocol-map": [
+      {
+        "q": "Office-to-office permanent link:",
+        "opts": [
+          "IPsec site-to-site",
+          "SSL portal",
+          "PPTP",
+          "Telnet"
+        ],
+        "c": 0,
+        "s": [
+          "Gateway-to-gateway = IPsec tunnel mode."
+        ],
+        "a": "IPsec site-to-site"
+      },
+      {
+        "q": "Browser-only remote access:",
+        "opts": [
+          "SSL/TLS VPN",
+          "IPsec client",
+          "PPTP",
+          "GRE"
+        ],
+        "c": 0,
+        "s": [
+          "No client install, 443-friendly."
+        ],
+        "a": "SSL/TLS VPN"
+      },
+      {
+        "q": "Modern minimal-code VPN:",
+        "opts": [
+          "WireGuard",
+          "PPTP",
+          "L2TP alone",
+          "SSLv3"
+        ],
+        "c": 0,
+        "s": [
+          "Tiny audited codebase, fast crypto."
+        ],
+        "a": "WireGuard"
+      },
+      {
+        "q": "Legacy broken VPN:",
+        "opts": [
+          "PPTP",
+          "OpenVPN",
+          "WireGuard",
+          "IPsec"
+        ],
+        "c": 0,
+        "s": [
+          "MS-CHAPv2 cracks - the wrong answer by design."
+        ],
+        "a": "PPTP"
+      },
+      {
+        "q": "Open-source TLS-based flexible VPN:",
+        "opts": [
+          "OpenVPN",
+          "PPTP",
+          "L2F",
+          "Telnet"
+        ],
+        "c": 0,
+        "s": [
+          "Runs over TLS/DTLS, any port."
+        ],
+        "a": "OpenVPN"
+      },
+      {
+        "q": "IPsec piece that only AUTHENTICATES:",
+        "opts": [
+          "AH",
+          "ESP",
+          "IKE",
+          "NAT-T"
+        ],
+        "c": 0,
+        "s": [
+          "Authentication Header - no encryption."
+        ],
+        "a": "AH"
+      },
+      {
+        "q": "IPsec piece that ENCRYPTS:",
+        "opts": [
+          "ESP",
+          "AH",
+          "IKE",
+          "GRE"
+        ],
+        "c": 0,
+        "s": [
+          "Encapsulating Security Payload."
+        ],
+        "a": "ESP"
+      },
+      {
+        "q": "IPsec key negotiator:",
+        "opts": [
+          "IKE",
+          "ESP",
+          "AH",
+          "ARP"
+        ],
+        "c": 0,
+        "s": [
+          "Internet Key Exchange builds SAs."
+        ],
+        "a": "IKE"
+      },
+      {
+        "q": "Whole-packet encryption mode:",
+        "opts": [
+          "Tunnel mode",
+          "Transport mode",
+          "AH mode",
+          "NAT mode"
+        ],
+        "c": 0,
+        "s": [
+          "New header wraps the original packet."
+        ],
+        "a": "Tunnel mode"
+      },
+      {
+        "q": "VPN counter for eavesdropping on public Wi-Fi:",
+        "opts": [
+          "Encrypted tunnel to a trusted gateway",
+          "Longer passwords",
+          "More subnets",
+          "Bigger MTU"
+        ],
+        "c": 0,
+        "s": [
+          "Tunnel blinds the local snooper."
+        ],
+        "a": "Encrypted tunnel to a trusted gateway"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "id": 1,
+      "q": "A firewall is best defined as:",
+      "opts": [
+        "A device that speeds up traffic",
+        "A barrier filtering traffic between networks per security rules",
+        "A backup appliance",
+        "A mail server"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "fw-basics",
+      "exp": [
+        "Monitors and filters incoming/outgoing traffic against organisation-defined rules."
+      ]
+    },
+    {
+      "id": 2,
+      "q": "Which firewall inspects packet HEADERS against filter standards?",
+      "opts": [
+        "Packet filtering",
+        "Proxy service",
+        "Stateful inspection",
+        "NGFW"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "generations",
+      "exp": [
+        "Generation 1: header fields only - fast, no payload or connection awareness."
+      ]
+    },
+    {
+      "id": 3,
+      "q": "Which firewall filters messages at the APPLICATION layer?",
+      "opts": [
+        "Packet filtering",
+        "Proxy service",
+        "Stateful inspection",
+        "Screening router"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "generations",
+      "exp": [
+        "Proxy = application-level intermediary between client and server."
+      ]
+    },
+    {
+      "id": 4,
+      "q": "Which firewall uses DYNAMIC packet filtering by monitoring ACTIVE connections?",
+      "opts": [
+        "Packet filtering",
+        "Proxy service",
+        "Stateful inspection",
+        "Static routing"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "generations",
+      "exp": [
+        "Stateful = the connection state table - 'active connections' is its signature phrase."
+      ]
+    },
+    {
+      "id": 5,
+      "q": "NGFW is defined by:",
+      "opts": [
+        "Port-only filtering",
+        "Deep packet inspection with application-level awareness",
+        "Being software-only",
+        "Blocking all traffic"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "generations",
+      "exp": [
+        "Generation 4: full payload inspection + application/user identity + integrated IPS."
+      ]
+    },
+    {
+      "id": 6,
+      "q": "A VPN primarily provides:",
+      "opts": [
+        "An encrypted tunnel over a public network",
+        "Faster DNS",
+        "Free hosting",
+        "A new IP protocol"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "vpn",
+      "exp": [
+        "Tunnel = confidentiality + integrity + authentication across untrusted networks."
+      ]
+    },
+    {
+      "id": 7,
+      "q": "Which VPN family suits OFFICE-TO-OFFICE site-to-site links?",
+      "opts": [
+        "IPsec",
+        "SSL/TLS VPN only",
+        "PPTP",
+        "Telnet"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "vpn",
+      "exp": [
+        "IPsec at the network layer is the site-to-site standard (tunnel mode)."
+      ]
+    },
+    {
+      "id": 8,
+      "q": "Which VPN suits a remote employee using only a BROWSER?",
+      "opts": [
+        "IPsec tunnel mode",
+        "SSL/TLS VPN",
+        "PPTP",
+        "ARP"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "vpn",
+      "exp": [
+        "SSL/TLS VPN = browser-based remote access, no client install."
+      ]
+    },
+    {
+      "id": 9,
+      "q": "IPsec TUNNEL mode encrypts:",
+      "opts": [
+        "Only the payload",
+        "The entire original IP packet (with a new header)",
+        "Only headers",
+        "Nothing"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "vpn",
+      "exp": [
+        "Tunnel wraps the whole packet for gateway-to-gateway links.",
+        "Transport mode encrypts just the payload."
+      ]
+    },
+    {
+      "id": 10,
+      "q": "The public-facing buffer network hosting web/mail servers is the:",
+      "opts": [
+        "LAN",
+        "DMZ",
+        "VLAN",
+        "WAN"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "architecture",
+      "exp": [
+        "DMZ isolates public servers so their compromise cannot reach the LAN directly."
+      ]
+    },
+    {
+      "id": 11,
+      "q": "Which IPsec component ENCRYPTS?",
+      "opts": [
+        "AH",
+        "ESP",
+        "IKE",
+        "ARP"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "vpn",
+      "exp": [
+        "ESP = Encapsulating Security Payload (encryption + integrity).",
+        "AH authenticates only; IKE negotiates keys."
+      ]
+    },
+    {
+      "id": 12,
+      "q": "The implicit rule at the end of a hardened firewall's ACL is:",
+      "opts": [
+        "Permit all",
+        "Deny all",
+        "Log all",
+        "Reject all with reply"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "fw-basics",
+      "exp": [
+        "Default deny - anything not explicitly permitted is dropped."
+      ]
+    },
+    {
+      "id": 13,
+      "q": "A hardened, minimal server exposed to the Internet is a:",
+      "opts": [
+        "Bastion host",
+        "Proxy client",
+        "Root server",
+        "DHCP server"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "architecture",
+      "exp": [
+        "Bastion = the deliberately exposed, stripped-down fortress host."
+      ]
+    },
+    {
+      "id": 14,
+      "q": "NAT's security side-effect is:",
+      "opts": [
+        "Hiding internal IP addresses from outsiders",
+        "Encrypting payloads",
+        "Filtering viruses",
+        "Blocking ports by itself"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "architecture",
+      "exp": [
+        "NAT obscures internal topology - helpful, but not a security control."
+      ]
+    },
+    {
+      "id": 15,
+      "q": "Filtering OUTBOUND traffic to stop compromised machines attacking others is:",
+      "opts": [
+        "Egress filtering",
+        "Ingress filtering",
+        "Load balancing",
+        "Port forwarding"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "architecture",
+      "exp": [
+        "Egress = exit; stops data exfiltration and outbound attacks."
+      ]
+    },
+    {
+      "id": 16,
+      "q": "Which firewall would identify an application tunnelled over port 80?",
+      "opts": [
+        "Packet filter",
+        "NGFW (deep packet inspection)",
+        "Hub",
+        "Repeater"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "generations",
+      "exp": [
+        "Port 80 carrying non-HTTP traffic is exactly what DPI/application awareness exposes."
+      ]
+    },
+    {
+      "id": 17,
+      "q": "IPsec TRANSPORT mode encrypts:",
+      "opts": [
+        "Only the payload (original header intact)",
+        "The whole packet",
+        "Only MACs",
+        "Nothing"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "vpn",
+      "exp": [
+        "Transport = host-to-host payload protection; tunnel = whole packet for gateways."
+      ]
+    },
+    {
+      "id": 18,
+      "q": "Which IPsec component AUTHENTICATES but does NOT encrypt?",
+      "opts": [
+        "AH",
+        "ESP",
+        "IKE",
+        "NAT"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "vpn",
+      "exp": [
+        "Authentication Header = integrity + origin auth; ESP carries the encryption."
+      ]
+    },
+    {
+      "id": 19,
+      "q": "IKE's job in IPsec is:",
+      "opts": [
+        "Negotiating keys and Security Associations",
+        "Compressing packets",
+        "Routing updates",
+        "DNS records"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "vpn",
+      "exp": [
+        "Internet Key Exchange sets up the SAs both gateways use."
+      ]
+    },
+    {
+      "id": 20,
+      "q": "An ACL line 'access-list 10 deny 172.16.48.0 0.0.15.255' is:",
+      "opts": [
+        "A standard ACL denying a /20 subnet",
+        "An extended ACL permitting mail",
+        "A NAT rule",
+        "A VPN policy"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "fw-basics",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Number 10 = standard range (1-99), source + wildcard only - the published PYQ answer."
+      ]
+    },
+    {
+      "id": 21,
+      "q": "Permitting SMTP only to host 1.1.1.1 requires which line?",
+      "opts": [
+        "access-list 110 permit tcp any host 1.1.1.1 eq smtp",
+        "access-list 10 permit smtp host 1.1.1.1",
+        "access-list 110 deny tcp any any",
+        "ip route 0.0.0.0 1.1.1.1"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "fw-basics",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Extended ACL (100-199): tcp protocol + destination port eq smtp."
+      ]
+    },
+    {
+      "id": 22,
+      "q": "Which firewall limitation does STATEFUL inspection fix?",
+      "opts": [
+        "Packet filters cannot tell replies to established sessions from new attacks",
+        "Packet filters are too fast",
+        "Proxies are illegal",
+        "NGFW has no ports"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "generations",
+      "exp": [
+        "The state table gives connection context that header-only filters lack."
+      ]
+    },
+    {
+      "id": 23,
+      "q": "A three-legged firewall has interfaces for:",
+      "opts": [
+        "LAN, WAN and DMZ",
+        "Two users",
+        "DNS, DHCP, FTP",
+        "Ingress only"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "architecture",
+      "exp": [
+        "One device, three zones - the single-box DMZ design."
+      ]
+    },
+    {
+      "id": 24,
+      "q": "Which VPN protocol is LEGACY and INSECURE?",
+      "opts": [
+        "PPTP",
+        "IPsec",
+        "OpenVPN",
+        "WireGuard"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "vpn",
+      "exp": [
+        "PPTP's encryption is broken - it appears only as the wrong answer."
+      ]
+    },
+    {
+      "id": 25,
+      "q": "A screened subnet architecture uses:",
+      "opts": [
+        "Two firewalls sandwiching the DMZ",
+        "One router only",
+        "No firewall",
+        "Three ISPs"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "architecture",
+      "exp": [
+        "Two devices, DMZ between - the strongest classic perimeter."
+      ]
+    },
+    {
+      "id": 26,
+      "q": "Which traffic would a STATEFUL firewall drop even if a generic allow rule exists?",
+      "opts": [
+        "An unsolicited inbound packet with no matching session",
+        "A reply to an outbound request",
+        "An allowed outbound packet",
+        "Encrypted traffic on 443"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "generations",
+      "exp": [
+        "No session entry -> no pass, regardless of generic rules."
+      ]
+    },
+    {
+      "id": 27,
+      "q": "WireGuard's selling points are:",
+      "opts": [
+        "Modern cryptography and a minimal codebase",
+        "Legacy compatibility",
+        "Plaintext speed",
+        "Being a proxy"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "vpn",
+      "exp": [
+        "Tiny audited codebase + fast modern crypto (ChaCha20-Poly1305)."
+      ]
+    },
+    {
+      "id": 28,
+      "q": "Which statement about proxy firewalls is TRUE?",
+      "opts": [
+        "They terminate and re-originate connections per protocol",
+        "They inspect only headers",
+        "They route packets unchanged",
+        "They replace routers"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "generations",
+      "exp": [
+        "The intermediary break gives real content awareness at the cost of speed."
+      ]
+    },
+    {
+      "id": 29,
+      "q": "Egress filtering primarily prevents:",
+      "opts": [
+        "Compromised internal machines attacking outward",
+        "Inbound DDoS",
+        "DNS caching",
+        "Wi-Fi interference"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "architecture",
+      "exp": [
+        "Exit-point control stops exfiltration and outbound abuse (also anti-spam hygiene)."
+      ]
+    },
+    {
+      "id": 30,
+      "q": "SSL/TLS VPNs traverse corporate firewalls easily because they:",
+      "opts": [
+        "Look like ordinary HTTPS on port 443",
+        "Use UDP 69",
+        "Disable inspection",
+        "Require special ports"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "vpn",
+      "exp": [
+        "Indistinguishable from normal web traffic to most filters."
+      ]
+    },
+    {
+      "id": 31,
+      "q": "Which rule matches the traffic 'any web browsing TO server 2.2.2.2'?",
+      "opts": [
+        "permit tcp any host 2.2.2.2 eq 80",
+        "deny udp any eq 80",
+        "permit icmp any any",
+        "access-list 10 permit 2.2.2.2"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "fw-basics",
+      "exp": [
+        "Web = tcp/80; extended ACL grammar with eq 80."
+      ]
+    },
+    {
+      "id": 32,
+      "q": "A 'personal firewall' runs:",
+      "opts": [
+        "On an end host, controlling its own traffic",
+        "Only on core routers",
+        "Inside switches",
+        "On DNS servers only"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "fw-basics",
+      "exp": [
+        "Host-based layer of defense in depth."
+      ]
+    },
+    {
+      "id": 33,
+      "q": "Which is a REASON to segment with an internal firewall (not just at the edge)?",
+      "opts": [
+        "Limit lateral movement after a breach",
+        "Increase broadcast domains for fun",
+        "Slow down users",
+        "Avoid NAT"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "architecture",
+      "exp": [
+        "Internal segmentation contains breaches - the zero-trust instinct."
+      ]
+    },
+    {
+      "id": 34,
+      "q": "IPsec site-to-site tunnels terminate typically on:",
+      "opts": [
+        "Security gateways at each office",
+        "Employee phones",
+        "DNS servers",
+        "Printers"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "vpn",
+      "exp": [
+        "Gateway-to-gateway: the tunnels connect the networks, not individual hosts."
+      ]
+    },
+    {
+      "id": 35,
+      "q": "Which firewall feature stops an employee tunneling forbidden apps over port 443?",
+      "opts": [
+        "NGFW application awareness",
+        "Packet filtering",
+        "NAT",
+        "DHCP"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "generations",
+      "exp": [
+        "DPI identifies the true application regardless of port."
+      ]
+    },
+    {
+      "id": 36,
+      "q": "The wildcard mask 0.0.0.63 corresponds to prefix:",
+      "opts": [
+        "/26",
+        "/24",
+        "/28",
+        "/20"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "fw-basics",
+      "exp": [
+        "63 = block 64 = 2^6 -> 32-6 = /26."
+      ]
+    },
+    {
+      "id": 37,
+      "q": "Which is a HOST-based firewall example?",
+      "opts": [
+        "Windows Defender Firewall",
+        "A core router ACL",
+        "An ISP scrubbing centre",
+        "A DMZ switch"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "fw-basics",
+      "exp": [
+        "Runs on the endpoint itself - last line of defense in depth."
+      ]
+    },
+    {
+      "id": 38,
+      "q": "Stateful failover pairs of firewalls provide:",
+      "opts": [
+        "High availability with session continuity",
+        "Faster DNS",
+        "Encryption",
+        "More NAT"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "architecture",
+      "exp": [
+        "State synchronisation keeps sessions alive through a device failure."
+      ]
+    },
+    {
+      "id": 39,
+      "q": "Which is TRUE about the DMZ and the LAN?",
+      "opts": [
+        "DMZ systems compromise should not grant LAN access",
+        "They share full trust",
+        "DMZ is more trusted",
+        "LAN is outside"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "architecture",
+      "exp": [
+        "Zoning exists precisely so a public-facing breach stops at the DMZ."
+      ]
+    },
+    {
+      "id": 40,
+      "q": "An 'implicit deny' means:",
+      "opts": [
+        "Traffic not matched by any rule is dropped",
+        "All traffic drops",
+        "Only UDP drops",
+        "Rules are optional"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "fw-basics",
+      "exp": [
+        "The invisible final rule of every serious ACL."
+      ]
+    },
+    {
+      "id": 41,
+      "q": "A published AXIS PYQ permits SMTP to only 1.1.1.1. Why must the ACL be EXTENDED (100-199)?",
+      "opts": [
+        "Standard ACLs cannot filter by protocol/destination port",
+        "110 is shorter",
+        "SMTP requires NAT",
+        "Standard lists are for IPv6"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "fw-basics",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "eq smtp = port filtering = extended-only capability; standard lists see source IPs alone."
+      ]
+    },
+    {
+      "id": 42,
+      "q": "An attacker sends packets with the ACK flag set for a session that never existed. Which firewall drops them first?",
+      "opts": [
+        "Stateful inspection",
+        "Packet filter with any-any permit",
+        "NAT device",
+        "Load balancer"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "generations",
+      "exp": [
+        "No state entry for the ACK -> dropped; header-only filters would pass it."
+      ]
+    },
+    {
+      "id": 43,
+      "q": "Which design places the DMZ between TWO firewalls, inside and outside?",
+      "opts": [
+        "Screened subnet",
+        "Screened router",
+        "Single-homed host",
+        "Flat network"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "architecture",
+      "exp": [
+        "The two-device sandwich - strongest classic perimeter topology."
+      ]
+    },
+    {
+      "id": 44,
+      "q": "IPsec tunnel mode between gateways: the inner header visible after decryption belongs to:",
+      "opts": [
+        "The original host-to-host packet",
+        "The gateways",
+        "The ISP",
+        "IKE"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "vpn",
+      "exp": [
+        "Tunnel mode preserves the original endpoints inside; the outer header is gateway-to-gateway."
+      ]
+    },
+    {
+      "id": 45,
+      "q": "Why does ESP alone usually replace AH+ESP in NAT environments?",
+      "opts": [
+        "AH authenticates immutable header fields that NAT rewrites",
+        "AH is slower to type",
+        "ESP is older",
+        "NAT requires AH"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "vpn",
+      "exp": [
+        "NAT changes IPs/ports -> AH's integrity check fails; ESP's coverage survives NAT (with NAT-T)."
+      ]
+    },
+    {
+      "id": 46,
+      "q": "A NGFW shows 'TeamViewer' on port 443. Which capability produced that label?",
+      "opts": [
+        "Application-level DPI with signature matching",
+        "Wildcard masks",
+        "State table lookups only",
+        "ARP inspection"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "generations",
+      "exp": [
+        "Payload signatures identify the true application regardless of port - generation-4 capability."
+      ]
+    },
+    {
+      "id": 47,
+      "q": "Split tunnelling in a remote-access VPN means:",
+      "opts": [
+        "Internet traffic goes direct; corporate traffic goes through the tunnel",
+        "All traffic is forced through the tunnel",
+        "DNS only tunnels",
+        "Splitting the password"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "vpn",
+      "exp": [
+        "Convenience vs security trade-off: full-tunnel forces everything through corporate inspection."
+      ]
+    },
+    {
+      "id": 48,
+      "q": "An ACL must block telnet TO a server while allowing SSH. Correct pair:",
+      "opts": [
+        "deny tcp any host S eq 23 + permit tcp any host S eq 22",
+        "permit udp any any",
+        "deny icmp any any",
+        "permit ip any any first"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "fw-basics",
+      "exp": [
+        "23 = telnet (block), 22 = SSH (allow) - explicit rules, order matters (first match wins)."
+      ]
+    },
+    {
+      "id": 49,
+      "q": "A stateful firewall survives a reboot without dropping sessions because of:",
+      "opts": [
+        "State synchronisation to its failover peer",
+        "NAT",
+        "DNS caching",
+        "The DMZ"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "architecture",
+      "exp": [
+        "Clustered firewalls replicate the state table - high availability."
+      ]
+    },
+    {
+      "id": 50,
+      "q": "Which statement comparing proxy and NGFW is TRUE?",
+      "opts": [
+        "Proxies terminate connections per protocol; NGFW inspects inline across applications",
+        "Proxies are always faster",
+        "NGFW cannot inspect content",
+        "They are identical"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "generations",
+      "exp": [
+        "Explicit intermediary vs inline transparent inspection - the architectural difference."
+      ]
+    },
+    {
+      "id": 51,
+      "q": "An ACL permits 'tcp any host 1.1.1.1 eq smtp' but the mail flow still fails. First thing to check:",
+      "opts": [
+        "The RETURN traffic (ephemeral source ports) - stateful inspection or a reply rule",
+        "The subnet mask",
+        "The DMZ",
+        "The wildcard of the permit"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "fw-basics",
+      "exp": [
+        "Mail servers reply FROM port 25 TO ephemeral client ports - return-path rules or state handling must cover it."
+      ]
+    },
+    {
+      "id": 52,
+      "q": "Which VPN flaw makes PPTP unacceptable?",
+      "opts": [
+        "Broken encryption (MS-CHAPv2 cracks) and no modern integrity",
+        "No ports",
+        "No IPv4 support",
+        "Too much logging"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "vpn",
+      "exp": [
+        "Cryptographically broken for years - the canonical 'insecure legacy VPN' answer."
+      ]
+    },
+    {
+      "id": 53,
+      "q": "A company wants remote access WITHOUT installing clients and WITHOUT exposing RDP/SSH to the Internet. Best fit:",
+      "opts": [
+        "SSL/TLS VPN portal (browser-based, proxied apps)",
+        "IPsec tunnel mode to every laptop",
+        "Opening port 3389",
+        "Telnet portal"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "vpn",
+      "exp": [
+        "SSL-VPN portals proxy internal apps over 443 - no client, no exposed management ports."
+      ]
+    },
+    {
+      "id": 54,
+      "q": "Which firewall generation first introduced CONNECTION CONTEXT?",
+      "opts": [
+        "Stateful inspection (generation 3)",
+        "Packet filtering",
+        "Proxy",
+        "None"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "generations",
+      "exp": [
+        "The state table is generation 3's invention - replies judged by session membership."
+      ]
+    },
+    {
+      "id": 55,
+      "q": "An any-any-permit firewall with logging is equivalent security-wise to:",
+      "opts": [
+        "No firewall (only an audit trail)",
+        "A NGFW",
+        "A DMZ",
+        "Zero Trust"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "fw-basics",
+      "exp": [
+        "Permit-everything enforces no policy - logging alone is observation, not control."
+      ]
+    },
+    {
+      "id": 56,
+      "q": "Which IPsec piece prevents REPLAY of captured tunnel packets?",
+      "opts": [
+        "ESP/AH sequence numbers",
+        "IKE cookies only",
+        "NAT tables",
+        "The tunnel mode itself"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "vpn",
+      "exp": [
+        "Anti-replay windows use per-packet sequence numbers inside ESP/AH."
+      ]
+    },
+    {
+      "id": 57,
+      "q": "A DMZ web server is compromised. Which architecture detail limits the blast radius to the DMZ?",
+      "opts": [
+        "Rules denying DMZ-initiated connections into the LAN",
+        "Same switch as the LAN",
+        "Shared admin password",
+        "No logging"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "architecture",
+      "exp": [
+        "Zoning works only if DMZ->LAN flows are denied by default - the whole point of the segment."
+      ]
+    },
+    {
+      "id": 58,
+      "q": "Which is the correct wildcard for permitting the 10.1.16.0/24 network in an ACL?",
+      "opts": [
+        "0.0.0.255",
+        "0.0.15.255",
+        "255.255.255.0",
+        "0.0.0.63"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "fw-basics",
+      "exp": [
+        "/24 -> wildcard 0.0.0.255 (inverse of 255.255.255.0)."
+      ]
+    },
+    {
+      "id": 59,
+      "q": "NGFW user-based policies require:",
+      "opts": [
+        "Identity integration (directory/SSO) so rules apply per USER not per IP",
+        "Static IPs for all users",
+        "Disabling DHCP",
+        "No authentication"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "generations",
+      "exp": [
+        "Generation-4 policies bind to users/groups - identity feeds the firewall."
+      ]
+    },
+    {
+      "id": 60,
+      "q": "Order these perimeter designs weakest to strongest:",
+      "opts": [
+        "Screened router, screened host, three-legged DMZ, screened subnet",
+        "Screened subnet, three-legged, host, router",
+        "Router, DMZ, subnet, host",
+        "Host, router, subnet, three-legged"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "architecture",
+      "exp": [
+        "One filter -> filter+bastion -> one box three zones -> two boxes sandwiching: monotonic strength."
+      ]
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "fw-role"
+    },
+    {
+      "type": "concept",
+      "sectionId": "fw-generations"
+    },
+    {
+      "type": "concept",
+      "sectionId": "fw-architecture"
+    },
+    {
+      "type": "concept",
+      "sectionId": "vpn-deep"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}

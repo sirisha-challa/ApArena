@@ -235,10 +235,12 @@
         "Client-Server vs P2P",
         "Shared Resources & Mapping",
         "Compatibility & Security Rules",
-        "LAN & Intranet Sharing"
+        "LAN/Intranet Sharing",
+        "Network Monitoring",
+        "Print & File Services"
       ],
       "estimatedHours": 4,
-      "status": null,
+      "status": "ready",
       "axisSection": "Networking, Security & Cloud"
     },
     {
@@ -251,11 +253,13 @@
       "subtopics": [
         "Identity Verification (Who are you?)",
         "Permissions (What can you do?)",
-        "Factors (Password/Biometric/OTP)",
-        "MFA & SSO"
+        "Factors (Password/Biometric/OTP) & MFA",
+        "Auth Protocols (Kerberos/RADIUS/LDAP/OAuth)",
+        "SSO & Delegation",
+        "Access Control Models (DAC/MAC/RBAC/ABAC)"
       ],
       "estimatedHours": 4,
-      "status": null,
+      "status": "ready",
       "axisSection": "Networking, Security & Cloud"
     },
     {
@@ -408,13 +412,15 @@
       "color": "#0891B2",
       "days": "2",
       "subtopics": [
-        "Packet Filtering",
-        "Proxy & Stateful Inspection",
-        "Next-Gen Firewalls",
-        "VPN Tunnels & Uses"
+        "Firewall Basics & ACLs",
+        "Four Generations",
+        "Stateful Logic",
+        "DMZ, NAT & Architecture",
+        "IPsec Modes & Components",
+        "VPN Protocols & Use Cases"
       ],
       "estimatedHours": 5,
-      "status": null,
+      "status": "ready",
       "axisSection": "Networking, Security & Cloud"
     },
     {

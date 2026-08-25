@@ -1,0 +1,2339 @@
+{
+  "id": "authentication-authorization",
+  "title": "Authentication vs Authorization",
+  "icon": "AA",
+  "category": "networking-cloud",
+  "subtitle": "Identity vs rights: factors & MFA, biometrics, Kerberos/RADIUS/LDAP/OAuth, SSO & access-control models",
+  "days": "2",
+  "color": "#0891B2",
+  "subtopics": [
+    "Identity Verification (Who are you?)",
+    "Permissions (What can you do?)",
+    "Factors (Password/Biometric/OTP) & MFA",
+    "Auth Protocols (Kerberos/RADIUS/LDAP/OAuth)",
+    "SSO & Delegation",
+    "Access Control Models (DAC/MAC/RBAC/ABAC)"
+  ],
+  "estimatedHours": 5,
+  "readingSections": [
+    {
+      "id": "aa-core",
+      "title": "The Core Distinction: Who vs What",
+      "type": "concept",
+      "quickSummary": "Authentication verifies IDENTITY (who are you?); authorization grants RIGHTS (what may you do?). AuthN always precedes AuthZ.",
+      "content": [
+        "Authentication (AuthN) verifies a user's identity by comparing presented credentials against an authorised-user database - username/password, cards, retina scans, voice recognition, fingerprints. It establishes and confirms WHO the person or system is, and has no bearing on which tasks or files that identity may touch.",
+        "Authorization (AuthZ) determines access rights: the system (typically a server administrator in multi-user systems) defines which users reach which directories, at which hours, with how much storage. It answers WHAT the verified identity may do, usually immediately after authentication.",
+        "The pairing rules from the syllabus: authentication is used when a SERVER wants to know exactly who is accessing it, and when a CLIENT wants proof the server is genuine (mutual authentication). Authorization is the process by which a server assesses whether a client has PERMISSION to use a resource. Some systems have no authorization at all - any requester gets the resource; most public web pages require neither."
+      ],
+      "subsections": [
+        {
+          "title": "The exam mapping (memorise verbatim)",
+          "content": "'Process of verifying a user's identity' -> AUTHENTICATION.\n'Process of assessing whether a client has permission to use a resource' -> AUTHORIZATION.\n'Credentials compared to a database of authorised users' -> AUTHENTICATION.\n'Defines directories, hours of access, storage space' -> AUTHORIZATION."
+        }
+      ],
+      "quickRevision": [
+        "AuthN = who you are (identity). AuthZ = what you may do (rights).",
+        "AuthN first, AuthZ second - always in that order.",
+        "AuthN methods: passwords, cards, retina, voice, fingerprints.",
+        "AuthZ may require additional authentication in some cases; some systems have none."
+      ],
+      "tricks": [
+        "AuthenticatioN contains 'identification' - identity is authentication, every time.",
+        "Password in the stem -> authentication. Permission/privilege/rights in the stem -> authorization.",
+        "Biometrics (fingerprint, retina, voice) are ALWAYS authentication - never authorization."
+      ],
+      "patterns": [
+        "'Server wants to know exactly WHO is accessing' -> authentication.",
+        "'Server assesses whether the client has permission' -> authorization.",
+        "'Which comes first?' -> authentication."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "PrepInsta AXIS syllabus (official topic)",
+          "question": "Difference between authorization and authentication - which statement is true?",
+          "approach": "Any option swapping the two is wrong: identity = AuthN, rights = AuthZ."
+        }
+      ],
+      "companyNote": "This is a named official AXIS topic - expect at least one direct AuthN-vs-AuthZ question per slot."
+    },
+    {
+      "id": "aa-factors",
+      "title": "Authentication Factors & MFA",
+      "type": "concept",
+      "quickSummary": "Three factor families: know (password/PIN), have (card/OTP phone), are (fingerprint/face/voice). MFA mixes families; two passwords is still single-factor.",
+      "content": [
+        "Knowledge factor - something you KNOW: passwords, PINs, security questions. Cheapest, weakest (guessable, phishable, reusable).",
+        "Possession factor - something you HAVE: smart cards, hardware tokens, OTP apps, phone push-approval. Stronger: theft is noticeable.",
+        "Inherence factor - something you ARE: fingerprints, retina/iris scans, voice recognition, facial geometry - the biometrics the syllabus lists. Cannot be forgotten or shared, but can't be rotated after compromise.",
+        "Multi-factor authentication (MFA/2FA) requires factors from DIFFERENT families: password + OTP app, card + PIN, fingerprint + phone. Two different passwords = still single-factor. Location/behaviour ('somewhere you are', 'something you do') appear as extended factors in some textbooks."
+      ],
+      "subsections": [
+        {
+          "title": "Biometric accuracy vocabulary",
+          "content": "FAR (False Acceptance Rate) - impostors wrongly accepted.\nFRR (False Rejection Rate) - genuine users wrongly rejected.\nCER/EER (Crossover Error Rate) - where FAR = FRR; LOWER CER = better device.\nRetention/registration - enrolling the template; templates should be stored as irreversible mathematical representations."
+        }
+      ],
+      "quickRevision": [
+        "Know / Have / Are - the three factor families.",
+        "MFA = factors from different families.",
+        "Two passwords = single factor.",
+        "CER/EER: lower = better biometric device."
+      ],
+      "tricks": [
+        "OTP + password = MFA; password + PIN = single factor - the classic trap pair.",
+        "'Something you ARE' options are always authentication methods.",
+        "Biometric accuracy question: pick the LOWEST CER/EER."
+      ],
+      "patterns": [
+        "'Which is a possession factor?' - smart card/OTP token.",
+        "'Which improves security by combining factors?' - MFA.",
+        "'Fingerprint scan' - inherence factor authentication."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "PrepInsta AXIS syllabus",
+          "question": "Cards, retina scans, voice recognition and fingerprints are listed as:",
+          "approach": "Authentication methods (the syllabus lists them verbatim alongside username/password)."
+        }
+      ],
+      "companyNote": "Factor-family classification is a reliable one-mark question - the password+PIN trap appears everywhere."
+    },
+    {
+      "id": "aa-protocols",
+      "title": "Enterprise AuthN/AuthZ Protocols",
+      "type": "concept",
+      "quickSummary": "Kerberos = ticket-based domain auth; RADIUS/TACACS+ = network access AAA; LDAP = directory queries; SAML/OAuth/OpenID = web SSO; 802.1X = port-based access.",
+      "content": [
+        "KERBEROS is the domain authentication protocol (Windows Active Directory's core): a trusted third party (Key Distribution Center) issues TICKETS instead of sending passwords over the network. The client proves identity to the TGT-issuing service, then presents service tickets to individual servers - mutual authentication with timestamps defeating replays.",
+        "RADIUS (UDP 1812/1645) and TACACS+ (TCP 49) are AAA protocols - Authentication, Authorization, Accounting - for network access: VPN concentrators, Wi-Fi, switches. RADIUS encrypts only the password field; TACACS+ encrypts the entire payload and separates the three As - Cisco's favourite exam contrast.",
+        "LDAP (port 389/636) queries DIRECTORY services - the database of users/groups that authorization decisions consult. Active Directory is LDAP + Kerberos + DNS together.",
+        "Web SSO protocols: SAML (XML assertions, enterprise SSO), OAuth 2.0 (DELEGATED AUTHORIZATION - 'login with X' granting scoped access without sharing passwords), OpenID Connect (authentication layer on OAuth). Single Sign-On = authenticate once, access many systems.",
+        "802.1X = port-based network access control: a device must authenticate (usually via RADIUS) before the switch port passes traffic."
+      ],
+      "subsections": [
+        {
+          "title": "AAA decoded",
+          "content": "Authentication - who are you? (credentials verified)\nAuthorization - what may you do? (rights applied)\nAccounting - what did you do? (logging/auditing: session time, data, commands)"
+        }
+      ],
+      "quickRevision": [
+        "Kerberos = tickets, no passwords on the wire, Active Directory.",
+        "RADIUS (UDP, password-only encryption) vs TACACS+ (TCP, full encryption, separated AAA).",
+        "LDAP = directory queries (the user/group database).",
+        "OAuth = delegated authorization; OpenID = authentication; SAML = enterprise SSO assertions.",
+        "802.1X = authenticate before the port opens."
+      ],
+      "tricks": [
+        "'Tickets instead of passwords' -> Kerberos, instantly.",
+        "'AAA' in the stem -> RADIUS or TACACS+; 'Cisco' or 'full payload encryption' tips it to TACACS+.",
+        "'Login with Google/Facebook' -> OAuth (authorization delegation).",
+        "'Authenticate once, use many apps' -> SSO (SAML in enterprises)."
+      ],
+      "patterns": [
+        "'Which protocol uses tickets?' - Kerberos.",
+        "'Which AAA protocol encrypts the entire session?' - TACACS+.",
+        "'Directory service protocol' - LDAP.",
+        "'Delegated authorization framework' - OAuth 2.0."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement security set",
+          "question": "Which protocol provides SSO in Windows domains?",
+          "approach": "Kerberos - the Active Directory authentication core."
+        }
+      ],
+      "companyNote": "Protocol-identification questions (Kerberos/RADIUS/LDAP/OAuth) appear in the broader technical pool and interviews."
+    },
+    {
+      "id": "aa-models",
+      "title": "Access Control Models",
+      "type": "concept",
+      "quickSummary": "DAC = owner decides; MAC = labels/levels (military); RBAC = roles define rights; ABAC = attribute rules. Plus least privilege & separation of duties.",
+      "content": [
+        "DAC (Discretionary Access Control): the resource OWNER decides who gets access (file permissions you set). Flexible, but owners can misconfigure and permissions propagate (Trojan horses ride DAC).",
+        "MAC (Mandatory Access Control): the SYSTEM enforces access by SECURITY LABELS and clearance levels - military/classified models (Top Secret/Secret/Confidential). Owners cannot override; no read-up, no write-down (Bell-LaPadula).",
+        "RBAC (Role-Based Access Control): rights attach to ROLES (teller, manager, admin); users are assigned roles. Enterprise standard - matches org charts, simplifies administration, enables separation of duties.",
+        "ABAC (Attribute-Based Access Control): policies evaluate ATTRIBUTES (user department, time, device health, location) - the finest-grained, powering zero-trust policies.",
+        "Governing principles: LEAST PRIVILEGE (minimum rights needed), SEPARATION OF DUTIES (no single person controls a whole sensitive process - the initiator cannot also approve)."
+      ],
+      "subsections": [
+        {
+          "title": "Model identification phrases",
+          "content": "'Owner decides' -> DAC.\n'Labels and clearance levels, system-enforced' -> MAC.\n'Rights assigned via job functions/roles' -> RBAC.\n'Policies on attributes like time/device/location' -> ABAC."
+        }
+      ],
+      "quickRevision": [
+        "DAC owner-decides; MAC label-enforced; RBAC role-driven; ABAC attribute-rules.",
+        "Least privilege + separation of duties govern all models.",
+        "Military/classified -> MAC. Corporate org chart -> RBAC."
+      ],
+      "tricks": [
+        "'Cannot override the system's labels' -> MAC (the owner is powerless - the giveaway).",
+        "'Teller role can approve accounts but not audit them' -> RBAC + separation of duties.",
+        "Time-of-day and device-health conditions -> ABAC."
+      ],
+      "patterns": [
+        "'Access based on job function' - RBAC.",
+        "'Security labels and clearances' - MAC.",
+        "'Owner grants permissions' - DAC."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement security set",
+          "question": "Which access model uses security labels and clearances?",
+          "approach": "MAC - mandatory, system-enforced, military-grade."
+        }
+      ],
+      "companyNote": "Access-model identification appears in security buckets and interviews alike - four definitions, four marks."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "aa-mapping",
+      "title": "AuthN vs AuthZ Mapping Table",
+      "formula": {
+        "latex": "\\text{identity} \\to \\text{AuthN};\\; \\text{rights} \\to \\text{AuthZ}",
+        "text": "Identity-verification phrases map to authentication; permission phrases map to authorization."
+      },
+      "whenToUse": "Every AuthN-vs-AuthZ discrimination question.",
+      "explanation": [
+        "'Verifying a user's identity' -> authentication.",
+        "'Assessing whether a client has permission' -> authorization.",
+        "'Credentials compared against authorised-user database' -> authentication.",
+        "'Directories, hours, storage space defined by admin' -> authorization.",
+        "Authentication first; authorization second; some systems skip authorization entirely."
+      ],
+      "example": {
+        "prompt": "Server checks whether the client may open a shared file.",
+        "steps": [
+          "Identity already known.",
+          "Permission evaluation = authorization."
+        ],
+        "answer": "Authorization"
+      },
+      "memoryTip": "AuthenticatioN = IdentificatioN.",
+      "commonMistake": "Biometrics as authorization - biometrics prove identity (authentication)."
+    },
+    {
+      "id": "factor-families",
+      "title": "Three Factor Families",
+      "formula": {
+        "latex": "\\text{KNOW} + \\text{HAVE} + \\text{ARE}",
+        "text": "Knowledge (password/PIN), possession (card/OTP), inherence (biometrics). MFA mixes families."
+      },
+      "whenToUse": "Factor classification and MFA questions.",
+      "explanation": [
+        "Knowledge: passwords, PINs, security questions.",
+        "Possession: smart cards, OTP tokens, phones.",
+        "Inherence: fingerprint, retina, voice, face.",
+        "MFA = factors from DIFFERENT families; two passwords stays single-factor.",
+        "Extended factors: somewhere you are (location), something you do (behaviour)."
+      ],
+      "example": {
+        "prompt": "Password plus fingerprint login - what is this?",
+        "steps": [
+          "Knowledge + inherence = different families.",
+          "MFA."
+        ],
+        "answer": "Multi-factor authentication"
+      },
+      "memoryTip": "Know-Have-Are; mix two = MFA.",
+      "commonMistake": "Password + PIN = single factor (both knowledge)."
+    },
+    {
+      "id": "aaa-protocols",
+      "title": "AAA & Auth Protocol Map",
+      "formula": {
+        "latex": "\\text{Kerberos}=\\text{tickets};\\; \\text{RADIUS/TACACS+}=\\text{AAA};\\; \\text{LDAP}=\\text{directory};\\; \\text{OAuth}=\\text{delegated AuthZ}",
+        "text": "Match each protocol to its single signature purpose."
+      },
+      "whenToUse": "Protocol identification questions.",
+      "explanation": [
+        "Kerberos: ticket-based domain auth (Active Directory); no passwords on the wire; mutual auth.",
+        "RADIUS: UDP, AAA for network access, encrypts password field only.",
+        "TACACS+: TCP, encrypts full payload, separates AAA (Cisco).",
+        "LDAP 389/636: directory queries (users/groups).",
+        "SAML: enterprise SSO assertions; OAuth 2.0: delegated authorization; OpenID Connect: authN layer.",
+        "802.1X: port-based access control before traffic passes."
+      ],
+      "example": {
+        "prompt": "Which protocol issues tickets instead of transmitting passwords?",
+        "steps": [
+          "Ticket-granting = the Kerberos signature.",
+          "Kerberos."
+        ],
+        "answer": "Kerberos"
+      },
+      "memoryTip": "Tickets=Kerb; AAA=Radius/Tac; Directory=LDAP; Delegate=OAuth.",
+      "commonMistake": "OAuth as authentication - OAuth authorizes; OpenID authenticates."
+    },
+    {
+      "id": "biometric-metrics",
+      "title": "Biometric Accuracy Metrics",
+      "formula": {
+        "latex": "\\text{CER/EER} = \\text{FAR} = \\text{FRR point};\\; \\text{lower is better}",
+        "text": "FAR = impostors accepted; FRR = genuine users rejected; the crossover rate ranks devices."
+      },
+      "whenToUse": "Biometric accuracy questions.",
+      "explanation": [
+        "FAR (False Acceptance): security risk - impostors pass.",
+        "FRR (False Rejection): usability pain - genuine users bounce.",
+        "CER/EER: the sensitivity point where FAR = FRR; the LOWER the CER, the better the device.",
+        "Templates stored as irreversible mathematical representations."
+      ],
+      "example": {
+        "prompt": "Which device is most accurate?",
+        "steps": [
+          "Compare crossover error rates.",
+          "Lowest CER wins."
+        ],
+        "answer": "The device with the lowest CER/EER"
+      },
+      "memoryTip": "Accept-false = FAR risk; Reject-false = FRR pain.",
+      "commonMistake": "Choosing the HIGHEST CER - lower is always better."
+    },
+    {
+      "id": "access-models",
+      "title": "Access Control Models",
+      "formula": {
+        "latex": "\\text{DAC}=\\text{owner};\\; \\text{MAC}=\\text{labels};\\; \\text{RBAC}=\\text{roles};\\; \\text{ABAC}=\\text{attributes}",
+        "text": "Four models: owner-decided, label-enforced, role-driven, attribute-rule-based."
+      },
+      "whenToUse": "Access-model identification questions.",
+      "explanation": [
+        "DAC: resource owners grant access (file permissions); flexible, error-prone.",
+        "MAC: system-enforced labels/clearances (military); no owner override.",
+        "RBAC: rights attach to roles; enterprise standard.",
+        "ABAC: policies on attributes (dept, time, device, location) - zero-trust grade granularity.",
+        "Principles: least privilege, separation of duties."
+      ],
+      "example": {
+        "prompt": "Rights assigned through job functions like 'teller' or 'auditor'.",
+        "steps": [
+          "Role-driven rights.",
+          "RBAC."
+        ],
+        "answer": "RBAC"
+      },
+      "memoryTip": "Owner-Label-Role-Attribute.",
+      "commonMistake": "Calling label-based access 'RBAC' - labels/clearances are MAC."
+    },
+    {
+      "id": "sso-flow",
+      "title": "SSO & Delegation Flow",
+      "formula": {
+        "latex": "\\text{authN once} \\to \\text{token/assertion} \\to \\text{many apps}",
+        "text": "Single Sign-On exchanges tokens/assertions instead of re-prompting credentials."
+      },
+      "whenToUse": "SSO/SAML/OAuth flow questions.",
+      "explanation": [
+        "SSO: authenticate once against an IdP (identity provider); apps trust its assertions.",
+        "SAML: XML assertions; enterprise web SSO.",
+        "OAuth 2.0: resource owner grants SCOPED access to a third party WITHOUT sharing the password.",
+        "OpenID Connect: OAuth + authentication layer (who logged in).",
+        "Benefit/risk: one strong login, but one high-value target."
+      ],
+      "example": {
+        "prompt": "'Login with Google' on a third-party site.",
+        "steps": [
+          "Delegated, scoped access without password sharing.",
+          "OAuth 2.0 (with OpenID for identity)."
+        ],
+        "answer": "OAuth 2.0 / OpenID Connect"
+      },
+      "memoryTip": "One login, many doors; OAuth delegates, OpenID identifies.",
+      "commonMistake": "'Login with X' called SAML - consumer flows are OAuth/OIDC; SAML is enterprise SSO."
+    }
+  ],
+  "practiceProblems": {
+    "aa-mapping": [
+      {
+        "q": "'Verifying a user's identity' defines:",
+        "opts": [
+          "Authentication",
+          "Authorization",
+          "Accounting",
+          "Auditing"
+        ],
+        "c": 0,
+        "s": [
+          "Identity = AuthN."
+        ],
+        "a": "Authentication"
+      },
+      {
+        "q": "'Assessing whether a client has permission' defines:",
+        "opts": [
+          "Authorization",
+          "Authentication",
+          "Encryption",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "Permission = AuthZ."
+        ],
+        "a": "Authorization"
+      },
+      {
+        "q": "Username/password comparison against a user database:",
+        "opts": [
+          "Authentication",
+          "Authorization",
+          "Accounting",
+          "DHCP"
+        ],
+        "c": 0,
+        "s": [
+          "Credential check = identity."
+        ],
+        "a": "Authentication"
+      },
+      {
+        "q": "Defining which folders a user may open:",
+        "opts": [
+          "Authorization",
+          "Authentication",
+          "Hashing",
+          "Ping"
+        ],
+        "c": 0,
+        "s": [
+          "Rights assignment = AuthZ."
+        ],
+        "a": "Authorization"
+      },
+      {
+        "q": "Which runs second?",
+        "opts": [
+          "Authorization",
+          "Authentication",
+          "Neither",
+          "Both together"
+        ],
+        "c": 0,
+        "s": [
+          "Identity first, rights second."
+        ],
+        "a": "Authorization"
+      },
+      {
+        "q": "Retina scans are used for:",
+        "opts": [
+          "Authentication",
+          "Authorization",
+          "Routing",
+          "Accounting"
+        ],
+        "c": 0,
+        "s": [
+          "Biometrics prove identity."
+        ],
+        "a": "Authentication"
+      },
+      {
+        "q": "Storage-space limits per user are:",
+        "opts": [
+          "Authorization decisions",
+          "Authentication methods",
+          "Hashes",
+          "Ports"
+        ],
+        "c": 0,
+        "s": [
+          "Rights/quotas = AuthZ."
+        ],
+        "a": "Authorization decisions"
+      },
+      {
+        "q": "A client verifying the SERVER's identity is:",
+        "opts": [
+          "Mutual authentication",
+          "Authorization",
+          "Accounting",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "Syllabus: clients confirm the server too."
+        ],
+        "a": "Mutual authentication"
+      },
+      {
+        "q": "Most public web pages require:",
+        "opts": [
+          "Neither authN nor authZ",
+          "Both always",
+          "MFA",
+          "Kerberos"
+        ],
+        "c": 0,
+        "s": [
+          "Verbatim syllabus line."
+        ],
+        "a": "Neither authN nor authZ"
+      },
+      {
+        "q": "Authorization may sometimes require:",
+        "opts": [
+          "Additional authentication",
+          "New cabling",
+          "Disabling NAT",
+          "Bigger disks"
+        ],
+        "c": 0,
+        "s": [
+          "Verbatim syllabus line."
+        ],
+        "a": "Additional authentication"
+      }
+    ],
+    "factor-families": [
+      {
+        "q": "PIN is which factor?",
+        "opts": [
+          "Knowledge",
+          "Possession",
+          "Inherence",
+          "Location"
+        ],
+        "c": 0,
+        "s": [
+          "Something you know."
+        ],
+        "a": "Knowledge"
+      },
+      {
+        "q": "Smart card is which factor?",
+        "opts": [
+          "Possession",
+          "Knowledge",
+          "Inherence",
+          "Behaviour"
+        ],
+        "c": 0,
+        "s": [
+          "Something you have."
+        ],
+        "a": "Possession"
+      },
+      {
+        "q": "Voice recognition is which factor?",
+        "opts": [
+          "Inherence",
+          "Knowledge",
+          "Possession",
+          "Token"
+        ],
+        "c": 0,
+        "s": [
+          "Something you are."
+        ],
+        "a": "Inherence"
+      },
+      {
+        "q": "MFA requires:",
+        "opts": [
+          "Factors from different families",
+          "Two passwords",
+          "Two usernames",
+          "One factor twice"
+        ],
+        "c": 0,
+        "s": [
+          "Family mix is the requirement."
+        ],
+        "a": "Factors from different families"
+      },
+      {
+        "q": "Which is MFA?",
+        "opts": [
+          "Password + fingerprint",
+          "Password + PIN",
+          "Two passwords",
+          "Username + password"
+        ],
+        "c": 0,
+        "s": [
+          "Knowledge + inherence."
+        ],
+        "a": "Password + fingerprint"
+      },
+      {
+        "q": "Which is NOT MFA?",
+        "opts": [
+          "Password + security question",
+          "Password + OTP",
+          "Card + PIN",
+          "Fingerprint + phone push"
+        ],
+        "c": 0,
+        "s": [
+          "Both knowledge factors."
+        ],
+        "a": "Password + security question"
+      },
+      {
+        "q": "Hardware token is:",
+        "opts": [
+          "Possession",
+          "Knowledge",
+          "Inherence",
+          "Extended"
+        ],
+        "c": 0,
+        "s": [
+          "Something you have."
+        ],
+        "a": "Possession"
+      },
+      {
+        "q": "Extended factor 'somewhere you are' means:",
+        "opts": [
+          "Location/geolocation",
+          "Room temperature",
+          "Network speed",
+          "Screen size"
+        ],
+        "c": 0,
+        "s": [
+          "Contextual factor in ABAC/MFA."
+        ],
+        "a": "Location/geolocation"
+      },
+      {
+        "q": "Why is possession stronger than knowledge?",
+        "opts": [
+          "Theft/loss is noticeable; knowledge is silently phished",
+          "It is longer",
+          "It is newer",
+          "It is free"
+        ],
+        "c": 0,
+        "s": [
+          "Detectable compromise."
+        ],
+        "a": "Theft/loss is noticeable; knowledge is silently phished"
+      },
+      {
+        "q": "Biometrics cannot be:",
+        "opts": [
+          "Changed after compromise",
+          "Used for login",
+          "Combined with MFA",
+          "Measured"
+        ],
+        "c": 0,
+        "s": [
+          "No rotation for fingerprints."
+        ],
+        "a": "Changed after compromise"
+      }
+    ],
+    "aaa-protocols": [
+      {
+        "q": "Ticket-based domain authentication:",
+        "opts": [
+          "Kerberos",
+          "RADIUS",
+          "LDAP",
+          "OAuth"
+        ],
+        "c": 0,
+        "s": [
+          "KDC issues TGTs and service tickets."
+        ],
+        "a": "Kerberos"
+      },
+      {
+        "q": "AAA protocol over UDP, password-field-only encryption:",
+        "opts": [
+          "RADIUS",
+          "TACACS+",
+          "LDAP",
+          "SAML"
+        ],
+        "c": 0,
+        "s": [
+          "The classic network-access AAA."
+        ],
+        "a": "RADIUS"
+      },
+      {
+        "q": "AAA over TCP with full-payload encryption:",
+        "opts": [
+          "TACACS+",
+          "RADIUS",
+          "OAuth",
+          "Kerberos"
+        ],
+        "c": 0,
+        "s": [
+          "Cisco's separated-AAA protocol."
+        ],
+        "a": "TACACS+"
+      },
+      {
+        "q": "Directory query protocol (users/groups):",
+        "opts": [
+          "LDAP",
+          "RADIUS",
+          "Kerberos",
+          "802.1X"
+        ],
+        "c": 0,
+        "s": [
+          "Ports 389/636."
+        ],
+        "a": "LDAP"
+      },
+      {
+        "q": "Delegated authorization framework:",
+        "opts": [
+          "OAuth 2.0",
+          "Kerberos",
+          "TACACS+",
+          "ARP"
+        ],
+        "c": 0,
+        "s": [
+          "Scoped access without password sharing."
+        ],
+        "a": "OAuth 2.0"
+      },
+      {
+        "q": "Authentication layer built on OAuth:",
+        "opts": [
+          "OpenID Connect",
+          "SAML",
+          "RADIUS",
+          "LDAP"
+        ],
+        "c": 0,
+        "s": [
+          "OIDC answers who logged in."
+        ],
+        "a": "OpenID Connect"
+      },
+      {
+        "q": "Enterprise XML-assertion SSO:",
+        "opts": [
+          "SAML",
+          "OAuth",
+          "DHCP",
+          "SNMP"
+        ],
+        "c": 0,
+        "s": [
+          "Identity provider assertions."
+        ],
+        "a": "SAML"
+      },
+      {
+        "q": "Port-based network access control:",
+        "opts": [
+          "802.1X",
+          "802.11",
+          "Kerberos",
+          "LDAP"
+        ],
+        "c": 0,
+        "s": [
+          "Authenticate before traffic passes (RADIUS behind)."
+        ],
+        "a": "802.1X"
+      },
+      {
+        "q": "Active Directory combines:",
+        "opts": [
+          "LDAP + Kerberos + DNS",
+          "FTP + SMTP",
+          "NAT + PAT",
+          "ARP + ICMP"
+        ],
+        "c": 0,
+        "s": [
+          "Directory + auth + name resolution."
+        ],
+        "a": "LDAP + Kerberos + DNS"
+      },
+      {
+        "q": "'Authenticate once, access many apps' is:",
+        "opts": [
+          "SSO",
+          "MFA",
+          "SoD",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "Single sign-on via IdP tokens."
+        ],
+        "a": "SSO"
+      }
+    ],
+    "biometric-metrics": [
+      {
+        "q": "Impostors wrongly accepted =",
+        "opts": [
+          "FAR",
+          "FRR",
+          "CER hardware",
+          "Salt"
+        ],
+        "c": 0,
+        "s": [
+          "False Acceptance Rate - the security risk."
+        ],
+        "a": "FAR"
+      },
+      {
+        "q": "Genuine users wrongly rejected =",
+        "opts": [
+          "FRR",
+          "FAR",
+          "CER",
+          "ECC"
+        ],
+        "c": 0,
+        "s": [
+          "False Rejection Rate - the usability pain."
+        ],
+        "a": "FRR"
+      },
+      {
+        "q": "Better biometric device has:",
+        "opts": [
+          "Lower CER/EER",
+          "Higher CER",
+          "Bigger scanner",
+          "Louder beep"
+        ],
+        "c": 0,
+        "s": [
+          "Crossover Error Rate - lower is better."
+        ],
+        "a": "Lower CER/EER"
+      },
+      {
+        "q": "CER/EER is the point where:",
+        "opts": [
+          "FAR equals FRR",
+          "FAR is zero",
+          "FRR is zero",
+          "Both are 100%"
+        ],
+        "c": 0,
+        "s": [
+          "Sensitivity crossover."
+        ],
+        "a": "FAR equals FRR"
+      },
+      {
+        "q": "Which metric is the SECURITY risk?",
+        "opts": [
+          "FAR",
+          "FRR",
+          "CER size",
+          "Template size"
+        ],
+        "c": 0,
+        "s": [
+          "False accepts let impostors in."
+        ],
+        "a": "FAR"
+      },
+      {
+        "q": "Biometric templates should be:",
+        "opts": [
+          "Irreversible mathematical representations",
+          "Plain images",
+          "Text files",
+          "Screenshots"
+        ],
+        "c": 0,
+        "s": [
+          "Non-reversible storage protects the unchangeable biometric."
+        ],
+        "a": "Irreversible mathematical representations"
+      },
+      {
+        "q": "Why can't a compromised fingerprint be fixed like a password?",
+        "opts": [
+          "Biometrics are permanent - only ten exist for life",
+          "Fingerprints rotate weekly",
+          "Scanners reset them",
+          "They can be changed easily"
+        ],
+        "c": 0,
+        "s": [
+          "No rotation possible."
+        ],
+        "a": "Biometrics are permanent"
+      },
+      {
+        "q": "Liveness detection defeats:",
+        "opts": [
+          "Fake fingerprints/photos presented to scanners",
+          "Phishing emails",
+          "SQLi",
+          "DDoS"
+        ],
+        "c": 0,
+        "s": [
+          "Presentation-attack detection."
+        ],
+        "a": "Fake fingerprints/photos presented to scanners"
+      },
+      {
+        "q": "Facial geometry and iris patterns are:",
+        "opts": [
+          "Inherence factors",
+          "Knowledge factors",
+          "Possession factors",
+          "Ports"
+        ],
+        "c": 0,
+        "s": [
+          "Something you are."
+        ],
+        "a": "Inherence factors"
+      },
+      {
+        "q": "Multi-modal biometrics means:",
+        "opts": [
+          "Combining two biometrics (face + fingerprint)",
+          "One biometric twice",
+          "No biometrics",
+          "Passwords only"
+        ],
+        "c": 0,
+        "s": [
+          "Two inherence measures reduce FAR/FRR."
+        ],
+        "a": "Combining two biometrics"
+      }
+    ],
+    "access-models": [
+      {
+        "q": "Owner decides access:",
+        "opts": [
+          "DAC",
+          "MAC",
+          "RBAC",
+          "ABAC"
+        ],
+        "c": 0,
+        "s": [
+          "Discretionary = owner's call."
+        ],
+        "a": "DAC"
+      },
+      {
+        "q": "Labels and clearances, system-enforced:",
+        "opts": [
+          "MAC",
+          "DAC",
+          "RBAC",
+          "OAuth"
+        ],
+        "c": 0,
+        "s": [
+          "Mandatory - military style."
+        ],
+        "a": "MAC"
+      },
+      {
+        "q": "Rights via roles like 'manager':",
+        "opts": [
+          "RBAC",
+          "DAC",
+          "MAC",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "Role-Based Access Control."
+        ],
+        "a": "RBAC"
+      },
+      {
+        "q": "Rules on time/device/department:",
+        "opts": [
+          "ABAC",
+          "DAC",
+          "MAC",
+          "SAML"
+        ],
+        "c": 0,
+        "s": [
+          "Attribute-Based Access Control."
+        ],
+        "a": "ABAC"
+      },
+      {
+        "q": "'No read up, no write down' belongs to:",
+        "opts": [
+          "MAC (Bell-LaPadula)",
+          "DAC",
+          "RBAC",
+          "OAuth"
+        ],
+        "c": 0,
+        "s": [
+          "Confidentiality lattice of labels."
+        ],
+        "a": "MAC (Bell-LaPadula)"
+      },
+      {
+        "q": "Enterprise favourite matching org charts:",
+        "opts": [
+          "RBAC",
+          "DAC",
+          "MAC",
+          "None"
+        ],
+        "c": 0,
+        "s": [
+          "Roles mirror job functions."
+        ],
+        "a": "RBAC"
+      },
+      {
+        "q": "Initiator cannot also approve payments:",
+        "opts": [
+          "Separation of duties",
+          "Least privilege",
+          "MFA",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "SoD splits sensitive processes."
+        ],
+        "a": "Separation of duties"
+      },
+      {
+        "q": "Minimum needed rights only:",
+        "opts": [
+          "Least privilege",
+          "Full admin",
+          "Defense in depth",
+          "SSO"
+        ],
+        "c": 0,
+        "s": [
+          "Shrink the blast radius."
+        ],
+        "a": "Least privilege"
+      },
+      {
+        "q": "File permissions you set yourself are:",
+        "opts": [
+          "DAC",
+          "MAC",
+          "RBAC",
+          "ABAC"
+        ],
+        "c": 0,
+        "s": [
+          "Your discretion."
+        ],
+        "a": "DAC"
+      },
+      {
+        "q": "Zero-trust policies evaluating device health + location:",
+        "opts": [
+          "ABAC",
+          "DAC",
+          "MAC",
+          "POP3"
+        ],
+        "c": 0,
+        "s": [
+          "Attribute-driven decisions."
+        ],
+        "a": "ABAC"
+      }
+    ],
+    "sso-flow": [
+      {
+        "q": "Authenticate once, use many apps:",
+        "opts": [
+          "SSO",
+          "MFA",
+          "SoD",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "IdP issues trusted tokens/assertions."
+        ],
+        "a": "SSO"
+      },
+      {
+        "q": "The system that issues identity assertions:",
+        "opts": [
+          "Identity Provider (IdP)",
+          "Router",
+          "DHCP server",
+          "Firewall"
+        ],
+        "c": 0,
+        "s": [
+          "IdP authenticates; apps trust it."
+        ],
+        "a": "Identity Provider (IdP)"
+      },
+      {
+        "q": "'Login with GitHub' grants the app:",
+        "opts": [
+          "Scoped access without your password",
+          "Your password",
+          "Full account control",
+          "Your SSH keys"
+        ],
+        "c": 0,
+        "s": [
+          "OAuth delegation with scopes."
+        ],
+        "a": "Scoped access without your password"
+      },
+      {
+        "q": "Enterprise SSO assertion format:",
+        "opts": [
+          "SAML (XML)",
+          "FTP",
+          "ICMP",
+          "ARP"
+        ],
+        "c": 0,
+        "s": [
+          "SAML assertions between IdP and service providers."
+        ],
+        "a": "SAML (XML)"
+      },
+      {
+        "q": "Central SSO's main risk:",
+        "opts": [
+          "One high-value target (IdP compromise locks/opens everything)",
+          "Slower apps",
+          "More passwords",
+          "No MFA possible"
+        ],
+        "c": 0,
+        "s": [
+          "Single point of authentication - harden it."
+        ],
+        "a": "One high-value target"
+      },
+      {
+        "q": "Instant deprovisioning benefit of central IdP:",
+        "opts": [
+          "Leavers lose all access when disabled once",
+          "Faster CPUs",
+          "Smaller subnets",
+          "No logging"
+        ],
+        "c": 0,
+        "s": [
+          "Disable at the IdP; every app follows."
+        ],
+        "a": "Leavers lose all access when disabled once"
+      },
+      {
+        "q": "OIDC tokens answer:",
+        "opts": [
+          "Who authenticated (identity)",
+          "What the weather is",
+          "Which subnet",
+          "Which port"
+        ],
+        "c": 0,
+        "s": [
+          "OpenID = authentication layer on OAuth."
+        ],
+        "a": "Who authenticated (identity)"
+      },
+      {
+        "q": "OAuth scopes are:",
+        "opts": [
+          "Limited, revocable permission grants",
+          "Subnet masks",
+          "Hash salts",
+          "Port ranges"
+        ],
+        "c": 0,
+        "s": [
+          "Narrow delegation."
+        ],
+        "a": "Limited, revocable permission grants"
+      },
+      {
+        "q": "MFA at the IdP protects:",
+        "opts": [
+          "Every app behind the SSO",
+          "Only email",
+          "Nothing",
+          "Only VPN"
+        ],
+        "c": 0,
+        "s": [
+          "One strong gate guards all doors."
+        ],
+        "a": "Every app behind the SSO"
+      },
+      {
+        "q": "Which pair is correct?",
+        "opts": [
+          "SAML-enterprise SSO; OAuth-delegation",
+          "SAML-delegation; OAuth-enterprise SSO only",
+          "Both are hashes",
+          "Both are AAA"
+        ],
+        "c": 0,
+        "s": [
+          "The canonical split."
+        ],
+        "a": "SAML-enterprise SSO; OAuth-delegation"
+      }
+    ],
+    "aa-drill": [
+      {
+        "q": "Server checks if the client may DELETE a file:",
+        "opts": [
+          "Authorization",
+          "Authentication",
+          "Accounting",
+          "Ping"
+        ],
+        "c": 0,
+        "s": [
+          "Rights evaluation."
+        ],
+        "a": "Authorization"
+      },
+      {
+        "q": "User types password at a login screen:",
+        "opts": [
+          "Authentication",
+          "Authorization",
+          "Accounting",
+          "Routing"
+        ],
+        "c": 0,
+        "s": [
+          "Identity proof."
+        ],
+        "a": "Authentication"
+      },
+      {
+        "q": "System logs which files a user opened:",
+        "opts": [
+          "Accounting",
+          "Authentication",
+          "Authorization",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "The third A - audit trail."
+        ],
+        "a": "Accounting"
+      },
+      {
+        "q": "Which is NOT an authentication method?",
+        "opts": [
+          "Setting disk quotas",
+          "Fingerprint",
+          "OTP token",
+          "Password"
+        ],
+        "c": 0,
+        "s": [
+          "Quotas are authorization/limits."
+        ],
+        "a": "Setting disk quotas"
+      },
+      {
+        "q": "AuthN before AuthZ because:",
+        "opts": [
+          "Rights are meaningless without a verified identity",
+          "Hashes need salts",
+          "Ports need numbers",
+          "NAT requires it"
+        ],
+        "c": 0,
+        "s": [
+          "Who first, then what."
+        ],
+        "a": "Rights are meaningless without a verified identity"
+      },
+      {
+        "q": "Kerberos timestamps prevent:",
+        "opts": [
+          "Replay attacks",
+          "Phishing",
+          "SQLi",
+          "DDoS"
+        ],
+        "c": 0,
+        "s": [
+          "Stale tickets rejected."
+        ],
+        "a": "Replay attacks"
+      },
+      {
+        "q": "TACACS+ encrypts:",
+        "opts": [
+          "The entire payload",
+          "Only the password",
+          "Nothing",
+          "Only usernames"
+        ],
+        "c": 0,
+        "s": [
+          "vs RADIUS's password-only encryption."
+        ],
+        "a": "The entire payload"
+      },
+      {
+        "q": "802.1X authenticates before:",
+        "opts": [
+          "The switch port passes traffic",
+          "The DHCP lease",
+          "The DNS query",
+          "The VPN tunnel"
+        ],
+        "c": 0,
+        "s": [
+          "Port-based NAC."
+        ],
+        "a": "The switch port passes traffic"
+      },
+      {
+        "q": "Which model CANNOT be overridden by resource owners?",
+        "opts": [
+          "MAC",
+          "DAC",
+          "Both",
+          "Neither"
+        ],
+        "c": 0,
+        "s": [
+          "Mandatory = system-enforced."
+        ],
+        "a": "MAC"
+      },
+      {
+        "q": "Full pipeline order:",
+        "opts": [
+          "Identify -> authenticate -> authorize -> audit",
+          "Audit -> identify -> authorize",
+          "Authorize -> identify",
+          "Authenticate -> audit -> authorize"
+        ],
+        "c": 0,
+        "s": [
+          "The AAA lifecycle."
+        ],
+        "a": "Identify -> authenticate -> authorize -> audit"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "id": 1,
+      "q": "Authentication verifies:",
+      "opts": [
+        "What you may do",
+        "Who you are",
+        "Your disk space",
+        "Your salary"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "aa-core",
+      "exp": [
+        "Identity verification against an authorised-user database."
+      ]
+    },
+    {
+      "id": 2,
+      "q": "Authorization determines:",
+      "opts": [
+        "Your identity",
+        "Your access rights",
+        "Your password",
+        "Your MAC address"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "aa-core",
+      "exp": [
+        "Rights: directories, hours, storage - decided after identity is known."
+      ]
+    },
+    {
+      "id": 3,
+      "q": "Which is an authentication method per the AXIS syllabus?",
+      "opts": [
+        "Retina scan",
+        "Setting file permissions",
+        "Disk quota assignment",
+        "Port filtering"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "aa-factors",
+      "source": "PrepInsta AXIS syllabus",
+      "exp": [
+        "Cards, retina scans, voice recognition and fingerprints are syllabus-listed authentication methods."
+      ]
+    },
+    {
+      "id": 4,
+      "q": "Which process runs FIRST?",
+      "opts": [
+        "Authorization",
+        "Authentication",
+        "Accounting",
+        "Auditing"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "aa-core",
+      "exp": [
+        "Identity before rights - always."
+      ]
+    },
+    {
+      "id": 5,
+      "q": "A password is which factor?",
+      "opts": [
+        "Possession",
+        "Knowledge",
+        "Inherence",
+        "Location"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "aa-factors",
+      "exp": [
+        "Something you KNOW = knowledge factor."
+      ]
+    },
+    {
+      "id": 6,
+      "q": "A fingerprint scan is which factor?",
+      "opts": [
+        "Knowledge",
+        "Possession",
+        "Inherence",
+        "Token"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "aa-factors",
+      "exp": [
+        "Something you ARE - inherence (biometric)."
+      ]
+    },
+    {
+      "id": 7,
+      "q": "An OTP app on your phone is which factor?",
+      "opts": [
+        "Knowledge",
+        "Possession",
+        "Inherence",
+        "Behaviour"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "aa-factors",
+      "exp": [
+        "Something you HAVE - possession."
+      ]
+    },
+    {
+      "id": 8,
+      "q": "Password + OTP approval is:",
+      "opts": [
+        "Single-factor",
+        "Multi-factor authentication",
+        "No authentication",
+        "Authorization"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "aa-factors",
+      "exp": [
+        "Knowledge + possession = different families = MFA."
+      ]
+    },
+    {
+      "id": 9,
+      "q": "Password + PIN together is:",
+      "opts": [
+        "MFA",
+        "Still single-factor (both knowledge)",
+        "Three-factor",
+        "Biometric"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "aa-factors",
+      "exp": [
+        "Same family (knowledge) - the classic MFA trap."
+      ]
+    },
+    {
+      "id": 10,
+      "q": "Which protocol issues TICKETS instead of sending passwords over the network?",
+      "opts": [
+        "Kerberos",
+        "FTP",
+        "HTTP",
+        "SNMP"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "protocols",
+      "exp": [
+        "Kerberos tickets via the Key Distribution Center - Active Directory's core."
+      ]
+    },
+    {
+      "id": 11,
+      "q": "Kerberos is the authentication core of:",
+      "opts": [
+        "Windows Active Directory",
+        "Linux cron",
+        "DNS",
+        "DHCP"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "protocols",
+      "exp": [
+        "AD = LDAP + Kerberos + DNS."
+      ]
+    },
+    {
+      "id": 12,
+      "q": "AAA stands for:",
+      "opts": [
+        "Authentication, Authorization, Accounting",
+        "Access, Audit, Allow",
+        "Admin, Auth, Apply",
+        "All Access Allowed"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "protocols",
+      "exp": [
+        "Who are you, what may you do, what did you do."
+      ]
+    },
+    {
+      "id": 13,
+      "q": "LDAP is used to:",
+      "opts": [
+        "Query directory services (users/groups)",
+        "Encrypt disks",
+        "Route packets",
+        "Scan ports"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "protocols",
+      "exp": [
+        "The directory database authorization decisions consult (ports 389/636)."
+      ]
+    },
+    {
+      "id": 14,
+      "q": "'Login with Google' on a third-party app is:",
+      "opts": [
+        "OAuth delegated authorization",
+        "Kerberos",
+        "TACACS+",
+        "802.1X"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "protocols",
+      "exp": [
+        "Scoped access without password sharing = OAuth 2.0 (OpenID adds identity)."
+      ]
+    },
+    {
+      "id": 15,
+      "q": "802.1X provides:",
+      "opts": [
+        "Port-based network access control",
+        "Wi-Fi speed boosts",
+        "Name resolution",
+        "Disk encryption"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "protocols",
+      "exp": [
+        "Authenticate before the switch port passes traffic (usually via RADIUS)."
+      ]
+    },
+    {
+      "id": 16,
+      "q": "Which access model lets the resource OWNER decide permissions?",
+      "opts": [
+        "MAC",
+        "DAC",
+        "RBAC",
+        "ABAC"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "models",
+      "exp": [
+        "Discretionary = owner's discretion (your file permissions)."
+      ]
+    },
+    {
+      "id": 17,
+      "q": "Which model uses security LABELS and CLEARANCES?",
+      "opts": [
+        "RBAC",
+        "MAC",
+        "DAC",
+        "ABAC"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "models",
+      "exp": [
+        "Mandatory Access Control - military/classified, system-enforced."
+      ]
+    },
+    {
+      "id": 18,
+      "q": "Rights attached to job functions like 'teller' describe:",
+      "opts": [
+        "RBAC",
+        "DAC",
+        "MAC",
+        "ABAC"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "models",
+      "exp": [
+        "Role-Based Access Control - rights follow roles, not individuals."
+      ]
+    },
+    {
+      "id": 19,
+      "q": "The principle of granting minimum needed rights is:",
+      "opts": [
+        "Least privilege",
+        "Full admin",
+        "Defense in depth",
+        "NAT"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "models",
+      "exp": [
+        "Shrinks the blast radius of any compromise."
+      ]
+    },
+    {
+      "id": 20,
+      "q": "RADIUS typically runs over:",
+      "opts": [
+        "UDP",
+        "TCP 22",
+        "ICMP",
+        "FTP"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "protocols",
+      "exp": [
+        "UDP 1812/1645 - encrypts only the password field."
+      ]
+    },
+    {
+      "id": 21,
+      "q": "Which AAA protocol encrypts the ENTIRE payload and separates the three As?",
+      "opts": [
+        "RADIUS",
+        "TACACS+",
+        "LDAP",
+        "Kerberos"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "protocols",
+      "exp": [
+        "TACACS+ (TCP 49) - Cisco's contrast favourite."
+      ]
+    },
+    {
+      "id": 22,
+      "q": "Biometric device accuracy is ranked by:",
+      "opts": [
+        "Crossover Error Rate (lower = better)",
+        "Highest FAR",
+        "Largest scanner",
+        "Loudest beep"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "aa-factors",
+      "exp": [
+        "CER/EER = the FAR=FRR point; lower is better."
+      ]
+    },
+    {
+      "id": 23,
+      "q": "FAR (False Acceptance Rate) measures:",
+      "opts": [
+        "Impostors wrongly accepted",
+        "Genuine users rejected",
+        "Login speed",
+        "Storage used"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "aa-factors",
+      "exp": [
+        "FAR = the security risk; FRR = the usability pain."
+      ]
+    },
+    {
+      "id": 24,
+      "q": "Single Sign-On means:",
+      "opts": [
+        "Authenticate once, access many systems",
+        "One password forever",
+        "One user per system",
+        "No authentication"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "protocols",
+      "exp": [
+        "IdP-issued tokens/assertions trusted across apps (SAML/OIDC)."
+      ]
+    },
+    {
+      "id": 25,
+      "q": "Which model enforces access by attributes like TIME and DEVICE HEALTH?",
+      "opts": [
+        "ABAC",
+        "DAC",
+        "MAC",
+        "RBAC"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "models",
+      "exp": [
+        "Attribute-Based Access Control - zero-trust grade policies."
+      ]
+    },
+    {
+      "id": 26,
+      "q": "Separation of duties means:",
+      "opts": [
+        "No single person controls an entire sensitive process",
+        "Everyone shares admin",
+        "Duties are optional",
+        "One person does everything"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "models",
+      "exp": [
+        "Initiator cannot also approve - fraud/failure containment."
+      ]
+    },
+    {
+      "id": 27,
+      "q": "Which is TRUE about most public web pages?",
+      "opts": [
+        "They require neither authentication nor authorization",
+        "They require MFA",
+        "They require smart cards",
+        "They require Kerberos"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "aa-core",
+      "source": "PrepInsta AXIS syllabus (verbatim)",
+      "exp": [
+        "Public resources: no gate at all - the syllabus' own line."
+      ]
+    },
+    {
+      "id": 28,
+      "q": "A server wanting to know exactly WHO is accessing uses:",
+      "opts": [
+        "Authentication",
+        "Authorization",
+        "Accounting",
+        "NAT"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "aa-core",
+      "source": "PrepInsta AXIS syllabus (verbatim)",
+      "exp": [
+        "Identity verification = authentication (client-side proof too - mutual auth)."
+      ]
+    },
+    {
+      "id": 29,
+      "q": "Authorization may sometimes require:",
+      "opts": [
+        "Additional authentication in certain circumstances",
+        "A new subnet",
+        "Disabling firewalls",
+        "More RAM"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "aa-core",
+      "source": "PrepInsta AXIS syllabus (verbatim)",
+      "exp": [
+        "Syllabus: passwords necessary in some cases, not others."
+      ]
+    },
+    {
+      "id": 30,
+      "q": "SAML is primarily used for:",
+      "opts": [
+        "Enterprise web Single Sign-On assertions",
+        "File transfer",
+        "Port scanning",
+        "Subnetting"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "protocols",
+      "exp": [
+        "XML assertion-based SSO between identity and service providers."
+      ]
+    },
+    {
+      "id": 31,
+      "q": "OpenID Connect adds to OAuth 2.0:",
+      "opts": [
+        "An authentication (identity) layer",
+        "Encryption",
+        "Routing",
+        "Accounting"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "protocols",
+      "exp": [
+        "OAuth authorizes; OIDC answers 'who logged in'."
+      ]
+    },
+    {
+      "id": 32,
+      "q": "Kerberos defeats replay attacks using:",
+      "opts": [
+        "Timestamps and ticket lifetimes",
+        "Longer cables",
+        "MAC filtering",
+        "DNS TTLs"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "protocols",
+      "exp": [
+        "Captured tickets expire quickly and carry time validation."
+      ]
+    },
+    {
+      "id": 33,
+      "q": "Which model can an owner NOT override?",
+      "opts": [
+        "MAC",
+        "DAC",
+        "Both",
+        "Neither"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "models",
+      "exp": [
+        "Mandatory = system-enforced labels; owners have no discretion."
+      ]
+    },
+    {
+      "id": 34,
+      "q": "Biometric templates should be stored as:",
+      "opts": [
+        "Irreversible mathematical representations",
+        "Plain images",
+        "Text passwords",
+        "Printouts"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "aa-factors",
+      "exp": [
+        "You can rotate a password, never a fingerprint - store only irreversible templates."
+      ]
+    },
+    {
+      "id": 35,
+      "q": "Which is an ACCOUNTING example?",
+      "opts": [
+        "Logging session duration and data transferred",
+        "Verifying a password",
+        "Granting folder rights",
+        "Issuing a ticket"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "protocols",
+      "exp": [
+        "Accounting = the 'what did you do' audit leg of AAA."
+      ]
+    },
+    {
+      "id": 36,
+      "q": "Mutual authentication means:",
+      "opts": [
+        "Both client and server prove identity",
+        "Only the server proves",
+        "Only the user proves",
+        "No proof at all"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "protocols",
+      "exp": [
+        "Kerberos and certificate mutual TLS both provide it - the syllabus notes clients verifying servers too."
+      ]
+    },
+    {
+      "id": 37,
+      "q": "Which factor is 'somewhere you are'?",
+      "opts": [
+        "Location (extended factor)",
+        "Knowledge",
+        "Possession",
+        "Inherence"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "aa-factors",
+      "exp": [
+        "Geolocation appears as an extended/contextual factor."
+      ]
+    },
+    {
+      "id": 38,
+      "q": "RBAC's main administrative benefit:",
+      "opts": [
+        "Rights follow roles, simplifying management as people change jobs",
+        "Faster CPUs",
+        "Smaller subnets",
+        "No auditing"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "models",
+      "exp": [
+        "Change a user's role; all rights follow - no per-resource edits."
+      ]
+    },
+    {
+      "id": 39,
+      "q": "Which is a POSSESSION factor example?",
+      "opts": [
+        "Smart card",
+        "Mother's maiden name",
+        "Iris scan",
+        "Typed passphrase"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "aa-factors",
+      "exp": [
+        "Something you HAVE - cards, tokens, phones."
+      ]
+    },
+    {
+      "id": 40,
+      "q": "Authorization without any authentication is:",
+      "opts": [
+        "Possible in systems where any requester gets the resource",
+        "Impossible everywhere",
+        "Always required",
+        "Illegal"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "aa-core",
+      "source": "PrepInsta AXIS syllabus (verbatim)",
+      "exp": [
+        "Syllabus: in some circumstances there is no authorization - anyone requesting gets it; and some systems skip authz entirely."
+      ]
+    },
+    {
+      "id": 41,
+      "q": "A published syllabus line says authentication 'has no bearing on' which files/tasks a user may access. This is emphasised because candidates confuse:",
+      "opts": [
+        "Authentication with authorization",
+        "Hashing with encryption",
+        "TCP with UDP",
+        "DNS with DHCP"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "aa-core",
+      "source": "PrepInsta AXIS syllabus",
+      "exp": [
+        "The syllabus stresses identity-proofing grants NOTHING - rights are authorization's domain."
+      ]
+    },
+    {
+      "id": 42,
+      "q": "Why does Kerberos avoid sending passwords over the network?",
+      "opts": [
+        "Ticket-based exchange with time-limited encrypted tickets replaces password transmission",
+        "Passwords are compressed",
+        "It uses UDP only",
+        "It disables passwords"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "protocols",
+      "exp": [
+        "Credentials prove identity once to the KDC; tickets (encrypted, timestamped) speak thereafter."
+      ]
+    },
+    {
+      "id": 43,
+      "q": "A company wants network-device administration to log EVERY command separately with full-payload encryption. Choose:",
+      "opts": [
+        "TACACS+",
+        "RADIUS",
+        "LDAP",
+        "OAuth"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "protocols",
+      "exp": [
+        "TACACS+ separates AAA and encrypts full payloads - command-by-command accounting included."
+      ]
+    },
+    {
+      "id": 44,
+      "q": "An attacker steals a fingerprint template database. Why is this worse than a password leak?",
+      "opts": [
+        "Biometrics cannot be rotated/changed after compromise",
+        "Fingerprints are longer",
+        "Passwords are public",
+        "It is not worse"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "aa-factors",
+      "exp": [
+        "You get ten fingers for life - template protection (irreversible storage) is critical."
+      ]
+    },
+    {
+      "id": 45,
+      "q": "A zero-trust policy allows finance app access only from managed laptops 9-to-5. Which model?",
+      "opts": [
+        "ABAC",
+        "DAC",
+        "Pure MAC",
+        "No model"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "models",
+      "exp": [
+        "Device-health + time + department attributes = ABAC policy evaluation."
+      ]
+    },
+    {
+      "id": 46,
+      "q": "OAuth's 'scoped access' means the third-party app:",
+      "opts": [
+        "Receives limited rights (e.g., read-only calendar) without your password",
+        "Gets your password",
+        "Becomes your identity provider",
+        "Owns your account"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "protocols",
+      "exp": [
+        "Delegated authorization: specific scopes, revocable, no credential sharing."
+      ]
+    },
+    {
+      "id": 47,
+      "q": "Which sequence is a correct Kerberos exchange?",
+      "opts": [
+        "Auth to KDC -> receive TGT -> request service ticket -> present to service",
+        "Service -> KDC -> password -> done",
+        "Password broadcast -> tickets -> no validation",
+        "Ticket -> password -> KDC"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "protocols",
+      "exp": [
+        "KDC/AS issues TGT; TGS issues service tickets; services validate tickets - no passwords on the wire."
+      ]
+    },
+    {
+      "id": 48,
+      "q": "Bell-LaPadula's 'no read up, no write down' belongs to which model?",
+      "opts": [
+        "MAC (label-based confidentiality)",
+        "DAC",
+        "RBAC",
+        "OAuth"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "models",
+      "exp": [
+        "Clearance labels enforce confidentiality lattices - mandatory, not discretionary."
+      ]
+    },
+    {
+      "id": 49,
+      "q": "An org requires that the person who INITIATES payments cannot APPROVE them. Which principle?",
+      "opts": [
+        "Separation of duties",
+        "Least privilege",
+        "Defense in depth",
+        "MFA"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "models",
+      "exp": [
+        "SoD splits critical processes across roles - RBAC implements it."
+      ]
+    },
+    {
+      "id": 50,
+      "q": "Why is 'password + security question' usually still single-factor?",
+      "opts": [
+        "Both are knowledge factors answerable by the same attacker research",
+        "Questions are biometric",
+        "PINs are possession",
+        "It is three-factor"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "aa-factors",
+      "exp": [
+        "Family matters, not count - security questions are knowledge, phishable like passwords."
+      ]
+    },
+    {
+      "id": 51,
+      "q": "Which deployment gives SSO AND centralized authorization policy in a web estate?",
+      "opts": [
+        "Identity Provider with SAML/OIDC + central policy (e.g., IdP groups mapped per app)",
+        "Local accounts on every server",
+        "Shared admin password",
+        "Per-app password spreadsheets"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "protocols",
+      "exp": [
+        "Central IdP: one authentication, group-driven authorization pushed to apps."
+      ]
+    },
+    {
+      "id": 52,
+      "q": "RADIUS vs TACACS+ classic contrast pair:",
+      "opts": [
+        "RADIUS: UDP, merges AAA, hides password; TACACS+: TCP, separate AAA, full encryption",
+        "RADIUS: TCP, full encryption; TACACS+: UDP",
+        "Both encrypt everything",
+        "Both are hashing"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "protocols",
+      "exp": [
+        "The canonical exam contrast - transport, payload scope, and AAA separation."
+      ]
+    },
+    {
+      "id": 53,
+      "q": "A biometric door reads a severed finger as valid. Which metric failed the designers?",
+      "opts": [
+        "Liveness detection (FAR in practice)",
+        "FRR",
+        "CER marketing",
+        "Storage size"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "aa-factors",
+      "exp": [
+        "Presentation/liveness detection defeats spoofing - pure FAR maths missed liveness."
+      ]
+    },
+    {
+      "id": 54,
+      "q": "Which statement about OAuth scopes is TRUE?",
+      "opts": [
+        "Scopes limit WHAT the app may do (e.g., read-only calendar) and are revocable",
+        "Scopes encrypt traffic",
+        "Scopes replace passwords everywhere",
+        "Scopes are subnets"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "protocols",
+      "exp": [
+        "Delegated authorization = narrow, revocable grants - never the full account."
+      ]
+    },
+    {
+      "id": 55,
+      "q": "802.1X with EAP-TLS authenticates:",
+      "opts": [
+        "Both the user/device AND the network via certificates",
+        "Only passwords",
+        "Only MACs",
+        "Nothing"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "protocols",
+      "exp": [
+        "Certificate-based mutual auth before the port opens - the enterprise NAC standard."
+      ]
+    },
+    {
+      "id": 56,
+      "q": "Which access model would a military classified system with Top Secret/Secret labels use?",
+      "opts": [
+        "MAC",
+        "DAC",
+        "OAuth",
+        "ABAC only"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "models",
+      "exp": [
+        "Clearance labels enforced by the system = mandatory access control."
+      ]
+    },
+    {
+      "id": 57,
+      "q": "A helpdesk can reset passwords but not view salaries; HR views salaries but cannot reset passwords. This is:",
+      "opts": [
+        "RBAC with separation of duties",
+        "DAC",
+        "MAC labels",
+        "ABAC time rules"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "models",
+      "exp": [
+        "Role-scoped rights + split sensitive processes = textbook RBAC/SoD."
+      ]
+    },
+    {
+      "id": 58,
+      "q": "Why do enterprises prefer central IdP SSO over per-app accounts?",
+      "opts": [
+        "One hardened authentication point, instant deprovisioning, consistent MFA policy",
+        "More passwords are safer",
+        "Slower logins help",
+        "No auditing possible"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "protocols",
+      "exp": [
+        "Central authN/authZ: one place to enforce MFA and cut access when people leave."
+      ]
+    },
+    {
+      "id": 59,
+      "q": "Which option correctly pairs protocol to purpose?",
+      "opts": [
+        "Kerberos-tickets; RADIUS-AAA; LDAP-directory; OAuth-delegated authZ",
+        "Kerberos-directory; RADIUS-tickets; LDAP-AAA; OAuth-tickets",
+        "LDAP-tickets; OAuth-AAA; Kerberos-delegation; RADIUS-directory",
+        "All four are hashing"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "protocols",
+      "exp": [
+        "The four signature purposes - option A alone aligns them."
+      ]
+    },
+    {
+      "id": 60,
+      "q": "Order the full access-decision pipeline:",
+      "opts": [
+        "Identify -> authenticate -> authorize -> audit",
+        "Authorize -> authenticate -> identify -> audit",
+        "Audit -> authorize -> authenticate",
+        "Authenticate -> audit -> identify"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "aa-core",
+      "exp": [
+        "Claim identity, prove it (AuthN), get rights (AuthZ), leave records (accounting) - the AAA pipeline."
+      ]
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "aa-core"
+    },
+    {
+      "type": "concept",
+      "sectionId": "aa-factors"
+    },
+    {
+      "type": "concept",
+      "sectionId": "aa-protocols"
+    },
+    {
+      "type": "concept",
+      "sectionId": "aa-models"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}

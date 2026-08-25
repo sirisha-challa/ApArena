@@ -1,0 +1,2326 @@
+{
+  "id": "client-server-sharing",
+  "title": "Client-Server Networks & Resource Sharing",
+  "icon": "CS",
+  "category": "networking-cloud",
+  "subtitle": "AXIS official topic: client-server vs P2P, shared resources, the three sharing rules, monitoring & print services",
+  "days": "2",
+  "color": "#0891B2",
+  "subtopics": [
+    "Client-Server vs P2P",
+    "Shared Resources & Mapping",
+    "Compatibility & Security Rules",
+    "LAN/Intranet Sharing",
+    "Network Monitoring",
+    "Print & File Services"
+  ],
+  "estimatedHours": 4,
+  "readingSections": [
+    {
+      "id": "cs-vs-p2p",
+      "title": "Client-Server vs Peer-to-Peer",
+      "type": "concept",
+      "quickSummary": "Client-server: dedicated servers serve requesting clients - centralised control. P2P: every machine is both client and server - no central admin.",
+      "content": [
+        "The client-server model separates roles: SERVERS are dedicated machines providing services (files, print, mail, web, DNS, authentication), while CLIENTS request those services. One request-response cycle: client asks, server answers. The model gives centralised administration, consistent security policy, and scalable services - the enterprise standard.",
+        "Peer-to-peer (P2P) flattens the roles: every machine acts as BOTH client and server, sharing files and printers directly with each other. No central server means no central administration or security - fine for a handful of home/soho machines, unmanageable at company scale.",
+        "The published exam contrast: centralised control/security = client-server; every node both roles, no central admin = P2P. Server types to recognise: file server (storage), print server (queues jobs), mail server (SMTP/POP3/IMAP), web server (HTTP), DNS server (names), authentication server (logins), database server (structured data)."
+      ],
+      "subsections": [
+        {
+          "title": "Role vocabulary",
+          "content": "Client = requests services (browser, mail app, your laptop).\nServer = provides services (always-on, powerful, centralised).\nSame machine CAN play both roles technically - the model is about dedicated service providers."
+        }
+      ],
+      "quickRevision": [
+        "Client requests; server provides.",
+        "P2P: every node both roles; no central admin.",
+        "Centralised security + scalability = client-server advantages.",
+        "Know the server types: file, print, mail, web, DNS, auth, database."
+      ],
+      "tricks": [
+        "'Every node acts as both client and server' -> P2P, verbatim stem.",
+        "'Centralised security administration' -> client-server advantage.",
+        "Server-type matching: names tell the job (file server stores, print server queues, mail server relays)."
+      ],
+      "patterns": [
+        "'Which network type has no central administration?' - P2P.",
+        "'Which machine provides services?' - the server.",
+        "'Dedicated computer providing resources to clients' - server definition."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "PrepInsta AXIS syllabus context",
+          "question": "Client-server vs P2P comparison stems.",
+          "approach": "Central control vs decentralised roles - pick the option with the right governance side."
+        }
+      ],
+      "companyNote": "The client-server/P2P contrast underpins the entire official 'share resources in a client server network' topic."
+    },
+    {
+      "id": "shared-resources",
+      "title": "Shared Resources & the Three Sharing Rules",
+      "type": "concept",
+      "quickSummary": "Shared resources = data/devices reachable over LAN/intranet. Sharing demands: organisational security, compatibility, and mapping.",
+      "content": [
+        "Shared resources (also called network resources) are computer data, information, or hardware devices easily accessible from a remote computer over a LAN or workplace intranet - shared folders, network printers, central databases, shared drives.",
+        "Files and printers are shared under either the P2P or the client-server paradigm, and doing it WELL demands three disciplines straight from the syllabus:",
+        "1. ORGANISATIONAL SECURITY - unauthorised access to shared resources is a constant threat; security methods (permissions, authentication) must be established to give efficient parameters.\n2. COMPATIBILITY - various client-server operating systems can coexist, but the CLIENT needs a compatible OS or application to use the resource, else problems arise.\n3. MAPPING - accessing a shared drive/file requires a shared DESTINATION ADDRESS and NAMING CONVENTIONS (mapping a network drive to a letter like Z:)."
+      ],
+      "subsections": [
+        {
+          "title": "Mapping in practice",
+          "content": "UNC path: \\\\server\\share\\folder (Universal Naming Convention).\nDrive mapping: net use Z: \\\\server\\share - the share appears as a local drive.\nPermissions layers: share permissions (network view) + NTFS permissions (local filesystem) - most restrictive wins."
+        }
+      ],
+      "quickRevision": [
+        "Shared resource = data/device reachable over LAN or intranet.",
+        "Rule 1 security: permissions/authentication against unauthorised access.",
+        "Rule 2 compatibility: client OS/app must match the resource.",
+        "Rule 3 mapping: destination address + naming conventions (UNC, drive letters)."
+      ],
+      "tricks": [
+        "'Shared destination address and naming conventions' in the stem -> MAPPING, verbatim.",
+        "'Constant threat' to shared resources -> unauthorised access, answered by organisational security.",
+        "'Client must have a compatible OS/application' -> compatibility rule."
+      ],
+      "patterns": [
+        "'Which guideline is needed to access shared OS hardware drives?' - mapping.",
+        "'Which paradigm shares files and printers?' - both P2P and client-server (the syllabus names both).",
+        "'Resources accessible from a remote computer over LAN' - shared/network resources."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "PrepInsta AXIS syllabus (official topic text)",
+          "question": "Which rule requires a shared destination address and naming conventions?",
+          "approach": "Mapping - compatibility is OS fit; organisational security is access control."
+        }
+      ],
+      "companyNote": "The three rules are quoted verbatim in the official syllabus - at least one direct question per slot."
+    },
+    {
+      "id": "network-sizes",
+      "title": "LAN, MAN, WAN & Intranets",
+      "type": "concept",
+      "quickSummary": "LAN = one site; MAN = a city; WAN = countries/continents (the Internet). Intranet = private company network using Internet tech; extranet = controlled outsider access.",
+      "content": [
+        "Scale terms: LAN (Local Area Network) - one building/campus, high speed, privately owned. MAN (Metropolitan) - a city-scale network. WAN (Wide Area) - spans countries/continents by leasing links; the Internet is the largest WAN.",
+        "An INTRANET is a private organisational network using Internet technologies (TCP/IP, web servers, browsers) - employee-only access. An EXTRANET extends controlled access to trusted outsiders (partners, suppliers). The INTERNET is the public global network.",
+        "Shared resources in the syllabus live on LANs and workplace intranets - that phrasing itself is a testable definition."
+      ],
+      "subsections": [
+        {
+          "title": "Identification phrases",
+          "content": "'One building, high speed, privately owned' -> LAN.\n'City-wide' -> MAN.\n'Country/continent spanning, leased lines' -> WAN.\n'Private company network using web technologies' -> intranet.\n'Partners get controlled access' -> extranet."
+        }
+      ],
+      "quickRevision": [
+        "LAN < MAN < WAN by geography.",
+        "Intranet = private company web world; extranet = intranet + partners.",
+        "Shared resources live on LANs and intranets (syllabus wording)."
+      ],
+      "tricks": [
+        "The Internet is a WAN - but 'the Internet' and 'intranet' spellings get swapped in distractors; intranet = INTERNAL.",
+        "Extranet = intranet opened partially OUTSIDE the company."
+      ],
+      "patterns": [
+        "'Which network spans a campus?' - LAN.",
+        "'Private network using Internet technologies' - intranet."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement networking set",
+          "question": "Classify a network by its geographic spread.",
+          "approach": "Building->LAN, city->MAN, country+->WAN."
+        }
+      ],
+      "companyNote": "Scale-classification questions are permanent fixtures of networking MCQ rounds."
+    },
+    {
+      "id": "monitoring-print",
+      "title": "Network Monitoring & Print Services",
+      "type": "concept",
+      "quickSummary": "Monitoring tracks traffic/usage for faults and intrusions (sniffers, NMS). Print servers queue jobs centrally; sharing follows permissions.",
+      "content": [
+        "NETWORK MONITORING - named explicitly in the AXIS syllabus ('network monitoring, traffic usage') - tracks traffic and usage patterns to catch faults, bottlenecks and intrusions. Tools: packet sniffers/analysers (Wireshark captures packets for inspection), network management systems (SNMP-based dashboards of bandwidth/uptime), and flow analysers.",
+        "PRINT SHARING: a print server accepts jobs from clients, queues them, and feeds the printer - centralised driver management, quotas and audit. Clients install the shared printer by pointing at \\\\printserver\\printername.",
+        "File-sharing hygiene: least-privilege share permissions, group-based access (not per-user), audit trails on sensitive folders, and regular access reviews - the organisational-security rule in daily practice."
+      ],
+      "subsections": [
+        {
+          "title": "Monitoring vocabulary",
+          "content": "Packet sniffer - captures frames for analysis (Wireshark).\nSNMP - devices report status to a management console (UDP 161).\nBandwidth/latency monitoring - utilisation and delay trends.\nIntrusion detection - spotting attack patterns in traffic."
+        }
+      ],
+      "quickRevision": [
+        "Monitoring = traffic/usage observation for faults + intrusions.",
+        "Sniffer captures packets; SNMP polls device health.",
+        "Print server = central queue, drivers, quotas.",
+        "Share permissions: least privilege, group-based, audited."
+      ],
+      "tricks": [
+        "'Traffic usage' in the stem -> monitoring topic - answer with observation tools (sniffer/NMS).",
+        "Wireshark = packet ANALYSER (captures), not a blocker - firewall is the blocker.",
+        "Print server questions: the QUEUE is the concept - jobs wait their turn centrally."
+      ],
+      "patterns": [
+        "'Which tool captures packets for analysis?' - packet sniffer (Wireshark).",
+        "'Centralised print job handling' - print server with a queue."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "PrepInsta AXIS syllabus topic list",
+          "question": "'Network monitoring, traffic usage' themed questions.",
+          "approach": "Match the tool to the job: capture = sniffer, health-poll = SNMP, block = firewall."
+        }
+      ],
+      "companyNote": "Monitoring appears in the official topic list - expect a tool-purpose match."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "cs-roles",
+      "title": "Client-Server Role Table",
+      "formula": {
+        "latex": "\\text{client requests} \\leftrightarrow \\text{server provides}",
+        "text": "Clients ask; dedicated servers answer - centralised control is the model's whole point."
+      },
+      "whenToUse": "Model-comparison and server-type questions.",
+      "explanation": [
+        "Server types: file, print, mail, web, DNS, authentication, database.",
+        "P2P: every node both roles; no central admin; fine for tiny setups.",
+        "Client-server wins on central security, backup, and scalability.",
+        "A single machine can technically play both roles - the model is about DEDICATED providers."
+      ],
+      "example": {
+        "prompt": "Which machine queues everyone's print jobs?",
+        "steps": [
+          "Central service provider.",
+          "Print server."
+        ],
+        "answer": "Print server"
+      },
+      "memoryTip": "Ask vs answer.",
+      "commonMistake": "Calling P2P 'client-server without wires' - it is role-flattening, not a cabling style."
+    },
+    {
+      "id": "three-rules",
+      "title": "The Three Sharing Rules (verbatim)",
+      "formula": {
+        "latex": "\\text{security} + \\text{compatibility} + \\text{mapping}",
+        "text": "Organisational security, client compatibility, and mapping with naming conventions - the syllabus trio."
+      },
+      "whenToUse": "Every 'share resources in a client-server network' question.",
+      "explanation": [
+        "Organisational security: unauthorised access is the constant threat - permissions/authentication required.",
+        "Compatibility: the client needs a compatible OS/application for the resource.",
+        "Mapping: shared destination address + naming conventions (UNC \\\\server\\share, drive letters)."
+      ],
+      "example": {
+        "prompt": "Which rule needs a shared destination address and naming conventions?",
+        "steps": [
+          "Addressing + names = mapping."
+        ],
+        "answer": "Mapping"
+      },
+      "memoryTip": "Secure it, match it, map it.",
+      "commonMistake": "Attributing naming conventions to security - that is mapping's job."
+    },
+    {
+      "id": "unc-mapping",
+      "title": "UNC Paths & Drive Mapping",
+      "formula": {
+        "latex": "\\\\\\\\server\\share \\to \\text{drive letter}",
+        "text": "Universal Naming Convention addresses the share; mapping binds it to a local drive letter."
+      },
+      "whenToUse": "Practical file-sharing questions.",
+      "explanation": [
+        "UNC: \\\\fileserver\\projects - works from Run dialog or Explorer.",
+        "Map: net use Z: \\\\fileserver\\projects (or right-click -> Map network drive).",
+        "Permission layers: share permissions (network) + NTFS (local) - most restrictive wins.",
+        "Group-based grants beat per-user grants for administration."
+      ],
+      "example": {
+        "prompt": "Reach a share as a local drive.",
+        "steps": [
+          "Map the UNC to a letter.",
+          "net use Z: \\\\server\\share."
+        ],
+        "answer": "Map network drive (Z:)"
+      },
+      "memoryTip": "Two backslashes start every UNC.",
+      "commonMistake": "Forward slashes in UNC paths - Windows shares use backslashes."
+    },
+    {
+      "id": "lan-man-wan",
+      "title": "Network Scale Ladder",
+      "formula": {
+        "latex": "\\text{LAN} < \\text{MAN} < \\text{WAN}",
+        "text": "Building -> city -> country/continent; intranet = private company network; extranet = intranet + partners."
+      },
+      "whenToUse": "Network classification questions.",
+      "explanation": [
+        "LAN: one site, high speed, privately owned.",
+        "MAN: metropolitan/city scale.",
+        "WAN: wide geography via leased links; the Internet is the biggest.",
+        "Intranet: private, employee-only, Internet technologies.",
+        "Extranet: controlled access for trusted outsiders."
+      ],
+      "example": {
+        "prompt": "Partners need limited access to company resources.",
+        "steps": [
+          "Intranet extended outward with control.",
+          "Extranet."
+        ],
+        "answer": "Extranet"
+      },
+      "memoryTip": "L-M-W by size; intra=inside, extra=outside.",
+      "commonMistake": "Confusing Internet with intranet - one letter, opposite privacy."
+    },
+    {
+      "id": "monitor-tools",
+      "title": "Monitoring Tool Map",
+      "formula": {
+        "latex": "\\text{sniffer}=\\text{capture};\\; \\text{SNMP}=\\text{health};\\; \\text{flow}=\\text{usage}",
+        "text": "Capture packets (Wireshark), poll device health (SNMP 161), analyse usage flows."
+      },
+      "whenToUse": "Monitoring tool-purpose questions.",
+      "explanation": [
+        "Packet sniffer/analyser: captures frames for inspection (Wireshark).",
+        "SNMP: devices report to a management console (UDP 161).",
+        "Flow analysis: who-talks-to-what usage accounting.",
+        "IDS: intrusion patterns in traffic."
+      ],
+      "example": {
+        "prompt": "Inspect packet contents on the wire.",
+        "steps": [
+          "Frame capture tool.",
+          "Wireshark (packet sniffer)."
+        ],
+        "answer": "Packet sniffer (Wireshark)"
+      },
+      "memoryTip": "Capture, poll, count, detect.",
+      "commonMistake": "Wireshark as a blocker - it observes; firewalls block."
+    },
+    {
+      "id": "print-queue",
+      "title": "Print Service Logic",
+      "formula": {
+        "latex": "\\text{client job} \\to \\text{print server queue} \\to \\text{printer}",
+        "text": "Central queue orders jobs; the server manages drivers, quotas and audit."
+      },
+      "whenToUse": "Print-sharing questions.",
+      "explanation": [
+        "Jobs spool (wait) in the server queue - first-come or priority.",
+        "One driver point of management instead of every PC.",
+        "Connect via \\\\printserver\\printer.",
+        "Quotas and audit live centrally."
+      ],
+      "example": {
+        "prompt": "Everyone prints to one device - where do jobs wait?",
+        "steps": [
+          "Central holding area.",
+          "The print server queue (spooler)."
+        ],
+        "answer": "The print queue on the print server"
+      },
+      "memoryTip": "Queue = waiting room.",
+      "commonMistake": "Jobs waiting 'in the printer' - they wait in the server's spooler."
+    }
+  ],
+  "practiceProblems": {
+    "cs-roles": [
+      {
+        "q": "Requests services:",
+        "opts": [
+          "Client",
+          "Server",
+          "Router",
+          "Modem"
+        ],
+        "c": 0,
+        "s": [
+          "Client asks; server answers."
+        ],
+        "a": "Client"
+      },
+      {
+        "q": "Provides services:",
+        "opts": [
+          "Server",
+          "Client",
+          "Switch",
+          "Cable"
+        ],
+        "c": 0,
+        "s": [
+          "Dedicated provider."
+        ],
+        "a": "Server"
+      },
+      {
+        "q": "Every node plays both roles:",
+        "opts": [
+          "P2P",
+          "Client-server",
+          "Mainframe",
+          "VLAN"
+        ],
+        "c": 0,
+        "s": [
+          "Peer-to-peer flattening."
+        ],
+        "a": "P2P"
+      },
+      {
+        "q": "Centralised security is an advantage of:",
+        "opts": [
+          "Client-server",
+          "P2P",
+          "Neither",
+          "Both equally"
+        ],
+        "c": 0,
+        "s": [
+          "One policy point."
+        ],
+        "a": "Client-server"
+      },
+      {
+        "q": "Queues everyone's print jobs:",
+        "opts": [
+          "Print server",
+          "Web server",
+          "DNS server",
+          "Client"
+        ],
+        "c": 0,
+        "s": [
+          "Spooler centralisation."
+        ],
+        "a": "Print server"
+      },
+      {
+        "q": "Resolves names to IPs:",
+        "opts": [
+          "DNS server",
+          "Print server",
+          "File server",
+          "Modem"
+        ],
+        "c": 0,
+        "s": [
+          "Name resolution service."
+        ],
+        "a": "DNS server"
+      },
+      {
+        "q": "Stores central documents with permissions:",
+        "opts": [
+          "File server",
+          "Print server",
+          "Mail server",
+          "Hub"
+        ],
+        "c": 0,
+        "s": [
+          "Central storage."
+        ],
+        "a": "File server"
+      },
+      {
+        "q": "Relays email between organisations:",
+        "opts": [
+          "Mail server",
+          "File server",
+          "Proxy",
+          "Repeater"
+        ],
+        "c": 0,
+        "s": [
+          "SMTP relay role."
+        ],
+        "a": "Mail server"
+      },
+      {
+        "q": "Validates logins centrally:",
+        "opts": [
+          "Authentication server",
+          "Print server",
+          "Web server",
+          "Switch"
+        ],
+        "c": 0,
+        "s": [
+          "The identity database host."
+        ],
+        "a": "Authentication server"
+      },
+      {
+        "q": "P2P suits:",
+        "opts": [
+          "Small home/soho setups",
+          "Enterprise of 5000",
+          "Data centres",
+          "National banks"
+        ],
+        "c": 0,
+        "s": [
+          "No central admin - tiny scale only."
+        ],
+        "a": "Small home/soho setups"
+      }
+    ],
+    "three-rules": [
+      {
+        "q": "Rule needing a shared destination address + naming conventions:",
+        "opts": [
+          "Mapping",
+          "Compatibility",
+          "Security",
+          "Backup"
+        ],
+        "c": 0,
+        "s": [
+          "Addressing + names = mapping."
+        ],
+        "a": "Mapping"
+      },
+      {
+        "q": "Rule against unauthorised access:",
+        "opts": [
+          "Organisational security",
+          "Mapping",
+          "Compatibility",
+          "Caching"
+        ],
+        "c": 0,
+        "s": [
+          "Permissions/authentication."
+        ],
+        "a": "Organisational security"
+      },
+      {
+        "q": "Rule about client OS/application fit:",
+        "opts": [
+          "Compatibility",
+          "Mapping",
+          "Monitoring",
+          "Redundancy"
+        ],
+        "c": 0,
+        "s": [
+          "The client must support the resource."
+        ],
+        "a": "Compatibility"
+      },
+      {
+        "q": "'Constant threat' to shared resources:",
+        "opts": [
+          "Unauthorised access",
+          "Sunlight",
+          "Slow Wi-Fi",
+          "Dust"
+        ],
+        "c": 0,
+        "s": [
+          "The security rule's motivation."
+        ],
+        "a": "Unauthorised access"
+      },
+      {
+        "q": "The three sharing rules are:",
+        "opts": [
+          "Security, compatibility, mapping",
+          "Speed, size, colour",
+          "Ping, DNS, DHCP",
+          "Backup, archive, delete"
+        ],
+        "c": 0,
+        "s": [
+          "The syllabus trio."
+        ],
+        "a": "Security, compatibility, mapping"
+      },
+      {
+        "q": "Sharing happens under which paradigms?",
+        "opts": [
+          "P2P and client-server",
+          "Only client-server",
+          "Only P2P",
+          "Neither"
+        ],
+        "c": 0,
+        "s": [
+          "Both, per the syllabus."
+        ],
+        "a": "P2P and client-server"
+      },
+      {
+        "q": "Which rule fails when the client OS can't read the share?",
+        "opts": [
+          "Compatibility",
+          "Mapping",
+          "Security",
+          "Monitoring"
+        ],
+        "c": 0,
+        "s": [
+          "Client-side fit = compatibility."
+        ],
+        "a": "Compatibility"
+      },
+      {
+        "q": "Which rule fails with 'path not found'?",
+        "opts": [
+          "Mapping",
+          "Compatibility",
+          "Security",
+          "Backup"
+        ],
+        "c": 0,
+        "s": [
+          "Address/naming error."
+        ],
+        "a": "Mapping"
+      },
+      {
+        "q": "Which rule fails with 'access denied'?",
+        "opts": [
+          "Security (permissions)",
+          "Mapping",
+          "Compatibility",
+          "Cabling"
+        ],
+        "c": 0,
+        "s": [
+          "Identity/rights failure."
+        ],
+        "a": "Security (permissions)"
+      },
+      {
+        "q": "Shared resources live on:",
+        "opts": [
+          "LANs and workplace intranets",
+          "Fax machines",
+          "Floppies",
+          "Satellites only"
+        ],
+        "c": 0,
+        "s": [
+          "Verbatim syllabus wording."
+        ],
+        "a": "LANs and workplace intranets"
+      }
+    ],
+    "unc-mapping": [
+      {
+        "q": "UNC path for share 'Data' on server FS1:",
+        "opts": [
+          "\\\\FS1\\Data",
+          "//FS1\\Data",
+          "\\\\FS1/Data",
+          "FS1:Data"
+        ],
+        "c": 0,
+        "s": [
+          "Two backslashes, backslash separators."
+        ],
+        "a": "\\\\FS1\\Data"
+      },
+      {
+        "q": "Map a share to drive Z: via command:",
+        "opts": [
+          "net use Z: \\\\server\\share",
+          "map Z: /share",
+          "ipconfig Z:",
+          "cd Z:"
+        ],
+        "c": 0,
+        "s": [
+          "net use = the mapping command."
+        ],
+        "a": "net use Z: \\\\server\\share"
+      },
+      {
+        "q": "Share + NTFS permissions conflict resolves to:",
+        "opts": [
+          "Most restrictive",
+          "Least restrictive",
+          "Sum",
+          "Random"
+        ],
+        "c": 0,
+        "s": [
+          "Windows intersects them."
+        ],
+        "a": "Most restrictive"
+      },
+      {
+        "q": "Best permission administration:",
+        "opts": [
+          "Group-based grants",
+          "Per-user everywhere",
+          "Everyone Full Control",
+          "No permissions"
+        ],
+        "c": 0,
+        "s": [
+          "Scalable, consistent rights."
+        ],
+        "a": "Group-based grants"
+      },
+      {
+        "q": "UNC stands for:",
+        "opts": [
+          "Universal Naming Convention",
+          "United Network Code",
+          "Uniform Node Connector",
+          "Universal Net Control"
+        ],
+        "c": 0,
+        "s": [
+          "The \\server\\share standard."
+        ],
+        "a": "Universal Naming Convention"
+      },
+      {
+        "q": "A mapped drive appears:",
+        "opts": [
+          "Like a local disk (e.g., Z:)",
+          "Only in BIOS",
+          "In the printer queue",
+          "In DNS"
+        ],
+        "c": 0,
+        "s": [
+          "Explorer treats it as local."
+        ],
+        "a": "Like a local disk (e.g., Z:)"
+      },
+      {
+        "q": "Which is the security rule in daily practice?",
+        "opts": [
+          "Least-privilege group permissions, audited",
+          "Hide the folder name only",
+          "Share with Everyone",
+          "Email files instead"
+        ],
+        "c": 0,
+        "s": [
+          "Operationalising organisational security."
+        ],
+        "a": "Least-privilege group permissions, audited"
+      },
+      {
+        "q": "Forward slashes in a UNC path:",
+        "opts": [
+          "Incorrect - UNCs use backslashes",
+          "Required",
+          "Optional",
+          "Faster"
+        ],
+        "c": 0,
+        "s": [
+          "Windows shares use \\\\."
+        ],
+        "a": "Incorrect - UNCs use backslashes"
+      },
+      {
+        "q": "Accessing \\\\server\\share from Run dialog requires at minimum:",
+        "opts": [
+          "Valid credentials/permission on the share",
+          "A printer",
+          "Admin on the server",
+          "IPv6"
+        ],
+        "c": 0,
+        "s": [
+          "Security rule gates the path."
+        ],
+        "a": "Valid credentials/permission on the share"
+      },
+      {
+        "q": "Drive mapping implements which sharing rule?",
+        "opts": [
+          "Mapping",
+          "Compatibility",
+          "Security",
+          "Monitoring"
+        ],
+        "c": 0,
+        "s": [
+          "Address + naming = mapping."
+        ],
+        "a": "Mapping"
+      }
+    ],
+    "lan-man-wan": [
+      {
+        "q": "One building, high speed:",
+        "opts": [
+          "LAN",
+          "MAN",
+          "WAN",
+          "GAN"
+        ],
+        "c": 0,
+        "s": [
+          "Local area."
+        ],
+        "a": "LAN"
+      },
+      {
+        "q": "City-scale:",
+        "opts": [
+          "MAN",
+          "LAN",
+          "WAN",
+          "VLAN"
+        ],
+        "c": 0,
+        "s": [
+          "Metropolitan area."
+        ],
+        "a": "MAN"
+      },
+      {
+        "q": "Country/continent spanning:",
+        "opts": [
+          "WAN",
+          "LAN",
+          "MAN",
+          "PAN"
+        ],
+        "c": 0,
+        "s": [
+          "Wide area - leased links."
+        ],
+        "a": "WAN"
+      },
+      {
+        "q": "Private employee-only web world:",
+        "opts": [
+          "Intranet",
+          "Internet",
+          "Extranet",
+          "Ethernet"
+        ],
+        "c": 0,
+        "s": [
+          "Internal Internet technologies."
+        ],
+        "a": "Intranet"
+      },
+      {
+        "q": "Partners get controlled access:",
+        "opts": [
+          "Extranet",
+          "Intranet",
+          "Internet",
+          "VPN only"
+        ],
+        "c": 0,
+        "s": [
+          "Extended intranet."
+        ],
+        "a": "Extranet"
+      },
+      {
+        "q": "Largest WAN:",
+        "opts": [
+          "The Internet",
+          "A campus",
+          "A floor",
+          "A VLAN"
+        ],
+        "c": 0,
+        "s": [
+          "Global reach."
+        ],
+        "a": "The Internet"
+      },
+      {
+        "q": "Privately owned and typically fastest:",
+        "opts": [
+          "LAN",
+          "WAN",
+          "Internet",
+          "MAN"
+        ],
+        "c": 0,
+        "s": [
+          "Short, owned, fast."
+        ],
+        "a": "LAN"
+      },
+      {
+        "q": "Intra vs extra:",
+        "opts": [
+          "Inside org vs outside partners",
+          "Fast vs slow",
+          "Wired vs wireless",
+          "Big vs small"
+        ],
+        "c": 0,
+        "s": [
+          "Prefixes tell the audience."
+        ],
+        "a": "Inside org vs outside partners"
+      },
+      {
+        "q": "Shared resources per syllabus live on:",
+        "opts": [
+          "LAN/intranet",
+          "Internet only",
+          "Satellite only",
+          "Bluetooth only"
+        ],
+        "c": 0,
+        "s": [
+          "The definition's scope."
+        ],
+        "a": "LAN/intranet"
+      },
+      {
+        "q": "Which spans countries using leased lines?",
+        "opts": [
+          "WAN",
+          "LAN",
+          "MAN",
+          "PAN"
+        ],
+        "c": 0,
+        "s": [
+          "Wide-area links."
+        ],
+        "a": "WAN"
+      }
+    ],
+    "monitor-tools": [
+      {
+        "q": "Captures packets for inspection:",
+        "opts": [
+          "Packet sniffer (Wireshark)",
+          "Firewall",
+          "Print server",
+          "DHCP"
+        ],
+        "c": 0,
+        "s": [
+          "Observation, not blocking."
+        ],
+        "a": "Packet sniffer (Wireshark)"
+      },
+      {
+        "q": "Polls device health on UDP 161:",
+        "opts": [
+          "SNMP",
+          "SMTP",
+          "SNTP",
+          "SMB"
+        ],
+        "c": 0,
+        "s": [
+          "Management protocol."
+        ],
+        "a": "SNMP"
+      },
+      {
+        "q": "Spotting attack patterns in traffic:",
+        "opts": [
+          "Intrusion detection",
+          "Defragmentation",
+          "Printing",
+          "Mapping"
+        ],
+        "c": 0,
+        "s": [
+          "Monitoring's security leg."
+        ],
+        "a": "Intrusion detection"
+      },
+      {
+        "q": "'Network monitoring, traffic usage' is:",
+        "opts": [
+          "A named AXIS syllabus topic",
+          "A router brand",
+          "A cable type",
+          "A hash"
+        ],
+        "c": 0,
+        "s": [
+          "Official topic list item."
+        ],
+        "a": "A named AXIS syllabus topic"
+      },
+      {
+        "q": "Which tool would show WHO talks to WHAT (usage)?",
+        "opts": [
+          "Flow analyser",
+          "Print spooler",
+          "Drive mapper",
+          "BIOS"
+        ],
+        "c": 0,
+        "s": [
+          "Usage accounting."
+        ],
+        "a": "Flow analyser"
+      },
+      {
+        "q": "A sniffer seeing cleartext passwords implies:",
+        "opts": [
+          "Traffic needs encryption",
+          "The sniffer is broken",
+          "Passwords are fine",
+          "DNS failed"
+        ],
+        "c": 0,
+        "s": [
+          "Monitoring exposes plaintext risk."
+        ],
+        "a": "Traffic needs encryption"
+      },
+      {
+        "q": "Anomalous 3am outbound flows suggest:",
+        "opts": [
+          "A compromise (intrusion)",
+          "Normal backups always",
+          "Nothing",
+          "Faster links"
+        ],
+        "c": 0,
+        "s": [
+          "Intrusion-detection signal."
+        ],
+        "a": "A compromise (intrusion)"
+      },
+      {
+        "q": "Bandwidth utilisation trends are part of:",
+        "opts": [
+          "Network monitoring",
+          "Word processing",
+          "Print queues",
+          "BIOS"
+        ],
+        "c": 0,
+        "s": [
+          "Usage observation."
+        ],
+        "a": "Network monitoring"
+      },
+      {
+        "q": "Which blocks traffic (vs observing)?",
+        "opts": [
+          "Firewall",
+          "Wireshark",
+          "SNMP",
+          "Flow tool"
+        ],
+        "c": 0,
+        "s": [
+          "Enforcement vs observation."
+        ],
+        "a": "Firewall"
+      },
+      {
+        "q": "Monitoring's two goals per syllabus:",
+        "opts": [
+          "Faults and intrusions via traffic/usage",
+          "Speed and colour",
+          "Fun and profit",
+          "Printing and scanning"
+        ],
+        "c": 0,
+        "s": [
+          "Health + security."
+        ],
+        "a": "Faults and intrusions via traffic/usage"
+      }
+    ],
+    "print-queue": [
+      {
+        "q": "Jobs wait their turn in the:",
+        "opts": [
+          "Print queue (spooler) on the server",
+          "Monitor",
+          "Cable",
+          "DNS cache"
+        ],
+        "c": 0,
+        "s": [
+          "Serial processing."
+        ],
+        "a": "Print queue (spooler) on the server"
+      },
+      {
+        "q": "Central print benefits:",
+        "opts": [
+          "One driver point, quotas, audit",
+          "Slower always",
+          "No permissions",
+          "Per-PC drivers only"
+        ],
+        "c": 0,
+        "s": [
+          "Server-side management."
+        ],
+        "a": "One driver point, quotas, audit"
+      },
+      {
+        "q": "Connect to a shared printer via:",
+        "opts": [
+          "\\\\printserver\\printername",
+          "http://printer",
+          "ping printer",
+          "net start print"
+        ],
+        "c": 0,
+        "s": [
+          "UNC-style connection."
+        ],
+        "a": "\\\\printserver\\printername"
+      },
+      {
+        "q": "A stuck job blocks:",
+        "opts": [
+          "All jobs behind it in the queue",
+          "Only the server",
+          "The LAN",
+          "DNS"
+        ],
+        "c": 0,
+        "s": [
+          "Serial queue behaviour."
+        ],
+        "a": "All jobs behind it in the queue"
+      },
+      {
+        "q": "Print quotas live:",
+        "opts": [
+          "Centrally on the print server",
+          "In each user's head",
+          "In the printer's ROM only",
+          "In DNS"
+        ],
+        "c": 0,
+        "s": [
+          "Server-side control."
+        ],
+        "a": "Centrally on the print server"
+      },
+      {
+        "q": "Which is a shared HARDWARE resource?",
+        "opts": [
+          "Network printer",
+          "Shared spreadsheet",
+          "Email",
+          "Database row"
+        ],
+        "c": 0,
+        "s": [
+          "Hardware device sharing."
+        ],
+        "a": "Network printer"
+      },
+      {
+        "q": "Clearing the print queue fixes:",
+        "opts": [
+          "Stuck spooler jobs",
+          "DNS failures",
+          "Subnet masks",
+          "Passwords"
+        ],
+        "c": 0,
+        "s": [
+          "Spooler reset."
+        ],
+        "a": "Stuck spooler jobs"
+      },
+      {
+        "q": "Who manages printer drivers centrally in a client-server setup?",
+        "opts": [
+          "The print server",
+          "Every user manually",
+          "The router",
+          "Nobody"
+        ],
+        "c": 0,
+        "s": [
+          "One driver point."
+        ],
+        "a": "The print server"
+      },
+      {
+        "q": "Priority printing is configured:",
+        "opts": [
+          "In the queue/print server",
+          "In the paper tray",
+          "In DNS",
+          "On the client's wallpaper"
+        ],
+        "c": 0,
+        "s": [
+          "Queue-level control."
+        ],
+        "a": "In the queue/print server"
+      },
+      {
+        "q": "A shared printer is an example of:",
+        "opts": [
+          "Shared hardware resource",
+          "Shared software licence",
+          "Shared hash",
+          "Shared subnet"
+        ],
+        "c": 0,
+        "s": [
+          "The hardware half of the definition."
+        ],
+        "a": "Shared hardware resource"
+      }
+    ],
+    "cs-drill": [
+      {
+        "q": "40-machine P2P office in chaos - fix:",
+        "opts": [
+          "Migrate to client-server central services",
+          "Add machines",
+          "Remove passwords",
+          "Disable switches"
+        ],
+        "c": 0,
+        "s": [
+          "Scale breaks P2P governance."
+        ],
+        "a": "Migrate to client-server central services"
+      },
+      {
+        "q": "'Access denied' on a mapped share - investigate:",
+        "opts": [
+          "Permissions (security rule)",
+          "Drive letter",
+          "OS version",
+          "Wireshark"
+        ],
+        "c": 0,
+        "s": [
+          "Identity/rights first."
+        ],
+        "a": "Permissions (security rule)"
+      },
+      {
+        "q": "'Path not found' on a mapped share - investigate:",
+        "opts": [
+          "Mapping (path/name)",
+          "Permissions",
+          "Compatibility",
+          "Monitoring"
+        ],
+        "c": 0,
+        "s": [
+          "Addressing failure."
+        ],
+        "a": "Mapping (path/name)"
+      },
+      {
+        "q": "Old client can't read new SMB share - rule violated:",
+        "opts": [
+          "Compatibility",
+          "Mapping",
+          "Security",
+          "Monitoring"
+        ],
+        "c": 0,
+        "s": [
+          "OS/protocol mismatch."
+        ],
+        "a": "Compatibility"
+      },
+      {
+        "q": "Which sentence summarises the official topic?",
+        "opts": [
+          "Resources on LAN/intranet need security, compatibility, mapping under either paradigm",
+          "Shares need nothing",
+          "Only P2P shares",
+          "Only printers share"
+        ],
+        "c": 0,
+        "s": [
+          "Resources + paradigms + trio."
+        ],
+        "a": "Resources on LAN/intranet need security, compatibility, mapping under either paradigm"
+      },
+      {
+        "q": "Hidden$ shares provide:",
+        "opts": [
+          "Obscurity only - permissions still required",
+          "Full protection",
+          "Encryption",
+          "MFA"
+        ],
+        "c": 0,
+        "s": [
+          "Not access control."
+        ],
+        "a": "Obscurity only - permissions still required"
+      },
+      {
+        "q": "Which is BOTH a paradigm and a syllabus phrase?",
+        "opts": [
+          "Client-server paradigm for sharing files and printers",
+          "Client-server hashing",
+          "P2P subnetting",
+          "Server routing"
+        ],
+        "c": 0,
+        "s": [
+          "Verbatim syllabus wording."
+        ],
+        "a": "Client-server paradigm for sharing files and printers"
+      },
+      {
+        "q": "Which server hosts the employee directory?",
+        "opts": [
+          "Directory/database server (LDAP)",
+          "Print server",
+          "Modem",
+          "Hub"
+        ],
+        "c": 0,
+        "s": [
+          "Structured central data."
+        ],
+        "a": "Directory/database server (LDAP)"
+      },
+      {
+        "q": "VPN users reaching home shares means resources live on:",
+        "opts": [
+          "The intranet",
+          "The public Internet",
+          "A floppy",
+          "The VPN itself"
+        ],
+        "c": 0,
+        "s": [
+          "Intranet + VPN remote access."
+        ],
+        "a": "The intranet"
+      },
+      {
+        "q": "Cleartext shares observed by a sniffer - lesson:",
+        "opts": [
+          "Encrypt shared traffic",
+          "Disable monitoring",
+          "Map more drives",
+          "Print less"
+        ],
+        "c": 0,
+        "s": [
+          "Monitoring reveals; encryption protects."
+        ],
+        "a": "Encrypt shared traffic"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "id": 1,
+      "q": "In a client-server network, the CLIENT:",
+      "opts": [
+        "Provides services to all",
+        "Requests services from a server",
+        "Stores all passwords",
+        "Replaces routers"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cs-roles",
+      "exp": [
+        "Client = the requester; server = the provider."
+      ]
+    },
+    {
+      "id": 2,
+      "q": "Which architecture makes every machine BOTH client and server?",
+      "opts": [
+        "Client-server",
+        "Peer-to-peer",
+        "Mainframe",
+        "Ring"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cs-roles",
+      "exp": [
+        "P2P flattens the roles - no central admin either."
+      ]
+    },
+    {
+      "id": 3,
+      "q": "A dedicated machine providing resources to clients is a:",
+      "opts": [
+        "Client",
+        "Server",
+        "Router",
+        "Modem"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "cs-roles",
+      "exp": [
+        "The server definition - always-on, centralised."
+      ]
+    },
+    {
+      "id": 4,
+      "q": "Shared resources are accessible from a remote computer over:",
+      "opts": [
+        "A LAN or workplace intranet",
+        "Fax lines",
+        "Floppy disks only",
+        "Bluetooth only"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "shared-resources",
+      "source": "PrepInsta AXIS syllabus (verbatim)",
+      "exp": [
+        "The syllabus definition: data/devices reachable over a LAN or workplace intranet."
+      ]
+    },
+    {
+      "id": 5,
+      "q": "Which sharing rule requires a shared DESTINATION ADDRESS and naming conventions?",
+      "opts": [
+        "Organisational security",
+        "Compatibility",
+        "Mapping",
+        "Redundancy"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "shared-resources",
+      "source": "PrepInsta AXIS syllabus",
+      "exp": [
+        "Mapping = addressing + naming conventions (UNC paths, drive letters)."
+      ]
+    },
+    {
+      "id": 6,
+      "q": "The 'constant threat' to shared resources named in the syllabus is:",
+      "opts": [
+        "Power cuts",
+        "Unauthorised access",
+        "Sunlight",
+        "Slow printers"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "shared-resources",
+      "source": "PrepInsta AXIS syllabus (verbatim)",
+      "exp": [
+        "Answered by the organisational-security rule: permissions and authentication."
+      ]
+    },
+    {
+      "id": 7,
+      "q": "Which sharing rule says the CLIENT needs a compatible OS or application?",
+      "opts": [
+        "Mapping",
+        "Compatibility",
+        "Security",
+        "Backup"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "shared-resources",
+      "source": "PrepInsta AXIS syllabus",
+      "exp": [
+        "Compatibility - mismatched clients cannot use the resource."
+      ]
+    },
+    {
+      "id": 8,
+      "q": "Files and printers are shared under which paradigms?",
+      "opts": [
+        "P2P and client-server",
+        "Only client-server",
+        "Only P2P",
+        "Neither"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "shared-resources",
+      "source": "PrepInsta AXIS syllabus (verbatim)",
+      "exp": [
+        "The syllabus names BOTH as file/printer sharing paradigms."
+      ]
+    },
+    {
+      "id": 9,
+      "q": "A network limited to one building/campus is a:",
+      "opts": [
+        "WAN",
+        "MAN",
+        "LAN",
+        "GAN"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "network-sizes",
+      "exp": [
+        "LAN = local area - one site, high speed."
+      ]
+    },
+    {
+      "id": 10,
+      "q": "The largest WAN in existence is:",
+      "opts": [
+        "A campus net",
+        "The Internet",
+        "An intranet",
+        "A VLAN"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "network-sizes",
+      "exp": [
+        "The Internet spans continents - the biggest WAN."
+      ]
+    },
+    {
+      "id": 11,
+      "q": "A PRIVATE company network using Internet technologies is an:",
+      "opts": [
+        "Internet",
+        "Intranet",
+        "Extranet only",
+        "Ethernet"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "network-sizes",
+      "exp": [
+        "Intranet = internal web world for employees."
+      ]
+    },
+    {
+      "id": 12,
+      "q": "Partners/suppliers get controlled access to company resources via an:",
+      "opts": [
+        "Intranet",
+        "Extranet",
+        "Internet",
+        "Air gap"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "network-sizes",
+      "exp": [
+        "Extranet = intranet extended to trusted outsiders."
+      ]
+    },
+    {
+      "id": 13,
+      "q": "Which machine QUEUES print jobs centrally?",
+      "opts": [
+        "Print server",
+        "DNS server",
+        "Router",
+        "Client PC"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "print-queue",
+      "exp": [
+        "The print server's spooler holds jobs in order."
+      ]
+    },
+    {
+      "id": 14,
+      "q": "Which tool CAPTURES packets for analysis?",
+      "opts": [
+        "Packet sniffer (Wireshark)",
+        "Firewall",
+        "DHCP server",
+        "Repeater"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "monitor-tools",
+      "exp": [
+        "Sniffers observe traffic; firewalls block it."
+      ]
+    },
+    {
+      "id": 15,
+      "q": "SNMP (UDP 161) is used for:",
+      "opts": [
+        "Monitoring/managing network devices",
+        "Sending mail",
+        "File transfer",
+        "Name resolution"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "monitor-tools",
+      "exp": [
+        "Simple Network Management Protocol - device health polling."
+      ]
+    },
+    {
+      "id": 16,
+      "q": "The UNC path format for a Windows share is:",
+      "opts": [
+        "\\\\server\\share",
+        "//server/share/",
+        "http://share",
+        "server:share"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "shared-resources",
+      "exp": [
+        "Universal Naming Convention: two backslashes, then server, then share."
+      ]
+    },
+    {
+      "id": 17,
+      "q": "Mapping a network drive means:",
+      "opts": [
+        "Assigning a local drive letter to a share",
+        "Drawing the network",
+        "Installing a driver",
+        "Splitting a disk"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "shared-resources",
+      "exp": [
+        "net use Z: \\\\server\\share - the share behaves like a local disk."
+      ]
+    },
+    {
+      "id": 18,
+      "q": "When share permissions and NTFS permissions conflict, the result is:",
+      "opts": [
+        "The MOST restrictive applies",
+        "The least restrictive applies",
+        "Both ignored",
+        "Random"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "shared-resources",
+      "exp": [
+        "Windows combines them by taking the most limiting right."
+      ]
+    },
+    {
+      "id": 19,
+      "q": "Which is a client-server ADVANTAGE over P2P?",
+      "opts": [
+        "Centralised security administration",
+        "No servers needed",
+        "Cheaper always",
+        "Works offline"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "cs-roles",
+      "exp": [
+        "One policy point, one backup point, one admin point."
+      ]
+    },
+    {
+      "id": 20,
+      "q": "Which is a P2P DISADVANTAGE?",
+      "opts": [
+        "No central administration or security control",
+        "Too many servers",
+        "Requires fiber",
+        "Cannot share files"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "cs-roles",
+      "exp": [
+        "Decentralisation = every user secures their own node."
+      ]
+    },
+    {
+      "id": 21,
+      "q": "A server that relays email is a ___ server; one that resolves names is a ___ server.",
+      "opts": [
+        "mail; DNS",
+        "DNS; mail",
+        "web; print",
+        "print; database"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "cs-roles",
+      "exp": [
+        "Mail server relays (SMTP); DNS server resolves names."
+      ]
+    },
+    {
+      "id": 22,
+      "q": "Which server type stores centralised files?",
+      "opts": [
+        "File server",
+        "Print server",
+        "Web server",
+        "Proxy"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "cs-roles",
+      "exp": [
+        "File server = central storage with permissions."
+      ]
+    },
+    {
+      "id": 23,
+      "q": "Group-based share permissions beat per-user grants because:",
+      "opts": [
+        "Administration scales - change the group once",
+        "They are slower",
+        "They hide files better",
+        "They are required by law"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "shared-resources",
+      "exp": [
+        "Organisational-security rule in practice: manageable, consistent rights."
+      ]
+    },
+    {
+      "id": 24,
+      "q": "Which is an example of a shared HARDWARE resource?",
+      "opts": [
+        "A network printer",
+        "A text file",
+        "A database",
+        "An email"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "shared-resources",
+      "exp": [
+        "The syllabus definition includes hardware devices - printers are the classic."
+      ]
+    },
+    {
+      "id": 25,
+      "q": "Intranet vs Internet: the intranet is:",
+      "opts": [
+        "Private and internal",
+        "Public and global",
+        "Wireless only",
+        "Slower always"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "network-sizes",
+      "exp": [
+        "Intra = inside the organisation."
+      ]
+    },
+    {
+      "id": 26,
+      "q": "Which tool POLLS device health (uptime, interfaces)?",
+      "opts": [
+        "SNMP management system",
+        "Packet sniffer",
+        "Print server",
+        "DHCP"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "monitor-tools",
+      "exp": [
+        "SNMP agents answer management-console polls."
+      ]
+    },
+    {
+      "id": 27,
+      "q": "A city-wide network is a:",
+      "opts": [
+        "MAN",
+        "LAN",
+        "WAN",
+        "PAN"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "network-sizes",
+      "exp": [
+        "Metropolitan Area Network."
+      ]
+    },
+    {
+      "id": 28,
+      "q": "Which paradigm needs NO dedicated server?",
+      "opts": [
+        "Peer-to-peer",
+        "Client-server",
+        "Both",
+        "Neither"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "cs-roles",
+      "exp": [
+        "P2P machines share directly - no dedicated provider."
+      ]
+    },
+    {
+      "id": 29,
+      "q": "An authentication server's job:",
+      "opts": [
+        "Validating login credentials centrally",
+        "Printing jobs",
+        "Serving web pages",
+        "Resolving names"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "cs-roles",
+      "exp": [
+        "Central identity checks (the AuthN database host)."
+      ]
+    },
+    {
+      "id": 30,
+      "q": "Which is the best practice for sensitive share permissions?",
+      "opts": [
+        "Least privilege via groups, audited",
+        "Everyone Full Control",
+        "One admin account shared",
+        "No permissions"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "shared-resources",
+      "exp": [
+        "Organisational-security rule operationalised."
+      ]
+    },
+    {
+      "id": 31,
+      "q": "A 'screened' shared folder should first be protected by:",
+      "opts": [
+        "Authentication + permissions",
+        "Renaming it",
+        "Hiding it in C:\\",
+        "Disabling the NIC"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "shared-resources",
+      "exp": [
+        "Security rule: authentication gates access; permissions scope it."
+      ]
+    },
+    {
+      "id": 32,
+      "q": "Which network type is privately owned and fastest typically?",
+      "opts": [
+        "LAN",
+        "WAN",
+        "Internet",
+        "Extranet"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "network-sizes",
+      "exp": [
+        "Short distances = high speeds you own outright."
+      ]
+    },
+    {
+      "id": 33,
+      "q": "The client's OS failing to open a server share illustrates which rule?",
+      "opts": [
+        "Compatibility",
+        "Mapping",
+        "Security",
+        "Redundancy"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "shared-resources",
+      "source": "PrepInsta AXIS syllabus",
+      "exp": [
+        "Incompatible client OS/application = the compatibility rule's failure case."
+      ]
+    },
+    {
+      "id": 34,
+      "q": "Which server hosts company web pages internally?",
+      "opts": [
+        "Web server (on the intranet)",
+        "Print server",
+        "DHCP server",
+        "Modem"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "cs-roles",
+      "exp": [
+        "Intranet web servers serve internal pages."
+      ]
+    },
+    {
+      "id": 35,
+      "q": "Bandwidth utilisation trends are reviewed in:",
+      "opts": [
+        "Network monitoring",
+        "Word processing",
+        "Print queues",
+        "BIOS"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "monitor-tools",
+      "exp": [
+        "Monitoring = traffic/usage observation (syllabus phrase)."
+      ]
+    },
+    {
+      "id": 36,
+      "q": "Which is TRUE about a machine in a P2P network?",
+      "opts": [
+        "It shares its own resources directly with peers",
+        "It cannot share anything",
+        "It must run Windows Server",
+        "It has no NIC"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "cs-roles",
+      "exp": [
+        "Both roles locally - shares and accesses."
+      ]
+    },
+    {
+      "id": 37,
+      "q": "Which document naming convention maps \\\\fs1\\hr to drive H:?",
+      "opts": [
+        "Drive mapping via net use H: \\\\fs1\\hr",
+        "ipconfig /renew",
+        "nslookup fs1",
+        "tracert fs1"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "shared-resources",
+      "exp": [
+        "Mapping rule in action."
+      ]
+    },
+    {
+      "id": 38,
+      "q": "Which server type would host the company's employee directory?",
+      "opts": [
+        "Database/directory server (LDAP)",
+        "Print server",
+        "Proxy",
+        "Modem"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "cs-roles",
+      "exp": [
+        "Directory = structured central data (users/groups)."
+      ]
+    },
+    {
+      "id": 39,
+      "q": "Which statement about client and server OS is TRUE per the compatibility rule?",
+      "opts": [
+        "Various client-server operating systems can be deployed, but clients need compatible OS/apps",
+        "Only one OS may exist",
+        "OS is irrelevant",
+        "Servers need no OS"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "shared-resources",
+      "source": "PrepInsta AXIS syllabus",
+      "exp": [
+        "Mixed estates work - compatibility is the client-side requirement."
+      ]
+    },
+    {
+      "id": 40,
+      "q": "Which monitoring activity spots an attack IN PROGRESS?",
+      "opts": [
+        "Intrusion detection on traffic patterns",
+        "Disk defrag",
+        "Print spooling",
+        "Drive mapping"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "monitor-tools",
+      "exp": [
+        "IDS-style pattern watching - part of monitoring's remit."
+      ]
+    },
+    {
+      "id": 41,
+      "q": "The syllabus says mapping 'allows you to access any shared OS hardware drive, file, or resource'. The exam-quoted requirements are:",
+      "opts": [
+        "Shared destination address and naming conventions",
+        "A colour printer",
+        "Admin rights for all",
+        "No security"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "shared-resources",
+      "source": "PrepInsta AXIS syllabus (verbatim)",
+      "exp": [
+        "Mapping = destination addressing + naming conventions - the quoted pair."
+      ]
+    },
+    {
+      "id": 42,
+      "q": "A P2P office grows to 40 machines and chaos ensues. The architectural fix:",
+      "opts": [
+        "Migrate to client-server with central services",
+        "Add more P2P machines",
+        "Remove passwords",
+        "Disable switches"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "cs-roles",
+      "exp": [
+        "Scale breaks P2P governance - centralise file/auth/print services."
+      ]
+    },
+    {
+      "id": 43,
+      "q": "Which statement about the two sharing paradigms is EXACTLY per syllabus?",
+      "opts": [
+        "P2P and the client-server paradigm are the two technologies used to share files and printers",
+        "Only client-server can share printers",
+        "Only P2P can share files",
+        "Neither shares anything"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "shared-resources",
+      "source": "PrepInsta AXIS syllabus (verbatim)",
+      "exp": [
+        "Both paradigms share files/printers - the syllabus names both."
+      ]
+    },
+    {
+      "id": 44,
+      "q": "A share shows data to a user who should not see it. Which rule failed and where?",
+      "opts": [
+        "Organisational security - permission scoping on the share/NTFS",
+        "Mapping - wrong drive letter",
+        "Compatibility - OS mismatch",
+        "Monitoring - Wireshark"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "shared-resources",
+      "exp": [
+        "Over-broad rights = the security rule's failure; fix by least-privilege groups."
+      ]
+    },
+    {
+      "id": 45,
+      "q": "Which deployment matches ALL THREE sharing rules at once?",
+      "opts": [
+        "Authenticated group-based share, compatible clients, mapped UNC drive",
+        "Open share, any OS, no path",
+        "Hidden folder, no path, no rights",
+        "Public FTP with admin123"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "shared-resources",
+      "exp": [
+        "Security (auth+groups) + compatibility (standard clients) + mapping (drive letter) - the trio applied."
+      ]
+    },
+    {
+      "id": 46,
+      "q": "A client maps \\\\fs1\\data but gets 'access denied'. The FIRST rule to investigate:",
+      "opts": [
+        "Organisational security (permissions/authentication)",
+        "Compatibility (OS version)",
+        "Mapping (path syntax)",
+        "Monitoring"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "shared-resources",
+      "exp": [
+        "Access denied = identity/rights failure - security rule first; mapping errors give 'not found' instead."
+      ]
+    },
+    {
+      "id": 47,
+      "q": "Which scenario is compatibility (not mapping)?",
+      "opts": [
+        "A Windows 98-era client cannot read a modern SMB3 share",
+        "Typing the wrong share path",
+        "Forgetting the drive letter",
+        "Slow Wi-Fi"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "shared-resources",
+      "exp": [
+        "OS/protocol mismatch = compatibility; path errors are mapping."
+      ]
+    },
+    {
+      "id": 48,
+      "q": "An org wants employees on LAN and at home (VPN) to reach the same shares. The resource set is hosted on:",
+      "opts": [
+        "The intranet (reachable via VPN from outside)",
+        "The public Internet directly",
+        "A floppy",
+        "A peer laptop"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "network-sizes",
+      "exp": [
+        "Intranet resources + VPN remote access = the standard pattern."
+      ]
+    },
+    {
+      "id": 49,
+      "q": "Which server-type to task pairing is WRONG?",
+      "opts": [
+        "DNS server - queues print jobs",
+        "File server - stores documents",
+        "Mail server - relays email",
+        "Web server - serves HTTP pages"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "cs-roles",
+      "exp": [
+        "Print servers queue jobs; DNS resolves names - the pairing is wrong, hence the answer."
+      ]
+    },
+    {
+      "id": 50,
+      "q": "A sniffer is placed on the network and sees everything in CLEARTEXT. The architectural lesson:",
+      "opts": [
+        "Encrypt sensitive shared traffic (SMB signing/encryption, HTTPS)",
+        "Use bigger switches",
+        "Disable monitoring",
+        "Map more drives"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "monitor-tools",
+      "exp": [
+        "Monitoring exposes plaintext - encryption is the resource-protection lesson."
+      ]
+    },
+    {
+      "id": 51,
+      "q": "Which statement about share vs NTFS permission layers is TRUE?",
+      "opts": [
+        "Effective right = most restrictive of the two layers",
+        "Share rights always win",
+        "NTFS is ignored remotely",
+        "Both sum together"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "shared-resources",
+      "exp": [
+        "Windows intersects them - the tighter limit governs."
+      ]
+    },
+    {
+      "id": 52,
+      "q": "A print server's queue shows one job stuck and everything behind it waiting. The concept demonstrated:",
+      "opts": [
+        "Spooler serialisation (jobs wait their turn)",
+        "DNS caching",
+        "NAT overload",
+        "APIPA"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "print-queue",
+      "exp": [
+        "The queue processes sequentially - a stuck job blocks the line."
+      ]
+    },
+    {
+      "id": 53,
+      "q": "Why do enterprises prefer group-based permissions over per-user?",
+      "opts": [
+        "Membership changes propagate rights instantly - no per-resource edits",
+        "Groups are decorative",
+        "Users prefer it",
+        "Auditing becomes impossible"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "shared-resources",
+      "exp": [
+        "Join/leave a group; every share follows - the security rule made manageable."
+      ]
+    },
+    {
+      "id": 54,
+      "q": "An intranet web app must be reachable from a partner firm ONLY. The design:",
+      "opts": [
+        "Extranet with authenticated partner access",
+        "Open it to the Internet",
+        "Email the database",
+        "Remove authentication"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "network-sizes",
+      "exp": [
+        "Extranet = controlled external extension of the intranet."
+      ]
+    },
+    {
+      "id": 55,
+      "q": "Which monitoring finding indicates a COMPROMISE rather than a fault?",
+      "opts": [
+        "Odd outbound traffic to unknown hosts at 3am",
+        "Printer queue full",
+        "Slow Wi-Fi",
+        "Full disk"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "monitor-tools",
+      "exp": [
+        "Anomalous flows = intrusion signal; the rest are faults."
+      ]
+    },
+    {
+      "id": 56,
+      "q": "The syllabus phrase 'efficient parameters' for shared resources refers to:",
+      "opts": [
+        "Security methods (permissions/authentication) established against unauthorised access",
+        "Screen resolution",
+        "Printer DPI",
+        "Subnet sizes"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "shared-resources",
+      "source": "PrepInsta AXIS syllabus",
+      "exp": [
+        "Organisational security 'gives efficient parameters' - controls, not display settings."
+      ]
+    },
+    {
+      "id": 57,
+      "q": "Which is the correct UNC for a share called 'Finance' on server FS2?",
+      "opts": [
+        "\\\\FS2\\Finance",
+        "//FS2\\Finance",
+        "\\\\FS2/Finance",
+        "FS2:/Finance"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "shared-resources",
+      "exp": [
+        "Backslashes both levels - the only correct UNC form."
+      ]
+    },
+    {
+      "id": 58,
+      "q": "A P2P share is 'hidden' by a dollar suffix (Share$). Security-wise this is:",
+      "opts": [
+        "Obscurity only - permissions still required",
+        "Full protection",
+        "Encryption",
+        "MFA"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "shared-resources",
+      "exp": [
+        "Hidden-from-browsing is not access control - the security rule still applies."
+      ]
+    },
+    {
+      "id": 59,
+      "q": "Which pairing of network size to example is correct?",
+      "opts": [
+        "MAN-city cable network; WAN-national bank links; LAN-office floor",
+        "LAN-country; MAN-office; WAN-desk",
+        "WAN-desk; LAN-city; MAN-country",
+        "All are WANs"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "network-sizes",
+      "exp": [
+        "Geography ladder: office floor, city, nation."
+      ]
+    },
+    {
+      "id": 60,
+      "q": "Which single sentence summarises the official topic?",
+      "opts": [
+        "Shared resources on LANs/intranets demand security, compatibility and mapping under client-server or P2P paradigms",
+        "Shares need no rules",
+        "Only printers can be shared",
+        "P2P is mandatory"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "shared-resources",
+      "source": "PrepInsta AXIS syllabus synthesis",
+      "exp": [
+        "One sentence: resources + paradigms + three rules - the whole official topic."
+      ]
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "cs-vs-p2p"
+    },
+    {
+      "type": "concept",
+      "sectionId": "shared-resources"
+    },
+    {
+      "type": "concept",
+      "sectionId": "network-sizes"
+    },
+    {
+      "type": "concept",
+      "sectionId": "monitoring-print"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}
