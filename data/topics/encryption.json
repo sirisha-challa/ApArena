@@ -1,0 +1,2373 @@
+{
+  "id": "encryption",
+  "title": "Encryption & Cryptography",
+  "icon": "En",
+  "category": "networking-cloud",
+  "subtitle": "Symmetric vs asymmetric, DES/AES facts, hashing, digital signatures & the TLS hybrid handshake",
+  "days": "3",
+  "color": "#0891B2",
+  "subtopics": [
+    "Crypto Goals & Families",
+    "Symmetric vs Asymmetric",
+    "DES & AES Facts",
+    "Hashing & Signatures",
+    "SSL/TLS Hybrid Handshake",
+    "Key Exchange & Certificates"
+  ],
+  "estimatedHours": 6,
+  "readingSections": [
+    {
+      "id": "crypto-landscape",
+      "title": "Cryptography: The Landscape",
+      "type": "concept",
+      "quickSummary": "Encryption = reversible (with key); hashing = one-way integrity. Two families: symmetric (one key) and asymmetric (key pair).",
+      "content": [
+        "Cryptography serves four goals: confidentiality (secrecy via encryption), integrity (tamper-evidence via hashing), authentication (identity via certificates/signatures) and non-repudiation (undeniable sending via digital signatures).",
+        "Encryption is REVERSIBLE: plaintext + key -> ciphertext, and the right key returns the plaintext. Hashing (MD5, SHA family) is ONE-WAY: a fixed-length fingerprint with no decrypt step - change one bit and the hash changes completely.",
+        "Two encryption families exist. Symmetric: ONE shared key both encrypts and decrypts - fast, but the key must reach the other side safely. Asymmetric: a PUBLIC key encrypts, a PRIVATE key decrypts - slow, but the public half can be published freely."
+      ],
+      "subsections": [
+        {
+          "title": "The named algorithms",
+          "content": "Symmetric: DES (56-bit key, 16 rounds, block cipher, bit-oriented), 3DES (DES x3, deprecated), AES (128/192/256-bit keys, 10/12/14 rounds), IDEA, Blowfish, RC4 (stream, broken).\nAsymmetric: RSA (factoring), Diffie-Hellman (key exchange), ECC (elliptic curves - small keys, strong).\nHashes: MD5 (broken for security), SHA-1 (deprecated), SHA-2/SHA-3 (current)."
+        }
+      ],
+      "quickRevision": [
+        "Encryption reversible; hashing one-way.",
+        "Symmetric = one key (DES/AES); asymmetric = pair (RSA/ECC).",
+        "Confidentiality from encryption; integrity from hashes; signatures = hash + private key."
+      ],
+      "tricks": [
+        "'Cannot be decrypted' in the stem -> hashing, not encryption.",
+        "Speed ranking: symmetric >> asymmetric - that is why TLS uses asymmetric ONLY to exchange a symmetric session key.",
+        "MD5/SHA-1 in an option about 'secure today' -> wrong; they are broken/deprecated."
+      ],
+      "patterns": [
+        "'Which algorithm is asymmetric?' -> RSA (only non-symmetric option typically).",
+        "'Which provides integrity, not confidentiality?' -> hashing.",
+        "'Shared key' -> symmetric."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Accenture AXIS Technical Assessment",
+          "question": "DES is an example of which option?",
+          "approach": "Bit-oriented cipher - DES encrypts 64-bit blocks with a 56-bit key over 16 rounds."
+        }
+      ],
+      "companyNote": "One algorithm-classification question (symmetric vs asymmetric vs hash) appears in most security buckets."
+    },
+    {
+      "id": "symmetric-asymmetric",
+      "title": "Symmetric vs Asymmetric",
+      "type": "concept",
+      "quickSummary": "Symmetric: same key both ways - fast, distribution problem. Asymmetric: public encrypts, private decrypts - solves distribution, computationally heavy.",
+      "content": [
+        "Symmetric cryptography (DES, 3DES, AES, IDEA, Blowfish) uses one secret key for both directions. Strengths: speed - hundreds of times faster than asymmetric. Weakness: KEY DISTRIBUTION - both parties need the same secret, and any insecure channel compromises it; also key scaling (n parties need n(n-1)/2 keys).",
+        "Asymmetric cryptography (RSA, Diffie-Hellman, ECC) uses mathematically linked key pairs. Publish the public key to the world; keep the private key secret. Anyone can encrypt TO you with your public key; only your private key decrypts. It also enables DIGITAL SIGNATURES: sign with the private key, verify with the public one.",
+        "Real systems hybridise: TLS uses asymmetric crypto to authenticate and exchange a fresh symmetric SESSION KEY, then encrypts the bulk traffic symmetrically - fast AND distribution-safe."
+      ],
+      "subsections": [
+        {
+          "title": "Key-scaling maths",
+          "content": "Symmetric keys for n parties: n(n-1)/2 (10 people -> 45 keys).\nAsymmetric: n key pairs (10 people -> 10 pairs, 10 public keys published)."
+        }
+      ],
+      "quickRevision": [
+        "Symmetric: 1 key, fast, distribution problem (DES/AES).",
+        "Asymmetric: pair, slow, solves distribution + signatures (RSA/ECC/DH).",
+        "Hybrid TLS: asymmetric handshake -> symmetric session.",
+        "Signatures: private-key sign, public-key verify."
+      ],
+      "tricks": [
+        "'Public key encrypts, private decrypts' - never reversed for confidentiality (reversing = signature).",
+        "Key-count questions: symmetric n(n-1)/2 vs asymmetric n.",
+        "'Fast bulk encryption' -> symmetric (AES), always."
+      ],
+      "patterns": [
+        "'Which solves key distribution?' -> asymmetric.",
+        "'Which is used for bulk data in TLS?' -> symmetric session cipher.",
+        "'Digital signature uses...' -> sender's PRIVATE key."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement security set",
+          "question": "RSA vs AES classification.",
+          "approach": "RSA asymmetric (factoring); AES symmetric (rounds 10/12/14)."
+        }
+      ],
+      "companyNote": "The hybrid-TLS story (asymmetric handshake, symmetric bulk) is the exam's favourite crypto narrative."
+    },
+    {
+      "id": "des-aes",
+      "title": "DES & AES: The Block-Cipher Facts",
+      "type": "concept",
+      "quickSummary": "DES: 64-bit block, 56-bit key, 16 rounds, bit-oriented. AES: 128-bit block, 128/192/256-bit keys, 10/12/14 rounds. Rounds = key bits / 32.",
+      "content": [
+        "DES (Data Encryption Standard, 1977): a symmetric BLOCK cipher - encrypts 64-bit blocks with a 56-bit effective key through 16 Feistel rounds. It is a BIT-ORIENTED cipher (the published AXIS PYQ answer). Its 56-bit key is brute-forceable today, so 3DES (triple-DES) extended life before AES replaced it.",
+        "AES (Advanced Encryption Standard, 2001, Rijndael): symmetric block cipher with a fixed 128-bit block and three key sizes. The round count follows the key: AES-128 -> 10 rounds, AES-192 -> 12, AES-256 -> 14. Each round runs SubBytes, ShiftRows, MixColumns, AddRoundKey - the final round skips MixColumns.",
+        "Stream vs block: block ciphers encrypt fixed chunks (DES/AES); stream ciphers encrypt bit-by-bit with a keystream (RC4 - now broken). Feistel networks (DES) split halves; AES's Substitution-Permutation network does not."
+      ],
+      "subsections": [
+        {
+          "title": "The one numeric fact (published PYQ)",
+          "content": "'How many processes/rounds turn plaintext into encrypted data in AES-128?' -> 10.\nPattern: rounds = key bits / 32 (128/32 = 10, 192/32 = 12... well, 6; the standard fixes 12; 256/32 = 8... the standard fixes 14). Memorise the trio 10-12-14 directly."
+        }
+      ],
+      "quickRevision": [
+        "DES: 64-bit block, 56-bit key, 16 rounds, bit-oriented.",
+        "AES: 128-bit block; 10/12/14 rounds for 128/192/256-bit keys.",
+        "Final AES round skips MixColumns.",
+        "3DES = DES applied three times (deprecated)."
+      ],
+      "tricks": [
+        "16 rounds belongs to DES; 10/12/14 belong to AES - options always cross-list them.",
+        "AES-256 -> 14 rounds; AES-192 -> 12; AES-128 -> 10. Climb with the key.",
+        "'Bit-oriented cipher' in options -> DES (published answer)."
+      ],
+      "patterns": [
+        "'How many rounds in AES-128?' - 10.",
+        "'Which is a symmetric block cipher?' - AES/DES (not RSA).",
+        "'56-bit key' - DES."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Accenture AXIS Technical Assessment",
+          "question": "How many processes turn plaintext into encrypted data in AES-128?",
+          "approach": "10 rounds."
+        },
+        {
+          "source": "Asked in Accenture AXIS Technical Assessment",
+          "question": "DES encryption algorithm is an example of which option?",
+          "approach": "Bit-oriented cipher."
+        }
+      ],
+      "companyNote": "The AES-rounds question is a verified repeat in published AXIS sets - one fact, guaranteed mark."
+    },
+    {
+      "id": "hashing-signatures",
+      "title": "Hashing & Digital Signatures",
+      "type": "concept",
+      "quickSummary": "Hashes fingerprint data one-way (MD5/SHA); digital signatures = hash of the message encrypted with the signer's PRIVATE key.",
+      "content": [
+        "A cryptographic hash (MD5 128-bit, SHA-1 160-bit, SHA-256 256-bit) maps any input to a fixed-length fingerprint: deterministic, one-way (no inverse), avalanche-prone (tiny change = totally different hash), collision-resistant (practically impossible to find two inputs with one hash). Uses: integrity checks, password storage (salted), digital signatures, blockchains.",
+        "A DIGITAL SIGNATURE works backwards from encryption: the sender HASHES the message, then encrypts that hash with their PRIVATE key. Anyone verifies by decrypting with the sender's PUBLIC key and comparing hashes - proving origin (authentication) and non-repudiation, since only the private key holder could have signed.",
+        "Password storage best practice: store salted hashes, never plaintext or plain encryption - database theft then leaks nothing reversible."
+      ],
+      "subsections": [
+        {
+          "title": "Hash properties checklist",
+          "content": "Deterministic - same input, same output.\nOne-way - cannot recover input.\nAvalanche - one bit flips everything.\nCollision-resistant - two inputs, same hash: practically impossible (MD5/SHA-1 fail this today)."
+        }
+      ],
+      "quickRevision": [
+        "Hash = one-way fingerprint: MD5 (broken), SHA-1 (deprecated), SHA-2/3 (current).",
+        "Signature = hash encrypted with signer's PRIVATE key; verified with PUBLIC key.",
+        "Signature gives authentication + integrity + non-repudiation.",
+        "Passwords: store salted hashes."
+      ],
+      "tricks": [
+        "Signature key direction is OPPOSITE to confidentiality: sign with private, encrypt-to-me with public.",
+        "'Cannot be reversed' -> hash. 'Two keys mathematically linked' -> asymmetric.",
+        "MD5 in a 'secure today' option -> wrong (collisions demonstrated)."
+      ],
+      "patterns": [
+        "'Which ensures a message was not altered?' - hash/digest comparison.",
+        "'Which proves the sender cannot deny sending?' - digital signature (non-repudiation).",
+        "'Salted hash' - password storage."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement security set",
+          "question": "Purpose of a digital signature?",
+          "approach": "Authentication + integrity + non-repudiation - NOT confidentiality."
+        }
+      ],
+      "companyNote": "Signature-vs-encryption key direction trips many candidates - one deliberate revision kills the trap."
+    },
+    {
+      "id": "ssl-tls",
+      "title": "SSL/TLS & the Hybrid Handshake",
+      "type": "concept",
+      "quickSummary": "TLS = modern SSL: certificates authenticate, asymmetric crypto exchanges a symmetric session key, bulk data rides symmetric.",
+      "content": [
+        "SSL (Secure Sockets Layer) evolved into TLS (Transport Layer Security) - 'SSL' survives as the colloquial name. TLS provides the padlock on HTTPS: server authentication via CA-signed certificates, key exchange, and encrypted application data.",
+        "The hybrid handshake: (1) hello - versions and cipher suites negotiated; (2) server presents its CERTIFICATE; browser verifies the chain to a trusted Certificate Authority; (3) key exchange (RSA or Diffie-Hellman variants) establishes a fresh SYMMETRIC session key; (4) all further traffic encrypts with that fast symmetric cipher (typically AES).",
+        "A published AXIS PYQ detail: in SSLv3, padding bits are CONCATENATED with the secret key during MAC computation - textbook (Forouzan) phrasing that appeared verbatim in the exam."
+      ],
+      "subsections": [
+        {
+          "title": "Handshake order",
+          "content": "ClientHello -> ServerHello + Certificate -> key exchange -> session keys derived -> encrypted application data.\nTLS 1.3 simplifies to ONE round trip and drops legacy algorithms."
+        }
+      ],
+      "quickRevision": [
+        "TLS = modern SSL. Certificates authenticate servers.",
+        "Asymmetric handshake -> symmetric session key -> fast bulk encryption.",
+        "SSLv3 padding bits concatenated with the secret key (PYQ fact).",
+        "Certificate Authorities (CAs) anchor browser trust."
+      ],
+      "tricks": [
+        "Handshake story in order: negotiate -> certify -> exchange -> encrypt-symmetric.",
+        "SSLv3 padding = CONCATENATED (published PYQ) - not XORed, not ANDed."
+      ],
+      "patterns": [
+        "'Padlock/padlock not shown' - certificate validity/CA trust issue.",
+        "'Session key' - the symmetric key created during the handshake."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Accenture AXIS Technical Assessment",
+          "question": "In SSLv3 the padding bits are ______ with the secret key.",
+          "approach": "Concatenated - the Forouzan-textbook line the exam quoted."
+        }
+      ],
+      "companyNote": "The hybrid model (why TLS uses BOTH crypto families) explains half the crypto questions asked anywhere."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "sym-asym-table",
+      "title": "Symmetric vs Asymmetric Decision Table",
+      "formula": {
+        "latex": "\\text{symmetric} = 1\\text{ key, fast};\\; \\text{asymmetric} = \\text{pair, slow}",
+        "text": "One shared key (DES/AES) vs public+private pair (RSA/ECC)."
+      },
+      "whenToUse": "Algorithm classification and key-distribution questions.",
+      "explanation": [
+        "Symmetric: same key both directions; fast bulk encryption; n(n-1)/2 keys for n parties.",
+        "Asymmetric: public encrypts / private decrypts; solves distribution; enables signatures.",
+        "Hybrid (TLS): asymmetric handshake -> symmetric session key.",
+        "Members: symmetric = DES/3DES/AES/IDEA/Blowfish; asymmetric = RSA/DH/ECC."
+      ],
+      "example": {
+        "prompt": "Which algorithm is asymmetric?",
+        "steps": [
+          "Key-pair family.",
+          "RSA."
+        ],
+        "answer": "RSA"
+      },
+      "memoryTip": "One key = quick; two keys = sure.",
+      "commonMistake": "Calling AES asymmetric - AES is the symmetric standard."
+    },
+    {
+      "id": "aes-rounds",
+      "title": "AES Rounds Rule",
+      "formula": {
+        "latex": "\\text{AES-128}=10,\\; \\text{AES-192}=12,\\; \\text{AES-256}=14\\;\\text{rounds}",
+        "text": "Rounds climb with key size: 10, 12, 14 on a fixed 128-bit block."
+      },
+      "whenToUse": "Any 'how many rounds/processes in AES-x' question.",
+      "explanation": [
+        "128-bit block fixed; key size selects rounds.",
+        "Round ops: SubBytes, ShiftRows, MixColumns (skipped in final round), AddRoundKey.",
+        "DES comparison: 16 rounds, 56-bit key - do not cross-match."
+      ],
+      "example": {
+        "prompt": "Rounds in AES-128?",
+        "steps": [
+          "Smallest key, fewest rounds.",
+          "10."
+        ],
+        "answer": "10"
+      },
+      "memoryTip": "10-12-14 climbs with the key.",
+      "commonMistake": "16 for AES - that is DES."
+    },
+    {
+      "id": "des-facts",
+      "title": "DES Fact Card",
+      "formula": {
+        "latex": "\\text{DES}: 64\\text{-bit block}, 56\\text{-bit key}, 16\\text{ rounds}, \\text{bit-oriented}",
+        "text": "Symmetric Feistel block cipher; 3DES applies it three times."
+      },
+      "whenToUse": "DES classification and parameter questions.",
+      "explanation": [
+        "64-bit blocks; 56-bit effective key (8 parity bits dropped from 64).",
+        "16 Feistel rounds; bit-oriented cipher (published PYQ).",
+        "Broken by brute force today -> 3DES -> AES succession."
+      ],
+      "example": {
+        "prompt": "DES key length?",
+        "steps": [
+          "64 bits stored, 8 parity dropped.",
+          "56 effective bits."
+        ],
+        "answer": "56 bits"
+      },
+      "memoryTip": "56-16-64: key-rounds-block.",
+      "commonMistake": "64-bit KEY - 64 is the block; the key is 56."
+    },
+    {
+      "id": "hash-vs-enc",
+      "title": "Hash vs Encryption",
+      "formula": {
+        "latex": "\\text{hash} = \\text{one-way};\\; \\text{encryption} = \\text{two-way with key}",
+        "text": "Hashes verify; encryption hides. No key reverses a hash."
+      },
+      "whenToUse": "Integrity vs confidentiality questions.",
+      "explanation": [
+        "Hash properties: deterministic, one-way, avalanche, collision-resistant.",
+        "MD5/SHA-1 broken for collisions; SHA-2/3 current.",
+        "Password storage: salted hashes only.",
+        "Signature = hash signed with private key."
+      ],
+      "example": {
+        "prompt": "Verify a download wasn't altered.",
+        "steps": [
+          "Compare fingerprints.",
+          "SHA-256 checksum."
+        ],
+        "answer": "SHA-256 hash comparison"
+      },
+      "memoryTip": "Hash = fingerprint; encryption = safe.",
+      "commonMistake": "Decrypting a hash - impossible by design."
+    },
+    {
+      "id": "signature-direction",
+      "title": "Digital Signature Key Direction",
+      "formula": {
+        "latex": "\\text{sign with PRIVATE};\\; \\text{verify with PUBLIC}",
+        "text": "Confidentiality encrypts to the recipient's public key; signatures sign with the sender's private key."
+      },
+      "whenToUse": "Signature and non-repudiation questions.",
+      "explanation": [
+        "Hash the message -> encrypt hash with signer's private key -> anyone verifies with public key.",
+        "Provides authentication + integrity + non-repudiation (not confidentiality).",
+        "Encrypt-to-someone uses THEIR public key."
+      ],
+      "example": {
+        "prompt": "Prove a message came from you, unaltered.",
+        "steps": [
+          "Hash + private-key signature.",
+          "Receiver verifies with your public key."
+        ],
+        "answer": "Digital signature"
+      },
+      "memoryTip": "Sign = private. Lock-for-me = my public.",
+      "commonMistake": "Signing with the public key - anyone could then forge it."
+    },
+    {
+      "id": "tls-hybrid",
+      "title": "TLS Hybrid Handshake",
+      "formula": {
+        "latex": "\\text{certs (asym)} \\to \\text{session key} \\to \\text{AES bulk (sym)}",
+        "text": "Certificates authenticate; asymmetric exchange creates a symmetric session key; bulk data rides symmetric."
+      },
+      "whenToUse": "HTTPS/TLS narrative questions.",
+      "explanation": [
+        "ClientHello/ServerHello negotiate suites.",
+        "Certificate chain verified to a trusted CA.",
+        "Key exchange (ECDHE/RSA) -> fresh symmetric session key.",
+        "Bulk traffic: AES-GCM etc. SSLv3 padding fact: concatenated with secret key (PYQ)."
+      ],
+      "example": {
+        "prompt": "Why does TLS use BOTH crypto families?",
+        "steps": [
+          "Asymmetric solves distribution/auth; symmetric is fast.",
+          "Hybrid: best of both."
+        ],
+        "answer": "Asymmetric handshake, symmetric bulk"
+      },
+      "memoryTip": "Asym to meet, sym to talk.",
+      "commonMistake": "Saying TLS encrypts everything with RSA - only the key exchange is asymmetric."
+    }
+  ],
+  "practiceProblems": {
+    "sym-asym-table": [
+      {
+        "q": "One shared key both directions:",
+        "opts": [
+          "Symmetric",
+          "Asymmetric",
+          "Hash",
+          "Certificate"
+        ],
+        "c": 0,
+        "s": [
+          "DES/AES family."
+        ],
+        "a": "Symmetric"
+      },
+      {
+        "q": "Public key encrypts, private decrypts:",
+        "opts": [
+          "Asymmetric",
+          "Symmetric",
+          "Hashing",
+          "Compression"
+        ],
+        "c": 0,
+        "s": [
+          "RSA/ECC family."
+        ],
+        "a": "Asymmetric"
+      },
+      {
+        "q": "Which is symmetric?",
+        "opts": [
+          "AES",
+          "RSA",
+          "ECC",
+          "Diffie-Hellman"
+        ],
+        "c": 0,
+        "s": [
+          "AES = the symmetric standard."
+        ],
+        "a": "AES"
+      },
+      {
+        "q": "Which solves key distribution?",
+        "opts": [
+          "Asymmetric crypto",
+          "Longer symmetric keys",
+          "Disabling firewalls",
+          "Subnetting"
+        ],
+        "c": 0,
+        "s": [
+          "Publish public keys freely."
+        ],
+        "a": "Asymmetric crypto"
+      },
+      {
+        "q": "TLS bulk encryption uses:",
+        "opts": [
+          "A symmetric session key",
+          "RSA throughout",
+          "MD5",
+          "No encryption"
+        ],
+        "c": 0,
+        "s": [
+          "Asymmetric handshake -> symmetric session."
+        ],
+        "a": "A symmetric session key"
+      },
+      {
+        "q": "Symmetric keys for 10 people (all pairs):",
+        "opts": [
+          "10",
+          "45",
+          "100",
+          "20"
+        ],
+        "c": 1,
+        "s": [
+          "n(n-1)/2 = 45."
+        ],
+        "a": "45"
+      },
+      {
+        "q": "Faster family:",
+        "opts": [
+          "Symmetric",
+          "Asymmetric",
+          "Equal",
+          "Neither"
+        ],
+        "c": 0,
+        "s": [
+          "Hundreds of times faster."
+        ],
+        "a": "Symmetric"
+      },
+      {
+        "q": "Digital signature signs with:",
+        "opts": [
+          "Sender's private key",
+          "Sender's public key",
+          "Receiver's private key",
+          "No key"
+        ],
+        "c": 0,
+        "s": [
+          "Only the holder could sign - non-repudiation."
+        ],
+        "a": "Sender's private key"
+      },
+      {
+        "q": "Encrypt a message FOR Alice:",
+        "opts": [
+          "Alice's public key",
+          "Alice's private key",
+          "Your private key",
+          "Bob's public key"
+        ],
+        "c": 0,
+        "s": [
+          "Only Alice's private key opens it."
+        ],
+        "a": "Alice's public key"
+      },
+      {
+        "q": "ECC advantage:",
+        "opts": [
+          "Small keys, same strength",
+          "Weaker hashes",
+          "Slower RSA",
+          "No signatures"
+        ],
+        "c": 0,
+        "s": [
+          "Elliptic-curve efficiency."
+        ],
+        "a": "Small keys, same strength"
+      }
+    ],
+    "aes-rounds": [
+      {
+        "q": "AES-128 rounds?",
+        "opts": [
+          "10",
+          "12",
+          "14",
+          "16"
+        ],
+        "c": 0,
+        "s": [
+          "Smallest key -> 10."
+        ],
+        "a": "10"
+      },
+      {
+        "q": "AES-192 rounds?",
+        "opts": [
+          "12",
+          "10",
+          "14",
+          "16"
+        ],
+        "c": 0,
+        "s": [
+          "Middle key -> 12."
+        ],
+        "a": "12"
+      },
+      {
+        "q": "AES-256 rounds?",
+        "opts": [
+          "14",
+          "10",
+          "12",
+          "8"
+        ],
+        "c": 0,
+        "s": [
+          "Largest key -> 14."
+        ],
+        "a": "14"
+      },
+      {
+        "q": "AES block size:",
+        "opts": [
+          "64 bits",
+          "128 bits",
+          "192 bits",
+          "256 bits"
+        ],
+        "c": 1,
+        "s": [
+          "Fixed 128-bit blocks."
+        ],
+        "a": "128 bits"
+      },
+      {
+        "q": "Operation skipped in the final round:",
+        "opts": [
+          "MixColumns",
+          "SubBytes",
+          "ShiftRows",
+          "AddRoundKey"
+        ],
+        "c": 0,
+        "s": [
+          "Final round: no MixColumns."
+        ],
+        "a": "MixColumns"
+      },
+      {
+        "q": "16 rounds belongs to:",
+        "opts": [
+          "DES",
+          "AES-128",
+          "AES-256",
+          "SHA-1"
+        ],
+        "c": 0,
+        "s": [
+          "DES's Feistel count."
+        ],
+        "a": "DES"
+      },
+      {
+        "q": "AES-128 key length:",
+        "opts": [
+          "128 bits",
+          "64 bits",
+          "56 bits",
+          "256 bits"
+        ],
+        "c": 0,
+        "s": [
+          "Key = the name."
+        ],
+        "a": "128 bits"
+      },
+      {
+        "q": "AES is:",
+        "opts": [
+          "Symmetric block cipher",
+          "Asymmetric",
+          "A hash",
+          "A protocol"
+        ],
+        "c": 0,
+        "s": [
+          "Rijndael, standardised 2001."
+        ],
+        "a": "Symmetric block cipher"
+      },
+      {
+        "q": "AES replaced:",
+        "opts": [
+          "DES/3DES",
+          "RSA",
+          "SHA-1",
+          "DNS"
+        ],
+        "c": 0,
+        "s": [
+          "2001 standardisation after DES's fall."
+        ],
+        "a": "DES/3DES"
+      },
+      {
+        "q": "Round operations include all EXCEPT:",
+        "opts": [
+          "SubBytes",
+          "ShiftRows",
+          "MixColumns",
+          "Feistel swap"
+        ],
+        "c": 3,
+        "s": [
+          "AES is substitution-permutation, not Feistel."
+        ],
+        "a": "Feistel swap"
+      }
+    ],
+    "des-facts": [
+      {
+        "q": "DES effective key length:",
+        "opts": [
+          "56 bits",
+          "64 bits",
+          "128 bits",
+          "40 bits"
+        ],
+        "c": 0,
+        "s": [
+          "64 stored - 8 parity = 56."
+        ],
+        "a": "56 bits"
+      },
+      {
+        "q": "DES block size:",
+        "opts": [
+          "64 bits",
+          "128 bits",
+          "56 bits",
+          "32 bits"
+        ],
+        "c": 0,
+        "s": [
+          "64-bit blocks."
+        ],
+        "a": "64 bits"
+      },
+      {
+        "q": "DES rounds:",
+        "opts": [
+          "16",
+          "10",
+          "12",
+          "14"
+        ],
+        "c": 0,
+        "s": [
+          "16 Feistel rounds."
+        ],
+        "a": "16"
+      },
+      {
+        "q": "DES structure type:",
+        "opts": [
+          "Feistel network",
+          "Substitution-permutation only",
+          "Stream",
+          "Lattice"
+        ],
+        "c": 0,
+        "s": [
+          "Halves swap each round."
+        ],
+        "a": "Feistel network"
+      },
+      {
+        "q": "DES successor:",
+        "opts": [
+          "AES",
+          "MD5",
+          "RSA",
+          "SHA-1"
+        ],
+        "c": 0,
+        "s": [
+          "2001 standardisation."
+        ],
+        "a": "AES"
+      },
+      {
+        "q": "3DES applies DES:",
+        "opts": [
+          "Three times",
+          "Once",
+          "Never",
+          "Twelve times"
+        ],
+        "c": 0,
+        "s": [
+          "EDE with 2-3 keys."
+        ],
+        "a": "Three times"
+      },
+      {
+        "q": "DES is:",
+        "opts": [
+          "Bit-oriented block cipher",
+          "Stream cipher",
+          "Asymmetric",
+          "A hash"
+        ],
+        "c": 0,
+        "s": [
+          "Published AXIS PYQ classification."
+        ],
+        "a": "Bit-oriented block cipher"
+      },
+      {
+        "q": "Why did DES fall?",
+        "opts": [
+          "56-bit key brute-forceable",
+          "Too many rounds",
+          "No blocks",
+          "Illegal everywhere"
+        ],
+        "c": 0,
+        "s": [
+          "Modern hardware exhausts 2^56."
+        ],
+        "a": "56-bit key brute-forceable"
+      },
+      {
+        "q": "RC4 is a:",
+        "opts": [
+          "Broken stream cipher",
+          "Block cipher",
+          "Hash",
+          "Asymmetric algorithm"
+        ],
+        "c": 0,
+        "s": [
+          "Keystream cipher - prohibited in TLS now."
+        ],
+        "a": "Broken stream cipher"
+      },
+      {
+        "q": "DES operates on:",
+        "opts": [
+          "64-bit blocks",
+          "128-bit blocks",
+          "Bytes alone",
+          "Packets"
+        ],
+        "c": 0,
+        "s": [
+          "64 in, 64 out."
+        ],
+        "a": "64-bit blocks"
+      }
+    ],
+    "hash-vs-enc": [
+      {
+        "q": "One-way transformation:",
+        "opts": [
+          "Hashing",
+          "Symmetric encryption",
+          "Asymmetric encryption",
+          "All encryption"
+        ],
+        "c": 0,
+        "s": [
+          "No key reverses a hash."
+        ],
+        "a": "Hashing"
+      },
+      {
+        "q": "Which hash is BROKEN?",
+        "opts": [
+          "MD5",
+          "SHA-256",
+          "SHA-3",
+          "SHA-512"
+        ],
+        "c": 0,
+        "s": [
+          "Practical collisions demonstrated."
+        ],
+        "a": "MD5"
+      },
+      {
+        "q": "Password storage uses:",
+        "opts": [
+          "Salted hashes",
+          "Plaintext",
+          "Reversible encryption",
+          "Rot13"
+        ],
+        "c": 0,
+        "s": [
+          "Salt kills rainbow tables."
+        ],
+        "a": "Salted hashes"
+      },
+      {
+        "q": "Tiny input change causes:",
+        "opts": [
+          "Completely different hash (avalanche)",
+          "Same hash",
+          "Half the hash changing",
+          "No change"
+        ],
+        "c": 0,
+        "s": [
+          "Avalanche effect."
+        ],
+        "a": "Completely different hash"
+      },
+      {
+        "q": "Download integrity check uses:",
+        "opts": [
+          "SHA-256 checksum comparison",
+          "Decryption",
+          "Subnetting",
+          "Port scan"
+        ],
+        "c": 0,
+        "s": [
+          "Fingerprint equality = unaltered."
+        ],
+        "a": "SHA-256 checksum comparison"
+      },
+      {
+        "q": "Hash output length for SHA-256:",
+        "opts": [
+          "256 bits",
+          "128 bits",
+          "160 bits",
+          "64 bits"
+        ],
+        "c": 0,
+        "s": [
+          "The name is the length."
+        ],
+        "a": "256 bits"
+      },
+      {
+        "q": "SHA-1 length and status:",
+        "opts": [
+          "160 bits, deprecated",
+          "256 bits, current",
+          "128 bits, broken",
+          "512 bits, new"
+        ],
+        "c": 0,
+        "s": [
+          "Collision attacks demonstrated."
+        ],
+        "a": "160 bits, deprecated"
+      },
+      {
+        "q": "A 'rainbow table' attacks:",
+        "opts": [
+          "Unsalted password hashes",
+          "Certificates",
+          "Subnets",
+          "VPNs"
+        ],
+        "c": 0,
+        "s": [
+          "Precomputed hash lookup - salt kills it."
+        ],
+        "a": "Unsalted password hashes"
+      },
+      {
+        "q": "Hash collisions threaten:",
+        "opts": [
+          "Integrity guarantees",
+          "Confidentiality",
+          "Speed",
+          "Ports"
+        ],
+        "c": 0,
+        "s": [
+          "Two inputs, one fingerprint = forgery."
+        ],
+        "a": "Integrity guarantees"
+      },
+      {
+        "q": "HMAC is:",
+        "opts": [
+          "Hash-based message authentication code (keyed hash)",
+          "A hash algorithm",
+          "An encryption mode",
+          "A certificate"
+        ],
+        "c": 0,
+        "s": [
+          "Hash + shared secret = authenticity + integrity."
+        ],
+        "a": "Hash-based message authentication code"
+      }
+    ],
+    "signature-direction": [
+      {
+        "q": "Sign with:",
+        "opts": [
+          "Private key",
+          "Public key",
+          "Session key",
+          "Salt"
+        ],
+        "c": 0,
+        "s": [
+          "Only the holder can sign."
+        ],
+        "a": "Private key"
+      },
+      {
+        "q": "Verify with:",
+        "opts": [
+          "Public key",
+          "Private key",
+          "Salt",
+          "IV"
+        ],
+        "c": 0,
+        "s": [
+          "Anyone can verify - that's the point."
+        ],
+        "a": "Public key"
+      },
+      {
+        "q": "Signatures give:",
+        "opts": [
+          "Auth + integrity + non-repudiation",
+          "Confidentiality",
+          "Compression",
+          "Anonymity"
+        ],
+        "c": 0,
+        "s": [
+          "Not secrecy - content stays readable."
+        ],
+        "a": "Auth + integrity + non-repudiation"
+      },
+      {
+        "q": "Confidential message to Alice uses:",
+        "opts": [
+          "Alice's public key",
+          "Alice's private key",
+          "Your private key",
+          "A hash only"
+        ],
+        "c": 0,
+        "s": [
+          "Only Alice decrypts."
+        ],
+        "a": "Alice's public key"
+      },
+      {
+        "q": "Non-repudiation means:",
+        "opts": [
+          "Sender can't deny",
+          "Receiver can't read",
+          "No records",
+          "Anonymous sending"
+        ],
+        "c": 0,
+        "s": [
+          "Private-key-only signature proves origin."
+        ],
+        "a": "Sender can't deny"
+      },
+      {
+        "q": "Code signing verifies:",
+        "opts": [
+          "Publisher identity + update integrity",
+          "Download speed",
+          "File size",
+          "License cost"
+        ],
+        "c": 0,
+        "s": [
+          "Signature checked against the publisher's public cert."
+        ],
+        "a": "Publisher identity + update integrity"
+      },
+      {
+        "q": "What is hashed before signing?",
+        "opts": [
+          "The message itself",
+          "The public key",
+          "The certificate",
+          "The salt"
+        ],
+        "c": 0,
+        "s": [
+          "Sign the digest, bind the content."
+        ],
+        "a": "The message itself"
+      },
+      {
+        "q": "If a signature verifies, the message:",
+        "opts": [
+          "Is unaltered since signing",
+          "Was encrypted",
+          "Is anonymous",
+          "Is compressed"
+        ],
+        "c": 0,
+        "s": [
+          "Any alteration breaks the hash match."
+        ],
+        "a": "Is unaltered since signing"
+      },
+      {
+        "q": "Certificate chains end at:",
+        "opts": [
+          "A trusted root CA",
+          "The user",
+          "The router",
+          "The salt"
+        ],
+        "c": 0,
+        "s": [
+          "Root of trust in the browser/OS store."
+        ],
+        "a": "A trusted root CA"
+      },
+      {
+        "q": "Which does a signature NOT provide?",
+        "opts": [
+          "Confidentiality",
+          "Authentication",
+          "Integrity",
+          "Non-repudiation"
+        ],
+        "c": 0,
+        "s": [
+          "Content stays readable - pair with encryption for secrecy."
+        ],
+        "a": "Confidentiality"
+      }
+    ],
+    "tls-hybrid": [
+      {
+        "q": "TLS handshake step order:",
+        "opts": [
+          "Hello -> Certificate -> Key exchange -> Encrypted data",
+          "Certificate -> Hello -> Data",
+          "Data -> Certificate -> Hello",
+          "Key exchange -> Hello"
+        ],
+        "c": 0,
+        "s": [
+          "Negotiate, authenticate, exchange, encrypt."
+        ],
+        "a": "Hello -> Certificate -> Key exchange -> Encrypted data"
+      },
+      {
+        "q": "Session key lifetime:",
+        "opts": [
+          "One connection, then discarded",
+          "Forever",
+          "One year",
+          "Per user"
+        ],
+        "c": 0,
+        "s": [
+          "Fresh per session limits damage."
+        ],
+        "a": "One connection, then discarded"
+      },
+      {
+        "q": "SSLv3 padding bits are:",
+        "opts": [
+          "Concatenated with the secret key",
+          "XORed",
+          "ANDed",
+          "Deleted"
+        ],
+        "c": 0,
+        "s": [
+          "Published AXIS PYQ (Forouzan line)."
+        ],
+        "a": "Concatenated with the secret key"
+      },
+      {
+        "q": "Forward secrecy uses:",
+        "opts": [
+          "Ephemeral Diffie-Hellman (ECDHE)",
+          "Static RSA only",
+          "MD5",
+          "No keys"
+        ],
+        "c": 0,
+        "s": [
+          "Per-session independent keys."
+        ],
+        "a": "Ephemeral Diffie-Hellman (ECDHE)"
+      },
+      {
+        "q": "CA stands for:",
+        "opts": [
+          "Certificate Authority",
+          "Cipher Algorithm",
+          "Control Access",
+          "Crypto Anchor"
+        ],
+        "c": 0,
+        "s": [
+          "Vouches key-to-identity bindings."
+        ],
+        "a": "Certificate Authority"
+      },
+      {
+        "q": "TLS 1.3 handshake round trips:",
+        "opts": [
+          "1",
+          "2",
+          "3",
+          "0 with any config"
+        ],
+        "c": 0,
+        "s": [
+          "One round trip - faster and leaner."
+        ],
+        "a": "1"
+      },
+      {
+        "q": "Padlock missing in browser means:",
+        "opts": [
+          "Certificate invalid/untrusted or plain HTTP",
+          "Faster site",
+          "No cookies",
+          "IPv6"
+        ],
+        "c": 0,
+        "s": [
+          "Trust chain or HTTPS failure."
+        ],
+        "a": "Certificate invalid/untrusted or plain HTTP"
+      },
+      {
+        "q": "Which does TLS NOT hide from a network observer?",
+        "opts": [
+          "The destination domain (SNI/DNS)",
+          "Page content",
+          "POST bodies",
+          "Cookies (flagged secure)"
+        ],
+        "c": 0,
+        "s": [
+          "SNI/DNS metadata leaks the hostname."
+        ],
+        "a": "The destination domain (SNI/DNS)"
+      },
+      {
+        "q": "Modern TLS bulk cipher:",
+        "opts": [
+          "AES-GCM",
+          "RC4",
+          "DES",
+          "MD5-based"
+        ],
+        "c": 0,
+        "s": [
+          "Authenticated encryption standard."
+        ],
+        "a": "AES-GCM"
+      },
+      {
+        "q": "Hybrid TLS rationale:",
+        "opts": [
+          "Asymmetric solves distribution; symmetric is fast",
+          "Asymmetric is faster",
+          "Symmetric solves identity",
+          "Both are hashes"
+        ],
+        "c": 0,
+        "s": [
+          "Best of both families."
+        ],
+        "a": "Asymmetric solves distribution; symmetric is fast"
+      }
+    ],
+    "crypto-drill": [
+      {
+        "q": "Classify RSA:",
+        "opts": [
+          "Asymmetric (factoring)",
+          "Symmetric block",
+          "Hash",
+          "Stream"
+        ],
+        "c": 0,
+        "s": [
+          "Key pairs + factoring hardness."
+        ],
+        "a": "Asymmetric (factoring)"
+      },
+      {
+        "q": "Classify AES-256:",
+        "opts": [
+          "Symmetric block, 14 rounds",
+          "Asymmetric",
+          "Hash",
+          "Stream"
+        ],
+        "c": 0,
+        "s": [
+          "256-bit key -> 14 rounds."
+        ],
+        "a": "Symmetric block, 14 rounds"
+      },
+      {
+        "q": "Classify MD5:",
+        "opts": [
+          "Broken hash",
+          "Strong cipher",
+          "Asymmetric",
+          "Protocol"
+        ],
+        "c": 0,
+        "s": [
+          "Collisions practical - never for security."
+        ],
+        "a": "Broken hash"
+      },
+      {
+        "q": "DES bit-oriented, AES is:",
+        "opts": [
+          "Substitution-permutation network",
+          "Feistel only",
+          "Stream",
+          "Asymmetric"
+        ],
+        "c": 0,
+        "s": [
+          "Different structure, same family (symmetric block)."
+        ],
+        "a": "Substitution-permutation network"
+      },
+      {
+        "q": "Integrity WITHOUT secrecy:",
+        "opts": [
+          "Hash/HMAC",
+          "RSA encrypt",
+          "AES encrypt",
+          "Salt"
+        ],
+        "c": 0,
+        "s": [
+          "Fingerprints detect change; secrecy needs encryption."
+        ],
+        "a": "Hash/HMAC"
+      },
+      {
+        "q": "Secrecy WITHOUT authentication:",
+        "opts": [
+          "Plain symmetric encryption",
+          "Digital signature",
+          "Hash",
+          "Certificate"
+        ],
+        "c": 0,
+        "s": [
+          "Encrypted but sender unproven."
+        ],
+        "a": "Plain symmetric encryption"
+      },
+      {
+        "q": "Key exchange without sharing secrets upfront:",
+        "opts": [
+          "Diffie-Hellman",
+          "AES",
+          "SHA-256",
+          "DES"
+        ],
+        "c": 0,
+        "s": [
+          "Public derivation of a shared secret."
+        ],
+        "a": "Diffie-Hellman"
+      },
+      {
+        "q": "Order: sign a message:",
+        "opts": [
+          "Hash -> encrypt hash with private key",
+          "Encrypt whole message with public key",
+          "Hash with public key",
+          "Salt then encrypt"
+        ],
+        "c": 0,
+        "s": [
+          "Digest + private key = signature."
+        ],
+        "a": "Hash -> encrypt hash with private key"
+      },
+      {
+        "q": "Which fact pair is TRUE?",
+        "opts": [
+          "DES 56-bit/16 rounds; AES-128 10 rounds",
+          "DES 128-bit/10; AES 56-bit/16",
+          "DES 16-bit/64 rounds; AES 56/10",
+          "Both 128-bit"
+        ],
+        "c": 0,
+        "s": [
+          "The two parameter sets, never crossed."
+        ],
+        "a": "DES 56-bit/16 rounds; AES-128 10 rounds"
+      },
+      {
+        "q": "Kerckhoffs's principle:",
+        "opts": [
+          "Secrecy lives in the key, not the algorithm's secrecy",
+          "Hide algorithms",
+          "Share keys publicly",
+          "Use MD5"
+        ],
+        "c": 0,
+        "s": [
+          "Assume the system is known."
+        ],
+        "a": "Secrecy lives in the key, not the algorithm's secrecy"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "id": 1,
+      "q": "Symmetric encryption uses:",
+      "opts": [
+        "A public and private key pair",
+        "The same key to encrypt and decrypt",
+        "No key",
+        "Two different algorithms"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "sym-asym",
+      "exp": [
+        "One shared secret key both directions - DES/AES family."
+      ]
+    },
+    {
+      "id": 2,
+      "q": "Asymmetric encryption uses:",
+      "opts": [
+        "One shared key",
+        "A mathematically linked key pair",
+        "Only hashing",
+        "No keys"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "sym-asym",
+      "exp": [
+        "Public key encrypts; private key decrypts - RSA family."
+      ]
+    },
+    {
+      "id": 3,
+      "q": "Which algorithm is ASYMMETRIC?",
+      "opts": [
+        "AES",
+        "DES",
+        "RSA",
+        "IDEA"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "sym-asym",
+      "exp": [
+        "RSA = Rivest-Shamir-Adleman key-pair cryptography.",
+        "AES/DES/IDEA are symmetric."
+      ]
+    },
+    {
+      "id": 4,
+      "q": "AES-128 performs how many rounds?",
+      "opts": [
+        "8",
+        "10",
+        "12",
+        "16"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "aes",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "AES-128 = 10 rounds; 192 -> 12; 256 -> 14.",
+        "16 is DES's count."
+      ]
+    },
+    {
+      "id": 5,
+      "q": "AES-256 performs how many rounds?",
+      "opts": [
+        "10",
+        "12",
+        "14",
+        "16"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "aes",
+      "exp": [
+        "Largest key, most rounds: 14."
+      ]
+    },
+    {
+      "id": 6,
+      "q": "DES has an effective key length of:",
+      "opts": [
+        "56 bits",
+        "64 bits",
+        "128 bits",
+        "256 bits"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "des",
+      "exp": [
+        "56 effective bits (64-bit blocks; 8 parity bits dropped)."
+      ]
+    },
+    {
+      "id": 7,
+      "q": "DES runs for how many rounds?",
+      "opts": [
+        "10",
+        "12",
+        "14",
+        "16"
+      ],
+      "c": 3,
+      "d": "easy",
+      "t": "des",
+      "exp": [
+        "16 Feistel rounds - the number that gets swapped into AES options."
+      ]
+    },
+    {
+      "id": 8,
+      "q": "DES is classified as a:",
+      "opts": [
+        "Bit-oriented cipher",
+        "Stream cipher only",
+        "Hash function",
+        "Asymmetric algorithm"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "des",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Published PYQ: DES is a bit-oriented (block) cipher."
+      ]
+    },
+    {
+      "id": 9,
+      "q": "A hash function is:",
+      "opts": [
+        "Reversible with a key",
+        "One-way - not reversible",
+        "Only for images",
+        "A transport protocol"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "hashing",
+      "exp": [
+        "Fingerprints verify integrity; there is no decrypt step."
+      ]
+    },
+    {
+      "id": 10,
+      "q": "Which is a HASH algorithm?",
+      "opts": [
+        "SHA-256",
+        "AES",
+        "RSA",
+        "DES"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "hashing",
+      "exp": [
+        "SHA = Secure Hash Algorithm family.",
+        "AES/DES encrypt; RSA uses key pairs."
+      ]
+    },
+    {
+      "id": 11,
+      "q": "A digital signature is created with the sender's:",
+      "opts": [
+        "Public key",
+        "Private key",
+        "Session key",
+        "Hash only"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "signatures",
+      "exp": [
+        "Sign with the PRIVATE key; anyone verifies with the public one."
+      ]
+    },
+    {
+      "id": 12,
+      "q": "A digital signature provides:",
+      "opts": [
+        "Confidentiality",
+        "Authentication, integrity and non-repudiation",
+        "Faster transfer",
+        "Compression"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "signatures",
+      "exp": [
+        "It proves who sent it and that it is unaltered - it does NOT hide content."
+      ]
+    },
+    {
+      "id": 13,
+      "q": "TLS (HTTPS) encrypts bulk traffic with:",
+      "opts": [
+        "The server's private key",
+        "A fresh symmetric session key",
+        "RSA only",
+        "MD5"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "tls",
+      "exp": [
+        "Hybrid model: asymmetric handshake creates a symmetric session key for speed."
+      ]
+    },
+    {
+      "id": 14,
+      "q": "The server's identity in HTTPS is proven by:",
+      "opts": [
+        "A CA-signed certificate",
+        "Its port number",
+        "A MAC address",
+        "Subnet mask"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "tls",
+      "exp": [
+        "The certificate chain anchors to a trusted Certificate Authority."
+      ]
+    },
+    {
+      "id": 15,
+      "q": "In SSLv3, padding bits are ______ with the secret key.",
+      "opts": [
+        "XORed",
+        "Concatenated",
+        "ANDed",
+        "Subtracted"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "tls",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Textbook (Forouzan) line the exam quoted: padding bits are concatenated with the secret key."
+      ]
+    },
+    {
+      "id": 16,
+      "q": "AES operates on blocks of:",
+      "opts": [
+        "64 bits",
+        "128 bits",
+        "192 bits",
+        "256 bits"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "aes",
+      "exp": [
+        "Block is fixed at 128 bits; only the KEY varies (128/192/256).",
+        "64-bit blocks belong to DES."
+      ]
+    },
+    {
+      "id": 17,
+      "q": "Which AES round operation is SKIPPED in the final round?",
+      "opts": [
+        "SubBytes",
+        "ShiftRows",
+        "MixColumns",
+        "AddRoundKey"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "aes",
+      "exp": [
+        "Final round omits MixColumns."
+      ]
+    },
+    {
+      "id": 18,
+      "q": "The main weakness of symmetric cryptography is:",
+      "opts": [
+        "Slow computation",
+        "Secure key distribution",
+        "Large ciphertext",
+        "Weak algorithms"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "sym-asym",
+      "exp": [
+        "Both parties need the same secret - delivery is the hard part; asymmetric solves it."
+      ]
+    },
+    {
+      "id": 19,
+      "q": "For n people to ALL communicate privately with symmetric keys, how many keys are needed?",
+      "opts": [
+        "n",
+        "n(n-1)/2",
+        "2n",
+        "n^2"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "sym-asym",
+      "exp": [
+        "Every pair needs its own key: n choose 2 = n(n-1)/2 - 10 people = 45 keys."
+      ]
+    },
+    {
+      "id": 20,
+      "q": "Which hash is considered BROKEN for security purposes?",
+      "opts": [
+        "SHA-256",
+        "MD5",
+        "SHA-3",
+        "SHA-512"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "hashing",
+      "exp": [
+        "MD5 collisions are practical; SHA-1 deprecated; SHA-2/3 current."
+      ]
+    },
+    {
+      "id": 21,
+      "q": "Password storage best practice:",
+      "opts": [
+        "Salted hashes",
+        "Plaintext",
+        "Reversible encryption with a shared key",
+        "A text file"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "hashing",
+      "exp": [
+        "Salted hashes defeat rainbow tables and leak nothing reversible."
+      ]
+    },
+    {
+      "id": 22,
+      "q": "RSA's security rests on:",
+      "opts": [
+        "56-bit keys",
+        "Difficulty of factoring large numbers",
+        "16 rounds",
+        "Broadcast storms"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "sym-asym",
+      "exp": [
+        "Factoring the product of two large primes is the hard problem."
+      ]
+    },
+    {
+      "id": 23,
+      "q": "ECC (Elliptic Curve Cryptography) offers:",
+      "opts": [
+        "Comparable security with smaller keys",
+        "Weaker security only",
+        "Faster hashing",
+        "No signatures"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "sym-asym",
+      "exp": [
+        "Smaller keys, same strength - ideal for constrained devices."
+      ]
+    },
+    {
+      "id": 24,
+      "q": "3DES means:",
+      "opts": [
+        "DES applied three times",
+        "Three different algorithms",
+        "Triple AES",
+        "Three users"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "des",
+      "exp": [
+        "Encrypt-Decrypt-Encrypt with two or three DES keys - deprecated now."
+      ]
+    },
+    {
+      "id": 25,
+      "q": "Which statement about the TLS handshake is TRUE?",
+      "opts": [
+        "Asymmetric crypto exchanges a symmetric session key",
+        "Symmetric crypto exchanges an RSA key",
+        "No keys are exchanged",
+        "Only hashing occurs"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "tls",
+      "exp": [
+        "Certificates authenticate; key exchange creates the session key; symmetric does the bulk work."
+      ]
+    },
+    {
+      "id": 26,
+      "q": "Encrypting a message with the RECIPIENT's public key provides:",
+      "opts": [
+        "Confidentiality to that recipient",
+        "Non-repudiation",
+        "Compression",
+        "Routing"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "sym-asym",
+      "exp": [
+        "Only their private key can open it - confidentiality to them."
+      ]
+    },
+    {
+      "id": 27,
+      "q": "Signing with your private key lets ANYONE:",
+      "opts": [
+        "Verify it came from you",
+        "Decrypt the whole message",
+        "Change the message undetected",
+        "Recover your private key"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "signatures",
+      "exp": [
+        "Public-key verification proves origin and integrity - not secrecy."
+      ]
+    },
+    {
+      "id": 28,
+      "q": "A 'salt' in password hashing is:",
+      "opts": [
+        "Random data added before hashing",
+        "The hash output",
+        "A decryption key",
+        "A certificate"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "hashing",
+      "exp": [
+        "Salts make identical passwords hash differently - rainbow tables die."
+      ]
+    },
+    {
+      "id": 29,
+      "q": "Which is a STREAM cipher?",
+      "opts": [
+        "RC4",
+        "AES",
+        "DES",
+        "RSA"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "des",
+      "exp": [
+        "RC4 encrypts bit-by-bit with a keystream (now broken); AES/DES are block ciphers."
+      ]
+    },
+    {
+      "id": 30,
+      "q": "Diffie-Hellman is used for:",
+      "opts": [
+        "Key exchange over an insecure channel",
+        "Bulk encryption",
+        "Hashing passwords",
+        "Compressing data"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "sym-asym",
+      "exp": [
+        "Two parties derive a shared secret publicly without transmitting it."
+      ]
+    },
+    {
+      "id": 31,
+      "q": "Avalanche effect means:",
+      "opts": [
+        "One input bit change alters the whole output hash",
+        "Hashes grow like snow",
+        "Keys cascade",
+        "Blocks stack"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "hashing",
+      "exp": [
+        "Tiny change -> completely different digest - tamper evidence."
+      ]
+    },
+    {
+      "id": 32,
+      "q": "Which key does a receiver use to decrypt a message encrypted for them?",
+      "opts": [
+        "Their private key",
+        "Their public key",
+        "The sender's private key",
+        "The session salt"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "sym-asym",
+      "exp": [
+        "Encrypt-to-me uses my public key; only MY private key opens it."
+      ]
+    },
+    {
+      "id": 33,
+      "q": "Which is TRUE about AES block size?",
+      "opts": [
+        "Fixed 128 bits regardless of key size",
+        "Grows with the key",
+        "64 bits",
+        "Variable 256"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "aes",
+      "exp": [
+        "Key size varies the rounds; the block stays 128."
+      ]
+    },
+    {
+      "id": 34,
+      "q": "Non-repudiation means the sender:",
+      "opts": [
+        "Cannot deny sending",
+        "Can deny sending",
+        "Stays anonymous",
+        "Uses no keys"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "signatures",
+      "exp": [
+        "Only the private key holder could have signed - denial is impossible."
+      ]
+    },
+    {
+      "id": 35,
+      "q": "Which is the CURRENT recommended hash family?",
+      "opts": [
+        "SHA-2/SHA-3",
+        "MD5",
+        "SHA-1",
+        "MD4"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "hashing",
+      "exp": [
+        "MD5 broken, SHA-1 deprecated, SHA-2/3 stand."
+      ]
+    },
+    {
+      "id": 36,
+      "q": "A Certificate Authority's role is to:",
+      "opts": [
+        "Sign/verify certificates binding keys to identities",
+        "Store all private keys",
+        "Encrypt all traffic itself",
+        "Assign IP addresses"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "tls",
+      "exp": [
+        "The CA vouches that a public key belongs to a named entity."
+      ]
+    },
+    {
+      "id": 37,
+      "q": "Which cipher would protect a satellite link with minimal CPU?",
+      "opts": [
+        "ECC (small keys)",
+        "RSA-4096",
+        "DES",
+        "MD5"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "sym-asym",
+      "exp": [
+        "ECC delivers strength with tiny keys - ideal for constrained hardware."
+      ]
+    },
+    {
+      "id": 38,
+      "q": "TLS 1.3 improved on 1.2 by:",
+      "opts": [
+        "One-round-trip handshake and dropping legacy algorithms",
+        "Adding MD5",
+        "Removing certificates",
+        "Slowing handshakes"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "tls",
+      "exp": [
+        "Faster, leaner, legacy-cipher-free."
+      ]
+    },
+    {
+      "id": 39,
+      "q": "Which is a BLOCK cipher mode concept?",
+      "opts": [
+        "IV/nonce uniqueness per encryption",
+        "Port numbers",
+        "Subnetting",
+        "Routing tables"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "aes",
+      "exp": [
+        "Modes (CBC/GCM/CTR) need unique IVs/nonces - reuse breaks security."
+      ]
+    },
+    {
+      "id": 40,
+      "q": "Kerckhoffs's principle states security must rely on:",
+      "opts": [
+        "The key being secret, not the algorithm",
+        "Hiding the algorithm",
+        "Long ports",
+        "Security through obscurity"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "crypto-landscape",
+      "exp": [
+        "Assume the enemy knows the system; the key carries all secrecy."
+      ]
+    },
+    {
+      "id": 41,
+      "q": "Which is TRUE about 3DES today?",
+      "opts": [
+        "Deprecated - effectively 112-bit security, being phased out",
+        "The strongest option",
+        "A hash",
+        "Faster than AES"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "des",
+      "exp": [
+        "AES replaced it; 3DES lingers in legacy banking systems."
+      ]
+    },
+    {
+      "id": 42,
+      "q": "Perfect forward secrecy means:",
+      "opts": [
+        "Compromised long-term keys don't reveal past session keys",
+        "Keys never change",
+        "Sessions never end",
+        "No keys exist"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "tls",
+      "exp": [
+        "Ephemeral Diffie-Hellman (DHE/ECDHE) gives each session independent keys."
+      ]
+    },
+    {
+      "id": 43,
+      "q": "A collision in hashing means:",
+      "opts": [
+        "Two inputs produce the same hash",
+        "The hash crashed",
+        "Data got encrypted",
+        "A key expired"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "hashing",
+      "exp": [
+        "Collisions break integrity guarantees - why MD5/SHA-1 fell."
+      ]
+    },
+    {
+      "id": 44,
+      "q": "Which encryption protects data AT REST on a lost laptop?",
+      "opts": [
+        "Full-disk encryption (AES)",
+        "TLS only",
+        "Firewall",
+        "Subnetting"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "sym-asym",
+      "exp": [
+        "BitLocker/FileVault encrypt stored data; TLS protects transit only."
+      ]
+    },
+    {
+      "id": 45,
+      "q": "Which statement about key length is TRUE?",
+      "opts": [
+        "Symmetric 128-bit ~ asymmetric 3072-bit in strength",
+        "Asymmetric keys are always shorter for equal strength",
+        "Longer hashes are weaker",
+        "Key length is irrelevant"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "sym-asym",
+      "exp": [
+        "Asymmetric needs far longer keys for equivalent strength - ECC closes the gap."
+      ]
+    },
+    {
+      "id": 46,
+      "q": "The 'session key' in TLS lives:",
+      "opts": [
+        "Only for that connection, then discarded",
+        "Forever on the server",
+        "In the certificate",
+        "In DNS"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "tls",
+      "exp": [
+        "Fresh per-session keys limit blast radius - forward secrecy extends this."
+      ]
+    },
+    {
+      "id": 47,
+      "q": "Which algorithm would sign a software update so users verify the publisher?",
+      "opts": [
+        "Publisher's private key signature (e.g., RSA/ECDSA)",
+        "MD5 of the filename",
+        "The update's port",
+        "A subnet mask"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "signatures",
+      "exp": [
+        "Code-signing certificates + private-key signatures - verified against the public key."
+      ]
+    },
+    {
+      "id": 48,
+      "q": "Encryption + hash + signature together give:",
+      "opts": [
+        "Confidentiality + integrity + non-repudiation",
+        "Only speed",
+        "Only confidentiality",
+        "Nothing combined"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "crypto-landscape",
+      "exp": [
+        "The full security stack - each tool covers one goal."
+      ]
+    },
+    {
+      "id": 49,
+      "q": "A published AXIS PYQ asks how many 'processes' convert plaintext to ciphertext in AES-128. The answer 10 refers to:",
+      "opts": [
+        "The 10 rounds of the AES-128 schedule",
+        "10 keys",
+        "10 users",
+        "10 certificates"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "aes",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Each round applies the four operations; 10 rounds total for the 128-bit key."
+      ]
+    },
+    {
+      "id": 50,
+      "q": "Why does the final AES round skip MixColumns?",
+      "opts": [
+        "It would be redundant - no security gain before the last key addition",
+        "It is too slow",
+        "MixColumns is illegal",
+        "SubBytes replaced it"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "aes",
+      "exp": [
+        "A final MixColumns adds nothing invertible to cryptanalysis - the standard omits it."
+      ]
+    },
+    {
+      "id": 51,
+      "q": "An attacker has n users' symmetric network. Adding an (n+1)th user requires how many NEW keys?",
+      "opts": [
+        "n",
+        "1",
+        "n+1",
+        "n(n+1)/2"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "sym-asym",
+      "exp": [
+        "The new member shares a key with EACH existing member: n new keys - the scaling problem asymmetric crypto solves."
+      ]
+    },
+    {
+      "id": 52,
+      "q": "Which attack does a per-message unique nonce/IV specifically prevent?",
+      "opts": [
+        "Replay and keystream-reuse attacks",
+        "Phishing",
+        "Brute force on long keys",
+        "Shoulder surfing"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "aes",
+      "exp": [
+        "IV/nonce reuse in modes like CTR/GCM leaks keystream - uniqueness is mandatory."
+      ]
+    },
+    {
+      "id": 53,
+      "q": "Published AXIS trivia: SSLv3 MAC padding bits are concatenated with the secret key. This construction appears in:",
+      "opts": [
+        "The SSLv3 record MAC computation (Forouzan)",
+        "AES key schedule",
+        "RSA keygen",
+        "DH exchange"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "tls",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "A textbook detail quoted verbatim - memorise 'concatenated' for this exact question."
+      ]
+    },
+    {
+      "id": 54,
+      "q": "Why do signatures hash the message FIRST?",
+      "opts": [
+        "Signing a fixed-size digest is efficient and binds the signature to exact content",
+        "Hashes are required by law",
+        "To encrypt faster",
+        "To hide the message"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "signatures",
+      "exp": [
+        "Hash-then-sign: efficiency + integrity binding; signing raw long messages would be impractical."
+      ]
+    },
+    {
+      "id": 55,
+      "q": "Which scenario breaks forward secrecy?",
+      "opts": [
+        "Server's long-term RSA key stolen, enabling decryption of recorded old handshakes (no ECDHE)",
+        "A session key expiring",
+        "A certificate renewing",
+        "AES-256 use"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "tls",
+      "exp": [
+        "Without ephemeral key exchange, stealing the static key unlocks ALL recorded sessions - ECDHE prevents this."
+      ]
+    },
+    {
+      "id": 56,
+      "q": "Match: DES-? ; AES-? ; RSA-? ; SHA-?",
+      "opts": [
+        "56-bit key; 10/12/14 rounds; key pairs; one-way digest",
+        "64-bit key; 16 rounds; hashing; signatures",
+        "128-bit key; 10 rounds; one-way; key pairs",
+        "16 rounds; 56-bit; digest; pairs"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "crypto-landscape",
+      "exp": [
+        "DES 56-bit/16 rounds; AES 10/12/14; RSA key pairs; SHA one-way digests - option A alone aligns all four."
+      ]
+    },
+    {
+      "id": 57,
+      "q": "A CA's root certificate is compromised. Blast radius:",
+      "opts": [
+        "Every certificate chaining to that CA becomes forgeable",
+        "One website only",
+        "Nothing - CAs are decorative",
+        "Only email"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "tls",
+      "exp": [
+        "The root anchors the whole chain - revocation and re-issuance at scale follow."
+      ]
+    },
+    {
+      "id": 58,
+      "q": "Which correctly orders the TLS 1.2 handshake?",
+      "opts": [
+        "Hello -> Certificate -> Key exchange -> Finished (symmetric from here)",
+        "Key exchange -> Hello -> Certificate",
+        "Certificate -> Hello -> data",
+        "Data -> handshake"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "tls",
+      "exp": [
+        "Negotiate, authenticate, exchange, then encrypted Finished under the new session keys."
+      ]
+    },
+    {
+      "id": 59,
+      "q": "Why hash passwords with a salt instead of encrypting them?",
+      "opts": [
+        "Hashes can't be reversed; salts defeat precomputed tables - a DB leak reveals nothing usable",
+        "Encryption is slower",
+        "Salts are legally required",
+        "Hashes are shorter"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "hashing",
+      "exp": [
+        "Verification only needs hash equality - reversible storage is an unnecessary risk."
+      ]
+    },
+    {
+      "id": 60,
+      "q": "Order by historical succession:",
+      "opts": [
+        "DES -> 3DES -> AES",
+        "AES -> DES -> 3DES",
+        "3DES -> DES -> AES",
+        "AES -> 3DES -> DES"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "des",
+      "exp": [
+        "1977 DES, late-90s 3DES stopgap, 2001 AES standardisation."
+      ]
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "crypto-landscape"
+    },
+    {
+      "type": "concept",
+      "sectionId": "symmetric-asymmetric"
+    },
+    {
+      "type": "concept",
+      "sectionId": "des-aes"
+    },
+    {
+      "type": "concept",
+      "sectionId": "hashing-signatures"
+    },
+    {
+      "type": "concept",
+      "sectionId": "ssl-tls"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}

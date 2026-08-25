@@ -1,0 +1,2386 @@
+{
+  "id": "protocols",
+  "title": "Protocols & Ports",
+  "icon": "Pt",
+  "category": "networking-cloud",
+  "subtitle": "TCP vs UDP, the exam port table, mail chain, web/file transfer & support protocols",
+  "days": "3",
+  "color": "#0891B2",
+  "subtopics": [
+    "TCP vs UDP",
+    "Well-Known Ports",
+    "Mail Chain (SMTP/POP3/IMAP)",
+    "Web & Files (HTTP(S)/FTP/SFTP)",
+    "Support Protocols (DNS/DHCP/ARP/ICMP)",
+    "HTTP Methods & Status Codes"
+  ],
+  "estimatedHours": 6,
+  "readingSections": [
+    {
+      "id": "what-are-protocols",
+      "title": "What Are Network Protocols?",
+      "type": "concept",
+      "quickSummary": "Agreed rule-sets that let devices communicate; each protocol has a job (mail, web, files, names) and most have a fixed port number.",
+      "content": [
+        "A protocol is an agreed set of rules governing communication between devices - message format, order, and actions on send/receive. Protocols are layered: low-level ones move raw bits (TCP/IP), higher-level ones define applications (HTTP fetches pages, SMTP sends mail).",
+        "For the exam, protocols reduce to two tables: WHO does WHAT (protocol-to-purpose matching) and WHICH PORT (a 16-bit number identifying the application on a machine). Well-known ports run 0-1023; the exam draws from about a dozen.",
+        "Ports let one machine run many services at once: the IP address finds the machine, the port finds the program on it. That 'IP = street, port = flat number' picture answers half of all port questions."
+      ],
+      "subsections": [
+        {
+          "title": "The protocol families",
+          "content": "Transport: TCP (reliable) and UDP (fast).\nWeb: HTTP (plain), HTTPS (TLS-encrypted).\nMail: SMTP (send), POP3/IMAP (retrieve).\nFiles: FTP (insecure), SFTP/FTPS (secure), TFTP (trivial UDP).\nSupport: DNS (names), DHCP (address leasing), ICMP (ping/errors), SNMP (management), Telnet/SSH (remote terminals)."
+        },
+        {
+          "title": "Why ports matter",
+          "content": "A server listening on port 80 serves web pages; port 25 serves mail. A client picks an ephemeral (temporary) port for its side. Firewalls filter by port - which is exactly how the AXIS ACL questions work: 'permit tcp any host 1.1.1.1 eq smtp'."
+        }
+      ],
+      "quickRevision": [
+        "Protocol = communication rule-set; layered like the network model.",
+        "IP finds the machine; PORT finds the program.",
+        "Well-known ports = 0-1023; memorise the exam dozen.",
+        "Every protocol has a one-line purpose - match stems to purposes."
+      ],
+      "tricks": [
+        "Port pairs with meaning: 22 SSH (secure shell), 23 Telnet (INSECURE shell) - exams swap them.",
+        "80 vs 443: plain vs padlock. 443 = HTTPS = TLS.",
+        "Mail trio: 25 send, 110 POP3 fetch-delete, 143 IMAP fetch-keep.",
+        "DNS rides UDP 53 for queries (TCP 53 for zone transfers)."
+      ],
+      "patterns": [
+        "'Which port does X use?' - table recall.",
+        "'Which protocol for Y purpose?' - purpose matching.",
+        "'Connection-oriented vs connectionless' - TCP vs UDP.",
+        "'Secure replacement for Telnet' - SSH."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Accenture AXIS PYQ pattern (ACL items)",
+          "question": "Permit SMTP mail to only host 1.1.1.1.",
+          "approach": "Extended ACL: access-list 110 permit tcp any host 1.1.1.1 eq smtp - protocol + port in one line."
+        }
+      ],
+      "companyNote": "Port-matching questions appear in nearly every networking bucket across TCS, Accenture and Cocubes papers."
+    },
+    {
+      "id": "tcp-vs-udp",
+      "title": "TCP vs UDP: Reliable vs Fast",
+      "type": "concept",
+      "quickSummary": "TCP: connection-oriented, ordered, retransmits - reliable but heavier. UDP: connectionless datagrams - fast, no delivery guarantee.",
+      "content": [
+        "TCP (Transmission Control Protocol) is CONNECTION-ORIENTED: a three-way handshake (SYN, SYN-ACK, ACK) opens a session, sequence numbers keep data ordered, and acknowledgements trigger retransmission of anything lost. Reliable, but that bookkeeping costs time and headers.",
+        "UDP (User Datagram Protocol) is CONNECTIONLESS: fire-and-forget datagrams with no handshake, no ordering, no retry. Minimal overhead makes it perfect for DNS lookups, live video/voice, gaming and broadcasts - anywhere speed beats perfection.",
+        "Choosing between them is a standard MCQ: web pages, email and file transfer need TCP's reliability; streaming, DNS queries and VoIP prefer UDP's speed."
+      ],
+      "subsections": [
+        {
+          "title": "The three-way handshake",
+          "content": "Client -> SYN ('let's talk?').\nServer -> SYN-ACK ('yes, and here's my number').\nClient -> ACK ('confirmed') - connection established, data flows.\nTeardown uses FIN/ACK exchanges."
+        },
+        {
+          "title": "Who rides on what",
+          "content": "TCP: HTTP/HTTPS, FTP, SMTP, POP3, IMAP, SSH, Telnet.\nUDP: DNS queries, DHCP, TFTP, SNMP, VoIP, video streaming, online games.\nDNS is the classic split case: queries on UDP 53, zone transfers on TCP 53."
+        }
+      ],
+      "quickRevision": [
+        "TCP = connection-oriented, ordered, retransmitted, heavier.",
+        "UDP = connectionless, unordered, no retry, lighter/faster.",
+        "Handshake = SYN -> SYN-ACK -> ACK.",
+        "Reliability apps -> TCP; realtime/DNS/DHCP -> UDP."
+      ],
+      "tricks": [
+        "'Handshake / acknowledgement / ordered delivery' in the stem -> TCP, every time.",
+        "Live video lagging but complete = TCP; live video dropping frames = UDP - exams frame this as 'which for streaming?'",
+        "DNS default transport is UDP - a favourite trick question."
+      ],
+      "patterns": [
+        "'Which protocol guarantees delivery?' - TCP.",
+        "'Which is connectionless?' - UDP.",
+        "'Three-way handshake' - TCP connection setup."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement networking set",
+          "question": "Difference between TCP and UDP?",
+          "approach": "Connection-oriented + reliable vs connectionless + fast; pick the option with BOTH halves right."
+        }
+      ],
+      "companyNote": "One TCP/UDP comparison question appears in almost every technical MCQ paper ever set."
+    },
+    {
+      "id": "mail-chain",
+      "title": "The Mail Chain: SMTP, POP3, IMAP",
+      "type": "concept",
+      "quickSummary": "SMTP sends and relays (25); POP3 downloads-and-deletes (110); IMAP keeps mail server-side and syncs (143).",
+      "content": [
+        "Email travels in one direction protocol and arrives via another. SMTP (Simple Mail Transfer Protocol, port 25) PUSHES mail: client-to-server and server-to-server. It never retrieves.",
+        "POP3 (Post Office Protocol v3, port 110) PULLS mail by downloading it to ONE device, typically deleting the server copy - simple but breaks multi-device use. IMAP (Internet Message Access Protocol, port 143) keeps mail ON the server and synchronises folders across every device - the modern default.",
+        "Secure variants ride TLS: SMTPS (465/587), POP3S (995), IMAPS (993). Exam stems test the send-vs-retrieve split and the POP3-vs-IMAP sync difference."
+      ],
+      "subsections": [
+        {
+          "title": "Flow example",
+          "content": "Alice (Gmail) writes to Bob (Outlook):\n1. Alice's client -> Gmail server via SMTP.\n2. Gmail server -> Outlook server via SMTP (server-to-server relay).\n3. Bob's devices fetch via IMAP (server-side sync) or POP3 (download)."
+        }
+      ],
+      "quickRevision": [
+        "SMTP = send/relay (25). POP3 = download/delete (110). IMAP = server-side sync (143).",
+        "Secure ports: 465/587 SMTPS, 995 POP3S, 993 IMAPS.",
+        "Multi-device reading -> IMAP."
+      ],
+      "tricks": [
+        "'S' = Send in SMTP - the only SENDING protocol of the three.",
+        "POP3's P = Post Office: collect your letter and leave the box empty (server copy deleted).",
+        "IMAP's I = Internet: mail stays on the Internet server, synced everywhere."
+      ],
+      "patterns": [
+        "'Which protocol sends email?' - SMTP.",
+        "'Read the same mailbox on phone and laptop' - IMAP.",
+        "'Downloads messages and removes them from the server' - POP3."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Accenture AXIS PYQ pattern",
+          "question": "ACL permitting SMTP to one host.",
+          "approach": "eq smtp in an extended ACL - port 25 semantics."
+        }
+      ],
+      "companyNote": "Mail-protocol matching is a recurring one-mark question - the send/retrieve split is the whole answer."
+    },
+    {
+      "id": "web-file-protocols",
+      "title": "Web & File Transfer: HTTP(S), FTP, SFTP",
+      "type": "concept",
+      "quickSummary": "HTTP fetches pages in plaintext (80); HTTPS wraps it in TLS (443); FTP moves files unencrypted (20/21); SFTP tunnels over SSH (22).",
+      "content": [
+        "HTTP (HyperText Transfer Protocol, port 80) is the request-response language of the web: GET, POST, PUT, DELETE. It is PLAINTEXT - anyone on the path can read it. HTTPS = HTTP inside TLS encryption on port 443: confidentiality, integrity and server authentication via certificates.",
+        "FTP (File Transfer Protocol) moves files using two channels - control on port 21, data on port 20 - with credentials in CLEARTEXT. Secure replacements: SFTP (SSH File Transfer Protocol over port 22, encrypted) and FTPS (FTP over TLS). TFTP (Trivial FTP, UDP 69) is a minimal no-auth version for LAN bootstrapping.",
+        "Remote terminals: Telnet (23) predates security - everything typed, including passwords, travels in plaintext; SSH (22) is its encrypted replacement. 'Secure replacement for Telnet/FTP' is a ready-made MCQ pair."
+      ],
+      "subsections": [
+        {
+          "title": "HTTP methods worth knowing",
+          "content": "GET - retrieve a resource (parameters in URL).\nPOST - submit data (body).\nPUT - upload/replace.\nDELETE - remove.\nStatus codes: 200 OK, 301 redirect, 404 not found, 500 server error."
+        },
+        {
+          "title": "HTTPS certificates",
+          "content": "TLS handshake: server presents a certificate signed by a Certificate Authority; the browser verifies the chain, then both derive session keys. That is how the browser 'authenticates' the site - the published PYQ pairing with user logins."
+        }
+      ],
+      "quickRevision": [
+        "HTTP 80 plaintext; HTTPS 443 TLS.",
+        "FTP 21 control + 20 data (cleartext); SFTP 22 (SSH); TFTP 69 (UDP).",
+        "Telnet 23 insecure; SSH 22 encrypted.",
+        "GET/POST/PUT/DELETE + 200/404/500 codes."
+      ],
+      "tricks": [
+        "FTP's TWO ports (21 control, 20 data) - exams love asking which is which.",
+        "'Credentials in plaintext' -> Telnet or HTTP or FTP; the secure twins are SSH, HTTPS, SFTP.",
+        "404 = missing resource; 500 = server broke; 200 = fine."
+      ],
+      "patterns": [
+        "'Encrypted web traffic' - HTTPS/443.",
+        "'Secure file transfer over SSH' - SFTP.",
+        "'Which port carries FTP data?' - 20 (control is 21)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement networking set",
+          "question": "FTP uses which two ports?",
+          "approach": "21 control, 20 data - order matters in the options."
+        }
+      ],
+      "companyNote": "HTTP-vs-HTTPS and FTP port questions are permanent fixtures of technical MCQ rounds."
+    },
+    {
+      "id": "support-protocols",
+      "title": "Support Protocols: DNS, DHCP, ARP, ICMP, SNMP",
+      "type": "concept",
+      "quickSummary": "DNS translates names to IPs (53); DHCP leases addresses via DORA; ARP maps IP to MAC; ICMP carries ping/errors; SNMP manages devices.",
+      "content": [
+        "DNS (Domain Name System, port 53) translates human names (google.com) into IP addresses through a hierarchy: resolver -> root -> TLD (.com) -> authoritative server. Queries ride UDP 53; zone transfers between servers use TCP 53.",
+        "DHCP (Dynamic Host Configuration Protocol) leases IP configuration to hosts through DORA: Discover, Offer, Request, Acknowledge - all broadcast initially. Leases expire and renew automatically.",
+        "ARP (Address Resolution Protocol) answers 'who has this IP?' inside a LAN, mapping IPv4 to MAC. ICMP (Internet Control Message Protocol) is ping's transport - echo request/reply plus error messages (destination unreachable, TTL exceeded). SNMP (Simple Network Management Protocol, UDP 161) monitors and manages network devices."
+      ],
+      "subsections": [
+        {
+          "title": "DORA in one line each",
+          "content": "Discover - client broadcasts 'any DHCP server?'.\nOffer - server offers an address.\nRequest - client formally asks for the offered address.\nAcknowledge - server confirms the lease."
+        }
+      ],
+      "quickRevision": [
+        "DNS 53 (UDP queries / TCP transfers) - names to IPs.",
+        "DHCP DORA - automatic IP leasing.",
+        "ARP - IP to MAC on the LAN. ICMP - ping and errors.",
+        "SNMP 161 - device monitoring."
+      ],
+      "tricks": [
+        "DORA order mnemonic: the word DORA itself - Discover Offer Request Ack.",
+        "ping = ICMP, not UDP/TCP - a trick option in every paper.",
+        "DNS over UDP by default; 'zone transfer' flips it to TCP."
+      ],
+      "patterns": [
+        "'Translates domain names to IP addresses' - DNS.",
+        "'Automatic IP assignment' - DHCP.",
+        "'Which protocol does PING use?' - ICMP.",
+        "'Maps IP address to MAC address' - ARP."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement networking set",
+          "question": "DHCP operation order?",
+          "approach": "D-O-R-A: Discover, Offer, Request, Acknowledge."
+        }
+      ],
+      "companyNote": "DNS/DHCP/ARP purpose-matching questions recur in every networking bucket - four definitions, four free marks."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "tcp-vs-udp-table",
+      "title": "TCP vs UDP Decision Table",
+      "formula": {
+        "latex": "\\text{TCP} = \\text{connection-oriented, reliable};\\; \\text{UDP} = \\text{connectionless, fast}",
+        "text": "Reliability apps ride TCP; realtime lookups/streams ride UDP."
+      },
+      "whenToUse": "Any transport-protocol comparison question.",
+      "explanation": [
+        "TCP: handshake, sequencing, ACKs, retransmission - HTTP(S), FTP, SMTP, SSH.",
+        "UDP: no handshake/order/retry - DNS queries, DHCP, TFTP, VoIP, streaming, gaming.",
+        "DNS is the split case: UDP 53 queries, TCP 53 zone transfers.",
+        "Overhead: TCP header 20+ bytes vs UDP 8 bytes."
+      ],
+      "example": {
+        "prompt": "Which transport carries a live video call?",
+        "steps": [
+          "Dropped frames beat frozen delays.",
+          "UDP - speed over retransmission."
+        ],
+        "answer": "UDP"
+      },
+      "memoryTip": "TCP = Tracked, Checked, Patient. UDP = Untracked, Direct, Prompt.",
+      "commonMistake": "Putting DNS on TCP by default - queries ride UDP 53."
+    },
+    {
+      "id": "port-table",
+      "title": "The Exam Port Table",
+      "formula": {
+        "latex": "20/21\\text{ FTP}, 22\\text{ SSH}, 23\\text{ Telnet}, 25\\text{ SMTP}, 53\\text{ DNS}, 69\\text{ TFTP}, 80\\text{ HTTP}, 110\\text{ POP3}, 143\\text{ IMAP}, 443\\text{ HTTPS}",
+        "text": "Twelve ports cover every placement question ever set on this."
+      },
+      "whenToUse": "Port-matching questions.",
+      "explanation": [
+        "FTP splits 21 control / 20 data.",
+        "SSH 22 replaced Telnet 23 - one number apart, security worlds apart.",
+        "Mail: 25 send, 110 POP3, 143 IMAP (secure: 465/587, 995, 993).",
+        "Web: 80 HTTP, 443 HTTPS. DNS 53, TFTP 69 (UDP), SNMP 161, RDP 3389."
+      ],
+      "example": {
+        "prompt": "Port for secure web?",
+        "steps": [
+          "Secure web = HTTPS.",
+          "443."
+        ],
+        "answer": "443"
+      },
+      "memoryTip": "21-22-23: FTP, SSH, Telnet in a row - middle one is secure.",
+      "commonMistake": "20 as the FTP CONTROL port - 21 controls, 20 carries data."
+    },
+    {
+      "id": "mail-flow-rule",
+      "title": "Mail Flow Rule",
+      "formula": {
+        "latex": "\\text{SMTP sends (25)} \\to \\text{POP3 downloads (110)} \\mid \\text{IMAP syncs (143)}",
+        "text": "SMTP is the only sender; POP3 and IMAP only retrieve."
+      },
+      "whenToUse": "Mail-protocol purpose and multi-device questions.",
+      "explanation": [
+        "Client -> server and server -> server relaying = SMTP.",
+        "POP3: download to one device, server copy typically deleted.",
+        "IMAP: mail stays server-side; folders sync across devices.",
+        "Secure wrappers: SMTPS 465/587, POP3S 995, IMAPS 993."
+      ],
+      "example": {
+        "prompt": "Read the same inbox on phone and laptop with server folders intact.",
+        "steps": [
+          "Server-side synchronisation needed.",
+          "IMAP."
+        ],
+        "answer": "IMAP"
+      },
+      "memoryTip": "SMTP = Send Mail To People.",
+      "commonMistake": "POP3 'syncing' devices - POP3 downloads and deletes."
+    },
+    {
+      "id": "http-vs-https",
+      "title": "HTTP vs HTTPS (TLS Wrap)",
+      "formula": {
+        "latex": "\\text{HTTPS} = \\text{HTTP} + \\text{TLS on } 443",
+        "text": "HTTPS adds encryption, integrity and server authentication via certificates."
+      },
+      "whenToUse": "Web security and port questions.",
+      "explanation": [
+        "HTTP 80 plaintext; anyone on the path reads it.",
+        "HTTPS 443: TLS handshake, CA-signed certificate, session keys.",
+        "Certificate chain = how the browser authenticates the site.",
+        "Methods: GET/POST/PUT/DELETE; codes 200/301/404/500."
+      ],
+      "example": {
+        "prompt": "Why does the padlock appear?",
+        "steps": [
+          "TLS certificate verified against a CA chain.",
+          "HTTPS session established."
+        ],
+        "answer": "Valid TLS certificate on HTTPS"
+      },
+      "memoryTip": "80 naked, 443 armoured.",
+      "commonMistake": "HTTPS hides the DOMAIN from DNS - it does not; only the content path is encrypted."
+    },
+    {
+      "id": "three-way-handshake",
+      "title": "TCP Three-Way Handshake",
+      "formula": {
+        "latex": "\\text{SYN} \\to \\text{SYN-ACK} \\to \\text{ACK}",
+        "text": "Three exchanges open every TCP connection before data flows."
+      },
+      "whenToUse": "Connection-setup and 'connection-oriented' questions.",
+      "explanation": [
+        "Client SYN: 'start?'.",
+        "Server SYN-ACK: 'yes, and acknowledged'.",
+        "Client ACK: session established.",
+        "Teardown: FIN/ACK pairs; sequence numbers keep byte order."
+      ],
+      "example": {
+        "prompt": "Sequence of a TCP connection open?",
+        "steps": [
+          "Three messages in order.",
+          "SYN, SYN-ACK, ACK."
+        ],
+        "answer": "SYN -> SYN-ACK -> ACK"
+      },
+      "memoryTip": "S-SA-A: 'Should we? - Sure, and you? - Agreed.'",
+      "commonMistake": "ACK-SYN as one message from the client - the SYN-ACK comes from the SERVER."
+    },
+    {
+      "id": "support-protocols-table",
+      "title": "Support Protocol Purposes",
+      "formula": {
+        "latex": "\\text{DNS}=\\text{names},\\; \\text{DHCP}=\\text{leases},\\; \\text{ARP}=\\text{IP}\\to\\text{MAC},\\; \\text{ICMP}=\\text{ping},\\; \\text{SNMP}=\\text{manage}",
+        "text": "Five support protocols, five one-line purposes."
+      },
+      "whenToUse": "Purpose-matching questions.",
+      "explanation": [
+        "DNS 53: resolve names to IPs (UDP queries, TCP zone transfers).",
+        "DHCP: DORA - Discover Offer Request Ack - leases addresses.",
+        "ARP: who-has-this-IP -> MAC mapping on the LAN.",
+        "ICMP: echo request/reply (ping) and error reporting.",
+        "SNMP 161: monitoring and managing devices."
+      ],
+      "example": {
+        "prompt": "Which protocol does ping use?",
+        "steps": [
+          "Echo request/reply messages.",
+          "ICMP - not TCP, not UDP."
+        ],
+        "answer": "ICMP"
+      },
+      "memoryTip": "DORA spells the DHCP dance.",
+      "commonMistake": "Ping on UDP - it rides ICMP, which is neither TCP nor UDP."
+    }
+  ],
+  "practiceProblems": {
+    "tcp-vs-udp-table": [
+      {
+        "q": "Which transport opens a session with a handshake?",
+        "opts": [
+          "TCP",
+          "UDP",
+          "ICMP",
+          "ARP"
+        ],
+        "c": 0,
+        "s": [
+          "SYN, SYN-ACK, ACK = TCP connection setup."
+        ],
+        "a": "TCP"
+      },
+      {
+        "q": "Which transport would carry a DNS query by default?",
+        "opts": [
+          "UDP",
+          "TCP",
+          "ICMP",
+          "SMTP"
+        ],
+        "c": 0,
+        "s": [
+          "Small Q&A = one datagram = UDP 53."
+        ],
+        "a": "UDP"
+      },
+      {
+        "q": "Which guarantees ordered delivery?",
+        "opts": [
+          "TCP",
+          "UDP",
+          "IP",
+          "ICMP"
+        ],
+        "c": 0,
+        "s": [
+          "Sequence numbers + ACKs reorder and retransmit."
+        ],
+        "a": "TCP"
+      },
+      {
+        "q": "Live game traffic prefers:",
+        "opts": [
+          "UDP",
+          "TCP",
+          "SMTP",
+          "FTP"
+        ],
+        "c": 0,
+        "s": [
+          "Speed beats retransmitting stale inputs."
+        ],
+        "a": "UDP"
+      },
+      {
+        "q": "Which is connectionless?",
+        "opts": [
+          "UDP",
+          "TCP",
+          "HTTPS",
+          "SSH"
+        ],
+        "c": 0,
+        "s": [
+          "No handshake, no session."
+        ],
+        "a": "UDP"
+      },
+      {
+        "q": "Retransmission of lost segments is a feature of:",
+        "opts": [
+          "TCP",
+          "UDP",
+          "Both",
+          "Neither"
+        ],
+        "c": 0,
+        "s": [
+          "ACK-driven retransmission = TCP."
+        ],
+        "a": "TCP"
+      },
+      {
+        "q": "Email sending rides which transport?",
+        "opts": [
+          "TCP (SMTP)",
+          "UDP",
+          "ICMP",
+          "None"
+        ],
+        "c": 0,
+        "s": [
+          "SMTP = TCP 25 - mail must arrive complete."
+        ],
+        "a": "TCP (SMTP)"
+      },
+      {
+        "q": "VoIP prefers:",
+        "opts": [
+          "UDP",
+          "TCP",
+          "Both",
+          "ICMP"
+        ],
+        "c": 0,
+        "s": [
+          "Realtime audio tolerates loss, not delay."
+        ],
+        "a": "UDP"
+      },
+      {
+        "q": "TCP header size vs UDP:",
+        "opts": [
+          "20+ vs 8 bytes",
+          "8 vs 20 bytes",
+          "Equal",
+          "TCP has none"
+        ],
+        "c": 0,
+        "s": [
+          "Sequencing/ACK fields cost space."
+        ],
+        "a": "20+ vs 8 bytes"
+      },
+      {
+        "q": "Zone transfers between DNS servers use:",
+        "opts": [
+          "TCP 53",
+          "UDP 53",
+          "UDP 69",
+          "TCP 25"
+        ],
+        "c": 0,
+        "s": [
+          "Large serial transfers need reliability."
+        ],
+        "a": "TCP 53"
+      }
+    ],
+    "port-table": [
+      {
+        "q": "SSH port?",
+        "opts": [
+          "22",
+          "23",
+          "21",
+          "25"
+        ],
+        "c": 0,
+        "s": [
+          "22 = SSH; 23 = Telnet."
+        ],
+        "a": "22"
+      },
+      {
+        "q": "Telnet port?",
+        "opts": [
+          "23",
+          "22",
+          "25",
+          "69"
+        ],
+        "c": 0,
+        "s": [
+          "23 - plaintext remote terminal."
+        ],
+        "a": "23"
+      },
+      {
+        "q": "TFTP port?",
+        "opts": [
+          "69",
+          "21",
+          "20",
+          "53"
+        ],
+        "c": 0,
+        "s": [
+          "UDP 69 - trivial file transfer."
+        ],
+        "a": "69"
+      },
+      {
+        "q": "SNMP port?",
+        "opts": [
+          "161",
+          "143",
+          "110",
+          "3389"
+        ],
+        "c": 0,
+        "s": [
+          "UDP 161 - management."
+        ],
+        "a": "161"
+      },
+      {
+        "q": "RDP port?",
+        "opts": [
+          "3389",
+          "443",
+          "8080",
+          "1723"
+        ],
+        "c": 0,
+        "s": [
+          "3389 - Windows remote desktop."
+        ],
+        "a": "3389"
+      },
+      {
+        "q": "IMAP port?",
+        "opts": [
+          "143",
+          "110",
+          "993",
+          "25"
+        ],
+        "c": 0,
+        "s": [
+          "143 = IMAP; 993 = IMAPS."
+        ],
+        "a": "143"
+      },
+      {
+        "q": "POP3 port?",
+        "opts": [
+          "110",
+          "143",
+          "995",
+          "587"
+        ],
+        "c": 0,
+        "s": [
+          "110 = POP3; 995 = POP3S."
+        ],
+        "a": "110"
+      },
+      {
+        "q": "FTP data port?",
+        "opts": [
+          "20",
+          "21",
+          "22",
+          "69"
+        ],
+        "c": 0,
+        "s": [
+          "20 = data; 21 = control."
+        ],
+        "a": "20"
+      },
+      {
+        "q": "SMTPS submission port (common):",
+        "opts": [
+          "587",
+          "25",
+          "110",
+          "53"
+        ],
+        "c": 0,
+        "s": [
+          "587 with STARTTLS; 465 implicit TLS."
+        ],
+        "a": "587"
+      },
+      {
+        "q": "Which port pair is web-related?",
+        "opts": [
+          "80 and 443",
+          "25 and 110",
+          "22 and 23",
+          "69 and 161"
+        ],
+        "c": 0,
+        "s": [
+          "HTTP 80, HTTPS 443."
+        ],
+        "a": "80 and 443"
+      }
+    ],
+    "mail-flow-rule": [
+      {
+        "q": "Protocol that RELAYS mail between servers:",
+        "opts": [
+          "SMTP",
+          "POP3",
+          "IMAP",
+          "DNS"
+        ],
+        "c": 0,
+        "s": [
+          "SMTP pushes client->server and server->server."
+        ],
+        "a": "SMTP"
+      },
+      {
+        "q": "Protocol that downloads-and-deletes:",
+        "opts": [
+          "POP3",
+          "IMAP",
+          "SMTP",
+          "SNMP"
+        ],
+        "c": 0,
+        "s": [
+          "Post-office model: collect, box empties."
+        ],
+        "a": "POP3"
+      },
+      {
+        "q": "Protocol for multi-device server-side sync:",
+        "opts": [
+          "IMAP",
+          "POP3",
+          "SMTP",
+          "FTP"
+        ],
+        "c": 0,
+        "s": [
+          "Folders stay on the server."
+        ],
+        "a": "IMAP"
+      },
+      {
+        "q": "Secure SMTP submission port:",
+        "opts": [
+          "587",
+          "25",
+          "110",
+          "143"
+        ],
+        "c": 0,
+        "s": [
+          "587 + STARTTLS = client submission."
+        ],
+        "a": "587"
+      },
+      {
+        "q": "IMAPS port:",
+        "opts": [
+          "993",
+          "995",
+          "465",
+          "443"
+        ],
+        "c": 0,
+        "s": [
+          "993 = TLS-wrapped IMAP."
+        ],
+        "a": "993"
+      },
+      {
+        "q": "POP3S port:",
+        "opts": [
+          "995",
+          "993",
+          "110",
+          "465"
+        ],
+        "c": 0,
+        "s": [
+          "995 = TLS-wrapped POP3."
+        ],
+        "a": "995"
+      },
+      {
+        "q": "Which protocol can NEVER retrieve mail?",
+        "opts": [
+          "SMTP",
+          "IMAP",
+          "POP3",
+          "All retrieve"
+        ],
+        "c": 0,
+        "s": [
+          "SMTP only sends/relays."
+        ],
+        "a": "SMTP"
+      },
+      {
+        "q": "Mail arrives on the server but the phone never sees it (IMAP configured). First check:",
+        "opts": [
+          "IMAP sync/fetch settings",
+          "SMTP relay",
+          "DNS zone",
+          "Cable"
+        ],
+        "c": 0,
+        "s": [
+          "Retrieval path = IMAP settings."
+        ],
+        "a": "IMAP sync settings"
+      },
+      {
+        "q": "Which pair retrieves mail?",
+        "opts": [
+          "POP3 and IMAP",
+          "SMTP and POP3",
+          "SMTP and IMAP",
+          "SMTP and DNS"
+        ],
+        "c": 0,
+        "s": [
+          "The two pull protocols."
+        ],
+        "a": "POP3 and IMAP"
+      },
+      {
+        "q": "Sending from a mail CLIENT to the company server uses:",
+        "opts": [
+          "SMTP",
+          "POP3",
+          "IMAP",
+          "ICMP"
+        ],
+        "c": 0,
+        "s": [
+          "Client submission = SMTP (587/25)."
+        ],
+        "a": "SMTP"
+      }
+    ],
+    "http-vs-https": [
+      {
+        "q": "HTTPS = HTTP + ___:",
+        "opts": [
+          "TLS",
+          "FTP",
+          "SMTP",
+          "UDP"
+        ],
+        "c": 0,
+        "s": [
+          "TLS wraps and encrypts HTTP on 443."
+        ],
+        "a": "TLS"
+      },
+      {
+        "q": "Plain HTTP port:",
+        "opts": [
+          "80",
+          "443",
+          "8080",
+          "22"
+        ],
+        "c": 0,
+        "s": [
+          "80 - plaintext."
+        ],
+        "a": "80"
+      },
+      {
+        "q": "The browser trusts a site's certificate because it is:",
+        "opts": [
+          "CA-signed",
+          "Self-written",
+          "MAC-based",
+          "Port-based"
+        ],
+        "c": 0,
+        "s": [
+          "Certificate chain to a trusted Certificate Authority."
+        ],
+        "a": "CA-signed"
+      },
+      {
+        "q": "Which HTTP method fetches a page?",
+        "opts": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "c": 0,
+        "s": [
+          "GET retrieves; POST submits."
+        ],
+        "a": "GET"
+      },
+      {
+        "q": "Status 404 means:",
+        "opts": [
+          "Not Found",
+          "OK",
+          "Server error",
+          "Redirect"
+        ],
+        "c": 0,
+        "s": [
+          "404 = resource missing."
+        ],
+        "a": "Not Found"
+      },
+      {
+        "q": "Status 500 means:",
+        "opts": [
+          "Server error",
+          "OK",
+          "Not found",
+          "Redirect"
+        ],
+        "c": 0,
+        "s": [
+          "5xx = server-side failure."
+        ],
+        "a": "Server error"
+      },
+      {
+        "q": "Status 301 means:",
+        "opts": [
+          "Moved permanently (redirect)",
+          "OK",
+          "Not found",
+          "Unauthorised"
+        ],
+        "c": 0,
+        "s": [
+          "3xx = redirection family."
+        ],
+        "a": "Moved permanently"
+      },
+      {
+        "q": "Which is TRUE of HTTP?",
+        "opts": [
+          "Plaintext - readable on the path",
+          "Encrypted by default",
+          "Compressed by law",
+          "Wireless only"
+        ],
+        "c": 0,
+        "s": [
+          "No TLS = anyone in the middle reads it."
+        ],
+        "a": "Plaintext"
+      },
+      {
+        "q": "HTTPS authenticates:",
+        "opts": [
+          "The server to the browser",
+          "The browser to the server",
+          "Both passwords",
+          "The ISP"
+        ],
+        "c": 0,
+        "s": [
+          "Certificate proves server identity; user login is separate."
+        ],
+        "a": "The server to the browser"
+      },
+      {
+        "q": "HTTP method to upload/replace a resource:",
+        "opts": [
+          "PUT",
+          "GET",
+          "HEAD",
+          "OPTIONS"
+        ],
+        "c": 0,
+        "s": [
+          "PUT stores the body at the URL."
+        ],
+        "a": "PUT"
+      }
+    ],
+    "three-way-handshake": [
+      {
+        "q": "First message of a TCP connection:",
+        "opts": [
+          "SYN",
+          "SYN-ACK",
+          "ACK",
+          "FIN"
+        ],
+        "c": 0,
+        "s": [
+          "Client SYN opens the conversation."
+        ],
+        "a": "SYN"
+      },
+      {
+        "q": "Second message comes from the:",
+        "opts": [
+          "Server (SYN-ACK)",
+          "Client (ACK)",
+          "Router",
+          "DNS"
+        ],
+        "c": 0,
+        "s": [
+          "Server answers SYN with SYN-ACK."
+        ],
+        "a": "Server (SYN-ACK)"
+      },
+      {
+        "q": "Third message:",
+        "opts": [
+          "Client ACK",
+          "Server SYN",
+          "FIN",
+          "RST"
+        ],
+        "c": 0,
+        "s": [
+          "Client ACK completes the handshake."
+        ],
+        "a": "Client ACK"
+      },
+      {
+        "q": "Graceful TCP teardown uses:",
+        "opts": [
+          "FIN/ACK exchanges",
+          "RST only",
+          "Nothing",
+          "SYN again"
+        ],
+        "c": 0,
+        "s": [
+          "FIN from each side, ACKed."
+        ],
+        "a": "FIN/ACK exchanges"
+      },
+      {
+        "q": "'Connection-oriented' means:",
+        "opts": [
+          "A session is established before data",
+          "No setup needed",
+          "Broadcast only",
+          "Wireless only"
+        ],
+        "c": 0,
+        "s": [
+          "Handshake first, data after."
+        ],
+        "a": "A session is established before data"
+      },
+      {
+        "q": "TCP ordering is maintained by:",
+        "opts": [
+          "Sequence numbers",
+          "Port numbers",
+          "MAC addresses",
+          "TTL"
+        ],
+        "c": 0,
+        "s": [
+          "Bytes are numbered; receiver reorders."
+        ],
+        "a": "Sequence numbers"
+      },
+      {
+        "q": "A half-open SYN flood exhausts:",
+        "opts": [
+          "The server's pending-connection table",
+          "Client RAM",
+          "DNS cache",
+          "The mask"
+        ],
+        "c": 0,
+        "s": [
+          "Thousands of uncompleted SYNs queue forever."
+        ],
+        "a": "The server's pending-connection table"
+      },
+      {
+        "q": "Which protocol does NOT use the handshake?",
+        "opts": [
+          "UDP",
+          "TCP",
+          "HTTPS",
+          "SSH transport"
+        ],
+        "c": 0,
+        "s": [
+          "UDP is connectionless."
+        ],
+        "a": "UDP"
+      },
+      {
+        "q": "RST packet means:",
+        "opts": [
+          "Abort the connection immediately",
+          "Start a connection",
+          "Sync sequence",
+          "Slow down"
+        ],
+        "c": 0,
+        "s": [
+          "Reset = hard abort."
+        ],
+        "a": "Abort the connection immediately"
+      },
+      {
+        "q": "Acknowledgements enable:",
+        "opts": [
+          "Retransmission of lost segments",
+          "Encryption",
+          "Name resolution",
+          "Routing"
+        ],
+        "c": 0,
+        "s": [
+          "Missing ACKs trigger resend."
+        ],
+        "a": "Retransmission of lost segments"
+      }
+    ],
+    "support-protocols-table": [
+      {
+        "q": "DORA order:",
+        "opts": [
+          "Discover, Offer, Request, Ack",
+          "Demand, Open, Relay, Accept",
+          "Detect, Offer, Renew, Assign",
+          "Domain, Option, Route, Address"
+        ],
+        "c": 0,
+        "s": [
+          "The DHCP lease dance spells DORA."
+        ],
+        "a": "Discover, Offer, Request, Ack"
+      },
+      {
+        "q": "'Who has this IP?' is asked by:",
+        "opts": [
+          "ARP",
+          "DNS",
+          "DHCP",
+          "ICMP"
+        ],
+        "c": 0,
+        "s": [
+          "ARP broadcast resolves IP->MAC on the LAN."
+        ],
+        "a": "ARP"
+      },
+      {
+        "q": "ping's protocol:",
+        "opts": [
+          "ICMP",
+          "UDP",
+          "TCP",
+          "SNMP"
+        ],
+        "c": 0,
+        "s": [
+          "Echo request/reply = ICMP."
+        ],
+        "a": "ICMP"
+      },
+      {
+        "q": "Name-to-IP resolution:",
+        "opts": [
+          "DNS",
+          "DHCP",
+          "ARP",
+          "SNMP"
+        ],
+        "c": 0,
+        "s": [
+          "The phonebook protocol."
+        ],
+        "a": "DNS"
+      },
+      {
+        "q": "Device monitoring/management protocol:",
+        "opts": [
+          "SNMP",
+          "SMTP",
+          "FTP",
+          "Telnet"
+        ],
+        "c": 0,
+        "s": [
+          "UDP 161 - polling and traps."
+        ],
+        "a": "SNMP"
+      },
+      {
+        "q": "DNS zone transfers ride:",
+        "opts": [
+          "TCP 53",
+          "UDP 53",
+          "UDP 69",
+          "ICMP"
+        ],
+        "c": 0,
+        "s": [
+          "Reliability for big serial transfers."
+        ],
+        "a": "TCP 53"
+      },
+      {
+        "q": "DHCP messages are initially:",
+        "opts": [
+          "Broadcast",
+          "Unicast to the server",
+          "Multicast",
+          "Encrypted"
+        ],
+        "c": 0,
+        "s": [
+          "The client doesn't know a server yet - broadcast."
+        ],
+        "a": "Broadcast"
+      },
+      {
+        "q": "TTL exceeded errors arrive via:",
+        "opts": [
+          "ICMP",
+          "TCP",
+          "POP3",
+          "ARP"
+        ],
+        "c": 0,
+        "s": [
+          "ICMP type 11 - traceroute builds on it."
+        ],
+        "a": "ICMP"
+      },
+      {
+        "q": "Which maps IP to MAC?",
+        "opts": [
+          "ARP",
+          "RARP is reverse; ARP is IP->MAC",
+          "DNS",
+          "DHCP"
+        ],
+        "c": 0,
+        "s": [
+          "Address Resolution Protocol."
+        ],
+        "a": "ARP"
+      },
+      {
+        "q": "Traceroute builds its hop list using:",
+        "opts": [
+          "ICMP TTL-exceeded messages",
+          "SMTP relays",
+          "DNS records",
+          "FTP channels"
+        ],
+        "c": 0,
+        "s": [
+          "Incrementing TTL forces ICMP replies at each hop."
+        ],
+        "a": "ICMP TTL-exceeded messages"
+      }
+    ],
+    "port-mastery": [
+      {
+        "q": "Port 443:",
+        "opts": [
+          "HTTPS",
+          "HTTP",
+          "SSH",
+          "SMTP"
+        ],
+        "c": 0,
+        "s": [
+          "TLS-wrapped web."
+        ],
+        "a": "HTTPS"
+      },
+      {
+        "q": "Port 22:",
+        "opts": [
+          "SSH",
+          "Telnet",
+          "SMTP",
+          "DNS"
+        ],
+        "c": 0,
+        "s": [
+          "Secure shell."
+        ],
+        "a": "SSH"
+      },
+      {
+        "q": "Port 53:",
+        "opts": [
+          "DNS",
+          "DHCP",
+          "HTTP",
+          "POP3"
+        ],
+        "c": 0,
+        "s": [
+          "Name resolution."
+        ],
+        "a": "DNS"
+      },
+      {
+        "q": "Port 25:",
+        "opts": [
+          "SMTP",
+          "POP3",
+          "IMAP",
+          "SNMP"
+        ],
+        "c": 0,
+        "s": [
+          "Mail transfer."
+        ],
+        "a": "SMTP"
+      },
+      {
+        "q": "Port 110:",
+        "opts": [
+          "POP3",
+          "IMAP",
+          "SMTP",
+          "HTTP"
+        ],
+        "c": 0,
+        "s": [
+          "Post Office Protocol v3."
+        ],
+        "a": "POP3"
+      },
+      {
+        "q": "Port 143:",
+        "opts": [
+          "IMAP",
+          "POP3",
+          "SMTP",
+          "FTP"
+        ],
+        "c": 0,
+        "s": [
+          "Internet Message Access Protocol."
+        ],
+        "a": "IMAP"
+      },
+      {
+        "q": "Port 21:",
+        "opts": [
+          "FTP control",
+          "FTP data",
+          "SSH",
+          "TFTP"
+        ],
+        "c": 0,
+        "s": [
+          "Commands ride 21; data rides 20."
+        ],
+        "a": "FTP control"
+      },
+      {
+        "q": "Port 69:",
+        "opts": [
+          "TFTP (UDP)",
+          "HTTP alt",
+          "SMTPS",
+          "SNMP"
+        ],
+        "c": 0,
+        "s": [
+          "Trivial FTP - UDP, no auth."
+        ],
+        "a": "TFTP (UDP)"
+      },
+      {
+        "q": "Port 23:",
+        "opts": [
+          "Telnet (insecure)",
+          "SSH",
+          "Mail",
+          "DNS"
+        ],
+        "c": 0,
+        "s": [
+          "Plaintext terminal - replaced by 22."
+        ],
+        "a": "Telnet (insecure)"
+      },
+      {
+        "q": "Port 20:",
+        "opts": [
+          "FTP data",
+          "FTP control",
+          "SSH",
+          "HTTPS"
+        ],
+        "c": 0,
+        "s": [
+          "The file bytes themselves."
+        ],
+        "a": "FTP data"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "id": 1,
+      "q": "TCP is best described as:",
+      "opts": [
+        "Connectionless and fast",
+        "Connection-oriented and reliable",
+        "A mail protocol",
+        "A routing protocol"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "tcp-udp",
+      "exp": [
+        "TCP opens sessions (3-way handshake), orders bytes and retransmits losses - reliable at a cost."
+      ]
+    },
+    {
+      "id": 2,
+      "q": "UDP is best described as:",
+      "opts": [
+        "Connection-oriented",
+        "Connectionless with no delivery guarantee",
+        "Encrypted by default",
+        "Reliable but slow"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "tcp-udp",
+      "exp": [
+        "UDP fires datagrams without handshake or retry - fast, minimal overhead."
+      ]
+    },
+    {
+      "id": 3,
+      "q": "The TCP three-way handshake sequence is:",
+      "opts": [
+        "ACK, SYN, SYN-ACK",
+        "SYN, SYN-ACK, ACK",
+        "SYN, ACK, FIN",
+        "HELLO, OK, GO"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "tcp-udp",
+      "exp": [
+        "Client SYN -> server SYN-ACK -> client ACK opens the session."
+      ]
+    },
+    {
+      "id": 4,
+      "q": "Which port does HTTP use?",
+      "opts": [
+        "21",
+        "25",
+        "80",
+        "443"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "HTTP = 80; HTTPS = 443."
+      ]
+    },
+    {
+      "id": 5,
+      "q": "Which port does HTTPS use?",
+      "opts": [
+        "80",
+        "443",
+        "8080",
+        "22"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "HTTPS = HTTP over TLS on 443."
+      ]
+    },
+    {
+      "id": 6,
+      "q": "SMTP uses port:",
+      "opts": [
+        "25",
+        "110",
+        "143",
+        "53"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "SMTP sends/relays mail on 25."
+      ]
+    },
+    {
+      "id": 7,
+      "q": "POP3 retrieves mail on port:",
+      "opts": [
+        "143",
+        "110",
+        "25",
+        "993"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "POP3 = 110; IMAP = 143; IMAPS = 993."
+      ]
+    },
+    {
+      "id": 8,
+      "q": "Which protocol SENDS email?",
+      "opts": [
+        "POP3",
+        "IMAP",
+        "SMTP",
+        "SNMP"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "mail",
+      "exp": [
+        "SMTP = Simple Mail TRANSFER Protocol - the only sender of the three."
+      ]
+    },
+    {
+      "id": 9,
+      "q": "Which retrieval protocol keeps mail on the SERVER and syncs across devices?",
+      "opts": [
+        "POP3",
+        "IMAP",
+        "SMTP",
+        "FTP"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "mail",
+      "exp": [
+        "IMAP = server-side folders synchronised everywhere.",
+        "POP3 downloads and typically deletes."
+      ]
+    },
+    {
+      "id": 10,
+      "q": "DNS resolves:",
+      "opts": [
+        "IP addresses to MACs",
+        "Domain names to IP addresses",
+        "Ports to processes",
+        "Domains to owners"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "support",
+      "exp": [
+        "DNS = the Internet's phonebook: name -> IP."
+      ]
+    },
+    {
+      "id": 11,
+      "q": "DNS queries normally ride:",
+      "opts": [
+        "TCP 53",
+        "UDP 53",
+        "ICMP",
+        "SMTP"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "Queries = UDP 53; zone transfers flip to TCP 53."
+      ]
+    },
+    {
+      "id": 12,
+      "q": "DHCP assigns:",
+      "opts": [
+        "Domain names",
+        "IP addresses automatically",
+        "MAC addresses",
+        "Passwords"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "support",
+      "exp": [
+        "Dynamic Host Configuration Protocol leases IP config to hosts."
+      ]
+    },
+    {
+      "id": 13,
+      "q": "The ping utility uses which protocol?",
+      "opts": [
+        "TCP",
+        "UDP",
+        "ICMP",
+        "ARP"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "support",
+      "exp": [
+        "Echo request/reply = ICMP - neither TCP nor UDP."
+      ],
+      "shortcut": "ping -> ICMP. Always."
+    },
+    {
+      "id": 14,
+      "q": "ARP maps:",
+      "opts": [
+        "IP to MAC",
+        "MAC to IP",
+        "Names to IP",
+        "Ports to PIDs"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "support",
+      "exp": [
+        "'Who has this IP?' -> MAC answer - local link only."
+      ]
+    },
+    {
+      "id": 15,
+      "q": "FTP's CONTROL channel uses port:",
+      "opts": [
+        "20",
+        "21",
+        "22",
+        "69"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "21 = control, 20 = data - the two-channel design."
+      ]
+    },
+    {
+      "id": 16,
+      "q": "Which is the SECURE replacement for Telnet?",
+      "opts": [
+        "FTP",
+        "SSH",
+        "HTTP",
+        "SNMP"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "Telnet 23 is plaintext; SSH 22 encrypts the whole session."
+      ]
+    },
+    {
+      "id": 17,
+      "q": "Telnet uses port:",
+      "opts": [
+        "22",
+        "23",
+        "25",
+        "21"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "Telnet = 23; SSH = 22."
+      ]
+    },
+    {
+      "id": 18,
+      "q": "TFTP differs from FTP because it:",
+      "opts": [
+        "Uses TCP with encryption",
+        "Is trivial, connectionless (UDP) and unauthenticated",
+        "Is faster than light",
+        "Compresses files"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "TFTP = Trivial FTP on UDP 69 - no auth, minimal features, LAN bootstrap use."
+      ]
+    },
+    {
+      "id": 19,
+      "q": "HTTPS provides:",
+      "opts": [
+        "Encryption only",
+        "Encryption, integrity and server authentication",
+        "Faster downloads",
+        "Free domains"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "web",
+      "exp": [
+        "TLS wraps HTTP with confidentiality, integrity and certificate-based server identity."
+      ]
+    },
+    {
+      "id": 20,
+      "q": "Well-known ports occupy the range:",
+      "opts": [
+        "0-1023",
+        "1024-49151",
+        "49152-65535",
+        "1-100"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "0-1023 well-known; 1024+ ephemeral/registered."
+      ]
+    },
+    {
+      "id": 21,
+      "q": "SNMP (port 161) is used for:",
+      "opts": [
+        "Sending mail",
+        "Monitoring/managing network devices",
+        "Resolving names",
+        "File transfer"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "support",
+      "exp": [
+        "Simple Network Management Protocol - device monitoring/management."
+      ]
+    },
+    {
+      "id": 22,
+      "q": "An IP address finds a machine; a PORT finds:",
+      "opts": [
+        "The building",
+        "The program/service on that machine",
+        "The user",
+        "The country"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ports",
+      "exp": [
+        "IP -> host, port -> application on that host - one machine runs many services."
+      ]
+    },
+    {
+      "id": 23,
+      "q": "Which application naturally uses UDP?",
+      "opts": [
+        "Banking transfer page",
+        "Live video streaming",
+        "Email sending",
+        "File download"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "tcp-udp",
+      "exp": [
+        "Realtime media prefers UDP speed; retransmitting stale frames is pointless."
+      ]
+    },
+    {
+      "id": 24,
+      "q": "Which application naturally uses TCP?",
+      "opts": [
+        "DNS query",
+        "Online shooter game",
+        "Downloading an invoice PDF",
+        "Live voice call"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "tcp-udp",
+      "exp": [
+        "Files must arrive complete and ordered -> TCP.",
+        "DNS/gaming/voice favour UDP."
+      ]
+    },
+    {
+      "id": 25,
+      "q": "DHCP's DORA sequence stands for:",
+      "opts": [
+        "Discover, Offer, Request, Acknowledge",
+        "Detect, Open, Reserve, Assign",
+        "Domain, Option, Route, Address",
+        "Deliver, Offer, Renew, Accept"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "support",
+      "exp": [
+        "DORA: client Discover broadcast, server Offer, client Request, server Acknowledge - the lease is live."
+      ]
+    },
+    {
+      "id": 26,
+      "q": "DNS zone transfers between servers use:",
+      "opts": [
+        "UDP 53",
+        "TCP 53",
+        "ICMP",
+        "UDP 69"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "ports",
+      "exp": [
+        "Big/serial transfers need TCP reliability; queries stay on UDP 53."
+      ]
+    },
+    {
+      "id": 27,
+      "q": "Which FTP port carries the DATA channel?",
+      "opts": [
+        "21",
+        "20",
+        "22",
+        "80"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "ports",
+      "exp": [
+        "21 = control commands; 20 = actual file data."
+      ]
+    },
+    {
+      "id": 28,
+      "q": "SFTP secures file transfer by:",
+      "opts": [
+        "Running over SSH (port 22)",
+        "Using UDP 69",
+        "Disabling passwords",
+        "Compressing twice"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "web",
+      "exp": [
+        "SFTP = SSH File Transfer Protocol - everything inside the encrypted SSH session."
+      ]
+    },
+    {
+      "id": 29,
+      "q": "IMAP's secure port (IMAPS) is:",
+      "opts": [
+        "993",
+        "995",
+        "587",
+        "443"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "ports",
+      "exp": [
+        "IMAPS 993; POP3S 995; SMTPS 465/587."
+      ]
+    },
+    {
+      "id": 30,
+      "q": "Which is TRUE about POP3's default behaviour?",
+      "opts": [
+        "It syncs folders across devices",
+        "It downloads messages and typically deletes the server copy",
+        "It sends mail",
+        "It resolves names"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "mail",
+      "exp": [
+        "Post-Office model: collect the letter, box empties - one-device protocol."
+      ]
+    },
+    {
+      "id": 31,
+      "q": "An extended ACL line 'permit tcp any host 1.1.1.1 eq smtp' filters on:",
+      "opts": [
+        "MAC address only",
+        "Destination port 25 traffic to that host",
+        "All UDP to the host",
+        "Only ping packets"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "ports",
+      "source": "Accenture AXIS PYQ pattern",
+      "exp": [
+        "'eq smtp' = destination port 25 - protocol + port filtering is what makes extended ACLs 'extended'."
+      ]
+    },
+    {
+      "id": 32,
+      "q": "Which HTTP status code means 'Not Found'?",
+      "opts": [
+        "200",
+        "301",
+        "404",
+        "500"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "web",
+      "exp": [
+        "200 OK; 301 redirect; 404 missing; 500 server error."
+      ]
+    },
+    {
+      "id": 33,
+      "q": "Which HTTP method SUBMITS form data?",
+      "opts": [
+        "GET",
+        "POST",
+        "DELETE",
+        "TRACE"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "web",
+      "exp": [
+        "POST carries data in the request body; GET exposes parameters in the URL."
+      ]
+    },
+    {
+      "id": 34,
+      "q": "During the TLS handshake, the browser verifies the server using:",
+      "opts": [
+        "A CA-signed certificate",
+        "The server's MAC address",
+        "A DNS record",
+        "The port number"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "web",
+      "exp": [
+        "Certificate chain up to a trusted Certificate Authority authenticates the site."
+      ]
+    },
+    {
+      "id": 35,
+      "q": "Which pair BOTH normally ride UDP?",
+      "opts": [
+        "HTTP and FTP",
+        "DNS queries and DHCP",
+        "SMTP and POP3",
+        "HTTPS and SSH"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "tcp-udp",
+      "exp": [
+        "DNS queries (53) and DHCP both use UDP.",
+        "The rest are TCP family."
+      ]
+    },
+    {
+      "id": 36,
+      "q": "TCP guarantees:",
+      "opts": [
+        "Ordered, complete delivery or an error",
+        "Delivery under all circumstances",
+        "Minimum bandwidth",
+        "Encryption"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "tcp-udp",
+      "exp": [
+        "Retransmission recovers loss; if the connection dies, TCP reports failure - it never silently drops."
+      ]
+    },
+    {
+      "id": 37,
+      "q": "Which port pair is correct?",
+      "opts": [
+        "SSH 23 / Telnet 22",
+        "SSH 22 / Telnet 23",
+        "SSH 21 / Telnet 25",
+        "SSH 443 / Telnet 80"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "ports",
+      "exp": [
+        "22 secure, 23 insecure - adjacent and frequently swapped in options."
+      ]
+    },
+    {
+      "id": 38,
+      "q": "A firewall blocks port 25 outbound from PCs. Which activity breaks?",
+      "opts": [
+        "Web browsing",
+        "Direct mail sending to external SMTP servers",
+        "DNS lookups",
+        "SSH sessions"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "ports",
+      "exp": [
+        "Port 25 = SMTP - blocking it stops PCs sending mail directly (a spam-control measure)."
+      ]
+    },
+    {
+      "id": 39,
+      "q": "RDP (Remote Desktop Protocol) listens on:",
+      "opts": [
+        "3389",
+        "161",
+        "69",
+        "143"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "ports",
+      "exp": [
+        "RDP = 3389 - Windows remote desktop."
+      ]
+    },
+    {
+      "id": 40,
+      "q": "Which statement about ports 0-1023 is TRUE?",
+      "opts": [
+        "Reserved as 'well-known' for standard services",
+        "Random client ports",
+        "Only for UDP",
+        "Deprecated"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "ports",
+      "exp": [
+        "Well-known range binds the famous services; clients use ephemeral ports above 1023."
+      ]
+    },
+    {
+      "id": 41,
+      "q": "Which protocol would a network MANAGEMENT console use?",
+      "opts": [
+        "SNMP",
+        "SMTP",
+        "POP3",
+        "TFTP"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "support",
+      "exp": [
+        "Simple Network Management Protocol polls device health on UDP 161."
+      ]
+    },
+    {
+      "id": 42,
+      "q": "IMAPS (993) differs from IMAP (143) by:",
+      "opts": [
+        "Wrapping the session in TLS",
+        "Using UDP",
+        "Removing folders",
+        "Faster speed"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "ports",
+      "exp": [
+        "The S = TLS-wrapped session - same protocol semantics, encrypted transport."
+      ]
+    },
+    {
+      "id": 43,
+      "q": "Which is the correct mail-flow order?",
+      "opts": [
+        "SMTP client->server, SMTP server->server, IMAP/POP3 retrieval",
+        "POP3 sends, SMTP retrieves",
+        "IMAP relays between servers",
+        "DNS delivers attachments"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "mail",
+      "exp": [
+        "Push via SMTP twice, then pull via IMAP/POP3 - attachments ride inside the mail protocol."
+      ]
+    },
+    {
+      "id": 44,
+      "q": "Which is a connectionless transport?",
+      "opts": [
+        "TCP",
+        "UDP",
+        "Both",
+        "Neither"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "tcp-udp",
+      "exp": [
+        "UDP sends datagrams without any session setup."
+      ]
+    },
+    {
+      "id": 45,
+      "q": "A user can reach a site by IP but not by name. Which service failed?",
+      "opts": [
+        "DHCP",
+        "DNS",
+        "SMTP",
+        "DHCP again"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "support",
+      "exp": [
+        "Name->IP resolution broken = DNS problem; connectivity itself is fine."
+      ]
+    },
+    {
+      "id": 46,
+      "q": "Which protocol reports 'destination unreachable' errors?",
+      "opts": [
+        "ICMP",
+        "ARP",
+        "SNMP",
+        "TCP"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "support",
+      "exp": [
+        "ICMP carries control/error messages - type 3 is destination unreachable."
+      ]
+    },
+    {
+      "id": 47,
+      "q": "HTTPS runs over which transport by default?",
+      "opts": [
+        "TCP 443",
+        "UDP 443",
+        "ICMP 443",
+        "UDP 80"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "ports",
+      "exp": [
+        "TLS needs TCP's reliability - HTTPS = TCP 443 (QUIC/HTTP3 over UDP is the modern exception)."
+      ]
+    },
+    {
+      "id": 48,
+      "q": "Which port does SMTPS commonly use for submission?",
+      "opts": [
+        "587",
+        "110",
+        "53",
+        "161"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "ports",
+      "exp": [
+        "587 = mail submission with STARTTLS; 465 = implicit TLS; 25 = server-to-server relay."
+      ]
+    },
+    {
+      "id": 49,
+      "q": "A DNS resolver caches a record, then the zone changes. Which mechanism eventually fixes the stale cache?",
+      "opts": [
+        "TTL expiry on the record",
+        "DHCP renewal",
+        "ARP flush",
+        "TCP reset"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "support",
+      "exp": [
+        "Every DNS record carries a Time-To-Live; resolvers drop the cache entry when TTL expires."
+      ]
+    },
+    {
+      "id": 50,
+      "q": "Why does DNS use UDP for queries but TCP for zone transfers?",
+      "opts": [
+        "UDP is more secure",
+        "Queries are small single exchanges; zone transfers are large and need TCP reliability",
+        "UDP is older",
+        "Zones are illegal on UDP"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "support",
+      "exp": [
+        "One small Q&A fits one datagram; multi-record transfers need TCP's ordering and retransmission."
+      ]
+    },
+    {
+      "id": 51,
+      "q": "An attacker floods a server with SYNs but never completes handshakes. This targets:",
+      "opts": [
+        "TCP's connection table (half-open SYN flood)",
+        "UDP's connectionlessness",
+        "DNS caching",
+        "ARP tables"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "tcp-udp",
+      "exp": [
+        "Half-open SYN floods exhaust TCP's pending-connection queue - a classic DoS."
+      ]
+    },
+    {
+      "id": 52,
+      "q": "Which header is SMALLER on the wire?",
+      "opts": [
+        "TCP (20+ bytes)",
+        "UDP (8 bytes)",
+        "Equal",
+        "TCP when encrypted"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "tcp-udp",
+      "exp": [
+        "UDP's 8-byte header vs TCP's 20+ with sequencing/ACK fields - part of UDP's speed."
+      ]
+    },
+    {
+      "id": 53,
+      "q": "A client behind NAT browses two sites simultaneously. The server-side destination ports are both 443, yet replies reach the right browser tab because:",
+      "opts": [
+        "NAT rewrites source ports uniquely per session",
+        "Ports are ignored",
+        "Browsers share one connection",
+        "DNS distinguishes them"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "ports",
+      "exp": [
+        "NAT tracks unique ephemeral SOURCE ports per session - that mapping routes replies correctly."
+      ]
+    },
+    {
+      "id": 54,
+      "q": "Which sequence correctly matches protocol-transport-port?",
+      "opts": [
+        "SMTP-UDP-25, DNS-TCP-53, HTTP-TCP-80",
+        "SMTP-TCP-25, DNS-UDP-53, HTTP-TCP-80",
+        "SMTP-TCP-110, DNS-UDP-25, HTTP-UDP-80",
+        "SMTP-TCP-25, DNS-TCP-53 always, HTTP-UDP-80"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "ports",
+      "exp": [
+        "SMTP rides TCP 25; DNS queries UDP 53 (TCP only for transfers); HTTP TCP 80."
+      ]
+    },
+    {
+      "id": 55,
+      "q": "An admin must allow ONLY secure remote terminal access. Which port stays open?",
+      "opts": [
+        "23",
+        "22",
+        "Both",
+        "21"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "ports",
+      "exp": [
+        "SSH 22 encrypted; Telnet 23 exposes everything in plaintext - close it."
+      ]
+    },
+    {
+      "id": 56,
+      "q": "Which statement about ephemeral ports is TRUE?",
+      "opts": [
+        "Clients pick temporary high ports (1024+) for their side of a connection",
+        "Servers use them permanently",
+        "They are only for UDP",
+        "They are reserved for ICMP"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "ports",
+      "exp": [
+        "Well-known ports bind servers; clients grab ephemeral ports per session."
+      ]
+    },
+    {
+      "id": 57,
+      "q": "A mail client must SEND while the network blocks outbound 25 but allows 587. The fix is:",
+      "opts": [
+        "Use SMTP submission on 587 with STARTTLS",
+        "Switch to POP3",
+        "Use ICMP",
+        "Disable TLS"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "mail",
+      "exp": [
+        "587 is the modern submission port with STARTTLS - exactly why ISPs block 25 for clients."
+      ]
+    },
+    {
+      "id": 58,
+      "q": "Which protocol pair BOTH use two-channel or multi-message designs?",
+      "opts": [
+        "FTP (control+data) and TCP handshake (3 messages)",
+        "DNS and ARP",
+        "SNMP and TFTP",
+        "ICMP and UDP"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "web",
+      "exp": [
+        "FTP splits control/data ports; TCP opens with a 3-message handshake - both are multi-message designs."
+      ]
+    },
+    {
+      "id": 59,
+      "q": "An organisation scans its egress and finds PCs hitting random external servers on port 25. Most likely:",
+      "opts": [
+        "Spam botnet activity",
+        "Normal browsing",
+        "DNS tunnelling",
+        "Video calls"
+      ],
+      "c": 2,
+      "d": "hard",
+      "t": "ports",
+      "exp": [
+        "Mass outbound SMTP from clients is classic spam-bot behaviour - legitimate clients use 587 via their provider."
+      ]
+    },
+    {
+      "id": 60,
+      "q": "Order these by OSI layer, lowest first: ARP, TCP, HTTP, IP.",
+      "opts": [
+        "ARP, IP, TCP, HTTP",
+        "IP, ARP, TCP, HTTP",
+        "TCP, ARP, HTTP, IP",
+        "HTTP, TCP, IP, ARP"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "support",
+      "exp": [
+        "ARP = L2 (link), IP = L3 (network), TCP = L4 (transport), HTTP = L7 (application).",
+        "Layer-ordering questions compress the whole model into one item."
+      ]
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "what-are-protocols"
+    },
+    {
+      "type": "concept",
+      "sectionId": "tcp-vs-udp"
+    },
+    {
+      "type": "concept",
+      "sectionId": "mail-chain"
+    },
+    {
+      "type": "concept",
+      "sectionId": "web-file-protocols"
+    },
+    {
+      "type": "concept",
+      "sectionId": "support-protocols"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}

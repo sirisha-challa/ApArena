@@ -1,0 +1,2427 @@
+{
+  "id": "ip-addressing",
+  "title": "IP Addressing & Subnetting",
+  "icon": "IP",
+  "category": "networking-cloud",
+  "subtitle": "Classes, CIDR masks, network/broadcast math, private ranges & IPv6 - the computational core of the AXIS networking bucket",
+  "days": "3",
+  "color": "#0891B2",
+  "subtopics": [
+    "IPv4 Structure & Binary",
+    "Five Address Classes",
+    "Subnetting & CIDR Math",
+    "Private & Special Addresses",
+    "Usable Hosts & Ranges",
+    "IPv6 Essentials"
+  ],
+  "estimatedHours": 6,
+  "readingSections": [
+    {
+      "id": "intro-ipv4",
+      "title": "What Is an IP Address?",
+      "type": "concept",
+      "quickSummary": "A 32-bit number in four dotted octets (0-255 each) that uniquely identifies a device on an IP network.",
+      "content": [
+        "An IP address is the logical address that identifies a device on a network so packets know where to travel. IPv4 addresses are 32 bits long, written as four decimal octets separated by dots - for example 192.168.1.77. Each octet is 8 bits and ranges from 0 to 255, giving 2^32 = 4,294,967,296 possible addresses.",
+        "Every address has two parts: the NETWORK portion (which street) and the HOST portion (which house). The subnet mask draws the line between them - mask bits are 1 for the network part and 0 for the host part.",
+        "Machines read addresses in BINARY; humans read dotted decimal. The exam asks you to translate between the two, so the place-value row 128-64-32-16-8-4-2-1 must be automatic."
+      ],
+      "subsections": [
+        {
+          "title": "Octet anatomy",
+          "content": "One octet = 8 bits = place values 128 64 32 16 8 4 2 1.\nExample: 240 = 128+64+32+16 = 11110000.\n192 = 128+64 = 11000000. 252 = 128+64+32+16+8+4 = 11111100.\nAll zeros = 0; all ones = 255."
+        },
+        {
+          "title": "Logical vs physical",
+          "content": "IP addresses are LOGICAL - assigned by software (DHCP or an admin) and changeable. MAC addresses are PHYSICAL - burned into the NIC and (normally) permanent. ARP maps IP -> MAC on the local network; that pairing question is a classic MCQ."
+        }
+      ],
+      "quickRevision": [
+        "IPv4 = 32 bits = 4 octets x 8 bits, each 0-255.",
+        "Network portion + host portion; the subnet mask marks the boundary.",
+        "Place values per octet: 128 64 32 16 8 4 2 1.",
+        "IP = logical (assignable); MAC = physical (burned in)."
+      ],
+      "tricks": [
+        "To read any mask octet, add the place values of its 1-bits from the left: 11110000 -> 128+64+32+16 = 240.",
+        "255 = all eight 1s; 0 = all zeros; anything else means a subnetted octet.",
+        "If a question says 'permanent, burned-in address' -> MAC. 'Can be assigned by DHCP' -> IP."
+      ],
+      "patterns": [
+        "'How many bits in an IPv4 address?' - 32.",
+        "'Range of one octet' - 0 to 255.",
+        "'Which address is logical?' - IP."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement networking set",
+          "question": "An IP address is a ___ bit address.",
+          "approach": "IPv4: 32 bits (4 x 8). IPv6: 128 bits."
+        }
+      ],
+      "companyNote": "One or two definition-level IP questions appear in the AXIS networking bucket - free marks from this section alone."
+    },
+    {
+      "id": "ip-classes",
+      "title": "The Five Address Classes",
+      "type": "concept",
+      "quickSummary": "First octet decides the class: A 1-126 (/8), B 128-191 (/16), C 192-223 (/24), D 224-239 (multicast), E 240-255 (experimental).",
+      "content": [
+        "Classful addressing splits the IPv4 space by the FIRST octet. Class A: 1-126, default mask 255.0.0.0 (/8) - 16 million hosts per network, for giants. Class B: 128-191, mask 255.255.0.0 (/16) - 65,534 hosts. Class C: 192-223, mask 255.255.255.0 (/24) - 254 hosts, for small networks.",
+        "Class D (224-239) is reserved for MULTICAST groups - never assigned to hosts. Class E (240-255) is experimental/research - also never for hosts. The missing 127 block is the LOOPBACK network (127.0.0.1 = 'this machine'), and 0.x.x.x is reserved.",
+        "Memory hooks: 1-126 A (127 missing for loopback), 128-191 B, 192-223 C, 224+ D/E. 'A few large, B medium, C many small.'"
+      ],
+      "subsections": [
+        {
+          "title": "The class table",
+          "content": "Class A: first octet 1-126, /8, 255.0.0.0, ~16.7M hosts/network\nClass B: 128-191, /16, 255.255.0.0, 65,534 hosts\nClass C: 192-223, /24, 255.255.255.0, 254 hosts\nClass D: 224-239 - multicast, no mask\nClass E: 240-255 - experimental/reserved"
+        },
+        {
+          "title": "Why 127 is missing from A",
+          "content": "127.0.0.0/8 is the loopback block - traffic sent there never leaves the machine. 127.0.0.1 is 'localhost'. That is why Class A ends at 126, and why 'which address tests your own NIC?' answers 127.0.0.1."
+        }
+      ],
+      "quickRevision": [
+        "A 1-126 (/8) | B 128-191 (/16) | C 192-223 (/24) | D 224-239 multicast | E 240-255 reserved.",
+        "127.x.x.x = loopback (localhost = 127.0.0.1).",
+        "Hosts per network: A ~16.7M, B 65,534, C 254."
+      ],
+      "tricks": [
+        "First-octet boundaries rhyme with powers: 126/127 cut, 128 start of B, 191 end of B (191 = 256-64-1), 192 start of C, 223 end of C.",
+        "224 = multicast (Class D) - the number 224 itself is the giveaway in stems.",
+        "'Which class does 140.x.x.x belong to?' - 140 sits in 128-191 -> B. Just place the first octet on the number line."
+      ],
+      "patterns": [
+        "'Default mask of Class B' - 255.255.0.0.",
+        "'Which class does 192.168.1.1 belong to?' - C (192-223).",
+        "'224.0.0.5 is used for...' - multicast (Class D).",
+        "'Which address tests the local TCP/IP stack?' - 127.0.0.1."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement networking set",
+          "question": "Identify the class of a given IP (e.g., 140.10.2.1).",
+          "approach": "Read the first octet against the number line: 140 -> Class B."
+        }
+      ],
+      "companyNote": "Class identification from the first octet is the single most repeated IP MCQ across placement papers."
+    },
+    {
+      "id": "subnetting-core",
+      "title": "Subnetting: Masks, CIDR & Network Math",
+      "type": "concept",
+      "quickSummary": "/n sets n mask bits; mask octet = 256 - block size; network = floor(ip/block) x block; hosts = 2^h - 2.",
+      "content": [
+        "Subnetting borrows bits from the host portion to create smaller networks. CIDR notation /n says how many 1-bits the mask has: /24 = 24 ones = 255.255.255.0. Every borrowed bit DOUBLES the number of subnets and HALVES each subnet's size.",
+        "Three mechanical steps answer any subnet question. (1) Mask: fill n ones from the left; any partially-filled octet equals 256 minus the block size. (2) Network address: block = 2^(32-n) in the last significant octet; network = floor(my-ip / block) x block. (3) Broadcast = next network minus 1; usable hosts = network+1 through broadcast-1.",
+        "Host count formula: usable hosts = 2^h - 2 where h = 32 - n host bits - subtracting the network address (all host bits 0) and broadcast (all host bits 1)."
+      ],
+      "subsections": [
+        {
+          "title": "Worked example: 172.16.50.172/20",
+          "content": "/20 -> mask 255.255.240.0 (third octet 11110000 = 240).\nBlock in third octet = 256 - 240 = 16 -> boundaries .0, .16, .32, .48, .64 ...\n50 falls between 48 and 64 -> network = 172.16.48.0.\nBroadcast = 172.16.63.255. Usable range = 172.16.48.1 - 172.16.63.254.\nWildcard (for ACLs) = 0.0.15.255 - the inverse of the mask."
+        },
+        {
+          "title": "Common prefixes to memorise",
+          "content": "/8 = 255.0.0.0 (16.7M hosts) | /16 = 255.255.0.0 (65,534)\n/20 = 255.255.240.0 (4,094) | /24 = 255.255.255.0 (254)\n/26 = 255.255.255.192 (62) | /28 = 255.255.255.240 (14) | /30 = 255.255.255.252 (2)"
+        },
+        {
+          "title": "The published PYQ walkthrough",
+          "content": "'Deny the /20 subnet containing 172.16.50.172' -> network 172.16.48.0, wildcard 0.0.15.255 -> access-list 10 deny 172.16.48.0 0.0.15.255. The distractor 172.16.64.0 starts one block too high - floor(50/16) = 48, never 64."
+        }
+      ],
+      "quickRevision": [
+        "/n = n mask ones. Partial octet value = 256 - block.",
+        "Block = 2^(32-n). Network = floor(ip/block) x block. Broadcast = next network - 1.",
+        "Usable hosts = 2^h - 2. Wildcard = inverse mask.",
+        "Memorise: /8 /16 /20 /24 /26 /28 /30."
+      ],
+      "tricks": [
+        "Mask-octet pairs come in sum-256 pairs: 240<->16, 192<->64, 252<->4, 248<->8. Know one, know both.",
+        "For 'which subnet contains X', divide the relevant octet by the block and keep the floor - never round up.",
+        "Hosts formula: subtract 2 ALWAYS (network + broadcast). Options offering 2^h without -2 are the trap.",
+        "/30 = 2 usable hosts - the router-to-router link size; it appears as a 'smallest subnet' answer."
+      ],
+      "patterns": [
+        "'Which subnet does X belong to?' - floor division by the block.",
+        "'How many usable hosts in /n?' - 2^(32-n) - 2.",
+        "'Wildcard mask for the ACL' - inverse of the subnet mask.",
+        "'Broadcast address of X/n' - next network minus one."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Accenture AXIS Technical Assessment (Cisco-style)",
+          "question": "Standard access list denying the /20 subnet of 172.16.50.172?",
+          "approach": "Network 172.16.48.0 with wildcard 0.0.15.255 -> access-list 10 deny 172.16.48.0 0.0.15.255."
+        },
+        {
+          "source": "Accenture AXIS PYQ pattern",
+          "question": "Wildcard/mask conversion for a given CIDR.",
+          "approach": "Mask octet + wildcard octet = 255 in every fully-used octet position; block pairs sum to 256."
+        }
+      ],
+      "companyNote": "Subnet membership + wildcard conversion is THE computational question of the AXIS networking bucket - practise the floor-division method until it takes under 30 seconds."
+    },
+    {
+      "id": "special-addresses",
+      "title": "Private & Special Addresses",
+      "type": "concept",
+      "quickSummary": "RFC 1918 private blocks: 10/8, 172.16/12, 192.168/16 - not routable on the Internet. Plus loopback, APIPA and broadcast/network rules.",
+      "content": [
+        "Three blocks are reserved for PRIVATE networks (RFC 1918) and are never routed on the public Internet: 10.0.0.0/8 (10.0.0.0-10.255.255.255), 172.16.0.0/12 (172.16.0.0-172.31.255.255 - only the 172.16-31 second octet, NOT all of 172.x), and 192.168.0.0/16. Home routers and offices hand these out; NAT translates them to public IPs.",
+        "Special addresses: 127.0.0.1 loopback (test your own stack); 169.254.x.x APIPA - the self-assigned address a Windows machine gives itself when DHCP fails (a favourite MCQ); x.x.x.255 subnet broadcast (delivered to every host in the subnet); x.x.x.0 the network address itself (never assigned to a host).",
+        "Everything else in the IPv4 space is PUBLIC - globally unique, Internet-routable, leased from an ISP/registry. 8.8.8.8 (Google DNS) is public; 192.168.1.1 (typical home router) is private."
+      ],
+      "subsections": [
+        {
+          "title": "The 172 trap",
+          "content": "PRIVATE: 172.16.0.0 through 172.31.255.255 only.\nPUBLIC: 172.0.x.x-172.15.x.x and 172.32.x.x-172.255.x.x.\nMCQs offer 172.32.5.4 as a 'private' distractor - it is PUBLIC (32 > 31)."
+        },
+        {
+          "title": "APIPA - the DHCP failure address",
+          "content": "When a DHCP server cannot be reached, Windows self-assigns 169.254.x.x/16 (Automatic Private IP Addressing). Seeing 169.254 on a machine = DHCP problem. Classic exam question with a one-line answer."
+        }
+      ],
+      "quickRevision": [
+        "Private: 10/8, 172.16/12 (16-31 only), 192.168/16.",
+        "127.0.0.1 loopback; 169.254 APIPA (DHCP failed).",
+        "Host bits all-0 = network address; all-1 = broadcast - neither is assignable to a host.",
+        "NAT translates private -> public for Internet access."
+      ],
+      "tricks": [
+        "The 172 rule: private only when the SECOND octet is 16-31. Write '172.16-31' on your scratch pad.",
+        "169.254 in the stem -> DHCP failure/APIPA - answer without reading the options.",
+        "All-ones host portion -> broadcast; all-zeros -> network. Both unassignable."
+      ],
+      "patterns": [
+        "'Which is a private address?' - check the three blocks; 172.32+ and 172.0-15 are public traps.",
+        "'Machine self-assigned 169.254.20.1 - what does it mean?' - DHCP server unreachable.",
+        "'Which address is not routable on the Internet?' - any RFC 1918 private block."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement networking set",
+          "question": "Which of the following is a private IP address?",
+          "approach": "Test against 10/8, 172.16-31/12, 192.168/16 - reject 172.32+ and 172.0-15 traps."
+        }
+      ],
+      "companyNote": "Private-range identification with 172.x traps appears across TCS/Infosys/Accenture papers alike."
+    },
+    {
+      "id": "ipv6-basics",
+      "title": "IPv6 Essentials",
+      "type": "concept",
+      "quickSummary": "128 bits, eight hex groups colon-separated; '::' compresses ONE run of zero groups; loopback ::1; no broadcast (multicast instead).",
+      "content": [
+        "IPv6 addresses the IPv4 exhaustion problem with 128 bits - about 340 undecillion addresses. Written as EIGHT groups of four hexadecimal digits separated by colons: 2001:0db8:0000:0000:0000:ff00:0042:8329.",
+        "Two compression rules: leading zeros in a group may be dropped (0db8 -> db8, 0042 -> 42), and ONE continuous run of all-zero groups may be replaced by a double colon - so the example becomes 2001:db8::ff00:42:8329. The double colon may appear only ONCE (ambiguity rule).",
+        "Address types: unicast (one), multicast (many), and anycast (nearest of many). There is NO broadcast in IPv6 - its job is done by multicast (the all-nodes group ff02::1). Loopback is ::1 (not 127.0.0.1), and the unspecified address is ::."
+      ],
+      "subsections": [
+        {
+          "title": "Compression worked example",
+          "content": "Full: 2001:0db8:0000:0000:0000:ff00:0042:8329\nDrop leading zeros: 2001:db8:0:0:0:ff00:42:8329\nCompress the zero run once: 2001:db8::ff00:42:8329\nIllegal: 2001::db8::ff00:42:8329 (double colon twice)."
+        },
+        {
+          "title": "Key addresses",
+          "content": "Loopback: ::1 (equivalent of IPv4's 127.0.0.1).\nUnspecified: :: (means 'no address' - never assigned).\nAll-nodes multicast: ff02::1.\nLink-local: fe80::/10 - self-configured per interface.\nGlobal unicast: currently 2000::/3."
+        }
+      ],
+      "quickRevision": [
+        "128 bits, 8 hex groups, colon-separated.",
+        "Drop leading zeros; '::' replaces ONE zero run, used at most once.",
+        "Loopback ::1; no broadcast - multicast ff02::1 instead.",
+        "Link-local fe80::/10."
+      ],
+      "tricks": [
+        "Double-colon questions: the answer is always 'once only' - two double colons is ambiguous and illegal.",
+        "'IPv4's 127.0.0.1 equals which IPv6 address?' - ::1.",
+        "'IPv6 has no broadcast' - it uses multicast instead; that sentence is a ready-made MCQ."
+      ],
+      "patterns": [
+        "'How many bits in IPv6?' - 128.",
+        "'Compress this address' - drop leading zeros, then :: the single zero run.",
+        "'Which IPv6 address is the loopback?' - ::1."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement networking set",
+          "question": "IPv6 address length and notation questions.",
+          "approach": "128 bits, hex/colon, single :: compression, ::1 loopback, no broadcast."
+        }
+      ],
+      "companyNote": "One light IPv6 question (bits, :: rule or loopback) shows up in most networking buckets - three facts cover it."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "octet-binary",
+      "title": "Octet Binary Place Values",
+      "formula": {
+        "latex": "128+64+32+16+8+4+2+1",
+        "text": "Each octet is 8 bits with place values 128 down to 1; sum the 1-bit positions to read the decimal."
+      },
+      "whenToUse": "Converting between dotted decimal and binary, and reading mask octets.",
+      "explanation": [
+        "Write the eight place values, put the bits under them, add where 1.",
+        "240 = 128+64+32+16 = 11110000.",
+        "192 = 128+64 = 11000000; 252 = 11111100; 248 = 11111000.",
+        "All ones = 255; all zeros = 0."
+      ],
+      "example": {
+        "prompt": "Binary of mask octet 240?",
+        "steps": [
+          "240 = 128+64+32+16.",
+          "Bits: 11110000."
+        ],
+        "answer": "11110000"
+      },
+      "memoryTip": "Halves from 128 down to 1.",
+      "commonMistake": "Reversing bit order - the 128 place is always leftmost."
+    },
+    {
+      "id": "class-ranges",
+      "title": "Class Identification Table",
+      "formula": {
+        "latex": "A:1\\text{-}126/8,\\; B:128\\text{-}191/16,\\; C:192\\text{-}223/24,\\; D:224\\text{-}239,\\; E:240\\text{-}255",
+        "text": "Read the FIRST octet: 1-126 A, 128-191 B, 192-223 C, 224-239 D (multicast), 240-255 E."
+      },
+      "whenToUse": "Any 'which class is this IP' question.",
+      "explanation": [
+        "127 is loopback, so A stops at 126.",
+        "Default masks: A /8, B /16, C /24.",
+        "D = multicast groups; E = experimental - neither for hosts.",
+        "Hosts per network: A 16,777,214; B 65,534; C 254."
+      ],
+      "example": {
+        "prompt": "Class of 140.10.2.1?",
+        "steps": [
+          "First octet 140 lies in 128-191.",
+          "Class B."
+        ],
+        "answer": "Class B"
+      },
+      "memoryTip": "126|128, 191|192, 223|224 - the three gates.",
+      "commonMistake": "Calling 127.x Class A loopback 'A range' - it is reserved out of A."
+    },
+    {
+      "id": "cidr-mask",
+      "title": "CIDR to Mask & Wildcard",
+      "formula": {
+        "latex": "/n \\Rightarrow \\text{mask},\\; \\text{wildcard} = 255-\\text{mask per octet}",
+        "text": "/n fills n ones; each mask octet is the sum of its place values; wildcard is the octet-wise inverse."
+      },
+      "whenToUse": "Converting /n to dotted mask, or producing ACL wildcards.",
+      "explanation": [
+        "/20 = 8+8+4 ones -> 255.255.240.0.",
+        "Partial octet = 256 - block: block 16 -> 240.",
+        "Wildcard = inverse: 240 <-> 15, 192 <-> 63, 0 <-> 255.",
+        "Memorise: /8, /16, /20, /24, /26, /28, /30."
+      ],
+      "example": {
+        "prompt": "Mask and wildcard of /26?",
+        "steps": [
+          "26 ones = 24 + 2 -> last octet 11000000 = 192.",
+          "Wildcard = 255-192 = 63 -> 0.0.0.63."
+        ],
+        "answer": "255.255.255.192 / 0.0.0.63"
+      },
+      "memoryTip": "Mask+wildcard pairs sum to 255 (octet) or 256 (block).",
+      "commonMistake": "Writing the wildcard as the mask - they are inverses."
+    },
+    {
+      "id": "hosts-formula",
+      "title": "Usable Hosts & Block Size",
+      "formula": {
+        "latex": "\\text{hosts} = 2^{32-n} - 2,\\quad \\text{block} = 2^{32-n}",
+        "text": "Usable hosts subtract the network and broadcast addresses from the block."
+      },
+      "whenToUse": "Host-count and block-size questions.",
+      "explanation": [
+        "/24: 2^8 - 2 = 254. /16: 65,534. /20: 4,094.",
+        "/26: 2^6 - 2 = 62. /28: 14. /30: 2 (router links).",
+        "Block size in the significant octet = 256 - mask octet: 240 -> 16, 192 -> 64.",
+        "Every borrowed bit doubles subnets and halves block size."
+      ],
+      "example": {
+        "prompt": "Usable hosts in a /26?",
+        "steps": [
+          "h = 32-26 = 6.",
+          "2^6 - 2 = 62."
+        ],
+        "answer": "62"
+      },
+      "memoryTip": "Minus 2, always - network and broadcast live there.",
+      "commonMistake": "Answering 64 for /26 hosts - that is the block size, not usable hosts."
+    },
+    {
+      "id": "network-address",
+      "title": "Network & Broadcast by Floor Division",
+      "formula": {
+        "latex": "\\text{net} = \\lfloor ip/\\text{block} \\rfloor \\times \\text{block};\\; \\text{bcast} = \\text{next net} - 1",
+        "text": "Divide the key octet by the block, keep the floor, multiply back; broadcast is the next network minus one."
+      },
+      "whenToUse": "'Which subnet contains X?' and broadcast-address questions.",
+      "explanation": [
+        "172.16.50.172/20: block 16 in the third octet.",
+        "floor(50/16) = 3 -> 3x16 = 48 -> network 172.16.48.0.",
+        "Next network 172.16.64.0 -> broadcast 172.16.63.255.",
+        "Usable range: network+1 through broadcast-1 (172.16.48.1 - 172.16.63.254)."
+      ],
+      "example": {
+        "prompt": "Subnet of 192.168.1.130/26?",
+        "steps": [
+          "Block 64 in the fourth octet.",
+          "floor(130/64) = 2 -> 128 -> 192.168.1.128.",
+          "Broadcast 192.168.1.191."
+        ],
+        "answer": "192.168.1.128/26"
+      },
+      "memoryTip": "Floor, multiply, next-minus-one.",
+      "commonMistake": "Rounding 50/16 up to 64 - floor only."
+    },
+    {
+      "id": "private-ranges",
+      "title": "RFC 1918 & Special Address Table",
+      "formula": {
+        "latex": "10/8,\\; 172.16/12,\\; 192.168/16",
+        "text": "Private blocks 10.x, 172.16-31.x, 192.168.x; loopback 127.0.0.1; APIPA 169.254/16."
+      },
+      "whenToUse": "Private/public identification and special-address questions.",
+      "explanation": [
+        "10.0.0.0-10.255.255.255 private.",
+        "172.16.0.0-172.31.255.255 private - second octet 16-31 ONLY.",
+        "192.168.0.0-192.168.255.255 private.",
+        "127.0.0.1 loopback; 169.254.x.x APIPA (DHCP failed); host-bits-all-1 = broadcast; all-0 = network."
+      ],
+      "example": {
+        "prompt": "Is 172.32.5.4 private?",
+        "steps": [
+          "Second octet 32 > 31.",
+          "Outside 172.16-31 -> public."
+        ],
+        "answer": "No - public"
+      },
+      "memoryTip": "172.16-31: write the range, test the second octet.",
+      "commonMistake": "Treating all of 172.x as private - only 16-31 is."
+    }
+  ],
+  "practiceProblems": {
+    "octet-binary": [
+      {
+        "q": "Binary of 192?",
+        "opts": [
+          "11000000",
+          "10101010",
+          "11110000",
+          "10000000"
+        ],
+        "c": 0,
+        "s": [
+          "128+64 = 192 -> 11000000."
+        ],
+        "a": "11000000"
+      },
+      {
+        "q": "Binary of 240?",
+        "opts": [
+          "11110000",
+          "11000000",
+          "11101110",
+          "10000000"
+        ],
+        "c": 0,
+        "s": [
+          "128+64+32+16 = 240."
+        ],
+        "a": "11110000"
+      },
+      {
+        "q": "Binary of 252?",
+        "opts": [
+          "11111100",
+          "11110000",
+          "11000000",
+          "11101111"
+        ],
+        "c": 0,
+        "s": [
+          "252 = 128+64+32+16+8+4."
+        ],
+        "a": "11111100"
+      },
+      {
+        "q": "Decimal of 11111111?",
+        "opts": [
+          "128",
+          "255",
+          "256",
+          "127"
+        ],
+        "c": 1,
+        "s": [
+          "All 8 place values sum: 255."
+        ],
+        "a": "255"
+      },
+      {
+        "q": "Decimal of 10000000?",
+        "opts": [
+          "64",
+          "128",
+          "192",
+          "16"
+        ],
+        "c": 1,
+        "s": [
+          "Only the 128 place set."
+        ],
+        "a": "128"
+      },
+      {
+        "q": "Decimal of 11000000?",
+        "opts": [
+          "128",
+          "192",
+          "224",
+          "160"
+        ],
+        "c": 1,
+        "s": [
+          "128+64 = 192."
+        ],
+        "a": "192"
+      },
+      {
+        "q": "How many bits per octet?",
+        "opts": [
+          "4",
+          "8",
+          "16",
+          "32"
+        ],
+        "c": 1,
+        "s": [
+          "8 bits, 0-255 each."
+        ],
+        "a": "8"
+      },
+      {
+        "q": "Total bits in an IPv4 address?",
+        "opts": [
+          "8",
+          "16",
+          "32",
+          "64"
+        ],
+        "c": 2,
+        "s": [
+          "4 octets x 8 = 32 bits."
+        ],
+        "a": "32"
+      },
+      {
+        "q": "Mask octet with block size 16 is:",
+        "opts": [
+          "240",
+          "224",
+          "248",
+          "192"
+        ],
+        "c": 0,
+        "s": [
+          "256 - 16 = 240."
+        ],
+        "a": "240"
+      },
+      {
+        "q": "Mask octet with block size 64 is:",
+        "opts": [
+          "192",
+          "240",
+          "224",
+          "128"
+        ],
+        "c": 0,
+        "s": [
+          "256 - 64 = 192."
+        ],
+        "a": "192"
+      }
+    ],
+    "class-ranges": [
+      {
+        "q": "Class of 10.1.2.3?",
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "c": 0,
+        "s": [
+          "First octet 10 in 1-126 -> A."
+        ],
+        "a": "A"
+      },
+      {
+        "q": "Class of 150.100.1.1?",
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "E"
+        ],
+        "c": 1,
+        "s": [
+          "150 in 128-191 -> B."
+        ],
+        "a": "B"
+      },
+      {
+        "q": "Class of 200.1.1.1?",
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "c": 2,
+        "s": [
+          "200 in 192-223 -> C."
+        ],
+        "a": "C"
+      },
+      {
+        "q": "Class of 225.1.1.1?",
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "D (multicast)"
+        ],
+        "c": 3,
+        "s": [
+          "225 in 224-239 -> multicast."
+        ],
+        "a": "D (multicast)"
+      },
+      {
+        "q": "Class of 250.1.1.1?",
+        "opts": [
+          "A",
+          "B",
+          "E (experimental)",
+          "C"
+        ],
+        "c": 2,
+        "s": [
+          "240-255 = Class E reserved."
+        ],
+        "a": "E (experimental)"
+      },
+      {
+        "q": "Default mask of Class A?",
+        "opts": [
+          "255.0.0.0",
+          "255.255.0.0",
+          "255.255.255.0",
+          "/24"
+        ],
+        "c": 0,
+        "s": [
+          "A = /8."
+        ],
+        "a": "255.0.0.0"
+      },
+      {
+        "q": "Usable hosts in Class C default?",
+        "opts": [
+          "256",
+          "254",
+          "65534",
+          "16M"
+        ],
+        "c": 1,
+        "s": [
+          "2^8 - 2 = 254."
+        ],
+        "a": "254"
+      },
+      {
+        "q": "Why does Class A stop at 126?",
+        "opts": [
+          "127 is loopback",
+          "128 is taken by B",
+          "Tradition",
+          "No reason"
+        ],
+        "c": 0,
+        "s": [
+          "127/8 reserved for loopback."
+        ],
+        "a": "127 is loopback"
+      },
+      {
+        "q": "Class of 191.255.1.1?",
+        "opts": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "c": 1,
+        "s": [
+          "191 is the LAST B octet (128-191)."
+        ],
+        "a": "B"
+      },
+      {
+        "q": "Class of 223.255.255.1?",
+        "opts": [
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "c": 1,
+        "s": [
+          "223 is the LAST C octet (192-223)."
+        ],
+        "a": "C"
+      }
+    ],
+    "cidr-mask": [
+      {
+        "q": "Mask of /24?",
+        "opts": [
+          "255.255.255.0",
+          "255.255.0.0",
+          "255.0.0.0",
+          "255.255.255.255"
+        ],
+        "c": 0,
+        "s": [
+          "24 ones = 3 full octets."
+        ],
+        "a": "255.255.255.0"
+      },
+      {
+        "q": "Mask of /16?",
+        "opts": [
+          "255.255.0.0",
+          "255.0.0.0",
+          "255.255.255.0",
+          "/16 = 0.0.255.255"
+        ],
+        "c": 0,
+        "s": [
+          "16 ones = 2 octets."
+        ],
+        "a": "255.255.0.0"
+      },
+      {
+        "q": "Mask of /20?",
+        "opts": [
+          "255.255.240.0",
+          "255.255.0.0",
+          "255.255.255.240",
+          "255.240.0.0"
+        ],
+        "c": 0,
+        "s": [
+          "4 ones in octet 3 = 240."
+        ],
+        "a": "255.255.240.0"
+      },
+      {
+        "q": "Mask of /26?",
+        "opts": [
+          "255.255.255.192",
+          "255.255.255.240",
+          "255.255.255.0",
+          "255.255.192.0"
+        ],
+        "c": 0,
+        "s": [
+          "2 ones in octet 4 = 192."
+        ],
+        "a": "255.255.255.192"
+      },
+      {
+        "q": "Wildcard of /24?",
+        "opts": [
+          "0.0.0.255",
+          "255.255.255.0",
+          "0.0.255.255",
+          "0.0.0.63"
+        ],
+        "c": 0,
+        "s": [
+          "Inverse: 0.0.0.255."
+        ],
+        "a": "0.0.0.255"
+      },
+      {
+        "q": "Wildcard of /26?",
+        "opts": [
+          "0.0.0.63",
+          "0.0.0.255",
+          "255.255.255.192",
+          "0.0.0.31"
+        ],
+        "c": 0,
+        "s": [
+          "255 - 192 = 63."
+        ],
+        "a": "0.0.0.63"
+      },
+      {
+        "q": "Mask of /30?",
+        "opts": [
+          "255.255.255.252",
+          "255.255.255.240",
+          "255.255.255.248",
+          "255.255.255.192"
+        ],
+        "c": 0,
+        "s": [
+          "6 ones = 252."
+        ],
+        "a": "255.255.255.252"
+      },
+      {
+        "q": "Mask octet 224 means block size:",
+        "opts": [
+          "32",
+          "16",
+          "64",
+          "8"
+        ],
+        "c": 0,
+        "s": [
+          "256 - 224 = 32."
+        ],
+        "a": "32"
+      },
+      {
+        "q": "/28 corresponds to mask:",
+        "opts": [
+          "255.255.255.240",
+          "255.255.255.248",
+          "255.255.240.0",
+          "255.255.255.192"
+        ],
+        "c": 0,
+        "s": [
+          "4 ones = 240."
+        ],
+        "a": "255.255.255.240"
+      },
+      {
+        "q": "Mask+wildcard octets always sum to:",
+        "opts": [
+          "256",
+          "255",
+          "128",
+          "0"
+        ],
+        "c": 1,
+        "s": [
+          "Octet-wise: 255 - mask = wildcard."
+        ],
+        "a": "255"
+      }
+    ],
+    "hosts-formula": [
+      {
+        "q": "Usable hosts in /26?",
+        "opts": [
+          "64",
+          "62",
+          "32",
+          "126"
+        ],
+        "c": 1,
+        "s": [
+          "2^6 - 2 = 62."
+        ],
+        "a": "62"
+      },
+      {
+        "q": "Usable hosts in /28?",
+        "opts": [
+          "16",
+          "14",
+          "12",
+          "30"
+        ],
+        "c": 1,
+        "s": [
+          "2^4 - 2 = 14."
+        ],
+        "a": "14"
+      },
+      {
+        "q": "Usable hosts in /30?",
+        "opts": [
+          "4",
+          "2",
+          "6",
+          "0"
+        ],
+        "c": 1,
+        "s": [
+          "2^2 - 2 = 2 - point-to-point links."
+        ],
+        "a": "2"
+      },
+      {
+        "q": "Usable hosts in /20?",
+        "opts": [
+          "4096",
+          "4094",
+          "2046",
+          "1022"
+        ],
+        "c": 1,
+        "s": [
+          "2^12 - 2 = 4094."
+        ],
+        "a": "4094"
+      },
+      {
+        "q": "Usable hosts in /16?",
+        "opts": [
+          "65536",
+          "65534",
+          "32766",
+          "16382"
+        ],
+        "c": 1,
+        "s": [
+          "2^16 - 2 = 65,534."
+        ],
+        "a": "65534"
+      },
+      {
+        "q": "Block size of /26 in the last octet:",
+        "opts": [
+          "64",
+          "128",
+          "32",
+          "16"
+        ],
+        "c": 0,
+        "s": [
+          "2^6 = 64."
+        ],
+        "a": "64"
+      },
+      {
+        "q": "Why subtract 2 from the host count?",
+        "opts": [
+          "Network + broadcast reserved",
+          "DNS needs two",
+          "Routers take two",
+          "No reason"
+        ],
+        "c": 0,
+        "s": [
+          "All-zeros = network; all-ones = broadcast."
+        ],
+        "a": "Network + broadcast reserved"
+      },
+      {
+        "q": "Need 100 hosts - smallest prefix?",
+        "opts": [
+          "/25 (126)",
+          "/26 (62)",
+          "/27 (30)",
+          "/24 (254)"
+        ],
+        "c": 0,
+        "s": [
+          "62 < 100 <= 126 -> /25 is smallest fit."
+        ],
+        "a": "/25 (126)"
+      },
+      {
+        "q": "Need 6 hosts - smallest prefix?",
+        "opts": [
+          "/29 (6)",
+          "/28 (14)",
+          "/30 (2)",
+          "/27 (30)"
+        ],
+        "c": 0,
+        "s": [
+          "2^3 - 2 = 6 exactly."
+        ],
+        "a": "/29 (6)"
+      },
+      {
+        "q": "Borrowing 3 bits in /24 creates how many subnets?",
+        "opts": [
+          "3",
+          "6",
+          "8",
+          "16"
+        ],
+        "c": 2,
+        "s": [
+          "2^3 = 8 subnets."
+        ],
+        "a": "8"
+      }
+    ],
+    "network-address": [
+      {
+        "q": "Subnet of 192.168.1.77/24?",
+        "opts": [
+          "192.168.1.0",
+          "192.168.0.0",
+          "192.168.1.77",
+          "192.168.1.255"
+        ],
+        "c": 0,
+        "s": [
+          "floor(77/256)=0 -> 192.168.1.0."
+        ],
+        "a": "192.168.1.0"
+      },
+      {
+        "q": "Subnet of 172.16.50.172/20?",
+        "opts": [
+          "172.16.48.0",
+          "172.16.32.0",
+          "172.16.64.0",
+          "172.16.50.0"
+        ],
+        "c": 0,
+        "s": [
+          "floor(50/16)=3 -> 48."
+        ],
+        "a": "172.16.48.0"
+      },
+      {
+        "q": "Broadcast of 192.168.1.77/24?",
+        "opts": [
+          "192.168.1.255",
+          "192.168.1.0",
+          "192.168.255.255",
+          "192.168.1.128"
+        ],
+        "c": 0,
+        "s": [
+          "Next network .1.1.0? No - next is 192.168.2.0 minus 1 = .1.255."
+        ],
+        "a": "192.168.1.255"
+      },
+      {
+        "q": "Subnet of 192.168.1.130/26?",
+        "opts": [
+          "192.168.1.128",
+          "192.168.1.192",
+          "192.168.1.64",
+          "192.168.1.0"
+        ],
+        "c": 0,
+        "s": [
+          "floor(130/64)=2 -> 128."
+        ],
+        "a": "192.168.1.128"
+      },
+      {
+        "q": "Broadcast of 192.168.1.130/26?",
+        "opts": [
+          "192.168.1.191",
+          "192.168.1.255",
+          "192.168.1.159",
+          "192.168.1.128"
+        ],
+        "c": 0,
+        "s": [
+          "Next subnet .192 minus 1 = .191."
+        ],
+        "a": "192.168.1.191"
+      },
+      {
+        "q": "First usable host of 192.168.1.128/26?",
+        "opts": [
+          ".129",
+          ".128",
+          ".190",
+          ".127"
+        ],
+        "c": 0,
+        "s": [
+          "Network .128 -> first usable .129."
+        ],
+        "a": "192.168.1.129"
+      },
+      {
+        "q": "Last usable host of 192.168.1.128/26?",
+        "opts": [
+          ".190",
+          ".191",
+          ".129",
+          ".192"
+        ],
+        "c": 0,
+        "s": [
+          "Broadcast .191 -> last usable .190."
+        ],
+        "a": "192.168.1.190"
+      },
+      {
+        "q": "Subnet of 10.0.0.199/28?",
+        "opts": [
+          "10.0.0.192",
+          "10.0.0.176",
+          "10.0.0.208",
+          "10.0.0.199"
+        ],
+        "c": 0,
+        "s": [
+          "floor(199/16)=12 -> 192."
+        ],
+        "a": "10.0.0.192"
+      },
+      {
+        "q": "Broadcast of 10.0.0.199/28?",
+        "opts": [
+          "10.0.0.207",
+          "10.0.0.208",
+          "10.0.0.199",
+          "10.0.0.255"
+        ],
+        "c": 0,
+        "s": [
+          "Next block .208 minus 1 = .207."
+        ],
+        "a": "10.0.0.207"
+      },
+      {
+        "q": "Subnet of 172.16.99.1/16?",
+        "opts": [
+          "172.16.0.0",
+          "172.16.99.0",
+          "172.0.0.0",
+          "172.16.255.255"
+        ],
+        "c": 0,
+        "s": [
+          "/16 -> first two octets fixed."
+        ],
+        "a": "172.16.0.0"
+      }
+    ],
+    "private-ranges": [
+      {
+        "q": "Which is private?",
+        "opts": [
+          "172.20.1.1",
+          "172.32.1.1",
+          "172.15.1.1",
+          "172.100.1.1"
+        ],
+        "c": 0,
+        "s": [
+          "Second octet 20 in 16-31 -> private."
+        ],
+        "a": "172.20.1.1"
+      },
+      {
+        "q": "Which is PUBLIC?",
+        "opts": [
+          "172.32.9.9",
+          "172.16.9.9",
+          "172.31.9.9",
+          "10.9.9.9"
+        ],
+        "c": 0,
+        "s": [
+          "32 > 31 -> outside the private 172 range."
+        ],
+        "a": "172.32.9.9"
+      },
+      {
+        "q": "RFC 1918 private blocks are:",
+        "opts": [
+          "10/8, 172.16/12, 192.168/16",
+          "11/8, 172.32/12, 192.169/16",
+          "9/8, 172.8/12, 192.167/16",
+          "All of 172/8"
+        ],
+        "c": 0,
+        "s": [
+          "The three reserved blocks."
+        ],
+        "a": "10/8, 172.16/12, 192.168/16"
+      },
+      {
+        "q": "A machine self-assigned 169.254.44.5 - meaning?",
+        "opts": [
+          "DHCP failed (APIPA)",
+          "Static IP set",
+          "Server online",
+          "IPv6 active"
+        ],
+        "c": 0,
+        "s": [
+          "APIPA = no DHCP response."
+        ],
+        "a": "DHCP failed (APIPA)"
+      },
+      {
+        "q": "Loopback address:",
+        "opts": [
+          "127.0.0.1",
+          "169.254.0.1",
+          "10.0.0.1",
+          "192.168.0.0"
+        ],
+        "c": 0,
+        "s": [
+          "127.0.0.1 = localhost."
+        ],
+        "a": "127.0.0.1"
+      },
+      {
+        "q": "Private addresses are routable on the Internet:",
+        "opts": [
+          "False - NAT translates them",
+          "True always",
+          "True for 10/8 only",
+          "True with permission"
+        ],
+        "c": 0,
+        "s": [
+          "RFC 1918 is unroutable publicly; NAT bridges."
+        ],
+        "a": "False - NAT translates them"
+      },
+      {
+        "q": "Which home-router address is private?",
+        "opts": [
+          "192.168.1.1",
+          "192.169.1.1",
+          "8.8.8.8",
+          "172.32.1.1"
+        ],
+        "c": 0,
+        "s": [
+          "192.168.x = private block."
+        ],
+        "a": "192.168.1.1"
+      },
+      {
+        "q": "All host bits SET TO 1 gives the:",
+        "opts": [
+          "Broadcast",
+          "Network",
+          "Gateway",
+          "Mask"
+        ],
+        "c": 0,
+        "s": [
+          "All-ones = broadcast; all-zeros = network."
+        ],
+        "a": "Broadcast"
+      },
+      {
+        "q": "Which is public?",
+        "opts": [
+          "192.169.5.5",
+          "192.168.5.5",
+          "10.5.5.5",
+          "172.31.5.5"
+        ],
+        "c": 0,
+        "s": [
+          "192.169 is one off the private block - public."
+        ],
+        "a": "192.169.5.5"
+      },
+      {
+        "q": "NAT's job:",
+        "opts": [
+          "Translate private <-> public addresses",
+          "Encrypt traffic",
+          "Assign MACs",
+          "Resolve names"
+        ],
+        "c": 0,
+        "s": [
+          "NAT maps RFC 1918 addresses to a public IP at the gateway."
+        ],
+        "a": "Translate private <-> public"
+      }
+    ],
+    "ipv6-ladder": [
+      {
+        "q": "IPv6 address length:",
+        "opts": [
+          "128 bits",
+          "32 bits",
+          "64 bits",
+          "256 bits"
+        ],
+        "c": 0,
+        "s": [
+          "128 bits = 8 groups of 4 hex digits."
+        ],
+        "a": "128 bits"
+      },
+      {
+        "q": "IPv6 loopback:",
+        "opts": [
+          "::1",
+          "127.0.0.1",
+          "fe80::1",
+          "::"
+        ],
+        "c": 0,
+        "s": [
+          "::1 = localhost."
+        ],
+        "a": "::1"
+      },
+      {
+        "q": "Double colon may appear:",
+        "opts": [
+          "Once per address",
+          "Twice",
+          "Three times",
+          "Never"
+        ],
+        "c": 0,
+        "s": [
+          "Twice would be ambiguous."
+        ],
+        "a": "Once per address"
+      },
+      {
+        "q": "IPv6 broadcast exists:",
+        "opts": [
+          "False - multicast replaces it",
+          "True as ff02::1 broadcast",
+          "True in every subnet",
+          "Only in hybrid"
+        ],
+        "c": 0,
+        "s": [
+          "No broadcast in IPv6 - multicast (ff02::1 all-nodes)."
+        ],
+        "a": "False - multicast replaces it"
+      },
+      {
+        "q": "2001:0db8:0000:0000:0000:ff00:0042:8329 compresses to:",
+        "opts": [
+          "2001:db8::ff00:42:8329",
+          "2001::db8::ff00:42:8329",
+          "2001:db8:ff00:42::8329",
+          "It cannot compress"
+        ],
+        "c": 0,
+        "s": [
+          "Drop leading zeros; :: the zero run once."
+        ],
+        "a": "2001:db8::ff00:42:8329"
+      },
+      {
+        "q": "fe80::/10 addresses are:",
+        "opts": [
+          "Link-local",
+          "Global unicast",
+          "Loopback",
+          "Multicast"
+        ],
+        "c": 0,
+        "s": [
+          "fe80::/10 = link-local, self-configured."
+        ],
+        "a": "Link-local"
+      },
+      {
+        "q": "The unspecified IPv6 address is:",
+        "opts": [
+          "::",
+          "::1",
+          "ff02::1",
+          "2001::"
+        ],
+        "c": 0,
+        "s": [
+          ":: = no address - never assigned."
+        ],
+        "a": "::"
+      },
+      {
+        "q": "IPv6 notation base:",
+        "opts": [
+          "Hexadecimal",
+          "Decimal",
+          "Octal",
+          "Binary text"
+        ],
+        "c": 0,
+        "s": [
+          "Hex groups, colon-separated."
+        ],
+        "a": "Hexadecimal"
+      },
+      {
+        "q": "All-nodes multicast address:",
+        "opts": [
+          "ff02::1",
+          "::1",
+          "fe80::",
+          "2001:db8::1"
+        ],
+        "c": 0,
+        "s": [
+          "ff02::1 reaches every node on the link."
+        ],
+        "a": "ff02::1"
+      },
+      {
+        "q": "IPv6 was created primarily to:",
+        "opts": [
+          "Solve IPv4 address exhaustion",
+          "Speed up Word",
+          "Replace DNS",
+          "Remove security"
+        ],
+        "c": 0,
+        "s": [
+          "4.3 billion addresses ran out; 128 bits fixes it."
+        ],
+        "a": "Solve IPv4 address exhaustion"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "id": 1,
+      "q": "How many bits does an IPv4 address contain?",
+      "opts": [
+        "16",
+        "32",
+        "64",
+        "128"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ipv4-basics",
+      "exp": [
+        "IPv4 = 32 bits = four 8-bit octets.",
+        "128 bits is IPv6."
+      ]
+    },
+    {
+      "id": 2,
+      "q": "The range of values for one octet is:",
+      "opts": [
+        "0-128",
+        "0-255",
+        "1-256",
+        "0-1023"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ipv4-basics",
+      "exp": [
+        "8 bits -> 2^8 = 256 values: 0 through 255."
+      ]
+    },
+    {
+      "id": 3,
+      "q": "An IP address is a ___ address, while a MAC address is ___ .",
+      "opts": [
+        "physical / logical",
+        "logical / physical",
+        "permanent / temporary",
+        "private / public"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ipv4-basics",
+      "exp": [
+        "IP is logical (assigned by software/DHCP); MAC is physical (burned into the NIC)."
+      ]
+    },
+    {
+      "id": 4,
+      "q": "Which class does the address 140.10.2.1 belong to?",
+      "opts": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "classes",
+      "exp": [
+        "First octet 140 lies in 128-191 -> Class B (default mask 255.255.0.0)."
+      ],
+      "shortcut": "Place the first octet on the line: 126 | 128-191 | 192-223 | 224-239 | 240-255."
+    },
+    {
+      "id": 5,
+      "q": "Which class does 192.168.1.1 belong to?",
+      "opts": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "classes",
+      "exp": [
+        "192 is inside 192-223 -> Class C, default mask 255.255.255.0."
+      ]
+    },
+    {
+      "id": 6,
+      "q": "The default subnet mask of Class B is:",
+      "opts": [
+        "255.0.0.0",
+        "255.255.0.0",
+        "255.255.255.0",
+        "255.255.240.0"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "classes",
+      "exp": [
+        "Class B = /16 = 255.255.0.0.",
+        "/8 is A's default; /24 is C's."
+      ]
+    },
+    {
+      "id": 7,
+      "q": "The default subnet mask of Class C is:",
+      "opts": [
+        "255.0.0.0",
+        "255.255.0.0",
+        "255.255.255.0",
+        "255.255.255.192"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "classes",
+      "exp": [
+        "Class C = /24 = 255.255.255.0 - 254 usable hosts."
+      ]
+    },
+    {
+      "id": 8,
+      "q": "Class D addresses (224-239) are used for:",
+      "opts": [
+        "Host assignment",
+        "Multicast groups",
+        "Experimental research",
+        "Loopback"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "classes",
+      "exp": [
+        "Class D = multicast; never assigned to individual hosts.",
+        "240-255 (E) is the experimental block."
+      ]
+    },
+    {
+      "id": 9,
+      "q": "Which address tests your own TCP/IP stack (loopback)?",
+      "opts": [
+        "192.168.1.1",
+        "127.0.0.1",
+        "169.254.0.5",
+        "10.0.0.1"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "special-addresses",
+      "exp": [
+        "127.0.0.1 = localhost - traffic never leaves the machine."
+      ]
+    },
+    {
+      "id": 10,
+      "q": "Which is a PRIVATE IP address?",
+      "opts": [
+        "172.32.5.4",
+        "172.20.10.5",
+        "8.8.8.8",
+        "172.0.5.4"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "special-addresses",
+      "exp": [
+        "Private 172 block = second octet 16-31 only.",
+        "172.32 and 172.0 are PUBLIC traps."
+      ]
+    },
+    {
+      "id": 11,
+      "q": "Which is a private network block?",
+      "opts": [
+        "11.0.0.0/8",
+        "10.0.0.0/8",
+        "192.169.0.0/16",
+        "172.32.0.0/12"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "special-addresses",
+      "exp": [
+        "RFC 1918 blocks: 10/8, 172.16/12, 192.168/16.",
+        "11/8 and 192.169/16 are public look-alikes."
+      ]
+    },
+    {
+      "id": 12,
+      "q": "A Windows machine shows 169.254.20.1. This means:",
+      "opts": [
+        "Static IP configured",
+        "DHCP failed - APIPA self-assigned",
+        "Server is up",
+        "IPv6 is active"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "special-addresses",
+      "exp": [
+        "169.254/16 = APIPA, self-assigned when no DHCP server responds."
+      ]
+    },
+    {
+      "id": 13,
+      "q": "How many usable hosts does a /24 network have?",
+      "opts": [
+        "256",
+        "255",
+        "254",
+        "128"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "subnetting",
+      "exp": [
+        "2^8 - 2 = 254 - minus the network and broadcast addresses."
+      ]
+    },
+    {
+      "id": 14,
+      "q": "The subnet mask 255.255.255.0 equals which CIDR?",
+      "opts": [
+        "/16",
+        "/20",
+        "/24",
+        "/26"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "subnetting",
+      "exp": [
+        "24 one-bits: 8+8+8 -> /24."
+      ]
+    },
+    {
+      "id": 15,
+      "q": "The mask octet 240 in binary is:",
+      "opts": [
+        "11110000",
+        "11000000",
+        "11111100",
+        "00001111"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "subnetting",
+      "exp": [
+        "128+64+32+16 = 240 -> four ones then four zeros."
+      ]
+    },
+    {
+      "id": 16,
+      "q": "How many bits does an IPv6 address contain?",
+      "opts": [
+        "32",
+        "64",
+        "128",
+        "256"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "ipv6",
+      "exp": [
+        "IPv6 = 128 bits - about 340 undecillion addresses."
+      ]
+    },
+    {
+      "id": 17,
+      "q": "The IPv6 loopback address is:",
+      "opts": [
+        "127.0.0.1",
+        "::1",
+        "fe80::1",
+        "::0"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ipv6",
+      "exp": [
+        "::1 is IPv6's loopback (IPv4's 127.0.0.1 equivalent)."
+      ]
+    },
+    {
+      "id": 18,
+      "q": "IPv6 replaces broadcast with:",
+      "opts": [
+        "Anycast only",
+        "Multicast",
+        "Unicast",
+        "Loopcast"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ipv6",
+      "exp": [
+        "IPv6 has NO broadcast - multicast groups (e.g., ff02::1 all-nodes) do that job."
+      ]
+    },
+    {
+      "id": 19,
+      "q": "The double colon (::) in IPv6 may be used:",
+      "opts": [
+        "As often as needed",
+        "At most once per address",
+        "Only at the start",
+        "Only at the end"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "ipv6",
+      "exp": [
+        "One :: compresses ONE run of zero groups - twice would be ambiguous."
+      ]
+    },
+    {
+      "id": 20,
+      "q": "The network portion of an address is separated from the host portion by the:",
+      "opts": [
+        "Gateway",
+        "Subnet mask",
+        "MAC address",
+        "Port number"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "subnetting",
+      "exp": [
+        "Mask 1-bits = network, 0-bits = host - the dividing line."
+      ]
+    },
+    {
+      "id": 21,
+      "q": "Which address is PUBLIC (Internet-routable)?",
+      "opts": [
+        "10.1.1.1",
+        "192.168.5.5",
+        "8.8.8.8",
+        "172.31.9.9"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "special-addresses",
+      "exp": [
+        "8.8.8.8 (Google DNS) is public; the others sit in RFC 1918 blocks."
+      ]
+    },
+    {
+      "id": 22,
+      "q": "In an IPv4 subnet, the address with all HOST bits set to 1 is the:",
+      "opts": [
+        "Network address",
+        "Broadcast address",
+        "Gateway",
+        "Loopback"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "subnetting",
+      "exp": [
+        "All-ones host portion = broadcast (e.g., 192.168.1.255 in /24).",
+        "All-zeros = the network address."
+      ]
+    },
+    {
+      "id": 23,
+      "q": "Which is NOT assignable to a host?",
+      "opts": [
+        "192.168.1.10",
+        "192.168.1.0 (its /24 network address)",
+        "10.0.0.5",
+        "172.16.3.20"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "subnetting",
+      "exp": [
+        "The network address (host bits all zero) and broadcast are reserved - never on a host."
+      ]
+    },
+    {
+      "id": 24,
+      "q": "IPv6 addresses are written in which numeral system?",
+      "opts": [
+        "Binary only",
+        "Decimal",
+        "Hexadecimal, colon-separated",
+        "Octal"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "ipv6",
+      "exp": [
+        "Eight groups of four hex digits, colon-separated: 2001:0db8::..."
+      ]
+    },
+    {
+      "id": 25,
+      "q": "Which subnet does 172.16.50.172/20 belong to?",
+      "opts": [
+        "172.16.32.0",
+        "172.16.48.0",
+        "172.16.64.0",
+        "172.16.50.0"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "subnetting",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "/20 -> block 16 in the third octet: boundaries .0 .16 .32 .48 .64 ...",
+        "floor(50/16)=48 -> 172.16.48.0."
+      ],
+      "shortcut": "floor(octet/block) x block - never round up."
+    },
+    {
+      "id": 26,
+      "q": "The wildcard mask for 172.16.48.0/20 is:",
+      "opts": [
+        "0.0.255.255",
+        "0.0.15.255",
+        "0.0.31.255",
+        "255.255.240.0"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "subnetting",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Wildcard = inverse of 255.255.240.0 -> 0.0.15.255.",
+        "Mask+wildcard pairs sum to 255 per octet."
+      ]
+    },
+    {
+      "id": 27,
+      "q": "The broadcast address of 192.168.1.130/26 is:",
+      "opts": [
+        "192.168.1.159",
+        "192.168.1.191",
+        "192.168.1.255",
+        "192.168.1.128"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "/26 block = 64 -> subnet 192.168.1.128-191.",
+        "Broadcast = last address = 192.168.1.191."
+      ]
+    },
+    {
+      "id": 28,
+      "q": "How many usable hosts are in a /26 subnet?",
+      "opts": [
+        "64",
+        "62",
+        "32",
+        "30"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "2^6 - 2 = 62 (network + broadcast excluded).",
+        "64 is the BLOCK size - the classic trap."
+      ]
+    },
+    {
+      "id": 29,
+      "q": "How many usable hosts are in a /28 subnet?",
+      "opts": [
+        "16",
+        "14",
+        "12",
+        "30"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "2^4 - 2 = 14."
+      ]
+    },
+    {
+      "id": 30,
+      "q": "A /30 subnet provides how many usable hosts - ideal for what?",
+      "opts": [
+        "4 - servers",
+        "2 - router-to-router links",
+        "6 - switches",
+        "0 - nothing"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "2^2 - 2 = 2 - exactly enough for the two ends of a point-to-point link."
+      ]
+    },
+    {
+      "id": 31,
+      "q": "The network address of 192.168.1.130/26 is:",
+      "opts": [
+        "192.168.1.0",
+        "192.168.1.64",
+        "192.168.1.128",
+        "192.168.1.192"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "floor(130/64) = 2 -> 128 -> network 192.168.1.128.",
+        "Ranges: .0-.63, .64-.127, .128-.191, .192-.255."
+      ]
+    },
+    {
+      "id": 32,
+      "q": "Usable host range of 10.0.0.192/28:",
+      "opts": [
+        "10.0.0.193-10.0.0.206",
+        "10.0.0.192-10.0.0.207",
+        "10.0.0.193-10.0.0.207",
+        "10.0.0.194-10.0.0.206"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "/28 block = 16: .192 network, .207 broadcast.",
+        "Usable = .193 through .206."
+      ]
+    },
+    {
+      "id": 33,
+      "q": "The mask 255.255.255.192 corresponds to CIDR:",
+      "opts": [
+        "/25",
+        "/26",
+        "/27",
+        "/28"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "192 = 11000000 = 2 ones -> 8+8+8+2 = /26."
+      ]
+    },
+    {
+      "id": 34,
+      "q": "How many /26 subnets fit inside one /24?",
+      "opts": [
+        "2",
+        "4",
+        "8",
+        "16"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "Borrowing 2 bits -> 2^2 = 4 subnets of 64 addresses each."
+      ]
+    },
+    {
+      "id": 35,
+      "q": "Borrowing one extra bit for subnets does what?",
+      "opts": [
+        "Doubles subnets, halves each subnet's size",
+        "Halves subnets, doubles size",
+        "No change",
+        "Triples hosts"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "Each borrowed bit doubles subnet count and halves block size - the fundamental trade."
+      ]
+    },
+    {
+      "id": 36,
+      "q": "Which is the broadcast address of 172.16.48.0/20?",
+      "opts": [
+        "172.16.48.255",
+        "172.16.63.255",
+        "172.16.64.255",
+        "172.31.255.255"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "/20 block 16 -> next network 172.16.64.0 -> broadcast 172.16.63.255."
+      ]
+    },
+    {
+      "id": 37,
+      "q": "Class A provides how many usable hosts per network?",
+      "opts": [
+        "254",
+        "65,534",
+        "16,777,214",
+        "4 billion"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "classes",
+      "exp": [
+        "/8 leaves 24 host bits: 2^24 - 2 = 16,777,214."
+      ]
+    },
+    {
+      "id": 38,
+      "q": "Class B provides how many usable hosts per network?",
+      "opts": [
+        "254",
+        "16,777,214",
+        "65,534",
+        "1022"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "classes",
+      "exp": [
+        "/16 leaves 16 host bits: 2^16 - 2 = 65,534."
+      ]
+    },
+    {
+      "id": 39,
+      "q": "Which first-octet value is INVALID for a Class A host address?",
+      "opts": [
+        "1",
+        "10",
+        "126",
+        "127"
+      ],
+      "c": 3,
+      "d": "medium",
+      "t": "classes",
+      "exp": [
+        "127 is the loopback block - reserved, not for hosts.",
+        "Class A host range is 1-126."
+      ]
+    },
+    {
+      "id": 40,
+      "q": "NAT (Network Address Translation) exists because private addresses:",
+      "opts": [
+        "Are faster",
+        "Cannot be routed on the public Internet",
+        "Use more bits",
+        "Are IPv6"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "special-addresses",
+      "exp": [
+        "RFC 1918 blocks are unroutable publicly; NAT translates them to a public IP at the gateway."
+      ]
+    },
+    {
+      "id": 41,
+      "q": "Which address is PRIVATE?",
+      "opts": [
+        "172.16.200.1",
+        "172.32.1.1",
+        "172.15.9.9",
+        "172.100.1.1"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "special-addresses",
+      "exp": [
+        "Only second octets 16-31 are private in the 172 block.",
+        "15, 32 and 100 are all public."
+      ]
+    },
+    {
+      "id": 42,
+      "q": "The IPv6 address 2001:0db8:0000:0000:0000:ff00:0042:8329 compresses to:",
+      "opts": [
+        "2001:db8::ff00:42:8329",
+        "2001::db8::ff00:42:8329",
+        "2001:db8:0:0:0:ff00:42:8329 is illegal",
+        "2001:db8::0::42:8329"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "ipv6",
+      "exp": [
+        "Drop leading zeros, then ONE :: replaces the three zero groups.",
+        "Two double colons (option B) is illegal."
+      ]
+    },
+    {
+      "id": 43,
+      "q": "fe80::/10 addresses in IPv6 are:",
+      "opts": [
+        "Global unicast",
+        "Link-local (self-configured per interface)",
+        "Multicast",
+        "Loopback"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "ipv6",
+      "exp": [
+        "fe80::/10 = link-local - auto-configured, not routable off the link."
+      ]
+    },
+    {
+      "id": 44,
+      "q": "Which command shows your Windows machine's IP configuration?",
+      "opts": [
+        "ping",
+        "ipconfig",
+        "tracert",
+        "netstat -a"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "tools",
+      "exp": [
+        "ipconfig displays local IP/mask/gateway (ipconfig /all adds MAC + DNS)."
+      ]
+    },
+    {
+      "id": 45,
+      "q": "The first usable host of 192.168.1.128/26 is:",
+      "opts": [
+        "192.168.1.128",
+        "192.168.1.129",
+        "192.168.1.190",
+        "192.168.1.64"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "Network = .128; first usable = network + 1 = .129."
+      ]
+    },
+    {
+      "id": 46,
+      "q": "The last usable host of 192.168.1.128/26 is:",
+      "opts": [
+        "192.168.1.191",
+        "192.168.1.190",
+        "192.168.1.129",
+        "192.168.1.192"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "Broadcast = .191; last usable = broadcast - 1 = .190."
+      ]
+    },
+    {
+      "id": 47,
+      "q": "Which protocol automatically assigns IP addresses?",
+      "opts": [
+        "DNS",
+        "DHCP",
+        "ARP",
+        "FTP"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "tools",
+      "exp": [
+        "DHCP leases IPs dynamically; DNS resolves names; ARP maps IP->MAC."
+      ]
+    },
+    {
+      "id": 48,
+      "q": "An organisation needs 50 host addresses in one subnet. Smallest suitable prefix?",
+      "opts": [
+        "/25 (126 hosts)",
+        "/26 (62 hosts)",
+        "/27 (30 hosts)",
+        "/24 (254 hosts)"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "subnetting",
+      "exp": [
+        "Need >= 50 usable: /27 gives 30 (too few), /26 gives 62 (fits) - smallest fit.",
+        "/25 works too but is not the SMALLEST."
+      ],
+      "shortcut": "Pick the smallest 2^h - 2 >= requirement."
+    },
+    {
+      "id": 49,
+      "q": "A standard ACL must deny the entire /20 subnet of 172.16.50.172. The first line is:",
+      "opts": [
+        "access-list 10 deny 172.16.48.0 0.0.15.255",
+        "access-list 10 deny 172.16.64.0 0.0.31.255",
+        "access-list 10 deny 172.16.50.0 0.0.0.255",
+        "access-list 110 deny tcp any any"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "subnetting",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Network 172.16.48.0 (floor(50/16)x16), wildcard 0.0.15.255.",
+        "Standard ACLs use numbers 1-99; 110 is extended."
+      ]
+    },
+    {
+      "id": 50,
+      "q": "An ISP owns 192.168.1.0/24 wait - instead: how many /29 subnets fit in a /24, and usable hosts each?",
+      "opts": [
+        "16 subnets, 6 hosts",
+        "32 subnets, 14 hosts",
+        "8 subnets, 30 hosts",
+        "32 subnets, 30 hosts"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "subnetting",
+      "exp": [
+        "/29 borrows 5 bits from /24 -> 2^5 = 32 subnets.",
+        "Each /29: block 8 -> 2^3 - 2 = 6 usable hosts."
+      ]
+    },
+    {
+      "id": 51,
+      "q": "You need 14 subnets inside a /24 with the MOST hosts per subnet possible. Which mask?",
+      "opts": [
+        "/27 (3 borrowed bits)",
+        "/28 (4 borrowed bits)",
+        "/26 (2 borrowed bits)",
+        "/30"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "subnetting",
+      "exp": [
+        "Need >= 14 subnets: 2^4 = 16 -> borrow 4 bits -> /28.",
+        "/27 gives 2^3 = 8 subnets - too few; /28 leaves 14 hosts each."
+      ]
+    },
+    {
+      "id": 52,
+      "q": "Given 172.16.50.172/20, the LAST usable host address is:",
+      "opts": [
+        "172.16.63.254",
+        "172.16.63.255",
+        "172.16.48.254",
+        "172.16.64.254"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "subnetting",
+      "exp": [
+        "Subnet 172.16.48.0-63.255; broadcast .63.255; last usable .63.254."
+      ]
+    },
+    {
+      "id": 53,
+      "q": "Which IP CANNOT be assigned to a host on 10.0.0.0/24?",
+      "opts": [
+        "10.0.0.1",
+        "10.0.0.254",
+        "10.0.0.0",
+        "10.0.0.100"
+      ],
+      "c": 2,
+      "d": "hard",
+      "t": "subnetting",
+      "exp": [
+        "10.0.0.0 is the /24 network address (host bits all zero) - reserved."
+      ]
+    },
+    {
+      "id": 54,
+      "q": "Two routers connect point-to-point. The most efficient subnet mask for the link is:",
+      "opts": [
+        "/24",
+        "/28",
+        "/30",
+        "/26"
+      ],
+      "c": 2,
+      "d": "hard",
+      "t": "subnetting",
+      "exp": [
+        "/30 = exactly 2 usable hosts - one per router, zero waste."
+      ]
+    },
+    {
+      "id": 55,
+      "q": "An address of 169.254.100.7 with mask 255.255.0.0 most likely indicates:",
+      "opts": [
+        "A public web server",
+        "DHCP failure (APIPA)",
+        "A DNS server",
+        "A loopback test"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "special-addresses",
+      "exp": [
+        "169.254/16 = APIPA self-assignment when no DHCP server answers."
+      ]
+    },
+    {
+      "id": 56,
+      "q": "Which compressed IPv6 form is ILLEGAL?",
+      "opts": [
+        "2001:db8::1",
+        "::1",
+        "2001::db8::1",
+        "fe80::1"
+      ],
+      "c": 2,
+      "d": "hard",
+      "t": "ipv6",
+      "exp": [
+        "Two double colons appear in 2001::db8::1 - ambiguous, therefore illegal.",
+        ":: may appear only once."
+      ]
+    },
+    {
+      "id": 57,
+      "q": "The IPv6 all-nodes multicast address (broadcast replacement) is:",
+      "opts": [
+        "ff02::1",
+        "::1",
+        "fe80::1",
+        "2001::1"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "ipv6",
+      "exp": [
+        "ff02::1 reaches all nodes on the link - IPv6's broadcast substitute.",
+        "::1 is loopback; fe80::1 is a link-local unicast."
+      ]
+    },
+    {
+      "id": 58,
+      "q": "A company leases 172.16.0.0/16 and must carve 100 subnets with the most hosts each. Borrowing 7 bits gives 128 subnets of:",
+      "opts": [
+        "510 hosts",
+        "254 hosts",
+        "1022 hosts",
+        "126 hosts"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "subnetting",
+      "exp": [
+        "/16 + 7 = /23 -> 9 host bits -> 2^9 - 2 = 510 usable hosts per subnet."
+      ]
+    },
+    {
+      "id": 59,
+      "q": "Which pair of addresses are BOTH public (Internet-routable)?",
+      "opts": [
+        "172.32.1.1 and 192.169.1.1",
+        "10.0.0.1 and 10.255.0.1",
+        "192.168.1.1 and 172.31.1.1",
+        "172.16.1.1 and 172.20.1.1"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "special-addresses",
+      "exp": [
+        "172.32 is outside 16-31 -> public; 192.169 is outside 192.168 -> public.",
+        "Every other option contains an RFC 1918 address."
+      ],
+      "shortcut": "Test each address against 10/8, 172.16-31/12, 192.168/16."
+    },
+    {
+      "id": 60,
+      "q": "Subnet 10.1.1.0/28 and 10.1.1.16/28 are adjacent. The broadcast of the FIRST is:",
+      "opts": [
+        "10.1.1.15",
+        "10.1.1.16",
+        "10.1.1.14",
+        "10.1.1.31"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "subnetting",
+      "exp": [
+        "/28 block = 16: first subnet 10.1.1.0-15, broadcast 10.1.1.15.",
+        "Next subnet starts at .16."
+      ]
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "intro-ipv4"
+    },
+    {
+      "type": "concept",
+      "sectionId": "ip-classes"
+    },
+    {
+      "type": "concept",
+      "sectionId": "subnetting-core"
+    },
+    {
+      "type": "concept",
+      "sectionId": "special-addresses"
+    },
+    {
+      "type": "concept",
+      "sectionId": "ipv6-basics"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}

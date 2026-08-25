@@ -1,0 +1,2475 @@
+{
+  "id": "security-attacks",
+  "title": "Common Attacks",
+  "icon": "AT",
+  "category": "networking-cloud",
+  "subtitle": "Attack identification table, malware family tree, SQLi/XSS/MITM & defence mapping",
+  "days": "3",
+  "color": "#0891B2",
+  "subtopics": [
+    "Attack Identification Table",
+    "DoS/DDoS Family",
+    "Malware Taxonomy",
+    "Web Attacks (SQLi/XSS/MITM)",
+    "Social Engineering",
+    "Defence Mapping"
+  ],
+  "estimatedHours": 5,
+  "readingSections": [
+    {
+      "id": "attack-landscape",
+      "title": "The Attack Landscape",
+      "type": "concept",
+      "quickSummary": "Every attack has a one-line definition; AXIS PYQs test exactly that line - match the stem phrase to the name.",
+      "content": [
+        "Network attacks fall into families: identity attacks (spoofing, phishing), availability attacks (DoS, DDoS, smurfing, email bombing), interception (man-in-the-middle, eavesdropping), code attacks (malware, SQL injection, XSS), and credential attacks (brute force, keylogging).",
+        "AXIS PYQs are identification drills: a one-line symptom appears, and you must name the attack. The published pool is small - spoofing, email bombing, phishing, smurfing, DDoS, and the malware quartet cover nearly every instance.",
+        "The defence mapping matters too: firewalls and filters against traffic attacks, antivirus against malware, user training against phishing, encryption against interception."
+      ],
+      "subsections": [
+        {
+          "title": "The core table (memorise verbatim)",
+          "content": "Spoofing - attacker creates a packet/identity that APPEARS to be something else.\nEmail bombing - flooding a user with massive unwanted email volume.\nPhishing - fraudulent messages tricking users into revealing credentials.\nSmurfing - ICMP echo to a broadcast address with a SPOOFED source; all hosts reply to the victim.\nDoS/DDoS - overwhelming a service; DDoS = distributed across many machines.\nMan-in-the-Middle - secretly relaying/altering traffic between two parties."
+        }
+      ],
+      "quickRevision": [
+        "'Appears to be something else' = spoofing. 'Unwanted volume of emails' = email bombing.",
+        "DDoS = DoS from many sources at once.",
+        "Smurfing = ICMP broadcast amplification + spoofed source.",
+        "Phishing targets PEOPLE; spoofing targets IDENTITIES/PACKETS."
+      ],
+      "tricks": [
+        "Email vs traffic: mail-flood stems -> email bombing; bandwidth-flood stems -> DoS/DDoS/ping storm.",
+        "Two-technique questions: smurfing ALWAYS involves spoofing (forged source) - 'which two attacks...' answers pair them.",
+        "Human-gullibility stems -> phishing; technical-forgery stems -> spoofing."
+      ],
+      "patterns": [
+        "'User receives unwanted amount of emails' -> email bombing (published PYQ).",
+        "'Creates a packet that appears to be something else' -> spoofing (published PYQ).",
+        "'Thousands of machines flood one server' -> DDoS."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Accenture AXIS Technical Assessment",
+          "question": "An attack in which the user receives an unwanted amount of emails is:",
+          "approach": "Email bombing - options typically include smurfing, DoS, ping storm (all traffic attacks)."
+        },
+        {
+          "source": "Asked in Accenture AXIS Technical Assessment",
+          "question": "Attack in which a user creates a packet that appears to be something else:",
+          "approach": "Spoofing - forged identity at packet level."
+        }
+      ],
+      "companyNote": "Attack identification is the most repeated security bucket in published AXIS sets - the table above IS the syllabus."
+    },
+    {
+      "id": "malware-taxonomy",
+      "title": "The Malware Family Tree",
+      "type": "concept",
+      "quickSummary": "Virus needs a host file; worm self-spreads; trojan disguises; ransomware extorts; spyware/keyloggers watch; rootkits hide.",
+      "content": [
+        "Malware = malicious software, sorted by BEHAVIOUR. Virus: attaches to a host FILE and spreads when that file runs - needs human action. Worm: self-replicates across networks WITHOUT any host file - pure network spread. Trojan horse: disguises itself as legitimate software; the user installs it willingly.",
+        "Ransomware encrypts the victim's data and demands payment - the extortion model. Spyware silently collects information; keyloggers record keystrokes (credential theft); adware force-feeds advertisements; rootkits bury themselves deep in the OS to hide other malware; botlets-turned-botnets turn infected machines into DDoS soldiers.",
+        "Defences map one-to-one: antivirus/anti-malware scanners, patches against worm-exploited vulnerabilities, download discipline against trojans, offline backups against ransomware."
+      ],
+      "subsections": [
+        {
+          "title": "The quartet compared",
+          "content": "Virus - attaches to host files; spreads by execution/sharing.\nWorm - self-propagates over the network; no host needed.\nTrojan - disguised as useful software; user installs it.\nRansomware - encrypts data; demands payment."
+        }
+      ],
+      "quickRevision": [
+        "Host file needed = virus; network self-spread = worm; disguise = trojan; extortion = ransomware.",
+        "Keylogger = keystroke thief. Spyware = information thief. Rootkit = hider.",
+        "Ransomware defence = offline backups."
+      ],
+      "tricks": [
+        "'Needs a host file' vs 'self-replicates without host' is THE virus/worm discriminator - options always include both.",
+        "'Disguised as legitimate software' -> trojan (Greek-horse logic).",
+        "'Demands payment to unlock' -> ransomware, no other option qualifies."
+      ],
+      "patterns": [
+        "'Which malware spreads without human action?' - worm.",
+        "'User willingly installs it' - trojan.",
+        "'Encrypts files and demands ransom' - ransomware."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement security set",
+          "question": "Difference between virus and worm?",
+          "approach": "Host-file dependency vs autonomous network replication."
+        }
+      ],
+      "companyNote": "The virus/worm/trojan trio appears in every technical MCQ round of every company - highest-frequency malware question."
+    },
+    {
+      "id": "web-code-attacks",
+      "title": "Web & Code Attacks: SQLi, XSS, MITM",
+      "type": "concept",
+      "quickSummary": "SQL injection smuggles database commands through input fields; XSS injects scripts into trusted pages; MITM relays traffic secretly.",
+      "content": [
+        "SQL injection (SQLi) exploits unsanitised input: an attacker types SQL fragments into a login or search field, and the backend executes them - classic payload ' OR 1=1 -- logs anyone in. Defence: parameterised queries and input validation.",
+        "Cross-site scripting (XSS) injects malicious JavaScript into pages OTHER users trust - stolen cookies and session hijacking follow. Defence: output encoding and Content-Security-Policy. Both SQLi and XSS are INPUT-validation failures - a pairing exams love.",
+        "Man-in-the-Middle (MITM) positions the attacker between two parties, relaying and possibly altering traffic - enabled by unencrypted links (plain HTTP, open Wi-Fi). Defence: TLS everywhere. Related: session hijacking steals session cookies; replay attacks re-send captured legitimate traffic."
+      ],
+      "subsections": [
+        {
+          "title": "Defence mapping",
+          "content": "SQLi -> parameterised queries, least-privilege DB accounts.\nXSS -> output encoding, CSP headers.\nMITM -> TLS/HTTPS, VPN on public Wi-Fi.\nCredential attacks -> MFA, lockouts, strong password policy."
+        }
+      ],
+      "quickRevision": [
+        "SQLi = database commands via input; ' OR 1=1 -- is the classic payload.",
+        "XSS = malicious script on a trusted page; steals cookies.",
+        "MITM = secret relay between two parties; TLS kills it.",
+        "Both SQLi and XSS are input-validation failures."
+      ],
+      "tricks": [
+        "'Database' + 'input field' in the stem -> SQL injection.",
+        "'Script' + 'other users' browsers' -> XSS.",
+        "'Secretly relays between two parties' -> man-in-the-middle."
+      ],
+      "patterns": [
+        "' OR 1=1 -- style payload shown in the stem -> SQLi.",
+        "'Injects malicious scripts into trusted websites' -> XSS."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement security set",
+          "question": "Which attack injects SQL commands through input fields?",
+          "approach": "SQL injection - the only database-execution attack in the options."
+        }
+      ],
+      "companyNote": "SQLi/XSS appear in the broader technical pool (and coding-round discussions); MITM pairs with VPN questions."
+    },
+    {
+      "id": "defence-mapping",
+      "title": "Defence Mapping & Best Practices",
+      "type": "concept",
+      "quickSummary": "Every attack has a matching control: filters vs floods, training vs phishing, backups vs ransomware, TLS vs interception.",
+      "content": [
+        "Security questions often run the arrow backwards: given an attack, name the defence. The mapping is logical: traffic floods meet firewalls/rate-limiting/anti-DDoS services; phishing meets user training and mail filtering; malware meets antivirus and patching; ransomware meets offline backups; interception meets encryption; credential guessing meets MFA and lockout policies.",
+        "Organisational practices wrap the technical controls: least privilege (minimum rights needed), defense in depth (many layers), regular patching (closing worm doors), security audits, and incident-response plans. The AXIS syllabus phrase 'organisational security' from the client-server topic lives here.",
+        "Zero Trust is the modern doctrine: never trust, always verify - every request authenticated and authorised regardless of network location."
+      ],
+      "subsections": [
+        {
+          "title": "The doctrine trio",
+          "content": "Least privilege - grant minimum rights needed.\nDefense in depth - layered controls; no single wall.\nZero Trust - verify every request, every time."
+        }
+      ],
+      "quickRevision": [
+        "Flood -> firewall/rate-limit. Phish -> training + mail filter. Malware -> AV + patches.",
+        "Ransomware -> offline backups. Interception -> TLS. Guessing -> MFA + lockouts.",
+        "Least privilege, defense in depth, zero trust - the doctrine trio."
+      ],
+      "tricks": [
+        "Defence questions: pick the control that attacks the attack MECHANISM, not a neighbour.",
+        "'Never trust, always verify' is the Zero Trust slogan - quoted verbatim in options."
+      ],
+      "patterns": [
+        "'Best defence against ransomware' - regular offline backups.",
+        "'Best defence against phishing' - user awareness training.",
+        "'Verify every request regardless of origin' - Zero Trust."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement security set",
+          "question": "Match the attack to its primary defence.",
+          "approach": "Mechanism-matching: floods->filters, deceit->training, encryption->interception."
+        }
+      ],
+      "companyNote": "Defence-mapping items round out the security bucket - one usually appears alongside an identification question."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "attack-table",
+      "title": "The Attack Identification Table",
+      "formula": {
+        "latex": "\\text{symptom} \\mapsto \\text{name}",
+        "text": "Each one-line symptom maps to exactly one attack name - memorise the pairs verbatim."
+      },
+      "whenToUse": "Every attack-identification MCQ.",
+      "explanation": [
+        "Appears to be something else -> spoofing.",
+        "Unwanted mass emails -> email bombing.",
+        "Fraudulent messages stealing credentials -> phishing.",
+        "ICMP broadcast amplification with forged source -> smurfing.",
+        "Distributed traffic overwhelm -> DDoS.",
+        "Secret relay between two parties -> MITM."
+      ],
+      "example": {
+        "prompt": "User complains of thousands of junk emails.",
+        "steps": [
+          "Mail volume, not bandwidth.",
+          "Email bombing."
+        ],
+        "answer": "Email bombing"
+      },
+      "memoryTip": "Mail flood = bombing. Bandwidth flood = DoS. Fake face = spoofing.",
+      "commonMistake": "Confusing phishing (targets people) with spoofing (forges identities)."
+    },
+    {
+      "id": "dos-family",
+      "title": "The DoS Family Tree",
+      "formula": {
+        "latex": "\\text{DoS} \\subset \\{\\text{SYN flood}, \\text{smurf}, \\text{ping storm}\\};\\; \\text{DDoS} = \\text{distributed DoS}",
+        "text": "One attacker = DoS; thousands of coordinated attackers = DDoS; variants differ in the flood type."
+      },
+      "whenToUse": "Availability-attack questions.",
+      "explanation": [
+        "SYN flood - half-open TCP connections exhaust the server table.",
+        "Smurf - ICMP to broadcast with spoofed source; replies swamp the victim.",
+        "Ping storm/ICMP flood - raw echo flooding.",
+        "DDoS - botnets coordinate thousands of sources; harder to block (no single origin)."
+      ],
+      "example": {
+        "prompt": "Thousands of infected PCs flood one shop's checkout.",
+        "steps": [
+          "Many sources, one victim.",
+          "DDoS via botnet."
+        ],
+        "answer": "DDoS"
+      },
+      "memoryTip": "D = Distributed = many machines.",
+      "commonMistake": "Calling a single-source flood a DDoS - the D needs distribution."
+    },
+    {
+      "id": "malware-matrix",
+      "title": "Malware Behaviour Matrix",
+      "formula": {
+        "latex": "\\text{virus}=\\text{host file};\\; \\text{worm}=\\text{self-spread};\\; \\text{trojan}=\\text{disguise};\\; \\text{ransomware}=\\text{extortion}",
+        "text": "Four behaviours, four names - the discriminator is HOW it spreads and what it wants."
+      },
+      "whenToUse": "Malware identification questions.",
+      "explanation": [
+        "Virus: attaches to files; needs execution/sharing.",
+        "Worm: autonomous network replication; no host.",
+        "Trojan: disguised as useful software; user-installed.",
+        "Ransomware: encrypts data, demands payment.",
+        "Support cast: spyware (spies), keylogger (keystrokes), rootkit (hides), adware (ads)."
+      ],
+      "example": {
+        "prompt": "Malware that spread with NO host file across the whole LAN overnight.",
+        "steps": [
+          "Autonomous network replication.",
+          "Worm."
+        ],
+        "answer": "Worm"
+      },
+      "memoryTip": "V-H-W-N-T-R: Virus-Host, Worm-Network, Trojan-Trick, Ransom-Ransom.",
+      "commonMistake": "Saying viruses self-replicate over networks - that is the worm's signature."
+    },
+    {
+      "id": "code-attack-pair",
+      "title": "SQLi & XSS: The Input-Validation Pair",
+      "formula": {
+        "latex": "'\\;\\text{OR } 1=1\\; \\text{--} \\Rightarrow \\text{SQLi};\\; \\text{script injection} \\Rightarrow \\text{XSS}",
+        "text": "Both are input-validation failures; one hits the database, the other hits browsers."
+      },
+      "whenToUse": "Web application attack questions.",
+      "explanation": [
+        "SQLi: SQL fragments through inputs execute on the database; classic payload ' OR 1=1 --.",
+        "XSS: injected JavaScript runs in OTHER users' browsers; steals cookies/sessions.",
+        "Defence SQLi: parameterised queries, input validation.",
+        "Defence XSS: output encoding, Content-Security-Policy."
+      ],
+      "example": {
+        "prompt": "Login bypassed by typing ' OR 1=1 -- in the password box.",
+        "steps": [
+          "SQL fragment executed by backend.",
+          "SQL injection."
+        ],
+        "answer": "SQL injection"
+      },
+      "memoryTip": "Database = SQLi. Browser = XSS. Both = validate input.",
+      "commonMistake": "Calling cookie theft 'SQLi' - cookie/session theft is XSS's crime."
+    },
+    {
+      "id": "mitm-tls",
+      "title": "MITM & the TLS Counter",
+      "formula": {
+        "latex": "\\text{MITM} \\xrightarrow{\\text{defeated by}} \\text{TLS/VPN}",
+        "text": "Interception dies when both ends authenticate and encrypt - TLS certificates and VPN tunnels."
+      },
+      "whenToUse": "Interception and public-Wi-Fi questions.",
+      "explanation": [
+        "MITM relays/alters traffic between two parties secretly.",
+        "Enabled by plaintext links (HTTP, open Wi-Fi).",
+        "TLS certificates authenticate the server; encryption blinds the relay.",
+        "VPN extends that tunnel across untrusted networks."
+      ],
+      "example": {
+        "prompt": "Attacker reads logins on cafe Wi-Fi.",
+        "steps": [
+          "Plaintext over shared medium.",
+          "Mitigate with HTTPS/VPN."
+        ],
+        "answer": "MITM - defeat with TLS/VPN"
+      },
+      "memoryTip": "Open Wi-Fi + no TLS = eavesdropper's paradise.",
+      "commonMistake": "Firewalls stopping MITM - filtering is not encryption; TLS is the counter."
+    },
+    {
+      "id": "defence-map",
+      "title": "Attack-to-Defence Mapping",
+      "formula": {
+        "latex": "\\text{flood}\\to\\text{filter};\\; \\text{deceit}\\to\\text{train};\\; \\text{malware}\\to\\text{AV+patch};\\; \\text{ransom}\\to\\text{backup}",
+        "text": "Match each attack mechanism to the control that breaks it."
+      },
+      "whenToUse": "Defence/best-practice questions.",
+      "explanation": [
+        "DoS/DDoS -> firewalls, rate limiting, anti-DDoS services.",
+        "Phishing -> user training + mail filtering.",
+        "Malware -> antivirus + patching.",
+        "Ransomware -> offline/offsite backups.",
+        "Interception -> TLS/VPN. Credential guessing -> MFA + lockouts.",
+        "Doctrine: least privilege, defense in depth, zero trust."
+      ],
+      "example": {
+        "prompt": "Best defence against ransomware?",
+        "steps": [
+          "Ransomware encrypts live data.",
+          "Offline backups restore without paying."
+        ],
+        "answer": "Regular offline backups"
+      },
+      "memoryTip": "Break the mechanism, not the neighbour.",
+      "commonMistake": "Antivirus as the anti-phishing answer - phishing targets people, so training leads."
+    }
+  ],
+  "practiceProblems": {
+    "attack-table": [
+      {
+        "q": "Unwanted flood of emails in a user's inbox:",
+        "opts": [
+          "Email bombing",
+          "Smurfing",
+          "Spoofing",
+          "SQLi"
+        ],
+        "c": 0,
+        "s": [
+          "Mail-volume flood = email bombing."
+        ],
+        "a": "Email bombing"
+      },
+      {
+        "q": "Packet forged to appear from another source:",
+        "opts": [
+          "Spoofing",
+          "Phishing",
+          "Worm",
+          "Ransomware"
+        ],
+        "c": 0,
+        "s": [
+          "Fake identity = spoofing."
+        ],
+        "a": "Spoofing"
+      },
+      {
+        "q": "Fake bank page harvesting credentials:",
+        "opts": [
+          "Phishing",
+          "DoS",
+          "SQLi",
+          "MITM"
+        ],
+        "c": 0,
+        "s": [
+          "Human deception = phishing."
+        ],
+        "a": "Phishing"
+      },
+      {
+        "q": "ICMP broadcast amplification with forged source:",
+        "opts": [
+          "Smurfing",
+          "Email bombing",
+          "XSS",
+          "Adware"
+        ],
+        "c": 0,
+        "s": [
+          "Every host replies AT the victim."
+        ],
+        "a": "Smurfing"
+      },
+      {
+        "q": "Thousands of machines flooding one server:",
+        "opts": [
+          "DDoS",
+          "Phishing",
+          "Keylogging",
+          "SQLi"
+        ],
+        "c": 0,
+        "s": [
+          "Distributed = botnet army."
+        ],
+        "a": "DDoS"
+      },
+      {
+        "q": "Secret relay/alteration between two parties:",
+        "opts": [
+          "MITM",
+          "Spoofing",
+          "Worm",
+          "Adware"
+        ],
+        "c": 0,
+        "s": [
+          "The invisible middleman."
+        ],
+        "a": "MITM"
+      },
+      {
+        "q": "Re-sending captured valid traffic:",
+        "opts": [
+          "Replay attack",
+          "Phishing",
+          "Worm",
+          "Rootkit"
+        ],
+        "c": 0,
+        "s": [
+          "Freshness tokens (nonce) stop it."
+        ],
+        "a": "Replay attack"
+      },
+      {
+        "q": "Automated password guessing from a wordlist:",
+        "opts": [
+          "Dictionary attack",
+          "Phishing",
+          "Smurf",
+          "XSS"
+        ],
+        "c": 0,
+        "s": [
+          "Credential grinding; MFA/lockouts counter."
+        ],
+        "a": "Dictionary attack"
+      },
+      {
+        "q": "Forged email FROM address:",
+        "opts": [
+          "Email spoofing",
+          "Email bombing",
+          "Hashing",
+          "Tunnelling"
+        ],
+        "c": 0,
+        "s": [
+          "Identity forgery at mail layer (SPF/DKIM fight it)."
+        ],
+        "a": "Email spoofing"
+      },
+      {
+        "q": "Recording a user's keystrokes:",
+        "opts": [
+          "Keylogging",
+          "Smurfing",
+          "DDoS",
+          "SQLi"
+        ],
+        "c": 0,
+        "s": [
+          "Credential capture in realtime."
+        ],
+        "a": "Keylogging"
+      }
+    ],
+    "dos-family": [
+      {
+        "q": "DoS from ONE machine vs DDoS:",
+        "opts": [
+          "DDoS uses many distributed sources",
+          "Identical",
+          "DoS is stronger",
+          "DDoS is legal"
+        ],
+        "c": 0,
+        "s": [
+          "D = distributed across a botnet."
+        ],
+        "a": "DDoS uses many distributed sources"
+      },
+      {
+        "q": "Half-open TCP connections exhausting a server:",
+        "opts": [
+          "SYN flood",
+          "Email bomb",
+          "XSS",
+          "Phishing"
+        ],
+        "c": 0,
+        "s": [
+          "SYNs never completed -> table exhaustion."
+        ],
+        "a": "SYN flood"
+      },
+      {
+        "q": "Smurf amplification factor equals:",
+        "opts": [
+          "Hosts in the broadcast domain",
+          "Attackers",
+          "TTL",
+          "Mask"
+        ],
+        "c": 0,
+        "s": [
+          "N hosts each reply to the victim."
+        ],
+        "a": "Hosts in the broadcast domain"
+      },
+      {
+        "q": "Which is a MAIL flood?",
+        "opts": [
+          "Email bombing",
+          "Ping storm",
+          "SYN flood",
+          "Smurf"
+        ],
+        "c": 0,
+        "s": [
+          "The only inbox-targeted flood."
+        ],
+        "a": "Email bombing"
+      },
+      {
+        "q": "Botnet definition:",
+        "opts": [
+          "Infected machines under a controller",
+          "A firewall type",
+          "A DNS record",
+          "A backup system"
+        ],
+        "c": 0,
+        "s": [
+          "Bots await the herder's command."
+        ],
+        "a": "Infected machines under a controller"
+      },
+      {
+        "q": "Raw ICMP echo flooding:",
+        "opts": [
+          "Ping storm / ICMP flood",
+          "SQLi",
+          "XSS",
+          "Trojan"
+        ],
+        "c": 0,
+        "s": [
+          "Bandwidth exhaustion by echo requests."
+        ],
+        "a": "Ping storm / ICMP flood"
+      },
+      {
+        "q": "Primary mitigation for DDoS:",
+        "opts": [
+          "Rate limiting + anti-DDoS scrubbing",
+          "Longer passwords",
+          "MFA",
+          "Offline backups"
+        ],
+        "c": 0,
+        "s": [
+          "Filter/absorb the flood upstream."
+        ],
+        "a": "Rate limiting + anti-DDoS scrubbing"
+      },
+      {
+        "q": "Which flood targets TCP connection tables?",
+        "opts": [
+          "SYN flood",
+          "Email bomb",
+          "Adware",
+          "Phishing"
+        ],
+        "c": 0,
+        "s": [
+          "Half-open sessions starve the server."
+        ],
+        "a": "SYN flood"
+      },
+      {
+        "q": "Why botnets beat single-server DoS:",
+        "opts": [
+          "Harder to block + multiplied capacity",
+          "Slower",
+          "Legal",
+          "Cheaper for victims"
+        ],
+        "c": 0,
+        "s": [
+          "No single origin to block."
+        ],
+        "a": "Harder to block + multiplied capacity"
+      },
+      {
+        "q": "ICMP 'destination unreachable' is carried by:",
+        "opts": [
+          "ICMP (control messages)",
+          "SMTP",
+          "POP3",
+          "ARP"
+        ],
+        "c": 0,
+        "s": [
+          "ICMP is the error/control channel."
+        ],
+        "a": "ICMP (control messages)"
+      }
+    ],
+    "malware-matrix": [
+      {
+        "q": "Needs a HOST FILE:",
+        "opts": [
+          "Virus",
+          "Worm",
+          "Trojan",
+          "Rootkit"
+        ],
+        "c": 0,
+        "s": [
+          "Attaches and spreads on execution."
+        ],
+        "a": "Virus"
+      },
+      {
+        "q": "Self-spreads over the network alone:",
+        "opts": [
+          "Worm",
+          "Virus",
+          "Adware",
+          "Keylogger"
+        ],
+        "c": 0,
+        "s": [
+          "No host, no user action needed."
+        ],
+        "a": "Worm"
+      },
+      {
+        "q": "Disguised as useful software:",
+        "opts": [
+          "Trojan",
+          "Worm",
+          "Rootkit",
+          "Ransomware"
+        ],
+        "c": 0,
+        "s": [
+          "The user installs it willingly."
+        ],
+        "a": "Trojan"
+      },
+      {
+        "q": "Encrypts data and demands payment:",
+        "opts": [
+          "Ransomware",
+          "Spyware",
+          "Worm",
+          "Bot"
+        ],
+        "c": 0,
+        "s": [
+          "Extortion model."
+        ],
+        "a": "Ransomware"
+      },
+      {
+        "q": "Secretly collects user information:",
+        "opts": [
+          "Spyware",
+          "Worm",
+          "Virus",
+          "Ransomware"
+        ],
+        "c": 0,
+        "s": [
+          "Espionage malware."
+        ],
+        "a": "Spyware"
+      },
+      {
+        "q": "Hides other malware deep in the OS:",
+        "opts": [
+          "Rootkit",
+          "Adware",
+          "Worm",
+          "Trojan"
+        ],
+        "c": 0,
+        "s": [
+          "Stealth toolkit at the root level."
+        ],
+        "a": "Rootkit"
+      },
+      {
+        "q": "Force-feeds advertisements:",
+        "opts": [
+          "Adware",
+          "Worm",
+          "Rootkit",
+          "Virus"
+        ],
+        "c": 0,
+        "s": [
+          "Annoyance-class malware."
+        ],
+        "a": "Adware"
+      },
+      {
+        "q": "Best ransomware defence:",
+        "opts": [
+          "Offline backups",
+          "Faster CPU",
+          "More RAM",
+          "Bigger screen"
+        ],
+        "c": 0,
+        "s": [
+          "Restore without paying."
+        ],
+        "a": "Offline backups"
+      },
+      {
+        "q": "Best worm containment:",
+        "opts": [
+          "Network segmentation",
+          "Email training",
+          "MFA",
+          "Disk encryption"
+        ],
+        "c": 0,
+        "s": [
+          "Worms need network paths - cut them."
+        ],
+        "a": "Network segmentation"
+      },
+      {
+        "q": "Best trojan prevention:",
+        "opts": [
+          "Download discipline + trusted sources only",
+          "Subnetting",
+          "NAT",
+          "Ping filters"
+        ],
+        "c": 0,
+        "s": [
+          "Trojans need willing installation."
+        ],
+        "a": "Download discipline"
+      }
+    ],
+    "web-attacks": [
+      {
+        "q": "' OR 1=1 -- bypasses a login. Attack?",
+        "opts": [
+          "SQL injection",
+          "XSS",
+          "Phishing",
+          "MITM"
+        ],
+        "c": 0,
+        "s": [
+          "Backend SQL altered by input."
+        ],
+        "a": "SQL injection"
+      },
+      {
+        "q": "Malicious script running in OTHER users' browsers:",
+        "opts": [
+          "XSS",
+          "SQLi",
+          "Smurf",
+          "Spoofing"
+        ],
+        "c": 0,
+        "s": [
+          "Cookie theft and session hijack follow."
+        ],
+        "a": "XSS"
+      },
+      {
+        "q": "Direct SQLi countermeasure:",
+        "opts": [
+          "Parameterised queries",
+          "Output encoding",
+          "MFA",
+          "Backups"
+        ],
+        "c": 0,
+        "s": [
+          "Code/data separation kills injected SQL."
+        ],
+        "a": "Parameterised queries"
+      },
+      {
+        "q": "Direct XSS countermeasure:",
+        "opts": [
+          "Output encoding + CSP",
+          "Parameterised queries",
+          "Rate limiting",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "Neutralise scripts; restrict script sources."
+        ],
+        "a": "Output encoding + CSP"
+      },
+      {
+        "q": "Reading logins typed on open Wi-Fi (HTTP sites):",
+        "opts": [
+          "MITM sniffing",
+          "SQLi",
+          "Worm",
+          "Ransomware"
+        ],
+        "c": 0,
+        "s": [
+          "Plaintext over shared medium."
+        ],
+        "a": "MITM sniffing"
+      },
+      {
+        "q": "MITM's direct counter:",
+        "opts": [
+          "TLS/VPN encryption",
+          "Antivirus",
+          "Backups",
+          "Training"
+        ],
+        "c": 0,
+        "s": [
+          "Encryption blinds the relay."
+        ],
+        "a": "TLS/VPN encryption"
+      },
+      {
+        "q": "Session hijacking typically steals:",
+        "opts": [
+          "Session cookies",
+          "Subnet masks",
+          "MAC tables",
+          "DNS zones"
+        ],
+        "c": 0,
+        "s": [
+          "Cookie = the session ticket."
+        ],
+        "a": "Session cookies"
+      },
+      {
+        "q": "LAN attack forging ARP replies to intercept traffic:",
+        "opts": [
+          "ARP spoofing",
+          "Phishing",
+          "Email bombing",
+          "Adware"
+        ],
+        "c": 0,
+        "s": [
+          "Dynamic ARP inspection counters it."
+        ],
+        "a": "ARP spoofing"
+      },
+      {
+        "q": "Which pair are BOTH input-validation failures?",
+        "opts": [
+          "SQLi and XSS",
+          "DoS and DDoS",
+          "Virus and worm",
+          "Phishing and MITM"
+        ],
+        "c": 0,
+        "s": [
+          "Both execute attacker-supplied input."
+        ],
+        "a": "SQLi and XSS"
+      },
+      {
+        "q": "HTTP status/code family for server errors:",
+        "opts": [
+          "5xx",
+          "4xx",
+          "3xx",
+          "2xx"
+        ],
+        "c": 0,
+        "s": [
+          "500 = server broke; 404 = missing (4xx client)."
+        ],
+        "a": "5xx"
+      }
+    ],
+    "defence-map": [
+      {
+        "q": "Best phishing defence:",
+        "opts": [
+          "User training + mail filtering",
+          "Offline backups",
+          "Subnetting",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "Phishing targets people - train and filter."
+        ],
+        "a": "User training + mail filtering"
+      },
+      {
+        "q": "Best malware defence combo:",
+        "opts": [
+          "Antivirus + patching",
+          "MFA + lockouts",
+          "TLS + VPN",
+          "Rate limiting"
+        ],
+        "c": 0,
+        "s": [
+          "Signatures catch known; patches close holes."
+        ],
+        "a": "Antivirus + patching"
+      },
+      {
+        "q": "Credential-guessing counter:",
+        "opts": [
+          "MFA + account lockouts",
+          "Offline backups",
+          "CSP headers",
+          "VLANs"
+        ],
+        "c": 0,
+        "s": [
+          "Second factor + lockout = grinding dies."
+        ],
+        "a": "MFA + account lockouts"
+      },
+      {
+        "q": "'Verify every request regardless of origin':",
+        "opts": [
+          "Zero Trust",
+          "Least privilege",
+          "Patching",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "The Zero Trust doctrine."
+        ],
+        "a": "Zero Trust"
+      },
+      {
+        "q": "Granting minimum needed rights:",
+        "opts": [
+          "Least privilege",
+          "Defense in depth",
+          "Zero Trust",
+          "DMARC"
+        ],
+        "c": 0,
+        "s": [
+          "Shrink the blast radius."
+        ],
+        "a": "Least privilege"
+      },
+      {
+        "q": "Many overlapping security layers:",
+        "opts": [
+          "Defense in depth",
+          "Single sign-on",
+          "Least privilege",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "No single wall."
+        ],
+        "a": "Defense in depth"
+      },
+      {
+        "q": "Interception counter:",
+        "opts": [
+          "TLS/VPN",
+          "Antivirus",
+          "Backups",
+          "Rate limits"
+        ],
+        "c": 0,
+        "s": [
+          "Encrypted traffic is useless to sniffers."
+        ],
+        "a": "TLS/VPN"
+      },
+      {
+        "q": "Worm-outbreak prevention:",
+        "opts": [
+          "Regular patching",
+          "Email training",
+          "Backups",
+          "MFA"
+        ],
+        "c": 0,
+        "s": [
+          "Worms ride unpatched holes."
+        ],
+        "a": "Regular patching"
+      },
+      {
+        "q": "Mail authentication trio that fights spoofing:",
+        "opts": [
+          "SPF, DKIM, DMARC",
+          "NAT, PAT, VLAN",
+          "AES, DES, RSA",
+          "DNS, DHCP, ARP"
+        ],
+        "c": 0,
+        "s": [
+          "Sender-policy frameworks verify legitimate senders."
+        ],
+        "a": "SPF, DKIM, DMARC"
+      },
+      {
+        "q": "Incident containment before recovery matches which doctrine?",
+        "opts": [
+          "Defense in depth (layered response)",
+          "Least privilege only",
+          "NAT",
+          "Zero compression"
+        ],
+        "c": 0,
+        "s": [
+          "Isolate, eradicate, recover - layered handling."
+        ],
+        "a": "Defense in depth (layered response)"
+      }
+    ],
+    "identification-drill": [
+      {
+        "q": "Clone site stealing bank logins:",
+        "opts": [
+          "Phishing",
+          "Smurfing",
+          "SQLi",
+          "Worm"
+        ],
+        "c": 0,
+        "s": [
+          "Fake authority + credential harvest."
+        ],
+        "a": "Phishing"
+      },
+      {
+        "q": "Invoice attachment installing a backdoor:",
+        "opts": [
+          "Trojan (via phishing delivery)",
+          "Worm",
+          "Adware",
+          "Rootkit only"
+        ],
+        "c": 0,
+        "s": [
+          "Disguised payload = trojan behaviour."
+        ],
+        "a": "Trojan (via phishing delivery)"
+      },
+      {
+        "q": "Server unreachable as thousands of IPs ping it:",
+        "opts": [
+          "DDoS",
+          "Phishing",
+          "XSS",
+          "Keylogger"
+        ],
+        "c": 0,
+        "s": [
+          "Distributed traffic overwhelm."
+        ],
+        "a": "DDoS"
+      },
+      {
+        "q": "Login page accepts 'admin'-- as password:",
+        "opts": [
+          "SQLi",
+          "XSS",
+          "MITM",
+          "Adware"
+        ],
+        "c": 0,
+        "s": [
+          "Input became SQL."
+        ],
+        "a": "SQLi"
+      },
+      {
+        "q": "Pop-ups flooding a browser after installing a 'free' PDF tool:",
+        "opts": [
+          "Adware (trojan delivery)",
+          "Worm",
+          "Smurf",
+          "Replay"
+        ],
+        "c": 0,
+        "s": [
+          "Disguised bundle = trojan; payload = ads."
+        ],
+        "a": "Adware (trojan delivery)"
+      },
+      {
+        "q": "Traffic between two offices altered in transit undetected:",
+        "opts": [
+          "MITM",
+          "Phishing",
+          "Email bombing",
+          "Rootkit"
+        ],
+        "c": 0,
+        "s": [
+          "Interception + alteration = MITM; TLS would detect/prevent."
+        ],
+        "a": "MITM"
+      },
+      {
+        "q": "Every host on a subnet replying to one victim's IP:",
+        "opts": [
+          "Smurfing",
+          "Phishing",
+          "SQLi",
+          "Ransomware"
+        ],
+        "c": 0,
+        "s": [
+          "Broadcast amplification with forged source."
+        ],
+        "a": "Smurfing"
+      },
+      {
+        "q": "Files renamed with .locked and a ransom note appears:",
+        "opts": [
+          "Ransomware",
+          "Adware",
+          "Spyware",
+          "Worm"
+        ],
+        "c": 0,
+        "s": [
+          "Encryption extortion."
+        ],
+        "a": "Ransomware"
+      },
+      {
+        "q": "Competitor receives your confidential emails verbatim:",
+        "opts": [
+          "Eavesdropping/MITM",
+          "DoS",
+          "XSS",
+          "Trojan"
+        ],
+        "c": 0,
+        "s": [
+          "Interception of plaintext traffic."
+        ],
+        "a": "Eavesdropping/MITM"
+      },
+      {
+        "q": "Login attempts hammering an account with password guesses:",
+        "opts": [
+          "Brute-force attack",
+          "Phishing",
+          "Smurf",
+          "XSS"
+        ],
+        "c": 0,
+        "s": [
+          "Credential grinding; lockouts/MFA counter."
+        ],
+        "a": "Brute-force attack"
+      }
+    ],
+    "code-attack-pair": [
+      {
+        "q": "' OR 1=1 -- typed into a login bypasses authentication. Attack?",
+        "opts": [
+          "SQL injection",
+          "XSS",
+          "Phishing",
+          "MITM"
+        ],
+        "c": 0,
+        "s": [
+          "Input executed as backend SQL."
+        ],
+        "a": "SQL injection"
+      },
+      {
+        "q": "Attacker JavaScript runs in other users' browsers:",
+        "opts": [
+          "XSS",
+          "SQLi",
+          "DDoS",
+          "Smurf"
+        ],
+        "c": 0,
+        "s": [
+          "Injected script = cross-site scripting."
+        ],
+        "a": "XSS"
+      },
+      {
+        "q": "Direct SQLi fix:",
+        "opts": [
+          "Parameterised queries",
+          "Output encoding",
+          "Backups",
+          "MFA"
+        ],
+        "c": 0,
+        "s": [
+          "Separate code from data."
+        ],
+        "a": "Parameterised queries"
+      },
+      {
+        "q": "Direct XSS fix:",
+        "opts": [
+          "Output encoding + CSP",
+          "Parameterised queries",
+          "Rate limiting",
+          "NAT"
+        ],
+        "c": 0,
+        "s": [
+          "Neutralise and restrict scripts."
+        ],
+        "a": "Output encoding + CSP"
+      },
+      {
+        "q": "SQLi's typical prize:",
+        "opts": [
+          "Database data extraction",
+          "Cookie theft",
+          "Bandwidth",
+          "Mail flood"
+        ],
+        "c": 0,
+        "s": [
+          "Queries hit the database."
+        ],
+        "a": "Database data extraction"
+      },
+      {
+        "q": "XSS's typical prize:",
+        "opts": [
+          "Session cookies",
+          "Database dumps",
+          "Subnets",
+          "Certificates"
+        ],
+        "c": 0,
+        "s": [
+          "document.cookie exfiltration."
+        ],
+        "a": "Session cookies"
+      },
+      {
+        "q": "Which input is a classic SQLi probe?",
+        "opts": [
+          "' OR '1'='1",
+          "<script>alert(1)</script> in a comment",
+          "ping -t",
+          "netstat"
+        ],
+        "c": 0,
+        "s": [
+          "Tautology payload - always-true WHERE clause."
+        ],
+        "a": "' OR '1'='1"
+      },
+      {
+        "q": "Which input is a classic XSS probe?",
+        "opts": [
+          "<script>alert(1)</script>",
+          "' OR 1=1 --",
+          "SELECT * FROM users",
+          "DROP TABLE users"
+        ],
+        "c": 0,
+        "s": [
+          "Script tag testing injection."
+        ],
+        "a": "<script>alert(1)</script>"
+      },
+      {
+        "q": "Both SQLi and XSS are fundamentally:",
+        "opts": [
+          "Input-validation failures",
+          "Routing problems",
+          "Hardware faults",
+          "DNS issues"
+        ],
+        "c": 0,
+        "s": [
+          "Untrusted input executed somewhere dangerous."
+        ],
+        "a": "Input-validation failures"
+      },
+      {
+        "q": "Least-privilege DB accounts limit which SQLi damage?",
+        "opts": [
+          "Scope of data the injected queries touch",
+          "Page speed",
+          "Cookie size",
+          "DNS TTL"
+        ],
+        "c": 0,
+        "s": [
+          "Fewer rights = smaller blast radius."
+        ],
+        "a": "Scope of reachable data"
+      }
+    ],
+    "mitm-tls": [
+      {
+        "q": "Attacker reads logins typed on cafe Wi-Fi (HTTP site):",
+        "opts": [
+          "MITM sniffing",
+          "SQLi",
+          "Worm",
+          "Ransomware"
+        ],
+        "c": 0,
+        "s": [
+          "Plaintext over shared medium."
+        ],
+        "a": "MITM sniffing"
+      },
+      {
+        "q": "MITM's direct counter:",
+        "opts": [
+          "TLS/VPN",
+          "Antivirus",
+          "Backups",
+          "Rate limiting"
+        ],
+        "c": 0,
+        "s": [
+          "Encryption blinds the relay."
+        ],
+        "a": "TLS/VPN"
+      },
+      {
+        "q": "A TLS certificate proves to the browser:",
+        "opts": [
+          "The server's identity (CA-verified)",
+          "The server's speed",
+          "The subnet mask",
+          "The user's password"
+        ],
+        "c": 0,
+        "s": [
+          "Chain to a trusted CA."
+        ],
+        "a": "The server's identity"
+      },
+      {
+        "q": "LAN attack forging ARP replies to intercept:",
+        "opts": [
+          "ARP spoofing",
+          "Phishing",
+          "Email bombing",
+          "Adware"
+        ],
+        "c": 0,
+        "s": [
+          "Dynamic ARP inspection counters it."
+        ],
+        "a": "ARP spoofing"
+      },
+      {
+        "q": "Which control DETECTS ARP spoofing?",
+        "opts": [
+          "Dynamic ARP inspection",
+          "Offline backups",
+          "MFA",
+          "CSP headers"
+        ],
+        "c": 0,
+        "s": [
+          "Validates ARP against trusted bindings."
+        ],
+        "a": "Dynamic ARP inspection"
+      },
+      {
+        "q": "HTTPS on public Wi-Fi protects:",
+        "opts": [
+          "Content confidentiality end-to-end",
+          "The DNS lookup only",
+          "The MAC address",
+          "Nothing"
+        ],
+        "c": 0,
+        "s": [
+          "Content encrypted; SNI/DNS metadata visible."
+        ],
+        "a": "Content confidentiality"
+      },
+      {
+        "q": "Which makes MITM harder internally?",
+        "opts": [
+          "Internal TLS/mTLS",
+          "Disabling switches",
+          "Longer passwords alone",
+          "Extra VLANs only"
+        ],
+        "c": 0,
+        "s": [
+          "Authenticated encryption between services."
+        ],
+        "a": "Internal TLS/mTLS"
+      },
+      {
+        "q": "Session hijacking means:",
+        "opts": [
+          "Reusing a stolen session cookie",
+          "Cracking passwords offline",
+          "Flooding a server",
+          "Spoofing MACs only"
+        ],
+        "c": 0,
+        "s": [
+          "The cookie IS the session."
+        ],
+        "a": "Reusing a stolen session cookie"
+      },
+      {
+        "q": "HSTS forces:",
+        "opts": [
+          "Browsers to use HTTPS only",
+          "DNS over HTTPS",
+          "HTTP/3",
+          "VPN tunnels"
+        ],
+        "c": 0,
+        "s": [
+          "Strict-Transport-Security blocks HTTP downgrade."
+        ],
+        "a": "Browsers to use HTTPS only"
+      },
+      {
+        "q": "Which pair both enable MITM on a LAN?",
+        "opts": [
+          "ARP spoofing and MAC flooding",
+          "SQLi and XSS",
+          "Phishing and training",
+          "Patching and backups"
+        ],
+        "c": 0,
+        "s": [
+          "Both poison local tables."
+        ],
+        "a": "ARP spoofing and MAC flooding"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "id": 1,
+      "q": "An attack in which the user receives an unwanted amount of emails is:",
+      "opts": [
+        "Smurfing",
+        "Denial of Service",
+        "Email bombing",
+        "Ping storm"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "identification",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Mail flood = email bombing.",
+        "Smurf/ping storm/DoS are bandwidth attacks."
+      ]
+    },
+    {
+      "id": 2,
+      "q": "An attack in which a user creates a packet that appears to be something else is:",
+      "opts": [
+        "Smurfing",
+        "Trojan",
+        "Email bombing",
+        "Spoofing"
+      ],
+      "c": 3,
+      "d": "easy",
+      "t": "identification",
+      "source": "Asked in Accenture AXIS Technical Assessment",
+      "exp": [
+        "Forged identity at packet level = spoofing.",
+        "Trojan is disguised SOFTWARE, not a packet trick."
+      ]
+    },
+    {
+      "id": 3,
+      "q": "Fraudulent messages that trick users into revealing credentials:",
+      "opts": [
+        "Phishing",
+        "DDoS",
+        "SQL injection",
+        "Sniffing"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "identification",
+      "exp": [
+        "Phishing deceives PEOPLE into handing over secrets."
+      ]
+    },
+    {
+      "id": 4,
+      "q": "A DDoS attack differs from DoS because it:",
+      "opts": [
+        "Is always slower",
+        "Uses many distributed sources simultaneously",
+        "Only targets email",
+        "Is legal"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "dos-family",
+      "exp": [
+        "D = Distributed: botnets of thousands of machines swamp the victim."
+      ]
+    },
+    {
+      "id": 5,
+      "q": "Which malware NEEDS a host file to spread?",
+      "opts": [
+        "Worm",
+        "Virus",
+        "Trojan",
+        "Ransomware"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "malware",
+      "exp": [
+        "Viruses attach to host files and spread on execution.",
+        "Worms self-replicate over networks without hosts."
+      ]
+    },
+    {
+      "id": 6,
+      "q": "Which malware self-replicates across networks WITHOUT a host file?",
+      "opts": [
+        "Virus",
+        "Worm",
+        "Adware",
+        "Rootkit"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "malware",
+      "exp": [
+        "Worms propagate autonomously - the network IS their vehicle."
+      ]
+    },
+    {
+      "id": 7,
+      "q": "Malware disguised as legitimate software is a:",
+      "opts": [
+        "Worm",
+        "Virus",
+        "Trojan",
+        "Ransomware"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "malware",
+      "exp": [
+        "The Trojan horse trick: useful-looking wrapper, malicious payload."
+      ]
+    },
+    {
+      "id": 8,
+      "q": "Malware that encrypts data and demands payment:",
+      "opts": [
+        "Ransomware",
+        "Spyware",
+        "Worm",
+        "Adware"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "malware",
+      "exp": [
+        "Ransom = pay-to-unlock extortion."
+      ]
+    },
+    {
+      "id": 9,
+      "q": "Software that silently records keystrokes:",
+      "opts": [
+        "Keylogger",
+        "Firewall",
+        "Worm",
+        "Proxy"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "malware",
+      "exp": [
+        "Keyloggers capture credentials as they are typed."
+      ]
+    },
+    {
+      "id": 10,
+      "q": "Typing ' OR 1=1 -- into a login field to bypass authentication is:",
+      "opts": [
+        "XSS",
+        "SQL injection",
+        "Phishing",
+        "MITM"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "web-attacks",
+      "exp": [
+        "The payload alters the backend SQL query - database attack = SQLi."
+      ]
+    },
+    {
+      "id": 11,
+      "q": "Injecting malicious scripts into pages other users trust is:",
+      "opts": [
+        "SQL injection",
+        "XSS",
+        "Smurfing",
+        "Spoofing"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "web-attacks",
+      "exp": [
+        "Cross-Site Scripting runs attacker JavaScript in VICTIMS' browsers - cookie theft follows."
+      ]
+    },
+    {
+      "id": 12,
+      "q": "Secretly relaying and altering traffic between two parties is:",
+      "opts": [
+        "Man-in-the-Middle",
+        "Phishing",
+        "Ransomware",
+        "DoS"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "web-attacks",
+      "exp": [
+        "MITM = the invisible postman who reads and edits letters."
+      ]
+    },
+    {
+      "id": 13,
+      "q": "The primary defence against phishing is:",
+      "opts": [
+        "User awareness training + mail filtering",
+        "Faster CPUs",
+        "More RAM",
+        "Disabling firewalls"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "defence",
+      "exp": [
+        "Phishing exploits people - training plus filtering attacks that mechanism."
+      ]
+    },
+    {
+      "id": 14,
+      "q": "The best defence against ransomware is:",
+      "opts": [
+        "Regular offline backups",
+        "Disabling the firewall",
+        "Opening email attachments quickly",
+        "Turning off antivirus"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "defence",
+      "exp": [
+        "Restorable backups remove the extortion leverage."
+      ]
+    },
+    {
+      "id": 15,
+      "q": "Which attack floods a service with traffic from thousands of infected machines?",
+      "opts": [
+        "Phishing",
+        "DDoS",
+        "SQLi",
+        "Keylogging"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "dos-family",
+      "exp": [
+        "Botnets = distributed denial of service."
+      ]
+    },
+    {
+      "id": 16,
+      "q": "Spyware's main purpose is to:",
+      "opts": [
+        "Encrypt files",
+        "Silently collect information",
+        "Flood networks",
+        "Crash servers"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "malware",
+      "exp": [
+        "Spyware watches and reports - espionage, not sabotage."
+      ]
+    },
+    {
+      "id": 17,
+      "q": "ICMP echo requests sent to a broadcast address with a forged source is:",
+      "opts": [
+        "Smurfing",
+        "Phishing",
+        "SQLi",
+        "Adware"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "dos-family",
+      "exp": [
+        "Smurf = amplification: every broadcast host replies AT the spoofed victim."
+      ]
+    },
+    {
+      "id": 18,
+      "q": "'Never trust, always verify' is the slogan of:",
+      "opts": [
+        "Zero Trust",
+        "Defense in depth",
+        "Least privilege",
+        "NAT"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "defence",
+      "exp": [
+        "Zero Trust verifies every request regardless of network location."
+      ]
+    },
+    {
+      "id": 19,
+      "q": "Granting users only the rights they need is:",
+      "opts": [
+        "Least privilege",
+        "Full admin for all",
+        "Defense in depth",
+        "Patching"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "defence",
+      "exp": [
+        "Least privilege shrinks the blast radius of any compromise."
+      ]
+    },
+    {
+      "id": 20,
+      "q": "Which is a CREDENTIAL attack?",
+      "opts": [
+        "Brute-force password guessing",
+        "Port scanning only",
+        "Patching",
+        "Subnetting"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "identification",
+      "exp": [
+        "Brute force grinds password combinations; MFA and lockouts counter it."
+      ]
+    },
+    {
+      "id": 21,
+      "q": "Which malware turns infected PCs into DDoS soldiers?",
+      "opts": [
+        "Botnet agents",
+        "Adware",
+        "Keyloggers only",
+        "None can"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "dos-family",
+      "exp": [
+        "Bots await commands from a controller - coordinated floods on cue."
+      ]
+    },
+    {
+      "id": 22,
+      "q": "Eavesdropping on network traffic is best countered by:",
+      "opts": [
+        "Encryption (TLS/VPN)",
+        "Turning off the monitor",
+        "Removing the firewall",
+        "Slower links"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "defence",
+      "exp": [
+        "Encrypted traffic is useless to a sniffer."
+      ]
+    },
+    {
+      "id": 23,
+      "q": "Which attack targets a DATABASE through web input fields?",
+      "opts": [
+        "SQL injection",
+        "Phishing",
+        "Worm",
+        "Smurfing"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "web-attacks",
+      "exp": [
+        "SQLi = input fields as a database command line."
+      ]
+    },
+    {
+      "id": 24,
+      "q": "Stolen session cookies are the typical prize of:",
+      "opts": [
+        "XSS",
+        "Ransomware",
+        "Smurfing",
+        "Ping storms"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "web-attacks",
+      "exp": [
+        "Injected scripts read cookies -> session hijacking."
+      ]
+    },
+    {
+      "id": 25,
+      "q": "A user receives an email 'from the bank' linking to a clone site that steals credentials. This is:",
+      "opts": [
+        "Phishing",
+        "Smurfing",
+        "SQLi",
+        "DDoS"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "identification",
+      "exp": [
+        "Fake authority + fake page + credential harvest = textbook phishing."
+      ]
+    },
+    {
+      "id": 26,
+      "q": "Which TWO techniques does a smurf attack combine?",
+      "opts": [
+        "Spoofing and ICMP amplification",
+        "Encryption and hashing",
+        "SQLi and XSS",
+        "Virus and worm"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "dos-family",
+      "exp": [
+        "Forged source (spoofing) + broadcast echo amplification (ICMP) = the reply storm."
+      ]
+    },
+    {
+      "id": 27,
+      "q": "Which malware pair is distinguished by host-file dependency?",
+      "opts": [
+        "Virus vs worm",
+        "Trojan vs ransomware",
+        "Spyware vs adware",
+        "Rootkit vs bot"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "malware",
+      "exp": [
+        "Virus needs the host file; the worm needs nothing but the network."
+      ]
+    },
+    {
+      "id": 28,
+      "q": "An employee's browser runs attacker JavaScript that posts their session cookie to an external site. Attack?",
+      "opts": [
+        "XSS",
+        "Smurf",
+        "Email bombing",
+        "ARP spoofing"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "web-attacks",
+      "exp": [
+        "Script in a trusted page + cookie exfiltration = cross-site scripting."
+      ]
+    },
+    {
+      "id": 29,
+      "q": "Which defence directly neutralises SQL injection?",
+      "opts": [
+        "Parameterised queries",
+        "More RAM",
+        "Disabling SSL",
+        "Bigger monitors"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "web-attacks",
+      "exp": [
+        "Parameterised queries separate code from data - injected fragments never execute."
+      ]
+    },
+    {
+      "id": 30,
+      "q": "A botnet's controller is best described as:",
+      "opts": [
+        "The command source coordinating infected machines",
+        "A firewall brand",
+        "A DNS record",
+        "A backup server"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "dos-family",
+      "exp": [
+        "Bot herder issues commands; the bots execute - DDoS on demand."
+      ]
+    },
+    {
+      "id": 31,
+      "q": "Which attack re-sends captured legitimate traffic to gain access?",
+      "opts": [
+        "Replay attack",
+        "Phishing",
+        "Worm",
+        "Adware"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "identification",
+      "exp": [
+        "Replays reuse valid transmissions; timestamps/nonces defeat them."
+      ]
+    },
+    {
+      "id": 32,
+      "q": "Which malware buries itself in the OS to HIDE other malware?",
+      "opts": [
+        "Rootkit",
+        "Adware",
+        "Worm",
+        "Ransomware"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "malware",
+      "exp": [
+        "Root = deepest access; kit = toolkit - the stealth layer."
+      ]
+    },
+    {
+      "id": 33,
+      "q": "An attacker emails a fake invoice with a malicious macro attachment. Two threats in one:",
+      "opts": [
+        "Phishing + trojan delivery",
+        "Smurfing + spoofing",
+        "SQLi + XSS",
+        "DoS + DDoS"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "identification",
+      "exp": [
+        "The deceit is phishing; the attachment payload is trojan behaviour."
+      ]
+    },
+    {
+      "id": 34,
+      "q": "Which control BEST limits the damage of a compromised account?",
+      "opts": [
+        "Least privilege",
+        "Disabling logging",
+        "Shared admin password",
+        "No backups"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "defence",
+      "exp": [
+        "Minimal rights = minimal blast radius."
+      ]
+    },
+    {
+      "id": 35,
+      "q": "Which attack type is 'ping storm' closest to?",
+      "opts": [
+        "ICMP flooding (DoS family)",
+        "Mail bombing",
+        "Credential theft",
+        "XSS"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "dos-family",
+      "exp": [
+        "Raw echo-request flooding - a DoS variant, distinct from smurf's broadcast trick."
+      ]
+    },
+    {
+      "id": 36,
+      "q": "Output encoding and Content-Security-Policy defend against:",
+      "opts": [
+        "XSS",
+        "SQLi",
+        "DDoS",
+        "Rootkits"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "web-attacks",
+      "exp": [
+        "Encoding neutralises injected scripts; CSP restricts what scripts may run."
+      ]
+    },
+    {
+      "id": 37,
+      "q": "Which is a SOCIAL engineering attack (targets people, not machines)?",
+      "opts": [
+        "Phishing",
+        "SQL injection",
+        "SYN flood",
+        "Port scanning"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "identification",
+      "exp": [
+        "Phishing hacks humans; the others hack systems."
+      ]
+    },
+    {
+      "id": 38,
+      "q": "A forged email sender address (bank@secure-bank.example) that is not the real bank is:",
+      "opts": [
+        "Email spoofing",
+        "Email bombing",
+        "Hashing",
+        "Tunnelling"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "identification",
+      "exp": [
+        "Forged FROM identity = spoofing at the mail layer (SPF/DKIM/DMARC counter it)."
+      ]
+    },
+    {
+      "id": 39,
+      "q": "Which layer of defence means 'many overlapping controls'?",
+      "opts": [
+        "Defense in depth",
+        "Single sign-on",
+        "Least privilege",
+        "NAT"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "defence",
+      "exp": [
+        "No single wall - layers upon layers."
+      ]
+    },
+    {
+      "id": 40,
+      "q": "Which attack intercepts communication on open Wi-Fi to steal logins typed into HTTP sites?",
+      "opts": [
+        "MITM via sniffing",
+        "Worm",
+        "Ransomware",
+        "Smurf"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "web-attacks",
+      "exp": [
+        "Plaintext over a shared medium = read-and-relay opportunities."
+      ]
+    },
+    {
+      "id": 41,
+      "q": "Which malware demands cryptocurrency typically?",
+      "opts": [
+        "Ransomware",
+        "Adware",
+        "Worm",
+        "Keylogger"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "malware",
+      "exp": [
+        "Crypto payments are hard to trace - the ransom rail of choice."
+      ]
+    },
+    {
+      "id": 42,
+      "q": "A 'drive-by download' infects a browser simply by VISITING a page. Primary defence?",
+      "opts": [
+        "Patched browser + script blocking",
+        "Faster internet",
+        "Bigger screen",
+        "Disabling HTTPS"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "malware",
+      "exp": [
+        "Unpatched browser vulnerabilities are the door; patching closes it."
+      ]
+    },
+    {
+      "id": 43,
+      "q": "Which statement about DDoS mitigation is TRUE?",
+      "opts": [
+        "Rate limiting and anti-DDoS services absorb/filter floods",
+        "Unplugging the router forever",
+        "Encryption stops floods",
+        "More bandwidth alone always wins"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "defence",
+      "exp": [
+        "Filtering/scrubbing centres + rate limits absorb floods; bandwidth alone just raises the ceiling."
+      ]
+    },
+    {
+      "id": 44,
+      "q": "Which attack uses a dictionary of common passwords?",
+      "opts": [
+        "Dictionary/brute-force attack",
+        "Phishing",
+        "Smurf",
+        "XSS"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "identification",
+      "exp": [
+        "Automated guessing - lockouts and MFA are the counters."
+      ]
+    },
+    {
+      "id": 45,
+      "q": "Which is an INSIDER threat example?",
+      "opts": [
+        "A disgruntled employee exfiltrating data",
+        "A foreign army's DDoS",
+        "A worm from the Internet",
+        "A storm cutting power"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "identification",
+      "exp": [
+        "Insider = trusted person misusing legitimate access."
+      ]
+    },
+    {
+      "id": 46,
+      "q": "Multi-factor authentication primarily defeats:",
+      "opts": [
+        "Stolen-password logins",
+        "DDoS floods",
+        "SQL injection",
+        "Email bombing"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "defence",
+      "exp": [
+        "A stolen password alone is useless without the second factor."
+      ]
+    },
+    {
+      "id": 47,
+      "q": "Which is TRUE about smurfing's amplification?",
+      "opts": [
+        "Every broadcast host replies to the spoofed victim",
+        "Only the server replies",
+        "No replies occur",
+        "Replies go to the attacker"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "dos-family",
+      "exp": [
+        "The forged source redirects the entire reply storm at the victim."
+      ]
+    },
+    {
+      "id": 48,
+      "q": "Which practice closes the vulnerabilities worms exploit?",
+      "opts": [
+        "Regular patching",
+        "Disabling antivirus",
+        "Sharing admin passwords",
+        "Opening all ports"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "defence",
+      "exp": [
+        "Worms ride unpatched holes - patching shuts the doors."
+      ]
+    },
+    {
+      "id": 49,
+      "q": "A published AXIS PYQ pairs 'unwanted amount of emails' with three traffic-attack distractors. The distractors work because all four are:",
+      "opts": [
+        "Flooding attacks differing only in medium",
+        "Identical attacks",
+        "Encryption methods",
+        "Routing protocols"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "identification",
+      "source": "Accenture AXIS PYQ pattern",
+      "exp": [
+        "Smurfing, DoS and ping storm flood BANDWIDTH; email bombing floods a MAILBOX - the medium is the discriminator."
+      ]
+    },
+    {
+      "id": 50,
+      "q": "An attacker cannot decrypt captured traffic but re-sends it later successfully. Which control would have prevented this?",
+      "opts": [
+        "Nonces/timestamps in the protocol",
+        "Longer passwords",
+        "Bigger subnets",
+        "Faster CPU"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "identification",
+      "exp": [
+        "Replay attacks reuse valid captures; freshness tokens (nonce/timestamp) make replays stale."
+      ]
+    },
+    {
+      "id": 51,
+      "q": "Which sequence correctly orders escalating malware defence?",
+      "opts": [
+        "Antivirus -> patching -> offline backups -> network segmentation (random)",
+        "Patching -> antivirus -> segmentation -> backups (layered)",
+        "Only antivirus suffices",
+        "No order exists"
+      ],
+      "c": 1,
+      "d": "hard",
+      "t": "defence",
+      "exp": [
+        "Defense in depth: signature defence, vulnerability removal, containment, recovery - each layer covers the last's gaps."
+      ]
+    },
+    {
+      "id": 52,
+      "q": "An attacker registers bank-secure-login.com and clones the bank's page. Which TWO defences catch this earliest?",
+      "opts": [
+        "User training (check domain) + mail filtering/DMARC",
+        "Subnetting + NAT",
+        "Antivirus + disk encryption",
+        "VLANs + STP"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "defence",
+      "exp": [
+        "Phishing dies at human vigilance and mail authentication (SPF/DKIM/DMARC) - technical layers come later."
+      ]
+    },
+    {
+      "id": 53,
+      "q": "Which attack does ENCRYPTION alone NOT stop?",
+      "opts": [
+        "Ransomware (runs locally as the user)",
+        "MITM sniffing",
+        "Wiretapping",
+        "Wi-Fi eavesdropping"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "defence",
+      "exp": [
+        "Ransomware executes WITH the user's rights on the endpoint - encryption protects data in transit/at rest, not local execution."
+      ]
+    },
+    {
+      "id": 54,
+      "q": "A smurf attack's amplification factor equals:",
+      "opts": [
+        "Number of hosts in the broadcast domain",
+        "Number of attackers",
+        "Subnet mask value",
+        "TTL count"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "dos-family",
+      "exp": [
+        "One request -> N hosts each reply to the victim: amplification = N."
+      ]
+    },
+    {
+      "id": 55,
+      "q": "Which attack chain is internally consistent?",
+      "opts": [
+        "Phishing email -> credential theft -> account misuse",
+        "SQLi -> ICMP flood -> cookie theft",
+        "Smurf -> ransom payment -> worm",
+        "DDoS -> data encryption by attacker"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "identification",
+      "exp": [
+        "Only A follows cause-to-effect logically; the others mix incompatible mechanisms."
+      ]
+    },
+    {
+      "id": 56,
+      "q": "Which control detects an active MITM on a LAN (ARP spoofing)?",
+      "opts": [
+        "Dynamic ARP inspection / ARP monitoring",
+        "Subnet masks",
+        "DNS caching",
+        "NAT"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "defence",
+      "exp": [
+        "DAI validates ARP replies against trusted bindings - the direct counter to ARP spoofing."
+      ]
+    },
+    {
+      "id": 57,
+      "q": "A worm outbreak is contained fastest by:",
+      "opts": [
+        "Network segmentation/isolation of infected segments",
+        "Email training",
+        "Offline backups",
+        "MFA"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "defence",
+      "exp": [
+        "Worms propagate over the network - cutting paths starves them; backups/training address other attacks."
+      ]
+    },
+    {
+      "id": 58,
+      "q": "Which option pair lists an attack and its CORRECT direct counter?",
+      "opts": [
+        "XSS -> output encoding; SQLi -> parameterised queries",
+        "XSS -> parameterised queries; SQLi -> output encoding",
+        "XSS -> offline backups; SQLi -> MFA",
+        "SQLi -> rate limiting; XSS -> NAT"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "web-attacks",
+      "exp": [
+        "Each input-validation failure has its specific fix - swapping them is the classic distractor."
+      ]
+    },
+    {
+      "id": 59,
+      "q": "Why do DDoS attackers prefer botnets over single powerful servers?",
+      "opts": [
+        "Distributed sources are harder to block and multiply total flood capacity",
+        "Botnets encrypt better",
+        "Single servers are illegal",
+        "Botnets reduce latency for victims"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "dos-family",
+      "exp": [
+        "Blocking one origin fails against thousands; capacity multiplies by node count."
+      ]
+    },
+    {
+      "id": 60,
+      "q": "Map: 'invoice macro' -> ? ; 'fake bank page' -> ? ; 'broadcast ICMP storm' -> ?",
+      "opts": [
+        "Trojan; phishing; smurfing",
+        "Worm; spoofing; DDoS",
+        "Ransomware; MITM; email bombing",
+        "Keylogger; XSS; SQLi"
+      ],
+      "c": 0,
+      "d": "hard",
+      "t": "identification",
+      "exp": [
+        "Attachment disguise = trojan delivery; cloned credential page = phishing; broadcast echo flood = smurfing.",
+        "Three table rows in one question - the AXIS style."
+      ]
+    }
+  ],
+  "learningPath": [
+    {
+      "type": "concept",
+      "sectionId": "attack-landscape"
+    },
+    {
+      "type": "concept",
+      "sectionId": "malware-taxonomy"
+    },
+    {
+      "type": "concept",
+      "sectionId": "web-code-attacks"
+    },
+    {
+      "type": "concept",
+      "sectionId": "defence-mapping"
+    },
+    {
+      "type": "practice",
+      "sectionId": "mcq-practice"
+    },
+    {
+      "type": "mastery",
+      "sectionId": "speed-drill"
+    }
+  ]
+}

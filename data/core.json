@@ -283,13 +283,15 @@
       "color": "#0891B2",
       "days": "3",
       "subtopics": [
-        "IPv4 Classes",
-        "Subnet Masks & CIDR",
-        "Private vs Public IPs",
-        "IPv6 Basics"
+        "IPv4 Structure & Binary",
+        "Five Address Classes",
+        "Subnetting & CIDR Math",
+        "Private & Special Addresses",
+        "Usable Hosts & Ranges",
+        "IPv6 Essentials"
       ],
       "estimatedHours": 6,
-      "status": null,
+      "status": "ready",
       "axisSection": "Networking, Security & Cloud"
     },
     {
@@ -301,12 +303,14 @@
       "days": "3",
       "subtopics": [
         "TCP vs UDP",
-        "HTTP/HTTPS & FTP",
-        "SMTP/POP3/IMAP",
-        "Well-Known Ports (0-1023)"
+        "Well-Known Ports",
+        "Mail Chain (SMTP/POP3/IMAP)",
+        "Web & Files (HTTP(S)/FTP/SFTP)",
+        "Support Protocols (DNS/DHCP/ARP/ICMP)",
+        "HTTP Methods & Status Codes"
       ],
       "estimatedHours": 6,
-      "status": null,
+      "status": "ready",
       "axisSection": "Networking, Security & Cloud"
     },
     {
@@ -385,14 +389,15 @@
       "color": "#0891B2",
       "days": "3",
       "subtopics": [
+        "Crypto Goals & Families",
         "Symmetric vs Asymmetric",
-        "DES & AES Rounds",
-        "RSA & Key Exchange",
-        "Hashing vs Encryption",
-        "SSL/TLS Basics"
+        "DES & AES Facts",
+        "Hashing & Signatures",
+        "SSL/TLS Hybrid Handshake",
+        "Key Exchange & Certificates"
       ],
       "estimatedHours": 6,
-      "status": null,
+      "status": "ready",
       "axisSection": "Networking, Security & Cloud"
     },
     {
@@ -420,14 +425,15 @@
       "color": "#0891B2",
       "days": "3",
       "subtopics": [
-        "Phishing & Spoofing",
-        "DoS/DDoS & Smurfing",
-        "Email Bombing",
-        "Malware (Virus/Worm/Trojan/Ransomware)",
-        "SQLi & XSS"
+        "Attack Identification Table",
+        "DoS/DDoS Family",
+        "Malware Taxonomy",
+        "Web Attacks (SQLi/XSS/MITM)",
+        "Social Engineering",
+        "Defence Mapping"
       ],
       "estimatedHours": 6,
-      "status": null,
+      "status": "ready",
       "axisSection": "Networking, Security & Cloud"
     },
     {
