@@ -1,0 +1,513 @@
+{
+  "id": "javascript",
+  "title": "JavaScript & Frontend Basics",
+  "icon": "JS",
+  "category": "cs-foundations",
+  "color": "#475569",
+  "subtopics": [
+    "Variables & Types",
+    "Functions & Events",
+    "DOM Basics",
+    "ES6 Highlights"
+  ],
+  "estimatedHours": 5,
+  "readingSections": [
+    {
+      "id": "vars-types",
+      "title": "Variables and Types: var vs let vs const, primitives, typeof and coercion",
+      "type": "concept",
+      "quickSummary": "var function-scoped hoisted with undefined, let block-scoped no redeclare, const block-scoped no reassign. Primitives: string, number, bigint, boolean, undefined, null, symbol. typeof guards type. == coerces, === strict. Falsy: false, 0, empty string, null, undefined, NaN.",
+      "content": [
+        "Declare with let when the binding will change, with const when it will not be reassigned, and avoid var in new code because var is function-scoped, hoisted to undefined before its declaration line, and allows redeclaration silently. Example: for(var i=0;i<3;i++) leaks i outside the loop, while for(let i=0;i<3;i++) keeps i in the block. Temporarily dead zone means let and const cannot be read before their line — reading them early throws ReferenceError, not undefined.",
+        "Types are dynamic — one variable can hold a string and later a number. Primitives are string, number (IEEE 754 double), bigint for huge integers via trailing n, boolean, undefined (declared but not set), null (intentional empty via assignment), and symbol (unique key). Objects are the rest: Array, Object, Function, Date, RegExp, Map and Set. typeof returns a string with one classic lie: typeof null is object, which is a historic bug, not the real type.",
+        "Coercion is the exam's favourite trap. Double equals == coerces types before comparing: \"5\" == 5 is true, 0 == false is true, null == undefined is true, but null == 0 is false. Triple equals === is strict plus no coercion: \"5\" === 5 is false, null === undefined is false. Prefer strict in real code; the exam tests you know the difference by listing both results.",
+        "Falsy and truthy govern conditionals and the tiny operators. Falsy six: false, 0, negative zero, empty string, null, undefined, NaN. Everything else is truthy, including empty array and empty object and string zero. The patterns || as default (value || fallback takes fallback when value is falsy) vs && as guard (value && value.prop reads only when truthy) rely on this. The newer ?? as nullish coalescing is stricter: value ?? fallback only when value is null or undefined, not zero or empty string.",
+        "Surface quirk: NaN means not a number but its type is number: typeof NaN is number, and NaN !== NaN is true, so test via Number.isNaN. parseInt(\"08\") and Number(\"  5  \") vs parseFloat differ on whitespace plus trailing junk."
+      ],
+      "subsections": [
+        {
+          "title": "Hoisting vs TDZ in 15 seconds",
+          "content": "var declaration hoists to the top of its function as undefined. let and const hoist but sit in a dead zone until their line — access before throws. Function declarations hoist fully; function expressions and arrow assigned to let/const do not run before their line."
+        },
+        {
+          "title": "typeof lie and one-operator test",
+          "content": "typeof null === \"object\" is the bug to remember. typeof an array is also \"object\" — test Array.isArray instead. For numbers prefer Number.isNaN over isNaN which coerces."
+        }
+      ],
+      "quickRevision": [
+        "var function-scoped hoisted undefined and redeclare-able; let block-scoped no redeclare, const no reassign, both dead zone early.",
+        "Primitives 7 plus objects; typeof null is object bug; array test via isArray.",
+        "== coerces (\"5\"==5 true), === strict no coercion (\"5\"===5 false); null==undefined true via double but false via triple.",
+        "Falsy six: false, 0, empty string, null, undefined, NaN — everything else truthy; || default vs ?? nullish (null or undefined only).",
+        "NaN type number, NaN !== NaN true, use isNaN plus parseInt vs Number."
+      ],
+      "tricks": [
+        "Any answer that says const makes an object immutable is wrong — const prevents reassignment of the binding, not mutation of object contents.",
+        "Do not swap || with ?? — || triggers on zero or empty string, ?? only on null or undefined.",
+        "0 == false is true via double, 0 === false is false via triple — exam loves this pair."
+      ],
+      "patterns": [
+        "'Hoisted var vs dead zone let/const?' -> var undefined before line, let/const throws before line.",
+        "'Falsy list?' -> false, 0, empty string, null, undefined, NaN — rest truthy.",
+        "'Coerce vs strict?' -> == coerces true for \"5\" vs 5, === strict false.",
+        "'Null type?' -> typeof null is object bug; array test isArray."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TCS NQT / Infosys — JS basics, every year",
+          "question": "var vs let vs const scope and hoist plus typeof plus == vs === plus falsy plus NaN?",
+          "approach": "var function undefined before, let/const dead zone throws, typeof null object lie, double coerces true, triple strict false, six falsy."
+        },
+        {
+          "source": "Wipro — || vs ??",
+          "question": "Default operator for zero or empty string vs null or undefined only?",
+          "approach": "|| defaults on falsy six so trips on zero; ?? nullish only on null or undefined so keeps zero."
+        }
+      ],
+      "companyNote": "Variables plus typeof plus coercion plus falsy appears as a 2-item set."
+    },
+    {
+      "id": "functions-events",
+      "title": "Functions and Events: declarations vs expressions vs arrows, this, closures and loop capture plus event flow",
+      "type": "concept",
+      "quickSummary": "Function declaration hoists, expression does not, arrow has no own this and closes over call site. this at call depends on dot plus strict vs global vs arrow vs bind. Closure keeps outer after return — loop capture bug fixed by let. Events bubble up, capture down, stopPropagation stops, preventDefault cancels.",
+      "content": [
+        "Functions have three faces the exam swaps. Function declaration function f(){} hoists fully so you can call above its line. Function expression const f = function(){} and arrow const f = () => {} do not hoist as callable before their assignment line — early calls fail. Arrows have no own this, no arguments object (use rest ...args), and cannot be constructors with new — parent scope this is closed over instead.",
+        "this binding has four rules the paper rotates. In sloppy mode, bare foo() gets global this (window); in strict, undefined. With a dot, obj.foo() gets obj as this. With new, new Foo() gets the new instance. With bind/call/apply, foo.bind(o) forces o. Arrow ignores all four and uses the surrounding scope this where defined — that is why arrow plus method combination is risky.",
+        "Closure means a function keeps its outer bindings after the outer has returned. Classic loop trap: for(var i=0;i<3;i++) { setTimeout(function(){console.log(i)},0) } prints 3,3,3 because var leaks and three closures share one i. Fix: for(let i=0;i<3;i++) with block-scoped i each closure gets its own, or wrap with an IIFE. Closure enables private state: function counter(){let n=0; return ()=> ++n} keeps n alive after return.",
+        "Events have capture plus target plus bubble. A click enters from the window down via capturing, fires on the target, then bubbles up through ancestors. addEventListener third arg can be true for capture or {capture:true} or {once:true} or {passive:true}. Stop flows: event.stopPropagation stops bubbling or capturing beyond; event.stopImmediatePropagation also stops other listeners on the same target; event.preventDefault cancels the default action (link navigate or form submit) without stopping flow.",
+        "Two more traps that steal marks. One, hoisting: declaration hoists, expression does not — calling an arrow above its line fails. Two, rest vs spread: ...args in a parameter is rest that gathers many into an array, ...arr in a call is spread that explodes an array into many arguments — same dots, opposite direction."
+      ],
+      "subsections": [
+        {
+          "title": "this decision order that survives pressure",
+          "content": "Is it an arrow? Arrow uses surrounding this, not call site. New? new instance. Bound via bind/call/apply? bound object. Dotted call obj.foo()? obj. Bare strict? undefined; bare sloppy? global. That order answers every this MCQ."
+        },
+        {
+          "title": "Closure plus async loop in one sight",
+          "content": "Loop plus async inside plus var is the signature of the triple-3 bug. One let per iteration fixes it because each turn gets its own i. IIFE that captures the current var also fixes in legacy code, but AXIS rewards let."
+        }
+      ],
+      "quickRevision": [
+        "Declaration hoists callable, expression and arrow not before line. Arrow no own this plus no arguments plus not a constructor.",
+        "this via new > bind/call/apply > dot obj > bare global/undefined; arrow overrides and closes over surrounding.",
+        "Closure keeps outer after outer returns; var loop shares one i (3,3,3), let gives per-iteration copy fixes.",
+        "Capture down then target then bubble up; stopPropagation stops flow, preventDefault cancels default, immediate also kills other listeners on target.",
+        "Rest gathers in definition (...args array), spread explodes in call (...arr many). Hoisting declaration yes, expression/arrow no."
+      ],
+      "tricks": [
+        "Any answer that says an arrow has its own this via call site is wrong — arrow closes over surrounding scope.",
+        "Do not confuse stopPropagation with preventDefault — first stops travel, second cancels the default action but not travel.",
+        "Barest this confusion: sloppy vs strict differs only for bare calls — dotted calls dominate both."
+      ],
+      "patterns": [
+        "'Declaration hoists callable?' -> Yes. 'Expression/arrow before line?' -> No.",
+        "'Arrow own this?' -> No own; uses surrounding.",
+        "'Loop var plus async prints 3,3,3 vs let fixes?' -> Var shares, let per turn. 'Closure private counter?' -> Function returning function keeps var alive.",
+        "'Capture vs bubble?' -> Capture down, bubble up. 'Stop travel vs cancel click?' -> stopPropagation vs preventDefault."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS — functions plus this plus closure plus events, guaranteed",
+          "question": "Hoisting vs arrow this vs closure loop capture plus events bubble vs capture vs stop?",
+          "approach": "Declaration hoists arrow not, arrow no own this, var loop 3,3,3 vs let per turn, capture down bubble up stop vs prevent."
+        },
+        {
+          "source": "Infosys — rest vs spread",
+          "question": "Gather many into an array vs explode an array into many — dots in definition vs call?",
+          "approach": "Rest gathers in definition (...args array), spread explodes in call (...arr many)."
+        }
+      ],
+      "companyNote": "Functions plus this plus closure plus loop capture plus events capture vs bubble appears as a 2-3 item set."
+    },
+    {
+      "id": "dom",
+      "title": "DOM Basics: tree, selection, nodes vs elements, create and mutation vs XSS",
+      "type": "concept",
+      "quickSummary": "DOM is the live tree of the page: Document at root, Elements as tags plus Nodes vs Elements distinction, HTMLCollection live vs NodeList. Select via getElementById/ByClass vs querySelectorAll. Create via createElement plus append. textContent safe vs innerHTML risky (XSS). Events bubble through it; styles via classList and style.",
+      "content": [
+        "The DOM (Document Object Model) is the browser's live tree view of the page. Root is Document, children are Elements (tags), which own Attributes, have Text Nodes, and are shaped by CSSOM and layout. The DOM is live — changes via scripts repaint immediately. The exam word live is not filler — live collections update as the document changes.",
+        "Selecting elements has two families. Classic: getElementById returns one, getElementsByClassName and getElementsByTagName return a live HTMLCollection that auto-updates on DOM mutation, and getElementsByName returns by name attribute. Modern: querySelector returns the first matching CSS selector, querySelectorAll returns a static NodeList snapshot that does not track DOM changes. The exam swaps live vs static — that is the free mark many pilots miss.",
+        "Nodes vs Elements is the other discriminant. Node includes everything: Element nodes, Text nodes (whitespace counts), Comment nodes. Element is the subset that are tags. NodeList can hold both kinds; HTMLCollection holds Elements only. childNodes includes all nodes including text whitespace; children includes only Element children — that one-versus text trick reappears under box model too.",
+        "Creating and mutating: document.createElement(\"div\") builds an element, document.createTextNode builds a text node, parent.appendChild(child) and parent.append(element, text) attach, parent.insertBefore(new, existing), parent.replaceChild(new, old), oldClone = node.cloneNode(deep) deep vs shallow, and remove via node.remove() or parent.removeChild(child). Attribute via setAttribute plus getAttribute plus removeAttribute; CSS class manipulation via classList.add/remove/toggle and style via element.style (inline) or getComputedStyle for the real rendered value.",
+        "Safety: textContent sets plain text safely — no HTML is parsed. innerHTML parses as HTML and can lead to XSS (cross-site scripting) if user input is inserted via innerHTML without sanitization. The exam writes innerHTML equals userInput and asks which is unsafe — answer innerHTML without escaping. Events emitted by the DOM bubble or capture through the tree exactly as the functions section described."
+      ],
+      "subsections": [
+        {
+          "title": "Live vs static in one glance",
+          "content": "Live HTMLCollection via getElementsByClassName auto-updates when you add or remove elements of that class. Static NodeList via querySelectorAll is a snapshot — adding after does not appear until you query again. That is why a loop over a live collection that mutates the collection can behave unexpectedly while a static snapshot does not."
+        },
+        {
+          "title": "textContent vs innerHTML safety rule",
+          "content": "Use textContent for user-supplied text. Use innerHTML only for trusted markup or sanitized strings. Anytime the paper writes userInput into innerHTML as template it is an XSS bait — flag it."
+        }
+      ],
+      "quickRevision": [
+        "DOM live tree: Document root plus Elements plus Attributes plus Text plus Comment nodes; live updates as scripts mutate.",
+        "Selectors: Classic live HTMLCollection (getElementsBy*) vs Modern static NodeList (querySelectorAll). getElementById one, querySelector first, querySelectorAll many.",
+        "Nodes vs Elements: Node includes Elements plus Text plus Comments; Element subset that are tags; childNodes all vs children only elements.",
+        "Mutation via createElement plus append plus insertBefore plus replaceChild plus cloneNode plus remove plus setAttribute plus classList plus style. Live collections react.",
+        "textContent safe plain, innerHTML parses HTML risky XSS if userInput via innerHTML; events bubble through."
+      ],
+      "tricks": [
+        "Any answer that says querySelectorAll returns a live collection is wrong — it is static NodeList vs live HTMLCollection for getElementsBy*.",
+        "Do not swap childNodes with children — childNodes includes Text whitespace, children Elements only.",
+        "innerHTML plus user input without escaping is the XSS flag — always choose textContent for untrusted data."
+      ],
+      "patterns": [
+        "'One element vs first vs many?' -> getElementById one, querySelector first, querySelectorAll many (static). 'Live updating collection?' -> getElementsByClassName HTMLCollection.",
+        "'Tag vs everything?' -> Element vs Node (Node includes Text and Comments). 'Live vs static after DOM change?' -> Live vs NodeList.",
+        "'Build and attach?' -> createElement plus append, insertBefore, replaceChild, cloneNode, remove, classList add or remove.",
+        "'User text safe vs HTML parse risky?' -> textContent safe plain vs innerHTML parses risky XSS."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TCS / AXIS — DOM selection plus live, every year",
+          "question": "Which selector plus live vs static plus node vs element?",
+          "approach": "Classic getElementsBy* live HTMLCollection vs querySelectorAll static NodeList, Nde plus Text vs Element, childNodes vs children."
+        },
+        {
+          "source": "Wipro — innerHTML vs textContent safety",
+          "question": "Which is safe for user input vs which parses as HTML and risks XSS?",
+          "approach": "textContent safe plain, innerHTML parses and risky with untrusted without sanitization."
+        }
+      ],
+      "companyNote": "DOM appears as either a selector plus live vs node vs element or as a creation/mutation plus safety XSS question."
+    },
+    {
+      "id": "es6",
+      "title": "ES6 Highlights: arrow, let/const, template literals, destructuring, spread/rest, default, modules, promises and async or await plus classes",
+      "type": "concept",
+      "quickSummary": "ES6 modern syntax: let/const, arrow, template `${}` literals, destructuring of objects and arrays, spread vs rest `...`, default params, modules import/export, Promise plus chaining then vs catch, async/await syntax sugar. Transpile via Babel when old browsers must run new syntax; bundle via bundlers.",
+      "content": [
+        "let and const were covered but the ES6 context adds why: block scope plus const binding were added to fix var leaking and to enable tooling to reason about immutability at the binding level — not object immutability. Use const by default and fall back to let only when reassignment is needed. The exam writes var vs let vs const with reassignment plus block plus loop capture and expects the trade-off wording.",
+        "Arrow plus template: arrow () => {} omits its own this plus arguments; template literals via backticks allow `${expr}` interpolation plus multiline strings. Destructuring extracts: const {name, age} = person and const [a,b] = arr plus nested plus defaults. Default parameters function f(name = \"Asha\") give fallback even when undefined is passed; combine with destructuring for options bags: function f({x=0, y=0}={}).",
+        "Spread vs rest unify with `...`. Spread explodes an array or object in a call or literal: fn(...arr) and [...arr, 4] and {...a, ...b} spread merges objects. Rest gathers many into an array in a definition: function f(...args) and const [first, ...rest] = arr. Same dots, opposite directions — spread call-side explosion, rest definition-side gathering.",
+        "Modules remove globals. Scripts without modules pollute window. Modules via import/export are static plus tree-shakeable: import {foo} from \"./foo.js\" statically declares dependencies so bundlers can drop unused exports. Type script adds types on top but for AXIS JS the paper only tests import/export existence plus transpilation via Babel plus bundling via Webpack or Vite or Rollup.",
+        "Promises model future values. A Promise has three states: pending, fulfilled with a value, rejected with a reason. Attach via then for success and catch for failure; finally always. Promise.all waits for all promises and fails on the first reject; allSettled waits for all and returns each outcome; any returns the first fulfilled; race returns first settled whether fulfill or reject. Async and await are syntax sugar on promises — await pauses the async function until the promise settles without blocking the thread, but it can only be used inside an async function (or at top-level in modules). Error handling is try plus await plus catch or await plus .catch plus finally."
+      ],
+      "subsections": [
+        {
+          "title": "Spread vs rest direction test",
+          "content": "Dots in a function parameter plus destructuring left side is rest gathering. Dots in a function call plus array or object literal is spread explosion. The exam prints ...x in both spots and swaps labels — read where the dots sit, call vs definition."
+        },
+        {
+          "title": "Modules vs scripts in one line each",
+          "content": "Script runs globally and hoists into window — bad for big apps. Module imports only what it needs via import, exports via export, scopes per file, static so tooling can tree-shake. Babel transpiles new syntax to old for old browsers; bundlers chop many files into few for delivery."
+        }
+      ],
+      "quickRevision": [
+        "let/const block plus const binding-not-object; arrow no own this; template via backticks plus ${} plus multiline.",
+        "Destructuring extracts plus defaults; spread explodes in calls ({...a,...b} for objects), rest gathers in definitions (...args array).",
+        "Modules import vs export static per file vs scripts global — tree-shakeable; transpile via Babel; bundle via Webpack or Vite.",
+        "Promise pending to fulfilled/rejected via then plus catch plus finally; all vs allSettled vs any vs race; async/await sugar pauses inside async only.",
+        "Default params function f(name=\"Asha\") plus options-bag {x=0,y=0} with destructuring."
+      ],
+      "tricks": [
+        "Any answer that says const makes objects immutable is backwards — only the binding reassignment is blocked.",
+        "Do not confuse spread vs rest — call explosion vs definition gathering have opposite labels despite same dots.",
+        "all vs allSettled vs any vs race is a four-way: all waits all and fails first reject, allSettled waits all and always returns per-outcome, any first fulfilled, race first settled of any kind."
+      ],
+      "patterns": [
+        "'No own this vs own this?' -> Arrow no own closes over vs declaration own via call rules.",
+        "'Gather many into one array?' -> Rest ...args in definition 'Explode one array into many?' -> Spread ...arr in call.",
+        "'Pending to fulfilled vs rejected plus chain?' -> Promise then/catch/finally; all vs allSettled vs any vs race.",
+        "'Static per file plus tree shaking vs global polluting?' -> Modules vs scripts."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every recent AXIS frontend paper — ES6 plus promises plus async, guaranteed",
+          "question": "Differentiate spread vs rest vs arrow pool vs promise combinators vs modules vs scripts?",
+          "approach": "Rest gathers in definition, spread explodes in call, arrow no own this, all failures differ for all vs any vs race, modules static vs scripts global."
+        },
+        {
+          "source": "Infosys — destructuring plus defaults",
+          "question": "Options-bag with defaults via destructuring and default param?",
+          "approach": "function f({x=0,y=0}={}) — fallback to default object and per-field defaults via destructuring."
+        }
+      ],
+      "companyNote": "ES6 appears as either a syntax trio (let/arrow/template/destructure/spread/await) or a promise-clusters plus modules."
+    },
+    {
+      "id": "exam-js",
+      "title": "Exam JavaScript Synthesis (how AXIS mixes all four families)",
+      "type": "concept",
+      "quickSummary": "Vars vs scope vs hoist vs coercion vs falsy first. Functions plus this plus closures plus loop capture plus capture vs bubble vs stop vs prevent second. DOM selection plus live vs static plus nodes vs elements vs textContent vs innerHTML XSS third. ES6 arrow plus spread vs rest plus template plus modules plus promise combinators plus async or await fourth. One pass per verb kills most tables.",
+      "content": [
+        "Vars row: var function undefined before vs let/const dead zone throws plus const binding not object plus typeof null is object bug vs isArray plus double coerces vs triple strict plus OR default vs nullish coalesce only null or undefined plus falsy six plus NaN !== NaN.",
+        "Functions plus events row: declaration hoists callable vs expression/arrow not before vs arrow no own this vs bound/call/apply vs dot vs bare strict plus closure keeps outer after return plus var loop 3,3,3 vs let per turn plus rest gather in definition vs spread explode in call plus capture down vs bubble up vs stopPropagation vs preventDefault.",
+        "DOM row: classic live HTMLCollection vs modern static NodeList vs getElementById one vs querySelector first vs querySelectorAll many static vs nodes with Text/Comment vs elements tag vs childNodes all vs children elements plus create via createElement plus append plus insertBefore vs clone vs remove plus classList plus safety textContent safe vs innerHTML XSS via user input.",
+        "ES6 row: let/const plus arrow plus template with backticks plus destructuring with defaults plus spread vs rest via dots direction plus modules static import/export plus transpilation vs bundling plus Promise pending-fulfilled-rejected via then/catch/finally plus combinators all vs allSettled vs any vs race plus async/await sugar inside async with try/catch plus classes as syntactic sugar over prototypes.",
+        "Speed rule for the exam hall: any mixed JavaScript table with five stems is solved by one pass — read var scope vs type vs coercion vs function hoist vs arrow this vs DOM live vs spread direction vs promise fail policy. Circle the discriminant word in each stem and the distractors neutralize."
+      ],
+      "subsections": [
+        {
+          "title": "One-pass elimination for hard mixed items",
+          "content": "Item offers both var vs let vs const with \"reassign the object\" bait — eliminate reassignable via const if the check is mutation vs binding. Item offers || vs ?? bait — eliminate || if the check is zero must stay. Item offers arrow vs declaration for an early call — pick declaration."
+        },
+        {
+          "title": "When both DOM and events appear together",
+          "content": "Selector family decides live vs static; bubble vs capture decides direction; stop vs prevent decides travel vs default. Keep rows separate — DOM models the tree, events travel it."
+        }
+      ],
+      "quickRevision": [
+        "Vars falsy vs scope vs hoist vs coercion vs typeof vs ??? are the six micro-tests for the vars row.",
+        "Declaration hoists callable vs expression/arrow not; arrow no own this, closure loop var 3,3,3 vs let per. use rest gather def vs spread call, capture down bubble up stop vs prevent.",
+        "HTMLCollection live vs NodeList static; nodes-plus-text vs elements tags; childNodes all vs children elements; textContent safe vs innerHTML XSS via userInput.",
+        "Spread explode vs rest gather; Promise all vs allSettled vs any vs race; modules static vs scripts global.",
+        "One pass per discriminant word solves most mixed tables."
+      ],
+      "tricks": [
+        "Any answer that says const freezes an object is wrong — reassignment is blocked, mutation is allowed.",
+        "Do not swap querySelectorAll live vs static — it is static NodeList that later inserts do not affect until re-queried.",
+        "All vs any vs race is not three synonyms — all waits all and fails first reject, any first fulfill, race first settled of any kind, allSettled always per-outcome."
+      ],
+      "patterns": [
+        "'Binding reuse vs object mutation?' -> const binding not object.",
+        "'Early call before line?' -> Declaration hoists, expression/arrow does not.",
+        "'Live updating collection after add?' -> Live HTMLCollection yes vs static NodeList no.",
+        "'Any fail rejects first vs waits always?' -> all vs allSettled.",
+        "'Prevent link navigate vs stop bubble?' -> preventDefault vs stopPropagation."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS synthesis — mixed JS 4-5 item match-the-column",
+          "question": "Given five stems each touching a different JS family, match each to vars vs functions plus this vs DOM vs ES6?",
+          "approach": "One pass: var scope vs type vs double vs arrow this, declaration hoist, DOM live, spread direction, promise combinator."
+        },
+        {
+          "source": "TCS / Wipro — ES6 plus async plus DOM safety",
+          "question": "Spread vs rest plus async/await vs textContent vs innerHTML XSS?",
+          "approach": "Dots direction, await inside async, textContent safe vs innerHTML parses and risks XSS."
+        }
+      ],
+      "companyNote": "Synthesis tables appear as a 4-5 item match-the-column question mixing all families."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "vars-types",
+      "title": "Variables and Types with typeof and Coercion",
+      "formula": {
+        "latex": "var:func:hoist\\;und \\;|\\; let:blk:TDZ \\;|\\; const:blk:no\\;reassign \\;|\\; typeof\\;null:object\\;(bug) \\;|\\; ==coerce\\;vs\\;===strict \\;|\\; falsy:6 \\;|\\; ||falsy\\;vs\\;??nullish",
+        "text": "var func hoist undefined | let blk TDZ | const blk no reassign | typeof null object bug | ==coerce vs ===strict | falsy 6 | || falsy vs ?? nullish"
+      },
+      "whenToUse": "Any var vs let vs const plus hoist, typeof null, isArray, == vs ===, falsy, NaN, || vs ?? MCQ.",
+      "explanation": [
+        "var function-scoped hoisted as undefined plus redeclare allowed, let block-scoped dead zone throws before line plus no redeclare in same block, const block-scoped no reassignment plus also dead zone.",
+        "Primitives 7 plus objects; typeof null is object bug; Array check via Array.isArray.",
+        "Double equals coerces: \"5\" == 5 true, true via coercion for 0==false, while null == undefined true but null == 0 false.",
+        "Triple equals no coercion: \"5\" === 5 false, null === undefined false. Prefer strict in real code.",
+        "Falsy six false plus 0 plus empty string plus null plus undefined plus NaN — rest truthy; || defaults on falsy so trips on zero, ?? nullish only on null or undefined so keeps zero.",
+        "NaN !== NaN is true and typeof NaN is number — test via Number.isNaN."
+      ],
+      "example": {
+        "prompt": "Snippets: for(var i ...) leak vs for(let i ...) block and \"5\" == 5 vs \"5\" === 5 plus value 0 with fallback 10 via || vs ??.",
+        "steps": [
+          "var leaks i outside the block; let keeps i inside.",
+          "\"5\" == 5 coerces true; \"5\" === 5 strict false.",
+          "0 || 10 gives 10 via falsy fallback, 0 ?? 10 gives 0 via nullish keep zero."
+        ],
+        "answer": "var leaks vs let block; double true vs triple false; || 10 vs ?? 0"
+      },
+      "memoryTip": "Var Visible far, Let Locked, Const Cannot reassign. Null lie object, isArray true array. Coerce double, Strict triple. Falsy six. Double pipe falsy, double question nullish.",
+      "commonMistake": "Const freezes object — it does not. Only the binding reassignment is blocked; object contents remain mutable."
+    },
+    {
+      "id": "functions-events",
+      "title": "Functions plus this plus Closure plus Loop Capture plus Events",
+      "formula": {
+        "latex": "Decl\\;hoists,\\;Expr/Arrow\\;no \\;|\\; Arrow\\;no\\;own\\;this \\;|\\; this:new>bind>dot>bare(strict?und:global) \\;|\\; Closure\\;outer\\;after \\;|\\; Loop\\;var\\;shares\\;let\\;per",
+        "text": "Decl hoists Expr/Arrow no | Arrow no own this | this new>bind>dot>bare strict undefined else global | Closure outer after | Loop var shares let per"
+      },
+      "whenToUse": "Any hoist plus arrow this plus closure plus var vs let loop plus events capture vs bubble vs stop vs prevent plus rest vs spread MCQ.",
+      "explanation": [
+        "Declaration callable before line, expression and arrow not callable before assignment line.",
+        "Arrow closes over surrounding this and has no own this plus no arguments plus not a constructor.",
+        "this binding order: new instant > bind/call/apply bound object > dotted obj > bare sloppy global vs strict undefined; arrow overrides and uses surrounding.",
+        "Closure keeps outer bindings alive after outer returns; classic private counter via returned function.",
+        "Loop var shares one i (3,3,3) vs let gives per-iteration copy fixes async log.",
+        "Events: capture down then target then bubble up. stopPropagation stops travel, preventDefault cancels default but not travel.",
+        "Rest ...args in definition gathers many into array, spread ...arr in call explodes array into many."
+      ],
+      "example": {
+        "prompt": "Predict: for(var i=0;i<3;i++) setTimeout(()=>console.log(i),0) vs for(let i ...) plus arrow as method this vs declaration hoist plus capture vs bubble?",
+        "steps": [
+          "Var shares: 3,3,3. Let per turn: 0,1,2.",
+          "Arrow method uses surrounding this, not dot; declaration hoists, expression not.",
+          "Click capture down then bubble up; stopPropagation stops, preventDefault cancels."
+        ],
+        "answer": "Var 3,3,3 vs let 0,1,2; arrow surrounding; decl hoists; capture down bubble up"
+      },
+      "memoryTip": "Declaration Declared before, Arrow Around this. This Nine Bind Dot Bare sloppy global strict undefined. Closure Clings, Var Shares, Let Splits. Capture Comes down, Bubble Boils up.",
+      "commonMistake": "Arrow own this via call site — never, arrow uses surrounding. stopPropagation vs preventDefault swap."
+    },
+    {
+      "id": "dom",
+      "title": "DOM: Live vs Static plus Nodes vs Elements plus Safety plus Mutation",
+      "formula": {
+        "latex": "HTMLCollection\\;live\\;vs\\;NodeList\\;static \\;|\\; Node\\;all\\;vs\\;Element\\;tags \\;|\\; childNodes\\;vs\\;children \\;|\\; textContent\\;safe\\;vs\\;innerHTML\\;XSS \\;|\\; createElement+append+insert/clone",
+        "text": "HTMLCollection live vs NodeList static | Node all vs Element tags | childNodes vs children | textContent safe vs innerHTML XSS | createElement+append+insert/clone"
+      },
+      "whenToUse": "Any DOM selection plus live collection vs static NodeList vs node vs element vs XSS MCQ.",
+      "explanation": [
+        "Classic selectors via getElementsByClassName or ByTagName return live HTMLCollection Elements that auto-update on mutation.",
+        "Modern via querySelectorAll returns static NodeList snapshot that does not track DOM changes until re-queried.",
+        "Node includes Elements plus Text (whitespace counts) plus Comments; Element subset that are tags only.",
+        "childNodes includes all nodes; children includes only Elements; loop over live that mutates can surprise, static snapshot does not.",
+        "Create plus append plus insertBefore plus replaceChild plus cloneNode plus remove plus classList plus style plus setAttribute mutate the live tree.",
+        "Safety: textContent sets plain safely, innerHTML parses HTML and risks XSS with untrusted user input."
+      ],
+      "example": {
+        "prompt": "After document.querySelectorAll plus getElementsByClassName both query a class, a new element of that class is appended — which collection sees it without re-query?",
+        "steps": [
+          "Live HTMLCollection updates.",
+          "Static NodeList snapshot does not until re-queried.",
+          "Count test via length shows the split."
+        ],
+        "answer": "HTMLCollection live sees it; NodeList static does not"
+      },
+      "memoryTip": "Live HTMLCollection Like Real Time, Static Snapshot. Node Narratives all, Element Especially tags. childNodes Numerous, children just Elements. textContent True safe, innerHTML Intricate risky.",
+      "commonMistake": "QuerySelectorAll live — it is static NodeList vs live HTMLCollection for getElementsBy*. ChildNodes equals children — childNodes includes Text whitespace."
+    },
+    {
+      "id": "es6",
+      "title": "ES6: Arrow plus Destructure plus Spread vs Rest plus Template plus Modules plus Promises plus Async",
+      "formula": {
+        "latex": "Arrow+let/const+`` \\;|\\; {a,b}+[a,b]+default \\;|\\; Spread\\;call\\;Explode\\;vs\\;Rest\\;Def\\;Gather \\;|\\; Modules\\;static \\;|\\; Promise\\;all/settled/any/race+async/await",
+        "text": "Arrow+let/const+ template | Destructure with defaults | Spread call Explode vs Rest Def Gather | Modules static | Promise all/settled/any/race + async/await"
+      },
+      "whenToUse": "Any ES6 plus promise combinator plus async vs sync plus module vs script MCQ.",
+      "explanation": [
+        "ES6 adds let and const plus arrow via no own this plus template via backticks with ${} interpolation plus destructuring object and array plus defaults plus spread in call explosion vs rest in definition gathering.",
+        "Modules via import/export static per file plus tree-shakeable; scripts global; transpile via Babel for old browsers; bundle via Webpack or Vite or Rollup.",
+        "Promise three states pending to fulfilled or rejected via then plus catch plus finally; all waits for all and fails first reject vs allSettled always waits and per-outcome vs any first fulfilled vs race first settled of any kind.",
+        "Async plus await sugar pauses inside async function until promise settles without blocking thread; try plus await plus catch handles failure, or await plus .catch plus finally.",
+        "Classes are syntactic sugar over prototypes: class plus extends plus super plus constructor plus methods inherited via prototype — nice spelling but prototype under."
+      ],
+      "example": {
+        "prompt": "Dots ...x appear in fn(...arr) call vs function f(...args) definition and Promise combinators plus modules vs scripts?",
+        "steps": [
+          "Call Explosion is spread ...arr into many arguments; definition Gather is rest ...args into an array.",
+          "Promise.all fails first reject vs any first fulfill vs race first settled vs allSettled always per-outcome.",
+          "Modules static per file with import/export vs scripts global polluting."
+        ],
+        "answer": "Spread explode call vs rest gather def; all fails first vs allSettled always vs any first fulfill vs race first settled; modules static vs scripts global"
+      },
+      "memoryTip": "Spread Sprouts many, Rest Rests many. All All fail first, AllSettled Always per, Any Any fulfill, Race Rush first. Module Many per file static, Script Sprawls global.",
+      "commonMistake": "Spread vs rest swapped via same dots; all vs any vs race swapped via first word. Spread call explode vs rest definition gather is the direction test."
+    }
+  ],
+  "practiceProblems": {
+    "vars-types": [
+      {"q": "Outside a for loop for(var i=0;i<3;i++) vs for(let i=0;i<3;i++) — i visibility is:", "opts": ["Var leaks outside, let keeps inside (block)", "Both leak outside", "Both block inside", "Both undefined outside"], "c": 0, "s": ["var function-scoped leaks; let block-scoped keeps inside."], "a": "Var leaks outside, let keeps inside (block)"},
+      {"q": "Const binding of an object const o = {} vs mutation o.x = 1 vs reassignment o = {} is:", "opts": ["Const prevents reassignment o = {} but allows o.x = 1 mutation", "Const prevents both", "Const allows reassignment", "Const makes object immutable via all helpers"], "c": 0, "s": ["Const blocks binding reassignment, not internal mutation."], "a": "Const prevents reassignment o = {} but allows o.x = 1 mutation"},
+      {"q": "typeof null vs isArray for [] is:", "opts": ["object vs true", "null vs false", "object vs false", "null vs true"], "c": 0, "s": ["Historic bug: typeof null is object; Array.isArray([]) is true."], "a": "object vs true"},
+      {"q": "Double equals \"5\" == 5 vs triple equals \"5\" === 5 is:", "opts": ["True vs true", "False vs true", "True vs false (coerce vs strict)", "False vs false"], "c": 2, "s": ["Double coerces true, triple strict false."], "a": "True vs false (coerce vs strict)"},
+      {"q": "0 == false vs 0 === false is:", "opts": ["True vs true", "False vs false", "True vs false as double true vs triple strict", "False vs true"], "c": 2, "s": ["0 coerces to false under double; triple is strict false."], "a": "True vs false as double true vs triple strict"},
+      {"q": "Falsy list correctness is:", "opts": ["Only false", "False, 0, empty string, null, undefined, NaN are falsy", "Only null plus undefined", "Only empty string"], "c": 1, "s": ["Six falsy: false plus 0 plus empty string plus null plus undefined plus NaN."], "a": "False, 0, empty string, null, undefined, NaN are falsy"},
+      {"q": "Empty array as conditional plus value || 10 vs value ?? 10 with value zero Zero yields:", "opts": ["Empty array falsy vs truthy nor relevant", "[] is truthy vs || gives 10 vs ?? gives 0", "[] is falsy vs both give 10", "[] is false vs both give 0"], "c": 1, "s": ["Empty array truthy. || on zero trips falsy to 10; ?? keeps zero."], "a": "[] is truthy vs || gives 10 vs ?? gives 0"},
+      {"q": "NaN type via typeof plus NaN !== NaN plus test is:", "opts": ["number plus false plus isNaN", "number plus true plus Number.isNaN", "object plus true plus isNaN", "string plus true plus isNaN"], "c": 1, "s": ["typeof NaN is number, NaN !== NaN true, test via Number.isNaN."], "a": "number plus true plus Number.isNaN"},
+      {"q": "Let vs const dead zone reading above line yields:", "opts": ["undefined before line for both", "throws for let and const dead zone vs var undefined before line", "true before line for let", "null before line"], "c": 1, "s": ["Dead zone throws, not undefined."], "a": "throws for let and const dead zone vs var undefined before line"},
+      {"q": "Const vs object mutation plus double vs triple plus live vs static preview mixed as a discriminant for vars row is:", "opts": ["All same", "Const binding not object plus double coerces vs triple strict plus live HTMLCollection vs static NodeList", "Only var vs let", "Only typeof"], "c": 1, "s": ["Vars row holds these six micro-tests; const binding is not object mutation."], "a": "Const binding not object plus double coerces vs triple strict plus live HTMLCollection vs static NodeList"}
+    ],
+    "functions-events": [
+      {"q": "Function declaration hoists callable before line vs expression not before is:", "opts": ["Both hoist callable before line", "Declaration callable before line, expression/arrow not before", "Neither hoists callable", "Only arrow hoists callable"], "c": 1, "s": ["Declaration fully hoists; expression/arrow assignment does not run before line."], "a": "Declaration callable before line, expression/arrow not before"},
+      {"q": "Arrow own this via call site is:", "opts": ["True — arrow has own this", "False — arrow closes over surrounding scope this", "Always global", "Always null"], "c": 1, "s": ["Arrow no own this; uses surrounding scope."], "a": "False — arrow closes over surrounding scope this"},
+      {"q": "Bound priority new > bind > dot > bare sloppy global vs bare strict undefined describes:", "opts": ["Coercion", "this binding order", "Scope", "DOM live"], "c": 1, "s": ["New instant > bind/call/apply > dotted obj > bare global/undefined."], "a": "this binding order"},
+      {"q": "Classic var loop var i with async callback prints what and let fixes how?", "opts": ["Prints 0,1,2 vs let prints 3,3,3", "Prints 3,3,3 via shared i vs let gives per-iteration copy fixes", "No issue", "Both print 3,3,3"], "c": 1, "s": ["Var shares one i; let gives per-turn copy."], "a": "Prints 3,3,3 via shared i vs let gives per-iteration copy fixes"},
+      {"q": "Closure private counter via function returning function keeps var via:", "opts": ["Closure outer after return", "Hoisting only", "No closure", "Only class"], "c": 0, "s": ["Returned function closes over outer n alive after return."], "a": "Closure outer after return"},
+      {"q": "Rest gathers many into an array in definition vs spread explodes in call is:", "opts": ["Both gather", "Rest gathers in definition (...args) vs spread explodes in call (...arr)", "Both explode", "Opposites swapped"], "c": 1, "s": ["Dots in definition gather; in call explode."], "a": "Rest gathers in definition (...args) vs spread explodes in call (...arr)"},
+      {"q": "Events capture down vs bubble up vs stop vs prevent correct grouping is:", "opts": ["Bubble down capture up vs stop cancels travel vs prevent cancels default", "Capture down then bubble up vs stopPropagation stops travel vs preventDefault cancels default", "Only bubble down", "Only capture up"], "c": 1, "s": ["Capture down then target then bubble up; stop stops, prevent cancels."], "a": "Capture down then bubble up vs stopPropagation stops travel vs preventDefault cancels default"},
+      {"q": "Hoisting for function expression const f = function(){} plus call above line is:", "opts": ["Callable above", "Not callable above before assignment", "Global", "Arrow only callable above"], "c": 1, "s": ["Expression assignment not hoisted as callable."], "a": "Not callable above before assignment"},
+      {"q": "StopPropagation vs preventDefault distinction for a link click with a handler:", "opts": ["Both stop travel", "stopPropagation stops bubbling/capturing but link still would navigate, preventDefault cancels navigate but still bubbles unless also stopped", "Both cancel default", "Neither does anything"], "c": 1, "s": ["Travel vs default are orthogonal."], "a": "stopPropagation stops bubbling/capturing but link still would navigate, preventDefault cancels navigate but still bubbles unless also stopped"},
+      {"q": "Arrow plus method this trap when using obj = { foo: () => this } vs obj.foo = function(){ return this } is:", "opts": ["Both own this via dot", "Arrow uses surrounding scope even with dot, function via dot uses obj", "Both use surrounding", "Both global"], "c": 1, "s": ["Arrow closes over surrounding; method via dot gives obj."], "a": "Arrow uses surrounding scope even with dot, function via dot uses obj"}
+    ],
+    "dom": [
+      {"q": "Live auto-updating collection after a DOM mutation is:", "opts": ["querySelectorAll NodeList static", "getElementsByClassName HTMLCollection live", "Both live", "Both static"], "c": 1, "s": ["Classic live HTMLCollection vs static NodeList."], "a": "getElementsByClassName HTMLCollection live"},
+      {"q": "Static snapshot collection until re-queried is:", "opts": ["getElementsByClassName live", "querySelectorAll NodeList static", "Live tree only", "Neither"], "c": 1, "s": ["Modern static NodeList snapshot."], "a": "querySelectorAll NodeList static"},
+      {"q": "One plus first plus many selectors grouping is:", "opts": ["getElementById one, querySelector first, querySelectorAll many static", "getElementById many, querySelector one always via live only", "All via getElementById only", "Only via classes"], "c": 0, "s": ["Classic one vs modern first vs all many."], "a": "getElementById one, querySelector first, querySelectorAll many static"},
+      {"q": "Node vs Element correct is:", "opts": ["Node equals Element only", "Node includes Elements plus Text (whitespace counts) plus Comments; Element subset that are tags", "Node equals Text only", "Element includes all nodes equally"], "c": 1, "s": ["Tags vs all node flavours."], "a": "Node includes Elements plus Text (whitespace counts) plus Comments; Element subset that are tags"},
+      {"q": "childNodes vs children correct is:", "opts": ["childNodes only elements vs children all nodes", "childNodes all nodes including Text whitespace vs children only Elements", "Both all nodes", "Both only elements"], "c": 1, "s": ["Text whitespace distinction."], "a": "childNodes all nodes including Text whitespace vs children only Elements"},
+      {"q": "Building plus attaching via parent.append plus inserting plus cloning plus removing is:", "opts": ["Only via innerHTML", "createElement plus append plus insertBefore plus replaceChild plus cloneNode plus remove", "Only via textContent", "Neither"], "c": 1, "s": ["DOM mutation API family."], "a": "createElement plus append plus insertBefore plus replaceChild plus cloneNode plus remove"},
+      {"q": "User-supplied text that must be set safely is:", "opts": ["innerHTML directly", "textContent safe plain", "Both safe", "Neither safe"], "c": 1, "s": ["textContent sets plain safely."], "a": "textContent safe plain"},
+      {"q": "HTML parse risky injection via userInput without escaping via:", "opts": ["textContent", "innerHTML", "Both safe", "Neither risky"], "c": 1, "s": ["innerHTML parses HTML; XSS bait."], "a": "innerHTML"},
+      {"q": "Class manipulation idiomatic via:", "opts": ["Only via style per element string", "classList add/remove/toggle", "Only via innerHTML", "Only via append"], "c": 1, "s": ["classList plus style inline or getComputedStyle."], "a": "classList add/remove/toggle"},
+      {"q": "Live collection loop that mutates the collection vs static snapshot loop mutation effect is:", "opts": ["Live can surprise as length changes vs static snapshot does not change until re-queried", "Both surprise equally", "Both static", "Live never surprises"], "c": 0, "s": ["Live HTMLCollection tracks; static NodeList does not until re-queried."], "a": "Live can surprise as length changes vs static snapshot does not change until re-queried"}
+    ],
+    "es6": [
+      {"q": "Block scope plus const binding plus arrow no own this vs declaration own via call plus template interpolation via backticks is:", "opts": ["Only var scope", "let/const block plus const binding not object plus arrow surrounding plus template ${} via backticks", "Only arrow scope", "Only template"], "c": 1, "s": ["ES6 trio: let/const plus arrow plus template."], "a": "let/const block plus const binding not object plus arrow surrounding plus template ${} via backticks"},
+      {"q": "Destructuring extract with defaults const {a=0}=obj plus array plus rest is:", "opts": ["Impossible", "ES6 destructuring extracts plus defaults", "Only via var", "Only via loops"], "c": 1, "s": ["Object plus array plus nested plus defaults plus rest gathering."], "a": "ES6 destructuring extracts plus defaults"},
+      {"q": "Dots ...x in definition vs call discriminate as:", "opts": ["Both spread explosion", "Rest gathers in definition vs spread explodes in call", "Both gather", "Opposites swapped"], "c": 1, "s": ["Call vs definition direction test."], "a": "Rest gathers in definition vs spread explodes in call"},
+      {"q": "Modules vs scripts correct is:", "opts": ["Scripts static vs modules global", "Modules static per file plus tree-shake via import/export vs scripts global polluting window", "Both global", "Only scripts exist"], "c": 1, "s": ["Static per file vs global; bundler plus transpiler split."], "a": "Modules static per file plus tree-shake via import/export vs scripts global polluting window"},
+      {"q": "Transpilation for old browsers plus bundling many files into few plus types on top is:", "opts": ["Transpile via Babel for syntax plus bundler via Webpack or Vite plus TypeScript adds types", "Only TypeScript", "Only Babel vs bundler same", "Only via script"], "c": 0, "s": ["Babel syntax, bundler chops, types via TS."], "a": "Transpile via Babel for syntax plus bundler via Webpack or Vite plus TypeScript adds types"},
+      {"q": "Promise states pending to fulfilled vs rejected plus then vs catch vs finally plus all vs allSettled vs any vs race is:", "opts": ["All same", "Pending to fulfilled/rejected via then/catch/finally plus combinators as all fails first vs allSettled always per-outcome vs any first fulfilled vs race first settled", "Only Promise.all", "Only async"], "c": 1, "s": ["States plus combinators four-way difference."], "a": "Pending to fulfilled/rejected via then/catch/finally plus combinators as all fails first vs allSettled always per-outcome vs any first fulfilled vs race first settled"},
+      {"q": "Async/await sugar plus where await may appear plus interleaving with try/catch is:", "opts": ["Await anywhere", "Await inside async function or top-level in modules only, via try plus await plus catch or await plus .catch", "Only via callback", "Only via Promise constructor"], "c": 1, "d": null, "s": ["Inside async or top-level module; try/catch with await."], "a": "Await inside async function or top-level in modules only, via try plus await plus catch or await plus .catch"},
+      {"q": "Default param function f({x=0}={}) with destructuring options-bag fallback is:", "opts": ["Default via destructuring plus fallback object when undefined", "Only via var", "Impossible", "Only via template"], "c": 0, "s": ["Options bag empty when undefined fixes x default."], "a": "Default via destructuring plus fallback object when undefined"},
+      {"q": "All waits all and fails first reject vs allSettled waits all and returns per-outcome regardless vs any first fulfilled vs race first settled correct grouping is:", "opts": ["All same vs allSettled vs any vs race not distinct", "Distinct four-way as described", "Only all vs any distinction", "Only race vs allSettled"], "c": 1, "s": ["Four distinct combinators."], "a": "Distinct four-way as described"},
+      {"q": "Classes as syntactic sugar over prototypes with extends plus super plus constructor plus methods inherited via prototype:", "opts": ["Fully distinct type not prototype", "Syntactic sugar over prototypes", "Only scripts global", "Only ES6 plus types"], "c": 1, "s": ["Class is sugar over prototypes."], "a": "Syntactic sugar over prototypes"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Outside a for loop for(var i=0;i<3;i++) vs for(let i=0;i<3;i++) — i visibility is:", "opts": ["Var leaks outside, let keeps inside (block)", "Both leak outside", "Both block inside", "Both undefined outside"], "c": 0, "d": "easy", "t": "Variables & Types", "exp": ["var function-scoped leaks; let block-scoped keeps inside."]},
+    {"id": 2, "q": "Const binding of an object const o = {} vs mutation o.x = 1 vs reassignment o = {} is:", "opts": ["Const prevents reassignment o = {} but allows o.x = 1 mutation", "Const prevents both", "Const allows reassignment", "Const makes object immutable via all helpers"], "c": 0, "d": "medium", "t": "Variables & Types", "exp": ["Const blocks reassignment, not mutation."]},
+    {"id": 3, "q": "typeof null vs isArray for [] is:", "opts": ["object vs true", "null vs false", "object vs false", "null vs true"], "c": 0, "d": "medium", "t": "Variables & Types", "exp": ["Historic bug: typeof null is object; Array.isArray([]) is true."]},
+    {"id": 4, "q": "Double equals \"5\" == 5 vs triple equals \"5\" === 5 is:", "opts": ["True vs true", "False vs true", "True vs false (coerce vs strict)", "False vs false"], "c": 2, "d": "easy", "t": "Variables & Types", "exp": ["Double coerces true, triple strict false."]},
+    {"id": 5, "q": "0 == false vs 0 === false is:", "opts": ["True vs true", "False vs false", "True vs false as double true vs triple strict", "False vs true"], "c": 2, "d": "medium", "t": "Variables & Types", "exp": ["0 coerces to false under double; triple is strict false."]},
+    {"id": 6, "q": "Falsy list correctness is:", "opts": ["Only false", "False, 0, empty string, null, undefined, NaN are falsy", "Only null plus undefined", "Only empty string"], "c": 1, "d": "medium", "t": "Variables & Types", "exp": ["Six falsy: false plus 0 plus empty string plus null plus undefined plus NaN."]},
+    {"id": 7, "q": "Empty array as conditional plus value || 10 vs value ?? 10 with value zero yields:", "opts": ["Empty array falsy vs truthy nor relevant", "[] is truthy vs || gives 10 vs ?? gives 0", "[] is falsy vs both give 10", "[] is false vs both give 0"], "c": 1, "d": "medium", "t": "Variables & Types", "exp": ["Empty array truthy; || falsy trips on zero, ?? keeps zero."]},
+    {"id": 8, "q": "NaN type via typeof plus NaN !== NaN plus test is:", "opts": ["number plus false plus isNaN", "number plus true plus Number.isNaN", "object plus true plus isNaN", "string plus true plus isNaN"], "c": 1, "d": "medium", "t": "Variables & Types", "exp": ["typeof NaN is number, NaN !== NaN true, test via Number.isNaN."]},
+    {"id": 9, "q": "Let vs const dead zone reading above line yields:", "opts": ["undefined before line for both", "throws for let and const dead zone vs var undefined before line", "true before line for let", "null before line"], "c": 1, "d": "medium", "t": "Variables & Types", "exp": ["Dead zone throws, not undefined."]},
+    {"id": 10, "q": "Function declaration hoists callable before line vs expression not before is:", "opts": ["Both hoist callable before line", "Declaration callable before line, expression/arrow not before", "Neither hoists callable", "Only arrow hoists callable"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["Declaration fully hoists; expression/arrow does not."]},
+    {"id": 11, "q": "Arrow own this via call site is:", "opts": ["True — arrow has own this", "False — arrow closes over surrounding scope this", "Always global", "Always null"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["Arrow no own this; uses surrounding."]},
+    {"id": 12, "q": "Bound priority new > bind > dot > bare sloppy global vs bare strict undefined describes:", "opts": ["Coercion", "this binding order", "Scope", "DOM live"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["New instant > bind/call/apply > dotted obj > bare global/undefined."]},
+    {"id": 13, "q": "Classic var loop var i with async callback prints what and let fixes how?", "opts": ["Prints 0,1,2 vs let prints 3,3,3", "Prints 3,3,3 via shared i vs let gives per-iteration copy fixes", "No issue", "Both print 3,3,3"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["Var shares one i; let fixes."]},
+    {"id": 14, "q": "Closure private counter via function returning function keeps var via:", "opts": ["Closure outer after return", "Hoisting only", "No closure", "Only class"], "c": 0, "d": "medium", "t": "Functions & Events", "exp": ["Returned function closes over outer n alive after return."]},
+    {"id": 15, "q": "Rest gathers many into an array in definition vs spread explodes in call is:", "opts": ["Both gather", "Rest gathers in definition (...args) vs spread explodes in call (...arr)", "Both explode", "Opposites swapped"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["Dots in definition gather; in call explode."]},
+    {"id": 16, "q": "Events capture down vs bubble up vs stop vs prevent correct grouping is:", "opts": ["Bubble down capture up vs stop cancels travel vs prevent cancels default", "Capture down then bubble up vs stopPropagation stops travel vs preventDefault cancels default", "Only bubble down", "Only capture up"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["Capture down then bubble up; stop stops, prevent cancels."]},
+    {"id": 17, "q": "Live auto-updating collection after a DOM mutation is:", "opts": ["querySelectorAll NodeList static", "getElementsByClassName HTMLCollection live", "Both live", "Both static"], "c": 1, "d": "medium", "t": "DOM Basics", "exp": ["Classic live HTMLCollection vs static NodeList."]},
+    {"id": 18, "q": "Static snapshot collection until re-queried is:", "opts": ["getElementsByClassName live", "querySelectorAll NodeList static", "Live tree only", "Neither"], "c": 1, "d": "medium", "t": "DOM Basics", "exp": ["Modern static NodeList snapshot."]},
+    {"id": 19, "q": "Node vs Element correct is:", "opts": ["Node equals Element only", "Node includes Elements plus Text plus Comments; Element subset that are tags", "Node equals Text only", "Element includes all nodes equally"], "c": 1, "d": "medium", "t": "DOM Basics", "exp": ["Tags vs all node flavours."]},
+    {"id": 20, "q": "childNodes vs children correct is:", "opts": ["childNodes only elements vs children all nodes", "childNodes all nodes including Text whitespace vs children only Elements", "Both all nodes", "Both only elements"], "c": 1, "d": "medium", "t": "DOM Basics", "exp": ["Text whitespace distinction."]},
+    {"id": 21, "q": "User-supplied text that must be set safely is:", "opts": ["innerHTML directly", "textContent safe plain", "Both safe", "Neither safe"], "c": 1, "d": "medium", "t": "DOM Basics", "exp": ["textContent sets plain safely."]},
+    {"id": 22, "q": "HTML parse risky injection via userInput without escaping via:", "opts": ["textContent", "innerHTML", "Both safe", "Neither risky"], "c": 1, "d": "medium", "t": "DOM Basics", "exp": ["innerHTML parses HTML; XSS bait."]},
+    {"id": 23, "q": "Class manipulation idiomatic via:", "opts": ["Only via style per element string", "classList add/remove/toggle", "Only via innerHTML", "Only via append"], "c": 1, "d": "medium", "t": "DOM Basics", "exp": ["classList plus style."]},
+    {"id": 24, "q": "Block scope plus const binding plus arrow no own this vs declaration own via call plus template interpolation via backticks is:", "opts": ["Only var scope", "let/const block plus const binding not object plus arrow surrounding plus template ${} via backticks", "Only arrow scope", "Only template"], "c": 1, "d": "medium", "t": "ES6 Highlights", "exp": ["ES6 trio: let/const plus arrow plus template."]},
+    {"id": 25, "q": "Destructuring extract with defaults const {a=0}=obj plus array plus rest is:", "opts": ["Impossible", "ES6 destructuring extracts plus defaults", "Only via var", "Only via loops"], "c": 1, "d": "medium", "t": "ES6 Highlights", "exp": ["Object plus array plus nested plus defaults."]},
+    {"id": 26, "q": "Dots ...x in definition vs call discriminate as:", "opts": ["Both spread explosion", "Rest gathers in definition vs spread explodes in call", "Both gather", "Opposites swapped"], "c": 1, "d": "medium", "t": "ES6 Highlights", "exp": ["Call vs definition direction."]},
+    {"id": 27, "q": "Modules vs scripts correct is:", "opts": ["Scripts static vs modules global", "Modules static per file plus tree-shake via import/export vs scripts global polluting window", "Both global", "Only scripts exist"], "c": 1, "d": "medium", "t": "ES6 Highlights", "exp": ["Static per file vs global."]},
+    {"id": 28, "q": "Transpilation for old browsers plus bundling many files into few plus types on top is:", "opts": ["Transpile via Babel for syntax plus bundler via Webpack or Vite plus TypeScript adds types", "Only TypeScript", "Only Babel vs bundler same", "Only via script"], "c": 0, "d": "medium", "t": "ES6 Highlights", "exp": ["Babel syntax, bundler chops, types via TS."]},
+    {"id": 29, "q": "Promise states pending to fulfilled vs rejected plus then vs catch plus finally plus all vs allSettled vs any vs race is:", "opts": ["All same", "Pending to fulfilled/rejected via then/catch/finally plus combinators as all fails first vs allSettled always per-outcome vs any first fulfilled vs race first settled", "Only Promise.all", "Only async"], "c": 1, "d": "medium", "t": "ES6 Highlights", "exp": ["States plus combinators four-way."]},
+    {"id": 30, "q": "Default param function f({x=0}={}) with destructuring options-bag fallback is:", "opts": ["Default via destructuring plus fallback object when undefined", "Only via var", "Impossible", "Only via template"], "c": 0, "d": "medium", "t": "ES6 Highlights", "exp": ["Options bag empty when undefined."]},
+    {"id": 31, "q": "All waits all and fails first reject vs allSettled waits all and returns per-outcome regardless vs any first fulfilled vs race first settled correct grouping is:", "opts": ["All same vs allSettled vs any vs race not distinct", "Distinct four-way as described", "Only all vs any distinction", "Only race vs allSettled"], "c": 1, "d": "medium", "t": "ES6 Highlights", "exp": ["Four distinct combinators."]},
+    {"id": 32, "q": "Live collection that mutates while looping vs static snapshot loop mutation effect is:", "opts": ["Live can surprise as length changes vs static snapshot does not change until re-queried", "Both surprise equally", "Both static", "Live never surprises"], "c": 0, "d": "medium", "t": "DOM Basics", "exp": ["Live HTMLCollection tracks; static does not."]},
+    {"id": 33, "q": "Async/await available inside:", "opts": ["Anywhere", "Inside async function or top-level in modules only", "Only inside sync functions", "Only inside constructors"], "c": 1, "d": "medium", "t": "ES6 Highlights", "exp": ["Inside async or top-level module."]},
+    {"id": 34, "q": "Await syntax plus error handling correctly is:", "opts": ["try plus await plus catch or await plus .catch plus finally", "Only .then always", "Only callback", "Only sync"], "c": 0, "d": "medium", "t": "ES6 Highlights", "exp": ["Try plus await plus catch."]},
+    {"id": 35, "q": "Classes as syntactic sugar over prototypes with extends plus super plus constructor plus methods inherited via prototype:", "opts": ["Fully distinct type not prototype", "Syntactic sugar over prototypes", "Only scripts global", "Only ES6 plus types"], "c": 1, "d": "medium", "t": "ES6 Highlights", "exp": ["Class is sugar over prototypes."]},
+    {"id": 36, "q": "Hoisting for function expression const f = function(){} plus call above line is:", "opts": ["Callable above", "Not callable above before assignment", "Global", "Arrow only callable above"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["Expression not hoisted as callable."]},
+    {"id": 37, "q": "Arrow plus method this trap when obj = { foo: () => this } vs obj.foo = function(){ return this } is:", "opts": ["Both own this via dot", "Arrow uses surrounding scope even with dot, function via dot uses obj", "Both use surrounding", "Both global"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["Arrow closes over surrounding; method via dot gives obj."]},
+    {"id": 38, "q": "StopPropagation vs preventDefault for a link click with handler:", "opts": ["Both stop travel", "stopPropagation stops bubbling/capturing but link still would navigate, preventDefault cancels navigate but still bubbles unless also stopped", "Both cancel default", "Neither does anything"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["Travel vs default are orthogonal."]},
+    {"id": 39, "q": "Creating and attaching via createElement plus append plus insertBefore plus replaceChild plus cloneNode plus remove is:", "opts": ["Only via innerHTML", "DOM mutation API family", "Only via textContent", "Neither"], "c": 1, "d": "medium", "t": "DOM Basics", "exp": ["DOM mutation family."]},
+    {"id": 40, "q": "One plus first plus many selectors grouping is:", "opts": ["getElementById one, querySelector first, querySelectorAll many static", "getElementById many, querySelector one always via live only", "All via getElementById only", "Only via classes"], "c": 0, "d": "medium", "t": "DOM Basics", "exp": ["Classic one vs modern first vs all many."]},
+    {"id": 41, "q": "Dotted this obj.foo() vs bare sloppy vs strict distinction matters only for:", "opts": ["Bare calls", "Dotted calls too", "Never", "Arrow only"], "c": 0, "d": "medium", "t": "Functions & Events", "exp": ["Dotted dominates both modes; bare strict vs sloppy differs."]},
+    {"id": 42, "q": "IIFE that captures var for loop plus async is:", "opts": ["Only A", "Classic legacy wrapper fix vs modern let per iteration", "Not needed", "Only let needed never IIFE"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["Modern let fixes; legacy IIFE captured current var."]},
+    {"id": 43, "q": "typeof lie exact string plus isArray true for array is:", "opts": ["typeof null is object bug plus Array.isArray true", "typeof null is null plus Array.isArray false", "No lie", "Only number type"], "c": 0, "d": "medium", "t": "Variables & Types", "exp": ["Historic bug."]},
+    {"id": 44, "q": "Falsy six plus ?? vs || zero and empty string test combined is correctly:", "opts": ["|| trips on zero empty as falsy to default, ?? keeps zero empty as not nullish", "Both keep zero", "Both trip on zero", "Both falsy equal"], "c": 0, "d": "medium", "t": "Variables & Types", "exp": ["|| falsy vs ?? nullish."]},
+    {"id": 45, "q": "Event capture true vs bubble false for addEventListener third arg can also be object with:", "opts": ["Only capture true", "{capture:true} or {once:true} or {passive:true}", "Never object", "Only once false"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["Modern options object."]},
+    {"id": 46, "q": "Capturing vs bubbling vs target exact phase count is:", "opts": ["Two phases only", "Three: capturing down, target, bubbling up", "One phase only target", "Four phases"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["Three phases."]},
+    {"id": 47, "q": "Building plus attaching vs querying vs safety XSS rows belong to respectively:", "opts": ["All DOM", "Query vs creation vs safety are DOM subfamilies but single DOM topic", "Only query vs only safety", "Only creation"], "c": 1, "d": "medium", "t": "DOM Basics", "exp": ["DOM subfamilies."]},
+    {"id": 48, "q": "Spread vs rest in destructuring const [first, ...rest] = arr with dots left side is:", "opts": ["Spread", "Rest gathers remaining into array", "Call explosion", "Module"], "c": 1, "d": "medium", "t": "ES6 Highlights", "exp": ["Left side gather is rest."]},
+    {"id": 49, "q": "Module vs script global pollution vs tree shaking plus import vs export exists is:", "opts": ["Same", "Module static per file plus import vs export vs script global plus transpilation vs bundling", "Only via require", "Only via export default"], "c": 1, "d": "medium", "t": "ES6 Highlights", "exp": ["Static per file vs global."]},
+    {"id": 50, "q": "Promise combinators fail first vs always per-outcome vs first fulfilled vs first settled exact mapping is:", "opts": ["all fails first vs allSettled always per-outcome vs any first fulfilled vs race first settled", "all same vs allSettled same vs any same vs race same", "Only all vs any distinct", "Only race vs allSettled distinct"], "c": 0, "d": "medium", "t": "ES6 Highlights", "exp": ["Four distinct."]},
+    {"id": 51, "q": "Class extends via super plus constructor plus prototype inheritance in JS:", "opts": ["Sugar over prototypes", "Entirely new engine distinct from prototypes", "Only via script global", "No inheritance"], "c": 0, "d": "medium", "t": "ES6 Highlights", "exp": ["Sugar over prototypes."]},
+    {"id": 52, "q": "Hoisting vs TDZ vs binding reassign vs mutation distinct enforcement is:", "opts": ["Same enforcement", "var hoists undefined vs let/const TDZ throws vs const binding-not-object mutation allowed", "All block scoped same", "Only var hoists"], "c": 1, "d": "medium", "t": "Variables & Types", "exp": ["Three enforcements differ."]},
+    {"id": 53, "q": "Coercion vs strictly plus types null bug plus isArray composed in one multi-micro test is:", "opts": ["All isolated different families but tested together", "One family only", "Only coercion", "Only null bug"], "c": 0, "d": "medium", "t": "Variables & Types", "exp": ["Mixed vars row."]},
+    {"id": 54, "q": "Declaration hoists callable vs expression via const vs arrow no own this vs closure loop vs capture down bubble up plus stop vs prevent all combined is:", "opts": ["All isolated but one functions-plus-events row", "One row mixes all these as one functions-plus-events synthesis", "Only closure plus declaration", "Only events plus arrow"], "c": 1, "d": "medium", "t": "Functions & Events", "exp": ["One synthesis row mixes these."]},
+    {"id": 55, "q": "Live HTMLCollection vs static NodeList auto-update after DOM mutation is the discriminant for:", "opts": ["Only via events", "Live vs static collections in DOM selection", "Only via modules", "Only via coercion"], "c": 1, "d": "medium", "t": "DOM Basics", "exp": ["Live auto-updates; static snapshot does not."]},
+    {"id": 56, "q": "textContent safe plain vs innerHTML parses HTML risky XSS via userInput without escaping is discriminant for:", "opts": ["Only via ES6", "DOM safety XSS", "Only via vars", "Only via functions"], "c": 1, "d": "medium", "t": "DOM Basics", "exp": ["Safe plain vs risky parse."]},
+    {"id": 57, "q": "Rest gathers in definition vs spread explodes in call plus arrow no own this plus declaration hoists vs expression vs promise combinators belong to respectively:", "opts": ["All DOM", "ES6 spread vs rest plus arrow plus promise plus declaration hoist synthesis — ES6 row", "Only spread vs rest", "Only promise vs modules"], "c": 1, "d": "medium", "t": "ES6 Highlights", "exp": ["ES6 synthesis."]},
+    {"id": 58, "q": "Modules static per file plus tree shake plus Babel transpilation plus bundler chopping many files into few is discriminant for:", "opts": ["Only DOM", "ES6 modules vs scripts", "Only vars", "Only DOM safety"], "c": 1, "d": "medium", "t": "ES6 Highlights", "exp": ["Static per file vs global."]},
+    {"id": 59, "q": "Bindings vs scope vs hoist vs typeof vs coercion vs falsy vs promise combinators vs DOM live rows all separate but tested together because they share topic word JavaScript is expected as:", "opts": ["One pass per discriminant word solves most mixed tables", "Memorize per full table brute force", "Only per exam paper brute", "Never mixed"], "c": 0, "d": "medium", "t": "Variables & Types", "exp": ["One pass per verb kills most tables."]},
+    {"id": 60, "q": "Which ES6 feature adds unique identity for keys not equal to any prior string plus symbol type is:", "opts": ["String only", "Symbol unique key", "Only number", "Only bigint"], "c": 1, "d": "medium", "t": "Variables & Types", "exp": ["Symbol unique key."]}
+  ]
+}

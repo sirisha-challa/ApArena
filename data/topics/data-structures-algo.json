@@ -1,0 +1,553 @@
+{
+  "id": "data-structures-algo",
+  "title": "Data Structures & Algorithms Concepts",
+  "icon": "DSA",
+  "category": "cs-foundations",
+  "color": "#475569",
+  "subtopics": [
+    "Arrays & Strings",
+    "Stacks & Queues",
+    "Trees & Graphs",
+    "Sorting & Searching",
+    "Complexity (Big-O)"
+  ],
+  "estimatedHours": 9,
+  "readingSections": [
+    {
+      "id": "arrays-strings",
+      "title": "Arrays and Strings: indexing, contiguous storage, two-pointer and sliding window",
+      "type": "concept",
+      "quickSummary": "Array contiguous fixed-type storage plus O(1) random access via index plus O(n) insert or delete in the middle. String is array of chars plus often immutable. Two pointers scan from opposite ends. Sliding window keeps a variable-length interval that grows and shrinks.",
+      "content": [
+        "An array is a contiguous block where every element has the same size and type so address equals base plus index times element size. That single fact gives O(1) random access: arr[5] is direct math, not a search. Cost appears elsewhere: inserting or deleting in the middle needs shifting — worst O(n) moves — and resizing beyond capacity may allocate a new block plus copy all. The exam loves array vs linked list where array wins on random access but linked list wins on insertion without shifting.",
+        "A string is an array of characters with language flavour: in Java and Python strings are immutable (every so-called change builds a new string plus hides O(n) copy cost), in C they are mutable arrays terminated by null, in JavaScript they are UTF-16 sequences with surrogate pairs. String operations the exam rotates: length, concatenation, substring via slice, compare lexicographically, reverse, and pattern search via built-ins or two-pointer scan.",
+        "Two-pointer is the pattern that saves marks on arrays and strings. Place one pointer at the start and one at the end and move inward based on a condition. Palindrome check increments left while decrementing right; sorted two-sum moves low plus high towards the target from both ends; removing duplicates from a sorted array keeps a write pointer and a read pointer. The exam draws an array with two arrows and asks number of comparisons — count pointer moves.",
+        "Sliding window keeps a window [left, right] that grows by moving right and shrinks by moving left while an invariant holds (distinct characters, sum less than K, exactly K distinct). Window carets keep maximum or minimum plus window length and best seen. Typical questions: longest substring without repeating characters, smallest subarray covering a target, count with at most K distinct. The exam swaps the words at most vs exactly and the fix is subtracting one count from the other.",
+        "Array primitives to have ready: prefix sums let range sum queries be O(1) after O(n) build via prefix[i] equals sum up to i; sparse arrays waste space (bitmap or map may compress); sorted arrays enable binary search; sparse plus two-pointer plus prefix sum maps directly to substring vs subarray stems."
+      ],
+      "subsections": [
+        {
+          "title": "Random access vs insertion plus resize",
+          "content": "Random access O(1) via index math is the array headline. Insertion middle O(n) shifts, deletion middle O(n) shifts, append amortized O(1) with occasional resize copy, full resize O(n) allocate plus copy. That table vs linked list O(n) random vs O(1) insert via splice is the mark."
+        },
+        {
+          "title": "Immutable strings hide copies",
+          "content": "On an immutable string each plus or push or slice that logically edits builds a new buffer and copies characters. Repeating plus in a loop yields O(n squared) via repeated copying — prefer a builder such as StringBuilder or list plus join. AXIS commonly writes repeated string concatenation in a loop and asks complexity."
+        }
+      ],
+      "quickRevision": [
+        "Array contiguous plus O(1) index via base plus index times size; insert/delete middle O(n) shifts; append amortized O(1) via resize copy.",
+        "String char array flavour: Java/Python immutable (new string per edit), C mutable, JS UTF-16. Substring via slice, compare lex order, reverse via two pointers.",
+        "Two pointers start plus end move inward: palindrome, sorted two-sum, dedup on sorted via write plus read.",
+        "Sliding window [left,right] grows right shrinks left per invariant; at most K vs exactly K vs longest with no repeat is the invariant.",
+        "Prefix sums range sum O(1) after O(n) build; sparse vs sorted vs string plus immutable nuance vs prefix."
+      ],
+      "tricks": [
+        "Any answer that says array insert in the middle is O(1) is wrong — middle insertion is O(n) shifts plus perhaps resize.",
+        "Do not swap two-pointer with sliding window — two pointers start at opposite ends and meet; window starts narrow and grows plus shrinks inside.",
+        "Immutable strings make repeated plus O(n squared) — builder collect then join is linear."
+      ],
+      "patterns": [
+        "'Contiguous O(1) index vs O(n) insert middle?' -> Array via base plus index, linked list via O(n) walk vs O(1) splice.",
+        "'Immutable string repeated concatenation in loop?' -> StringBuilder or list plus join to stay O(n).",
+        "'Two arrows from ends inward?' -> Two-pointer. 'Variable [left,right] growing and shrinking vs invariant?' -> Sliding window.",
+        "'Range sum query?' -> Prefix sums; sorted two-sum needs array sorted then two pointers."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TCS NQT / Infosys — arrays plus strings plus pointers plus windows, every year",
+          "question": "Array indexing plus string immutability plus two-pointer vs sliding window plus prefix?",
+          "approach": "Index O(1) math, immutable copies O(n), two pointers meet, window grows plus shrinks, prefix O(1) range sums."
+        },
+        {
+          "source": "Wipro — palindromes plus dedup vs sum",
+          "question": "Palindrome via two pointers vs dedup via write plus read vs two-sum on sorted via opposite ends?",
+          "approach": "Palindromes compare ends inward, dedup sorted keeps write plus read, sorted two-sum opposite ends moving towards target."
+        }
+      ],
+      "companyNote": "Array indexing plus string plus two-pointer vs window appears as a 2-item set."
+    },
+    {
+      "id": "stacks-queues",
+      "title": "Stacks and Queues: LIFO vs FIFO plus monotonic plus queues for BFS",
+      "type": "concept",
+      "quickSummary": "Stack LIFO via push plus pop plus peek (top). Queue FIFO via enqueue plus dequeue plus front. Stacks drive DFS and undo and bracket checks; queues drive BFS and scheduling. Monotonic stack keeps increasing or decreasing to solve next greater or histogram; circular queue via bounded array vs linked queue unbounded.",
+      "content": [
+        "Stack is Last-In First-Out. Only the top is visible. Operations are push on top, pop from top, peek that reads without removing, plus emptiness plus size. Implementation via array needs capacity plus grows via resizing; via linked list links each push. The exam writes expression evaluation steps sequence as stack content after each token — the stack snapshot after each symbol is the mark.",
+        "Queue is First-In First-Out. Operations are enqueue at rear, dequeue at front, front or peek that reads front, plus emptiness plus size. Implementation via linked list links each enqueue; via circular array wraps rear to front with head pointer plus tail plus size plus modulo arithmetic. Circular fixes wasted space where plain array leaves bubbles. The exam's circular queue empty vs full via head equals tail test is the classic trap — one slot wasted or size flag breaks the tie.",
+        "Applications decide which to pick. Stack drives Depth-First traversal (explicit stack versus recursion's implicit call stack), expression conversion (infix to postfix plus evaluation), balanced parentheses via pushing opens and popping on closes, undo and backtracking. Queue drives Breadth-First traversal (level order), print queue, round-robin buffers, and sliding-window buffering within the array topic.",
+        "Monotonic stack is the power-ups the exam loves. An increasing stack on input 2,1,2,4,3 pushes while the stack top is bigger than the next — popping collects next greater elements; a decreasing stack collects next smaller. Next Greater Element to the right is the template: maintain decreasing stack of candidates, pop while top small than incoming, then map popped to incoming as its next greater. Histogram maximum rectangle plus trapped rain water reuse the same structure plus indices plus width.",
+        "Two queues can simulate a stack by moving all but the last between queues, and two stacks can simulate a queue by pouring one stack into the other to reverse order. AXIS rarely asks to run the full simulation but writes two queues make a stack or cost analysis for amortized time — amortized O(1) via each element moved at most twice is the expected phrasing."
+      ],
+      "subsections": [
+        {
+          "title": "Stack snapshot of expression evaluation",
+          "content": "Postfix evaluation scans left to right: push numbers, on operator pop two, apply, push result. Tracing the stack contents after each token is a frequent one-mark diagram — count depth matches operand vs operator balance."
+        },
+        {
+          "title": "Circular queue tie-break that steals marks",
+          "content": "On a bounded array head tracks dequeue, tail tracks enqueue, size tracks occupancy. Head equals tail means both empty plus full — so keep one empty slot or a count. That one empty slot is the baked-in waste that many stems forget to mention."
+        }
+      ],
+      "quickRevision": [
+        "Stack LIFO push plus pop plus peek top via array plus resize or linked; queue FIFO enqueue at rear plus dequeue at front via circular array plus modulo or linked.",
+        "Stack drives DFS plus expressions plus undo plus brackets; queue drives BFS plus scheduling plus buffering.",
+        "Monotonic increasing vs decreasing stack for next greater or smaller plus histogram via indices.",
+        "Circular queue head plus tail plus size plus one wasted slot or flag separates empty vs full.",
+        "Two stacks simulate queue and two queues simulate stack via reversals — amortized O(1) each element at most twice."
+      ],
+      "tricks": [
+        "Any answer that says queue uses LIFO is swapping — LIFO is stack, FIFO is queue.",
+        "Do not attach BFS to stack — BFS uses queue for level order, DFS uses stack plus recursion for depth.",
+        "Circular empty equals full tie-break requires one wasted slot or size flag — any answer that says head equals tail alone decides without tie-breaker is wrong for bounded circular."
+      ],
+      "patterns": [
+        "'Last pushed first popped?' -> Stack. 'First enqueued first dequeued?' -> Queue.",
+        "'Expression evaluation stack trace plus balanced parentheses?' -> Stack push opens pop on closes.",
+        "'Level order vs depth?' -> Queue for BFS vs stack or recursion for DFS.",
+        "'Next greater or histogram plus trapped rain?' -> Monotonic stack with indices.",
+        "'Queue on a bounded array wraps?' -> Circular plus head plus tail plus size."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — stacks plus queues plus BFS or DFS, every year",
+          "question": "Stack via push plus pop plus peek vs queue via enqueue plus dequeue plus front plus stack for DFS vs queue for BFS plus balanced parentheses?",
+          "approach": "LIFO top vs FIFO front; stack recursion depth, queue levels; parentheses push opens pop closes check emptiness and matching type."
+        },
+        {
+          "source": "TCS / Infosys — monotonic stack plus circular",
+          "question": "Next Greater via decreasing stack vs trapped rain or histogram via stack plus circular equality plus two Stacks as queue?",
+          "approach": "Decreasing stack for next greater with popped to incoming map; histogram width times pop; head equals tail needs size or waste flag; pour stack to reverse for queue simulation."
+        }
+      ],
+      "companyNote": "Stacks plus queues plus BFS or DFS appears as either a direct op or as an expression trace or as a level order."
+    },
+    {
+      "id": "trees-graphs",
+      "title": "Trees and Graphs: traversals plus BST plus heaps vs trie plus BFS vs DFS plus representation",
+      "type": "concept",
+      "quickSummary": "Tree acyclic connected with one path between any two nodes, rooted gives parent plus child plus height plus depth. Binary tree max two children; BST left smaller right larger plus ordered. Traversals: inorder sorted on BST, preorder, postorder, level BFS via queue. Heap complete array with heapify O(n). Trie prefix tree as nested array plus bit vector. Graph nodes plus edges with adjacency list vs matrix trade-off. BFS queue shortest on unweighted, DFS stack/recursion for connectivity plus cycle plus topo via stack.",
+      "content": [
+        "A tree is an acyclic connected graph with one unique path between any two nodes. A rooted tree fixes a root and imposes direction: parent, children, siblings, leaf with no child, height as longest root-to-leaf edge count (often counted as node count differs by one; pick leaf height 0 vs 1 as per stem), depth as root-to-node edges. Binary tree restricts each node to at most two children — left and right matter for ordered trees. Balanced plus AVL vs red-black rarely need rotation tracing on AXIS beyond awareness.",
+        "BST (Binary Search Tree) adds order: left subtree holds keys smaller than node, right holds larger, duplicates policy decides side or forbids. Sorted order via inorder traversal is the BST giveaway: inorder on a BST is ascending. Traversals by type: inorder for BST sorted (left+node+right), preorder for copy and prefix ops (node+left+right), postorder for delete and postfix (left+right+node), level order plus BFS via queue for width first. The exam writes such bursts as traversal strings plus asks which BST would produce this preorder or which stack vs queue matches which traversal.",
+        "Heap is the array-backed complete binary tree that respects the heap property: min-heap parent smaller than children, max-heap parent larger. Index via parent i, children 2*i plus 1/2 for 0-based. Build in O(n) via linear heapify from the last non-leaf downwards, not N inserts. Priority queue is the abstraction; heap is the implementation. Trie (prefix tree) stores strings as a tree of characters sharing prefixes; bit vector plus nested arrays plus terminal flag compress sequential lookups — lookup remains O(L) where L is key length.",
+        "Graphs are networks: node (vertex) plus edges weighted or unweighted, directed or undirected, possibly with cycles. Representation splits. Adjacency matrix is n times n grid of 0/1 or weights plus dense but O(n squared) space plus O(1) edge existence; adjacency list is array of per-vertex neighbor lists plus sparse-friendly O(V plus E) plus average neighbour enumeration fast but edge existence linear. The exam word dense vs sparse tells you which representation to quote.",
+        "Traversals plus search on graphs. BFS via queue explores level by level and returns the shortest path length on an unweighted graph (distance in edges). DFS via stack or recursion explores depth and helps connectivity plus cycle detection before blackening and topological sort after. Weighted shortest needs Dijkstra after BFS, but AXIS focuses BFS vs DFS vs adjacency as the graph core. Cycle plus bipartite plus connected components also reduce to BFS or DFS colouring — undirected cycle appears as a back edge to a visited not parent.",
+        "Why the exam stresses the split: arrays plus strings focus on two-pointer plus window plus prefix; stacks plus queues focus on LIFO vs FIFO plus BFS vs DFS; trees plus graphs focus on traversal plus BST vs heap vs trie vs adjacency plus BFS vs DFS0."
+      ],
+      "subsections": [
+        {
+          "title": "Traversals on BST in one string",
+          "content": "Preorder copies and prints prefix: node left right. Inorder sorts BST: left node right. Postorder deletes and prints postfix: left right node. Level traverses by breadth via queue. That four-in-one table saves many marks."
+        },
+        {
+          "title": "Heap build O(n) vs N inserts O(n log n)",
+          "content": "Linear heapify inserts cost O(log n) so N inserts cost N log N; heapify from bottom gives O(n) by skipping leaves. AXIS commonly wants the O(n) heapify claim as the cost to convert an array already random to a heap."
+        }
+      ],
+      "quickRevision": [
+        "Tree acyclic connected one path plus rooted terms via parent plus children plus leaf plus height vs depth plus binary two children.",
+        "BST left smaller right larger plus ordered duplicates policy decides; inorder sorted ascending on BST; preorder node left right vs postorder left right node vs level via queue.",
+        "Heap complete array via heapify O(n) vs wrong O(n log n) if built via inserts; min vs max property via parent at i vs children at 2*i plus 1/2 (0-based); priority queue abstraction.",
+        "Trie prefix tree as nested arrays via terminal flag plus bit vector; graph adjacency list O(V+E) sparse vs matrix O(n^2) dense via BFS shortest on unweighted vs DFS depth via stack or recursion.",
+        "BFS queue shortest plus DFS stack/recursion for connectivity plus cycle plus topo plus representation dense vs sparse. Binary tree shape plus balanced vs AVL vs red-black awareness."
+      ],
+      "tricks": [
+        "Any answer that says heap build via N inserts is O(n) is wrong — inserts O(n log n) vs heapify O(n).",
+        "Do not attach BFS shortest to weighted graphs — BFS shortest holds only for unweighted; weighted shortest needs Dijkstra.",
+        "Inorder always sorted is only true for BST — general binary tree inorder is not sorted."
+      ],
+      "patterns": [
+        "'Left smaller right larger?' -> BST plus inorder sorted via BST.",
+        "'Build heap from arbitrary array?' -> Heapify O(n) not N inserts.",
+        "'Shortest on unweighted graph plus level order?' -> BFS via queue; 'Depth plus connectivity plus topo?' -> DFS via stack or recursion.",
+        "'Adjacency dense vs sparse?' -> Matrix O(n^2) vs list O(V+E).",
+        "'Prefix tree via shared prefixes?' -> Trie O(L) on key length."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — trees plus graphs plus traversal plus heap plus trie, every year",
+          "question": "BST traversal plus heap vs trie vs graph adjacency plus BFS vs DFS?",
+          "approach": "Inorder sorts BST; heap via heapify O(n); trie prefix O(L); adjacency vs matrix by dense vs sparse; BFS queue shortest vs DFS depth."
+        },
+        {
+          "source": "TCS / Wipro — BFS vs DFS",
+          "question": "Which traversal with queue vs stack gives shortest on unweighted vs depth connections?",
+          "approach": "Queue for level vs stack/recursion for depth; BFS not weighted shortest beyond unweighted."
+        }
+      ],
+      "companyNote": "Trees plus graphs plus heap plus trie appears as a 2-item set with one string/trace."
+    },
+    {
+      "id": "sorting-searching",
+      "title": "Sorting and Searching: bubble vs selection vs insertion vs merge vs quick vs heap plus linear vs binary",
+      "type": "concept",
+      "quickSummary": "Sorting orders; complexity vs stability decide. Simple sorts O(n^2): bubble swaps adjacent, selection picks min, insertion like cards shifts. Efficient O(n log n): merge divide conquer stable, quick partition average O(n log n) worst O(n^2) depending on pivot, heap via heapify. Searching: linear O(n) scans all, binary O(log n) needs sorted via dividing mid.",
+      "content": [
+        "Sorting orders keys. Simple O(n squared) sorts: bubble repeatedly swaps adjacent out-of-order passes and short-circuits if a pass had no swap; selection each pass picks the minimum among unsorted and swaps into place plus smallest writes; insertion walks like playing cards: each new element shifted left into the sorted prefix. Insertion wins for small or nearly sorted on comparisons and moves plus stable with tiny overhead.",
+        "Efficient O(n log n) sorts: merge splits in half recursively then merges two sorted halves with a temp buffer — stable and divide plus conquer with O(n) extra plus not in-place but always n log n. Quick picks a pivot plus partitions smaller vs larger via two pointers then recurses on partitions — average n log n, worst n squared when pivot always worst (already sorted plus bad pivot pick); randomized pivot or median-of-three tames it. Heap builds a heap then repeatedly extracts the root.",
+        "Stability matters when secondary order must be preserved. Stable sorts keep equal keys in input order: merge plus insertion plus bubble (swapping only adjacent out-of-order strictly stable) plus counting vs radix. Unstable sorts can flip equal keys: selection plus quick (partition moves) plus heap (sifting) are classically unstable but selection can be made stable with extra moves. The exam writes stable vs worst plus average plus in-place as a comparison table.",
+        "Searching: linear search walks one by one O(n) without sorting. Binary search needs a sorted array and halves the interval via mid each probe: while left less than equal to right compare mid and narrow, O(log n) comparisons plus O(1) extra; mid update left equals mid plus 1 vs right equals mid minus 1 plus inclusive bounds are the off-by-one traps. The exam's step count on binary search is number of mids probed.",
+        "Two counting sources on analysis: swaps vs comparisons vs moves vs recursion depth plus space. Stable plus worst vs space determines which to quote. Counting sort plus radix non-comparison sort count fast for small key ranges (counting O(n plus k) via frequency after stabilization and radix O(d times (n plus k))). AXIS rarely asks to run radix beyond awareness but recognizes non-comparison plus O(n log n) barrier for comparison sorts."
+      ],
+      "subsections": [
+        {
+          "title": "One comparison table that ends the trap",
+          "content": "Bubble O(n^2) stable in-place average vs worst quadratic. Selection O(n^2) unstable in-place via picks. Insertion O(n^2) but O(n) on nearly sorted, stable, in-place. Merge O(n log n) stable not in-place with O(n) extra plus always n log n. Quick average O(n log n) unstable in-place plus worst n^2 with very bad pivot. Heap O(n log n) unstable in-place via heapify plus extract. Linear search O(n), binary O(log n) sorted."
+        },
+        {
+          "title": "Stability check that saves a mark",
+          "content": "Swapping only adjacent out-of-order preserves order of equals, hence bubble plus insertion are stable; moving via jumps (selection plus quick plus heap) can leap and flip equals, hence unstable classically."
+        }
+      ],
+      "quickRevision": [
+        "Simple O(n^2): bubble adjacent swap plus short-circuit, selection pick min swap, insertion like cards shift in — insertion good on nearly sorted and stable.",
+        "Efficient O(n log n): merge divide conjoin stable, quick pivot partition average good worst quadratic, heap heapify plus extract — all efficient plus in-place except merge extra.",
+        "Stability: stable keeps equals original order: merge plus insertion plus bubble vs unstable: selection plus quick plus heap.",
+        "Linear O(n) without sorted vs binary O(log n) needs sorted via mid halving plus inclusive bounds.",
+        "Non-comparison counting vs radix bypass comparison lower bound for small key ranges plus non-comparison special case."
+      ],
+      "tricks": [
+        "Any answer that says quick is always O(n log n) worst is wrong — pivot choice decides; worst is O(n^2) with consistently bad pivot, average randomized much lower.",
+        "Do not swap insertion vs selection inside: insertion shifts, selection picks.",
+        "Any answer that says binary search works unsorted is wrong — sorting is mandatory first or linear remains O(n)."
+      ],
+      "patterns": [
+        "'Adjacent swaps plus short-circuit if no swap?' -> Bubble O(n^2) stable.",
+        "'Picks minimum each pass vs shifts like cards?' -> Selection picks vs insertion shifts. 'Divide plus conquer with temp?' -> Merge stable O(n log n).",
+        "'Pivot plus partition plus average vs worst?' -> Quick average n log n worst n^2.",
+        "'Needs sorted half via mid?' -> Binary O(log n). 'Scans one by one?' -> Linear O(n).",
+        "'Keeps equals order?' -> Stable: merge plus insertion plus bubble; unstable: selection plus quick plus heap."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — sorting plus searching, every year",
+          "question": "Which sort has which complexity plus which is stable plus word for binary mid probes plus divide plus conquer identification?",
+          "approach": "Simple O(n^2) vs efficient O(n log n) plus stable list via adjacent-preserving sorts, binary needs sorted via mid halving."
+        },
+        {
+          "source": "TCS / Infosys — binary vs linear plus pivot",
+          "question": "Step count plus average vs worst via pivot plus stability vs space comparison?",
+          "approach": "Binary O(log n) mids; quick pivot decides worst; stable bubble via insertion via merge; merge extra space vs quick in-place."
+        }
+      ],
+      "companyNote": "Sorting plus searching appears as either a compare table or as a binary step trace or as a stability plus complexity match."
+    },
+    {
+      "id": "complexity",
+      "title": "Complexity (Big-O): asymptotic growth plus best vs average vs worst plus space plus divide plus conquer",
+      "type": "concept",
+      "quickSummary": "Big-O upper bound and Omega lower and Theta tight; growth chart tied around constant~1 vs log vs sqrt vs linear vs linearithmic n log n vs quadratic vs cubic vs exponential 2^n vs factorial n!. O counts steps ignoring constants plus lower terms after grouping per faster still dominates slower: n^2 plus n is still n^2. Best vs average vs worst vary by input; space vs time trade-offs, recursion depth vs iterative; Master for divide plus conquer relates cost plus fanout vs combine.",
+      "content": [
+        "Asymptotic means large n. Big-O is upper bound: grows at most as fast as g(n). Omega is lower bound. Theta is tight both. AXIS asks big-O almost exclusively, sometimes big-Theta plus little-o vs little-O. Fudge: ignore constants and lower-order terms — an algorithm of 5 n squared plus 30 n plus 10 is still Theta(n squared) plus O(n squared) plus also O(n cubed) loosely; bound is monotonic after some n0.",
+        "Growth ladder that decides in 5 seconds: constant O(1) < log n (binary search) < sqrt(n) < n (linear scan) < n log n (efficient sorts) < n squared (simple sorts) < n cubed (cubic) < 2^n (exponential) < n! (factorial). For fixed n = 1000, log ~10, sqrt ~32, linear 1k, n log n ~10k, n squared 1M, exponential 2^1000 absurd — that absurdity is the exponential vs polynomial split that breaks test cases.",
+        "Best vs average vs worst depend on input. Linear search best O(1) when target first, average O(n), worst O(n) when last or missing. Bubble sort best O(n) via sorted plus no swap short-circuit, average plus worst O(n squared). Binary search best O(1) via mid immediate, worst O(log n). Quick best ~O(n log n) via balanced pivot, worst O(n squared) via worst pivot; random pivot fixes average ~n log n. The exam word best plus average plus worst is never filler.",
+        "Space plus time plus recursion depth trade: extra space O(1) in-place vs O(n) per buffer such as merge temp vs O(log n) recursion stack for binary search via recursion plus quick plus merge depth. Divide-and-conquer Master theorem for recurrences of the form T(n) = a T(n/b) plus O(n^d) compares a vs b^d: if a less than b^d then leaves dominate => O(n^d); if a equals b^d then balanced => O(n^d log n); if a greater than b^d then children dominate => O(n^{log(b) a}). For merge sort T(n)=2T(n/2) plus O(n) gives a=2, b=2, d=1, b^d=2 so a equals b^d => O(n log n).",
+        "Two small facts that steal marks. One, amortized analysis via potential for dynamic array append: single append worst O(n) due to resize copy but sequence of n appends averages O(1) via geometric growth (double). Two, tight bound Theta vs loose upper O: stating O(n squared) for an O(n log n) algorithm is not wrong as a loose upper but Theta is the tight description — AXIS expects the tight one."
+      ],
+      "subsections": [
+        {
+          "title": "Growth chart that decides in 5 seconds",
+          "content": "Constant 1, log n ~10 at 1000, sqrt ~32, linear 1000, n log n ~10k, n squared 1M, 2^n absurd at 1000. That stack predicts which beats which for given n without algebra."
+        },
+        {
+          "title": "Ignore constants plus lower terms illustration",
+          "content": "5 n squared + 1000 n + 100 behaves as Theta(n squared) because n squared dominates after some n0 — drop 1000 n and the 5 and the 100; compare growth shapes, not numbers for large n. Master theorem for divide-and-conquer relates fanout vs combine cost as described."
+        }
+      ],
+      "quickRevision": [
+        "Big-O upper vs Omega lower vs Theta tight; drop constants plus lower terms; loose upper may hold but tight is Theta.",
+        "Growth: O(1) < log < sqrt < n < n log n < n^2 < n^3 < 2^n < n! — ladder plus ladder for fixed n=1000: log~10, sqrt~32, linear1k, n log n~10k, n^2 1M.",
+        "Best vs average vs worst via input: linear best 1, binary best 1 vs log worst, quick pivot decides best balanced vs worst quadratic.",
+        "Space vs recursion plus time: O(1) in-place vs O(n) buffer vs O(log n) stack; Master fanout vs combine via a vs b^d for divide plus conquer.",
+        "Amortized vs worst: dynamic array append amortized O(1) despite worst O(n) via resize copy; Theta is tight description, O is loose upper."
+      ],
+      "tricks": [
+        "Any answer that uses best instead of worst for worst-case wording is swapping — worst must assume adversary input that maximizes steps.",
+        "Do not attach O(log n) worst to linear scan — O(log n) is binary via sorted; linear is O(n) worst.",
+        "Quick worst O(n log n) claim without remark on pivot is the favourite wrong — worst is O(n^2) with persistently bad pivot."
+      ],
+      "patterns": [
+        "'Upper vs tight?' -> Big-O upper vs Theta tight; drop constants plus lower terms.",
+        "'Growth versus for 1000?' -> Log vs sqrt vs linear vs n log n vs squared vs exponential plus factorial via ladder.",
+        "'Best vs average vs worst vary by input?' -> Linear first vs last vs target; quick balanced vs worst pivot; binary first mid vs last.",
+        "'Master fanout vs combine cost for divide plus conquer?' -> Compare a vs b^d as text-described.",
+        "'Worst vs amortized plus space vs in-place?' -> Worst per operation vs amortized per sequence vs O(1) in-place vs O(n) buffer vs O(log n) stack."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — complexity plus growth plus best vs worst, every year",
+          "question": "Big-O vs Theta plus best vs average vs worst for linear vs binary vs quick vs bubble plus Master for merge vs quick vs heap?",
+          "approach": "Upper vs tight with drops, ladder for growth, best vs worst per input, a vs b^d for divide plus conquer fanout vs combine."
+        },
+        {
+          "source": "TCS / Infosys — amortized plus space",
+          "question": "Dynamic array append amortized vs worst plus space O(1) vs O(n) vs O(log n) stack?",
+          "approach": "Worst O(n) resize copy vs amortized O(1) via geometric double; space via extra buffer vs recursion stack."
+        }
+      ],
+      "companyNote": "Complexity plus growth plus best vs worst plus Master appears as a 2-3 item set."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "arrays-strings",
+      "title": "Arrays and Strings plus Two Pointers plus Window plus Prefix",
+      "formula": {
+        "latex": "Arr[base+i\\cdot size]\\;O(1)\\; |\\; Str\\;immut\\;copy\\;|\\; 2ptr\\;ends\\;meet\\;|\\; Window[left,right]\\;grow\\;shrink\\;|\\; Prefix:sum=prefix[r]-prefix[l-1]",
+        "text": "Arr base+i*size O1 | Str immutable copy | 2ptr ends meet | Window [left,right] grow shrink | Prefix sum = prefix[r]-prefix[l-1]"
+      },
+      "whenToUse": "Any array indexing plus string plus two-pointer vs window plus range-sum MCQ.",
+      "explanation": [
+        "Array index math base plus i times size gives O(1) random; insert or delete middle O(n) shifts; append amortized O(1) via resize copy.",
+        "String immutable plus repeated plus copies O(n squared) vs builder O(n).",
+        "Two pointers start at opposite ends and meet via condition; sliding window keeps [left,right] growing right and shrinking left per invariant.",
+        "Prefix sums range sum O(1) after O(n) build: sum(l..r) = prefix[r]-prefix[l-1].",
+        "Sorted plus prefix vs window vs two pointers decide which pattern the stem wants."
+      ],
+      "example": {
+        "prompt": "Sum of subarray l..r quickly after one building pass over the array?",
+        "steps": [
+          "Build prefix where prefix[i]=sum up to i in O(n).",
+          "Range is prefix[r]-prefix[l-1].",
+          "Window vs prefix vs two pointers: range sum is prefix, not window."
+        ],
+        "answer": "Prefix sum O1 per query"
+      },
+      "memoryTip": "Index math O1, String copy immut, Ends meet two pointers, Window grows right shrinks left, Prefix subtracts before l.",
+      "commonMistake": "Middle insert O1 — it is O(n) shifts. Repeated concatenations via plus are O(n squared) on immutable strings."
+    },
+    {
+      "id": "stacks-queues",
+      "title": "Stacks and Queues plus Monotonic plus BFS vs DFS",
+      "formula": {
+        "latex": "Stack\\;LIFO\\;push/pop/peek/top\\;|\\; Queue\\;FIFO\\;enq/deq/front\\;|\\; Mono\\;inc/dec\\;|\\; BFS\\;queue\\;vs\\;DFS\\;stack",
+        "text": "Stack LIFO push/pop/peek top | Queue FIFO enq/deq/front | Mono inc/dec | BFS queue vs DFS stack"
+      },
+      "whenToUse": "Any LIFO vs FIFO plus expression plus BFS vs DFS plus next greater plus circular queue MCQ.",
+      "explanation": [
+        "Stack Last-In First-Out via push plus pop plus peek top; queue First-In First-Out via enqueue plus dequeue plus front.",
+        "Stack drives DFS plus expressions plus undo plus brackets; queue drives BFS plus scheduling plus buffering.",
+        "Monotonic stack keeps increasing or decreasing to solve next greater, histogram, trapped rain via indices.",
+        "Circular queue via bounded array plus head plus tail plus size plus one wasted slot or flag separates empty vs full.",
+        "Two stacks simulate queue and two queues simulate stack via reversals — amortized O(1)."
+      ],
+      "example": {
+        "prompt": "Level order of a tree plus next greater of an array — structures?",
+        "steps": [
+          "Level order is BFS via queue.",
+          "Next greater is decreasing stack via indices.",
+          "Expression evaluation plus brackets via stack."
+        ],
+        "answer": "BFS queue, next greater decreasing stack, brackets stack"
+      },
+      "memoryTip": "Stack Stands top, Queue Queues front. Mono Monotone stacks. Breadth Queue, Depth Stack.",
+      "commonMistake": "BFS via stack — BFS is queue for levels, DFS is stack via recursion for depth."
+    },
+    {
+      "id": "trees-graphs",
+      "title": "Trees plus BST plus Heap plus Trie plus Graphs vs BFS vs DFS",
+      "formula": {
+        "latex": "Tree\\;acyc\\;conn\\; \\;|\\; BST\\;left<\\&&\\;right>\\;mid\\;sorted\\;inorder \\;|\\; Heap\\;heapify\\;O(n)\\; \\;|\\; Trie\\;prefix\\;O(L)\\; \\;|\\; Graph\\;list\\;sparse\\;vs\\;matrix\\;dense",
+        "text": "Tree acyclic connected | BST left< && right> inorder sorted | Heap heapify O(n) | Trie prefix O(L) | Graph list sparse vs matrix dense"
+      },
+      "whenToUse": "Any tree plus BST plus heap vs trie plus graph adjacency vs BFS vs DFS MCQ.",
+      "explanation": [
+        "Tree acyclic connected with one path plus rooted terms via parent plus leaf plus height vs depth.",
+        "BST order left smaller vs right larger plus inorder ascending; preorder node left right vs postorder left right node vs level via queue.",
+        "Heap complete array via heapify O(n) vs inserts O(n log n); min plus max property; priority queue abstraction.",
+        "Trie prefix tree as nested arrays via terminal flag; graph adjacency list O(V+E) sparse vs matrix O(n^2) dense.",
+        "BFS queue shortest on unweighted vs DFS stack/recursion for depth plus cycle plus topo; weighted shortest needs Dijkstra not BFS."
+      ],
+      "example": {
+        "prompt": "Inorder on a BST vs building a heap from a shuffled array plus choosing adjacency for sparse plus shortest on unweighted?",
+        "steps": [
+          "Inorder on BST gives sorted ascending.",
+          "Heap from arbitrary array via heapify is O(n).",
+          "Sparse graph adjacency list plus BFS queue for shortest on unweighted."
+        ],
+        "answer": "BST inorder sorted, heap heapify O(n), sparse list via BFS queue shortest"
+      },
+      "memoryTip": "Inorder Sorts BST, Heap Heapify linear, Trie Tries prefix, List Light sparse, BFS Breadth shortest unweighted.",
+      "commonMistake": "Heap via inserts O(n) — inserts is O(n log n); heapify is O(n). BFS shortest on weighted — weighted needs Dijkstra."
+    },
+    {
+      "id": "sorting-searching",
+      "title": "Sorting plus Stability plus Linear vs Binary",
+      "formula": {
+        "latex": "Simple\\;O(n^2):bubble/swap+sel/pick+ins/shift \\;|\\; Eff\\;O(n\\log n):merge/stable+quick/pivot+heap \\;|\\; Lin\\;O(n)\\;vs\\;Bin\\;O(log n)\\;via\\;mid\\;sorted",
+        "text": "Simple O(n^2) bubble/swap+selection/pick+insertion/shift | Eff O(n log n) merge/stable+quick/pivot+heap | Linear O(n) vs Binary O(log n) via mid sorted"
+      },
+      "whenToUse": "Any sort complexity vs stability vs in-place vs linear vs binary probe MCQ.",
+      "explanation": [
+        "Simple O(n squared): bubble adjacent swap plus short-circuit, selection pick minimum swap, insertion like cards shift stable tiny.",
+        "Efficient O(n log n): merge divide conquer stable not in-place plus O(n) extra, quick pivot partition average n log n worst n squared via bad pivot plus in-place unstable, heap heapify plus extract.",
+        "Stability keeps equals original order: stable are merge plus insertion plus bubble via adjacent preserving; unstable are selection plus quick plus heap via jumps.",
+        "Linear search O(n) scans one by one no sort; binary O(log n) needs sorted via mid halving plus inclusive bounds.",
+        "Non-comparison counting vs radix bypass comparison lower bound for small key ranges O(n plus k) via frequency after stabilization."
+      ],
+      "example": {
+        "prompt": "Stable sort needed preserving secondary order and binary needs sorted half via mid — which are stable and which needs sorted?",
+        "steps": [
+          "Stable keeps equals: merge plus insertion plus bubble; unstable selection plus quick plus heap.",
+          "Linear needs no sorted; binary needs sorted and halves via mid.",
+          "Insertion wins nearly sorted as stable with shifts."
+        ],
+        "answer": "Stable merge/ins/bubble vs unstable sel/quick/heap; binary sorted via mid, linear scans"
+      },
+      "memoryTip": "Simple Swap/ Pick/ Shift stable with Insertion, Efficient Merge stable Quick Pivot Heap Binary needs Sorted halves via Mid.",
+      "commonMistake": "Quick always O(n log n) worst — pivot decides, worst O(n^2). Binary unsorted also works — binary needs sorted first."
+    },
+    {
+      "id": "complexity",
+      "title": "Complexity: Big-O plus Ladder plus Best vs Worst plus Master plus Amortized",
+      "formula": {
+        "latex": "O\\;up,\\;Theta\\;tight,\\;Omega\\;low \\;|\\; 1<log<\\sqrt{n}<n<n\\log n<n^2<2^n<n! \\;|\\; Best\\;vs\\;Worst\\;input\\; \\;|\\; Master\\;a\\;vs\\;b^d \\;|\\; Amort\\;O(1)\\;vs\\;worst\\;O(n)",
+        "text": "O up Theta tight Omega low | 1<log<sqrt<n<n log n<n^2<2^n<n! | Best vs Worst input | Master a vs b^d | Amort O1 vs worst On"
+      },
+      "whenToUse": "Any big-O vs Theta vs ladder plus best vs average vs worst vs Master vs amortized vs space MCQ.",
+      "explanation": [
+        "Big-O upper bound, Theta tight both, Omega lower; drop constants plus lower terms; loose upper may hold but tight is Theta.",
+        "Growth chart constant < log < sqrt < linear < linearithmic < quadratic < cubic < exponential 2^n < factorial for large n — 1000 ladder: log~10, sqrt~32, linear1k, n log n~10k, n^2 1M, 2^n absurd.",
+        "Best vs average vs worst vary by input: linear best O(1) first vs worst O(n) last, bubble sorted best O(n) vs worst O(n^2), binary best O(1) mid immediate.",
+        "Master for divide plus conquer T(n)=aT(n/b)+O(n^d) compares a vs b^d: less leaves dominate O(n^d), equal balanced O(n^d log n), greater children dominate O(n^{log(b) a}).",
+        "Amortized per sequence vs worst per operation: dynamic array append worst O(n) resize copy vs amortized O(1) via geometric double plus space O(1) in-place vs O(n) buffer vs O(log n) stack."
+      ],
+      "example": {
+        "prompt": "5 n^2 + 1000 n + 100 bound plus ladder 1000 plus quick worst vs Master for merge T(n)=2T(n/2)+O(n)?",
+        "steps": [
+          "Drop lower plus constants: Theta(n^2) tight, O(n^2) holds, O(n^3) loose also holds.",
+          "Ladder: linear 1k vs n log n ~10k vs squared 1M — ladder decides without algebra.",
+          "Quick worst O(n^2) via bad pivot vs average O(n log n); merge a=2,b=2,d=1,b^d=2 equal so O(n log n)."
+        ],
+        "answer": "Theta n^2 tight, ladder n log n ~10k vs n^2 1M, quick worst O(n^2), merge O(n log n)"
+      },
+      "memoryTip": "Upper O, Tight Theta, Lower Omega. Ladder 1 log sqrt linear loglog quad exp fact. Fanout a vs combine b^d Master, worst via adversary input, amortized via geometric double.",
+      "commonMistake": "Worst via best input. Worst must assume adversary that maximizes steps; amortized worst vs average per operation swapped."
+    }
+  ],
+  "practiceProblems": {
+    "arrays-strings": [
+      {"q": "Array random access via index is:", "opts": ["O(n)", "O(1) via base plus index times size", "O(log n)", "O(n log n)"], "c": 1, "s": ["Direct math gives O(1)."], "a": "O(1) via base plus index times size"},
+      {"q": "Array insert in the middle worst time is:", "opts": ["O(1)", "O(n) via shifts", "O(log n)", "O(n log n)"], "c": 1, "s": ["Need shifts. Append amortized O(1) via resize."], "a": "O(n) via shifts"},
+      {"q": "Immutable strings repeated concatenation via plus in a loop is:", "opts": ["O(n)", "O(n squared) via repeated copies vs builder O(n)", "O(log n)", "O(1)"], "c": 1, "s": ["Each logical edit builds new buffer plus copies."], "a": "O(n squared) via repeated copies vs builder O(n)"},
+      {"q": "Two pointers start vs sliding window keeps:", "opts": ["Two pointers at opposite ends meet vs window keeps [left,right] that grows right shrinks left", "Both at starts", "Both at ends only", "Both random"], "c": 0, "s": ["Ends meet vs interval grow plus shrink per invariant."], "a": "Two pointers at opposite ends meet vs window keeps [left,right] that grows right shrinks left"},
+      {"q": "Palindrome check classic pattern is:", "opts": ["Sliding window", "Two pointers start plus end inward", "Binary search", "Merge sort"], "c": 1, "s": ["Compare ends inward."], "a": "Two pointers start plus end inward"},
+      {"q": "Longest substring without repeating characters classic pattern is:", "opts": ["Two pointers", "Sliding window", "Binary search", "Insertion sort"], "c": 1, "s": ["Variable window growing right shrinking left via at most K distinct invariant."], "a": "Sliding window"},
+      {"q": "Sorted dedup via single pass keeps:", "opts": ["Window", "Write plus read pointers (slow vs fast)", "Binary search", "Queue"], "c": 1, "s": ["Read scans, write keeps distinct."], "a": "Write plus read pointers (slow vs fast)"},
+      {"q": "Prefix sums let range sum query be:", "opts": ["O(n) per query", "O(1) after O(n) build via prefix[r]-prefix[l-1]", "O(log n) always", "O(n log n)"], "c": 1, "s": ["After building prefix sums."], "a": "O(1) after O(n) build via prefix[r]-prefix[l-1]"},
+      {"q": "Sorted two-sum target using opposite ends vs invariant is:", "opts": ["Linear scan", "Two pointers opposite ends", "Sliding window always", "Stack only"], "c": 1, "s": ["Low plus high towards target from both ends."], "a": "Two pointers opposite ends"},
+      {"q": "Array contiguous plus fixed type gives random access plus shifting cost for inserts vs linked list O(n) walk vs O(1) splice — match is:", "opts": ["Linked list random O(1) vs array insert O(1)", "Array random O(1) vs linked random O(n) vs array insert O(n) vs linked O(1) after walk", "Both same", "Both swap"], "c": 1, "s": ["Random array fast, linked slow; splice opposite."], "a": "Array random O(1) vs linked random O(n) vs array insert O(n) vs linked O(1) after walk"}
+    ],
+    "stacks-queues": [
+      {"q": "LIFO via push plus pop plus peek (top) is a:", "opts": ["Queue", "Stack", "Heap", "Trie"], "c": 1, "s": ["Last-In First-Out top. Queue FIFO front."], "a": "Stack"},
+      {"q": "FIFO via enqueue at rear plus dequeue at front plus front is a:", "opts": ["Stack", "Queue", "Heap", "Graph"], "c": 1, "s": ["First-In First-Out."], "a": "Queue"},
+      {"q": "DFS uses and BFS uses:", "opts": ["BFS uses stack vs DFS uses queue", "Stack for DFS vs queue for BFS", "Both stack", "Both queue"], "c": 1, "s": ["Depth via stack or recursion, breadth via queue."], "a": "Stack for DFS vs queue for BFS"},
+      {"q": "Balanced parentheses via pushes opens and pops on closes plus type check via:", "opts": ["Queue", "Stack", "Heap", "Trie"], "c": 1, "s": ["Push opens, pop matches closes."], "a": "Stack"},
+      {"q": "Expression postfix evaluation via scanning left plus pushing numbers and popping two on operator plus pushing result tracks via:", "opts": ["Queue", "Stack", "Heap", "Array random only"], "c": 1, "s": ["Push operands, apply on operator."], "a": "Stack"},
+      {"q": "Next Greater Element to the right via decreasing stack vs trapped rain via stack with indices is via:", "opts": ["Queue", "Monotonic stack", "Array random only", "Tree traversal"], "c": 1, "s": ["Increasing vs decreasing stack for next greater or smaller plus histogram."], "a": "Monotonic stack"},
+      {"q": "Circular queue on bounded array head tracks dequeue plus tail enqueue plus size plus tie-break via:", "opts": ["No tie-break", "One wasted slot or flag separates empty vs full", "Always size one", "Only head plus tail enough"], "c": 1, "s": ["Head equals tail means both empty plus full without tie-break."], "a": "One wasted slot or flag separates empty vs full"},
+      {"q": "Queue on circular array wraps via:", "opts": ["Linear never wraps", "Modulo arithmetic wraps rear to front", "Only linked", "Only stack wraps"], "c": 1, "s": ["Modulo wraps."], "a": "Modulo arithmetic wraps rear to front"},
+      {"q": "Undo plus backtracking classic is:", "opts": ["Queue", "Stack", "Graph via BFS only", "Heap only"], "c": 1, "s": ["Stack remembers. Queue levels."], "a": "Stack"},
+      {"q": "Two stacks simulate a queue via pouring plus two queues simulate a stack via moving all but last — cost: ", "opts": ["Worst O(n^2) always", "Amortized O(1) each element at most twice", "Always O(n)", "No amortized"], "c": 1, "s": ["Each element moved at most twice."], "a": "Amortized O(1) each element at most twice"}
+    ],
+    "trees-graphs": [
+      {"q": "Tree acyclic connected with one path between any two nodes plus leaf vs height vs depth via:", "opts": ["Graph cyclic only", "Tree via parent plus children plus leaf plus height vs depth", "Only cycle plus leaf", "Only trie"], "c": 1, "s": ["Tree rooted terms plus height vs depth."], "a": "Tree via parent plus children plus leaf plus height vs depth"},
+      {"q": "BST left smaller right larger plus duplicates policy decides side is:", "opts": ["Heap", "BST", "Trie", "Queue"], "c": 1, "s": ["Ordered duplicates policy."], "a": "BST"},
+      {"q": "Inorder on a BST yields:", "opts": ["Random order", "Sorted ascending", "Reverse sorted always", "Postorder same"], "c": 1, "s": ["Left plus node plus right sorted."], "a": "Sorted ascending"},
+      {"q": "Preorder is node plus left plus right and postorder is left plus right plus node while level is BFS via:", "opts": ["Stack", "Queue", "Heap only", "Trie only"], "c": 1, "s": ["Preorder prefix, postorder postfix, level via queue."], "a": "Queue"},
+      {"q": "Heap complete array plus heapify vs N inserts cost among: O(n) vs O(n log n) is:", "opts": ["Heapify O(n log n) vs inserts O(n)", "Heapify O(n) vs N inserts O(n log n)", "Both O(n)", "Both O(n log n)"], "c": 1, "s": ["Bottom-up heapify linear."], "a": "Heapify O(n) vs N inserts O(n log n)"},
+      {"q": "Priority queue abstraction vs heap implementation is:", "opts": ["Heap is abstraction vs priority queue is implementation", "Priority queue is abstraction vs heap is implementation", "Both abstractions", "Both implementations"], "c": 1, "s": ["Heap implements priority queue."], "a": "Priority queue is abstraction vs heap is implementation"},
+      {"q": "Trie prefix tree as nested arrays via terminal flag plus lookup O(L) where L is:", "opts": ["Number of items", "Key length", "Number of edges", "Number of nodes squared"], "c": 1, "s": ["Prefix length."], "a": "Key length"},
+      {"q": "Adjacency list vs matrix trade-off is:", "opts": ["List dense O(n^2) vs matrix sparse O(V+E)", "List O(V+E) sparse vs matrix O(n^2) dense", "Both O(n^2)", "Both O(V+E)"], "c": 1, "s": ["List sparse-friendly vs matrix dense."], "a": "List O(V+E) sparse vs matrix O(n^2) dense"},
+      {"q": "BFS queue shortest on unweighted plus DFS stack or recursion for depth plus cycle vs Dijkstra weighted is:", "opts": ["BFS for weighted too", "BFS shortest only on unweighted; weighted needs Dijkstra vs DFS for depth", "DFS shortest on unweighted", "BFS not level"], "c": 1, "s": ["Weighted shortest not BFS."], "a": "BFS shortest only on unweighted; weighted needs Dijkstra vs DFS for depth"},
+      {"q": "Undirected cycle via DFS back edge to visited not parent appears when:", "opts": ["No cycle via DFS ever", "Back edge to visited not parent via DFS reveals cycle", "Only via BFS", "Only via matrix"], "c": 1, "s": ["Classic detection."], "a": "Back edge to visited not parent via DFS reveals cycle"}
+    ],
+    "sorting-searching": [
+      {"q": "Bubble adjacent swap plus short-circuit if no swap vs selection pick minimum plus swap is:", "opts": ["Bubble O(n^2) stable vs selection O(n^2) unstable via picks", "Bubble vs selection identical behavior", "Both stable merging", "Both heapify"], "c": 0, "s": ["Bubble adjacent preserving; selection picks via jumps."], "a": "Bubble O(n^2) stable vs selection O(n^2) unstable via picks"},
+      {"q": "Insertion like cards shifts stable plus O(n) on nearly sorted plus O(n^2) worst is vs efficient:", "opts": ["Linear search", "Merge divide conquer stable O(n log n) with O(n) extra not in-place", "Binary search", "Heap via trie"], "c": 1, "s": ["Insertion vs merge via divide plus buffer."], "a": "Merge divide conquer stable O(n log n) with O(n) extra not in-place"},
+      {"q": "Quick pivot partition average O(n log n) vs worst O(n^2) via bad pivot belongs to:", "opts": ["Merge", "Quick", "Insertion", "Bubble"], "c": 1, "s": ["Pivot decides. Randomized median tames."], "a": "Quick"},
+      {"q": "Heap via heapify plus extract is:", "opts": ["Merge only", "Heap O(n log n) unstable in-place via heapify plus extract", "Bubble only", "Selection only"], "c": 1, "s": ["Heapify plus extract."], "a": "Heap O(n log n) unstable in-place via heapify plus extract"},
+      {"q": "Stable vs unstable example grouping is:", "opts": ["All sorts stable", "Stable bubble plus insertion plus merge vs unstable selection plus quick plus heap via jumps", "All unstable", "Only merge stable plus quick also stable"], "c": 1, "s": ["Preserving vs jumping equals order."], "a": "Stable bubble plus insertion plus merge vs unstable selection plus quick plus heap via jumps"},
+      {"q": "Linear O(n) scans one by one plus no sorted vs binary via mid plus sorted is:", "opts": ["Linear O(log n) vs binary O(n)", "Linear O(n) without sorted vs binary O(log n) needs sorted via mid halving", "Both O(n)", "Both O(log n)"], "c": 1, "s": ["Sort prerequisite for binary."], "a": "Linear O(n) without sorted vs binary O(log n) needs sorted via mid halving"},
+      {"q": "Binary probe count: mid via left plus right div 2 inclusive plus narrowing via left equals mid plus 1 vs right equals mid minus 1 is:", "opts": ["No mid plus no narrowing", "Mid halving via inclusive bounds", "Only rightmost plus left equals mid", "Only linear"], "c": 1, "s": ["Mid halving with inclusive bounds."], "a": "Mid halving via inclusive bounds"},
+      {"q": "Counting plus radix bypass comparison lower bound for small key ranges via:", "opts": ["Only merger", "Counting O(n plus k) via freq plus radix O(d times (n plus k)) non-comparison", "Only insertion", "Only heap"], "c": 1, "s": ["Non-comparison sorts."] , "a": "Counting O(n plus k) via freq plus radix O(d times (n plus k)) non-comparison"},
+      {"q": "Small or nearly sorted win via insertion via shifts plus stable vs merge via stable divide plus extra is:", "opts": ["Merge always wins small nearly sorted", "Insertion wins small nearly sorted via O(n) best with tiny moves", "Only bubble always", "Only heap"], "c": 1, "s": ["Insertion best via card shifts."], "a": "Insertion wins small nearly sorted via O(n) best with tiny moves"},
+      {"q": "Merge O(n) extra not in-place vs quick in-place divide via pivot vs heap in-place via heapify is tradeoff as:", "opts": ["No space tradeoff", "Merge extra O(n) buffer vs quick plus heap in-place plus unstable", "Merge in-place only", "Quick extra O(n) always"], "c": 1, "s": ["Space vs stability."], "a": "Merge extra O(n) buffer vs quick plus heap in-place plus unstable"}
+    ],
+    "complexity": [
+      {"q": "Big-O upper vs Theta tight vs Omega lower plus ignore constants plus lower terms is:", "opts": ["Big-O is tight, Theta is upper", "Big-O upper vs Omega lower vs Theta tight plus drop constants plus lower terms", "Big-O lower vs Omega upper", "All same"], "c": 1, "s": ["Bounds definitions plus drop rule."], "a": "Big-O upper vs Omega lower vs Theta tight plus drop constants plus lower terms"},
+      {"q": "Growth ladder correct ordering is:", "opts": ["1 < log < sqrt < n < n log n < n^2 < 2^n < n!", "n! < 2^n < n^2 < n log n < n < log < 1", "All same", "1 < n < log < sqrt < n^2"], "c": 0, "s": ["Constant < log < sqrt < linear < linearithmic < quadratic < exponential < factorial."], "a": "1 < log < sqrt < n < n log n < n^2 < 2^n < n!"},
+      {"q": "For fixed n=1000 latch plus expected order: log~10, sqrt~32, linear 1k, n log n~10k, n^2 1M — prediction is:", "opts": ["Linear fastest then squared then exponential faster", "Log fastest then sqrt vs linear vs n log n vs squared plus exponential absurd at 1k", "All similar", "Exponential faster than log"], "c": 1, "s": ["Ladder decides without algebra."], "a": "Log fastest then sqrt vs linear vs n log n vs squared plus exponential absurd at 1k"},
+      {"q": "5 n^2 + 1000 n + 100 tight bound is:", "opts": ["O(n log n)", "Theta(n^2) tight, O(n^2) holds, O(n^3) loosely holds", "O(1) only", "Omega only"], "c": 1, "s": ["Drop lower plus constants; tight is squared."], "a": "Theta(n^2) tight, O(n^2) holds, O(n^3) loosely holds"},
+      {"q": "Linear search best vs worst is:", "opts": ["Both O(n)", "Best O(1) first vs worst O(n) last or missing", "Both O(1)", "Both O(log n)"], "c": 1, "s": ["Input varies: first vs last."], "a": "Best O(1) first vs worst O(n) last or missing"},
+      {"q": "Quick best ~O(n log n) balanced vs worst O(n^2) via worst pivot vs average random pivot is:", "opts": ["Quick always O(n log n) worst", "Best n log n vs worst n^2 via bad pivot", "Quick always O(n^2)", "Quick always O(n)"], "c": 1, "s": ["Pivot decides."], "a": "Best n log n vs worst n^2 via bad pivot"},
+      {"q": "Master for T(n)=2T(n/2)+O(n) gives a=2,b=2,d=1,b^d=2 so case plus result is:", "opts": ["Less leaves dominate O(n)", "Equal balanced O(n log n)", "Greater children dominate O(n^log a)", "No master"], "c": 1, "s": ["Equal so balanced O(n log n). Merge sort."], "a": "Equal balanced O(n log n)"},
+      {"q": "Amortized vs worst: dynamic array append worst vs amortized via geometric double is:", "opts": ["Worst O(1) amortized O(n)", "Worst O(n) resize copy vs amortized O(1) per sequence", "Both O(n log n)", "Both O(1) worst"], "c": 1, "s": ["Worst copy vs amortized geometric."], "a": "Worst O(n) resize copy vs amortized O(1) per sequence"},
+      {"q": "Space: merge plus binary recursion stack plus in-place sorts correct is:", "opts": ["Merge O(1) only", "Merge O(n) buffer vs recursion stack O(log n) vs in-place O(1)", "All O(n)", "All O(log n)"], "c": 1, "s": ["Extra buffer vs stack vs in-place."], "a": "Merge O(n) buffer vs recursion stack O(log n) vs in-place O(1)"},
+      {"q": "O(log n) worst for sorted half via mid in this topic is:", "opts": ["Linear search", "Binary search", "Bubble sort", "Insertion sort"], "c": 1, "s": ["Binary half via mid."], "a": "Binary search"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Array random access via index is:", "opts": ["O(n)", "O(1) via base plus index times size", "O(log n)", "O(n log n)"], "c": 1, "d": "easy", "t": "Arrays & Strings", "exp": ["Direct math O(1)."]},
+    {"id": 2, "q": "Array insert in the middle worst is:", "opts": ["O(1)", "O(n) via shifts", "O(log n)", "O(n log n)"], "c": 1, "d": "easy", "t": "Arrays & Strings", "exp": ["Need shifts."]},
+    {"id": 3, "q": "Immutable strings repeated concatenation via plus in a loop is:", "opts": ["O(n)", "O(n squared) via repeated copies vs builder O(n)", "O(log n)", "O(1)"], "c": 1, "d": "medium", "t": "Arrays & Strings", "exp": ["Each builds new buffer plus copies."]},
+    {"id": 4, "q": "Two pointers start vs sliding window keeps:", "opts": ["Two pointers at opposite ends meet vs window keeps [left,right] grows right shrinks left", "Both at starts", "Both at ends only", "Both random"], "c": 0, "d": "medium", "t": "Arrays & Strings", "exp": ["Ends meet vs interval."]},
+    {"id": 5, "q": "Palindrome check classic is:", "opts": ["Sliding window", "Two pointers start plus end inward", "Binary search", "Merge sort"], "c": 1, "d": "easy", "t": "Arrays & Strings", "exp": ["Compare ends inward."]},
+    {"id": 6, "q": "Longest substring without repeating characters classic is:", "opts": ["Two pointers", "Sliding window", "Binary search", "Insertion sort"], "c": 1, "d": "medium", "t": "Arrays & Strings", "exp": ["Variable window growing plus shrinking."]},
+    {"id": 7, "q": "Sorted dedup via single pass keeps:", "opts": ["Window", "Write plus read pointers (slow vs fast)", "Binary search", "Queue"], "c": 1, "d": "medium", "t": "Arrays & Strings", "exp": ["Read scans, write keeps."]},
+    {"id": 8, "q": "Prefix sums let range sum query be:", "opts": ["O(n) per query", "O(1) after O(n) build via prefix[r]-prefix[l-1]", "O(log n) always", "O(n log n)"], "c": 1, "d": "medium", "t": "Arrays & Strings", "exp": ["After building prefix sums."]},
+    {"id": 9, "q": "Sorted two-sum target using opposite ends vs invariant is:", "opts": ["Linear scan", "Two pointers opposite ends", "Sliding window always", "Stack only"], "c": 1, "d": "medium", "t": "Arrays & Strings", "exp": ["Low plus high towards target."]},
+    {"id": 10, "q": "Array contiguous plus fixed type gives random access plus shifting cost for inserts vs linked list O(n) walk vs O(1) splice — match is:", "opts": ["Linked list random O(1) vs array insert O(1)", "Array random O(1) vs linked random O(n) vs array insert O(n) vs linked O(1) after walk", "Both same", "Both swap"], "c": 1, "d": "medium", "t": "Arrays & Strings", "exp": ["Random fast array, linked slow; splice opposite."]},
+    {"id": 11, "q": "LIFO via push plus pop plus peek (top) is a:", "opts": ["Queue", "Stack", "Heap", "Trie"], "c": 1, "d": "easy", "t": "Stacks & Queues", "exp": ["Last-In First-Out top."]},
+    {"id": 12, "q": "FIFO via enqueue at rear plus dequeue at front plus front is a:", "opts": ["Stack", "Queue", "Heap", "Graph"], "c": 1, "d": "easy", "t": "Stacks & Queues", "exp": ["First-In First-Out."]},
+    {"id": 13, "q": "DFS uses and BFS uses:", "opts": ["BFS uses stack vs DFS uses queue", "Stack for DFS vs queue for BFS", "Both stack", "Both queue"], "c": 1, "d": "easy", "t": "Stacks & Queues", "exp": ["Depth vs breadth."]},
+    {"id": 14, "q": "Balanced parentheses via pushes opens pops on closes plus type check via:", "opts": ["Queue", "Stack", "Heap", "Trie"], "c": 1, "d": "easy", "t": "Stacks & Queues", "exp": ["Push opens pop matches."]},
+    {"id": 15, "q": "Expression postfix evaluation via pushing numbers popping two on operator plus pushing result tracks via:", "opts": ["Queue", "Stack", "Heap", "Array random only"], "c": 1, "d": "medium", "t": "Stacks & Queues", "exp": ["Push operands, apply on operator."]},
+    {"id": 16, "q": "Next Greater Element to the right via decreasing stack vs trapped rain via stack with indices is via:", "opts": ["Queue", "Monotonic stack", "Array random only", "Tree traversal"], "c": 1, "d": "medium", "t": "Stacks & Queues", "exp": ["Increasing vs decreasing stack."]},
+    {"id": 17, "q": "Circular queue on bounded array head tracks dequeue plus tail enqueue plus size plus tie-break via:", "opts": ["No tie-break", "One wasted slot or flag separates empty vs full", "Always size one", "Only head plus tail enough"], "c": 1, "d": "medium", "t": "Stacks & Queues", "exp": ["Head equals tail means both empty plus full without tie-break."]},
+    {"id": 18, "q": "Queue on circular array wraps via:", "opts": ["Linear never wraps", "Modulo arithmetic wraps rear to front", "Only linked", "Only stack wraps"], "c": 1, "d": "medium", "t": "Stacks & Queues", "exp": ["Modulo wraps."]},
+    {"id": 19, "q": "Undo plus backtracking classic is:", "opts": ["Queue", "Stack", "Graph via BFS only", "Heap only"], "c": 1, "d": "medium", "t": "Stacks & Queues", "exp": ["Stack remembers."]},
+    {"id": 20, "q": "Two stacks simulate a queue via pouring plus two queues simulate a stack via moving all but last — cost:", "opts": ["Worst O(n^2) always", "Amortized O(1) each element at most twice", "Always O(n)", "No amortized"], "c": 1, "d": "medium", "t": "Stacks & Queues", "exp": ["Each element moved at most twice."]},
+    {"id": 21, "q": "Tree acyclic connected with one path between any two plus leaf vs height vs depth via:", "opts": ["Graph cyclic only", "Tree via parent plus children plus leaf plus height vs depth", "Only cycle plus leaf", "Only trie"], "c": 1, "d": "easy", "t": "Trees & Graphs", "exp": ["Tree rooted terms."]},
+    {"id": 22, "q": "BST left smaller right larger plus duplicates policy decides side is:", "opts": ["Heap", "BST", "Trie", "Queue"], "c": 1, "d": "easy", "t": "Trees & Graphs", "exp": ["Ordered."]},
+    {"id": 23, "q": "Inorder on a BST yields:", "opts": ["Random order", "Sorted ascending", "Reverse sorted always", "Postorder same"], "c": 1, "d": "easy", "t": "Trees & Graphs", "exp": ["Left plus node plus right sorted."]},
+    {"id": 24, "q": "Preorder node plus left plus right and postorder left plus right plus node while level is BFS via:", "opts": ["Stack", "Queue", "Heap only", "Trie only"], "c": 1, "d": "medium", "t": "Trees & Graphs", "exp": ["Level via queue."]},
+    {"id": 25, "q": "Heap complete array plus heapify vs N inserts cost O(n) vs O(n log n) is:", "opts": ["Heapify O(n log n) vs inserts O(n)", "Heapify O(n) vs N inserts O(n log n)", "Both O(n)", "Both O(n log n)"], "c": 1, "d": "medium", "t": "Trees & Graphs", "exp": ["Bottom-up heapify linear."]},
+    {"id": 26, "q": "Priority queue abstraction vs heap implementation is:", "opts": ["Heap is abstraction vs priority queue is implementation", "Priority queue is abstraction vs heap is implementation", "Both abstractions", "Both implementations"], "c": 1, "d": "medium", "t": "Trees & Graphs", "exp": ["Heap implements priority queue."]},
+    {"id": 27, "q": "Trie prefix tree as nested arrays via terminal flag plus lookup O(L) where L is:", "opts": ["Number of items", "Key length", "Number of edges", "Number of nodes squared"], "c": 1, "d": "medium", "t": "Trees & Graphs", "exp": ["Prefix length."]},
+    {"id": 28, "q": "Adjacency list vs matrix trade-off is:", "opts": ["List dense O(n^2) vs matrix sparse O(V+E)", "List O(V+E) sparse vs matrix O(n^2) dense", "Both O(n^2)", "Both O(V+E)"], "c": 1, "d": "medium", "t": "Trees & Graphs", "exp": ["List sparse-friendly vs matrix dense."]},
+    {"id": 29, "q": "BFS queue shortest on unweighted plus DFS stack or recursion for depth plus cycle vs Dijkstra weighted is:", "opts": ["BFS for weighted too", "BFS shortest only on unweighted; weighted needs Dijkstra vs DFS for depth", "DFS shortest on unweighted", "BFS not level"], "c": 1, "d": "medium", "t": "Trees & Graphs", "exp": ["Weighted shortest not BFS."]},
+    {"id": 30, "q": "Undirected cycle via DFS back edge to visited not parent appears when:", "opts": ["No cycle via DFS ever", "Back edge to visited not parent via DFS reveals cycle", "Only via BFS", "Only via matrix"], "c": 1, "d": "medium", "t": "Trees & Graphs", "exp": ["Classic detection."]},
+    {"id": 31, "q": "Bubble adjacent swap plus short-circuit if no swap vs selection pick minimum plus swap is:", "opts": ["Bubble O(n^2) stable vs selection O(n^2) unstable via picks", "Bubble vs selection identical behavior", "Both stable merging", "Both heapify"], "c": 0, "d": "medium", "t": "Sorting & Searching", "exp": ["Bubble adjacent preserving; selection via jumps."]},
+    {"id": 32, "q": "Insertion like cards shifts stable plus O(n) on nearly sorted plus O(n^2) worst is vs efficient:", "opts": ["Linear search", "Merge divide conquer stable O(n log n) with O(n) extra not in-place", "Binary search", "Heap via trie"], "c": 1, "d": "medium", "t": "Sorting & Searching", "exp": ["Insertion vs merge via divide plus buffer."]},
+    {"id": 33, "q": "Quick pivot partition average O(n log n) vs worst O(n^2) via bad pivot belongs to:", "opts": ["Merge", "Quick", "Insertion", "Bubble"], "c": 1, "d": "medium", "t": "Sorting & Searching", "exp": ["Pivot decides."]},
+    {"id": 34, "q": "Heap via heapify plus extract is:", "opts": ["Merge only", "Heap O(n log n) unstable in-place via heapify plus extract", "Bubble only", "Selection only"], "c": 1, "d": "medium", "t": "Sorting & Searching", "exp": ["Heapify plus extract."]},
+    {"id": 35, "q": "Stable vs unstable grouping is:", "opts": ["All sorts stable", "Stable bubble plus insertion plus merge vs unstable selection plus quick plus heap via jumps", "All unstable", "Only merge stable plus quick also stable"], "c": 1, "d": "medium", "t": "Sorting & Searching", "exp": ["Preserving vs jumping equals order."]},
+    {"id": 36, "q": "Linear O(n) scans one by one plus no sorted vs binary via mid plus sorted is:", "opts": ["Linear O(log n) vs binary O(n)", "Linear O(n) without sorted vs binary O(log n) needs sorted via mid halving", "Both O(n)", "Both O(log n)"], "c": 1, "d": "medium", "t": "Sorting & Searching", "exp": ["Sort prerequisite for binary."]},
+    {"id": 37, "q": "Binary probe count: mid via left plus right div 2 inclusive plus narrowing via left equals mid plus 1 vs right equals mid minus 1 is:", "opts": ["No mid plus no narrowing", "Mid halving via inclusive bounds", "Only rightmost plus left equals mid", "Only linear"], "c": 1, "d": "medium", "t": "Sorting & Searching", "exp": ["Mid halving with inclusive bounds."]},
+    {"id": 38, "q": "Counting plus radix bypass comparison lower bound for small key ranges via:", "opts": ["Only merger", "Counting O(n plus k) via freq plus radix O(d times (n plus k)) non-comparison", "Only insertion", "Only heap"], "c": 1, "d": "medium", "t": "Sorting & Searching", "exp": ["Non-comparison sorts."]},
+    {"id": 39, "q": "Small or nearly sorted win via insertion via shifts plus stable vs merge via stable divide plus extra is:", "opts": ["Merge always wins small nearly sorted", "Insertion wins small nearly sorted via O(n) best with tiny moves", "Only bubble always", "Only heap"], "c": 1, "d": "medium", "t": "Sorting & Searching", "exp": ["Insertion best."]},
+    {"id": 40, "q": "Merge O(n) extra not in-place vs quick in-place divide via pivot vs heap in-place via heapify is tradeoff as:", "opts": ["No space tradeoff", "Merge extra O(n) buffer vs quick plus heap in-place plus unstable", "Merge in-place only", "Quick extra O(n) always"], "c": 1, "d": "medium", "t": "Sorting & Searching", "exp": ["Space vs stability."]},
+    {"id": 41, "q": "Big-O upper vs Theta tight vs Omega lower plus ignore constants plus lower terms is:", "opts": ["Big-O is tight, Theta is upper", "Big-O upper vs Omega lower vs Theta tight plus drop constants plus lower terms", "Big-O lower vs Omega upper", "All same"], "c": 1, "d": "medium", "t": "Complexity (Big-O)", "exp": ["Bounds definitions plus drop rule."]},
+    {"id": 42, "q": "Growth ladder correct ordering is:", "opts": ["1 < log < sqrt < n < n log n < n^2 < 2^n < n!", "n! < 2^n < n^2 < n log n < n < log < 1", "All same", "1 < n < log < sqrt < n^2"], "c": 0, "d": "medium", "t": "Complexity (Big-O)", "exp": ["Constant < log < sqrt < linear < linearithmic < quadratic < exponential < factorial."]},
+    {"id": 43, "q": "For fixed n=1000 latch plus expected order: log~10, sqrt~32, linear 1k, n log n~10k, n^2 1M — prediction is:", "opts": ["Linear fastest then squared then exponential faster", "Log fastest then sqrt vs linear vs n log n vs squared plus exponential absurd at 1k", "All similar", "Exponential faster than log"], "c": 1, "d": "medium", "t": "Complexity (Big-O)", "exp": ["Ladder decides without algebra."]},
+    {"id": 44, "q": "5 n^2 plus 1000 n plus 100 tight bound is:", "opts": ["O(n log n)", "Theta(n^2) tight, O(n^2) holds, O(n^3) loosely holds", "O(1) only", "Omega only"], "c": 1, "d": "medium", "t": "Complexity (Big-O)", "exp": ["Drop lower plus constants; tight is squared."]},
+    {"id": 45, "q": "Linear search best vs worst is:", "opts": ["Both O(n)", "Best O(1) first vs worst O(n) last or missing", "Both O(1)", "Both O(log n)"], "c": 1, "d": "medium", "t": "Complexity (Big-O)", "exp": ["Input varies: first vs last."]},
+    {"id": 46, "q": "Quick best ~O(n log n) balanced vs worst O(n^2) via worst pivot vs average random pivot is:", "opts": ["Quick always O(n log n) worst", "Best n log n vs worst n^2 via bad pivot", "Quick always O(n^2)", "Quick always O(n)"], "c": 1, "d": "medium", "t": "Complexity (Big-O)", "exp": ["Pivot decides."]},
+    {"id": 47, "q": "Master for T(n)=2T(n/2)+O(n) gives a=2,b=2,d=1,b^d=2 so case plus result is:", "opts": ["Less leaves dominate O(n)", "Equal balanced O(n log n)", "Greater children dominate O(n^{log a})", "No master"], "c": 1, "d": "medium", "t": "Complexity (Big-O)", "exp": ["Equal so balanced O(n log n). Merge sort."]},
+    {"id": 48, "q": "Amortized vs worst: dynamic array append worst vs amortized via geometric double is:", "opts": ["Worst O(1) amortized O(n)", "Worst O(n) resize copy vs amortized O(1) per sequence", "Both O(n log n)", "Both O(1) worst"], "c": 1, "d": "medium", "t": "Complexity (Big-O)", "exp": ["Worst copy vs amortized geometric."]},
+    {"id": 49, "q": "Space: merge plus binary recursion stack plus in-place sorts correct is:", "opts": ["Merge O(1) only", "Merge O(n) buffer vs recursion stack O(log n) vs in-place O(1)", "All O(n)", "All O(log n)"], "c": 1, "d": "medium", "t": "Complexity (Big-O)", "exp": ["Extra buffer vs stack vs in-place."]},
+    {"id": 50, "q": "O(log n) worst for sorted half via mid in this topic is:", "opts": ["Linear search", "Binary search", "Bubble sort", "Insertion sort"], "c": 1, "d": "easy", "t": "Complexity (Big-O)", "exp": ["Binary half via mid."]},
+    {"id": 51, "q": "Array base plus index times size vs shifts on middle insert vs prefix sum query fast plus builder for repeated plus is practical triage as:", "opts": ["All isolated but one array row", "One row mixes indexing vs shifts vs prefix vs immutable plus builder", "Only prefix vs window", "Only indexing vs builder"], "c": 1, "d": "medium", "t": "Arrays & Strings", "exp": ["One row mixes these."]},
+    {"id": 52, "q": "Stack LIFO via top vs queue FIFO via front plus monotonic stack plus BFS vs DFS all combined is:", "opts": ["All isolated but one stacks plus queues row", "One row mixes all these as one stacks plus queues synthesis", "Only LIFO vs FIFO", "Only BFS vs DFS"], "c": 1, "d": "medium", "t": "Stacks & Queues", "exp": ["One synthesis row mixes these."]},
+    {"id": 53, "q": "Inorder sorts BST vs heap heapify linear vs trie prefix O(L) vs graph adjacency dense vs sparse plus BFS shortest unweighted vs Dijkstra weighted all combined is:", "opts": ["All isolated but one trees plus graphs row", "One row mixes all these as one trees plus graphs synthesis", "Only inorder vs heap", "Only BFS vs DFS"], "c": 1, "d": "medium", "t": "Trees & Graphs", "exp": ["One synthesis row mixes these."]},
+    {"id": 54, "q": "Simple O(n^2) bubble vs merge divide stable plus quick pivot plus heap vs linear vs binary plus counting vs radix all combined is:", "opts": ["All isolated but one sorting row", "One row mixes all these as one sorting plus searching synthesis", "Only simple vs efficient", "Only stability vs space"], "c": 1, "d": "medium", "t": "Sorting & Searching", "exp": ["One synthesis row."]},
+    {"id": 55, "q": "Big-O up vs tight vs ladder plus best vs worst via input plus Master a vs b^d plus amortized geometric plus space O(1) vs O(n) vs O(log n) all combined is:", "opts": ["All isolated but one complexity row", "One row mixes all these as one complexity synthesis", "Only ladder vs best vs worst", "Only Master vs amortized"], "c": 1, "d": "medium", "t": "Complexity (Big-O)", "exp": ["One synthesis row mixes these."]},
+    {"id": 56, "q": "Amortized O(1) append vs worst O(n) resize copy vs loopy growth plus geometric double explanation is discriminant for:", "opts": ["Only worst per operation", "Amortized per sequence vs worst plus geometric growth", "Only tight vs loose", "Only linear vs binary"], "c": 1, "d": "medium", "t": "Complexity (Big-O)", "exp": ["Geometric double."]},
+    {"id": 57, "q": "Heap complete array plus heapify O(n) vs N inserts O(n log n) vs trie O(L) vs list vs matrix vs BFS shortest unweighted all belong respectively to:", "opts": ["All same structure row", "Trees plus graphs row distinctions: heap heapify vs trie prefix vs graph density vs BFS shortest unweighted", "Only heap vs trie", "Only BFS vs DFS"], "c": 1, "d": "medium", "t": "Trees & Graphs", "exp": ["Trees plus graphs row distinctions."]},
+    {"id": 58, "q": "LIFO last vs FIFO first vs monotonic increasing vs decreasing plus trapped rain via indices vs circular queue head equals tail tie-break all belong respectively to:", "opts": ["All same stack vs queue single family", "Stacks plus queues row distinctions: LIFO vs FIFO vs monotonic plus trapped rain vs circular queue tie-break", "Only LIFO vs FIFO", "Only circular queue"], "c": 1, "d": "medium", "t": "Stacks & Queues", "exp": ["Stacks plus queues row distinctions."]},
+    {"id": 59, "q": "Two pointers ends meet vs window [left,right] grow right shrink left vs prefix range sum via subtract all belong to respectively:", "opts": ["All same window only", "Arrays plus strings row distinctions: ends meet vs interval vs prefix sum via subtract", "Only two pointers plus window", "Only prefix sum"], "c": 1, "d": "medium", "t": "Arrays & Strings", "exp": ["Arrays plus strings row distinctions."]},
+    {"id": 60, "q": "System shows stable merge plus insertion plus bubble vs unstable selection plus quick plus heap plus linear O(n) vs binary O(log n) sorted via mid all belong respectively to:", "opts": ["Sorting plus searching row distinctions: stability vs linear vs binary", "Only sorting plus stability", "Only linear vs binary", "Only merge stable"], "c": 0, "d": "medium", "t": "Sorting & Searching", "exp": ["Sorting plus searching row distinctions."]}
+  ]
+}

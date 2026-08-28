@@ -1,0 +1,507 @@
+{
+  "id": "sql-queries",
+  "title": "SQL Queries & JOINs",
+  "icon": "SQL",
+  "category": "cs-foundations",
+  "color": "#475569",
+  "subtopics": [
+    "SELECT & WHERE",
+    "JOINs (Inner/Left/Right/Full)",
+    "GROUP BY & HAVING",
+    "Subqueries & Aggregates"
+  ],
+  "estimatedHours": 8,
+  "readingSections": [
+    {
+      "id": "select-where",
+      "title": "SELECT and WHERE (projection vs filter vs wildcard)",
+      "type": "concept",
+      "quickSummary": "SELECT chooses columns (projection; * means all). FROM chooses table. WHERE filters rows before grouping. Use = <> < > <= >= plus BETWEEN ... AND ... plus IN (...) plus LIKE with % any and _ one plus IS NULL. ORDER BY sorts after; LIMIT caps rows.",
+      "content": [
+        "SELECT picks which columns to show. SELECT name, salary FROM Employees shows two columns. SELECT * is wildcard that means every column — handy for quick checks and a favorite exam distractor when the question says explicit column list vs star. SELECT can also compute and rename: SELECT salary*12 AS annual FROM Employees gives an alias.",
+        "WHERE picks which rows survive, evaluated before grouping and before DISTINCT. WHERE salary > 50000 alone means greater than 50000. WHERE salary BETWEEN 50000 AND 80000 is inclusive on both ends. WHERE status IN ('active','on-leave') is shorthand for OR. Any comparison with NULL fails unless you write IS NULL or IS NOT NULL — WHERE age = NULL is never true in SQL's three-valued logic; the correct is WHERE age IS NULL.",
+        "Patterns that steal marks: wildcards with LIKE. LIKE 'A%' means starts with A and % is any length including zero, _ is exactly one character so 'A__' matches Ana but not A or Annabelle. LIKE '%esh' ends with esh. The exam writes % vs _ as the binary. The other s is DISTINCT vs ALL: SELECT DISTINCT removes duplicate rows after WHERE — the exam's example duplicates employee names often tests this.",
+        "Order and limiting are post-filter. ORDER BY salary DESC sorts high to low; add second key ORDER BY dept, salary DESC to break ties. LIMIT 5 returns the first five. In SQL Server and Oracle the names differ (TOP 5 or ROWNUM) but AXIS uses LIMIT for MySQL/Postgres style — know TOP and ROWNUM as synonyms the exam may list as distractors.",
+        "Two small facts that reappear. One, alias in WHERE in most DBMS fails — you alias in SELECT but cannot filter by that alias in the same WHERE; you filter by the original column or wrap in a subquery: SELECT salary*12 AS annual FROM Employees WHERE annual > 600000 is often wrong; write WHERE salary*12 > 600000. Two, AND binds tighter than OR so add parentheses: WHERE dept='Sales' AND (status='active' OR bonus>0) is often the intended filter."
+      ],
+      "subsections": [
+        {
+          "title": "Three-valued logic and NULL",
+          "content": "Any comparison with NULL yields UNKNOWN, not true or false, so WHERE filters it out. COUNT(*) counts rows regardless of NULL, COUNT(column) counts non-null. The exam loves COUNT behaviour plus IS NULL vs = NULL."
+        },
+        {
+          "title": "BETWEEN vs IN vs LIKE in 15 seconds",
+          "content": "BETWEEN inclusive range with AND. IN list of exact values. LIKE pattern with % any length and _ one char. Each answers a different stem; do not swap a range for a pattern."
+        }
+      ],
+      "quickRevision": [
+        "SELECT picks columns (projection; * all; AS alias). FROM picks table. WHERE filters rows before grouping.",
+        "Operators: = <> < > <= >= plus BETWEEN inclusive plus IN plus LIKE % any _ one plus IS NULL. NULL never equals with =.",
+        "ORDER BY after, LIMIT / TOP / ROWNUM after, DISTINCT removes duplicates.",
+        "Alias not visible in same WHERE; AND tighter than OR so parenthesize.",
+        "COUNT(*) rows even with NULL, COUNT(col) non-null; LIKE 'A%' starts with, '%esh' ends with, 'A__' exactly three with A plus two."
+      ],
+      "tricks": [
+        "Any answer that writes WHERE col = NULL is wrong — it must be IS NULL.",
+        "Do not confuse % any length with _ one char. %esh covers Ramesh and esh; _esh only three plus esh.",
+        "SELECT COUNT(*) vs COUNT(col) is the free mark when the column has NULLs."
+      ],
+      "patterns": [
+        "'Which picks columns?' -> SELECT. 'Which filters rows?' -> WHERE. 'Which picks rows after?' -> HAVING on groups.",
+        "'Starts with A?' -> LIKE 'A%' 'Ends with esh?' -> LIKE '%esh' 'Single char?' -> _.",
+        "'One null check?' -> IS NULL. 'Many exact values?' -> IN. 'Range?' -> BETWEEN."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS — SELECT/WHERE/LIKE/NULL, every year",
+          "question": "Which statement returns this pattern or which WHERE is correct for NULL / A% / range?",
+          "approach": "SELECT for columns, WHERE for rows, LIKE % vs _, = NULL is wrong use IS NULL, BETWEEN inclusive."
+        },
+        {
+          "source": "Gate / placement — alias vs WHERE",
+          "question": "Can an alias from SELECT be used in the same WHERE?",
+          "approach": "No in most DBMS — filter by original expression or wrap in a subquery."
+        }
+      ],
+      "companyNote": "SELECT vs WHERE vs LIKE % vs _ vs IS NULL appear as either a direct syntax or a pattern-match question."
+    },
+    {
+      "id": "joins",
+      "title": "JOINs: Inner, Left, Right, Full plus the Venn that ends the debate plus Self and Cross",
+      "type": "concept",
+      "quickSummary": "JOIN glues rows by a key. INNER keeps only matches (overlap). LEFT keeps all from left plus matches. RIGHT keeps all from right plus matches. FULL keeps all from both. SELF joins a table to itself. CROSS makes every combination.",
+      "content": [
+        "A JOIN takes rows from two tables that share a key and produces one combined row per match. INNER JOIN keeps only rows that match on both sides — Employees INNER JOIN Departments ON Employees.deptId = Departments.id shows only employees attached to an existing department and only departments attached to an employee; non-matching rows are dropped. This is the overlap in the Venn diagram the exam pastes.",
+        "LEFT (or LEFT OUTER) JOIN keeps every row from the left table and tacks on the right when it matches; non-matching left rows stay with NULL on the right. Example: show every employee plus department name where present — an intern with no department still appears with department NULL. If the paper says all from Employees even if no department, answer LEFT.",
+        "RIGHT JOIN is the mirror: every row from the right table survives and left fills with NULL where no match. RIGHT is the symmetric counterpart of LEFT — if the exam writes all Departments even if no employee, answer RIGHT. FULL (or FULL OUTER) JOIN keeps every row from both sides with NULL where no partner — the union of LEFT and RIGHT; WHERE left.id IS NULL after FULL isolates right-only; WHERE right.id IS NULL isolates left-only. Some DBMS such as MySQL historically needed UNION to fake FULL — the exam knows that synonym.",
+        "SELF JOIN is a table joined to itself via aliases: Employees a JOIN Employees b ON a.managerId = b.id shows each employee beside the manager's name from the same table. CROSS JOIN is the Cartesian product — every row of A with every row of B, no ON at all; with 100 employees times 10 departments the result has 1,000 rows before any filter. CROSS plus a later WHERE filter is logically an INNER but with far more intermediate work.",
+        "Placement in the Venn: INNER is overlap only. LEFT is all of left plus overlap. RIGHT is all of right plus overlap. FULL is all plus all plus overlap. Each half-exclusive question is the Venn with one crescent isolated by adding IS NULL on the opposite side after the join. If the exam says all employees and all departments regardless, answer FULL; if it says all employees regardless, answer LEFT."
+      ],
+      "subsections": [
+        {
+          "title": "ON vs WHERE with OUTER JOINs — where people lose a mark",
+          "content": "ON decides match for the join. Rows that fail ON for an OUTER join still survive as the preserved side with NULL. WHERE filters the joined result after that, so a WHERE on an outer column such as department.name pulls those NULL rows out and turns the OUTER back into an INNER. If you want to filter the preserved side after, put the condition in ON for OUTER, not in WHERE."
+        },
+        {
+          "title": "COUNT plus LEFT vs INNER",
+          "content": "COUNT plus LEFT vs INNER decides counts of zero groups. Department with no employees: INNER count missing, LEFT count shows zero. The paper loves: number of employees per department including empty departments — pick LEFT not INNER."
+        }
+      ],
+      "quickRevision": [
+        "INNER overlap only; LEFT all from left plus matches; RIGHT all from right plus matches; FULL all from both.",
+        "SELF table to itself via aliases (employee plus manager); CROSS every combination (no ON), product of counts.",
+        "Venn: LEFT all-of-left plus overlap, RIGHT all-of-right plus overlap, FULL union plus exclusive via IS NULL filter.",
+        "ON shapes the join, WHERE shapes the result after — OUTER plus WHERE on outer column turns to INNER.",
+        "FULL plus WHERE left.key IS NULL isolates right-only; FULL plus WHERE right.key IS NULL isolates left-only; COUNT plus LEFT shows zeros."
+      ],
+      "tricks": [
+        "Any answer that treats CROSS JOIN like INNER with an ON is wrong — CROSS has no ON and makes the full product.",
+        "Do not attach LEFT vs RIGHT to fixed tables — LEFT and RIGHT swap by order; the preserved side is what the name says.",
+        "FULL needs both preserved sides — any answer that says one side only is LEFT or RIGHT, not FULL."
+      ],
+      "patterns": [
+        "'Only matches?' -> INNER. 'All from Employees even if missing department?' -> LEFT from Employees. 'All from Departments even if missing employees?' -> RIGHT. 'All from both?' -> FULL.",
+        "'One table to itself via managerId?' -> SELF JOIN with aliases.",
+        "'Every combination multiplication?' -> CROSS JOIN product count.",
+        "'Empty groups count zero?' -> LEFT not INNER."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every AXIS paper — JOINs plus Venn, guaranteed",
+          "question": "Given two tables, which JOIN produces this result set or which Venn crescent?",
+          "approach": "Overlap INNER, all-left LEFT, all-right RIGHT, all-all FULL, itself SELF, product CROSS. Hold diagram slices plus IS NULL variants."
+        },
+        {
+          "source": "TCS / Infosys — ON vs WHERE with OUTER",
+          "question": "WHERE department.name = 'Sales' on a LEFT JOIN — which employees survive vs ON deptName = 'Sales'?",
+          "approach": "WHERE after pulls outer NULLs out so LEFT becomes INNER; ON keeps outer non-matching with NULL."
+        }
+      ],
+      "companyNote": "1-2 questions per paper are pure JOIN Venn, plus one ON vs WHERE or zero-count with LEFT."
+    },
+    {
+      "id": "groupby-having",
+      "title": "GROUP BY and HAVING vs WHERE plus Aggregates, ORDER BY and LIMIT",
+      "type": "concept",
+      "quickSummary": "GROUP BY collapses rows into one per group for aggregates (COUNT, SUM, AVG, MIN, MAX). WHERE filters before groups. HAVING filters after groups (often on aggregates). ORDER BY sorts after. LIMIT caps last. HAVING needs GROUP BY; WHERE cannot see aggregates.",
+      "content": [
+        "Aggregates reduce many rows to one value. COUNT counts rows (star counts with NULL, column counts non-null), SUM totals, AVG averages, MIN and MAX extremes. Applied alone SELECT COUNT(*) FROM Employees returns a single row one column. Applied with GROUP BY, the same functions return one row per group — per department, per status, per day.",
+        "GROUP BY defines the bucket key. Example: SELECT dept, COUNT(*) FROM Employees GROUP BY dept collapses four Sales rows into one Sales bucket plus two HR rows into one HR bucket and computes the count per bucket. Every column in SELECT must either be in GROUP BY or inside an aggregate; the exam writes SELECT name, COUNT(*) ... GROUP BY dept and expects you to spot that name is neither grouped nor aggregated — error in strict SQL mode.",
+        "WHERE filters before grouping. HAVING filters after grouping, often on aggregates. Compare: WHERE salary > 50000 discards low rows before they join a group. HAVING COUNT(*) > 5 keeps only groups whose aggregate count exceeded five after the grouping. If the question says departments with more than five employees, answer HAVING COUNT(*) > 5, not WHERE. WHERE cannot see aggregates.",
+        "Order of execution the exam tests via ordering traps. Logical order (simplified): FROM then WHERE then GROUP BY then HAVING then SELECT then ORDER BY then LIMIT. That order explains why WHERE sees no aggregates, HAVING sees groups and aggregates, SELECT alias often not visible in WHERE but visible in HAVING and ORDER BY, and LIMIT caps last. There is also DISTINCT that removes duplicates after SELECT and before ORDER BY.",
+        "ORDER BY sorts after the build. ORDER BY salary DESC sorts high to low and can take numbers (ORDER BY 2 means second SELECT expression) or aliases. LIMIT 5 plus OFFSET 2 skips two and shows the next five (pagination). On SQL Server and Oracle the names shift (TOP or OFFSET FETCH or ROWNUM) but the logic stays post-sort."
+      ],
+      "subsections": [
+        {
+          "title": "WHERE vs HAVING in 10 seconds that saves a mark",
+          "content": "Rows then groups. WHERE rows before groups — no aggregates visible. HAVING groups after groups — aggregates visible. If the stem says filter on COUNT or AVG, circle HAVING. If it says filter on salary before grouping, circle WHERE."
+        },
+        {
+          "title": "Strict GROUP BY rule that fails non-aggregated columns",
+          "content": "SELECT name, COUNT(*) FROM Employees GROUP BY dept fails because name is neither grouped nor aggregated and could be many values inside one dept bucket. Strict SQL rejects it; MySQL permissive mode used to permit with ANY_VALUE but the exam's strict answer is error or needs GROUP BY name as well."
+        }
+      ],
+      "quickRevision": [
+        "Aggregates COUNT/SUM/AVG/MIN/MAX collapse many rows to one via GROUP BY groups.",
+        "WHERE filters rows before groups; HAVING filters groups after (on aggregates). WHERE cannot see aggregates.",
+        "Every SELECT column must be either in GROUP BY or aggregated — otherwise strict error.",
+        "Execution: FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY -> LIMIT -> DISTINCT between SELECT and ORDER BY.",
+        "ORDER BY sorts after; LIMIT caps last; TOP or OFFSET FETCH vs LIMIT is dialect noise."
+      ],
+      "tricks": [
+        "Any answer that filters on COUNT in WHERE is wrong — COUNT is aggregate so it must be HAVING.",
+        "Any answer that SELECTs a non-grouped non-aggregated column under GROUP BY is wrong in strict SQL — must be in GROUP BY or inside an aggregate.",
+        "Do not attach HAVING to a query with no GROUP BY — HAVING implies grouping even when one group (all rows) is implicit."
+      ],
+      "patterns": [
+        "'Filter before groups on salary?' -> WHERE salary > .... 'Filter on COUNT > 5 after groups?' -> HAVING COUNT(*) > 5.",
+        "'Groups per dept with count?' -> SELECT dept, COUNT(*) FROM Employees GROUP BY dept.",
+        "'Sort high to low after groups?' -> ORDER BY salary DESC. 'First five after?' -> LIMIT 5.",
+        "'Non-grouped non-aggregated col with GROUP BY?' -> Error in strict mode."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every AXIS paper — GROUP BY vs HAVING vs WHERE, guaranteed",
+          "question": "Which filters before groups vs after groups or which GROUP BY plus HAVING returns this grouped result?",
+          "approach": "WHERE rows before no aggregates, HAVING groups after with aggregates; ORDER BY sort and LIMIT cap last."
+        },
+        {
+          "source": "TCS / Gate — aggregates plus strict rule",
+          "question": "Which SELECT with GROUP BY is valid and which aggregate counts with NULL plus GROUP BY strict?",
+          "approach": "Every SELECT col either grouped or aggregated; COUNT(*) vs COUNT(col) distinct counts, plus strict failure for stray column."
+        }
+      ],
+      "companyNote": "GROUP BY vs HAVING plus strict rule plus COUNT vs SUM vs AVG appears as a 2-3 item set."
+    },
+    {
+      "id": "subqueries-agg",
+      "title": "Subqueries, Aggregates, IN vs EXISTS vs ANY vs ALL and Set Operators plus DML twins",
+      "type": "concept",
+      "quickSummary": "Subquery inside SELECT/WHERE/FROM/HAVING. Non-correlated runs once; correlated re-runs per outer row and references the outer. Aggregates COUNT/SUM/AVG/MIN/MAX plus DISTINCT. IN vs EXISTS vs ANY/ALL for membership vs existence. UNION distinct vs UNION ALL duplicates, INTERSECT, EXCEPT. INSERT/UPDATE/DELETE twins.",
+      "content": [
+        "A subquery is a query inside another query. Non-correlated subquery does not reference the outer and runs once: SELECT * FROM Employees WHERE salary > (SELECT AVG(salary) FROM Employees). Correlated subquery references the outer and runs per outer row: SELECT * FROM Employees e WHERE salary > (SELECT AVG(salary) FROM Employees WHERE dept = e.dept) — note e.dept from the outer is used inside. Correlated is powerful but costlier; the exam writes WHERE dept = e.dept inside as the tell for correlated.",
+        "Aggregates cover the math. COUNT counts rows (COUNT(*) rows with NULL, COUNT(col) non-null), SUM totals numeric, AVG averages numeric (ignores NULL), MIN and MAX extremes (work on numbers and strings). DISTINCT inside an aggregate collapses duplicates: COUNT(DISTINCT status) distinct values. The spread between SUM plus COUNT plus AVG is a trap where AVG is tested as SUM divided by COUNT of non-null with the same filter.",
+        "IN vs EXISTS vs ANY/ALL for membership. IN checks whether a value is in a list or subquery result: salary IN (SELECT salary FROM Managers). EXISTS checks whether a subquery returns any rows at all — often uncorrelated with duplicate semantics filtered out: WHERE EXISTS (SELECT 1 FROM Teams WHERE Teams.id = Employees.teamId) says a team exists with that id. ANY/ALL compare against many values from a subquery: salary > ANY (SELECT ...) means greater than the minimum of the subquery; > ALL means greater than the maximum. The exam writes > ANY vs > ALL to salvage a mark — ANY any one, ALL every one.",
+        "Set operators union results: UNION removes duplicates, UNION ALL keeps duplicates (faster). INTERSECT keeps only common rows between the two queries, EXCEPT (or MINUS) keeps rows from the first not in the second. Both operands must have the same number of columns with compatible types. Correlated vs non-correlated determines whether you cannot extract the inner query alone.",
+        "DML twins: INSERT INTO Employees VALUES (...) adds one row; INSERT INTO ... SELECT ... inserts many; UPDATE Employees SET salary = salary*1.10 WHERE dept='Sales' changes existing; DELETE FROM Employees WHERE status='retired' deletes rows; TRUNCATE clears all fast but varies by DBMS for WHERE and trigger behaviour covered in the DBMS language topic. AXIS often lists TRUNCATE and DELETE to test the language row membership but keeps DML inside this topic for row ops."
+      ],
+      "subsections": [
+        {
+          "title": "IN vs EXISTS in one trade-off line",
+          "content": "IN materializes the subquery list and checks membership — concise. EXISTS checks existence row by row and often wins with indexes on correlated queries plus duplicate semantics differ. IN handles NULL nuances poorly (a NULL in the IN list makes the comparison UNKNOWN, so WHERE x IN (NULL) matches nothing). The exam loves IN with NULL."
+        },
+        {
+          "title": "ANY/ALL in two phrases",
+          "content": "> ANY is greater than the minimum of the subquery so one success suffices. > ALL is greater than the maximum so it must beat every row. = ANY behaves like IN. = ALL is unusual. Words any vs all decide."
+        }
+      ],
+      "quickRevision": [
+        "Non-correlated subquery runs once; correlated references the outer and runs per outer row (outer dept = e.dept inside is the clue).",
+        "Aggregates COUNT(*) rows with NULL plus COUNT(col) non-null plus SUM/AVG/MIN/MAX; DISTINCT inside aggregates counts distinct; AVG ignores NULL.",
+        "IN membership: WHERE value IN (list/subquery) with NULL trap. EXISTS existence: WHERE EXISTS (subquery) true if subquery returns any rows.",
+        "ANY any one (minimum threshold) vs ALL every one (maximum threshold). UNION distinct vs UNION ALL keep duplicates vs INTERSECT vs EXCEPT.",
+        "DML row ops: INSERT add, UPDATE change, DELETE remove rows with WHERE, TRUNCATE fast clear — row vs table awareness."
+      ],
+      "tricks": [
+        "Any answer that says IN ignores NULL cleanly is wrong — an IN list containing NULL yields UNKNOWN when checking a non-matching value so nothing matches. EXISTS handles unknown differently.",
+        "Do not swap ANY vs ALL thresholds: > ANY is greater than the minimum so easy to satisfy; > ALL is greater than the maximum so hard.",
+        "Correlated subqueries cannot be run standalone — they need the outer row reference."
+      ],
+      "patterns": [
+        "'Value equals many from a subquery?' -> IN or = ANY. 'Any row exists with this id?' -> EXISTS.",
+        "'Greater than at least one vs every?' -> > ANY vs > ALL.",
+        "'Remove duplicates between two queries?' -> UNION distinct; 'Keep duplicates?' -> UNION ALL.",
+        "'Per-department average vs overall average?' -> Correlated with outer dept vs non-correlated subquery without outer ref."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / Infosys — subqueries plus IN/EXISTS plus ANY/ALL, frequent",
+          "question": "Which subquery type plus which membership or threshold operator on this result?",
+          "approach": "Non-correlated once vs correlated per outer; IN list vs EXISTS existence plus ANY minimum vs ALL maximum; UNION distinct vs UNION ALL."
+        },
+        {
+          "source": "Gate / placement — aggregates plus DISTINCT",
+          "question": "COUNT plus COUNT(DISTINCT) vs SUM vs AVG with NULL plus GROUP BY plus HAVING vs WHERE?",
+          "approach": "COUNT(*) rows even with NULL vs COUNT(col) non-null vs COUNT(DISTINCT); GROUP BY strict; HAVING on aggregates."
+        }
+      ],
+      "companyNote": "1-2 questions per paper: one IN vs EXISTS or ANY/ALL plus one COUNT vs SUM vs AVG with GROUP boundaries."
+    },
+    {
+      "id": "exam-sql",
+      "title": "Exam SQL Synthesis: FROM to LIMIT order and CASE dissection",
+      "type": "concept",
+      "quickSummary": "Logical order is FROM then WHERE then GROUP BY then HAVING then SELECT then ORDER BY then LIMIT. Use it to kill distractors. Read whether the stem wants overlap vs all-left vs all-both for JOINs, before vs after for WHERE vs HAVING, and whether average is overall vs per group for correlated vs non-correlated.",
+      "content": [
+        "One mental pipeline kills most traps. FROM chooses the base tables modified by JOIN type (INNER/LEFT/RIGHT/FULL/CROSS). WHERE prunes rows before groups. GROUP BY forms buckets. HAVING prunes buckets on aggregates. SELECT picks which buckets or row values plus aggregates plus DISTINCT to show. ORDER BY sorts the surviving rows or groups. LIMIT caps last. Any statement that claims an aggregate is visible in WHERE or an alias is visible in WHERE fails this order.",
+        "JOIN vs filter confusion is neutralized by the same pipeline: ON is part of the JOIN branching inside the FROM clause, so an OUTER join ON determines which partners exist; surviving non-matches keep the preserved side with NULL. WHERE after the join then prunes the composed rows and can turn an OUTER into an INNER. If the paper says show all employees even if no department but filters department.name after, the cure is moving the department condition into the ON of the LEFT.",
+        "Grouped average confusion: SELECT * FROM Employees WHERE salary > (SELECT AVG(salary) FROM Employees) compares each row to the overall average (non-correlated subquery). Move the AVG into a correlated subquery with WHERE dept = e.dept inside and each row is compared to its own department's average — different result set with the same skeleton. The exam often shows both and asks which returns more rows.",
+        "Case reading for IN vs EXISTS: list materialization IN is concise for small static lists. Existence EXISTS plus indexes is powerful for large correlated checks with few duplicates. The exam writes a list that contains NULL plus NOT IN and expects you to spot that WHERE x NOT IN (NULL) matches nothing due to UNKNOWN vs NOT EXISTS handles correctly.",
+        "Surface the confusing overlap: COUNT(*), COUNT(column) and COUNT(DISTINCT column) look similar but differ on NULL handling plus duplication. SUM counts non-null plus duplicates. AVG divides SUM by COUNT of non-null for its column with the same filter. A stem that says average salary excluding NULL vs including NULL in count decides which COUNT to pick."
+      ],
+      "subsections": [
+        {
+          "title": "One-pass read for a hard item",
+          "content": "Item offers four statements mixing INNER vs LEFT vs WHERE vs HAVING. If the text says all from Employees even though some miss, eliminate INNER. If it says filter on COUNT after, eliminate WHERE. If it says overall vs per department average, eliminate the wrong subquery scope. One pass kills three."
+        },
+        {
+          "title": "AnySet vs AllSet discriminant that saves a mark",
+          "content": "Any behaves like exists one so it is anchored at the minimum of the subquery. All behaves like universal so it is anchored at the maximum. Hanging where ANY vs ALL is the trap is easier than reciting the definitions."
+        }
+      ],
+      "quickRevision": [
+        "Pipeline: FROM+JOIN via ON -> WHERE -> GROUP BY -> HAVING -> SELECT/DISTINCT -> ORDER BY -> LIMIT.",
+        "ON shapes the join, WHERE shapes the result after — OUTER plus WHERE on outer column turns to INNER.",
+        "Overall avg non-correlated vs per-group avg correlated via outer reference distinguishes result size.",
+        "IN membership: NOT IN with NULL matches nothing; EXISTS unaffected. UNION distinct vs UNION ALL duplicates.",
+        "Count trio: COUNT(*) rows with NULL plus COUNT(col) non-null plus COUNT(DISTINCT) distinct."
+      ],
+      "tricks": [
+        "Any answer that puts alias equals in WHERE is usually wrong in strict SQL — alias built in SELECT after WHERE.",
+        "Any answer that treats WHERE COUNT(*) > 5 as valid is wrong — aggregates visible only in HAVING.",
+        "Do not confuse DISTINCT after SELECT with removing duplicates between two UNION queries — first is inside one query, second between two."
+      ],
+      "patterns": [
+        "'Only matches vs all-left vs all-both?' -> INNER vs LEFT vs FULL via JOIN type plus IS NULL variants.",
+        "'Before groups vs after groups?' -> WHERE vs HAVING.",
+        "'Overall average vs per-department average?' -> Non-correlated vs correlated subquery with outer dept.",
+        "'Any one vs every?' -> ANY vs ALL. 'Distinct between vs all?' -> UNION vs UNION ALL."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS synthesis — mixed SQL 4-5 item match-the-column",
+          "question": "Given five stems each touching a different SQL family, match each to FROM/JOIN vs WHERE vs GROUP vs HAVING vs subquery vs set operator?",
+          "approach": "One pass: JOIN overlap vs all for JOINs; rows vs groups for WHERE vs HAVING; once vs per-outer for subquery; distinct vs duplicates for UNION."
+        },
+        {
+          "source": "Gate / placement — alias and grouping plus HAVING plus strict rule",
+          "question": "Which statement with SELECT alias vs GROUP BY vs HAVING plus strict plus COUNT vs SUM vs AVG with NULL is valid?",
+          "approach": "Pipeline order enforces alias after WHERE, WHERE before aggregates, SELECT col must be grouped or aggregated."
+        }
+      ],
+      "companyNote": "Synthesis tables appear as a 4-5 item match-the-column question mixing all families."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "select-where",
+      "title": "SELECT, WHERE, LIKE, BETWEEN, IN, IS NULL, ORDER BY and LIMIT",
+      "formula": {
+        "latex": "SELECT\\;cols\\;|\\; WHERE\\;rows\\;filter \\;|\\; LIKE\\;'%any'\\,'_one' \\;|\\; BETWEEN\\;inclusive\\;AND \\;|\\; IN\\;list \\;|\\; IS\\;NULL \\;|\\; ORDER\\;BY\\;then\\;LIMIT",
+        "text": "SELECT cols | WHERE rows filter | LIKE '%any' '_one' | BETWEEN inclusive AND | IN list | IS NULL | ORDER BY then LIMIT"
+      },
+      "whenToUse": "Any SELECT vs WHERE vs pattern vs range vs list vs null vs sort vs cap MCQ.",
+      "explanation": [
+        "SELECT picks columns: SELECT name, salary FROM table shows two; SELECT * wildcard shows all; AS alias renames.",
+        "WHERE picks rows before grouping: = <> < > <= >= plus BETWEEN ... AND ... inclusive plus IN (...) plus LIKE with % any length and _ one plus IS NULL per three-valued logic.",
+        "LIKE patterns: 'A%' starts with A, '%esh' ends with esh, 'A__' exactly three starting A plus two more.",
+        "COUNT(*) rows with NULL, COUNT(col) non-null; alias generally not visible in same WHERE; AND tighter than OR.",
+        "ORDER BY sorts after, LIMIT / TOP / ROWNUM caps last, DISTINCT removes duplicates after SELECT."
+      ],
+      "example": {
+        "prompt": "Employees whose names start with A and age between 25 and 35 plus status in active or on-leave and phone not null sorted by salary descending top 5 — write the skeleton.",
+        "steps": [
+          "Pick columns: SELECT * or list names.",
+          "FROM Employees WHERE name LIKE 'A%' AND age BETWEEN 25 AND 35 AND status IN ('active','on-leave') AND phone IS NOT NULL.",
+          "Add ORDER BY salary DESC then LIMIT 5. Parentheses if OR mixes with AND."
+        ],
+        "answer": "SELECT * FROM Employees WHERE name LIKE 'A%' AND age BETWEEN 25 AND 35 AND status IN ('active','on-leave') AND phone IS NOT NULL ORDER BY salary DESC LIMIT 5"
+      },
+      "memoryTip": "Select cols, Where rows, Like %any _one, Between inclusive, In exact list, Is NULL null test, Order sort, Limit cap.",
+      "commonMistake": "Writing WHERE col = NULL or swapping % with _ or treating SELECT alias as visible in same WHERE in strict SQL."
+    },
+    {
+      "id": "joins",
+      "title": "JOINs Venn and ON vs WHERE plus SELF and CROSS",
+      "formula": {
+        "latex": "INNER\\;overlap \\;|\\; LEFT\\;all\\;left+match \\;|\\; RIGHT\\;all\\;right+match \\;|\\; FULL\\;all\\;both \\;|\\; SELF\\;self\\;aliased \\;|\\; CROSS\\;product\\;no\\;ON",
+        "text": "INNER overlap | LEFT all left+match | RIGHT all right+match | FULL all both | SELF self aliased | CROSS product no ON"
+      },
+      "whenToUse": "Any JOIN-to-result or Venn or exclusive half or ON vs WHERE or zero-count MCQ.",
+      "explanation": [
+        "INNER keeps only matching rows — overlap. LEFT all left plus matches, RIGHT all right plus matches, FULL all from both. SELF table to itself via aliases for hierarchies (employee with manager). CROSS every combination with no ON — product count.",
+        "Exclusive halves: FULL plus WHERE left.key IS NULL isolates right-only; FULL plus WHERE right.key IS NULL isolates left-only.",
+        "ON decides match for the join; surviving OUTER non-matches keep preserved side with NULL. WHERE after the join prunes composed rows and can turn OUTER into INNER.",
+        "COUNT plus LEFT vs INNER: LEFT includes zero groups; INNER drops them.",
+        "FULL needs both preserved sides; one side only is LEFT or RIGHT; preservation side is what the name says."
+      ],
+      "example": {
+        "prompt": "Show every department with a zero count even if no employee belongs to it — which join and which nuance?",
+        "steps": [
+          "Need empty departments counted as zero — must preserve departments even without matches.",
+          "INNER would drop empty departments, so need LEFT from Departments or RIGHT from Employees to preserve the right side.",
+          "COUNT with GROUP BY plus LEFT gives the zero row; inner would miss it. Keep filter on department condition in ON, not WHERE, or OUTER becomes INNER."
+        ],
+        "answer": "LEFT JOIN from Departments (or RIGHT mirrored) preserving departments plus ON not WHERE for outer filter"
+      },
+      "memoryTip": "Overlap INNER, Left LEFT, Right RIGHT, Full FULL, Self Self, Cross X. ON matches, WHERE filters after — OUTER plus WHERE on outer turns into INNER.",
+      "commonMistake": "CROSS with an ON like INNER — CROSS has no ON. Outer filter in WHERE neutering LEFT vs FULL."
+    },
+    {
+      "id": "groupby-having",
+      "title": "GROUP BY plus HAVING vs WHERE plus Aggregates and ORDER vs LIMIT",
+      "formula": {
+        "latex": "GROUP\\;BY\\;buckets+agg \\;|\\; WHERE\\;before\\;groups \\;|\\; HAVING\\;after\\;groups\\;(aggs) \\;|\\; ORDER\\;BY\\;sort\\;then\\;LIMIT",
+        "text": "GROUP BY buckets+agg | WHERE before groups | HAVING after groups aggs | ORDER BY sort then LIMIT"
+      },
+      "whenToUse": "Any bucketing vs before vs after vs aggregate vs sort vs cap or strict GROUP BY MCQ.",
+      "explanation": [
+        "Aggregates COUNT/SUM/AVG/MIN/MAX plus DISTINCT reduce many rows to buckets defined by GROUP BY.",
+        "WHERE filters rows before buckets — no aggregates visible. HAVING filters buckets after — aggregates visible.",
+        "Every SELECT column must be either in GROUP BY or inside an aggregate; strict SQL rejects otherwise.",
+        "Logical order: FROM then WHERE then GROUP BY then HAVING then SELECT/DISTINCT then ORDER BY then LIMIT.",
+        "ORDER BY sorts after; LIMIT/TOP/OFFSET caps last; DISTINCT removes duplicates between SELECT and ORDER BY."
+      ],
+      "example": {
+        "prompt": "Departments with more than 5 employees earning average salary above 60000 sorted by count — write the skeleton body.",
+        "steps": [
+          "Bucket: GROUP BY dept.",
+          "Need count greater than 5 and average above 60000 — both aggregates so must be HAVING.",
+          "Compose: FROM Employees GROUP BY dept HAVING COUNT(*) > 5 AND AVG(salary) > 60000 then ORDER BY COUNT(*) DESC."
+        ],
+        "answer": "FROM Employees GROUP BY dept HAVING COUNT(*) > 5 AND AVG(salary) > 60000 ORDER BY COUNT(*) DESC"
+      },
+      "memoryTip": "Rows before groups Where, groups after Having. Group To bucket, Aggregate to reduce, Order to sort, Limit to cap.",
+      "commonMistake": "Putting COUNT in WHERE — only HAVING sees aggregates. Selecting non-grouped non-aggregated columns under GROUP BY fails strict."
+    },
+    {
+      "id": "subqueries-agg",
+      "title": "Subqueries: correlated vs not plus IN/EXISTS plus ANY/ALL plus sets",
+      "formula": {
+        "latex": "SubQ\\;non\\;once\\;vs\\;correlated\\;per\\;outer \\;|\\; IN\\;list\\;vs\\;EXISTS\\;presence \\;|\\; ANY\\;one\\;vs\\;ALL\\;every \\;|\\; UNION\\;vs\\;UNION\\;ALL\\;vs\\;INTERSECT\\;vs\\;EXCEPT",
+        "text": "SubQ non once vs correlated per outer | IN list vs EXISTS presence | ANY one vs ALL every | UNION vs UNION ALL vs INTERSECT vs EXCEPT"
+      },
+      "whenToUse": "Any membership vs existence vs threshold vs set vs row vs per-group average MCQ.",
+      "explanation": [
+        "Non-correlated subquery runs once without outer reference; correlated references the outer (e.dept = e.dept) and runs per outer row.",
+        "IN checks whether a value is in a subquery result list; EXISTS checks whether a subquery returns any rows at all — handling of NULL differs (IN list containing NULL yields UNKNOWN for non-matches so matches nothing, EXISTS unaffected).",
+        "ANY any one so > ANY is greater than the minimum of the subquery so easy to satisfy. ALL every one so > ALL is greater than the maximum so hard. = ANY behaves like IN.",
+        "Set row combiners: UNION removes duplicates, UNION ALL keeps duplicates faster, INTERSECT keeps common rows, EXCEPT keeps rows from first not in second. Both operands same column count with compatible types. Correlated subqueries cannot run standalone.",
+        "Row DML twins: INSERT add, UPDATE change, DELETE remove rows with WHERE, TRUNCATE fast clear — row vs table awareness."
+      ],
+      "example": {
+        "prompt": "Employees earning more than their own department's average — correlation choice plus ANY vs ALL plus set?",
+        "steps": [
+          "Per-department average needs outer dept inside the subquery: correlated WHERE dept = e.dept.",
+          "Single comparison is greater than one average per row: plain greater than, not aggregated.",
+          "If the paper asks greater than every department average, would be > ALL over a subquery of per-department averages."
+        ],
+        "answer": "Correlated WHERE salary > (SELECT AVG(salary) FROM Employees WHERE dept = e.dept) — plain greater than per row"
+      },
+      "memoryTip": "Non Once vs Correl per row: outer ref is Correl. In List, Exists presence. Any Any one minimum, All Every maximum. Union distinct vs Union All duplicates keeps.",
+      "commonMistake": "IN with NULL behaves as UNKNOWN so non-matching matches nothing; > ANY vs > ALL thresholds swapped; correlated run standalone."
+    }
+  ],
+  "practiceProblems": {
+    "select-where": [
+      {"q": "Pick name and salary from Employees — which statement part?", "opts": ["SELECT name, salary", "WHERE name, salary", "ORDER BY name, salary", "GROUP BY name, salary"], "c": 0, "s": ["SELECT picks columns: SELECT name, salary FROM Employees. WHERE filters rows."], "a": "SELECT name, salary"},
+      {"q": "Picks which rows survive has salary greater than 50000 — keyword?", "opts": ["SELECT", "FROM", "WHERE", "ORDER BY"], "c": 2, "s": ["WHERE salary > 50000 filters rows. SELECT picks columns."], "a": "WHERE"},
+      {"q": "Every column quickly — syntax?", "opts": ["SELECT *", "SELECT ALL", "WHERE *", "ALL *"], "c": 0, "s": ["Star is wildcard for all columns. SELECT * FROM Employees."], "a": "SELECT *"},
+      {"q": "Rename computed salary*12 in output as annual — keyword?", "opts": ["AS annual", "WHERE annual", "BY annual", "IS annual"], "c": 0, "s": ["Alias: SELECT salary*12 AS annual FROM Employees."], "a": "AS annual"},
+      {"q": "Status either active or on-leave — keyword for list?", "opts": ["BETWEEN", "IN", "LIKE", "IS"], "c": 1, "s": ["IN list of exact values: WHERE status IN ('active','on-leave')."], "a": "IN"},
+      {"q": "Age between 25 and 35 inclusive plus range — keyword?", "opts": ["IN", "BETWEEN 25 AND 35", "LIKE 25", "IS BETWEEN"], "c": 1, "s": ["BETWEEN 25 AND 35 inclusive on both ends."], "a": "BETWEEN 25 AND 35"},
+      {"q": "Name starts with A — pattern?", "opts": ["LIKE 'A%'", "LIKE 'A__'", "LIKE '%A'", "LIKE 'A'"], "c": 0, "s": ["A% starts with, %esh ends with, A__ exactly three starting A plus two."], "a": "LIKE 'A%'"},
+      {"q": "Fixed pattern exactly three with first A plus two chars — pattern?", "opts": ["LIKE 'A%'", "LIKE 'A__'", "LIKE '%A'", "LIKE 'A'"], "c": 1, "s": ["Underscore _ one char: A__ three starting A plus two."], "a": "LIKE 'A__'"},
+      {"q": "Correct null check for age unknown is:", "opts": ["WHERE age = NULL", "WHERE age IS NULL", "WHERE age LIKE NULL", "WHERE age IN NULL"], "c": 1, "s": ["= NULL is never true (UNKNOWN); use IS NULL."], "a": "WHERE age IS NULL"},
+      {"q": "Top five after sorting high to low by salary — keywords?", "opts": ["SELECT count only", "ORDER BY salary DESC LIMIT 5", "WHERE salary DESC LIMIT 5", "GROUP BY salary DESC LIMIT 5"], "c": 1, "s": ["ORDER BY sorts, LIMIT caps. COUNT vs ORDER confusion is a trap."], "a": "ORDER BY salary DESC LIMIT 5"}
+    ],
+    "joins": [
+      {"q": "Only rows matching on both sides join — overlap only — name?", "opts": ["INNER JOIN", "LEFT JOIN", "RIGHT JOIN", "FULL JOIN"], "c": 0, "s": ["INNER overlap only."], "a": "INNER JOIN"},
+      {"q": "Every employee even if no department plus NULL on right when no match — name?", "opts": ["INNER JOIN", "LEFT JOIN from Employees", "RIGHT JOIN", "CROSS JOIN"], "c": 1, "s": ["LEFT keeps all from left plus matches."], "a": "LEFT JOIN from Employees"},
+      {"q": "Every department even if no employee plus NULL on left when no match — name?", "opts": ["INNER JOIN", "LEFT JOIN from Employees", "RIGHT JOIN (all Departments) or LEFT mirrored", "CROSS JOIN"], "c": 2, "s": ["All from Departments is RIGHT when Employees is left; mirrored LEFT if order swapped."], "a": "RIGHT JOIN (all Departments) or LEFT mirrored"},
+      {"q": "Every row from both tables regardless — name?", "opts": ["INNER JOIN", "LEFT JOIN", "FULL OUTER JOIN", "CROSS JOIN"], "c": 2, "s": ["FULL keeps both preserved sides plus overlap. Each half-exclusive via IS NULL filter."], "a": "FULL OUTER JOIN"},
+      {"q": "Table to itself via managerId — name?", "opts": ["SELF JOIN with aliases", "CROSS JOIN", "FULL JOIN", "Inner only no alias"], "c": 0, "s": ["Self join: Employees a JOIN Employees b ON a.managerId = b.id."], "a": "SELF JOIN with aliases"},
+      {"q": "Every combination with no ON — product count — name?", "opts": ["INNER JOIN", "LEFT JOIN", "CROSS JOIN", "FULL JOIN"], "c": 2, "s": ["CROSS JOIN product, no ON."], "a": "CROSS JOIN"},
+      {"q": "FULL with WHERE left.id IS NULL isolates which half?", "opts": ["Left exclusive", "Right-only rows where left is NULL", "Both preserved", "Inner overlap only"], "c": 1, "s": ["Right-only crescent when left NULL."], "a": "Right-only rows where left is NULL"},
+      {"q": "LEFT with non-matching left rows after join leaves right columns as:", "opts": ["Zero", "NULL", "Blank table", "Error"], "c": 1, "s": ["LEFT non-matching right is NULL."], "a": "NULL"},
+      {"q": "Preserve zero-count departments with no employees — count per department correct join is:", "opts": ["INNER JOIN", "LEFT JOIN from Departments plus COUNT", "RIGHT JOIN from Employees plus WHERE outer filter", "CROSS JOIN"], "c": 1, "s": ["LEFT preserves empty groups for zero; INNER drops them."], "a": "LEFT JOIN from Departments plus COUNT"},
+      {"q": "100 employees times 10 departments CROSS yields:", "opts": ["100", "10", "1000", "110"], "c": 2, "s": ["Product count 100*10=1000 rows before any WHERE."], "a": "1000"}
+    ],
+    "groupby-having": [
+      {"q": "Collapse many rows per department into one row per department via count — keyword?", "opts": ["WHERE", "GROUP BY", "ORDER BY", "LIMIT"], "c": 1, "s": ["GROUP BY buckets plus aggregate per bucket."], "a": "GROUP BY"},
+      {"q": "Filter on aggregates after groups such as COUNT greater than 5 — keyword?", "opts": ["WHERE", "HAVING", "ORDER BY", "FROM"], "c": 1, "s": ["HAVING filters groups after; WHERE cannot see aggregates."], "a": "HAVING"},
+      {"q": "Before groups filter on salary greater than 50000 — keyword?", "opts": ["HAVING", "WHERE", "ORDER BY", "GROUP BY"], "c": 1, "s": ["WHERE before groups on row values."], "a": "WHERE"},
+      {"q": "Every SELECT column under GROUP BY must be either in GROUP BY or inside an aggregate — strict result otherwise is:", "opts": ["Success on any DBMS", "Error in strict SQL mode (MySQL permissive would pick via ANY_VALUE)", "Always success with zero", "Triggers"], "c": 1, "s": ["Strict SQL rejects stray non-grouped non-aggregated columns."], "a": "Error in strict SQL mode (MySQL permissive would pick via ANY_VALUE)"},
+      {"q": "COUNT(*) vs COUNT(sal) when sal has NULLs — difference is:", "opts": ["Same", "COUNT(*) counts with NULL, COUNT(sal) counts non-null", "Both zero", "COUNT(*) non-null only"], "c": 1, "s": ["Star counts rows even with NULL; column counts non-null."], "a": "COUNT(*) counts with NULL, COUNT(sal) counts non-null"},
+      {"q": "Departments with more than five employees — correct filter is:", "opts": ["WHERE COUNT(*) > 5", "HAVING COUNT(*) > 5", "WHERE GROUP BY > 5", "ORDER BY COUNT(*) > 5"], "c": 1, "s": ["COUNT is aggregate so after groups: HAVING."], "a": "HAVING COUNT(*) > 5"},
+      {"q": "Logical order correct sequence is:", "opts": ["SELECT then WHERE then FROM", "FROM then WHERE then GROUP BY then HAVING then SELECT then ORDER BY then LIMIT", "HAVING then WHERE then SELECT", "LIMIT then FROM"], "c": 1, "s": ["Pipeline: FROM+JOIN via ON -> WHERE -> GROUP BY -> HAVING -> SELECT/DISTINCT -> ORDER BY -> LIMIT."], "a": "FROM then WHERE then GROUP BY then HAVING then SELECT then ORDER BY then LIMIT"},
+      {"q": "Sum and average vs min and max on salary — all of these are:", "opts": ["Non-aggregates", "Aggregate functions that collapse many rows to one via GROUP BY buckets or to one overall", "DDL only", "TCL only"], "c": 1, "s": ["Aggregates per bucket or overall when no GROUP BY."], "a": "Aggregate functions that collapse many rows to one via GROUP BY buckets or to one overall"},
+      {"q": "SELECT alias annual visible where in this pipeline?", "opts": ["WHERE", "HAVING and ORDER BY (after SELECT) vs WHERE before", "Only in FROM", "Never"], "c": 1, "s": ["Alias built in SELECT after WHERE fails in strict WHERE; visible in HAVING and ORDER BY."], "a": "HAVING and ORDER BY (after SELECT) vs WHERE before"},
+      {"q": "LIMIT 5 with OFFSET 2 means:", "opts": ["First two then stop", "Skip two then show next five", "Only row two", "Only row five"], "c": 1, "s": ["Skip two then cap five — pagination."], "a": "Skip two then show next five"}
+    ],
+    "subqueries-agg": [
+      {"q": "Non-correlated subquery with no outer reference runs:", "opts": ["Per outer row", "Once independently", "Never", "Per index only"], "c": 1, "s": ["No outer ref: once. Correlated with e.dept inside runs per outer row."], "a": "Once independently"},
+      {"q": "Correlated subquery that references outer dept = e.dept runs:", "opts": ["Once", "Per outer row", "Only for DISTINCT", "Only for ORDER BY"], "c": 1, "s": ["Correlated per outer row is the tells via outer dept."], "a": "Per outer row"},
+      {"q": "Membership whether a value is in a subquery result — operator is:", "opts": ["EXISTS", "IN", "ANY", "LIMIT"], "c": 1, "s": ["IN list membership: WHERE value IN (SELECT ...)."], "a": "IN"},
+      {"q": "Existence whether a subquery returns any rows at all — operator is:", "opts": ["IN", "EXISTS", "ORDER BY", "LIMIT"], "c": 1, "s": ["EXISTS presence true if subquery returns any rows."], "a": "EXISTS"},
+      {"q": "Greater than the minimum of the subquery so one success suffices is:", "opts": ["> ALL", "> ANY", "= ALL", "IS NULL"], "c": 1, "s": ["> ANY is greater than the minimum so easy. > ALL greater than maximum hard."], "a": "> ANY"},
+      {"q": "Greater than the maximum of the subquery so must beat every row is:", "opts": ["> ANY", "> ALL", "IN", "LIKE"], "c": 1, "s": ["> ALL every one so hard; = ANY behaves like IN."], "a": "> ALL"},
+      {"q": "Union that removes duplicates between two queries is:", "opts": ["UNION ALL", "UNION", "INTERSECT", "EXCEPT"], "c": 1, "s": ["UNION distinct removes, UNION ALL keeps duplicates faster."], "a": "UNION"},
+      {"q": "Union that keeps duplicates without deduplication is:", "opts": ["UNION", "UNION ALL", "INTERSECT", "EXCEPT"], "c": 1, "s": ["UNION ALL keeps all from both including duplicates."], "a": "UNION ALL"},
+      {"q": "Set that keeps only common rows between two queries is:", "opts": ["UNION", "INTERSECT", "EXCEPT", "CROSS"], "c": 1, "s": ["INTERSECT. EXCEPT keeps rows from first not in second."], "a": "INTERSECT"},
+      {"q": "Rows from first not in second is:", "opts": ["UNION", "INTERSECT", "EXCEPT (or MINUS)", "CROSS"], "c": 2, "s": ["EXCEPT or MINUS depending on DBMS."], "a": "EXCEPT (or MINUS)"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Pick name and salary from Employees — correct SELECT skeleton?", "opts": ["SELECT name, salary FROM Employees", "WHERE name, salary", "ORDER BY name salary", "GROUP BY name salary"], "c": 0, "d": "easy", "t": "SELECT & WHERE", "exp": ["SELECT picks columns; FROM picks table."]},
+    {"id": 2, "q": "Filter rows with salary greater than 50000 — keyword?", "opts": ["SELECT", "FROM", "WHERE", "ORDER BY"], "c": 2, "d": "easy", "t": "SELECT & WHERE", "exp": ["WHERE salary > 50000 rows filter."]},
+    {"id": 3, "q": "Every column quickly — wildcard syntax?", "opts": ["SELECT *", "SELECT ALL", "WHERE *", "ALL *"], "c": 0, "d": "easy", "t": "SELECT & WHERE", "exp": ["Star wildcard for all columns."]},
+    {"id": 4, "q": "Rename computed salary*12 in output as annual — syntax?", "opts": ["AS annual", "WHERE annual", "BY annual", "IS annual"], "c": 0, "d": "easy", "t": "SELECT & WHERE", "exp": ["Alias: SELECT salary*12 AS annual FROM Employees."]},
+    {"id": 5, "q": "Status either active or on-leave — membership keyword?", "opts": ["BETWEEN", "IN", "LIKE", "IS"], "c": 1, "d": "easy", "t": "SELECT & WHERE", "exp": ["IN ('active','on-leave')."]},
+    {"id": 6, "q": "Age between 25 and 35 inclusive — correct range?", "opts": ["IN", "BETWEEN 25 AND 35", "LIKE 25", "IS BETWEEN"], "c": 1, "d": "easy", "t": "SELECT & WHERE", "exp": ["BETWEEN inclusive on both ends."]},
+    {"id": 7, "q": "Name starts with A — LIKE pattern?", "opts": ["LIKE 'A%'", "LIKE 'A__'", "LIKE '%A'", "LIKE 'A'"], "c": 0, "d": "easy", "t": "SELECT & WHERE", "exp": ["A% starts with, %esh ends with, A__ exactly three starting A."]},
+    {"id": 8, "q": "Fixed pattern exactly three with first A plus two chars — LIKE?", "opts": ["LIKE 'A%'", "LIKE 'A__'", "LIKE '%A'", "LIKE 'A'"], "c": 1, "d": "easy", "t": "SELECT & WHERE", "exp": ["_ one char: A__ three starting A."]},
+    {"id": 9, "q": "Correct null check for age unknown is:", "opts": ["WHERE age = NULL", "WHERE age IS NULL", "WHERE age LIKE NULL", "WHERE age IN NULL"], "c": 1, "d": "easy", "t": "SELECT & WHERE", "exp": ["= NULL never true; IS NULL per three-valued logic."]},
+    {"id": 10, "q": "Top five after sorting high to low by salary — statement?", "opts": ["SELECT count only", "ORDER BY salary DESC LIMIT 5", "WHERE salary DESC LIMIT 5", "GROUP BY salary DESC LIMIT 5"], "c": 1, "d": "easy", "t": "SELECT & WHERE", "exp": ["ORDER BY sorts, LIMIT caps."]},
+    {"id": 11, "q": "Only rows matching on both sides join — overlap only — JOIN is:", "opts": ["INNER JOIN", "LEFT JOIN", "RIGHT JOIN", "FULL JOIN"], "c": 0, "d": "easy", "t": "JOINs (Inner/Left/Right/Full)", "exp": ["INNER overlap only."]},
+    {"id": 12, "q": "Every employee even if no department plus NULL on right — JOIN is:", "opts": ["INNER JOIN", "LEFT JOIN from Employees", "RIGHT JOIN", "CROSS JOIN"], "c": 1, "d": "easy", "t": "JOINs (Inner/Left/Right/Full)", "exp": ["LEFT all from left plus matches."]},
+    {"id": 13, "q": "Every department even if no employee plus NULL on left — JOIN is:", "opts": ["INNER JOIN", "LEFT JOIN from Employees", "RIGHT JOIN (all Departments) or LEFT mirrored", "CROSS JOIN"], "c": 2, "d": "easy", "t": "JOINs (Inner/Left/Right/Full)", "exp": ["All from Departments is RIGHT when Employees is left."]},
+    {"id": 14, "q": "Every row from both tables regardless — JOIN is:", "opts": ["INNER JOIN", "LEFT JOIN", "FULL OUTER JOIN", "CROSS JOIN"], "c": 2, "d": "easy", "t": "JOINs (Inner/Left/Right/Full)", "exp": ["FULL keeps both preserved sides plus overlap."]},
+    {"id": 15, "q": "Table to itself via managerId — JOIN is:", "opts": ["SELF JOIN with aliases", "CROSS JOIN", "FULL JOIN", "Inner only no alias"], "c": 0, "d": "medium", "t": "JOINs (Inner/Left/Right/Full)", "exp": ["Self join: Employees a JOIN Employees b ON a.managerId = b.id."]},
+    {"id": 16, "q": "Every combination with no ON — product count — JOIN is:", "opts": ["INNER JOIN", "LEFT JOIN", "CROSS JOIN", "FULL JOIN"], "c": 2, "d": "medium", "t": "JOINs (Inner/Left/Right/Full)", "exp": ["CROSS product, no ON."]},
+    {"id": 17, "q": "FULL with WHERE left.id IS NULL isolates:", "opts": ["Left exclusive", "Right-only rows where left NULL", "Both preserved", "Inner overlap only"], "c": 1, "d": "medium", "t": "JOINs (Inner/Left/Right/Full)", "exp": ["Right-only crescent when left NULL."]},
+    {"id": 18, "q": "LEFT non-matching right columns are:", "opts": ["Zero", "NULL", "Blank table", "Error"], "c": 1, "d": "medium", "t": "JOINs (Inner/Left/Right/Full)", "exp": ["LEFT non-matching right is NULL."]},
+    {"id": 19, "q": "Preserve zero-count departments with no employees — correct join is:", "opts": ["INNER JOIN", "LEFT JOIN from Departments plus COUNT", "RIGHT JOIN from Employees plus WHERE outer filter", "CROSS JOIN"], "c": 1, "d": "medium", "t": "JOINs (Inner/Left/Right/Full)", "exp": ["LEFT preserves empty groups for zero; INNER drops them."]},
+    {"id": 20, "q": "100 employees times 10 departments CROSS yields:", "opts": ["100", "10", "1000", "110"], "c": 2, "d": "medium", "t": "JOINs (Inner/Left/Right/Full)", "exp": ["Product 100*10=1000 before any WHERE."]},
+    {"id": 21, "q": "Collapse many rows per department into one per department via count — keyword?", "opts": ["WHERE", "GROUP BY", "ORDER BY", "LIMIT"], "c": 1, "d": "easy", "t": "GROUP BY & HAVING", "exp": ["GROUP BY buckets plus aggregate per bucket."]},
+    {"id": 22, "q": "Filter on aggregates after groups such as COUNT greater than 5 — keyword?", "opts": ["WHERE", "HAVING", "ORDER BY", "FROM"], "c": 1, "d": "easy", "t": "GROUP BY & HAVING", "exp": ["HAVING groups after; WHERE cannot see aggregates."]},
+    {"id": 23, "q": "Before groups filter on salary greater than 50000 — keyword?", "opts": ["HAVING", "WHERE", "ORDER BY", "GROUP BY"], "c": 1, "d": "easy", "t": "GROUP BY & HAVING", "exp": ["WHERE before groups."]},
+    {"id": 24, "q": "Every SELECT column under GROUP BY must be either in GROUP BY or inside an aggregate — strict result otherwise is:", "opts": ["Success on any DBMS", "Error in strict SQL mode", "Always success with zero", "Triggers"], "c": 1, "d": "medium", "t": "GROUP BY & HAVING", "exp": ["Strict SQL rejects stray. Permissive MySQL used to pick ANY_VALUE."]},
+    {"id": 25, "q": "COUNT(*) vs COUNT(sal) when sal has NULLs — difference is:", "opts": ["Same", "COUNT(*) with NULL, COUNT(sal) non-null", "Both zero", "COUNT(*) non-null only"], "c": 1, "d": "medium", "t": "GROUP BY & HAVING", "exp": ["Star counts rows with NULL; col counts non-null."]},
+    {"id": 26, "q": "Departments with more than five employees — correct filter is:", "opts": ["WHERE COUNT(*) > 5", "HAVING COUNT(*) > 5", "WHERE GROUP BY > 5", "ORDER BY COUNT(*) > 5"], "c": 1, "d": "easy", "t": "GROUP BY & HAVING", "exp": ["COUNT aggregate so HAVING."]},
+    {"id": 27, "q": "Logical order correct sequence is:", "opts": ["SELECT then WHERE then FROM", "FROM then WHERE then GROUP BY then HAVING then SELECT then ORDER BY then LIMIT", "HAVING then WHERE then SELECT", "LIMIT then FROM"], "c": 1, "d": "medium", "t": "GROUP BY & HAVING", "exp": ["Pipeline order."]},
+    {"id": 28, "q": "Sum and average vs min and max on salary — all of these are:", "opts": ["Non-aggregates", "Aggregate functions that collapse many rows to one via buckets or to one overall", "DDL only", "TCL only"], "c": 1, "d": "easy", "t": "GROUP BY & HAVING", "exp": ["Aggregates per bucket or overall."]},
+    {"id": 29, "q": "SELECT alias annual visible where?", "opts": ["WHERE", "HAVING and ORDER BY after SELECT vs WHERE before", "Only in FROM", "Never"], "c": 1, "d": "medium", "t": "GROUP BY & HAVING", "exp": ["After SELECT vs before."]},
+    {"id": 30, "q": "LIMIT 5 with OFFSET 2 means:", "opts": ["First two then stop", "Skip two then show next five", "Only row two", "Only row five"], "c": 1, "d": "medium", "t": "GROUP BY & HAVING", "exp": ["Pagination."]},
+    {"id": 31, "q": "Non-correlated subquery with no outer reference runs:", "opts": ["Per outer row", "Once independently", "Never", "Per index only"], "c": 1, "d": "easy", "t": "Subqueries & Aggregates", "exp": ["No outer: once. Correlated per outer."]},
+    {"id": 32, "q": "Correlated subquery that references outer dept = e.dept runs:", "opts": ["Once", "Per outer row", "Only for DISTINCT", "Only for ORDER BY"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["Per outer row clue via outer dept."]},
+    {"id": 33, "q": "Membership whether a value is in a subquery result — operator is:", "opts": ["EXISTS", "IN", "ANY", "LIMIT"], "c": 1, "d": "easy", "t": "Subqueries & Aggregates", "exp": ["IN list membership."]},
+    {"id": 34, "q": "Existence whether a subquery returns any rows at all — operator is:", "opts": ["IN", "EXISTS", "ORDER BY", "LIMIT"], "c": 1, "d": "easy", "t": "Subqueries & Aggregates", "exp": ["EXISTS presence."]},
+    {"id": 35, "q": "Greater than the minimum of the subquery so one success suffices is:", "opts": ["> ALL", "> ANY", "= ALL", "IS NULL"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["> ANY minimum easy."]},
+    {"id": 36, "q": "Greater than the maximum of the subquery so must beat every row is:", "opts": ["> ANY", "> ALL", "IN", "LIKE"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["> ALL every one hard."]},
+    {"id": 37, "q": "Union that removes duplicates between two queries is:", "opts": ["UNION ALL", "UNION", "INTERSECT", "EXCEPT"], "c": 1, "d": "easy", "t": "Subqueries & Aggregates", "exp": ["UNION removes; UNION ALL keeps duplicates."]},
+    {"id": 38, "q": "Union that keeps duplicates without deduplication is:", "opts": ["UNION", "UNION ALL", "INTERSECT", "EXCEPT"], "c": 1, "d": "easy", "t": "Subqueries & Aggregates", "exp": ["Keep all from both including duplicates."]},
+    {"id": 39, "q": "Set that keeps only common rows between two queries is:", "opts": ["UNION", "INTERSECT", "EXCEPT", "CROSS"], "c": 1, "d": "easy", "t": "Subqueries & Aggregates", "exp": ["INTERSECT keeps common."]},
+    {"id": 40, "q": "Rows from first not in second is:", "opts": ["UNION", "INTERSECT", "EXCEPT (or MINUS)", "CROSS"], "c": 2, "d": "easy", "t": "Subqueries & Aggregates", "exp": ["EXCEPT or MINUS."]},
+    {"id": 41, "q": "Employees earning more than their own department's average — which comparison shape?", "opts": ["Non-correlated overall average", "Correlated WHERE dept = e.dept per outer row", "Only IN", "Only LIKE"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["Per-department via correlated with outer dept."]},
+    {"id": 42, "q": "Employees earning more than overall average — which shape?", "opts": ["Correlated", "Non-correlated once without outer dept", "Only IN", "Only ORDER BY"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["Overall average once without outer reference."]},
+    {"id": 43, "q": "COUNT(DISTINCT status) counts:", "opts": ["Rows with NULL plus distinct", "Distinct non-null values", "Only NULL", "All duplicates"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["Distinct inside aggregate."]},
+    {"id": 44, "q": "AVG(sal) with NULLs is:", "opts": ["SUM divided by COUNT(*) rows with NULL", "SUM divided by COUNT(sal) non-null", "SUM plus COUNT", "Not aggregate"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["Ignores NULL in both numerator and denominator; star vs col matters again."]},
+    {"id": 45, "q": "Where x IN (NULL) matches rows with x null — statement is:", "opts": ["True matches null with null", "False — comparison with NULL yields UNKNOWN so matches nothing", "Always matches", "Only matches zero"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["IN containing NULL yields UNKNOWN for non-matching so nothing matches."]},
+    {"id": 46, "q": "Where x NOT IN (1, NULL) matches rows with x=2 — result is:", "opts": ["Matches 2", "Matches nothing because x <> NULL yields UNKNOWN", "Matches all", "Syntax error"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["NOT IN list with NULL breaks membership to UNKNOWN so nothing matches; EXISTS unaffected."]},
+    {"id": 47, "q": "ON vs WHERE with LEFT JOIN — filtering department name after the join in WHERE on outer column turns LEFT into:", "opts": ["FULL", "INNER semantics (drops outer NULL rows)", "Keeps outer same", "CROSS"], "c": 1, "d": "medium", "t": "JOINs (Inner/Left/Right/Full)", "exp": ["WHERE after prunes composed rows and removes outer NULLs."]},
+    {"id": 48, "q": "ON filter with LEFT JOIN that keeps all from left plus conditional right is:", "opts": ["Put condition in WHERE", "Put condition in ON so outer non-matches keep with NULL", "Always CROSS", "Never"], "c": 1, "d": "medium", "t": "JOINs (Inner/Left/Right/Full)", "exp": ["ON shapes join; WHERE after can neuter outer."]},
+    {"id": 49, "q": "Pipeline order alias annual not visible in WHERE because:", "opts": ["Alias meaningless always", "WHERE evaluated before SELECT builds alias", "Alias visible nowhere", "Only visible in CROSS"], "c": 1, "d": "medium", "t": "SELECT & WHERE", "exp": ["Alias built in SELECT after WHERE in logical order."]},
+    {"id": 50, "q": "HAVING COUNT(*) > ANY (SELECT COUNT(*) FROM Departments GROUP BY dept) means greater than:", "opts": ["Maximum group count", "Minimum group count", "Average", "Zero"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["> ANY minimum so beats smallest group's count — easy."]},
+    {"id": 51, "q": "HAVING COUNT(*) > ALL (SELECT COUNT(*) FROM Departments GROUP BY dept) means greater than:", "opts": ["Minimum", "Maximum group count", "Average", "Zero"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["> ALL every one so beats maximum — hard."]},
+    {"id": 52, "q": "System says LIMIT vs TOP vs ROWNUM — which is standard in AXIS examples?", "opts": ["Only ROWNUM always", "LIMIT for MySQL/Postgres, TOP for SQL Server, ROWNUM for Oracle — same capping logic post-sort", "Only TOP", "Neither"], "c": 1, "d": "medium", "t": "GROUP BY & HAVING", "exp": ["Same logic post-sort; name is dialect noise."]},
+    {"id": 53, "q": "INSERT into Employees plus VALUES plus row then UPDATE salary times 1.10 plus WHERE dept='Sales' then DELETE from Employees plus WHERE status='retired' — correct bucket for row ops?", "opts": ["DDL only", "DML row ops", "TCL only", "DCL only"], "c": 1, "d": "easy", "t": "Subqueries & Aggregates", "exp": ["DML manipulates rows; DDL modifies structure."]},
+    {"id": 54, "q": "EXCEPT keeps:", "opts": ["Duplicates plus common", "Rows from first not in second", "Both completely", "None"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["First minus second."]},
+    {"id": 55, "q": "INTERSECT keeps:", "opts": ["Union distinct", "Only common rows between the two queries", "All rows", "None"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["Common rows."]},
+    {"id": 56, "q": "SELECT with alias annual = salary*12 plus WHERE annual greater than 600000 in strict SQL:", "opts": ["Always valid", "Not valid — WHERE cannot see alias select in same level; write WHERE salary*12 greater than 600000 or wrap", "Valid on any WHERE before SELECT", "Only valid with CROSS"], "c": 1, "d": "medium", "t": "SELECT & WHERE", "exp": ["Alias not visible in same WHERE in strict."]},
+    {"id": 57, "q": "Logical pipeline failing if WHERE COUNT large than 5 is written, reason is:", "opts": ["COUNT is not aggregate", "WHERE cannot see aggregates — must be HAVING", "GROUP BY missing always", "ORDER BY missing"], "c": 1, "d": "medium", "t": "GROUP BY & HAVING", "exp": ["HAVING filters groups with aggregates."]},
+    {"id": 58, "q": "Strict GROUP BY fails for SELECT name, COUNT(*) FROM Employees GROUP BY dept because:", "opts": ["name not in GROUP BY and not aggregated — many names per bucket", "name aggregated", "dept missing", "COUNT missing"], "c": 0, "d": "medium", "t": "GROUP BY & HAVING", "exp": ["Stray non-grouped non-aggregated column."]},
+    {"id": 59, "q": "COUNT distinct plus GROUP BY plus ORDER BY plus LIMIT caps — step that caps is:", "opts": ["GROUP BY", "LIMIT (or TOP/ROWNUM) after ORDER BY", "WHERE", "SELECT"], "c": 1, "d": "medium", "t": "GROUP BY & HAVING", "exp": ["Cap after sort at tail of pipeline."]},
+    {"id": 60, "q": "Salary greater than ANY vs ALL of per-department averages — threshold discriminant is:", "opts": ["Both maximum", "ANY minimum vs ALL maximum", "Both minimum", "Neither"], "c": 1, "d": "medium", "t": "Subqueries & Aggregates", "exp": ["Any one vs every one thresholds."]}
+  ]
+}

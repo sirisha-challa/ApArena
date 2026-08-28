@@ -1,0 +1,511 @@
+{
+  "id": "html-css",
+  "title": "HTML & CSS",
+  "icon": "HC",
+  "category": "cs-foundations",
+  "color": "#475569",
+  "subtopics": [
+    "Tags & Structure",
+    "Forms & Inputs",
+    "Selectors & Box Model",
+    "Flex/Grid Basics"
+  ],
+  "estimatedHours": 5,
+  "readingSections": [
+    {
+      "id": "tags-structure",
+      "title": "Tags and Structure: document skeleton plus block vs inline plus semantics",
+      "type": "concept",
+      "quickSummary": "HTML is tags in a tree. Skeleton: DOCTYPE plus html plus head (meta, title, link) plus body. Tags: opening, content, closing. Block fills width and stacks, inline flows and wraps. Semantic tags: header, nav, main, section, article, aside, footer give meaning and accessibility beyond div and span.",
+      "content": [
+        "HTML (HyperText Markup Language) describes structure, not looks. Every page is a tree of tags. Skeleton the exam checks: <!DOCTYPE html> plus html plus head that holds meta plus title plus link to CSS plus script plus body that holds the visible content. The html element may hold a lang attribute; head holds the page title that appears on the tab; body holds everything the user sees.",
+        "Tags have opening plus content plus closing. Void tags have no closing body and no content: img, input, br, hr, meta, link. Attributes give extra data: href on anchor, src plus alt on image, id plus class for targeting, for on label that references an input id. The exam writes img without alt and asks which accessibility fact fails — answer alt is missing and required for screen readers.",
+        "Block vs inline governs layout before any CSS. Block elements fill the full width available and stack vertically: div, p, h1-h6, ul, li, header, nav, main, section, article, aside, footer, form, table, hr. Inline elements flow inside a line and wrap: span, a, strong, em, b, i, label, br, img (replaced inline), input, button. Block can wrap block plus inline; inline should not wrap block — careless nesting fails validation even if it renders.",
+        "Semantic HTML gives meaning to parts of the page beyond a sea of divs. header is page or section header, nav holds primary navigation links, main holds the primary content once per page, section holds a thematic grouping, article holds a self-contained piece like a blog post, aside holds tangential content like a sidebar, footer holds footer plus info. Screen readers plus search plus maintainability benefit — div plus span carry no semantics, while the semantic tags give the accessibility tree a voice.",
+        "Head facts the exam rotates: title is required and shown on the tab; meta charset sets the encoding to UTF-8; meta viewport sets the responsive initial scale to 1; link rel stylesheet hooks a CSS file via href; script in head blocks parsing unless defer or async while DOM must exist for script that touches it. Those head lines are the skeleton plus links that make the page work."
+      ],
+      "subsections": [
+        {
+          "title": "Block vs inline in 15 seconds",
+          "content": "Block full width plus stacks plus can wrap block plus inline. Inline flows inside a line plus wraps plus should not wrap block. img is replaced inline that still sizes but still inline before flex or grid. The exam tests this with which element completes this valid nesting."
+        },
+        {
+          "title": "Semantic why it matters that AXIS loves",
+          "content": "A page built only with div and span is accessible as flat untitled blocks to a screen reader. Header plus nav plus main plus footer let the assistive tech speak the structure — header vs main vs navigation landmarks. Search engines do the same weighting. That is why AXIS asks to replace a div soup with semantic tags."
+        }
+      ],
+      "quickRevision": [
+        "Skeleton: DOCTYPE plus html (lang) plus head (meta charset plus viewport plus title plus link stylesheet plus script defer) plus body (visible).",
+        "Tag opening plus content plus closing; void no closing: img, input, br, hr, meta, link; alt required on img.",
+        "Block stacks full width (div, p, h1-h6, header, nav, main, section, article, aside, footer); inline flows inside line (span, a, strong, label, img replaced inline).",
+        "Semantic header, nav, main, section, article, aside, footer give meaning vs div plus span with none.",
+        "Inline should not wrap block; block wraps block plus inline."
+      ],
+      "tricks": [
+        "Any answer that says br has a closing tag via br closing is wrong — br is void. Void tags have no content plus no closing.",
+        "Do not swap inline vs block via which can wrap which — inline wrapping block fails validation.",
+        "A page with only div and span has no semantics — the accessible landmark words header/nav/main/section/article/aside/footer are missing."
+      ],
+      "patterns": [
+        "'Head holds title plus meta charset plus link stylesheet plus script vs body holds visible?' -> Head vs body split plus skeleton.",
+        "'Block vs inline plus which stacks vs which flows?' -> Block stacks full width, inline flows inside.",
+        "'Semantic header vs nav vs main vs article vs aside vs footer vs div span?' -> Semantic gives landmarks, div no meaning.",
+        "'Void tags?' -> img, input, br, hr, meta, link — no closing."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TCS NQT / Infosys — HTML skeleton plus tags, every year",
+          "question": "DOCTYPe plus head vs body plus void tags plus block vs inline plus semantics?",
+          "approach": "Skeleton plus void no closing includes alt, block stacks vs inline flows, semantic landmarks for accessibility."
+        },
+        {
+          "source": "Wipro — semantics",
+          "question": "Replace a div soup with semantic tags?",
+          "approach": "Header for header, nav for links, main once, section for group, article self-contained, aside tangential, footer footer."
+        }
+      ],
+      "companyNote": "Skeleton plus void tags plus block vs inline plus semantic appears as a 2-item set."
+    },
+    {
+      "id": "forms-inputs",
+      "title": "Forms and Inputs: form plus method plus controls plus label plus validation",
+      "type": "concept",
+      "quickSummary": "Form wraps controls and submits on submit. Method GET puts data in URL query, POST hides in body. Controls: text/password/email/number/search/tel/url/checkbox/radio/select/textarea/file/button. Label via for equals input id. Attributes: required, placeholder, pattern, disabled, readonly, checked. Validation via required plus type plus pattern plus :valid. preventDefault cancels submit without navigation.",
+      "content": [
+        "A form groups controls that belong to one submission. Example: form method POST action /login plus inputs plus button type submit. On submit, the browser serializes name plus value pairs and navigates or sends them per method and action: GET serializes into the URL query ?name=Asha&age=22 and is bookmarkable with limited length, POST hides in the request body and carries file uploads plus larger payloads. The exam word visible in URL is the GET vs POST tell.",
+        "Input controls the exam rotates: text general string, password masks, email type checks email shape, number with min/max/step numeric, search with clear affordance, tel for phone, url for url, checkbox independent toggles (many can be selected), radio one of a group sharing same name, select dropdown plus option (plus optgroup), textarea multiline, file plus accepts plus multiple plus drag, and button with type submit plus reset plus button (type defaults to submit inside a form — inside vs outside difference matters).",
+        "Labels give accessibility and hit area: label for emailField targets input id emailField so clicking the label focuses the input plus screen readers announce it. Fieldset groups related controls (shipping address) plus legend captions the group. Placeholder shows light hint inside the input but is not a label — the exam writes placeholder alone and asks which accessibility fails — answer label is missing even though placeholder shows.",
+        "Validation can be declarative. Required makes a field mandatory; type email plus type url plus type number enforce shape; pattern plus RegExp enforces a regex such as pattern \"[A-Z]{3}[0-9]{3}\" for three letters plus three digits; min/max plus step plus length via minlength plus maxlength add guards; checked plus required on a checkbox enforces acceptance. States :valid plus :invalid plus :required plus :checked style the result; validationMessage surfaces the text.",
+        "Two nuance traps that steal marks. One, disabled inputs are not submitted and not focusable while readonly are submitted and focusable but not editable — opposite submits. Two, type button vs submit vs reset: submit submits the form, reset restores defaults, plain button does nothing without script via onclick — many form failures are button type plain without a handler."
+      ],
+      "subsections": [
+        {
+          "title": "Disabled vs readonly in 10 seconds",
+          "content": "Disabled not in submission and greyed and not focusable. Readonly focusable and submitted but not editable. That opposite is the exam's favourite forms nuance."
+        },
+        {
+          "title": "Method plus enctype distinction",
+          "content": "GET plus query vs POST plus body is the method split. File uploads need method POST plus enctype multipart/form-data — the exam writes file plus GET and expects wrong via method and encoding both."
+        }
+      ],
+      "quickRevision": [
+        "Form plus controls submit serializes name plus value pairs: GET in URL query visible limited, POST in body.",
+        "Controls: text/password/email/number/search/tel/url/checkbox/radio/select/textarea/file/button; radio shares name, fieldset plus legend groups, label for equals input id, placeholder not a label.",
+        "Attributes required, placeholder hint, pattern regex, disabled not submitted vs readonly submitted, checked, disabled not focusable readonly focusable.",
+        "Type plus required plus pattern declarative validation via :valid plus :invalid; type button vs submit vs reset;",
+        "Validation patterns via required plus type plus pattern plus :valid states plus validationMessage; button type submit inside form submits."
+      ],
+      "tricks": [
+        "Any answer that says placeholder replaces label is wrong — placeholder is a hint; label is the accessible name via for plus id and larger hit area.",
+        "Disabled not submitted vs readonly submitted is the opposite — swap bait appears whenever both options are listed.",
+        "GET plus file upload is wrong — files need POST plus multipart/form-data."
+      ],
+      "patterns": [
+        "'Visible in URL vs hidden in body?' -> GET vs POST.",
+        "'One of many vs many independent?' -> Radio same name one vs checkbox many independent toggles.",
+        "'Label clicks to focus?' -> Label for equals input id; legend captions fieldset group.",
+        "'Need type check or pattern plus required?' -> Declarative validation with :valid states.",
+        "'Disabled vs readonly submit and focus?' -> Disabled not submitted not focusable vs readonly submitted focusable."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS — forms plus inputs plus labels, every year",
+          "question": "GET vs POST plus label for vs placeholder trap plus disabled vs readonly plus file plus GET?",
+          "approach": "GET visible query vs POST body, label for equals id, placeholder not a label, disabled not submitted vs readonly submitted, file needs POST plus multipart."
+        },
+        {
+          "source": "Wipro — controls",
+          "question": "Which control for one of many vs file vs multiline?",
+          "approach": "Radio same name one, checkbox many, file with accepts, textarea multiline, select plus option dropdown."
+        }
+      ],
+      "companyNote": "Forms appear as either a skeleton plus label vs placeholder or as a GET vs POST plus file vs disabled vs readonly synthesis."
+    },
+    {
+      "id": "selectors-box",
+      "title": "Selectors, Specificity, Cascade and the Box Model",
+      "type": "concept",
+      "quickSummary": "Selectors target elements: type, class ., id #, attribute [attr], pseudo :hover, ::before, combinators. Specificity hierarchy: inline 1000, ids 100, classes 10, elements 1; !important wins and order breaks ties. Box is content plus padding plus border plus margin; box-sizing border-box simplifies. Margin collapses vertically; outline and border differences matter.",
+      "content": [
+        "Selectors read right to left when the browser matches. Type targets a tag: div, p, h1. Class targets dot: .card matches class card. ID targets hash: #main matches id main (one per page by rule). Attribute [type=\"text\"] matches exact; [name^=\"user\"] starts with, [name$=\"id\"] ends with, [name*=\"mid\"] contains. Pseudo-classes target state: :hover, :focus, :checked, :nth-child(2n). Pseudo-elements target a part: ::before and ::after (generated content), ::first-line, ::selection. Combinators decide scope: descendant space any descendant, child > direct child, adjacent + next sibling, general sibling ~ all following siblings.",
+        "Specificity decides conflicts. Count in a base that mirrors digits: inline style 1000, plus ID 100 each, plus class plus attribute plus pseudo-class 10 each, plus element plus pseudo-element 1 each. Score components a plus b plus c plus d where a is inline. Compare left to right — 1 id beats any number of classes. !important outranks even high specificity, but among important flags the same cascade plus source order still applies. Source order is the final tie-breaker when specificity and importance match.",
+        "Cascade is layered. Origins: user-agent defaults vs author your sheet vs user custom. Within one origin plus importance level, more specific wins; equal specificity later wins; inline outranks embedded plus external unless an external important countermands. The exam loves !important plus order traps where two selectors look similar but one has an ID or an inline; they Paste such diagrams to find the computed colour.",
+        "The box model builds layout. From inside out: content (width times height) plus padding (inside spacing plus background paints there) plus border (stroke) plus margin (outside spacing plus transparent). width equals content width in the default content-box model; in border-box, width includes padding plus border so math is kinder — set box-sizing to border-box globally to soak padding. Real rendered size equals content plus paddings plus borders plus margins on that axis.",
+        "Margin collapse is special to block layout. Two adjacent vertical margins between block siblings or between a parent and first or last child can merge into the larger, not sum. Positive meets negative partially collapses; floated or flex or grid or absolutely positioned boxes plus inline blocks do not collapse. Outline looks like a border but draws outside the border plus outline-offset even further and does not occupy box space or collapse — outline is the accessible focus ring. ChildNodes vs children resurfaces here: padding vs margin gap is not a Text node."
+      ],
+      "subsections": [
+        {
+          "title": "Specificity math that saves marks",
+          "content": "Example: #main .card p counts as 100 plus 10 plus 1 = 111. div.card#main ul li counts as 100 plus 10 plus 3 = 113, so it beats the first even though both target similar. Inline style via style=\"color:red\" is 1000 and beats both unless important flips."
+        },
+        {
+          "title": "Box plus collapse sight test",
+          "content": "Two divs with margin 20 each stacked produce gap 20, not 40 — larger wins. Positive 20 plus negative 10 produce gap 10. Adding 1px padding plus border to either parent breaks collapse with its first child — gap sums again. That sight test appears as a margin puzzle."
+        }
+      ],
+      "quickRevision": [
+        "Selectors: type, .class, #id, [attr], :hover etc, ::before plus combinators space > plus + plus ~.",
+        "Specificity: inline 1000 plus ids 100 plus classes 10 plus elements 1; !important outranks; order breaks tie.",
+        "Cascade: origin plus importance plus specificity plus order; later wins when equal.",
+        "Box: content plus padding plus border plus margin; content-box vs border-box plus margin collapse vertical only; outline draws outside not in box.",
+        "Combinator descendant space any descendant, child > direct, plus adjacent next, tilde ~ following all."
+      ],
+      "tricks": [
+        "Any answer that says specificity sums classes to beat an id is wrong — 10 plus 10 plus 10 (30) does not beat 100 for one id.",
+        "Do not confuse descendant space with child > — space any level, > direct child only; + adjacent next, ~ all following siblings.",
+        "Margin collapse sums is the wrong rule — vertical block margins collapse to larger, not sum; inline does not collapse."
+      ],
+      "patterns": [
+        "'Higher specificity?' -> Count IDs vs classes vs elements; inline beats all sans important.",
+        "'Space vs > vs + vs ~?' -> Any descendant vs direct child vs adjacent next vs all following siblings.",
+        "'Padding vs margin vs border vs outline?' -> Inside vs outside vs stroke vs outside not in box.",
+        "'Gap 20 stacked 20 gap?' -> 20 via collapse not 40; adding border/padding to parent breaks collapse."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS — selectors plus specificity plus cascade, every year",
+          "question": "Which selector higher plus combinator meaning plus box-gap plus outline vs border?",
+          "approach": "Specificity base 1000:Ids:Classes:Elements; space any, > direct, + adjacent, ~ following; margin collapse vertical."
+        },
+        {
+          "source": "Wipro — box model",
+          "question": "Real rendered width with content plus padding plus border under content-box vs border-box?",
+          "approach": "Content-box width is content only; border-box width includes padding plus border — add accordingly."
+        }
+      ],
+      "companyNote": "Selectors plus cascade plus combinators plus box plus margin collapse appears as a 2-item set."
+    },
+    {
+      "id": "flex-grid",
+      "title": "Flex and Grid: one-dimensional vs two-dimensional layout plus gaps vs margins plus axis vs lines",
+      "type": "concept",
+      "quickSummary": "Flex lays out one direction at a time (row or column) via container: display:flex; items flex proportionally. Grid lays out rows plus columns together via container plus tracks: tracks sized via fractions plus templates; gaps are channel spacing not collapsed margins; place vs template decide named areas.",
+      "content": [
+        "Flexbox (display: flex) lays out items along one main axis at a time — either row or column. The container decides direction via flex-direction row vs column. Main controls: justify-content aligns along the main axis (flex-start, center, space-between, space-around, space-evenly), align-items aligns along the cross axis (stretch, center, flex-start, baseline), align-self overrides per item, flex-wrap controls wrapping, gap sets the channel between items. On items: flex-grow takes extra free space, flex-shrink shrinks when tight, flex-basis is the starting hypothetical size, flex is the triple shorthand flex: grow shrink basis (written as flex: 1 0 auto), and order reorders visually not semantically.",
+        "Grid (display: grid) lays out two dimensions at once: rows plus columns together via tracks. Define columns via grid-template-columns and rows via grid-template-rows using fractions fr, px, or named lines plus repeats: repeat(3, 1fr) for three equal, repeat(auto-fit, minmax(250px, 1fr)) for wrapping cards. Gaps between tracks are gap (gap is not margin and never collapses). Placement via grid-column and grid-row on items with span N or line numbers; named lines via [main-start] and template areas add semantics but add another concept — AXIS rarely traps on named areas beyond awareness.",
+        "Which to pick is the exam point. Flex for a one-row nav, pill list or toolbar that wraps. Grid for a page that needs both rows plus columns aligned together (gallery, dashboard). Both respect gap differently than block margin: gap is channel spacing inside the container that never collapses, while block margin collapse applies only to block siblings outside. That margin vs gap split is the bait the paper loves.",
+        "Alignment wording is similar but scope differs. Flex align is per flex line; Grid align is per grid area. justify-content is main axis in flex and inline axis in grid; align-content distributes whole rows vs columns when there are multiple tracks; place shorthand pairs justify plus align. The old float plus clearfix toolkit belongs to the legacy block world and is not needed for flex or grid but still appears as a distractor.",
+        "Responsive sense without media details: Grid adapts structural tracks to viewport; header plus nav plus main plus sidebar plus footer can re-template from two columns to one by redefining grid areas inside a media query. Flex adapts single line by wrapping plus growing. AXIS rarely asks to write media syntax — just to choose flex vs grid for a layout shape."
+      ],
+      "subsections": [
+        {
+          "title": "Gap vs margin in one line each",
+          "content": "Gap is inside the container between items, channel spacing that never collapses — flex vs grid concept. Margin is outside an item in block layout and collapses vertically — block concept. That one line answers every gap vs margin puzzle."
+        },
+        {
+          "title": "Axis memory aid",
+          "content": "Main is where flex flows (row left to right or column top to bottom). Cross is perpendicular. Justify sits on main, align sits on cross. Swap the picture when flex-direction becomes column."
+        }
+      ],
+      "quickRevision": [
+        "Flex one dimension at a time: container display flex, direction row vs column, justify main, align cross, gap channel, items flex grow/shrink/basis via flex triple plus order visual.",
+        "Grid two dimensions at once: container display grid, tracks via grid-template via fr plus repeat vs auto-fit minmax vs named lines, gap channel never collapses.",
+        "Pick flex for one-row toolbar that wraps, grid for rows plus columns gallery together.",
+        "Gap not collapsed inside container vs margin outside block that collapses vertical.",
+        "Legacy float plus clearfix is distractor when flex or grid suffices."
+      ],
+      "tricks": [
+        "Any answer that says gap collapses like margin is wrong — gap never collapses; only block margins do.",
+        "Do not call grid one-dimensional — grid is rows plus columns together; flex is one direction at a time.",
+        "Order reorders only visual display order plus not the DOM or screen-reader order — accessibility bait."
+      ],
+      "patterns": [
+        "'One direction row or column vs both rows plus columns?' -> Flex vs grid.",
+        "'Gap between items vs space outside?' -> Gap inside container channel vs margin outside block.",
+        "'Main axis row vs column reorders?' -> flex-direction decides where justify sits.",
+        "'Wrapping cards that auto reflow?' -> Grid auto-fit minmax vs flex wrap — both wrap but grid aligns both axes."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TCS / AXIS — flex vs grid plus gap, frequent",
+          "question": "Differentiate flex vs grid on dimensions and choose for a toolbar vs dashboard vs gap vs margin?",
+          "approach": "Flex one dimension row or column; grid two; toolbar wrap is flex; dashboard aligned both is grid; gap never collapses."
+        },
+        {
+          "source": "Infosys — order and axis",
+          "question": "Which visual order vs semantic order and main vs cross?",
+          "approach": "Order visual only; justify on main, align on cross; direction swap changes main."
+        }
+      ],
+      "companyNote": "Flex vs grid plus gap vs margin appears as either a direct plus which-to-pick or as a layout-gap puzzle."
+    },
+    {
+      "id": "exam-html",
+      "title": "Exam HTML/CSS Synthesis (skeleton plus forms plus cascade plus box vs flex vs grid)",
+      "type": "concept",
+      "quickSummary": "Skeleton head vs body plus void plus block vs inline plus semantics first. Forms GET plus query vs POST plus body plus control plus label plus disabled vs readonly plus file need POST multipart second. Selectors plus combinators plus specificity plus cascade plus box plus collapse plus border vs outline plus gap third. Flex vs grid decision via dimensions plus wrapping plus gap fourth. One pass per row solves most tables.",
+      "content": [
+        "Skeleton row: DOCTYPE plus html lang plus head holds meta charset plus viewport plus title plus link stylesheet plus script vs body visible content. Tags have opening plus content closing; void img/input/br/hr/meta/link have no closing plus no content. Attributes href vs src plus alt on img required for accessibility, id unique per page plus class many per page for styling or scripting via classList. Tags that wrap or flow: block stacks full, inline flows.",
+        "Forms row: form wraps controls and submits via button type submit; GET visible in URL query limited bookmarkable, POST hidden in body for files plus large; controls text/password/email/number/checkbox/radio/select/textarea/file plus fieldset plus legend; label for equals input id gives accessible name plus larger click area vs placeholder hint alone; disabled not submitted vs readonly submitted but not editable; validation via required plus type plus pattern via RegExp and :valid plus :invalid; button submit vs reset vs plain button via script.",
+        "Selectors plus box row: selectors type vs .class vs #id vs [attr] vs :pseudo vs ::pseudo-element plus combinators space any descendant vs > direct child vs + adjacent next vs ~ following all vs grouping via comma. Specificity hierarchy inline 1000 vs ids 100 vs classes 10 vs elements 1 plus !important outranks even high plus order breaks ties. Cascade collects origins plus importance before specificity; box with content plus padding plus border plus margin under content-box vs border-box; margin collapse vertical only between block siblings plus parent first or last child vs outline draws outside not in box nor collapsed vs gap inside flex or grid channel never collapses.",
+        "Layout row: Flex one dimension via container display flex with main vs cross axes via justify vs align vs flex triple vs gap channel inside; Grid two dimensions via container display grid with tracks via fr plus repeat plus auto-fit minmax vs named lines plus gap inside vs placement via grid-column plus grid-row. Float plus clearfix legacy is distractor when flex or grid suffices.",
+        "Speed rule: any mixed HTML/CSS table with four stems is solved by row: skeleton plus void plus block vs semantic, forms GET vs label vs disabled vs file, selectors plus cascade plus box plus gap, flex vs grid via axis plus gap. Circle the row, not the full sheet."
+      ],
+      "subsections": [
+        {
+          "title": "One-pass elimination for hard mixed items",
+          "content": "Item offers both void tags and void tags with closing to bait br closing. Eliminate closing. Item offers GET vs POST for file — eliminate GET for binary. Item offers block wrapping inline vs inline wrapping block — second fails validation. Item offers descendant vs child combinator — descendant any level broad vs child direct only."
+        },
+        {
+          "title": "Label vs placeholder trap that reappears",
+          "content": "Placeholder is gray hint inside the input that ghosts away on typing — not accessible via screen reader as a persistent name. Label for equals id is the name — accessible and also large click target. The exam writes placeholder alone and marks label missing — learn that trap cold."
+        }
+      ],
+      "quickRevision": [
+        "Skeleton DOCTYPE plus html lang plus head meta title link script vs body; void has no content/closing; block vs inline vs semantic landmarks.",
+        "Forms form plus controls submit serializes name+value pairs; GET query visible vs POST body; controls plus label for equals id plus placeholder hint vs fieldset legend; disabled not submitted nor focusable vs readonly submitted focusable; validation type+required+pattern.",
+        "Selectors type vs class vs id vs attribute vs pseudo plus combinators space vs > vs + vs ~ plus grouping comma; specificity inline vs id vs class vs element via 1000:Ids:Classes:Elements; cascade origin plus importance plus order; box content+padding+border+margin via border-box; margin collapse vertical only.",
+        "Flex one along main justify main align cross vs Grid two rows plus cols via tracks fr plus gap channel vs margin outside block collapsed; outline outside not box.",
+        "Mixed table one pass per row kills most distractors."
+      ],
+      "tricks": [
+        "Any answer that says void tags have closing tags is wrong — void have none: img, input, br, meta, link.",
+        "Any answer that says GET works for file upload is wrong — file needs POST plus multipart.",
+        "Any answer that says descendant space equals child > is wrong — space any descendant, > direct child only; + adjacent next only, ~ following all.",
+        "Gap vs margin swap is the flex vs block bait — gap inside container never collapses like block margin does."
+      ],
+      "patterns": [
+        "'Void list plus skeleton vs semantics?' -> Skeleton plus void plus block vs inline plus header/nav/main semantic landmarks.",
+        "'GET visible vs POST hidden vs file vs label?' -> Forms GET query vs POST body vs file multipart vs label for vs disabled not submitted.",
+        "'Selector power plus gap vs collapse?' -> Specificity hierarchy plus combinator scope plus gap channel vs margin outside.",
+        "'One dimension row vs both rows plus columns?' -> Flex vs grid with gap channel."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS synthesis — mixed HTML/CSS 4-5 item match-the-column",
+          "question": "Given five stems each touching a different HTML/CSS family, match each correctly?",
+          "approach": "One pass: skeleton void vs block or inline plus semantics, forms GET vs label vs disabled vs file, selectors specificity plus combinator vs box vs gap, flex vs grid."
+        },
+        {
+          "source": "TCS / Wipro — skeleton vs forms vs selectors",
+          "question": "Which tag belongs to head vs body or which selector combinator or which box gap behaviour?",
+          "approach": "Head meta title link vs body visible; descendant vs child vs adjacent vs general via scope; gap channel vs margin outside collapsed."
+        }
+      ],
+      "companyNote": "Synthesis tables appear as a 4-5 item match-the-column question mixing all families."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "tags-structure",
+      "title": "HTML Skeleton: document plus void vs block vs semantic",
+      "formula": {
+        "latex": "Doc!\\;html(head:meta/title/link/script)+body\\;visible \\;|\\; Void:img/input/br/hr/meta/link\\;no\\;closing \\;|\\; Block\\;stacks\\;full\\;vs\\;Inline\\;flows",
+        "text": "Doc html(head meta/title/link/script)+body visible | Void img/input/br/hr/meta/link no closing | Block stacks full vs Inline flows"
+      },
+      "whenToUse": "Any skeleton plus head vs body plus void vs block vs inline vs semantics MCQ.",
+      "explanation": [
+        "Skeleton: html root plus DOCTYPE, head with meta charset plus viewport plus title plus link stylesheet plus script (defer/async), body visible.",
+        "Tag: opening plus content plus closing. Void: no content plus no closing — img plus input plus br plus hr plus meta plus link.",
+        "Attributes: href, src plus alt required on img for accessibility, id unique plus class many, for equals id on label.",
+        "Block stacks full width plus wraps block plus inline; inline flows inside a line plus should not wrap block.",
+        "Semantic: header, nav, main, section, article, aside, footer give landmarks vs div plus span with none."
+      ],
+      "example": {
+        "prompt": "Which nesting is invalid per spec even if it paints?",
+        "steps": [
+          "Span is inline; div is block.",
+          "Inline wrapping block is invalid per content model even if browsers heal it.",
+          "Block wrapping inline is valid."
+        ],
+        "answer": "span wrapping div is invalid"
+      },
+      "memoryTip": "Head Holds code, Body Bears visible. Void Vacant no closing. Block Builds towers, Inline In line. Semantic Speaks meaning.",
+      "commonMistake": "Block wraps block plus inline; inline wraps block — second fails validation."
+    },
+    {
+      "id": "forms-inputs",
+      "title": "Forms and Inputs plus GET vs POST plus label vs placeholder plus disabled vs readonly",
+      "formula": {
+        "latex": "GET\\;query\\;visible \\;|\\; POST\\;body\\; \\;|\\; Label\\;for=id,\\;Placeholder\\;hint\\; \\;|\\; Disabled\\;not\\;submitted\\;vs\\;Readonly\\;submitted \\;|\\; File:POST+multipart",
+        "text": "GET query visible | POST body | Label for=id Placeholder hint | Disabled not submitted vs Readonly submitted | File POST+multipart"
+      },
+      "whenToUse": "Any GET vs POST plus file plus label vs placeholder plus disabled vs readonly MCQ.",
+      "explanation": [
+        "Form serializes name plus value pairs on submit via button type submit; action plus method decide destination plus encoding.",
+        "GET places data in URL query visible, limited, bookmarkable; POST hides in body for files plus large.",
+        "Radio one of a group sharing same name; checkbox many independent; select plus option plus optgroup; textarea multiline; range number.",
+        "Label for equals input id gives accessible name plus large click target; fieldset plus legend groups related.",
+        "Required plus type plus pattern plus :valid declarative; disabled not submitted nor focusable vs readonly submitted focusable not editable.",
+        "Type email plus number plus url enforce shape; ValidationMessage shows text; file input needs POST plus enctype multipart/form-data."
+      ],
+      "example": {
+        "prompt": "File upload form fails when method GET plus no enctype multipart — why and fix?",
+        "steps": [
+          "File needs binary in body, not query — GET is query only.",
+          "Method must be POST.",
+          "enctype must be multipart/form-data. Label for id remains required for accessibility."
+        ],
+        "answer": "Switch to POST plus multipart, keep label for equals id"
+      },
+      "memoryTip": "GET Gets query, POST Puts body. Label Links, Placeholder Phantoms. Disabled Dumped not submitted, Readonly Remains.",
+      "commonMistake": "Placeholder replaces label — placeholder is hint, label is the accessible name."
+    },
+    {
+      "id": "selectors-box",
+      "title": "Selectors plus Specificity plus Cascade plus Box Model",
+      "formula": {
+        "latex": "Sel:type,.class,\\#id,[attr],:hover,::before \\;|\\; Comb:space/\\>/+/\\sim \\;|\\; Spec:inline1000>id100>class10>el1>!\\;|\\; Box:p+b+m\\;collapse\\;vertical",
+        "text": "Selectors type .class #id [attr] :hover ::before | Combinators space />/+/~ | Spec inline1000>id100>class10>el1 !important | Box content+padding+border+margin collapse vertical"
+      },
+      "whenToUse": "Any selector vs combinator vs specificity vs cascade vs box vs margin vs outline vs gap MCQ.",
+      "explanation": [
+        "Selectors type (div), class (.c), id (#m), attribute [type=\"text\"], pseudo :hover/:focus/:checked/:nth-child, pseudo-element ::before/::after/::first-line.",
+        "Combinators: descendant space any descendant, child > direct child, + adjacent next sibling, ~ general following siblings, , grouping.",
+        "Specificity: inline 1000 > ids 100 > classes/attributes/pseudo-classes 10 > elements/pseudo-elements 1; order breaks ties; !important outranks even high specificity.",
+        "Cascade: origin plus importance then specificity then order (later wins); cascade collects then applies.",
+        "Box from inside out: content plus padding (inside background) plus border plus margin (outside transparent); border-box width includes padding plus border; margin collapses vertical only between block siblings or parent with first/last child; outline outside not in box nor collapsed; gap inside flex or grid channel never collapsed."
+      ],
+      "example": {
+        "prompt": "Selector score for #main .card p vs div.card#main ul li plus two stacked blocks margin 20 each plus gap inside flex?",
+        "steps": [
+          "Score: #main .card p = 100+10+1=111.",
+          "div.card#main ul li = 100+10+1+1+1=113 wins when equal importance.",
+          "Vertical margins 20 and 20 collapse to 20, not 40; gap inside flex is channel spacing not margin so not collapsed."
+        ],
+        "answer": "#main .card p 111 vs div.card#main ul li 113 latter higher; gap 20 vs margin 20 collapsed to 20"
+      },
+      "memoryTip": "Space Spans any, > Grands direct, + Next, Tilde Trailing all. Green IDs, Blue Classes, Red Elements — order breaks ties. Box Built padding border margin; Collapse Vertical only.",
+      "commonMistake": "Descendant equals child — space any descendant, > direct child only; + adjacent next only, ~ all following siblings. Margin 20 plus 20 is 20, not 40, between blocks."
+    },
+    {
+      "id": "flex-grid",
+      "title": "Flex vs Grid plus Gap vs Margin plus Axis",
+      "formula": {
+        "latex": "Flex:1D\\;row|col\\;justify\\;main,\\;align\\;cross\\;vs\\;Grid:2D\\;rows+cols\\;tracks \\;|\\; Gap\\;channel\\;inside\\;|\\; Margin\\;outside\\;block\\;collapse",
+        "text": "Flex 1D row|col justify main align cross vs Grid 2D rows+cols tracks | Gap channel inside | Margin outside block collapse"
+      },
+      "whenToUse": "Any flex vs grid vs gap vs margin vs axis MCQ.",
+      "explanation": [
+        "Flex one direction at a time via display:flex with direction row vs column plus wrap via flex-wrap plus grow/shrink/basis via flex plus order visual plus justify main plus align cross plus gap channel inside.",
+        "Grid rows plus columns together via display:grid with grid-template-columns plus rows via fr plus repeat plus auto-fit minmax plus named lines vs gap channel inside vs placement via grid-column plus row.",
+        "Pick flex for one-row nav/pill/toolbar that wraps vs grid for row-plus-column dashboard/gallery aligned both.",
+        "Gap inside flex or grid channel never collapses; block margin outside collapses vertical.",
+        "Legacy float plus clearfix is distractor when flex or grid suffices; order reorders only visual not DOM accessibility."
+      ],
+      "example": {
+        "prompt": "Should a wrapping nav pills row use flex or grid? Which gap behaviour on the channel plus stacked block margins outside?",
+        "steps": [
+          "Pills row wraps but aligns along one line at a time — one-dimensional fit is flex.",
+          "Inside channel gap never collapses.",
+          "Outside block margins between similar blocks collapse to larger, not sum."
+        ],
+        "answer": "Pills via flex row plus wrap, gap not collapsed, block margins collapsed to larger"
+      },
+      "memoryTip": "Flex Flows along Main, Cross Complements; Grid Grids Rows plus Columns. Gap Gains channel, Margin Merges outside.",
+      "commonMistake": "Grid one-dimensional — grid is two. Gap collapses like margin — gap never collapses."
+    }
+  ],
+  "practiceProblems": {
+    "tags-structure": [
+      {"q": "Skeleton head holds while body holds — split is:", "opts": ["Head holds meta/title/link/script vs body visible", "Head holds visible vs body holds code", "No split", "Both hold nothing"], "c": 0, "s": ["Head code vs body visible."], "a": "Head holds meta/title/link/script vs body visible"},
+      {"q": "Void tags with no closing tag include:", "opts": ["div, p, h1", "img, input, br, hr, meta, link", "span, a", "ul, li"], "c": 1, "s": ["Void: no content plus no closing."], "a": "img, input, br, hr, meta, link"},
+      {"q": "Missing alt on img fails:", "opts": ["No issue", "Accessibility for screen readers", "Only colour", "Only margin"], "c": 1, "s": ["Alt is required for accessibility."], "a": "Accessibility for screen readers"},
+      {"q": "Block vs inline correct grouping is:", "opts": ["Block inline flows vs inline stacks", "Block stacks full width (header/nav/main) vs inline flows (span/a/label)", "Both block stack", "Both inline flow"], "c": 1, "s": ["Block full width stack; inline flows inside."], "a": "Block stacks full width (header/nav/main) vs inline flows (span/a/label)"},
+      {"q": "Semantic landmarks that give meaning beyond div are:", "opts": ["Only div plus span", "header, nav, main, section, article, aside, footer", "Only void tags", "Only b plus i"], "c": 1, "s": ["Landmarks give accessibility tree a voice."], "a": "header, nav, main, section, article, aside, footer"},
+      {"q": "Inline wrapping block valid per spec is:", "opts": ["Valid", "Invalid even if renders after browser heals it", "Valid only for void", "Valid for span wrapping div"], "c": 1, "s": ["Inline should not wrap block."], "a": "Invalid even if renders after browser heals it"},
+      {"q": "Block wrapping block plus inline is:", "opts": ["Invalid", "Valid", "Void only", "Never"], "c": 1, "s": ["Block may wrap block plus inline."], "a": "Valid"},
+      {"q": "Doctype declaration via !Doctype html is:", "opts": ["No purpose", "Triggers standards mode", "Only for void", "Only for form"], "c": 1, "s": ["Standards mode vs quirks."], "a": "Triggers standards mode"},
+      {"q": "lang on html plus title in head plus meta charset are respectively:", "opts": ["Style plus block plus inline", "Language plus tab title plus encoding", "All body content", "All inline"], "c": 1, "s": ["Lang language code, title tab title, charset UTF-8 encoding."], "a": "Language plus tab title plus encoding"},
+      {"q": "img is inline yet sizes — descriptor is:", "opts": ["Block", "Replaced inline that sizes but still inline before flex or grid", "Void block", "None"], "c": 1, "s": ["Replaced inline sizes but still inline before flex or grid."], "a": "Replaced inline that sizes but still inline before flex or grid"}
+    ],
+    "forms-inputs": [
+      {"q": "GET vs POST visibility is:", "opts": ["GET hidden in body vs POST visible in query", "GET query visible vs POST body", "Both visible in query", "Both hidden in body"], "c": 1, "s": ["GET query visible limited; POST body."], "a": "GET query visible vs POST body"},
+      {"q": "File upload needs while plain text does not is:", "opts": ["GET plus no enctype", "POST plus multipart/form-data", "GET plus multipart", "POST plus no enctype"], "c": 1, "s": ["File needs POST plus multipart enctype."], "a": "POST plus multipart/form-data"},
+      {"q": "Radio group one of many vs checkbox many independent uses:", "opts": ["Same as checkbox", "Radio sharing same name vs checkbox many independent", "Only via array", "Only via js"], "c": 1, "s": ["Radio one of group sharing name; checkbox many."], "a": "Radio sharing same name vs checkbox many independent"},
+      {"q": "Select plus option plus optgroup is:", "opts": ["Radio", "Dropdown select", "Text", "File"], "c": 1, "s": ["Dropdown select."], "a": "Dropdown select"},
+      {"q": "Textarea is:", "opts": ["Single line", "Multiline text", "Dropdown", "File"], "c": 1, "s": ["Multiline text."], "a": "Multiline text"},
+      {"q": "Label click focuses input when:", "opts": ["Label has placeholder", "Label for equals input id", "Label has name", "Label has type"], "c": 1, "s": ["For equals id links them and enlarges hit area."], "a": "Label for equals input id"},
+      {"q": "Placeholder alone vs placeholder plus label — accessibility is:", "opts": ["Placeholder alone sufficient", "Placeholder not a label — label for equals id required", "Label not needed", "Either"], "c": 1, "s": ["Placeholder hint ghosts; label is the accessible name."], "a": "Placeholder not a label — label for equals id required"},
+      {"q": "Disabled vs readonly: not submitted vs submitted, not focusable vs focusable, not editable flags:", "opts": ["Disabled submitted readonly not", "Disabled not submitted not focusable vs readonly submitted focusable not editable", "Both submitted", "Both focusable editable"], "c": 1, "s": ["Opposite semantics: disabled dumped not submitted, readonly remains."], "a": "Disabled not submitted not focusable vs readonly submitted focusable not editable"},
+      {"q": "Pattern via regex via pattern=\"[A-Z]{3}[0-9]{3}\" enforces:", "opts": ["Any string", "Three letters then three digits", "Only numbers", "Only lowercase"], "c": 1, "s": ["Regex via RegExp pattern."], "a": "Three letters then three digits"},
+      {"q": "Button type inside a form: plain button without script vs submit vs reset is:", "opts": ["All submit", "Button does nothing, submit submits, reset restores defaults", "All reset", "All button does nothing"], "c": 1, "s": ["Inside form submit submits, plain button does nothing without script."], "a": "Button does nothing, submit submits, reset restores defaults"}
+    ],
+    "selectors-box": [
+      {"q": "Score for #main .card p counts as:", "opts": ["111 via 100+10+1", "10", "1000", "1"], "c": 0, "s": ["One id plus one class plus one element =111."], "a": "111 via 100+10+1"},
+      {"q": "Score for div.card#main ul li counts as:", "opts": ["111", "113 via 100+10+1+1+1", "1000", "3"], "c": 1, "s": ["Id plus class plus three elements =113 beats 111."], "a": "113 via 100+10+1+1+1"},
+      {"q": "Specificity base mimics digits: next after inline is:", "opts": ["Elements 1", "Classes 10", "Ids 100", "Inline 1000"], "c": 2, "s": ["Ids 100 each; inline 1000 alone."], "a": "Ids 100"},
+      {"q": "Ten classes vs one id plus tie about whether classes beat id:", "opts": ["Ten plus 10+10+10 beats 100", "30 does not beat 100 — id beats any number of classes", "Both beat inline always", "None beat inline"], "c": 1, "s": ["30 not >100; inline 1000 beats both unless important flips."], "a": "30 does not beat 100 — id beats any number of classes"},
+      {"q": "Combinator descendant space:", "opts": ["Direct child only", "Any descendant at any depth", "Adjacent next only", "Following all"], "c": 1, "s": ["Space any descendant."], "a": "Any descendant at any depth"},
+      {"q": "Combinator child >:", "opts": ["Any descendant", "Direct child only", "Adjacent next only", "Following all"], "c": 1, "s": ["Only direct child."], "a": "Direct child only"},
+      {"q": "Combinator plus +:", "opts": ["Any descendant", "Direct child only", "Adjacent next sibling only", "All following siblings"], "c": 2, "s": ["+ immediate next sibling."], "a": "Adjacent next sibling only"},
+      {"q": "Combinator general sibling ~:", "opts": ["Any descendant", "Direct child only", "Adjacent next only", "All following siblings"], "c": 3, "s": ["All following siblings."], "a": "All following siblings"},
+      {"q": "Two stacked blocks margin 20 each stacked gap collapse is:", "opts": ["40", "20 — larger wins (20 as single)", "0", "10"], "c": 1, "s": ["Vertical block margins collapse to larger, not sum."], "a": "20 — larger wins (20 as single)"},
+      {"q": "Outline vs border in box model:", "opts": ["Both inside box", "Border stroke inside box, outline draws outside not in box nor collapsed, outline-offset even further", "Both outside collapsed", "Outline inside block collapsed"], "c": 1, "s": ["Outline outside not in box."] , "a": "Border stroke inside box, outline draws outside not in box nor collapsed, outline-offset even further"}
+    ],
+    "flex-grid": [
+      {"q": "Flex lays out:", "opts": ["Two dimensions at once rows plus cols", "One dimension at a time row or column via direction", "No dimension", "Only grid two dimensions"], "c": 1, "s": ["One direction at a time via flex-direction."], "a": "One dimension at a time row or column via direction"},
+      {"q": "Grid lays out:", "opts": ["One dimension row or column only", "Two dimensions rows plus columns via tracks", "No dimension", "Only inline flows"], "c": 1, "s": ["Rows plus columns together via tracks."], "a": "Two dimensions rows plus columns via tracks"},
+      {"q": "Tracks sized via fr plus repeat vs auto-fit minmax are concepts from:", "opts": ["Flex only", "Grid tracks via fractions", "Margin only", "No tracks"], "c": 1, "s": ["fr plus repeat plus auto-fit minmax are grid."], "a": "Grid tracks via fractions"},
+      {"q": "Gap vs margin correct split is:", "opts": ["Gap collapses like margin", "Gap channel inside flex or grid never collapses vs margin outside block collapses vertical", "Both collapse equally", "Both channel inside never collapse"], "c": 1, "s": ["Gap inside channel never collapsed; block margin outside collapses vertical."], "a": "Gap channel inside flex or grid never collapses vs margin outside block collapses vertical"},
+      {"q": "One-row pill list that wraps — best fit is:", "opts": ["Grid must", "Flex via row plus wrap", "Float must", "Table must"], "c": 1, "s": ["Flex row that wraps."], "a": "Flex via row plus wrap"},
+      {"q": "Dashboard rows plus cols aligned together — best fit is:", "opts": ["Flex one dimension only", "Grid rows plus cols together", "Float only", "Inline only"], "c": 1, "s": ["Gallery/dashboard aligned both — grid."], "a": "Grid rows plus cols together"},
+      {"q": "Legacy float plus clearfix is vs flex or grid is:", "opts": ["Modern equally", "Legacy workaround; use flex or grid when able", "Modern plus float best always", "Only float modern"], "c": 1, "s": ["Legacy vs modern layout."], "a": "Legacy workaround; use flex or grid when able"},
+      {"q": "Order reorders:", "opts": ["DOM and screen reader order plus visual", "Visual display order only — not DOM nor screen-reader order", "All orders including DOM", "No reordering"], "c": 1, "s": ["Visual only; accessibility bait."], "a": "Visual display order only — not DOM nor screen-reader order"},
+      {"q": "Main vs cross decide where justify vs align sit is governed by:", "opts": ["Constant main inline", "flex-direction decides where main is then justify on main and align on cross", "Always cross", "Never"], "c": 1, "s": ["Direction swaps picture."], "a": "flex-direction decides where main is then justify on main and align on cross"},
+      {"q": "Repeat with auto-fit minmax wraps cards that auto reflow inside:", "opts": ["Flex only", "Grid — Grid auto-fit minmax wraps plus flex wrap also but grid aligns both axes", "Neither wraps", "Only float wraps"], "c": 1, "s": ["Both wrap but grid aligns both dimensions."], "a": "Grid — Grid auto-fit minmax wraps plus flex wrap also but grid aligns both axes"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Skeleton head holds while body holds — split is:", "opts": ["Head holds meta/title/link/script vs body visible", "Head holds visible vs body holds code", "No split", "Both hold nothing"], "c": 0, "d": "easy", "t": "Tags & Structure", "exp": ["Head code vs body visible."]},
+    {"id": 2, "q": "Void tags with no closing tag include:", "opts": ["div, p, h1", "img, input, br, hr, meta, link", "span, a", "ul, li"], "c": 1, "d": "easy", "t": "Tags & Structure", "exp": ["Void: no content plus no closing."]},
+    {"id": 3, "q": "Missing alt on img fails:", "opts": ["No issue", "Accessibility for screen readers", "Only colour", "Only margin"], "c": 1, "d": "easy", "t": "Tags & Structure", "exp": ["Alt required."]},
+    {"id": 4, "q": "Block vs inline grouping is:", "opts": ["Block inline flows vs inline stacks", "Block stacks full width (header/nav/main) vs inline flows (span/a/label)", "Both block stack", "Both inline flow"], "c": 1, "d": "easy", "t": "Tags & Structure", "exp": ["Block full stack; inline flows."]},
+    {"id": 5, "q": "Semantic landmarks that give meaning beyond div are:", "opts": ["Only div plus span", "header, nav, main, section, article, aside, footer", "Only void tags", "Only b plus i"], "c": 1, "d": "easy", "t": "Tags & Structure", "exp": ["Landmarks give accessibility tree voice."]},
+    {"id": 6, "q": "Inline wrapping block valid per spec is:", "opts": ["Valid", "Invalid even if renders after browser heals it", "Valid only for void", "Valid for span wrapping div"], "c": 1, "d": "medium", "t": "Tags & Structure", "exp": ["Inline should not wrap block."]},
+    {"id": 7, "q": "Block wrapping block plus inline is:", "opts": ["Invalid", "Valid", "Void only", "Never"], "c": 1, "d": "easy", "t": "Tags & Structure", "exp": ["Block may wrap block plus inline."]},
+    {"id": 8, "q": "Doctype via !DOCTYPE html does:", "opts": ["No purpose", "Triggers standards mode", "Only for void", "Only for form"], "c": 1, "d": "medium", "t": "Tags & Structure", "exp": ["Standards vs quirks."]},
+    {"id": 9, "q": "GET vs POST visibility is:", "opts": ["GET hidden in body vs POST visible in query", "GET query visible vs POST body", "Both visible in query", "Both hidden in body"], "c": 1, "d": "easy", "t": "Forms & Inputs", "exp": ["GET query visible limited; POST body."]},
+    {"id": 10, "q": "File upload needs while plain text does not is:", "opts": ["GET plus no enctype", "POST plus multipart/form-data", "GET plus multipart", "POST plus no enctype"], "c": 1, "d": "medium", "t": "Forms & Inputs", "exp": ["File needs POST plus multipart."]},
+    {"id": 11, "q": "Radio group one vs checkbox many uses:", "opts": ["Same as checkbox", "Radio sharing same name vs checkbox many independent", "Only via array", "Only via js"], "c": 1, "d": "medium", "t": "Forms & Inputs", "exp": ["Radio one of group sharing name; checkbox many."]},
+    {"id": 12, "q": "Select plus option plus optgroup is:", "opts": ["Radio", "Dropdown select", "Text", "File"], "c": 1, "d": "easy", "t": "Forms & Inputs", "exp": ["Dropdown select."]},
+    {"id": 13, "q": "Textarea is:", "opts": ["Single line", "Multiline text", "Dropdown", "File"], "c": 1, "d": "easy", "t": "Forms & Inputs", "exp": ["Multiline text."]},
+    {"id": 14, "q": "Label click focuses input when:", "opts": ["Label has placeholder", "Label for equals input id", "Label has name", "Label has type"], "c": 1, "d": "medium", "t": "Forms & Inputs", "exp": ["For equals id links them."]},
+    {"id": 15, "q": "Placeholder alone vs placeholder plus label — accessibility is:", "opts": ["Placeholder alone sufficient", "Placeholder not a label — label for equals id required", "Label not needed", "Either"], "c": 1, "d": "medium", "t": "Forms & Inputs", "exp": ["Placeholder hint ghosts; label is accessible name."]},
+    {"id": 16, "q": "Disabled vs readonly: not submitted vs submitted, not focusable vs focusable:", "opts": ["Disabled submitted readonly not", "Disabled not submitted not focusable vs readonly submitted focusable not editable", "Both submitted", "Both focusable editable"], "c": 1, "d": "medium", "t": "Forms & Inputs", "exp": ["Opposite semantics."]},
+    {"id": 17, "q": "Pattern via regex via pattern=\"[A-Z]{3}[0-9]{3}\" enforces:", "opts": ["Any string", "Three letters then three digits", "Only numbers", "Only lowercase"], "c": 1, "d": "medium", "t": "Forms & Inputs", "exp": ["Regex via pattern."]},
+    {"id": 18, "q": "Button type inside a form: plain vs submit vs reset is:", "opts": ["All submit", "Button does nothing, submit submits, reset restores defaults", "All reset", "All do nothing"], "c": 1, "d": "medium", "t": "Forms & Inputs", "exp": ["Inside form submit submits, plain does nothing."]},
+    {"id": 19, "q": "Score for #main .card p counts as:", "opts": ["111 via 100+10+1", "10", "1000", "1"], "c": 0, "d": "medium", "t": "Selectors & Box Model", "exp": ["One id plus one class plus one element."]},
+    {"id": 20, "q": "Score for div.card#main ul li counts as:", "opts": ["111", "113 via 100+10+1+1+1", "1000", "3"], "c": 1, "d": "medium", "t": "Selectors & Box Model", "exp": ["Id plus class plus three elements."]},
+    {"id": 21, "q": "Ten classes vs one id plus tie about whether classes beat id:", "opts": ["Ten plus 10+10+10 beats 100", "30 does not beat 100 — id beats any number of classes", "Both beat inline always", "None beat inline"], "c": 1, "d": "medium", "t": "Selectors & Box Model", "exp": ["30 not >100; inline 1000 beats both."]},
+    {"id": 22, "q": "Combinator descendant space:", "opts": ["Direct child only", "Any descendant at any depth", "Adjacent next only", "Following all"], "c": 1, "d": "easy", "t": "Selectors & Box Model", "exp": ["Space any descendant."]},
+    {"id": 23, "q": "Combinator child >:", "opts": ["Any descendant", "Direct child only", "Adjacent next only", "Following all"], "c": 1, "d": "easy", "t": "Selectors & Box Model", "exp": ["Only direct child."]},
+    {"id": 24, "q": "Combinator plus +:", "opts": ["Any descendant", "Direct child only", "Adjacent next sibling only", "All following siblings"], "c": 2, "d": "medium", "t": "Selectors & Box Model", "exp": ["+ immediate next sibling."]},
+    {"id": 25, "q": "Combinator general sibling ~:", "opts": ["Any descendant", "Direct child only", "Adjacent next only", "All following siblings"], "c": 3, "d": "medium", "t": "Selectors & Box Model", "exp": ["All following siblings."]},
+    {"id": 26, "q": "Two stacked blocks margin 20 each stacked gap collapse is:", "opts": ["40", "20 — larger wins (20 as single)", "0", "10"], "c": 1, "d": "medium", "t": "Selectors & Box Model", "exp": ["Vertical block margins collapse to larger."]},
+    {"id": 27, "q": "Outline vs border in box model:", "opts": ["Both inside box", "Border stroke inside box, outline draws outside not in box nor collapsed, outline-offset even further", "Both outside collapsed", "Outline inside block collapsed"], "c": 1, "d": "medium", "t": "Selectors & Box Model", "exp": ["Outline outside not in box."]},
+    {"id": 28, "q": "Flex lays out:", "opts": ["Two dimensions at once rows plus cols", "One dimension at a time row or column via direction", "No dimension", "Only grid two dimensions"], "c": 1, "d": "easy", "t": "Flex/Grid Basics", "exp": ["One direction via flex-direction."]},
+    {"id": 29, "q": "Grid lays out:", "opts": ["One dimension row or column only", "Two dimensions rows plus columns via tracks", "No dimension", "Only inline flows"], "c": 1, "d": "easy", "t": "Flex/Grid Basics", "exp": ["Rows plus columns via tracks."]},
+    {"id": 30, "q": "Tracks sized via fr plus repeat vs auto-fit minmax are concepts from:", "opts": ["Flex only", "Grid tracks via fractions", "Margin only", "No tracks"], "c": 1, "d": "medium", "t": "Flex/Grid Basics", "exp": ["fr plus repeat plus auto-fit are grid."]},
+    {"id": 31, "q": "Gap vs margin correct split is:", "opts": ["Gap collapses like margin", "Gap channel inside flex or grid never collapses vs margin outside block collapses vertical", "Both collapse equally", "Both channel inside never collapse"], "c": 1, "d": "medium", "t": "Flex/Grid Basics", "exp": ["Gap inside channel never collapsed; block margin outside collapses."]},
+    {"id": 32, "q": "One-row pill list that wraps — best fit is:", "opts": ["Grid must", "Flex via row plus wrap", "Float must", "Table must"], "c": 1, "d": "medium", "t": "Flex/Grid Basics", "exp": ["Flex row that wraps."]},
+    {"id": 33, "q": "Dashboard rows plus cols aligned together — best fit is:", "opts": ["Flex one dimension only", "Grid rows plus cols together", "Float only", "Inline only"], "c": 1, "d": "medium", "t": "Flex/Grid Basics", "exp": ["Gallery/dashboard aligned both — grid."]},
+    {"id": 34, "q": "Legacy float plus clearfix is vs flex or grid is:", "opts": ["Modern equally", "Legacy workaround; use flex or grid when able", "Modern plus float best always", "Only float modern"], "c": 1, "d": "medium", "t": "Flex/Grid Basics", "exp": ["Legacy vs modern."]},
+    {"id": 35, "q": "Order reorders:", "opts": ["DOM and screen reader order plus visual", "Visual display order only — not DOM nor screen-reader order", "All orders including DOM", "No reordering"], "c": 1, "d": "medium", "t": "Flex/Grid Basics", "exp": ["Visual only; accessibility bait."]},
+    {"id": 36, "q": "Main vs cross decide where justify vs align sit is governed by:", "opts": ["Constant main inline", "flex-direction decides where main is then justify on main and align on cross", "Always cross", "Never"], "c": 1, "d": "medium", "t": "Flex/Grid Basics", "exp": ["Direction swaps picture."]},
+    {"id": 37, "q": "Void correct list after writing br without closing is:", "opts": ["br has closing always", "br has no closing as void", "br sometimes has closing", "Only for block"], "c": 1, "d": "easy", "t": "Tags & Structure", "exp": ["Void has no content nor closing."]},
+    {"id": 38, "q": "Form wraps controls and submits on submit serializes name plus value pairs — statement is:", "opts": ["False", "True", "Only via GET", "Only via label"], "c": 1, "d": "easy", "t": "Forms & Inputs", "exp": ["Serializes name plus value pairs."]},
+    {"id": 39, "q": "Fieldset plus legend purpose is:", "opts": ["Only for void", "Group related controls plus caption the group", "Only for block vs inline", "Only for semantics via divs"], "c": 1, "d": "medium", "t": "Forms & Inputs", "exp": ["Fieldset groups; legend captions."]},
+    {"id": 40, "q": "Pseudo-class hover plus focus plus checked belong to:", "opts": ["Attributes", "Pseudo-classes for state", "Pseudo-elements for parts", "Combinators"], "c": 1, "d": "medium", "t": "Selectors & Box Model", "exp": ["State. ::before is pseudo-element for generated part."]},
+    {"id": 41, "q": "Descendant space vs child direct vs adjacent next vs general all distinction greatest breadth is:", "opts": ["Adjacent next only", "Space any descendant at any depth — broadest", "Child direct only", "Following all broader than any descendant"], "c": 1, "d": "medium", "t": "Selectors & Box Model", "exp": ["Space any level broadest; > direct narrower; ~ following all but only siblings."]},
+    {"id": 42, "q": "Content-box width counts vs border-box width counts:", "opts": ["Both include padding plus border", "Content-box content only vs border-box includes padding plus border", "Both content only", "Content-box includes margin too"], "c": 1, "d": "medium", "t": "Selectors & Box Model", "exp": ["Border-box includes padding plus border."]},
+    {"id": 43, "q": "Stacked 20 plus stacked 20 gap with parent adding 1px padding plus border to parent would be:", "opts": ["20 collapsed remains", "41 two gaps plus parent break", "0", "10"], "c": 1, "d": "medium", "t": "Selectors & Box Model", "exp": ["Padding plus border to parent breaks collapse with its first/last child — gaps sum plus parent spacing."]},
+    {"id": 44, "q": "After writing disabled plus readonly choices, form submission visibility expected is:", "opts": ["Disabled submitted readonly not", "Disabled not submitted readonly submitted", "Both submitted", "Both not submitted"], "c": 1, "d": "medium", "t": "Forms & Inputs", "exp": ["Opposite."]},
+    {"id": 45, "q": "Rows plus cols aligned both means two dimensions — pick flex vs grid:", "opts": ["Flex", "Grid rows plus cols together", "Inline only", "Block only"], "c": 1, "d": "easy", "t": "Flex/Grid Basics", "exp": ["Two dimensions is grid."]},
+    {"id": 46, "q": "Gap channel never collapses — statement is:", "opts": ["False", "True", "Only margin collapses, gap never", "Only for grid not flex"], "c": 1, "d": "medium", "t": "Flex/Grid Basics", "exp": ["Channel inside flex or grid never collapsed."]},
+    {"id": 47, "q": "Specificity !important outranks even high specificity — statement is:", "opts": ["False", "True — later order still breaks ties among important flags", "Only inside inline", "Never"], "c": 1, "d": "medium", "t": "Selectors & Box Model", "exp": ["Important outranks even high specificity; order still matters among important."]},
+    {"id": 48, "q": "Pseudo-element ::before vs pseudo-class :hover belongs to respectively:", "opts": ["Both pseudo-classes", "Pseudo-element part vs pseudo-class state", "Both pseudo-elements", "Pseudo-element state only"], "c": 1, "d": "medium", "t": "Selectors & Box Model", "exp": ["::before generated content part vs :hover state."]},
+    {"id": 49, "q": "Skeleton tags correct order smallest viable head vs body plus void plus block vs semantic row all belong to effectively:", "opts": ["One topic row synthesis", "One pass per row via skeleton plus void plus block vs semantic plus forms plus selectors plus flex vs grid synthesis — one pass", "Only skeleton", "Only forms"], "c": 1, "d": "medium", "t": "Tags & Structure", "exp": ["One pass per row kills mixed table."]},
+    {"id": 50, "q": "Block full width stacks plus can wrap block plus inline vs inline flows plus should not wrap block — invalid wrap is:", "opts": ["Div wrapping div plus span", "Span wrapping div", "Div wrapping span", "Header wrapping span"], "c": 1, "d": "medium", "t": "Tags & Structure", "exp": ["Inline should not wrap block."]},
+    {"id": 51, "q": "Head meta charset plus viewport plus title plus link stylesheet plus script all in head — statement is:", "opts": ["False — body", "True", "Only void", "Only semantic"], "c": 1, "d": "easy", "t": "Tags & Structure", "exp": ["Head holds meta plus title plus link plus script."]},
+    {"id": 52, "q": "Grouping selector via comma for one rule across many selectors plus combinator family plus specificity plus box plus gap belong to respectively:", "opts": ["Only selectors", "Comma grouping plus combinator scope vs specificity vs box vs gap synthesis", "Only box", "Only flex vs grid"], "c": 1, "d": "medium", "t": "Selectors & Box Model", "exp": ["Mixed selector plus cascade plus box row."]},
+    {"id": 53, "q": "Content plus padding plus border plus margin from inside out plus border-box width includes padding plus border is box model — statement is:", "opts": ["False", "True", "Only margin collapses", "Only gap never collapses"], "c": 1, "d": "medium", "t": "Selectors & Box Model", "exp": ["From inside out plus border-box includes."]},
+    {"id": 54, "q": "Justify on main vs align on cross vs direction swap vs gap inside vs margin outside block collapsed all belong to effectively:", "opts": ["Only justify vs align", "Flex plus margin collapse distinctions", "Only gap vs margin", "Only grid tracks"], "c": 1, "d": "medium", "t": "Flex/Grid Basics", "exp": ["Flex axis plus gap vs margin."]},
+    {"id": 55, "q": "Textarea auto vs readonly plus placeholder ghost vs label for larger hit area distinction is:", "opts": ["Only placeholder hints", "Placeholder not a label plus fieldset legend plus disabled vs readonly", "Only disabled vs readonly", "Only label for vs name"], "c": 1, "d": "medium", "t": "Forms & Inputs", "exp": ["Placeholder hint ghosts; label is accessible name plus hit area."]},
+    {"id": 56, "q": "Void inside a mixed HTML soup plus void plus block vs inline trap plus semantics landmark — one pass per row synthesis means:", "opts": ["Brute force all tables", "One verb per row chooses skeleton vs void vs block vs semantic plus forms vs selectors vs flex", "Only brute force", "Never mixed"], "c": 1, "d": "medium", "t": "Tags & Structure", "exp": ["One verb per row."]},
+    {"id": 57, "q": "A layout requires rows plus columns aligned together as a dashboard Gallery where gap channel must not collapse — pick:", "opts": ["Flex only", "Grid via tracks plus gap channel that never collapses", "Block plus margin only", "Float via clearfix only"], "c": 1, "d": "medium", "t": "Flex/Grid Basics", "exp": ["Grid rows plus cols plus gap channel."]},
+    {"id": 58, "q": "Display inline vs block vs flex vs grid display roles plus axis plus wrap vs gap are correctly:", "opts": ["All same display", "Inline flows vs block stacks full vs flex 1D row|col via main|Cross vs Grid 2D rows+cols via tracks", "Only flex plus grid differ", "Only inline vs block differ"], "c": 1, "d": "medium", "t": "Flex/Grid Basics", "exp": ["Display roles differ."]},
+    {"id": 59, "q": "Form action plus method encoding plus enctype file fails as GET plus no multipart — why?", "opts": ["No failure", "File needs POST plus multipart; GET query cannot carry file", "Only label failure", "Only placeholder failure"], "c": 1, "d": "medium", "t": "Forms & Inputs", "exp": ["File via body multipart."]},
+    {"id": 60, "q": "Which tags are semantic landmarks plus which are non-semantic generic containers?", "opts": ["Semantic header, nav, main, section, article, aside, footer vs non-semantic div plus span", "All semantic including div plus span", "All non-semantic", "Only void tags semantic"], "c": 0, "d": "easy", "t": "Tags & Structure", "exp": ["Landmarks vs generic."]}
+  ]
+}

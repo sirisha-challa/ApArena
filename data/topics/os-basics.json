@@ -1,0 +1,512 @@
+{
+  "id": "os-basics",
+  "title": "OS Basics (Process/Thread/Memory)",
+  "icon": "OS",
+  "category": "cs-foundations",
+  "color": "#475569",
+  "subtopics": [
+    "Process vs Thread",
+    "Scheduling",
+    "Deadlocks",
+    "Memory Management"
+  ],
+  "estimatedHours": 6,
+  "readingSections": [
+    {
+      "id": "process-thread",
+      "title": "Process vs Thread (heavy vs light plus states)",
+      "type": "concept",
+      "quickSummary": "Process is a running program with its own address space, files, and one or more threads. Thread is the schedulable CPU within a process sharing the process memory. Create heavy for process, light for thread. Context switch on thread cheaper. States: new, ready, running, waiting/blocked, terminated; plus suspend variants.",
+      "content": [
+        "A process is an instance of a program in execution. It owns an address space (code, data, heap, stack plus per-process metadata in the PCB — Process Control Block), a set of open files and sockets, and at least one thread. Processes are isolated — one cannot directly touch another's memory without OS help via shared memory or pipes. Creation via fork plus exec on Unix or CreateProcess on Windows is heavy and measured in microseconds to milliseconds.",
+        "A thread is the unit of CPU scheduling inside a process. All threads of a process share the same code, data, heap and files but each thread has its own program counter, register set and stack plus a Thread Control Block. Creating a thread is light — tens of microseconds — and switching between threads of the same process avoids swapping address spaces. The exam word task or lightweight process or LWP is a thread.",
+        "Concurrency vs parallelism: concurrent means interleaved on one core via context switches (not at the same instant but progression: one after another quickly). Parallel means truly simultaneous on many cores. A single-core machine can be concurrent but not parallel; a multi-core machine can be both. Multithreading exploits both when the OS schedules threads across cores.",
+        "Life cycle: new while being admitted, ready waiting for the CPU, running on the CPU, waiting or blocked until an event (I/O complete, lock), and terminated after exit. Preemptive kernels can move a running process to ready on a timer tick or arrival of a higher priority job; cooperative waits for voluntary yields. Diagram-wise the exam often draws the classic five-state model plus suspend ready and suspend waiting that swap a process to disk.",
+        "Small facts that reappear. User threads managed in user space by a thread library (e.g. green threads) vs kernel threads managed by the OS — many-to-one maps many user threads to one kernel thread (poor parallelism), one-to-one maps each user to a kernel thread (common, e.g. Linux NPTL), many-to-many mixes. The exam writes Java threads are user-level but the modern JVM maps each to a kernel thread — that mix is the mark."
+      ],
+      "subsections": [
+        {
+          "title": "PCB vs TCB contents in 15 seconds",
+          "content": "PCB holds process-wide state: PID, parent, address space pointers, open file table, signal mask, scheduling priority, accounting, and list of threads. TCB holds per-thread state: thread ID, registers including PC and stack pointer, stack bounds, scheduling state, and blocked reason. Swap TCB on thread switch; swap PCB plus page tables on process switch."
+        },
+        {
+          "title": "Fork plus exec vs clone",
+          "content": "fork duplicates the process (copy-on-write pages today), child gets a copy of the parent's address space and file descriptors. exec replaces the child image with a new program. Threads share via clone with shared address space flags. AXIS rarely asks to run fork but does label fork as heavy and thread creation as light."
+        }
+      ],
+      "quickRevision": [
+        "Process running program with its own address space plus files plus one or more threads via heavy creation and PCB; thread schedulable CPU inside process sharing memory with its own stack plus registers and TCB.",
+        "Process isolated; thread shared memory of the process — thread creation and context cheaper.",
+        "States: new -> ready -> running -> waiting/blocked -> terminated; preemptive can preempt running to ready; plus suspend variants swapping to disk.",
+        "Concurrent interleaved on one core vs parallel truly simultaneous on many cores; multithreading uses both when OS spreads threads.",
+        "User vs kernel threads: many-to-one, one-to-one, many-to-many; modern JVM one-to-one is the AXIS expectation."
+      ],
+      "tricks": [
+        "Any answer that says threads have separate address spaces like processes is wrong — threads of one process share the process address space.",
+        "Do not attach heavy creation to threads — fork plus exec is heavy; thread is light.",
+        "Ready vs running is CPU held vs waiting for CPU. Blocked vs ready after I/O is blocked waiting for event vs ready for CPU."
+      ],
+      "patterns": [
+        "'Running program with its own address space?' -> Process. 'Schedulable unit inside sharing memory?' -> Thread.",
+        "'Heavy create with PCB and copy?' -> Process via fork. 'Light create with TCB share?' -> Thread.",
+        "'Interleaved on one core vs simultaneous on many?' -> Concurrent vs parallel.",
+        "'Same process shared heap but own stack?' -> Thread. 'New->ready->running->waiting->terminated?' -> Process life cycle."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — process vs thread plus states plus PCB/TCB, every year",
+          "question": "Differentiate process vs thread plus PCB vs TCB plus thread types plus map plus concurrent vs parallel plus life cycle diagram?",
+          "approach": "Process heavy with address space and PCB; thread light schedulable with TCB shares process memory; concurrent vs parallel vs parallelism; five-state plus suspend."
+        },
+        {
+          "source": "TCS / Wipro — heavy vs light",
+          "question": "Why is thread creation faster than process creation?",
+          "approach": "No need to duplicate address space and files — share process memory plus heap plus files, only create stack plus registers."
+        }
+      ],
+      "companyNote": "1-2 questions per paper on process vs thread plus states or PCB/TCB plus concurrent vs parallel."
+    },
+    {
+      "id": "scheduling",
+      "title": "Scheduling: Preemptive vs Nonpreemptive plus FCFS/SJF/SRTF/RR/Priority plus Metrics",
+      "type": "concept",
+      "quickSummary": "Scheduler picks who runs. Metrics: CPU utilization, throughput, turnaround (finish minus arrival), waiting, response, fairness. FCFS nonpreemptive by arrival. SJF nonpreemptive shortest next optimal for average wait but needs burst estimate and starves long. SRTF preemptive SJF. Priority picks highest priority may starve. RR time-quantum round-robin fair for interactive.",
+      "content": [
+        "Goals that decide trade-offs: maximize CPU utilization and throughput (jobs per unit time) while minimizing turnaround (arrival to finish, includes waiting plus running), waiting (in ready queue), response (arrival to first CPU for interactive), and variance fairness plus starvation. Real OSes balance many, not one. AXIS often lists these five metrics and asks which FCFS optimizes vs which RR optimizes.",
+        "FCFS (First-Come First-Served) runs in arrival order nonpreemptively. Simple and starvation-free but convoy effect kills average wait when a long job holds the head and many short arrive behind it. Turnaround equals waiting plus burst; waiting accumulates the convoy. The exam's FCFS with one long at front is the average-wait trap where SJF beats it badly.",
+        "SJF (Shortest Job First) picks the shortest burst among ready nonpreemptively and is provably optimal for minimum average waiting among nonpreemptive policies. SRTF (Shortest Remaining Time First) is the preemptive twin — if a new shorter job arrives while one runs, it preempts. Both need burst estimates which are imperfect and both starve long jobs without aging. Priority scheduling picks highest priority (externally ranked) nonpreemptively; preemptive priority preempts on higher arrival plus aging slowly raises waiting priority to combat starvation.",
+        "Round-Robin (RR) gives each ready process a time quantum Q and cycles. Small Q favors response and fairness but causes many context switches and cache disruption; large Q approaches FCFS. Waiting in RR includes many small slices, not one long head wait. The exam writes Q = 2 vs Q = 4 and asks for Gantt vs averages — quantum size moves boundaries tick by tick.",
+        "Multilevel queues and feedback: the OS often mixes policies — foreground interactive RR-like while background batch FCFS-like, with feedback that demotes misbehaving jobs to lower queues. The exam rarely asks to run feedback beyond the name, but it recognizes multilevel as the diagram that separates foreground vs background."
+      ],
+      "subsections": [
+        {
+          "title": "Gantt computation that saves marks",
+          "content": "Draw one row per CPU and fill bursts in policy order including preemptions at each arrival tick. For each process record arrival, start, finish. Turnaround = finish - arrival. Waiting = turnaround - burst. Response = first start - arrival. Average each over jobs. With RR also record slice per quantum."
+        },
+        {
+          "title": "Optimality claim that AXIS loves",
+          "content": "Shortest next is optimal for minimum average waiting among nonpreemptive choices. Any paper that asks proven optimal for that metric expects SJF/SRTF by name. No other nonpreemptive beats SJF in that metric if bursts are known."
+        }
+      ],
+      "quickRevision": [
+        "Metrics: utilization plus throughput high vs turnaround plus waiting plus response plus fairness low.",
+        "FCFS nonpreemptive by arrival: simple starvation-free but convoy bad average wait with one long at head.",
+        "SJF nonpreemptive shortest next optimal for average wait; SRTF preemptive twin; both starve long without aging and need estimates.",
+        "Priority picks highest priority via ranking, needs aging against starvation; preemptive priority preempts on higher arrival.",
+        "RR time-quantum round-robin fair for interactive; small Q good response many switches, large Q towards FCFS; multilevel queues split foreground vs background."
+      ],
+      "tricks": [
+        "Any answer that says FCFS is optimal for average waiting is wrong — SJF holds that crown among nonpreemptive.",
+        "Do not confuse SRTF vs SJF: same shortest rule, SRTF preemptive and SJF not — arrival during execution matters only for SRTF.",
+        "Aging fixes priority starvation but not FCFS convoy — aging raises priority, convoy is ordered by arrival not priority."
+      ],
+      "patterns": [
+        "'One long at head many shorts behind?' -> Convoy under FCFS; SJF wins.",
+        "'Proven optimal for average waiting nonpreemptive?' -> SJF (preemptive twin is SRTF).",
+        "'Preempt on higher arrival plus anti-starvation?' -> Priority plus aging.",
+        "'Time-quantum fair for interactive?' -> Round-Robin; small Q good response, large Q towards FCFS.",
+        "'Mixed foreground vs background?' -> Multilevel plus feedback."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every AXIS paper — scheduling plus metrics plus Gantt, guaranteed",
+          "question": "FCFS vs SJF vs SRTF vs RR vs Priority plus averages plus convoy plus aging?",
+          "approach": "FCFS arrival order, SJF shortest nonpreemptive optimal, SRTF preemptive twin, RR quantum with Gantt tick, Priority with aging."
+        },
+        {
+          "source": "Gate / placement — Gantt averages plus aging plus optimality",
+          "question": "Given bursts plus arrivals plus quantum Q plus priorities, compute average turnaround vs waiting or which starves?",
+          "approach": "Gantt per policy plus formulas above; aging fixes starvation for Priority and optionally SJF."
+        }
+      ],
+      "companyNote": "Scheduling Gantt plus averages appears as a 2-3 item set — FCFS vs SJF vs RR or Priority with aging."
+    },
+    {
+      "id": "deadlock",
+      "title": "Deadlocks: Four Conditions, Graph, Prevention vs Avoidance vs Detection vs Recovery plus Dining",
+      "type": "concept",
+      "quickSummary": "Deadlock is a cycle of waits. Necessary four: mutual exclusion, hold and wait, no preemption, circular wait (all four for deadlock, but four together do not guarantee). Handle by prevention (break one), avoidance via Banker's safe check, detection plus recovery, or ignore (ostrich). Dining philosophers is the canonical starvation plus deadlock case.",
+      "content": [
+        "Deadlock is a set of processes each waiting for a resource held by another in the set, so none can proceed. The four necessary conditions: mutual exclusion (resource held by one at a time), hold and wait (holder waits for another while keeping its own), no preemption (cannot forcibly take the held resource), and circular wait (chain that circles: P1 waits for P2 while P2 waits for P1 or longer cycle P1->P2->P3->P1). All four must hold for deadlock, but four together do not guarantee deadlock on every path — they are necessary not sufficient for a cycle to be realized.",
+        "Graph view: resource allocation graph with process nodes and resource instances plus request edges and assignment edges. A cycle in the graph indicates deadlock when each resource in the cycle has a single instance; with multiple instances a cycle is a warning not a proof. AXIS commonly draws the classic two-process two-resource cycle R1 held by P1 wanted by P2 and R2 held by P2 wanted by P1.",
+        "Handling strategies. Prevention breaks one of the four: break mutual exclusion via sharable resources where possible, break hold-and-wait via all-or-nothing request (request all at once), break no-preemption via allow preemption on wait, break circular wait via total order on resources (always request in numeric order). Avoidance does not break statically but checks safety before granting — Banker's algorithm checks whether the system stays in a safe state (a sequence that can run to completion) and denies the request if it would make it unsafe. Detection lets deadlocks happen and runs a cycle detector periodically plus recovery by aborting or preempting until the cycle breaks. Ignorance (ostrich) lets deadlocks be rare versus recovery cost — many general-purpose OSes take this and expect the operator.",
+        "Banker's algorithm at intuition level: each process declares its maximum need per resource type upfront. System tracks allocated plus available. Before granting a request it simulates the grant and tests existence of a safe sequence where every remaining process can complete with hypothetical future allocations under its max. If none exists the state is unsafe and the request waits. AXIS asks whether immediate granting keeps the state safe — compute safe sequence or not.",
+        "Dining philosophers frames starvation plus deadlock: N philosophers at a round table with N forks, each needs two forks to eat and thinks otherwise. Classical deadlock when each grabs left and waits for right. Prevention via global fork ordering or limit of N-1 eaters or asymmetry prevents circular wait. Classic exam story: 5 philosophers, 5 forks, each picks left first -> deadlock. Change order for one to pick right first -> deadlock-free."
+      ],
+      "subsections": [
+        {
+          "title": "Prevention vs avoidance vs detection in one sentence each",
+          "content": "Prevention breaks one condition statically before allocation. Avoidance checks dynamic safety before granting. Detection allows then finds cycles plus recovers. Ostrich ignores because deadlocks are rare for the cost."
+        },
+        {
+          "title": "Safe vs unsafe is not deadlocked vs not",
+          "content": "Safe means a sequence exists to finish every process even under max needs. Unsafe means no such sequence — deadlock may occur if worst-case requests arrive, but not necessarily right now. Avoidance denies requests that would make the state unsafe, not only those that are immediately deadlocked."
+        }
+      ],
+      "quickRevision": [
+        "Deadlock is wait cycle plus four necessary: mutual exclusion, hold and wait, no preemption, circular wait.",
+        "Prevention breaks one: no hold-and-wait or ordered requests etc. Avoidance Banker's safe check before grant. Detection cycle plus abort/preempt. Ostrich ignore.",
+        "Resource graph cycle means deadlock when single instance per type; multi-instance cycle is warning not proof.",
+        "Banker declares max per type plus tracks allocated plus available; grants only safe states where a completion sequence exists.",
+        "Dining philosophers 5 pick-left deadlock vs alternate ordering or N-1 limit prevents circular wait."
+      ],
+      "tricks": [
+        "Any answer that says three of the four can still deadlock is wrong — all four must hold for deadlock.",
+        "Do not equate unsafe with deadlocked — unsafe may still run but could deadlock under max; avoidance denies unsafe, not only deadlocked.",
+        "Graph cycle alone is insufficient with many instances per resource — need resource instance count."
+      ],
+      "patterns": [
+        "'Four necessary for deadlock?' -> Mutual exclusion plus hold and wait plus no preemption plus circular wait.",
+        "'Check before granting?' -> Banker's avoidance via safe sequence.",
+        "'Break one condition statically?' -> Prevention (hold-and-wait or circular wait via ordering).",
+        "'Detect plus abort after?' -> Detection plus recovery.",
+        "'5 philosophers each left then right?' -> Deadlock via circular wait; ordering fix breaks it."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every AXIS paper — deadlock plus Banker, guaranteed",
+          "question": "Which condition or which handling fixes it or is this state safe via Banker's or which philosophers fix works?",
+          "approach": "Four plus break-one is prevention, Banker safe if a completion sequence exists, diamond vs chain plus N-1 for dining."
+        },
+        {
+          "source": "Gate / placement — graph cycle vs instances",
+          "question": "Does this allocation graph imply deadlock with many instances?",
+          "approach": "Single type cycle implies deadlock; multi-instance cycle warning not proof."
+        }
+      ],
+      "companyNote": "Deadlock plus Banker's safe plus dining prevention appears as a 2-item set."
+    },
+    {
+      "id": "memory",
+      "title": "Memory Management: Contiguous vs Paging vs Segmentation plus Replacement",
+      "type": "concept",
+      "quickSummary": "Memory is scarce and fragmented. Contiguous needs one block and fragments externally; paging splits into equal frames and pages plus TLB plus replacement (FIFO/LRU/Optimal/Clock); segmentation splits by logical chunks with sharing. Virtual memory plus demand paging loads pages on fault; thrashing is excess paging; copy-on-write shares then splits.",
+      "content": [
+        "Contiguous allocation places each process in one continuous block. First-fit picks the first hole that fits, best-fit the smallest fitting, worst-fit the largest. External fragmentation leaves many small holes none big enough; compaction defragments by moving blocks but is expensive. Internal fragmentation is waste inside an allocated block or page/segment due to rounding up.",
+        "Paging solves external fragmentation by splitting physical memory into equal frames and virtual memory into equal pages, with a page table mapping virtual page number to frame plus offset. The TLB caches recent translations; a TLB hit avoids a page table walk. Caching TLB is like DNS cache but for addresses. Demand paging loads a page only on a page fault (trap when needed) plus replacement picks a victim when no free frame exists.",
+        "Replacement policies decide the victim. FIFO evicts the oldest loaded (simple but Belady anomaly can occur where more frames increase faults). LRU evicts the least recently used (good locality, needs tracking, stack-friendly). Optimal (OPT or Belady ideal) evicts the page whose next use is farthest in the future (unreal but the lower bound against which LRU is measured). Clock (second-chance) approximates LRU with one reference bit plus a circular hand. The exam draws the reference string and asks for fault count per policy — fault count is the metric of choice.",
+        "Segmentation splits by logical units (code, data, stack) that are variable sized and sharable: libraries map the same segment into many address spaces, which paging alone can simulate with shared frames but segmentation supports naturally. Paged segmentation (segment plus pages) and huge pages plus TLB size vs page fragmentation trade off. Pages fix external fragmentation but have internal waste per page (average half a page per segment).",
+        "Virtual memory plus thrashing: when the working set does not fit, the OS faults constantly while making no forward progress — thrashing. Fixes: swap more jobs out, buy frames, or use working-set or Page-Fault-Frequency based admission. Copy-on-write after fork plus shared libraries are features that avoid copying bytes until writes diverge."
+      ],
+      "subsections": [
+        {
+          "title": "Fault count comparison in one glance",
+          "content": "FIFO is oldest. LRU is least recently used. Optimal is farthest future. Clock is hand with reference bits approximating LRU. For the canonical string 7,0,1,2,0,3,0,4 plus 3 frames, faults are FIFO 7, LRU 6, Optimal 5 — that hierarchy holds for that string and often resembles real ordering even if not universal."
+        },
+        {
+          "title": "External vs internal in 10 seconds",
+          "content": "External many small holes between blocks — compaction fixes but paging removes the need. Internal waste inside the last page or segment due to rounding even though external has gone. AXIS often writes many small holes vs waste inside a page and expects external vs internal respectively."
+        }
+      ],
+      "quickRevision": [
+        "Contiguous one block: first/best/worst fit plus external many small holes fixed by compaction, internal waste inside block.",
+        "Paging frames equals pages, page table via VPN to frame plus offset, TLB caches translations, demand paging on fault.",
+        "Victim policies: FIFO oldest (Belady), LRU least recent, Optimal farthest ideal, Clock hand second-chance.",
+        "Segmentation logical variable chunks sharable; paged helps both benefits; internal half-page average still.",
+        "Virtual memory thrashes when working set overcommits — fix swap out or add frames; copy-on-write shares then splits after fork."
+      ],
+      "tricks": [
+        "Any answer that says Belady can happen under LRU is wrong — Belady disproves stack property; LRU is stack and thus Belady-free, FIFO is not.",
+        "Do not attach trunk to external fragmentation still present under paging — paging removes external, keeps internal.",
+        "Demand paging on TLB hit does not fault — hit avoids table walk, misses need table then perhaps fault."
+      ],
+      "patterns": [
+        "'One block per process many holes?' -> Contiguous external. 'Waste inside page?' -> Internal.",
+        "'VPN to frame plus offset via table plus TLB plus fault?' -> Paging.",
+        "'Oldest vs least recent vs farthest future?' -> FIFO vs LRU vs Optimal.",
+        "'Logical variable sharable chunks?' -> Segmentation.",
+        "'Fits never exceeds frames -> thrashing?' -> Page-fault storm."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — paging plus replacement, every year",
+          "question": "Page faults for FIFO vs LRU vs Optimal vs Clock on this reference string?",
+          "approach": "Simulate: FIFO queue age, LRU stack recency, Optimal scan future, Clock hand bits approximation."
+        },
+        {
+          "source": "TCS / Wipro — fragmentation plus compaction",
+          "question": "External vs internal vs compaction vs demand paging vs thrashing?",
+          "approach": "External many small holes compaction fixes, internal rounding waste inside, demand faults on need, thrashing swamps progress."
+        }
+      ],
+      "companyNote": "Paging faults plus fragmentation plus demand paging appear as a 2-item set."
+    },
+    {
+      "id": "exam-os",
+      "title": "Exam OS Synthesis: process vs scheduling vs deadlock vs memory plus IPC",
+      "type": "concept",
+      "quickSummary": "Life cycle decides heavy vs light plus states; scheduling picks policy plus metrics plus starvation; deadlock four plus handling via prevention vs avoidance vs detection; memory paging vs segmentation plus victim faults; IPC and sync via pipes plus shared memory plus mutex plus semaphore plus monitor stitch them.",
+      "content": [
+        "State plus creation row: new->ready->running->waiting->terminated, suspend variants; process heavy fork vs thread light; user vs kernel thread many-to-one vs one-to-one; PCB vs TCB contents; concurrent vs parallel. The exam often mixes this with memory — do not let the mix distract from the heavy vs light split.",
+        "Scheduling row: FCFS arrival order nonpreemptive with convoy, SJF shortest nonpreemptive optimal for average wait, SRTF preemptive twin, Priority via ranking plus aging, RR quantum for interactive, multilevel foreground vs background. Metrics turnaround minus arrival, waiting minus burst, response first start minus arrival, plus utilization plus throughput plus fairness. Gantt ticking is the calculation skill.",
+        "Deadlock plus sync row: four necessary plus prevention break-one vs avoidance Banker's safe vs detection cycle vs ostrich; allocation graph cycle plus single-instance proof; dining philosophers circular wait fix via ordering or N-1; synchronization of access to shared data uses locks: mutex for critical section, semaphore for counting, monitor plus condition for encapsulated wait, spin versus sleep trade-offs.",
+        "Memory row: contiguous first/best/worst plus external vs compaction; paging fixed split plus TLB plus fault plus replacement FIFO/LRU/Optimal/Clock; segmentation variable sharable; virtual plus thrashing via working set; copy-on-write. The exam loves Belady as the gotcha that only FIFO among the trio exhibits.",
+        "IPC stitching: pipes anonymous plus named FIFO for streaming bytes between processes plus message queues plus shared memory for bulk via mapping plus signals. Threads of one process communicate via shared memory with synchronization instead. AXIS writes IPC type questions as pipes vs shared memory — streaming vs shared mapping is the discriminant."
+      ],
+      "subsections": [
+        {
+          "title": "One-pass elimination for mixed OS items",
+          "content": "Item lists four statements mixing PCB vs scheduling vs deadlock vs paging. If the stem says drop vs alert, ignore for OS scheduling but check active vs passive vocabulary does not leak from networking — keep OS row: hold-and-wait vs hold plus wait naming is exact, polling vs quantum vs sharing belongs to scheduling, not security."
+        },
+        {
+          "title": "When both isolation plus scheduling matter together",
+          "content": "A pipeline of parallel threads on a multi-core guest VM scheduled both by the guest kernel and the host hypervisor is two-level scheduling. Guest chooses which thread of its process runs, host chooses which vCPU of which VM runs. Layering doubles but each layer still uses FCFS vs SJF vs RR style policies."
+        }
+      ],
+      "quickRevision": [
+        "Heavy fork plus exec plus PCB vs light thread plus TCB plus sharing; five-state plus suspend; user vs kernel many-to-one vs one-to-one; concurrent vs parallel.",
+        "FCFS arrival, SJF shortest nonpreemptive optimal, SRTF preemptive twin, Priority ranking plus aging, RR quantum with Gantt tick, turnaround minus arrival etc.",
+        "Deadlock four plus handling break-one vs Banker safe vs detection plus graph cycle, dining N-1 or ordering fixes.",
+        "Memory contiguous vs paging frames plus TLB plus faults FIFO/LRU/Optimal/Clock vs segmentation vs virtual thrashing plus copy-on-write plus internal vs external fragmentation.",
+        "IPC pipes vs shared memory vs signals plus sync via mutex vs semaphore vs monitor."
+      ],
+      "tricks": [
+        "Any answer that mixes hold and wait wording is sensitive — hold and wait is one of the four: keeping one while requesting another.",
+        "Do not attach Belady to LRU — LRU is stack and thus Belady-free; only FIFO among FIFO/LRU/Optimal invites Belady.",
+        "External fragmentation is not a paging problem — paging removes external; contiguity removal is the paging win."
+      ],
+      "patterns": [
+        "'Heavy with own address space vs light sharing?' -> Process vs thread.",
+        "'FCFS vs SJF vs Priority vs RR?' -> Arrival order vs shortest optimal vs ranking plus aging vs quantum.",
+        "'Four for deadlock plus handling?' -> Four necessary plus break-one vs Banker vs detection plus dining N-1 or ordering.",
+        "'Oldest vs least recent vs farthest?' -> FIFO vs LRU vs Optimal.",
+        "'Streaming bytes between processes?' -> Pipe vs shared memory mapping."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS synthesis — mixed OS 4-5 item match-the-column",
+          "question": "Given five stems each touching a different OS row, match each correctly?",
+          "approach": "One pass: heavy vs light plus states for process; arrival vs shortest vs ranking plus aging vs quantum for scheduling; four plus handling for deadlock; paging vs segment plus victim faults for memory plus pipes vs shm for IPC."
+        },
+        {
+          "source": "Gate / placement — Gantt plus faults plus Banker",
+          "question": "Average turnaround plus page faults under LRU plus Banker safe — compute three?",
+          "approach": "Gantt per policy plus simulate FIFO/LRU, then Banker safety test for deadlock avoidance."
+        }
+      ],
+      "companyNote": "Synthesis tables appear as a 4-5 item match-the-column question mixing all families."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "process-thread",
+      "title": "Process vs Thread split with States and PCB vs TCB",
+      "formula": {
+        "latex": "Process=program+addr\\;space+files+threads\\;heavy\\;PCB \\;|\\; Thread=sched\\;inside\\;sharing+stack\\;TCB \\;|\\; new\\to ready\\to running\\to waiting\\to term",
+        "text": "Process program+addr space+files+threads heavy PCB | Thread sched inside sharing+stack TCB | new to ready to running to waiting to term"
+      },
+      "whenToUse": "Any process vs thread vs PCB vs state vs concurrent vs user vs kernel MCQ.",
+      "explanation": [
+        "Process is a running program with its own virtual address space plus files plus one or more threads via heavy fork plus exec, tracked in a PCB.",
+        "Thread is the CPU-schedulable unit inside a process sharing code plus data plus heap plus files, with own PC plus stack plus registers in a TCB.",
+        "States: new pending admission, ready waiting for CPU, running on CPU, waiting/blocked awaiting I/O or lock, terminated done, plus suspend ready/waiting swapped to disk.",
+        "Concurrent interleaved on one core vs parallel simultaneous on many; threads exploit both when OS spreads them.",
+        "User threads many-to-one via library vs kernel one-to-one via OS vs many-to-many mix; modern JVM one-to-one is AXIS expectation."
+      ],
+      "example": {
+        "prompt": "Thread vs process memory and creation: which shares which and which is faster to create?",
+        "steps": [
+          "Threads of one process share its heap plus code plus data plus files; only stacks plus registers are separate.",
+          "Process creation duplicates address space and file table via fork plus exec; thread only needs stack plus TCB.",
+          "Thread creation is lighter and faster than process creation."
+        ],
+        "answer": "Threads share process heap/code/data/files plus own stack; process heavy vs thread light"
+      },
+      "memoryTip": "Heavy House Process with Land, Light Thread lives inside. PCB Pink Card for Process, TCB Tiny Card for Thread. New Ready Runners Wait Terminate.",
+      "commonMistake": "Threads have separate address spaces — they share the process address space; processes are the isolated units."
+    },
+    {
+      "id": "scheduling",
+      "title": "Scheduling Policies and Metrics",
+      "formula": {
+        "latex": "FCFS\\;arrival \\;|\\; SJF\\;shortest\\;nonpreempt\\;opt \\;|\\; SRTF\\;preempt\\;shortest \\;|\\; Priority\\;rank+aging \\;|\\; RR\\;quantum \\;|\\; Turnaround=finish-arrival,\\;Waiting=turnaround-burst",
+        "text": "FCFS arrival | SJF shortest nonpreempt opt | SRTF preempt shortest | Priority rank+aging | RR quantum | Turnaround finish-arrival Waiting turnaround-burst"
+      },
+      "whenToUse": "Any FCFS vs SJF vs SRTF vs Priority vs RR vs convoy vs aging vs Gantt average MCQ.",
+      "explanation": [
+        "FCFS arrival order nonpreemptive simple starvation-free with convoy bad average waiting when one long at head.",
+        "SJF shortest among ready nonpreemptive is provably optimal for minimum average waiting; SRTF is its preemptive twin that preempts on shorter arrival; both need estimates and starve long without aging.",
+        "Priority picks highest priority via ranking, needs aging to raise waiting priority and avoid starvation; preemptive priority preempts on higher arrival.",
+        "Round-Robin time quantum cycles, small Q favours response and fairness but many switches, large Q approaches FCFS; multilevel splits foreground vs background with feedback.",
+        "Metrics: turnaround = finish - arrival, waiting = turnaround - burst, response = first start - arrival; Gantt plus those averages is the calculation skill."
+      ],
+      "example": {
+        "prompt": "Three jobs bursts 8, 4, 2 arrive together at 0. Average waiting under FCFS order 8 then 4 then 2 vs SJF order 2 then 4 then 8?",
+        "steps": [
+          "FCFS Gantt: 0-8 first, 8-12 second, 12-14 third; waits are 0, 8, 12 so average (0+8+12)/3 = 6.66.",
+          "SJF order 2 then 4 then 8: Gantt 0-2, 2-6, 6-14; waits 0, 2, 6 average (0+2+6)/3 = 2.66.",
+          "SJF lower average waiting — optimality among nonpreemptive."
+        ],
+        "answer": "FCFS average ~6.7, SJF average ~2.7, SJF better (optimal) under same set"
+      },
+      "memoryTip": "FCFS First, SJF Shortest, SRTF Remains shortest, Priority ranked plus Aging, Round-Robin Repeats with Quantum. SJF is Star for minimum average wait.",
+      "commonMistake": "FCFS optimal for average waiting — SJF holds that crown among nonpreemptive."
+    },
+    {
+      "id": "deadlocks",
+      "title": "Deadlock Four plus Graph plus Handling",
+      "formula": {
+        "latex": "Four:\\;ME+HoldWait+NoPrempt+CircWait \\;|\\; Prevention\\;break\\;one \\;|\\; Avoidance\\;Banker\\;safe \\;|\\; Detection\\;cycle \\;|\\; Dining\\;N-1\\;or\\;ordering",
+        "text": "Four ME HoldWait NoPrempt CircWait | Prevention break one | Avoidance Banker safe | Detection cycle | Dining N-1 or ordering"
+      },
+      "whenToUse": "Any deadlock condition or graph or prevention vs avoidance vs detection or dining MCQ.",
+      "explanation": [
+        "Deadlock is wait cycle plus four necessary: mutual exclusion holder one at a time, hold and wait keeps own waits for another, no preemption cannot forcibly take, circular wait chains and circles.",
+        "Prevention breaks one statically: no hold-and-wait via all-or-nothing, preemption allowed, circular wait via total order on resources.",
+        "Avoidance via Banker's declares max per type plus available, grants only if a safe completion sequence exists after grant; unsafe denied not yet deadlocked.",
+        "Resource graph cycle indicates deadlock when single instance per resource type; multi-instance cycle warning not proof.",
+        "Dining philosophers N pick left deadlock; break circular by global ordering or limit to N-1 eaters or asymmetry."
+      ],
+      "example": {
+        "prompt": "Two processes each hold one resource and want the other's — which deadlock condition and fix handles this?",
+        "steps": [
+          "Holds one waits for other is hold and wait plus mutual exclusion plus no preemption plus circle P1->P2->P1.",
+          "All four necessary are present and graph has a cycle so deadlock with single instances.",
+          "Break circular via ordered requests or allow preemption, or use avoidance Banker to deny the second wait."
+        ],
+        "answer": "Hold and wait plus circular wait; break by ordering or preemption or Banker avoidance"
+      },
+      "memoryTip": "ME Hold NoPre Circ is four. Prevention Prevents broken one, Avoidance Asks Banker safe, Detection Finds cycle, Dining Dines with ordering.",
+      "commonMistake": "Unsafe already deadlocked — unsafe may still run but could deadlock under worst-case max; avoidance denies unsafe, not only deadlocked."
+    },
+    {
+      "id": "memory",
+      "title": "Memory: Contiguous vs Paging vs Segmentation plus Replacement",
+      "formula": {
+        "latex": "Contig\\;one\\;block\\;extern\\;vs\\;internal \\;|\\; Paging\\;frames+pages+TLB+fault \\;|\\; FIFO/LRU/Opt/Clock \\;|\\; Seg\\;logical\\;sharable",
+        "text": "Contig one block extern vs internal | Paging frames+pages+TLB+fault | FIFO/LRU/Opt/Clock | Seg logical sharable"
+      },
+      "whenToUse": "Any fragmentation vs paging vs TLB vs replacement vs segmentation vs thrashing MCQ.",
+      "explanation": [
+        "Contiguous one block per process via first/best/worst fit suffers external many small holes fixed by compaction and has internal waste inside last unit.",
+        "Paging splits physical into frames and virtual into pages, page table via VPN to frame plus offset, TLB caches translations, demand paging faults on need, replacement picks victim.",
+        "FIFO oldest, LRU least recent (stack, Belady-free), Optimal farthest future ideal, Clock hand second-chance approximation.",
+        "Segmentation logical variable sharable plus paged segmentation combines both plus huge pages vs TLB vs internal trade.",
+        "Virtual memory thrashes when working set overcommits — swap out or add frames; copy-on-write shares then splits after fork."
+      ],
+      "example": {
+        "prompt": "Reference string 7,0,1,2,0,3,0,4 with 3 frames faults under FIFO vs LRU vs Optimal?",
+        "steps": [
+          "FIFO oldest queue age simulation yields 7 faults on that string with 3 frames.",
+          "LRU stack recency yields 6 faults.",
+          "Optimal farthest future yields 5 ideal lower bound."
+        ],
+        "answer": "FIFO 7, LRU 6, Optimal 5 — Optimal best ideal, LRU better than FIFO, only FIFO can show Belady"
+      },
+      "memoryTip": "Contiguous Chunk with Crops: Compaction, Paging Plates with TLB Tray, Victims First Oldest then Recent then Farthest, Clock Circles.",
+      "commonMistake": "Paging external still present — paging removes external via frames; Belady tied to LRU — Belady is FIFO among the trio."
+    }
+  ],
+  "practiceProblems": {
+    "process-thread": [
+      {"q": "Running program with its own address space plus files plus methods owning at least one schedulable unit is a:", "opts": ["Process", "Thread", "Cache", "Bus"], "c": 0, "s": ["Process instance of program in execution with address space and PCB."], "a": "Process"},
+      {"q": "Schedulable CPU inside a process sharing the process heap plus files plus data is a:", "opts": ["Process", "Thread", "Cache", "Bus"], "c": 1, "s": ["Thread shares heap plus code plus files with own stack plus registers and TCB."], "a": "Thread"},
+      {"q": "Heavy creation via fork plus exec vs light creation plus many per process maps to:", "opts": ["Process heavy vs thread light", "Thread heavy vs process light", "Both heavy", "Both light"], "c": 0, "s": ["Process duplicates address space and files; thread shares."], "a": "Process heavy vs thread light"},
+      {"q": "Interleaved on one core vs truly simultaneous on many cores is:", "opts": ["Parallel vs concurrent", "Concurrent vs parallel", "Both parallel", "Both concurrent"], "c": 1, "s": ["Concurrent interleaved, parallel simultaneous on multi-core."], "a": "Concurrent vs parallel"},
+      {"q": "States correct order is:", "opts": ["Terminated -> Running -> Ready", "New -> Ready -> Running -> Waiting/Blocked -> Terminated", "Ready -> New -> Running", "Blocked -> New only"], "c": 1, "s": ["Classic five-state plus suspend variants."], "a": "New -> Ready -> Running -> Waiting/Blocked -> Terminated"},
+      {"q": "Block holding a trace that keeps heap but own stack is stored in:", "opts": ["PCB only", "TCB per thread", "Page table only", "TLB only"], "c": 1, "s": ["Thread Control Block per-thread registers plus stack. PCB process-wide."], "a": "TCB per thread"},
+      {"q": "Process Control Block PCB holds:", "opts": ["Only PC", "PID plus parent plus address space plus open files plus priority plus accounting plus thread list", "Only TLB", "Only buffer"], "c": 1, "s": ["Process-wide state in PCB."], "a": "PID plus parent plus address space plus open files plus priority plus accounting plus thread list"},
+      {"q": "Modern JVM Java threads map as:", "opts": ["Many-to-one via library only", "One-to-one each user maps to kernel thread", "No mapping", "Only many-to-many"], "c": 1, "s": ["Linux NPTL one-to-one is common; modern JVM supports that."], "a": "One-to-one each user maps to kernel thread"},
+      {"q": "Many user threads to one kernel thread maps as:", "opts": ["One-to-one", "Many-to-one", "Many-to-many", "Only paging"], "c": 1, "s": ["Many-to-one maps many user to one kernel — poor parallelism."], "a": "Many-to-one"},
+      {"q": "Two threads of one process each need 1 MB stack plus shared heap 10 MB — overhead vs separate processes with same heap duplicated:", "opts": ["Threads need own 10 MB copies", "Threads share 10 MB plus each needs own stack vs processes duplicate heap", "Both duplicate heap", "Threads share stack too"], "c": 1, "s": ["Threads share heap plus code plus files; only stacks plus registers separate."], "a": "Threads share 10 MB plus each needs own stack vs processes duplicate heap"}
+    ],
+    "scheduling": [
+      {"q": "Pick who runs by arrival order nonpreemptively — policy is:", "opts": ["FCFS", "SJF", "Priority", "RR"], "c": 0, "s": ["First-Come First-Served by arrival order."], "a": "FCFS"},
+      {"q": "Pick shortest among ready nonpreemptively optimal for average waiting is:", "opts": ["FCFS", "SJF", "Round-Robin", "Random"], "c": 1, "s": ["Shortest Job First optimal among nonpreemptive for average wait."], "a": "SJF"},
+      {"q": "Preemptive twin of SJF is:", "opts": ["RR", "SRTF (Shortest Remaining Time First)", "FCFS", "Multilevel without preemption"], "c": 1, "s": ["SRTF preempts on shorter arrival."], "a": "SRTF (Shortest Remaining Time First)"},
+      {"q": "Pick by externally ranked priority via ranking plus aging to avoid starvation is:", "opts": ["FCFS", "SJF", "Priority plus aging", "FIFO only"], "c": 2, "s": ["Priority plus aging raises waiting priority."], "a": "Priority plus aging"},
+      {"q": "Time-quantum round-robin cycle — policy is:", "opts": ["SJF", "FCFS", "Round-Robin", "No preemption"], "c": 2, "s": ["Round-Robin fair for interactive via quantum cycles."], "a": "Round-Robin"},
+      {"q": "Convoy where one long at head holds many short behind kills average wait under:", "opts": ["SJF", "FCFS", "RR with small quantum", "Priority"], "c": 1, "s": ["Head-of-line long blocks the line. SJF would avoid it."], "a": "FCFS"},
+      {"q": "Aging slowly raises priority of waiting jobs over time — fixes starvation under:", "opts": ["FCFS convoy", "Priority", "No policy", "Only SJF"], "c": 1, "s": ["Priority starvation fixed by aging."], "a": "Priority"},
+      {"q": "Large quantum approaches which policy?", "opts": ["SJF", "FCFS", "Priority", "No relation"], "c": 1, "s": ["Large Q approaches FCFS; small Q many switches."], "a": "FCFS"},
+      {"q": "Multilevel queues split:", "opts": ["Only one queue", "Foreground interactive RR-like vs background batch FCFS-like with feedback", "Only SJF", "Only RR"], "c": 1, "s": ["Foreground vs background plus feedback that demotes misbehaving jobs."], "a": "Foreground interactive RR-like vs background batch FCFS-like with feedback"},
+      {"q": "Turnaround for a process is:", "opts": ["burst only", "finish - arrival", "arrival - finish", "priority only"], "c": 1, "s": ["Finish minus arrival includes waiting plus running."], "a": "finish - arrival"}
+    ],
+    "deadlocks": [
+      {"q": "Deadlock necessary four includes:", "opts": ["Mutual exclusion, hold and wait, no preemption, circular wait", "Only mutual exclusion", "Only hold and wait plus no preemption", "Only circular wait"], "c": 0, "s": ["All four necessary for deadlock; four together do not guarantee."] , "a": "Mutual exclusion, hold and wait, no preemption, circular wait"},
+      {"q": "Break hold-and-wait via:", "opts": ["Ordered resources", "All-or-nothing request", "Aging", "Quantum"], "c": 1, "s": ["Request all at once or release all when waiting."], "a": "All-or-nothing request"},
+      {"q": "Break circular wait via:", "opts": ["Many threads", "Total order on resources and always request in numeric order", "Large quantum", "Small quantum"], "c": 1, "s": ["Ordered requests break the circle."], "a": "Total order on resources and always request in numeric order"},
+      {"q": "Avoidance via Banker's grants only if:", "opts": ["Graph has a cycle", "State remains safe with a completion sequence under max needs", "No cycle at all", "Hold and wait broken"], "c": 1, "s": ["Safe sequence exists to finish every process."], "a": "State remains safe with a completion sequence under max needs"},
+      {"q": "Graph cycle means deadlock when single instance per type — statement is:", "opts": ["False", "True", "Always false with multi-instance also", "Only for no cycle"], "c": 1, "s": ["Single type cycle implies deadlock; multi-instance warning not proof."], "a": "True"},
+      {"q": "Graph cycle with many instances per resource type is:", "opts": ["Guaranteed deadlock", "Warning not proof", "No warning", "Only for no hold"], "c": 1, "s": ["Many instances may still satisfy waiting without a true deadlock."], "a": "Warning not proof"},
+      {"q": "Ostrich is:", "opts": ["Prevention", "Avoidance", "Ignore because deadlocks rare for cost", "Detection plus recovery always"], "c": 2, "s": ["Let deadlocks be rare vs recovery cost; many general OSes take this."], "a": "Ignore because deadlocks rare for cost"},
+      {"q": "Dining philosophers with 5 forks each picks left first deadlock plus fix is:", "opts": ["No deadlock", "Deadlock via circular wait; fix via ordered pick or N-1 limit or asymmetry", "Only aging fixes", "Only RR fixes"], "c": 1, "s": ["Each grabs left and waits for right is circular; ordering breaks it."], "a": "Deadlock via circular wait; fix via ordered pick or N-1 limit or asymmetry"},
+      {"q": "Safe means:", "opts": ["Already deadlocked", "A completion sequence exists under max needs", "No process holds any", "All resources free"], "c": 1, "s": ["Safe is existence of sequence to finish every process."], "a": "A completion sequence exists under max needs"},
+      {"q": "Prevention vs avoidance vs detection speed rule is:", "opts": ["Same", "Prevention breaks one statically vs avoidance checks safe before grant vs detection allows then cycles", "Only detection", "Only prevention"], "c": 1, "s": ["Break one vs safe check vs allow then find."], "a": "Prevention breaks one statically vs avoidance checks safe before grant vs detection allows then cycles"}
+    ],
+    "memory": [
+      {"q": "One block per process with first/best/worst fit plus many small holes is:", "opts": ["Paging", "Contiguous allocation", "Segmentation", "Virtual only"], "c": 1, "s": ["Contiguous one block plus external fragmentation and companion compaction."], "a": "Contiguous allocation"},
+      {"q": "Many small holes none big enough between blocks is:", "opts": ["Internal", "External fragmentation", "No fragmentation", "Only in paging"], "c": 1, "s": ["External between blocks; compaction fixes but paging removes need."], "a": "External fragmentation"},
+      {"q": "Waste inside the last page due to rounding is:", "opts": ["External", "Internal fragmentation", "No waste", "Only in contiguous"], "c": 1, "s": ["Internal inside block or page."], "a": "Internal fragmentation"},
+      {"q": "Physical memory into equal frames and virtual into equal pages with table VPN to frame plus offset is:", "opts": ["Contiguous", "Paging", "Segmentation", "Only TLB"], "c": 1, "s": ["Fixed split plus TLB cache plus fault on demand."], "a": "Paging"},
+      {"q": "Cache of recent page translations is the:", "opts": ["TLB", "Page table itself", "Cache of files only", "Buffer only"], "c": 0, "s": ["Translation Lookaside Buffer caches VP to frame mappings."], "a": "TLB"},
+      {"q": "Load page only on fault trap when needed is:", "opts": ["Contiguous", "Demand paging", "Compaction", "Segmentation only"], "c": 1, "s": ["Demand paging loads on page fault."], "a": "Demand paging"},
+      {"q": "Victim oldest loaded is:", "opts": ["LRU", "FIFO", "Optimal", "Clock"], "c": 1, "s": ["First in first out — can show Belady."], "a": "FIFO"},
+      {"q": "Victim least recently used is:", "opts": ["FIFO", "LRU", "Optimal", "Clock hand only"], "c": 1, "s": ["LRU locality, stack-friendly Belady-free."], "a": "LRU"},
+      {"q": "Victim farthest future use is:", "opts": ["FIFO", "LRU", "Optimal (Belady ideal)", "Clock"], "c": 2, "s": ["Ideal unreachable lower bound."], "a": "Optimal (Belady ideal)"},
+      {"q": "Working set overcommits and OS faults constantly while making no forward progress is:", "opts": ["Compaction", "Thrashing", "Optimal", "Paging only without thrashing"], "c": 1, "s": ["Page-fault storm; fix swap out or add frames."], "a": "Thrashing"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Running program with its own address space plus files plus one or more threads via heavy creation is a:", "opts": ["Process", "Thread", "Cache", "Bus"], "c": 0, "d": "easy", "t": "Process vs Thread", "exp": ["Process heavy with address space and PCB."]},
+    {"id": 2, "q": "Schedulable CPU inside a process sharing the heap plus files but own stack is a:", "opts": ["Process", "Thread", "Cache", "Bus"], "c": 1, "d": "easy", "t": "Process vs Thread", "exp": ["Thread shares heap plus code plus files with own stack."]},
+    {"id": 3, "q": "Heavy via fork plus exec vs light many per process maps to:", "opts": ["Process heavy vs thread light", "Thread heavy vs process light", "Both heavy", "Both light"], "c": 0, "d": "easy", "t": "Process vs Thread", "exp": ["Process duplicates; thread shares."]},
+    {"id": 4, "q": "Interleaved on one core vs truly simultaneous on many cores is:", "opts": ["Parallel vs concurrent", "Concurrent vs parallel", "Both parallel", "Both concurrent"], "c": 1, "d": "easy", "t": "Process vs Thread", "exp": ["Concurrent interleaved, parallel simultaneous."]},
+    {"id": 5, "q": "States correct order is:", "opts": ["Terminated then Running", "New then Ready then Running then Waiting/Blocked then Terminated", "Ready then New then Running", "Blocked then New only"], "c": 1, "d": "easy", "t": "Process vs Thread", "exp": ["Classic five-state plus suspend."]},
+    {"id": 6, "q": "Per-thread execution state plus registers plus stack is stored in:", "opts": ["PCB only", "TCB per thread", "Page table only", "TLB only"], "c": 1, "d": "medium", "t": "Process vs Thread", "exp": ["TCB per-thread. PCB process-wide."]},
+    {"id": 7, "q": "PCB holds:", "opts": ["Only PC", "PID plus parent plus address space plus open files plus priority plus accounting plus thread list", "Only TLB", "Only buffer"], "c": 1, "d": "medium", "t": "Process vs Thread", "exp": ["Process-wide state in PCB."]},
+    {"id": 8, "q": "Modern JVM Java threads map as:", "opts": ["Many-to-one via library only", "One-to-one each user maps to kernel thread", "No mapping", "Only many-to-many"], "c": 1, "d": "medium", "t": "Process vs Thread", "exp": ["Linux NPTL one-to-one common."]},
+    {"id": 9, "q": "Many user threads to one kernel thread maps as:", "opts": ["One-to-one", "Many-to-one", "Many-to-many", "Only paging"], "c": 1, "d": "medium", "t": "Process vs Thread", "exp": ["Many-to-one."]},
+    {"id": 10, "q": "Two threads of one process each need 1 MB stack plus shared heap 10 MB vs separate processes with same heap duplicated", "opts": ["Threads need own 10 MB copies", "Threads share 10 MB plus each needs own stack vs processes duplicate heap", "Both duplicate heap", "Threads share stack too"], "c": 1, "d": "medium", "t": "Process vs Thread", "exp": ["Threads share heap."]},
+    {"id": 11, "q": "Pick who runs by arrival order nonpreemptively — policy is:", "opts": ["FCFS", "SJF", "Priority", "RR"], "c": 0, "d": "easy", "t": "Scheduling", "exp": ["First-Come First-Served."]},
+    {"id": 12, "q": "Pick shortest among ready nonpreemptively optimal for average waiting is:", "opts": ["FCFS", "SJF", "Round-Robin", "Random"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["Shortest Job First optimal among nonpreemptive."]},
+    {"id": 13, "q": "Preemptive twin of SJF is:", "opts": ["RR", "SRTF (Shortest Remaining Time First)", "FCFS", "Multilevel without preemption"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["SRTF preempts on shorter arrival."]},
+    {"id": 14, "q": "Pick by externally ranked priority via ranking plus aging to avoid starvation is:", "opts": ["FCFS", "SJF", "Priority plus aging", "FIFO only"], "c": 2, "d": "medium", "t": "Scheduling", "exp": ["Priority plus aging."]},
+    {"id": 15, "q": "Time-quantum round-robin cycle — policy is:", "opts": ["SJF", "FCFS", "Round-Robin", "No preemption"], "c": 2, "d": "easy", "t": "Scheduling", "exp": ["Round-Robin fair for interactive."]},
+    {"id": 16, "q": "Convoy where one long at head holds many short behind kills average wait under:", "opts": ["SJF", "FCFS", "RR with small quantum", "Priority"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["Head-of-line long blocks."]},
+    {"id": 17, "q": "Aging slowly raises priority of waiting jobs — fixes starvation under:", "opts": ["FCFS convoy", "Priority", "No policy", "Only SJF"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["Priority starvation fixed by aging."]},
+    {"id": 18, "q": "Large quantum approaches which policy?", "opts": ["SJF", "FCFS", "Priority", "No relation"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["Large Q towards FCFS."]},
+    {"id": 19, "q": "Multilevel queues split:", "opts": ["Only one queue", "Foreground interactive RR-like vs background batch FCFS-like with feedback", "Only SJF", "Only RR"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["Foreground vs background plus feedback."]},
+    {"id": 20, "q": "Turnaround for a process is:", "opts": ["burst only", "finish - arrival", "arrival - finish", "priority only"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["Finish minus arrival."]},
+    {"id": 21, "q": "Deadlock necessary four includes:", "opts": ["Mutual exclusion, hold and wait, no preemption, circular wait", "Only mutual exclusion", "Only hold and wait plus no preemption", "Only circular wait"], "c": 0, "d": "easy", "t": "Deadlocks", "exp": ["All four necessary for deadlock."]},
+    {"id": 22, "q": "Break hold-and-wait via:", "opts": ["Ordered resources", "All-or-nothing request", "Aging", "Quantum"], "c": 1, "d": "medium", "t": "Deadlocks", "exp": ["Request all at once or release all when waiting."]},
+    {"id": 23, "q": "Break circular wait via:", "opts": ["Many threads", "Total order on resources and always request in numeric order", "Large quantum", "Small quantum"], "c": 1, "d": "medium", "t": "Deadlocks", "exp": ["Ordered requests break circle."]},
+    {"id": 24, "q": "Avoidance via Banker's grants only if:", "opts": ["Graph has a cycle", "State remains safe with a completion sequence under max needs", "No cycle at all", "Hold and wait broken"], "c": 1, "d": "medium", "t": "Deadlocks", "exp": ["Safe sequence exists."]},
+    {"id": 25, "q": "Graph cycle means deadlock when single instance per type — statement is:", "opts": ["False", "True", "Always false with multi-instance also", "Only for no cycle"], "c": 1, "d": "medium", "t": "Deadlocks", "exp": ["Single type cycle implies deadlock."]},
+    {"id": 26, "q": "Graph cycle with many instances per type is:", "opts": ["Guaranteed deadlock", "Warning not proof", "No warning", "Only for no hold"], "c": 1, "d": "medium", "t": "Deadlocks", "exp": ["Many instances may still satisfy waiting."]},
+    {"id": 27, "q": "Ostrich is:", "opts": ["Prevention", "Avoidance", "Ignore because deadlocks rare for cost", "Detection plus recovery always"], "c": 2, "d": "medium", "t": "Deadlocks", "exp": ["Let deadlocks be rare versus cost."]},
+    {"id": 28, "q": "Dining philosophers with 5 forks each picks left first deadlock plus fix is:", "opts": ["No deadlock", "Deadlock via circular wait; fix via ordered pick or N-1 limit or asymmetry", "Only aging fixes", "Only RR fixes"], "c": 1, "d": "medium", "t": "Deadlocks", "exp": ["Each grabs left and waits for right is circular; ordering breaks it."]},
+    {"id": 29, "q": "Safe means:", "opts": ["Already deadlocked", "A completion sequence exists under max needs", "No process holds any", "All resources free"], "c": 1, "d": "medium", "t": "Deadlocks", "exp": ["Safe is existence of sequence."]},
+    {"id": 30, "q": "Prevention vs avoidance vs detection speed rule is:", "opts": ["Same", "Prevention breaks one statically vs avoidance checks safe before grant vs detection allows then cycles", "Only detection", "Only prevention"], "c": 1, "d": "medium", "t": "Deadlocks", "exp": ["Break one vs safe check vs allow then find."]},
+    {"id": 31, "q": "One block per process with first/best/worst fit plus many small holes is:", "opts": ["Paging", "Contiguous allocation", "Segmentation", "Virtual only"], "c": 1, "d": "easy", "t": "Memory Management", "exp": ["Contiguous one block plus external fragmentation."]},
+    {"id": 32, "q": "Many small holes none big enough between blocks is:", "opts": ["Internal", "External fragmentation", "No fragmentation", "Only in paging"], "c": 1, "d": "medium", "t": "Memory Management", "exp": ["External between blocks."]},
+    {"id": 33, "q": "Waste inside the last page due to rounding is:", "opts": ["External", "Internal fragmentation", "No waste", "Only in contiguous"], "c": 1, "d": "medium", "t": "Memory Management", "exp": ["Internal inside block or page."]},
+    {"id": 34, "q": "Physical into equal frames and virtual into equal pages with table VPN to frame plus offset is:", "opts": ["Contiguous", "Paging", "Segmentation", "Only TLB"], "c": 1, "d": "medium", "t": "Memory Management", "exp": ["Fixed split plus TLB cache plus demand faults."]},
+    {"id": 35, "q": "Cache of recent page translations is the:", "opts": ["TLB", "Page table itself", "Cache of files only", "Buffer only"], "c": 0, "d": "medium", "t": "Memory Management", "exp": ["TLB."]},
+    {"id": 36, "q": "Load page only on fault trap when needed is:", "opts": ["Contiguous", "Demand paging", "Compaction", "Segmentation only"], "c": 1, "d": "medium", "t": "Memory Management", "exp": ["Demand paging."]},
+    {"id": 37, "q": "Victim oldest loaded is:", "opts": ["LRU", "FIFO", "Optimal", "Clock"], "c": 1, "d": "easy", "t": "Memory Management", "exp": ["First in first out — can show Belady."]},
+    {"id": 38, "q": "Victim least recently used is:", "opts": ["FIFO", "LRU", "Optimal", "Clock hand only"], "c": 1, "d": "medium", "t": "Memory Management", "exp": ["LRU locality, stack."]},
+    {"id": 39, "q": "Victim farthest future use is:", "opts": ["FIFO", "LRU", "Optimal (Belady ideal)", "Clock"], "c": 2, "d": "medium", "t": "Memory Management", "exp": ["Ideal."]},
+    {"id": 40, "q": "Working set overcommits and OS faults constantly while making no forward progress is:", "opts": ["Compaction", "Thrashing", "Optimal", "Paging only without thrashing"], "c": 1, "d": "medium", "t": "Memory Management", "exp": ["Page-fault storm: thrashing."]},
+    {"id": 41, "q": "Waiting time for a Round-Robin process with many slices is:", "opts": ["One long head plus running", "Sum of many small waits plus one burst", "Zero", "Only I/O"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["Many small slices vs one long head wait in FCFS."]},
+    {"id": 42, "q": "Average wait: FCFS with bursts 8,4,2 arrive together at 0 — average vs SJF ordering?", "opts": ["FCFS better than SJF", "SJF better: FCFS ~6.7 vs SJF ~2.7", "Same", "Depends on priority only"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["FCFS waits 0,8,12 avg 6.66 vs SJF 0,2,6 avg 2.66 — SRTF preemptive twin would be similar on simultaneous arrival."]},
+    {"id": 43, "q": "SRTF preemptive twin matters over SJF when:", "opts": ["All arrive together", "A new shorter arrives while one runs", "No arrivals after start", "Only when quantum huge"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["Preemption on shorter arrival."]},
+    {"id": 44, "q": "Two-level scheduling on a guest VM: guest chooses thread and host chooses vCPU — layering described is:", "opts": ["No layering", "Guest plus host each with its own policy — each still FCFS vs SJF vs RR style", "Only guest", "Only host"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["Doubled but each layer still uses standard policies."]},
+    {"id": 45, "q": "Resource graph cycle with single instance plus four conditions present means:", "opts": ["No deadlock", "Deadlock", "Warning only", "Only starvation"], "c": 1, "d": "medium", "t": "Deadlocks", "exp": ["Single instance cycle plus four means deadlock."]},
+    {"id": 46, "q": "Unaffected after this topic but examined: pipes vs shared memory for IPC — streaming bytes vs shared mapping discriminant is:", "opts": ["Both streaming", "Pipes streaming between processes vs shared memory mapping bulk via pages", "Both mapping bulk", "Neither"], "c": 1, "d": "medium", "t": "Memory Management", "exp": ["Stream vs bulk mapping with sync."]},
+    {"id": 47, "q": "Belady anomaly — more frames can increase faults — under which policy among FIFO/LRU/Optimal?", "opts": ["LRU", "FIFO (non-stack)", "Optimal", "Both LRU and Optimal"], "c": 1, "d": "medium", "t": "Memory Management", "exp": ["LRU is stack Belady-free; only FIFO among the trio exhibits."]},
+    {"id": 48, "q": "Reference string 7,0,1,2,0,3,0,4 with 3 frames faults under FIFO vs LRU vs Optimal on that string are:", "opts": ["FIFO fewer than LRU always", "FIFO 7, LRU 6, Optimal 5 on that string", "All 7", "Optimal 7"], "c": 1, "d": "medium", "t": "Memory Management", "exp": ["Standard textbook string hierarchy."]},
+    {"id": 49, "q": "Demand paging TLB hit vs page fault vs table walk correct order is:", "opts": ["Always fault", "TLB hit avoids table walk and fault; TLB miss needs table and possibly fault", "Table walk always without TLB", "Never TLB"], "c": 1, "d": "medium", "t": "Memory Management", "exp": ["Hit saves walk; miss needs table then possibly fault."]},
+    {"id": 50, "q": "External many small holes vs internal waste inside last page vs many such holes fixed by:", "opts": ["Paging fixes external via frames; internal remains half page average", "Paging fixes internal only", "No fix", "Only segmentation"], "c": 0, "d": "medium", "t": "Memory Management", "exp": ["Paging removes external."]},
+    {"id": 51, "q": "Copy-on-write after fork plus shared libraries avoid copying bytes until:", "opts": ["Never copied", "Writes diverge", "Reads only", "Boot only"], "c": 1, "d": "medium", "t": "Memory Management", "exp": ["Share then split on write divergence."]},
+    {"id": 52, "q": "Five-state model plus suspend ready vs suspend waiting swapped to:", "opts": ["Cache", "Disk via medium-term scheduler", "TLB", "CPU registers only"], "c": 1, "d": "medium", "t": "Process vs Thread", "exp": ["Medium-term swaps to disk."]},
+    {"id": 53, "q": "Preemptive vs nonpreemptive vs cooperative distinction is:", "opts": ["Same", "Preemptive can preempt running to ready via timer or higher arrival; cooperative/nonpreemptive needs voluntary yield or completion", "Only cooperative", "Only nonpreemptive"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["Timer or arrival preempts vs waits."]},
+    {"id": 54, "q": "Quantum small vs large: small favours:", "opts": ["Throughput only", "Response and fairness at cost of many switches", "Waiting only", "No effect"], "c": 1, "d": "medium", "t": "Scheduling", "exp": ["Small many switches but good response."]},
+    {"id": 55, "q": "Banker needs max need per type upfront for each process — why declare max?", "opts": ["No reason", "To test safety by hypothetical completion under max before granting", "To allocate all immediately", "Only for quantum"], "c": 1, "d": "medium", "t": "Deadlocks", "exp": ["Hypothetical future allocations under max to check safe sequence existence."]},
+    {"id": 56, "q": "Hold and wait is one condition — wording sensitive: a process that keeps its held resource while waiting for another describes:", "opts": ["Mutual exclusion only", "Hold and wait", "No preemption only", "Circular wait only"], "c": 1, "d": "easy", "t": "Deadlocks", "exp": ["Keeping one waits for another."]},
+    {"id": 57, "q": "Mutex vs semaphore vs monitor correct use is:", "opts": ["Mutex for counting many via count", "Mutex critical section for one vs semaphore counting many vs monitor encapsulated wait with condition", "All same", "Only mutex"], "c": 1, "d": "medium", "t": "Deadlocks", "exp": ["Mutex one, semaphore count, monitor encapsulated wait."]},
+    {"id": 58, "q": "Paged segmentation plus huge pages plus TLB size tradeoff is:", "opts": ["No tradeoff", "Large pages bigger TLB coverage but more internal waste vs small pages more TLB entries but less waste", "Only TLB", "Only paging"], "c": 1, "d": "medium", "t": "Memory Management", "exp": ["Huge pages tradeoff."]},
+    {"id": 59, "q": "Starvation vs deadlock distinction is:", "opts": ["Same", "Starvation waits indefinite but some progress elsewhere vs deadlock cycle none progress", "Only deadlock indefinite", "Only starvation circular"], "c": 1, "d": "medium", "t": "Deadlocks", "exp": ["Starvation indefinite wait but system keeps moving; deadlock none of the cycle moves."]},
+    {"id": 60, "q": "Process vs thread shared heap but own stack plus many such threads on one core concurrent vs many cores parallel vs many interleavings describes respectively:", "opts": ["Process vs thread, shared heap stack, concurrent vs parallel", "Process vs thread shared heap plus own stack, concurrent interleaved on one core vs parallel simultaneous on many, plus multithreading scheduling exploits both", "Only process vs thread", "Only concurrent vs parallel"], "c": 1, "d": "medium", "t": "Process vs Thread", "exp": ["Full synthesis that mixes rows from this topic."]}
+  ]
+}

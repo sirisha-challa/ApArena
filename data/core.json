@@ -541,7 +541,8 @@
         "Subqueries & Aggregates"
       ],
       "estimatedHours": 8,
-      "status": null
+      "status": "ready",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "normalization",
@@ -557,7 +558,8 @@
         "Anomalies"
       ],
       "estimatedHours": 5,
-      "status": null
+      "status": "ready",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "os-basics",
@@ -573,7 +575,8 @@
         "Memory Management"
       ],
       "estimatedHours": 6,
-      "status": null
+      "status": "ready",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "javascript",
@@ -589,7 +592,8 @@
         "ES6 Highlights"
       ],
       "estimatedHours": 5,
-      "status": null
+      "status": "ready",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "html-css",
@@ -605,7 +609,8 @@
         "Flex/Grid Basics"
       ],
       "estimatedHours": 5,
-      "status": null
+      "status": "ready",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "data-structures-algo",
@@ -622,7 +627,8 @@
         "Complexity (Big-O)"
       ],
       "estimatedHours": 9,
-      "status": null
+      "status": "ready",
+      "authoredAt": "2026-08-28"
     }
   ],
   "examPattern": {

@@ -1,0 +1,508 @@
+{
+  "id": "normalization",
+  "title": "Normalization (1NF-3NF)",
+  "icon": "NF",
+  "category": "cs-foundations",
+  "color": "#475569",
+  "subtopics": [
+    "Functional Dependency",
+    "1NF, 2NF, 3NF",
+    "BCNF Overview",
+    "Anomalies"
+  ],
+  "estimatedHours": 5,
+  "readingSections": [
+    {
+      "id": "fd",
+      "title": "Functional Dependency: Determinants, Armstrong and Closure",
+      "type": "concept",
+      "quickSummary": "FD X -> Y means equal X implies equal Y in every instance; X is the determinant. Armstrong axioms (reflexivity, augmentation, transitivity) derive all. Closure X+ is all attributes forced by X via FDs.",
+      "content": [
+        "A functional dependency X -> Y says that any two rows with the same X must have the same Y in every valid instance, now and after any insert. Terminology: X is the determinant (left side), Y is the dependent (right side). If studentId determines name (studentId -> name) then a given studentId cannot be tied to two different names. FDs are constraints you declare, not mined from a picture of rows alone — a counterexample proves an FD does not hold but no finite sample proves it must hold.",
+        "Notation and trivia: {A,B} -> C means the pair together determines C, not individually. { } on the left is possible for constant columns. Composite determinants are the focus because single-attribute FDs are trivial to close. The exam writes FDs as A -> B, AB -> C, B -> D and expects you to use Armstrong or direct closure to answer queries.",
+        "Armstrong axioms are sound and complete for FDs. Reflexivity: if Y is subset of X then X -> Y holds trivially. Augmentation: if X -> Y then XZ -> YZ. Transitivity: if X -> Y and Y -> Z then X -> Z. From these derive union (if X -> Y and X -> Z then X -> YZ), decomposition (if X -> YZ then X -> Y and X -> Z), and pseudotransitivity. AXIS rarely asks to name an axiom but the derivation hides behind closure computations.",
+        "Closure X+ is all attributes forced from X by repeated FD application: start with X, look for any FD whose left is subset of current closure and add its right, repeat until done. Closure answers almost every question: does X -> Y hold? Check whether Y is subset of X+. Is X a super key of a relation R with FD set F? Check whether X+ equals all attributes of R.",
+        "Two small facts that reappear. One, trivial FDs are those where Y subset of X — always hold by reflexivity and make dependency checks noisier. Two, extraneous attributes can be struck: an attribute on the left is extraneous if closure without it still reaches the right; an attribute on the right is extraneous if closure of the left without using it still reaches it. Canonical or minimal cover is the FD set with no extraneous and no redundant FDs — the exam loves minimal cover as a trap before candidate key work."
+      ],
+      "subsections": [
+        {
+          "title": "Closure by hand in 30 seconds",
+          "content": "Start with X. Scan FDs left to right; when left is subset of current set add right. Repeat until no new attributes. That set is X+. With FDs A->B, B->C, A->D, closure A+ is {A,B,C,D}. If the stem says is AB a super key of R( A,B,C,D) check whether AB+ is all four."
+        },
+        {
+          "title": "Extraneous and canonical cover intuition",
+          "content": "Extraneous means removing it does not change what is implied. To test a left attribute a in X->Y, compute closure of X minus {a} and see whether Y still there. To test a right attribute, recompute closure of X without using that FD's right attribute. Redundant FDs fall out the same way. Canonical cover is the cleaned set with single attribute on the right and no extras."
+        }
+      ],
+      "quickRevision": [
+        "FD X -> Y: same X implies same Y invariant; X determinant, Y dependent.",
+        "Armstrong: reflexivity trivial subset, augmentation add Z, transitivity chain; union plus decomposition derived.",
+        "Closure X+ repeats: add right when left is subset until done; answers X -> Y if Y subset of X+, and keys if X+ is all attributes.",
+        "Trivial FD Y subset of X; extraneous left test via closure of X without the attribute, right test via closure without using that right.",
+        "Canonical or minimal cover is no extraneous and no redundant plus single on the right — the cleaned FD set."
+      ],
+      "tricks": [
+        "Do not attach minimality to closure alone — closure tests implied attributes; minimality adds the no-extras removal step.",
+        "Any answer that treats a sample table with no counterexamples as proof of an FD is wrong — FD is a declared constraint, not an observed coincidence.",
+        "Left side order does not matter: AB -> C and BA -> C are identical."
+      ],
+      "patterns": [
+        "'Does X -> Y hold under these FDs?' -> Compute X+ and test Y subset of X+.",
+        "'Is X a superkey?' -> Check X+ equals relation attributes.",
+        "'Minimal cover or extraneous check?' -> Remove and re-close without the suspect attribute.",
+        "'Trivial FD?' -> Right subset of left is always trivial via reflexivity."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — FD and closure, every year",
+          "question": "Does this FD hold or find closure or remove extraneous or compute minimal cover?",
+          "approach": "Closure by iteration; then minimality via drop-and-reclose tests."
+        },
+        {
+          "source": "Infosys / TCS — keys plus FD interaction",
+          "question": "Candidate keys of R given this FD set?",
+          "approach": "Search attributes never on right are forced into every candidate; test closures to find minimal supers that cover all."
+        }
+      ],
+      "companyNote": "Closure appears as either a free-standing closure or hidden inside candidate and superkey questions."
+    },
+    {
+      "id": "nf123",
+      "title": "1NF, 2NF and 3NF (with bare minimum on how to fix)",
+      "type": "concept",
+      "quickSummary": "1NF no list or repeating attributes — each cell holds one atomic value. 2NF no partial dependency on a composite key. 3NF no transitive dependency on a non-key. Each step keeps data losslessly and may preserve dependencies differently.",
+      "content": [
+        "1NF (First Normal Form) says every attribute is atomic and there are no repeating groups or lists inside a cell. Student phones as phone1 and phone2 repeating plus hobbies as a list hobbies in one cell both violate. Fix by splitting the many list into a separate table: StudentPhones(studentId, phone) or by unnesting repeated column groups into rows. AXIS writes a table where one cell holds two values and asks whether it is 1NF — answer is no.",
+        "2NF (Second Normal Form) requires 1NF plus no partial dependency on any proper prefix of a candidate key. Partial means a non-key attribute depends on just a part of a composite key, not the whole key. Example: Enrollment(studentId, courseId) -> studentName exists but studentName depends only on studentId, not the pair. Fix by decomposing to Student(studentId, studentName) plus Enrollment(studentId, courseId) keeping the linking foreign key explicit. The exam writes such a diagram as the partial dependency trap.",
+        "3NF (Third Normal Form) requires 2NF plus no transitive dependency where a non-key attribute depends on another non-key via the key. Transitive chain key -> A -> B where both A and B are non-key. Example: Orders(orderId, customerId, customerCity) where customerId determines customerCity and orderId determines customerId, so orderId determines customerCity transitively via customerId but customerCity is not key. Fix by splitting off Customer(customerId, customerCity) and keeping customerId as a foreign in Orders.",
+        "Normalization steps are losslessly decomposed: the join of the decomposed tables must reproduce the original without spurious tuples via a lossless join test (the common attribute set must functionally determine one side), and it must often preserve the original FDs so checks can be done without joining. 2NF plus 3NF fixes aim for lossless plus dependency preservation (LP) while higher BCNF aims for lossless but may sacrifice dependency preservation.",
+        "When each form fails in exam language. List in a cell plus repeating columns is 1NF failure. Partial on a composite candidate is 2NF failure. Transitive through a non-key is 3NF failure. AXIS commonly shows a table with an FD diagram and asks which highest form it already satisfies — climb from 1NF upward and stop at the first failure."
+      ],
+      "subsections": [
+        {
+          "title": "Partial vs transitive at speed",
+          "content": "Partial touches a part of a composite candidate key. Transitive touches a non-key via another non-key starting from the key. Both are redundancies rooted in depending on the wrong anchor — partial on a part of the key, transitive on a non-key. The exam draws FD arrows with left plus right clearly labeled to separate them."
+        },
+        {
+          "title": "Why composite keys matter most",
+          "content": "Single-attribute candidates cannot have a proper prefix, so partial dependencies are impossible without a composite key. Papers that want a 2NF failure always introduce a composite candidate; otherwise the exam shifts the trap to 3NF transitive."
+        }
+      ],
+      "quickRevision": [
+        "1NF no list or repeating group — one value per cell, many lists go to a new table.",
+        "2NF no partial on any proper prefix of a candidate key — fix by splitting the depending columns with the part they depend on, keeping the part as foreign.",
+        "3NF no transitive via a non-key — split the transitive tail into its own table referenced by foreign.",
+        "Each fix aims lossless join (common attribute determines one side) plus ideally dependency preservation.",
+        "Composite candidates decide 2NF partial; without a composite 2NF trap cannot fire so look to transitive for 3NF."
+      ],
+      "tricks": [
+        "Any answer that says 1NF only removes duplicates is too weak — 1NF forbids repeating groups and lists inside cells.",
+        "Partial is always prefix of a composite candidate, never transitive via a non-key — do not swap definitions.",
+        "Do not attach transitive fix to composite decomposition in the same way as 2NF — 3NF split via the middle of the chain, not via the prefix."
+      ],
+      "patterns": [
+        "'Cell with list plus repeating phones?' -> Fails 1NF.",
+        "'studentName via studentId alone when candidate is studentId plus courseId?' -> Partial so fails 2NF.",
+        "'customerCity via customerId via orderId plus non-key transitively?' -> Transitive so fails 3NF.",
+        "'Highest form a table already satisfies?' -> Climb from 1NF and stop at first failure."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every AXIS paper — 1NF vs 2NF vs 3NF plus FD diagram, guaranteed",
+          "question": "Which form does this relation already satisfy or which dependency violates which form, and how to decompose losslessly?",
+          "approach": "Atomic check then partial on a composite candidate then transitive via non-key; split to preserve lossless plus ideally dependencies."
+        },
+        {
+          "source": "Gate / placement — decomposition",
+          "question": "Lossless plus dependency preservation after 2NF or 3NF split?",
+          "approach": "Lossless via common attribute determines one side; dependency preservation via keeping FDs checkable without joining."
+        }
+      ],
+      "companyNote": "1NF-3NF appear either as a direct highest-form or as a fix-the-table-plus-lossless vs preservation item."
+    },
+    {
+      "id": "bcnf",
+      "title": "BCNF Overview: when 3NF is not enough and what is sacrificed",
+      "type": "concept",
+      "quickSummary": "BCNF requires every nontrivial left determinant to be a superkey. Stronger than 3NF; fixes remaining anomalies from overlapping candidate dependencies. Enforced via recursive decomposition that is always lossless but may lose dependency preservation, and is provably achieved in polynomial time.",
+      "content": [
+        "BCNF (Boyce-Codd Normal Form) says every nontrivial functional dependency X -> Y in the relation must have X as a superkey of that relation — no determinant outside a superkey. It is stricter than 3NF, which allows a determinant that is a superkey or a dependent that is a prime attribute. BCNF forbids both exceptions except superkey alone.",
+        "When BCNF fails: composite candidate with overlapping dependencies causes a non-superkey determinant. Classic example: Enroll(studentId, courseId, instructor) where courseId -> instructor but courseId alone is not a superkey of the whole three-attribute relation even though instructor is a non-prime attribute. That failure is 3NF-transitive before, but BCNF catches heterogenous keys where 3NF's prime-attribute exception hides the remaining anomaly.",
+        "Enforcement: recursively decompose R on a violating X -> Y into R1(X plus Y) and R2(R minus Y) plus keep X as the join key. Each step is lossless because the common attributes X determine one side. Repeat until no violating FD remains. The result is always lossless and may be not dependency-preserving — a trade-off the exam loves to name explicitly: BCNF lossless yes, dependency-preserving not always.",
+        "Two small facts that steal marks. One, any relation with only one candidate key is automatically in BCNF iff it is in 3NF — the stricter condition adds nothing. Two, any two-attribute relation is always in BCNF because a nontrivial dependency must determine the other and so must be a superkey.",
+        "AXIS rarely asks to run BCNF decomposition fully but loves to ask highest form: given a table with FDs, is it 3NF or BCNF? If the table is 3NF yet a non-superkey determinant exists (often overlapping candidates), answer 3NF not BCNF. If the paper says BCNF plus dependency preservation are incompatible for this instance, that is expected — pick lossless over preserved if forced."
+      ],
+      "subsections": [
+        {
+          "title": "3NF vs BCNF in one line each",
+          "content": "3NF: every nontrivial left determines via superkey or the right includes a prime attribute. BCNF: every nontrivial left determines via superkey only. The prime-attribute exception is the extra slack 3NF keeps which BCNF removes."
+        },
+        {
+          "title": "Lossless vs dependency preservation trade-off that reappears",
+          "content": "Lossless guarantees no spurious tuples after joining back — common attribute must determine one side per decomposition step. Dependency preservation means every original FD is checkable on a single decomposed table without joining. BCNF keeps lossless always; dependency preservation may require staying at 3NF instead. Papers pose this as a choice."
+        }
+      ],
+      "quickRevision": [
+        "BCNF: every nontrivial X -> Y has X superkey — no determinant outside a superkey.",
+        "Stricter than 3NF; catches overlapping candidate anomalies where 3NF's prime exception hid the residue.",
+        "Decompose via violating X -> Y into X plus Y and R minus Y; each step lossless because X determines one side.",
+        "Always lossless but may lose dependency preservation; one-candidate or two-attribute relations are trivially BCNF when 3NF.",
+        "Highest-form check: 3NF first, then test BCNF rule for any remaining non-superkey determinant."
+      ],
+      "tricks": [
+        "Any answer that says BCNF is weaker than 3NF is backwards — BCNF stricter than 3NF.",
+        "Do not treat BCNF failure as only for transitive via a non-key — overlapping candidate dependencies can fail BCNF even without a classic transitive string.",
+        "If the paper says preserve all FDs and BCNF conflicts, choose 3NF as the preserve compromise — that is the expected answer."
+      ],
+      "patterns": [
+        "'Highest form among 1NF-3NF-BCNF?' -> Climb and stop: list fail is 1NF fail, partial on composite is 2NF fail, transitive non-key is 3NF fail, non-superkey determinant is BCNF fail.",
+        "'BCNF vs 3NF slack?' -> BCNF forbids determinant outside superkey; 3NF tolerates prime right attribute.",
+        "'Lossless join test?' -> Common attributes functionally determine one side per decomposition.",
+        "'Dependency preservation must keep all FDs checkable without joining?' -> 3NF usually keeps, BCNF may lose."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — highest form plus BCNF vs 3NF, frequent",
+          "question": "Highest normal form given FDs plus whether lossless vs dependency preserving after BCNF split?",
+          "approach": "Test normal forms in order; then BCNF rule per FD; then lossless vs preserved for the split."
+        },
+        {
+          "source": "TCS / Wipro — BCNF existence",
+          "question": "When is a relation automatically in BCNF if 3NF plus extra condition?",
+          "approach": "One candidate or two attributes — trivially BCNF when 3NF; overlapping candidates need explicit BCNF test."
+        }
+      ],
+      "companyNote": "BCNF appears as either a highest-form refinement over 3NF or as lossless vs dependency-preservation trade-off."
+    },
+    {
+      "id": "anomalies",
+      "title": "Anomalies: insertion, deletion and update (why denormalization repeats work)",
+      "type": "concept",
+      "quickSummary": "Insertion anomaly: cannot insert without extra values. Deletion anomaly: deleting removes unintended facts. Update anomaly: changing one fact needs many rows touched. All fixed by splitting to higher form plus controlled redundancy is denormalization for speed.",
+      "content": [
+        "Insertion anomaly means you cannot insert a fact you want without also supplying a fact you do not have or do not want. With a bad Students-Hobby split that jammed dept facts beside hobbies, adding a new department with no hobby students may force a null hobby or a duplicate hobby row. The normalized split keeps Departments separate so insert works.",
+        "Deletion anomaly means deleting one fact deletes another fact you wanted to keep. Course Enrollments on a combined Enrollments table where course location lives: deleting the last student enrolled in a course deletes the course location fact as a side effect. Fix by splitting Course(courseId, location) from Enrollment(studentId, courseId).",
+        "Update anomaly means one fact lives in many rows so an update must touch many rows or risk inconsistency. Changing a department's building address that repeats per student row means many updates and likely a missed row that leaves the database inconsistent until found. Fix by moving the repeating fact to its own table with a foreign key so one update suffices. Think repeated redundant copies as the root.",
+        "Why any redundancy reintroduces anomalies if taken too far: denormalization adds controlled redundancy for read speed (fewer joins) at the cost of write anomalies if updates are now duplicated. AXIS often lists denormalization as faster reads plus heavier writes and update anomalies — that trade-off is the mark.",
+        "Exam reading expects: anomaly name => cause => normalized fix => denormalization compromise. A paper that shows one table with phone1 plus phone2 repeating plus hobbies list plus dept plus building repeats accommodates many sins at once; classify each to its form or anomaly and answer the count of anomalies rather than one global yes or no."
+      ],
+      "subsections": [
+        {
+          "title": "Three anomalies one line each",
+          "content": "Insertion needs what you lack, deletion kills what you wanted to keep, update needs many touches. All share root redundancy — fixing it via lossless split removes the anomaly."
+        },
+        {
+          "title": "When denormalization wins anyway",
+          "content": "Read-heavy reporting that joins many normalized tables on every refresh benefits from a pre-joined star or fact table. You accept controlled redundancy and add triggers or batch jobs to keep copies consistent. Many warehouses are denormalized on purpose."
+        }
+      ],
+      "quickRevision": [
+        "Insertion cannot insert without extra spurious null or duplicate. Deletion deletes unintended keeper fact. Update needs many row touches — repeated copies.",
+        "Root cause repeated redundancy due to lower form; fix via lossless decomposition per form rule.",
+        "Denormalization controlled redundancy for read speed at the cost of write and update anomalies.",
+        "Count anomalies per sin rather than as one global verdict when a table violates many rules at once.",
+        "Lossless plus dependency preservation determine whether the split was clean."
+      ],
+      "tricks": [
+        "Any answer that claims no anomalies exist while redundancy remains is wishful — redundancy guarantees at least update anomalies.",
+        "Do not conflate 1NF many list with 2NF partial — both are redundancy sins but belong to different forms.",
+        "Denormalization is a deliberate trade, not a higher form — AXIS asks denormalized is not more normalized."
+      ],
+      "patterns": [
+        "'Cannot add a dept with no students without null hobby?' -> Insertion anomaly.",
+        "'Delete last student loses dept building fact?' -> Deletion anomaly.",
+        "'Change building address needs many rows?' -> Update anomaly.",
+        "'Why tolerate some denormalization?' -> Read speed with controlled redundancy vs write cost."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS — anomalies, every year",
+          "question": "Which anomaly caused by this design and which split fixes it?",
+          "approach": "Insertion needs extra, deletion kills keeper, update many touches — all via lossless split."
+        },
+        {
+          "source": "Wipro — denormalization trade-off",
+          "question": "Benefit and cost of deliberate denormalization?",
+          "approach": "Benefit fewer joins fast reads; cost duplicated writes and update anomalies."
+        }
+      ],
+      "companyNote": "Anomalies appear either as a name-match or as a fix-the-table-plus-trade-off."
+    },
+    {
+      "id": "exam-norm",
+      "title": "Exam Normalization Synthesis (keys plus FDs plus forms plus trade-offs)",
+      "type": "concept",
+      "quickSummary": "FD X -> Y via closure plus minimal cover gives keys plus dependencies. Then climb 1NF -> 2NF partial on composite -> 3NF transitive vs 2NF fix via split vs BCNF non-superkey. Then note lossless plus dependency preservation vs denormalization for reads. One pass kills most traps.",
+      "content": [
+        "FD plus keys row decides supertag vs candidate vs primary vs foreign plus composite vs unique via closure plus minimality. ER normalization reuses the same vocabulary as the keys topic plus its own weak bridge vocabulary — do not think of two silos. AXIS often ports the same phrasing across both topics so one consolidated memory saves time.",
+        "Forms row: 1NF atomic no list plus no repeating plus no composite cell; 2NF no partial on any proper prefix of a candidate key so split by prefix-linked columns plus keep prefix as foreign; 3NF no transitive via non-key so split via the middle of the chain; BCNF every nontrivial left is a superkey, strictly stronger than 3NF with loss of dependency preservation possible. Highest form is the lowest failed plus one on a tidy table.",
+        "Trade-off row: lossless join via common determinant vs dependency preservation via checkability without joining plus denormalization controlled redundancy for read speed vs write anomalies plus isolation of FD closure vs minimal cover before keys. The exam interleaves this trade-off with language row analogs (primary vs unique null tolerance interacts too).",
+        "Speed-vs-marks rule: if the paper shows an FD diagram with many composite arrows, count composites; if it shows a single list column plus many phones, look to 1NF before chasing 2NF partial. Candidate keys never on right decides forced attributes — pick them first to prune space before closing others.",
+        "Surface the confusing overlap: FD Armstrong closure vs minimal cover vs losslessness vs dependency preservation vs denormalization vs isolation levels from the DBMS basics topic — each uses distinct vocabulary. Hold closure vs minimal vs lossless vs preserved vs read-vs-write vs isolation as separate columns."
+      ],
+      "subsections": [
+        {
+          "title": "One-pass elimination for hard items",
+          "content": "Item offers five claims mixing 2NF partial vs 3NF transitive vs BCNF superkey. If FD involves a proper prefix of a composite candidate, circle 2NF partial. If FD chain goes key -> non-key -> non-key, circle 3NF transitive. If determinant not a superkey at all, circle BCNF. Eliminate two quickly, choose the earliest failure."
+        },
+        {
+          "title": "When both lossless vs preserved appear together",
+          "content": "Lossless guarantees no spurious tuples after joining back — common attributes must determine one side per decomposition step. Dependency preservation means every original FD is checkable on a single decomposed table without joining. BCNF keeps lossless always; preservation may require staying at 3NF instead. Papers pose this as a choice."
+        }
+      ],
+      "quickRevision": [
+        "FD X -> Y plus closure plus Armstrong plus minimal vs super vs candidate vs primary vs foreign via closure.",
+        "1NF atomic lists, 2NF partial on composite prefix, 3NF transitive via non-key, BCNF determinant must be superkey.",
+        "Fixes via lossless split via common determinant plus preserve dependencies where possible.",
+        "Anomalies insertion vs deletion vs update plus denormalization controlled redundancy for read speed.",
+        "Highest form is first failure plus one; composite decides 2NF relevance, non-key chain decides 3NF, non-superkey decides BCNF."
+      ],
+      "tricks": [
+        "Any answer that conflates partial plus transitive as same is wrong — prefix vs via non-key are different anchors.",
+        "Any answer that claims BCNF is weaker than 3NF is backwards — BCNF stricter.",
+        "Any answer that mixes cardinality with normal form (e.g. N:M is a form) is mixing ER vs normalization families."
+      ],
+      "patterns": [
+        "'Atomic vs list plus repeating?' -> 1NF. 'Partial on a part of a composite?' -> 2NF. 'Transitive via non-key?' -> 3NF. 'Non-superkey determinant even without classic transitive?' -> BCNF.",
+        "'Lossless guaranteed vs preserved may not?' -> BCNF trade-off.",
+        "'Insertion vs deletion vs update anomaly plus split?' -> Redundancy root via form failure.",
+        "'Keys candidate via closure plus minimality?' -> Closure first, drop-and-reclose for minimality, selection for primary."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS synthesis — mixed normalization plus keys plus FD plus ER",
+          "question": "Given FD diagram plus column sets plus ER shape, match each to key vs FD vs 1NF vs 2NF vs 3NF vs BCNF vs anomaly?",
+          "approach": "One pass: minimal super for candidate, closure for FD, atomic for 1NF, partial for 2NF, transitive for 3NF, non-superkey for BCNF, redundancy for anomaly."
+        },
+        {
+          "source": "Gate / placement — highest form plus lossless plus denormalization plus closure",
+          "question": "Highest normal form given FDs plus whether lossless plus denormalized for read speed plus closure of X?",
+          "approach": "Highest is first failure plus one, closure to check super, denormalization for read vs write anomalies."
+        }
+      ],
+      "companyNote": "Synthesis tables appear as a 4-5 item match-the-column question mixing all families plus FD closure."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "fd",
+      "title": "Functional Dependency and Closure",
+      "formula": {
+        "latex": "X\\to Y:\\;equal\\;X\\Rightarrow equal\\;Y \\;|\\; Arm:refl+aug+trans \\;|\\; Clos\\;X+\\;iter\\;add \\;|\\; super\\;if\\;X+=R",
+        "text": "X->Y equal X implies equal Y | Armstrong refl+aug+trans | Closure X+ iterate add | super if X+=R"
+      },
+      "whenToUse": "Any 'does X -> Y hold?' or 'is X a superkey?' or minimal cover MCQ.",
+      "explanation": [
+        "FD X -> Y means any two rows with same X must have same Y in every valid instance (invariant).",
+        "Armstrong axioms: reflexivity trivial subset, augmentation add Z, transitivity chain X->Y,Y->Z so X->Z, plus derived union and decomposition.",
+        "Closure X+ repeats adding right when left is subset until stable; answers holds if Y subset of X+ and super if X+ equals all attributes R.",
+        "Extraneous left test via closure of X minus {a} still reaches Y; right test via closure without using that right; canonical single on right after removal.",
+        "FDs are declared constraints, not observed coincidence; counterexample disproves, sample never proves."
+      ],
+      "example": {
+        "prompt": "FDs A->B, B->C, C->D. Find A+ and check A->C plus C->A plus super.",
+        "steps": [
+          "Start with A: add B via A->B, then C via B->C, then D via C->D. A+ = {A,B,C,D}.",
+          "C is subset of A+ so A->C holds via transitivity; C+ is {C,D} not containing A so C->A does not hold.",
+          "Relation R(A,B,C,D): A+ equals R so A is superkey and with no smaller candidate is a candidate."
+        ],
+        "answer": "A+ is {A,B,C,D}; A->C holds, C->A does not; A is superkey (candidate if minimal)"
+      },
+      "memoryTip": "Determinant Determines Dependent. Closure Closes by Adding. Armstrong Artic Bulks: Refl Trivial, Augment Add, Transitive Through.",
+      "commonMistake": "Proving an FD from a sample table with no counterexample — a sample never proves an FD; it only disproves with a counterexample where equal left yields differing right."
+    },
+    {
+      "id": "nf12",
+      "title": "1NF vs 2NF rule",
+      "formula": {
+        "latex": "1NF:\\;no\\;list\\;no\\;repeating \\;|\\; 2NF:\\;no\\;partial\\;on\\;proper\\;prefix\\;of\\;candidate",
+        "text": "1NF no list no repeating | 2NF no partial on proper prefix of candidate"
+      },
+      "whenToUse": "Any 1NF or 2NF failure or fix MCQ, especially with a table picture.",
+      "explanation": [
+        "1NF forbids repeating groups and lists inside cells — one atomic value per cell, many lists move to a new table.",
+        "2NF needs 1NF plus no partial dependency: non-key must not depend on a proper part of a composite candidate key.",
+        "Partial is always prefix of a composite candidate, not any touching of a key. Single-attribute candidates cannot have partials.",
+        "Fix splits the depending columns with the part they depend on, keeping the part as a foreign key in the original; validates via lossless join test.",
+        "Highest form with failures: list says 1NF fail first, partial on composite next, transitive later, non-superkey last."
+      ],
+      "example": {
+        "prompt": "R(A,B,C,D) with candidate key AB. FD A -> C. Is it 2NF?",
+        "steps": [
+          "Composite candidate AB exists so 2NF trap can fire.",
+          "C is a non-key and A is a proper prefix of AB.",
+          "A -> C is a partial dependency on a proper prefix, so fails 2NF. Fix to R1(A,C) plus R2(A,B,D) keeping A as foreign."
+        ],
+        "answer": "Not in 2NF — partial dependency on proper prefix A of composite candidate AB"
+      },
+      "memoryTip": "List breaks 1NF, Part of key breaks 2NF. One atomic, Part proper prefix.",
+      "commonMistake": "Calling any FD touching a candidate partial. Partial touches a proper prefix, not the whole candidate."
+    },
+    {
+      "id": "nf3-bcnf",
+      "title": "3NF vs BCNF rule and tradeoff",
+      "formula": {
+        "latex": "3NF:\\;no\\;transitive\\;via\\;non\\text{-}key \\;|\\; BCNF:\\;every\\;left\\;is\\;superkey \\;|\\; BCNF\\;stricter,\\;lossless\\;yes,\\;preserved\\;may\\;no",
+        "text": "3NF no transitive via non-key | BCNF every left is superkey | BCNF stricter lossless yes preserved may no"
+      },
+      "whenToUse": "Any 3NF or BCNF highest-form MCQ or lossless plus dependency-preservation after split MCQ.",
+      "explanation": [
+        "3NF needs 2NF plus no transitive where non-key depends on another non-key starting from key. Chain key -> A -> B where both A and B non-key: split via the middle.",
+        "BCNF needs every nontrivial left to be a superkey — no determinant outside a superkey. Strictly stronger than 3NF; the prime-attribute exception is removed.",
+        "Enforce via recursive decomposition X->Y into X plus Y and R minus Y using X as join attribute; each step lossless because common determines one side.",
+        "Always lossless but may lose dependency preservation, and vice goal may need staying at 3NF.",
+        "Two-attribute or one-candidate 3NF is often automatically BCNF — overlapping candidates decide the exception."
+      ],
+      "example": {
+        "prompt": "R(A,B,C) where candidate is A and FD A->B plus B->C plus B not superkey. Is it 3NF or BCNF?",
+        "steps": [
+          "Candidate A with B plus C non-key, chain A->B->C is transitive via non-key B.",
+          "Transitive means fails 3NF; therefore also fails BCNF.",
+          "Fix to R1(B,C) plus R2(A,B) keeping B as foreign — both are now lossless and dependency preserving in this case."
+        ],
+        "answer": "Not in 3NF (hence not in BCNF) — transitive via B"
+      },
+      "memoryTip": "Transitive Through, BCNF Big super on left. Chain shows 3NF, non-super left shows BCNF.",
+      "commonMistake": "Calling every non-superkey dependency BCNF only without checking whether 3NF prime exception would already forgive it."
+    },
+    {
+      "id": "anomalies",
+      "title": "Anomalies and Denormalization",
+      "formula": {
+        "latex": "Ins:\\;needs\\;spurious\\;tuple\\; \\;|\\; Del:\\;kills\\;keeper \\;|\\; Upd:\\;many\\;touches\\;repeat \\;|\\; Denorm:\\;controlled\\;redundancy\\;fast\\;reads",
+        "text": "Insertion needs spurious tuple | Deletion kills keeper | Update many touches repeat | Denormalization controlled redundancy fast reads"
+      },
+      "whenToUse": "Any insertion vs deletion vs update anomaly or denormalization trade-off MCQ.",
+      "explanation": [
+        "Insertion needs extra spurious or null or duplicate to insert a needed fact with unrelated facts jammed together.",
+        "Deletion removes an unrelated keeper fact as a side effect, e.g. last row carrying course facts.",
+        "Update needs many row touches due to repeated copies of the same fact — one change duplicated.",
+        "All from repeated redundancy due to lower form; fixing via lossless split removes the root.",
+        "Denormalization keeps controlled redundancy for read speed via fewer joins at the cost of write anomalies and heavier updates plus batch or trigger sync."
+      ],
+      "example": {
+        "prompt": "Changing a department building repeats per student row — many touches?",
+        "steps": [
+          "One building fact lives in many rows via repeated copies.",
+          "One change needs many rows — classic update anomaly via redundancy.",
+          "Fix by moving building to Department with foreign key so one update suffices."
+        ],
+        "answer": "Update anomaly — fix via split to Department(building) plus foreign"
+      },
+      "memoryTip": "Insertion Includes spurious, Deletion Destroys keeper, Update touches many copies. Denormalization Deliberately repeats for read.",
+      "commonMistake": "Mixing 1NF list with 2NF partial as the same sin — many lists is 1NF atomic, partial on prefix is 2NF."
+    }
+  ],
+  "practiceProblems": {
+    "fd": [
+      {"q": "FD X -> Y means in every valid instance:", "opts": ["Same X implies same Y", "Same Y implies same X", "X equals Y always", "No relation"], "c": 0, "s": ["Equal determinant implies equal dependent invariant."], "a": "Same X implies same Y"},
+      {"q": "X -> Y — X is the:", "opts": ["Dependent", "Determinant", "Superkey always", "Attribute type"], "c": 1, "s": ["Left side is determinant; right side dependent."], "a": "Determinant"},
+      {"q": "Reflexivity yields:", "opts": ["X -> Y is trivial when Y subset of X", "Only augmentation", "Only transitivity", "Only decomposition"], "c": 0, "s": ["Trivial subset always holds."], "a": "X -> Y is trivial when Y subset of X"},
+      {"q": "If A -> B and B -> C then via Armstrong:", "opts": ["A -> C via transitivity", "C -> A", "No", "Only reflexivity"], "c": 0, "s": ["Chain transitivity. Also gives A -> BC via union then decomposition."], "a": "A -> C via transitivity"},
+      {"q": "FDs A->B, B->C, A->D. Find A+:", "opts": ["{A}", "{A,B}", "{A,B,C,D}", "{C,D}"], "c": 2, "s": ["Start A add B via A->B add C via B->C add D via A->D so all four."], "a": "{A,B,C,D}"},
+      {"q": "Relation R(A,B,C,D). Is A a superkey given above FDs?", "opts": ["No", "Yes because A+ equals all attributes", "Only if B+", "Only if C+"], "c": 1, "s": ["Super when closure equals relation attributes."], "a": "Yes because A+ equals all attributes"},
+      {"q": "FDs hold vs sample table with no counterexample proves:", "opts": ["Sample proves the FD", "Sample never proves must hold — only a counterexample disproves", "Only holds if composite", "Only if candidate"], "c": 1, "s": ["FD is declared constraint, not observed coincidence."], "a": "Sample never proves must hold — only a counterexample disproves"},
+      {"q": "Left attribute a of X->Y extraneous when:", "opts": ["Closure of X minus {a} does not contain Y", "Closure of X minus {a} still contains Y", "Only when trivial", "Never"], "c": 1, "s": ["Extraneous if removable without changing closure to Y."], "a": "Closure of X minus {a} still contains Y"},
+      {"q": "Right attribute b of X->Y extraneous when:", "opts": ["Closure of X without using X->b still contains b", "Only when trivial", "Never", "Closure of Y only"], "c": 0, "s": ["Right extraneous if closure of X without using that right still reaches b."], "a": "Closure of X without using X->b still contains b"},
+      {"q": "Canonical cover is FD set with:", "opts": ["Many on right plus many extraneous plus many redundant", "Single on right plus no extraneous plus no redundant plus no trivial", "No attributes", "Only superset"], "c": 1, "s": ["Minimal cover — single attribute on right with no extras."], "a": "Single on right plus no extraneous plus no redundant plus no trivial"}
+    ],
+    "nf12": [
+      {"q": "List or repeating phones in one cell — violates:", "opts": ["1NF", "2NF", "3NF", "BCNF"], "c": 0, "s": ["Atomic forbids list inside cells. Fix via separate table."], "a": "1NF"},
+      {"q": "Student roll plus course determines name where name depends only on roll — violation is:", "opts": ["1NF", "2NF partial on prefix of composite candidate", "3NF transitive", "BCNF"], "c": 1, "s": ["Part of composite key alone determines non-key."], "a": "2NF partial on prefix of composite candidate"},
+      {"q": "Single-attribute candidate can have a partial dependency — true or false?", "opts": ["True", "False — needs a proper prefix of a composite candidate", "Only for composite with many", "Only for BCNF"], "c": 1, "s": ["Single has no proper prefix so partial cannot fire without composite."], "a": "False — needs a proper prefix of a composite candidate"},
+      {"q": "2NF fix splitting partial moves the depending columns plus the part they depend on and keeps the part as:", "opts": ["No key", "Foreign key in original", "Only trigger", "Only index"], "c": 1, "s": ["Part kept as foreign to rejoin."], "a": "Foreign key in original"},
+      {"q": "R(A,B,C,D) with candidate AB plus FD A->C. Is it 2NF?", "opts": ["Yes", "No — partial on prefix A", "Only if BCNF", "Only if 1NF"], "c": 1, "s": ["A is proper prefix of AB so partial fails 2NF."], "a": "No — partial on prefix A"},
+      {"q": "Fix for R(A,B,C,D) where AB is candidate plus A->C is:", "opts": ["R1(A,C) plus R2(A,B,D) keeping A foreign", "No split", "Only denormalize", "Only isolation level"], "c": 0, "s": ["Split the partial tail C with its determinant A, keep A foreign."], "a": "R1(A,C) plus R2(A,B,D) keeping A foreign"},
+      {"q": "Lossless check for 2NF split: common attribute must:", "opts": ["Be prime", "Functionally determine one side", "Be candidate alone", "Be null"], "c": 1, "s": ["Common determines one side ensures no spurious join."], "a": "Functionally determine one side"},
+      {"q": "Highest form climb starts at:", "opts": ["BCNF", "1NF atomic", "3NF transitive", "FD closure only"], "c": 1, "s": ["Climb from 1NF upward stop at first failure."], "a": "1NF atomic"},
+      {"q": "Repeating column group qty1 plus qty2 plus qty3 violates:", "opts": ["2NF", "1NF — repeating group", "3NF", "BCNF"], "c": 1, "s": ["Repeating group not atomic."], "a": "1NF — repeating group"},
+      {"q": "2NF requires which prior form?", "opts": ["No prior", "1NF", "3NF", "BCNF"], "c": 1, "s": ["Each step requires the prior."], "a": "1NF"}
+    ],
+    "nf3-bcnf": [
+      {"q": "Chain key -> non-key A -> non-key B — violation is:", "opts": ["1NF", "2NF", "3NF transitive via non-key", "BCNF only via superkey not needed"], "c": 2, "s": ["Transitive via non-key breaks 3NF."], "a": "3NF transitive via non-key"},
+      {"q": "Orders(orderId, customerId, customerCity) where customerId->customerCity plus orderId->customerId — dependency on customerCity via customerId is:", "opts": ["Partial", "Transitive", "1NF only", "BCNF only"], "c": 1, "s": ["Key transitively determines non-key via another non-key."], "a": "Transitive"},
+      {"q": "3NF fix splitting transitive via middle is:", "opts": ["R1(customerId,customerCity) plus R2(orderId,customerId) keeping customerId foreign", "No split", "Only 2NF split", "Only BCNF split"], "c": 0, "s": ["Split tail city with its determinant customerId."], "a": "R1(customerId,customerCity) plus R2(orderId,customerId) keeping customerId foreign"},
+      {"q": "BCNF rule: every nontrivial left determinant must be:", "opts": ["A non-key", "A superkey", "Any attribute", "Composite only"], "c": 1, "s": ["No determinant outside a superkey."], "a": "A superkey"},
+      {"q": "BCNF self is:", "opts": ["Weaker than 3NF", "Strictly stronger than 3NF", "Same as 3NF", "Unrelated to 3NF"], "c": 1, "s": ["Stricter; catches anomalies 3NF forgives via prime exception."], "a": "Strictly stronger than 3NF"},
+      {"q": "Enroll(studentId, courseId, instructor) where courseId->instructor but courseId alone not superkey is violation of:", "opts": ["2NF only", "BCNF via non-superkey determinant even though 3NF forgives prime on right", "1NF only", "No violation"], "c": 1, "s": ["Non-superkey determinant fails BCNF; 3NF's prime exception hides it."], "a": "BCNF via non-superkey determinant even though 3NF forgives prime on right"},
+      {"q": "BCNF decomposition R on violating X->Y into R1(X plus Y) plus R2(R minus Y) is:", "opts": ["Always lossy", "Always lossless via common X determining one side", "Never lossless", "Only for partial"], "c": 1, "s": ["Each step lossless because common determines one side."], "a": "Always lossless via common X determining one side"},
+      {"q": "BCNF decomposition may be:", "opts": ["Always dependency preserving", "Not dependency preserving in general", "Never dependency preserving", "Only via trigger"], "c": 1, "s": ["May lose dependency preservation vs always lossless."], "a": "Not dependency preserving in general"},
+      {"q": "Any two-attribute relation in 3NF is:", "opts": ["Never BCNF", "Automatically BCNF", "Only if candidate composite", "Only if key composite"], "c": 1, "s": ["Nontrivial FD must be via one determining the other so superkey."], "a": "Automatically BCNF"},
+      {"q": "Highest form given FDs: climb first failure plus one — order is:", "opts": ["Random", "1NF then 2NF then 3NF then BCNF", "BCNF then 3NF then 2NF", "Only BCNF then 1NF"], "c": 1, "s": ["Climb from atomic then partial then transitive then non-superkey."], "a": "1NF then 2NF then 3NF then BCNF"}
+    ],
+    "anomalies": [
+      {"q": "Cannot add a new dept with no students without null hobby — anomaly is:", "opts": ["Insertion", "Deletion", "Update", "BCNF"], "c": 0, "s": ["Insertion needs spurious holder or null hobby."], "a": "Insertion"},
+      {"q": "Delete last student enrolled in a course also loses course location fact — anomaly is:", "opts": ["Insertion", "Deletion", "Update", "Closure"], "c": 1, "s": ["Deletion kills unintended keeper fact."], "a": "Deletion"},
+      {"q": "Change building address needs many row touches where it repeats — anomaly is:", "opts": ["Insertion", "Deletion", "Update", "1NF"], "c": 2, "s": ["Repeated redundant copies: update anomaly."], "a": "Update"},
+      {"q": "Root cause of all three anomalies is:", "opts": ["Many lists only", "Repeated redundancy due to lower form", "Only trigger", "Only isolation"], "c": 1, "s": ["Redundancy via denormalized lower form."], "a": "Repeated redundancy due to lower form"},
+      {"q": "Fix insertion plus deletion plus update anomalies via:", "opts": ["More redundancy", "Lossless decomposition to higher form", "Only trigger on insert", "Only denormalize"], "c": 1, "s": ["Split via form rule keeps join lossless."], "a": "Lossless decomposition to higher form"},
+      {"q": "Denormalization deliberate purpose is:", "opts": ["More anomalies for free", "Controlled redundancy for fast reads via fewer joins", "Only for writes", "Only for BCNF"], "c": 1, "s": ["Fewer joins fast reads at cost of writes."], "a": "Controlled redundancy for fast reads via fewer joins"},
+      {"q": "Denormalization cost is:", "opts": ["Heavier writes and update anomalies plus batch sync", "Only reads faster with no cost", "Only inserts faster", "No cost"], "c": 0, "s": ["Duplicated writes and update anomalies plus batch or trigger sync."], "a": "Heavier writes and update anomalies plus batch sync"},
+      {"q": "Table with Students-Hobby jammed plus phone1 plus phone2 repeating plus dept plus building repeats has at once:", "opts": ["One anomaly", "Many sins at once — classify each to its form or anomaly", "No sin", "Only BCNF"], "c": 1, "s": ["Classify each sin vs count anomalies per sin rather than one global yes or no."], "a": "Many sins at once — classify each to its form or anomaly"},
+      {"q": "Keeping copies consistent after denormalization often needs:", "opts": ["Triggers or batch jobs", "No sync", "Only delete via ON delete cascade only", "Only atomicity via log"], "c": 0, "s": ["Controlled redundancy via triggers or batch sync."], "a": "Triggers or batch jobs"},
+      {"q": "Denormalized warehouse is deliberately:", "opts": ["More normalized for writes", "Not more normalized — purposely lower plus indexed with star schema for reads", "Only isolation level", "Only closure"], "c": 1, "s": ["Purposely lower plus indexed with star schema for reads."], "a": "Not more normalized — purposely lower plus indexed with star schema for reads"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "FD X -> Y means in every valid instance:", "opts": ["Same X implies same Y", "Same Y implies same X", "X equals Y always", "No relation"], "c": 0, "d": "easy", "t": "Functional Dependency", "exp": ["Equal determinant implies equal dependent invariant."]},
+    {"id": 2, "q": "X -> Y — X is the:", "opts": ["Dependent", "Determinant", "Superkey always", "Attribute type"], "c": 1, "d": "easy", "t": "Functional Dependency", "exp": ["Left determinant; right dependent."]},
+    {"id": 3, "q": "Reflexivity yields:", "opts": ["X -> Y trivial when Y subset of X", "Only augmentation", "Only transitivity", "Only decomposition"], "c": 0, "d": "medium", "t": "Functional Dependency", "exp": ["Trivial subset always holds."]},
+    {"id": 4, "q": "If A -> B and B -> C then via Armstrong:", "opts": ["A -> C via transitivity", "C -> A", "No", "Only reflexivity"], "c": 0, "d": "medium", "t": "Functional Dependency", "exp": ["Chain transitivity."]},
+    {"id": 5, "q": "FDs A->B, B->C, A->D. Find A+:", "opts": ["{A}", "{A,B}", "{A,B,C,D}", "{C,D}"], "c": 2, "d": "medium", "t": "Functional Dependency", "exp": ["Start A add B via A->B add C via B->C add D via A->D so all four."]},
+    {"id": 6, "q": "Relation R(A,B,C,D). Is A a superkey given above FDs?", "opts": ["No", "Yes because A+ equals all attributes", "Only if B+", "Only if C+"], "c": 1, "d": "medium", "t": "Functional Dependency", "exp": ["Super when closure equals relation attributes."]},
+    {"id": 7, "q": "Sample table with no counterexample proves an FD must hold — statement is:", "opts": ["True", "False — sample never proves must hold, only counterexample disproves", "True if composite", "True if candidate"], "c": 1, "d": "medium", "t": "Functional Dependency", "exp": ["FD is declared constraint, not observed coincidence."]},
+    {"id": 8, "q": "Left attribute a of X->Y extraneous when:", "opts": ["Closure of X minus {a} does not contain Y", "Closure of X minus {a} still contains Y", "Only when trivial", "Never"], "c": 1, "d": "medium", "t": "Functional Dependency", "exp": ["Removable without changing closure to Y."]},
+    {"id": 9, "q": "Right attribute b of X->Y extraneous when:", "opts": ["Closure of X without using X->b still contains b", "Only when trivial", "Never", "Closure of Y only"], "c": 0, "d": "medium", "t": "Functional Dependency", "exp": ["Without using that right still reaches b."]},
+    {"id": 10, "q": "Canonical cover is FD set with:", "opts": ["Many on right plus many extraneous plus many redundant", "Single on right plus no extraneous plus no redundant plus no trivial", "No attributes", "Only superset"], "c": 1, "d": "medium", "t": "Functional Dependency", "exp": ["Minimal cover single on right with no extras."]},
+    {"id": 11, "q": "List or repeating phones in one cell — violates:", "opts": ["1NF", "2NF", "3NF", "BCNF"], "c": 0, "d": "easy", "t": "1NF, 2NF, 3NF", "exp": ["Atomic forbids list inside cells."]},
+    {"id": 12, "q": "Student roll plus course determines name where name depends only on roll — violation is:", "opts": ["1NF", "2NF partial on prefix of composite candidate", "3NF transitive", "BCNF"], "c": 1, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Part of composite key alone determines non-key."]},
+    {"id": 13, "q": "Single-attribute candidate can have a partial dependency — true or false?", "opts": ["True", "False — needs proper prefix of composite candidate", "Only for composite many", "Only for BCNF"], "c": 1, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Single has no proper prefix."]},
+    {"id": 14, "q": "2NF fix splitting partial moves the depending columns plus the part and keeps the part as:", "opts": ["No key", "Foreign key in original", "Only trigger", "Only index"], "c": 1, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Part kept as foreign to rejoin."]},
+    {"id": 15, "q": "R(A,B,C,D) with candidate AB plus FD A->C. Is it 2NF?", "opts": ["Yes", "No — partial on prefix A", "Only if BCNF", "Only if 1NF"], "c": 1, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Proper prefix of AB so partial fails 2NF."]},
+    {"id": 16, "q": "Fix for R(A,B,C,D) where AB is candidate plus A->C is:", "opts": ["R1(A,C) plus R2(A,B,D) keeping A foreign", "No split", "Only denormalize", "Only isolation level"], "c": 0, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Split partial tail C with its determinant A."]},
+    {"id": 17, "q": "Lossless check for 2NF split: common attribute must:", "opts": ["Be prime", "Functionally determine one side", "Be candidate alone", "Be null"], "c": 1, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Common determines one side ensures no spurious join."]},
+    {"id": 18, "q": "Highest form climb starts at:", "opts": ["BCNF", "1NF atomic", "3NF transitive", "FD closure only"], "c": 1, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Climb from 1NF upward."]},
+    {"id": 19, "q": "Repeating column group qty1 plus qty2 plus qty3 violates:", "opts": ["2NF", "1NF — repeating group", "3NF", "BCNF"], "c": 1, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Repeating group not atomic."]},
+    {"id": 20, "q": "2NF requires prior:", "opts": ["No prior", "1NF", "3NF", "BCNF"], "c": 1, "d": "easy", "t": "1NF, 2NF, 3NF", "exp": ["Each step requires prior."]},
+    {"id": 21, "q": "Chain key -> non-key A -> non-key B is violation of:", "opts": ["1NF", "2NF", "3NF transitive via non-key", "BCNF only via superkey not needed"], "c": 2, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Transitive via non-key breaks 3NF."]},
+    {"id": 22, "q": "Orders(orderId, customerId, customerCity) where customerId->customerCity plus orderId->customerId — customerCity via customerId is:", "opts": ["Partial", "Transitive", "1NF only", "BCNF only"], "c": 1, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Key transitively determines non-key via another non-key."]},
+    {"id": 23, "q": "3NF fix splitting transitive via middle is:", "opts": ["R1(customerId,customerCity) plus R2(orderId,customerId) keeping customerId foreign", "No split", "Only 2NF split", "Only BCNF split"], "c": 0, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Split tail with its determinant."]},
+    {"id": 24, "q": "BCNF rule: every nontrivial left determinant must be:", "opts": ["A non-key", "A superkey", "Any attribute", "Composite only"], "c": 1, "d": "medium", "t": "BCNF Overview", "exp": ["No determinant outside superkey."]},
+    {"id": 25, "q": "BCNF is:", "opts": ["Weaker than 3NF", "Strictly stronger than 3NF", "Same as 3NF", "Unrelated to 3NF"], "c": 1, "d": "medium", "t": "BCNF Overview", "exp": ["Stricter."]},
+    {"id": 26, "q": "Enroll(studentId, courseId, instructor) where courseId->instructor but courseId alone not superkey is violation of:", "opts": ["2NF only", "BCNF via non-superkey determinant even though 3NF forgives prime on right", "1NF only", "No violation"], "c": 1, "d": "medium", "t": "BCNF Overview", "exp": ["Non-superkey determinant fails BCNF; 3NF forgives prime right."]},
+    {"id": 27, "q": "BCNF decomposition R on violating X->Y into R1(X plus Y) plus R2(R minus Y) is:", "opts": ["Always lossy", "Always lossless via common X determining one side", "Never lossless", "Only for partial"], "c": 1, "d": "medium", "t": "BCNF Overview", "exp": ["Each step lossless because common determines one side."]},
+    {"id": 28, "q": "BCNF decomposition may be:", "opts": ["Always dependency preserving", "Not dependency preserving in general", "Never dependency preserving", "Only via trigger"], "c": 1, "d": "medium", "t": "BCNF Overview", "exp": ["May lose preservation."]},
+    {"id": 29, "q": "Any two-attribute relation in 3NF is:", "opts": ["Never BCNF", "Automatically BCNF", "Only if candidate composite", "Only if key composite"], "c": 1, "d": "medium", "t": "BCNF Overview", "exp": ["Nontrivial FD must be via one determining the other so superkey."]},
+    {"id": 30, "q": "Highest form order is:", "opts": ["Random", "1NF then 2NF then 3NF then BCNF", "BCNF then 3NF then 2NF", "Only BCNF then 1NF"], "c": 1, "d": "easy", "t": "BCNF Overview", "exp": ["Climb from atomic then partial then transitive then non-superkey."]},
+    {"id": 31, "q": "Cannot add a new dept with no students without null hobby — anomaly is:", "opts": ["Insertion", "Deletion", "Update", "BCNF"], "c": 0, "d": "medium", "t": "Anomalies", "exp": ["Insertion needs spurious holder."]},
+    {"id": 32, "q": "Delete last student also loses course location — anomaly is:", "opts": ["Insertion", "Deletion", "Update", "Closure"], "c": 1, "d": "medium", "t": "Anomalies", "exp": ["Deletion kills keeper."]},
+    {"id": 33, "q": "Change building address needs many row touches — anomaly is:", "opts": ["Insertion", "Deletion", "Update", "1NF"], "c": 2, "d": "medium", "t": "Anomalies", "exp": ["Repeated copies: update."]},
+    {"id": 34, "q": "Root cause of insertion plus deletion plus update anomalies is:", "opts": ["Many lists only", "Repeated redundancy due to lower form", "Only trigger", "Only isolation"], "c": 1, "d": "medium", "t": "Anomalies", "exp": ["Redundancy via lower form."]},
+    {"id": 35, "q": "Fix anomalies via:", "opts": ["More redundancy", "Lossless decomposition to higher form", "Only trigger on insert", "Only denormalize"], "c": 1, "d": "easy", "t": "Anomalies", "exp": ["Split via form rule."]},
+    {"id": 36, "q": "Denormalization deliberate purpose is:", "opts": ["More anomalies for free", "Controlled redundancy for fast reads via fewer joins", "Only for writes", "Only for BCNF"], "c": 1, "d": "medium", "t": "Anomalies", "exp": ["Fewer joins fast reads at cost of writes."]},
+    {"id": 37, "q": "Denormalization cost is:", "opts": ["Heavier writes and update anomalies plus batch sync", "Only reads faster with no cost", "Only inserts faster", "No cost"], "c": 0, "d": "medium", "t": "Anomalies", "exp": ["Duplicated writes plus batch."]},
+    {"id": 38, "q": "Table with Students-Hobby plus phone1 plus phone2 plus dept plus building repeats has at once:", "opts": ["One anomaly", "Many sins at once — classify each to its form or anomaly", "No sin", "Only BCNF"], "c": 1, "d": "medium", "t": "Anomalies", "exp": ["Classify each sin vs count per sin."]},
+    {"id": 39, "q": "Keeping copies consistent after denormalization often needs:", "opts": ["Triggers or batch jobs", "No sync", "Only ON delete cascade only", "Only atomicity via log"], "c": 0, "d": "medium", "t": "Anomalies", "exp": ["Controlled redundancy via triggers or batch sync."]},
+    {"id": 40, "q": "Denormalized warehouse is deliberately:", "opts": ["More normalized for writes", "Not more normalized — purposely lower plus indexed with star schema for reads", "Only isolation level", "Only closure"], "c": 1, "d": "medium", "t": "Anomalies", "exp": ["Purposely lower plus star schema."]},
+    {"id": 41, "q": "Attribute on left a of X->Y extraneous when:", "opts": ["Closure of X minus {a} still contains Y", "Never", "Only trivial", "Only when Y subset X"], "c": 0, "d": "medium", "t": "Functional Dependency", "exp": ["Removable without changing closure."]},
+    {"id": 42, "q": "Attribute on right b of X->Y extraneous when:", "opts": ["Closure of X without using X->b still contains b", "Never", "Only trivial", "Only when trivial plus subset"], "c": 0, "d": "medium", "t": "Functional Dependency", "exp": ["Without using that right still reaches b."]},
+    {"id": 43, "q": "Superkey test via closure is X+ equals:", "opts": ["No attributes", "All relation attributes R", "Only candidate", "Only primary"], "c": 1, "d": "medium", "t": "Functional Dependency", "exp": ["Super if X+ covers R."]},
+    {"id": 44, "q": "1NF forbids:", "opts": ["Composite keys", "Lists and repeating groups inside cells", "Composite via many attributes", "Only isolation"], "c": 1, "d": "easy", "t": "1NF, 2NF, 3NF", "exp": ["One atomic value per cell."]},
+    {"id": 45, "q": "2NF forbids:", "opts": ["Lists", "Partial on proper prefix of composite candidate", "Transitive via non-key", "Non-superkey left"], "c": 1, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Part of key determines non-key."]},
+    {"id": 46, "q": "3NF forbids:", "opts": ["Lists", "Partial", "Transitive via non-key", "No anomalies"], "c": 2, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Via non-key chain."]},
+    {"id": 47, "q": "BCNF forbids:", "opts": ["Lists", "Partial", "Transitive only", "Every nontrivial left outside a superkey"], "c": 3, "d": "medium", "t": "BCNF Overview", "exp": ["Every left must be superkey."]},
+    {"id": 48, "q": "Lossless via common attribute that determines one side ensures:", "opts": ["Dependency preservation only", "No spurious tuples after joining back", "Only 1NF", "Only anomalies"], "c": 1, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Common determines one side."]},
+    {"id": 49, "q": "Dependency preservation means every original FD is:", "opts": ["Lost", "Checkable on a single decomposed table without joining", "Only via trigger", "Only via view"], "c": 1, "d": "medium", "t": "BCNF Overview", "exp": ["Checkable on single table."]},
+    {"id": 50, "q": "BCNF lossless always and dependency preservation may not is which trade-off?", "opts": ["BCNF trade-off", "No trade-off", "Only 1NF trade-off", "Only keys trade-off"], "c": 0, "d": "medium", "t": "BCNF Overview", "exp": ["BCNF vs 3NF preservation may need staying at 3NF."]},
+    {"id": 51, "q": "Highest normal form given FDs: climb first failure plus one — order is:", "opts": ["Random", "1NF then 2NF then 3NF then BCNF", "BCNF then 3NF", "Only BCNF"], "c": 1, "d": "easy", "t": "BCNF Overview", "exp": ["Climb from atomic."]},
+    {"id": 52, "q": "One-candidate 3NF is often automatically BCNF because:", "opts": ["Overlapping tricks", "Non-superkey determinant minus prime exception hides residue — with one candidate less overlap", "Only via many", "Only via list"], "c": 1, "d": "medium", "t": "BCNF Overview", "exp": ["Less overlap to hide."]},
+    {"id": 53, "q": "Candidate minimal super tested by:", "opts": ["Checking X+ equals R and no proper subset does", "Only checking X+ equals R without minimality", "Only checking trivial", "Only checking composite"], "c": 0, "d": "medium", "t": "Functional Dependency", "exp": ["Super plus minimality test."]},
+    {"id": 54, "q": "Composite many columns together identify where none alone suffices — example is:", "opts": ["Single key", "Enrollment studentId plus courseId plus grade with grade on the bridge", "Super only", "Foreign only"], "c": 1, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Composite where together unique."]},
+    {"id": 55, "q": "Bridge vs super vs candidate: many Many needs bridge while super test via closure — unrelated families but both rely on closure because:", "opts": ["Different but both use minimal super vs foreign on N", "Same family", "No relation", "Only BCNF"], "c": 0, "d": "medium", "t": "1NF, 2NF, 3NF", "exp": ["Clarifies two families mixing: N:M needs bridge; super test via closure."]},
+    {"id": 56, "q": "Trivial FD Y subset of X always holds via:", "opts": ["Augmentation only", "Reflexivity", "Only transitivity", "Only union"], "c": 1, "d": "easy", "t": "Functional Dependency", "exp": ["Trivial subset always holds."]},
+    {"id": 57, "q": "Union derived from Armstrong says if X->Y and X->Z then X->:", "opts": ["Z only", "YZ", "Only X", "Only superset"], "c": 1, "d": "medium", "t": "Functional Dependency", "exp": ["Union."]},
+    {"id": 58, "q": "Insertion needs spurious tuple scenario is:", "opts": ["Insertion anomaly", "Deletion anomaly", "Update anomaly", "Closure anomaly"], "c": 0, "d": "easy", "t": "Anomalies", "exp": ["Cannot insert without extra."]},
+    {"id": 59, "q": "Deletion kills keeper scenario is:", "opts": ["Insertion anomaly", "Deletion anomaly", "Update anomaly", "Lossless anomaly"], "c": 1, "d": "easy", "t": "Anomalies", "exp": ["Delete one fact deletes keeper."]},
+    {"id": 60, "q": "Update needs many touches scenario is:", "opts": ["Insertion anomaly", "Deletion anomaly", "Update anomaly", "Lossless anomaly"], "c": 2, "d": "easy", "t": "Anomalies", "exp": ["Many row touches via redundancy."]}
+  ]
+}
