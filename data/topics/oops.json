@@ -1,0 +1,506 @@
+{
+  "id": "oops",
+  "title": "OOPs (Abstraction/Inheritance/Polymorphism)",
+  "icon": "OO",
+  "category": "cs-foundations",
+  "color": "#475569",
+  "subtopics": [
+    "Classes & Objects",
+    "4 Pillars of OOP",
+    "Inheritance Types",
+    "Overloading vs Overriding"
+  ],
+  "estimatedHours": 8,
+  "readingSections": [
+    {
+      "id": "class-object",
+      "title": "Classes and Objects (blueprint vs house)",
+      "type": "concept",
+      "quickSummary": "Class is the blueprint that defines fields and methods. Object is the house built from it at runtime, occupying memory. One class can create many objects. Class lives once, objects many; class defines, object occupies.",
+      "content": [
+        "A class is a template that bundles data (fields, properties) and the operations on that data (methods, constructors) plus the identity of the type. Think blueprint: it says a Car has colour and mileage and can accelerate, but there is no car on the road yet and no memory for an instance. The class lives in code and in metadata once it is loaded.",
+        "An object is an instance of a class created at runtime via new (or a factory) that occupies heap memory with its own field values. Think house built from the blueprint: now there is a real Car with colour red and mileage 12 — a second Car can be blue with mileage 8 from the same blueprint. One class, many objects, each with its own state but the same behaviour definition.",
+        "Every object has state (the current field values), behaviour (the methods it can run, defined by its class), and identity (a distinct address/reference even if two objects hold identical field values — the exam's equality trap). Create via constructor, which shares the class name and is called with new. Destructors or finalizers or close handle cleanup when the language provides them.",
+        "Members divide by ownership. Instance members belong to each object and are accessed via the object. Static members belong to the class itself and are shared across all objects (Java static, C++ static, C# static). The exam writes static vs instance to test whether you think a change on one object affects the others — for static it does, for instance it does not.",
+        "Visibility at a glance: public visible everywhere, private visible only inside the class, protected visible to subclasses, package/internal visible within the same package/module. AXIS rarely traps on visibility here beyond contrast with the pillars — know that private hides inside the class and that public vs private is the simplest boundary."
+      ],
+      "subsections": [
+        {
+          "title": "Blueprint vs house vs neighbourhood",
+          "content": "Blueprint is the class. Houses are the objects. The neighbourhood is the heap full of objects plus references pointing into it. Constructors lay foundations — they initialize fields so the house is not garbage. Static fields are like a shared water tower serving the whole neighbourhood, not one house."
+        },
+        {
+          "title": "Equality trap that steals marks",
+          "content": "Identity vs equality: two distinct Car objects can both be red at mileage 12 yet a == b can be false under reference equality because they are two different houses. Content equality must compare fields explicitly. Strings add string-intern and equals vs == traps across languages — read the language the stem names."
+        }
+      ],
+      "quickRevision": [
+        "Class is the blueprint with fields and methods; object is the instance at runtime in heap via constructor.",
+        "One class many objects, each object has state plus behaviour plus identity (distinct reference).",
+        "Instance members per object, static members per class shared.",
+        "Constructor is named as class and called with new; visibility public/private/protected decides exposure.",
+        "Reference equality vs content equality — distinct identity even if fields look identical."
+      ],
+      "tricks": [
+        "Any answer that says a class occupies instance memory like an object is wrong — only objects occupy instance slots on the heap.",
+        "Static change on one instance appears on another because static lives on the class, not the instance.",
+        "Identity trap: two new Car objects with identical fields are still two identities — a == b can fail under reference equality."
+      ],
+      "patterns": [
+        "'Template that defines fields and methods?' -> Class. 'Runtime instance in heap?' -> Object.",
+        "'Via which keyword with a constructor?' -> new.",
+        "'Per-class shared member?' -> Static. 'Per-object?' -> Instance.",
+        "'Distinct reference even if fields match?' -> Identity."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS — class vs object, every year",
+          "question": "Which is a blueprint vs heap instance, static vs instance, or equality?",
+          "approach": "Class blueprint define, object instance occupies, static shared on class, identity distinct."
+        },
+        {
+          "source": "Infosys — constructor",
+          "question": "What creates an object and shares the class name?",
+          "approach": "Constructor — same name as class, called with new, may be overloaded."
+        }
+      ],
+      "companyNote": "1-2 questions per paper: class vs object vs static vs instance, plus reference vs content equality."
+    },
+    {
+      "id": "pillars",
+      "title": "The Four Pillars: Abstraction, Encapsulation, Inheritance, Polymorphism",
+      "type": "concept",
+      "quickSummary": "Abstraction hides what is unnecessary and shows what matters (interface/abstract). Encapsulation bundles data with methods and hides internals via private plus accessors. Inheritance reuses a parent as a child is-a. Polymorphism lets one call behave differently by compile or runtime dispatch.",
+      "content": [
+        "Abstraction means modelling only what matters for the problem and hiding what does not. The user of a CoffeeMachine presses makeCoffee and does not see the grinder motor — that is abstraction. Mechanically it is expressed with abstract classes and interfaces: an abstract class can have state plus partial implementation plus abstract duties; an interface is a contract of duties with no state (Java 8+ allows default). The exam writes both to bait you — abstraction is the idea, interfaces and abstract classes are the tools.",
+        "Encapsulation means bundling data and the methods that touch it into one unit and exposing it through a guarded entry — fields are often private, access via getters and setters plus constructors that enforce invariants. Benefit: internal representation can change (ArrayList to LinkedList, or array to map) without callers noticing, and broken states are rejected at the gate. The exam phrase data hiding points to encapsulation.",
+        "Inheritance means a child class reuses and can extend or override a parent class, expressing an is-a relationship. Example: Dog is an Animal, so Dog inherits feel and can override speak. Benefits: code reuse and substitutability. Costs: coupling — the child depends on the parent's internals — which is why composition (has-a) often wins over deep hierarchies. The exam word reuses signals inheritance.",
+        "Polymorphism means one interface, many forms. Same method name plus different parameter lists selects at compile time (overloading). Same method name plus same parameters but different receiver class selects at runtime (overriding plus dynamic dispatch). With a parent reference holding a child object, the child's overridden method runs even though the variable type is parent — that is the exam's favourite polymorphism demo.",
+        "How the four map in a one-screen story. Abstraction decides what a coffee machine promises (makeCoffee). Encapsulation guards how it does it (private grinder, public maker). Inheritance lets a DeluxeMachine reuse CoffeeMachine and add extras. Polymorphism lets one call machine.makeCoffee() behave as the Deluxe version when the underlying object is Deluxe."
+      ],
+      "subsections": [
+        {
+          "title": "Abstraction vs encapsulation in 15 seconds",
+          "content": "Abstraction hides what exists to model only what matters and shows a simple contract. Encapsulation hides internals and bundles data plus methods to guard them. One is about what to show, the other about how to guard. Interface and abstract class are abstraction tools; private plus accessors are encapsulation tools."
+        },
+        {
+          "title": "Inheritance is-a vs composition has-a",
+          "content": "Is-a is inheritance: Dog is an Animal. Has-a is composition: Car has an Engine. Composition delegates rather than inherits and is more flexible because you can swap engines without inheriting every engine detail. AXIS commonly wants composition when the stem says has or is composed of."
+        }
+      ],
+      "quickRevision": [
+        "Abstraction shows what matters via abstract class/interface. Encapsulation bundles and hides via private plus getters/setters.",
+        "Inheritance reuses via is-a (child is a parent kind). Polymorphism one name many behaviours via overload vs override.",
+        "Abstract class can have state plus duties; interface is contract of duties (classic).",
+        "Composition has-a delegates and is often better than deep inheritance — weaker coupling.",
+        "Dynamic dispatch: parent reference to child object calls child's override at runtime."
+      ],
+      "tricks": [
+        "Interface is pure contract (no state classically), abstract is partial — do not swap definitions.",
+        "Data hiding belongs to encapsulation, not abstraction — many stems bait with abstraction for a private field.",
+        "Deep inheritance couples too tightly — the modern answer is often composition plus interfaces."
+      ],
+      "patterns": [
+        "'Simple contract hiding grinder?' -> Abstraction (interface/abstract). 'Private fields plus accessors?' -> Encapsulation.",
+        "'Code reuse via is-a?' -> Inheritance. 'One call many behaviours?' -> Polymorphism.",
+        "'Is-a vs has-a?' -> Inheritance vs composition. Papers love to offer both."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every AXIS paper — pillars, guaranteed",
+          "question": "Which pillar matches this description or this code snippet?",
+          "approach": "Match keywords: interface or partial is abstraction, private is encapsulation, reuses is inheritance, overload vs override is polymorphism."
+        },
+        {
+          "source": "Infosys / TCS — abstraction vs encapsulation",
+          "question": "Which hides what vs how and which tool is which?",
+          "approach": "Abstraction hides what (model what matters: interface/abstract), encapsulation hides how (private plus accessors)."
+        }
+      ],
+      "companyNote": "Four pillars appear as either a direct match or a code snippet to label. Encapsulation vs abstraction is the favourite confusion."
+    },
+    {
+      "id": "inheritance-types",
+      "title": "Inheritance Types, Access and Method Resolution",
+      "type": "concept",
+      "quickSummary": "Single: one parent. Multilevel: chain. Hierarchical: one parent many children. Multiple: many parents (Java interfaces only, C++ and Python allow multiple class inheritance). Diamond via A->B,A->C->D; Java resolves via interfaces, C++ via virtual inheritance, Python via MRO.",
+      "content": [
+        "Single inheritance is one child from one parent. Multilevel is a chain where B inherits A and C inherits B, so C can reach A transitively via B. Hierarchical is one parent with many children side by side (Cat and Dog are both Animals) sharing the parent without the children knowing each other. The exam loves hierarchical because its count of children is the trap — one parent many children, not the chain.",
+        "Multiple inheritance is many parents for one child. Java forbids multiple class inheritance (one extends, many implements via interfaces). C++ allows multiple class inheritance and Python does too. If the stem says Java and many parents for classes, answer impossible without interfaces is the trap — interfaces rescue it.",
+        "Hybrid is a mix of the above (e.g. hierarchical plus multilevel). It appears as a name more than as a drawing — any diagram that is clearly a chain plus a sibling is hybrid. The exam structure connects directly to method resolution: in a diamond A at top, B and C in the middle, D at bottom inheriting B and C, which A's method does D get when both B and C shadow it?",
+        "Diamond resolution per language is the mark. Python follows C3 linearization and exposes it as Method Resolution Order (MRO) left-to-right depth-first respecting order. C++ requires virtual inheritance to merge the single A subobject; without it there are two Am inside D and the call is ambiguous. Java has no class diamond because a class has one parent; the diamond lives among interfaces and the compiler forces an override when two interfaces define the same default.",
+        "Surface the confusing overlap: constructor and composition. A subclass constructor may chain to the parent (super) to establish invariants. Composition has-a can often replace deep inheritance — a Car has an Engine can be better than Car inherits Engine. AXIS commonly offers both choices and expects delegation for has.",
+        "Access control connects directly to inheritance: in Java protected is package plus subclass; in C++ protected is subclass plus friends, and public vs protected vs private inheritance decides what outside sees. The exam rarely goes deep beyond private hides inside class and protected is subclass-visible."
+      ],
+      "subsections": [
+        {
+          "title": "Diamond in one paragraph that ends debates",
+          "content": "Draw A with method m at the top, B and C below A each overriding m differently, D inheriting B and C. Call m on a D. Without a rule it is ambiguous which m wins. C++ wins only with virtual inheritance merging A; otherwise ambiguity. Python wins by C3 MRO given the declared order; Java would not compile as a class diamond because D can have only one extends, but with interfaces it forces D to resolve the clash."
+        },
+        {
+          "title": "Why Java restricts multiple class inheritance",
+          "content": "Multiple class parents make diamonds and state conflicts (which field, which super). Interfaces have no instance state classically, so the conflict is limited to behaviour signatures; default method clashes are resolved by requiring an explicit override. That is why Java chose interfaces for multiple inheritance of type, not state."
+        }
+      ],
+      "quickRevision": [
+        "Single one parent, multilevel chain, hierarchical one-to-many, multiple many-to-one, hybrid mix.",
+        "Java multiple class no, multiple interfaces yes; C++ and Python allow multiple class.",
+        "Diamond A-B,C-D: Python MRO (C3), C++ virtual inheritance merges, Java class diamond disallowed but interfaces require override.",
+        "Composition has-a delegates and is often better than deep is-a chains.",
+        "Derived is-a Base must hold for inheritance; has-a is composition."
+      ],
+      "tricks": [
+        "Any answer that says Java supports multiple class extends is wrong — only one extends, many implements via interfaces.",
+        "Do not confuse multilevel with multiple — chain vs many parents to one child are different words for different shapes.",
+        "Degree vs shape: multilevel chain length vs hierarchical breadth vs multiple parent count."
+      ],
+      "patterns": [
+        "'One parent one child?' -> Single. 'Chain A->B->C?' -> Multilevel. 'One parent many children?' -> Hierarchical. 'Many parents one child?' -> Multiple.",
+        "'Diamond D over B,C over A?' -> Resolution per language (Python C3, C++ virtual, Java interface trap).",
+        "'Has-a vs is-a?' -> Composition has-a vs inheritance is-a."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — inheritance shapes and diamond, very frequent",
+          "question": "Name this inheritance shape or resolve the diamond in this code?",
+          "approach": "Single vs chain vs one-to-many vs many-to-one; then apply language rule for diamond."
+        },
+        {
+          "source": "TCS / Wipro — Java multiple class trap",
+          "question": "Is this Java multiple class inheritance valid?",
+          "approach": "No — at most one extends; interfaces rescue multiple type inheritance."
+        }
+      ],
+      "companyNote": "1-2 questions per paper on inheritance shapes plus one diamond or MRO/virtual inheritance plus one Java extends vs implements."
+    },
+    {
+      "id": "overload-override",
+      "title": "Overloading vs Overriding (compile vs runtime) plus Binding and Dispatch",
+      "type": "concept",
+      "quickSummary": "Overloading: same name different parameters inside one class, bound at compile. Overriding: same name same parameters in child as in parent, bound at runtime via virtual dispatch via parent reference. Private, final, static and constructors cannot be overridden. Constructors can be overloaded.",
+      "content": [
+        "Overloading is compile-time polymorphism: one class has several methods with the same name but different parameter lists (type or count or order). The compiler picks the target using overload resolution at compile. Example: add(int,int) vs add(double,double) vs add(String,String). So-called operator overloading is overloading of operators in C++ and Python, not in Java.",
+        "Overriding is runtime polymorphism: a child class redefines a method it inherits from a parent with the same name plus same parameter list plus compatible return and not weaker access. The decision of which body runs is deferred to runtime and follows the object's actual class, not the reference type — dynamic dispatch via a vtable or equivalent. That is why parentRefToChildObj.speak() can bark instead of the generic animal sound.",
+        "Signatures matter for the mark. Overloading cares about parameters — name plus parameter list (and type) form the compile-time signature (return type alone does not disambiguate overloads in Java and C++). Overriding requires the same parameter list plus compatible return via covariant returns plus not narrower access plus not static. The exam writes two overloads that differ only by return and asks which compiles — answer neither compiles as overloads (return alone does not overloading make).",
+        "What cannot be overridden steals many marks. Private methods are not visible to children (they can hide with a new method but not override). Final methods are sealed. Static methods hide, not override (the call resolves with the reference type, not the object). Constructors are not inherited and cannot be overridden, but they can be overloaded via chaining (this and super). Private virtual is a niche but testable trap — accessibility and virtual are orthogonal in C++ and Java.",
+        "Binding words: static binding or early binding at compile (overloading, private, static, final) vs dynamic binding or late binding at runtime (virtual overriding). Covariance says an overriding method may return a more specific subtype than the overridden one — the classic factory pattern returning a subtype."
+      ],
+      "subsections": [
+        {
+          "title": "Static hiding vs dynamic overriding in one line each",
+          "content": "Override needs a virtual instance method on the same parameter list and the runtime dispatches to the object's class. Hiding is static method with the same signature but resolution stays with the reference type. The exam prints parentRefToChildObj call and asks which runs — instance override picks the child, static hide picks the reference type."
+        },
+        {
+          "title": "Return type myth",
+          "content": "Overloading cannot be distinguished by return alone. void foo() vs int foo() on the same parameter list is a compile error, not two overloads. Overriding may differ by covariant return but must share parameters. Hold parameters as the overload key; return is not the overload key."
+        }
+      ],
+      "quickRevision": [
+        "Overload: same name different params inside one class, compile-time, return alone does not count.",
+        "Override: same name same params in child as in parent, runtime via dynamic dispatch, parent ref to child calls child body.",
+        "Cannot override private/final/static/constructor; static hides not overrides; constructors overload via chaining.",
+        "Access in Java/C++ on override not weaker; return covariant widens downward.",
+        "Static/early at compile vs dynamic/late at runtime is the binding vocabulary."
+      ],
+      "tricks": [
+        "Two methods with same name and same params differing only by return are not overloads — redefinition error.",
+        "Static method same signature in child is hiding, not overriding — call resolves with reference type, not object.",
+        "Constructor is not overridden nor inherited; it can be overloaded and chained via this/super."
+      ],
+      "patterns": [
+        "'Same name different params same class?' -> Overloading (compile). 'Same name same params child hides parent?' -> Overriding (runtime).",
+        "'Parent reference child object whose code runs?' -> Child override at runtime; static would pick reference type.",
+        "'Can return type distinguish overload?' -> No. 'Can covariant narrow return for override?' -> Yes."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every OOP paper — overload vs override, guaranteed",
+          "question": "Differentiate overloading vs overriding or predict which overload vs which override runs on this code?",
+          "approach": "Params decide overloading at compile; same params plus virtual decide overriding at runtime. Watch static vs virtual."
+        },
+        {
+          "source": "TCS / Infosys — cannot override and hiding",
+          "question": "Can this private/final/static/constructor be overridden?",
+          "approach": "Private hidden not visible, final sealed, static hides, constructor not inherited — only overloadable."
+        }
+      ],
+      "companyNote": "1-2 MCQs per paper on overload vs override plus one on dynamic vs static/hiding plus one on cannot-override traps."
+    },
+    {
+      "id": "exam-oop",
+      "title": "Exam OOP Synthesis (how AXIS mixes it all)",
+      "type": "concept",
+      "quickSummary": "Decision chain: many virtual full-OSes is VM, many microservices dense is container is in another bank but OOP bank focuses on blueprint vs instance plus pillar labels plus shape vs hiding vs dispatch. Read is-a vs has-a, then overloaded params vs overridden same params, then inline vs virtual.",
+      "content": [
+        "Pillar wording decides first. Simple contract or partial model is abstraction. Guarding fields is encapsulation. Reusing a parent is inheritance. One name many behaviours is polymorphism. A code snippet that shows private fields plus public getters is encapsulation even if the class also sits in a hierarchy.",
+        "Shape wording decides second. Single vs chain vs one-to-many vs many-to-one maps directly to inheritance type. A diagram that is clearly a chain plus a sibling is hybrid. A diamond needs the language rule — C3 left-to-right in Python, virtual merging in C++, interface clash in Java.",
+        "Overload vs override decides third. Same name different params inside one class is overloading at compile; same name same params across parent-child is overriding at runtime with dynamic dispatch. Private, final, static and constructors cannot be overridden; return alone does not overload.",
+        "Is-a vs has-a decides fourth. Dog is an Animal is-a maps to extends or inherits; Car has an Engine maps to composition and delegation. Prefer composition when the stem says has, is composed of or is assembled from, even when inheritance could technically compile.",
+        "Speed-vs-marks rule: if the paper mixes four OOP ideas, run one pass by keyword — interface mentions -> abstraction, private plus getter -> encapsulation, reuses -> inheritance, overload vs override vs virtual -> polymorphism — then reconcile shapes and dispatch. One pass removes most distractors."
+      ],
+      "subsections": [
+        {
+          "title": "One-pass elimination for mixed OOP items",
+          "content": "Item that mentions both private fields and an interface uses two pillars — private points to encapsulation as the specifically tested pillar, interface points to abstraction as the specifically tested pillar. Choose which pillar the question highlights: guarding fields is encapsulation; contracting duties is abstraction."
+        },
+        {
+          "title": "When both inheritance and polymorphism appear together",
+          "content": "Inheritance is the structure (child is a parent kind); polymorphism is the behaviour (one call dispatches differently). Many overrides assume inheritance, but polymorphism names the dispatch. If the stem says parent reference child object calls child body, pick polymorphism and specifically overriding plus dynamic dispatch even though inheritance underlies it."
+        }
+      ],
+      "quickRevision": [
+        "Abstraction interface/abstract vs encapsulation private+accessors vs inheritance is-a vs composition has-a vs polymorphism overload/override.",
+        "Single chain vs one-to-many vs many-to-one vs mix are the shape vocabulary.",
+        "Overload compile same name different params; override runtime same name same params plus virtual; static hides.",
+        "Diamond rule per language; composition often better than deep is-a.",
+        "One pass by keyword kills most mixed OOP tables."
+      ],
+      "tricks": [
+        "Abstraction vs encapsulation: what to show vs how to guard — many stems bait by offering both.",
+        "Inheritance vs composition: is-a vs has-a — has or composed maps to delegation, not extends.",
+        "Private field inside a hierarchy is not abstraction — guarding is encapsulation even within inheritance."
+      ],
+      "patterns": [
+        "'Simple contract hiding grinder?' -> Abstraction. 'Private plus getters?' -> Encapsulation. 'Reuses?' -> Inheritance. 'One name many forms?' -> Polymorphism.",
+        "'Shape among classes?' -> Single/multilevel/hierarchical/multiple/hybrid ->Diamond resolution.",
+        "'Same name different params same class?' -> Overload. 'Same name same params child?' -> Override via virtual.",
+        "'Has-a vs is-a?' -> Composition has-a delegates, inheritance is-a inherits."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS synthesis — mixed OOP 4-5 item match-the-column",
+          "question": "Given five stems each touching a different OOP idea, match each to pillar or mechanism?",
+          "approach": "One pass: interface->abstraction, private->encapsulation, reuses/is-a->inheritance, overload vs override->polymorphism, then diamond/MRO or cannot-override for depth."
+        },
+        {
+          "source": "TCS / Wipro — is-a vs has-a plus dispatch",
+          "question": "Is this an extends relationship, delegation, or dispatch via virtual?",
+          "approach": "Is-a extends, has-a delegates, parent ref child object speaks of polymorphism plus dynamic binding."
+        }
+      ],
+      "companyNote": "Synthesis tables appear as a 4-5 item match-the-column question mixing all pillars and mechanisms."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "class-object",
+      "title": "Class vs Object with Static vs Instance and Identity",
+      "formula": {
+        "latex": "Class:blueprint\\;(fields+methods) \\;|\\; Object:new\\;Class()+heap\\;(state+behav+identity) \\;|\\; Static\\;class\\;vs\\;instance\\;per\\;object",
+        "text": "Class blueprint fields+methods | Object new Class() heap state+behav+identity | Static class vs instance per object"
+      },
+      "whenToUse": "Any class vs object vs static vs instance vs equality MCQ.",
+      "explanation": [
+        "Class defines shape of state and behaviour — one definition, one loaded copy.",
+        "Object is the runtime instance via constructor with new, holding its own field values plus behaviour delegated to its class plus its own identity address.",
+        "Instance members per object accessed via object; static members per class shared — static change on one object visible to others.",
+        "Constructor shares class name, initializes the new object; destructor/finalizer/close cleans up where available.",
+        "Identity is distinct reference even if fields equal — content equality must compare fields explicitly, not just == on references."
+      ],
+      "example": {
+        "prompt": "One class Car, two objects red 12 and blue 8 — how many copies of the class vs fields are distinct?",
+        "steps": [
+          "Class definition exists once.",
+          "Two distinct objects occupy heap each with own fields red/blue and 12/8.",
+          "Static counts once shared. Instance counts per object so two values."
+        ],
+        "answer": "One class definition, two objects with two distinct field sets, static shared"
+      },
+      "memoryTip": "Blueprint class, Building object, new Constructs, static Shared, instance Individual, identity Is distinct.",
+      "commonMistake": "Calling a class an occupied memory slot like an object, or thinking static belongs to the instance."
+    },
+    {
+      "id": "pillars",
+      "title": "Four Pillars row",
+      "formula": {
+        "latex": "Abstraction:hide\\;what\\;(interface/abstract) \\;|\\; Encapsulation:bundle+hide\\;how\\;(private+accessors) \\;|\\; Inheritance:is\\text{-}a \\;|\\; Polymorphism:overload|+override",
+        "text": "Abstraction hide what interface/abstract | Encapsulation bundle+hide how private+accessors | Inheritance is-a | Polymorphism overload+override"
+      },
+      "whenToUse": "Any 'which pillar is this description or this snippet?' MCQ.",
+      "explanation": [
+        "Abstraction models only what matters and shows a simple contract — tools are interface and abstract class.",
+        "Encapsulation bundles data plus touching methods and hides internals via private plus guarded getters/setters and constructors.",
+        "Inheritance is-a reuses a parent as a child — Dog is an Animal — benefits reuse and substitutability, cost coupling.",
+        "Polymorphism one name many behaviours — overloading compile same name different params inside one class, overriding runtime same params in child via dynamic dispatch.",
+        "Composition has-a delegates and is often better than deep is-a; language favourite has or composed vs is-a ."
+      ],
+      "example": {
+        "prompt": "CoffeeMachine shows makeCoffee public and hides grinder private — pillars?",
+        "steps": [
+          "Hiding grinder behind makeCoffee is what to show vs how to guard split.",
+          "Simplified contract is abstraction; guarding fields is encapsulation.",
+          "If a later DeluxeMachine reuses it, that reuse is inheritance; polymorphic makeCoffee would be polymorphic."
+        ],
+        "answer": "Abstraction plus encapsulation (Deluxe reuse is inheritance, polymorphic behaviour is polymorphism)"
+      },
+      "memoryTip": "What to show Abstraction, How to guard Encapsulation, Whose reuse Inheritance, Many Forms Polymorphism.",
+      "commonMistake": "Swapping abstraction and encapsulation. Abstraction what to model, encapsulation how to guard."
+    },
+    {
+      "id": "inheritance-types",
+      "title": "Inheritance shapes, Diamond and Interface fix",
+      "formula": {
+        "latex": "Single\\;one\\; \\;|\\; MultiLevel\\;chain \\;|\\; Hier\\;one\\to many \\;|\\; Multiple\\;many\\to one \\;|\\; Diamond\\;A\\to B/C\\to D+rule",
+        "text": "Single one | MultiLevel chain | Hierarchical one to many | Multiple many to one | Diamond A to B/C to D plus rule"
+      },
+      "whenToUse": "Any shape-naming or diamond resolution or Java multiple-class trap MCQ.",
+      "explanation": [
+        "Single one parent, multilevel chain transitively, hierarchical one parent many children, multiple many parents one child, hybrid mix.",
+        "Java one extends plus many implements via interfaces; C++ and Python allow multiple class inheritance.",
+        "Diamond D over B,C over A: Python MRO (C3) left-to-right, C++ virtual inheritance merges the single A, Java class diamond disallowed but interfaces require explicit override of default clash.",
+        "Composition has-a delegates vs inheritance is-a inherits — prefer composition for has or is composed of.",
+        "Single chain length vs hierarchical breadth vs multiple parent count are different metrics."
+      ],
+      "example": {
+        "prompt": "Is class D extends B,C legal in Java as class parents?",
+        "steps": [
+          "Java class extends takes one parent only.",
+          "Many class parents is not legal.",
+          "Many interfaces is legal via implements with an explicit override for any default clash."
+        ],
+        "answer": "Not legal as classes; legal via interfaces with required override"
+      },
+      "memoryTip": "Chain Multilevel, Many children Hierarchical, Many parents Multiple, Mix Hybrid, Diamond Duplicates A.",
+      "commonMistake": "Confusing multilevel chain with multiple many-parents — different words, different shapes."
+    },
+    {
+      "id": "overload-override",
+      "title": "Overloading vs Overriding plus Binding",
+      "formula": {
+        "latex": "Overload:\\;same\\;name\\;diff\\;params\\;same\\;class@compile \\;|\\; Override:\\;same\\;name\\;same\\;params\\;child@runtime\\;virtual \\;|\\; cannot\\;private/final/static/ctor",
+        "text": "Overload same name diff params same class compile | Override same name same params child runtime virtual | cannot private/final/static/ctor"
+      },
+      "whenToUse": "Any overload vs override vs binding vs hiding vs cannot-override MCQ or code-output prediction.",
+      "explanation": [
+        "Overload same name different params inside one class, compile-time via overload resolution; return alone does not disambiguate overloads.",
+        "Override same name same params in child as in parent, runtime via dynamic dispatch (virtual), needs virtual instance, compatible return via covariance, not weaker access, not static.",
+        "Cannot override private (not visible), final (sealed), static (hides not overrides — resolves with reference type), nor constructors (not inherited) — constructors can only be overloaded/chained.",
+        "Binding: static/early at compile (overload, private, static, final) vs dynamic/late at runtime (virtual override).",
+        "Hiding vs overriding is the static shadow trap with the parentRefToChildObj test: instance picks object, static picks reference."
+      ],
+      "example": {
+        "prompt": "Parent p = new Child(); p.instanceSpeak() vs p.staticSpeak() plus void foo() vs int foo() same params — overload or override?",
+        "steps": [
+          "Instance method with virtual override picks child's body at runtime — dynamic binding.",
+          "Static method same signature is hiding — resolves with reference type p which is Parent, so Parent's body.",
+          "Same name same params differing only by return is not an overload — compile error, not two methods."
+        ],
+        "answer": "Instance override runs child, static hide runs parent, return-differing same-params is not an overload"
+      },
+      "memoryTip": "OverLoad Loads different params inside class; OverRide Rides the child over the parent with SamE params at Runtime; Static Stays with Type.",
+      "commonMistake": "Thinking return type disambiguates overloading or that static overrides. Neither — params disambiguate overload, static hides."
+    }
+  ],
+  "practiceProblems": {
+    "class-object": [
+      {"q": "Template that defines fields and methods but occupies no per-instance heap slot until instantiated is a:", "opts": ["Class", "Object", "String literal", "Array element"], "c": 0, "s": ["Class is the blueprint; only the object instance occupies heap field slots via new."], "a": "Class"},
+      {"q": "Runtime instance in heap with state, behaviour delegated to its class, and distinct identity is a:", "opts": ["Class", "Object", "Interface", "Package"], "c": 1, "s": ["Object via constructor with new: state plus behaviour plus identity."], "a": "Object"},
+      {"q": "One class, how many objects may be created via repeated new?", "opts": ["At most one", "Exactly one", "Many — one heap instance per new", "Zero"], "c": 2, "s": ["Many objects from one class, each with its own field values."], "a": "Many — one heap instance per new"},
+      {"q": "Which call creates an object in Java/C++/C#?", "opts": ["delete new Car()", "new Car()", "malloc Car", "free Car"], "c": 1, "s": ["Constructor via new Car() creates a heap object with identity."], "a": "new Car()"},
+      {"q": "Static field change on one object visible to another object — why?", "opts": ["Field is private", "Field is static per class shared", "Field is instance per object", "Field does not exist"], "c": 1, "s": ["Static lives on the class, not the instance — shared across all objects."], "a": "Field is static per class shared"},
+      {"q": "Instance field change on one object visible to another object:", "opts": ["Always yes", "No — per-object instance fields are separate", "Only if private", "Only if final"], "c": 1, "s": ["Instance fields belong to each object separately."], "a": "No — per-object instance fields are separate"},
+      {"q": "Two new Car objects both red with mileage 12 under reference equality a == b is usually:", "opts": ["True", "False because identities are distinct", "Null", "Compile error"], "c": 1, "s": ["Distinct references even if field values match — content equality must compare fields."], "a": "False because identities are distinct"},
+      {"q": "Constructor naming in Java/C++ is:", "opts": ["Any name", "Same name as its class", "Always init", "Always main"], "c": 1, "s": ["Constructor shares the class name and is called with new, may be overloaded."], "a": "Same name as its class"},
+      {"q": "Member accessed via the class name with no instance is most likely:", "opts": ["Instance member", "Static member", "Private member from outside", "Protected member from outside"], "c": 1, "s": ["Static members belong to the class itself and are accessed via ClassName.member."], "a": "Static member"},
+      {"q": "Reference equality vs content equality trap: a == b on two distinct objects with identical fields checks:", "opts": ["Content equality", "Reference identity", "Only hash", "Only length"], "c": 1, "s": ["Reference equality checks identity: same heap address, not same field values."], "a": "Reference identity"}
+    ],
+    "pillars": [
+      {"q": "Simplified contract that hides the grinder behind makeCoffee is which pillar?", "opts": ["Encapsulation", "Abstraction", "Inheritance", "Polymorphism"], "c": 1, "s": ["Hiding what exists to model only what matters: abstraction via interface/abstract."], "a": "Abstraction"},
+      {"q": "Private fields with public getters that guard state is which pillar?", "opts": ["Abstraction", "Encapsulation", "Inheritance", "Polymorphism"], "c": 1, "s": ["Bundling and guarding internals via private plus accessors: encapsulation."], "a": "Encapsulation"},
+      {"q": "Child reusing a parent via is-a (Dog is an Animal) is which pillar?", "opts": ["Abstraction", "Encapsulation", "Inheritance", "Polymorphism"], "c": 2, "s": ["Reuse via is-a parent-child is inheritance (extends)."], "a": "Inheritance"},
+      {"q": "One call with many behaviours either via compile list or runtime dispatch is which pillar?", "opts": ["Abstraction", "Encapsulation", "Inheritance", "Polymorphism"], "c": 3, "s": ["One interface many forms: overloading at compile, overriding at runtime."], "a": "Polymorphism"},
+      {"q": "Interface with abstract duties and an abstract class with state plus partial implementation are tools for:", "opts": ["Encapsulation only", "Abstraction", "Polymorphism only", "Inheritance only"], "c": 1, "s": ["Interface and abstract class model what matters — abstraction tools."], "a": "Abstraction"},
+      {"q": "Changing internal ArrayList to LinkedList without callers noticing demonstrates:", "opts": ["Abstraction only", "Encapsulation", "Inheritance", "Polymorphism"], "c": 1, "s": ["Guarded internals let representation change behind the accessors: encapsulation."], "a": "Encapsulation"},
+      {"q": "Dog is an Animal is:", "opts": ["Abstraction", "Encapsulation", "Inheritance (is-a)", "Composition (has-a)"], "c": 2, "s": ["Is-a kind is inheritance. Has-a part is composition."], "a": "Inheritance (is-a)"},
+      {"q": "Car has an Engine is best modelled as:", "opts": ["Inheritance", "Composition (has-a) with delegation", "Abstraction only", "Polymorphism only"], "c": 1, "s": ["Has-a part delegates rather than inherits; swapping engines is easy."], "a": "Composition (has-a) with delegation"},
+      {"q": "Parent reference to child object calls child's overridden method at runtime — pillar and mechanism:", "opts": ["Abstraction", "Encapsulation", "Inheritance only", "Polymorphism via overriding plus dynamic dispatch"], "c": 3, "s": ["One interface many behaviours — overriding via runtime dispatch even though reference type is parent."], "a": "Polymorphism via overriding plus dynamic dispatch"},
+      {"q": "Data hiding where fields are private points to:", "opts": ["Abstraction", "Encapsulation", "Inheritance", "Polymorphism"], "c": 1, "s": ["Private fields are object-internal hiding: encapsulation, not model what to show."], "a": "Encapsulation"}
+    ],
+    "inheritance-types": [
+      {"q": "One child from one parent — inheritance type?", "opts": ["Single", "Multilevel", "Hierarchical", "Multiple"], "c": 0, "s": ["One parent : single. Chain is multilevel; one-to-many is hierarchical."], "a": "Single"},
+      {"q": "Chain A -> B -> C where C reaches A transitively via B — type?", "opts": ["Single", "Multilevel", "Hierarchical", "Multiple"], "c": 1, "s": ["Chain is multilevel (linear)."], "a": "Multilevel"},
+      {"q": "One parent with many children side by side — type?", "opts": ["Single", "Multilevel", "Hierarchical", "Multiple"], "c": 2, "s": ["One-to-many is hierarchical."], "a": "Hierarchical"},
+      {"q": "Many parents for one child — type?", "opts": ["Single", "Multilevel", "Hierarchical", "Multiple"], "c": 3, "s": ["Many-to-one is multiple inheritance."], "a": "Multiple"},
+      {"q": "Java class D extends B, C with two class parents — legal?", "opts": ["Yes", "No — one extends only, many parents via interfaces", "Yes for small n", "Depends on package"], "c": 1, "s": ["Java classes one extends; interfaces rescue multiple type inheritance via implements."], "a": "No — one extends only, many parents via interfaces"},
+      {"q": "C++ class D extends B, C with two class parents — legal?", "opts": ["No", "Yes — C++ allows multiple class inheritance", "Only with interfaces", "Only for primitives"], "c": 1, "s": ["C++ allows it; ambiguity resolved via virtual inheritance for a diamond."], "a": "Yes — C++ allows multiple class inheritance"},
+      {"q": "Python class D(B, C) where B and C share parent A - resolution order is:", "opts": ["Random", "MRO via C3 linearization left-to-right", "Only single inheritance chain", "Always C first"], "c": 1, "s": ["Python exposes Method Resolution Order as C3 left-to-right depth-first respecting order."], "a": "MRO via C3 linearization left-to-right"},
+      {"q": "C++ diamond D over B,C over A without virtual inheritance — A subobjects in D are:", "opts": ["One merged", "Two copies — ambiguous", "Zero", "Virtual by default"], "c": 1, "s": ["Without virtual there are two Am, so A::m call is ambiguous without qualification."], "a": "Two copies — ambiguous"},
+      {"q": "C++ fix to merge the two A copies in a diamond is:", "opts": ["More extends", "Virtual inheritance (virtual base)", "Final keyword", "Private inheritance"], "c": 1, "s": ["Virtual inheritance shares one A subobject among the paths."], "a": "Virtual inheritance (virtual base)"},
+      {"q": "Is-a vs has-a: Car has an Engine best as:", "opts": ["Inheritance is-a", "Composition has-a via delegation", "Abstraction only", "Polymorphism only"], "c": 1, "s": ["Has-a part with delegation is composition, not extends."], "a": "Composition has-a via delegation"}
+    ],
+    "overload-override": [
+      {"q": "Same name different params inside one class bound at compile is:", "opts": ["Overriding", "Overloading", "Hiding", "Recursion"], "c": 1, "s": ["Compile-time overloading: same name different params inside one class."], "a": "Overloading"},
+      {"q": "Same name same params in child as in parent bound at runtime is:", "opts": ["Overloading", "Overriding via virtual dynamic dispatch", "Hiding only", "Constructing"], "c": 1, "s": ["Runtime overriding via dynamic dispatch follows object actual class."], "a": "Overriding via virtual dynamic dispatch"},
+      {"q": "Two overloads differing only by return on same params in Java — result?", "opts": ["Second overload wins", "Compile error — return alone does not disambiguate overloads", "Both compile", "Runtime picks one"], "c": 1, "s": ["Params decide overloading; return alone never distinguishes overloads."], "a": "Compile error — return alone does not disambiguate overloads"},
+      {"q": "Overriding return may be:", "opts": ["Any unrelated type", "Covariant more specific subtype", "Must be void", "Must be exactly the same with no narrowing"], "c": 1, "s": ["Covariance allows narrowing to a more specific subtype than the overridden return."], "a": "Covariant more specific subtype"},
+      {"q": "Private method in parent — can child override it?", "opts": ["Yes", "No — not visible, new method hides but does not override", "Only if final", "Only if static"], "c": 1, "s": ["Private not visible to children, so cannot be overridden."], "a": "No — not visible, new method hides but does not override"},
+      {"q": "Final method in parent — can child override it?", "opts": ["Yes", "No — sealed", "Only via hiding", "Only via overloading"], "c": 1, "s": ["Final is sealed; override disallowed."], "a": "No — sealed"},
+      {"q": "Static method same signature in child is:", "opts": ["Overriding — runtime picks child", "Hiding — resolves with reference type, not object", "Overloading", "Constructing"], "c": 1, "s": ["Static hides, not overrides — call resolves with reference type."], "a": "Hiding — resolves with reference type, not object"},
+      {"q": "Parent p = new Child(); p.instanceSpeak() vs p.staticSpeak() picks:", "opts": ["Both parent", "Instance child runtime vs static parent with reference type", "Both child", "Both compile error"], "c": 1, "s": ["Virtual instance picks child by object, static hide picks parent by reference type."], "a": "Instance child runtime vs static parent with reference type"},
+      {"q": "Constructor — can it be overridden?", "opts": ["Yes", "No — not inherited, only overloaded and chained via this/super", "Only if static", "Only if private"], "c": 1, "s": ["Not inherited so cannot be overridden; can be overloaded and chained."], "a": "No — not inherited, only overloaded and chained via this/super"},
+      {"q": "Early binding vs late binding maps to:", "opts": ["Both runtime", "Static/early at compile vs dynamic/late at runtime", "Both compile", "Only early"], "c": 1, "s": ["Static early at compile (overload/private/static/final) vs dynamic late at runtime (virtual override)."], "a": "Static/early at compile vs dynamic/late at runtime"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Template that defines fields and methods as a blueprint is a:", "opts": ["Class", "Object", "Interface only", "Package"], "c": 0, "d": "easy", "t": "Classes & Objects", "exp": ["Class is the blueprint; objects are the instances in heap."]},
+    {"id": 2, "q": "Heap instance with its own field values and identity created via new is a:", "opts": ["Class", "Object", "Package", "Module"], "c": 1, "d": "easy", "t": "Classes & Objects", "exp": ["Object: state plus behaviour plus distinct identity at runtime."]},
+    {"id": 3, "q": "One class may create how many objects via repeated new?", "opts": ["At most one", "Exactly one", "Many", "Zero"], "c": 2, "d": "easy", "t": "Classes & Objects", "exp": ["Many objects per class, each with own fields."]},
+    {"id": 4, "q": "Constructor naming is:", "opts": ["Any name", "Same as its class", "Always create", "Always build"], "c": 1, "d": "easy", "t": "Classes & Objects", "exp": ["Same as class, called with new, may be overloaded."]},
+    {"id": 5, "q": "Member shared across all objects of a class via the class itself is:", "opts": ["Instance", "Static", "Private only", "Protected only"], "c": 1, "d": "easy", "t": "Classes & Objects", "exp": ["Static per class shared. Instance per object separate."]},
+    {"id": 6, "q": "Change to a static field on one object seen via another — why?", "opts": ["It is private", "It lives on the class shared", "It is per-object separate", "It does not exist"], "c": 1, "d": "medium", "t": "Classes & Objects", "exp": ["Static lives on the class, not the instance."]},
+    {"id": 7, "q": "Two new Car objects both red with mileage 12 under reference equality a == b is usually:", "opts": ["True", "False because distinct identities", "Null", "Compile error"], "c": 1, "d": "medium", "t": "Classes & Objects", "exp": ["Distinct heap addresses even if field values match — content equality must compare fields."]},
+    {"id": 8, "q": "Which creates an object via a constructor?", "opts": ["delete", "new with constructor", "malloc C-style only", "free"], "c": 1, "d": "easy", "t": "Classes & Objects", "exp": ["new Car() constructs a heap object."]},
+    {"id": 9, "q": "Instance field change on one object visible to another:", "opts": ["Always", "No — per-object separate", "Only if final", "Only if volatile"], "c": 1, "d": "easy", "t": "Classes & Objects", "exp": ["Instance fields belong to each object separately."]},
+    {"id": 10, "q": "Access via the class name with no instance object is most likely:", "opts": ["Instance", "Static", "Private from outside", "Protected from outside"], "c": 1, "d": "medium", "t": "Classes & Objects", "exp": ["Static members belong to the class itself."]},
+    {"id": 11, "q": "Simplified contract that hides the grinder behind makeCoffee is which pillar?", "opts": ["Encapsulation", "Abstraction", "Inheritance", "Polymorphism"], "c": 1, "d": "medium", "t": "4 Pillars of OOP", "exp": ["Hiding what exists: abstraction via interface/abstract."]},
+    {"id": 12, "q": "Private fields with public getters that guard state is which pillar?", "opts": ["Abstraction", "Encapsulation", "Inheritance", "Polymorphism"], "c": 1, "d": "medium", "t": "4 Pillars of OOP", "exp": ["Bundling plus guarding internals: encapsulation."]},
+    {"id": 13, "q": "Child reusing a parent via is-a is which pillar?", "opts": ["Abstraction", "Encapsulation", "Inheritance", "Polymorphism"], "c": 2, "d": "easy", "t": "4 Pillars of OOP", "exp": ["Is-a reuse is inheritance."]},
+    {"id": 14, "q": "One call many behaviours via compile list or runtime dispatch is which pillar?", "opts": ["Abstraction", "Encapsulation", "Inheritance", "Polymorphism"], "c": 3, "d": "easy", "t": "4 Pillars of OOP", "exp": ["One interface many forms: overloading or overriding."]},
+    {"id": 15, "q": "Interface with abstract duties vs abstract class with state plus duties are tools for:", "opts": ["Encapsulation only", "Abstraction", "Polymorphism only", "Inheritance only"], "c": 1, "d": "medium", "t": "4 Pillars of OOP", "exp": ["Interface and abstract class model what matters — abstraction."]},
+    {"id": 16, "q": "Changing List from ArrayList to LinkedList without callers noticing shows:", "opts": ["Inheritance", "Encapsulation", "Polymorphism only", "Abstraction only"], "c": 1, "d": "medium", "t": "4 Pillars of OOP", "exp": ["Guarded internals let representation change behind accessors."]},
+    {"id": 17, "q": "Dog is an Animal is:", "opts": ["Abstraction", "Encapsulation", "Inheritance is-a", "Composition has-a"], "c": 2, "d": "easy", "t": "4 Pillars of OOP", "exp": ["Is-a kind is inheritance."]},
+    {"id": 18, "q": "Car has an Engine is best modelled as:", "opts": ["Inheritance", "Composition has-a with delegation", "Abstraction only", "Polymorphism only"], "c": 1, "d": "medium", "t": "4 Pillars of OOP", "exp": ["Has-a part delegates; swapping parts easy."]},
+    {"id": 19, "q": "Parent reference to child calls child's override at runtime — pillar and mechanism:", "opts": ["Abstraction", "Encapsulation", "Inheritance only", "Polymorphism via overriding plus dynamic dispatch"], "c": 3, "d": "medium", "t": "4 Pillars of OOP", "exp": ["Polymorphism via runtime override."]},
+    {"id": 20, "q": "Data hiding where fields are private points to:", "opts": ["Abstraction", "Encapsulation", "Inheritance", "Polymorphism"], "c": 1, "d": "easy", "t": "4 Pillars of OOP", "exp": ["Private: encapsulation, not model what to show."]},
+    {"id": 21, "q": "One child from one parent — type?", "opts": ["Single", "Multilevel", "Hierarchical", "Multiple"], "c": 0, "d": "easy", "t": "Inheritance Types", "exp": ["One parent: single."]},
+    {"id": 22, "q": "Chain A -> B -> C where C reaches A via B — type?", "opts": ["Single", "Multilevel", "Hierarchical", "Multiple"], "c": 1, "d": "easy", "t": "Inheritance Types", "exp": ["Chain is multilevel."]},
+    {"id": 23, "q": "One parent many children side by side — type?", "opts": ["Single", "Multilevel", "Hierarchical", "Multiple"], "c": 2, "d": "easy", "t": "Inheritance Types", "exp": ["One-to-many hierarchical."]},
+    {"id": 24, "q": "Many parents for one child — type?", "opts": ["Single", "Multilevel", "Hierarchical", "Multiple"], "c": 3, "d": "easy", "t": "Inheritance Types", "exp": ["Many-to-one multiple."]},
+    {"id": 25, "q": "Java class D extends B, C with two class parents — legal?", "opts": ["Yes", "No — one extends only, many parents via interfaces", "Yes for small n", "Depends on package"], "c": 1, "d": "medium", "t": "Inheritance Types", "exp": ["One extends; interfaces rescue multiple type."]},
+    {"id": 26, "q": "C++ class D extends B, C with two class parents — legal?", "opts": ["No", "Yes — C++ allows multiple class inheritance", "Only via interfaces", "Only for primitives"], "c": 1, "d": "medium", "t": "Inheritance Types", "exp": ["C++ allows; diamond resolved via virtual inheritance."]},
+    {"id": 27, "q": "Python class D(B, C) where B and C share parent A — resolution order is:", "opts": ["Random", "MRO via C3 left-to-right", "Only single chain", "Always C first"], "c": 1, "d": "medium", "t": "Inheritance Types", "exp": ["Method Resolution Order as C3."]},
+    {"id": 28, "q": "C++ diamond D over B,C over A without virtual inheritance — A copies are:", "opts": ["One merged", "Two copies ambiguous", "Zero", "Virtual by default"], "c": 1, "d": "medium", "t": "Inheritance Types", "exp": ["Two Am, so A::m is ambiguous without qualification."]},
+    {"id": 29, "q": "C++ fix to merge the two A copies in a diamond is:", "opts": ["More extends", "Virtual inheritance (virtual base)", "Final keyword", "Private inheritance"], "c": 1, "d": "medium", "t": "Inheritance Types", "exp": ["Virtual inheritance shares one A subobject."]},
+    {"id": 30, "q": "Is-a vs has-a: Car has an Engine best as:", "opts": ["Inheritance is-a", "Composition has-a via delegation", "Abstraction only", "Polymorphism only"], "c": 1, "d": "medium", "t": "Inheritance Types", "exp": ["Has-a part with delegation is composition."]},
+    {"id": 31, "q": "Same name different params inside one class bound at compile is:", "opts": ["Overriding", "Overloading", "Hiding", "Recursion"], "c": 1, "d": "easy", "t": "Overloading vs Overriding", "exp": ["Compile-time overloading: same name different params."]},
+    {"id": 32, "q": "Same name same params in child as in parent bound at runtime is:", "opts": ["Overloading", "Overriding via virtual dynamic dispatch", "Hiding only", "Constructing"], "c": 1, "d": "easy", "t": "Overloading vs Overriding", "exp": ["Runtime overriding via dynamic dispatch."]},
+    {"id": 33, "q": "Two overloads differing only by return on same params in Java — result?", "opts": ["Second overload wins", "Compile error — return alone does not disambiguate overloads", "Both compile", "Runtime picks one"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Params decide overloading; return alone never distinguishes."]},
+    {"id": 34, "q": "Overriding return may be:", "opts": ["Any unrelated type", "Covariant more specific subtype", "Must be void", "Must be exactly same with no narrowing"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Covariance allows narrowing to more specific subtype."]},
+    {"id": 35, "q": "Private method in parent — can child override?", "opts": ["Yes", "No — not visible, new method hides but does not override", "Only if final", "Only if static"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Private not visible to children."]},
+    {"id": 36, "q": "Final method in parent — can child override?", "opts": ["Yes", "No — sealed", "Only via hiding", "Only via overloading"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Final is sealed."]},
+    {"id": 37, "q": "Static method same signature in child is:", "opts": ["Overriding runtime picks child", "Hiding — resolves with reference type, not object", "Overloading", "Constructing"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Static hides, not overrides — resolves with reference type."]},
+    {"id": 38, "q": "Parent p = new Child(); p.instanceSpeak() vs p.staticSpeak() picks:", "opts": ["Both parent", "Instance child runtime vs static parent with reference type", "Both child", "Both compile error"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Virtual instance picks child by object, static hide picks parent by reference."]},
+    {"id": 39, "q": "Constructor — can it be overridden?", "opts": ["Yes", "No — not inherited, only overloaded and chained via this/super", "Only if static", "Only if private"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Not inherited so cannot be overridden."]},
+    {"id": 40, "q": "Early binding vs late binding maps to:", "opts": ["Both runtime", "Static/early at compile vs dynamic/late at runtime", "Both compile", "Only early"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Static early at compile vs dynamic late at runtime."]},
+    {"id": 41, "q": "Private fields with public getters is specifically:", "opts": ["Abstraction only", "Encapsulation", "Inheritance only", "Polymorphism only"], "c": 1, "d": "easy", "t": "4 Pillars of OOP", "exp": ["Guarding internals via private plus accessors: encapsulation."]},
+    {"id": 42, "q": "Interface duties versus abstract class with state plus partial duties are:", "opts": ["Both encapsulation", "Abstraction tools — contract vs partial model", "Both polymorphism", "Both inheritance"], "c": 1, "d": "medium", "t": "4 Pillars of OOP", "exp": ["What to show vs how to guard — abstraction tools."]},
+    {"id": 43, "q": "Inheritance relation must satisfy:", "opts": ["Has-a", "Is-a (child is a parent kind)", "Never is-a", "Only has-a"], "c": 1, "d": "easy", "t": "Inheritance Types", "exp": ["Is-a kind is inheritance. Has-a part is composition."]},
+    {"id": 44, "q": "Overloading cares about:", "opts": ["Return type only", "Name plus parameter list", "Only name", "Only return plus name"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Name plus params form the overload signature; return alone not enough."]},
+    {"id": 45, "q": "Overriding across parent-child cares about:", "opts": ["Name only", "Same name same params plus compatible return plus not weaker access", "Only count", "Only visibility"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Same params plus covariance plus not weaker access."]},
+    {"id": 46, "q": "Which C++ or Python feature directly exposes diamonds or overloads of operators?", "opts": ["Operator overloading exists in C++ and Python, not in Java as overload of operators", "Only Java", "Neither", "Only C#"], "c": 0, "d": "medium", "t": "Overloading vs Overriding", "exp": ["C++ and Python allow operator overloading as overloading of operators; Java does not."]},
+    {"id": 47, "q": "Covariant return means the overriding method may return:", "opts": ["Unrelated type", "A more specific subtype than overridden", "Void only", "Primitive only"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Narrowing to subtype is covariant."]},
+    {"id": 48, "q": "Which language enforces that a diamond among classes is impossible via extends but among interfaces requires override?", "opts": ["C++", "Java", "Python", "C"], "c": 1, "d": "medium", "t": "Inheritance Types", "exp": ["Java: one extends, many implements — default clash forces explicit override."]},
+    {"id": 49, "q": "Composition preferred when the stem says:", "opts": ["Is-a", "Has-a / is composed of / is assembled from", "Never", "Only is-a"], "c": 1, "d": "medium", "t": "4 Pillars of OOP", "exp": ["Has-a part with delegation is composition, more flexible than deep inheritance."]},
+    {"id": 50, "q": "One interface many behaviours plus strong isolation via separate kernels is from which topics respectively?", "opts": ["Both same pillar", "Polymorphism vs VM isolation — different banks but similar many-forms wording", "Only OOP", "Only networking"], "c": 1, "d": "medium", "t": "4 Pillars of OOP", "exp": ["Wording many crosses banks; OOP polymorphism is forms of a call, VM isolation is kernel boundary."]},
+    {"id": 51, "q": "Child constructor chaining uses:", "opts": ["this and super", "Only free", "Only delete", "Only new"], "c": 0, "d": "medium", "t": "Overloading vs Overriding", "exp": ["this() chains within class, super() chains to parent."]},
+    {"id": 52, "q": "Hiding vs overriding — reference type Parent with Child object on a static method resolves with:", "opts": ["Object", "Reference type (Parent)", "Either", "Random"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Static hides with reference type, not object."]},
+    {"id": 53, "q": "Deep inheritance hierarchy cost is:", "opts": ["Decoupling", "Tight coupling via parent internals", "No coupling", "Only speed cost"], "c": 1, "d": "medium", "t": "Inheritance Types", "exp": ["Child depends on parent internals — composition often wins."]},
+    {"id": 54, "q": "Interface prior to Java 8 is best described as:", "opts": ["Partial class with state", "Pure contract of abstract duties with no instance state", "Concrete class", "Package"], "c": 1, "d": "medium", "t": "4 Pillars of OOP", "exp": ["Pure contract classically."]},
+    {"id": 55, "q": "Dynamic dispatch decision time is:", "opts": ["At compile", "At runtime based on object actual class", "At package load only", "At deletion"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Late binding at runtime via vtable."]},
+    {"id": 56, "q": "Overloading decision time is:", "opts": ["At runtime", "At compile via overload resolution", "At package load only", "At deletion"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Compile-time selection among same name different params."]},
+    {"id": 57, "q": "One class, three methods add(int,int) / add(double,double) / add(String,String) is:", "opts": ["Overriding", "Overloading", "Hiding", "Shadowing"], "c": 1, "d": "easy", "t": "Overloading vs Overriding", "exp": ["Same class same name different params: overloading."]},
+    {"id": 58, "q": "Child method speak() with same signature as parent speak() that overrides is which binding when virtual?", "opts": ["Early", "Late (dynamic) via virtual dispatch", "Never", "Only inline"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Virtual instance dispatches at runtime to the object's class."]},
+    {"id": 59, "q": "Can private, final, static or constructor be overridden?", "opts": ["Yes all", "None of them as overriding", "Only private", "Only static"], "c": 1, "d": "medium", "t": "Overloading vs Overriding", "exp": ["Private not visible, final sealed, static hides, constructor not inherited."]},
+    {"id": 60, "q": "Is-a vs has-a decision for Car and Engine in an AXIS table — best match when Engine is a swappable part is:", "opts": ["Inherits Engine", "Has an Engine via composition", "Is an abstraction only", "Is a polymorphism only"], "c": 1, "d": "medium", "t": "Inheritance Types", "exp": ["Has-a part via delegation; swapping engines without inheriting every engine detail is composition."]}
+  ]
+}

@@ -1,0 +1,507 @@
+{
+  "id": "virtualization",
+  "title": "Virtualization & Containers",
+  "icon": "VM",
+  "category": "networking-cloud",
+  "color": "#0891B2",
+  "subtopics": [
+    "Hypervisors",
+    "VMs vs Containers",
+    "Benefits & Use Cases"
+  ],
+  "estimatedHours": 4,
+  "readingSections": [
+    {
+      "id": "hypervisors",
+      "title": "Hypervisors: Type 1 Bare-Metal vs Type 2 Hosted",
+      "type": "concept",
+      "quickSummary": "Hypervisor creates and runs VMs. Type 1 runs directly on hardware (bare-metal, e.g. ESXi, Hyper-V, KVM) — fast, for data centres. Type 2 runs on top of a host OS (e.g. VirtualBox, VMware Workstation) — easy, for desktops. Both let many virtual machines share one physical host.",
+      "content": [
+        "Virtualization means one physical machine pretends to be many. The hypervisor is the software that makes that lie convincing — it carves CPU, RAM and disk into isolated virtual machines (VMs), each with its own guest OS. The physical machine underneath is the host. Each VM thinks it owns real hardware; it actually owns virtual hardware the hypervisor emulates.",
+        "Type 1 bare-metal hypervisor installs directly on the hardware with no host OS in between. Examples: VMware ESXi, Microsoft Hyper-V (when installed as the bare role), KVM (Linux kernel hypervisor), Xen, and Nutanix AHV. Because it sits closest to the silicon, it is fastest, most scalable and most secure — the choice for servers, clouds and data centres. If the exam says enterprise, cloud or data centre hypervisor, answer Type 1.",
+        "Type 2 hosted hypervisor installs as an application inside a normal host OS. Examples: Oracle VirtualBox, VMware Workstation Player/Fusion, Parallels Desktop, QEMU without KVM. You can run a Linux VM inside your Windows laptop with one download. Because it rides on top of a host OS, it is simpler but has extra overhead and depends on the host. If the question says runs on top of Windows or desktop virtualization, answer Type 2.",
+        "Two small facts that steal marks. One, containers do not use a hypervisor in the classic sense (they share the host kernel) — any answer that says Docker runs VMs via a hypervisor is wrong. Two, KVM is Type 1 even though it ships inside Linux — once enabled the Linux kernel itself becomes the hypervisor; do not call KVM Type 2 just because you install it on Linux.",
+        "Management layer: Type 1 fleets are managed by a control plane (vCenter for ESXi, System Center for Hyper-V, oVirt for KVM). The exam rarely asks the manager name, but it loves Hyper-V and VirtualBox as the paired examples for Type 1 vs Type 2."
+      ],
+      "subsections": [
+        {
+          "title": "Host vs guest vs hypervisor in one line each",
+          "content": "Host is the physical box. Hypervisor is the layer that virtualizes it. Guest is what runs inside — a VM's OS. Type 1: hypervisor straight on host. Type 2: hypervisor on host OS, then guests on top."
+        },
+        {
+          "title": "Why KVM confuses everyone",
+          "content": "You install KVM on Linux, so it feels hosted. But once loaded, KVM turns the Linux kernel into a Type 1 hypervisor that schedules VMs directly on hardware via Intel VT or AMD-V. The exam treats KVM as Type 1 — know it as the exception that proves the host-vs-bare distinction."
+        }
+      ],
+      "quickRevision": [
+        "Hypervisor = creates and runs VMs by virtualizing CPU, RAM and disk. Host physical, guest is the VM's OS.",
+        "Type 1 bare-metal (ESXi, Hyper-V bare, KVM, Xen) directly on hardware — fast, for servers/cloud.",
+        "Type 2 hosted (VirtualBox, VMware Workstation, Parallels) on top of a host OS — easy, for desktops.",
+        "Type 1 wins on performance and isolation; Type 2 wins on setup ease.",
+        "Containers share the host kernel, not a hypervisor per VM."
+      ],
+      "tricks": [
+        "If options say Type 1 runs on top of Windows, it is wrong — that description is Type 2.",
+        "KVM is Type 1 even though you enable it inside Linux — classic trap.",
+        "Any answer that says containers use a hypervisor per container is wrong — containers share one kernel."
+      ],
+      "patterns": [
+        "'Data centre hypervisor type?' -> Type 1 bare-metal (ESXi/Hyper-V/KVM).",
+        "'Laptop VirtualBox or Workstation type?' -> Type 2 hosted.",
+        "'One physical host many isolated VMs?' -> Hypervisor (type decides bare vs hosted).",
+        "'Which virtualization needs no host OS underneath?' -> Type 1."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS NQT — hypervisors, frequent",
+          "question": "Type 1 vs Type 2 hypervisor examples and where they run?",
+          "approach": "Type 1 bare ESXi/Hyper-V/KVM for servers, Type 2 hosted VirtualBox/Workstation on a host OS for desktops."
+        },
+        {
+          "source": "Wipro / Gate — host vs guest",
+          "question": "What is the host vs guest vs hypervisor vs VM?",
+          "approach": "Host physical, hypervisor virtualizes, guest OS is inside the VM, VM is the virtual machine instance."
+        }
+      ],
+      "companyNote": "1 question per paper names a Type 1 vs Type 2 product and asks which type it is or where it runs."
+    },
+    {
+      "id": "vm-container",
+      "title": "VMs vs Containers (the split that decides the answer)",
+      "type": "concept",
+      "quickSummary": "VM = full guest OS per instance plus virtual hardware via hypervisor — heavy, strong isolation. Container = shared host kernel, one OS kernel for many containers — light, fast, portable, weaker isolation. VM simulates hardware, container simulates the OS boundary.",
+      "content": [
+        "A VM carries a full guest OS — kernel, libraries and apps plus virtual CPU, RAM, disk and NIC pretending to be real hardware via the hypervisor. Start is tens of seconds to minutes, disk is gigabytes, isolation is strong because each VM has its own kernel. If the stem says strong isolation including different kernels or runs Windows and Linux guests on one host, answer VM.",
+        "A container shares the host OS kernel and packages only the app plus its libraries into a portable image that runs as an isolated process. Start is milliseconds to seconds, disk is megabytes, density is dozens to hundreds per host. Docker is the image and runtime; Podman is the daemonless alternative; Kubernetes orchestrates many containers across a fleet. If the stem says shares the host kernel, lightweight, portable image or fast start, answer container.",
+        "Isolation and kernel are the core distinction the exam tests. VM isolation is hardware-level via the hypervisor (hypervisor isolated kernels). Container isolation is OS-level via kernel features (cgroups limit resources, namespaces isolate files, network, PIDs, users). A kernel bug affects all containers on that host but only one VM guest kernel.",
+        "Portability trade-off. Container images run anywhere the same kernel family exists — the same image on a laptop and in the cloud gives you env parity. VMs are more portable across different OS kernels (a Windows guest and a Linux guest can sit on one hypervisor) but their images are larger and slower to move. The exam writes both to bait you — read kernel sharing vs kernel isolation.",
+        "When the paper mixes both: data centre that needs harsh tenant isolation picks VMs; microservices that need rapid scale and density pick containers; many real clouds do both — VMs at the bottom to isolate tenants, containers on top for app density (Kata and Firecracker are even container-like VMs for extra isolation)."
+      ],
+      "subsections": [
+        {
+          "title": "One physical host, three views",
+          "content": "Bare metal: apps straight on OS on hardware. VMs: hypervisor on hardware, guests each with their own OS, apps on guests. Containers: OS on hardware, container engine on OS, containers sharing that one kernel, apps in containers. AXIS diagrams show this stack side by side."
+        },
+        {
+          "title": "Why density differs by an order of magnitude",
+          "content": "A VM duplicates a whole OS per instance (gigabytes, minutes). A container reuses the kernel (megabytes, seconds). Density 10s of VMs per host vs 100s of containers per host — the factor ten is the exam number to know roughly."
+        }
+      ],
+      "quickRevision": [
+        "VM has full guest OS plus virtual hardware via hypervisor — heavy, slow start, strong isolation, different kernels on one host.",
+        "Container shares host kernel plus app image — light, fast, portable, many per host, weaker isolation shared kernel.",
+        "VM isolates by hypervisor and separate kernels; container isolates by cgroups and namespaces on one kernel.",
+        "Docker image plus engine for containers; Kubernetes orchestrates many containers; hypervisor manages VMs.",
+        "Many clouds nest both: VMs isolate tenants, containers pack apps on top."
+      ],
+      "tricks": [
+        "Any answer that says containers virtualize hardware like VMs is wrong — VMs virtualize hardware, containers virtualize the OS boundary.",
+        "If the question says one Linux host many Ubuntu plus Alpine containers answer container shares one Linux kernel.",
+        "Speed is not security — fast and dense is container, strongly isolated with separate kernels is VM."
+      ],
+      "patterns": [
+        "'Heavy with guest OS per instance, strong isolation?' -> VM.",
+        "'Light shared kernel, portable image, fast scale?' -> Container.",
+        "'Docker vs hypervisor?' -> Docker containers, hypervisor VMs.",
+        "'Different guest OS kernels on one physical host?' -> VM (hypervisor), not classic containers."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every recent AXIS cloud paper — VM vs container, guaranteed",
+          "question": "Differentiate VM and container on isolation, kernel, start time, density, portability?",
+          "approach": "VM full OS via hypervisor slow strong isolated; container shared kernel fast dense portable."
+        },
+        {
+          "source": "Infosys / TCS — Docker/Kubernetes placement",
+          "question": "What does Docker package vs what does Kubernetes do vs what does a hypervisor do?",
+          "approach": "Docker images and runs containers, Kubernetes schedules many containers, hypervisor runs VMs."
+        }
+      ],
+      "companyNote": "1-2 questions per paper on VM vs container split plus one on Docker/Kubernetes vs hypervisor."
+    },
+    {
+      "id": "container-eco",
+      "title": "Container Ecosystem: Images, Dockerfiles, Registries and Orchestration",
+      "type": "concept",
+      "quickSummary": "Image is a read-only layered filesystem plus metadata; container is a running instance of an image. Dockerfile builds an image layer by layer, registry (Docker Hub, ECR, GCR) stores images, Docker/Podman runs one host, Kubernetes schedules many hosts with pods, services, deployments, scaling, self-healing and rolling updates.",
+      "content": [
+        "Image vs container is the first distinction. An image is the immutable, layered template — filesystem plus config. A container is that template plus a writable layer plus process state at runtime. Many containers can be started from one image. If the question says read-only template, answer image; if it says running instance, answer container.",
+        "Dockerfile builds an image: FROM base, RUN setup, COPY files, CMD default process. Each instruction adds a layer that caches and reuses. Registry stores the result — Docker Hub is public, ECR (AWS), GCR (GCP) and ACR (Azure) are cloud registries. The exam loves: 'Where are images stored?' -> registry.",
+        "Docker Engine runs containers on one host; Podman runs daemonlessly with similar CLI. Kubernetes (k8s) orchestrates containers across a fleet: Pod is the smallest unit (one or more tightly coupled containers sharing network), Deployment declares desired replicas and rollout strategy, Service load-balances, ConfigMap and Secret decouple config, Ingress routes external traffic. The exam asks pod vs container and deployment vs service as the pairing to separate.",
+        "Kubernetes control plane vs data plane in two words. Control plane (API server, scheduler, controllers, etcd) decides. Data plane (nodes, kubelet, kube-proxy, container runtime) executes. YouTube scale or banking online scale needs the fleet, so think fleet equals orchestration. One VM with Docker on a laptop does not need Kubernetes for the exam's scope.",
+        "Surface the confusing overlap: VM vs container vs serverless. Serverless (Lambda, Cloud Functions) runs code without you managing the host, images or cluster — the provider does. AXIS sometimes lists serverless as the extreme of density and operational simplicity, but most papers still stop at containers plus orchestration."
+      ],
+      "subsections": [
+        {
+          "title": "Image is to class as container is to object",
+          "content": "OOP analogy: image is the class (template), container is the object (running instance) with writable state. That phrasing appears verbatim in some papers. Hold image read-only layered filesystem, container writable instance."
+        },
+        {
+          "title": "Why registries matter for supply chain",
+          "content": "Images are pulled from a registry by name and tag (nginx:1.25 on Docker Hub, myapp:v3 on ECR). The exam writes registry vs repo vs tag and expects registry is the store, repository is the name, tag is the version."
+        }
+      ],
+      "quickRevision": [
+        "Image read-only layered template vs container running instance with writable layer.",
+        "Dockerfile FROM/RUN/COPY/CMD builds image layer by layer; caches each step; pushes to registry.",
+        "Registry stores images — Docker Hub public, ECR/GCR/ACR cloud. Repository is the name, tag is the version.",
+        "Docker/Podman run on one host; Kubernetes orchestrates a fleet with Pods, Deployments, Services, ConfigMap/Secret, Ingress.",
+        "Serverless above containers — no host management, just function code — niche on AXIS but appears as vocabulary."
+      ],
+      "tricks": [
+        "Image vs container: image read-only template, container running instance with writable state — classic trap.",
+        "Docker builds and runs on one host; Kubernetes schedules across many. Do not swap them.",
+        "Pod is not a container — pod houses one or more containers sharing network namespace."
+      ],
+      "patterns": [
+        "'Read-only layered filesystem?' -> Image. 'Running instance with writable layer?' -> Container.",
+        "'FROM RUN COPY CMD file that builds an image?' -> Dockerfile.",
+        "'Stores images by repository and tag?' -> Registry (Docker Hub/ECR/GCR).",
+        "'Smallest unit in Kubernetes?' -> Pod. 'Desired replicas and rollout?' -> Deployment."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS cloud — container ecosystem, frequent",
+          "question": "Image vs container vs Dockerfile vs registry vs Kubernetes pod vs deployment?",
+          "approach": "Image template, container instance, Dockerfile builds, registry stores, pod smallest K8s unit, deployment manages replicas."
+        },
+        {
+          "source": "TCS / Wipro — orchestration",
+          "question": "When is Kubernetes needed vs Docker alone on one host?",
+          "approach": "One host Docker suffices; fleet scale needs Kubernetes orchestration with control vs data plane."
+        }
+      ],
+      "companyNote": "Container papers always include 1-2 questions on image vs container/Dockerfile/registry and 1 on Kubernetes pods."
+    },
+    {
+      "id": "benefits",
+      "title": "Benefits, Use Cases and Cost Model (why virtualize at all)",
+      "type": "concept",
+      "quickSummary": "Benefits: consolidation (fewer hosts), isolation (fault and security boundary), portability (image runs anywhere), elasticity and HA, snapshots and live migration. Costs: hypervisor/container overhead, licensing, complexity, noisy neighbours. Use VMs for strong isolation and mixed OS; containers for microservices, CI/CD, portability and density.",
+      "content": [
+        "Consolidation is the headline saving: five lightly used physical servers become five VMs on one host, cutting hardware, power, cooling and rack. Overcommit lets summed virtual RAM exceed physical with ballooning and swapping, but overcommit too far creates noisy neighbours where one greedy tenant starves others — the exam's favourite drawback phrasing.",
+        "Isolation and blast radius: a VM crash rarely affects another VM thanks to hypervisor separation; a container crash can affect peers via the shared kernel if resource limits are absent. Live migration (vMotion, Live Migration) moves a running VM between hosts with near-zero downtime — a VM benefit containers replace with quick reschedule but not byte-for-byte live memory migration in classic Docker.",
+        "Portability and DevOps: one container image built in dev runs identically in test and prod, killing it works on my machine. CI/CD pipelines build, test, push to registry and roll out via Kubernetes Deployments with rolling updates and rollback. Snapshots let VMs roll back to a point in time, handy for risky updates.",
+        "Use-case split the exam tests. VMs win when you need different OS kernels on one host (Windows plus Linux together), strong tenant isolation (banking, government), or a big monolith that expects a full OS. Containers win for microservices, high scale and density, rapid scaling and versioning, and portability across clouds. Real estates run both — VMs at the bottom for tenant isolation, containers on top for app density.",
+        "Cost trade-off summary for the stem: CapEx vs OpEx, overhead vs utilization, density vs isolation, single pane vs sprawl. The exam often writes increased utilization and reduced CapEx as pros and increased complexity and noisy neighbours as cons — check which side the stem asks for."
+      ],
+      "subsections": [
+        {
+          "title": "When noisy neighbours appear and how to fix",
+          "content": "Overcommit plus no limits equals noisy neighbours — one VM or container hogs CPU/RAM/IO. Fix with reservations and limits (cgroups for containers, shares/limits for VMs), QoS, and monitoring. The exam lists noisy neighbours as the drawback of consolidation."
+        },
+        {
+          "title": "Snapshots vs container immutability",
+          "content": "VM snapshot saves disk plus memory to resume. Container ideal is immutable — do not snapshot a running container as a recovery plan; rebuild a new image version and roll out a new Deployment. Both let you roll back, but the mechanisms differ and the exam mixes them."
+        }
+      ],
+      "quickRevision": [
+        "Pros: consolidation and cost saving, isolation and fault boundary, portability and env parity, elasticity/HA with live migration, snapshots and rolling updates.",
+        "Cons: hypervisor overhead and licensing, complexity and sprawl, noisy neighbours on overcommit, shared-kernel risk for containers.",
+        "Live migration moves a running VM between hosts nearly downtime-free — VMs headline there; containers reschedule.",
+        "Pipeline: build image -> test -> push to registry -> deploy via Kubernetes Deployment rolling update with rollback.",
+        "VMs for mixed OS and strong isolation; containers for microservices, density and rapid scaling — often both nested."
+      ],
+      "tricks": [
+        "Any answer that says containers give stronger isolation than VMs is wrong for classic containers — VMs isolate stronger via separate kernels.",
+        "Do not confuse snapshot plus rollback on VMs with immutable container updates — VMs snapshot disk+memory, containers expect new image versions.",
+        "Containers share the host kernel so Windows containers need a Windows host kernel — image portability has kernel-family limits."
+      ],
+      "patterns": [
+        "'Five servers into one host?' -> Server consolidation via VMs (or containers for apps).",
+        "'Move a running workload with no downtime?' -> VM live migration (or Kubernetes reschedule for containers).",
+        "'Kill it works on my machine and scale fast?' -> Containers plus registry plus pipeline.",
+        "'Need Windows plus Linux guests on one host?' -> VMs (hypervisor), not classic Linux containers."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS mixed — benefits vs drawbacks, very frequent",
+          "question": "List benefits (consolidation, isolation, portability) vs downsides (overhead, complexity, noisy neighbours) or when to pick VM vs container?",
+          "approach": "VM for mixed OS and harsh isolation, containers for microservices and density and portability; both for layered clouds."
+        },
+        {
+          "source": "TCS / Wipro — migration and rollback",
+          "question": "Which technology allows live migration or rolling rollback with near-zero downtime?",
+          "approach": "VM live migration (vMotion) and Kubernetes rolling Deployments for containers — pick by layer: VM host move vs app replica rollout."
+        }
+      ],
+      "companyNote": "Benefits vs use cases vs trade-offs appears as a 2-3 item set — consolidation, when to pick VM vs container, and live migration vs reschedule."
+    },
+    {
+      "id": "exam-mix",
+      "title": "Exam Mix: spotting which technology the stem wants",
+      "type": "concept",
+      "quickSummary": "Read the verbs: kernel sharing or image or registry or fast scale -> container. Separate kernels or vMotion or strong tenant isolation -> VM. Bare on hardware vs on top of Windows -> Type 1 vs 2. Pod is Kubernetes, image is Docker, VM is hypervisor. One pass kills most distractors.",
+      "content": [
+        "Stem says shares the host kernel, layered image and registry — answer container and Dockerfile plus registry. Stem says full guest OS per instance plus virtual hardware — answer VM and hypervisor. One phrase decides the track; mixing the tracks loses the mark.",
+        "Stem emphasizes fleet scale, replicas, self-healing, service discovery — answer Kubernetes (or at least orchestration), not standalone Docker. A single-host demo that mentions pods is still Kubernetes vocabulary used to test you.",
+        "Stem says Windows guest and Linux guest on one host plus need strong tenant isolation — answer VMs, not classic Linux containers which share one kernel family. Kata or gVisor are Container-like VMs for stronger isolation but the exam's scope is classic containers plus VMs.",
+        "Stem says runs on top of Windows on a laptop vs directly on hardware in a data centre — answer Type 2 vs Type 1 hypervisor respectively. Pair the vendor name: VirtualBox and Workstation lean Type 2; ESXi and Hyper-V bare lean Type 1 even when Hyper-V can be added as a Windows role.",
+        "Speed rule for the exam hall: if the paper mentions one host many isolated full OSes pick VM; if it mentions many microservices many replicas fast and portable pick container; if it mentions one physical to many virtual not specifying OS vs app, read kernel wording to disambiguate."
+      ],
+      "subsections": [
+        {
+          "title": "When both are mentioned and you must pick the better fit",
+          "content": "Many real clouds nest both — VMs isolate tenants at the bottom, containers pack apps on top. If the stem asks best for strong isolation between mutually distrusting tenants, choose VMs. If it asks best for app portability and density, choose containers. The exam picks the primary mapping, not an exclusive claim."
+        },
+        {
+          "title": "Why density vs isolation is the underlying axis",
+          "content": "Density is containers, isolation is VMs. Cost saving via consolidation lives on the density side; risk containment lives on the isolation side. That axis predicts most why virtualize questions faster than memorizing long benefit lists."
+        }
+      ],
+      "quickRevision": [
+        "Shares kernel/image/registry/fast scale -> container. Full guest OS/strong isolation -> VM.",
+        "Bare on hardware data centre -> Type 1; on top of host OS laptop -> Type 2.",
+        "Docker image on one host vs Kubernetes fleet with pods/deployments/services across many.",
+        "Density and portability point to containers; harsh isolation and mixed OS point to VMs — often both nested.",
+        "Read the verb: kernel wording decides VM vs container when the generic many-virtuals phrasing appears."
+      ],
+      "tricks": [
+        "Any answer that says containers need no host OS is wrong — they share the host kernel, so a host OS is present.",
+        "VM has a guest OS per instance; container does not — that is the single difference that filters most mixed options.",
+        "Pod houses containers sharing a network, not the other way around."
+      ],
+      "patterns": [
+        "'Many isolated full OSes on one box?' -> VM.",
+        "'Many microservices many replicas portable?' -> Container.",
+        "'FROM RUN COPY CMD?' -> Dockerfile. 'Push and pull by tag?' -> Registry. 'Fleet of hosts?' -> Kubernetes.",
+        "'On top of Windows laptop?' -> Type 2. 'Directly on hardware in DC?' -> Type 1."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS cloud synthesis — mixed VM vs container plus Type plus registry plus orchestration",
+          "question": "Given five stems, match each to VM vs container vs image vs registry vs Kubernetes vs Type?",
+          "approach": "One pass by verb: kernel -> VM vs container, bare vs hosted -> Type, image vs container -> image, store -> registry, fleet replicas -> Kubernetes."
+        },
+        {
+          "source": "TCS / Infosys — when to use which",
+          "question": "Best fit for strong isolation vs best for portability and density plus when to choose Type 1 vs 2?",
+          "approach": "Strong isolation and mixed OS -> VM Type 1 in DC; portable microservices and density -> containers; laptop demo -> Type 2."
+        }
+      ],
+      "companyNote": "Synthesis table mixing all six concepts appears as a 4-5 item match-the-column question."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "hypervisors",
+      "title": "Hypervisors: Type 1 vs Type 2 split",
+      "formula": {
+        "latex": "Type\\;1\\;bare\\;on\\;hardware\\;(ESXi,Hyper\\text{-}V,KVM)=fast\\;DC \\;|\\; Type\\;2\\;on\\;host\\;OS\\;(VBox,Workstation)=easy\\;desktop",
+        "text": "Type1 bare on hardware ESXi/Hyper-V/KVM fast DC | Type2 on host OS VirtualBox/Workstation easy desktop"
+      },
+      "whenToUse": "Any 'which type is this hypervisor or where does it run?' MCQ.",
+      "explanation": [
+        "Hypervisor carves one host into many isolated VMs with virtual hardware.",
+        "Type 1 bare-metal directly on hardware: ESXi, Hyper-V bare, KVM, Xen — server/cloud.",
+        "Type 2 hosted on a host OS: VirtualBox, VMware Workstation/Fusion, Parallels — desktop.",
+        "KVM is Type 1 even though enabled inside Linux via VT/AMD-V.",
+        "Containers share the host kernel, not a per-VM hypervisor."
+      ],
+      "example": {
+        "prompt": "Product listed as VirtualBox — which type and where?",
+        "steps": [
+          "VirtualBox runs as an app inside a host OS such as Windows.",
+          "That layer is hosted virtualization.",
+          "Hosted is Type 2, easy for desktops, not bare for data centres."
+        ],
+        "answer": "Type 2 hosted"
+      },
+      "memoryTip": "Bare is Best for Big DC (Type 1). Hosted is House OS for desktops (Type 2). KVM is Keen bare.",
+      "commonMistake": "Calling KVM Type 2 because you install it. After load it becomes Type 1."
+    },
+    {
+      "id": "vm-vs-container",
+      "title": "VM vs Container kernel split",
+      "formula": {
+        "latex": "VM=guest\\;OS+virt\\;HW\\;via\\;hypervisor \\;|\\; Container=shared\\;kernel+image \\;|\\; VM\\;strong\\;isol,\\; container\\;dense\\;portable",
+        "text": "VM guest OS+virt HW via hypervisor | Container shared kernel+image | VM strong isolation container dense portable"
+      },
+      "whenToUse": "Any VM vs container MCQ on isolation, kernel, speed, density, portability.",
+      "explanation": [
+        "VM has full guest OS plus virtual hardware per instance via hypervisor — heavy, slow start, strong isolation, mixed kernels.",
+        "Container shares host kernel plus app image — light, fast, portable, many per host, weaker isolation shared kernel.",
+        "VM isolates by separate kernels; container by cgroups and namespaces on one kernel.",
+        "Density: VMs tens per host, containers hundreds per host — order of magnitude.",
+        "Portability: container image runs anywhere same kernel family — env parity; VM moves larger images across any kernel."
+      ],
+      "example": {
+        "prompt": "Host needs Windows and Linux guests together with harsh isolation — choose?",
+        "steps": [
+          "Need different kernels on one physical host.",
+          "Classic containers share one kernel family, so not fit.",
+          "VMs via hypervisor give separate kernels and strong isolation."
+        ],
+        "answer": "VMs (Type 1 hypervisor)"
+      },
+      "memoryTip": "VM Virtual Machine full, Container shares Common kernel. VMs Isolate kernels, Containers Copy nothing extra.",
+      "commonMistake": "Saying containers virtualize hardware like VMs. VMs virtualize hardware; containers virtualize the OS boundary."
+    },
+    {
+      "id": "container-eco",
+      "title": "Images, Dockerfiles, Registries and Kubernetes",
+      "formula": {
+        "latex": "Image=read\\text{-}only\\;layered \\;|\\; Container=writable\\;instance \\;|\\; Dockerfile\\;builds \\;|\\; Registry\\;stores \\;|\\; K8s=Pods+Deploy+Service",
+        "text": "Image read-only layered | Container writable instance | Dockerfile builds | Registry stores | K8s Pods Deploy Service"
+      },
+      "whenToUse": "Any image vs container vs Dockerfile vs registry vs Kubernetes pod MCQ.",
+      "explanation": [
+        "Image is the read-only layered template including filesystem plus metadata; container is a running instance with a writable layer.",
+        "Dockerfile with FROM/RUN/COPY/CMD builds an image layer by layer with cache.",
+        "Registry stores images: Docker Hub public and ECR/GCR/ACR cloud; repo is name, tag is version.",
+        "Docker/Podman run on one host; Kubernetes orchestrates across a fleet.",
+        "Pod smallest K8s unit (containers sharing network), Deployment desired replicas plus rollout, Service load balances, ConfigMap/Secret config, Ingress routes."
+      ],
+      "example": {
+        "prompt": "Declare 3 replicas with rolling updates and rollback via Kubernetes — resource?",
+        "steps": [
+          "Desired replica count with rollout strategy is a Deployment, not a lone Pod.",
+          "Pod is one instance; Deployment manages the set of pods.",
+          "Deployment holds spec.replicas plus strategy."
+        ],
+        "answer": "Deployment"
+      },
+      "memoryTip": "Image I, Container C, Dockerfile Builds, Registry Repos, Kubernetes K Pods Dots Services.",
+      "commonMistake": "Calling a pod a container. Pod houses one or more containers sharing a network."
+    },
+    {
+      "id": "benefits",
+      "title": "Benefits and Costs: when VM vs container wins",
+      "formula": {
+        "latex": "Pros:\\;consolidation+isolation+portable+HA \\;|\\; Cons:\\;overhead+sprawl+noisy \\;|\\; VM\\;mix\\;OS\\;strong\\; \\;vs\\; container\\;micro\\;dense",
+        "text": "Pros consolidation isolation portable HA | Cons overhead sprawl noisy | VM mix OS strong vs container micro dense"
+      },
+      "whenToUse": "Any 'why virtualize?' benefits vs drawbacks or when to pick VM vs container MCQ.",
+      "explanation": [
+        "Pros: consolidation (few hosts), isolation and fault boundary, portability and env parity, elasticity and HA with live migration and reschedule, snapshots and rolling updates with rollback.",
+        "Cons: overhead and licensing, complexity and sprawl, noisy neighbours on overcommit, shared-kernel risk for containers.",
+        "Live migration moves a running VM between hosts nearly downtime-free — VMs headline there; containers reschedule new replicas.",
+        "Pipeline: build image then test then push to registry then deploy via Kubernetes Deployment rolling update.",
+        "Use VMs for mixed OS and strong tenant isolation; containers for microservices, density and rapid scaling — often nested VMs below containers."
+      ],
+      "example": {
+        "prompt": "Five lightly used servers become five VMs on one host — benefit?",
+        "steps": [
+          "Many physical hosts collapse into fewer via virtualization.",
+          "Hardware, power, cooling and rack fall — the named benefit is consolidation.",
+          "Trade-off is noisy neighbours if overcommitted without limits."
+        ],
+        "answer": "Server consolidation"
+      },
+      "memoryTip": "Consolidate many, Isolate safely, Portability prevents works-on-my-machine, Availability via migration, lightweight vs strong.",
+      "commonMistake": "Saying containers give stronger isolation than VMs for classic containers — separate kernels on VMs isolate harder."
+    }
+  ],
+  "practiceProblems": {
+    "hypervisors": [
+      {"q": "Hypervisor role is to:", "opts": ["Encrypt the disk only", "Create and run VMs by virtualizing CPU, RAM and disk", "Route packets between LANs", "Store images only"], "c": 1, "s": ["Hypervisor carves one physical host into many virtual machines with virtual hardware."], "a": "Create and run VMs by virtualizing CPU, RAM and disk"},
+      {"q": "Type 1 hypervisor runs:", "opts": ["On top of Windows as an app", "Directly on hardware as bare-metal", "Only inside Docker", "Only in a browser"], "c": 1, "s": ["Bare-metal directly on hardware — fastest for data centres."], "a": "Directly on hardware as bare-metal"},
+      {"q": "Example Type 1 bare-metal hypervisor:", "opts": ["VirtualBox", "VMware Workstation", "VMware ESXi", "Parallels"], "c": 2, "s": ["ESXi is bare. VirtualBox/Workstation/Parallels are hosted Type 2."], "a": "VMware ESXi"},
+      {"q": "Example Type 2 hosted hypervisor:", "opts": ["ESXi", "Hyper-V bare role", "KVM", "Oracle VirtualBox"], "c": 3, "s": ["VirtualBox runs inside a host OS as an app: Type 2."], "a": "Oracle VirtualBox"},
+      {"q": "Best for a data centre cloud cluster:", "opts": ["Type 2 hosted", "Type 1 bare-metal", "No hypervisor", "Only containers with no host OS"], "c": 1, "s": ["Performance and isolation favour Type 1 for servers/cloud."], "a": "Type 1 bare-metal"},
+      {"q": "Best for a quick Linux VM on a Windows laptop:", "opts": ["Type 1 bare-metal", "Type 2 hosted (VirtualBox/Workstation)", "Only ESXi directly", "Only modem"], "c": 1, "s": ["Hosted hypervisor as an app inside Windows is the desktop fit."], "a": "Type 2 hosted (VirtualBox/Workstation)"},
+      {"q": "KVM hypervisor type is:", "opts": ["Type 2 hosted", "Type 1 bare-metal", "Neither", "Container only"], "c": 1, "s": ["Once loaded, the Linux kernel becomes a Type 1 hypervisor via VT/AMD-V."], "a": "Type 1 bare-metal"},
+      {"q": "Host vs guest: which is the VM's OS?", "opts": ["Host", "Hypervisor", "Guest", "Registry"], "c": 2, "s": ["Guest is inside the VM. Host is the physical box. Hypervisor virtualizes."], "a": "Guest"},
+      {"q": "Containers rely on a per-VM hypervisor like VMs do — statement is:", "opts": ["True", "False — they share the host kernel via cgroups/namespaces", "True for Docker", "True for Podman"], "c": 1, "s": ["Containers share one kernel; VMs have per-VM hypervisor plus guest kernel."], "a": "False — they share the host kernel via cgroups/namespaces"},
+      {"q": "Management for ESXi fleets is:", "opts": ["vCenter", "VirtualBox UI", "Notepad", "Modem"], "c": 0, "s": ["vCenter manages ESXi. VirtualBox UI manages desktop Type 2."], "a": "vCenter"}
+    ],
+    "vm-vs-container": [
+      {"q": "VM has versus container has — guest OS:", "opts": ["VM full per instance, container shares host kernel", "Both have full guest OS", "Both share one kernel", "Neither has a kernel"], "c": 0, "s": ["VM full guest OS plus virtual hardware; container shares host kernel plus image."], "a": "VM full per instance, container shares host kernel"},
+      {"q": "Strong isolation with separate kernels — choice:", "opts": ["Containers only", "VMs via hypervisor", "Serverless only", "AP only"], "c": 1, "s": ["VMs isolate via separate kernels and hypervisor. Containers share kernel."], "a": "VMs via hypervisor"},
+      {"q": "Lightweight, fast start, many per host — choice:", "opts": ["VMs", "Containers", "Modems", "Routers"], "c": 1, "s": ["Containers megabytes vs VMs gigabytes, seconds vs minutes."], "a": "Containers"},
+      {"q": "Windows and Linux guests together on one physical host — choice:", "opts": ["Classic Linux containers sharing one kernel", "VMs via Type 1 hypervisor", "Only AP", "Only modem"], "c": 1, "s": ["Mixed kernels on one host needs VMs; classic containers share one family."], "a": "VMs via Type 1 hypervisor"},
+      {"q": "Isolation by cgroups and namespaces on one kernel is:", "opts": ["VMs", "Containers", "Routers", "Switches"], "c": 1, "s": ["Container isolation is OS-level cgroups/namespaces. VM is hypervisor plus separate kernels."], "a": "Containers"},
+      {"q": "Which is heavy (gigabytes, minutes) vs light (megabytes, seconds)?", "opts": ["VM heavy container light", "Both heavy", "Both light", "VM light container heavy"], "c": 0, "s": ["VM duplicates OS per instance; container reuses kernel."], "a": "VM heavy container light"},
+      {"q": "Density per host — VMs tens vs containers:", "opts": ["Also tens only", "Hundreds", "One only", "None"], "c": 1, "s": ["Order of magnitude: VMs tens, containers hundreds."], "a": "Hundreds"},
+      {"q": "Kernel bug affect scope — VM vs container shared host:", "opts": ["VM guest bug affects host kernel of other tenants", "Container host bug affects all containers sharing that host kernel", "Neither affects anyone", "Both always isolate kernel bugs"], "c": 1, "s": ["VM guest kernels separate; container host kernel shared so bug spreads across containers on that host."], "a": "Container host bug affects all containers sharing that host kernel"},
+      {"q": "Docker runs:", "opts": ["VMs only", "Containers via shared kernel", "Only Type 1 hypervisor", "Only modem"], "c": 1, "s": ["Docker images and runs containers; hypervisor runs VMs."], "a": "Containers via shared kernel"},
+      {"q": "Kubernetes orchestrates:", "opts": ["VMs only without containers", "Many containers across a fleet", "Only one host", "Only modem"], "c": 1, "s": ["Orchestrates containers at fleet scale with pods and services."], "a": "Many containers across a fleet"}
+    ],
+    "container-eco": [
+      {"q": "Image is versus container is:", "opts": ["Image is running instance, container is template", "Image is read-only template, container is running instance with writable layer", "Both are running", "Both are templates"], "c": 1, "s": ["Image immutable layered filesystem, container adds writable layer plus process state."], "a": "Image is read-only template, container is running instance with writable layer"},
+      {"q": "File that builds an image with FROM, RUN, COPY, CMD is a:", "opts": ["Dockerfile", "Registry", "Pod", "VM"], "c": 0, "s": ["Dockerfile instructions add layers with cache then push to registry."], "a": "Dockerfile"},
+      {"q": "Store that holds images by repository and tag for pulling is a:", "opts": ["Registry (Docker Hub, ECR, GCR)", "VM", "Hypervisor", "Bridge"], "c": 0, "s": ["Registry stores; repository is the name, tag is version."], "a": "Registry (Docker Hub, ECR, GCR)"},
+      {"q": "Smallest Kubernetes unit that houses one or more containers sharing network is a:", "opts": ["Pod", "Registry", "VM", "Modem"], "c": 0, "s": ["Pod is smallest K8s unit; Deployment manages desired replicas of pods."], "a": "Pod"},
+      {"q": "Declares desired replicas plus rolling update and rollback in Kubernetes is a:", "opts": ["Pod", "Deployment", "VM", "Registry"], "c": 1, "s": ["Deployment spec.replicas plus strategy. Pod is one instance."], "a": "Deployment"},
+      {"q": "Load balances traffic across pods at a stable address in Kubernetes is a:", "opts": ["Service", "Registry", "Hypervisor", "Container alone"], "c": 0, "s": ["Service provides stable VIP or DNS across pods."], "a": "Service"},
+      {"q": "Decouples config from image in Kubernetes is:", "opts": ["ConfigMap and Secret", "Registry", "Hypervisor", "VM"], "c": 0, "s": ["ConfigMap and Secret inject config without rebuilding the image."], "a": "ConfigMap and Secret"},
+      {"q": "Routes external HTTP into the cluster by host and path in Kubernetes is:", "opts": ["Ingress", "Registry", "Hypervisor", "Bridge"], "c": 0, "s": ["Ingress routes external traffic plus TLS to Services."], "a": "Ingress"},
+      {"q": "Docker Hub is:", "opts": ["A registry that is public", "A container", "A VM", "A hypervisor"], "c": 0, "s": ["Public registry; ECR/GCR/ACR are cloud registries."], "a": "A registry that is public"},
+      {"q": "Repository vs tag in a registry:", "opts": ["Tag is the store, repo is version", "Repository is the name, tag is the version", "Both are same", "Repo is host only"], "c": 1, "s": ["Example nginx:1.25 registry holds repository nginx with tag 1.25."], "a": "Repository is the name, tag is the version"}
+    ],
+    "benefits": [
+      {"q": "Five lightly used physical servers become five VMs on one host — benefit is:", "opts": ["Encryption", "Server consolidation", "Subnetting", "Wiring only"], "c": 1, "s": ["Consolidation saves hardware, power, cooling and rack."], "a": "Server consolidation"},
+      {"q": "Move a running VM between hosts with near-zero downtime is:", "opts": ["Live migration (vMotion/Live Migration)", "Copy paste", "Reboot", "Snapshot only"], "c": 0, "s": ["Live migration moves memory plus disk state without reboot."], "a": "Live migration (vMotion/Live Migration)"},
+      {"q": "Containers reschedule for move — Kubernetes equivalent of live migration for app replicas is:", "opts": ["vMotion", "Reschedule via Deployment new pods", "Copy", "Modem"], "c": 1, "s": ["Containers favour fast reschedule of new pods over byte-for-byte live memory move."], "a": "Reschedule via Deployment new pods"},
+      {"q": "One image built in dev runs identically in test and prod — benefit is:", "opts": ["Port isolation", "Portability and env parity", "Only VMs", "Only modem"], "c": 1, "s": ["Image portability kills it works on my machine."], "a": "Portability and env parity"},
+      {"q": "Drawback where one greedy tenant starves others on an overcommitted host is:", "opts": ["Snapshot", "Noisy neighbours", "Registry", "Dockerfile"], "c": 1, "s": ["Overcommit without limits lets one hog CPU/RAM/IO."], "a": "Noisy neighbours"},
+      {"q": "Fix noisy neighbours with:", "opts": ["MoreRegistries", "Reservations and limits via cgroups (containers) or shares/limits (VMs)", "MoreModems", "No fix"], "c": 1, "s": ["cgroups limits for containers, shares/limits plus QoS for VMs."], "a": "Reservations and limits via cgroups (containers) or shares/limits (VMs)"},
+      {"q": "VM snapshot saves:", "opts": ["Only the name", "Disk plus optional memory to resume", "Only registry", "Only log"], "c": 1, "s": ["Snapshot disk plus memory lets you roll back riskily."], "a": "Disk plus optional memory to resume"},
+      {"q": "Container ideal for rollback is:", "opts": ["Snapshot running container memory", "Immutable rebuild to new image version and roll out new Deployment", "Only vMotion", "Only modem"], "c": 1, "s": ["Immutable image versions plus rolling Deployment beats snapshotting a running container."], "a": "Immutable rebuild to new image version and roll out new Deployment"},
+      {"q": "Microservices that scale fast and need high density — best fit:", "opts": ["Big VM per service only", "Containers plus orchestration", "Bare metal per microservice only", "Modem per service"], "c": 1, "s": ["Containers plus Kubernetes give fast scale and density."], "a": "Containers plus orchestration"},
+      {"q": "Windows containers need:", "opts": ["No host OS", "A Windows host kernel — same kernel family", "Linux only", "No kernel"], "c": 1, "s": ["Shared kernel means Windows containers need Windows host family."], "a": "A Windows host kernel — same kernel family"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Hypervisor role is to:", "opts": ["Route packets", "Create and run VMs by virtualizing CPU, RAM and disk", "Store Docker images only", "Encrypt DNS only"], "c": 1, "d": "easy", "t": "Hypervisors", "exp": ["Hypervisor carves one host into many VMs with virtual hardware."]},
+    {"id": 2, "q": "Type 1 hypervisor runs:", "opts": ["On top of Windows as an app", "Directly on hardware as bare-metal", "Only inside Docker", "Only in a browser"], "c": 1, "d": "easy", "t": "Hypervisors", "exp": ["Bare-metal directly on hardware — fast for data centres."]},
+    {"id": 3, "q": "Example Type 1 bare-metal:", "opts": ["VirtualBox", "VMware Workstation", "VMware ESXi", "Parallels"], "c": 2, "d": "easy", "t": "Hypervisors", "exp": ["ESXi bare. Others are hosted Type 2."]},
+    {"id": 4, "q": "Example Type 2 hosted:", "opts": ["ESXi", "Hyper-V bare role", "KVM", "Oracle VirtualBox"], "c": 3, "d": "easy", "t": "Hypervisors", "exp": ["VirtualBox inside host OS is Type 2."]},
+    {"id": 5, "q": "Best for a data centre cloud cluster:", "opts": ["Type 2 hosted", "Type 1 bare-metal", "No hypervisor", "Only containers with no host OS"], "c": 1, "d": "easy", "t": "Hypervisors", "exp": ["Performance and isolation favour Type 1."]},
+    {"id": 6, "q": "Best for a quick Linux VM on a Windows laptop:", "opts": ["Type 1 bare-metal", "Type 2 hosted (VirtualBox/Workstation)", "Only ESXi directly", "Only modem"], "c": 1, "d": "easy", "t": "Hypervisors", "exp": ["Hosted as an app inside Windows."]},
+    {"id": 7, "q": "KVM type is:", "opts": ["Type 2 hosted", "Type 1 bare-metal", "Neither", "Container only"], "c": 1, "d": "medium", "t": "Hypervisors", "exp": ["Kernel becomes Type 1 via VT/AMD-V after load."]},
+    {"id": 8, "q": "Host vs guest: which is the VM's OS?", "opts": ["Host", "Hypervisor", "Guest", "Registry"], "c": 2, "d": "easy", "t": "Hypervisors", "exp": ["Guest inside VM. Host physical box."]},
+    {"id": 9, "q": "Containers run via a per-VM hypervisor like VMs — statement is:", "opts": ["True", "False — they share host kernel via cgroups/namespaces", "True for Docker", "True for Podman"], "c": 1, "d": "medium", "t": "Hypervisors", "exp": ["Containers share kernel; VMs hypervisor plus guest kernel."]},
+    {"id": 10, "q": "Management for ESXi fleets is:", "opts": ["vCenter", "VirtualBox UI", "Notepad", "Modem"], "c": 0, "d": "medium", "t": "Hypervisors", "exp": ["vCenter manages ESXi."]},
+    {"id": 11, "q": "VM has versus container has — guest OS:", "opts": ["VM full per instance, container shares host kernel", "Both have full guest OS", "Both share one kernel", "Neither has a kernel"], "c": 0, "d": "easy", "t": "VMs vs Containers", "exp": ["VM full guest plus virtual hardware; container image shares kernel."]},
+    {"id": 12, "q": "Strong isolation with separate kernels — choice:", "opts": ["Containers only", "VMs via hypervisor", "Serverless only", "AP only"], "c": 1, "d": "easy", "t": "VMs vs Containers", "exp": ["VMs via separate kernels and hypervisor."]},
+    {"id": 13, "q": "Lightweight fast many per host — choice:", "opts": ["VMs", "Containers", "Modems", "Routers"], "c": 1, "d": "easy", "t": "VMs vs Containers", "exp": ["Containers megabytes, VMs gigabytes."]},
+    {"id": 14, "q": "Windows plus Linux guests together on one host — choice:", "opts": ["Classic Linux containers sharing one kernel", "VMs via Type 1 hypervisor", "Only AP", "Only modem"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["Mixed kernels needs VMs."]},
+    {"id": 15, "q": "Isolation by cgroups and namespaces on one kernel is:", "opts": ["VMs", "Containers", "Routers", "Switches"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["Container OS-level. VM hypervisor plus kernels."]},
+    {"id": 16, "q": "Heavy vs light disk and start time:", "opts": ["VM heavy container light", "Both heavy", "Both light", "VM light container heavy"], "c": 0, "d": "easy", "t": "VMs vs Containers", "exp": ["VM duplicates OS; container reuses kernel."]},
+    {"id": 17, "q": "Density per host — VMs tens vs containers:", "opts": ["Also tens only", "Hundreds", "One only", "None"], "c": 1, "d": "easy", "t": "VMs vs Containers", "exp": ["Order of magnitude: containers denser."]},
+    {"id": 18, "q": "Kernel bug affect scope on shared host:", "opts": ["VM guest bug affects other tenants' kernels", "Container host bug affects all containers sharing that host kernel", "Neither affects anyone", "Both always isolate"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["VM kernels separate; container host kernel shared."]},
+    {"id": 19, "q": "Docker runs:", "opts": ["VMs only", "Containers via shared kernel", "Only Type 1 hypervisor", "Only modem"], "c": 1, "d": "easy", "t": "VMs vs Containers", "exp": ["Docker images and runs containers."]},
+    {"id": 20, "q": "Kubernetes orchestrates:", "opts": ["VMs only without containers", "Many containers across a fleet", "Only one host", "Only modem"], "c": 1, "d": "easy", "t": "VMs vs Containers", "exp": ["Fleet scale with pods."]},
+    {"id": 21, "q": "Image is versus container is:", "opts": ["Image is running instance, container is template", "Image is read-only template, container is running instance with writable layer", "Both running", "Both templates"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["Image layered read-only, container running writable instance."]},
+    {"id": 22, "q": "File that builds an image with FROM RUN COPY CMD is a:", "opts": ["Dockerfile", "Registry", "Pod", "VM"], "c": 0, "d": "easy", "t": "VMs vs Containers", "exp": ["Dockerfile layers with cache."]},
+    {"id": 23, "q": "Store that holds images by repository and tag is a:", "opts": ["Registry (Docker Hub, ECR, GCR)", "VM", "Hypervisor", "Bridge"], "c": 0, "d": "easy", "t": "VMs vs Containers", "exp": ["Registry stores; repository is name, tag version."]},
+    {"id": 24, "q": "Smallest Kubernetes unit housing one or more containers sharing network is a:", "opts": ["Pod", "Registry", "VM", "Modem"], "c": 0, "d": "medium", "t": "VMs vs Containers", "exp": ["Pod is smallest K8s unit."]},
+    {"id": 25, "q": "Declares desired replicas plus rolling update and rollback is a:", "opts": ["Pod", "Deployment", "VM", "Registry"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["Deployment desired replicas plus strategy."]},
+    {"id": 26, "q": "Load balances traffic across pods at a stable address is a:", "opts": ["Service", "Registry", "Hypervisor", "Container alone"], "c": 0, "d": "medium", "t": "VMs vs Containers", "exp": ["Service stable VIP/DNS."]},
+    {"id": 27, "q": "Decouples config from image in Kubernetes is:", "opts": ["ConfigMap and Secret", "Registry", "Hypervisor", "VM"], "c": 0, "d": "medium", "t": "VMs vs Containers", "exp": ["Inject config without rebuilding."]},
+    {"id": 28, "q": "Routes external HTTP into the cluster by host and path is:", "opts": ["Ingress", "Registry", "Hypervisor", "Bridge"], "c": 0, "d": "medium", "t": "VMs vs Containers", "exp": ["Ingress routes plus TLS."]},
+    {"id": 29, "q": "Docker Hub is:", "opts": ["A registry that is public", "A container", "A VM", "A hypervisor"], "c": 0, "d": "easy", "t": "VMs vs Containers", "exp": ["Public registry."]},
+    {"id": 30, "q": "Repository vs tag in a registry:", "opts": ["Tag is the store, repo is version", "Repository is the name, tag is the version", "Both same", "Repo is host only"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["nginx:1.25 holds repo nginx tag 1.25."]},
+    {"id": 31, "q": "Five lightly used servers become five VMs on one host — benefit is:", "opts": ["Encryption", "Server consolidation", "Subnetting", "Wiring only"], "c": 1, "d": "easy", "t": "Benefits & Use Cases", "exp": ["Consolidation saves hardware, power, cooling."]},
+    {"id": 32, "q": "Move a running VM between hosts with near-zero downtime is:", "opts": ["Live migration (vMotion/Live Migration)", "Copy paste", "Reboot", "Snapshot only"], "c": 0, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Live migration moves memory plus disk without reboot."]},
+    {"id": 33, "q": "Containers reschedule equivalent of live migration for app replicas is:", "opts": ["vMotion", "Reschedule via Deployment new pods", "Copy", "Modem"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Containers favour reschedule of new pods."]},
+    {"id": 34, "q": "One image built in dev runs identically in test and prod — benefit is:", "opts": ["Port isolation", "Portability and env parity", "Only VMs", "Only modem"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Image portability kills works on my machine."]},
+    {"id": 35, "q": "Drawback where one greedy tenant starves others on overcommitted host is:", "opts": ["Snapshot", "Noisy neighbours", "Registry", "Dockerfile"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Overcommit without limits lets one hog resources."]},
+    {"id": 36, "q": "Fix noisy neighbours with:", "opts": ["MoreRegistries", "Reservations and limits via cgroups or shares/limits", "MoreModems", "No fix"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Limits plus QoS and monitoring."]},
+    {"id": 37, "q": "VM snapshot saves:", "opts": ["Only name", "Disk plus optional memory to resume", "Only registry", "Only log"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Snapshot disk plus memory to roll back."]},
+    {"id": 38, "q": "Container ideal for rollback is:", "opts": ["Snapshot running container memory", "Immutable rebuild to new image version and roll out new Deployment", "Only vMotion", "Only modem"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Immutable versions plus rolling Deployment."]},
+    {"id": 39, "q": "Microservices that scale fast and need high density — best fit:", "opts": ["Big VM per service only", "Containers plus orchestration", "Bare metal per microservice only", "Modem per service"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Containers plus Kubernetes."]},
+    {"id": 40, "q": "Windows containers need:", "opts": ["No host OS", "A Windows host kernel — same kernel family", "Linux only", "No kernel"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Shared kernel must match family."]},
+    {"id": 41, "q": "Image is to class as container is to:", "opts": ["Function", "Object (running instance)", "Registry", "Host"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["Image template vs container instance with writable state."]},
+    {"id": 42, "q": "Which tradeoff best summarizes VM vs container?", "opts": ["Density vs isolation", "Colour vs size", "Speed vs colour", "Only cost"], "c": 0, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Density containers, isolation VMs — underlying axis."]},
+    {"id": 43, "q": "When both VMs and containers are mentioned and strong tenant isolation is primary, pick:", "opts": ["Containers only", "VMs", "Only modem", "Only cache"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["VMs harsh isolation via separate kernels."]},
+    {"id": 44, "q": "When both are mentioned and app portability and density is primary, pick:", "opts": ["Containers", "VMs only", "Only hub", "Only registry"], "c": 0, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Containers plus image portability."]},
+    {"id": 45, "q": "Nested real clouds often:", "opts": ["Use only VMs", "Use only containers", "Nest both: VMs isolate tenants, containers pack apps on top", "Use neither"], "c": 2, "d": "medium", "t": "Benefits & Use Cases", "exp": ["VMs bottom for tenant isolation, containers top for app density."]},
+    {"id": 46, "q": "Pod houses containers sharing:", "opts": ["Disk only", "Network namespace (same IP)", "Only registry", "Only modem"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["Pod containers share network and some volumes."]},
+    {"id": 47, "q": "Tag latest in a registry without pinning is risky because:", "opts": ["Latest always immutable", "Latest moves so reproducibility breaks", "Latest is private", "No risk"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["Pin to a specific versioned tag or digest for reproducibility."]},
+    {"id": 48, "q": "Docker daemonless alternative similar CLI is:", "opts": ["Podman", "Hub", "VM", "Hyper-V"], "c": 0, "d": "medium", "t": "VMs vs Containers", "exp": ["Podman daemonless, similar CLI."]},
+    {"id": 49, "q": "Control plane decides vs data plane executes in:", "opts": ["Docker on one host only", "Kubernetes — API server/scheduler/controllers vs nodes and kubelet", "Modem only", "Hub only"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["Control plane decides, data plane (nodes) runs."]},
+    {"id": 50, "q": "Serverless vs containers — serverless:", "opts": ["You manage hosts and clusters", "Provider manages hosts and clusters, you supply function code", "No code", "Only VM"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["Provider manages — extreme operational density."]},
+    {"id": 51, "q": "Overcommit that sums virtual RAM beyond physical plus ballooning can cause:", "opts": ["No effect", "Noisy neighbours and swapping", "Only registry growth", "Only VLAN growth"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Overcommit starves and swaps."]},
+    {"id": 52, "q": "Which verb decides VM vs container when phrasing is generic many virtual on one box?", "opts": ["Colour", "Kernel wording — shares kernel is container, full guest OS is VM", "Only price", "Only RAM"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Kernel sharing is the disambiguator."]},
+    {"id": 53, "q": "Bare on hardware in a data centre vs on top of Windows on a laptop maps to:", "opts": ["Same type", "Type 1 vs Type 2", "Container vs VM", "Only container"], "c": 1, "d": "medium", "t": "Hypervisors", "exp": ["Bare Type 1 data centre, hosted Type 2 laptop."]},
+    {"id": 54, "q": "Registry is the store, repository is the name, tag is the version — statement is:", "opts": ["False", "True", "Only for VMs", "Only for hubs"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["Standard registry terminology."]},
+    {"id": 55, "q": "Rolling update strategy in Kubernetes belongs to:", "opts": ["Pod alone", "Deployment", "VM snapshot alone", "Hub"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["Deployment rollout strategy."]},
+    {"id": 56, "q": "Shares no host kernel literally is:", "opts": ["Container", "False — containers share host kernel", "VM shares kernel", "Hub shares kernel"], "c": 1, "d": "medium", "t": "VMs vs Containers", "exp": ["Container premise is shared host kernel."]},
+    {"id": 57, "q": "Best for a branch needing one box for firewall plus IPS plus VPN (different topic) analogy: UTM vs containers is analogy for:", "opts": ["No analogy", "Bundle vs deep is same axis: UTM bundles many functions like nested both bundles VM isolation plus container density", "Only UTM", "Only VM"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Different domain but same bundle vs depth trade-off pattern."]},
+    {"id": 58, "q": "Which technology gives isolated full OSes with different kernels on one host without containers?", "opts": ["Only containers", "VMs via hypervisor", "Only bridge", "Only sanit"], "c": 1, "d": "easy", "t": "VMs vs Containers", "exp": ["VMs with hypervisor and guest OSes."]},
+    {"id": 59, "q": "One physical to many virtual not specifying OS vs app — disambiguate by:", "opts": ["Price only", "Kernel wording", "Only host name", "Only subnet"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Kernel sharing vs full guest OS decides."]},
+    {"id": 60, "q": "Container image portability has limits across:", "opts": ["No limits", "Kernel family — Windows containers need Windows host kernel", "Only modem", "Only cache"], "c": 1, "d": "medium", "t": "Benefits & Use Cases", "exp": ["Shared kernel family must match."]}
+  ]
+}

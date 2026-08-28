@@ -1,0 +1,511 @@
+{
+  "id": "command-prompt",
+  "title": "Command Prompt & CLI Basics",
+  "icon": "C:\\>",
+  "category": "ms-office",
+  "color": "#0D9488",
+  "subtopics": [
+    "Navigation (cd/dir)",
+    "File Operations (copy/move/del)",
+    "Network Commands (ipconfig/ping)",
+    "Drives & Paths"
+  ],
+  "estimatedHours": 4,
+  "readingSections": [
+    {
+      "id": "cli-intro",
+      "title": "What the Black Window Is (CMD, PowerShell, Terminal)",
+      "type": "concept",
+      "quickSummary": "CLI = you type commands, Windows types back. CMD (Command Prompt) is the old black window, PowerShell is the modern blue window, Terminal is the new tabbed host. Open with Win+R then cmd, or Win+X then Terminal. Every command is verb, space, target.",
+      "content": [
+        "CLI means Command Line Interface — you type a command, press Enter, Windows replies in text. No mouse, no icons, just words. It feels old-fashioned, but it is the fastest way to do many admin jobs and the only way to answer exam questions about dir, cd, ipconfig and ping.",
+        "Windows actually has three CLIs that share most commands. CMD (Command Prompt, the classic black window, file cmd.exe) is the oldest. PowerShell (blue window, far more powerful, file powershell.exe) understands everything CMD does plus much more. Windows Terminal (the new tabbed app on Windows 11) can host both CMD and PowerShell in tabs. For this exam, when the question says Command Prompt, answer with CMD commands.",
+        "Open it fast: Win+R then type cmd and press Enter, or press Win+X and choose Terminal or Command Prompt, or type cmd in Start search. The prompt shows your current folder, for example C:\\Users\\Asha>. You type after the >. Upper or lower case does not matter — DIR and dir do the same thing.",
+        "Every command follows one shape: verb, space, target, space, options. For example dir C:\\Users /w means verb dir, target C:\\Users, option /w for wide view. Options start with slash on CMD and with dash on PowerShell and Linux, which is a common exam trap.",
+        "Why the exam loves CLI: one line proves you know files, paths, drives and networking without a screenshot. Four families cover every AXIS question — navigation (cd, dir), file operations (copy, move, del, ren), network (ipconfig, ping, tracert), and drives plus paths (absolute, relative, wildcards)."
+      ],
+      "subsections": [
+        {
+          "title": "PowerShell vs CMD in one line",
+          "content": "If a question lists both ipconfig and Get-NetIPConfiguration, the first is CMD, the second is the PowerShell name for the same job. AXIS asks CMD names. PowerShell aliases like ls and pwd are borrowed from Linux and also work in PowerShell, but CMD uses dir and cd."
+        },
+        {
+          "title": "Case, spaces and quotes",
+          "content": "Commands are case-insensitive. If a folder name contains a space, wrap it in quotes: cd \"My Documents\" or the command will see two separate names. The exam sometimes writes C:\\My Documents without quotes as a distractor — it would fail without them."
+        }
+      ],
+      "quickRevision": [
+        "CLI = type a command, press Enter, read the reply. Three hosts: CMD (black), PowerShell (blue), Terminal (tabbed).",
+        "Open: Win+R then cmd, or Win+X then Terminal. Prompt shows current folder: C:\\Users\\Asha>.",
+        "Shape: verb target options. Options use slash on CMD (/w) and dash on Linux (-w).",
+        "Case does not matter. Spaces in names need quotes: cd \"My Documents\".",
+        "Four families for the exam: navigation, file ops, network, drives and paths."
+      ],
+      "tricks": [
+        "If options show dir -w vs dir /w — pick dir /w. Slash is CMD, dash is Linux/PowerShell core.",
+        "Any path with a space without quotes is a trap — it would break in real CMD.",
+        "Win+R then cmd is the fastest open — the exam sometimes asks exactly that sequence."
+      ],
+      "patterns": [
+        "'How do you open Command Prompt with Run?' -> Win+R then type cmd.",
+        "'Slash vs dash for options?' -> CMD uses slash, Linux/PowerShell prefers dash.",
+        "'Folder name with a space?' -> Wrap in quotes."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Placement papers — CLI basics",
+          "question": "Which key opens Run to launch cmd?",
+          "approach": "Win+R, then type cmd and press Enter. Win+X is the Power User menu variant."
+        },
+        {
+          "source": "TCS / Wipro — slash vs dash",
+          "question": "Which is the correct CMD option format?",
+          "approach": "Slash. dir /w and dir /p are correct CMD; dir -w is Linux."
+        }
+      ],
+      "companyNote": "One question almost always tests Win+R then cmd and slash vs dash. Easy marks."
+    },
+    {
+      "id": "navigation",
+      "title": "Navigation: cd and dir (where am I, what is here, go there)",
+      "type": "concept",
+      "quickSummary": "pwd/cd shows or changes folder, dir lists files. cd alone or cd without args shows current. cd .. goes up one, cd \\ goes to root, cd /d D: jumps drives. dir /w wide, dir /p page, dir /a shows hidden, dir /s recursive.",
+      "content": [
+        "Navigation is where you are and what is around you. cd alone (or pwd in PowerShell/Linux) shows the current folder. dir lists the files and folders inside it. Learn this pair first and everything else follows.",
+        "Moving: cd Documents goes into the Documents subfolder. cd .. goes up one level to the parent. cd \\ jumps straight to the root of the current drive (C:\\). cd /d D:\\Projects jumps to another drive and folder in one go — the /d is required when you change drives on CMD. Without /d, cd D:\\Projects changes the remembered folder on D but you stay on C.",
+        "Listing: dir alone lists the current folder with names, sizes, dates and a summary at the bottom. dir /w shows a wide view (many names per line, no details). dir /p pauses after each screen (useful when a folder has thousands of files). dir /a shows all including hidden and system files. dir /s recurses into every subfolder. dir *.txt lists only files ending in .txt.",
+        "Helpers: cls clears the screen. Tab autocompletes a name so you do not need to type it fully. Up and Down arrows recall previous commands. The exam loves dir /w, dir /p, dir /a and dir /s as a set — four suffixes, four meanings.",
+        "Two small traps. One, dir by itself does not show hidden files — only dir /a does. Two, cd without arguments prints the current directory, while cd .. with two dots means parent — a single dot cd . means current directory and is rarely asked."
+      ],
+      "subsections": [
+        {
+          "title": "Absolute vs relative in navigation",
+          "content": "cd C:\\Users\\Asha\\Documents is absolute (starts from root C:\\). cd Documents when you are in C:\\Users\\Asha is relative (starts from where you are). Both end in the same place. The exam writes both and asks whether they differ — understand that they are two routes to the same destination depending on your starting point."
+        },
+        {
+          "title": "Drive jump must use /d",
+          "content": "On CMD, cd D: alone changes the remembered folder on D but does not move you there — you stay on C. To actually go to D:\\, use cd /d D:\\ or type D: and press Enter. PowerShell fixes this and lets cd D:\\ work directly, but AXIS tests CMD behaviour."
+        }
+      ],
+      "quickRevision": [
+        "cd shows current folder; cd <name> enters subfolder; cd .. parent; cd \\ root; cd /d D:\\ jumps drives.",
+        "dir lists current; dir /w wide; dir /p paged; dir /a all including hidden; dir /s recursive; dir *.ext filtered.",
+        "cls clears screen; Tab completes; Up recalls last command.",
+        "cd without slash: cd D: does not move — need cd /d D:\\ or D: then Enter.",
+        "dir without /a hides hidden files."
+      ],
+      "tricks": [
+        "If options contain cd D:\\Projects without /d, it is wrong on CMD — the correct is cd /d D:\\Projects.",
+        "If question says dir shows hidden files, it is false — only dir /a does.",
+        "dir /w vs dir /p: w = wide (many columns), p = pause each screen. Do not swap them."
+      ],
+      "patterns": [
+        "'Wide listing?' -> dir /w. 'Pause each screen?' -> dir /p. 'Show hidden?' -> dir /a. 'All subfolders?' -> dir /s.",
+        "'Go to parent?' -> cd .. 'Go to root?' -> cd \\.",
+        "'Change from C: to D:\\Projects?' -> cd /d D:\\Projects."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every placement CLI set — dir variants",
+          "question": "Which switch shows hidden files / shows wide / pauses?",
+          "approach": "dir /a all including hidden, dir /w wide, dir /p page. Memorize the three letters."
+        },
+        {
+          "source": "Infosys / Accenture — cd drive jump",
+          "question": "Correct command to move from C:\\ to D:\\Projects on CMD?",
+          "approach": "cd /d D:\\Projects. Without /d you stay on C."
+        }
+      ],
+      "companyNote": "Expect 1-2 questions on dir /w vs /p vs /a vs /s and one on cd /d drive jump."
+    },
+    {
+      "id": "file-ops",
+      "title": "File Operations: copy, xcopy, move, ren, del, mkdir, rmdir, type, attrib",
+      "type": "concept",
+      "quickSummary": "Create and delete folders with mkdir/rmdir, copy with copy/xcopy, move or rename with move/ren, delete files with del, read a file with type, change attributes with attrib. del is files, rmdir is folders (add /s to remove tree).",
+      "content": [
+        "Files and folders are managed with a small set of verbs. mkdir (or md) makes a new folder: mkdir Projects. rmdir (or rd) removes an empty folder: rmdir Projects. Add /s to remove a folder and everything inside it: rmdir /s Projects — Windows will ask for confirmation unless you also add /q for quiet.",
+        "Copy: copy file.txt D:\\Backup\\ copies one file. xcopy C:\\Data D:\\Data /s /e copies a whole tree including subfolders and empty folders. The modern replacement on newer Windows is robocopy, but AXIS still asks copy and xcopy — know that copy is for files, xcopy adds the /s tree power.",
+        "Move and rename share verbs: move old.txt new.txt renames in the same folder. move C:\\a.txt D:\\ moves the file to another drive or folder. ren (or rename) renames only: ren old.txt new.txt. del (or erase) deletes files: del file.txt deletes one, del *.tmp deletes all .tmp files in the current folder, del /s *.tmp deletes them recursively.",
+        "Reading and attributes: type file.txt prints the file to the screen (like cat on Linux). attrib shows attributes: R read-only, H hidden, S system, A archive. attrib +h file.txt hides a file, attrib -h shows it again. attrib +r makes it read-only.",
+        "Wildcards: star * means any characters, question mark ? means one character. *.txt matches all text files. report?.docx matches report1.docx but not report10.docx. The exam often writes del *.txt vs del ?.txt as traps — count the characters."
+      ],
+      "subsections": [
+        {
+          "title": "Delete family at a glance",
+          "content": "del deletes files, never folders. rmdir (rd) deletes folders, empty by default; add /s to delete the tree. erase is an alias for del. If a question says del removes a folder, it is wrong — that job is rmdir."
+        },
+        {
+          "title": "Copy vs xcopy vs robocopy lineage",
+          "content": "copy for files (with /y to overwrite without asking). xcopy for trees (with /s include non-empty subfolders, /e include empty ones too). robocopy for mirrored, restartable, logged copies — asked less often, but know its name as the modern successor."
+        }
+      ],
+      "quickRevision": [
+        "mkdir / md makes folder; rmdir / rd removes folder; add /s to delete tree; /q suppresses confirmation.",
+        "copy file-to-file; xcopy /s tree ( /e adds empty); move moves or renames; ren renames only.",
+        "del deletes files (del *.tmp); erase alias of del. del does not delete folders.",
+        "type prints file; attrib +h/-h hides/shows; +r read-only.",
+        "Wildcards: * any length, ? one char. *.txt all txt, ?.txt one-char name."
+      ],
+      "tricks": [
+        "If options show rmdir file.txt — wrong. rmdir is for folders; del is for files.",
+        "xcopy without /s copies only files in the top folder, not subfolders — the /s is the tree switch.",
+        "attrib +h hides, attrib -h unhides. Plus sets, minus clears."
+      ],
+      "patterns": [
+        "'Delete a folder and everything inside?' -> rmdir /s FolderName.",
+        "'Copy a folder tree?' -> xcopy Source Dest /s (add /e to include empty folders).",
+        "'Show a text file in the prompt?' -> type file.txt.",
+        "'Hide a file?' -> attrib +h file.txt."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Wipro / TCS NQT — copy vs xcopy",
+          "question": "Which command copies all files and subfolders?",
+          "approach": "xcopy with /s. copy alone does not recurse."
+        },
+        {
+          "source": "Placement papers — del vs rmdir",
+          "question": "Which command deletes a directory?",
+          "approach": "rmdir or rd (with /s for non-empty). del deletes files, not directories."
+        }
+      ],
+      "companyNote": "1-2 questions per paper on copy/xcopy and del vs rmdir, plus one attrib or type."
+    },
+    {
+      "id": "network-commands",
+      "title": "Network Commands: ipconfig, ping, tracert, netstat, nslookup, getmac, arp, hostname",
+      "type": "concept",
+      "quickSummary": "ipconfig shows IP address and masks, ping tests reachability, tracert traces hops, netstat shows ports and connections, nslookup resolves DNS, getmac shows MAC, arp shows IP-to-MAC table, hostname prints machine name.",
+      "content": [
+        "Network commands are the other half of the CLI topic. ipconfig shows your IP address, subnet mask and gateway. ipconfig /all shows everything including MAC, DNS servers and DHCP status. ipconfig /release and ipconfig /renew release and request a new address from DHCP. ipconfig /flushdns clears the local DNS cache.",
+        "ping tests whether another host is reachable: ping google.com or ping 8.8.8.8. Four replies mean success; Request timed out means blocked or down. ping -t pings continuously until you press Ctrl+C. ping -n 10 sends exactly 10 packets instead of the default 4.",
+        "tracert (on Linux and routers, traceroute) shows every router between you and the destination — each hop and its round-trip time. Stars mean a hop that did not reply. The exam loves: 'Which command traces the route?' -> tracert. Also know pathping, which is tracert plus ping statistics per hop.",
+        "netstat shows active connections and listening ports. netstat -an shows all connections as numbers (fast). netstat -ano adds the owning process ID so you can match a port to a program in Task Manager. arp -a shows the IP-to-MAC mapping inside your subnet. getmac shows your network adapter MAC addresses without the full ipconfig noise. nslookup google.com asks DNS for the IP behind a name. hostname prints this computer's name.",
+        "Three easy marks: nbtstat -n (NetBIOS names), netsh (the shell for network configuration), and the fact that ping uses ICMP while tracert on Windows also uses ICMP but with growing TTL."
+      ],
+      "subsections": [
+        {
+          "title": "ICMP family in one line",
+          "content": "ping sends ICMP Echo Request and waits for Echo Reply. tracert on Windows sends ICMP Echo with increasing TTL; on Linux, traceroute defaults to UDP. The exam mixes them — remember both trace a route, but only ping is the reachability test."
+        },
+        {
+          "title": "netstat -ano decoded",
+          "content": "a = all, n = numeric (do not resolve names), o = owning PID. Combine as one: netstat -ano. Then open Task Manager > Details to match PID to program. The exam lists -a, -n, -o separately to test you."
+        }
+      ],
+      "quickRevision": [
+        "ipconfig alone = IP, mask, gateway; /all = MAC, DNS, DHCP, lease; /release + /renew cycle DHCP; /flushdns clears cache.",
+        "ping tests reachability (ICMP echo). -t continuous, -n count.",
+        "tracert traces every hop; pathping adds per-hop stats; ping and tracert both use ICMP on Windows.",
+        "netstat -an all numeric; -ano adds PID. arp -a IP-to-MAC table. getmac just the MAC.",
+        "nslookup resolves name to IP; hostname prints this PC name."
+      ],
+      "tricks": [
+        "If options show traceroute on a Windows question — the correct Windows command is tracert. traceroute is Linux/cisco.",
+        "ipconfig without /all shows only IP, mask and gateway — not MAC or DNS details.",
+        "ping 127.0.0.1 (loopback) tests your own TCP/IP stack without touching the network."
+      ],
+      "patterns": [
+        "'Show full IP, MAC, DNS, DHCP?' -> ipconfig /all.",
+        "'Test if a host is reachable?' -> ping.",
+        "'Trace the path to a host?' -> tracert (Windows) / traceroute (Linux).",
+        "'Show IP-to-MAC table?' -> arp -a. 'Show active ports?' -> netstat -an.",
+        "'Find IP for a domain?' -> nslookup."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every AXIS practice set — networking section",
+          "question": "Which command displays TCP/IP configuration / checks connectivity / traces route?",
+          "approach": "ipconfig, ping, tracert. The canonical trio. /all, -t, -ano are the common suffixes."
+        },
+        {
+          "source": "Infosys / Wipro — DNS tools",
+          "question": "Which command resolves a hostname to an IP?",
+          "approach": "nslookup hostname. ping also resolves but its job is reachability; nslookup is the DNS lookup tool."
+        }
+      ],
+      "companyNote": "2-3 questions per paper if networking is in scope: ipconfig /all, ping, tracert, and netstat -ano."
+    },
+    {
+      "id": "drives-paths",
+      "title": "Drives, Paths, Wildcards and Redirection",
+      "type": "concept",
+      "quickSummary": "Drives are C: D: etc. Absolute path starts from drive root (C:\\Users\\Asha), relative starts from current folder. . is current, .. is parent. * any, ? one. > writes to file (overwrites), >> appends, | pipes to next command.",
+      "content": [
+        "Drives are named by letters followed by a colon: C: is usually system, D: and E: are data or drives, A: and B: are historic floppy slots the exam still loves to joke about. Type D: and press Enter to switch to D, or use cd /d D:\\Projects to switch and move in one line. dir C:\\ lists C regardless of where you are.",
+        "Paths come in two flavours. Absolute starts from the drive root, for example C:\\Users\\Asha\\Documents\\report.docx — complete from the top. Relative starts from where you are now, for example Documents\\report.docx when you are already in C:\\Users\\Asha. The dot trick: single dot . means current folder, double dot .. means parent folder.",
+        "Wildcards speed up file selection. Star * matches any length including zero: *.txt matches all text files, report* matches report1, reportFinal, report. Question ? matches exactly one character: report?.txt matches report1.txt but not report10.txt. Combine: dir report*.txt finds every report text file.",
+        "Redirection and piping move output. dir > list.txt writes the listing into a new file, overwriting it if it exists. dir >> list.txt appends to the file instead. type file.txt | more pages the output one screen at a time (also type large.txt | findstr \"error\" to filter). The pipe | sends the output of the left command into the input of the right command.",
+        "Two path traps. One, forward slash / is the option prefix on CMD, so a path with forward slashes like C:/Users/Asha may fail or be misread — use backslashes C:\\Users\\Asha on Windows. Two, quoting: any path with a space must be quoted, for example type \"C:\\My Files\\notes.txt\" — without quotes CMD sees two separate arguments."
+      ],
+      "subsections": [
+        {
+          "title": "Absolute vs relative at speed",
+          "content": "Absolute = full from root, starts with drive or backslash: C:\\Data\\file.txt or \\Data\\file.txt (root-relative). Relative = from current: ..\\Data\\file.txt or Data\\file.txt. If the question says starting folder is C:\\Users\\Asha and target is C:\\Users\\Asha\\Documents, then both C:\\Users\\Asha\\Documents and Documents are correct — one absolute, one relative."
+        },
+        {
+          "title": "Redirection cheat sheet",
+          "content": "> is overwrite, >> is append, < is input from file, | is pipe between commands. The exam sometimes writes dir > file.txt vs dir >> file.txt as a binary — overwrite vs append is the distinction."
+        }
+      ],
+      "quickRevision": [
+        "Drives: C: system, D: data. Switch with D: or cd /d D:\\Path.",
+        "Absolute starts from root (C:\\...), relative from current (...). . current, .. parent.",
+        "Wildcards: * any length, ? one char. *.txt all txt, ?.txt single-char name.",
+        "Redirection: > overwrite, >> append, | pipe to next command.",
+        "Backslash \\ is the Windows path separator; forward slash / is the option prefix.",
+        "Paths with spaces need quotes: \"C:\\My Files\\notes.txt\"."
+      ],
+      "tricks": [
+        "If a question writes C:/Users/Asha with forward slashes — on CMD it would be wrong. Use backslashes.",
+        "> overwrites, >> appends. The second > is the clue for append.",
+        "type *.txt does not work — type prints one file. Use type file.txt or loop: for %f in (*.txt) do type \"%f\"."
+      ],
+      "patterns": [
+        "'Absolute vs relative?' -> Absolute from root with drive, relative from current without drive.",
+        "'Overwrite file with output?' -> >. 'Append?' -> >>. 'Pipe to next command?' -> |.",
+        "'Star vs question wildcard?' -> * any, ? one.",
+        "'Current folder?' -> . 'Parent folder?' -> .."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Placement papers — paths and wildcards",
+          "question": "Difference between absolute and relative path / between * and ? / between > and >>?",
+          "approach": "Absolute from root, relative from current; star any length, question one char; > overwrite, >> append."
+        },
+        {
+          "source": "TCS / Wipro — drive switch",
+          "question": "Correct way to change from C: to D:\\Data on CMD?",
+          "approach": "cd /d D:\\Data or D: then cd Data. cd D:\\Data alone stays on C on CMD."
+        }
+      ],
+      "companyNote": "Paths, wildcards and > vs >> appear as a combined table-type question. Memorize the 5 pairs above."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "navigation",
+      "title": "Navigation: cd and dir Switches",
+      "formula": {
+        "latex": "cd: .\\to\\here, ..\\up, \\\\root, /d\\jump\\;\\; | \\;\\; dir: /w\\wide, /p\\page, /a\\all, /s\\tree",
+        "text": "cd: enter folder, .. up, \\ root, /d jump drives | dir: /w wide, /p page, /a all+hidden, /s recurse"
+      },
+      "whenToUse": "Any 'which switch shows X?' MCQ for cd or dir, or which command moves/lists.",
+      "explanation": [
+        "cd alone prints current. cd Folder enters subfolder. cd .. goes to parent. cd \\ goes to drive root. cd /d D:\\Folder jumps drives.",
+        "dir alone lists current with details. /w wide many per line, /p pause per screen, /a all including hidden+system, /s recurse into subfolders.",
+        "cls clears, Tab autocompletes, Up recalls, /? shows help for any command: dir /? .",
+        "dir *.txt filters by wildcard. dir /a shows what dir alone hides (hidden files).",
+        "PowerShell/Linux note: ls -a -l -R are the Linux equivalents of dir /a /w /s — dash not slash."
+      ],
+      "example": {
+        "prompt": "List every file including hidden ones in a wide view.",
+        "steps": [
+          "Need hidden -> need /a.",
+          "Need wide -> need /w.",
+          "Combine: dir /a /w (order does not matter, dir /w /a works too)."
+        ],
+        "answer": "dir /a /w"
+      },
+      "memoryTip": "w = wide, p = pause, a = all, s = subfolders. The four letters spell W P A S — wide pages show all subfolders.",
+      "commonMistake": "Thinking dir shows hidden files by default. Only dir /a does."
+    },
+    {
+      "id": "file-ops",
+      "title": "File Operations: mkdir/rmdir/copy/xcopy/move/ren/del/type/attrib",
+      "formula": {
+        "latex": "mkdir\\new, rmdir/s\\tree, copy\\file, xcopy/s\\tree, move\\move/rename, ren\\rename, del\\files, type\\read, attrib\\+/\\-h/r",
+        "text": "mkdir new, rmdir/s tree, copy file, xcopy/s tree, move move/rename, ren rename, del files, type read, attrib +/- hide/read-only"
+      },
+      "whenToUse": "Any 'which command does X to a file or folder?' MCQ — the verb family tells you immediately.",
+      "explanation": [
+        "mkdir or md makes a folder. rmdir or rd removes a folder; add /s to delete the tree, /q to skip confirmation.",
+        "copy copies files; xcopy with /s copies trees (add /e to include empty subfolders). move moves between drives and also renames.",
+        "ren or rename renames only, inside the same folder.",
+        "del or erase deletes files (del *.tmp, del /s *.log). Never folders — that is rmdir.",
+        "type prints a file. attrib +h hides, -h unhides, +r read-only, -r writable.",
+        "Wildcards: * any length, ? one char, combined with any of the above."
+      ],
+      "example": {
+        "prompt": "Copy the entire folder C:\\Data including all subfolders to D:\\Backup.",
+        "steps": [
+          "Single files: copy. Whole tree: need xcopy with /s.",
+          "To include empty folders too, use /e.",
+          "Command: xcopy C:\\Data D:\\Backup /s /e"
+        ],
+        "answer": "xcopy C:\\Data D:\\Backup /s /e"
+      },
+      "memoryTip": "del = files, rmdir = remove dir. xcopy = extended copy (the x is the tree). + adds attribute, - removes it.",
+      "commonMistake": "Using del to delete a folder. del deletes files. rmdir deletes folders."
+    },
+    {
+      "id": "network-commands",
+      "title": "Network Commands: ipconfig/ping/tracert/netstat/nslookup/arp/getmac/hostname",
+      "formula": {
+        "latex": "ipconfig/all, ping\\reach, tracert\\hops, netstat-an(o)\\ports, arp-a\\ip\\to\\mac, getmac\\mac, nslookup\\name\\to\\ip",
+        "text": "ipconfig/all show config, ping reach, tracert hops, netstat -ano ports+PID, arp -a IP-to-MAC, getmac MAC, nslookup name to IP"
+      },
+      "whenToUse": "Any MCQ that asks which command shows, tests, or traces a network property.",
+      "explanation": [
+        "ipconfig shows IP, mask, gateway. /all adds MAC, DNS, DHCP. /release and /renew cycle DHCP. /flushdns clears cache.",
+        "ping sends ICMP Echo to test reachability. -t continuous, -n 10 count. 127.0.0.1 loopback tests own stack.",
+        "tracert traces every router hop. On Linux and routers the name is traceroute. pathping is tracert plus per-hop stats.",
+        "netstat shows ports and connections. -an all numeric, -ano adds owning PID. arp -a shows IP-to-MAC table inside subnet. getmac just prints MAC addresses.",
+        "nslookup resolves a hostname to its IP via DNS. hostname prints this PC name. nbtstat shows NetBIOS names."
+      ],
+      "example": {
+        "prompt": "Show this PC TCP connections with numeric addresses and the owning process ID.",
+        "steps": [
+          "Show connections: netstat.",
+          "Numeric: add -n.",
+          "Owning PID: add -o. Combine as -ano.",
+          "Command: netstat -ano"
+        ],
+        "answer": "netstat -ano"
+      },
+      "memoryTip": "ipconfig = configuration, ping = pong reply, tracert = trace the route, netstat = network status, nslookup = name server lookup, arp = address resolution.",
+      "commonMistake": "Picking traceroute on a Windows question. Windows name is tracert; traceroute is Linux."
+    },
+    {
+      "id": "drives-paths",
+      "title": "Drives, Paths, Wildcards and Redirection",
+      "formula": {
+        "latex": "Drive\\ C:,D: \\;\\; Absolute\\ C:\\\\root\\;\\; Relative\\ from\\ here \\;\\; .\\here, ..\\parent \\;\\; *any, ?one \\;\\; >overwrite \\;\\; >>append \\;\\; |pipe",
+        "text": "Drive C: D: | Absolute from root | Relative from here | . here, .. parent | * any, ? one | > overwrite, >> append, | pipe"
+      },
+      "whenToUse": "Any MCQ about absolute vs relative, * vs ?, > vs >>, or | pipe.",
+      "explanation": [
+        "Absolute starts with drive or backslash: C:\\Users\\Asha\\file.txt. Relative starts from current: ..\\file.txt or Documents\\file.txt.",
+        ". current folder, .. parent folder, \\ root of current drive.",
+        "* any length including zero, ? exactly one character.",
+        "> writes output and overwrites file. >> appends. | pipes left output into right command. < reads from file.",
+        "Backslash \\ is the Windows path separator. Slash / is the option prefix (dir /w). Paths with spaces need quotes.",
+        "Wildcard example: dir *.txt vs del ?.txt — star many, question one."
+      ],
+      "example": {
+        "prompt": "From C:\\Users\\Asha (which contains Documents\\report.docx), write the absolute and a relative path to the file.",
+        "steps": [
+          "Absolute from root: C:\\Users\\Asha\\Documents\\report.docx.",
+          "Relative from C:\\Users\\Asha: Documents\\report.docx (start from current, no drive needed).",
+          "Both are correct — they are two ways to write the same location."
+        ],
+        "answer": "Absolute C:\\Users\\Asha\\Documents\\report.docx; Relative Documents\\report.docx"
+      },
+      "memoryTip": "> overwrite (one arrow), >> append (two arrows keep history), * star any, ? question one.",
+      "commonMistake": "Writing C:/Users/Asha with forward slashes on CMD. Windows CMD expects backslashes."
+    }
+  ],
+  "practiceProblems": {
+    "navigation": [
+      {"q": "Command to show the current folder on CMD:", "opts": ["cd", "dir", "cls", "type"], "c": 1, "s": ["cd alone prints the current directory. dir lists its contents. cls clears. type prints a file."], "a": "cd"},
+      {"q": "Go to the parent folder (one level up):", "opts": ["cd .", "cd ..", "cd \\", "cd /"], "c": 1, "s": ["Single dot . is current, double dot .. is parent, backslash \\ is drive root."], "a": "cd .."},
+      {"q": "Go to the root of the current drive:", "opts": ["cd ..", "cd .", "cd \\", "cd /"], "c": 2, "s": ["cd \\ goes to C:\\ (or current drive root). cd .. goes to parent only."], "a": "cd \\"},
+      {"q": "Correct CMD command to move from C:\\ to D:\\Projects:", "opts": ["cd D:\\Projects", "cd /d D:\\Projects", "go D:\\Projects", "move D:\\Projects"], "c": 1, "s": ["On CMD, changing drives needs /d: cd /d D:\\Projects. Without /d you stay on C."], "a": "cd /d D:\\Projects"},
+      {"q": "List files in wide view (many per line):", "opts": ["dir /w", "dir /p", "dir /a", "dir /s"], "c": 0, "s": ["Wide is /w. Page pause is /p. All including hidden is /a. Recursive is /s."], "a": "dir /w"},
+      {"q": "List files pausing after each screen:", "opts": ["dir /w", "dir /p", "dir /a", "dir /s"], "c": 1, "s": ["Pause is /p. Wide /w, all /a, subfolders /s."], "a": "dir /p"},
+      {"q": "Show all files including hidden and system:", "opts": ["dir /w", "dir /p", "dir /a", "dir /s"], "c": 2, "s": ["All including hidden is /a. dir alone hides hidden files."], "a": "dir /a"},
+      {"q": "Recurse into all subfolders while listing:", "opts": ["dir /w", "dir /p", "dir /a", "dir /s"], "c": 3, "s": ["Recursive tree is /s. Wide /w, page /p, all /a."], "a": "dir /s"},
+      {"q": "List only files ending in .txt in the current folder:", "opts": ["dir .txt", "dir *.txt", "dir ?.txt", "dir txt"], "c": 1, "s": ["Star any length: *.txt. Question one char: ?.txt. Need star-dot-extension."], "a": "dir *.txt"},
+      {"q": "Windows uses slash for options and backslash for paths. Correct listing with wide option for C:\\Users:", "opts": ["dir C:/Users -w", "dir C:\\Users /w", "dir C:\\Users -w", "dir C:/Users /w"], "c": 1, "s": ["Windows path uses backslash, option uses slash: dir C:\\Users /w. Forward slash in path is wrong on CMD."], "a": "dir C:\\Users /w"}
+    ],
+    "file-ops": [
+      {"q": "Create a new folder named Projects:", "opts": ["md Projects", "del Projects", "type Projects", "attrib Projects"], "c": 0, "s": ["mkdir or md makes a folder. del deletes files, type prints, attrib shows attributes."], "a": "md Projects"},
+      {"q": "Remove an EMPTY folder named Temp:", "opts": ["del Temp", "rmdir Temp", "erase Temp", "type Temp"], "c": 1, "s": ["rmdir or rd removes folders when empty. del/erases files only. Need rmdir for folders."], "a": "rmdir Temp"},
+      {"q": "Remove a folder and everything inside it (including subfolders):", "opts": ["rmdir Temp", "rmdir /s Temp", "del Temp", "attrib Temp"], "c": 1, "s": ["Empty only is rmdir Temp. Add /s to delete the tree: rmdir /s Temp."], "a": "rmdir /s Temp"},
+      {"q": "Copy a single file report.txt to D:\\Backup\\:", "opts": ["copy report.txt D:\\Backup\\", "xcopy report.txt D:\\Backup\\", "move report.txt D:\\Backup\\", "ren report.txt D:\\Backup\\"], "c": 0, "s": ["copy for files. xcopy adds tree power. move also moves between drives but copy is the classic single-file verb."], "a": "copy report.txt D:\\Backup\\"},
+      {"q": "Copy an entire folder tree including subfolders (and empty ones):", "opts": ["copy C:\\Data D:\\Data", "xcopy C:\\Data D:\\Data /s /e", "ren C:\\Data D:\\Data", "type C:\\Data"], "c": 1, "s": ["Whole tree needs xcopy with /s (non-empty subfolders) plus /e to include empty folders."], "a": "xcopy C:\\Data D:\\Data /s /e"},
+      {"q": "Rename old.txt to new.txt in the same folder:", "opts": ["ren old.txt new.txt", "move old.txt D:\\", "copy old.txt new.txt", "attrib old.txt"], "c": 0, "s": ["ren or rename renames inside one folder. move can also rename but ren is the rename-only verb."], "a": "ren old.txt new.txt"},
+      {"q": "Delete all .tmp files in the current folder:", "opts": ["del *.tmp", "rmdir *.tmp", "type *.tmp", "attrib *.tmp"], "c": 0, "s": ["Star wildcard any: del *.tmp deletes all matching files. rmdir deletes folders only."], "a": "del *.tmp"},
+      {"q": "Display the contents of notes.txt on the screen:", "opts": ["type notes.txt", "dir notes.txt", "copy notes.txt", "attrib notes.txt"], "c": 0, "s": ["type prints a file. dir lists, copy duplicates, attrib shows hide/read-only flags."], "a": "type notes.txt"},
+      {"q": "Hide a file named secret.txt (set hidden attribute):", "opts": ["attrib +h secret.txt", "attrib -h secret.txt", "del secret.txt", "mkdir secret.txt"], "c": 0, "s": ["Plus sets, minus clears: +h hides, -h unhides. +r read-only, -r writable."], "a": "attrib +h secret.txt"},
+      {"q": "Make a file read-only so it cannot be overwritten accidentally:", "opts": ["attrib +r file.txt", "attrib -r file.txt", "attrib +h file.txt", "del file.txt"], "c": 0, "s": ["Read-only is +r. Minus -r makes writable. +h is hidden."], "a": "attrib +r file.txt"}
+    ],
+    "network-commands": [
+      {"q": "Show current TCP/IP configuration (IP, mask, gateway) on CMD:", "opts": ["ipconfig", "ping", "tracert", "netstat"], "c": 0, "s": ["ipconfig shows IP config. ping tests reachability. tracert traces hops. netstat shows ports."], "a": "ipconfig"},
+      {"q": "Show full network details including MAC, DNS servers and DHCP status:", "opts": ["ipconfig", "ipconfig /all", "ipconfig /renew", "ping /all"], "c": 1, "s": ["ipconfig alone shows only IP, mask, gateway. /all adds MAC, DNS, DHCP, lease."], "a": "ipconfig /all"},
+      {"q": "Test whether google.com is reachable and its round-trip time:", "opts": ["ipconfig google.com", "ping google.com", "tracert google.com", "nslookup google.com"], "c": 1, "s": ["ping tests reachability and RTT via ICMP Echo. tracert traces the path. nslookup is DNS lookup."], "a": "ping google.com"},
+      {"q": "Continuously ping until you press Ctrl+C:", "opts": ["ping -t host", "ping -n host", "ping /t host", "ping host -t"], "c": 0, "s": ["-t continuous. -n <count> sends a fixed count. Options use dash on ping even on Windows."], "a": "ping -t host"},
+      {"q": "Trace every router between you and google.com on Windows:", "opts": ["traceroute google.com", "tracert google.com", "ping google.com", "netstat google.com"], "c": 1, "s": ["Windows name is tracert. traceroute is the Linux/cisco name. Both show each hop."], "a": "tracert google.com"},
+      {"q": "Show active TCP connections and listening ports as numbers:", "opts": ["netstat -an", "netstat -r", "ipconfig -an", "arp -an"], "c": 0, "s": ["-a all, -n numeric. Together netstat -an. Add -o to include owning PID as -ano."], "a": "netstat -an"},
+      {"q": "Show the IP-to-MAC mapping table for your subnet:", "opts": ["arp -a", "getmac -a", "nslookup -a", "ping -a"], "c": 0, "s": ["arp -a shows Address Resolution Protocol table: IP maps to MAC inside your network."], "a": "arp -a"},
+      {"q": "Show this computer's MAC addresses quickly:", "opts": ["getmac", "hostname", "nslookup", "ping"], "c": 0, "s": ["getmac prints MACs of all adapters without the full ipconfig noise. hostname prints machine name."], "a": "getmac"},
+      {"q": "Ask DNS for the IP behind google.com:", "opts": ["nslookup google.com", "ping google.com", "tracert google.com", "netstat google.com"], "c": 0, "s": ["nslookup is the DNS lookup tool. ping also resolves but its job is reachability testing."], "a": "nslookup google.com"},
+      {"q": "Clear the local DNS resolver cache:", "opts": ["ipconfig /flushdns", "ipconfig /release", "ping /flush", "tracert /flush"], "c": 0, "s": ["/flushdns clears resolver cache. /release and /renew cycle DHCP. No such /flush for ping/tracert."], "a": "ipconfig /flushdns"}
+    ],
+    "drives-paths": [
+      {"q": "Drive letter that is usually the system drive on Windows:", "opts": ["A:", "B:", "C:", "Z:"], "c": 2, "s": ["C: is usually system. A: and B: are historic floppy slots. D: often second drive or partition."], "a": "C:"},
+      {"q": "Which path is absolute (complete from drive root)?", "opts": ["Documents\\file.txt", "C:\\Users\\Asha\\Documents\\file.txt", "..\\file.txt", ".\\file.txt"], "c": 1, "s": ["Absolute starts from root with drive: C:\\... . Others start from current or parent — relative."], "a": "C:\\Users\\Asha\\Documents\\file.txt"},
+      {"q": "You are in C:\\Users\\Asha. Which relative path reaches Documents\\report.docx inside it?", "opts": ["C:\\Users\\Asha\\Documents\\report.docx", "\\Documents\\report.docx", "Documents\\report.docx", "..\\report.docx"], "c": 2, "s": ["Relative from current: Documents\\report.docx. Adding the full C:\\... is the absolute route — also correct in reality but not relative."], "a": "Documents\\report.docx"},
+      {"q": "Symbol for current folder and for parent folder:", "opts": [". current, .. parent", ".. current, . parent", "\\ current, / parent", "* current, ? parent"], "c": 0, "s": ["Single dot . current, double dot .. parent, backslash \\ root."], "a": ". current, .. parent"},
+      {"q": "Wildcard that matches any length including zero:", "opts": ["?", "*", "/", "\\"], "c": 1, "s": ["Star * any length. Question ? exactly one character. Slash and backslash are not wildcards."], "a": "*"},
+      {"q": "Wildcard that matches exactly one character:", "opts": ["*", "?", "/", "\\"], "c": 1, "s": ["Question mark ? one char. Star * any length."], "a": "?"},
+      {"q": "Match all files ending in .txt:", "opts": ["?.txt", "*.txt", "/.txt", "\\.txt"], "c": 1, "s": ["Star-dot-extension: *.txt. ?.txt matches single-char names only, like a.txt."], "a": "*.txt"},
+      {"q": "Write the output of dir into a new file list.txt, overwriting it:", "opts": ["dir > list.txt", "dir >> list.txt", "dir | list.txt", "dir < list.txt"], "c": 0, "s": ["Single > writes and overwrites. Double >> appends. Pipe | sends to next command. < reads from file."], "a": "dir > list.txt"},
+      {"q": "Append the output of dir to the end of list.txt without erasing it:", "opts": ["dir > list.txt", "dir >> list.txt", "dir | list.txt", "dir < list.txt"], "c": 1, "s": ["Double >> appends. Single > overwrites."], "a": "dir >> list.txt"},
+      {"q": "Send the output of dir into findstr to filter for error:", "opts": ["dir > findstr \"error\"", "dir | findstr \"error\"", "dir >> findstr \"error\"", "dir < findstr \"error\""], "c": 1, "s": ["Pipe | sends left output into right command: dir | findstr \"error\" filters the listing."], "a": "dir | findstr \"error\""}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Fastest way to open Command Prompt via the Run dialog:", "opts": ["Win+R then type cmd", "Win+P then type cmd", "Ctrl+R then type cmd", "Win+S then type cmd"], "c": 0, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["Run is Win+R. Then type cmd and press Enter. Win+P is Project, Ctrl+R has no such effect."]},
+    {"id": 2, "q": "Which window is the modern PowerShell host on Windows 11 that can tab both CMD and PowerShell?", "opts": ["Notepad", "Windows Terminal", "File Explorer", "Control Panel"], "c": 1, "d": "medium", "t": "Navigation (cd/dir)", "exp": ["Windows Terminal is the tabbed host on Windows 11. It can host CMD, PowerShell and others in tabs."]},
+    {"id": 3, "q": "Commands on CMD are case sensitive vs insensitive:", "opts": ["Sensitive — DIR and dir differ", "Insensitive — DIR and dir do the same", "Only file names are sensitive", "Only options are sensitive"], "c": 1, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["CMD is case-insensitive. DIR, Dir and dir do the same. Linux is the case-sensitive one."]},
+    {"id": 4, "q": "Correct way to change into a folder named My Documents on CMD:", "opts": ["cd My Documents", "cd MyDocuments", "cd \"My Documents\"", "cd My_Documents"], "c": 2, "d": "medium", "t": "Navigation (cd/dir)", "exp": ["A space splits arguments, so a space-containing name must be quoted: cd \"My Documents\". Without quotes CMD sees two names."]},
+    {"id": 5, "q": "Which command prints the current folder on CMD?", "opts": ["dir", "cd", "cls", "type"], "c": 1, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["cd alone prints current directory on CMD. dir lists its contents. On Linux/PowerShell the same job is pwd."]},
+    {"id": 6, "q": "Go to the parent folder (one level up) on CMD:", "opts": ["cd .", "cd ..", "cd \\", "cd /"], "c": 1, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["Single dot . is current, double dot .. is parent, backslash \\ is drive root."]},
+    {"id": 7, "q": "Jump to the root of the current drive on CMD:", "opts": ["cd ..", "cd \\", "cd .", "cd /root"], "c": 1, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["cd \\ jumps to C:\\ (or current drive root). cd .. goes to parent only, not root."]},
+    {"id": 8, "q": "Correct CMD command to move from C:\\ to D:\\Projects:", "opts": ["cd D:\\Projects", "cd /d D:\\Projects", "go D:\\Projects", "move D:\\Projects"], "c": 1, "d": "medium", "t": "Navigation (cd/dir)", "exp": ["Changing drives on CMD needs /d: cd /d D:\\Projects. Without /d the current drive stays C."]},
+    {"id": 9, "q": "List files in wide view (many per line) on CMD:", "opts": ["dir /w", "dir /p", "dir /a", "dir /s"], "c": 0, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["Wide is /w. Page pause /p, all+hidden /a, recurse subfolders /s."]},
+    {"id": 10, "q": "List files pausing after each screenful on CMD:", "opts": ["dir /w", "dir /p", "dir /a", "dir /s"], "c": 1, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["Pause is /p. Use when a folder has too many files to fit one screen."]},
+    {"id": 11, "q": "Show all files including hidden and system on CMD:", "opts": ["dir", "dir /w", "dir /a", "dir /p"], "c": 2, "d": "medium", "t": "Navigation (cd/dir)", "exp": ["dir alone hides hidden files; only dir /a shows all including hidden and system."]},
+    {"id": 12, "q": "Recursively list all subfolders as well on CMD:", "opts": ["dir /w", "dir /p", "dir /a", "dir /s"], "c": 3, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["Recursive tree is /s. dir /s C:\\Data shows Data and every folder inside it."]},
+    {"id": 13, "q": "List only files ending in .txt in the current folder:", "opts": ["dir .txt", "dir *.txt", "dir ?.txt", "dir txt"], "c": 1, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["Star any length: *.txt. ?: one char. Need star-dot-extension."]},
+    {"id": 14, "q": "Create a new folder named Reports on CMD:", "opts": ["mkdir Reports", "del Reports", "type Reports", "attrib Reports"], "c": 0, "d": "easy", "t": "File Operations (copy/move/del)", "exp": ["mkdir or md makes a folder. del deletes files, type prints, attrib sets attributes."]},
+    {"id": 15, "q": "Remove an empty folder named Temp on CMD:", "opts": ["del Temp", "rmdir Temp", "erase Temp", "type Temp"], "c": 1, "d": "medium", "t": "File Operations (copy/move/del)", "exp": ["Folders need rmdir or rd when empty. del/erase delete files, not folders."]},
+    {"id": 16, "q": "Delete a folder and everything inside it (including subfolders) on CMD:", "opts": ["rmdir Temp", "rmdir /s Temp", "del Temp", "erase Temp /s"], "c": 1, "d": "medium", "t": "File Operations (copy/move/del)", "exp": ["Empty only is rmdir Temp. Add /s for the tree: rmdir /s Temp. Add /q to skip confirmation."]},
+    {"id": 17, "q": "Copy a single file notes.txt to D:\\Backup\\:", "opts": ["copy notes.txt D:\\Backup\\", "xcopy notes.txt D:\\Backup\\", "move notes.txt D:\\Backup\\", "ren notes.txt D:\\Backup\\"], "c": 0, "d": "easy", "t": "File Operations (copy/move/del)", "exp": ["Single files use copy. xcopy adds tree power with /s. move moves, ren renames only."]},
+    {"id": 18, "q": "Copy an entire folder tree including subfolders (and empty ones) on CMD:", "opts": ["copy C:\\Data D:\\Data", "xcopy C:\\Data D:\\Data /s /e", "ren C:\\Data D:\\Data", "type C:\\Data"], "c": 1, "d": "medium", "t": "File Operations (copy/move/del)", "exp": ["Whole tree needs xcopy with /s (non-empty subfolders) plus /e to include empty folders. copy alone does not recurse."]},
+    {"id": 19, "q": "Rename old.txt to new.txt in the same folder:", "opts": ["ren old.txt new.txt", "move old.txt D:\\", "copy old.txt new.txt", "attrib old.txt new.txt"], "c": 0, "d": "easy", "t": "File Operations (copy/move/del)", "exp": ["ren or rename renames inside one folder. move can also rename but ren is the rename-only verb."]},
+    {"id": 20, "q": "Delete all .log files in the current folder:", "opts": ["del *.log", "rmdir *.log", "type *.log", "attrib *.log"], "c": 0, "d": "easy", "t": "File Operations (copy/move/del)", "exp": ["Star any length: del *.log deletes every .log matching file. rmdir is for folders."]},
+    {"id": 21, "q": "Alias for del on CMD (also deletes files):", "opts": ["erase", "rmdir", "mkdir", "type"], "c": 0, "d": "medium", "t": "File Operations (copy/move/del)", "exp": ["erase is an alias for del. rmdir is alias for rd but removes folders, not files."]},
+    {"id": 22, "q": "Display the contents of readme.txt on the screen on CMD:", "opts": ["type readme.txt", "dir readme.txt", "copy readme.txt", "attrib readme.txt"], "c": 0, "d": "easy", "t": "File Operations (copy/move/del)", "exp": ["type prints a file. dir lists, copy duplicates, attrib shows hide/read-only flags."]},
+    {"id": 23, "q": "Hide a file named secret.txt (set hidden attribute) on CMD:", "opts": ["attrib +h secret.txt", "attrib -h secret.txt", "del secret.txt", "mkdir secret.txt"], "c": 0, "d": "medium", "t": "File Operations (copy/move/del)", "exp": ["Plus sets, minus clears: +h hides, -h unhides. +r read-only, -r writable."]},
+    {"id": 24, "q": "Make a file read-only on CMD:", "opts": ["attrib +r file.txt", "attrib -r file.txt", "attrib +h file.txt", "del file.txt"], "c": 0, "d": "medium", "t": "File Operations (copy/move/del)", "exp": ["Read-only is +r. -r makes writable. +h hidden, -h visible."]},
+    {"id": 25, "q": "Which command shows the current TCP/IP configuration (IP, mask, gateway) on CMD?", "opts": ["ipconfig", "ping", "tracert", "netstat"], "c": 0, "d": "easy", "t": "Network Commands (ipconfig/ping)", "exp": ["ipconfig shows IP config. ping tests reachability, tracert traces hops, netstat shows ports."]},
+    {"id": 26, "q": "Show full details including MAC, DNS servers and DHCP status on CMD:", "opts": ["ipconfig", "ipconfig /all", "ipconfig /renew", "ping /all"], "c": 1, "d": "medium", "t": "Network Commands (ipconfig/ping)", "exp": ["ipconfig alone shows only IP, mask, gateway. /all adds MAC, DNS, DHCP, lease times."]},
+    {"id": 27, "q": "Release and renew a DHCP address on CMD (correct pair in order):", "opts": ["ipconfig /renew then /release", "ipconfig /release then /renew", "ipconfig /flushdns then /release", "ping /release then /renew"], "c": 1, "d": "medium", "t": "Network Commands (ipconfig/ping)", "exp": ["Release first, then renew: ipconfig /release then ipconfig /renew. /flushdns is a separate DNS cache clear."]},
+    {"id": 28, "q": "Clear the local DNS resolver cache on CMD:", "opts": ["ipconfig /flushdns", "ipconfig /release", "ping /flush", "tracert /flush"], "c": 0, "d": "medium", "t": "Network Commands (ipconfig/ping)", "exp": ["/flushdns clears resolver cache. /release and /renew cycle DHCP. No such switch for ping/tracert."]},
+    {"id": 29, "q": "Test whether google.com is reachable and measure its RTT on CMD:", "opts": ["ipconfig google.com", "ping google.com", "tracert google.com", "nslookup google.com"], "c": 1, "d": "easy", "t": "Network Commands (ipconfig/ping)", "exp": ["ping tests reachability and RTT via ICMP Echo. tracert traces path, nslookup resolves name to IP."]},
+    {"id": 30, "q": "Ping continuously until you press Ctrl+C on CMD (correct option):", "opts": ["ping -t host", "ping -n host", "ping /t host", "ping host -continuous"], "c": 0, "d": "medium", "t": "Network Commands (ipconfig/ping)", "exp": ["-t continuous, -n <count> sends a fixed count. ping uses dash even on Windows (exception)."]},
+    {"id": 31, "q": "Trace every router between you and google.com on Windows CMD:", "opts": ["traceroute google.com", "tracert google.com", "ping google.com", "netstat google.com"], "c": 1, "d": "easy", "t": "Network Commands (ipconfig/ping)", "exp": ["Windows uses tracert. traceroute is the Linux/cisco name. Both show each hop."]},
+    {"id": 32, "q": "Show active TCP connections and listening ports as numeric addresses on CMD:", "opts": ["netstat -an", "netstat -r", "ipconfig -an", "arp -an"], "c": 0, "d": "medium", "t": "Network Commands (ipconfig/ping)", "exp": ["-a all, -n numeric. Together netstat -an. Add -o to include owning PID: netstat -ano."]},
+    {"id": 33, "q": "Also show the owning process ID for each port (so you can match in Task Manager) on CMD:", "opts": ["netstat -an", "netstat -ano", "netstat -r", "ipconfig /all"], "c": 1, "d": "medium", "t": "Network Commands (ipconfig/ping)", "exp": ["Add -o to include owning PID: netstat -ano. Then match PID in Task Manager > Details."]},
+    {"id": 34, "q": "Show the IP-to-MAC mapping table for your subnet on CMD:", "opts": ["arp -a", "getmac -a", "nslookup -a", "ping -a"], "c": 0, "d": "medium", "t": "Network Commands (ipconfig/ping)", "exp": ["arp -a shows ARP table: IP maps to MAC inside your network. getmac just prints MACs."]},
+    {"id": 35, "q": "Show this computer network adapter MAC addresses quickly on CMD:", "opts": ["getmac", "hostname", "nslookup", "ping"], "c": 0, "d": "easy", "t": "Network Commands (ipconfig/ping)", "exp": ["getmac prints MACs without the full ipconfig noise. hostname prints machine name."]},
+    {"id": 36, "q": "Ask DNS for the IP behind google.com on CMD:", "opts": ["nslookup google.com", "ping google.com", "tracert google.com", "netstat google.com"], "c": 0, "d": "medium", "t": "Network Commands (ipconfig/ping)", "exp": ["nslookup is the DNS lookup tool. ping also resolves but its job is reachability."]},
+    {"id": 37, "q": "Loopback address that tests your own TCP/IP stack without using the network:", "opts": ["192.168.1.1", "127.0.0.1", "8.8.8.8", "0.0.0.0"], "c": 1, "d": "medium", "t": "Network Commands (ipconfig/ping)", "exp": ["127.0.0.1 is loopback. ping 127.0.0.1 reaching means your stack works even if the cable is unplugged."]},
+    {"id": 38, "q": "Print this computer name on CMD:", "opts": ["hostname", "getmac", "ipconfig", "netstat"], "c": 0, "d": "easy", "t": "Network Commands (ipconfig/ping)", "exp": ["hostname prints the computer name. getmac prints MAC, ipconfig shows IP config, netstat shows ports."]},
+    {"id": 39, "q": "Drive letter usually used for the Windows system drive:", "opts": ["A:", "B:", "C:", "Z:"], "c": 2, "d": "easy", "t": "Drives & Paths", "exp": ["C: is usually system. A: and B: are historic floppy slots. D: often second partition or drive."]},
+    {"id": 40, "q": "Which path is absolute (complete from drive root)?", "opts": ["Documents\\file.txt", "C:\\Users\\Asha\\Documents\\file.txt", "..\\file.txt", ".\\file.txt"], "c": 1, "d": "easy", "t": "Drives & Paths", "exp": ["Absolute starts with drive or root backslash: C:\\... . Others start from current or parent — relative."]},
+    {"id": 41, "q": "You are in C:\\Users\\Asha. Which relative path reaches Documents\\report.docx inside it?", "opts": ["C:\\Users\\Asha\\Documents\\report.docx", "\\Documents\\report.docx", "Documents\\report.docx", "..\\report.docx"], "c": 2, "d": "medium", "t": "Drives & Paths", "exp": ["Relative from current: Documents\\report.docx. The full C:\\... is the absolute version — also correct in reality but not relative."]},
+    {"id": 42, "q": "Symbol for current folder and for parent folder on CMD:", "opts": [". current, .. parent", ".. current, . parent", "\\ current, / parent", "* current, ? parent"], "c": 0, "d": "easy", "t": "Drives & Paths", "exp": ["Single dot . current, double dot .. parent, backslash \\ drive root."]},
+    {"id": 43, "q": "Wildcard that matches any length including zero on CMD:", "opts": ["?", "*", "/", "\\"], "c": 1, "d": "easy", "t": "Drives & Paths", "exp": ["Star * any length. Question ? exactly one character. Slash and backslash are not wildcards."]},
+    {"id": 44, "q": "Wildcard that matches exactly one character on CMD:", "opts": ["*", "?", "/", "\\"], "c": 1, "d": "easy", "t": "Drives & Paths", "exp": ["Question mark ? one char. Star * any length."]},
+    {"id": 45, "q": "Match all files ending in .txt on CMD:", "opts": ["?.txt", "*.txt", "/.txt", "\\.txt"], "c": 1, "d": "easy", "t": "Drives & Paths", "exp": ["Star-dot-extension: *.txt. ?.txt matches only single-char names like a.txt."]},
+    {"id": 46, "q": "Write the output of dir into a new file list.txt, overwriting it on CMD:", "opts": ["dir > list.txt", "dir >> list.txt", "dir | list.txt", "dir < list.txt"], "c": 0, "d": "medium", "t": "Drives & Paths", "exp": ["Single > writes and overwrites. Double >> appends. Pipe | sends to next command. < reads from file."]},
+    {"id": 47, "q": "Append the output of dir to the end of list.txt without erasing it on CMD:", "opts": ["dir > list.txt", "dir >> list.txt", "dir | list.txt", "dir < list.txt"], "c": 1, "d": "medium", "t": "Drives & Paths", "exp": ["Double >> appends. Single > overwrites."]},
+    {"id": 48, "q": "Send the output of dir into findstr to filter lines containing error on CMD:", "opts": ["dir > findstr \"error\"", "dir | findstr \"error\"", "dir >> findstr \"error\"", "dir < findstr \"error\""], "c": 1, "d": "medium", "t": "Drives & Paths", "exp": ["Pipe | sends left output into right command: dir | findstr \"error\" filters the listing."]},
+    {"id": 49, "q": "Which path separator does Windows CMD expect in paths?", "opts": ["Forward slash /", "Backslash \\", "Colon :", "Pipe |"], "c": 1, "d": "easy", "t": "Drives & Paths", "exp": ["Windows path separator is backslash \\. Forward slash / is the option prefix (dir /w)."]},
+    {"id": 50, "q": "Any path with a space must be handled on CMD by:", "opts": ["Replacing space with underscore", "Wrapping the path in quotes", "Using forward slashes", "Adding /s"], "c": 1, "d": "medium", "t": "Drives & Paths", "exp": ["A space splits arguments, so quote the path: \"C:\\My Files\\notes.txt\". Without quotes CMD sees two names."]},
+    {"id": 51, "q": "Clear the screen on CMD:", "opts": ["cls", "clear", "clr", "clean"], "c": 0, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["cls is CMD. clear is Linux/PowerShell core. Both clear but AXIS tests cls."]},
+    {"id": 52, "q": "Which command lists help/options for dir on CMD?", "opts": ["dir /?", "dir -?", "help dir", "dir ?"], "c": 0, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["/? shows help for any CMD command: dir /?, copy /?, ipconfig /?. Dash -? is Linux."]},
+    {"id": 53, "q": "Windows + R opens Run. What does Windows + X open?", "opts": ["Run", "Power User menu (Terminal, Device Manager...)", "Search", "Project"], "c": 1, "d": "medium", "t": "Navigation (cd/dir)", "exp": ["Win+X is Power User menu: Terminal, Device Manager, Disk Management, Task Manager, Run and more."]},
+    {"id": 54, "q": "On CMD, what does * match vs ? match when selecting files?", "opts": ["Both match any length", "* any length, ? one char", "? any length, * one char", "Both match one char"], "c": 1, "d": "medium", "t": "Drives & Paths", "exp": ["Star * any length. Question ? exactly one. report?.txt matches reportA but not report10."]},
+    {"id": 55, "q": "Which netstat option combination shows numeric addresses and owning PIDs together?", "opts": ["netstat -r", "netstat -an", "netstat -ano", "netstat -s"], "c": 2, "d": "medium", "t": "Network Commands (ipconfig/ping)", "exp": ["-a all, -n numeric, -o PID. Together: netstat -ano."]},
+    {"id": 56, "q": "Which command shows NetBIOS names (older Windows name service) on CMD?", "opts": ["nbtstat -n", "netstat -n", "nslookup -n", "getmac -n"], "c": 0, "d": "medium", "t": "Network Commands (ipconfig/ping)", "exp": ["nbtstat -n NetBIOS names. netstat -n is numeric ports, not names."]},
+    {"id": 57, "q": "Which command is the shell for advanced network configuration (firewall, interfaces, WiFi) on CMD?", "opts": ["netsh", "netstat", "nslookup", "tracert"], "c": 0, "d": "medium", "t": "Network Commands (ipconfig/ping)", "exp": ["netsh is the network shell for deep configuration. netstat only shows status, not config."]},
+    {"id": 58, "q": "What does attrib +r -h file.txt do in order?", "opts": ["Hide and make read-only", "Make read-only and unhide", "Delete and hide", "Copy and hide"], "c": 1, "d": "medium", "t": "File Operations (copy/move/del)", "exp": ["Plus sets, minus clears: +r sets read-only, -h clears hidden so the file becomes read-only and visible."]},
+    {"id": 59, "q": "Which key autocompletes a file or folder name in CMD?", "opts": ["Tab", "Shift", "Alt", "F1"], "c": 0, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["Tab completes names. Up/Down recall previous commands. F1 does not autocomplete."]},
+    {"id": 60, "q": "Which key recalls the previous command in CMD?", "opts": ["Up arrow", "Down arrow", "Left arrow", "F12"], "c": 0, "d": "easy", "t": "Navigation (cd/dir)", "exp": ["Up recalls previous command, Down recalls next one when scrolling history. Up is the exam answer."]}
+  ]
+}

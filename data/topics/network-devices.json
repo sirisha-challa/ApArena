@@ -1,0 +1,505 @@
+{
+  "id": "network-devices",
+  "title": "Network Devices",
+  "icon": "ND",
+  "category": "networking-cloud",
+  "color": "#0891B2",
+  "subtopics": [
+    "Hub vs Switch vs Router",
+    "Access Points & Modems",
+    "Repeaters & Bridges",
+    "Gateways"
+  ],
+  "estimatedHours": 4,
+  "readingSections": [
+    {
+      "id": "hub-switch-router",
+      "title": "Hub vs Switch vs Router (the Big Three)",
+      "type": "concept",
+      "quickSummary": "Hub repeats to every port (L1, one collision domain, half-duplex). Switch learns MACs and forwards to one port (L2, one collision domain per port, full-duplex, VLANs). Router reads IP and routes between networks (L3, one broadcast domain per interface, NAT, ACLs). Layer rises with intelligence.",
+      "content": [
+        "Hub is Physical L1. It has no brain — every bit that arrives on one port is copied to every other port. All ports share one collision domain and the wire is half-duplex (one direction at a time). If two devices transmit together, they collide. Hubs are cheap but obsolete; the exam keeps them only to contrast with switches. If a question says repeats to all ports, answer hub.",
+        "Switch is Data Link L2 (and L3-switch adds routing). It learns MAC addresses by reading the source MAC of arriving frames and stores them in a MAC address table (also called CAM table). When a frame arrives, it looks up the destination MAC and forwards only to that port. Result: one collision domain per port, each port can be full-duplex, and throughput jumps. Switches also isolate broadcast traffic only within one broadcast domain and can carve VLANs.",
+        "Router is Network L3. It reads IP addresses, looks up the best path in its routing table (built by OSPF, BGP or static routes), and forwards packets between different networks or broadcast domains. Each router interface is its own network and its own broadcast domain. Routers do NAT to share one public IP, ACLs to filter, and fragmentation when the next link is smaller.",
+        "Comparison table the exam loves. Hub: L1, bits, no table, one collision domain, half-duplex, no MAC, no IP. Switch: L2, frames, MAC table, one per port collision domain, full-duplex, learns MAC. Router: L3, packets, routing table, one broadcast domain per interface, full-duplex, reads IP. Any question that mixes these rows is a trap — hold the row.",
+        "L3 switch is the hybrid. It switches like an L2 switch but can also route between VLANs without a separate router. If options list both switch and router for inter-VLAN routing, L3 switch is the correct modern answer."
+      ],
+      "subsections": [
+        {
+          "title": "Collision vs broadcast — one line",
+          "content": "Collision domain: set of ports where simultaneous transmissions collide (shared bus). Hub keeps one for all ports; switch gives one per port. Broadcast domain: set of ports where a broadcast reaches everyone. Switch keeps one per VLAN/broadcast domain; router breaks them (one per interface). Collision L1-L2 concern, broadcast L2-L3 concern."
+        },
+        {
+          "title": "How a switch learns — the two-word story",
+          "content": "Learn by source, forward by destination. Source MAC of each arriving frame goes into the table with its ingress port and an age timer. Destination MAC lookup decides the egress port; unknown unicast floods to all ports like a hub until the answer reveals the location, then forwarding becomes selective."
+        }
+      ],
+      "quickRevision": [
+        "Hub L1: repeats to all, one collision domain, half-duplex, no tables, no MAC/IP.",
+        "Switch L2: learns MAC in CAM, forwards to one port, one collision domain per port, full-duplex, VLANs, one broadcast domain per VLAN.",
+        "Router L3: reads IP, routing table OSPF/BGP, one broadcast domain per interface, NAT and ACLs, connects different networks.",
+        "L3 switch routes between VLANs like a router — modern answer for inter-VLAN.",
+        "Learn hub vs switch vs router as rows: layer, PDU, table, domains, duplex, addresses."
+      ],
+      "tricks": [
+        "Any answer that says router forwards by MAC is wrong — router forwards by IP. Switch forwards by MAC.",
+        "Hub vs switch: hub floods always, switch floods only unknown unicast/broadcast. That flood difference is the free mark.",
+        "A router interface is also a separate network — different IP subnet per interface is required."
+      ],
+      "patterns": [
+        "'Repeats to every port?' -> Hub (L1). 'Forwards to one port by MAC?' -> Switch (L2). 'Routes by IP between networks?' -> Router (L3).",
+        "'One collision domain per port?' -> Switch. 'One broadcast domain per interface?' -> Router.",
+        "'Inter-VLAN without a router?' -> L3 switch."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS NQT — devices, every year",
+          "question": "Hub vs switch vs router — layer, forwarded address, domains?",
+          "approach": "Map hub L1 no address flood, switch L2 MAC, router L3 IP. Hold collision vs broadcast split."
+        },
+        {
+          "source": "Gate / placement — table traps",
+          "question": "Which device operates at which OSI layer and uses which table?",
+          "approach": "Hub no table, switch MAC/CAM table, router routing table."
+        }
+      ],
+      "companyNote": "1 device-identification question per paper on average, plus one collision vs broadcast domain question."
+    },
+    {
+      "id": "ap-modem",
+      "title": "Access Points, Modems, NIC, WAP and the Edge",
+      "type": "concept",
+      "quickSummary": "Modem modulates/demodulates to bridge digital to analog or fiber/coax to Ethernet (ISP edge, public IP). AP/WAP bridges wireless to wired (extends LAN, SSID, channel, 802.11). Wireless router = router + switch + AP in one home box. NIC is the card with the MAC.",
+      "content": [
+        "NIC (Network Interface Card) is the hardware that gives a host a MAC and a port. Wired NIC is RJ45 Ethernet, wireless NIC is WiFi radio. Every frame sent or received passes through the NIC. The MAC you see in getmac or ipconfig is the NIC's MAC; the exam sometimes calls it BIA (Burned-In Address).",
+        "Modem is the ISP-edge bridge. Short for MOdulator-DEModulator: it converts the ISP medium (phone line DSL, coax cable, fiber via ONT/ONU, or even cellular) into Ethernet or directly into your line. The modem holds the public IP. Without it you have no internet; with it your private LAN hangs behind it. Modern fiber ONT is technically the fiber modem — AXIS still writes modem as the generic term.",
+        "Access Point (AP, also written WAP or W-AP) bridges wireless clients to the wired LAN. It has an SSID (the name you see when you scan), a radio channel (1/6/11 on 2.4 GHz for least overlap), a mode (b/g/n/ac/ax), and security (WPA2/WPA3). A fat standalone AP does more locally; a thin AP is managed by a wireless controller that configures many APs at once — the enterprise pattern.",
+        "The home wireless router is three devices in one plastic case: a router (NAT to one public IP, DHCP server, firewall), a switch (four LAN ports), and an AP (WiFi). Product marketing calls it a router but it is really router plus switch plus AP. The exam may dissect this box and ask which function does what — NAT is router, switching is switch, SSID is AP.",
+        "Signal extenders vs mesh: an extender repeats a weak signal with a performance penalty (half the airtime). A mesh system (two or three nodes that form a dedicated backhaul) performs better. For the exam, AP extends coverage by adding a new wired ingress point for wireless, which is superior to a pure repeater-mode extender."
+      ],
+      "subsections": [
+        {
+          "title": "Modem vs router vs AP in one line each",
+          "content": "Modem: ISP medium to Ethernet and public IP. Router: between networks, NAT, routing. AP: wireless to wired bridge inside one network with an SSID. Home box merges all three. Do not swap modem (ISP edge) with AP (LAN extension)."
+        },
+        {
+          "title": "Channels and interference in 20 seconds",
+          "content": "2.4 GHz has three non-overlapping 20 MHz channels: 1, 6, 11. Use them to avoid co-channel interference in a multi-AP install. 5 GHz has many more. AXIS rarely goes deeper than non-overlapping channels, but that fact alone can be a free mark."
+        }
+      ],
+      "quickRevision": [
+        "NIC: card with MAC (BIA), RJ45 wired or WiFi radio. MAC is NIC's identity.",
+        "Modem: MOdulator-DEModulator, ISP medium to Ethernet, holds public IP, needed for internet.",
+        "AP/WAP: wireless to wired bridge, SSID, channels 1/6/11 on 2.4G, 802.11 modes, WPA2/3.",
+        "Home wireless router = router (NAT/DHCP) + switch (LAN ports) + AP (WiFi) in one box.",
+        "Fat AP standalone vs thin AP with wireless controller; mesh beats pure extender relay."
+      ],
+      "tricks": [
+        "Any answer that says modem routes between local networks is wrong — that is the router. Modem bridges the ISP medium.",
+        "Do not confuse WAP (Wireless Access Point) with WEP (old broken security) — very different acronyms that look similar.",
+        "Thin vs fat AP is AP vs controller split, not modem vs router."
+      ],
+      "patterns": [
+        "'Device that demodulates ISP signal to Ethernet?' -> Modem (or ONT for fiber).",
+        "'Device that adds WiFi to a wired LAN?' -> Access Point.",
+        "'Three-in-one home box?' -> Wireless router = router + switch + AP.",
+        "'Card with the MAC?' -> NIC."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / Wipro — NIC/modem/AP, frequent",
+          "question": "NIC vs modem vs access point vs wireless router — which does what?",
+          "approach": "NIC has MAC, modem ISP edge with public IP, AP bridges WiFi to wired, wireless router merges all three."
+        },
+        {
+          "source": "Infosys — SSID/channels",
+          "question": "What is SSID and which channels avoid overlap on 2.4G?",
+          "approach": "SSID is the AP name you scan; 1, 6, 11 are non-overlapping on 2.4G."
+        }
+      ],
+      "companyNote": "1 question per paper dissects the home wireless router into router vs switch vs AP."
+    },
+    {
+      "id": "repeater-bridge",
+      "title": "Repeaters and Bridges (old but still tested)",
+      "type": "concept",
+      "quickSummary": "Repeater regenerates bits on the physical layer to extend distance (L1, one collision domain, no filtering). Bridge filters by MAC and segments collision domains (L2, two segments, learns like a switch, legacy name for what a switch does with many ports).",
+      "content": [
+        "Repeater is L1. It receives weak, noisy bits and regenerates clean bits with correct timing and amplitude to extend reach. It looks at no address, makes no forwarding decision, and creates one collision domain on both sides together. Two repeaters and a segment limit is a classic Ethernet history question (5-4-3 rule) but AXIS only asks: repeater is Physical and extends distance.",
+        "Bridge is L2 and is the ancestor of the switch. It has two ports with a filter: it learns MACs on each segment and forwards a frame from one side to the other only if the destination belongs on the other side. Result: two collision domains but still one broadcast domain. A switch is a multi-port bridge with much faster hardware — modern exams prefer the word switch but keep bridge as a distractor.",
+        "Why the exam still keeps both: they anchor the ends of the intelligence spectrum. Repeater L1 no learning, bridge/switch L2 MAC learning, router L3 IP routing. Give them a device description and they expect exactly one of those three buckets. Repeater extends length, bridge segments collisions, router segments broadcasts.",
+        "Spanning Tree (STP, IEEE 802.1D) exists because bridges/switches can loop if connected redundantly. A loop would flood forever. STP elects a root and blocks redundant ports to keep a tree with no loops. The exam rarely asks to run STP in detail, but knows to attach loop prevention to bridges/switches and not to hubs or repeaters.",
+        "Media extender nuance: Ethernet repeater vs wireless repeater are both regenerators but for different media. Do not confuse wireless repeater (retransmits on radio with half the airtime) with AP (bridges wireless to wired via a cable) — the exam may write repeater to mean either, so read wired vs wireless context."
+      ],
+      "subsections": [
+        {
+          "title": "Bridge vs switch in one line",
+          "content": "Bridge: 2 ports, segments collisions, forwards by MAC, Legacy name. Switch: many ports, same MAC learning, modern hardware, also segments collisions but can handle many VLANs. For an exam answer they are the same layer (L2) — pick bridge only when the question literally says 2-port bridge."
+        },
+        {
+          "title": "5-4-3 rule trivia that sometimes surfaces",
+          "content": "Old Ethernet: max 5 segments, 4 repeaters, 3 populated segments. Not needed to memorize beyond repeater extends reach and the 5-4-3 bounded the repeater chain. AXIS rarely tests the numbers, just the idea."
+        }
+      ],
+      "quickRevision": [
+        "Repeater L1: regenerates bits, extends distance, one collision domain across both sides, no filtering, no address.",
+        "Bridge L2: 2 ports, learns MAC, forwards by destination, segments collision domains, still one broadcast domain.",
+        "Switch is a multi-port bridge (many ports, faster, VLANs) — same L2 family.",
+        "STP blocks looped bridge/switch ports to keep a tree — loop prevention for bridges/switches only.",
+        "Repeater no brain, bridge some brain, switch smarter bridge, router smartest (IP)."
+      ],
+      "tricks": [
+        "Any answer that says repeater filters by MAC is wrong — that is bridge/switch.",
+        "Any answer that says bridge breaks broadcast domains is wrong — it breaks collision domains only; router breaks broadcast.",
+        "Do not attach STP to hubs or repeaters — STP is a bridge/switch protocol only."
+      ],
+      "patterns": [
+        "'Regenerates weak signal to extend distance?' -> Repeater (L1).",
+        "'Two ports, forwards by MAC, segments collisions?' -> Bridge (L2, legacy 2-port switch).",
+        "'Prevents loops among switches?' -> STP."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — repeater vs bridge",
+          "question": "Which layer and which domain does a repeater vs bridge segment?",
+          "approach": "Repeater L1 one collision domain across, bridge L2 two collision domains still one broadcast."
+        },
+        {
+          "source": "Infosys — STP placement",
+          "question": "Which protocol prevents loops among switches/bridges?",
+          "approach": "Spanning Tree STP on bridges/switches (802.1D). Not on hub/repeater/router."
+        }
+      ],
+      "companyNote": "Bridge vs repeater appears as a 1-mark definition or collision vs broadcast trap."
+    },
+    {
+      "id": "gateways",
+      "title": "Gateways, Proxies and Firewalls at the Edge",
+      "type": "concept",
+      "quickSummary": "Gateway translates between different systems or protocols and can sit at many layers (most commonly Application). Firewall filters at L3/L4 and higher. Proxy is an Application gateway that hides clients. Default gateway is the router out of your LAN.",
+      "content": [
+        "Gateway is the generic name for a translator between two different systems: different protocols, different formats, or different networks. Because different is vague, gateway can operate at many layers and the exam phrase almost always adds a qualifier. Without a qualifier, the safest association is a higher-layer or multi-layer translator above Network.",
+        "The default gateway is the concrete IP you configure on a host: the router that leads out of your LAN to everywhere else. If your IP is 192.168.1.10/24 then your gateway is likely 192.168.1.1 — the router interface on that subnet. Without it you can talk inside your LAN but not beyond. Show by ipconfig or route print on Windows.",
+        "Proxy is an Application gateway between clients and servers. Forward proxy hides the clients (corporate web proxy, cache). Reverse proxy hides the servers (load balancer, WAF in front of a web farm). Both speak Application protocols and can inspect HTTP. The exam word hides tells you proxy.",
+        "Firewall filters traffic by rules (ACLs, state, application). Classic generations: packet-filter (L3/L4 header), stateful (L3/L4 with connection state), application/proxy firewall (L7), next-gen (L2-L7 plus IPS, app ID, user ID). AXIS commonly bins firewalls as active security devices that can drop traffic, versus passive devices that only watch.",
+        "Placement in a sentence: hub, repeater, bridge, switch live inside the LAN; modem lives at the ISP edge; router and gateway live between networks; AP lives between wired and wireless inside one network; firewall and proxy live at the perimeter or between trust zones to filter. That picture answers many where does this device sit questions."
+      ],
+      "subsections": [
+        {
+          "title": "Default gateway vs gateway in OSI wording",
+          "content": "Default gateway is a configured IP that is your router out. Gateway in OSI wording is a generic multi-layer translator. One is a setting, the other is a function — same word, different context. AXIS commonly means the setting when it says default gateway and the function when it says just gateway."
+        },
+        {
+          "title": "Proxy as a hiding device",
+          "content": "Forward hides clients from servers, reverse hides servers from clients. Both benefits: caching, filtering, logging, hiding. If the question says cache or hide clients, answer forward proxy; if it says hide servers or load balance, answer reverse proxy."
+        }
+      ],
+      "quickRevision": [
+        "Gateway: generic translator between different systems, commonly Application or multi-layer.",
+        "Default gateway: router out of your LAN (e.g. 192.168.1.1), shown by ipconfig, must be on same subnet.",
+        "Proxy: Application gateway that hides — forward hides clients, reverse hides servers plus load balances.",
+        "Firewall: filters by rules, generations from packet-filter to next-gen; active device that can drop.",
+        "Map: modem ISP edge, router/gateway between networks, AP wireless-to-wired, firewall/proxy at perimeter."
+      ],
+      "tricks": [
+        "Any answer that puts gateway at a single low layer only (e.g. Data Link only) is too narrow — gateway spans or sits higher.",
+        "Do not swap proxy directions — forward for clients, reverse for servers.",
+        "Confusing default gateway with a regular host IP. Default gateway must be a router interface on your subnet."
+      ],
+      "patterns": [
+        "'Router out of your LAN?' -> Default gateway.",
+        "'Hides clients / caches web?' -> Forward proxy. 'Hides servers / load balances?' -> Reverse proxy.",
+        "'Filters by rules at perimeter?' -> Firewall.",
+        "'Translates between different systems?' -> Gateway (application/multi-layer)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / Wipro — default gateway vs gateway",
+          "question": "What is a default gateway / where does a gateway operate / what does a proxy hide?",
+          "approach": "Default gateway is your router out. Gateway generic translator higher layer. Forward hides clients, reverse hides servers."
+        },
+        {
+          "source": "Infosys — firewall generations",
+          "question": "Which generation or layer does a given firewall belong to?",
+          "approach": "Packet L3/L4, stateful L3-L4 with state, application L7, next-gen L2-L7 multi."
+        }
+      ],
+      "companyNote": "1 question per paper on default gateway vs gateway vs proxy, plus 1 on firewall placement if not covered in the security topic."
+    },
+    {
+      "id": "comparison",
+      "title": "Full Device Table and Placement Map (how AXIS tables you)",
+      "type": "concept",
+      "quickSummary": "One master table from least to most intelligent: Repeater L1, Hub L1, Bridge L2, Switch L2, L3 Switch L3, Router L3, AP/WAP L1/L2, Modem L1/L2, Gateway multi/App, Proxy App, Firewall L3-L7. AXIS pastes this table and asks one swapped cell.",
+      "content": [
+        "The master row for each device: name, OSI layer, PDU it looks at, whether it has a table, which domain it segments, duplex, and typical protocols. Learn the row and every per-device MCQ becomes a lookup, not a guess.",
+        "Repeater L1, bits, no table, one collision domain shared, half-duplex. Hub L1, bits, no table, one collision domain shared, half-duplex. Bridge L2, frames, MAC table, two collision domains, one broadcast domain, can be STP. Switch L2, frames, MAC table, one per port collision domain, one broadcast domain per VLAN, full-duplex, STP. L3 Switch L3, packets, MAC plus routing table, one per VLAN/per interface, full, inter-VLAN routing.",
+        "Router L3, packets, routing table, one broadcast domain per interface, full, OSPF/BGP, NAT and ACLs. Access Point L1/L2 wireless-to-wired, SSID and BSS, one collision domain per radio domain, bridges only. Modem L1/L2 ISP-medium-to-Ethernet, public IP, no routing between local subnets. Gateway multi/App translator, Proxy App gateway with hiding, Firewall L3-L7 filter with state and app ID.",
+        "Two placement facts finish the map. One, every LAN in the exam diagram has exactly one default gateway — the router interface on that LAN. Two, broadcasts never cross a router; that is why routers break broadcast domains. Any diagram that shows a broadcast crossing a router has a trap.",
+        "Active vs passive language that reappears in the security topic: active devices can drop or block (router with ACL, firewall, IPS), passive only watch (hub which cannot block, IDS, sniffer). The exam sometimes judges devices by active vs passive even in a devices topic."
+      ],
+      "subsections": [
+        {
+          "title": "How to hold the table in your head in 30 seconds",
+          "content": "L1 repeaters (repeater, hub). L2 forwarders (bridge 2-port, switch many, AP wireless). L3 routers (router, L3 switch). Edge translators (modem ISP, gateway translator, proxy hiding gateway, firewall filter). Layer rises with intelligence and with segmentation power."
+        },
+        {
+          "title": "Broadcast and collision — why they split at different layers",
+          "content": "Collision is a wire contention problem so L2 segmentation solves it. Broadcast is a scope problem so only L3 segmentation solves it, because L3 networks define broadcast scope. That is why bridges/switches fix collisions and only routers/gateways fix broadcasts."
+        }
+      ],
+      "quickRevision": [
+        "Master rows: Repeater/Hub L1 no table flood, Bridge/Switch L2 MAC, Router/L3-switch L3 IP, AP bridge WiFi, modem ISP edge, gateway translator, proxy hiding, firewall filter.",
+        "Every LAN has one default gateway that shares its subnet.",
+        "Broadcasts never cross a router — routers define broadcast domain boundaries.",
+        "Active can drop (router ACL, firewall, IPS), passive only watches (hub, IDS).",
+        "Layer rises with intelligence and with segmentation power."
+      ],
+      "tricks": [
+        "A table that says router forwards by MAC is always wrong — router forwards by IP.",
+        "Any answer that says hub breaks collision domains is wrong — it keeps one shared. Only switches/bridges/routers break them.",
+        "Do not call a home wireless router just a router — it is router+s witch+AP in one box, but on a layer question choose Router for the routing function."
+      ],
+      "patterns": [
+        "'Full device table with one swapped cell?' -> Hold the master rows and spot the swap.",
+        "'Default gateway for 192.168.1.10/24?' -> Likely 192.168.1.1 on same subnet.",
+        "'Device that never touches broadcast scope?' -> Hub/bridge/switch. 'Device that defines it?' -> Router/gateway."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS sample — device table",
+          "question": "Complete or correct a pasted device table (layer, PDU, domain, table)?",
+          "approach": "Run the master rows above and spot the swapped cell."
+        },
+        {
+          "source": "Gate / placement — placement map",
+          "question": "Where does modem vs AP vs router vs firewall sit in a diagram?",
+          "approach": "Modem ISP edge, AP wireless edge inside LAN, router between networks, firewall/proxy at perimeter."
+        }
+      ],
+      "companyNote": "Grouped device tables appear as a 1-mark direct or as an image to label. Hold the table."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "hub-switch-router",
+      "title": "Hub vs Switch vs Router Row",
+      "formula": {
+        "latex": "Hub\\;L1\\;no\\;table\\;flood\\;1\\;collision \\;|\\; Switch\\;L2\\;MAC\\;one/port \\;|\\; Router\\;L3\\;IP\\;one/broadcast\\;per\\;if",
+        "text": "Hub L1 no table flood one collision | Switch L2 MAC one per port | Router L3 IP one broadcast per interface"
+      },
+      "whenToUse": "Any hub vs switch vs router comparison MCQ, including collision vs broadcast.",
+      "explanation": [
+        "Hub L1 bits, no table, repeats to all, one collision domain shared, half-duplex, no filtering by address.",
+        "Switch L2 frames, MAC/CAM table, forwards to one port, one collision domain per port, full-duplex, one broadcast domain per VLAN, STP.",
+        "Router L3 packets, routing table via OSPF/BGP/static, reads IP, one broadcast domain per interface, NAT and ACLs, connects different networks.",
+        "L3 switch adds IP routing between VLANs without a separate router.",
+        "Forwarding rule: learn by source, forward by destination — source populates table, destination decides egress."
+      ],
+      "example": {
+        "prompt": "A frame arrives with destination MAC 3A:B4:5C:11:9F:02 known on port 3. What does each device do?",
+        "steps": [
+          "Hub repeats to all ports regardless — it has no table.",
+          "Switch looks up MAC and forwards only to port 3.",
+          "Router does not look at MAC for inter-network forwarding; it would strip the frame and route by IP instead — different layer."
+        ],
+        "answer": "Hub to all, switch to port 3, router routes by IP not MAC"
+      },
+      "memoryTip": "L1 repeat, L2 MAC, L3 IP — layer number rises with brain. Hub floods always, switch learns then selects, router routes.",
+      "commonMistake": "Saying router forwards by MAC. Router forwards by IP; switch forwards by MAC."
+    },
+    {
+      "id": "ap-modem",
+      "title": "NIC, Modem, AP, Wireless Router Split",
+      "formula": {
+        "latex": "NIC=MAC \\;|\\; Modem=ISP\\;to\\;Ethernet+public\\;IP \\;|\\; AP=WiFi\\to\\;wired+SSID \\;|\\; Wireless\\;router=router+switch+AP",
+        "text": "NIC MAC | Modem ISP to Ethernet + public IP | AP WiFi to wired + SSID | Wireless router = router+switch+AP"
+      },
+      "whenToUse": "Any modem vs AP vs wireless router vs NIC MCQ.",
+      "explanation": [
+        "NIC is the card with the MAC (BIA) — RJ45 wired or WiFi radio.",
+        "Modem MOD-DEMod bridges ISP medium (DSL/coax/fiber/cellular) to Ethernet and holds the public IP.",
+        "Access Point WAP bridges wireless to wired inside one LAN with an SSID and 802.11 channels; thin APs managed by a controller.",
+        "Home wireless router merges router (NAT/DHCP/firewall) plus switch (LAN ports) plus AP (WiFi) in one box.",
+        "Fat AP standalone vs thin AP controller-managed — enterprise naming distinction."
+      ],
+      "example": {
+        "prompt": "Office adds WiFi to an existing wired LAN without changing routing. Which device?",
+        "steps": [
+          "Need wireless-to-wired bridge inside same broadcast domain.",
+          "That is the Access Point, not a modem or a router.",
+          "Pick AP with correct SSID and WPA2/WPA3; modem stays at ISP edge."
+        ],
+        "answer": "Access Point"
+      },
+      "memoryTip": "Modem MOdulates to the ISP, AP Accesses wireless to wired, NIC Network Interface has MAC, wireless router is Really Three in One.",
+      "commonMistake": "Calling the AP a modem. Modem touches the ISP medium; AP touches wireless to wired inside the LAN."
+    },
+    {
+      "id": "repeater-bridge",
+      "title": "Repeater vs Bridge Split",
+      "formula": {
+        "latex": "Repeater\\;L1\\;regen+extend+no\\;filter \\;|\\; Bridge\\;L2\\;2port+MAC+segment\\;collision",
+        "text": "Repeater L1 regen extend no filter | Bridge L2 2-port MAC segment collision"
+      },
+      "whenToUse": "Any repeater vs bridge vs switch MCQ, especially collision vs broadcast or STP.",
+      "explanation": [
+        "Repeater L1 regenerates weak bits to extend distance, no address, no filtering, one collision domain across both sides.",
+        "Bridge L2 2 ports, learns MAC, forwards by destination, segments collision domains into two, still one broadcast domain.",
+        "Switch is a multi-port bridge — same family, modern hardware, many VLANs, STP.",
+        "STP blocks looped bridge/switch ports — only for bridges/switches, not hubs/repeaters or routers.",
+        "Wireless repeater retransmits on radio with half airtime; AP bridges to wired — different trade-offs."
+      ],
+      "example": {
+        "prompt": "Two LAN segments brown out over a long cable. Fix without adding broadcast domains?",
+        "steps": [
+          "Distance issue: repeater extends by regenerating bits.",
+          "Collision concern: bridge would segment collisions into two domains but keep one broadcast.",
+          "Requirement keep single broadcast -> bridge, not router. Repeater keeps one collision, bridge fixes it."
+        ],
+        "answer": "Repeater extends but keeps one collision; bridge segments collisions — choose bridge/switch to segment"
+      },
+      "memoryTip": "Repeater Repeats bits, Bridge Buffers and Branches by MAC. One extends length, the other segments collisions.",
+      "commonMistake": "Saying bridge breaks broadcast domains or that repeater filters by MAC — both backwards."
+    },
+    {
+      "id": "gateway-proxy",
+      "title": "Gateway, Proxy, Firewall and Default Gateway",
+      "formula": {
+        "latex": "Gateway=multi/App\\;translator \\;|\\; Proxy=App\\;hiding\\;Fwd/clients\\;Rev/servers \\;|\\; Firewall=L3\\text{-}L7\\;filter \\;|\\; Default\\;GW=router\\;out",
+        "text": "Gateway multi/App translator | Proxy App hiding fwd clients rev servers | Firewall L3-L7 filter | Default GW router out"
+      },
+      "whenToUse": "Any gateway vs proxy vs firewall vs default gateway MCQ.",
+      "explanation": [
+        "Gateway is generic translator between different systems, commonly Application or multi-layer.",
+        "Default gateway is the configured router out of your LAN (same subnet), shown by ipconfig.",
+        "Proxy is an Application gateway that hides — forward hides clients, reverse hides servers plus load balances.",
+        "Firewall filters by rules: packet-filter L3/L4, stateful L3-L4 with state, application L7, next-gen L2-L7 plus IPS/app/user ID. Active can drop.",
+        "Placement: modem ISP edge, router/gateway between networks, AP wireless edge inside LAN, firewall/proxy at perimeter."
+      ],
+      "example": {
+        "prompt": "Host 192.168.1.10/24 cannot reach 8.8.8.8 but can ping 192.168.1.5 inside same LAN. Most likely missing?",
+        "steps": [
+          "Inside LAN works, outside does not — out-of-network path is via router.",
+          "That path needs a default gateway configured on the host.",
+          "Check: default gateway should be the router on same subnet, likely 192.168.1.1."
+        ],
+        "answer": "Missing or wrong default gateway (router out of LAN)"
+      },
+      "memoryTip": "Gateway translates, proxy hides (forward clients reverse servers), firewall filters, default gateway is the Door to the internet.",
+      "commonMistake": "Putting gateway only at Data Link or swapping proxy directions."
+    }
+  ],
+  "practiceProblems": {
+    "hub-switch-router": [
+      {"q": "Hub operates at which OSI layer?", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 0, "s": ["Hub repeats bits: Physical L1. No table, no addressing."], "a": "Physical"},
+      {"q": "Switch (plain) operates at:", "opts": ["Physical", "Data Link", "Network", "Application"], "c": 1, "s": ["Reads MAC to forward frames: Data Link L2."], "a": "Data Link"},
+      {"q": "Router operates at:", "opts": ["Physical", "Data Link", "Network", "Presentation"], "c": 2, "s": ["Reads IP to route between networks: Network L3."], "a": "Network"},
+      {"q": "Hub repeats an arriving frame to:", "opts": ["Only the destination port", "Every other port (flood)", "Only the router", "Nowhere"], "c": 1, "s": ["Hub has no table — repeats to all. Switch forwards selectively."], "a": "Every other port (flood)"},
+      {"q": "Switch forwards a frame with known destination MAC to:", "opts": ["Every port", "Only the learned egress port", "Nowhere", "The modem only"], "c": 1, "s": ["Learned MAC in CAM goes to one port. Unknown unicast floods like a hub until learned."], "a": "Only the learned egress port"},
+      {"q": "Hub: how many collision domains?", "opts": ["One shared", "One per port", "One per VLAN", "One per interface"], "c": 0, "s": ["Hub one shared half-duplex. Switch one per port full-duplex."], "a": "One shared"},
+      {"q": "Switch: how many collision domains?", "opts": ["One shared", "One per port", "None", "One per router interface"], "c": 1, "s": ["One per port — each port is its own collision domain."], "a": "One per port"},
+      {"q": "Router: how many broadcast domains?", "opts": ["One shared", "One per VLAN (switch)", "One per router interface", "None"], "c": 2, "s": ["Router breaks broadcasts: one per interface/network."], "a": "One per router interface"},
+      {"q": "Table used by a switch:", "opts": ["Routing table", "MAC address/CAM table", "ARP table only", "No table"], "c": 1, "s": ["MAC/CAM table. Router uses routing table."], "a": "MAC address/CAM table"},
+      {"q": "Table used by a router:", "opts": ["MAC table only", "Routing table (best path via OSPF/BGP/static)", "STP table only", "No table"], "c": 1, "s": ["Routing table via protocols or static routes."], "a": "Routing table (best path via OSPF/BGP/static)"}
+    ],
+    "ap-modem": [
+      {"q": "Card that gives a host a MAC and a port:", "opts": ["NIC", "Modem", "Hub", "Repeater"], "c": 0, "s": ["NIC has the MAC (BIA). Modem ISP edge, hub L1 repeater, repeater regenerates bits."], "a": "NIC"},
+      {"q": "Modem does what?", "opts": ["Bridges wireless to wired inside LAN", "Modulates/demodulates to bridge ISP medium to Ethernet and holds public IP", "Forwards by MAC inside LAN", "Filters by firewall rules"], "c": 1, "s": ["MOdulator-DEModulator at ISP edge. AP bridges wireless to wired inside LAN."], "a": "Modulates/demodulates to bridge ISP medium to Ethernet and holds public IP"},
+      {"q": "Access Point (AP/WAP) adds:", "opts": ["ISP connectivity without modem", "WiFi to an existing wired LAN with an SSID", "A new routed network automatically", "A Firewall"], "c": 1, "s": ["AP bridges wireless to wired on same broadcast domain with an SSID."], "a": "WiFi to an existing wired LAN with an SSID"},
+      {"q": "Home wireless router contains:", "opts": ["Router only", "Router + switch + AP in one box", "Modem only", "Switch only"], "c": 1, "s": ["Router does NAT/routing, switch gives LAN ports, AP gives WiFi — three in one."], "a": "Router + switch + AP in one box"},
+      {"q": "SSID is:", "opts": ["A MAC address", "The name you see when scanning for WiFi", "A port number", "An IP address"], "c": 1, "s": ["SSID is the AP's broadcast name."], "a": "The name you see when scanning for WiFi"},
+      {"q": "Non-overlapping channels on 2.4 GHz for clean multi-AP install:", "opts": ["1, 6, 11", "1, 2, 3", "6, 7, 8", "All channels overlap"], "c": 0, "s": ["Classic three on 2.4G: 1, 6, 11. 5G has many more."], "a": "1, 6, 11"},
+      {"q": "Thin AP vs fat AP:", "opts": ["Modem vs router", "Thin managed by wireless controller, fat standalone", "Hub vs switch", "Repeater vs bridge"], "c": 1, "s": ["Thin APs depend on a controller that configures many at once; fat APs configure locally."], "a": "Thin managed by wireless controller, fat standalone"},
+      {"q": "Fiber to Ethernet at ISP edge on modern fiber is called:", "opts": ["ONT/ONU — the fiber modem", "Repeater", "Hub", "Bridge"], "c": 0, "s": ["Optical Network Terminal/Unit is the fiber modem; AXIS still writes modem generically."], "a": "ONT/ONU — the fiber modem"},
+      {"q": "Wireless repeater vs AP trade-off:", "opts": ["AP worse than repeater always", "AP via wired ingress superior; repeater replays on air with half airtime", "Both identical", "Repeater adds SSID, AP does not"], "c": 1, "s": ["AP via cable is superior; pure repeater relay halves airtime."], "a": "AP via wired ingress superior; repeater replays on air with half airtime"},
+      {"q": "Burned-In Address (BIA) is:", "opts": ["Public IP on modem", "Factory MAC on NIC", "SSID on AP", "Gateway on router"], "c": 1, "s": ["BIA is the factory-burned MAC on the NIC."], "a": "Factory MAC on NIC"}
+    ],
+    "repeater-bridge": [
+      {"q": "Repeater operates at:", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 0, "s": ["Regenerates bits: Physical L1. No filtering."], "a": "Physical"},
+      {"q": "Bridge (2-port, legacy) operates at:", "opts": ["Physical", "Data Link", "Network", "Application"], "c": 1, "s": ["Forwards by MAC, segments collisions: Data Link L2."], "a": "Data Link"},
+      {"q": "Repeater: filtering by MAC?", "opts": ["Yes filters by MAC", "No — regenerates bits without looking at addresses", "Filters by IP", "Filters by port"], "c": 1, "s": ["No brain — extend only. Bridge/switch filters by MAC."], "a": "No — regenerates bits without looking at addresses"},
+      {"q": "Bridge: domains segmented?", "opts": ["One collision one broadcast", "Two collision still one broadcast", "One collision two broadcast", "Two of both"], "c": 1, "s": ["Bridge two collision domains but still one broadcast; router breaks broadcast."], "a": "Two collision still one broadcast"},
+      {"q": "Switch is best described as:", "opts": ["Single-port repeater", "Multi-port bridge with faster hardware and VLANs", "Router with NAT", "Modem with SSID"], "c": 1, "s": ["Switch is modern multi-port bridge, same L2 family."], "a": "Multi-port bridge with faster hardware and VLANs"},
+      {"q": "Protocol that prevents loops among bridges/switches:", "opts": ["STP", "NAT", "ARP", "DHCP"], "c": 0, "s": ["Spanning Tree STP on bridges/switches only."], "a": "STP"},
+      {"q": "Old Ethernet 5-4-3 rule governed:", "opts": ["VLAN count", "Max repeaters/segments in a repeater chain", "Port count per switch", "Router hops"], "c": 1, "s": ["Historic bound for repeater chains: 5 segments 4 repeaters 3 populated."], "a": "Max repeaters/segments in a repeater chain"},
+      {"q": "Segmenting collisions vs broadcasts — which device fixes which?", "opts": ["Hub fixes both", "Bridge/switch fix collisions, router fixes broadcasts", "Router fixes collisions only", "Repeater fixes broadcasts"], "c": 1, "s": ["Collisions are L1-L2, broadcasts L2-L3 scope. Bridges/switches per hop, routers per network."], "a": "Bridge/switch fix collisions, router fixes broadcasts"},
+      {"q": "Switch VLAN vs plain bridge:", "opts": ["VLAN is unsupported on switches", "Modern switches support VLANs; legacy 2-port bridge typically did not", "Bridge supports VLANs but switch does not", "Both require a router for VLANs always"], "c": 1, "s": ["VLAN segmentation is modern switch feature; legacy bridge about two segments."], "a": "Modern switches support VLANs; legacy 2-port bridge typically did not"},
+      {"q": "Two LANs brown over a long cable but switches report no loops — lightest fix:", "opts": ["Add a router", "Add a repeater to regenerate or add a bridge/switch to segment collisions", "Add a gateway", "Add a proxy"], "c": 1, "s": ["Distance needs regeneration; collision count needs segmentation. Repeater extends, bridge/switch segments."], "a": "Add a repeater to regenerate or add a bridge/switch to segment collisions"}
+    ],
+    "gateway-proxy": [
+      {"q": "Default gateway is:", "opts": ["Your printer IP", "The router out of your LAN on your subnet", "Your public DNS", "Your modem MAC"], "c": 1, "s": ["Default gateway is your LAN's router interface, e.g. 192.168.1.1 for 192.168.1.10/24."], "a": "The router out of your LAN on your subnet"},
+      {"q": "Gateway in OSI wording is best seen as:", "opts": ["Physical L1 only", "Generic translator between different systems, commonly Application or multi-layer", "Data Link L2 only", "Network L3 only"], "c": 1, "s": ["Gateway translates between different systems or protocols, often higher layer."], "a": "Generic translator between different systems, commonly Application or multi-layer"},
+      {"q": "Forward proxy hides:", "opts": ["Servers", "Clients from servers", "Routers", "Switches"], "c": 1, "s": ["Forward hides clients. Reverse hides servers."], "a": "Clients from servers"},
+      {"q": "Reverse proxy hides:", "opts": ["Clients", "Servers from clients and can load balance", "Hubs", "NICs"], "c": 1, "s": ["Reverse hides servers in a farm; also load balances and can WAF."], "a": "Servers from clients and can load balance"},
+      {"q": "Firewall generations: packet-filter sits at:", "opts": ["Application only", "Network and Transport header inspection", "Physical only", "Session only"], "c": 1, "s": ["Packet-filter L3/L4 header. Stateful adds state, application L7, next-gen multi-layer."], "a": "Network and Transport header inspection"},
+      {"q": "Active vs passive device: which can drop traffic?", "opts": ["Hub", "Firewall and router with ACL/IPS", "IDS in watch mode", "Sniffer"], "c": 1, "s": ["Active can drop or block. Passive only watches (IDS, sniffer, hub)."], "a": "Firewall and router with ACL/IPS"},
+      {"q": "Host 192.168.1.10 can ping 192.168.1.5 but not 8.8.8.8. Most likely missing or wrong:", "opts": ["SSID", "Default gateway", "Bridge", "Hub"], "c": 1, "s": ["Inside LAN works, outside does not -> out-of-network needs router via default gateway."], "a": "Default gateway"},
+      {"q": "Where does the firewall most commonly sit?", "opts": ["Inside a PC only", "At the perimeter or between trust zones to filter", "Instead of a modem", "Instead of an AP"], "c": 1, "s": ["Perimeter or between zones to filter by rules."], "a": "At the perimeter or between trust zones to filter"},
+      {"q": "Modem sits at:", "opts": ["ISP edge", "Between two local VLANs", "At the AP", "At the proxy"], "c": 0, "s": ["ISP medium to Ethernet edge, holds public IP."], "a": "ISP edge"},
+      {"q": "Access Point sits at:", "opts": ["ISP edge", "Between wireless and wired inside one network", "Between two remote networks", "At the firewall only"], "c": 1, "s": ["Bridges wireless to wired inside same broadcast domain."], "a": "Between wireless and wired inside one network"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Hub operates at which OSI layer?", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 0, "d": "easy", "t": "Hub vs Switch vs Router", "exp": ["Hub repeats bits: Physical L1."]},
+    {"id": 2, "q": "Switch (plain) operates at:", "opts": ["Physical", "Data Link", "Network", "Application"], "c": 1, "d": "easy", "t": "Hub vs Switch vs Router", "exp": ["Reads MAC to forward frames: Data Link L2."]},
+    {"id": 3, "q": "Router operates at:", "opts": ["Physical", "Data Link", "Network", "Presentation"], "c": 2, "d": "easy", "t": "Hub vs Switch vs Router", "exp": ["Reads IP to route between networks: Network L3."]},
+    {"id": 4, "q": "Hub repeats a frame to:", "opts": ["Only the destination port", "Every other port (flood)", "Only the router", "Nowhere"], "c": 1, "d": "easy", "t": "Hub vs Switch vs Router", "exp": ["Hub no table — floods to all. Switch selects one."]},
+    {"id": 5, "q": "Switch with known destination MAC known on port 3 forwards to:", "opts": ["Every port", "Only port 3", "The modem", "No port"], "c": 1, "d": "easy", "t": "Hub vs Switch vs Router", "exp": ["Learned destination goes to one port; unknown floods like a hub until learned."]},
+    {"id": 6, "q": "Hub collision domains:", "opts": ["One shared", "One per port", "One per VLAN", "One per router interface"], "c": 0, "d": "medium", "t": "Hub vs Switch vs Router", "exp": ["Hub one shared half-duplex. Switch one per port full-duplex."]},
+    {"id": 7, "q": "Switch collision domains:", "opts": ["One shared", "One per port", "None", "One per router interface"], "c": 1, "d": "medium", "t": "Hub vs Switch vs Router", "exp": ["One per port — each port isolated."]},
+    {"id": 8, "q": "Router broadcast domains:", "opts": ["One shared", "One per VLAN on switch", "One per router interface/network", "None"], "c": 2, "d": "medium", "t": "Hub vs Switch vs Router", "exp": ["Router breaks broadcasts: one per interface/network."]},
+    {"id": 9, "q": "MAC address table (CAM) belongs to:", "opts": ["Hub", "Switch", "Modem", "Repeater"], "c": 1, "d": "medium", "t": "Hub vs Switch vs Router", "exp": ["MAC/CAM table on switch. Router uses routing table. Hub has none."]},
+    {"id": 10, "q": "Routing table via OSPF/BGP/static belongs to:", "opts": ["Hub", "Switch", "Router", "Repeater"], "c": 2, "d": "medium", "t": "Hub vs Switch vs Router", "exp": ["Router routing table via protocols or static routes."]},
+    {"id": 11, "q": "Card that gives a host a MAC and a port:", "opts": ["NIC", "Modem", "Hub", "Repeater"], "c": 0, "d": "easy", "t": "Access Points & Modems", "exp": ["NIC. Modem ISP edge, hub repeater L1."]},
+    {"id": 12, "q": "Modem does what?", "opts": ["Bridges wireless to wired", "Modulates/demodulates to bridge ISP medium to Ethernet and holds public IP", "Forwards by MAC", "Filters by firewall"], "c": 1, "d": "easy", "t": "Access Points & Modems", "exp": ["MOdulator-DEModulator at ISP edge. AP bridges WiFi to wired."]},
+    {"id": 13, "q": "Access Point (AP/WAP) adds:", "opts": ["ISP without modem", "WiFi to an existing wired LAN via SSID", "A new routed network automatically", "A firewall role"], "c": 1, "d": "easy", "t": "Access Points & Modems", "exp": ["AP bridges wireless to wired on same broadcast domain with an SSID."]},
+    {"id": 14, "q": "Home wireless router = ", "opts": ["Router only", "Router + switch + AP in one box", "Modem only", "Switch only"], "c": 1, "d": "medium", "t": "Access Points & Modems", "exp": ["Router NAT/routing + switch LAN ports + AP WiFi merged."]},
+    {"id": 15, "q": "SSID is:", "opts": ["A MAC", "The WiFi name you see when scanning", "A port", "An IP"], "c": 1, "d": "easy", "t": "Access Points & Modems", "exp": ["SSID broadcast name of the AP."]},
+    {"id": 16, "q": "Non-overlapping channels to use together on 2.4 GHz:", "opts": ["1, 6, 11", "1, 2, 3", "6, 7, 8", "All overlap"], "c": 0, "d": "medium", "t": "Access Points & Modems", "exp": ["Three classic on 2.4G: 1, 6, 11."]},
+    {"id": 17, "q": "Thin AP vs fat AP:", "opts": ["Modem vs router", "Thin managed by controller, fat standalone", "Hub vs switch", "Repeater vs bridge"], "c": 1, "d": "medium", "t": "Access Points & Modems", "exp": ["Thin depends on wireless controller; fat configures locally."]},
+    {"id": 18, "q": "Fiber modem at fiber ISP edge is called:", "opts": ["ONT/ONU", "Repeater", "Hub", "Bridge"], "c": 0, "d": "medium", "t": "Access Points & Modems", "exp": ["Optical Network Terminal/Unit is the fiber modem."]},
+    {"id": 19, "q": "Wireless repeater vs AP:", "opts": ["AP always worse", "AP via wired ingress superior; repeater replays on air with half airtime", "Identical", "Repeater adds SSID AP does not"], "c": 1, "d": "medium", "t": "Access Points & Modems", "exp": ["AP via cable superior; pure repeater halves airtime."]},
+    {"id": 20, "q": "Burned-In Address (BIA) is:", "opts": ["Public IP", "Factory MAC on NIC", "SSID", "Gateway"], "c": 1, "d": "medium", "t": "Access Points & Modems", "exp": ["Factory-burned MAC on the NIC."]},
+    {"id": 21, "q": "Repeater operates at:", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 0, "d": "easy", "t": "Repeaters & Bridges", "exp": ["Regenerates bits: Physical L1."]},
+    {"id": 22, "q": "Bridge (2-port, legacy) operates at:", "opts": ["Physical", "Data Link", "Network", "Application"], "c": 1, "d": "easy", "t": "Repeaters & Bridges", "exp": ["Forwards by MAC: Data Link L2."]},
+    {"id": 23, "q": "Repeater filters by MAC?", "opts": ["Yes", "No — regenerates bits without looking at addresses", "Filters by IP", "Filters by port"], "c": 1, "d": "medium", "t": "Repeaters & Bridges", "exp": ["No brain — extend only. Bridge/switch filter by MAC."]},
+    {"id": 24, "q": "Bridge domains segmented?", "opts": ["One collision one broadcast", "Two collision still one broadcast", "One collision two broadcast", "Two of both"], "c": 1, "d": "medium", "t": "Repeaters & Bridges", "exp": ["Bridge segments collisions into two but keeps one broadcast; router breaks broadcast."]},
+    {"id": 25, "q": "Switch is:", "opts": ["Single-port repeater", "Multi-port bridge with faster hardware and VLANs", "Router with NAT", "Modem with SSID"], "c": 1, "d": "medium", "t": "Repeaters & Bridges", "exp": ["Modern multi-port bridge, same L2 family."]},
+    {"id": 26, "q": "Loop prevention among bridges/switches — protocol:", "opts": ["STP", "NAT", "ARP", "DHCP"], "c": 0, "d": "medium", "t": "Repeaters & Bridges", "exp": ["Spanning Tree STP only on bridges/switches."]},
+    {"id": 27, "q": "Old Ethernet 5-4-3 rule governed:", "opts": ["VLAN count", "Max repeaters/segments in a chain", "Port count", "Router hops"], "c": 1, "d": "medium", "t": "Repeaters & Bridges", "exp": ["Historic repeater chain bound: 5 segments 4 repeaters 3 populated."]},
+    {"id": 28, "q": "Bridge/switch fix ___ vs router fixes ___", "opts": ["Hub fixes both", "Bridge/switch fix collisions, router fixes broadcasts", "Router fixes collisions only", "Repeater fixes broadcasts"], "c": 1, "d": "medium", "t": "Repeaters & Bridges", "exp": ["Collisions L1-L2 vs broadcasts L2-L3 scope."]},
+    {"id": 29, "q": "Modern switches vs legacy 2-port bridge — VLAN:", "opts": ["Unsupported on switches", "Switches support VLANs; legacy bridge typically did not", "Bridge supports but switch does not", "Both need router for VLANs always"], "c": 1, "d": "medium", "t": "Repeaters & Bridges", "exp": ["VLAN segmentation is modern switch; legacy bridge two segments."]},
+    {"id": 30, "q": "Two segments brown over long cable, no loops reported — lightest fix:", "opts": ["Add router", "Add repeater to regenerate or bridge/switch to segment collisions", "Add gateway", "Add proxy"], "c": 1, "d": "medium", "t": "Repeaters & Bridges", "exp": ["Distance needs regeneration; collisions need segmentation."]},
+    {"id": 31, "q": "Default gateway is:", "opts": ["Printer IP", "Router out of your LAN on your subnet", "Public DNS", "Modem MAC"], "c": 1, "d": "easy", "t": "Gateways", "exp": ["Default gateway is LAN router interface, e.g. 192.168.1.1 for 192.168.1.10/24."]},
+    {"id": 32, "q": "Gateway in OSI wording is:", "opts": ["Physical L1 only", "Generic translator between different systems, commonly Application or multi-layer", "Data Link L2 only", "Network L3 only"], "c": 1, "d": "medium", "t": "Gateways", "exp": ["Generic translator higher layer; default gateway is a configured router out."]},
+    {"id": 33, "q": "Forward proxy hides:", "opts": ["Servers", "Clients from servers", "Routers", "Switches"], "c": 1, "d": "medium", "t": "Gateways", "exp": ["Forward hides clients; reverse hides servers."]},
+    {"id": 34, "q": "Reverse proxy hides:", "opts": ["Clients", "Servers from clients and can load balance", "Hubs", "NICs"], "c": 1, "d": "medium", "t": "Gateways", "exp": ["Reverse hides servers in a farm; also load balances and can WAF."]},
+    {"id": 35, "q": "Packet-filter firewall sits at:", "opts": ["Application only", "Network and Transport header inspection", "Physical only", "Session only"], "c": 1, "d": "medium", "t": "Gateways", "exp": ["L3/L4 header. Stateful adds state, application L7, next-gen multi."]},
+    {"id": 36, "q": "Active vs passive — which can drop?", "opts": ["Hub", "Firewall and router with ACL/IPS", "IDS watch mode", "Sniffer"], "c": 1, "d": "medium", "t": "Gateways", "exp": ["Active can drop or block. Passive only watches."]},
+    {"id": 37, "q": "Host can ping same LAN but not 8.8.8.8. Missing or wrong:", "opts": ["SSID", "Default gateway", "Bridge", "Hub"], "c": 1, "d": "medium", "t": "Gateways", "exp": ["Outside LAN needs router via default gateway."]},
+    {"id": 38, "q": "Where does firewall most commonly sit?", "opts": ["Inside PC only", "At perimeter or between trust zones", "Instead of modem", "Instead of AP"], "c": 1, "d": "medium", "t": "Gateways", "exp": ["Perimeter or between zones to filter."]},
+    {"id": 39, "q": "Modem sits at:", "opts": ["ISP edge", "Between VLANs", "At AP", "At proxy"], "c": 0, "d": "easy", "t": "Gateways", "exp": ["ISP medium to Ethernet edge, holds public IP."]},
+    {"id": 40, "q": "Access Point sits at:", "opts": ["ISP edge", "Between wireless and wired inside one network", "Between remote networks", "At firewall only"], "c": 1, "d": "easy", "t": "Gateways", "exp": ["Bridges wireless to wired inside same broadcast domain."]},
+    {"id": 41, "q": "L3 switch vs plain switch:", "opts": ["Same as hub", "Can route by IP between VLANs without a separate router", "Is a modem", "Is a repeater"], "c": 1, "d": "medium", "t": "Hub vs Switch vs Router", "exp": ["L3 switch adds IP routing between VLANs."]},
+    {"id": 42, "q": "NIC BIA is burned where?", "opts": ["On the router", "On the NIC hardware", "On the modem", "On the server"], "c": 1, "d": "easy", "t": "Access Points & Modems", "exp": ["Factory-burned MAC on the NIC card."]},
+    {"id": 43, "q": "Home wireless router uses NAT to:", "opts": ["Repeat bits", "Share one public IP among many private hosts", "Learn MACs", "Produce SSID"], "c": 1, "d": "medium", "t": "Access Points & Modems", "exp": ["Router NAT shares one public IP. Switch learns MAC, AP produces SSID."]},
+    {"id": 44, "q": "Thin AP needs:", "opts": ["A modem", "A wireless controller that configures many APs", "A repeater", "A hub"], "c": 1, "d": "medium", "t": "Access Points & Modems", "exp": ["Controller-managed thin AP deployment."]},
+    {"id": 45, "q": "Fabric where broadcasts never cross:", "opts": ["Through a hub", "Through a bridge", "Through a router", "Through a switch without VLANs"], "c": 2, "d": "medium", "t": "Hub vs Switch vs Router", "exp": ["Router defines broadcast boundary; switch/hub/bridge keep one per VLAN/domain."]},
+    {"id": 46, "q": "STP elects a root and blocks:", "opts": ["Every port", "Redundant ports to keep a loop-free tree", "All router ports", "All modem ports"], "c": 1, "d": "medium", "t": "Repeaters & Bridges", "exp": ["Blocks redundant bridge/switch ports to maintain a tree."]},
+    {"id": 47, "q": "Gateway as Application translator can do which job?", "opts": ["Regenerate bits", "Convert between different protocols or formats between systems", "Learn MACs only", "Assign DHCP leases only"], "c": 1, "d": "medium", "t": "Gateways", "exp": ["Higher-layer translation between different systems."]},
+    {"id": 48, "q": "Forward proxy most useful for:", "opts": ["Hiding servers", "Hiding clients, filtering and caching corporate web", "Routing between VLANs", "Switching frames"], "c": 1, "d": "medium", "t": "Gateways", "exp": ["Corporate forward proxy for client hiding, filtering and cache."]},
+    {"id": 49, "q": "Reverse proxy most useful for:", "opts": ["Hiding servers, load balancing and shielding", "Repeating bits", "Bridging WiFi", "Assigning APIPA"], "c": 0, "d": "medium", "t": "Gateways", "exp": ["Hides server farm, load balances, can WAF."]},
+    {"id": 50, "q": "NAT lives on:", "opts": ["Hub", "Router (or L3 device/NAT gateway) at the edge", "Switch only", "Repeater"], "c": 1, "d": "medium", "t": "Gateways", "exp": ["Edge router or NAT gateway translates private to public."]},
+    {"id": 51, "q": "Old name for a switch with 2 ports was:", "opts": ["Router", "Bridge", "Gateway", "Modem"], "c": 1, "d": "easy", "t": "Repeaters & Bridges", "exp": ["Bridge is 2-port predecessor of switch, same L2 family."]},
+    {"id": 52, "q": "Hub vs switch flooding behaviour:", "opts": ["Both flood only unknown", "Hub always floods, switch floods only unknown unicast and broadcast", "Switch always floods, hub never", "Both never flood"], "c": 1, "d": "medium", "t": "Hub vs Switch vs Router", "exp": ["Hub to all always; switch learned then selective, unknown floods like hub."]},
+    {"id": 53, "q": "Router interface count vs network count:", "opts": ["One interface many networks", "One interface equals one network/broadcast domain (subnet)", "Many interfaces one network", "No relation"], "c": 1, "d": "medium", "t": "Hub vs Switch vs Router", "exp": ["Each router interface is its own subnet/broadcast domain."]},
+    {"id": 54, "q": "Which device would you buy to add WiFi to an already routed office LAN without adding routing?", "opts": ["Modem", "Router", "Access Point", "Repeater on same channel without wire"], "c": 2, "d": "medium", "t": "Access Points & Modems", "exp": ["AP via wired ingress is the right addition; adding another router would double-NAT unnecessarily."]},
+    {"id": 55, "q": "Modem plus wireless router combo sold for home use is:", "opts": ["Hub", "Gateway (ISP gateway) combining modem plus wireless router", "Bridge", "Repeater"], "c": 1, "d": "medium", "t": "Access Points & Modems", "exp": ["ISP gateway is marketing name for modem plus wireless router in one box."]},
+    {"id": 56, "q": "Device that reroutes a weak signal on radio with half the airtime is best called a:", "opts": ["AP", "Wireless repeater / extender in repeater mode", "Router", "Modem"], "c": 1, "d": "medium", "t": "Access Points & Modems", "exp": ["Repeater relay replays on air with penalty; AP via wire superior."]},
+    {"id": 57, "q": "Next-gen firewall beyond stateful can do:", "opts": ["Only packet filter", "Deep packet plus IPS plus application and user identification at L2-L7", "Only hub flooding", "Only modem bridging"], "c": 1, "d": "medium", "t": "Gateways", "exp": ["NGFW spans L2-L7 with IPS, app ID and user ID."]},
+    {"id": 58, "q": "Switch learning uses which MAC to populate the table?", "opts": ["Destination MAC", "Source MAC", "Both at once", "Neither"], "c": 1, "d": "medium", "t": "Hub vs Switch vs Router", "exp": ["Learn by source, forward by destination. Source populates, destination decides."]},
+    {"id": 59, "q": "Unknown unicast at a switch does what?", "opts": ["Drop silently", "Flood to all ports like a hub until location learned", "Send to router only", "Buffer forever"], "c": 1, "d": "medium", "t": "Hub vs Switch vs Router", "exp": ["Unknown destination floods to all ports except ingress, then future frames are selective."]},
+    {"id": 60, "q": "Which device would you NOT place at the ISP edge?", "opts": ["Modem", "ONT", "Access Point for LAN WiFi", "Router facing ISP with public IP"], "c": 2, "d": "easy", "t": "Gateways", "exp": ["AP belongs inside LAN wireless edge, not ISP edge. Modem/ONT/router facing ISP belong at edge."]}
+  ]
+}

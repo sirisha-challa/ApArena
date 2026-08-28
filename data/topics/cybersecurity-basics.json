@@ -1,0 +1,503 @@
+{
+  "id": "cybersecurity-basics",
+  "title": "Cybersecurity Fundamentals",
+  "icon": "CY",
+  "category": "networking-cloud",
+  "color": "#0891B2",
+  "subtopics": [
+    "CIA Triad",
+    "Network Security Types (Physical/Technical/Admin)",
+    "Active vs Passive Devices",
+    "UTM & Zero Trust"
+  ],
+  "estimatedHours": 6,
+  "readingSections": [
+    {
+      "id": "cia",
+      "title": "CIA Triad and AAA (the goals that define security)",
+      "type": "concept",
+      "quickSummary": "CIA = Confidentiality (no snooping), Integrity (no tampering), Availability (always up). Helpers: Authentication (who you are), Authorization (what you may do), Accounting/Auditing (what you did), Non-repudiation (cannot deny), Authenticity (it is really you).",
+      "content": [
+        "Confidentiality keeps data from unauthorized eyes. Passports: encryption at rest and on the wire (TLS, AES), access controls (RBAC), and even steganography. If the exam says eavesdropping, sniffing or shoulder surfing, answer confidentiality.",
+        "Integrity keeps data from unauthorized or undetected change. Passports: hashing (SHA), message authentication (HMAC), signatures, and checksums. If the exam says tampering, checksum mismatch or replay without change detection, answer integrity. MAC here means Message Authentication Code, not Media Access.",
+        "Availability keeps services reachable when needed. Passports: redundancy (dual power, RAID, dual WAN, clustering), backups, load balancing, DDoS mitigation (scrubbing, CDN, rate limiting). If the exam says outage, DDoS or failure tolerance, answer availability.",
+        "AAA refines CIA. Authentication proves identity (something you know/have/are). Authorization decides what that identity may do (permissions, ACLs, firewall rules). Accounting and Auditing log what was done (who did what when) for forensics and chargeback. Many stems write logging or billing and expect Accounting or Auditing.",
+        "Non-repudiation prevents denial: a signed email or blockchain transaction cannot later be credibly denied by the sender. It is built on signatures plus hashing. Authenticity proves origin (this key really belongs to that person). The exam swaps these two — signatures serve both but authenticity emphasizes origin, non-repudiation emphasizes undeniability."
+      ],
+      "subsections": [
+        {
+          "title": "Which C is which in one scenario",
+          "content": "Bank transfers 100 rupees. Confidentiality hides the amount from a sniffer via TLS. Integrity ensures the amount stays 100 and not 1000 via HMAC. Availability ensures the transfer service is up during trading hours via replicas. AAA decides which teller may submit the transfer and logs it."
+        },
+        {
+          "title": "Integrity vs authenticity in a trap",
+          "content": "Integrity is no change. Authenticity is no impostor. A message can be tampered without impersonation (integrity fails) or impersonated without tampering (authenticity fails). If options include both, read whether the attacker changed or spoofed."
+        }
+      ],
+      "quickRevision": [
+        "Confidentiality hides (encryption, access). Integrity catches change (hash, HMAC, signature). Availability keeps up (redundancy, backup, DDoS defense).",
+        "AAA: Authentication who, Authorization what may, Accounting/Auditing what did.",
+        "Non-repudiation cannot deny (signatures). Authenticity origin is genuine.",
+        "Sniff/snoop -> confidentiality, tamper/checksum -> integrity, outage/DDoS -> availability, login -> authentication, permission -> authorization, log -> accounting."
+      ],
+      "tricks": [
+        "Any answer that says hashing gives confidentiality is wrong — hashing checks integrity, not secrecy. Confidentiality needs encryption or access control.",
+        "Do not confuse MAC the address with MAC the code — Message Authentication Code is integrity, not a layer-2 address.",
+        "Logging belongs to Accounting/Auditing, not Authorization. Many stems bait with authorization because it sounds legal."
+      ],
+      "patterns": [
+        "'Data hidden from unauthorized?' -> Confidentiality. 'Data unchanged?' -> Integrity. 'Service reachable?' -> Availability.",
+        "'Who are you vs what may you do vs what did you do?' -> Authentication vs Authorization vs Accounting/Auditing.",
+        "'Cannot later deny?' -> Non-repudiation (signature plus hash)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS — CIA, every year",
+          "question": "Which CIA goal is violated by eavesdropping/tampering/DDoS?",
+          "approach": "Snoop confidentiality, change integrity, outage availability. Add AAA and non-repudiation to remove distractors."
+        },
+        {
+          "source": "Wipro / Infosys — AAA",
+          "question": "Which A handles login vs permission vs logging/billing?",
+          "approach": "Authentication identity, Authorization permission, Accounting/Auditing log. Hold the who/what/did split."
+        }
+      ],
+      "companyNote": "CIA appears as either a direct definition or a scenario plus a which-goal-broken. AAA/Auditing appears as 1 follow-up."
+    },
+    {
+      "id": "security-types",
+      "title": "Three Controls: Physical, Technical (Logical) and Administrative",
+      "type": "concept",
+      "quickSummary": "Physical protects things you can touch (gates, cameras, locks, biometrics, guards). Technical enforces via tech (firewalls, IDS/IPS, AV, encryption, MFA, EDR). Administrative governs via rules and process (policies, training, backups, DR, risk assessment). Most controls map to one, some span.",
+      "content": [
+        "Physical security protects the tangible: building, racks, disks, consoles, cables and people. Examples: fences, gates, mantraps, biometric readers, CCTV, guards, locked cages, cable locks. If the question says gate or CCTV or badge or tailgating, answer physical.",
+        "Technical or logical security protects via technology that enforces policy in the machine. Examples: firewalls, IDS/IPS, antivirus/EDR, encryption, hashing, access controls, MFA/TOTP, VPN, DLP, SIEM, NAC. If the stem says firewall, AV, IDS, EDR, WAF, MFA, encryption, DLP — answer technical.",
+        "Administrative or organizational security governs humans and processes: policies and standards, password policy, acceptable use, training and awareness, background checks, separation of duties, least privilege, change management, backups and disaster recovery and BCP, risk assessment. Training that fixes phishing failures is the textbook administrative control even though the platform that delivers the training is technical.",
+        "Why the exam stresses the split: a single control can look like two. A biometric door reader is physical (door) plus technical (template and logic). Backup as a process is administrative; the backup appliance that encrypts is technical; the locked vault that stores the tapes is physical. AXIS expects the primary type, not the secondary overlap.",
+        "Speed table for the exam hall. Physical: locks, gates, cameras, guards, biometrics, bollards, cages. Technical: everything that runs in software or silicon. Administrative: everything that runs as a document, meeting or drill. If it configures a box, technical; if it writes a rule or trains a person, administrative."
+      ],
+      "subsections": [
+        {
+          "title": "Training vs tooling — why they bait you",
+          "content": "Tooling is technical. Training the human to use it is administrative. Phishing simulation plus coaching is administrative even though the mail filter that caught the phish is technical. That bait appears whenever the paper writes security awareness."
+        },
+        {
+          "title": "Backup and DR — administrative until the appliance",
+          "content": "Backup policy plus drill is administrative. Encrypted backup image is technical. Offsite vault is physical. If options list all three, the primary on backup is administrative; location and media tilt to physical/technical."
+        }
+      ],
+      "quickRevision": [
+        "Physical: touchable protection — gates, cameras, locks, biometrics, guards, cages.",
+        "Technical: tech enforcement — firewalls, IDS/IPS, AV/EDR, encryption, MFA, VPN, DLP, SIEM, NAC.",
+        "Administrative: governance — policies, training, separation of duties, least privilege, BCP/DR, risk assessment.",
+        "Primary type is the tested answer when a control spans layers.",
+        "Training is administrative even when the training platform is technical."
+      ],
+      "tricks": [
+        "Any answer that puts firewall under administrative is wrong — firewall is technical. Policy about firewalls is administrative, the firewall itself is technical.",
+        "CCTV is physical even though it uses electronics — it protects a place, not a packet.",
+        "Do not confuse logical as a fourth type — logical overlaps technical. AXIS commonly bins technical as physical/technical/human; treat logical as technical."
+      ],
+      "patterns": [
+        "'Gate, CCTV, guard, badge, tailgating?' -> Physical.",
+        "'Firewall, IDS, AV, MFA, encryption, VPN?' -> Technical.",
+        "'Policy, training, BCP, least privilege, background check?' -> Administrative."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS sample — security types",
+          "question": "Which type is a given control (physical vs technical vs administrative)?",
+          "approach": "Ask is it a thing/place, a tech/box, or a rule/process/human drill?"
+        },
+        {
+          "source": "TCS / Wipro — awareness trap",
+          "question": "Security awareness training that reduces phishing is which control?",
+          "approach": "Administrative (people/process). The filter that blocked the mail is technical."
+        }
+      ],
+      "companyNote": "1-2 questions per paper on physical vs technical vs administrative, often as a dangling definition."
+    },
+    {
+      "id": "active-passive",
+      "title": "Active vs Passive Devices and When to Inspect Inline vs Watch",
+      "type": "concept",
+      "quickSummary": "Active can drop or block (firewall, IPS, WAF, router ACL). Passive only watches and alerts (IDS, sniffer, tap). Inline sees the path and can block; mirrored/tap sees a copy and cannot block. Placement decides active vs passive more than vendor name.",
+      "content": [
+        "Active devices participate and can affect traffic. Examples: firewall that drops by rule, IPS that drops by signature, WAF that blocks web exploits in line, router that drops by ACL, NAC that quarantines. Keyword drops. If the question says prevent, block or enforce, answer active.",
+        "Passive devices watch and alert without affecting flow. Examples: IDS that alerts on matches, packet sniffer, network tap feeding a collector, SIEM that correlates logs, packet broker that copies traffic. Keyword alerts. If the question says detect, alert or monitor, answer passive.",
+        "Inline vs mirrored is the deployment view of the same split. Inline is in the forwarding path and sees real packets so it can block at line rate. Mirrored or tapped gets a copy via SPAN/mirror or an optical tap and cannot block the original — even an IPS is passive if mirrored. The exam often writes IDS vs IPS to test inline vs copy.",
+        "Overlap the physical world: a guard who stops a person is active; a camera that only records is passive. Translate directly to network — the analogy is intentional and appears verbatim in some papers. Availability and CIA map back: active helps availability by dropping attacks; passive helps confidentiality and integrity by detecting snoop and tamper without itself causing availability risk.",
+        "Speed rule: first look for the verb. Drop/block/quarantine/enforce -> active. Alert/detect/log/monitor -> passive. Then confirm deployment — inline confirms active, mirrored confirms passive even if the vendor name sounds active."
+      ],
+      "subsections": [
+        {
+          "title": "IDS vs IPS in one line",
+          "content": "IDS Intrusion Detection System — detects and alerts, passive. IPS Intrusion Prevention System — detects and drops, active and inline. Same signatures, different verbs. The S changes from System to Prevention to remind you of blocking."
+        },
+        {
+          "title": "Why passive can be safer to deploy",
+          "content": "Passive cannot accidentally block legit traffic because it never touches the original — safer to tune. Active can block legit traffic if signatures are too aggressive (false positives) so it needs careful tuning and bypass. The exam may pitch risk vs benefit with that trade-off."
+        }
+      ],
+      "quickRevision": [
+        "Active drops or blocks: firewall, IPS, WAF inline, router ACL, NAC quarantine. Verb drops.",
+        "Passive watches and alerts: IDS, sniffer, tap, SPAN mirror, SIEM. Verb alerts.",
+        "Inline sees real path and can block; mirrored copy cannot block even if the box could inline.",
+        "Physical analogy: guard active, camera passive.",
+        "First check verb, then confirm deployment."
+      ],
+      "tricks": [
+        "Any answer that says IDS blocks is wrong — IDS only detects and alerts.",
+        "Do not attach active to IDS just because IDS and IPS share Intrusion — the Detection vs Prevention flips the capability.",
+        "A mirrored IPS is passive in that deployment even though IPS the product could be active inline."
+      ],
+      "patterns": [
+        "'Drop or block?' -> Active (firewall, IPS). 'Alert or monitor?' -> Passive (IDS, sniffer).",
+        "'In the forwarding path?' -> Inline and can block. 'Via SPAN or tap?' -> Mirrored and cannot block.",
+        "'Guard vs camera?' -> Guard active, camera passive (network maps directly)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / Infosys — active vs passive, frequent",
+          "question": "Is this device active or passive and can it block?",
+          "approach": "Active can drop/block (firewall, IPS); passive only alerts (IDS). Deployment inline vs mirrored decides blocking."
+        },
+        {
+          "source": "Wipro — IDS vs IPS wording",
+          "question": "IDS vs IPS — which detects vs which prevents?",
+          "approach": "IDS Detection alerts passive, IPS Prevention blocks active inline."
+        }
+      ],
+      "companyNote": "1 question per paper on active vs passive or IDS vs IPS, often framed as the guard vs camera analogy."
+    },
+    {
+      "id": "utm-zero",
+      "title": "UTM, NGFW and Zero Trust (how modern shops bundle and trust nothing by default)",
+      "type": "concept",
+      "quickSummary": "UTM bundles many functions (firewall, IPS, AV, URL/web, VPN, DLP, email) in one box for SMB/mid. NGFW is the modern L2-L7 firewall plus IPS plus app/user ID plus TLS inspection. Zero Trust trusts nothing by default — verify explicitly, least privilege, assume breach, micro-segment.",
+      "content": [
+        "UTM (Unified Threat Management) is a bundled appliance that packages firewall, IPS, gateway AV, URL/web filtering, VPN, DLP, email filtering and sometimes WAF and sandboxing in one box with one console and shared intelligence. It wins on ease and cost for small and mid shops. The compromise is single-vendor and single-box choke point versus best-of-breed point products that the largest enterprises still prefer.",
+        "NGFW (Next-Generation Firewall) is the evolved firewall that inspects at Layers 2 through 7, knows applications and users, does IPS, does TLS inspection, and shares cloud intelligence — far beyond a classic packet-filter or stateful firewall. Every modern firewall paper wants the NGFW label recognized.",
+        "Zero Trust reframes trust itself: never trust, always verify. Principles: verify explicitly every request with strong identity (MFA, device health), enforce least privilege per resource, assume breach so lateral movement is contained. Concrete mechanisms: identity and MFA everywhere, micro-segmentation (tiny zones with their own policies), continuous risk scoring, and just-in-time access.",
+        "How UTM and NGFW differ in a trap. UTM bundles many tools into one product for cost and simplicity. NGFW deepens inspection on the firewall itself from L3-L4 into L7 and user context. Both can coexist — a branch that runs UTM still runs it as an NGFW at the firewall function. AXIS tests the bundled vs deepened wording, not an either-or purchase.",
+        "Speed table: SMB wants one box for many functions -> UTM. Enterprise wants deepest inspection per flow with app and user awareness -> NGFW. Culture that trusts no implicit network segment and verifies every hop -> Zero Trust. If the paper says never trust, always verify, answer Zero Trust."
+      ],
+      "subsections": [
+        {
+          "title": "UTM bundled vs best-of-breed",
+          "content": "UTM trades best-of-breed depth for operational simplicity and shared logs. Some enterprises run best-of-breed firewalls plus standalone IPS and web proxies and accept the glue cost. AXIS rarely forces a purchase pick but traps on the definition — bundled is UTM, deepened L2-L7 firewall is NGFW."
+        },
+        {
+          "title": "Micro-segmentation in one sentence",
+          "content": "Micro-segmentation carves tiny policy zones around each workload so compromise of one does not imply access to neighbours — direct expression of assume breach and least privilege in Zero Trust."
+        }
+      ],
+      "quickRevision": [
+        "UTM: one box bundles firewall, IPS, AV, URL/web, VPN, DLP, email and more — simplicity and shared intelligence for SMB/mid.",
+        "NGFW: modern firewall at L2-L7 plus IPS plus application and user ID plus TLS inspection.",
+        "Zero Trust: never trust always verify — explicit verification, least privilege, assume breach, micro-segmentation, continuous risk and JIT.",
+        "UTM bundles many functions; NGFW deepens inspection — different axes, can coexist.",
+        "If the paper says trust nothing by default, answer Zero Trust."
+      ],
+      "tricks": [
+        "Any answer that says UTM equals antivirus only is too narrow — UTM bundles many including firewall, IPS and AV together.",
+        "Any answer that limits NGFW to L3/L4 only is old — NGFW is L2-L7 with app and user context.",
+        "Do not confuse UTM the appliance with UTM the coordinate system in maps — exam context disambiguates but the letters collide."
+      ],
+      "patterns": [
+        "'Bundled single box for many functions for a branch?' -> UTM.",
+        "'Deep L2-L7 inspection with app and user awareness?' -> NGFW.",
+        "'Never trust always verify or assume breach or micro-segment?' -> Zero Trust.",
+        "'Which trades best-of-breed depth for ease and shared logs?' -> UTM."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS mixed — UTM/NGFW/Zero Trust, recent years",
+          "question": "What bundles many functions vs what deepens inspection vs what trusts nothing by default?",
+          "approach": "UTM bundles many, NGFW deepens firewall, Zero Trust is the no implicit trust culture with verify, least privilege and assume breach."
+        },
+        {
+          "source": "Infosys / Wipro — Zero Trust wording",
+          "question": "Never trust always verify, verify explicitly, least privilege, assume breach — which model?",
+          "approach": "Zero Trust. Micro-segmentation is its signature control."
+        }
+      ],
+      "companyNote": "1 bundled question per paper on UTM vs NGFW vs Zero Trust, often as a definition pick."
+    },
+    {
+      "id": "exam-strategy",
+      "title": "Layering It: defense in depth and speed rules",
+      "type": "concept",
+      "quickSummary": "Defense in depth layers Physical plus Technical plus Administrative. Map every new term to Physical vs Technical vs Administrative, then CIA, then Active vs Passive. If the stem says policy or training, go Administrative; if it describes a box that drops, go Active Technical.",
+      "content": [
+        "Defense in depth means no single layer is expected to be perfect — physical keeps the wrong person out of the rack, technical enforces deny by default on the wire, administrative trains and drills and governs. The exam often shows one control and asks which layering it belongs to — answer defense in depth as the why, then the specific layer as the what.",
+        "Decision order that saves minutes across a paper. One, map the control to Physical vs Technical vs Administrative by asking is it a place/thing, a box, or a rule/drill? Two, map the goal to CIA plus AAA plus non-repudiation to eliminate similar options. Three, if the device question says block vs alert, choose Active vs Passive. Four, if the product says UTM/NGFW/Zero Trust, pick bundle vs deepen vs trust-nothing. That one pass removes most distractors.",
+        "Example stream. Paper says security awareness drill reduces phishing -> Administrative. Paper says firewall drops outbound steal -> Active Technical. Paper says IDS alerts on stolen credentials -> Passive Technical. Paper says one box packages firewall plus IPS plus AV for a branch -> UTM. Paper says never trust, verify each hop -> Zero Trust. Five answers, one pass each.",
+        "Watch the bait. The same word appears in two families: MAC as address vs code, MAC the door vs MAC the integrity check. UTM as appliance vs coordinate system. WAP as Wireless Access Point vs WAP the old phone protocol. Context decides, not letters alone.",
+        "Last mark that pilots miss: administrative fixes persistent human failures faster than more technical boxes. If the data says 40 percent phished and the fix is training that halves it, AXIS awards the administrative credit even when the slide shows a platform that delivered the training."
+      ],
+      "subsections": [
+        {
+          "title": "One-pass elimination on a hard item",
+          "content": "Item offers both Technical and Administrative for the same control. If the stem says awareness, background check, policy, BCP or drill, eliminate Technical. If it says firewall drops, IPS blocks, MFA enforces, eliminate Administrative. Primary function is the answer."
+        },
+        {
+          "title": "When bundled wins vs when deep wins",
+          "content": "SMB or branch wants one console and shared intelligence for many functions — UTM. Large enterprise wants deepest per-flow app and user awareness on the firewall — NGFW. Culture that rewires trust across every hop — Zero Trust. If the paper says trust nothing by default, do not answer UTM."
+        }
+      ],
+      "quickRevision": [
+        "Defense in depth = Physical plus Technical plus Administrative layered so no single failure gives full compromise.",
+        "Decision order: place vs box vs rule/drill, then CIA/AAA goal, then active vs passive, then bundle vs deepen vs trust-nothing.",
+        "Awareness/training/BCP is Administrative; firewall drop is Active Technical; IDS alert is Passive Technical; bundled box is UTM; never trust is Zero Trust.",
+        "Watch word collisions — MAC, WAP, UTM have two meanings; context decides."
+      ],
+      "tricks": [
+        "Any answer that says adding one more technical box alone fixes repeated human phishing is wrong — administrative training is the durable fix.",
+        "Any answer that says defense in depth is a product is wrong — it is a layering strategy across product types.",
+        "Do not mark a mirrored IPS as active blocking even though IPS the product could block inline — deployment decides blocking."
+      ],
+      "patterns": [
+        "'Multiple layers so no single failure gives full compromise?' -> Defense in depth.",
+        "'Policy or training or BCP?' -> Administrative.",
+        "'Box that drops?' -> Active Technical. 'Box that only alerts?' -> Passive Technical.",
+        "'Bundled vs deep vs trust-nothing?' -> UTM vs NGFW vs Zero Trust."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS synthesis — mixed security types and CIA plus active/passive",
+          "question": "Given five controls, classify each and which CIA goal each protects?",
+          "approach": "One pass: physical/technical/human, then CIA, then active/passive. Then UTM/NGFW/Zero Trust if present."
+        },
+        {
+          "source": "TCS / Wipro — awareness vs enforcement",
+          "question": "Repeated human failures — technical filter vs training — which control type?",
+          "approach": "Training/d Ruddiness is Administrative; filter/box is Technical. Long-run reduction comes from Administrative."
+        }
+      ],
+      "companyNote": "Synthesis tables appear as a 4-5 item match-the-column question. Hold the decision order."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "cia",
+      "title": "CIA plus AAA plus Non-repudiation Row",
+      "formula": {
+        "latex": "C=hide\\;encrypt/access \\;|\\; I=no\\;change\\;hash/HMAC/sig \\;|\\; A=up\\;redundant/DDoS \\;|\\; AuthN\\;who+AuthZ\\;what+Acct\\;did",
+        "text": "C hide encrypt/access | I no change hash/HMAC/sig | A up redundant/DDoS | AuthN who + AuthZ what + Acct did"
+      },
+      "whenToUse": "Any 'which security goal is violated or protected?' or AAA MCQ.",
+      "explanation": [
+        "Confidentiality hides from unauthorized (eavesdrop, sniff, shoulder surf) via encryption and access controls.",
+        "Integrity catches change (tamper, checksum mismatch) via hash, HMAC, signatures.",
+        "Availability keeps service reachable (outage, DDoS) via redundancy, backups, load balancing, scrubbing.",
+        "Authentication who you are, Authorization what you may do, Accounting/Auditing what you did (logs).",
+        "Non-repudiation cannot deny (signed), Authenticity origin genuine — signatures plus hashing."
+      ],
+      "example": {
+        "prompt": "Attacker changes the amount from 100 to 1000 without detection — which goal fails?",
+        "steps": [
+          "Change without detection is tampering.",
+          "Goal that catches change is Integrity.",
+          "Hash/HMAC/signature would have caught the mismatch."
+        ],
+        "answer": "Integrity"
+      },
+      "memoryTip": "Hide is C, no Change is I, Always up is A. Who is AuthN, What may is AuthZ, Did is Acct.",
+      "commonMistake": "Hashing for confidentiality. Hashing checks integrity; encryption provides confidentiality."
+    },
+    {
+      "id": "security-types",
+      "title": "Physical vs Technical vs Administrative Split",
+      "formula": {
+        "latex": "Physical=place+thing \\;|\\; Technical=box+tech \\;|\\; Administrative=rule+process+human",
+        "text": "Physical place+thing | Technical box+tech | Administrative rule+process+human"
+      },
+      "whenToUse": "Any 'which type is this control?' MCQ.",
+      "explanation": [
+        "Physical: gates, fences, mantraps, biometrics, CCTV, guards, cages, locks, bollards.",
+        "Technical: firewalls, IDS/IPS, AV/EDR, encryption, hashing, MFA, VPN, DLP, SIEM, NAC.",
+        "Administrative: policies, standards, training, awareness, background checks, separation of duties, least privilege, BCP/DR, risk assessment.",
+        "A control can span but the primary type is the tested answer.",
+        "Training that reduces repeated phishing is Administrative even when delivered on a platform."
+      ],
+      "example": {
+        "prompt": "Security awareness training halves repeat phishing — control type?",
+        "steps": [
+          "Is it a place/thing, a tech/box, or a rule/drill?",
+          "Training is a human and process improvement.",
+          "Administrative is the governance and human layer."
+        ],
+        "answer": "Administrative"
+      },
+      "memoryTip": "Place is Physical, Platform is Technical, Policy is Administrative — Place/Platform/Policy.",
+      "commonMistake": "Calling a firewall administrative because there is a firewall policy. The policy is administrative; the firewall itself is technical."
+    },
+    {
+      "id": "active-passive",
+      "title": "Active vs Passive: Drops vs Alerts, Inline vs Mirrored",
+      "formula": {
+        "latex": "Active=drops/blocks \\;|\\; Passive=alerts/watches \\;|\\; Inline\\;blocks,\\; Mirrored\\;cannot",
+        "text": "Active drops/blocks | Passive alerts/watches | Inline blocks Mirrored cannot"
+      },
+      "whenToUse": "Any active vs passive, IDS vs IPS, inline vs SPAN-Mirror MCQ.",
+      "explanation": [
+        "Active can drop or block (firewall, IPS, WAF inline, router ACL, NAC quarantine). Verb drops.",
+        "Passive only watches and alerts (IDS, sniffer, tap, SIEM). Verb alerts.",
+        "Inline sees real path so it can block at line rate; mirrored via SPAN or tap sees a copy and cannot block original.",
+        "IDS is passive Detection; IPS is active Prevention — same signatures different verbs. Deployment decides blocking.",
+        "Physical analogy: guard who stops is active; camera that records is passive."
+      ],
+      "example": {
+        "prompt": "IDS vs IPS — which can block a detected exploit?",
+        "steps": [
+          "IDS alerts passively — cannot block the original.",
+          "IPS is inline and active — can drop by signature.",
+          "A mirrored IPS would still be passive in that deployment."
+        ],
+        "answer": "IPS active inline can block; IDS passive cannot"
+      },
+      "memoryTip": "Active Acts, Passive Reports. Inline In the path, Mirrored Mere copy. Detection Detect passive, Prevention Prevent active.",
+      "commonMistake": "Saying IDS blocks. IDS alerts. Only IPS/firewall block."
+    },
+    {
+      "id": "utm-zero",
+      "title": "UTM vs NGFW vs Zero Trust",
+      "formula": {
+        "latex": "UTM=bundle\\;many\\;in\\;one \\;|\\; NGFW=L2\\text{-}L7\\;deep\\;firewall \\;|\\; Zero\\;Trust=never\\;trust\\;verify+least\\;privilege+assume\\;breach",
+        "text": "UTM bundle many in one | NGFW L2-L7 deep firewall | Zero Trust never trust verify+least privilege+assume breach"
+      },
+      "whenToUse": "Any bundled appliance vs firewalls evolution vs trust model MCQ.",
+      "explanation": [
+        "UTM Unified Threat Management bundles firewall, IPS, AV, URL/web, VPN, DLP, email and more in one box with shared intelligence — one console, easy for SMB/mid.",
+        "NGFW Next-Generation Firewall inspects L2-L7 plus IPS plus application and user ID plus TLS inspection — deepened firewall.",
+        "Zero Trust trusts nothing by default, verify explicitly via MFA/device health, least privilege per resource, assume breach with micro-segmentation, continuous risk and JIT.",
+        "UTM vs NGFW are different axes: UTM many functions in one product, NGFW depth on firewall function — can coexist.",
+        "Micro-segmentation is the signature Zero Trust control — tiny zones with own policies so compromise does not spread."
+      ],
+      "example": {
+        "prompt": "Branch wants one box for firewall plus IPS plus AV plus VPN — product type?",
+        "steps": [
+          "Many functions in one box with one console is the bundle definition.",
+          "That product is UTM.",
+          "If the question stresses deep L2-L7 firewall alone, think NGFW; if it stresses never trust, think Zero Trust."
+        ],
+        "answer": "UTM"
+      },
+      "memoryTip": "UTM Uni-fied Threat Management Bundles, NGFW Next Deep, Zero Trust Zero implicit trust.",
+      "commonMistake": "Narrowing UTM to antivirus or NGFW to L3/L4 only — UTM is many, NGFW is L2-L7 plus app and user."
+    }
+  ],
+  "practiceProblems": {
+    "cia": [
+      {"q": "Eavesdropping on unencrypted WiFi violates which CIA goal?", "opts": ["Confidentiality", "Integrity", "Availability", "Non-repudiation"], "c": 0, "s": ["Snoop without authorization is confidentiality. Tamper integrity, outage availability."], "a": "Confidentiality"},
+      {"q": "Tampering a transfer amount from 100 to 1000 undetected violates:", "opts": ["Confidentiality", "Integrity", "Availability", "Authenticity"], "c": 1, "s": ["Change without detection is integrity. Hash/HMAC would have caught it."], "a": "Integrity"},
+      {"q": "DDoS that makes a site unreachable violates:", "opts": ["Confidentiality", "Integrity", "Availability", "Non-repudiation"], "c": 2, "s": ["Service not reachable when needed is availability."], "a": "Availability"},
+      {"q": "Who are you? proves:", "opts": ["Authorization", "Authentication", "Accounting", "Non-repudiation"], "c": 1, "s": ["Authentication identity. Authorization what may, Accounting what did."], "a": "Authentication"},
+      {"q": "What may you do? (permission) is:", "opts": ["Authentication", "Authorization", "Accounting", "Availability"], "c": 1, "s": ["Authorization permission. Authentication who, accounting log."], "a": "Authorization"},
+      {"q": "What did you do? for forensics and billing is:", "opts": ["Authentication", "Authorization", "Accounting/Auditing", "Confidentiality"], "c": 2, "s": ["Accounting/Auditing logs who did what when."], "a": "Accounting/Auditing"},
+      {"q": "Signed email that the sender cannot later deny is:", "opts": ["Confidentiality", "Integrity only", "Non-repudiation", "Availability"], "c": 2, "s": ["Cannot deny via signature plus hash is non-repudiation. Authenticity focuses on origin."], "a": "Non-repudiation"},
+      {"q": "Hashing primarily protects:", "opts": ["Confidentiality", "Integrity", "Availability", "Authorization"], "c": 1, "s": ["Hashing checks no change — integrity, not secrecy."], "a": "Integrity"},
+      {"q": "Encryption primarily protects:", "opts": ["Integrity", "Confidentiality", "Availability", "Non-repudiation"], "c": 1, "s": ["Encryption hides from unauthorized — confidentiality."], "a": "Confidentiality"},
+      {"q": "Redundancy, backups and load balancing primarily protect:", "opts": ["Confidentiality", "Integrity", "Availability", "Authentication"], "c": 2, "s": ["Keeping service up despite failures is availability."], "a": "Availability"}
+    ],
+    "security-types": [
+      {"q": "CCTV at the data-centre door is which control type?", "opts": ["Physical", "Technical", "Administrative", "Logical only"], "c": 0, "s": ["Protects a place: physical even though it uses electronics."], "a": "Physical"},
+      {"q": "Firewall that drops by rule is which type?", "opts": ["Physical", "Technical", "Administrative", "None"], "c": 1, "s": ["Box that enforces policy in the machine: technical."], "a": "Technical"},
+      {"q": "Security awareness training is which type?", "opts": ["Physical", "Technical", "Administrative", "Physical+Technical"], "c": 2, "s": ["Improves humans and process: administrative even when delivered on a platform."], "a": "Administrative"},
+      {"q": "Password policy document is which type?", "opts": ["Physical", "Technical", "Administrative", "Technical only"], "c": 2, "s": ["Written rule that governs humans: administrative. The password check code is technical."], "a": "Administrative"},
+      {"q": "Biometric reader on a mantrap door is primarily:", "opts": ["Technical only", "Physical", "Administrative", "Logical only"], "c": 1, "s": ["Guards a door — physical; template logic is secondary technical overlap."], "a": "Physical"},
+      {"q": "Antivirus/EDR that blocks malware is which type?", "opts": ["Physical", "Technical", "Administrative", "None"], "c": 1, "s": ["Malware defense in software: technical."], "a": "Technical"},
+      {"q": "Background checks before hiring are which type?", "opts": ["Physical", "Technical", "Administrative", "Physical only"], "c": 2, "s": ["People process: administrative."], "a": "Administrative"},
+      {"q": "Locked server cage is which type?", "opts": ["Physical", "Technical", "Administrative", "Logical"], "c": 0, "s": ["Cage protects things you can touch: physical."], "a": "Physical"},
+      {"q": "Separation of duties and least privilege are which type?", "opts": ["Physical", "Technical", "Administrative", "None"], "c": 2, "s": ["Governance that limits human power: administrative."], "a": "Administrative"},
+      {"q": "MFA/TOTP prompt is enforced by which type?", "opts": ["Physical", "Technical", "Administrative", "None"], "c": 1, "s": ["Technology that enforces identity: technical. MFA policy document is administrative."], "a": "Technical"}
+    ],
+    "active-passive": [
+      {"q": "Firewall that drops by ACL is:", "opts": ["Active", "Passive", "Neither", "Both equally"], "c": 0, "s": ["Can drop so active. Verb drops. Passive only alerts."], "a": "Active"},
+      {"q": "IDS that alerts on a signature is:", "opts": ["Active — blocks", "Passive — alerts without blocking original", "Active — encrypts", "Passive — blocks"], "c": 1, "s": ["Detects and alerts; cannot block the original path."], "a": "Passive — alerts without blocking original"},
+      {"q": "IPS in line is:", "opts": ["Passive", "Active and can drop by signature inline", "Only a sniffer", "Only a log"], "c": 1, "s": ["Prevention blocks inline by signature; same detection as IDS but active."], "a": "Active and can drop by signature inline"},
+      {"q": "Inline deployment sees:", "opts": ["A copy only", "The real forwarding path and can block at line rate", "Nothing", "Only logs after hours"], "c": 1, "s": ["Inline is in the path; mirrored copy cannot block original."], "a": "The real forwarding path and can block at line rate"},
+      {"q": "SPAN or optical tap feeding IDS is:", "opts": ["Inline active blocking", "Mirrored/passive copy and cannot block the original", "Inline passive", "Active no matter what"], "c": 1, "s": ["Mirrored copy cannot block original even if the box could inline."], "a": "Mirrored/passive copy and cannot block the original"},
+      {"q": "Physical analogy guard vs camera:", "opts": ["Both active", "Guard active camera passive", "Both passive", "Guard passive camera active"], "c": 1, "s": ["Guard stops; camera records. Maps directly to network active vs passive."], "a": "Guard active camera passive"},
+      {"q": "WAF in line that blocks web exploits is:", "opts": ["Passive", "Active", "Not security", "Physical only"], "c": 1, "s": ["Web Application Firewall inline that blocks: active."], "a": "Active"},
+      {"q": "Sniffer used to capture packets is:", "opts": ["Active", "Passive", "Both", "Neither"], "c": 1, "s": ["Observes and copies; does not affect forwarding."], "a": "Passive"},
+      {"q": "SIEM that correlates logs is:", "opts": ["Active blocking the packet", "Passive monitoring and correlation", "Physical gate", "Administrative training"], "c": 1, "s": ["Collects and correlates alerts; does not forward packets."], "a": "Passive monitoring and correlation"},
+      {"q": "Router ACL that drops traffic to 192.168.1.0/24 is:", "opts": ["Passive alerting only", "Active dropping by rule", "Logical only not technical", "Physical only"], "c": 1, "s": ["Drop by rule is active enforcement."], "a": "Active dropping by rule"}
+    ],
+    "utm-zero": [
+      {"q": "One box bundles firewall plus IPS plus AV plus VPN plus URL filtering for a branch — product?", "opts": ["UTM", "NGFW only", "Zero Trust", "IDS only"], "c": 0, "s": ["Bundled multi-function appliance is Unified Threat Management."], "a": "UTM"},
+      {"q": "Modern firewall at L2-L7 plus IPS plus application and user ID plus TLS inspection is:", "opts": ["UTM", "NGFW", "Zero Trust", "IDS"], "c": 1, "s": ["Deepened L2-L7 firewall is Next-Generation Firewall."], "a": "NGFW"},
+      {"q": "Never trust always verify, least privilege, assume breach, micro-segment — model?", "opts": ["UTM", "NGFW", "Zero Trust", "IDS"], "c": 2, "s": ["No implicit trust culture; verify every hop and segment finely."], "a": "Zero Trust"},
+      {"q": "Signature control of Zero Trust that carves tiny policy zones:", "opts": ["Macro-segmentation", "Micro-segmentation", "No segmentation", "Only VLANs"], "c": 1, "s": ["Tiny zones with own policies so compromise does not spread — assume breach."], "a": "Micro-segmentation"},
+      {"q": "Which trades best-of-breed depth for simplicity and shared logs?", "opts": ["NGFW", "UTM", "Zero Trust", "DLP"], "c": 1, "s": ["UTM one box ease with shared intelligence versus standalone best-of-breed."] , "a": "UTM"},
+      {"q": "One console and shared intelligence across many functions best describes:", "opts": ["UTM", "IDS", "Hub", "Repeater"], "c": 0, "s": ["UTM single console and correlated intel across bundled functions."], "a": "UTM"},
+      {"q": "App and user awareness on the firewall best describes:", "opts": ["UTM", "NGFW", "Zero Trust", "SIEM"], "c": 1, "s": ["Application and user ID on the firewall is the NGFW deepening."], "a": "NGFW"},
+      {"q": "Verify explicitly with MFA and device health on every hop best describes which principle?", "opts": ["UTM", "NGFW", "Zero Trust", "Passive"], "c": 2, "s": ["Zero Trust verify explicitly every request."], "a": "Zero Trust"},
+      {"q": "UTM vs NGFW relationship:", "opts": ["UTM replaces NGFW always", "Different axes — UTM bundles many, NGFW deepens firewall — can coexist", "Identical products", "NGFW bundles UTM"], "c": 1, "s": ["Bundled vs deepened — a UTM branch can still run an NGFW at the firewall function."], "a": "Different axes — UTM bundles many, NGFW deepens firewall — can coexist"},
+      {"q": "Brand-new trust wording the paper invents — never trust always verify — answer:", "opts": ["UTM", "NGFW", "Zero Trust", "WAF"], "c": 2, "s": ["That sentence is the textbook Zero Trust definition."], "a": "Zero Trust"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Eavesdropping on unencrypted traffic violates which CIA goal?", "opts": ["Confidentiality", "Integrity", "Availability", "Non-repudiation"], "c": 0, "d": "easy", "t": "CIA Triad", "exp": ["Snoop without authorization is confidentiality."]},
+    {"id": 2, "q": "Tampering a transfer amount from 100 to 1000 undetected violates:", "opts": ["Confidentiality", "Integrity", "Availability", "Authenticity"], "c": 1, "d": "medium", "t": "CIA Triad", "exp": ["Change without detection is integrity. Hash/HMAC would detect."]},
+    {"id": 3, "q": "DDoS that makes a site unreachable violates:", "opts": ["Confidentiality", "Integrity", "Availability", "Non-repudiation"], "c": 2, "d": "easy", "t": "CIA Triad", "exp": ["Service not reachable when needed is availability."]},
+    {"id": 4, "q": "Who are you proves which AAA member?", "opts": ["Authorization", "Authentication", "Accounting", "Non-repudiation"], "c": 1, "d": "easy", "t": "CIA Triad", "exp": ["Authentication identity. Authorization what may, Accounting what did."]},
+    {"id": 5, "q": "What may you do (permission) is:", "opts": ["Authentication", "Authorization", "Accounting", "Availability"], "c": 1, "d": "easy", "t": "CIA Triad", "exp": ["Authorization permission."]},
+    {"id": 6, "q": "What did you do for forensics and billing is:", "opts": ["Authentication", "Authorization", "Accounting/Auditing", "Confidentiality"], "c": 2, "d": "easy", "t": "CIA Triad", "exp": ["Accounting/Auditing logs who did what when."]},
+    {"id": 7, "q": "Signed email that the sender cannot later deny gives:", "opts": ["Confidentiality", "Integrity only", "Non-repudiation", "Availability"], "c": 2, "d": "medium", "t": "CIA Triad", "exp": ["Cannot deny via signature is non-repudiation."]},
+    {"id": 8, "q": "Hashing primarily protects:", "opts": ["Confidentiality", "Integrity", "Availability", "Authorization"], "c": 1, "d": "medium", "t": "CIA Triad", "exp": ["Hashing checks no change — integrity, not secrecy."]},
+    {"id": 9, "q": "Encryption primarily protects:", "opts": ["Integrity", "Confidentiality", "Availability", "Non-repudiation"], "c": 1, "d": "easy", "t": "CIA Triad", "exp": ["Encryption hides from unauthorized — confidentiality."]},
+    {"id": 10, "q": "Redundancy, backups and load balancing primarily protect:", "opts": ["Confidentiality", "Integrity", "Availability", "Authentication"], "c": 2, "d": "easy", "t": "CIA Triad", "exp": ["Keeping service up despite failures is availability."]},
+    {"id": 11, "q": "CCTV at the door is which control type?", "opts": ["Physical", "Technical", "Administrative", "Logical only"], "c": 0, "d": "easy", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Protects a place — physical."]},
+    {"id": 12, "q": "Firewall that drops by rule is which type?", "opts": ["Physical", "Technical", "Administrative", "None"], "c": 1, "d": "easy", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Box that enforces policy in the machine — technical."]},
+    {"id": 13, "q": "Security awareness training is which type?", "opts": ["Physical", "Technical", "Administrative", "Physical+Technical"], "c": 2, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Improves humans and process — administrative even when delivered on a platform."]},
+    {"id": 14, "q": "Password policy document is which type?", "opts": ["Physical", "Technical", "Administrative", "Technical only"], "c": 2, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Written rule governing humans — administrative."]},
+    {"id": 15, "q": "Biometric reader on a mantrap is primarily:", "opts": ["Technical only", "Physical", "Administrative", "Logical only"], "c": 1, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Guards a door — physical."]},
+    {"id": 16, "q": "Antivirus/EDR that blocks malware is which type?", "opts": ["Physical", "Technical", "Administrative", "None"], "c": 1, "d": "easy", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Malware defense in software — technical."]},
+    {"id": 17, "q": "Background checks before hiring are which type?", "opts": ["Physical", "Technical", "Administrative", "Physical only"], "c": 2, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["People process — administrative."]},
+    {"id": 18, "q": "Locked server cage is which type?", "opts": ["Physical", "Technical", "Administrative", "Logical"], "c": 0, "d": "easy", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Cage protects things you can touch — physical."]},
+    {"id": 19, "q": "Separation of duties and least privilege are which type?", "opts": ["Physical", "Technical", "Administrative", "None"], "c": 2, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Governance limiting human power — administrative."]},
+    {"id": 20, "q": "MFA/TOTP prompt enforced by the system is which type?", "opts": ["Physical", "Technical", "Administrative", "None"], "c": 1, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Technology that enforces identity — technical. Policy document mandating it is administrative."]},
+    {"id": 21, "q": "Firewall that drops by ACL is:", "opts": ["Active", "Passive", "Neither", "Both equally"], "c": 0, "d": "easy", "t": "Active vs Passive Devices", "exp": ["Can drop so active. Passive only alerts."]},
+    {"id": 22, "q": "IDS that alerts on signature is:", "opts": ["Active blocks", "Passive alerts without blocking original", "Active encrypts", "Passive blocks"], "c": 1, "d": "easy", "t": "Active vs Passive Devices", "exp": ["Detects and alerts; cannot block original."]},
+    {"id": 23, "q": "IPS in line is:", "opts": ["Passive", "Active and can drop by signature inline", "Only sniffer", "Only log"], "c": 1, "d": "medium", "t": "Active vs Passive Devices", "exp": ["Prevention blocks inline by signature."]},
+    {"id": 24, "q": "Inline deployment sees:", "opts": ["A copy only", "Real forwarding path and can block at line rate", "Nothing", "Only logs after hours"], "c": 1, "d": "medium", "t": "Active vs Passive Devices", "exp": ["Inline is in the path; mirrored copy cannot block."]},
+    {"id": 25, "q": "SPAN or optical tap feeding IDS is:", "opts": ["Inline active blocking", "Mirrored passive copy and cannot block original", "Inline passive", "Active no matter what"], "c": 1, "d": "medium", "t": "Active vs Passive Devices", "exp": ["Mirrored copy cannot block original even if the box could inline."]},
+    {"id": 26, "q": "Guard vs camera maps to:", "opts": ["Both active", "Guard active camera passive", "Both passive", "Guard passive camera active"], "c": 1, "d": "easy", "t": "Active vs Passive Devices", "exp": ["Guard stops; camera records. Direct to network."]},
+    {"id": 27, "q": "WAF in line that blocks web exploits is:", "opts": ["Passive", "Active", "Not security", "Physical only"], "c": 1, "d": "medium", "t": "Active vs Passive Devices", "exp": ["Web Application Firewall inline that blocks is active."]},
+    {"id": 28, "q": "Sniffer used to capture packets is:", "opts": ["Active", "Passive", "Both", "Neither"], "c": 1, "d": "easy", "t": "Active vs Passive Devices", "exp": ["Observes and copies; does not affect forwarding."]},
+    {"id": 29, "q": "SIEM that correlates logs is:", "opts": ["Active blocking the packet", "Passive monitoring and correlation", "Physical gate", "Administrative training"], "c": 1, "d": "medium", "t": "Active vs Passive Devices", "exp": ["Collects and correlates alerts; not in forwarding path."]},
+    {"id": 30, "q": "Router ACL that drops traffic to 192.168.1.0/24 is:", "opts": ["Passive alert only", "Active dropping by rule", "Logical only not technical", "Physical only"], "c": 1, "d": "medium", "t": "Active vs Passive Devices", "exp": ["Drop by rule is active."]},
+    {"id": 31, "q": "One box bundles firewall plus IPS plus AV plus VPN plus URL filtering for a branch — product?", "opts": ["UTM", "NGFW only", "Zero Trust", "IDS only"], "c": 0, "d": "easy", "t": "UTM & Zero Trust", "exp": ["Bundled multi-function appliance is UTM."]},
+    {"id": 32, "q": "Modern firewall at L2-L7 plus IPS plus application and user ID plus TLS inspection is:", "opts": ["UTM", "NGFW", "Zero Trust", "IDS"], "c": 1, "d": "medium", "t": "UTM & Zero Trust", "exp": ["Deepened L2-L7 firewall is NGFW."]},
+    {"id": 33, "q": "Never trust always verify, least privilege, assume breach — model?", "opts": ["UTM", "NGFW", "Zero Trust", "IDS"], "c": 2, "d": "medium", "t": "UTM & Zero Trust", "exp": ["No implicit trust; verify every hop and segment finely."]},
+    {"id": 34, "q": "Signature control of Zero Trust that carves tiny policy zones:", "opts": ["Macro-segmentation", "Micro-segmentation", "No segmentation", "Only VLANs"], "c": 1, "d": "medium", "t": "UTM & Zero Trust", "exp": ["Tiny zones with own policies so compromise does not spread."]},
+    {"id": 35, "q": "Which trades best-of-breed depth for simplicity and shared logs?", "opts": ["NGFW", "UTM", "Zero Trust", "DLP"], "c": 1, "d": "medium", "t": "UTM & Zero Trust", "exp": ["UTM one box ease with shared intelligence."]},
+    {"id": 36, "q": "App and user awareness on the firewall best describes:", "opts": ["UTM", "NGFW", "Zero Trust", "SIEM"], "c": 1, "d": "medium", "t": "UTM & Zero Trust", "exp": ["Application and user ID on firewall is the NGFW deepening."]},
+    {"id": 37, "q": "Verify explicitly with MFA and device health on every hop — principle belongs to:", "opts": ["UTM", "NGFW", "Zero Trust", "Passive"], "c": 2, "d": "medium", "t": "UTM & Zero Trust", "exp": ["Zero Trust verify explicitly every request."]},
+    {"id": 38, "q": "UTM vs NGFW relation:", "opts": ["UTM replaces NGFW always", "Different axes — UTM bundles many, NGFW deepens firewall — can coexist", "Identical", "NGFW bundles UTM"], "c": 1, "d": "medium", "t": "UTM & Zero Trust", "exp": ["Bundled vs deepened — a UTM branch can still run an NGFW at firewall function."]},
+    {"id": 39, "q": "Defense in depth means:", "opts": ["One perfect device", "Layered Physical plus Technical plus Administrative so no single failure gives full compromise", "Only technical", "Only administrative"], "c": 1, "d": "medium", "t": "UTM & Zero Trust", "exp": ["Layered so no single failure gives full compromise."]},
+    {"id": 40, "q": "Security awareness that halves repeat phishing is primary:", "opts": ["Technical", "Administrative", "Physical", "Passive only"], "c": 1, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Governance and human training — administrative."]},
+    {"id": 41, "q": "Encrypted backup image vs locked vault that stores tapes — types:", "opts": ["Both administrative", "Technical vs physical respectively", "Both physical", "Both technical"], "c": 1, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Image encrypted is technical; vault is physical. Policy is administrative."]},
+    {"id": 42, "q": "Biometric door reader — primary and secondary:", "opts": ["Technical only", "Physical primary plus technical template secondary", "Administrative primary", "No type"], "c": 1, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Door is physical; template logic is secondary technical."]},
+    {"id": 43, "q": "DLP that blocks a file leaving via email is:", "opts": ["Passive only", "Active technical", "Physical", "Administrative only"], "c": 1, "d": "medium", "t": "Active vs Passive Devices", "exp": ["Can drop by rule — active technical."]},
+    {"id": 44, "q": "DLP as a written policy that defines what may leave is:", "opts": ["Technical only", "Administrative", "Physical", "Neither"], "c": 1, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Written rule governing humans — administrative. Enforcement box is technical."]},
+    {"id": 45, "q": "Mirrored IPS in a SPAN deployment can:", "opts": ["Block original", "Only alert on the copy — cannot block the original in that deployment", "Encrypt", "Route"], "c": 1, "d": "medium", "t": "Active vs Passive Devices", "exp": ["Copy cannot block original; only inline path can block."]},
+    {"id": 46, "q": "Best one-pass decision order is:", "opts": ["UTM then CIA then active", "Physical/Technical/Admin plus CIA/AAA plus active/passive plus bundle vs deepen vs trust", "Technical only", "Administrative only"], "c": 1, "d": "medium", "t": "UTM & Zero Trust", "exp": ["Place vs box vs rule, then goal, then active vs passive, then bundle vs deepen vs trust."]},
+    {"id": 47, "q": "Repeated human phishing best fixed long-term by:", "opts": ["More technical boxes only", "Administrative training plus process", "More cameras", "Repeater"], "c": 1, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Human failure needs governance and human fix — administrative."]},
+    {"id": 48, "q": "UTM is best for:", "opts": ["Largest enterprise best-of-breed always", "SMB or mid where one box and shared intel wins on simplicity", "No one", "Only physical"], "c": 1, "d": "medium", "t": "UTM & Zero Trust", "exp": ["One box ease and shared logs beats standalone glue for small/mid."]},
+    {"id": 49, "q": "Brand-new trust wording never trust always verify — answer:", "opts": ["UTM", "NGFW", "Zero Trust", "WAF"], "c": 2, "d": "medium", "t": "UTM & Zero Trust", "exp": ["Textbook Zero Trust definition sentence."]},
+    {"id": 50, "q": "IPsec tunnel that encrypts site-to-site is enforced by which type and activity?", "opts": ["Administrative passive", "Technical active", "Physical passive", "Negligible"], "c": 1, "d": "medium", "t": "Active vs Passive Devices", "exp": ["Technical box that enforces encryption and can drop — active technical."]},
+    {"id": 51, "q": "Risk assessment document that scopes controls is:", "opts": ["Physical", "Technical", "Administrative", "None"], "c": 2, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Governance analysis — administrative."]},
+    {"id": 52, "q": "VPN endpoint that encrypts remote access is deployed as:", "opts": ["Passive", "Active technical", "Physical only", "Administrative only"], "c": 1, "d": "medium", "t": "Active vs Passive Devices", "exp": ["Enforces encryption and access — active technical even though it enables availability."]},
+    {"id": 53, "q": "Which goal needs redundancy dual power plus RAID plus dual WAN?", "opts": ["Confidentiality", "Integrity", "Availability", "Non-repudiation"], "c": 2, "d": "medium", "t": "CIA Triad", "exp": ["Keeping service up — availability."]},
+    {"id": 54, "q": "WAP as seen in this topic vs WAP the old phone protocol — disambiguation:", "opts": ["Identical always", "Wireless Access Point is the topic device; old phone WAP is Wireless Application Protocol — context decides", "Not a collision", "Only one exists"], "c": 1, "d": "medium", "t": "Network Security Types (Physical/Technical/Admin)", "exp": ["Same letters different meanings; context decides."]},
+    {"id": 55, "q": "UTM coordinate system in maps vs UTM appliance — disambiguation:", "opts": ["Identical", "Maps version is coordinates; appliance is bundle — context decides", "Not a collision", "Only maps exists"], "c": 1, "d": "medium", "t": "UTM & Zero Trust", "exp": ["Same letters different meanings; context decides."]},
+    {"id": 56, "q": "CCTV that only records and never stops a person is:", "opts": ["Active", "Passive", "Both", "Neither"], "c": 1, "d": "easy", "t": "Active vs Passive Devices", "exp": ["Records only — passive."]},
+    {"id": 57, "q": "Guard who checks a badge and stops tailgating is:", "opts": ["Passive", "Active", "Neither", "Administrative only"], "c": 1, "d": "easy", "t": "Active vs Passive Devices", "exp": ["Stops and enforces — active (and physical)."]},
+    {"id": 58, "q": "Just-in-time access belongs to which modern model?", "opts": ["UTM", "NGFW", "Zero Trust", "Passive IDS"], "c": 2, "d": "medium", "t": "UTM & Zero Trust", "exp": ["Ephemeral least-privilege grants — Zero Trust."]},
+    {"id": 59, "q": "NGFW beyond stateful can do:", "opts": ["Only packet filter", "Deep L2-L7 plus IPS plus app plus user plus TLS inspection", "Only hub flooding", "Only modem bridging"], "c": 1, "d": "medium", "t": "UTM & Zero Trust", "exp": ["L2-L7 plus IPS, app ID and user ID with TLS inspection."]},
+    {"id": 60, "q": "Logging who did what when belongs to:", "opts": ["Authentication", "Authorization", "Accounting/Auditing", "Availability"], "c": 2, "d": "easy", "t": "CIA Triad", "exp": ["Who did what — Accounting/Auditing."]}
+  ]
+}

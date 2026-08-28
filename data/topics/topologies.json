@@ -1,0 +1,507 @@
+{
+  "id": "topologies",
+  "title": "Network Topologies",
+  "icon": "TP",
+  "category": "networking-cloud",
+  "color": "#0891B2",
+  "subtopics": [
+    "Star, Bus, Ring",
+    "Mesh & Hybrid",
+    "Topology Trade-offs",
+    "LAN/MAN/WAN"
+  ],
+  "estimatedHours": 4,
+  "readingSections": [
+    {
+      "id": "star-bus-ring",
+      "title": "Star, Bus and Ring (the classic three)",
+      "type": "concept",
+      "quickSummary": "Star: all nodes to a central hub/switch (one cable per node, central point of failure, easy to add). Bus: single shared cable with terminators (one backbone, one break kills all, collisions, cheap). Ring: circle where token or frames circle (equal access, one break can kill, hard to add).",
+      "content": [
+        "Star is the modern default. Every host has its own cable to a central device — today that is a switch (historically a hub). Failure of one cable affects only that host; failure of the centre affects every host, so the centre is the single point of failure. Adding or removing a host is one cable with no disruption to others. Star uses the least contention and, with a switch, no collisions per port. If the exam shows cheap adds and isolates faults, answer star.",
+        "Bus is the 10BASE2 era shark-fin cable. One shared backbone with taps and terminators at both ends. Any transmission travels the whole backbone. Pros: cheap, needs little cable. Cons: one backbone break, one missing terminator, or one faulty tap can bring the whole LAN down; adding a host can disrupt the bus; every host shares one collision domain so collisions are frequent; hard to locate faults. Exam phrase backbone or terminators almost always means bus.",
+        "Ring is a closed loop. Historically Token Ring (802.5) passed a token around; without the token you cannot transmit, so access is orderly and there are no collisions under normal operation. Modern physical star can still be a logical ring because frames circulate logically. One cable or NIC break can bring the ring down unless a dual ring or wrap-around is provisioned. Adding a node is disruptive. Exam phrase token almost always means ring.",
+        "Quick selector. Want easy management and isolated faults and easy moves/adds/changes — star. Want cheapest cable at the cost of fragile backbone — bus. Want deterministic token access on a loop — ring. Most papers label one of these three diagrams and ask the name — count the centre: centre star, line bus, circle ring.",
+        "Collisions vs token control. Bus shares one collision domain like a hub. Ring with token avoids collisions by permission-to-send. Star with a switch has one collision domain per port, so effectively no shared collisions."
+      ],
+      "subsections": [
+        {
+          "title": "Physical vs logical — why a star can be a ring",
+          "content": "Physical is cables, logical is how frames travel. Modern Token Ring was physically a star (cables to a MAU) but logically a ring because the token circled through the hub. AXIS rarely traps on this, but it explains why a diagram can look like a star yet the text says ring — trust the logic, not just the cables."
+        },
+        {
+          "title": "Terminators and token in one line",
+          "content": "Bus needs terminators to absorb the signal at both ends, otherwise it reflects. Ring needs a token (or a circulating frame) to grant send permission. If options mention terminators pick bus; if they mention token pick ring."
+        }
+      ],
+      "quickRevision": [
+        "Star: centre switch/hub, one cable per host, centre is SPOF, easy adds, isolated faults, best for modern offices.",
+        "Bus: single backbone plus terminators, cheap but one break kills all, one shared collision domain, hard to locate faults, needs terminators.",
+        "Ring: closed circle, token grants send, no collisions when healthy, one break can bring down unless dual, hard to add.",
+        "Diagram clue: centre = star, line = bus, circle = ring (watch physical vs logical trap).",
+        "Terminator belongs to bus, token belongs to ring."
+      ],
+      "tricks": [
+        "Any answer that says bus is easy to add without disruption is wrong — that is star.",
+        "Any answer that says ring has many collision domains is wrong — token ring avoids collisions by permission.",
+        "If options show star with a hub vs star with a switch, the switch version is modern star — collisions per port, not shared."
+      ],
+      "patterns": [
+        "'One cable per host to a centre, isolated faults, easy adds?' -> Star.",
+        "'Single backbone with terminators, one break kills all?' -> Bus.",
+        "'Circle where token circulates?' -> Ring.",
+        "'Terminator at both ends?' -> Bus. 'Token?' -> Ring."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS NQT — classic three, every year",
+          "question": "Name this topology from a diagram or description (centre/p backbone/circle)?",
+          "approach": "Centre star, line with terminators bus, circle with token ring."
+        },
+        {
+          "source": "Gate / placement — bus vs ring traits",
+          "question": "Which topology needs terminators / token / is the modern default?",
+          "approach": "Terminators bus, token ring, modern default star."
+        }
+      ],
+      "companyNote": "1 diagram or description question per paper on star vs bus vs ring, plus terminator vs token."
+    },
+    {
+      "id": "mesh-hybrid",
+      "title": "Mesh, Hybrid and Partial vs Full",
+      "type": "concept",
+      "quickSummary": "Mesh: every node connects to many others. Full mesh links every pair, partial leaves some out for cost. Very reliable and fast alternate paths but very expensive (n*(n-1)/2 links). Hybrid mixes two or more topologies (e.g. star-bus or star-ring campus).",
+      "content": [
+        "Mesh connects nodes to many peers instead of one centre or one backbone. In a full mesh every node has a direct link to every other node. For n nodes the number of links is n times (n minus 1) divided by 2, and each node has degree n minus 1. With 4 nodes that is 6 links; with 5, 10; with 6, 15 — it grows fast and that is why full mesh is rare beyond small backbones or data-centre spines.",
+        "Partial mesh is the practical compromise: connect only where reliability or latency demands it, leaving other pairs reached via hops. The campus or metro core might be full mesh among core routers while the edge stays star. The exam loves the formula above and asks for links or degree — plug in n and compute, or reverse-solve n from links.",
+        "Hybrid is literally what it says — combine two or more topologies in one design. The most common AXIS hybrid is a star where two floors are stars and a bus or ring or point-to-point link ties the stars together at the core; or a mesh core with star access. Any diagram that is clearly a star of stars plus a backbone between centres is a hybrid star-bus or star-ring — answer hybrid.",
+        "Point-to-point is a degenerate one-to-one link between two nodes. It appears as the inter-centre link inside a hybrid and also as a WAN link between two routers. Do not confuse mesh with point-to-point — mesh is many such links, point-to-point is one.",
+        "Reliability vs cost is the exam point. Mesh gives alternate paths so one or even a few links or nodes can fail and traffic still reroutes, but cable and ports cost climbs quadratically. Star is cheap and reliable enough when the centre is dual-homed. Pick mesh only where the requirement says very high availability outweighs cost — backbone, not office floor."
+      ],
+      "subsections": [
+        {
+          "title": "The count formula — memorize it",
+          "content": "Full mesh links = n*(n-1)/2. Each node degree = n-1. With n=4 -> 6 links; n=5 -> 10; n=6 -> 15; n=8 -> 28. The exam often asks links given n or n given links — solve the quadratic n^2 - n -2*links = 0."
+        },
+        {
+          "title": "Why no one meshes everything",
+          "content": "Beyond about 6-8 nodes full mesh becomes prohibitively expensive and hard to manage (every change needs many updates). Real networks stay partial: mesh where it matters (core), star where cost matters (access)."
+        }
+      ],
+      "quickRevision": [
+        "Full mesh every pair: links = n*(n-1)/2, degree = n-1. Partial mesh: some pairs via hops for cost.",
+        "Mesh is most reliable and gives fastest alternate paths, but cost grows quadratically — use for backbone/core.",
+        "Hybrid mixes at least two topologies — e.g. mesh core plus star floors, star of stars plus backbone.",
+        "Point-to-point is one link between two nodes; mesh is many such links.",
+        "Exam diagrams that are a star of stars tied by a backbone are hybrid star-bus/ring."
+      ],
+      "tricks": [
+        "If options say hybrid means only mixing physical and logical, it is wrong — hybrid means mixing topology types (star+bus, etc.). Physical vs logical is a different mixed concept.",
+        "Do not attach terminators to mesh — terminators belong to bus only.",
+        "Any answer that says partial mesh links = n*(n-1)/2 is counting full mesh, not partial — partial is fewer."
+      ],
+      "patterns": [
+        "'Every node to every other?' -> Full mesh. 'Many but not every pair?' -> Partial mesh. 'Star floors tied by a backbone?' -> Hybrid.",
+        "'Links for n in full mesh?' -> n*(n-1)/2. 'Degree per node?' -> n-1.",
+        "'Most reliable but most expensive?' -> Full mesh.",
+        "'Backbone mesh, access star?' -> Hybrid."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — mesh counts",
+          "question": "Links or degree in a full mesh given n (or solve for n)?",
+          "approach": "Plug links = n*(n-1)/2. For n=6 answer 15; reverse: 28 links solves n=8."
+        },
+        {
+          "source": "Wipro / TCS — hybrid identification",
+          "question": "What is a hybrid topology / identify this hybrid diagram?",
+          "approach": "Any mix of two or more pure types is hybrid — name the mix (star-bus, etc.)."
+        }
+      ],
+      "companyNote": "1 question per paper is either mesh link count or hybrid identification."
+    },
+    {
+      "id": "tradeoffs",
+      "title": "Trade-offs, Fault Tolerance, Cost and Management",
+      "type": "concept",
+      "quickSummary": "Star isolates faults to one link/host but centre is SPOF (fix with dual). Bus one break or terminator loss kills all. Ring one break can loop down unless dual-wrap. Mesh survives many failures but costs n*(n-1)/2. Cost low: bus, high: mesh. Management easy: star/hybrid.",
+      "content": [
+        "Fault isolation decides who finds and fixes outages fastest. Star isolates to the one link/host or the centre — clear boundaries. Bus smears the fault across the whole backbone because one break or missing terminator reflects and mimics noise everywhere, so fault location is hard. Ring circles the break to everyone on the loop, so isolation is also hard without wrap. Mesh isolates well because alternate paths exist — failure is rerouted, not total.",
+        "Single Point of Failure (SPOF) is the other axis. Bus backbone is a SPOF, ring is effectively a SPOF (one loop), star centre is a SPOF, full mesh has no SPOF, partial mesh has few. The exam loves: 'Which topology has no SPOF?' -> full mesh (with the cost caveat). 'How do you fix star's SPOF?' -> dual centre, dual-homed hosts, redundant links — still a hybrid with mesh flavour at the centre.",
+        "Cost: cheapest to wire is bus (one cable plus taps), then ring (loop), then star (one per host but short runs), then mesh (quadratic). Operational cost flips: star/hybrid cheapest to manage and expand; mesh expensive to manage because every change can touch many links. AXIS may write most cost-effective for an office and expect star, not bus, because office reliability outweighs the one-time cable saving.",
+        "Scalability and adds: star scales by adding one cable to the centre with no disruption; mesh scales with many new links; bus and ring are disruptive to add because you must cut or re-join the backbone or loop. That is why offices have not used bus or token ring for two decades — modern Ethernet is star to a switch.",
+        "Exam table that pastes these rows: easiest to add — star; most reliable — full mesh; single point of failure — bus/ring/star centre; needs terminators — bus; gives token permission — ring; quadratic links — mesh. Hold this table and every trade-off MCQ becomes a cell lookup."
+      ],
+      "subsections": [
+        {
+          "title": "How to kill a SPOF without meshing everything",
+          "content": "Dual centres and dual-homed hosts fix star's SPOF at the centre without full mesh. Add a parallel backbone or a second ring for wraps. The result is a hybrid that the exam still calls hybrid, not pure star — answer accordingly even when the diagram mostly looks like a star."
+        },
+        {
+          "title": "Why bus lost and star won",
+          "content": "Bus was cheap cable but fragile and shared collisions. Star with a switch gives per-port collisions, full-duplex, easy VLANs, and isolated faults for only slightly more cable. That value won, so every modern LAN diagram is a star unless labelled otherwise."
+        }
+      ],
+      "quickRevision": [
+        "Isolation best: star per link, mesh via alternates. Worst: bus whole backbone, ring loop.",
+        "SPOF: bus/ring/centre yes, full mesh no, partial few. Fix star with dual centre/homing (still hybrid).",
+        "Cost wiring low->high: bus, ring, star, mesh (quadratic). Operational low: star/hybrid, high: mesh.",
+        "Scaling easy: star. Disruptive: bus and ring need cut and rejoin.",
+        "Modern default: star to a switch; hybrid for campus."
+      ],
+      "tricks": [
+        "Any answer that says bus is most reliable is wrong — bus is among the least reliable once installed.",
+        "Do not confuse collision SPOF with broadcast SPOF — mesh survives both; star centre fixes both with dual.",
+        "If options offer hybrid as a choice alongside pure types, a star-of-stars with a backbone is hybrid, not pure star."
+      ],
+      "patterns": [
+        "'Single point of failure?' -> Bus backbone, ring loop, star centre (one). Full mesh none.",
+        "'Most reliable / survives many failures?' -> Full mesh.",
+        "'Easiest to add a host?' -> Star.",
+        "'Cheapest cable but fragile?' -> Bus. 'Cheapest overall for an office?' -> Star (not bus) due to management."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / Infosys — trade-off tables",
+          "question": "Which topology is most/least reliable / cheapest / easiest to add / has a SPOF?",
+          "approach": "Run the trade-off table: mesh reliable expensive, star easy, bus fragile with terminators."
+        },
+        {
+          "source": "Wipro / TCS — failure scenario",
+          "question": "One cable breaks — which topologies stay partly up vs fully down?",
+          "approach": "Star loses one host only, bus and ring likely collapse, mesh reroutes."
+        }
+      ],
+      "companyNote": "Trade-off rows appear as a direct table or as a one-break scenario. Memorize the row."
+    },
+    {
+      "id": "lan-man-wan",
+      "title": "LAN, MAN, WAN, PAN, WLAN, SAN and Campus",
+      "type": "concept",
+      "quickSummary": "PAN ~10 m around a person (Bluetooth, tether). LAN one site/building/campus with low latency and high speed, own gear. MAN city scale fibre across sites. WAN across cities/countries via leased lines/MPLS/internet VPN, high latency. WLAN is wireless LAN (802.11). SAN is storage network. Campus = linked LANs treated as one.",
+      "content": [
+        "PAN (Personal Area Network) is smallest: around one person at about 10 metres. Bluetooth between phone and earphones, USB tether, hotspot to a laptop. Not routed beyond the person. If the question says Bluetooth or personal hotspot, answer PAN.",
+        "LAN (Local Area Network) is one site — a building, floor, or campus of nearby buildings linked by the organization's own switches, APs and fibres. High speed (1G/10G on the wire, hundreds of Mbps on WiFi 5/6/7), low latency (often under 1 ms inside), and fully administered by the owner. Every department subnet in a building is a LAN; a campus backbone ties LANs together and is still called a campus LAN even though it spans buildings.",
+        "MAN (Metropolitan Area Network) is city scale: links several sites across a metro on carrier fibre or Ethernet services. Bigger than LAN, smaller than WAN. Provider-provisioned but often dedicated for one organization (a bank linking five city offices). Lower latency than a WAN but higher than a single-building LAN.",
+        "WAN (Wide Area Network) spans cities, states, countries and interconnects LANs. Built over leased lines, carrier MPLS, SD-WAN over internet, or VPN over internet. Crosses provider boundaries, high latency (tens to hundreds of ms), and you do not own the core. The internet itself is the largest public WAN. WLAN is not WAN — it is a Wireless LAN (802.11 inside one site). That single-letter trap flips many marks.",
+        "SAN (Storage Area Network) is high-speed fibre or iSCSI dedicated to storage — hosts vs disk arrays, not users vs internet. It can sit inside a building or campus but is a specialized fabric. Campus topology in AXIS phrasing means a building or campus where LANs are linked via a distribution and core — treat it as LAN plus campus backbone, not MAN just because it is bigger than one floor."
+      ],
+      "subsections": [
+        {
+          "title": "How to sort a case in 5 seconds",
+          "content": "Ask distance plus ownership. Person-scale Bluetooth -> PAN. One site you own and can pull cables -> LAN. Multiple city sites on carrier fibre -> MAN. Cross-city/country via carrier or internet VPN -> WAN. Wireless inside one LAN -> WLAN. Storage fabric -> SAN."
+        },
+        {
+          "title": "Campus vs MAN — the AXIS wording trap",
+          "content": "Campus of nearby buildings linked by your own fibres is still LAN/Campus, not MAN. MAN needs carrier metro transport between sites that are too far for your own fibres or share provider infrastructure. AXIS uses the word campus to mean LAN that spans buildings."
+        }
+      ],
+      "quickRevision": [
+        "PAN ~10 m personal (Bluetooth, hotspot). LAN one site/building/campus, own gear, high speed low latency.",
+        "MAN city scale fibre across sites, provider metro. WAN across cities/countries via leased/MPLS/VPN, high latency, internet is the biggest WAN.",
+        "WLAN = Wireless LAN (802.11) — not WAN. SAN = storage fabric (Fibre/iSCSI).",
+        "Campus = linked LANs treated as one — still LAN family, not MAN.",
+        "Sort by distance plus ownership."
+      ],
+      "tricks": [
+        "WLAN vs WAN: Wireless LAN vs Wide Area Network — one-letter trap. If it says WiFi, it is WLAN/LAN, not WAN.",
+        "SAN vs LAN: Storage fabric vs user LAN — different fabrics even in the same building.",
+        "Campus LAN can be bigger than a single building and is still a LAN in vendor phrasing."
+      ],
+      "patterns": [
+        "'Bluetooth earphones?' -> PAN. 'One building floor?' -> LAN. 'Five city offices on carrier fibre?' -> MAN. 'Offices across country via MPLS/VPN?' -> WAN.",
+        "'802.11 inside a building?' -> WLAN (still a LAN). 'Fibre network for disk arrays?' -> SAN.",
+        "'Campus backbone tying building LANs?' -> Campus LAN, not MAN."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS NQT — LAN/MAN/WAN, every year",
+          "question": "Which network type given a span and ownership description?",
+          "approach": "PAN personal, LAN site, MAN city, WAN wide, WLAN wireless LAN, SAN storage."
+        },
+        {
+          "source": "Wipro — campus vs MAN trap",
+          "question": "Is a campus of three nearby buildings on own fibre a MAN?",
+          "approach": "Still Campus LAN. MAN needs carrier metro transport, not just own campus fibre."
+        }
+      ],
+      "companyNote": "LAN/WAN/MAN appears as either a definition or a case scenario. WLAN vs WAN is the classic swap."
+    },
+    {
+      "id": "compare-mcq",
+      "title": "Comparison, Counting and Scenario Strategy (exam speed)",
+      "type": "concept",
+      "quickSummary": "Read the stem for centre vs backbone vs circle vs every-pair. Count mesh with n*(n-1)/2. Decide reliability vs cost. Name LAN/MAN/WAN by distance plus ownership. Pick star for an office when the paper says cheapest overall — star wins on manageability even if bus wires cheaper.",
+      "content": [
+        "Step for a topology name: look for a centre (star), a single backbone with terminator wording (bus), a circle or token wording (ring), every-pair wording or many diagonals (mesh), two floors tied by a backbone (hybrid). Decide in that order and you almost never miss.",
+        "Step for a count: full mesh links = n*(n-1)/2, degree = n-1. Plug test numbers 4->6, 5->10, 6->15, 8->28 to sanity-check; reverse-solve n by solving n^2 - n -2*links = 0 when the paper gives links.",
+        "Step for a failure scenario: one host cable fails -> star loses one host, others fine. Backbone breaks -> bus down. One node or cable breaks on single ring -> likely down unless dual wrap. One or two links fail on full mesh -> traffic reroutes, no outage. Pick the answer that matches scope: isolated vs total vs rerouted.",
+        "Step for LAN vs MAN vs WAN: read distance plus ownership. Personal Bluetooth -> PAN. Your switches and APs in one site or campus you own -> LAN/Campus. Carrier metro fibre across a city between your sites -> MAN. Leased/MPLS/internet VPN across cities or countries -> WAN. WiFi inside LAN -> WLAN, not WAN. Fibre for storage -> SAN.",
+        "Speed-vs-marks rule: if the question says most cost-effective for an office LAN, answer star even though bus needs less cable. Total cost includes fault isolation and growth; star wins there. That wording trap flips bus-would-be-cheaper on cable alone."
+      ],
+      "subsections": [
+        {
+          "title": "One failure answer pattern that repeats",
+          "content": "Star with a dual centre survives centre loss — otherwise centre is SPOF. Bus with a backbone SPOF collapses on one break. Ring with single loop collapses on one break — dual wraps survive one. Mesh survives many. AXIS loves to test that SPOF-remedy still counts as hybrid."
+        },
+        {
+          "title": "Quick reverse check for mesh links",
+          "content": "Given 28 links in full mesh, n solves n^2 - n - 56 = 0 -> n=8. Given degree 5, n=6. Learn the 4->6, 5->10, 6->15, 7->21, 8->28 chain so reverse clicks instantly."
+        }
+      ],
+      "quickRevision": [
+        "Name: centre star, backbone terminators bus, circle token ring, every-pair mesh, mixed floors hybrid.",
+        "Count: links n*(n-1)/2, degree n-1. Chain 4->6, 5->10, 6->15, 8->28.",
+        "Failure: star one host, bus total, ring likely total, mesh reroute.",
+        "Scope: PAN personal, LAN site, MAN city, WAN wide, WLAN wireless LAN, SAN storage.",
+        "Office cheapest overall = star, not bus."
+      ],
+      "tricks": [
+        "If options include both star and hybrid for a star-of-stars with a backbone linking the stars, pick hybrid.",
+        "Mesh links is exactly n*(n-1)/2 only for full mesh — partial mesh has fewer, the exam knows the difference.",
+        "SPOF-remedied star with dual centres is hybrid — do not stubbornly keep the star label."
+      ],
+      "patterns": [
+        "'Every node linked to every other?' -> Full mesh and count with formula. 'Many-to-many but not every pair?' -> Partial mesh.",
+        "'Mix of two types?' -> Hybrid (name the mix).",
+        "'Which segments broadcasts vs collisions?' -> Router/bridging vs repeaters analogy — topology inherits same split.",
+        "'Wireless inside a building vs across country?' -> WLAN vs WAN."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS mixed — 1 diagram plus 1 count plus 1 case",
+          "question": "Identify topology plus compute mesh links plus classify LAN/MAN/WAN case?",
+          "approach": "Name by shape, count by n*(n-1)/2, classify by distance plus ownership."
+        },
+        {
+          "source": "Infosys / Wipro — scenario",
+          "question": "Which topology survives a single cable failure and which has no SPOF?",
+          "approach": "Mesh survives and none except full mesh loses its SPOF; star with dual loses SPOF but is hybrid."
+        }
+      ],
+      "companyNote": "Mixed set appears almost every paper — 1 diagram, 1 mesh count, 1 reliable/cheapest/SPOF, 1 scope case."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "star-bus-ring",
+      "title": "Star vs Bus vs Ring Trait Table",
+      "formula": {
+        "latex": "Star:centre+isolated+easy \\;|\\; Bus:backbone+terminators+one\\;break\\;kills+shared\\;collision \\;|\\; Ring:circle+token+equal\\;access",
+        "text": "Star centre isolated easy | Bus backbone terminators one break kills shared collision | Ring circle token equal access"
+      },
+      "whenToUse": "Any 'which topology has X?' among the classic three or a diagram to name.",
+      "explanation": [
+        "Star: centre hub/switch, one cable per node, centre is SPOF, easy to add, isolated faults, modern default.",
+        "Bus: single backbone with terminators at both ends, one backbone break or missing terminator kills all, one shared collision domain, cheap cable but fragile and hard to locate faults, needs terminators.",
+        "Ring: closed loop, token grants send permission, no shared collisions when healthy, one break can bring down unless dual-wrap, hard to add, terminators not used.",
+        "Access: bus shared contention, ring token permission, star switched per-port no shared contention.",
+        "Physical vs logical: star physically can be a ring logically (token ring via MAU) — trust the framing, not just cables."
+      ],
+      "example": {
+        "prompt": "Single backbone where terminators absorb the signal at both ends — which topology?",
+        "steps": [
+          "Terminators belong only to bus.",
+          "Single backbone with terminators is the textbook bus description.",
+          "Token belongs to ring, centre belongs to star — not this."
+        ],
+        "answer": "Bus"
+      },
+      "memoryTip": "Centre star, line bus, circle ring. Terminator bus, token ring, star with switch is the modern office.",
+      "commonMistake": "Calling bus easy to add. Bus and ring are disruptive to add; star is easy."
+    },
+    {
+      "id": "mesh-hybrid",
+      "title": "Mesh Count and Hybrid Mix",
+      "formula": {
+        "latex": "Full\\;mesh\\;links=\\frac{n(n-1)}{2},\\;degree=n-1 \\;|\\; Partial\\;fewer \\;|\\; Hybrid=at\\;least\\;two\\;types\\;mixed",
+        "text": "Full mesh links n*(n-1)/2 degree n-1 | Partial fewer | Hybrid at least two types mixed"
+      },
+      "whenToUse": "Any mesh link or degree count, or a hybrid identification or point-to-point vs mesh MCQ.",
+      "explanation": [
+        "Full mesh every pair: count exactly n*(n-1)/2. Each node degree n-1. Examples: n=4 ->6, 5->10, 6->15, 8->28.",
+        "Partial mesh: fewer links — not every pair directly, rest via hops; cheaper, still reliable.",
+        "Hybrid: mixing at least two pure types (star+bus, star+ring, mesh core plus star access). Star of stars tied by a backbone is hybrid star-bus/ring.",
+        "Point-to-point is one link between two nodes; mesh is many such links. Full mesh has no SPOF where each other topology does.",
+        "Cost: mesh highest wiring cost due to quadratic growth; most reliable with many alternate paths."
+      ],
+      "example": {
+        "prompt": "Full mesh among 6 routers — links and degree per router?",
+        "steps": [
+          "Links = n*(n-1)/2 = 6*5/2 = 15.",
+          "Degree = n-1 = 5 per router (each connects to five peers).",
+          "Partial would have fewer than 15 by definition."
+        ],
+        "answer": "15 links, degree 5 per router"
+      },
+      "memoryTip": "n choose 2 for mesh links — combinations of pairs. Chain 4->6, 5->10, 6->15, 8->28 to reverse instantly.",
+      "commonMistake": "Using n*(n-1)/2 for partial mesh or for point-to-point. It is full mesh only."
+    },
+    {
+      "id": "tradeoffs",
+      "title": "Trade-off Table: Reliability, SPOF, Cost, Management",
+      "formula": {
+        "latex": "Reliable:\\;mesh\\;\\; SPOF:\\;bus/ring/centre\\;full\\;mesh\\;none \\;|\\; Cost\\;wire:\\;bus<ring<star<mesh \\;|\\; Easy:\\;star",
+        "text": "Reliable mesh | SPOF bus/ring/centre full mesh none | Cost wire bus < ring < star < mesh | Easy star"
+      },
+      "whenToUse": "Any 'most or least reliable, cheapest, easiest, or SPOF?' comparison MCQ or one-break scenario.",
+      "explanation": [
+        "Most reliable: full mesh (many alternate paths). Least reliable: bus backbone and single ring among pure star/bus/ring.",
+        "Single Point of Failure: bus backbone, ring loop, star centre are SPOF. Full mesh has none; partial has few; star with dual fixes SPOF but is then hybrid.",
+        "Wiring cost low to high: bus, ring, star, mesh (quadratic). Operational and growth cost low: star/hybrid, high: mesh.",
+        "Fault isolation easy: star per link and mesh via reroute. Hard: bus whole backbone, ring entire loop.",
+        "Office cheapest overall is star, not bus, because bus fault cost and growth cost dominate."
+      ],
+      "example": {
+        "prompt": "Office LAN asked as most cost-effective overall — bus or star?",
+        "steps": [
+          "Cable cheapest is bus, but operational and fault plus growth cost favour star.",
+          "Overall cost includes fault isolation and expansion, not just cable metres.",
+          "Answer star (with switch) — the modern default and exam answer for office cost-effective."
+        ],
+        "answer": "Star"
+      },
+      "memoryTip": "Reliable mesh, fragile bus, star is the safe office. SPOF is Backbone/Ring/Centre; Mesh none. Cheapest cable bus, cheapest office star.",
+      "commonMistake": "Picking bus as cheapest for an office. Cheapest cable is not cheapest office."
+    },
+    {
+      "id": "lan-man-wan",
+      "title": "LAN, MAN, WAN, PAN, WLAN, SAN, Campus Split",
+      "formula": {
+        "latex": "PAN\\;\\sim10m\\; \\;|\\; LAN\\;one\\;site\\;own \\;|\\; MAN\\;city\\;carrier \\;|\\; WAN\\;across\\;cities\\;leased/MPLS/VPN \\;|\\; WLAN=WiFi\\;LAN \\;|\\; SAN=storage",
+        "text": "PAN ~10m | LAN one site own | MAN city carrier | WAN across cities leased/MPLS/VPN | WLAN WiFi LAN | SAN storage"
+      },
+      "whenToUse": "Any scope classification MCQ by distance plus ownership, especially WLAN vs WAN or campus vs MAN.",
+      "explanation": [
+        "PAN ~10 m personal (Bluetooth, tether). LAN one site/building/campus with own gear, high speed, low latency.",
+        "MAN city scale fibre across sites on carrier metro. WAN across cities/countries via leased lines/MPLS/internet VPN, high latency, internet is biggest public WAN.",
+        "WLAN is a Wireless LAN (802.11) — not WAN. SAN is a storage fabric (Fibre/iSCSI) — not user LAN.",
+        "Campus ties LANs of nearby buildings with own fibres — still LAN/Campus, not MAN just because bigger than one floor.",
+        "Sort by distance plus who owns the transport: you own LAN/Campus, carrier owns MAN/WAN."
+      ],
+      "example": {
+        "prompt": "Bank links five city offices on carrier metro fibre — network type?",
+        "steps": [
+          "City scale across a metro, within one metropolitan area.",
+          "Not one site LAN, not cross-country WAN.",
+          "Carrier fibre across the city is the textbook MAN."
+        ],
+        "answer": "MAN"
+      },
+      "memoryTip": "PAN Personal, LAN Local, MAN Metropolitan, WAN Wide, WLAN Wireless LAN, SAN Storage — initial letters tell the scope.",
+      "commonMistake": "Answering WAN for WiFi inside a building or campus fibre tying nearby buildings — both are LAN family."
+    }
+  ],
+  "practiceProblems": {
+    "star-bus-ring": [
+      {"q": "All nodes each have a cable to a central switch — topology?", "opts": ["Bus", "Star", "Ring", "Mesh"], "c": 1, "s": ["One per host to centre is the textbook star."], "a": "Star"},
+      {"q": "Single shared backbone with terminators at both ends — topology?", "opts": ["Star", "Bus", "Ring", "Mesh"], "c": 1, "s": ["Backbone plus terminators absorbing the signal is bus."], "a": "Bus"},
+      {"q": "Closed loop where a token circulates to grant sending — topology?", "opts": ["Bus", "Star", "Ring", "Mesh"], "c": 2, "s": ["Circle with token permission is ring (Token Ring)."], "a": "Ring"},
+      {"q": "Which device wording signals a bus MCQ?", "opts": ["Token", "Terminator", "Mesh", "Hybrid"], "c": 1, "s": ["Terminator absorbs end-of-bus signal — only bus."], "a": "Terminator"},
+      {"q": "Which wording signals a ring MCQ?", "opts": ["Terminator", "Token", "Mesh", "Broadcast"], "c": 1, "s": ["Token grants sending on a ring — orderly access, no shared collisions."], "a": "Token"},
+      {"q": "Modern default office topology is:", "opts": ["Bus", "Ring", "Star to a switch", "Single ring"], "c": 2, "s": ["Modern Ethernet is star to a switch — per-port collisions, full-duplex, VLANs."], "a": "Star to a switch"},
+      {"q": "Bus collision domain is:", "opts": ["One per port", "One shared for the whole backbone", "One per VLAN", "None"], "c": 1, "s": ["One shared backbone like a hub."], "a": "One shared for the whole backbone"},
+      {"q": "Token access avoids:", "opts": ["Routing", "Shared collisions by permission", "VLANs", "Mesh costs"], "c": 1, "s": ["Only the holder of the token transmits — orderly, no collisions when healthy."], "a": "Shared collisions by permission"},
+      {"q": "Easiest and least disruptive to add a host — topology?", "opts": ["Bus", "Star", "Ring", "Hybrid only"], "c": 1, "s": ["Star needs one cable to centre with no cut. Bus must tap the backbone, ring must rejoin the loop."], "a": "Star"},
+      {"q": "Physical star whose frames logically circulate as a loop is:", "opts": ["Physical bus", "Physical star logical ring", "Pure mesh", "Pure bus"], "c": 1, "s": ["Historic Token Ring was physically a star to a MAU but logically a ring."], "a": "Physical star logical ring"}
+    ],
+    "mesh-hybrid": [
+      {"q": "Every node directly links to every other node — topology?", "opts": ["Star", "Ring", "Full mesh", "Bus"], "c": 2, "s": ["Every pair directly is the textbook full mesh."], "a": "Full mesh"},
+      {"q": "Full mesh links for n=4:", "opts": ["4", "6", "8", "12"], "c": 1, "s": ["n*(n-1)/2 = 4*3/2 = 6."], "a": "6"},
+      {"q": "Full mesh links for n=6:", "opts": ["12", "15", "18", "30"], "c": 1, "s": ["6*5/2 = 15."], "a": "15"},
+      {"q": "Full mesh degree per node for n=6:", "opts": ["3", "4", "5", "6"], "c": 2, "s": ["Degree = n-1 = 5 links out of each router."], "a": "5"},
+      {"q": "Known 28 links in a full mesh — n?", "opts": ["6", "7", "8", "10"], "c": 2, "s": ["n*(n-1)/2 = 28 solves n=8 (8*7/2=28). Chain 4->6 5->10 6->15 8->28."], "a": "8"},
+      {"q": "Mesh where some pairs are reached via hops via others for cost — variant?", "opts": ["Full mesh", "Partial mesh", "Bus", "Ring"], "c": 1, "s": ["Many but not every pair directly is partial mesh — practical compromise."], "a": "Partial mesh"},
+      {"q": "Point-to-point is:", "opts": ["One link between two nodes", "A circle", "A backbone", "A mix of many types"], "c": 0, "s": ["One-to-one link. Mesh is many such links plus others."], "a": "One link between two nodes"},
+      {"q": "Mix of star floors tied by a backbone between centres — topology?", "opts": ["Pure star", "Pure bus", "Hybrid star-bus/ring", "Pure mesh"], "c": 2, "s": ["Two or more pure types mixed is hybrid. Star floors tied by a backbone is hybrid star-bus or star-ring."], "a": "Hybrid star-bus/ring"},
+      {"q": "Most reliable but most expensive in pure ranking:", "opts": ["Star", "Bus", "Full mesh", "Ring"], "c": 2, "s": ["Mesh many alternates survives many failures, but cost quadratic."], "a": "Full mesh"},
+      {"q": "Why no one full-meshes a large office floor?", "opts": ["No reason", "Quadratic wiring and management cost outweighs the reliability gain vs star", "Mesh has lower reliability", "Star has no reliability"], "c": 1, "s": ["Beyond about 6-8 nodes full mesh becomes prohibitive; star/hybrid is reliable enough."], "a": "Quadratic wiring and management cost outweighs the reliability gain vs star"}
+    ],
+    "tradeoffs": [
+      {"q": "Which topology has a single point of failure at its backbone?", "opts": ["Mesh", "Bus", "Hybrid fully redundant", "Full mesh"], "c": 1, "s": ["Single backbone is the SPOF — one break or terminator loss can kill all."], "a": "Bus"},
+      {"q": "Which pure topology has no single point of failure?", "opts": ["Bus", "Ring single loop", "Full mesh", "Star with single centre"], "c": 2, "s": ["Full mesh alternate paths none single point loss kills all; others have one (backbone/loop/centre)."], "a": "Full mesh"},
+      {"q": "How to fix star's centre SPOF without meshing everything?", "opts": ["Add terminators", "Add dual centre and dual-homed hosts (hybrid)", "Change to bus", "Add a token"], "c": 1, "s": ["Dual centres and dual-homing keeps star benefits with redundancy — result is hybrid with mesh flavour at centre."], "a": "Add dual centre and dual-homed hosts (hybrid)"},
+      {"q": "Wiring cheapest in pure cable terms:", "opts": ["Bus", "Mesh", "Ring", "Star"], "c": 0, "s": ["One cable plus taps is cheapest wire. Operational cheapest overall is star."], "a": "Bus"},
+      {"q": "Most cost-effective overall for an office LAN:", "opts": ["Bus", "Star with switch", "Single ring", "Full mesh"], "c": 1, "s": ["Overall includes fault isolation and growth — star wins even though bus wires cheapest."], "a": "Star with switch"},
+      {"q": "Fault isolated per link/host — topology?", "opts": ["Bus", "Star", "Ring", "Mesh partial isolated only"], "c": 1, "s": ["Star per-link/host isolation. Bus smears, ring loops, mesh reroutes."], "a": "Star"},
+      {"q": "Fault location hardest — whole backbone:", "opts": ["Star", "Bus", "Mesh", "Hybrid with duals"], "c": 1, "s": ["Bus hard to locate — break or terminator mimics noise across whole backbone."], "a": "Bus"},
+      {"q": "Easiest to scale by adding a host with no disruption:", "opts": ["Bus", "Star", "Ring", "Token ring only"], "c": 1, "s": ["Star one cable to centre with no cut. Bus needs tap, ring must rejoin."], "a": "Star"},
+      {"q": "Which needs terminators at both ends?", "opts": ["Star", "Bus", "Ring", "Mesh"], "c": 1, "s": ["Bus only. Ring uses token, stars use centres, mesh uses links."], "a": "Bus"},
+      {"q": "Single loop ring without dual wrap after one cable cut is:", "opts": ["Fully up", "Likely down", "Faster", "Isolated to one host"], "c": 1, "s": ["One break can bring single loop down unless dual wrap provisioned."], "a": "Likely down"}
+    ],
+    "lan-man-wan": [
+      {"q": "Bluetooth between phone and earphones (~10 m) — network type?", "opts": ["PAN", "LAN", "MAN", "WAN"], "c": 0, "s": ["Personal Area ~10 m — PAN."], "a": "PAN"},
+      {"q": "One building floor with own switches and APs — network type?", "opts": ["PAN", "LAN", "MAN", "WAN"], "c": 1, "s": ["One site you own and can pull cables — LAN."], "a": "LAN"},
+      {"q": "Bank links five city offices on carrier metro fibre — network type?", "opts": ["LAN", "MAN", "WAN", "PAN"], "c": 1, "s": ["City scale on carrier metro — MAN."], "a": "MAN"},
+      {"q": "Offices across country via MPLS or internet VPN — network type?", "opts": ["LAN", "MAN", "WAN", "WLAN"], "c": 2, "s": ["Cross-city/country via carrier or internet VPN — WAN. Internet itself is the biggest public WAN."], "a": "WAN"},
+      {"q": "WLAN is best described as:", "opts": ["Wide Area Network", "Wireless LAN — WiFi inside one LAN", "Storage fabric", "Metro PN"], "c": 1, "s": ["Wireless LAN (802.11) — not WAN. Single-letter trap."], "a": "Wireless LAN — WiFi inside one LAN"},
+      {"q": "Fibre or iSCSI fabric dedicated to disk arrays — network type?", "opts": ["WLAN", "SAN", "MAN", "WAN"], "c": 1, "s": ["Storage Area Network — hosts vs disk arrays, specialized fabric."], "a": "SAN"},
+      {"q": "Campus of three nearby buildings linked on own fibre — network type?", "opts": ["MAN", "Campus LAN (still LAN)", "WAN", "PAN"], "c": 1, "s": ["Nearby buildings on own fibres are Campus LAN, not MAN. MAN needs carrier metro between sites."], "a": "Campus LAN (still LAN)"},
+      {"q": "Sort by distance plus ownership for MIT campus vs Mumbai branch on MPLS:", "opts": ["Both LAN", "Both WAN", "Campus LAN and WAN respectively", "Both MAN"], "c": 2, "s": ["Campus ties LANs on own backbone — LAN. Mumbai on MPLS across cities — WAN."], "a": "Campus LAN and WAN respectively"},
+      {"q": "Internet as a whole is classified as:", "opts": ["Largest public WAN", "Largest LAN", "A MAN", "A PAN"], "c": 0, "d": null, "s": ["Public Wide Area Network interconnecting LANs via carriers."] , "a": "Largest public WAN"},
+      {"q": "Distance ~10 m personal hotspot via phone — network type?", "opts": ["PAN", "LAN", "MAN", "WAN"], "c": 0, "s": ["Personal Area — ~10 m around one person."], "a": "PAN"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "All nodes each with a cable to a central switch — topology?", "opts": ["Bus", "Star", "Ring", "Mesh"], "c": 1, "d": "easy", "t": "Star, Bus, Ring", "exp": ["One per host to centre is textbook star."]},
+    {"id": 2, "q": "Single shared backbone with terminators at both ends — topology?", "opts": ["Star", "Bus", "Ring", "Mesh"], "c": 1, "d": "easy", "t": "Star, Bus, Ring", "exp": ["Backbone plus terminators absorbing the signal is bus."]},
+    {"id": 3, "q": "Closed loop where a token circulates to grant sending — topology?", "opts": ["Bus", "Star", "Ring", "Mesh"], "c": 2, "d": "easy", "t": "Star, Bus, Ring", "exp": ["Circle with token permission is ring."]},
+    {"id": 4, "q": "Modern default office topology is:", "opts": ["Bus", "Ring", "Star to a switch", "Single ring"], "c": 2, "d": "easy", "t": "Star, Bus, Ring", "exp": ["Modern Ethernet is star to a switch — per-port collisions, full-duplex, VLANs."]},
+    {"id": 5, "q": "Which device wording signals a bus MCQ?", "opts": ["Token", "Terminator", "Mesh", "Hybrid"], "c": 1, "d": "easy", "t": "Star, Bus, Ring", "exp": ["Terminator absorbs end-of-bus signal — only bus."]},
+    {"id": 6, "q": "Which wording signals a ring MCQ?", "opts": ["Terminator", "Token", "Mesh", "Broadcast"], "c": 1, "d": "easy", "t": "Star, Bus, Ring", "exp": ["Token grants sending on a ring — orderly, no shared collisions."]},
+    {"id": 7, "q": "Bus collision domain is:", "opts": ["One per port", "One shared for the whole backbone", "One per VLAN", "None"], "c": 1, "d": "medium", "t": "Star, Bus, Ring", "exp": ["One shared backbone like a hub."]},
+    {"id": 8, "q": "Star with a switch: collision domains are:", "opts": ["One shared", "One per port (full-duplex)", "One per building", "None"], "c": 1, "d": "medium", "t": "Star, Bus, Ring", "exp": ["One per port — no shared contention."]},
+    {"id": 9, "q": "Easiest and least disruptive to add a host:", "opts": ["Bus", "Star", "Ring", "Hybrid only"], "c": 1, "d": "easy", "t": "Star, Bus, Ring", "exp": ["Star one cable to centre with no cut."]},
+    {"id": 10, "q": "Physical star whose frames logically circulate as a loop is:", "opts": ["Physical bus", "Physical star logical ring", "Pure mesh", "Pure bus"], "c": 1, "d": "medium", "t": "Star, Bus, Ring", "exp": ["Token Ring was physically a star to a MAU but logically a ring."]},
+    {"id": 11, "q": "Every node directly links to every other node — topology?", "opts": ["Star", "Ring", "Full mesh", "Bus"], "c": 2, "d": "easy", "t": "Mesh & Hybrid", "exp": ["Every pair directly is full mesh."]},
+    {"id": 12, "q": "Full mesh links for n=4:", "opts": ["4", "6", "8", "12"], "c": 1, "d": "easy", "t": "Mesh & Hybrid", "exp": ["n*(n-1)/2 = 4*3/2 = 6."]},
+    {"id": 13, "q": "Full mesh links for n=6:", "opts": ["12", "15", "18", "30"], "c": 1, "d": "medium", "t": "Mesh & Hybrid", "exp": ["6*5/2 = 15."]},
+    {"id": 14, "q": "Full mesh degree per node for n=6:", "opts": ["3", "4", "5", "6"], "c": 2, "d": "medium", "t": "Mesh & Hybrid", "exp": ["Degree n-1 = 5."]},
+    {"id": 15, "q": "Known 28 links in a full mesh — n?", "opts": ["6", "7", "8", "10"], "c": 2, "d": "medium", "t": "Mesh & Hybrid", "exp": ["n*(n-1)/2=28 solves n=8 (8*7/2=28). Chain 4->6 5->10 6->15 8->28."]},
+    {"id": 16, "q": "Mesh where some pairs reached via hops for cost — variant?", "opts": ["Full mesh", "Partial mesh", "Bus", "Ring"], "c": 1, "d": "medium", "t": "Mesh & Hybrid", "exp": ["Many but not every pair directly is partial mesh."]},
+    {"id": 17, "q": "Point-to-point is:", "opts": ["One link between two nodes", "A circle", "A backbone", "A mix of types"], "c": 0, "d": "easy", "t": "Mesh & Hybrid", "exp": ["One-to-one link. Mesh is many such links."]},
+    {"id": 18, "q": "Mix of star floors tied by a backbone between centres — topology?", "opts": ["Pure star", "Pure bus", "Hybrid star-bus/ring", "Pure mesh"], "c": 2, "d": "medium", "t": "Mesh & Hybrid", "exp": ["Two or more pure types mixed is hybrid."]},
+    {"id": 19, "q": "Most reliable but most expensive pure:", "opts": ["Star", "Bus", "Full mesh", "Ring"], "c": 2, "d": "medium", "t": "Mesh & Hybrid", "exp": ["Mesh many alternates survives many failures, cost quadratic."]},
+    {"id": 20, "q": "Why no one full-meshes a large floor?", "opts": ["No reason", "Quadratic wiring and management cost outweighs gain vs star", "Mesh lower reliability", "Star has no reliability"], "c": 1, "d": "medium", "t": "Mesh & Hybrid", "exp": ["Beyond about 6-8 nodes full mesh prohibitive; star/hybrid reliable enough."]},
+    {"id": 21, "q": "Which topology has a single point of failure at backbone?", "opts": ["Mesh", "Bus", "Hybrid fully redundant", "Full mesh"], "c": 1, "d": "medium", "t": "Topology Trade-offs", "exp": ["Single backbone SPOF — one break or terminator loss can kill all."]},
+    {"id": 22, "q": "Which pure topology has no single point of failure?", "opts": ["Bus", "Ring single loop", "Full mesh", "Star with single centre"], "c": 2, "d": "medium", "t": "Topology Trade-offs", "exp": ["Full mesh alternate paths none single point loss kills all; others have one."]},
+    {"id": 23, "q": "How to fix star's centre SPOF without meshing everything?", "opts": ["Add terminators", "Add dual centre and dual-homed hosts (hybrid)", "Change to bus", "Add token"], "c": 1, "d": "medium", "t": "Topology Trade-offs", "exp": ["Dual centres and dual-homing keeps star benefits with redundancy — hybrid with mesh at centre."]},
+    {"id": 24, "q": "Wiring cheapest pure cable terms:", "opts": ["Bus", "Mesh", "Ring", "Star"], "c": 0, "d": "easy", "t": "Topology Trade-offs", "exp": ["One cable plus taps cheapest wire. Operational cheapest overall is star."]},
+    {"id": 25, "q": "Most cost-effective overall for an office LAN:", "opts": ["Bus", "Star with switch", "Single ring", "Full mesh"], "c": 1, "d": "medium", "t": "Topology Trade-offs", "exp": ["Overall includes fault isolation and growth — star wins even though bus wires cheapest."]},
+    {"id": 26, "q": "Fault isolated per link/host — topology?", "opts": ["Bus", "Star", "Ring", "Mesh partial isolated only"], "c": 1, "d": "medium", "t": "Topology Trade-offs", "exp": ["Star per-link/host. Bus smears, ring loops, mesh reroutes."]},
+    {"id": 27, "q": "Fault location hardest — whole backbone:", "opts": ["Star", "Bus", "Mesh", "Hybrid with duals"], "c": 1, "d": "medium", "t": "Topology Trade-offs", "exp": ["Bus hard — break or terminator mimics noise across whole backbone."]},
+    {"id": 28, "q": "Easiest to scale by adding a host with no disruption:", "opts": ["Bus", "Star", "Ring", "Token ring only"], "c": 1, "d": "easy", "t": "Topology Trade-offs", "exp": ["Star one cable to centre with no cut."]},
+    {"id": 29, "q": "Which needs terminators at both ends?", "opts": ["Star", "Bus", "Ring", "Mesh"], "c": 1, "d": "easy", "t": "Topology Trade-offs", "exp": ["Bus only."]},
+    {"id": 30, "q": "Single loop ring without dual wrap after one cable cut is:", "opts": ["Fully up", "Likely down", "Faster", "Isolated to one host"], "c": 1, "d": "medium", "t": "Topology Trade-offs", "exp": ["One break can bring single loop down unless dual wrap provisioned."]},
+    {"id": 31, "q": "Bluetooth between phone and earphones (~10 m) — network type?", "opts": ["PAN", "LAN", "MAN", "WAN"], "c": 0, "d": "easy", "t": "LAN/MAN/WAN", "exp": ["Personal Area ~10 m — PAN."]},
+    {"id": 32, "q": "One building floor with own switches and APs — network type?", "opts": ["PAN", "LAN", "MAN", "WAN"], "c": 1, "d": "easy", "t": "LAN/MAN/WAN", "exp": ["One site you own — LAN."]},
+    {"id": 33, "q": "Bank links five city offices on carrier metro fibre — network type?", "opts": ["LAN", "MAN", "WAN", "PAN"], "c": 1, "d": "medium", "t": "LAN/MAN/WAN", "exp": ["City scale on carrier metro — MAN."]},
+    {"id": 34, "q": "Offices across country via MPLS or internet VPN — network type?", "opts": ["LAN", "MAN", "WAN", "WLAN"], "c": 2, "d": "medium", "t": "LAN/MAN/WAN", "exp": ["Cross-city/country via carrier or internet VPN — WAN."]},
+    {"id": 35, "q": "WLAN is:", "opts": ["Wide Area Network", "Wireless LAN inside one LAN", "Storage fabric", "Metro PN"], "c": 1, "d": "easy", "t": "LAN/MAN/WAN", "exp": ["Wireless LAN (802.11) — not WAN. Single-letter trap."]},
+    {"id": 36, "q": "Fibre or iSCSI fabric dedicated to disk arrays — network type?", "opts": ["WLAN", "SAN", "MAN", "WAN"], "c": 1, "d": "medium", "t": "LAN/MAN/WAN", "exp": ["Storage Area Network — hosts vs disk arrays."]},
+    {"id": 37, "q": "Campus of three nearby buildings on own fibre — network type?", "opts": ["MAN", "Campus LAN (still LAN)", "WAN", "PAN"], "c": 1, "d": "medium", "t": "LAN/MAN/WAN", "exp": ["Nearby buildings on own fibres are Campus LAN, not MAN."]},
+    {"id": 38, "q": "Campus LAN vs MAN difference is:", "opts": ["Both LAN", "Campus LAN you own fibres vs MAN carrier metro", "Both WAN", "Both MAN"], "c": 1, "d": "medium", "t": "LAN/MAN/WAN", "exp": ["Campus ties LANs on own backbone — LAN. MAN needs carrier metro between sites."]},
+    {"id": 39, "q": "Internet as a whole is:", "opts": ["Largest public WAN", "Largest LAN", "A MAN", "A PAN"], "c": 0, "d": "easy", "t": "LAN/MAN/WAN", "exp": ["Public Wide Area Network interconnecting LANs."]},
+    {"id": 40, "q": "Personal hotspot via phone — network type?", "opts": ["PAN", "LAN", "MAN", "WAN"], "c": 0, "d": "easy", "t": "LAN/MAN/WAN", "exp": ["Personal Area — ~10 m around one person."]},
+    {"id": 41, "q": "Which topology uses a token to avoid collisions?", "opts": ["Bus", "Star", "Ring", "Mesh"], "c": 2, "d": "easy", "t": "Star, Bus, Ring", "exp": ["Token permission on a ring avoids shared collisions."]},
+    {"id": 42, "q": "Which topology would you choose to minimize collisions with a switch?", "opts": ["Bus", "Star with switch", "Single ring", "Bus with terminators"], "c": 1, "d": "medium", "t": "Star, Bus, Ring", "exp": ["Switch gives one collision domain per port, full-duplex."]},
+    {"id": 43, "q": "Full mesh cost grows:", "opts": ["Linearly", "Quadratically as n*(n-1)/2", "Logarithmically", "Constant"], "c": 1, "d": "medium", "t": "Mesh & Hybrid", "exp": ["Quadratic — links as combinations of pairs."]},
+    {"id": 44, "q": "Hybrid means:", "opts": ["Mix physical and logical only", "Mix at least two pure topology types", "Only star variant", "Only mesh variant"], "c": 1, "d": "medium", "t": "Mesh & Hybrid", "exp": ["Mix at least two pure types (star+bus, mesh core + star access, etc.)."]},
+    {"id": 45, "q": "Bus without terminators:", "opts": ["Works fine", "Signal reflects and mimics noise — failure", "Faster", "Isolates to one host"], "c": 1, "d": "medium", "t": "Topology Trade-offs", "exp": ["Missing terminator causes reflections that appear as noise across whole backbone."]},
+    {"id": 46, "q": "Ring token lost — result:", "opts": ["Network continues faster", "No one can transmit until token regenerated", "Only terminators fail", "Mesh takes over"], "c": 1, "d": "medium", "t": "Topology Trade-offs", "exp": ["Without token permission, no host transmits until token recovery."]},
+    {"id": 47, "q": "Dual ring vs single ring — resilience:", "opts": ["Same", "Dual wraps around a break to survive one", "Single more resilient", "No difference"], "c": 1, "d": "medium", "t": "Topology Trade-offs", "exp": ["Dual survives one break via wrap-around; single collapses."]},
+    {"id": 48, "q": "WLAN vs WAN — if a question says 802.11 inside a building, answer:", "opts": ["WAN", "WLAN which is still a LAN", "MAN", "SAN"], "c": 1, "d": "easy", "t": "LAN/MAN/WAN", "exp": ["802.11 wireless inside one site is Wireless LAN, not Wide Area."]},
+    {"id": 49, "q": "MPLS interconnect across the country is:", "opts": ["LAN", "MAN", "WAN", "PAN"], "c": 2, "d": "medium", "t": "LAN/MAN/WAN", "exp": ["Carrier MPLS across cities/countries is WAN."]},
+    {"id": 50, "q": "Which failure scope loses only one host under normal wiring?", "opts": ["Bus backbone break", "Single loop ring break", "One host cable in a star", "Full mesh single link"], "c": 2, "d": "medium", "t": "Topology Trade-offs", "exp": ["Star per-host cable failure isolates to that host only. Backbone/loop kill many; mesh reroutes but not isolated to one host by design."]},
+    {"id": 51, "q": "A diagram shows four switches full-meshed and each switch stars to its floor hosts. Topologies present:", "opts": ["Bus only", "Mesh plus star (hybrid)", "Ring only", "WAN only"], "c": 1, "d": "medium", "t": "Mesh & Hybrid", "exp": ["Core among switches is mesh, floors are stars — hybrid."]},
+    {"id": 52, "q": "Point-to-point between two routers is often used as:", "opts": ["LAN inside a floor", "WAN link between sites", "PAN between earphones", "SAN inside a SAN"], "c": 1, "d": "medium", "t": "LAN/MAN/WAN", "exp": ["Inter-router link across sites is a WAN link. Many such links in mesh still WAN links."]},
+    {"id": 53, "q": "Campus backbone that ties building LANs is still:", "opts": ["WAN", "Campus LAN family", "MAN by definition", "PAN"], "c": 1, "d": "medium", "t": "LAN/MAN/WAN", "exp": ["Nearby buildings on own fibres are Campus LAN. MAN requires carrier metro across the city."]},
+    {"id": 54, "q": "If a question says most cost-effective for an office you own, between bus and star, answer:", "opts": ["Bus", "Star", "Mesh", "Ring"], "c": 1, "d": "medium", "t": "Topology Trade-offs", "exp": ["Star overall cheaper than bus when fault isolation and growth included."]},
+    {"id": 55, "q": "How many links in a full mesh among 8 nodes?", "opts": ["16", "24", "28", "32"], "c": 2, "d": "medium", "t": "Mesh & Hybrid", "exp": ["8*7/2 = 28. Chain 4->6 5->10 6->15 8->28."]},
+    {"id": 56, "q": "Degree per node in a full mesh among 8 nodes:", "opts": ["4", "6", "7", "8"], "c": 2, "d": "medium", "t": "Mesh & Hybrid", "exp": ["Degree n-1 = 7 each connects to seven peers."]},
+    {"id": 57, "q": "Which topology has no collisions when healthy under token control?", "opts": ["Bus", "Ring with token", "Hub-star with hub", "Shared bus with hub"], "c": 1, "d": "medium", "t": "Star, Bus, Ring", "exp": ["Token permission avoids shared collisions; bus/hub share one domain."]},
+    {"id": 58, "q": "Hybrid star-bus vs pure bus — reliability:", "opts": ["Identical", "Hybrid more robust (star isolates per floor, bus/mesh at core)", "Pure bus more robust", "Both have terminators issue same"], "c": 1, "d": "medium", "t": "Mesh & Hybrid", "exp": ["Hybrid star-bus isolates per floor while core bus is still SPOF but less scope."]},
+    {"id": 59, "q": "802.11ac/ax inside a building and MPLS across country in same diagram — types:", "opts": ["Both WAN", "WLAN (LAN) and WAN", "Both LAN", "Both SAN"], "c": 1, "d": "medium", "t": "LAN/MAN/WAN", "exp": ["802.11 is Wireless LAN; MPLS across country is WAN."]},
+    {"id": 60, "q": "SAN is best paired with:", "opts": ["User web browsing", "High-speed block storage fabric for disk arrays", "Bluetooth earphones", "Metro city fibre among offices"], "c": 1, "d": "medium", "t": "LAN/MAN/WAN", "exp": ["SAN hosts vs disk arrays over Fibre/iSCSI, not users vs internet."]}
+  ]
+}

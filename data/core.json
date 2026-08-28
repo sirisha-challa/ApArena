@@ -211,8 +211,9 @@
         "Drives & Paths"
       ],
       "estimatedHours": 4,
-      "status": null,
-      "axisSection": "Common Applications & MS Office"
+      "status": "ready",
+      "axisSection": "Common Applications & MS Office",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "networking-security-cloud",
@@ -285,8 +286,9 @@
         "Encapsulation & PDUs"
       ],
       "estimatedHours": 6,
-      "status": null,
-      "axisSection": "Networking, Security & Cloud"
+      "status": "ready",
+      "axisSection": "Networking, Security & Cloud",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "ip-addressing",
@@ -340,8 +342,9 @@
         "Dynamic vs Static IP"
       ],
       "estimatedHours": 4,
-      "status": null,
-      "axisSection": "Networking, Security & Cloud"
+      "status": "ready",
+      "axisSection": "Networking, Security & Cloud",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "network-devices",
@@ -357,8 +360,9 @@
         "Gateways"
       ],
       "estimatedHours": 4,
-      "status": null,
-      "axisSection": "Networking, Security & Cloud"
+      "status": "ready",
+      "axisSection": "Networking, Security & Cloud",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "topologies",
@@ -374,8 +378,9 @@
         "LAN/MAN/WAN"
       ],
       "estimatedHours": 4,
-      "status": null,
-      "axisSection": "Networking, Security & Cloud"
+      "status": "ready",
+      "axisSection": "Networking, Security & Cloud",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "cybersecurity-basics",
@@ -391,8 +396,9 @@
         "UTM & Zero Trust"
       ],
       "estimatedHours": 6,
-      "status": null,
-      "axisSection": "Networking, Security & Cloud"
+      "status": "ready",
+      "axisSection": "Networking, Security & Cloud",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "encryption",
@@ -483,8 +489,9 @@
         "Benefits & Use Cases"
       ],
       "estimatedHours": 4,
-      "status": null,
-      "axisSection": "Networking, Security & Cloud"
+      "status": "ready",
+      "axisSection": "Networking, Security & Cloud",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "oops",
@@ -500,7 +507,8 @@
         "Overloading vs Overriding"
       ],
       "estimatedHours": 8,
-      "status": null
+      "status": "ready",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "dbms-basics",
@@ -516,7 +524,8 @@
         "DDL vs DML"
       ],
       "estimatedHours": 6,
-      "status": null
+      "status": "ready",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "sql-queries",

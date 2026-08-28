@@ -1,0 +1,507 @@
+{
+  "id": "dns-dhcp",
+  "title": "DNS & DHCP",
+  "icon": "DH",
+  "category": "networking-cloud",
+  "color": "#0891B2",
+  "subtopics": [
+    "Name Resolution (DNS Records)",
+    "DHCP DORA Process",
+    "DNS Hierarchy",
+    "Dynamic vs Static IP"
+  ],
+  "estimatedHours": 4,
+  "readingSections": [
+    {
+      "id": "dns-records",
+      "title": "Name Resolution and DNS Records (A, AAAA, CNAME, MX, TXT, NS, SOA, PTR, SRV)",
+      "type": "concept",
+      "quickSummary": "DNS is the phonebook that turns example.com into an IP. It returns resource records: A (IPv4), AAAA (IPv6), CNAME (alias), MX (mail server), TXT (text proof), NS (name server), SOA (authority), PTR (reverse), SRV (service).",
+      "content": [
+        "DNS (Domain Name System) is a distributed, hierarchical database whose job is one sentence: translate a human name into an address machines can route. You type example.com, DNS returns 93.184.216.34 (an A record) and your browser then connects to that IP. Without DNS you would memorize IP numbers like phone numbers.",
+        "Resolution path when you press Enter: browser cache, OS cache, hosts file, then the configured recursive resolver (often your ISP or 8.8.8.8 / 1.1.1.1), then the chain Root then TLD then Authoritative. Each step caches the answer for the duration of its TTL (Time To Live). The exam writes this chain and asks which is contacted first — Root is always first after your local caches and resolver.",
+        "Records to memorize as a table. A maps a name to an IPv4 address (e.g. www to 93.184.216.34). AAAA maps to an IPv6 address (four times longer). CNAME aliases one name to another (www.example.com is a CNAME to example.com). MX names the mail servers that accept mail for the domain and carries a priority number (lower wins). TXT holds arbitrary text used for SPF, DKIM and domain verification. NS lists the authoritative name servers for the zone. SOA marks the start of authority for a zone and carries serial, refresh, retry, expire and minimum. PTR does reverse (IP to name) and is used for lookups under in-addr.arpa. SRV advertises a service and a port (used by SIP, LDAP, Minecraft, etc.).",
+        "Two rules that catch candidates. One, a CNAME target must itself be a name, never a raw IP — point an alias at another name, and that name then resolves via its A or AAAA. Two, an MX target must point to a name (a mail host), never directly to an IP, and carries a priority so you can list a primary and a backup mail server.",
+        "Ports and positions: DNS queries are mostly UDP on port 53 and fall back to TCP on 53 when the answer is large (over about 512 bytes) or for zone transfers. In the OSI model DNS is an Application service that rides on Transport (UDP/TCP) — if the question asks port 53 it is testing Transport awareness."
+      ],
+      "subsections": [
+        {
+          "title": "Forward vs reverse — which record for which direction",
+          "content": "Forward is name to address: A, AAAA, CNAME, MX (via its target). Reverse is address to name: PTR under in-addr.arpa (or ip6.arpa for IPv6). The exam writes IP to name and asks PTR — if it writes name to IP and offers PTR, it is a trap; the answer is A or AAAA."
+        },
+        {
+          "title": "MX priority and why mail still works when one server is down",
+          "content": "Each MX has a priority number. Senders try the lowest number first; if it is unreachable they try the next. That is why you see two MX records with priorities like 10 and 20 — 10 is primary, 20 is backup. The exam sometimes lists two MX and asks which is tried first — lowest wins."
+        }
+      ],
+      "quickRevision": [
+        "DNS: name to IP (and service) phonebook. Chain: local caches then hosts then recursive resolver then Root then TLD then Authoritative. TTL controls caching.",
+        "Records: A IPv4, AAAA IPv6, CNAME alias to name, MX mail host with priority, TXT proof text, NS name server, SOA authority, PTR reverse IP to name, SRV service+port.",
+        "Rule: CNAME and MX must point to names, not raw IPs. PTR is reverse only.",
+        "Port 53, mostly UDP then TCP for large answers or zone transfers. Application service on Transport.",
+        "Forward vs reverse decides A/AAAA vs PTR."
+      ],
+      "tricks": [
+        "If options show MX pointing to 93.184.216.34 as an IP, it is wrong — MX must point to a mail host name.",
+        "CNAME pointing to an IP is wrong — alias to another name, that name then has the A.",
+        "PTR is reverse only. Any answer that uses PTR for name-to-IP is a trap — choose A or AAAA for forward."
+      ],
+      "patterns": [
+        "'Translate example.com to IPv4?' -> A. 'To IPv6?' -> AAAA. 'Alias one name to another?' -> CNAME.",
+        "'Mail servers for a domain?' -> MX with priority. 'Text proof VERIFICATION?' -> TXT. 'Name servers?' -> NS. 'Reverse IP to name?' -> PTR.",
+        "'Which port does DNS use?' -> UDP 53 and TCP 53 for large/transfer."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS NQT / Wipro — DNS records, every year",
+          "question": "Which DNS record maps a name to an IPv4/IPv6 / alias / mail server?",
+          "approach": "A for IPv4, AAAA for IPv6, CNAME for alias, MX for mail, TXT for text, NS for name servers, PTR for reverse."
+        },
+        {
+          "source": "Infosys / Gate — DNS port and protocol",
+          "question": "On which port and transport does DNS run?",
+          "approach": "Port 53, mostly UDP then TCP for large answers or zone transfers; Application service riding on Transport."
+        }
+      ],
+      "companyNote": "1-2 questions per paper on record types (especially A vs AAAA vs CNAME vs MX vs PTR) and one on port 53."
+    },
+    {
+      "id": "dora",
+      "title": "DHCP and the DORA Process (Discover, Offer, Request, Acknowledge)",
+      "type": "concept",
+      "quickSummary": "DHCP automatically gives a host an IP, mask, gateway and DNS. Four steps DORA use broadcasts for step 1 and 2, unicast or broadcast for 3 and 4. Uses UDP ports 67 (server) and 68 (client). Lease has T1 at 50 percent and T2 at 87.5 percent. Decline vs Release are different.",
+      "content": [
+        "DHCP (Dynamic Host Configuration Protocol) is how a device gets an IP without anyone typing one. Instead of static manual configuration, the host broadcasts for a server and the server offers an address plus subnet mask, default gateway, DNS servers and a lease time. AXIS loves the DORA initials — memorize the expansion and the broadcast vs unicast per step.",
+        "DORA step by step. Discover: client has no address yet, so it broadcasts to 255.255.255.255 on UDP 68 to 67 asking is there any DHCP server here? Offer: each server that hears it offers an IP and parameters via broadcast (or unicast depending on implementation) from port 67 to 68. Request: client chooses one offer and broadcasts a Request to claim it so all servers hear the choice. Acknowledge: the chosen server confirms with an ACK and the client now owns the lease.",
+        "Ports matter: server listens on UDP 67, client on UDP 68. Direction is the fact that steals marks: Discover is client 68 to server 67, Offer is server 67 to client 68. Any question that swaps 67 and 68 or says TCP is wrong — DHCP is UDP.",
+        "Lease life after ACK. The lease has a timer. At T1 (50 percent of lease) the client tries to renew with the original server via unicast Request. At T2 (87.5 percent) it broadcasts a rebinding Request to any server because renewal failed. At expiry it must stop using the address. Decline is the client refusing a bad offer (bad address detected via ARP). Release is the client voluntarily giving up an owned lease. NAK is the server refusing a Request.",
+        "Three companion tools you must not confuse. ipconfig /release and /renew are the Windows client commands that trigger DORA on demand. The DHCP relay or helper is the router feature that forwards broadcasts between VLANs so one central server can serve many subnets — without a relay, broadcasts stay inside one broadcast domain."
+      ],
+      "subsections": [
+        {
+          "title": "Broadcast vs unicast per step — the one-line check",
+          "content": "Discover must be broadcast (no address yet). Offer is broadcast (or unicast in some servers). Request is broadcast so all servers hear the choice; renewals after ACK are unicast. Acknowledge can be broadcast or unicast. If options say Discover was unicast, it is wrong."
+        },
+        {
+          "title": "Discover vs Request — easy to swap under pressure",
+          "content": "Discover is I need any server. Request is I want this specific offer and tells all servers which one was chosen. Two broadcasts that sound similar but occur in order: Discover first, Request third. D then R, not R then D."
+        }
+      ],
+      "quickRevision": [
+        "DORA: Discover broadcast 68->67, Offer 67->68, Request broadcast claiming one offer, Acknowledge confirming.",
+        "Ports: server 67, client 68, all UDP. Not TCP, not 53 or 80.",
+        "Lease: T1 50 percent renew unicast, T2 87.5 percent rebroadcast, expiry stop using, Decline refuses bad offer, Release gives up owned address, NAK server refuses.",
+        "Helper/relay forwards DHCP broadcasts across VLANs to a central server.",
+        "Windows triggers: ipconfig /release then /renew."
+      ],
+      "tricks": [
+        "If options list DORA in order RODA or DRAO, it is wrong — fixed order D then O then R then A.",
+        "Any answer that says DHCP uses TCP is wrong. DHCP is UDP.",
+        "Port swap trap: server 68 and client 67 is backwards — server is 67, client is 68."
+      ],
+      "patterns": [
+        "'Which DHCP message does the client send first?' -> Discover (broadcast).",
+        "'Server to client ports?' -> 67 to 68.",
+        "'Lease at 50 percent?' -> T1 renew with original server.",
+        "'Client detects offered IP already in use?' -> DHCP Decline."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every AXIS networking sample — DORA, guaranteed",
+          "question": "Expand DORA / which message is broadcast / which ports / which order?",
+          "approach": "Discover Offer Request Acknowledge, broadcast for Discover and Offer, UDP 67 server 68 client, order D O R A."
+        },
+        {
+          "source": "Infosys / Wipro — lease renewal",
+          "question": "At what point does the client try to renew and what is the message type?",
+          "approach": "T1 at 50 percent renew with original server via unicast Request; T2 at 87.5 percent rebroadcast."
+        }
+      ],
+      "companyNote": "DORA order plus ports is asked in nearly every networking paper. Learn the four initials and the two port numbers."
+    },
+    {
+      "id": "hierarchy",
+      "title": "DNS Hierarchy: Root, TLD, Authoritative, Recursive, Cache and TTL",
+      "type": "concept",
+      "quickSummary": "Root . is level 0, TLD like .com is level 1, second-level example.com, subdomain www.example.com. Root servers are 13 logical names with many anycast instances. Recursive resolver does the walking; authoritative servers are the answer. TTL controls cache lifetime.",
+      "content": [
+        "The DNS namespace is a tree. At the very top is the root, written as a single dot. It is served by 13 logical root servers named A through M — each is actually hundreds of physical instances via anycast, but the exam counts 13 logical. From the root hang the TLDs (Top Level Domains): generic like .com and .org and country codes like .in and .uk. Below a TLD sits the second-level domain that an organization registers, e.g. example in example.com. Below that are subdomains like www or mail, e.g. www.example.com.",
+        "Fully Qualified Domain Name (FQDN) means the complete name from a leaf to the root including the trailing dot: www.example.com. The trailing dot is the root and is usually invisible in browsers. How many labels counting dots tells you the level — that is a common AXIS phrasing: how many labels in www.example.com.? Answer: four including the root: www, example, com, root.",
+        "Two server roles you must never swap. Recursive resolver is the one your device asks — it does the iterative walking across Root then TLD then Authoritative on your behalf (often at 8.8.8.8 or 1.1.1.1 or your ISP). Authoritative server is the one that actually owns the zone and returns the definitive answer. If the question says which server returns the final answer for example.com, the answer is authoritative, not recursive.",
+        "Caching layers save time. Browser cache, OS cache, resolver cache each store answers for TTL seconds. Short TTL means faster change propagation but more queries. Long TTL means less traffic but stale data during moves. The exam loves: 'What controls how long a cached answer is used?' -> TTL.",
+        "Iteration per hop. The resolver asks the Root for .com, learns the TLD servers for .com, asks a TLD server for example.com, learns the authoritative servers for example.com, asks one of them and finally returns the A record. Each delegation uses NS records and glue records (A records for those NS names) to avoid loops."
+      ],
+      "subsections": [
+        {
+          "title": "Counting labels and levels",
+          "content": "www.example.com. has four labels if you count the root dot: www (subdomain), example (second-level), com (TLD), root (dot). Without the trailing dot, people count three, but AXIS explicitly including the trailing dot counts four. Read whether the question includes the dot."
+        },
+        {
+          "title": "Recursive vs iterative — direction matters",
+          "content": "From the client's view the query is recursive: ask the resolver and it does everything and returns one answer. Between the resolver and the name servers the queries are iterative: resolver asks Root, Root refers to TLD, resolver asks TLD, TLD refers to Authoritative, resolver asks Authoritative. AXIS often defines iterative as the resolver walking the chain."
+        }
+      ],
+      "quickRevision": [
+        "Tree: Root (.) level 0 -> TLD (.com/.org/.in) -> second-level (example) -> subdomain (www). FQDN includes trailing dot.",
+        "Root is 13 logical servers A-M, each anycast to many instances.",
+        "Recursive resolver does the walking (8.8.8.8, 1.1.1.1, ISP). Authoritative returns the final answer.",
+        "Caches: browser, OS, resolver — each respects TTL. Short TTL fast change, long TTL less traffic.",
+        "Chain: Root then TLD then Authoritative via NS+glue; client to resolver is recursive, resolver outward is iterative."
+      ],
+      "tricks": [
+        "Authoritative vs recursive is the favourite swap — authoritative is the answer, recursive is the walker.",
+        "Root count is 13 logical (A-M), not 13 physical, not 256 — that exact phrasing steals marks.",
+        "If the question counts labels in www.example.com without mentioning the trailing dot, use 3; with the dot, use 4."
+      ],
+      "patterns": [
+        "'Root servers count?' -> 13 logical A-M, anycast to hundreds physical.",
+        "'www.example.com. labels counting root?' -> 4 (www, example, com, root). Without root, 3.",
+        "'Resolver vs authoritative?' -> Resolver walks, authoritative answers.",
+        "'What controls cache lifetime?' -> TTL."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — DNS hierarchy",
+          "question": "How many root servers / what is the order Root->TLD->Authoritative / FQDN labels?",
+          "approach": "13 logical, order Root then TLD then Authoritative, count labels as above including root when dot shown."
+        },
+        {
+          "source": "TCS / Infosys — caching",
+          "question": "What caches DNS answers and what controls their lifetime?",
+          "approach": "Browser, OS, resolver caches; TTL controls lifetime."
+        }
+      ],
+      "companyNote": "Hierarchy order plus root count plus recursive vs authoritative appear as a combined 2-question block."
+    },
+    {
+      "id": "dynamic-static",
+      "title": "Dynamic vs Static IP, Private vs Public, APIPA and NAT",
+      "type": "concept",
+      "quickSummary": "Static never changes, dynamic comes from DHCP and can change. Static for servers, dynamic for clients. Private is inside your LAN (10/8, 172.16/12, 192.168/16) and NATed to one public IP at the router. APIPA 169.254 is the no-server fallback.",
+      "content": [
+        "Static means an IP is configured once on the host and never changes without someone changing it. Dynamic means DHCP assigns it and it can change at renewal or after expiry. If the exam says a web server needs a stable address that customers and DNS always point to, answer static. If it says a laptop that moves between networks, answer dynamic.",
+        "Trade-offs are predictable. Static is stable and DNS-friendly but wastes addresses and is painful to manage at scale. Dynamic is automatic and conserves the pool but address can change so DNS must support dynamic updates. APIPA is the automatic fallback when DHCP is expected but no server answers — Windows assigns a 169.254.x.x link-local address so the two computers in the room can still talk to each other but not to the internet.",
+        "Private vs public is orthogonal. Private addresses are for inside one broadcast domain: 10.0.0.0/8, 172.16.0.0/12 (172.16 to 172.31), 192.168.0.0/16. You can reuse them in every office because NAT at the edge translates many private addresses to one public address. Public addresses are globally unique and routable on the internet. The exam loves: 'Which is private?' -> 192.168.1.10 is private; 8.8.8.8 is public.",
+        "Ports live at Transport and identify services on a host: 53 DNS, 67/68 DHCP, 80 HTTP, 443 HTTPS, 25 SMTP, 110 POP3, 143 IMAP. Assignment is IANA static well-known vs dynamic ephemeral, which is not the same meaning as static vs dynamic IP — the words repeat in a different context, which the exam uses as wordplay.",
+        "Two small traps that steal a mark. One, static IP does not mean private and dynamic does not mean public — a static IP can be a public fixed IP on a server, and a dynamic IP can be a private one assigned inside a LAN. Two, dynamic DNS is a service that updates a name when a dynamic IP changes — it does not make the IP static."
+      ],
+      "subsections": [
+        {
+          "title": "When to pick static in the exam hall",
+          "content": "Servers, printers, gateways, DNS servers, DHCP servers themselves, and devices with port forwarding or firewall rules must be static (or DHCP reservation). Clients that just browse — laptops, phones — are fine on dynamic. If the stem says stable or always reachable, answer static."
+        },
+        {
+          "title": "APIPA detection in one second",
+          "content": "If you see 169.254.x.x on ipconfig and cannot reach the internet, DHCP failed and Windows fell back to APIPA. Fix: check cable or WiFi, then check the DHCP server or relay, not DNS."
+        }
+      ],
+      "quickRevision": [
+        "Static never changes, for servers and stable DNS. Dynamic via DHCP and can change.",
+        "Private inside LAN: 10/8, 172.16/12, 192.168/16 via NAT to one public. Public globally routable.",
+        "APIPA 169.254.x.x means no DHCP server reachable — link-local only.",
+        "Ports: 53 DNS, 67/68 DHCP, 80/443 web, 25/110/143 mail are the common well-known set.",
+        "Static vs dynamic IP is not static vs dynamic port — same words, different context."
+      ],
+      "tricks": [
+        "Any answer that says dynamic IP is always public or static is always private is wrong — orthogonal concepts.",
+        "APIPA appears only when DHCP was expected but got no answer — if static was configured, APIPA never appears.",
+        "NAT is the feature that lets many private addresses share one public address at the router."
+      ],
+      "patterns": [
+        "'Server that must be always reachable?' -> Static IP.",
+        "'169.254 address means?' -> APIPA/DHCP fallback, no server.",
+        "'Which IP is private?' -> 192.168.x or 10.x or 172.16-31.x. 'Which is public?' -> 8.8.8.8 style.",
+        "'Share many private IPs on one public?' -> NAT."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Placement papers — static vs dynamic and private vs public",
+          "question": "When to use static vs dynamic / which IP is private / what is APIPA?",
+          "approach": "Servers static, clients dynamic. Private ranges above. APIPA 169.254 on DHCP failure."
+        },
+        {
+          "source": "TCS / Wipro — NAT and addressing",
+          "question": "What allows many private hosts to use one public IP?",
+          "approach": "NAT at the edge router. Not DNS, not DHCP, not ARP."
+        }
+      ],
+      "companyNote": "1-2 questions per paper: one static vs dynamic and one private vs public or APIPA or NAT."
+    },
+    {
+      "id": "tools-compare",
+      "title": "Tools Comparison, Port Table and How to Not Mix DHCP with DNS",
+      "type": "concept",
+      "quickSummary": "DNS is lookup for names, DHCP is assignment of addresses. DNS port 53 both UDP and TCP; DHCP 67 server 68 client UDP only. nslookup and dig query DNS; ipconfig shows assigned address. Both use short TTL/lease timers but for different caches vs leases. Mixing them is the favourite trap.",
+      "content": [
+        "DNS and DHCP are the pair the exam loves to mix. DNS answers who is this name and where is it? DHCP answers what address do I get and how long is it mine? If the stem says resolve, translate or map a name, answer DNS. If it says assign, allocate, obtain or configure an address automatically, answer DHCP. One word decides the mark.",
+        "Port table side by side to memorize: DNS 53 on both UDP and TCP, DHCP server 67 and client 68 on UDP only. Protocol: both UDP, DNS also falls to TCP for large answers or zone transfers. Scope: DNS is distributed and hierarchical across the whole internet; DHCP is local to one broadcast domain unless a relay/helper forwards to a central server.",
+        "Timer confusion: DNS has TTL which controls how long a cached record is used. DHCP has lease time which controls how long an assigned address is valid and when T1 and T2 renewal triggers. They are analogous timers but for different state — cache vs lease. Any answer that swaps them is a trap.",
+        "Tool to address vs tool to look up. ipconfig, ifconfig or ip show what address this host currently owns (DHCP result). nslookup, dig or host ask what address a name maps to (DNS result). ping checks reachability (ICMP) and incidentally shows an address, but it is not a DNS or DHCP management command.",
+        "Security add-ons to recognize. DNSSEC signs zones to defeat spoofing (adds RRSIG records). DHCP snooping is a switch feature that trusts only specific ports for DHCP servers to block rogue DHCP attackers. The exam rarely goes deep here but both terms appear as vocabulary distractors — know the names and which protocol they harden."
+      ],
+      "subsections": [
+        {
+          "title": "Resolve vs assign — the verb check",
+          "content": "Before choosing, circle the verb. Resolve, translate, map, lookup -> DNS. Assign, allocate, obtain, configure automatically -> DHCP. Release, renew, discover -> DHCP. Query an MX or NS -> DNS. The verb alone usually disambiguates."
+        },
+        {
+          "title": "Why both are UDP but only DNS uses TCP as fallback",
+          "content": "Both are short request-response so UDP fits. DNS answers can exceed the typical UDP payload and then fall back to TCP; DHCP stays UDP only and handles retransmission itself. That detail is where an exam may place a TCP vs UDP trap."
+        }
+      ],
+      "quickRevision": [
+        "DNS resolve/translate vs DHCP assign/allocate — verb decides.",
+        "Ports: DNS 53 UDP+TCP, DHCP 67 server 68 client UDP only.",
+        "DNS TTL vs DHCP lease/T1/T2 — different timers for cache vs lease.",
+        "ipconfig shows assigned address (DHCP), nslookup asks name to address (DNS), ping checks reachability.",
+        "Security: DNSSEC hardens DNS, DHCP snooping hardens DHCP against rogue servers."
+      ],
+      "tricks": [
+        "If options contain both DNS and DHCP for a name-resolution stem, DNS is the only correct answer — DHCP never translates names.",
+        "Any answer that says DNS uses only TCP or only UDP is wrong — it uses both, with UDP first.",
+        "Any answer that says DHCP uses TCP is wrong — DHCP is UDP only."
+      ],
+      "patterns": [
+        "'Translate example.com to 93.184.216.34?' -> DNS.",
+        "'Automatically obtain an address?' -> DHCP (DORA).",
+        "'UDP and TCP on 53?' -> DNS. '67 and 68 UDP?' -> DHCP.",
+        "'Show current assigned IP?' -> ipconfig. 'Show MX for a domain?' -> nslookup/dig."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS mix — DNS vs DHCP side by side",
+          "question": "Which protocol translates names vs assigns addresses / which ports?",
+          "approach": "DNS translates on 53, DHCP assigns on 67/68. Verb decides, then port."
+        },
+        {
+          "source": "Infosys / Wipro — timer trap",
+          "question": "Difference between TTL and lease time?",
+          "approach": "TTL cache lifetime for DNS records, lease time address validity for DHCP."
+        }
+      ],
+      "companyNote": "A comparison or single trap mixing DNS and DHCP appears almost every paper. Circle the verb first."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "dns-records",
+      "title": "DNS Record Types and Ports",
+      "formula": {
+        "latex": "A:IPv4,\\; AAAA:IPv6,\\; CNAME:alias\\to\\name,\\; MX:mail+priority,\\; TXT:text,\\; NS:ns,\\; SOA:auth,\\; PTR:reverse,\\; SRV:service+port\\;|\\; port\\;53\\;UDP/TCP",
+        "text": "A IPv4, AAAA IPv6, CNAME alias to name, MX mail+priority, TXT text, NS name server, SOA authority, PTR reverse, SRV service+port | port 53 UDP/TCP"
+      },
+      "whenToUse": "Any 'which DNS record does X?' or 'on which port?' MCQ.",
+      "explanation": [
+        "A name to IPv4, AAAA name to IPv6, CNAME name alias to another name, MX mail servers with priority (lower first), TXT arbitrary text (SPF/DKIM/verification).",
+        "NS authoritative name servers, SOA start of authority with serial/refresh/retry/expire/minimum, PTR reverse IP to name under in-addr.arpa, SRV advertises service+port.",
+        "Rule: CNAME and MX must point to names, never raw IPs. A and AAAA point to addresses.",
+        "Forward is name to address (A/AAAA/CNAME via its target), reverse is address to name (PTR).",
+        "Port 53, mostly UDP then TCP for large answers or zone transfers. Application service on Transport."
+      ],
+      "example": {
+        "prompt": "Mail servers for example.com — which record and which field wins?",
+        "steps": [
+          "Mail is MX, not A or CNAME or TXT.",
+          "Each MX has a priority; lower number is tried first.",
+          "Choose MX and order by ascending priority (10 before 20)."
+        ],
+        "answer": "MX, lowest priority number first"
+      },
+      "memoryTip": "A for Address, AAAA is the long IPv6 A, C for alias Chain, MX for Mail eXchange, TXT for Text, NS for Name Server, PTR for PoinTeR reverse.",
+      "commonMistake": "Using PTR for forward lookup. PTR is reverse only. Forward is A or AAAA."
+    },
+    {
+      "id": "dora",
+      "title": "DHCP DORA Order, Broadcasts and Ports",
+      "formula": {
+        "latex": "Discover\\;(bcast\\;68\\to67) \\to Offer\\;(67\\to68) \\to Request\\;(bcast\\;claim) \\to Ack \\;|\\; 67=srv, 68=cli, UDP",
+        "text": "Discover broadcast 68->67, Offer 67->68, Request broadcast claim, Ack -> 67 server 68 client UDP"
+      },
+      "whenToUse": "Any DORA order, broadcast vs unicast, or DHCP port MCQ.",
+      "explanation": [
+        "Discover broadcast from client 68 to server 67. Offer from server 67 to client 68. Request broadcast claiming one offer. Acknowledge confirming.",
+        "All DHCP is UDP. Server 67, client 68. Direction and protocol are the frequent traps.",
+        "Lease: T1 50 percent renew unicast to original server, T2 87.5 percent rebroadcast, expiry stop using, Decline bad offer, Release voluntary give-up, NAK server refuse.",
+        "Discover must be broadcast (no address yet). Request is broadcast so all servers hear the choice; renewals after ACK are unicast.",
+        "Windows trigger pair: ipconfig /release then /renew. Relay/helper forwards broadcasts across VLANs."
+      ],
+      "example": {
+        "prompt": "Client wants to ask whether any DHCP server exists on the LAN. Which message and which ports?",
+        "steps": [
+          "First message is Discover.",
+          "No address yet -> must be broadcast.",
+          "Client port 68 to server port 67 over UDP. Order D is first."
+        ],
+        "answer": "Discover, broadcast from UDP 68 to 67"
+      },
+      "memoryTip": "D for Discover me, O for Offer sent, R for Request claim, A for Ack done — D O R A in fixed order.",
+      "commonMistake": "Swapping Discover and Request. Discover is need any server, Request is claim this offer — D then R."
+    },
+    {
+      "id": "hierarchy",
+      "title": "DNS Hierarchy, Root Count, Resolver Chain and TTL",
+      "formula": {
+        "latex": "Root(.) \\to TLD(.com) \\to SLD(example) \\to sub(www) \\;|\\; 13\\;roots\\;A\\text{-}M \\;|\\; recursive\\;walks,\\; authoritative\\;answers \\;|\\; TTL\\;caches",
+        "text": "Root . to TLD .com to SLD example to sub www | 13 roots A-M | recursive walks authoritative answers | TTL caches"
+      },
+      "whenToUse": "Any hierarchy order, root count, label count, resolver vs authoritative, or TTL MCQ.",
+      "explanation": [
+        "Tree: Root dot at level 0, then TLD, then second-level, then subdomain. FQDN includes trailing dot as root.",
+        "Root is 13 logical servers A-M via anycast. TLDs are generic and country codes. NS+glue delegates downward.",
+        "Recursive resolver walks Root then TLD then Authoritative on your behalf. Authoritative owns the zone and answers.",
+        "Caches: browser, OS, resolver each respect TTL. Short TTL fast change, long TTL less traffic.",
+        "Client to resolver is recursive; resolver outward to name servers is iterative. Labels count includes root dot when shown."
+      ],
+      "example": {
+        "prompt": "Labels in www.example.com. counting the trailing root dot?",
+        "steps": [
+          "Split by dots: www, example, com, plus trailing dot as root.",
+          "With trailing dot shown: four labels.",
+          "Without dot: three labels (commonly counted). Read whether the question shows the dot."
+        ],
+        "answer": "Four with root dot, three without"
+      },
+      "memoryTip": "Root to TLD to SLD to sub — general to specific downwards. 13 logical root servers A-M. Walk then answer vs own and answer.",
+      "commonMistake": "Swapping recursive and authoritative. Resolver walks, authoritative answers. Also counting physical root servers as 13 — it is 13 logical, hundreds physical via anycast."
+    },
+    {
+      "id": "dynamic-static",
+      "title": "Dynamic vs Static IP, Private vs Public, APIPA, NAT, Ports",
+      "formula": {
+        "latex": "Static=never\\;change\\;for\\;servers,\\; Dynamic=DHCP\\;auto \\;|\\; Private\\;10/8,172.16/12,192.168/16\\;NAT\\;public \\;|\\; APIPA\\;169.254",
+        "text": "Static never change for servers, dynamic DHCP auto | Private 10/8 172.16/12 192.168/16 NAT to public | APIPA 169.254 no server"
+      },
+      "whenToUse": "Any static vs dynamic, private vs public, APIPA, NAT, or port-to-service recollection MCQ.",
+      "explanation": [
+        "Static configured once never changes, for servers/printers/DNS/DHCP/gateways. Dynamic from DHCP can change at renewal.",
+        "Private inside LAN 10/8, 172.16/12, 192.168/16 via NAT to one public globally routable. Public unique routable.",
+        "APIPA 169.254.x.x link-local when DHCP expected but no server answered. Not internet routeable.",
+        "Ports well-known: 53 DNS, 67/68 DHCP, 80 HTTP, 443 HTTPS, 25 SMTP, 110 POP3, 143 IMAP. Transport identifiers on a host.",
+        "Static vs dynamic IP is orthogonal to static vs dynamic port — same words different context."
+      ],
+      "example": {
+        "prompt": "A laptop shows 169.254.10.5 and cannot browse. Cause?",
+        "steps": [
+          "169.254 is the APIPA block.",
+          "Means DHCP was expected but got no offer — no server reachable.",
+          "Check cable/WiFi and DHCP server or relay, not DNS or port 80."
+        ],
+        "answer": "APIPA fallback — no DHCP server reachable"
+      },
+      "memoryTip": "Static Stays Same. Dynamic DHCP Decides. Private Personal LAN behind NAT Public. APIPA Automatic Private when absent.",
+      "commonMistake": "Saying dynamic always means public or static always means private — orthogonal. A server can have a static public or a private reservation."
+    }
+  ],
+  "practiceProblems": {
+    "dns-records": [
+      {"q": "Translate www.example.com to an IPv4 address — which DNS record?", "opts": ["A", "AAAA", "MX", "PTR"], "c": 0, "s": ["Forward to IPv4 is A. AAAA is IPv6. MX mail, PTR reverse."], "a": "A"},
+      {"q": "Translate www.example.com to an IPv6 address — which record?", "opts": ["A", "AAAA", "CNAME", "TXT"], "c": 1, "s": ["Long address is AAAA (IPv6). A is IPv4. CNAME alias, TXT text."], "a": "AAAA"},
+      {"q": "Alias one name to another (www alias to example.com) — which record?", "opts": ["A", "CNAME", "MX", "PTR"], "c": 1, "s": ["Alias is CNAME. It must point to another name, not a raw IP. Target then resolves via its A."], "a": "CNAME"},
+      {"q": "Mail servers for example.com — which record?", "opts": ["A", "MX", "PTR", "SOA"], "c": 1, "s": ["Mail eXchange is MX with a priority. Lower number tried first."], "a": "MX"},
+      {"q": "Two MX records priorities 10 and 20 — which is tried first?", "opts": ["10", "20", "Both at once", "Random"], "c": 0, "s": ["Lower priority number wins. 10 before 20. Backup 20 used if 10 unreachable."], "a": "10"},
+      {"q": "Arbitrary verification text and SPF — which record?", "opts": ["TXT", "NS", "A", "PTR"], "c": 0, "s": ["TXT holds arbitrary text used for SPF, DKIM and domain verification."], "a": "TXT"},
+      {"q": "IP to name (reverse) under in-addr.arpa — which record?", "opts": ["A", "PTR", "CNAME", "MX"], "c": 1, "s": ["Reverse is PTR. Forward name-to-IP is A or AAAA. CNAME/MX are alias/mail."], "a": "PTR"},
+      {"q": "Which record lists the authoritative name servers for a zone?", "opts": ["A", "NS", "MX", "PTR"], "c": 1, "s": ["Name Server is NS. A is address, MX mail, PTR reverse."], "a": "NS"},
+      {"q": "Start of authority with serial/refresh/retry — which record?", "opts": ["SOA", "A", "CNAME", "TXT"], "c": 0, "s": ["Start Of Authority SOA marks authority. Includes serial, refresh, retry, expire, minimum."], "a": "SOA"},
+      {"q": "DNS port (well-known) on Transport:", "opts": ["UDP 53 and TCP 53 for large/transfer", "UDP 67 and TCP 67", "TCP 80 only", "UDP 68 only"], "c": 0, "s": ["DNS 53 on both UDP and TCP. 67/68 are DHCP. 80/443 are HTTP/S."], "a": "UDP 53 and TCP 53 for large/transfer"}
+    ],
+    "dora": [
+      {"q": "DHCP steps DORA stand for:", "opts": ["Discover Offer Request Acknowledge", "Discover Reply Offer Acknowledge", "Data Offer Request Answer", "Discover Offer Renew Acknowledge"], "c": 0, "s": ["Discover Offer Request Acknowledge in fixed order. Any other order is wrong."], "a": "Discover Offer Request Acknowledge"},
+      {"q": "Client first message to find any DHCP server:", "opts": ["Request", "Offer", "Discover", "Acknowledge"], "c": 2, "s": ["Discover is first. Request is claim of one offer, third step."], "a": "Discover"},
+      {"q": "Which DHCP message claims one offer so all servers hear?", "opts": ["Discover", "Offer", "Request", "Acknowledge"], "c": 2, "s": ["Request is the claim broadcast. Discover is need any server."], "a": "Request"},
+      {"q": "DHCP transport:", "opts": ["TCP", "UDP", "Both TCP and UDP equally", "ICMP"], "c": 1, "s": ["DHCP is UDP. DNS is the one that is UDP then TCP."], "a": "UDP"},
+      {"q": "DHCP server port vs client port:", "opts": ["Server 68 client 67", "Server 67 client 68", "Both 53", "Both 80"], "c": 1, "s": ["Server 67, client 68. Swap is a classic trap. Not 53 (DNS)."], "a": "Server 67 client 68"},
+      {"q": "DORA direction first message 68 to 67 is:", "opts": ["Client 68 to server 67", "Server 67 to client 68", "Client 53 to server 53", "Server 80 to client 80"], "c": 0, "s": ["Discover client 68 to server 67. Offer is opposite 67 to 68."], "a": "Client 68 to server 67"},
+      {"q": "At 50 percent of lease the client does:", "opts": ["Broadcast rebinding", "Unicast renew with original server", "Release the address", "Send Decline"], "c": 1, "s": ["T1 at 50 percent renew unicast with original server. T2 at 87.5 percent rebroadcast."], "a": "Unicast renew with original server"},
+      {"q": "Client detects offered IP already in use via ARP — which message?", "opts": ["Release", "Decline", "NAK", "Offer"], "c": 1, "s": ["Decline refuses a bad offer detected by client. Release gives up an owned lease. NAK is server refusal."], "a": "Decline"},
+      {"q": "What lets DHCP serve many VLANs with one central server?", "opts": ["DNS resolver", "Relay or helper that forwards broadcasts", "NAT", "ARP"], "c": 1, "s": ["Relay/helper forwards broadcasts between VLANs. Without it broadcasts stay in one broadcast domain."], "a": "Relay or helper that forwards broadcasts"},
+      {"q": "Windows commands to cycle DHCP on demand:", "opts": ["ipconfig /release then /renew", "ipconfig /renew then /release", "ipconfig /flushdns then /release", "ping /release then /renew"], "c": 0, "s": ["Release then renew. /flushdns clears resolver cache, not DHCP."], "a": "ipconfig /release then /renew"}
+    ],
+    "hierarchy": [
+      {"q": "DNS root servers — how many logical names A-M?", "opts": ["7", "13", "256", "1024"], "c": 1, "s": ["13 logical roots A-M via anycast to hundreds physical."], "a": "13"},
+      {"q": "Root of DNS is written as:", "opts": ["@", "dot .", "star *", "slash /"], "c": 1, "s": ["Root dot level 0 at the top."], "a": "dot ."},
+      {"q": "Order of walking from nothing to the answer:", "opts": ["Authoritative then TLD then Root", "Root then TLD then Authoritative", "TLD then Root then Authoritative", "Recursive then Authoritative only"], "c": 1, "s": ["Root then TLD then Authoritative via NS+glue. Root first."], "a": "Root then TLD then Authoritative"},
+      {"q": "Labels in www.example.com. with trailing root dot shown?", "opts": ["2", "3", "4", "5"], "c": 2, "s": ["www, example, com, plus root dot is four. Without dot people count three."], "a": "4"},
+      {"q": "Which server does the walking on your behalf across Root/TLD/Authoritative?", "opts": ["Authoritative", "Recursive resolver", "Root", "TLD only"], "c": 1, "s": ["Recursive resolver (ISP or 8.8.8.8 or 1.1.1.1) walks. Authoritative answers."], "a": "Recursive resolver"},
+      {"q": "Which server returns the final definitive answer for example.com?", "opts": ["Recursive resolver", "Root", "Authoritative", "Cache only"], "c": 2, "s": ["Authoritative owns the zone and answers. Resolver walks, root delegates to TLD."], "a": "Authoritative"},
+      {"q": "What controls how long a cached DNS answer is reused?", "opts": ["Lease time", "TTL", "Hold timer", "Keepalive"], "c": 1, "s": ["TTL Time To Live. Lease time is DHCP."], "a": "TTL"},
+      {"q": "Client to resolver is recursive, resolver outward is:", "opts": ["Recursive too", "Iterative", "Broadcast", "Anycast"], "c": 1, "s": ["Client to resolver recursive, resolver to name servers iterative."], "a": "Iterative"},
+      {"q": "Glue records are:", "opts": ["TXT for verification", "A records for NS names to avoid loops", "PTR for reverse", "MX priority"], "c": 1, "s": ["Glue is A/AAAA for the NS names so delegation does not loop. Triggered when NS is inside its own zone."], "a": "A records for NS names to avoid loops"},
+      {"q": "Which caches hold DNS answers?", "opts": ["Only browser", "Browser plus OS plus resolver", "Only resolver", "Only authoritative"], "c": 1, "s": ["All three: browser, OS, resolver — each respects TTL."], "a": "Browser plus OS plus resolver"}
+    ],
+    "dynamic-static": [
+      {"q": "Server that must always be reachable at the same address needs:", "opts": ["Dynamic", "Static", "APIPA", "None"], "c": 1, "s": ["Stable servers need static. Clients fine on dynamic."], "a": "Static"},
+      {"q": "Laptop that moves between networks is fine on:", "opts": ["Static only", "Dynamic via DHCP", "APIPA only", "Loopback only"], "c": 1, "s": ["Moving clients suit dynamic DHCP assignment."], "a": "Dynamic via DHCP"},
+      {"q": "Which is a private address inside a LAN?", "opts": ["8.8.8.8", "1.1.1.1", "192.168.1.10", "9.9.9.9"], "c": 2, "s": ["Private inside LAN: 192.168/16 or 10/8 or 172.16/12. 8.8.8.8 public Google DNS."], "a": "192.168.1.10"},
+      {"q": "Public address example (globally routable):", "opts": ["192.168.1.1", "10.0.0.5", "172.16.0.10", "8.8.8.8"], "c": 3, "s": ["Public unique routable on internet: 8.8.8.8 Google DNS. Others are private."], "a": "8.8.8.8"},
+      {"q": "Many private hosts sharing one public IP at the edge:", "opts": ["DNS", "NAT", "ARP", "DHCP"], "c": 1, "s": ["NAT translates many private to one public at the router."], "a": "NAT"},
+      {"q": "Address 169.254.10.5 means:", "opts": ["Static configured", "Public routable", "APIPA fallback — no DHCP server reachable", "Loopback"], "c": 2, "s": ["169.254 is APIPA link-local when DHCP expected but got no offer."], "a": "APIPA fallback — no DHCP server reachable"},
+      {"q": "Static vs dynamic IP is orthogonal to:", "opts": ["Private vs public", "TTL", "Lease time", "All of the above"], "c": 0, "s": ["Private vs public is independent. Static can be private or public. Dynamic can be private or public."], "a": "Private vs public"},
+      {"q": "Dynamic DNS does what?", "opts": ["Makes an IP static", "Updates a name when a dynamic IP changes", "Changes DNS port", "Blocks DHCP"], "c": 1, "s": ["Dynamic DNS updates name to match current dynamic address. Does not make address static."], "a": "Updates a name when a dynamic IP changes"},
+      {"q": "Which ports are well-known for DNS and DHCP server?", "opts": ["DNS 53 DHCP 67", "DNS 67 DHCP 53", "DNS 80 DHCP 443", "DNS 68 DHCP 53"], "c": 0, "s": ["DNS 53, DHCP server 67 (client 68). 80/443 web."], "a": "DNS 53 DHCP 67"},
+      {"q": "Best choice for a network printer that users add by IP:", "opts": ["Dynamic with short lease", "Static or DHCP reservation", "APIPA", "Public only"], "c": 1, "s": ["Printers need stable address: static or DHCP reservation (DHCP always gives same address)."], "a": "Static or DHCP reservation"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "DNS stands for:", "opts": ["Dynamic Name Service", "Domain Name System", "Data Network System", "Distributed Node Service"], "c": 1, "d": "easy", "t": "Name Resolution (DNS Records)", "exp": ["Domain Name System — the internet phonebook name to IP."]},
+    {"id": 2, "q": "Primary job of DNS:", "opts": ["Assign IP addresses automatically", "Translate names to addresses and services", "Route packets between networks", "Encrypt traffic"], "c": 1, "d": "easy", "t": "Name Resolution (DNS Records)", "exp": ["DNS translates a human name into an address or service record. DHCP assigns addresses."]},
+    {"id": 3, "q": "Translate example.com to an IPv4 address — which DNS record?", "opts": ["A", "AAAA", "MX", "PTR"], "c": 0, "d": "easy", "t": "Name Resolution (DNS Records)", "exp": ["Forward to IPv4 is A. AAAA is IPv6. MX mail, PTR reverse."]},
+    {"id": 4, "q": "Translate example.com to an IPv6 address — which DNS record?", "opts": ["A", "AAAA", "CNAME", "TXT"], "c": 1, "d": "easy", "t": "Name Resolution (DNS Records)", "exp": ["Long IPv6 address is AAAA. A is IPv4. CNAME alias, TXT text."]},
+    {"id": 5, "q": "Alias one name to another (alias.example.com to example.com) — which record?", "opts": ["A", "CNAME", "MX", "PTR"], "c": 1, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["Alias is CNAME. Must point to another name, not a raw IP."]},
+    {"id": 6, "q": "Mail servers for a domain — which DNS record?", "opts": ["A", "MX", "PTR", "SOA"], "c": 1, "d": "easy", "t": "Name Resolution (DNS Records)", "exp": ["Mail eXchange MX with priority. Lower number tried first."]},
+    {"id": 7, "q": "Two MX records priorities 10 and 20 — which is tried first?", "opts": ["10", "20", "Both together", "Random"], "c": 0, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["Lower priority wins. 10 before 20; backup if primary unreachable."]},
+    {"id": 8, "q": "Arbitrary text for SPF/DKIM verification — which record?", "opts": ["TXT", "NS", "A", "PTR"], "c": 0, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["TXT holds arbitrary text used for verification."]},
+    {"id": 9, "q": "IP to name (reverse) under in-addr.arpa — which record?", "opts": ["A", "PTR", "CNAME", "MX"], "c": 1, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["Reverse is PTR. Forward is A or AAAA."]},
+    {"id": 10, "q": "Which record lists the authoritative name servers for a zone?", "opts": ["A", "NS", "MX", "PTR"], "c": 1, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["Name Server NS. A address, MX mail, PTR reverse."]},
+    {"id": 11, "q": "Start of authority with serial/refresh/retry — which record?", "opts": ["SOA", "A", "CNAME", "TXT"], "c": 0, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["SOA marks authority with serial/refresh/retry/expire/minimum."]},
+    {"id": 12, "q": "Advertise a service and port (SIP, LDAP, etc.) — which record?", "opts": ["MX", "SRV", "A", "PTR"], "c": 1, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["Service SRV advertises service plus port."]},
+    {"id": 13, "q": "CNAME target must be:", "opts": ["A raw IP like 93.184.216.34", "Another domain name, not a raw IP", "A port number", "A MAC address"], "c": 1, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["Alias to another name; that name then resolves via its A or AAAA."]},
+    {"id": 14, "q": "MX target must point to:", "opts": ["A raw IP", "A mail host name, not a raw IP", "A port", "An alias only"], "c": 1, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["Mail eXchange must point to a host name with priority, not a raw IP."]},
+    {"id": 15, "q": "DNS well-known port on Transport:", "opts": ["UDP 53 and TCP 53 for large or zone transfer", "UDP 68 only", "TCP 80 only", "UDP 67 only"], "c": 0, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["DNS 53 both UDP and TCP. 67/68 are DHCP, 80 HTTP."]},
+    {"id": 16, "q": "DHCP stands for:", "opts": ["Dynamic Host Control Protocol", "Dynamic Host Configuration Protocol", "Domain Host Control Protocol", "Data Host Configuration Protocol"], "c": 1, "d": "easy", "t": "DHCP DORA Process", "exp": ["Dynamic Host Configuration Protocol."]},
+    {"id": 17, "q": "DORA stands for:", "opts": ["Discover Offer Request Acknowledge", "Discover Reply Offer Acknowledge", "Data Offer Request Answer", "Discover Offer Renew Acknowledge"], "c": 0, "d": "easy", "t": "DHCP DORA Process", "exp": ["Discover Offer Request Acknowledge in fixed order."]},
+    {"id": 18, "q": "DHCP uses:", "opts": ["TCP", "UDP", "Both equally", "ICMP"], "c": 1, "d": "easy", "t": "DHCP DORA Process", "exp": ["DHCP is UDP. DNS is UDP then TCP."]},
+    {"id": 19, "q": "DHCP server port vs client port:", "opts": ["Server 53 client 53", "Server 67 client 68", "Server 68 client 67", "Server 80 client 80"], "c": 1, "d": "medium", "t": "DHCP DORA Process", "exp": ["Server 67, client 68. Swap is a classic trap. Not 53 which is DNS."]},
+    {"id": 20, "q": "DORA first message Discover is:", "opts": ["Unicast from client", "Broadcast from client 68 to server 67", "Broadcast from server", "Multicast from server"], "c": 1, "d": "medium", "t": "DHCP DORA Process", "exp": ["No address yet so must broadcast client 68 to server 67."]},
+    {"id": 21, "q": "DORA second message Offer is:", "opts": ["Client to server", "Server 67 to client 68", "Server to server", "Router to client"], "c": 1, "d": "medium", "t": "DHCP DORA Process", "exp": ["Server 67 to client 68 offering IP and parameters."]},
+    {"id": 22, "q": "DORA third message Request is:", "opts": ["Server to client", "Broadcast from client claiming one offer", "Unicast to root", "ARP request"], "c": 1, "d": "medium", "t": "DHCP DORA Process", "exp": ["Request claims one offer and is broadcast so all servers hear the choice. Renewals later are unicast."]},
+    {"id": 23, "q": "At 50 percent of lease (T1) the client does:", "opts": ["Broadcast rebinding", "Unicast renew with original server", "Release address", "Send Decline"], "c": 1, "d": "medium", "t": "DHCP DORA Process", "exp": ["T1 at 50 percent renew unicast with original server. T2 at 87.5 percent rebroadcast."]},
+    {"id": 24, "q": "At 87.5 percent of lease (T2) the client does:", "opts": ["Unicast renew", "Broadcast rebinding to any server", "Release", "Send PTR"], "c": 1, "d": "medium", "t": "DHCP DORA Process", "exp": ["T2 rebroadcast to any server because renewal failed."]},
+    {"id": 25, "q": "Client detects offered IP already in use via ARP — which DHCP message?", "opts": ["Release", "Decline", "NAK", "Offer"], "c": 1, "d": "medium", "t": "DHCP DORA Process", "exp": ["Decline refuses a bad offer. Release gives up an owned lease. NAK is server refusal."]},
+    {"id": 26, "q": "Server refuses a Request — which DHCP message?", "opts": ["Decline", "Release", "NAK", "Discover"], "c": 2, "d": "medium", "t": "DHCP DORA Process", "exp": ["NAK is server negative ack refusing the Request."]},
+    {"id": 27, "q": "What lets one central DHCP server serve many VLANs/broadcast domains?", "opts": ["DNS resolver", "Relay or helper that forwards broadcasts", "NAT", "ARP cache"], "c": 1, "d": "medium", "t": "DHCP DORA Process", "exp": ["Relay/helper forwards broadcasts between VLANs. Without it broadcasts stay local."]},
+    {"id": 28, "q": "Windows commands to cycle DHCP on demand:", "opts": ["ipconfig /release then /renew", "ipconfig /renew then /release", "ipconfig /flushdns then /release", "ping /release then /renew"], "c": 0, "d": "medium", "t": "DHCP DORA Process", "exp": ["Release then renew. /flushdns clears resolver cache, not DHCP."]},
+    {"id": 29, "q": "How many logical root servers A-M in DNS?", "opts": ["7", "13", "26", "256"], "c": 1, "d": "easy", "t": "DNS Hierarchy", "exp": ["13 logical roots A-M via anycast to hundreds physical."]},
+    {"id": 30, "q": "Root of DNS is written as:", "opts": ["@", "dot .", "star *", "slash /"], "c": 1, "d": "easy", "t": "DNS Hierarchy", "exp": ["Root dot level 0 at the top."]},
+    {"id": 31, "q": "Order of walking from nothing to the answer:", "opts": ["Authoritative then TLD then Root", "Root then TLD then Authoritative", "TLD then Root then Authoritative", "Authoritative only"], "c": 1, "d": "medium", "t": "DNS Hierarchy", "exp": ["Root then TLD then Authoritative via NS+glue. Root first."]},
+    {"id": 32, "q": "Labels in www.example.com. with trailing root dot shown?", "opts": ["2", "3", "4", "5"], "c": 2, "d": "medium", "t": "DNS Hierarchy", "exp": ["www, example, com, plus root dot is four. Without dot people count three."]},
+    {"id": 33, "q": "Which server does the walking across Root/TLD/Authoritative on your behalf?", "opts": ["Authoritative", "Recursive resolver", "Root", "TLD only"], "c": 1, "d": "medium", "t": "DNS Hierarchy", "exp": ["Recursive resolver (ISP or 8.8.8.8/1.1.1.1) walks. Authoritative answers."]},
+    {"id": 34, "q": "Which server returns the final definitive answer for example.com?", "opts": ["Recursive resolver", "Root", "Authoritative", "Cache only"], "c": 2, "d": "medium", "t": "DNS Hierarchy", "exp": ["Authoritative owns the zone and answers. Resolver walks, root delegates."]},
+    {"id": 35, "q": "What controls how long a cached DNS answer is reused?", "opts": ["Lease time", "TTL", "Hold timer", "Keepalive"], "c": 1, "d": "easy", "t": "DNS Hierarchy", "exp": ["TTL Time To Live. Lease time is DHCP."]},
+    {"id": 36, "q": "Client to resolver is recursive, resolver outward is:", "opts": ["Recursive too", "Iterative", "Broadcast", "Anycast"], "c": 1, "d": "medium", "t": "DNS Hierarchy", "exp": ["Client to resolver recursive, resolver to name servers iterative."]},
+    {"id": 37, "q": "Glue records are:", "opts": ["TXT for verification", "A records for NS names to avoid loops", "PTR for reverse", "MX priority"], "c": 1, "d": "medium", "t": "DNS Hierarchy", "exp": ["Glue is A/AAAA for the NS names so delegation does not loop."]},
+    {"id": 38, "q": "Which caches hold DNS answers?", "opts": ["Only browser", "Browser plus OS plus resolver", "Only resolver", "Only authoritative"], "c": 1, "d": "medium", "t": "DNS Hierarchy", "exp": ["All three: browser, OS, resolver — each respects TTL."]},
+    {"id": 39, "q": "Server that must always be reachable at same address needs:", "opts": ["Dynamic", "Static", "APIPA", "None"], "c": 1, "d": "easy", "t": "Dynamic vs Static IP", "exp": ["Stable servers need static. Clients fine on dynamic."]},
+    {"id": 40, "q": "Laptop that moves between networks is fine on:", "opts": ["Static only", "Dynamic via DHCP", "APIPA only", "Loopback only"], "c": 1, "d": "easy", "t": "Dynamic vs Static IP", "exp": ["Moving clients suit dynamic DHCP assignment."]},
+    {"id": 41, "q": "Which is a private address inside a LAN?", "opts": ["8.8.8.8", "1.1.1.1", "192.168.1.10", "9.9.9.9"], "c": 2, "d": "easy", "t": "Dynamic vs Static IP", "exp": ["Private inside LAN: 192.168/16 or 10/8 or 172.16/12. 8.8.8.8 public Google DNS."]},
+    {"id": 42, "q": "Public address example (globally routable):", "opts": ["192.168.1.1", "10.0.0.5", "172.16.0.10", "8.8.8.8"], "c": 3, "d": "easy", "t": "Dynamic vs Static IP", "exp": ["Public unique routable on internet: 8.8.8.8 Google DNS. Others are private."]},
+    {"id": 43, "q": "Many private hosts sharing one public IP at the edge:", "opts": ["DNS", "NAT", "ARP", "DHCP"], "c": 1, "d": "medium", "t": "Dynamic vs Static IP", "exp": ["NAT translates many private to one public at the router."]},
+    {"id": 44, "q": "Address 169.254.10.5 means:", "opts": ["Static configured", "Public routable", "APIPA fallback — no DHCP server reachable", "Loopback"], "c": 2, "d": "medium", "t": "Dynamic vs Static IP", "exp": ["169.254 is APIPA link-local when DHCP expected but got no offer."]},
+    {"id": 45, "q": "Dynamic DNS does what?", "opts": ["Makes an IP static", "Updates a name when a dynamic IP changes", "Changes DNS port", "Blocks DHCP"], "c": 1, "d": "medium", "t": "Dynamic vs Static IP", "exp": ["Dynamic DNS updates name to match current dynamic address. Does not make address static."]},
+    {"id": 46, "q": "Which ports are well-known for DNS and DHCP server?", "opts": ["DNS 53 DHCP 67", "DNS 67 DHCP 53", "DNS 80 DHCP 443", "DNS 68 DHCP 53"], "c": 0, "d": "medium", "t": "Dynamic vs Static IP", "exp": ["DNS 53, DHCP server 67 (client 68). 80/443 web."]},
+    {"id": 47, "q": "Translate name to address vs assign address — which protocol is which?", "opts": ["Both DNS", "Both DHCP", "DNS translates, DHCP assigns", "DHCP translates, DNS assigns"], "c": 2, "d": "easy", "t": "Name Resolution (DNS Records)", "exp": ["DNS translates a name, DHCP assigns an address. Verb decides."]},
+    {"id": 48, "q": "DNS TTL vs DHCP lease — difference?", "opts": ["Same thing", "TTL cache lifetime for DNS, lease time address validity for DHCP", "TTL for DHCP only", "Lease for DNS only"], "c": 1, "d": "medium", "t": "Dynamic vs Static IP", "exp": ["TTL cache lifetime for DNS records, lease time address validity for DHCP."]},
+    {"id": 49, "q": "Which tool shows current assigned IP (DHCP result) vs queries a name (DNS)?", "opts": ["ipconfig shows assigned IP, nslookup queries a name", "nslookup shows assigned IP, ipconfig queries a name", "ping does both", "tracert does both"], "c": 0, "d": "medium", "t": "DHCP DORA Process", "exp": ["ipconfig shows assigned address (DHCP), nslookup asks name to address (DNS)."]},
+    {"id": 50, "q": "DNSSEC hardens:", "opts": ["DHCP", "DNS against spoofing via signatures", "ARP", "NAT"], "c": 1, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["DNSSEC signs zones to defeat spoofing (adds RRSIG). DHCP snooping hardens DHCP."]},
+    {"id": 51, "q": "DHCP snooping hardens:", "opts": ["DNS", "DHCP against rogue servers by trusting only specific ports", "HTTP", "SMTP"], "c": 1, "d": "medium", "t": "DHCP DORA Process", "exp": ["Switch feature trusts only specific ports for DHCP servers to block rogue DHCP."]},
+    {"id": 52, "q": "nslookup vs dig:", "opts": ["nslookup is Windows DNS lookup, dig is Linux DNS lookup — same job", "Both are DHCP", "Both are ping", "Both are routing"], "c": 0, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["Both query DNS; nslookup classic on Windows, dig powerful on Linux."]},
+    {"id": 53, "q": "If a question says CNAME points to 192.0.2.10 directly, it is:", "opts": ["Correct", "Wrong — CNAME must point to a name, not a raw IP", "Correct for reverse only", "Correct for mail only"], "c": 1, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["Alias to another name; that name then has the A with the IP."]},
+    {"id": 54, "q": "If a question says MX points directly to 192.0.2.10, it is:", "opts": ["Correct", "Wrong — MX must point to a host name", "Correct for reverse", "Correct for port 53"], "c": 1, "d": "medium", "t": "Name Resolution (DNS Records)", "exp": ["MX must point to a mail host name with priority, not a raw IP."]},
+    {"id": 55, "q": "Second-level domain in mail.example.com. ?", "opts": ["mail", "example", "com", "dot"], "c": 1, "d": "medium", "t": "DNS Hierarchy", "exp": ["mail is subdomain, example is second-level, com is TLD, dot is root."]},
+    {"id": 56, "q": "TLD in mail.example.com. ?", "opts": ["mail", "example", "com", "dot"], "c": 2, "d": "easy", "t": "DNS Hierarchy", "exp": ["Top Level Domain is com. Second-level is example."]},
+    {"id": 57, "q": "DHCP Decline vs Release:", "opts": ["Same", "Decline refuses a bad offer, Release gives up an owned lease", "Release refuses bad offer, Decline gives up lease", "Both from server"], "c": 1, "d": "medium", "t": "DHCP DORA Process", "exp": ["Decline is client refusing bad offer detected via ARP; Release is client voluntarily giving up owned address."]},
+    {"id": 58, "q": "DHCP NAK is sent by:", "opts": ["Client", "Server refusing a Request", "Router", "DNS server"], "c": 1, "d": "medium", "t": "DHCP DORA Process", "exp": ["NAK is server negative ack refusing the client Request."]},
+    {"id": 59, "q": "Best choice for a network printer that users add by IP:", "opts": ["Dynamic with short lease", "Static or DHCP reservation", "APIPA", "Public only"], "c": 1, "d": "medium", "t": "Dynamic vs Static IP", "exp": ["Printers need stable address: static or DHCP reservation (DHCP always gives same address)."]},
+    {"id": 60, "q": "Which uses 169.254.x.x?", "opts": ["Static configured host", "APIPA fallback when DHCP gets no OFFER", "Public internet host", "DNS authoritative"], "c": 1, "d": "medium", "t": "Dynamic vs Static IP", "exp": ["APIPA 169.254 link-local when DHCP expected but no server answered. Not routable to internet."]}
+  ]
+}

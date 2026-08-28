@@ -1,0 +1,511 @@
+{
+  "id": "dbms-basics",
+  "title": "DBMS Basics (Keys/ER/ACID)",
+  "icon": "DB",
+  "category": "cs-foundations",
+  "color": "#475569",
+  "subtopics": [
+    "Keys (Primary/Foreign/Candidate)",
+    "ER Diagrams",
+    "ACID Properties",
+    "DDL vs DML"
+  ],
+  "estimatedHours": 6,
+  "readingSections": [
+    {
+      "id": "keys",
+      "title": "Keys: Super, Candidate, Primary, Alternate, Foreign, Composite and Unique",
+      "type": "concept",
+      "quickSummary": "Keys identify rows. Super is any set that identifies. Candidate is minimal super (no extra column). Primary is the chosen candidate (one per table, no null, unique). Alternate is the unchosen candidate. Foreign links to a primary elsewhere. Composite uses many columns; unique allows one null quirk across DBs.",
+      "content": [
+        "A super key is any set of columns that is guaranteed unique for every row. If student roll plus email plus phone together are unique, that set is a super key even if phone alone would also be unique. Any superset of a super key is still a super key — adding columns never breaks uniqueness, it just makes the key less minimal.",
+        "A candidate key is a minimal super key — remove any column and it would no longer be unique. Candidates are the economical keys that could be chosen as the table's identity. Example: Student table has candidate keys {rollNo} and {email} and {rollNo, email} is a super key but not a candidate because you can drop email and rollNo alone still identifies. AXIS loves this minimality trap.",
+        "A primary key is the one candidate the designer chooses as the official identity. One per table, never null, always unique, and often indexed as the clustered key. The remaining candidates become alternate keys (also called secondary keys). If rollNo is chosen primary, email becomes alternate. Alternate keys still have the uniqueness and not-null contract in a disciplined design even though the DBMS enforces only the primary strictly.",
+        "A foreign key is a column (or set) in one table that points to the primary or candidate key of another table. Orders.customerId foreign -> Customers.customerId primary. The child foreign may be null (if the relationship is optional) unless constrained, but when non-null it must match an existing parent value — referential integrity. On delete or update the rule can cascade, restrict, set null or set default.",
+        "Composite vs unique quirks. A composite key uses multiple columns together (e.g. Enrollment primary is studentId plus courseId — neither alone is unique for the enrollment, together they are). A unique constraint guarantees uniqueness but most DBMS allow one null (SQL Server one null, Oracle and Postgres treat nulls as distinct so many nulls can slip through — AXIS usually says one null for unique vs none for primary to simplify). Surrogate vs natural: auto-increment id is a surrogate; email is natural. Both can serve as primary, but surrogate is often chosen for stability."
+      ],
+      "subsections": [
+        {
+          "title": "Minimality test that ends the trap",
+          "content": "Test minimality by trying to drop each column: if any subset of the set is still unique, the set is not minimal and therefore not a candidate. Only super keys that survive dropping every column are candidates. Primary is then the winner among them."
+        },
+        {
+          "title": "Referential integrity in one line",
+          "content": "Every non-null foreign value must exist as a primary or candidate value in the parent. A foreign that points nowhere is a referential integrity violation and the delete or insert that created it must be rejected or cascaded per rule."
+        }
+      ],
+      "quickRevision": [
+        "Super any superset identifying; candidate minimal super; primary the chosen candidate (one per table, no null, unique); alternate the unchosen candidate(s).",
+        "Foreign links to parent primary/candidate and enforces referential integrity; actions on delete/update: cascade/restrict/set null/default.",
+        "Composite uses many columns together; unique allows one null is the simplified exam rule.",
+        "Surrogate auto id vs natural email/phone — both can be primary; surrogate often preferred for stable joins.",
+        "Minimality test: drop any column and uniqueness must break for a candidate."
+      ],
+      "tricks": [
+        "Any answer that says a table can have many primary keys is wrong — one primary per table; many candidates, many foreigns.",
+        "Every candidate is a super key but not every super key is a candidate — minimality separates them.",
+        "Unique vs primary null trap: unique tolerates null(s) per the simplified row, primary never tolerates."
+      ],
+      "patterns": [
+        "'Any set that identifies?' -> Super. 'Minimal super?' -> Candidate. 'Chosen one for identity?' -> Primary.",
+        "'Links to another table?' -> Foreign (must match existing parent primary).",
+        "'Many columns together identify?' -> Composite. 'Natural email vs auto id?' -> Surrogate vs natural."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / Gate — keys, every year",
+          "question": "Differentiate super vs candidate vs primary vs alternate vs foreign vs composite vs unique plus minimality plus referential integrity?",
+          "approach": "Super any, candidate minimal super, primary chosen one, alternate unchosen, foreign links and obeys referential, composite many, unique one-null quirk."
+        },
+        {
+          "source": "TCS / Wipro — foreign key actions",
+          "question": "On delete cascade vs restrict vs set null?",
+          "approach": "Cascade deletes children, restrict blocks, set null orphans to null where allowed."
+        }
+      ],
+      "companyNote": "Keys appear as either a direct definition set or a table with columns to pick candidates and primary/foreign."
+    },
+    {
+      "id": "er",
+      "title": "ER Diagrams: Entities, Attributes, Relationships, Cardinality and Weak Entities",
+      "type": "concept",
+      "quickSummary": "ER models reality before tables. Entity is a thing (rectangle). Attribute is a property (oval). Key attribute underlined. Relationship is an association (diamond). Cardinality 1:1, 1:N, N:M. Weak entity (double rectangle) depends on an owner plus partial key; identifying relationship is double diamond and its foreign plus partial forms the composite primary.",
+      "content": [
+        "Entity is a real-world thing about which we store rows — Student, Course, Order. Strong entity exists independently with its own primary key. Weak entity cannot be identified without an owner — OrderItem depends on Order and uses OrderId plus itemNo as its composite primary. In diagrams, weak entity is a double rectangle and its identifying relationship is a double diamond.",
+        "Attributes describe entities. Simple cannot be split (rollNo). Composite can split (name into first plus last; address into street plus city plus pincode). Single-valued holds one value; multi-valued holds many (phoneNumbers, hobbies) shown with a double oval and often normalized to a separate table. Derived can be computed from others (age from dob) shown dashed. Key attributes are underlined (often with stronger underline for primary).",
+        "Relationships tie entities. They have degree: unary (one entity with itself, e.g. Employee manages Employee), binary (two entities, the common case), ternary (three together such as Doctor treats Patient with Drug). They have cardinality: 1:1 one to one (one passport per person), 1:N one to many (one department many employees), N:M many to many (students enroll in many courses and each course has many students). Participation: total means every entity must participate (double line), partial means some may not (single line).",
+        "Cardinality shapes tables. 1:N can be implemented by a foreign key on the N side (Employee has departmentId foreign). 1:1 can be foreign on either side (or unique foreign) with a choice based on null patterns. N:M needs a junction (bridge) table (Enrollment bridges Student and Course with the two foreign keys plus any relationship attributes such as grade). AXIS loves asking which cardinality needs no extra table vs a foreign vs a bridge.",
+        "Attributes on relationships belong on the relationship or its bridge: Enrolls relationship can carry grade and semester; WorksOn carries hours. ISA hierarchy appears in extended ER: specialization and generalization with disjoint vs overlapping and total vs partial constraints. The exam rarely drills ISA beyond recognizing disjoint total vs overlapping partial wording."
+      ],
+      "subsections": [
+        {
+          "title": "Weak entity checklist",
+          "content": "Weak lacks its own standalone key, shows double rectangle, has a partial key (discriminator), participates totally in an identifying double-diamond relationship with an owner, and its primary becomes the owner's foreign plus its partial key combined."
+        },
+        {
+          "title": "From ER to tables in 20 seconds",
+          "content": "Strong entities become tables with their attributes plus primary. 1:N adds a foreign on the N side. 1:1 adds a foreign with unique on either side (minimize nulls). N:M introduces a bridge with two foreigns plus relationship attributes, often both foreigns as a composite primary."
+        }
+      ],
+      "quickRevision": [
+        "Entity rectangle strong, double rectangle weak (needs owner plus partial key); attribute oval, key underlined, multi-valued double oval, derived dashed, composite splittable.",
+        "Relationship diamond, double diamond identifying; degree unary/binary/ternary; cardinality 1:1 vs 1:N vs N:M with total vs partial participation.",
+        "1:N foreign on N side; 1:1 foreign with unique; N:M bridge/junction with two foreigns plus relationship attributes.",
+        "Weak weak+owner combo keys via foreign plus partial; bridge N:M composite of two foreigns is the exam pattern.",
+        "ISA disjoint/overlapping plus total/partial for extended ER."
+      ],
+      "tricks": [
+        "Any answer that says N:M can be done with a single foreign is wrong — N:M needs a bridge; only 1:N can be a foreign on the N side.",
+        "Weak vs strong: weak cannot stand alone without its owner — existence dependency is the secondary word for weak.",
+        "Multi-valued attribute rarely stays as a column — it becomes its own table under normalization."
+      ],
+      "patterns": [
+        "'Shape among entities?' -> Entity rectangle, attribute oval, relationship diamond. 'Weak?' -> Double rectangle plus double diamond.",
+        "'Attribute that holds many phones?' -> Multi-valued double oval; often a separate table.",
+        "'Students many courses?' -> N:M -> bridge Enrollment with studentId plus courseId as composite primary."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — ER, every year",
+          "question": "Name this ER shape or translate cardinality to tables or spot the weak entity?",
+          "approach": "Rectangle entities, oval attributes, diamond relationships, N:M via bridge, weak via owner plus partial."
+        },
+        {
+          "source": "TCS / Wipro — cardinality to implementation",
+          "question": "How many tables for this cardinality or where does the foreign go?",
+          "approach": "1:N foreign on N side, 1:1 foreign with unique, N:M bridge with two foreigns."
+        }
+      ],
+      "companyNote": "ER tables and cardinality-to-table questions appear as a direct table count or a diagram to label."
+    },
+    {
+      "id": "acid",
+      "title": "ACID Properties: Atomicity, Consistency, Isolation, Durability",
+      "type": "concept",
+      "quickSummary": "ACID makes transactions correct. Atomicity all or nothing (commit or rollback). Consistency valid state to valid state via constraints. Isolation concurrent transactions behave as if serial (levels fix dirty/nonrepeatable/phantom). Durability committed stays even after crash via logging, checkpoint and recovery.",
+      "content": [
+        "A transaction is a logical unit that must leave the database correct. Atomicity says all of it commits or none does — if a transfer debits 500 from A but the credit to B fails, the entire transaction rolls back to the pre-transfer state via undo log; partial effects are not allowed. The failure words for atomicity are crash mid-transaction and all or nothing.",
+        "Consistency says a transaction moves the database from one valid state to another valid state per rules, constraints and triggers. Domain rules include not-negative balance, primary unique, foreign valid, checks and business invariants. A transaction that would violate a constraint is aborted — the database refuses to become inconsistent even if the request was atomic in its steps.",
+        "Isolation says concurrent transactions behave as if they ran in some serial order. Without it you get anomalies. Dirty read: T2 reads uncommitted T1 that later rolls back. Nonrepeatable read: T2 reads twice and sees T1's update in between. Phantom read: T2's range query sees new rows inserted by T1. Lost update: concurrent writes overwrite. The isolation levels trade off speed vs anomalies: Read Uncommitted allows dirty plus nonrepeatable plus phantom; Read Committed prevents dirty; Repeatable Read prevents both dirty and nonrepeatable but not phantoms; Serializable prevents all by serializing; Snapshot adds optimistic checks.",
+        "Durability says once committed, the effect survives crashes, power loss or media failure via write-ahead logging (WAL) plus checkpoints plus recovery manager. Redo log is replayed on restart for committed, undo log rolls back uncommitted. AXIS commonly bins recovery as system failure vs media failure vs transaction failure — durability survives via persistent redo plus backups.",
+        "Two small facts that reappear. One, individual SQL statements outside a transaction are each a tiny transaction (autocommit) — DDL often autocommits. Two, 2PL (two-phase locking) plus locking flavours and timestamp ordering plus optimistic concurrency are the isolation enforcement families the exam recognizes by name even if it does not run the algorithm."
+      ],
+      "subsections": [
+        {
+          "title": "Anomaly vs level — hold the table",
+          "content": "Dirty if you can read uncommitted. Nonrepeatable if a committed update appears on reread. Phantom if a committed insert appears in a range reread. Higher levels knock them out in order. Read Uncommitted none, Read Committed knocks dirty, Repeatable knocks dirty plus nonrepeatable, Serializable knocks all. Snapshot isolates via versions, often like Repeatable with write check."
+        },
+        {
+          "title": "WAL and restart in one sentence each",
+          "content": "Write-Ahead Logging writes redo before data pages, so crash reuse can replay redo for committed and undo for uncommitted. Checkpoint bounds recovery by flushing dirty pages and recording the restart point."
+        }
+      ],
+      "quickRevision": [
+        "Atomicity all or nothing via commit or rollback and undo log.",
+        "Consistency valid to valid per constraints — database refuses to become inconsistent.",
+        "Isolation behaves serially; levels: RU dirty yes, RC dirty no, RR dirty+nonrepeatable no, Serializable none; anomalies dirty/nonrepeatable/phantom.",
+        "Durability committed survives via WAL plus checkpoints plus recovery (redo for committed, undo for uncommitted).",
+        "Transactions are logical units; autocommit makes each statement a transaction if you do not begin one."
+      ],
+      "tricks": [
+        "Any answer that says Read Committed prevents phantoms is wrong — Repeatable Read also does not fully; only Serializable prevents phantoms in strict lock implementations.",
+        "Do not swap isolation and consistency — isolation is about concurrent behaviour, consistency is about rule validity after the transaction.",
+        "Durability is about after commit survives crash; atomicity is about before commit all-or-nothing. After vs before separates them."
+      ],
+      "patterns": [
+        "'All or nothing or crash half way?' -> Atomicity.",
+        "'Rules valid before and after?' -> Consistency.",
+        "'Concurrent behaves as some serial order or phantom?' -> Isolation.",
+        "'Committed survives even after crash?' -> Durability.",
+        "'Dirty vs nonrepeatable vs phantom?' -> Isolation plus level table."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Every AXIS paper — ACID plus isolation, guaranteed",
+          "question": "Which ACID property or which isolation level prevents which anomaly?",
+          "approach": "Atomic all-or-nothing, Consistency rules, Isolation serial behaviour via levels, Durability survive. Level table for dirty/nonrepeatable/phantom."
+        },
+        {
+          "source": "TCS / Infosys — crash plus recovery",
+          "question": "How does a committed transfer survive a crash after commit?",
+          "approach": "Durability via write-ahead log plus checkpoint plus redo on restart; uncommitted rolled back via undo."
+        }
+      ],
+      "companyNote": "ACID appears as either a direct pillar match or an isolation-level anomaly table; WAL and durability appear as a crash item."
+    },
+    {
+      "id": "ddl-dml",
+      "title": "DDL, DML, DCL, TCL and the Language of SQL",
+      "type": "concept",
+      "quickSummary": "DDL defines structure (CREATE, ALTER, DROP, TRUNCATE) and often autocommits. DML manipulates rows (SELECT, INSERT, UPDATE, DELETE). DCL controls access (GRANT, REVOKE). TCL manages transactions (COMMIT, ROLLBACK, SAVEPOINT). TRUNCATE vs DELETE choice and GRANT vs REVOKE are the classic pairs.",
+      "content": [
+        "DDL (Data Definition Language) modifies structure and definitions: CREATE builds a database or table or view or index, ALTER changes it, DROP deletes it completely including data and definition and permissions, TRUNCATE deletes all rows quickly while keeping the structure and indexes (often faster, fewer log records per row, may reset identity in some DBMS, cannot be filtered by WHERE). DDL often autocommits in many systems — the exam writes can DDL be rolled back? and expects it depends on DBMS but most consider DDL committed.",
+        "DML (Data Manipulation Language) works inside structures: INSERT adds rows, UPDATE changes rows, DELETE deletes rows, SELECT reads. With WHERE plus ORDER BY plus LIMIT plus JOIN plus GROUP BY plus HAVING plus DISTINCT the full DML shape emerges. DML respects transactions — wrap in BEGIN then COMMIT or ROLLBACK. DML can be rolled back inside a transaction; DELETE can be rolled back and can have WHERE so you delete a few rows; TRUNCATE cannot.",
+        "DCL (Data Control Language) deals with permissions: GRANT gives permission (SELECT or INSERT or UPDATE or DELETE or REFERENCES or EXECUTE) to a user or role, REVOKE takes it back. The exam writes GRANT SELECT ON Employees TO Alice and asks which type — answer DCL. WITH GRANT OPTION lets the recipient grant further; REVOKE CASCADE revokes downstream grants.",
+        "TCL (Transaction Control Language) manages transactions: COMMIT makes work permanent and durable, ROLLBACK undoes to the last commit or to a SAVEPOINT, SAVEPOINT marks an intermediate point inside a long transaction (ROLLBACK TO S2). SET TRANSACTION ISOLATION LEVEL belongs here conceptually as the concurrency dial. The paper often conflates TCL with DCL under the heading transaction plus access control.",
+        "Surface the confusing overlap: GRANT is DCL not DDL even though it affects definitions in a broad sense; distinction is access versus structure. SELECT is DML even though some older notes say DRL or DQL — AXIS treats SELECT as DML. CREATE VIEW plus SELECT on a view separates DDL for the view with DML for its query. The exam loves: 'GRANT belongs to?' -> DCL."
+      ],
+      "subsections": [
+        {
+          "title": "DELETE vs TRUNCATE in 20 seconds",
+          "content": "DELETE deletes rows and can have WHERE plus ORDER BY plus LIMIT in some DBMS, logs each row and fires triggers and can be rolled back inside a transaction and respects foreign keys; TRUNCATE deletes all rows in a table in one go, minimal log, fast, keeps structure, often cannot have WHERE, may bypass triggers and may be non-rollbac kable in some systems. Choose DELETE for selective, TRUNCATE for fast full clear where the engine allows."
+        },
+        {
+          "title": "GRANT cascade nuance that steals a mark",
+          "content": "WITH GRANT OPTION lets Alice grant to Bob what she was granted. REVOKE from Alice with CASCADE takes it from Bob too. Without CASCADE some systems block the revoke while grants still exist. The exam rarely goes deeper than cascade vs restrict wording."
+        }
+      ],
+      "quickRevision": [
+        "DDL CREATE/ALTER/DROP/TRUNCATE defines structure, often autocommits, TRUNCATE full clear fast keep structure.",
+        "DML INSERT/UPDATE/DELETE/SELECT manipulates rows and can be transacted and rolled back; SELECT is DML in AXIS phrasing.",
+        "DCL GRANT/REVOKE access control with cascade via WITH GRANT OPTION.",
+        "TCL COMMIT/ROLLBACK/SAVEPOINT controls transactions; SET TRANSACTION ISOLATION LEVEL lives here.",
+        "DELETE selective with WHERE and triggers vs TRUNCATE fast all."
+      ],
+      "tricks": [
+        "Any answer that says SELECT is DCL or DDL is wrong — SELECT is DML (some call it DQL but AXIS bins it as DML).",
+        "Any answer that says DROP and TRUNCATE both keep the structure is wrong — DROP deletes the table definition itself, TRUNCATE keeps it.",
+        "GRANT is DCL not DDL; distinction is access versus structure."
+      ],
+      "patterns": [
+        "'CREATE, ALTER, DROP, TRUNCATE?' -> DDL.",
+        "'SELECT, INSERT, UPDATE, DELETE?' -> DML.",
+        "'GRANT, REVOKE?' -> DCL.",
+        "'COMMIT, ROLLBACK, SAVEPOINT?' -> TCL.",
+        "'Full fast clear keep structure?' -> TRUNCATE. 'Selective delete of a few rows?' -> DELETE."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS — DDL vs DML vs DCL vs TCL, every year",
+          "question": "Which bucket does CREATE or SELECT or GRANT or COMMIT belong to?",
+          "approach": "DDL structure, DML rows, DCL access, TCL transactions. Hold the four lists."
+        },
+        {
+          "source": "Wipro — DELETE vs TRUNCATE",
+          "question": "DELETE vs TRUNCATE — which has WHERE, which can be rolled back, which fires triggers, which is faster?",
+          "approach": "DELETE selective trigger-heavy transacted; TRUNCATE fast full few logs keep structure."
+        }
+      ],
+      "companyNote": "Language buckets appear as a direct definition plus DELETE vs TRUNCATE as a 1-mark pair."
+    },
+    {
+      "id": "exam-dbms",
+      "title": "Exam DBMS Synthesis (keys plus ER plus ACID plus language in one pass)",
+      "type": "concept",
+      "quickSummary": "First spot the key family (super vs candidate vs primary vs foreign) plus minimality plus composite vs unique. Then spot ER shape (entity vs attribute vs relationship) plus cardinality vs bridge. Then ACID goal (all-or-nothing vs valid-to-valid vs serial vs survives). Then language bucket (DDL vs DML vs DCL vs TCL).",
+      "content": [
+        "Keys row: super any, candidate minimal super, primary chosen one, alternate unchosen, foreign links to parent, composite many columns, unique tolerates null per simplified row. Add actions cascade vs restrict vs set null and surrogate vs natural. That row answers every key definition plus a table with columns to choose candidates and primary/foreign.",
+        "ER row: entities rectangles, attributes ovals with key underlined multi-valued doubled derived dashed, relationships diamonds with total vs partial participation, cardinality 1:1 vs 1:N vs N:M with table mapping (same patterns as topology cardinalities but for relational modelling). Weak double rectangle plus double diamond with identifying owner supplies a composite primary via foreign plus partial.",
+        "ACID plus language rows: atomicity all-or-nothing, consistency valid-to-valid, isolation serial behaviour with level table versus phantom, durability survives via WAL plus checkpoint. DDL structure, DML rows, DCL access, TCL transactions. Interleaving gives the classic mixed table — DDL structure vs DML rows vs DCL access vs ACID goal vs cardinality shape — and one pass holds them apart.",
+        "Speed-vs-marks rule: if the paper shows a table with columns plus an ER diagram plus a transaction log, solve keys from column sets, solve ER cardinality to bridge, solve ACID from log state, solve language bucket from keyword. The exam rarely asks to run an algorithm, just to label the family.",
+        "Surface the confusing overlap: candidate vs primary is chosen vs available; super vs candidate is minimality; unique vs primary is null tolerance; N:M vs 1:N is bridge vs foreign; atomic vs durable is before commit vs after. Hold those three pairs and most traps neutralize."
+      ],
+      "subsections": [
+        {
+          "title": "Three pairs that flip together",
+          "content": "Super vs candidate flips on minimality. Candidate vs primary flips on chosen. Unique vs primary flips on null tolerance. Keep minimality, selection and null tolerance as the three filters for the keys family."
+        },
+        {
+          "title": "Two maps that recur exactly like networking",
+          "content": "Cardinality to tables (1:N foreign, N:M bridge) mirrors star vs mesh style maps in networking — one clever memory. ACID isolation levels mirror anomaly tables in the same way — memorize them as tables, not isolated facts."
+        }
+      ],
+      "quickRevision": [
+        "Keys: super any, candidate minimal, primary chosen, foreign links, composite many, unique one-null per simplified row, surrogate natural.",
+        "ER: entity rectangle, attribute oval with variants, relationship diamond, cardinality to tables via foreign vs bridge, weak double.",
+        "ACID: atomic all-or-nothing, consistent valid-to-valid, isolated serial behaviour with levels, durable survives via WAL.",
+        "Language: DDL structure, DML rows, DCL access, TCL transactions.",
+        "Pairs: minimality vs chosen vs null tolerance vs before vs after commit vs N:M bridge."
+      ],
+      "tricks": [
+        "Any answer that mixes cardinality with pillar (e.g. N:M is a pillar) is mixing families — keep keys vs ER vs ACID vs language rows separate.",
+        "DELETE vs TRUNCATE baits language with ACID durability via rollable vs fast — keep language row primary and ACID secondary.",
+        "Super vs candidate: candidate minimal super — many stems bait with any set that is unique and expect super but offer candidate as well; pick candidate only if minimal."
+      ],
+      "patterns": [
+        "'Any identifying set vs minimal?' -> Super vs candidate. 'Chosen one?' -> Primary. 'Links?' -> Foreign. 'Many columns together?' -> Composite.",
+        "'Entity vs attribute vs relationship?' -> Rectangle vs oval vs diamond. 'Multi-valued?' -> Double oval, often separate table.",
+        "'All-or-nothing vs survives crash?' -> Atomic vs durable (before vs after commit).",
+        "'N:M vs 1:N?' -> Bridge vs foreign on N side."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS synthesis — mixed DBMS 4-5 item match-the-column",
+          "question": "Given five stems each touching a different DBMS family, match each to key vs ER vs ACID vs language?",
+          "approach": "One pass: keys minimality, ER cardinality to tables, ACID goal plus level, language bucket — then delete vs truncate or cascade for depth."
+        },
+        {
+          "source": "Gate / placement — keys plus ER diagram plus bridge plus isolation",
+          "question": "Columns to pick candidates and primary/foreign, ER cardinalities to number of tables, anomalies vs isolation levels?",
+          "approach": "Candidates minimal super, bridge for N:M, level table for dirty/nonrepeatable/phantom."
+        }
+      ],
+      "companyNote": "Synthesis tables appear as a 4-5 item match-the-column question mixing all four families."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "keys",
+      "title": "Keys Row: Super, Candidate, Primary, Alternate, Foreign, Composite, Unique",
+      "formula": {
+        "latex": "Super\\;any\\; \\;|\\; Candidate\\;minimal\\;super \\;|\\; Primary\\;chosen\\;one\\;(1/table,\\;no\\;null,\\;unique) \\;|\\; Foreign\\;links\\;(ref\\;integrity) \\;|\\; Composite\\;many\\;together \\;|\\; Unique\\;one\\;null\\;quirk",
+        "text": "Super any | Candidate minimal super | Primary chosen one 1/table no null unique | Foreign links ref integrity | Composite many together | Unique one null quirk"
+      },
+      "whenToUse": "Any key definition, minimality, composite vs unique, or referential integrity MCQ.",
+      "explanation": [
+        "Super any superset identifying — adding columns never breaks uniqueness.",
+        "Candidate minimal super — dropping any column would break uniqueness; economical candidates available to choose.",
+        "Primary chosen candidate — one per table, never null, always unique, often clustered. Alternate is the unchosen candidate(s).",
+        "Foreign column or set in child pointing to parent primary/candidate — when non-null must match existing parent value — referential integrity.",
+        "Composite uses many columns together where none alone is unique (Enrollment studentId plus courseId). Unique allows one null per simplified row (DBMS dependent) unlike primary never null.",
+        "Surrogate auto id vs natural email — both can serve as primary; surrogate often preferred for stable joins. Actions on delete/update: cascade, restrict, set null, set default."
+      ],
+      "example": {
+        "prompt": "Student table candidates {rollNo} and {email}. rollNo chosen primary — what is email and what is {rollNo, email}?",
+        "steps": [
+          "Both {rollNo} and {email} are minimal super so each is a candidate.",
+          "Chosen rollNo is primary.",
+          "Unchosen candidate email is alternate. Superset {rollNo, email} is a super key but not a candidate because dropping email still unique."
+        ],
+        "answer": "email is alternate; {rollNo, email} is a super key but not a candidate"
+      },
+      "memoryTip": "Super SuperSet, Candidate Can Do Minimal, Primary Pick, Alternate Abandoned candidate, Foreign From another table, Composite Combo, Unique Usually allows one null.",
+      "commonMistake": "Many primary keys — only one primary per table; many candidates, many foreigns, many uniques."
+    },
+    {
+      "id": "er",
+      "title": "ER Diagrams and Cardinality to Tables",
+      "formula": {
+        "latex": "Entity\\;rect\\; \\;|\\; Attribute\\;oval\\;(key\\;underline,\\;multi\\;double) \\;|\\; Relationship\\;diamond \\;|\\; 1\\!:\\!N\\to foreign\\;on\\;N \\;|\\; N\\!:\\!M\\to bridge",
+        "text": "Entity rect | Attribute oval key underline multi double | Relationship diamond | 1:N foreign on N | N:M bridge"
+      },
+      "whenToUse": "Any ER shape naming or cardinality-to-table or weak entity MCQ.",
+      "explanation": [
+        "Entity rectangle strong, double rectangle weak; relationship diamond double diamond identifying; attribute oval key underlined multi-valued double oval derived dashed composite splittable.",
+        "Degree unary/binary/ternary; cardinality 1:1 vs 1:N vs N:M with total vs partial participation.",
+        "1:N implemented via foreign on N side; 1:1 via foreign with unique on either side minimizing nulls.",
+        "N:M needs a junction (bridge) with two foreign keys plus relationship attributes — often both foreigns form composite primary.",
+        "Weak entity depends on owner plus partial key discriminator; total participation in an identifying relationship; primary becomes owner foreign plus partial; existence dependency is weak."
+      ],
+      "example": {
+        "prompt": "Students many courses — cardinality and tables?",
+        "steps": [
+          "Cardinality Students to Courses is N:M — many to many.",
+          "Cannot be a single foreign — needs a junction.",
+          "Create Enrollment bridge with studentId plus courseId as two foreigns and composite primary, plus grade on the bridge."
+        ],
+        "answer": "N:M via bridge Enrollment(studentId, courseId) composite plus grade"
+      },
+      "memoryTip": "Rect Entity, Oval Attribute, Diamond Relationship, Many Many Bridge, Weak Double, Foreign follows Many.",
+      "commonMistake": "N:M via single foreign. N:M always needs a bridge; 1:N can be single foreign on N."
+    },
+    {
+      "id": "acid",
+      "title": "ACID and Isolation Level Table",
+      "formula": {
+        "latex": "A\\;all\\;or\\;nothing \\;|\\; C\\;valid\\to valid \\;|\\; I\\;serial\\;behav\\;(RU:dirty+y,\\;RC:dirty\\;no,\\;RR:both\\;no,\\;S:none) \\;|\\; D\\;committed\\;survives",
+        "text": "A all or nothing | C valid to valid | I serial behav RU dirty+y RC dirty no RR both no S none | D committed survives"
+      },
+      "whenToUse": "Any ACID pillar or isolation level vs anomaly MCQ or crash recovery MCQ.",
+      "explanation": [
+        "Atomicity all or nothing via commit or rollback and undo log.",
+        "Consistency valid state to valid state per constraints; database refuses inconsistent becoming.",
+        "Isolation concurrent behaves as some serial order via levels — anomalies are dirty (read uncommitted later rolled back), nonrepeatable (reread sees committed update), phantom (range sees new committed row); levels knock them out in order.",
+        "Durability committed survives crashes via write-ahead logging plus checkpoints plus redo for committed and undo for uncommitted on restart.",
+        "RU none prevented, RC dirty prevented, RR dirty plus nonrepeatable prevented, Serializable all prevented; individual statements outside transactions are autocommit."
+      ],
+      "example": {
+        "prompt": "T2 reads uncommitted T1 that later rolls back — which anomaly and which level would have prevented?",
+        "steps": [
+          "Read uncommitted data that later vanished is a dirty read anomaly.",
+          "Read Uncommitted allows dirty, Read Committed prevents it.",
+          "Any higher also prevents — RC is the first that knocks dirty out."
+        ],
+        "answer": "Dirty read — prevented from Read Committed upward"
+      },
+      "memoryTip": "All Atom, Valid to Valid Consistent, Isolated as Serial, Durable Done. RU dirty yes, RC dirty no, RR both no, S none.",
+      "commonMistake": "Swapping consistency and isolation or confusing phantom with nonrepeatable. Phantom adds new rows to a range; nonrepeatable updates an existing row reread."
+    },
+    {
+      "id": "ddl-dml",
+      "title": "DDL, DML, DCL, TCL and DELETE vs TRUNCATE",
+      "formula": {
+        "latex": "DDL:C/A/D/TR \\;|\\; DML:S/I/U/D \\;|\\; DCL:G/R \\;|\\; TCL:C/R/SV \\;|\\; DELETE\\;selective\\;trig\\;vs\\;TRUNCATE\\;fast\\;all",
+        "text": "DDL CREATE ALTER DROP TRUNCATE | DML SELECT INSERT UPDATE DELETE | DCL GRANT REVOKE | TCL COMMIT ROLLBACK SAVEPOINT | DELETE selective trig vs TRUNCATE fast all"
+      },
+      "whenToUse": "Any language-bucket MCQ or DELETE vs TRUNCATE vs DROP MCQ.",
+      "explanation": [
+        "DDL CREATE/ALTER/DROP/TRUNCATE defines structure, often autocommits, TRUNCATE keeps structure fast with minimal log for a full clear.",
+        "DML SELECT/INSERT/UPDATE/DELETE manipulates rows, belongs in transactions, DELETE selective with WHERE and triggers and rollable, SELECT is DML in AXIS binning (some say DQL).",
+        "DCL GRANT/REVOKE access control with WITH GRANT OPTION and cascade.",
+        "TCL COMMIT/ROLLBACK/SAVEPOINT controls transactions plus SET TRANSACTION ISOLATION LEVEL; savepoint marks intermediate rollback points inside a long transaction.",
+        "DROP deletes the table definition itself; TRUNCATE deletes all rows but keeps definition; DELETE deletes rows selectively."
+      ],
+      "example": {
+        "prompt": "Bucket bucket for CREATE, SELECT, GRANT, COMMIT plus DELETE vs TRUNCATE?",
+        "steps": [
+          "CREATE alters structure — DDL.",
+          "SELECT reads rows — DML.",
+          "GRANT gives permission — DCL.",
+          "COMMIT makes permanent — TCL.",
+          "DELETE removes selected rows with WHERE and triggers; TRUNCATE fast clears all."
+        ],
+        "answer": "CREATE DDL, SELECT DML, GRANT DCL, COMMIT TCL; DELETE selective, TRUNCATE fast full"
+      },
+      "memoryTip": "Define DDL, Manipulate DML, Control DCL, Transact TCL. Delete Draws WHERE, Truncate Throws all fast.",
+      "commonMistake": "SELECT as DCL or DDL; DROP keeps structure; or conflating GRANT as DDL not DCL."
+    }
+  ],
+  "practiceProblems": {
+    "keys": [
+      {"q": "Any set of columns that identifies every row (may have extra columns) is a:", "opts": ["Super key", "Candidate key", "Primary key", "Foreign key"], "c": 0, "s": ["Super is any superset identifying — candidates are the minimal ones within."], "a": "Super key"},
+      {"q": "Minimal super key — dropping any column would break uniqueness — is a:", "opts": ["Super key", "Candidate key", "Foreign key", "Composite key"], "c": 1, "s": ["Candidate is minimal super: economical key that could be chosen."], "a": "Candidate key"},
+      {"q": "One chosen as the official identity — one per table — is a:", "opts": ["Candidate key", "Primary key", "Alternate key", "Foreign key"], "c": 1, "s": ["Primary is the chosen candidate — one per table, never null, always unique."], "a": "Primary key"},
+      {"q": "Unchosen candidate(s) after choosing a primary is called:", "opts": ["Primary key", "Alternate key", "Foreign key", "Composite key"], "c": 1, "s": ["Alternate aka secondary candidate. Still unique in careful design."], "a": "Alternate key"},
+      {"q": "Foreign key value when non-null must:", "opts": ["Be null", "Match an existing parent primary/candidate value", "Be any integer", "Be a date"], "c": 1, "s": ["Referential integrity: every non-null foreign must exist in the parent."], "a": "Match an existing parent primary/candidate value"},
+      {"q": "Composite key means:", "opts": ["One column alone identifies", "Many columns together identify where none alone suffices", "Only for foreigns", "Only for unique"], "c": 1, "s": ["Composite uses many columns together, e.g. studentId plus courseId for enrollment."], "a": "Many columns together identify where none alone suffices"},
+      {"q": "Minimality trap: candidates {rollNo} and {email}; set {rollNo, email} is:", "opts": ["Candidate", "Super but not candidate (not minimal)", "Primary", "Foreign"], "c": 1, "s": ["Can drop email and {rollNo} alone still unique — not minimal so not candidate."], "a": "Super but not candidate (not minimal)"},
+      {"q": "How many primary keys per table?", "opts": ["Many", "One", "Zero or one but many candidates", "Up to three"], "c": 1, "s": ["One primary per table; many candidates, many foreigns, many uniques."], "a": "One"},
+      {"q": "Unique vs primary null simplification the paper uses is:", "opts": ["Both never null", "Unique tolerates null(s) per simplified row, primary never null", "Both tolerate nulls", "Primary tolerates nulls unique does not"], "c": 1, "s": ["Simplified: unique allows one null quirk across DBMS (many nulls on some), primary none."], "a": "Unique tolerates null(s) per simplified row, primary never null"},
+      {"q": "Surrogate vs natural: auto id vs email as primary — both can be primary, surrogate often preferred because:", "opts": ["More meaningful", "Stable for joins and never changes with life events", "Not unique", "Only for composite"], "c": 1, "s": ["Surrogate stable and never changes; natural emails/phones can change and break joins."], "a": "Stable for joins and never changes with life events"}
+    ],
+    "er": [
+      {"q": "Thing about which we store rows — rectangle — is a:", "opts": ["Attribute", "Entity", "Relationship", "Key"], "c": 1, "s": ["Entity is the thing. Attribute describes it, relationship ties entities."], "a": "Entity"},
+      {"q": "Property of an entity — oval — is a:", "opts": ["Entity", "Attribute", "Relationship", "Composite key"], "c": 1, "s": ["Attribute. Key attribute is an oval with underline."], "a": "Attribute"},
+      {"q": "Association among entities — diamond — is a:", "opts": ["Attribute", "Entity", "Relationship", "Key"], "c": 2, "s": ["Relationship ties entities, has degree plus cardinality plus participation."], "a": "Relationship"},
+      {"q": "Weak entity shown as:", "opts": ["Single rectangle", "Double rectangle", "Double oval", "Diamond"], "c": 1, "s": ["Weak double rectangle with an identifying double diamond relationship to its owner."], "a": "Double rectangle"},
+      {"q": "Multi-valued attribute (many phones) is a:", "opts": ["Single oval", "Double oval and often a separate table later", "Dashed oval", "Triangle"], "c": 1, "s": ["Many values per instance, double oval, often normalized to its own table."], "a": "Double oval and often a separate table later"},
+      {"q": "Department 1:N Employees — how to implement?", "opts": ["Bridge table", "Foreign key on the N side (Employee has departmentId)", "No foreign", "Double rectangle"], "c": 1, "s": ["1:N via foreign key on the Many side."], "a": "Foreign key on the N side (Employee has departmentId)"},
+      {"q": "Student N:M Course — how to implement?", "opts": ["Foreign key on Student only", "Junction/bridge table Enrollment with two foreigns plus relationship attributes", "No table", "Single foreign on Course"], "c": 1, "s": ["Many to many needs a bridge with both foreigns plus attributes like grade."], "a": "Junction/bridge table Enrollment with two foreigns plus relationship attributes"},
+      {"q": "Weak entity OrderItem depends on Order — its primary is:", "opts": ["Its partial key alone", "Owner foreign plus its partial key (composite)", "No primary", "Only foreign"], "c": 1, "s": ["Owner OrderId foreign plus OrderItem partial itemNo together identify the weak instance."], "a": "Owner foreign plus its partial key (composite)"},
+      {"q": "Total participation means:", "opts": ["Some may not participate", "Every entity of that type must participate (double line)", "Optional many", "Never participates"], "c": 1, "s": ["Total double line: every instance must have the relationship. Partial single line optional."], "a": "Every entity of that type must participate (double line)"},
+      {"q": "ISA hierarchy with disjoint vs overlapping plus total vs partial appears in:", "opts": ["ER only", "Extended ER as specialization/generalization", "Only keys", "Only ACID"], "c": 1, "s": ["Extended ER ISA constraints. Disjoint vs overlapping, total vs partial."], "a": "Extended ER as specialization/generalization"}
+    ],
+    "acid": [
+      {"q": "All or nothing if crash mid-transfer is which ACID property?", "opts": ["Atomicity", "Consistency", "Isolation", "Durability"], "c": 0, "s": ["Atomic via commit or rollback via undo — before commit all-or-nothing."], "a": "Atomicity"},
+      {"q": "Valid state to valid state per rules and constraints is:", "opts": ["Atomicity", "Consistency", "Isolation", "Durability"], "c": 1, "s": ["Consistency refuses to become inconsistent even if steps are atomic."], "a": "Consistency"},
+      {"q": "Concurrent behaves as some serial order is:", "opts": ["Atomicity", "Consistency", "Isolation", "Durability"], "c": 2, "s": ["Isolation plus levels prevents anomalies."], "a": "Isolation"},
+      {"q": "Committed survives crash via logging and redo even after power loss is:", "opts": ["Atomicity", "Consistency", "Isolation", "Durability"], "c": 3, "s": ["Durability via WAL plus checkpoint plus recovery."], "a": "Durability"},
+      {"q": "Anomaly: T2 reads uncommitted T1 that later rolls back is a:", "opts": ["Dirty read", "Nonrepeatable read", "Phantom read", "Lost update"], "c": 0, "s": ["Dirty read — uncommitted later vanished."], "a": "Dirty read"},
+      {"q": "Reread same row sees a committed update that was not there before — anomaly is:", "opts": ["Dirty read", "Nonrepeatable read", "Phantom read", "Integrity trap"], "c": 1, "s": ["Same row updated between reads — nonrepeatable."], "a": "Nonrepeatable read"},
+      {"q": "Range query sees new rows inserted by another transaction — anomaly is:", "opts": ["Dirty read", "Nonrepeatable read", "Phantom read", "Deadlock"], "c": 2, "s": ["New rows in a range that reappears is phantom. No existing row changed."], "a": "Phantom read"},
+      {"q": "Read Uncommitted prevents:", "opts": ["All", "Dirty plus nonrepeatable", "None (allows all three)", "Phantoms only"], "c": 2, "s": ["Read Uncommitted allows all — lowest isolation."], "a": "None (allows all three)"},
+      {"q": "Serializable prevents:", "opts": ["Only dirty", "Dirty plus nonrepeatable only", "All dirty plus nonrepeatable plus phantom", "None"], "c": 2, "s": ["Highest via serialization prevents all."], "a": "All dirty plus nonrepeatable plus phantom"},
+      {"q": "Write-Ahead Logging says:", "opts": ["Write data pages before log", "Write redo before data pages so restart can replay or undo", "No log", "Only checkpoint"], "c": 1, "s": ["Redo before data pages; checkpoint bounds recovery."], "a": "Write redo before data pages so restart can replay or undo"}
+    ],
+    "ddl-dml": [
+      {"q": "CREATE, ALTER, DROP, TRUNCATE belong to:", "opts": ["DML", "DDL", "DCL", "TCL"], "c": 1, "s": ["Data Definition modifies structure."], "a": "DDL"},
+      {"q": "SELECT, INSERT, UPDATE, DELETE belong to:", "opts": ["DDL", "DML", "DCL", "TCL"], "c": 1, "s": ["Data Manipulation works on rows. SELECT is DML in AXIS binning."], "a": "DML"},
+      {"q": "GRANT and REVOKE belong to:", "opts": ["DDL", "DML", "DCL", "TCL"], "c": 2, "s": ["Data Control access control."], "a": "DCL"},
+      {"q": "COMMIT, ROLLBACK, SAVEPOINT belong to:", "opts": ["DDL", "DML", "DCL", "TCL"], "c": 3, "s": ["Transaction Control manages transactions."], "a": "TCL"},
+      {"q": "DELETE vs TRUNCATE — which can have WHERE to delete a few rows?", "opts": ["DELETE", "TRUNCATE", "Both with WHERE", "Neither"], "c": 0, "s": ["DELETE selective with WHERE; TRUNCATE fast clears all."], "a": "DELETE"},
+      {"q": "Which keeps the structure but deletes all rows quickly keeping indexes?", "opts": ["DROP", "TRUNCATE", "DELETE via loop", "GRANT"], "c": 1, "s": ["TRUNCATE keeps structure, DROP deletes definition itself."], "a": "TRUNCATE"},
+      {"q": "Which deletes the table definition itself including permissions?", "opts": ["DELETE", "TRUNCATE", "DROP", "REVOKE"], "c": 2, "s": ["DROP deletes the table definition itself."], "a": "DROP"},
+      {"q": "GRANT SELECT ON Employees TO Alice belongs to:", "opts": ["DDL", "DML", "DCL", "TCL"], "c": 2, "s": ["Access control — DCL."], "a": "DCL"},
+      {"q": "WITH GRANT OPTION lets the recipient:", "opts": ["Revoke further", "Grant further to others", "Delete the table", "Alter the table"], "c": 1, "s": ["Recipient may grant onward; REVOKE CASCADE takes downstream grants too."], "a": "Grant further to others"},
+      {"q": "SAVEPOINT is used with:", "opts": ["DROP only", "ROLLBACK TO SAVEPOINT inside a long transaction", "GRANT only", "ALTER only"], "c": 1, "s": ["Transaction Control marks intermediate rollback points."], "a": "ROLLBACK TO SAVEPOINT inside a long transaction"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Any set of columns that identifies every row (may have extra columns) is a:", "opts": ["Super key", "Candidate key", "Primary key", "Foreign key"], "c": 0, "d": "easy", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Super is any superset identifying."]},
+    {"id": 2, "q": "Minimal super key — dropping any column would break uniqueness — is a:", "opts": ["Super key", "Candidate key", "Foreign key", "Composite key"], "c": 1, "d": "easy", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Candidate minimal super: economical."]},
+    {"id": 3, "q": "One chosen as the official identity — one per table — is a:", "opts": ["Candidate key", "Primary key", "Alternate key", "Foreign key"], "c": 1, "d": "easy", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Primary chosen candidate."]},
+    {"id": 4, "q": "Unchosen candidate(s) after choosing a primary is called:", "opts": ["Primary key", "Alternate key", "Foreign key", "Composite key"], "c": 1, "d": "medium", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Alternate aka secondary candidate."]},
+    {"id": 5, "q": "Foreign key value when non-null must:", "opts": ["Be null", "Match an existing parent primary/candidate value", "Be any integer", "Be a date"], "c": 1, "d": "medium", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Referential integrity."]},
+    {"id": 6, "q": "Composite key means:", "opts": ["One column alone identifies", "Many columns together identify where none alone suffices", "Only for foreigns", "Only for unique"], "c": 1, "d": "easy", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Many together: e.g. studentId plus courseId."]},
+    {"id": 7, "q": "Minimality trap: candidates {rollNo} and {email}; {rollNo, email} is:", "opts": ["Candidate", "Super but not candidate (not minimal)", "Primary", "Foreign"], "c": 1, "d": "medium", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Can drop email and {rollNo} alone still unique — not minimal so not candidate."]},
+    {"id": 8, "q": "How many primary keys per table?", "opts": ["Many", "One", "Zero or one but many candidates", "Up to three"], "c": 1, "d": "easy", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["One primary per table."]},
+    {"id": 9, "q": "Unique vs primary null simplification the paper uses is:", "opts": ["Both never null", "Unique tolerates null(s) per simplified row, primary never null", "Both tolerate nulls", "Primary tolerates nulls unique does not"], "c": 1, "d": "medium", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Simplified: unique one-null quirk, primary none."]},
+    {"id": 10, "q": "Surrogate vs natural: auto id vs email as primary — surrogate often preferred because:", "opts": ["More meaningful", "Stable for joins and never changes with life events", "Not unique", "Only for composite"], "c": 1, "d": "medium", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Stable and never changes."]},
+    {"id": 11, "q": "Thing about which we store rows — rectangle — is a:", "opts": ["Attribute", "Entity", "Relationship", "Key"], "c": 1, "d": "easy", "t": "ER Diagrams", "exp": ["Entity is the thing."]},
+    {"id": 12, "q": "Property of an entity — oval — is a:", "opts": ["Entity", "Attribute", "Relationship", "Composite key"], "c": 1, "d": "easy", "t": "ER Diagrams", "exp": ["Attribute. Key oval underlined."]},
+    {"id": 13, "q": "Association among entities — diamond — is a:", "opts": ["Attribute", "Entity", "Relationship", "Key"], "c": 2, "d": "easy", "t": "ER Diagrams", "exp": ["Relationship ties entities."]},
+    {"id": 14, "q": "Weak entity shown as:", "opts": ["Single rectangle", "Double rectangle", "Double oval", "Diamond"], "c": 1, "d": "easy", "t": "ER Diagrams", "exp": ["Weak double rectangle with double diamond to owner."]},
+    {"id": 15, "q": "Multi-valued attribute (many phones) is a:", "opts": ["Single oval", "Double oval and often a separate table later", "Dashed oval", "Triangle"], "c": 1, "d": "medium", "t": "ER Diagrams", "exp": ["Many values, double oval, often its own table."]},
+    {"id": 16, "q": "Department 1:N Employees — how to implement?", "opts": ["Bridge table", "Foreign key on the N side (Employee has departmentId)", "No foreign", "Double rectangle"], "c": 1, "d": "medium", "t": "ER Diagrams", "exp": ["1:N foreign on Many side."]},
+    {"id": 17, "q": "Student N:M Course — how to implement?", "opts": ["Foreign key on Student only", "Junction/bridge table Enrollment with two foreigns plus grade", "No table", "Single foreign on Course"], "c": 1, "d": "medium", "t": "ER Diagrams", "exp": ["Bridge with both foreigns plus relationship attributes."]},
+    {"id": 18, "q": "Weak entity OrderItem depends on Order — its primary is:", "opts": ["Its partial key alone", "Owner foreign plus its partial key (composite)", "No primary", "Only foreign"], "c": 1, "d": "medium", "t": "ER Diagrams", "exp": ["Owner OrderId foreign plus partial itemNo."]},
+    {"id": 19, "q": "Total participation means:", "opts": ["Some may not participate", "Every entity of that type must participate (double line)", "Optional many", "Never participates"], "c": 1, "d": "medium", "t": "ER Diagrams", "exp": ["Total double line. Partial optional."]},
+    {"id": 20, "q": "ISA hierarchy with disjoint vs overlapping plus total vs partial appears in:", "opts": ["ER only", "Extended ER as specialization/generalization", "Only keys", "Only ACID"], "c": 1, "d": "medium", "t": "ER Diagrams", "exp": ["Extended ER ISA."]},
+    {"id": 21, "q": "All or nothing if crash mid-transfer is which ACID property?", "opts": ["Atomicity", "Consistency", "Isolation", "Durability"], "c": 0, "d": "easy", "t": "ACID Properties", "exp": ["Atomic via rollback via undo."]},
+    {"id": 22, "q": "Valid state to valid state per rules is:", "opts": ["Atomicity", "Consistency", "Isolation", "Durability"], "c": 1, "d": "easy", "t": "ACID Properties", "exp": ["Consistency valid to valid per constraints."]},
+    {"id": 23, "q": "Concurrent behaves as some serial order is:", "opts": ["Atomicity", "Consistency", "Isolation", "Durability"], "c": 2, "d": "easy", "t": "ACID Properties", "exp": ["Isolation plus levels."]},
+    {"id": 24, "q": "Committed survives crash via logging even after power loss is:", "opts": ["Atomicity", "Consistency", "Isolation", "Durability"], "c": 3, "d": "easy", "t": "ACID Properties", "exp": ["Durability via WAL plus checkpoint plus redo."]},
+    {"id": 25, "q": "Anomaly: T2 reads uncommitted T1 that later rolls back is a:", "opts": ["Dirty read", "Nonrepeatable read", "Phantom read", "Lost update"], "c": 0, "d": "medium", "t": "ACID Properties", "exp": ["Dirty read — uncommitted later vanished."]},
+    {"id": 26, "q": "Reread same row sees a committed update that was not there before is:", "opts": ["Dirty read", "Nonrepeatable read", "Phantom read", "Integrity trap"], "c": 1, "d": "medium", "t": "ACID Properties", "exp": ["Same row updated between reads — nonrepeatable."]},
+    {"id": 27, "q": "Range query sees new rows inserted by another transaction is:", "opts": ["Dirty read", "Nonrepeatable read", "Phantom read", "Deadlock"], "c": 2, "d": "medium", "t": "ACID Properties", "exp": ["New rows in a range is phantom."]},
+    {"id": 28, "q": "Read Uncommitted prevents:", "opts": ["All", "Dirty plus nonrepeatable", "None (allows all three)", "Phantoms only"], "c": 2, "d": "medium", "t": "ACID Properties", "exp": ["Lowest isolation."]},
+    {"id": 29, "q": "Serializable prevents:", "opts": ["Only dirty", "Dirty plus nonrepeatable only", "All dirty plus nonrepeatable plus phantom", "None"], "c": 2, "d": "medium", "t": "ACID Properties", "exp": ["Highest prevents all."]},
+    {"id": 30, "q": "Write-Ahead Logging says:", "opts": ["Write data pages before log", "Write redo before data pages so restart can replay or undo", "No log", "Only checkpoint"], "c": 1, "d": "medium", "t": "ACID Properties", "exp": ["Redo before data pages."]},
+    {"id": 31, "q": "CREATE, ALTER, DROP, TRUNCATE belong to:", "opts": ["DML", "DDL", "DCL", "TCL"], "c": 1, "d": "easy", "t": "DDL vs DML", "exp": ["Data Definition modifies structure."]},
+    {"id": 32, "q": "SELECT, INSERT, UPDATE, DELETE belong to:", "opts": ["DDL", "DML", "DCL", "TCL"], "c": 1, "d": "easy", "t": "DDL vs DML", "exp": ["Data Manipulation rows."]},
+    {"id": 33, "q": "GRANT and REVOKE belong to:", "opts": ["DDL", "DML", "DCL", "TCL"], "c": 2, "d": "easy", "t": "DDL vs DML", "exp": ["Data Control access."]},
+    {"id": 34, "q": "COMMIT, ROLLBACK, SAVEPOINT belong to:", "opts": ["DDL", "DML", "DCL", "TCL"], "c": 3, "d": "easy", "t": "DDL vs DML", "exp": ["Transaction Control."]},
+    {"id": 35, "q": "DELETE vs TRUNCATE — which can have WHERE for a few rows?", "opts": ["DELETE", "TRUNCATE", "Both with WHERE", "Neither"], "c": 0, "d": "easy", "t": "DDL vs DML", "exp": ["DELETE selective with WHERE; TRUNCATE fast clears all."]},
+    {"id": 36, "q": "Which keeps the structure but deletes all rows quickly?", "opts": ["DROP", "TRUNCATE", "DELETE via loop", "GRANT"], "c": 1, "d": "easy", "t": "DDL vs DML", "exp": ["TRUNCATE keeps definition."]},
+    {"id": 37, "q": "Which deletes the table definition itself?", "opts": ["DELETE", "TRUNCATE", "DROP", "REVOKE"], "c": 2, "d": "easy", "t": "DDL vs DML", "exp": ["DROP deletes definition."]},
+    {"id": 38, "q": "GRANT SELECT ON Employees TO Alice belongs to:", "opts": ["DDL", "DML", "DCL", "TCL"], "c": 2, "d": "medium", "t": "DDL vs DML", "exp": ["Access control — DCL."]},
+    {"id": 39, "q": "WITH GRANT OPTION lets the recipient:", "opts": ["Revoke further", "Grant further to others", "Delete the table", "Alter the table"], "c": 1, "d": "medium", "t": "DDL vs DML", "exp": ["Grant onward; REVOKE CASCADE takes downstream."]},
+    {"id": 40, "q": "SAVEPOINT is used with:", "opts": ["DROP only", "ROLLBACK TO SAVEPOINT inside a long transaction", "GRANT only", "ALTER only"], "c": 1, "d": "medium", "t": "DDL vs DML", "exp": ["Transaction Control intermediate rollback points."]},
+    {"id": 41, "q": "On delete cascade means:", "opts": ["Block the delete", "Also delete matching foreign children", "Set child foreign to null", "Make all null"], "c": 1, "d": "medium", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Cascade deletes children that reference the deleted parent."]},
+    {"id": 42, "q": "On delete set null means:", "opts": ["Delete children", "Set child foreign to null where allowed", "Block", "Make all duplicate"], "c": 1, "d": "medium", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Orphan to null where null allowed."]},
+    {"id": 43, "q": "Composite primary Enrollment(studentId, courseId) plus grade — grade is:", "opts": ["Entity attribute on the bridge", "Key attribute alone", "Foreign only", "Weak entity alone"], "c": 0, "d": "medium", "t": "ER Diagrams", "exp": ["Relationship attribute lives on the bridge."]},
+    {"id": 44, "q": "Which isolation level prevents dirty but allows nonrepeatable and phantom?", "opts": ["Read Uncommitted", "Read Committed", "Serializable", "Only WAL"], "c": 1, "d": "medium", "t": "ACID Properties", "exp": ["Read Committed knocks dirty only."]},
+    {"id": 45, "q": "Which level prevents dirty plus nonrepeatable but not phantoms?", "opts": ["Read Uncommitted", "Repeatable Read", "Serializable", "Read Committed"], "c": 1, "d": "medium", "t": "ACID Properties", "exp": ["Repeatable Read knocks dirty plus nonrepeatable."]},
+    {"id": 46, "q": "Existence dependency where a child cannot exist without its owner describes:", "opts": ["Strong entity", "Weak entity", "Isolated entity", "Derived entity"], "c": 1, "d": "medium", "t": "ER Diagrams", "exp": ["Weak entity depends on its owner."]},
+    {"id": 47, "q": "Derived attribute age from dob in ER is shown as:", "opts": ["Solid oval", "Dashed oval", "Double oval", "Triangle"], "c": 1, "d": "medium", "t": "ER Diagrams", "exp": ["Derived computable dashed. Multi-valued double oval."]},
+    {"id": 48, "q": "Autocommit outside a BEGIN means each statement is:", "opts": ["Not a transaction", "Its own little transaction", "Dropped", "Only DDL"], "c": 1, "d": "medium", "t": "ACID Properties", "exp": ["Each statement is a tiny transaction with its own commit."]},
+    {"id": 49, "q": "Checkpoint purpose is to:", "opts": ["Encrypt", "Bound recovery by flushing dirty pages and recording restart point", "Add users", "Grant access"], "c": 1, "d": "medium", "t": "ACID Properties", "exp": ["Bounds redo after crash."]},
+    {"id": 50, "q": "PRIMARY vs UNIQUE index — primary implies UNIQUE plus:", "opts": ["Not null plus one per table plus often clustered", "Null allowed", "Many primaries", "No index"], "c": 0, "d": "medium", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Primary UNIQUE plus not null plus one per table and clustered favourite."]},
+    {"id": 51, "q": "N:M cannot be implemented via a single foreign — reason is:", "opts": ["Syntax only", "Many on both sides needs a bridge; one foreign stores only one value per row", "Only weak needs bridge", "Only 1:1 needs bridge"], "c": 1, "d": "medium", "t": "ER Diagrams", "exp": ["Single foreign cannot hold many values — needs junction."]},
+    {"id": 52, "q": "Triggers fire on which of DELETE vs TRUNCATE normally?", "opts": ["TRUNCATE only", "DELETE fires triggers, TRUNCATE often bypasses", "Both fire always together", "Neither fires"], "c": 1, "d": "medium", "t": "DDL vs DML", "exp": ["DELETE row-level triggers; TRUNCATE bulk often bypasses per row triggers."]},
+    {"id": 53, "q": "1:1 relationship implemented to minimize nulls — rule is:", "opts": ["Foreign on the side with many nulls", "Foreign on the side that minimizes nulls or via shared primary", "Always both tables with two foreigns", "Never via foreign"], "c": 1, "d": "medium", "t": "ER Diagrams", "exp": ["Place foreign where mandatory participation reduces nulls; or shared PK via extension."]},
+    {"id": 54, "q": "Isolation that uses versions rather than blocking locks for reads is:", "opts": ["2PL locking only", "MVCC/snapshot isolation", "Only WAL", "Only checkpoint"], "c": 1, "d": "medium", "t": "ACID Properties", "exp": ["MVCC versions; optimistic plus snapshot vs pessimistic locking."]},
+    {"id": 55, "q": "Which ACID property fails if a debit succeeds but its matching credit never does even after retry?", "opts": ["Atomicity", "Consistency", "Isolation", "Durability"], "c": 0, "d": "medium", "t": "ACID Properties", "exp": ["Partial committed — all-or-nothing broken: atomicity."]},
+    {"id": 56, "q": "Which property fails if a transaction leaves a negative balance despite atomicity?", "opts": ["Consistency", "Atomicity", "Durability", "Isolation"], "c": 0, "d": "medium", "t": "ACID Properties", "exp": ["Valid to valid per rules — negative breaks check constraint: consistency."]},
+    {"id": 57, "q": "ROLLBACK TO SAVEPOINT S2 inside a long transaction:", "opts": ["Commits all", "Undoes work since S2 but keeps work before S2", "Rolls back DDL only", "Commits durability"], "c": 1, "d": "medium", "t": "DDL vs DML", "exp": ["Partial rollback to S2 keeps earlier work in the transaction."]},
+    {"id": 58, "q": "Every non-null foreign value must exist in parent — principle is:", "opts": ["Atomicity", "Referential integrity", "Durability", "Isolation"], "c": 1, "d": "easy", "t": "Keys (Primary/Foreign/Candidate)", "exp": ["Referential integrity of foreign to parent primary/candidate."]},
+    {"id": 59, "q": "Disjoint vs overlapping and total vs partial as ISA constraints appear in:", "opts": ["Core ER only", "Extended ER ISA hierarchy", "Only keys", "Only TCL"], "c": 1, "d": "medium", "t": "ER Diagrams", "exp": ["ISA in extended ER: specialization/generalization."]},
+    {"id": 60, "q": "CREATE VIEW OrdersTotal AS SELECT ... is DDL for the view plus:", "opts": ["DCL for view", "DML query inside the view definition", "No language", "Only TCL"], "c": 1, "d": "medium", "t": "DDL vs DML", "exp": ["View definition DDL plus its query DML."]}
+  ]
+}

@@ -1,0 +1,508 @@
+{
+  "id": "osi-tcpip",
+  "title": "OSI & TCP/IP Model",
+  "icon": "7L",
+  "category": "networking-cloud",
+  "color": "#0891B2",
+  "subtopics": [
+    "7 Layers of OSI",
+    "TCP/IP 4-Layer Model",
+    "Layer Functions & Devices",
+    "Encapsulation & PDUs"
+  ],
+  "estimatedHours": 6,
+  "readingSections": [
+    {
+      "id": "osi-7",
+      "title": "The 7 Layers of OSI (top to bottom and bottom to top)",
+      "type": "concept",
+      "quickSummary": "OSI has 7 layers: 7 Application, 6 Presentation, 5 Session, 4 Transport, 3 Network, 2 Data Link, 1 Physical. Top three are host, bottom four are network. Mnemonic: All People Seem To Need Data Processing or Please Do Not Throw Sausage Pizza Away (layers 1 to 7).",
+      "content": [
+        "OSI (Open Systems Interconnection) is a 7-layer model that explains how data moves from one computer to another. It is a reference model — no product implements it purely, but every interview and every AXIS paper tests it. Learn the layers in both directions: bottom-up is Physical 1 to Application 7; top-down is Application 7 to Physical 1.",
+        "Layer 7 Application: where apps live. Protocols: HTTP, HTTPS, FTP, SMTP, POP3, IMAP, DNS, DHCP, SNMP. This is what the user sees — browser, mail client, file transfer.",
+        "Layer 6 Presentation: translation, encryption and compression. Turns human-readable data into a machine-agreed format and back. SSL/TLS encryption, JPEG, MP3, MPEG, GIF, ASCII, EBCDIC, encryption at this layer. If the exam says SSL or JPEG, answer Presentation.",
+        "Layer 5 Session: opens, manages and closes conversations between two apps. Establishes sessions, keeps them ordered, and terminates them. Protocols: NetBIOS, RPC, PPTP, SIP. Think session tickets and dialogue control.",
+        "Layer 4 Transport: end-to-end reliable or fast delivery. TCP (reliable, connection-oriented, with ACKs, sequencing and retransmission) and UDP (fast, connectionless, best-effort). Port numbers live here (80, 443, 25, 53). Flow control and segmentation also happen here. PDUs: Segment for TCP, Datagram for UDP.",
+        "Layer 3 Network: routing and logical addressing (IP). Chooses the best path and forwards packets across networks. Devices: Router and Layer 3 Switch. Protocols: IP, ICMP, ARP, OSPF, BGP. PDU is Packet.",
+        "Layer 2 Data Link: framing, MAC addressing, and hop-to-hop delivery on one link. Split into LLC and MAC sublayers. Devices: Switch (Layer 2), Bridge. Protocols: Ethernet, PPP, HDLC, ARP also touches here. PDU is Frame. Layer 1 Physical: the raw bits on the wire or air — cables (UTP, fiber), hubs, repeaters, connectors (RJ45), signals. PDU is Bits."
+      ],
+      "subsections": [
+        {
+          "title": "The two mnemonics that save marks",
+          "content": "Bottom to top (1 to 7): Please Do Not Throw Sausage Pizza Away = Physical, Data Link, Network, Transport, Session, Presentation, Application. Top to bottom (7 to 1): All People Seem To Need Data Processing = Application, Presentation, Session, Transport, Network, Data Link, Physical. Pick one and never mix it."
+        },
+        {
+          "title": "Why three layers are called host and four called network is just naming",
+          "content": "Top three (Session, Presentation, Application) run in the end host. Bottom four (Physical, Data Link, Network, Transport) run partly in the network. The split matters less than knowing each layer's job and its device and PDU — that is where marks are."
+        }
+      ],
+      "quickRevision": [
+        "7 to 1: Application, Presentation, Session, Transport, Network, Data Link, Physical. 1 to 7 reverse.",
+        "L7 app: HTTP, SMTP, FTP, DNS. L6 presentation: SSL/TLS, JPEG, MP3, encryption, compression.",
+        "L5 session: sessions and dialogue. L4 transport: TCP reliable vs UDP fast, ports, segments/datagrams.",
+        "L3 network: routing, IP addressing, routers, packets. L2 data link: framing, MAC, switches, frames. L1 physical: bits, cables, hubs.",
+        "Mnemonic bottom-up: Please Do Not Throw Sausage Pizza Away."
+      ],
+      "tricks": [
+        "SSL/TLS is Presentation, not Transport — even though it uses ports. Highest layer that mentions encryption wins.",
+        "Ports live at Transport, IP at Network, MAC at Data Link. If options mix them, pick the layer that owns the address type.",
+        "Learn both directions. A paper may ask for layer 2 from the top (Presentation) or layer 2 from the bottom (Data Link) — they are different answers."
+      ],
+      "patterns": [
+        "'Which layer handles encryption?' -> Presentation (L6).",
+        "'Which layer handles routing?' -> Network (L3).",
+        "'Which layer handles ports and TCP vs UDP?' -> Transport (L4)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / TCS NQT / Infosys — OSI layers, every year",
+          "question": "Which OSI layer does X belong to?",
+          "approach": "Map X to the 7 list above and answer the layer number plus name. Memorize the name-number table."
+        },
+        {
+          "source": "Gate / placement — PDU names",
+          "question": "What is the PDU at Transport / Network / Data Link?",
+          "approach": "L4 Segment/Datagram, L3 Packet, L2 Frame, L1 Bits. Learn this column."
+        }
+      ],
+      "companyNote": "1-2 MCQs per paper are pure OSI layer identification. PDU names and device per layer are the next most asked."
+    },
+    {
+      "id": "tcpip-4",
+      "title": "TCP/IP 4-Layer Model (the real-world stack) and how it maps to OSI",
+      "type": "concept",
+      "quickSummary": "TCP/IP has 4 layers: 4 Application (OSI 7-5), 3 Transport (OSI 4), 2 Internet (OSI 3), 1 Network Access / Link (OSI 2+1). DoD model 4, OSI 7 — AXIS asks the mapping.",
+      "content": [
+        "TCP/IP is the stack that actually runs the internet. It has four layers: Layer 4 Application, Layer 3 Transport, Layer 2 Internet, Layer 1 Network Access (also called Link or Network Interface). Do not confuse the numbers — TCP/IP counts from 1 at the bottom just like OSI, so L1 is again the bottom.",
+        "Mapping is the exam point. TCP/IP Application covers OSI 7+6+5 (Application, Presentation, Session — all collapsed into one). TCP/IP Transport equals OSI Transport. TCP/IP Internet equals OSI Network. TCP/IP Network Access covers OSI Data Link plus Physical. Many guides show a 5-layer variant that splits Network Access into Data Link and Physical for clarity — AXIS usually shows 4 but both count as correct if you name the mapping.",
+        "Names vary slightly by textbook and that confuses candidates. Network Access is also written as Network Interface, Link, or Host-to-Network. Internet is also written as Network or Internetwork. Application is also written as Process or Application Bundle. Recognize the synonyms and the mapping stays stable.",
+        "Which protocols live where in TCP/IP: Network Access — Ethernet, ARP, PPP. Internet — IP, ICMP, IGMP, OSPF, BGP. Transport — TCP and UDP. Application — HTTP, DNS, DHCP, SMTP, FTP. If the question shows a TCP/IP diagram, place each protocol in this row and the mapping is solved.",
+        "Why we still teach OSI if TCP/IP is real: OSI is the precise vocabulary that lets exam setters name a layer for any function. TCP/IP is the deployed stack. AXIS asks you to hold both in your head at once — 'Which OSI layer corresponds to TCP/IP Internet?' -> OSI Network. Fluency in both directions is the mark."
+      ],
+      "subsections": [
+        {
+          "title": "5-layer hybrid that many colleges teach",
+          "content": "Some textbooks insert a separate Physical layer, yielding 5 layers: Application, Transport, Network, Data Link, Physical. It is the TCP/IP stack with OSI's bottom split. If the exam shows 5, just know Application still equals OSI 7-5 and the bottom two equal OSI 2 and 1."
+        },
+        {
+          "title": "DoD model is the same as TCP/IP",
+          "content": "Department of Defense model: 4 layers with the same names. AXIS sometimes writes DoD instead of TCP/IP — same four, same mapping."
+        }
+      ],
+      "quickRevision": [
+        "TCP/IP 4: Application (covers OSI 7-5), Transport (OSI 4), Internet (OSI 3), Network Access (OSI 2+1).",
+        "Synonyms: Network Access = Link = Network Interface. Internet = Network/Internetwork. Application = Process.",
+        "DoD model is alias for TCP/IP.",
+        "5-layer hybrid splits Network Access into Data Link and Physical for teaching clarity."
+      ],
+      "tricks": [
+        "Any answer that maps TCP/IP Internet to anything other than OSI Network is wrong — that is the single easiest mapping to trap.",
+        "If TCP/IP layers are listed top-down, count still from bottom: L1 is Network Access, not Application. Read the direction in the question.",
+        "Application covering three OSI layers is the usual fact they ask first."
+      ],
+      "patterns": [
+        "'TCP/IP Application equals which OSI layers?' -> 7 Application + 6 Presentation + 5 Session.",
+        "'TCP/IP Internet maps to which OSI layer?' -> Network (L3).",
+        "'How many layers in TCP/IP vs OSI?' -> TCP/IP 4 (or 5 hybrid), OSI 7."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS sample — TCP/IP mapping",
+          "question": "Which OSI layer corresponds to TCP/IP Internet / Network Access / Application?",
+          "approach": "Internet -> Network. Network Access -> Data Link + Physical. Application -> upper three."
+        },
+        {
+          "source": "Gate / placement — model comparison",
+          "question": "How many layers in TCP/IP and which are collapsed?",
+          "approach": "4 (or 5 hybrid). Three upper OSI layers collapse into one TCP/IP Application."
+        }
+      ],
+      "companyNote": "1 mapping question per paper on average. Learn the 4-to-7 table cold."
+    },
+    {
+      "id": "layer-devices",
+      "title": "Layer Functions, Devices, Protocols and Addresses",
+      "type": "concept",
+      "quickSummary": "L1 hub/repeater, L2 switch/bridge, L3 router/L3-switch, L4-L7 firewall/load-balancer. Addresses: L2 MAC, L3 IP (logical), L4 port (process). Each layer only looks at its own header when forwarding.",
+      "content": [
+        "Match device to layer and the exam is half solved. Physical L1: Hub and Repeater — they repeat bits without looking at addresses. Data Link L2: Switch and Bridge — they read MAC addresses and forward frames within one network. Network L3: Router and Layer 3 switch — they read IP addresses and route packets across networks. Higher: Multilayer Switch, Firewall, Load Balancer and Gateway touch Transport and Application.",
+        "Every layer has a characteristic address or identifier. L2 uses MAC (Media Access Control) addresses — 48-bit, written as six hex pairs like 3A:B4:5C:11:9F:02, burned into the NIC. L3 uses IP addresses — 32-bit IPv4 or 128-bit IPv6, logical and routable. L4 uses port numbers — 16-bit, e.g. 80 HTTP, 443 HTTPS, 25 SMTP. Examiners love: 'Which address is used at Data Link?' -> MAC, 'At Network?' -> IP, 'At Transport?' -> Port.",
+        "Each layer also has its classic protocols. Physical: none really — it is signaling and cables. Data Link: Ethernet (IEEE 802.3), PPP, HDLC, and LLC/MAC framing. Network: IP, ICMP, IGMP, ARP, OSPF, BGP. Transport: TCP, UDP. Session: NetBIOS, PPTP, RPC. Presentation: SSL/TLS, JPEG, MP3. Application: HTTP, HTTPS, SMTP, POP3, IMAP, FTP, DNS, DHCP, SNMP, Telnet.",
+        "Functions to tag to layers: Physical — bits, timing, voltage, connectors, cabling (UTP/STP/Fiber). Data Link — framing, MAC addressing, error detection on one hop, flow control on the link, switch forwarding tables. Network — logical addressing, routing, packet forwarding, fragmentation, best-path selection. Transport — segmentation and reassembly, flow control end-to-end, error recovery (TCP), multiplexing by port. Session — session establishment and termination, dialogue control. Presentation — translation, compression, encryption. Application — user services and APIs.",
+        "Decision rule for MCQ design: if a question says port or TCP/UDP or segmentation, answer Transport. If it says routing or IP, answer Network. If it says MAC or framing or switch, answer Data Link. If it says bits, cable, hub or repeater, answer Physical. If it says encryption, JPEG or TLS, answer Presentation."
+      ],
+      "subsections": [
+        {
+          "title": "Switch confusion — L2 vs L3 switch",
+          "content": "A regular switch is L2 and forwards by MAC within one broadcast domain. An L3 switch can also route by IP between VLANs like a router, so on a layer question it counts as L3. If options list both, read whether the question involves VLAN routing — then L3 switch is the winner."
+        },
+        {
+          "title": "Gateway vs firewall vs proxy",
+          "content": "Gateway is a generic bridge between two different systems and can operate at many layers. Firewall inspects and filters and commonly sits at Network and Transport and higher. Proxy and application gateway sit at Application. The exam may place them higher than Network to test you."
+        }
+      ],
+      "quickRevision": [
+        "Devices: L1 hub/repeater, L2 switch/bridge, L3 router/L3-switch, multilayer/firewall/gateway higher.",
+        "Addresses: L2 MAC (48-bit hex), L3 IP (32/128-bit logical), L4 port (16-bit process), L7 DNS name.",
+        "Quick protocol tags: L2 Ethernet, L3 IP/ICMP/ARP, L4 TCP/UDP, L6 SSL/TLS/JPEG, L7 HTTP/DNS/SMTP.",
+        "Function tags: L1 bits, L2 framing/MAC, L3 IP+routing, L4 segmentation/ports, L5 session, L6 encrypt/compress, L7 user services."
+      ],
+      "tricks": [
+        "Hub vs switch: hub repeats to every port (one collision domain), switch forwards only to the destination port (one per port). The exam writes both to test if you swap them.",
+        "ARP looks like it belongs to Network but resolves IP to MAC so it lives between L3 and L2 — either answer may be worded as Data Link/Network intersection.",
+        "Do not attach ports to Network or IP to Transport — those are classic swaps."
+      ],
+      "patterns": [
+        "'Hub operates at?' -> Physical (L1). 'Switch at?' -> Data Link (L2). 'Router at?' -> Network (L3).",
+        "'MAC address used at?' -> Data Link (L2). 'IP at?' -> Network (L3). 'Port at?' -> Transport (L4).",
+        "'SSL/TLS at?' -> Presentation (L6)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "AXIS / Infosys — device to layer",
+          "question": "At which OSI layer does a switch / router / hub operate?",
+          "approach": "Hub L1, switch L2, router L3. Firewall higher (3-7). Gateway generic higher."
+        },
+        {
+          "source": "Placement papers — address to layer",
+          "question": "MAC vs IP vs Port — which layer?",
+          "approach": "MAC L2, IP L3, Port L4. Learn as a column, not as isolated facts."
+        }
+      ],
+      "companyNote": "2-3 questions per paper across device+address+protocol. Learn the three columns together."
+    },
+    {
+      "id": "encapsulation",
+      "title": "Encapsulation and PDUs: how data wraps at each layer",
+      "type": "concept",
+      "quickSummary": "App data -> add TCP/UDP header = segment/datagram (L4) -> add IP header = packet (L3) -> add MAC header/trailer = frame (L2) -> bits on wire (L1). Reverse on decode. Header per layer; only Data Link adds a trailer for FCS.",
+      "content": [
+        "Encapsulation is wrapping: as data travels down the sender, each layer adds its own header (and Data Link also adds a trailer). As it travels up the receiver, each layer strips its header. The exam draws this as a stack of boxes — top box smallest, each lower box adds a header around it.",
+        "Step by step on the sender: Application data is the payload. At Transport, add the TCP or UDP header -> PDU is called Segment (TCP) or Datagram (UDP). At Network, add the IP header -> Packet. At Data Link, add the MAC header and the FCS trailer -> Frame. At Physical, convert the Frame to Bits on the medium. That sequence of names is the most asked PDU fact.",
+        "On the receiver the reverse: Physical receives Bits, Data Link checks FCS and strips Frame header/trailer to extract Packet, Network strips IP header to extract Segment/Datagram, Transport strips TCP/UDP header to extract the original Application data. Any layer that fails its check may discard or ask for retransmission.",
+        "Headers to recognize: Transport header carries source and destination ports, sequence and ACK numbers, flags (SYN/ACK/FIN), window size (TCP). Network header carries source and destination IP addresses, TTL, protocol, fragmentation fields. Data Link header carries source and destination MAC addresses, EtherType, plus the FCS trailer for error detection.",
+        "Two small facts that steal marks. One, only Data Link adds a trailer (the FCS/CRC) because only the local link does a hop check before forwarding. Two, the term SDU is the data given to a layer from above, PDU is the data after that layer adds its header — SDU of N plus header of N equals PDU of N which becomes SDU of N-1. AXIS sometimes writes SDU/PDU wording to sound technical, but the idea is just data plus header."
+      ],
+      "subsections": [
+        {
+          "title": "PDU name chain in one line",
+          "content": "L7-5 data -> L4 segment/datagram -> L3 packet -> L2 frame -> L1 bits. Memorize this chain; many papers ask it verbatim with one name swapped."
+        },
+        {
+          "title": "Why only Data Link adds a trailer",
+          "content": "Only the frame carries an FCS trailer because only the Data Link does a CRC check per hop to catch transmission errors on that link. Higher layers rely on end-to-end checks in TCP or application checksums."
+        }
+      ],
+      "quickRevision": [
+        "Wrap down: data + TCP/UDP header = segment/datagram (L4), + IP header = packet (L3), + MAC header+trailer = frame (L2), -> bits (L1).",
+        "Unwrap up: reverse. Each layer strips its own header (L2 also checks trailer).",
+        "Headers: L4 ports/seq/ACK, L3 IP addresses/TTL, L2 MAC/FCS.",
+        "Only L2 adds a trailer (FCS/CRC). SDU plus header equals PDU."
+      ],
+      "tricks": [
+        "If options swap segment and packet, remember alphabet: Segment (S) at Transport above Packet (P) at Network — S above P.",
+        "Any answer that puts a trailer at Network or Transport is wrong — only Data Link has a trailer.",
+        "Datagram vs Segment: UDP users say datagram, TCP users say segment — the layer (Transport) is the same, the name follows the protocol."
+      ],
+      "patterns": [
+        "'PDU at Transport?' -> Segment (TCP) or Datagram (UDP). 'At Network?' -> Packet. 'At Data Link?' -> Frame. 'At Physical?' -> Bits.",
+        "'Which layer adds a trailer?' -> Data Link (FCS).",
+        "'Encapsulation means?' -> Adding headers (and a trailer at L2) as data goes down."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Gate / AXIS — encapsulation",
+          "question": "What is encapsulation / which PDU at which layer / which layer adds a trailer?",
+          "approach": "Wrap down, strip up. Only L2 has a trailer. PDU chain: segment/datagram, packet, frame, bits."
+        },
+        {
+          "source": "Infosys / Wipro — header fields",
+          "question": "Where do ports / IP addresses / MAC addresses live?",
+          "approach": "Ports in Transport header, IP in Network header, MAC in Data Link header."
+        }
+      ],
+      "companyNote": "1 PDU/encapsulation question per paper on average. Often shown as a diagram to label."
+    },
+    {
+      "id": "comparison",
+      "title": "Comparing OSI vs TCP/IP — when to answer which",
+      "type": "concept",
+      "quickSummary": "OSI = teaching precision (7 layers, clean roles, heavier). TCP/IP = deployed reality (4 layers, collapsed top, runs the internet). If the question says OSI, answer OSI layer names; if it says TCP/IP or DoD, use its four.",
+      "content": [
+        "OSI is detailed and teaching-friendly: seven layers with sharp role separation. TCP/IP is lean and deployed: four (or five hybrid) layers with the top three merged. OSI is a reference for exams and design discussions; TCP/IP is the operational standard you configure with IP, TCP and applications.",
+        "A common comparison table the exam may paste: OSI 7 vs TCP/IP 4 -> OSI L7-5 maps to TCP/IP L4 Application, OSI L4 maps to TCP/IP L3 Transport, OSI L3 maps to TCP/IP L2 Internet, OSI L2+1 map to TCP/IP L1 Network Access. Learn to read the table both ways.",
+        "If a paper shows a diagram, first detect the count: seven means OSI, four means TCP/IP, five means TCP/IP hybrid. Then answer using that model's names — mixing names across models loses marks even if the idea is right.",
+        "Feature wise, TCP/IP predates OSI and was built for packet switching and inter-networking. OSI was built to standardize teaching and vendor interop. For the exam, the only functional comparison worth memorizing is collapsed vs separate upper layers — that single fact answers most comparison MCQs.",
+        "Speed rule for the exam hall: any question containing host, application, presentation or session expects an OSI answer. Any question saying DoD, ARPANET or the four layers expects TCP/IP."
+      ],
+      "subsections": [
+        {
+          "title": "Which model to answer with",
+          "content": "Match the wording. If the stem says OSI, use OSI names even if the idea applies to TCP/IP. If the stem says TCP/IP, DoD or ARPANET, use its four names. If it says both, compare with the mapping table. Do not volunteer hybrid names when the question is purely OSI."
+        },
+        {
+          "title": "Typical traps in comparison tables",
+          "content": "Traps include swapping Transport and Internet rows, or placing TCP at Network instead of Transport, or calling Network Access a host layer. Hold the row: TCP and UDP are always Transport, never Internet."
+        }
+      ],
+      "quickRevision": [
+        "OSI 7 detailed reference, TCP/IP 4 deployed. OSI top three vs TCP/IP single Application is the key split.",
+        "Detect diagram by count: 7 OSI, 4 or 5 TCP/IP.",
+        "Answer in the model's own vocabulary.",
+        "TCP/UDP always Transport; IP/ICMP always Internet/Network."
+      ],
+      "tricks": [
+        "If options offer 5 layers for TCP/IP, it is not wrong — it is the hybrid variant. Choose the best mapping, not the count debate.",
+        "DoD is just another name for TCP/IP — same answer set.",
+        "Presentation and Session exist only in OSI vocabulary — any question naming them expects the OSI layer number."
+      ],
+      "patterns": [
+        "'Which TCP/IP layer covers OSI Presentation?' -> TCP/IP Application.",
+        "'Where does TCP live?' -> Transport in both models.",
+        "'Which model is used practically?' -> TCP/IP. 'Which is taught for precision?' -> OSI."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "TCS / Accenture — model comparison",
+          "question": "Difference between OSI and TCP/IP models?",
+          "approach": "OSI 7 vs TCP/IP 4 (or 5 hybrid). Upper three OSI layers collapse into one TCP/IP Application."
+        },
+        {
+          "source": "Infosys — protocol to layer placement",
+          "question": "Where does HTTP / IP / TCP / Ethernet belong in each model?",
+          "approach": "Map via OSI first (L7 HTTP, L3 IP, L4 TCP, L2 Ethernet), then shift with the table to TCP/IP."
+        }
+      ],
+      "companyNote": "Comparison tables appear as a direct 1-mark question or as a diagram to label."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "osi-7",
+      "title": "OSI 7 Layers with Mnemonic, Protocols and PDU",
+      "formula": {
+        "latex": "7\\;App:HTTP/SMTP/DNS \\;|\\; 6\\;Pres:TLS/JPEG \\;|\\; 5\\;Sess:NetBIOS \\;|\\; 4\\;Trans:TCP/UDP+ports \\;|\\; 3\\;Net:IP+routing \\;|\\; 2\\;Link:MAC+frame \\;|\\; 1\\;Phys:bits+hhub",
+        "text": "7 App HTTP/SMTP/DNS | 6 Pres TLS/JPEG | 5 Sess NetBIOS | 4 Trans TCP/UDP ports | 3 Net IP routing | 2 Link MAC frames | 1 Phys bits"
+      },
+      "whenToUse": "Any 'which OSI layer?' or 'order the layers' MCQ. The full mnemonic plus PDU per layer solves it.",
+      "explanation": [
+        "7 Application: HTTP, HTTPS, FTP, SMTP, POP3, IMAP, DNS, DHCP, SNMP — user services.",
+        "6 Presentation: SSL/TLS, JPEG, MP3, MPEG, GIF, ASCII, compression, encryption.",
+        "5 Session: NetBIOS, RPC, PPTP, SIP — sessions and dialogue.",
+        "4 Transport: TCP vs UDP, ports, segmentation, flow control — PDU segment/datagram.",
+        "3 Network: IP, ICMP, routing, OSPF/BGP, routers — PDU packet.",
+        "2 Data Link: Ethernet, framing, MAC, switches, frames (+ trailer).",
+        "1 Physical: bits, cables, hubs/repeaters, connectors.",
+        "PDU chain to memorize: L4 segment/datagram -> L3 packet -> L2 frame -> L1 bits."
+      ],
+      "example": {
+        "prompt": "Where does SSL/TLS encryption belong and what is directly below it?",
+        "steps": [
+          "Encryption lives at Presentation L6.",
+          "Directly below is Session L5 (above is Application L7, below that is Transport L4).",
+          "Check protocol column: SSL/TLS is listed at L6 in every table."
+        ],
+        "answer": "Presentation (L6); immediately below is Session (L5)"
+      },
+      "memoryTip": "Bottom-up mnemonic: Please Do Not Throw Sausage Pizza Away (Physical to Application). Top-down: All People Seem To Need Data Processing (Application to Physical).",
+      "commonMistake": "Putting ports at Network. Ports are Transport L4. IP at Network L3, MAC at Data Link L2."
+    },
+    {
+      "id": "tcpip-4",
+      "title": "TCP/IP 4 Layers and How They Cover OSI 7",
+      "formula": {
+        "latex": "TCP/IP\\;App=OSI\\;7+6+5,\\;Trans=4,\\;Internet=3,\\;NetAccess=2+1",
+        "text": "TCP/IP App covers OSI 7+6+5, Transport = OSI 4, Internet = OSI 3, Network Access = OSI 2+1"
+      },
+      "whenToUse": "Any mapping question between TCP/IP and OSI, including DoD wording or a diagram to label.",
+      "explanation": [
+        "TCP/IP Application contains OSI Application + Presentation + Session (three collapse into one).",
+        "TCP/IP Transport equals OSI Transport (TCP/UDP + ports same place).",
+        "TCP/IP Internet equals OSI Network (IP, ICMP, routing).",
+        "TCP/IP Network Access (Link/Interface) contains OSI Data Link + Physical (Ethernet + cables).",
+        "5-layer hybrid variant simply splits Network Access into Data Link and Physical for teaching clarity — mapping above stays the same.",
+        "Synonyms: Internet also called Network/Internetwork, Network Access also called Link/Network Interface, Application also called Process."
+      ],
+      "example": {
+        "prompt": "Which OSI layer(s) correspond to TCP/IP Internet?",
+        "steps": [
+          "Locate TCP/IP Internet row (L2 from bottom, L3 from top in 4-layer count).",
+          "Map with table: TCP/IP Internet maps to OSI Network L3.",
+          "Protocols confirm: IP and ICMP live there in both models."
+        ],
+        "answer": "OSI Network (L3)"
+      },
+      "memoryTip": "Collapse the top three OSI into one TCP/IP Application — that is the only trick. The other rows are one-to-one.",
+      "commonMistake": "Counting TCP/IP from the top as L1. TCP/IP like OSI counts from bottom: L1 is Network Access at the bottom."
+    },
+    {
+      "id": "layer-devices",
+      "title": "Devices, Addresses and Protocols per Layer",
+      "formula": {
+        "latex": "L1\\;hub+repeater \\;|\\; L2\\;switch/bridge+MAC \\;|\\; L3\\;router+IP \\;|\\; L4\\;ports+TCP/UDP \\;|\\; L6\\;TLS",
+        "text": "L1 hub/repeater, L2 switch/bridge MAC, L3 router IP, L4 ports TCP/UDP, L6 TLS"
+      },
+      "whenToUse": "Any device-to-layer or address-to-layer or protocol-to-layer MCQ.",
+      "explanation": [
+        "L1 Physical: hub, repeater, cables, connectors, bits.",
+        "L2 Data Link: switch, bridge, Ethernet, MAC addresses, frames.",
+        "L3 Network: router, L3 switch, IP addresses, ICMP, IP routing, packets.",
+        "L4 Transport: ports, TCP vs UDP, segmentation, flow control, firewall at transport boundary.",
+        "L5 Session, L6 Presentation (TLS/JPEG), L7 Application (HTTP/DNS).",
+        "Addresses: MAC at L2 (48-bit hex), IP at L3 (32/128-bit logical), port at L4 (16-bit), name at L7."
+      ],
+      "example": {
+        "prompt": "Match: hub, switch, router, port number -> which layer?",
+        "steps": [
+          "hub repeats bits: L1 Physical.",
+          "switch reads MAC: L2 Data Link.",
+          "router reads IP: L3 Network.",
+          "port number is L4 Transport."
+        ],
+        "answer": "hub L1, switch L2, router L3, port L4"
+      },
+      "memoryTip": "hub L1 (one), switch L2 (two), router L3 (three) — number rises with intelligence. MAC L2, IP L3, port L4 — alphabet order M I P with level.",
+      "commonMistake": "Calling a switch L3. A plain switch is L2. Only an L3 switch does routing; read the question wording."
+    },
+    {
+      "id": "encapsulation-pdu",
+      "title": "Encapsulation Wrap and PDU Chain",
+      "formula": {
+        "latex": "data\\xrightarrow{L4}segment/datagram\\xrightarrow{L3}packet\\xrightarrow{L2}frame+b+FCS\\xrightarrow{L1}bits",
+        "text": "data -> L4 segment/datagram -> L3 packet -> L2 frame+FCS trailer -> L1 bits (reverse on receive)"
+      },
+      "whenToUse": "Any 'what is encapsulation?' or 'PDU at X' or 'which layer adds a trailer?' MCQ.",
+      "explanation": [
+        "Sender goes down, wrapping: add TCP/UDP header = segment/datagram, add IP header = packet, add MAC header plus FCS trailer = frame, convert to bits.",
+        "Receiver goes up, unwrapping in reverse and checking/stripping each header (L2 checks trailer).",
+        "Header contents: L4 ports/seq/ACK/window, L3 IP addresses/TTL, L2 MAC addresses + FCS.",
+        "Only L2 adds a trailer (FCS/CRC) for per-hop error detection. No trailer at higher layers.",
+        "SDU plus header equals PDU which becomes SDU of the layer below — data grows as you go down."
+      ],
+      "example": {
+        "prompt": "Which PDU sequence is correct for data travelling down the stack?",
+        "steps": [
+          "Start at Transport: segment (TCP) or datagram (UDP).",
+          "Add Network: packet.",
+          "Add Data Link: frame (header plus FCS trailer).",
+          "Convert: bits on Physical. Check: segment/datagram -> packet -> frame -> bits is the chain."
+        ],
+        "answer": "segment/datagram -> packet -> frame -> bits"
+      },
+      "memoryTip": "Alphabet trick: Segment (S) above Packet (P) above Frame (F) above Bits (B) — S P F B down the stack. Only Frame has a Footer (trailer).",
+      "commonMistake": "Attaching a trailer to Network or Transport. Only Data Link has a trailer."
+    }
+  ],
+  "practiceProblems": {
+    "osi-7": [
+      {"q": "OSI Application layer is which number (1 is Physical at bottom)?", "opts": ["L1", "L4", "L5", "L7"], "c": 3, "s": ["Bottom is L1 Physical, top is L7 Application. Middle is L4 Transport."], "a": "L7"},
+      {"q": "Which OSI layer handles encryption, compression and translation (JPEG, TLS, MP3)?", "opts": ["Application", "Presentation", "Session", "Network"], "c": 1, "s": ["Presentation L6. Application L7 is user services, Session L5 is dialogue, Network L3 is routing."], "a": "Presentation"},
+      {"q": "Where do HTTP, SMTP, FTP and DNS live?", "opts": ["Transport", "Network", "Application", "Data Link"], "c": 2, "s": ["User-facing protocols: Application L7. Transport L4 is TCP/UDP, Network L3 is IP."], "a": "Application"},
+      {"q": "Which layer handles ports, TCP vs UDP, segmentation and flow control?", "opts": ["Network", "Transport", "Data Link", "Physical"], "c": 1, "s": ["Ports and TCP/UDP segmentation are Transport L4. IP routing is Network L3."], "a": "Transport"},
+      {"q": "Routing and logical addressing (IP) belong to which layer?", "opts": ["Network", "Transport", "Data Link", "Physical"], "c": 0, "s": ["IP addressing and path selection: Network L3. MAC/framing is Data Link L2."], "a": "Network"},
+      {"q": "Framing, MAC addressing and hop-to-hop delivery on one link:", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 1, "s": ["Framing and MAC: Data Link L2. Bits on wire: Physical L1."], "a": "Data Link"},
+      {"q": "Raw bits, cables, connectors and hubs belong to:", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 0, "s": ["Bits and hardware on the medium: Physical L1."], "a": "Physical"},
+      {"q": "PDU at the Transport layer (TCP) is called a:", "opts": ["Packet", "Frame", "Segment", "Bits"], "c": 2, "s": ["L4 is segment (TCP) or datagram (UDP). Packet L3, Frame L2, Bits L1."], "a": "Segment"},
+      {"q": "PDU at the Network layer is called a:", "opts": ["Segment", "Packet", "Frame", "Bits"], "c": 1, "s": ["Network L3 PDU is Packet. Transport segment, Data Link frame, Physical bits."], "a": "Packet"},
+      {"q": "PDU at the Data Link layer is called a:", "opts": ["Segment", "Packet", "Frame", "Bits"], "c": 2, "s": ["Data Link L2 PDU is Frame (header plus FCS trailer)."], "a": "Frame"}
+    ],
+    "tcpip-4": [
+      {"q": "How many layers in the standard TCP/IP (DoD) model?", "opts": ["7", "5", "4", "6"], "c": 2, "s": ["TCP/IP standard is 4. OSI is 7. A 5-layer hybrid splits Link and Physical for teaching."], "a": "4"},
+      {"q": "TCP/IP Internet layer maps to which OSI layer?", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 2, "s": ["Internet is the TCP/IP name for OSI Network L3 — where IP and routing live."], "a": "Network"},
+      {"q": "TCP/IP Network Access / Link layer maps to which OSI layers?", "opts": ["Physical only", "Data Link only", "Data Link + Physical", "Network + Data Link"], "c": 2, "s": ["Network Access covers OSI Data Link L2 plus Physical L1."], "a": "Data Link + Physical"},
+      {"q": "TCP/IP Application layer covers which OSI layers?", "opts": ["Application only", "Application + Presentation", "Application + Presentation + Session", "All seven"], "c": 2, "s": ["Three collapse into one: Application L7 plus Presentation L6 plus Session L5."], "a": "Application + Presentation + Session"},
+      {"q": "TCP/IP Transport layer equals which OSI layer?", "opts": ["Network", "Transport", "Data Link", "Application"], "c": 1, "s": ["Transport is the one-to-one row: same name, same job (TCP/UDP, ports)."], "a": "Transport"},
+      {"q": "Another name for TCP/IP Network Access in textbooks:", "opts": ["Internet", "Transport", "Link / Network Interface / Host-to-Network", "Application"], "c": 2, "s": ["Synonyms: Link, Network Interface, Host-to-Network all mean Network Access (L1)."], "a": "Link / Network Interface / Host-to-Network"},
+      {"q": "DoD model is alias for:", "opts": ["OSI", "TCP/IP", "Hybrid 5-layer only", "IEEE 802"], "c": 1, "s": ["Department of Defense model: same 4 layers as TCP/IP."], "a": "TCP/IP"},
+      {"q": "5-layer TCP/IP hybrid splits which standard layer into two?", "opts": ["Application", "Transport", "Internet", "Network Access into Data Link + Physical"], "c": 3, "s": ["The hybrid splits Network Access into Data Link and Physical for clarity, yielding 5."], "a": "Network Access into Data Link + Physical"},
+      {"q": "Where do TCP and UDP live in TCP/IP numbering?", "opts": ["Network Access", "Internet", "Transport", "Application"], "c": 2, "s": ["Transport: TCP and UDP. Always Transport, never Internet."], "a": "Transport"},
+      {"q": "Where does IP live in TCP/IP?", "opts": ["Network Access", "Internet", "Transport", "Application"], "c": 1, "s": ["Internet layer (L2 in 4-count, L3 in bottom-count). IP, ICMP, routing."], "a": "Internet"}
+    ],
+    "layer-devices": [
+      {"q": "Hub operates at which OSI layer?", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 0, "s": ["Hub repeats bits without looking at addresses: Physical L1."], "a": "Physical"},
+      {"q": "Switch (plain, without L3 routing) operates at:", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 1, "s": ["Plain switch reads MAC to forward frames within one network: Data Link L2."], "a": "Data Link"},
+      {"q": "Router operates at:", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 2, "s": ["Router reads IP to route packets across networks: Network L3."], "a": "Network"},
+      {"q": "L3 switch differs from plain switch because it can also:", "opts": ["Amplify signals", "Read MAC only", "Route by IP between VLANs", "Add ports only"], "c": 2, "s": ["L3 switch can route by IP between VLANs like a router, so it counts as L3."], "a": "Route by IP between VLANs"},
+      {"q": "Repeater belongs to:", "opts": ["Physical", "Data Link", "Network", "Application"], "c": 0, "s": ["Repeater regenerates bits on the wire: Physical L1, like a hub."], "a": "Physical"},
+      {"q": "Which address is used at Data Link?", "opts": ["IP", "MAC", "Port", "DNS name"], "c": 1, "s": ["L2 uses MAC (48-bit hex). L3 IP, L4 port, L7 name."], "a": "MAC"},
+      {"q": "Which address is used at Network?", "opts": ["MAC", "IP", "Port", "URL"], "c": 1, "s": ["Logical routing address: IP at L3. MAC L2, port L4."], "a": "IP"},
+      {"q": "Which identifier is used at Transport?", "opts": ["MAC", "IP", "Port", "SSID"], "c": 2, "s": ["Process multiplexing by port number at Transport L4."], "a": "Port"},
+      {"q": "SSL/TLS belongs to which OSI layer?", "opts": ["Application", "Presentation", "Session", "Transport"], "c": 1, "s": ["Encryption belongs to Presentation L6, even though it uses ports."], "a": "Presentation"},
+      {"q": "Which protocol is Data Link?", "opts": ["IP", "TCP", "Ethernet / PPP", "HTTP"], "c": 2, "s": ["Ethernet and PPP frame at Data Link L2. IP Network, TCP Transport, HTTP Application."], "a": "Ethernet / PPP"}
+    ],
+    "encapsulation-pdu": [
+      {"q": "Encapsulation as data goes down: who adds a header at each layer?", "opts": ["Only Application adds a header", "Each layer adds its own header as data goes down", "Only Data Link adds a header", "Only Physical adds a header"], "c": 1, "s": ["Each layer wraps data from above with its own header (L2 also adds a trailer)."], "a": "Each layer adds its own header as data goes down"},
+      {"q": "Correct PDU chain going down (Transport to Physical):", "opts": ["Bits -> Frame -> Packet -> Segment", "Segment/Datagram -> Packet -> Frame -> Bits", "Packet -> Segment -> Frame -> Bits", "Frame -> Packet -> Segment -> Bits"], "c": 1, "s": ["Down: segment/datagram (L4), packet (L3), frame (L2), bits (L1). Reverse on receive."], "a": "Segment/Datagram -> Packet -> Frame -> Bits"},
+      {"q": "Which layer adds a trailer (FCS/CRC) in addition to a header?", "opts": ["Network", "Transport", "Data Link", "Application"], "c": 2, "s": ["Only Data Link L2 adds a trailer for hop error detection."], "a": "Data Link"},
+      {"q": "Network-layer header carries:", "opts": ["Ports and ACK numbers", "IP addresses and TTL", "MAC addresses and FCS", "User credentials"], "c": 1, "s": ["IP addresses plus TTL and fragmentation: Network L3. Ports L4, MAC L2."], "a": "IP addresses and TTL"},
+      {"q": "Transport-layer header (TCP) carries:", "opts": ["Ports, sequence and ACK numbers, flags, window", "IP addresses and TTL", "MAC addresses and FCS", "SSL certificates"], "c": 0, "s": ["TCP header: source/dest ports, seq/ACK, flags SYN/ACK/FIN, window for flow control."], "a": "Ports, sequence and ACK numbers, flags, window"},
+      {"q": "Data Link header carries:", "opts": ["Ports", "IP addresses", "MAC addresses plus FCS trailer", "URLs"], "c": 2, "s": ["MAC addresses in header and FCS trailer for CRC check: Data Link L2."], "a": "MAC addresses plus FCS trailer"},
+      {"q": "On reception, each layer:", "opts": ["Adds another header", "Strips its own header and checks it (L2 also checks trailer)", "Discards the packet silently", "Compresses the data"], "c": 1, "s": ["Unwrapping: each layer strips its header on the way up; L2 also checks the trailer."], "a": "Strips its own header and checks it (L2 also checks trailer)"},
+      {"q": "UDP transport PDU is usually called a:", "opts": ["Segment", "Datagram", "Frame", "Packet"], "c": 1, "s": ["UDP prefers datagram; TCP prefers segment. Both are Transport PDUs."], "a": "Datagram"},
+      {"q": "SDU plus header equals:", "opts": ["Trailer", "PDU which becomes SDU of the layer below", "Only the SDU", "Only the header"], "c": 1, "s": ["SDU of N plus header of N equals PDU of N, which is SDU of N-1."], "a": "PDU which becomes SDU of the layer below"},
+      {"q": "Why only Data Link adds a trailer?", "opts": ["It has more data than other layers", "Per-hop CRC on that one link before forwarding", "It is the oldest layer", "It is optional"], "c": 1, "s": ["FCS/CRC is a per-hop check on that link before the frame is forwarded."], "a": "Per-hop CRC on that one link before forwarding"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "How many layers in the OSI model?", "opts": ["4", "5", "7", "8"], "c": 2, "d": "easy", "t": "7 Layers of OSI", "exp": ["OSI has 7 layers, TCP/IP has 4 (or 5 hybrid)."]},
+    {"id": 2, "q": "Top layer (L7) of OSI is:", "opts": ["Physical", "Transport", "Application", "Network"], "c": 2, "d": "easy", "t": "7 Layers of OSI", "exp": ["Top is Application L7; bottom is Physical L1."]},
+    {"id": 3, "q": "Bottom layer (L1) of OSI is:", "opts": ["Data Link", "Physical", "Network", "Transport"], "c": 1, "d": "easy", "t": "7 Layers of OSI", "exp": ["Bottom is Physical L1; top is Application L7."]},
+    {"id": 4, "q": "Which OSI layer handles encryption, compression and data translation (JPEG, TLS, ASCII)?", "opts": ["Application", "Presentation", "Session", "Transport"], "c": 1, "d": "medium", "t": "7 Layers of OSI", "exp": ["Presentation L6 handles encryption, compression and translation."]},
+    {"id": 5, "q": "Which layer establishes, maintains and terminates sessions and dialogues?", "opts": ["Presentation", "Session", "Transport", "Network"], "c": 1, "d": "medium", "t": "7 Layers of OSI", "exp": ["Session L5. Presentation is above it (L6), Transport below (L4)."]},
+    {"id": 6, "q": "Which layer handles end-to-end delivery, ports, TCP vs UDP and segmentation?", "opts": ["Network", "Transport", "Data Link", "Physical"], "c": 1, "d": "easy", "t": "7 Layers of OSI", "exp": ["Transport L4. Network L3 is IP routing, Data Link L2 is framing."]},
+    {"id": 7, "q": "Which layer handles routing, logical IP addressing and packet forwarding?", "opts": ["Network", "Transport", "Data Link", "Application"], "c": 0, "d": "easy", "t": "7 Layers of OSI", "exp": ["Network L3. IP and routing decisions belong to Network."]},
+    {"id": 8, "q": "Framing, MAC addressing and hop-to-hop delivery on one link belong to:", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 1, "d": "easy", "t": "7 Layers of OSI", "exp": ["Data Link L2. Physical L1 is just bits on the wire."]},
+    {"id": 9, "q": "Mnemonic Please Do Not Throw Sausage Pizza Away counts OSI from:", "opts": ["Top to bottom", "Bottom to top (L1 to L7)", "Middle outwards", "Alphabetical"], "c": 1, "d": "medium", "t": "7 Layers of OSI", "exp": ["Physical, Data Link, Network, Transport, Session, Presentation, Application — bottom to top."]},
+    {"id": 10, "q": "Mnemonic All People Seem To Need Data Processing counts OSI from:", "opts": ["Bottom to top", "Top to bottom (L7 to L1)", "Left to right", "Random"], "c": 1, "d": "medium", "t": "7 Layers of OSI", "exp": ["Application, Presentation, Session, Transport, Network, Data Link, Physical — top to bottom."]},
+    {"id": 11, "q": "PDU at Transport (TCP) is called a:", "opts": ["Packet", "Frame", "Segment", "Bits"], "c": 2, "d": "easy", "t": "Encapsulation & PDUs", "exp": ["Transport PDU: segment (TCP) or datagram (UDP). Packet is L3, Frame L2, Bits L1."]},
+    {"id": 12, "q": "PDU at Network is called a:", "opts": ["Segment", "Packet", "Frame", "Bits"], "c": 1, "d": "easy", "t": "Encapsulation & PDUs", "exp": ["Network L3: Packet."]},
+    {"id": 13, "q": "PDU at Data Link is called a:", "opts": ["Segment", "Packet", "Frame", "Bits"], "c": 2, "d": "easy", "t": "Encapsulation & PDUs", "exp": ["Data Link L2: Frame (header plus FCS trailer)."]},
+    {"id": 14, "q": "PDU at Physical is:", "opts": ["Packet", "Frame", "Bits", "Segment"], "c": 2, "d": "easy", "t": "Encapsulation & PDUs", "exp": ["Physical L1: Bits on the wire or air."]},
+    {"id": 15, "q": "Which layer adds a trailer (FCS/CRC) as well as a header?", "opts": ["Network", "Transport", "Data Link", "Application"], "c": 2, "d": "medium", "t": "Encapsulation & PDUs", "exp": ["Only Data Link L2 adds a trailer for per-hop error detection."]},
+    {"id": 16, "q": "Correct PDU order going down the sender from Transport:", "opts": ["Bits -> Frame -> Packet -> Segment", "Segment/Datagram -> Packet -> Frame -> Bits", "Packet -> Segment -> Frame -> Bits", "Frame -> Packet -> Segment -> Bits"], "c": 1, "d": "medium", "t": "Encapsulation & PDUs", "exp": ["Down: segment/datagram at L4, packet at L3, frame at L2, bits at L1."]},
+    {"id": 17, "q": "How many layers in the standard TCP/IP (DoD) model?", "opts": ["4", "5", "7", "8"], "c": 0, "d": "easy", "t": "TCP/IP 4-Layer Model", "exp": ["TCP/IP standard is 4. 5-layer is a teaching hybrid; OSI is 7."]},
+    {"id": 18, "q": "TCP/IP Internet layer maps to which OSI layer?", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 2, "d": "easy", "t": "TCP/IP 4-Layer Model", "exp": ["Internet is the TCP/IP name for OSI Network L3."]},
+    {"id": 19, "q": "TCP/IP Network Access / Link maps to which OSI layers?", "opts": ["Physical only", "Data Link only", "Data Link + Physical", "Network + Data Link"], "c": 2, "d": "medium", "t": "TCP/IP 4-Layer Model", "exp": ["Network Access covers Data Link L2 plus Physical L1."]},
+    {"id": 20, "q": "TCP/IP Application covers which OSI layers?", "opts": ["Application only", "Application + Presentation", "Application + Presentation + Session", "All seven"], "c": 2, "d": "medium", "t": "TCP/IP 4-Layer Model", "exp": ["Three collapse into one: L7 Application plus L6 Presentation plus L5 Session."]},
+    {"id": 21, "q": "Another name for the TCP/IP model:", "opts": ["OSI", "DoD model", "IEEE 802", "ISO model"], "c": 1, "d": "easy", "t": "TCP/IP 4-Layer Model", "exp": ["Department of Defense model — same four layers."]},
+    {"id": 22, "q": "5-layer TCP/IP hybrid splits which layer into two?", "opts": ["Application", "Transport", "Internet", "Network Access into Data Link + Physical"], "c": 3, "d": "medium", "t": "TCP/IP 4-Layer Model", "exp": ["Hybrid splits Network Access into Data Link and Physical for clarity, yielding 5."]},
+    {"id": 23, "q": "Where do TCP and UDP live in TCP/IP numbering?", "opts": ["Network Access", "Internet", "Transport", "Application"], "c": 2, "d": "easy", "t": "TCP/IP 4-Layer Model", "exp": ["Transport — always. IP/ICMP are Internet."]},
+    {"id": 24, "q": "Where does IP live in TCP/IP?", "opts": ["Network Access", "Internet", "Transport", "Application"], "c": 1, "d": "easy", "t": "TCP/IP 4-Layer Model", "exp": ["Internet layer. Ethernet and ARP are Network Access."]},
+    {"id": 25, "q": "Hub operates at which OSI layer?", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 0, "d": "easy", "t": "Layer Functions & Devices", "exp": ["Hub repeats bits: Physical L1."]},
+    {"id": 26, "q": "Plain switch (without L3 routing) operates at:", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 1, "d": "easy", "t": "Layer Functions & Devices", "exp": ["Reads MAC to forward frames: Data Link L2."]},
+    {"id": 27, "q": "Router operates at:", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 2, "d": "easy", "t": "Layer Functions & Devices", "exp": ["Reads IP to route packets across networks: Network L3."]},
+    {"id": 28, "q": "Which address is used at Data Link?", "opts": ["IP", "MAC", "Port", "DNS name"], "c": 1, "d": "easy", "t": "Layer Functions & Devices", "exp": ["Data Link uses MAC (48-bit hex)."]},
+    {"id": 29, "q": "Which address is used at Network?", "opts": ["MAC", "IP", "Port", "SSID"], "c": 1, "d": "easy", "t": "Layer Functions & Devices", "exp": ["Logical routing address: IP at Network L3."]},
+    {"id": 30, "q": "Which identifier is used at Transport?", "opts": ["MAC", "IP", "Port", "URL"], "c": 2, "d": "easy", "t": "Layer Functions & Devices", "exp": ["Process multiplexing by port at Transport L4."]},
+    {"id": 31, "q": "SSL/TLS belongs to which OSI layer?", "opts": ["Application", "Presentation", "Session", "Transport"], "c": 1, "d": "medium", "t": "Layer Functions & Devices", "exp": ["Encryption: Presentation L6, even though it uses TCP ports."]},
+    {"id": 32, "q": "Ethernet belongs to which layer?", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 1, "d": "medium", "t": "Layer Functions & Devices", "exp": ["Framing protocol: Data Link L2 (with Physical signalling below)."]},
+    {"id": 33, "q": "IP belongs to which layer?", "opts": ["Data Link", "Network", "Transport", "Presentation"], "c": 1, "d": "easy", "t": "Layer Functions & Devices", "exp": ["Logical addressing: Network L3."]},
+    {"id": 34, "q": "TCP belongs to which layer?", "opts": ["Network", "Transport", "Data Link", "Application"], "c": 1, "d": "easy", "t": "Layer Functions & Devices", "exp": ["Reliable byte stream: Transport L4."]},
+    {"id": 35, "q": "HTTP belongs to which layer?", "opts": ["Network", "Transport", "Data Link", "Application"], "c": 3, "d": "easy", "t": "Layer Functions & Devices", "exp": ["User-facing: Application L7."]},
+    {"id": 36, "q": "Encapsulation means:", "opts": ["Removing headers", "Adding headers (and a trailer at Data Link) as data goes down", "Compressing data only", "Converting to bits only"], "c": 1, "d": "medium", "t": "Encapsulation & PDUs", "exp": ["Each layer adds its own header (trailer only at L2) as data moves down."]},
+    {"id": 37, "q": "On reception, each layer:", "opts": ["Adds another header", "Strips its own header and checks it, L2 also checks trailer", "Discards the packet silently", "Compresses the data"], "c": 1, "d": "medium", "t": "Encapsulation & PDUs", "exp": ["Unwrapping: strip and check on the way up; Data Link checks FCS."]},
+    {"id": 38, "q": "UDP transport PDU is usually called a:", "opts": ["Segment", "Datagram", "Frame", "Packet"], "c": 1, "d": "medium", "t": "Encapsulation & PDUs", "exp": ["UDP datagram, TCP segment — both Transport."]},
+    {"id": 39, "q": "Which header carries ports, sequence/ACK numbers, flags and window?", "opts": ["Network header", "Transport header (TCP)", "Data Link header", "Physical header"], "c": 1, "d": "medium", "t": "Encapsulation & PDUs", "exp": ["TCP Transport header. Network carries IP addresses, Data Link carries MAC."]},
+    {"id": 40, "q": "Which header carries IP addresses, TTL and fragmentation fields?", "opts": ["Transport", "Network", "Data Link", "Presentation"], "c": 1, "d": "medium", "t": "Encapsulation & PDUs", "exp": ["Network header. Transport carries ports, Data Link carries MAC."]},
+    {"id": 41, "q": "Which OSI layer manages flow control on a single link vs end-to-end?", "opts": ["Only Data Link does link flow control and Transport does end-to-end", "Only Physical", "Only Network", "Only Application"], "c": 0, "d": "medium", "t": "7 Layers of OSI", "exp": ["Both do flow control but at different scopes: Data Link per hop, Transport end-to-end."]},
+    {"id": 42, "q": "OSI is 7 layers; TCP/IP is 4 — where is the main size difference?", "opts": ["Collapsed bottom layers", "Collapsed upper three into one Application", "Extra transport layer in OSI", "No difference"], "c": 1, "d": "medium", "t": "TCP/IP 4-Layer Model", "exp": ["Upper three OSI layers collapse into one TCP/IP Application."]},
+    {"id": 43, "q": "L3 switch differs from plain L2 switch because it:", "opts": ["Amplifies signals", "Reads MAC only", "Can route by IP between VLANs", "Adds only more ports"], "c": 2, "d": "medium", "t": "Layer Functions & Devices", "exp": ["L3 switch can route by IP between VLANs like a router."]},
+    {"id": 44, "q": "Repeater belongs to:", "opts": ["Physical", "Data Link", "Network", "Application"], "c": 0, "d": "easy", "t": "Layer Functions & Devices", "exp": ["Regenerates bits: Physical L1."]},
+    {"id": 45, "q": "Which is correct about the PDU chain?", "opts": ["Frame contains Packet which contains Segment", "Packet contains Frame which contains Segment", "Segment contains Bits", "All PDUs are the same size"], "c": 0, "d": "medium", "t": "Encapsulation & PDUs", "exp": ["Down: data in segment/datagram in packet in frame converted to bits. Frame is the outer wrapper for the packet."]},
+    {"id": 46, "q": "If a paper says traceroute on a Windows diagram, the correct Windows command is:", "opts": ["traceroute", "tracert", "route", "ping"], "c": 1, "d": "medium", "t": "Layer Functions & Devices", "exp": ["Windows uses tracert; traceroute is Linux/cisco. Both trace, but the name matters."]},
+    {"id": 47, "q": "Presentation layer protocols include:", "opts": ["TCP and UDP", "JPEG and SSL/TLS", "IP and ICMP", "Ethernet and PPP"], "c": 1, "d": "medium", "t": "7 Layers of OSI", "exp": ["JPEG compression and SSL/TLS encryption: Presentation. TCP/UDP Transport, IP/ICMP Network, Ethernet Data Link."]},
+    {"id": 48, "q": "Session layer protocols include:", "opts": ["HTTP", "NetBIOS and RPC", "IP", "TCP"], "c": 1, "d": "medium", "t": "7 Layers of OSI", "exp": ["Sessions: NetBIOS, RPC, PPTP, SIP at Session L5. HTTP Application, IP Network, TCP Transport."]},
+    {"id": 49, "q": "SDU plus header equals:", "opts": ["Trailer", "PDU which becomes SDU of the layer below", "Only the SDU", "Only the header"], "c": 1, "d": "medium", "t": "Encapsulation & PDUs", "exp": ["SDU of N plus header of N equals PDU of N which is SDU of N-1."]},
+    {"id": 50, "q": "Which layer is responsible for dialogue control and session tickets?", "opts": ["Presentation", "Session", "Transport", "Network"], "c": 1, "d": "medium", "t": "7 Layers of OSI", "exp": ["Session L5: dialogue control, session management."]},
+    {"id": 51, "q": "Bridge operates at:", "opts": ["Physical", "Data Link", "Network", "Transport"], "c": 1, "d": "medium", "t": "Layer Functions & Devices", "exp": ["Bridge forwards by MAC, like a switch: Data Link L2."]},
+    {"id": 52, "q": "Gateway commonly sits at:", "opts": ["Physical only", "Application and higher as a bridge between different systems", "Transport only", "Network only"], "c": 1, "d": "medium", "t": "Layer Functions & Devices", "exp": ["Gateway can operate at many layers and commonly at Application as conversion between different systems."]},
+    {"id": 53, "q": "Which is the most reliable indicator that a question expects an OSI answer?", "opts": ["It says IP", "It says host or mentions Application/Presentation/Session", "It says bits", "It says DNS"], "c": 1, "d": "medium", "t": "7 Layers of OSI", "exp": ["Host and explicit OSI layer names signal an OSI answer; DoD/ARPANET/four layers signal TCP/IP."]},
+    {"id": 54, "q": "Why does only Data Link add a trailer?", "opts": ["It has more data", "Per-hop CRC on that one link before forwarding", "It is oldest", "Optional"], "c": 1, "d": "medium", "t": "Encapsulation & PDUs", "exp": ["FCS/CRC is a per-hop check before the frame is forwarded."]},
+    {"id": 55, "q": "UDP is to datagram as TCP is to:", "opts": ["Packet", "Frame", "Segment", "Bits"], "c": 2, "d": "easy", "t": "Encapsulation & PDUs", "exp": ["UDP datagram, TCP segment — both Transport PDUs."]},
+    {"id": 56, "q": "Application layer provides:", "opts": ["Routing", "User services and APIs such as HTTP and DNS", "Framing", "Bit signalling"], "c": 1, "d": "easy", "t": "7 Layers of OSI", "exp": ["Application L7 provides user-facing services and APIs. Routing L3, framing L2, bits L1."]},
+    {"id": 57, "q": "Network layer function that chooses the best path:", "opts": ["Framing", "Routing", "Segmentation", "Compression"], "c": 1, "d": "easy", "t": "7 Layers of OSI", "exp": ["Routing and packet forwarding: Network L3. Segmentation Transport, framing Data Link, compression Presentation."]},
+    {"id": 58, "q": "ARP maps:", "opts": ["MAC to IP", "IP to MAC", "Port to IP", "Name to MAC"], "c": 1, "d": "medium", "t": "Layer Functions & Devices", "exp": ["ARP resolves IP to MAC inside a subnet — touches Network and Data Link."]},
+    {"id": 59, "q": "ICMP is associated primarily with:", "opts": ["Transport", "Network", "Application", "Presentation"], "c": 1, "d": "medium", "t": "Layer Functions & Devices", "exp": ["ICMP (ping, error messages) is a Network-layer helper for IP."]},
+    {"id": 60, "q": "Which comparison is TRUE about OSI vs TCP/IP?", "opts": ["OSI 4 and TCP/IP 7", "TCP/IP Application equals OSI Application only", "OSI is reference with sharp roles and 7 layers; TCP/IP is deployed with 4 and collapsed top", "They have identical layers"], "c": 2, "d": "medium", "t": "TCP/IP 4-Layer Model", "exp": ["OSI 7 reference, TCP/IP 4 deployed; top three OSI collapse into one TCP/IP Application."]}
+  ]
+}
