@@ -1,0 +1,568 @@
+{
+  "id": "ms-powerpoint",
+  "title": "MS PowerPoint",
+  "icon": "P",
+  "category": "ms-office",
+  "subtitle": "Slides, layouts, animations, slide show and shortcuts - the third of the Common Applications MS Office trio",
+  "days": "2",
+  "color": "#0D9488",
+  "subtopics": [
+    "Slides & Layouts",
+    "Views (Normal/Slide Show/Sorter)",
+    "Themes & Slide Master",
+    "Transitions & Animations",
+    "Slide Show & Notes",
+    "Shortcuts & Tips"
+  ],
+  "estimatedHours": 6,
+  "readingSections": [
+    {
+      "id": "slides-layouts",
+      "title": "Slides, Placeholders & Layouts",
+      "type": "concept",
+      "quickSummary": "A PowerPoint FILE = a presentation. Each presentation is a stack of SLIDES. Each slide uses a LAYOUT (a template of placeholders). Default file extension: .pptx since 2007.",
+      "content": [
+        "A PowerPoint FILE is called a PRESENTATION. The default file extension is .pptx since PowerPoint 2007 (replacing the older .ppt). New presentations start with a SINGLE blank slide; you add more via Home > New Slide (or Ctrl+M).",
+        "A SLIDE is one page in the presentation. The Slides pane on the left shows thumbnails of every slide in order. The active slide is the one currently being edited. PowerPoint auto-saves every few seconds; the file extension .pptx means the file is actually a ZIP containing XML, just like .docx and .xlsx.",
+        "A LAYOUT is a pre-arranged template of placeholders. The Home tab > Layout button shows all available layouts: Title Slide, Title and Content, Section Header, Two Content, Comparison, Title Only, Blank, Content with Caption, Picture with Caption. Pick a layout when you add a new slide (or change an existing slide's layout from the Layout button).",
+        "A PLACEHOLDER is a pre-formatted container on a slide. Click into a placeholder and start typing - the placeholder's default text ('Click to add title', 'Double-click to add an Object') is replaced. Placeholders can hold TEXT, TABLES, CHARTS, PICTURES, SMARTART, VIDEOS, or any combination. Layouts are made of named placeholders (title placeholder, content placeholder, etc.).",
+        "INSERT > New Slide picks the layout that comes AFTER the currently selected slide. Insert > Duplicate Slide (or Ctrl+D) copies the active slide. Delete Slide: right-click in the slide pane > Delete Slide. The shortcut to add a new slide is Ctrl+M."
+      ],
+      "subsections": [
+        {
+          "title": "Text box vs placeholder",
+          "content": "A TEXT BOX is a manually-added free-floating box (Insert > Text Box, then click and drag). It's NOT tied to the layout. A PLACEHOLDER is part of the slide layout - moving it moves the layout structure. Text boxes are for ad-hoc additions; placeholders are for the planned content of a layout."
+        },
+        {
+          "title": "How to format text inside a placeholder",
+          "content": "Click into the placeholder, select the text, then use the Home tab's font and paragraph tools (or the Mini Toolbar that pops up when you select text). The slide master controls the DEFAULT font for a placeholder - change it in View > Slide Master and every slide using that layout updates."
+        }
+      ],
+      "quickRevision": [
+        "Presentation = .pptx file (since 2007).",
+        "Slide = one page. Layout = the placeholder template. Placeholder = pre-formatted container.",
+        "Default layout for a new presentation: Title Slide.",
+        "Ctrl+M = new slide. Ctrl+D = duplicate slide. Home > Layout = change layout.",
+        "Text box = free-floating manual element. Placeholder = layout-bound."
+      ],
+      "tricks": [
+        "If the question says 'default file extension of MS PowerPoint 2016+' -> .pptx (replaced .ppt in 2007).",
+        "If the question lists 'default layout' as 'Title and Content' -> wrong. The FIRST layout (slide 1 default) is 'Title Slide'.",
+        "Ctrl+D is duplicate, NOT Delete. Delete a slide via right-click > Delete Slide or Backspace on the selected thumbnail."
+      ],
+      "patterns": [
+        "'Shortcut to add a new slide?' -> Ctrl+M.",
+        "'Shortcut to duplicate a slide?' -> Ctrl+D.",
+        "'Default file extension?' -> .pptx.",
+        "'Default layout of the first slide?' -> Title Slide."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in mymcqs / Sanfoundry / Testbook PowerPoint MCQ sets",
+          "question": "The default file extension for a PowerPoint presentation is:",
+          "approach": ".pptx (since PowerPoint 2007; .ppt was the older extension)."
+        },
+        {
+          "source": "Asked in PowerPoint MCQ banks (2024-2026)",
+          "question": "Shortcut to add a new slide in PowerPoint:",
+          "approach": "Ctrl+M."
+        }
+      ],
+      "companyNote": "The .pptx extension question and the Ctrl+M / Ctrl+D shortcut questions appear in nearly every MS Office paper."
+    },
+    {
+      "id": "views",
+      "title": "The Five Views of PowerPoint",
+      "type": "concept",
+      "quickSummary": "Normal view (default, for editing), Slide Sorter (miniature overview, for rearranging), Slide Show (F5, the actual presentation), Notes Page (slide + speaker notes), and Reading View (full-screen for reading).",
+      "content": [
+        "PowerPoint has FIVE views, all on the View tab (or in the status bar at the bottom-right). The DEFAULT view is NORMAL view - it shows the slide editing area, a slide/notes pane on the left, and the ribbon at the top. This is where you build slides.",
+        "SLIDE SORTER view shows all your slides as thumbnails in a grid. You can drag slides to reorder them, select multiple slides to apply a transition to all of them, and see the overall flow. To enter Slide Sorter: View > Slide Sorter (or click the grid icon in the status bar).",
+        "SLIDE SHOW view runs the presentation in full-screen, slide by slide. Start from the beginning with F5. Start from the current slide with Shift+F5. While in Slide Show, the cursor becomes a laser pointer or arrow; press Esc to exit. Right-click during a slideshow for a context menu (jump to slide, zoom, pen, etc.).",
+        "NOTES PAGE view shows the slide and a 'Click to add notes' area below it - the speaker notes. These notes are NOT shown to the audience during a normal slide show (use Presenter View to see them yourself). Print handouts with notes via File > Print > Handouts.",
+        "READING VIEW (View > Reading View) is a full-screen, minimal-interface view of the presentation for reading. Unlike Slide Show, the ribbon is still accessible. Good for reviewing your deck without losing the toolbar."
+      ],
+      "subsections": [
+        {
+          "title": "Status bar view icons",
+          "content": "Bottom-right of the PowerPoint window: four small icons switch between Normal, Slide Sorter, Reading View, and Slide Show. They're the fastest way to change views."
+        },
+        {
+          "title": "When to use which view",
+          "content": "NORMAL for editing. SLIDE SORTER for rearranging and applying bulk transitions. SLIDE SHOW for presenting. NOTES PAGE for adding speaker notes. READING VIEW for a clean preview."
+        }
+      ],
+      "quickRevision": [
+        "Normal view = default; slide editing area + slide pane + ribbon.",
+        "Slide Sorter = miniature overview; drag to reorder, select many for bulk transition.",
+        "Slide Show = full-screen presentation; F5 from start, Shift+F5 from current slide, Esc to exit.",
+        "Notes Page = slide + speaker notes; print for handouts.",
+        "Reading View = full-screen reading; ribbon still accessible."
+      ],
+      "tricks": [
+        "If the question lists 'Slide Sorter' as the default view -> wrong. Default is Normal.",
+        "F5 = start from beginning. Shift+F5 = start from current slide. Don't mix them up.",
+        "Esc ALWAYS exits a running slide show. The B key blacks out the screen; W key whites it out (audience attention reset)."
+      ],
+      "patterns": [
+        "'Default view in PowerPoint?' -> Normal view.",
+        "'Best view to rearrange 30 slides?' -> Slide Sorter.",
+        "'Shortcut to start slideshow from the beginning?' -> F5.",
+        "'Shortcut to start slideshow from the current slide?' -> Shift+F5."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked across PowerPoint MCQ banks",
+          "question": "The default view in MS PowerPoint is:",
+          "approach": "Normal view."
+        },
+        {
+          "source": "Asked in Testbook / mymcqs PowerPoint MCQ sets",
+          "question": "Shortcut to start a slide show from the beginning:",
+          "approach": "F5."
+        }
+      ],
+      "companyNote": "2-3 questions per paper on view-related shortcuts and the F5 vs Shift+F5 distinction."
+    },
+    {
+      "id": "themes-master",
+      "title": "Themes, Backgrounds & the Slide Master",
+      "type": "concept",
+      "quickSummary": "A theme = a coordinated set of fonts, colours and effects applied to the whole presentation. The Slide Master = the master template that controls placeholders, footers, logos for every slide.",
+      "content": [
+        "A THEME is a coordinated set of fonts, colours, effects, and a background that gives the whole presentation a unified look. Apply via Design > Themes. PowerPoint ships with several built-in themes (Office, Facet, Ion, Organic, etc.). Each theme defines a colour palette, a font pair (one for headings, one for body), and an effect style.",
+        "VARIANTS: Design > Variants (the coloured thumbnails on the right) are colour variations of the currently selected theme. Pick one to change just the colour palette while keeping fonts and effects the same.",
+        "BACKGROUNDS: Design > Format Background opens a pane to set a solid colour, gradient, picture, or pattern as the background. You can apply to the current slide or all slides.",
+        "The SLIDE MASTER is the master template every slide inherits from. View > Slide Master switches into Master view where you can edit the title placeholder, body placeholders, footers, page numbers, and date placeholders for ALL slides at once. Changes to the master propagate to every slide using that layout. Right-click a layout in the master to Rename, Duplicate, Insert Layout, or Delete Layout.",
+        "When you exit Slide Master view, the layouts you designed appear in the Layout dropdown for new slides. The master is the single source of truth for fonts, colours, and placeholder positions - the most powerful layout tool in PowerPoint."
+      ],
+      "subsections": [
+        {
+          "title": "Header / Footer / Page Number placeholders",
+          "content": "Insert > Header & Footer opens a dialog with checkboxes for Date and time, Slide number, Footer, and Don't show on title slide. These appear on every slide by default and are set up in the Slide Master. The text 'Click to add footer' you see in the placeholder is the master-defined default."
+        },
+        {
+          "title": "Custom theme (.thmx) export",
+          "content": "Design > Themes > Save Current Theme saves your colour/font/effect choices as a .thmx file you can reapply to other presentations. Useful for keeping multiple decks visually consistent (a company brand book)."
+        }
+      ],
+      "quickRevision": [
+        "Theme = a coordinated set of fonts, colours, effects, background.",
+        "Apply theme: Design > Themes. Variants = colour-only variations.",
+        "Slide Master = master template; edit View > Slide Master.",
+        "Insert > Header & Footer adds page numbers, date, footer text.",
+        "Save your theme as .thmx to reuse across decks."
+      ],
+      "tricks": [
+        "If the question says 'where do you edit the slide master?' -> View > Slide Master.",
+        "If the question asks 'which tab has Themes?' -> Design (not Home, not Format).",
+        "Changes to the Slide Master affect ALL slides using that layout. The exam loves this."
+      ],
+      "patterns": [
+        "'Where do you change the theme?' -> Design tab.",
+        "'Where do you edit placeholders and footers for all slides?' -> View > Slide Master.",
+        "'Header & Footer dialog is on which tab?' -> Insert."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Testbook / PrepInsta PowerPoint MCQ sets",
+          "question": "To edit placeholders and footers for all slides at once, use:",
+          "approach": "View > Slide Master."
+        },
+        {
+          "source": "Asked in mymcqs PowerPoint MCQs",
+          "question": "Where do you apply a theme to a PowerPoint presentation?",
+          "approach": "Design tab > Themes."
+        }
+      ],
+      "companyNote": "2 questions per paper on theme / master / footer placement."
+    },
+    {
+      "id": "transitions-animations",
+      "title": "Transitions & Animations: What's the Difference?",
+      "type": "concept",
+      "quickSummary": "TRANSITIONS = the effect when you move BETWEEN slides (one per slide). ANIMATIONS = effects on OBJECTS WITHIN a slide (one or many per slide).",
+      "content": [
+        "TRANSITIONS are effects that play when you move from one slide to the next (e.g. Fade, Wipe, Push, Morph). Applied via the Transitions tab. Each slide can have ONE transition (or 'None'). Common options: Duration (how long the effect lasts), Sound (a sound that plays during the transition), Apply To All (apply this transition to every slide).",
+        "ANIMATIONS are effects on individual objects (text, images, shapes, charts) WITHIN a slide. They are applied via the Animations tab. A single object can have ONE entry animation (how it appears) and multiple exit and motion-path animations. Common entry effects: Appear, Fade, Fly In, Zoom, Bounce, Spin. The Animation Pane lists every animation in order; drag to reorder.",
+        "Trigger = when the animation plays. 'On Click' (default, plays when you click the mouse / press the right arrow), 'With Previous' (plays at the same time as the previous animation), 'After Previous' (plays after the previous one ends).",
+        "The classic MCQ trap: 'Can a single slide have MULTIPLE transitions?' NO - one transition per slide. 'Can a single object have MULTIPLE animations?' YES - one entry, one exit, multiple motion paths.",
+        "Subtle is better. The exam love is: 'Which is more visually distracting in a real presentation?' Transitions on every slide (overuse of fancy effects is the most common PowerPoint mistake). Use 'None' or 'Fade' as a default, and animations sparingly on key data points."
+      ],
+      "subsections": [
+        {
+          "title": "Timing panel",
+          "content": "Animation tab > Timing > Start: On Click / With Previous / After Previous. Duration: how long the animation runs. Delay: how long to wait before starting. Repeat: how many times to play. The Animation Pane (right-side panel) is where you reorder animations in a slide."
+        },
+        {
+          "title": "Morph transition (PowerPoint 2016+)",
+          "content": "The MORPH transition (Transitions > Morph) automatically animates objects moving between two slides if they have the same name. Place the same shape on slide 1 and slide 3, then apply Morph to slide 3 -> the shape 'flies' from its slide 1 position to its slide 3 position. Powerful for storytelling slides without manual animation."
+        }
+      ],
+      "quickRevision": [
+        "Transitions = between slides (one per slide).",
+        "Animations = on objects within a slide (one or many per object).",
+        "Animation triggers: On Click / With Previous / After Previous.",
+        "Morph transition (2016+): auto-animates same-named objects between slides.",
+        "Insert > Header & Footer, not Transitions tab."
+      ],
+      "tricks": [
+        "If the question lists '5 transitions on a single slide' -> wrong (one transition per slide).",
+        "If the question lists '5 animations on a single object' -> right (entry + exit + multiple motion paths).",
+        "Transitions and Animations are TABS that look similar (both have the play-arrow icon) - don't mix them up."
+      ],
+      "patterns": [
+        "'Difference between transition and animation?' -> Transition = between slides. Animation = on objects within a slide.",
+        "'Where do you apply a Fade between slides?' -> Transitions tab.",
+        "'Where do you apply a Fade-In to one bullet point?' -> Animations tab."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in T4Tutorials / mymcqs / Sanfoundry PowerPoint MCQ sets",
+          "question": "Where do you add an effect that plays when moving from one slide to the next?",
+          "approach": "Transitions tab."
+        },
+        {
+          "source": "Asked across PowerPoint MCQ sets",
+          "question": "Can a single slide have multiple transitions?",
+          "approach": "No - one transition per slide."
+        }
+      ],
+      "companyNote": "The transition-vs-animation distinction appears in nearly every MS Office paper - 2-3 questions."
+    },
+    {
+      "id": "slide-show-notes",
+      "title": "Slide Show, Presenter View & Speaker Notes",
+      "type": "concept",
+      "quickSummary": "F5 = start slideshow. Presenter View = your private view with current slide + next slide + notes + timer. Notes pane = add speaker notes per slide (visible to you, not audience).",
+      "content": [
+        "SLIDE SHOW runs the presentation full-screen. F5 = from slide 1. Shift+F5 = from the current slide. Esc = exit. In Slide Show, use the arrow keys (Right / Down / Space / Page Down advance; Left / Up / Page Up go back). Press a slide number + Enter to jump to it ('5' then Enter).",
+        "PRESENTER VIEW is a special dual-monitor view: the audience sees the current slide on the big screen, and you see the current slide + the NEXT slide + your speaker notes + a timer + slide thumbnails on your laptop. To turn it on: Slide Show > Use Presenter View (or check the box in the Slide Show dialog, Alt+F5). Modern PowerPoint auto-detects a second monitor.",
+        "SPEAKER NOTES are the text you write to remind yourself what to say - NOT shown to the audience during a normal slide show. Click 'Click to add notes' at the bottom of Normal view, or switch to Notes Page view. To print notes for handouts: File > Print > 'Print Layout' dropdown > Notes Pages.",
+        "Timing and rehearsal: Use Rehearse Timings (Slide Show > Rehearse Timings) to time your talk slide-by-slide. PowerPoint records the time and auto-advances. 'Set Up Slide Show' (Slide Show tab) lets you loop the show, hide specific slides, or show a custom message at the end ('Thank you - Questions?')."
+      ],
+      "subsections": [
+        {
+          "title": "Slide show navigation shortcuts",
+          "content": "B or period = black screen (audience attention). W or comma = white screen. Number + Enter = jump to slide N. Esc = end show. F1 = show keyboard shortcuts overlay. Right-click during show = menu (Next, Previous, Go to Slide, Pointer Options, End Show)."
+        },
+        {
+          "title": "Print Layout options",
+          "content": "File > Print > Settings > 'Print Layout' dropdown gives: Slides, Handouts (1/2/3/4/6/9 per page), Notes Pages, Outline. The exam's classic trap: 'To print a presentation with speaker notes, which option?' -> Notes Pages."
+        }
+      ],
+      "quickRevision": [
+        "F5 = start slide show from beginning. Shift+F5 = from current slide. Esc = end.",
+        "Right / Down / Space = next slide. Left / Up = previous slide. Number + Enter = jump to slide N.",
+        "Presenter View = your private dual-screen view with notes and next slide.",
+        "Rehearse Timings = time your talk. Set Up Slide Show = loop, hide slides, custom end message.",
+        "Notes Pages = print with speaker notes (File > Print > Notes Pages)."
+      ],
+      "tricks": [
+        "If the question lists 'Shift+F5 starts from the beginning' -> wrong. Shift+F5 is from the current slide. F5 is from the beginning.",
+        "Presenter View needs TWO displays to be useful - on a single laptop screen it shows the same slide on both 'displays'.",
+        "B and W during a show = black/white screen. Useful when you want the audience's eyes on you, not the slide."
+      ],
+      "patterns": [
+        "'Shortcut to start slide show from the beginning?' -> F5.",
+        "'Shortcut to start from the current slide?' -> Shift+F5.",
+        "'Where to write speaker notes?' -> Click 'Click to add notes' at the bottom of Normal view.",
+        "'How to print with speaker notes?' -> File > Print > Notes Pages."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Sanfoundry / mymcqs PowerPoint MCQ sets",
+          "question": "Shortcut to start the slide show from the beginning:",
+          "approach": "F5."
+        },
+        {
+          "source": "Asked across PowerPoint MCQ banks",
+          "question": "Which view lets the presenter see notes, the next slide, and a timer?",
+          "approach": "Presenter View."
+        }
+      ],
+      "companyNote": "2-3 questions per paper on slide show / F5 / Presenter View / Notes Pages."
+    },
+    {
+      "id": "shortcuts-tips",
+      "title": "Most-Asked PowerPoint Shortcuts",
+      "type": "concept",
+      "quickSummary": "Ctrl+N new, Ctrl+O open, Ctrl+S save, Ctrl+P print. Ctrl+M new slide, Ctrl+D duplicate, Ctrl+G group, Ctrl+Shift+G ungroup. F5 show, Shift+F5 from current. Esc to exit. Ctrl+M is the most-asked.",
+      "content": [
+        "FILE shortcuts (same as Word/Excel): Ctrl+N new, Ctrl+O open, Ctrl+S save, Ctrl+P print, Ctrl+Z undo, Ctrl+Y redo, Ctrl+F find, Ctrl+H replace, Ctrl+A select all.",
+        "SLIDE shortcuts: Ctrl+M = NEW SLIDE (the most-asked). Ctrl+D = DUPLICATE the active slide. Delete / Backspace on a slide thumbnail = DELETE the slide. Ctrl+Shift+> / Ctrl+Shift+< = increase / decrease font size in the selected text box.",
+        "OBJECT shortcuts: Ctrl+G = GROUP selected objects (so they move as one). Ctrl+Shift+G = UNGROUP. Ctrl+Shift+C = copy formatting. Ctrl+Shift+V = paste formatting (same as Word/Excel).",
+        "SLIDE SHOW shortcuts: F5 = start from beginning. Shift+F5 = from current slide. Esc = end show. B = black screen. W = white screen. Number + Enter = jump to slide N. Ctrl+P = toggle pen / pointer tool (PowerPoint uses Ctrl+P for pen, unlike Word/Excel where Ctrl+P is print - within the show only).",
+        "NAVIGATION: Page Down / Page Up = next / previous slide. Home / End = first / last slide. Ctrl+G = navigate to a specific slide (in Normal view; this clashes with the group shortcut, so PowerPoint uses F5 to start the show and Ctrl+G only in Normal view for slide navigation). Be careful - the same key can do different things in different contexts."
+      ],
+      "subsections": [
+        {
+          "title": "Group / ungroup caveat",
+          "content": "Ctrl+G groups selected objects. Ctrl+Shift+G ungroups. If you group two shapes then ungroup, the original shapes return. If you double-click a grouped object, you 'enter' the group and can edit individual members without ungrouping. Esc exits the group."
+        },
+        {
+          "title": "Insert shortcut map",
+          "content": "Insert > Picture = no default shortcut (use Alt+N, P). Insert > Table = no default shortcut. Insert > Chart = Alt+N, C. Insert > Video = Alt+N, V. Insert > Shape = Alt+N, S, H. Insert > Text Box = Alt+N, X. Hyperlink = Ctrl+K (in slide content)."
+        }
+      ],
+      "quickRevision": [
+        "Ctrl+M = new slide. Ctrl+D = duplicate slide. Delete = delete slide.",
+        "Ctrl+G = group. Ctrl+Shift+G = ungroup.",
+        "F5 = start show. Shift+F5 = from current. Esc = end.",
+        "B/W = black/white screen during show. Number + Enter = jump to slide N.",
+        "Hyperlink = Ctrl+K."
+      ],
+      "tricks": [
+        "If the question asks 'shortcut for new slide in PowerPoint' -> Ctrl+M (NOT Ctrl+N - that's 'new presentation').",
+        "If the question lists 'Shift+F5 to start from the beginning' -> wrong (that's from the current slide).",
+        "Ctrl+P is PRINT in Normal view, but PEN/POINTER in Slide Show view. Context-dependent shortcuts are the exam trap."
+      ],
+      "patterns": [
+        "'Shortcut to add a new slide?' -> Ctrl+M.",
+        "'Shortcut to duplicate a slide?' -> Ctrl+D.",
+        "'Shortcut to start the slide show from the beginning?' -> F5.",
+        "'Shortcut to insert a hyperlink?' -> Ctrl+K."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in easymcqs / mymcqs / Sanfoundry PowerPoint shortcut MCQ sets",
+          "question": "Shortcut to insert a new slide in MS PowerPoint:",
+          "approach": "Ctrl+M."
+        },
+        {
+          "source": "Asked in PowerPoint MCQ sets",
+          "question": "Shortcut to start the slide show from the beginning:",
+          "approach": "F5."
+        }
+      ],
+      "companyNote": "Three to four shortcut questions per paper. Ctrl+M, F5, Ctrl+D, Ctrl+G are the four you'll see most."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "default-settings",
+      "title": "PowerPoint Default Settings (must memorise)",
+      "formula": {
+        "latex": "\\text{extension}=.\\text{pptx};\\; \\text{default view}=\\text{Normal};\\; \\text{default layout}=\\text{Title Slide};\\; \\text{show shortcut}=\\text{F5}",
+        "text": "File = .pptx (since 2007). Default view = Normal. Default first-slide layout = Title Slide. F5 = start slideshow from the beginning."
+      },
+      "whenToUse": "Any 'default value' MCQ in the PowerPoint block - five of the most-asked questions in the paper.",
+      "explanation": [
+        "File extension: .pptx since PowerPoint 2007 (older = .ppt).",
+        "Default view when you open PowerPoint: Normal view (slide editing area + slide pane + ribbon).",
+        "Default layout for the FIRST slide of a new presentation: Title Slide.",
+        "Shortcut to start the slideshow from the beginning: F5 (from current slide: Shift+F5).",
+        "Esc ALWAYS ends a running slide show.",
+        "Default number of slides in a new presentation: 1 (one blank slide, not three as in older versions).",
+        "Default save location: This PC > Documents on modern Windows."
+      ],
+      "example": {
+        "prompt": "What is the default file extension for MS PowerPoint 2016+?",
+        "steps": [
+          "Pre-2007: .ppt.",
+          "2007 onwards: .pptx.",
+          "Answer: .pptx."
+        ],
+        "answer": ".pptx"
+      },
+      "memoryTip": "'.pptx since 2007, Normal view, Title Slide first, F5 to start, Esc to exit'. Five facts the exam rotates through.",
+      "commonMistake": "Confusing Ctrl+M (new slide) with Ctrl+N (new presentation). New presentation opens a new file; new slide is added inside the current one."
+    },
+    {
+      "id": "transition-vs-animation",
+      "title": "Transition vs Animation: The Critical Distinction",
+      "formula": {
+        "latex": "\\text{Transition}=\\text{between slides};\\; \\text{Animation}=\\text{on objects within a slide}",
+        "text": "Transition: 1 per slide, plays when moving from one slide to the next. Animation: 0-to-many per object, plays on text/shape/chart inside a slide."
+      },
+      "whenToUse": "Any 'which tab / which effect plays when / which is which?' MCQ. The most-tested distinction in PowerPoint.",
+      "explanation": [
+        "TRANSITION (Transitions tab): one per slide. Plays when you ADVANCE from one slide to the next. Examples: Fade, Wipe, Push, Split, Reveal, Morph, None.",
+        "ANIMATION (Animations tab): on individual objects. Plays on ENTRY (Appear, Fade In, Fly In), EXIT (Fade Out, Fly Out), EMPHASIS (Spin, Grow/Shrink), and MOTION PATH (Lines, Arcs, Shapes, Custom Path).",
+        "Trigger options: On Click (default), With Previous (auto-play with the prior one), After Previous (auto-play after the prior one ends).",
+        "Common MCQ: 'Can a single slide have multiple transitions?' NO. 'Can a single object have multiple animations?' YES.",
+        "Animation Pane (right-side panel when you have animations) lets you reorder animations by drag-drop."
+      ],
+      "example": {
+        "prompt": "A bullet point flies in from the left when you click. Which feature is this?",
+        "steps": [
+          "It happens WITHIN a slide, on one object (the bullet).",
+          "This is an ANIMATION (not a transition).",
+          "On the Animations tab, the Fly In effect."
+        ],
+        "answer": "Animation"
+      },
+      "memoryTip": "TRANSITION = between slides. ANIMATION = within a slide. The preposition is the key.",
+      "commonMistake": "Confusing Transitions tab with Animations tab. Both have play-arrow icons and look similar - read the tab name."
+    },
+    {
+      "id": "show-shortcuts",
+      "title": "Slide Show & Shortcut Map",
+      "formula": {
+        "latex": "\\text{F5}=\\text{show from start};\\; \\text{Shift+F5}=\\text{from current};\\; \\text{Esc}=\\text{end};\\; \\text{B}=\\text{black};\\; \\text{W}=\\text{white};\\; \\text{N+Enter}=\\text{jump to slide }N",
+        "text": "F5 = start. Shift+F5 = from current. Esc = end. B/W = black/white. Number + Enter = jump to slide N."
+      },
+      "whenToUse": "Any 'shortcut for slide show / navigation' MCQ. The most-tested in the slide show category.",
+      "explanation": [
+        "F5 = start slideshow from slide 1. Shift+F5 = start from the currently selected slide.",
+        "Esc = end the running slide show and return to PowerPoint editing.",
+        "B = black screen (audience attention reset). W = white screen. Period (.) = black, comma (,) = white (alternate mnemonic).",
+        "Number + Enter (e.g. 5 then Enter) jumps to slide 5.",
+        "Right / Down arrow / Space / Page Down = next slide. Left / Up / Page Up = previous.",
+        "F1 during show = keyboard shortcut overlay."
+      ],
+      "example": {
+        "prompt": "You want to start the slide show from the current slide. Which shortcut?",
+        "steps": [
+          "F5 starts from the BEGINNING (slide 1).",
+          "Shift+F5 starts from the CURRENTLY selected slide.",
+          "Answer: Shift+F5."
+        ],
+        "answer": "Shift+F5"
+      },
+      "memoryTip": "F5 = 'From the start'. Shift+F5 = 'from here, shifted'. Esc = 'Exit Show'.",
+      "commonMistake": "Saying F5 starts from the current slide. F5 always starts from slide 1."
+    },
+    {
+      "id": "slide-shortcuts",
+      "title": "Slide & Object Shortcuts",
+      "formula": {
+        "latex": "\\text{Ctrl+M}=\\text{new slide};\\; \\text{Ctrl+D}=\\text{duplicate};\\; \\text{Ctrl+G}=\\text{group};\\; \\text{Ctrl+Shift+G}=\\text{ungroup};\\; \\text{Ctrl+K}=\\text{hyperlink};\\; \\text{Delete}=\\text{delete slide}",
+        "text": "Ctrl+M new slide, Ctrl+D duplicate, Ctrl+G group, Ctrl+Shift+G ungroup, Ctrl+K hyperlink, Delete = delete slide."
+      },
+      "whenToUse": "Any 'PowerPoint shortcut' MCQ. The four you'll see most are Ctrl+M, Ctrl+D, Ctrl+G, F5.",
+      "explanation": [
+        "Ctrl+M = NEW SLIDE (after the currently selected one).",
+        "Ctrl+D = DUPLICATE the currently selected slide (and any selected objects).",
+        "Delete or Backspace on a slide thumbnail = DELETE that slide.",
+        "Ctrl+G = GROUP selected objects (they move/format as one). Ctrl+Shift+G = UNGROUP.",
+        "Ctrl+K = insert HYPERLINK.",
+        "Ctrl+Shift+> / Ctrl+Shift+< = increase / decrease font size in selected text box.",
+        "Ctrl+Z = undo. Ctrl+Y = redo."
+      ],
+      "example": {
+        "prompt": "Which shortcut duplicates the currently selected slide?",
+        "steps": [
+          "Ctrl+D = duplicate (applies to selected objects and selected slides).",
+          "Ctrl+M = new slide (not duplicate).",
+          "Answer: Ctrl+D."
+        ],
+        "answer": "Ctrl+D"
+      },
+      "memoryTip": "Ctrl+M = 'Make a new slide'. Ctrl+D = 'Duplicate'. D comes after M - second in the alphabet, second in the workflow.",
+      "commonMistake": "Using Ctrl+N to add a new slide - Ctrl+N is 'New PRESENTATION' (new file), not a new slide inside the current one."
+    }
+  ],
+  "practiceProblems": {
+    "default-settings": [
+      {"q": "Default file extension of MS PowerPoint 2016+:", "opts": [".ppt", ".pptx", ".ppsx", ".ppam"], "c": 1, "s": [".pptx since PowerPoint 2007.", ".ppt was the pre-2007 extension.", ".ppsx is a slideshow-only file. .ppam is a PowerPoint add-in."], "a": ".pptx"},
+      {"q": "Default view when PowerPoint opens a file:", "opts": ["Slide Sorter", "Slide Show", "Normal view", "Notes Page"], "c": 2, "s": ["Normal view is the default. Shows the slide editing area, slide pane, and ribbon."], "a": "Normal view"},
+      {"q": "Default layout for the first slide of a new presentation:", "opts": ["Title and Content", "Title Slide", "Blank", "Two Content"], "c": 1, "s": ["First slide of a new presentation defaults to the Title Slide layout."], "a": "Title Slide"},
+      {"q": "Shortcut to start a slide show from the beginning:", "opts": ["Shift+F5", "F5", "Ctrl+F5", "Alt+F5"], "c": 1, "s": ["F5 starts from the beginning. Shift+F5 starts from the current slide."], "a": "F5"},
+      {"q": "Default number of slides in a new presentation (PowerPoint 2016+):", "opts": ["0", "1", "3", "5"], "c": 1, "s": ["A new presentation starts with 1 blank slide. (Older Office had 3.)"], "a": "1"},
+      {"q": "Shortcut to end a running slide show:", "opts": ["F5", "Esc", "Alt+F4", "Ctrl+Q"], "c": 1, "s": ["Esc ends the slide show and returns to PowerPoint editing."], "a": "Esc"},
+      {"q": "Shortcut to start slide show from the CURRENT slide:", "opts": ["F5", "Shift+F5", "Alt+F5", "Ctrl+Shift+F5"], "c": 1, "s": ["Shift+F5 starts from the currently selected slide."], "a": "Shift+F5"},
+      {"q": "File extension of a pre-2007 PowerPoint file:", "opts": [".pptx", ".ppt", ".docx", ".odp"], "c": 1, "s": [".ppt was the pre-2007 extension. Word 2007 / Excel 2007 / PowerPoint 2007 all switched to the x-suffix."], "a": ".ppt"},
+      {"q": "Tab that owns the Themes gallery in PowerPoint:", "opts": ["Home", "Insert", "Design", "View"], "c": 2, "s": ["Design tab has Themes, Variants, Customize."], "a": "Design"},
+      {"q": "Tab to edit the Slide Master:", "opts": ["Home > Slide Master", "Insert > Slide Master", "View > Slide Master", "Design > Slide Master"], "c": 2, "s": ["View > Slide Master. (Design has Themes; Slide Master is a VIEW.)"], "a": "View > Slide Master"}
+    ],
+    "transition-vs-animation": [
+      {"q": "Transitions are effects that play when:", "opts": ["An object appears on a slide", "Moving from one slide to the next", "Starting PowerPoint", "Printing"], "c": 1, "s": ["Transitions = between slides. One per slide."], "a": "Moving from one slide to the next"},
+      {"q": "Animations are effects on:", "opts": ["Slides", "Objects within a slide", "The whole presentation", "Themes"], "c": 1, "s": ["Animations = on objects (text, shapes, charts) within a slide."], "a": "Objects within a slide"},
+      {"q": "How many transitions can a single slide have?", "opts": ["Unlimited", "3", "1", "0"], "c": 2, "s": ["One transition per slide. (You can apply the same transition to many slides.)"], "a": "1"},
+      {"q": "How many animations can a single object have?", "opts": ["Only 1", "Up to 3", "Unlimited", "0"], "c": 2, "s": ["Unlimited (entry, exit, emphasis, multiple motion paths)."], "a": "Unlimited"},
+      {"q": "Which tab has the 'Fade' between slides?", "opts": ["Home", "Insert", "Design", "Transitions"], "c": 3, "s": ["Transitions tab has the slide-to-slide effects."], "a": "Transitions"},
+      {"q": "Which tab has 'Fly In' for a bullet point?", "opts": ["Home", "Transitions", "Animations", "Design"], "c": 2, "s": ["Animations tab has the object-level effects."], "a": "Animations"},
+      {"q": "Animation trigger 'On Click' means the animation plays:", "opts": ["When you click the mouse", "When the previous animation ends", "At the same time as the previous one", "Automatically on slide load"], "c": 0, "s": ["On Click = play when the user clicks. (After Previous / With Previous are the other two.)"], "a": "When you click the mouse"},
+      {"q": "Animation trigger 'With Previous' means the animation plays:", "opts": ["When you click", "After the previous animation ends", "At the same time as the previous one", "When the slide loads"], "c": 2, "s": ["With Previous = start simultaneously with the prior animation."], "a": "At the same time as the previous one"},
+      {"q": "Animation trigger 'After Previous' means the animation plays:", "opts": ["When you click", "After the previous animation finishes", "At the same time as the previous", "Before the slide appears"], "c": 1, "s": ["After Previous = auto-start when the prior animation completes."], "a": "After the previous animation finishes"},
+      {"q": "The Morph transition (PowerPoint 2016+) auto-animates:", "opts": ["Text colour", "Same-named objects between slides", "Slide background", "Theme colours"], "c": 1, "s": ["Morph auto-animates objects that share the same name between two slides."], "a": "Same-named objects between slides"}
+    ],
+    "show-shortcuts": [
+      {"q": "Shortcut to start the slide show from the beginning:", "opts": ["Shift+F5", "F5", "Alt+F5", "Ctrl+F5"], "c": 1, "s": ["F5 = from beginning."], "a": "F5"},
+      {"q": "Shortcut to start the slide show from the current slide:", "opts": ["F5", "Shift+F5", "Alt+F5", "Esc"], "c": 1, "s": ["Shift+F5 = from current slide."], "a": "Shift+F5"},
+      {"q": "Shortcut to end a running slide show:", "opts": ["F5", "Esc", "Alt+F4", "Ctrl+W"], "c": 1, "s": ["Esc ends the slide show."], "a": "Esc"},
+      {"q": "During a slide show, pressing B gives you:", "opts": ["Next slide", "Black screen", "Bookmark", "Bold text"], "c": 1, "s": ["B = black screen. (W = white screen.)"], "a": "Black screen"},
+      {"q": "During a slide show, W gives you:", "opts": ["Wide screen", "White screen", "Next slide", "Web browser"], "c": 1, "s": ["W = white screen."], "a": "White screen"},
+      {"q": "To jump to slide 7 during a slide show, type:", "opts": ["7 + Ctrl", "7 then Enter", "Alt+7", "F7"], "c": 1, "s": ["Type the number then Enter. 7 then Enter jumps to slide 7."], "a": "7 then Enter"},
+      {"q": "During a slide show, which key advances to the next slide?", "opts": ["Right arrow / Space / Page Down", "Only Right arrow", "Only Enter", "Only Space"], "c": 0, "s": ["Multiple keys advance: Right arrow, Down arrow, Space, Page Down, Enter, N (next)."], "a": "Right arrow / Space / Page Down"},
+      {"q": "F1 during a slide show:", "opts": ["Starts the show", "Shows the keyboard shortcuts overlay", "Ends the show", "Toggles pen"], "c": 1, "s": ["F1 shows the on-screen keyboard shortcut reference."], "a": "Shows the keyboard shortcuts overlay"},
+      {"q": "To exit a slide show and return to editing:", "opts": ["F5", "Esc", "Ctrl+Q", "Both Esc and Ctrl+Q"], "c": 1, "s": ["Esc exits the slide show."], "a": "Esc"},
+      {"q": "To use a pen/pointer during a slide show, right-click and pick:", "opts": ["Pointer Options", "Tools > Pen", "View > Pen", "Format > Pen"], "c": 0, "s": ["Right-click in slide show > Pointer Options > Pen."], "a": "Pointer Options"}
+    ],
+    "slide-shortcuts": [
+      {"q": "Shortcut to add a new slide:", "opts": ["Ctrl+N", "Ctrl+M", "Ctrl+S", "Ctrl+L"], "c": 1, "s": ["Ctrl+M = new slide. (Ctrl+N = new presentation.)"], "a": "Ctrl+M"},
+      {"q": "Shortcut to duplicate the selected slide:", "opts": ["Ctrl+D", "Ctrl+C", "Ctrl+V", "Ctrl+Shift+D"], "c": 0, "s": ["Ctrl+D duplicates the selected slide (and selected objects)."], "a": "Ctrl+D"},
+      {"q": "To delete the selected slide, press:", "opts": ["Delete or Backspace", "Ctrl+X", "Ctrl+D", "F8"], "c": 0, "s": ["Select a slide in the slide pane and press Delete (or Backspace)."], "a": "Delete or Backspace"},
+      {"q": "Shortcut to GROUP selected objects:", "opts": ["Ctrl+G", "Ctrl+B", "Ctrl+U", "Ctrl+Shift+G"], "c": 0, "s": ["Ctrl+G groups selected objects."], "a": "Ctrl+G"},
+      {"q": "Shortcut to UNGROUP:", "opts": ["Ctrl+G", "Ctrl+Shift+G", "Ctrl+Alt+G", "Ctrl+U"], "c": 1, "s": ["Ctrl+Shift+G ungroups."], "a": "Ctrl+Shift+G"},
+      {"q": "Shortcut to insert a hyperlink:", "opts": ["Ctrl+K", "Ctrl+H", "Ctrl+L", "Ctrl+I"], "c": 0, "s": ["Ctrl+K opens the Insert Hyperlink dialog."], "a": "Ctrl+K"},
+      {"q": "Ctrl+N in PowerPoint does what?", "opts": ["Add a new slide", "Create a new (blank) presentation", "Open the Notes pane", "New master slide"], "c": 1, "s": ["Ctrl+N = new presentation (a new .pptx file). For new SLIDE inside current, use Ctrl+M."], "a": "Create a new (blank) presentation"},
+      {"q": "Shortcut to increase font size in selected text:", "opts": ["Ctrl+>", "Ctrl+Shift+>", "Ctrl+= ", "Alt+Shift+>"], "c": 1, "s": ["Ctrl+Shift+> = increase. Ctrl+Shift+< = decrease."], "a": "Ctrl+Shift+>"},
+      {"q": "To move a slide UP in the order (within the slide pane), drag it OR use:", "opts": ["Alt+Up", "Ctrl+Up", "Shift+Up", "Page Up"], "c": 0, "s": ["Alt+Shift+Up moves a slide up; Alt+Shift+Down moves it down. (Also: just drag.)"], "a": "Alt+Shift+Up"},
+      {"q": "Ctrl+Shift+V in PowerPoint pastes:", "opts": ["Plain text", "Formatting (from Format Painter)", "A hyperlink", "An image"], "c": 1, "s": ["Ctrl+Shift+V = paste formatting (the target of Format Painter)."], "a": "Formatting (from Format Painter)"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "MS PowerPoint is primarily used for:", "opts": ["Word processing", "Spreadsheets", "Creating presentations / slideshows", "Databases"], "c": 2, "d": "easy", "t": "Slides & Layouts", "exp": ["PowerPoint creates slide-based presentations (slide shows) for meetings, lectures, reports."]},
+    {"id": 2, "q": "Default file extension of MS PowerPoint 2016+:", "opts": [".ppt", ".pptx", ".ppsx", ".ppam"], "c": 1, "d": "easy", "t": "Slides & Layouts", "exp": [".pptx since PowerPoint 2007. .ppt was the older extension."]},
+    {"id": 3, "q": "Default layout for the first slide of a new presentation:", "opts": ["Title and Content", "Title Slide", "Blank", "Two Content"], "c": 1, "d": "easy", "t": "Slides & Layouts", "exp": ["A new presentation opens with a Title Slide layout."]},
+    {"id": 4, "q": "Shortcut to add a new slide:", "opts": ["Ctrl+N", "Ctrl+M", "Ctrl+S", "Ctrl+L"], "c": 1, "d": "easy", "t": "Slides & Layouts", "exp": ["Ctrl+M adds a new slide after the currently selected one."]},
+    {"id": 5, "q": "Shortcut to duplicate the selected slide:", "opts": ["Ctrl+D", "Ctrl+C", "Ctrl+V", "Ctrl+Shift+D"], "c": 0, "d": "easy", "t": "Slides & Layouts", "exp": ["Ctrl+D duplicates the selected slide."]},
+    {"id": 6, "q": "A PLACEHOLDER in PowerPoint is:", "opts": ["A free-floating text box", "A pre-formatted container on a layout", "A slide transition", "A theme"], "c": 1, "d": "medium", "t": "Slides & Layouts", "exp": ["Placeholders are pre-formatted containers defined in the slide layout. They hold text, pictures, charts, etc."]},
+    {"id": 7, "q": "A TEXT BOX is different from a placeholder because:", "opts": ["Text boxes hold images; placeholders don't", "Text boxes are manually added; placeholders are part of the layout", "Text boxes print; placeholders don't", "They are the same"], "c": 1, "d": "medium", "t": "Slides & Layouts", "exp": ["Text box: free-floating, manually added. Placeholder: tied to the layout, defined in the master."]},
+    {"id": 8, "q": "Where do you change a slide's layout (e.g. from Title to Two Content)?", "opts": ["Home > Layout", "Insert > Layout", "Design > Layout", "View > Layout"], "c": 0, "d": "easy", "t": "Slides & Layouts", "exp": ["Home tab > Layout button shows all available layouts."]},
+    {"id": 9, "q": "Default view when PowerPoint opens a file:", "opts": ["Slide Sorter", "Slide Show", "Normal view", "Notes Page"], "c": 2, "d": "easy", "t": "Views (Normal/Slide Show/Sorter)", "exp": ["Normal view is the default - slide editing area + slide pane + ribbon."]},
+    {"id": 10, "q": "Best view to rearrange 30 slides in a deck:", "opts": ["Normal view", "Slide Sorter", "Notes Page", "Reading View"], "c": 1, "d": "easy", "t": "Views (Normal/Slide Show/Sorter)", "exp": ["Slide Sorter shows all slides as thumbnails for drag-to-reorder and bulk operations."]},
+    {"id": 11, "q": "Shortcut to start a slide show from the beginning:", "opts": ["Shift+F5", "F5", "Ctrl+F5", "Alt+F5"], "c": 1, "d": "easy", "t": "Slide Show & Notes", "exp": ["F5 = from beginning. Shift+F5 = from current slide."]},
+    {"id": 12, "q": "Shortcut to start the slide show from the CURRENT slide:", "opts": ["F5", "Shift+F5", "Alt+F5", "Ctrl+Shift+F5"], "c": 1, "d": "easy", "t": "Slide Show & Notes", "exp": ["Shift+F5 = from current slide. F5 = from beginning."]},
+    {"id": 13, "q": "Shortcut to end a running slide show:", "opts": ["F5", "Esc", "Alt+F4", "Ctrl+W"], "c": 1, "d": "easy", "t": "Slide Show & Notes", "exp": ["Esc ends the slide show and returns to editing."]},
+    {"id": 14, "q": "During a slide show, pressing B gives you:", "opts": ["Bold text", "Black screen", "Bookmark", "Next slide"], "c": 1, "d": "easy", "t": "Slide Show & Notes", "exp": ["B = black screen. W = white screen. Useful for pulling audience attention back to you."]},
+    {"id": 15, "q": "To jump to slide 7 during a slide show:", "opts": ["7 + Ctrl", "7 then Enter", "Alt+7", "F7"], "c": 1, "d": "medium", "t": "Slide Show & Notes", "exp": ["Type the number then Enter. 7 then Enter jumps to slide 7."]},
+    {"id": 16, "q": "What is the purpose of the B/W keys during a slide show?", "opts": ["Bold / Italic", "Black / White screen to refocus audience", "Begin / Wait", "Bookmark / Warning"], "c": 1, "d": "medium", "t": "Slide Show & Notes", "exp": ["B / W toggle the screen to black or white so the audience's eyes come back to the presenter."]},
+    {"id": 17, "q": "Transitions are effects that play when:", "opts": ["An object appears on a slide", "Moving from one slide to the next", "Starting PowerPoint", "Printing"], "c": 1, "d": "easy", "t": "Transitions & Animations", "exp": ["Transitions = between slides. One per slide."]},
+    {"id": 18, "q": "Animations are effects on:", "opts": ["Slides", "Objects within a slide", "The whole presentation", "Themes"], "c": 1, "d": "easy", "t": "Transitions & Animations", "exp": ["Animations = on individual objects (text, shapes, charts) within a slide."]},
+    {"id": 19, "q": "How many transitions can a single slide have?", "opts": ["Unlimited", "3", "1", "0"], "c": 2, "d": "medium", "t": "Transitions & Animations", "exp": ["ONE transition per slide. (You can apply the same transition to many slides.)"]},
+    {"id": 20, "q": "How many animations can a single object have?", "opts": ["Only 1", "Up to 3", "Unlimited", "0"], "c": 2, "d": "medium", "t": "Transitions & Animations", "exp": ["Unlimited - entry, exit, emphasis, multiple motion paths. Use the Animation Pane to reorder."]},
+    {"id": 21, "q": "Which tab has 'Fly In' for a bullet point?", "opts": ["Home", "Transitions", "Animations", "Design"], "c": 2, "d": "medium", "t": "Transitions & Animations", "exp": ["Animations tab has the object-level effects (entry, exit, emphasis, motion paths)."]},
+    {"id": 22, "q": "Animation trigger 'With Previous' means:", "opts": ["When you click", "After the previous animation finishes", "At the same time as the previous one", "When the slide loads"], "c": 2, "d": "medium", "t": "Transitions & Animations", "exp": ["With Previous = start simultaneously with the prior animation."]},
+    {"id": 23, "q": "Animation trigger 'After Previous' means:", "opts": ["When you click", "After the previous animation finishes", "At the same time as the previous", "Before the slide appears"], "c": 1, "d": "medium", "t": "Transitions & Animations", "exp": ["After Previous = auto-start when the prior animation completes."]},
+    {"id": 24, "q": "The Morph transition (PowerPoint 2016+) auto-animates:", "opts": ["Text colour", "Same-named objects between slides", "Slide background", "Theme colours"], "c": 1, "d": "medium", "t": "Transitions & Animations", "exp": ["Morph auto-animates objects with the same name between two slides."]},
+    {"id": 25, "q": "Tab to apply a Theme to a presentation:", "opts": ["Home", "Insert", "Design", "View"], "c": 2, "d": "easy", "t": "Themes & Slide Master", "exp": ["Design tab > Themes. Variants are colour-only variations."]},
+    {"id": 26, "q": "To edit the Slide Master (footer, placeholders for all slides), use:", "opts": ["Home > Master", "Design > Master", "View > Slide Master", "Insert > Slide Master"], "c": 2, "d": "medium", "t": "Themes & Slide Master", "exp": ["View > Slide Master. Changes propagate to every slide using the edited layout."]},
+    {"id": 27, "q": "Slide Master edits affect:", "opts": ["Only the active slide", "All slides using that layout", "Only the title slide", "Only blank slides"], "c": 1, "d": "medium", "t": "Themes & Slide Master", "exp": ["Master changes propagate to every slide using that master layout."]},
+    {"id": 28, "q": "Where do you turn on Header & Footer (date, page number, footer text)?", "opts": ["Insert > Header & Footer", "Design > Header & Footer", "View > Header & Footer", "Home > Header & Footer"], "c": 0, "d": "medium", "t": "Themes & Slide Master", "exp": ["Insert > Header & Footer. Toggle Date, Slide number, Footer. 'Don't show on title slide' option."]},
+    {"id": 29, "q": "Variants on the Design tab are:", "opts": ["Different slide themes", "Colour variations of the selected theme", "Animation presets", "Font styles"], "c": 1, "d": "medium", "t": "Themes & Slide Master", "exp": ["Variants = colour-only variations of the currently selected theme (fonts and effects stay the same)."]},
+    {"id": 30, "q": "Where do you write speaker notes?", "opts": ["At the bottom of Normal view (Click to add notes)", "On the slide itself", "In the Slide Sorter", "In the theme"], "c": 0, "d": "easy", "t": "Slide Show & Notes", "exp": ["Click 'Click to add notes' at the bottom of Normal view. Or switch to Notes Page view."]},
+    {"id": 31, "q": "Speaker notes are visible to:", "opts": ["The audience", "The presenter (in Presenter View or Notes Page)", "Everyone during a normal slide show", "Nobody - they print only"], "c": 1, "d": "medium", "t": "Slide Show & Notes", "exp": ["Notes are NOT shown to the audience during a normal slide show. The presenter sees them in Presenter View or by printing Notes Pages."]},
+    {"id": 32, "q": "To print slides WITH speaker notes, use File > Print >:", "opts": ["Slides", "Handouts", "Notes Pages", "Outline"], "c": 2, "d": "medium", "t": "Slide Show & Notes", "exp": ["File > Print > 'Print Layout' dropdown > Notes Pages prints each slide with its notes."]},
+    {"id": 33, "q": "Presenter View shows the presenter:", "opts": ["Only the current slide", "Current + next slide + notes + timer", "Only notes", "Only timer"], "c": 1, "d": "medium", "t": "Slide Show & Notes", "exp": ["Presenter View: current slide + next slide preview + speaker notes + timer. Audience sees current slide on the big screen."]},
+    {"id": 34, "q": "Right-click during a slide show, then Pointer Options > Pen does what?", "opts": ["Exits the show", "Lets you draw freehand on the slide", "Prints the slide", "Saves the deck"], "c": 1, "d": "medium", "t": "Slide Show & Notes", "exp": ["Pointer Options > Pen lets you draw on the current slide (annotations). Press E to erase; Esc to exit."]},
+    {"id": 35, "q": "Shortcut to GROUP selected objects:", "opts": ["Ctrl+G", "Ctrl+B", "Ctrl+U", "Ctrl+Shift+G"], "c": 0, "d": "easy", "t": "Shortcuts & Tips", "exp": ["Ctrl+G groups selected objects so they move/format as one."]},
+    {"id": 36, "q": "Shortcut to UNGROUP objects:", "opts": ["Ctrl+G", "Ctrl+Shift+G", "Ctrl+Alt+G", "Ctrl+U"], "c": 1, "d": "easy", "t": "Shortcuts & Tips", "exp": ["Ctrl+Shift+G ungroups."]},
+    {"id": 37, "q": "Shortcut to insert a hyperlink:", "opts": ["Ctrl+K", "Ctrl+H", "Ctrl+L", "Ctrl+I"], "c": 0, "d": "easy", "t": "Shortcuts & Tips", "exp": ["Ctrl+K opens the Insert Hyperlink dialog (works in Word, Excel, PowerPoint, Outlook)."]},
+    {"id": 38, "q": "Shortcut to start a slide show from the current slide:", "opts": ["F5", "Shift+F5", "Alt+F5", "Esc"], "c": 1, "d": "easy", "t": "Slide Show & Notes", "exp": ["Shift+F5 = from current slide. F5 = from beginning."]},
+    {"id": 39, "q": "To select multiple slides in the slide pane:", "opts": ["Click and drag, OR Ctrl+click, OR Shift+click", "Only Ctrl+click", "Only Shift+click", "Double-click each"], "c": 0, "d": "medium", "t": "Slides & Layouts", "exp": ["Click+drag for a range; Ctrl+click for non-contiguous; Shift+click for the range. Bulk-delete or bulk-format then."]},
+    {"id": 40, "q": "Rehearse Timings is on which tab?", "opts": ["Home", "Insert", "Transitions", "Slide Show"], "c": 3, "d": "medium", "t": "Slide Show & Notes", "exp": ["Slide Show > Rehearse Timings. Records how long you spend on each slide. Saves as a recorded slideshow."]},
+    {"id": 41, "q": "Ctrl+M in PowerPoint does what?", "opts": ["New presentation", "Add a new slide", "Open the Master view", "Merge shapes"], "c": 1, "d": "easy", "t": "Slides & Layouts", "exp": ["Ctrl+M = new slide. (Ctrl+N = new presentation - new file.)"]},
+    {"id": 42, "q": "How many slides does a new PowerPoint 2016+ presentation start with?", "opts": ["0", "1", "3", "5"], "c": 1, "d": "easy", "t": "Slides & Layouts", "exp": ["1 blank slide with the Title Slide layout."]},
+    {"id": 43, "q": "What is the .pptx file format (since 2007)?", "opts": ["Binary blob", "ZIP archive of XML files", "Plain text", "PDF-like"], "c": 1, "d": "medium", "t": "Slides & Layouts", "exp": [".pptx is a ZIP archive of XML files (OOXML). Same structure as .docx and .xlsx."]},
+    {"id": 44, "q": "Which view is best for adding speaker notes to slides?", "opts": ["Normal view (notes pane at bottom)", "Slide Sorter", "Slide Show", "Reading View"], "c": 0, "d": "easy", "t": "Slide Show & Notes", "exp": ["Normal view shows the notes pane below the slide. Click 'Click to add notes' to type."]},
+    {"id": 45, "q": "What does Insert > Header & Footer let you do?", "opts": ["Add date, page number, footer text to slides", "Add a header bar to the slide", "Insert a Word header", "Change the theme"], "c": 0, "d": "medium", "t": "Themes & Slide Master", "exp": ["Header & Footer dialog: check Date and time, Slide number, Footer. 'Don't show on title slide' option."]},
+    {"id": 46, "q": "A theme in PowerPoint defines:", "opts": ["Just colours", "Colours + fonts + effects + background", "Only fonts", "Only animations"], "c": 1, "d": "medium", "t": "Themes & Slide Master", "exp": ["A theme = a coordinated set of colours, fonts, effects, and background."]},
+    {"id": 47, "q": "Where do you set a custom BACKGROUND for one slide only?", "opts": ["Design > Format Background (right-click on the pane to apply to selected slide)", "Home > Background", "Insert > Background", "View > Background"], "c": 0, "d": "medium", "t": "Themes & Slide Master", "exp": ["Design > Format Background. The pane has 'Apply to All' or apply to current slide."]},
+    {"id": 48, "q": "Ctrl+Shift+V in PowerPoint:", "opts": ["Pastes plain text", "Pastes formatting from Format Painter", "Pastes a hyperlink", "Pastes an image"], "c": 1, "d": "medium", "t": "Shortcuts & Tips", "exp": ["Ctrl+Shift+V = paste formatting (Format Painter target). Ctrl+V = paste content."]},
+    {"id": 49, "q": "Ctrl+Shift+> in PowerPoint does what?", "opts": ["Move to next slide", "Increase font size in selected text", "Insert a new slide", "Group selected objects"], "c": 1, "d": "medium", "t": "Shortcuts & Tips", "exp": ["Ctrl+Shift+> = increase font size. Ctrl+Shift+< = decrease."]},
+    {"id": 50, "q": "F1 during a slide show shows:", "opts": ["The first slide", "The keyboard shortcuts overlay", "The notes", "The audience list"], "c": 1, "d": "medium", "t": "Slide Show & Notes", "exp": ["F1 shows the on-screen keyboard shortcut reference during the show."]},
+    {"id": 51, "q": "The Slide Sorter view shows:", "opts": ["Just the active slide", "All slides as thumbnails", "The notes", "The audience"], "c": 1, "d": "easy", "t": "Views (Normal/Slide Show/Sorter)", "exp": ["Slide Sorter = miniature overview of all slides. Best for reordering and bulk operations."]},
+    {"id": 52, "q": "To add a picture to a slide, use:", "opts": ["Home > Picture", "Insert > Picture", "Design > Picture", "Animations > Picture"], "c": 1, "d": "easy", "t": "Themes & Slide Master", "exp": ["Insert tab > Pictures. Then browse to the file. Use Online Pictures for stock images."]},
+    {"id": 53, "q": "A presentation saved as a 'show' (.ppsx) opens directly in:", "opts": ["Normal view", "Slide Show view", "Slide Sorter", "Notes Page"], "c": 1, "d": "medium", "t": "Slide Show & Notes", "exp": [".ppsx files open directly in Slide Show view (no editing UI). Useful for kiosk / distributable decks."]},
+    {"id": 54, "q": "What is the maximum number of slides in a presentation?", "opts": ["100", "500", "Unlimited (memory-bound)", "200"], "c": 2, "d": "medium", "t": "Slides & Layouts", "exp": ["PowerPoint doesn't impose a hard limit. Memory and file size are the practical limits (very large decks can lag)."]},
+    {"id": 55, "q": "To save a custom theme for reuse across decks, use:", "opts": ["Design > Save Current Theme", "File > Save As Theme", "Insert > Theme", "Format > Theme"], "c": 0, "d": "medium", "t": "Themes & Slide Master", "exp": ["Design > Themes > Save Current Theme saves a .thmx file with your colours, fonts, effects."]},
+    {"id": 56, "q": "To reorder slides, the easiest view is:", "opts": ["Normal view", "Slide Sorter", "Notes Page", "Slide Show"], "c": 1, "d": "easy", "t": "Views (Normal/Slide Show/Sorter)", "exp": ["In Slide Sorter, click and drag slides to reorder. In Normal view, drag the thumbnails in the slide pane."]},
+    {"id": 57, "q": "Ctrl+G in Normal view (with no objects selected) does what?", "opts": ["Groups objects", "Goes to slide N (older versions) / no-op in modern PowerPoint", "Inserts a graph", "Pastes formatting"], "c": 1, "d": "medium", "t": "Shortcuts & Tips", "exp": ["In older PowerPoint Ctrl+G opened Go To Slide. In modern PowerPoint with no selection, Ctrl+G is a no-op (grouping needs selected objects)."]},
+    {"id": 58, "q": "To quickly move a slide to a new position, use:", "opts": ["Drag in the slide pane OR in Slide Sorter", "Right-click > Move > To End", "Both A and B work", "You cannot reorder slides"], "c": 2, "d": "medium", "t": "Views (Normal/Slide Show/Sorter)", "exp": ["Drag in the slide pane (Normal view) or in Slide Sorter. Right-click > Move also works."]},
+    {"id": 59, "q": "What does F5 do in Normal view (editing a slide)?", "opts": ["Insert a chart", "Start the slide show from the beginning", "Find and replace", "Save the file"], "c": 1, "d": "medium", "t": "Slide Show & Notes", "exp": ["F5 always starts the slide show. From Normal view, it starts from slide 1; from a selected slide, it still starts from slide 1 (use Shift+F5 for current)."]},
+    {"id": 60, "q": "To format a placeholder's default font, edit the:", "opts": ["Active slide only", "Slide Master", "Handout Master", "Notes Master"], "c": 1, "d": "medium", "t": "Themes & Slide Master", "exp": ["View > Slide Master. Change the font on the master placeholder and every slide using that layout inherits it."]}
+  ]
+}

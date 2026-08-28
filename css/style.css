@@ -663,3 +663,65 @@ html.dark .hero h1 span{background:linear-gradient(120deg,#fff 30%, #A78BFA 100%
 /* === Fix: expanded reading sections must never clip long content === */
 .step-body{overflow:hidden}
 .step-body.expanded{max-height:none !important;overflow:visible}
+
+/* === Fix: formula-box LaTeX/text overflow + practice step numbering === */
+.formula-box{
+  white-space: normal !important;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  font-size: 1rem !important;
+  line-height: 1.55;
+  padding: 16px 18px !important;
+}
+.formula-box .katex,
+.formula-box .katex-display,
+.formula-box .katex-html{
+  white-space: normal !important;
+  max-width: 100%;
+  font-size: 1em;
+}
+.formula-box .katex-display{
+  margin: 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 4px 0;
+}
+.formula-box .katex-display > .katex{
+  display: inline-block;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: visible;
+}
+
+/* Numbered step badges — applied to formula-card example steps and practice solution steps */
+.solution-steps{ counter-reset: stepcounter; }
+.solution-step{
+  position: relative;
+  counter-increment: stepcounter;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 14px 10px 12px;
+}
+.solution-step::before{
+  content: counter(stepcounter);
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  flex: none;
+  margin-top: 2px;
+  line-height: 1;
+}
+.solution-step p{ flex: 1; min-width: 0; margin: 0; }
+.topic-section.practice .practice-solution-steps .solution-step{ background: var(--surface-2); border: none; border-left: 3px solid var(--accent); border-radius: 8px; padding: 10px 14px 10px 12px; font-size: 14px; line-height: 1.6; }
+.formula-card .solution-step{ background: transparent; border: none; border-left: 2px solid var(--border); border-radius: 0; padding: 6px 0 6px 12px; }
+
+/* Single-step solution block: hide the number badge (it's just a one-line statement) */
+.solution-steps:not(:has(.solution-step:nth-child(2))) .solution-step::before{ display: none; }

@@ -1,0 +1,578 @@
+{
+  "id": "ms-word",
+  "title": "MS Word",
+  "icon": "W",
+  "category": "ms-office",
+  "subtitle": "Word's ribbon, views, formatting, page setup, mail merge and proofing - the Accenture Common Applications block loves this",
+  "days": "3",
+  "color": "#0D9488",
+  "subtopics": [
+    "Formatting & Fonts",
+    "Views (Print/Outline/Web)",
+    "Tabs & Ribbon",
+    "Page Layout & Margins",
+    "Tables & Mail Merge",
+    "Proofing & Review"
+  ],
+  "estimatedHours": 8,
+  "readingSections": [
+    {
+      "id": "formatting-fonts",
+      "title": "Formatting & Fonts: Bold, Italic, Underline and the Default Calibri",
+      "type": "concept",
+      "quickSummary": "Word is for document creation. Formatting = Bold/Italic/Underline/Font/Size/Colour. Default font since 2007 is Calibri 11. Default file extension is .docx.",
+      "content": [
+        "MS Word is a WORD PROCESSOR - it makes documents (letters, reports, resumes, manuals), NOT spreadsheets or databases. The .docx extension has been the default since Word 2007 (replacing the older .doc). Each newer Word can still open old .doc files in Compatibility Mode.",
+        "Formatting means changing how text looks without changing the text itself. The four pillars of character formatting are BOLD (Ctrl+B), ITALIC (Ctrl+I), UNDERLINE (Ctrl+U) and STRIKETHROUGH (no default shortcut - use the Font dialog). Paragraph formatting covers alignment (left/center/right/justify), line spacing, and indentation.",
+        "Word has a STYLES gallery on the Home tab - 'Title', 'Heading 1', 'Heading 2', 'Normal', 'Subtitle' etc. Applying a style is faster than manually setting font + size + colour + bold. The styles also drive the Navigation Pane and the Table of Contents.",
+        "Default font in Word 2007/2010/2013/2016/2019/2021/365 is CALIBRI 11 pt (body) and Calibri Light for headings. Older Word (2003 and before) defaulted to Times New Roman 12. The exam loves to ask 'what is the default font in MS Word?' - answer is Calibri.",
+        "FONT SIZE in Word is measured in POINTS (pt). Common sizes: 8 (footnote), 10 (small body), 11 (Word default body), 12 (academic body), 14 (sub-heading), 18 (heading), 24 (title), 36+ (poster). One point = 1/72 of an inch. The shortcut to bump size up is Ctrl+Shift+> and down is Ctrl+Shift+<."
+      ],
+      "subsections": [
+        {
+          "title": "Character vs Paragraph vs Section formatting",
+          "content": "CHARACTER formatting (bold, italic, font, size, colour) affects selected text only. PARAGRAPH formatting (alignment, line spacing, indentation, bullets) affects the whole paragraph (you just need to click in it). SECTION formatting (margins, page size, columns, headers/footers) affects every page in that section. Section breaks (Layout > Breaks) split a document into independent sections."
+        },
+        {
+          "title": "The Format Painter",
+          "content": "Format Painter (Home tab, also Ctrl+Shift+C to copy format, Ctrl+Shift+V to paste it) copies formatting from one place to another. Double-click Format Painter to apply to multiple places. A staple exam question: 'Which shortcut copies formatting?' - Ctrl+Shift+C."
+        }
+      ],
+      "quickRevision": [
+        "MS Word = word processor -> .docx files (since 2007).",
+        "Default font: Calibri 11 (since Word 2007).",
+        "Bold=Ctrl+B, Italic=Ctrl+I, Underline=Ctrl+U.",
+        "Format Painter: Ctrl+Shift+C copies, Ctrl+Shift+V applies.",
+        "Character formatting = selection; Paragraph = whole para; Section = page-level.",
+        "Styles live on the Home tab."
+      ],
+      "tricks": [
+        "If the question says 'default font in MS Word 2007 or later' -> Calibri.",
+        "If the option lists 'Times New Roman 12' as the default -> wrong (it was the default before 2007).",
+        "Ctrl+B, Ctrl+I, Ctrl+U are the only three letter shortcuts you need to know cold for character formatting.",
+        "Format Painter is NOT Ctrl+C - it is Ctrl+Shift+C."
+      ],
+      "patterns": [
+        "'Which shortcut makes text bold?' -> Ctrl+B.",
+        "'Default file extension of MS Word 2016+?' -> .docx.",
+        "'Default font in MS Word 2016+?' -> Calibri (11pt).",
+        "'How to copy formatting from one place to another?' -> Format Painter (Ctrl+Shift+C)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked across PrepInsta / mcqstop / Sanfoundry MS Word MCQ banks (2024-2026)",
+          "question": "The default file extension of MS Word 2016+ is:",
+          "approach": ".docx (replaced the old .doc in Word 2007)."
+        },
+        {
+          "source": "Asked in Sanfoundry MS Word MCQ bank",
+          "question": "The default font in MS Word 2016+ is:",
+          "approach": "Calibri 11pt."
+        }
+      ],
+      "companyNote": "The .docx vs .doc and Calibri vs Times New Roman default-font questions appear in nearly every MS Office paper."
+    },
+    {
+      "id": "views",
+      "title": "The Five Views of MS Word",
+      "type": "concept",
+      "quickSummary": "Print Layout (default, shows margins), Web Layout (no margins, browser-style), Outline (collapsible headings), Draft / Read Mode (no page breaks, easy reading), and the older 'Normal' view.",
+      "content": [
+        "Word has FIVE views, all on the View tab. The default view is PRINT LAYOUT - it shows the document exactly as it will print, with margins, page breaks, headers and footers visible.",
+        "WEB LAYOUT shows the document as it would look in a web browser - no margins, content reflows to the window. Useful when authoring a long page for screen reading or for pasting into an HTML email. There are NO page breaks in Web Layout.",
+        "OUTLINE VIEW shows the document as a collapsible tree of headings. You can drag entire sections up or down, promote/demote a heading (Alt+Shift+Left/Right), and focus on structure rather than formatting. Outlines use Heading styles - if your document has no Heading styles, the outline is empty.",
+        "DRAFT (was called 'Normal' before Word 2007) shows the document as one long scrollable page WITHOUT page breaks, headers, footers or margins. Useful for fast typing and reading flow. Draft is the best view for editing large bodies of text without distraction.",
+        "READ MODE (View > Read Mode) is the full-screen reading view that came in Word 2013. It reformats columns, hides the ribbon, and lets you flip through pages. Press Esc to exit. Read Mode is the closest Word gets to a 'Kindle' view."
+      ],
+      "subsections": [
+        {
+          "title": "View shortcuts",
+          "content": "Alt+W then P = Print Layout. Alt+W then W = Web Layout. Alt+W then O = Outline. Alt+W then D = Draft (was Normal). Alt+W then R = Read Mode. On the status bar at the bottom-right are four view icons - one click switches views."
+        },
+        {
+          "title": "Why does the exam love views?",
+          "content": "Because one view hides the page structure: 'Which view does NOT show page breaks?' -> Draft (formerly Normal). 'Which view is best for a webpage?' -> Web Layout. 'Which view lets you collapse headings?' -> Outline. These three factoids cover 90% of view-related MCQs."
+        }
+      ],
+      "quickRevision": [
+        "Print Layout = default; shows pages, margins, headers/footers.",
+        "Web Layout = no margins, reflows to window, no page breaks.",
+        "Outline View = collapsible headings; uses Heading styles.",
+        "Draft (Normal) = one long page; no page breaks, no headers/footers.",
+        "Read Mode = full-screen reading, no ribbon, like a Kindle."
+      ],
+      "tricks": [
+        "'Which view does not show page breaks?' -> Draft (Normal).",
+        "'Best view for writing a webpage?' -> Web Layout.",
+        "'Drag a heading up or down by clicking its bullet?' -> Outline View.",
+        "If a question lists 'Normal' as a current view -> correct, Normal is the legacy name for Draft."
+      ],
+      "patterns": [
+        "'Default view in MS Word?' -> Print Layout.",
+        "'Which view shows the document as a single long page with no page breaks?' -> Draft (Normal).",
+        "'Which view is best for reading a long document without distractions?' -> Read Mode."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked across MS Word MCQ banks",
+          "question": "Which view is the default in MS Word?",
+          "approach": "Print Layout."
+        },
+        {
+          "source": "Asked in Sanfoundry MS Word MCQ set",
+          "question": "The view that does NOT show page breaks is:",
+          "approach": "Draft (was 'Normal' in older Word)."
+        }
+      ],
+      "companyNote": "Two to three view-related MCQs in every Common Applications paper. Memorise what each view hides and shows."
+    },
+    {
+      "id": "ribbon-tabs",
+      "title": "The Ribbon & Tabs: Where Every Command Lives",
+      "type": "concept",
+      "quickSummary": "The Ribbon replaced menus/toolbars in Word 2007. It has 8 core tabs (Home, Insert, Design, Layout, References, Mailings, Review, View) plus context tabs. Each tab has groups of related commands.",
+      "content": [
+        "The RIBBON is the bar across the top of Word that replaced the old menu-and-toolbar system in Word 2007. It is divided into TABS; each tab holds GROUPS of related commands; each group has the actual buttons and dropdowns.",
+        "The eight core tabs (and what they do): HOME (clipboard, font, paragraph, styles - the everyday tab), INSERT (page break, table, picture, shape, header, footer, page number, symbol, equation), DESIGN (themes, document formatting - was 'Page Layout' theme tools in older Word), LAYOUT (margins, orientation, size, columns, breaks - was 'Page Layout' in older Word), REFERENCES (table of contents, footnotes, citations, bibliography, captions, index), MAILINGS (envelopes, labels, mail merge - the one you need for the merge MCQ), REVIEW (spelling, grammar, thesaurus, word count, track changes, comments, compare), VIEW (the 5 views, zoom, show/hide, macros, window).",
+        "Above the ribbon is the QUICK ACCESS TOOLBAR (QAT) - a small customisable strip with Save, Undo, Redo by default. The QAT is the only toolbar that survived the 2007 redesign. Ctrl+S adds Save if it isn't there. Right-click any ribbon button to 'Add to Quick Access Toolbar'.",
+        "Below the ribbon is the contextual tab system. When you click inside a picture, table, shape, chart, header/footer, or equation, a new set of FORMAT (or PICTURE FORMAT, TABLE DESIGN, DRAWING) tabs appear at the top. These context tabs vanish when you click outside the object.",
+        "You can customise the ribbon: File > Options > Customize Ribbon lets you add or remove tabs and commands. You can also 'Minimize the Ribbon' with Ctrl+F1 (the up-arrow icon at the top-right) - it collapses to a thin strip of tab names, giving you more vertical space for your document."
+      ],
+      "subsections": [
+        {
+          "title": "The Home tab cheat sheet",
+          "content": "Home is the most-tested tab. It contains: Clipboard (cut/copy/paste/format painter), Font (font name, size, bold/italic/underline/strikethrough, X^2 / X_2 superscript/subscript, font colour, highlight), Paragraph (bullets, numbering, sort, show/hide paragraph marks, alignment, line spacing, shading, borders), Styles (the style gallery - Title, Heading 1-3, Normal, etc.), Editing (Find, Replace, Select)."
+        },
+        {
+          "title": "Tell me without looking: which tab for which task?",
+          "content": "Insert a Table -> Insert tab. Change Margins -> Layout tab. Apply a Theme -> Design tab. Mail Merge -> Mailings tab. Track Changes -> Review tab. Table of Contents -> References tab. Zoom -> View tab. Spelling check -> Review tab (or F7 from anywhere). Table of Contents again? References. Numbering a list -> Home tab. Page Numbers -> Insert (or Header & Footer > Page Number)."
+        }
+      ],
+      "quickRevision": [
+        "Ribbon = 8 tabs; each tab has groups; each group has buttons.",
+        "Core tabs: Home, Insert, Design, Layout, References, Mailings, Review, View.",
+        "Context tabs (Picture Format, Table Design, etc.) appear only when relevant.",
+        "Quick Access Toolbar (QAT) is the only customisable toolbar left - top-left.",
+        "Ctrl+F1 minimises/maximises the ribbon."
+      ],
+      "tricks": [
+        "If the question says 'tab for table of contents' -> References. NOT 'Insert'.",
+        "If the question says 'tab for mail merge' -> Mailings.",
+        "If the question says 'tab for margins / orientation / paper size' -> Layout.",
+        "If a tab is not in the list of 8 -> it's a context tab (auto-shows when relevant).",
+        "Ctrl+F1 toggles the ribbon collapsed state."
+      ],
+      "patterns": [
+        "'Which tab contains Mail Merge?' -> Mailings.",
+        "'Which tab has Margins and Orientation?' -> Layout.",
+        "'Where is the Quick Access Toolbar?' -> Top-left, above the ribbon.",
+        "'Which tab for Spelling & Grammar?' -> Review (also F7 anywhere).",
+        "'How to minimise the ribbon?' -> Ctrl+F1 or the up-arrow at the top-right."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in cybotech.in 110-MCQ Ribbon/Tabs set",
+          "question": "Which tab contains the Mail Merge command?",
+          "approach": "Mailings tab."
+        },
+        {
+          "source": "Asked in Sanfoundry / mcqstop Word MCQs",
+          "question": "Which tab lets you change page margins?",
+          "approach": "Layout tab."
+        }
+      ],
+      "companyNote": "Tab-location MCQs are easy marks if you know the 8 tabs. Two or three such questions per MS Office paper."
+    },
+    {
+      "id": "page-layout",
+      "title": "Page Layout, Margins, Orientation, Paper Size",
+      "type": "concept",
+      "quickSummary": "Layout tab controls margins, paper size, orientation (portrait/landscape), columns, and section breaks. Default A4 (most of world) or Letter (US) at 1-inch (2.54cm) margins.",
+      "content": [
+        "All page-level formatting lives on the LAYOUT tab. The most-used group is 'Page Setup' which holds Margins, Orientation, Size, Columns, Breaks, Line Numbers, and Hyphenation.",
+        "ORIENTATION: Portrait (taller than wide, 8.5x11 inches in US Letter) is the default. Landscape (wider than tall) rotates the page 90 degrees - use it for wide tables, certificates, or slides printed on paper. Change it on Layout > Orientation.",
+        "PAPER SIZE: defaults are US Letter (8.5x11 in) for Americas and A4 (210x297mm = 8.27x11.69 in) for the rest of the world including India. The exam usually assumes A4 unless it specifies US. Other sizes: A3 (bigger, for posters), A5 (half-A4, for booklets), Legal (8.5x14 in, US legal pads), Envelope sizes. Change via Layout > Size.",
+        "MARGINS: default is 1 inch (2.54 cm) on all four sides for both Word's 'Normal' and 'Office 2003 Default' presets. Common presets: Normal (1in all around), Narrow (0.5in all around), Moderate (1in top/bottom, 0.75in left/right), Wide (1.5in left/right, 1in top/bottom), Mirrored (for book printing - inside/outside margins). Custom margins let you set any value; minimum is 0.3 cm (Word enforces this).",
+        "HEADERS AND FOOTERS: insert via Insert > Header (or Footer) > Blank. By default they appear on EVERY page of the section. Page numbers go in headers/footers via Insert > Page Number. 'Different First Page' lets the cover page have a different (or no) header. 'Different Odd & Even Pages' (an Office 365 addition) alternates."
+      ],
+      "subsections": [
+        {
+          "title": "Section breaks - the hidden power",
+          "content": "A SECTION BREAK (Layout > Breaks) splits the document into independent sections. Each section can have its own orientation, margins, columns, headers, footers, and page numbering. A 'Continuous' section break starts a new section on the same page; 'Next Page' starts on a new page. The exam occasionally asks 'which break starts a new page' -> Next Page break."
+        },
+        {
+          "title": "Page setup dialog (Layout > Margins > Custom Margins)",
+          "content": "The full Page Setup dialog has three tabs: Margins, Paper, Layout. The Margins tab lets you set Gutter (extra space on the binding side for printed books), and Mirror Margins (which swaps left/right to become inside/outside on facing pages). The Paper tab sets size and source. The Layout tab sets headers/footers distance from the edge, and 'Different first page' / 'Different odd & even'."
+        }
+      ],
+      "quickRevision": [
+        "Layout tab = margins, orientation, size, columns, breaks, page numbers.",
+        "Default orientation: Portrait. Default size: A4 (India) or Letter (US). Default margin: 1 inch (2.54 cm).",
+        "Narrow margin = 0.5 in all around. Mirrored = book-style inside/outside.",
+        "Headers/footers appear on every page of a section by default.",
+        "Section break (Layout > Breaks > Next Page) starts a new section on a new page."
+      ],
+      "tricks": [
+        "If the option says 'default margin 1 inch' -> right. '0.5 inch' -> Narrow, not default. '1.5 inch' -> Wide, not default.",
+        "Landscape = wider than tall (wider page). Portrait = taller than wide (taller page). The exam flips the wording; remember the visual.",
+        "Page numbers live in headers/footers, NOT directly in the body. The shortcut for page number is NOT a global one - it's Insert > Page Number.",
+        "Min margins in Word = 0.3 cm. If an option says '0 cm margins' -> wrong."
+      ],
+      "patterns": [
+        "'Which tab for page orientation?' -> Layout.",
+        "'Default margin in MS Word?' -> 1 inch (2.54 cm).",
+        "'Default paper size in India?' -> A4.",
+        "'To put a page number at the bottom centre of every page?' -> Insert > Page Number > Bottom of Page > Plain Number 2 (centre)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Sanfoundry / mcqstop Word MCQs",
+          "question": "Default margin in MS Word is:",
+          "approach": "1 inch (2.54 cm) on all sides."
+        },
+        {
+          "source": "Asked in mcqstop Word MCQs",
+          "question": "Header and Footer appear on:",
+          "approach": "Every page of the document by default (in that section)."
+        }
+      ],
+      "companyNote": "Three or four page-layout questions in a typical MS Office paper: default margin, default size, header/footer scope, section break."
+    },
+    {
+      "id": "tables-mailmerge",
+      "title": "Tables and Mail Merge",
+      "type": "concept",
+      "quickSummary": "Tables = rows + columns for structured data. Mail Merge = one template document + a data list = many personalised documents (letters, labels, envelopes). Lives on the Mailings tab.",
+      "content": [
+        "A TABLE in Word (Insert > Table) is a grid of rows and columns. A 3x4 table has 3 columns and 4 rows = 12 cells. You type into cells like a tiny spreadsheet. Tables are for any structured data inside a document: schedules, price lists, contact sheets.",
+        "The Table Design and Layout (context) tabs give you banded rows, header row, formulas (=SUM(ABOVE), =AVERAGE(LEFT)), and tools to sort, merge cells, split cells, add/delete rows. Press Tab inside the last cell to add a new row.",
+        "MAIL MERGE is Word's killer feature for sending the same letter to many people with personalised fields (name, address, date). The classic flow: (1) write a letter with placeholders like Dear [First Name]; (2) on Mailings > Select Recipients, point Word at a list of recipients (an Excel sheet, a CSV, an Outlook contacts list, or you can type one from scratch); (3) Mailings > Insert Merge Field drops placeholders; (4) Finish & Merge > Edit Individual Documents to generate the personalised copies.",
+        "The two key terms in Mail Merge: the MAIN DOCUMENT (your letter template) and the DATA SOURCE (your recipient list). Word matches rows in the data source to copies of the main document. The 'preview results' button (Mailings > Preview Results) lets you cycle through recipients with the arrow buttons to check the merge before printing.",
+        "Other common Mailings-tab uses: Envelopes (type one address, Word lays it out for the envelope window), Labels (Avery-style sheets for printing mailing labels), and Directory (which generates a single document with ALL records instead of one per record)."
+      ],
+      "subsections": [
+        {
+          "title": "Table basics MCQ traps",
+          "content": "Pressing Tab inside the last cell of a table adds a new row. Pressing Tab in the last cell of a single-cell table adds another column (not a row - and if it's the very last cell, it creates a new row below the table). The 'Repeat Header Rows' option on Table Design keeps the first row's labels visible across page breaks. Borders and Shading live under Table Design > Borders and Table Design > Shading."
+        },
+        {
+          "title": "Mail Merge field types",
+          "content": "Address Block (the wizard that combines First Name + Last Name + Address into a proper postal address), Greeting Line (Dear [Title] [Last Name]), and individual fields (First Name, Email, Company). Use 'Match Fields' on the Mailings ribbon to teach Word which column in your data source is which."
+        }
+      ],
+      "quickRevision": [
+        "Table = rows x columns of cells. Insert via Insert > Table.",
+        "Tab in the last cell adds a row. Repeat Header Rows keeps a header row across page breaks.",
+        "Mail Merge = template + recipient list = many personalised docs.",
+        "Mailings tab owns: Envelopes, Labels, Mail Merge, Directory.",
+        "Preview Results lets you cycle through recipients before printing."
+      ],
+      "tricks": [
+        "If the question says 'tab for mail merge' -> Mailings (NOT Insert).",
+        "If the question asks what shows up in a merged letter -> the data source's column for that field.",
+        "Tab in last cell = new row. Tab in single-cell last cell = new column.",
+        "Don't confuse Mail Merge with simply 'merging two documents' - that's not what it does."
+      ],
+      "patterns": [
+        "'Which tab for Mail Merge?' -> Mailings.",
+        "'To generate one personalised letter per row in an Excel list?' -> Mailings > Select Recipients > Mail Merge.",
+        "'Press Tab in the last cell of a table to...' -> Add a new row."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in mcqstop Word MCQs",
+          "question": "Mail Merge is used to:",
+          "approach": "Create personalised letters for multiple recipients (from a template + data list)."
+        },
+        {
+          "source": "Asked in Sanfoundry Word MCQs",
+          "question": "Mailings tab is used for:",
+          "approach": "Envelopes, labels, mail merge, directory."
+        }
+      ],
+      "companyNote": "Mail Merge is the highest-leverage MS Word topic for the Common Applications MCQ block - one or two questions guaranteed."
+    },
+    {
+      "id": "proofing-review",
+      "title": "Proofing & Review: Spelling, Track Changes, Comments, Word Count",
+      "type": "concept",
+      "quickSummary": "Review tab = Spelling (F7), Grammar, Thesaurus, Word Count, Translate, Track Changes (Ctrl+Shift+E), Comments, Compare, Restrict Editing. The 'Tell me what you want to do' search box is the universal launcher.",
+      "content": [
+        "All editing, reviewing, and proofing tools live on the REVIEW tab. The four most-tested are: SPELLING & GRAMMAR (F7 or Review > Spelling & Grammar), WORD COUNT (Review > Word Count - shows characters, words, lines, pages), TRACK CHANGES (Ctrl+Shift+E - records every edit so a reviewer can Accept/Reject), and COMMENTS (Review > New Comment).",
+        "TRACK CHANGES is the way to collaborate on a document. Turn it on with Ctrl+Shift+E; every insertion/deletion/format change is now marked in a different colour per author with a timestamp. Reviewers can Accept or Reject each change individually, or Accept All / Reject All from the Review tab. The exam: 'Which shortcut turns on Track Changes?' -> Ctrl+Shift+E.",
+        "SPELLING & GRAMMAR: the wavy red underline is a spell-check; the green/blue underline is grammar. Right-click a flagged word for suggestions, or hit F7 to open the Spelling pane and step through. Custom dictionaries let you add domain terms so Word stops flagging them. AutoCorrect (File > Options > Proofing > AutoCorrect Options) fixes typos as you type - 'teh' becomes 'the' automatically.",
+        "COMMENTS are non-printing notes attached to text. Review > New Comment (or Alt+Ctrl+M) drops a comment balloon in the right margin. Use @mentions in modern Word to ping a specific reviewer. Comments are great for review workflows - they don't change the document text.",
+        "COMPARE and COMBINE (Review > Compare / Combine) let you see what changed between two versions of the same document. Compare shows the differences as tracked changes; Combine merges edits from two reviewers into one document. The exam's classic: 'Which feature shows the difference between two versions of a document?' -> Compare (under the Review tab)."
+      ],
+      "subsections": [
+        {
+          "title": "The 'Tell me what you want to do' box",
+          "content": "The 'Tell me what you want to do' search box (or 'Search' bar) sits at the top of the ribbon in modern Word. Type any command name (e.g. 'watermark', 'table of contents', 'track changes') and Word offers to run the matching command or open the right dialog. This is the fastest way to find a feature without remembering which tab it lives on."
+        },
+        {
+          "title": "The status bar proofing icons",
+          "content": "Bottom-right of the Word window: the 'Errors' indicator (red X for errors, green tick for no errors, blue dash for no spelling check - in protected forms). Click it to jump to the next error. The page count, word count, and zoom slider also live in the status bar."
+        }
+      ],
+      "quickRevision": [
+        "Review tab = Spelling, Grammar, Thesaurus, Word Count, Track Changes, Comments, Compare, Combine.",
+        "Spelling & Grammar: F7 anywhere. Track Changes: Ctrl+Shift+E.",
+        "AutoCorrect: 'teh' -> 'the' automatically (File > Options > Proofing).",
+        "Comments: Alt+Ctrl+M; live in the margin; don't change the document.",
+        "Compare shows differences between two versions; Combine merges them."
+      ],
+      "tricks": [
+        "If the option lists 'F7' for spelling -> right. F7 is the universal shortcut.",
+        "If the question says 'shortcut to track changes' -> Ctrl+Shift+E (NOT F7).",
+        "Comments do NOT print by default. Header/footer with the comment author's name does.",
+        "Word Count = Review tab, OR look at the status bar at the bottom of the window (shows word count live)."
+      ],
+      "patterns": [
+        "'Which tab has Spelling and Grammar?' -> Review.",
+        "'How do you turn on Track Changes?' -> Ctrl+Shift+E (or Review > Track Changes).",
+        "'How do you see what changed between two versions?' -> Review > Compare.",
+        "'Where is the Word Count?' -> Review tab, OR bottom-left status bar."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in cybotech.in / Sanfoundry Word MCQ banks",
+          "question": "The shortcut to turn on Track Changes in MS Word is:",
+          "approach": "Ctrl+Shift+E."
+        },
+        {
+          "source": "Asked in mcqstop Word MCQs",
+          "question": "Ctrl+F is used for:",
+          "approach": "Find text in the document (the Find pane on the Home tab)."
+        }
+      ],
+      "companyNote": "Three to four review/proofing questions in a typical paper: Track Changes shortcut, F7 spelling, Compare, Word Count."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "default-settings",
+      "title": "MS Word Default Settings (must memorise)",
+      "formula": {
+        "latex": "\\text{font}=\\text{Calibri }11;\\; \\text{extension}=.\\text{docx};\\; \\text{margin}=1\\text{ in};\\; \\text{view}=\\text{Print Layout};\\; \\text{size}=\\text{A4/Letter}",
+        "text": "Font Calibri 11, file .docx, margin 1 inch (2.54 cm), default view Print Layout, paper A4 (India) or Letter (US)."
+      },
+      "whenToUse": "Any 'default value' MCQ in the MS Office block. Five of the most-asked questions in the entire paper.",
+      "explanation": [
+        "Font: Calibri 11pt body (since Word 2007). Older Word default: Times New Roman 12.",
+        "File extension: .docx (since Word 2007). Older: .doc.",
+        "Default margin: 1 inch on all four sides (Word's 'Normal' preset).",
+        "Default view: Print Layout.",
+        "Default paper size: A4 (210x297 mm) outside the US, US Letter (8.5x11 in) in the US.",
+        "Default save location: This PC > Documents in modern Windows; 'My Documents' in older Windows."
+      ],
+      "example": {
+        "prompt": "What is the default font in MS Word 2016+?",
+        "steps": [
+          "Pre-2007 default was Times New Roman 12.",
+          "Word 2007+ switched to Calibri 11.",
+          "Answer: Calibri."
+        ],
+        "answer": "Calibri (11pt)"
+      },
+      "memoryTip": "'Calibri 11, docx, 1 inch, Print, A4' - the 5 defaults the exam rotates through.",
+      "commonMistake": "Picking Times New Roman as the default (it was the default BEFORE 2007)."
+    },
+    {
+      "id": "formatting-shortcuts",
+      "title": "Character Formatting Shortcuts (Ctrl + Letter)",
+      "formula": {
+        "latex": "\\text{Bold}=\\text{Ctrl+B};\\; \\text{Italic}=\\text{Ctrl+I};\\; \\text{Underline}=\\text{Ctrl+U};\\; \\text{Copy fmt}=\\text{Ctrl+Shift+C};\\; \\text{Paste fmt}=\\text{Ctrl+Shift+V}",
+        "text": "BIU = Ctrl+B, Ctrl+I, Ctrl+U. Format Painter = Ctrl+Shift+C then Ctrl+Shift+V."
+      },
+      "whenToUse": "Any 'which shortcut for X formatting?' MCQ. The exam always has 2-3 of these.",
+      "explanation": [
+        "Ctrl+B = Bold. Press once to apply, press again to remove (toggle).",
+        "Ctrl+I = Italic. Same toggle behaviour.",
+        "Ctrl+U = Underline. Same toggle behaviour.",
+        "Ctrl+Shift+C copies the formatting of the selected text (used by Format Painter).",
+        "Ctrl+Shift+V pastes the formatting onto newly selected text.",
+        "Ctrl+L / Ctrl+E / Ctrl+R / Ctrl+J = Left / Centre / Right / Justify alignment (paragraph formatting).",
+        "Font size up/down: Ctrl+Shift+> and Ctrl+Shift+<."
+      ],
+      "example": {
+        "prompt": "Which shortcut applies italic to the selected text?",
+        "steps": [
+          "Three letter-format shortcuts: B (bold), I (italic), U (underline).",
+          "Italic -> Ctrl+I."
+        ],
+        "answer": "Ctrl+I"
+      },
+      "memoryTip": "'B I U' = the three shape-and-line marks on the ribbon. B comes first alphabetically so Ctrl+B = Bold.",
+      "commonMistake": "Confusing Ctrl+C (Copy text) with Ctrl+Shift+C (Copy formatting)."
+    },
+    {
+      "id": "ribbon-tabs",
+      "title": "The 8 Tabs and What Each One Does",
+      "formula": {
+        "latex": "\\text{Home, Insert, Design, Layout, References, Mailings, Review, View}",
+        "text": "Home (everyday) | Insert (objects/headers) | Design (themes) | Layout (page setup) | References (TOC, citations) | Mailings (merge, envelopes) | Review (proof, track) | View (zoom, panes)."
+      },
+      "whenToUse": "Any 'which tab for X command?' MCQ. This is the most-tested category in the MS Office block.",
+      "explanation": [
+        "Home: font, paragraph, styles, clipboard - the everyday tab.",
+        "Insert: page break, table, picture, shape, header, footer, page number, symbol, equation.",
+        "Design: themes, document formatting (was 'Page Layout' in Word 2010+ for theme tools).",
+        "Layout: margins, orientation, size, columns, breaks (was 'Page Layout' in Word 2010+ for page setup).",
+        "References: table of contents, footnotes, endnotes, citations, bibliography, captions, index.",
+        "Mailings: envelopes, labels, mail merge (start mail merge, select recipients, insert merge field, finish).",
+        "Review: spelling (F7), grammar, thesaurus, word count, track changes, comments, compare, combine.",
+        "View: the 5 views, zoom, show/hide, macros, window."
+      ],
+      "example": {
+        "prompt": "Which tab contains the Mail Merge command?",
+        "steps": [
+          "Tab list: Home, Insert, Design, Layout, References, Mailings, Review, View.",
+          "Mail Merge -> Mailings."
+        ],
+        "answer": "Mailings"
+      },
+      "memoryTip": "Read the first letters: H I D L R M R V. 'How I Design Layout References - Mail, Review, View'. The trick: Mailings is the one with M for Mail.",
+      "commonMistake": "Putting Mail Merge under Insert (it's not - Mail Merge is its own tab)."
+    },
+    {
+      "id": "review-shortcuts",
+      "title": "Review and Proofing Shortcuts",
+      "formula": {
+        "latex": "\\text{Spelling}=\\text{F7};\\; \\text{Track Changes}=\\text{Ctrl+Shift+E};\\; \\text{New Comment}=\\text{Alt+Ctrl+M};\\; \\text{Ctrl+F}=\\text{Find};\\; \\text{Ctrl+H}=\\text{Replace};\\; \\text{Ctrl+G}=\\text{Goto Page}",
+        "text": "F7 = spell check. Ctrl+Shift+E = Track Changes on/off. Ctrl+F = Find. Ctrl+H = Replace."
+      },
+      "whenToUse": "Any 'shortcut for X review feature?' MCQ.",
+      "explanation": [
+        "F7 opens the Spelling & Grammar pane. Works anywhere in Word.",
+        "Ctrl+Shift+E toggles Track Changes (also available on the Review tab).",
+        "Alt+Ctrl+M inserts a new comment on the selected text.",
+        "Ctrl+F opens the Find pane (search forward).",
+        "Ctrl+H opens Replace (find + replace).",
+        "Ctrl+G (or Ctrl+Shift+G in some versions) opens 'Go To' - jump to a specific page, section, footnote, etc.",
+        "Ctrl+P = Print. Ctrl+S = Save. Ctrl+N = New document. Ctrl+O = Open. Ctrl+Z = Undo."
+      ],
+      "example": {
+        "prompt": "Which shortcut turns Track Changes on?",
+        "steps": [
+          "Track Changes lives on the Review tab.",
+          "Shortcut: Ctrl+Shift+E."
+        ],
+        "answer": "Ctrl+Shift+E"
+      },
+      "memoryTip": "F7 for 'Find errors' (spelling) - 7 looks like a flag. Ctrl+Shift+E for 'Edit tracking'.",
+      "commonMistake": "Using F7 for Track Changes (F7 is spelling, not tracking). For Track Changes use Ctrl+Shift+E."
+    }
+  ],
+  "practiceProblems": {
+    "default-settings": [
+      {"q": "Default font in MS Word 2007 and later:", "opts": ["Times New Roman 12", "Arial 11", "Calibri 11", "Verdana 10"], "c": 2, "s": ["Since Word 2007, the default is Calibri 11.", "Times New Roman 12 was the pre-2007 default."], "a": "Calibri 11"},
+      {"q": "Default file extension for MS Word 2016+ documents:", "opts": [".doc", ".docx", ".txt", ".pdf"], "c": 1, "s": [".docx since Word 2007.", ".doc is the pre-2007 extension."], "a": ".docx"},
+      {"q": "Default margin in MS Word is:", "opts": ["0.5 inch", "1 inch (2.54 cm)", "1.5 inch", "2 cm"], "c": 1, "s": ["Word's 'Normal' margin preset = 1 inch on all four sides.", "That's 2.54 cm."], "a": "1 inch (2.54 cm)"},
+      {"q": "Default view in MS Word is:", "opts": ["Draft", "Web Layout", "Outline", "Print Layout"], "c": 3, "s": ["Print Layout is the default since Word 2007.", "Draft was called 'Normal' before 2007."], "a": "Print Layout"},
+      {"q": "Default paper size in India:", "opts": ["US Letter", "Legal", "A4", "A3"], "c": 2, "s": ["A4 (210x297 mm) is the international standard used in India.", "US Letter is for the Americas only."], "a": "A4"},
+      {"q": "Word's default Save shortcut is:", "opts": ["Ctrl+S", "Ctrl+Shift+S", "Ctrl+Alt+S", "F12"], "c": 0, "s": ["Ctrl+S is the universal Save shortcut across Windows apps."], "a": "Ctrl+S"},
+      {"q": "Default page orientation in Word:", "opts": ["Landscape", "Portrait", "Square", "User-defined"], "c": 1, "s": ["Portrait (taller than wide) is the default."], "a": "Portrait"},
+      {"q": "Default font colour in Word 2016+ is:", "opts": ["Blue", "Red", "Black", "Auto (theme default)"], "c": 3, "s": ["Body text is theme-default (black/dark grey)."], "a": "Auto (theme default - black)"},
+      {"q": "Word's default line spacing is:", "opts": ["Single", "1.5 lines", "Double", "Multiple (1.08)"], "c": 0, "s": ["Default is Single, 1.08 in newer Word; the legacy default is Single."], "a": "Single"},
+      {"q": "Pre-2007 default font in MS Word was:", "opts": ["Calibri", "Arial", "Times New Roman 12", "Cambria"], "c": 2, "s": ["Pre-2007 default was Times New Roman 12.", "Word 2007 switched to Calibri 11."], "a": "Times New Roman 12"}
+    ],
+    "formatting-shortcuts": [
+      {"q": "Shortcut to apply Bold to selected text:", "opts": ["Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+D"], "c": 0, "s": ["B I U: Ctrl+B = Bold, Ctrl+I = Italic, Ctrl+U = Underline."], "a": "Ctrl+B"},
+      {"q": "Shortcut to apply Italic:", "opts": ["Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+Shift+I"], "c": 1, "s": ["I = Italic."], "a": "Ctrl+I"},
+      {"q": "Shortcut to apply Underline:", "opts": ["Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+Shift+U"], "c": 2, "s": ["U = Underline."], "a": "Ctrl+U"},
+      {"q": "Shortcut to copy formatting (Format Painter):", "opts": ["Ctrl+C", "Ctrl+Shift+C", "Ctrl+Alt+C", "Ctrl+Shift+F"], "c": 1, "s": ["Ctrl+Shift+C copies formatting (Format Painter).", "Ctrl+C copies text."], "a": "Ctrl+Shift+C"},
+      {"q": "Shortcut to paste formatting:", "opts": ["Ctrl+V", "Ctrl+Shift+V", "Ctrl+Alt+V", "Ctrl+P"], "c": 1, "s": ["Ctrl+Shift+V pastes formatting from the Format Painter."], "a": "Ctrl+Shift+V"},
+      {"q": "Shortcut to align selected paragraph to the centre:", "opts": ["Ctrl+L", "Ctrl+E", "Ctrl+R", "Ctrl+J"], "c": 1, "s": ["E = Centre (center)."], "a": "Ctrl+E"},
+      {"q": "Shortcut to justify selected paragraph:", "opts": ["Ctrl+L", "Ctrl+E", "Ctrl+R", "Ctrl+J"], "c": 3, "s": ["J = Justify."], "a": "Ctrl+J"},
+      {"q": "Shortcut to align selected paragraph to the left:", "opts": ["Ctrl+L", "Ctrl+E", "Ctrl+R", "Ctrl+J"], "c": 0, "s": ["L = Left."], "a": "Ctrl+L"},
+      {"q": "Shortcut to align selected paragraph to the right:", "opts": ["Ctrl+L", "Ctrl+E", "Ctrl+R", "Ctrl+J"], "c": 2, "s": ["R = Right."], "a": "Ctrl+R"},
+      {"q": "Shortcut to increase font size:", "opts": ["Ctrl+]", "Ctrl+Shift+>", "Ctrl+Alt+>", "Ctrl++"], "c": 1, "s": ["Ctrl+Shift+> increases font size; Ctrl+Shift+< decreases."], "a": "Ctrl+Shift+>"}
+    ],
+    "ribbon-tabs": [
+      {"q": "Tab for Mail Merge:", "opts": ["Home", "Insert", "Mailings", "Review"], "c": 2, "s": ["Mailings tab owns mail merge, envelopes, labels."], "a": "Mailings"},
+      {"q": "Tab for changing page margins:", "opts": ["Home", "Page Layout", "Layout", "Design"], "c": 2, "s": ["Layout tab (Word 2013+). Pre-2013 it was 'Page Layout'."], "a": "Layout"},
+      {"q": "Tab for inserting a Table of Contents:", "opts": ["Insert", "References", "Layout", "Review"], "c": 1, "s": ["References tab has TOC, citations, footnotes, bibliography."], "a": "References"},
+      {"q": "Tab for changing document theme:", "opts": ["Home", "Insert", "Design", "Layout"], "c": 2, "s": ["Design tab (Word 2013+); was 'Page Layout' in older Word."], "a": "Design"},
+      {"q": "Tab for inserting pictures and shapes:", "opts": ["Home", "Insert", "Design", "Layout"], "c": 1, "s": ["Insert tab has pictures, shapes, tables, headers, footers, page numbers, symbols."], "a": "Insert"},
+      {"q": "Tab for Spelling & Grammar:", "opts": ["Home", "Insert", "Review", "View"], "c": 2, "s": ["Review tab: proofing, track changes, comments, compare."], "a": "Review"},
+      {"q": "Tab for the 5 document views:", "opts": ["Home", "Layout", "Review", "View"], "c": 3, "s": ["View tab: Print Layout, Web Layout, Outline, Draft, Read Mode."], "a": "View"},
+      {"q": "Number of core tabs in the Word ribbon:", "opts": ["5", "6", "8", "10"], "c": 2, "s": ["8 core tabs: Home, Insert, Design, Layout, References, Mailings, Review, View."], "a": "8"},
+      {"q": "The Quick Access Toolbar (QAT) is:", "opts": ["Below the ribbon", "A customisable mini-toolbar above the ribbon", "On the status bar", "Hidden by default"], "c": 1, "s": ["The QAT is a small customisable toolbar above the ribbon with Save/Undo/Redo by default."], "a": "A customisable mini-toolbar above the ribbon"},
+      {"q": "Shortcut to minimise/maximise the ribbon:", "opts": ["Ctrl+F1", "Ctrl+R", "Alt+F4", "F11"], "c": 0, "s": ["Ctrl+F1 toggles the ribbon collapsed state."], "a": "Ctrl+F1"}
+    ],
+    "review-shortcuts": [
+      {"q": "Shortcut to start Spelling & Grammar check:", "opts": ["F1", "F5", "F7", "F12"], "c": 2, "s": ["F7 opens the Spelling & Grammar pane from anywhere."], "a": "F7"},
+      {"q": "Shortcut to turn Track Changes on/off:", "opts": ["Ctrl+Shift+E", "Ctrl+Shift+T", "Ctrl+Alt+T", "F7"], "c": 0, "s": ["Ctrl+Shift+E toggles Track Changes."], "a": "Ctrl+Shift+E"},
+      {"q": "Shortcut to insert a New Comment:", "opts": ["Alt+Ctrl+M", "Ctrl+Alt+N", "Ctrl+M", "F7"], "c": 0, "s": ["Alt+Ctrl+M inserts a new comment on the selected text."], "a": "Alt+Ctrl+M"},
+      {"q": "Shortcut to open the Find pane:", "opts": ["Ctrl+F", "Ctrl+H", "Ctrl+G", "F5"], "c": 0, "s": ["Ctrl+F opens Find."], "a": "Ctrl+F"},
+      {"q": "Shortcut to open Find and Replace:", "opts": ["Ctrl+F", "Ctrl+H", "Ctrl+R", "Ctrl+Shift+F"], "c": 1, "s": ["Ctrl+H opens Replace (Find + Replace)."], "a": "Ctrl+H"},
+      {"q": "Which tab has 'Compare' (compare two versions):", "opts": ["Home", "Insert", "References", "Review"], "c": 3, "s": ["Review > Compare shows differences between two versions."], "a": "Review"},
+      {"q": "Tab for Word Count:", "opts": ["Home", "Insert", "Layout", "Review"], "c": 3, "s": ["Review > Word Count; or check the status bar at the bottom."], "a": "Review"},
+      {"q": "The wavy red underline in Word indicates:", "opts": ["A grammar error", "A spelling error", "A tracked change", "A comment"], "c": 1, "s": ["Red wavy underline = spelling error. Green/blue = grammar."], "a": "A spelling error"},
+      {"q": "AutoCorrect in MS Word is configured in:", "opts": ["Home > AutoCorrect", "File > Options > Proofing", "Review > AutoCorrect", "Insert > Quick Parts"], "c": 1, "s": ["File > Options > Proofing > AutoCorrect Options."], "a": "File > Options > Proofing"},
+      {"q": "The Compare feature on the Review tab is used to:", "opts": ["Combine two documents", "Show differences between two versions of a document", "Translate the document", "Check grammar"], "c": 1, "s": ["Compare shows the differences between two versions as tracked changes."], "a": "Show differences between two versions of a document"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "MS Word is primarily used for:", "opts": ["Spreadsheets", "Word processing / document creation", "Slideshows", "Database queries"], "c": 1, "d": "easy", "t": "Formatting & Fonts", "exp": ["MS Word is a word processor - it makes documents (letters, reports, resumes).", "Spreadsheets -> Excel. Slideshows -> PowerPoint. Databases -> Access."]},
+    {"id": 2, "q": "Default file extension of MS Word 2016+:", "opts": [".doc", ".docx", ".txt", ".pdf"], "c": 1, "d": "easy", "t": "Formatting & Fonts", "exp": [".docx is the default since Word 2007.", ".doc is the pre-2007 extension."]},
+    {"id": 3, "q": "Default font in MS Word 2016+:", "opts": ["Times New Roman", "Arial", "Calibri", "Verdana"], "c": 2, "d": "easy", "t": "Formatting & Fonts", "exp": ["Calibri 11 pt is the default since Word 2007.", "Times New Roman 12 was the pre-2007 default."]},
+    {"id": 4, "q": "Shortcut to apply Bold:", "opts": ["Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+D"], "c": 0, "d": "easy", "t": "Formatting & Fonts", "exp": ["Ctrl+B = Bold, Ctrl+I = Italic, Ctrl+U = Underline."]},
+    {"id": 5, "q": "Shortcut to apply Italic:", "opts": ["Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+Shift+I"], "c": 1, "d": "easy", "t": "Formatting & Fonts", "exp": ["Ctrl+I = Italic."]},
+    {"id": 6, "q": "Format Painter is used to:", "opts": ["Copy text formatting from one place to another", "Insert a picture", "Translate the document", "Check spelling"], "c": 0, "d": "easy", "t": "Formatting & Fonts", "exp": ["Format Painter copies formatting (bold, font, colour) from selected text and pastes it onto other text.", "Shortcut: Ctrl+Shift+C then Ctrl+Shift+V."]},
+    {"id": 7, "q": "Shortcut to copy formatting (Format Painter):", "opts": ["Ctrl+C", "Ctrl+Shift+C", "Ctrl+Alt+C", "Ctrl+Shift+F"], "c": 1, "d": "medium", "t": "Formatting & Fonts", "exp": ["Ctrl+Shift+C copies formatting.", "Ctrl+C copies the text itself."]},
+    {"id": 8, "q": "Default view in MS Word is:", "opts": ["Draft", "Web Layout", "Print Layout", "Outline"], "c": 2, "d": "easy", "t": "Views (Print/Outline/Web)", "exp": ["Print Layout is the default view since Word 2007."]},
+    {"id": 9, "q": "Which view shows the document without page breaks?", "opts": ["Print Layout", "Web Layout", "Outline", "Draft"], "c": 3, "d": "easy", "t": "Views (Print/Outline/Web)", "exp": ["Draft (formerly 'Normal') is one continuous scrollable page without page breaks."]},
+    {"id": 10, "q": "Which view is best for a webpage-style document?", "opts": ["Print Layout", "Web Layout", "Outline", "Draft"], "c": 1, "d": "easy", "t": "Views (Print/Outline/Web)", "exp": ["Web Layout reflows the content to fit the window without margins - like a browser."]},
+    {"id": 11, "q": "Which view lets you collapse and drag headings?", "opts": ["Print Layout", "Web Layout", "Outline", "Draft"], "c": 2, "d": "medium", "t": "Views (Print/Outline/Web)", "exp": ["Outline View shows the document as a collapsible tree of Heading-styled paragraphs."]},
+    {"id": 12, "q": "Read Mode in Word is used for:", "opts": ["Printing", "Full-screen distraction-free reading", "Spell checking", "Mail merge"], "c": 1, "d": "medium", "t": "Views (Print/Outline/Web)", "exp": ["Read Mode (Word 2013+) is a full-screen, ribbon-hidden reading view like a Kindle."]},
+    {"id": 13, "q": "How many core views does MS Word have?", "opts": ["3", "4", "5", "6"], "c": 2, "d": "medium", "t": "Views (Print/Outline/Web)", "exp": ["5 views: Print Layout, Web Layout, Outline, Draft (Normal), Read Mode."]},
+    {"id": 14, "q": "Default page orientation in Word:", "opts": ["Landscape", "Portrait", "Square", "Custom"], "c": 1, "d": "easy", "t": "Page Layout & Margins", "exp": ["Portrait (taller than wide) is the default."]},
+    {"id": 15, "q": "Default margin in MS Word is:", "opts": ["0.5 inch", "1 inch (2.54 cm)", "1.5 inch", "2 cm"], "c": 1, "d": "easy", "t": "Page Layout & Margins", "exp": ["Word's 'Normal' margin preset is 1 inch on all four sides (2.54 cm)."]},
+    {"id": 16, "q": "Default paper size in India:", "opts": ["US Letter", "Legal", "A4", "A3"], "c": 2, "d": "easy", "t": "Page Layout & Margins", "exp": ["A4 (210x297 mm) is the international standard used in India.", "US Letter is for the Americas."]},
+    {"id": 17, "q": "Tab for changing page margins:", "opts": ["Home", "Insert", "Layout", "Design"], "c": 2, "d": "easy", "t": "Page Layout & Margins", "exp": ["Layout tab owns margins, orientation, paper size, columns, breaks."]},
+    {"id": 18, "q": "Tab for Mail Merge:", "opts": ["Home", "Insert", "Mailings", "Review"], "c": 2, "d": "easy", "t": "Tables & Mail Merge", "exp": ["Mailings tab has Mail Merge, Envelopes, Labels, Directory."]},
+    {"id": 19, "q": "Mail Merge is used to:", "opts": ["Merge two documents", "Create personalised letters for multiple recipients", "Combine PDFs", "Merge tables"], "c": 1, "d": "easy", "t": "Tables & Mail Merge", "exp": ["Mail Merge combines a template (your letter) with a data source (your recipient list) to generate personalised copies."]},
+    {"id": 20, "q": "Tab for inserting a Table of Contents:", "opts": ["Insert", "References", "Layout", "Review"], "c": 1, "d": "medium", "t": "Tabs & Ribbon", "exp": ["References tab has TOC, citations, footnotes, bibliography, index."]},
+    {"id": 21, "q": "Tab for changing the document theme:", "opts": ["Home", "Insert", "Design", "Layout"], "c": 2, "d": "medium", "t": "Tabs & Ribbon", "exp": ["Design tab (Word 2013+); was 'Page Layout' theme tools in older Word."]},
+    {"id": 22, "q": "Number of core tabs in the Word ribbon:", "opts": ["5", "6", "8", "10"], "c": 2, "d": "medium", "t": "Tabs & Ribbon", "exp": ["8 core tabs: Home, Insert, Design, Layout, References, Mailings, Review, View."]},
+    {"id": 23, "q": "The Quick Access Toolbar (QAT) is located:", "opts": ["Below the ribbon", "Above the ribbon, top-left", "On the status bar", "In the File menu"], "c": 1, "d": "medium", "t": "Tabs & Ribbon", "exp": ["The QAT is the small customisable strip above the ribbon with Save / Undo / Redo by default."]},
+    {"id": 24, "q": "Shortcut to minimise / maximise the ribbon:", "opts": ["Ctrl+F1", "Ctrl+R", "Alt+F4", "F11"], "c": 0, "d": "medium", "t": "Tabs & Ribbon", "exp": ["Ctrl+F1 toggles the ribbon collapsed state."]},
+    {"id": 25, "q": "Shortcut to start Spelling & Grammar check:", "opts": ["F1", "F5", "F7", "F12"], "c": 2, "d": "easy", "t": "Proofing & Review", "exp": ["F7 opens the Spelling & Grammar pane from anywhere in Word."]},
+    {"id": 26, "q": "Shortcut to turn Track Changes on/off:", "opts": ["Ctrl+Shift+E", "Ctrl+Shift+T", "Ctrl+Alt+T", "F7"], "c": 0, "d": "medium", "t": "Proofing & Review", "exp": ["Ctrl+Shift+E toggles Track Changes.", "F7 is spelling."]},
+    {"id": 27, "q": "Tab for Spelling, Grammar, Track Changes, and Comments:", "opts": ["Home", "Insert", "Review", "View"], "c": 2, "d": "easy", "t": "Proofing & Review", "exp": ["Review tab: Spelling, Grammar, Thesaurus, Word Count, Track Changes, Comments, Compare, Combine."]},
+    {"id": 28, "q": "Tab for Compare and Combine:", "opts": ["Home", "Insert", "Layout", "Review"], "c": 3, "d": "medium", "t": "Proofing & Review", "exp": ["Review > Compare shows differences between two versions.", "Review > Combine merges two versions."]},
+    {"id": 29, "q": "Wavy red underline in Word indicates:", "opts": ["A grammar error", "A spelling error", "A tracked change", "A comment"], "c": 1, "d": "medium", "t": "Proofing & Review", "exp": ["Red wavy = spelling. Green or blue wavy = grammar."]},
+    {"id": 30, "q": "Wavy green or blue underline in Word indicates:", "opts": ["A spelling error", "A grammar error", "A formatting error", "A comment"], "c": 1, "d": "medium", "t": "Proofing & Review", "exp": ["Red = spelling. Green/blue = grammar."]},
+    {"id": 31, "q": "Shortcut to open Find:", "opts": ["Ctrl+F", "Ctrl+H", "Ctrl+G", "F5"], "c": 0, "d": "easy", "t": "Proofing & Review", "exp": ["Ctrl+F = Find. Ctrl+H = Replace. Ctrl+G = Go To."]},
+    {"id": 32, "q": "Shortcut to open Find and Replace:", "opts": ["Ctrl+F", "Ctrl+H", "Ctrl+R", "F5"], "c": 1, "d": "easy", "t": "Proofing & Review", "exp": ["Ctrl+H opens the Replace dialog."]},
+    {"id": 33, "q": "Where do you insert a header or footer in a document?", "opts": ["Home tab", "Insert tab", "Layout tab", "View tab"], "c": 1, "d": "medium", "t": "Page Layout & Margins", "exp": ["Insert > Header (or Footer) > Blank three-column header/footer."]},
+    {"id": 34, "q": "By default, a header/footer appears on:", "opts": ["The first page only", "The last page only", "Every page of the section", "Only when printed"], "c": 2, "d": "medium", "t": "Page Layout & Margins", "exp": ["Headers/footers appear on every page of the section by default.", "Different First Page can hide it on page 1."]},
+    {"id": 35, "q": "Where is the Page Number command?", "opts": ["Home tab", "Insert tab", "Layout tab", "View tab"], "c": 1, "d": "medium", "t": "Page Layout & Margins", "exp": ["Insert > Page Number > choose position (top/bottom) and style."]},
+    {"id": 36, "q": "How do you start a new page within a document?", "opts": ["Enter key", "Insert > Page Break (or Ctrl+Enter)", "Tab key", "Layout > Breaks > Section"], "c": 1, "d": "medium", "t": "Page Layout & Margins", "exp": ["Insert > Page Break, or Ctrl+Enter, inserts a hard page break."]},
+    {"id": 37, "q": "In a Word table, pressing Tab in the last cell:", "opts": ["Adds a new column", "Adds a new row", "Merges the cell", "Selects the next cell only"], "c": 1, "d": "medium", "t": "Tables & Mail Merge", "exp": ["Pressing Tab in the last cell of a table adds a new row.", "Special case: a single-cell last cell adds a column, not a row."]},
+    {"id": 38, "q": "The Envelopes command lives on which tab?", "opts": ["Home", "Insert", "Mailings", "Layout"], "c": 2, "d": "medium", "t": "Tables & Mail Merge", "exp": ["Mailings > Envelopes."]},
+    {"id": 39, "q": "A Word table cell can contain:", "opts": ["Text only", "Numbers only", "Text, numbers, or images", "Only headers"], "c": 2, "d": "medium", "t": "Tables & Mail Merge", "exp": ["A table cell can hold text, numbers, images, even another nested table."]},
+    {"id": 40, "q": "Default font size in MS Word 2016+:", "opts": ["10 pt", "11 pt", "12 pt", "14 pt"], "c": 1, "d": "medium", "t": "Formatting & Fonts", "exp": ["Default is Calibri 11 pt."]},
+    {"id": 41, "q": "A point in typography equals:", "opts": ["1/12 inch", "1/72 inch", "1/144 inch", "1 cm"], "c": 1, "d": "hard", "t": "Formatting & Fonts", "exp": ["1 point = 1/72 inch. 72 pt = 1 inch."]},
+    {"id": 42, "q": "Where do you set a custom page size in Word?", "opts": ["Home > Size", "Insert > Size", "Layout > Size", "View > Size"], "c": 2, "d": "medium", "t": "Page Layout & Margins", "exp": ["Layout > Size > More Paper Sizes opens a custom-size dialog."]},
+    {"id": 43, "q": "Section breaks in Word are used to:", "opts": ["Start a new line", "Split the document into sections with independent page setup", "Insert a hyperlink", "Create a table"], "c": 1, "d": "hard", "t": "Page Layout & Margins", "exp": ["Section breaks (Layout > Breaks) let you have different margins, orientation, headers per section."]},
+    {"id": 44, "q": "Which type of section break starts the new section on a new page?", "opts": ["Continuous", "Next Page", "Even Page", "Column"], "c": 1, "d": "hard", "t": "Page Layout & Margins", "exp": ["Next Page = new section starts on a fresh page. Continuous = same page."]},
+    {"id": 45, "q": "The shortcut to insert a hard page break in Word is:", "opts": ["Ctrl+Enter", "Ctrl+Shift+P", "Ctrl+Break", "Alt+Enter"], "c": 0, "d": "medium", "t": "Page Layout & Margins", "exp": ["Ctrl+Enter inserts a page break."]},
+    {"id": 46, "q": "Pre-2007 MS Word used which file extension by default?", "opts": [".docx", ".doc", ".txt", ".dot"], "c": 1, "d": "hard", "t": "Formatting & Fonts", "exp": [".doc was the pre-2007 default. Word 2007 introduced .docx.", ".dot is the template extension."]},
+    {"id": 47, "q": "Pre-2007 MS Word used which default font?", "opts": ["Calibri", "Arial", "Times New Roman 12", "Cambria"], "c": 2, "d": "medium", "t": "Formatting & Fonts", "exp": ["Pre-2007 default: Times New Roman 12.", "Word 2007 switched to Calibri 11."]},
+    {"id": 48, "q": "In Word, the 'Tell me what you want to do' box is used to:", "opts": ["Send a message", "Search for any command by name", "Translate the document", "Check spelling"], "c": 1, "d": "medium", "t": "Tabs & Ribbon", "exp": ["The 'Tell me' search box at the top finds any Word command by name."]},
+    {"id": 49, "q": "What does the F7 shortcut do in MS Word?", "opts": ["Open Help", "Start Spelling & Grammar", "Open New Document", "Print"], "c": 1, "d": "easy", "t": "Proofing & Review", "exp": ["F7 opens the Spelling & Grammar pane from anywhere."]},
+    {"id": 50, "q": "Word's Track Changes feature is used for:", "opts": ["Speeding up the document", "Recording every edit so a reviewer can accept/reject", "Changing the font automatically", "Translating the document"], "c": 1, "d": "medium", "t": "Proofing & Review", "exp": ["Track Changes marks every insertion/deletion/format change for later review."]},
+    {"id": 51, "q": "A comment in Word:", "opts": ["Changes the document text", "Is a non-printing note attached to text", "Is a tracked change", "Is a spell-check suggestion"], "c": 1, "d": "medium", "t": "Proofing & Review", "exp": ["Comments are margin notes that do not change the document text."]},
+    {"id": 52, "q": "Shortcut to insert a New Comment in Word:", "opts": ["Alt+Ctrl+M", "Ctrl+Alt+N", "Ctrl+M", "F7"], "c": 0, "d": "medium", "t": "Proofing & Review", "exp": ["Alt+Ctrl+M inserts a new comment on the selected text."]},
+    {"id": 53, "q": "To compare two versions of a document and highlight the differences, use:", "opts": ["Insert > Compare", "Review > Compare", "View > Compare", "Home > Compare"], "c": 1, "d": "medium", "t": "Proofing & Review", "exp": ["Review > Compare opens the Compare Documents dialog."]},
+    {"id": 54, "q": "Word Count is found on which tab?", "opts": ["Home", "Insert", "Layout", "Review"], "c": 3, "d": "easy", "t": "Proofing & Review", "exp": ["Review > Word Count shows pages, words, characters, lines, paragraphs."]},
+    {"id": 55, "q": "In a Word table, the formula =SUM(ABOVE):", "opts": ["Sums all cells in the column above the current cell", "Sums all cells in the row left of the current cell", "Sums the entire table", "Is not a real Word formula"], "c": 0, "d": "hard", "t": "Tables & Mail Merge", "exp": ["=SUM(ABOVE) sums all numeric cells in the column above the current cell (until a non-numeric cell)."]},
+    {"id": 56, "q": "Which feature lets you create personalised letters for many recipients from one template?", "opts": ["Templates", "Mail Merge", "Macros", "References"], "c": 1, "d": "easy", "t": "Tables & Mail Merge", "exp": ["Mail Merge on the Mailings tab."]},
+    {"id": 57, "q": "In Mail Merge, the two key components are:", "opts": ["Template and macros", "Main document and data source", "Header and footer", "Style and theme"], "c": 1, "d": "medium", "t": "Tables & Mail Merge", "exp": ["Main document = your letter template; data source = your recipient list (Excel/CSV/Contacts)."]},
+    {"id": 58, "q": "To cycle through Mail Merge recipients and preview, use:", "opts": ["Review > Preview", "Mailings > Preview Results", "View > Preview", "Insert > Preview"], "c": 1, "d": "medium", "t": "Tables & Mail Merge", "exp": ["Mailings > Preview Results - use the arrow buttons to cycle through recipients."]},
+    {"id": 59, "q": "MS Word's status bar at the bottom of the window shows (among other things):", "opts": ["Font name", "Page number and word count", "Document title", "Today's date"], "c": 1, "d": "medium", "t": "Tabs & Ribbon", "exp": ["The status bar shows page number, word count, view icons, and zoom slider at the bottom."]},
+    {"id": 60, "q": "The 'Repeat Header Rows' option in a Word table is useful when:", "opts": ["The table spans multiple pages and you want the header on each page", "The table has only one row", "The document is a single page", "The table contains images"], "c": 0, "d": "medium", "t": "Tables & Mail Merge", "exp": ["Table Design > Repeat Header Rows keeps the first row's labels visible on each new page where the table continues."]}
+  ]
+}

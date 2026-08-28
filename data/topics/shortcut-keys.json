@@ -1,0 +1,514 @@
+{
+  "id": "shortcut-keys",
+  "title": "Shortcut Keys (Windows & Office)",
+  "icon": "Ctrl",
+  "category": "ms-office",
+  "subtitle": "Universal Ctrl shortcuts, Word/Excel/PowerPoint/Outlook, Windows-key combos - the time-saver across every Office task",
+  "days": "2",
+  "color": "#0D9488",
+  "subtopics": [
+    "Universal Shortcuts (Ctrl+C/V/X/Z)",
+    "Word Shortcuts",
+    "Excel Shortcuts",
+    "PowerPoint & Outlook Shortcuts",
+    "Windows Key Combos"
+  ],
+  "estimatedHours": 5,
+  "readingSections": [
+    {
+      "id": "universal",
+      "title": "Universal Shortcuts: Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+Z",
+      "type": "concept",
+      "quickSummary": "The 7-10 universal shortcuts that work in EVERY Windows app: Ctrl+C copy, Ctrl+V paste, Ctrl+X cut, Ctrl+Z undo, Ctrl+Y redo, Ctrl+A select all, Ctrl+S save, Ctrl+P print, Ctrl+F find.",
+      "content": [
+        "The 'universal' keyboard shortcuts are the ones that work in (almost) every Windows application - browsers, MS Office, Notepad, File Explorer, even most third-party tools. Memorise these first because they save the most time.",
+        "Ctrl+C = COPY the selected text or object to the clipboard. Ctrl+X = CUT (copy + remove). Ctrl+V = PASTE from the clipboard. The clipboard is a temporary storage area in Windows; only one item is stored at a time (unless you use Win+V in Windows 10/11 to open clipboard history).",
+        "Ctrl+Z = UNDO the last action. Most apps support multiple undos (Ctrl+Z, Ctrl+Z, Ctrl+Z...) to walk back through history. Ctrl+Y = REDO - undo the undo. In MS Word, the undo list is famously long (hundreds of actions).",
+        "Ctrl+A = SELECT ALL in the current document / window. Ctrl+S = SAVE. Ctrl+P = PRINT (or open the print dialog). Ctrl+F = FIND (open the find/search bar). These four round out the core 8-10 universal shortcuts you should know cold.",
+        "Ctrl+N = NEW (new file in Office; new window in browsers; new email in Outlook; new appointment in Calendar - view-dependent). Ctrl+O = OPEN. Ctrl+W = CLOSE (current tab, document, or window). Ctrl+Esc / Win = open the Start menu."
+      ],
+      "subsections": [
+        {
+          "title": "Clipboard history (Windows 10/11)",
+          "content": "Win+V opens the Clipboard history panel - shows the last 25 items you've copied. Click any to paste. Pin items to keep them. Without this, copying one item overwrites the previous. Classic workflow: 'Damn, I needed what I copied 5 minutes ago.' Win+V solves it."
+        },
+        {
+          "title": "Format Painter (Ctrl+Shift+C / Ctrl+Shift+V)",
+          "content": "Ctrl+Shift+C copies FORMATTING (not text) from the selected area. Ctrl+Shift+V pastes that formatting to a new selection. Used to quickly apply the same look to multiple places. Double-click Format Painter to apply to multiple areas. Works in Word, Excel, PowerPoint."
+        }
+      ],
+      "quickRevision": [
+        "Ctrl+C copy, Ctrl+X cut, Ctrl+V paste. Clipboard = temporary storage.",
+        "Ctrl+Z undo, Ctrl+Y redo. Most apps support multiple undos.",
+        "Ctrl+A select all, Ctrl+S save, Ctrl+P print, Ctrl+F find.",
+        "Ctrl+N new (view-dependent), Ctrl+O open, Ctrl+W close, Ctrl+Esc / Win Start menu.",
+        "Win+V = clipboard history. Ctrl+Shift+C / Ctrl+Shift+V = format painter."
+      ],
+      "tricks": [
+        "Ctrl+Y in some apps = Redo, in others (MS Word) = Repeat (a different concept). PowerPoint uses Ctrl+Y for Redo; Word uses Ctrl+Y for Repeat - both are valid, the exam accepts either.",
+        "Ctrl+Shift+V pastes WITHOUT formatting in some apps (plain-text paste). Test before assuming."
+      ],
+      "patterns": [
+        "'Shortcut to copy?' -> Ctrl+C.",
+        "'Shortcut to paste?' -> Ctrl+V.",
+        "'Shortcut to undo?' -> Ctrl+Z.",
+        "'Shortcut to select all?' -> Ctrl+A.",
+        "'Shortcut to open clipboard history?' -> Win+V."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in every MS Office MCQ bank",
+          "question": "Shortcut to COPY selected text:",
+          "approach": "Ctrl+C."
+        },
+        {
+          "source": "Asked in MS Office sets",
+          "question": "Shortcut to UNDO last action:",
+          "approach": "Ctrl+Z. Ctrl+Y = Redo (in most apps)."
+        }
+      ],
+      "companyNote": "The 8 universal shortcuts (C/V/X/Z/A/S/P/F) are the foundation of every other topic. Free marks."
+    },
+    {
+      "id": "word",
+      "title": "MS Word Shortcuts: Formatting, Navigation, Editing",
+      "type": "concept",
+      "quickSummary": "Ctrl+B/I/U for Bold/Italic/Underline. Ctrl+L/E/R/J for alignment. Ctrl+Enter for page break. F7 for spell check. Ctrl+Shift+E for Track Changes. Ctrl+F for Find. Ctrl+H for Replace.",
+      "content": [
+        "Character formatting: Ctrl+B = Bold. Ctrl+I = Italic. Ctrl+U = Underline. Ctrl+Shift+D = double underline (Word). Ctrl+Shift+W = underline only the words (skip spaces - useful for legal documents). Ctrl+Shift+A = ALL CAPS (toggles between case styles).",
+        "Paragraph formatting: Ctrl+L = align Left. Ctrl+E = align cEnter. Ctrl+R = align Right. Ctrl+J = Justify. Ctrl+1 / Ctrl+2 / Ctrl+5 = single / double / 1.5 line spacing. Ctrl+M / Ctrl+Shift+M = increase / decrease paragraph indent.",
+        "Navigation: Ctrl+Home = top of document. Ctrl+End = bottom. Ctrl+G = Go to page. Ctrl+F = Find. Ctrl+H = Find and Replace. F5 = Go to (page, section, bookmark, comment).",
+        "Editing / structure: Ctrl+Enter = page break. Ctrl+Shift+Enter = column break. Ctrl+Backspace = delete previous word. Ctrl+Delete = delete next word. Shift+End = select to end of line. Shift+Home = select to start. Ctrl+Shift+End = select to end of document.",
+        "Document management: Ctrl+N = new document. Ctrl+O = open. Ctrl+S = save. Ctrl+P = print. Ctrl+W = close current document. F7 = spell & grammar check. Ctrl+Shift+E = Track Changes on/off. F1 = Word Help."
+      ],
+      "subsections": [
+        {
+          "title": "Text size shortcuts",
+          "content": "Ctrl+Shift+> = increase font size. Ctrl+Shift+< = decrease font size. Ctrl+] = grow by 1 point. Ctrl+[ = shrink by 1 point. Ctrl+0 (zero) = reset to 12pt. Ctrl+Shift+C / Ctrl+Shift+V = Format Painter (copy / paste formatting)."
+        },
+        {
+          "title": "Headings, lists, comments",
+          "content": "Ctrl+Alt+1 to Ctrl+Alt+6 = apply Heading 1-6 styles (Word). Ctrl+Alt+0 = Normal style. Ctrl+Shift+L = bullet list. Ctrl+Shift+N = numbered list. Alt+Ctrl+M = new comment. Ctrl+Shift+E = Track Changes on/off."
+        }
+      ],
+      "quickRevision": [
+        "Bold Ctrl+B, Italic Ctrl+I, Underline Ctrl+U.",
+        "Alignment: Ctrl+L Left, Ctrl+E Centre, Ctrl+R Right, Ctrl+J Justify.",
+        "Line spacing: Ctrl+1 single, Ctrl+2 double, Ctrl+5 1.5.",
+        "Navigation: Ctrl+Home top, Ctrl+End bottom, Ctrl+G go-to page.",
+        "Page break Ctrl+Enter, column break Ctrl+Shift+Enter.",
+        "Track Changes Ctrl+Shift+E, Spelling F7, Help F1."
+      ],
+      "tricks": [
+        "Ctrl+0 (zero, not the letter O) resets font size to 12pt. Easy to mix up.",
+        "Ctrl+Shift+> grows font by one PRESET step (12 → 14 → 18 ...). Ctrl+] grows by exactly 1 point each press.",
+        "If a question lists 'Ctrl+Shift+B' as Bold -> wrong. Ctrl+Shift+B is something else (in some apps, paste as plain text). Ctrl+B alone is Bold."
+      ],
+      "patterns": [
+        "'Shortcut to bold?' -> Ctrl+B.",
+        "'Shortcut to italic?' -> Ctrl+I.",
+        "'Shortcut to underline?' -> Ctrl+U.",
+        "'Shortcut to insert a page break?' -> Ctrl+Enter.",
+        "'Shortcut to turn Track Changes on?' -> Ctrl+Shift+E."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in MS Word MCQ banks",
+          "question": "Shortcut to underline text:",
+          "approach": "Ctrl+U."
+        },
+        {
+          "source": "Asked across Word sets",
+          "question": "Shortcut to insert a manual page break:",
+          "approach": "Ctrl+Enter."
+        }
+      ],
+      "companyNote": "Ctrl+B/I/U, Ctrl+L/E/R/J, Ctrl+Enter, F7, Ctrl+Shift+E - 3-5 questions per paper."
+    },
+    {
+      "id": "excel",
+      "title": "MS Excel Shortcuts: Cell, Selection, Editing, Formulas",
+      "type": "concept",
+      "quickSummary": "Ctrl+Arrow navigates to the edge of data. Ctrl+Space / Shift+Space selects column/row. F2 edits the active cell. Ctrl+; today's date. Ctrl+Shift+L toggles filters. Alt+= auto-SUM. F4 cycles absolute/relative reference.",
+      "content": [
+        "Cell navigation: Ctrl+Arrow key (Up/Down/Left/Right) jumps to the edge of the current data region (e.g. from a cell with data, Ctrl+Down jumps to the last cell with data before an empty row). Ctrl+Home = A1. Ctrl+End = last used cell. Page Up / Page Down = scroll one screen.",
+        "Selection: Ctrl+Space = select ENTIRE column. Shift+Space = select ENTIRE row. Shift+Arrow = extend selection by one cell. Ctrl+Shift+Arrow = extend to edge of data. Ctrl+A = select entire data region. Ctrl+Shift+End = select from active cell to last used cell.",
+        "Editing: F2 = edit the active cell (move cursor inside). Escape = cancel edit. Enter = confirm and move down. Tab = confirm and move right. Shift+Enter = confirm and move up. Ctrl+Z = undo. Ctrl+Y = redo. Ctrl+D = Fill Down (copies top cell to selected range). Ctrl+R = Fill Right.",
+        "Formulas: Alt+= = AutoSUM (sums the column above / row to the left). F4 = cycle cell reference (A1 -> $A$1 -> A$1 -> $A1). Ctrl+; = today's date in the active cell. Ctrl+Shift+; = current time. Ctrl+` = toggle display of formulas / results.",
+        "Workbook navigation: Ctrl+Page Down = next sheet. Ctrl+Page Up = previous sheet. Ctrl+G = Go To (cell, named range, comment). Ctrl+F = Find. Ctrl+H = Replace. Ctrl+Shift+L = toggle AutoFilter. F11 = instant chart on a new sheet. Alt+F1 = chart on the current sheet. F2 = rename the current sheet."
+      ],
+      "subsections": [
+        {
+          "title": "Fill series",
+          "content": "Type 1, 2 in two cells. Select both. Drag the fill handle (small square at the bottom-right of the selection) and Excel auto-fills the series 3, 4, 5... (or Mon, Tue, Wed... or Jan, Feb...). Or use Home > Fill > Series to control the step."
+        },
+        {
+          "title": "Cell formatting shortcuts",
+          "content": "Ctrl+1 = Format Cells dialog. Ctrl+B/I/U = bold / italic / underline. Ctrl+Shift+$ = Currency format. Ctrl+Shift+% = Percentage format. Ctrl+Shift+! = Number format with comma separator. Ctrl+Shift+# = Date format. Ctrl+Shift+@ = Text format."
+        }
+      ],
+      "quickRevision": [
+        "Ctrl+Arrow = jump to edge of data region.",
+        "Ctrl+Space = column; Shift+Space = row.",
+        "F2 = edit cell. Enter confirm + down. Tab confirm + right.",
+        "Alt+= = AutoSUM. F4 = cycle A1/$A$1/A$1/$A1.",
+        "Ctrl+; = today. Ctrl+Shift+; = time. Ctrl+` = show formulas.",
+        "Ctrl+Page Up/Down = next/previous sheet. Ctrl+Shift+L = AutoFilter."
+      ],
+      "tricks": [
+        "Ctrl+D copies the top cell of a selection down. Ctrl+R copies leftmost cell right. These are the Fill shortcuts.",
+        "F4 cycles reference types in formula edit mode. Without selecting a reference, F4 does nothing useful.",
+        "Ctrl+Shift+L toggles AutoFilter on the current data set. Most-asked Excel filter shortcut."
+      ],
+      "patterns": [
+        "'Shortcut to insert today's date in a cell?' -> Ctrl+;.",
+        "'Shortcut to toggle AutoFilter?' -> Ctrl+Shift+L.",
+        "'Shortcut to sum a column?' -> Alt+=.",
+        "'Shortcut to select entire column?' -> Ctrl+Space.",
+        "'Shortcut to go to the last used cell?' -> Ctrl+End."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in every Excel MCQ set",
+          "question": "Shortcut to enter today's date in a cell:",
+          "approach": "Ctrl+; (semicolon)."
+        },
+        {
+          "source": "Asked in Sanfoundry / Testbook Excel MCQs",
+          "question": "Shortcut to apply AutoFilter:",
+          "approach": "Ctrl+Shift+L."
+        }
+      ],
+      "companyNote": "Alt+=, F4 reference cycle, Ctrl+; date, Ctrl+Shift+L filter are the four most-tested Excel shortcuts."
+    },
+    {
+      "id": "powerpoint-outlook",
+      "title": "PowerPoint & Outlook Shortcuts",
+      "type": "concept",
+      "quickSummary": "PowerPoint: Ctrl+M new slide, Ctrl+D duplicate, F5 show. Outlook: Ctrl+Shift+M new email, Ctrl+R reply, Ctrl+F forward, F9 send/receive, Ctrl+Shift+K new task.",
+      "content": [
+        "PowerPoint: Ctrl+M = new slide. Ctrl+D = duplicate selected slide. Ctrl+Shift+C / Ctrl+Shift+V = copy / paste formatting. F5 = start slide show from beginning. Shift+F5 = from current slide. Esc = end show. B = black screen. W = white screen. Alt+F5 = Presenter View. Ctrl+G = group objects. Ctrl+Shift+G = ungroup.",
+        "Outlook: Ctrl+Shift+M = new email from anywhere. Ctrl+R = Reply. Ctrl+F = Forward. Ctrl+Shift+R = Reply All. F9 = Send/Receive (force send / fetch). Ctrl+1 = switch to Mail view. Ctrl+2 = Calendar. Ctrl+3 = Contacts. Ctrl+K = check names in address book.",
+        "Outlook calendar: Ctrl+Shift+A = new appointment from anywhere. Ctrl+Shift+Q = new meeting request. Ctrl+Shift+K = new task. Ctrl+G = go to date. Ctrl+1/2/3/4 = day/work week/week/month view.",
+        "Universal: Ctrl+Shift+P (insert picture from file) and Ctrl+Shift+V (paste) are useful in every Office app. Ctrl+1 opens Format Cells (Excel) or Format Picture / Format Object (PowerPoint) or Format Text Effects (Word). The Ctrl+1 shortcut is one of the most useful 'tool the exam forgets to ask' shortcuts."
+      ],
+      "subsections": [
+        {
+          "title": "Outlook reading / marking",
+          "content": "Ctrl+U = mark the selected message as read (or unread, depending on context). Ctrl+Q = mark as read and move to the next. Ctrl+Shift+A = mark all messages in the current folder as read. F4 = Reply (in older Outlook)."
+        },
+        {
+          "title": "PowerPoint presentation navigation",
+          "content": "N or Right arrow / Space / Page Down = next slide. P or Left arrow / Page Up = previous. Number + Enter = jump to slide N (e.g. 5 then Enter). B = black. W = white. . = black (alternate). , = white. F1 = keyboard shortcut overlay."
+        }
+      ],
+      "quickRevision": [
+        "PowerPoint: Ctrl+M new slide, Ctrl+D duplicate, F5 show, B/W blank screen, Ctrl+G group.",
+        "Outlook: Ctrl+Shift+M new email, Ctrl+R reply, Ctrl+F forward, Ctrl+Shift+R reply all, F9 send/receive.",
+        "Outlook calendar: Ctrl+Shift+A appointment, Ctrl+Shift+Q meeting, Ctrl+Shift+K task.",
+        "Outlook views: Ctrl+1 Mail, Ctrl+2 Calendar, Ctrl+3 Contacts, Ctrl+4 Tasks.",
+        "Ctrl+1 = Format dialog (Cells / Picture / Object) in every Office app."
+      ],
+      "tricks": [
+        "Ctrl+M in PowerPoint = new slide. Ctrl+M in Mail view in Outlook = new email. Same shortcut, different app.",
+        "F5 in PowerPoint = start slideshow. F5 in Excel = Go To (navigate to a named range or cell). Same shortcut, different app.",
+        "Ctrl+1 opens Format dialog in EVERY Office app but the contents differ (Cells, Picture, Object, Font, etc.)."
+      ],
+      "patterns": [
+        "'PowerPoint: shortcut to add a new slide?' -> Ctrl+M.",
+        "'PowerPoint: shortcut to start the slide show from the beginning?' -> F5.",
+        "'Outlook: shortcut for new email from anywhere?' -> Ctrl+Shift+M.",
+        "'Outlook: shortcut to force send/receive?' -> F9."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in PowerPoint MCQ sets",
+          "question": "Shortcut to add a new slide in PowerPoint:",
+          "approach": "Ctrl+M."
+        },
+        {
+          "source": "Asked in Outlook MCQ sets",
+          "question": "Shortcut to create a new email from anywhere in Outlook:",
+          "approach": "Ctrl+Shift+M."
+        }
+      ],
+      "companyNote": "1-2 questions per paper: Ctrl+M in PowerPoint, F5 in PowerPoint, Ctrl+Shift+M in Outlook, F9 in Outlook."
+    },
+    {
+      "id": "windows",
+      "title": "Windows Key Combos (Win+X, Win+L, Win+D, Win+E)",
+      "type": "concept",
+      "quickSummary": "Win key combinations for system-level control: Win+E File Explorer, Win+L lock, Win+D show desktop, Win+X power menu, Win+V clipboard, Win+Arrow snap, Win+Shift+S screenshot.",
+      "content": [
+        "The Windows key (Win) is the key with the Microsoft / Windows logo, usually between Ctrl and Alt. Win+X combinations open system features and Windows tools.",
+        "Navigation: Win+E = open File Explorer (the file manager). Win+D = Show Desktop (minimise / restore all windows). Win+L = Lock the screen (sign-in screen). Win+M = minimise all windows. Win+Shift+M = restore minimised windows. Win+Tab = open Task View (timeline / virtual desktops).",
+        "Snapping and resize: Win+Left / Win+Right = snap the current window to the left or right half of the screen. Win+Up = maximise. Win+Down = minimise / restore. Useful for working with two apps side by side. Win+Home = minimise all windows except the active one (the 'shake to minimise' feature).",
+        "Power user: Win+I = Settings app. Win+X = Power user menu (quick access to Device Manager, Disk Management, Task Manager, etc.). Win+L = lock. Win+R = Run dialog (type 'cmd', 'msconfig', 'regedit' for advanced tools). Win+Shift+S = screenshot a region (Windows 10/11 Snip & Sketch).",
+        "Virtual desktops (Win+Ctrl+D / Win+Ctrl+Left/Right): create a new virtual desktop, switch between them. Useful for separating 'work' and 'personal' on one machine. Win+V = clipboard history (Windows 10/11)."
+      ],
+      "subsections": [
+        {
+          "title": "Screenshot shortcuts (Windows 10/11)",
+          "content": "PrtScn (Print Screen) = full screenshot to clipboard. Win+PrtScn = full screenshot saved to Pictures\\Screenshots. Alt+PrtScn = screenshot of the ACTIVE window only. Win+Shift+S = region select (Snip & Sketch - rectangle, freeform, window, full screen)."
+        },
+        {
+          "title": "Task Manager",
+          "content": "Ctrl+Shift+Esc opens Task Manager directly (skip Ctrl+Alt+Del). Task Manager shows running processes, CPU / memory / disk / network usage, startup programs (Task Manager > Startup tab to disable startup items). The most powerful 'is something slow?' diagnostic tool in Windows."
+        }
+      ],
+      "quickRevision": [
+        "Win+E = File Explorer. Win+L = Lock. Win+D = Show Desktop.",
+        "Win+I = Settings. Win+X = Power user menu.",
+        "Win+Left/Right = snap. Win+Up = maximise. Win+Down = minimise/restore.",
+        "Win+Shift+S = region screenshot.",
+        "Win+V = clipboard history. Win+Ctrl+D = new virtual desktop.",
+        "Ctrl+Shift+Esc = Task Manager directly."
+      ],
+      "tricks": [
+        "Win+L is the keyboard shortcut you should press EVERY time you walk away from your desk - it locks the screen and protects the laptop.",
+        "Win+PrtScn saves the screenshot as a file in Pictures\\Screenshots. PrtScn alone puts it on the clipboard (you have to paste it somewhere).",
+        "Win+Shift+S is the modern way to take a region screenshot in Windows 10/11 - no need for the old Snipping Tool."
+      ],
+      "patterns": [
+        "'Shortcut to lock the screen?' -> Win+L.",
+        "'Shortcut to open File Explorer?' -> Win+E.",
+        "'Shortcut to open Task Manager directly?' -> Ctrl+Shift+Esc.",
+        "'Shortcut to take a region screenshot?' -> Win+Shift+S.",
+        "'Shortcut to snap a window to the left half of the screen?' -> Win+Left."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in basic computer MCQ sets",
+          "question": "Shortcut to lock the Windows screen:",
+          "approach": "Win+L."
+        },
+        {
+          "source": "Asked in basic computer MCQ sets",
+          "question": "Shortcut to open File Explorer:",
+          "approach": "Win+E."
+        }
+      ],
+      "companyNote": "Win+L (lock) and Win+E (File Explorer) are the most-tested Windows-key shortcuts."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "universal-eight",
+      "title": "The 8 Universal Shortcuts (must memorise)",
+      "formula": {
+        "latex": "\\text{C/V/X/Z}=\\text{edit};\\; \\text{A/S/P/F}=\\text{navigate}",
+        "text": "C copy, V paste, X cut, Z undo. A select all, S save, P print, F find."
+      },
+      "whenToUse": "Any 'which shortcut does X?' MCQ in any app. Universal = works in (almost) every Windows application.",
+      "explanation": [
+        "EDIT: Ctrl+C copy, Ctrl+X cut, Ctrl+V paste, Ctrl+Z undo, Ctrl+Y redo.",
+        "NAVIGATE / MANAGE: Ctrl+A select all, Ctrl+S save, Ctrl+P print, Ctrl+F find, Ctrl+H replace (Office apps).",
+        "FILE: Ctrl+N new (view-dependent), Ctrl+O open, Ctrl+W close.",
+        "RECOVERY: Ctrl+Z undo (most apps support multiple undos - up to 100 in Office), Ctrl+Y redo.",
+        "FORMATTING: Ctrl+B/I/U for Bold/Italic/Underline; Ctrl+L/E/R/J for align Left/Centre/Right/Justify."
+      ],
+      "example": {
+        "prompt": "Shortcut to copy selected text to the clipboard?",
+        "steps": [
+          "Ctrl+C = copy. Ctrl+X = cut. Ctrl+V = paste. Ctrl+Z = undo.",
+          "Answer: Ctrl+C."
+        ],
+        "answer": "Ctrl+C"
+      },
+      "memoryTip": "C/V/X/Z = the edit shortcuts. A/S/P/F = the navigate/manage shortcuts. The alphabet is the menu.",
+      "commonMistake": "Confusing Ctrl+Y (redo) with Ctrl+F (find). Different letters, different actions."
+    },
+    {
+      "id": "word-biu",
+      "title": "Word Formatting: B/I/U + L/E/R/J",
+      "formula": {
+        "latex": "\\text{B}=\\text{Bold};\\; \\text{I}=\\text{Italic};\\; \\text{U}=\\text{Underline};\\; \\text{L}=\\text{Left};\\; \\text{E}=\\text{cEntre};\\; \\text{R}=\\text{Right};\\; \\text{J}=\\text{Justify}",
+        "text": "B/I/U for character formatting. L/E/R/J for paragraph alignment (Left/cEntre/Right/Justify)."
+      },
+      "whenToUse": "Any 'shortcut for bold / italic / align' MCQ. The most-tested formatting shortcuts.",
+      "explanation": [
+        "Character: Ctrl+B Bold, Ctrl+I Italic, Ctrl+U Underline. Toggle each (press twice to remove).",
+        "Paragraph alignment: Ctrl+L Left, Ctrl+E cEntre (note the British spelling - 'E' for centre), Ctrl+R Right, Ctrl+J Justify (both edges straight).",
+        "Line spacing: Ctrl+1 single, Ctrl+2 double, Ctrl+5 1.5.",
+        "Font size: Ctrl+] grow 1pt, Ctrl+[ shrink 1pt, Ctrl+Shift+> grow preset, Ctrl+Shift+< shrink preset, Ctrl+0 reset to 12pt.",
+        "Page break: Ctrl+Enter (manual page break). Column break: Ctrl+Shift+Enter (newspaper-style columns).",
+        "Track Changes: Ctrl+Shift+E. Spelling: F7. Help: F1. Close document: Ctrl+W."
+      ],
+      "example": {
+        "prompt": "Shortcut to centre the selected paragraph?",
+        "steps": [
+          "L = Left, E = cEntre, R = Right, J = Justify.",
+          "Answer: Ctrl+E."
+        ],
+        "answer": "Ctrl+E"
+      },
+      "memoryTip": "B/I/U for character. L/E/R/J for paragraph. The letters match the action in your head (E for cEntre is the only one that doesn't match perfectly - remember 'English spelling' for British/AU/IN context).",
+      "commonMistake": "If the question lists 'Ctrl+Shift+B' as Bold -> wrong. Ctrl+Shift+B is something else (paste as plain text in some apps). Ctrl+B alone is Bold."
+    },
+    {
+      "id": "excel-keys",
+      "title": "Excel Cell-Editing Shortcuts",
+      "formula": {
+        "latex": "\\text{F2}=\\text{edit};\\; \\text{Alt+=}=\\text{AutoSUM};\\; \\text{F4}=\\text{reference cycle};\\; \\text{Ctrl+;}=\\text{today};\\; \\text{Ctrl+`}=\\text{show formulas}",
+        "text": "F2 edit cell, Alt+= sum, F4 cycle A1/$A$1, Ctrl+; today, Ctrl+` show formulas."
+      },
+      "whenToUse": "Any Excel shortcut MCQ. The five here are the highest-yield.",
+      "explanation": [
+        "F2 = edit the active cell (move cursor inside the cell so you can type at the existing position). Escape = cancel edit. Enter = confirm and move DOWN. Tab = confirm and move RIGHT. Shift+Enter = confirm and move UP. Shift+Tab = LEFT.",
+        "Alt+= = AutoSUM. Inserts =SUM(...) and detects the most likely range (column above or row to the left).",
+        "F4 = toggle cell reference. In a formula, click a reference and press F4: A1 -> $A$1 -> A$1 -> $A1 -> A1. Use $A$1 to lock the column AND row.",
+        "Ctrl+; = today's date. Ctrl+Shift+; = current time.",
+        "Ctrl+` (backtick / grave accent) toggles the display between formula view and result view. Useful for finding errors.",
+        "Ctrl+Space = select entire column. Shift+Space = select entire row. Ctrl+Shift+L = toggle AutoFilter."
+      ],
+      "example": {
+        "prompt": "Shortcut to insert the current date in a cell:",
+        "steps": [
+          "Ctrl+; (semicolon) = today. Ctrl+Shift+; = time.",
+          "Answer: Ctrl+;."
+        ],
+        "answer": "Ctrl+;"
+      },
+      "memoryTip": "Ctrl+; = the only date shortcut worth memorising. Semicolon because it's near M on QWERTY (date has M in it - month).",
+      "commonMistake": "Ctrl+' (apostrophe, not semicolon) does something different - it enters the value from the cell ABOVE."
+    },
+    {
+      "id": "powerpoint-outlook-keys",
+      "title": "PowerPoint & Outlook Top Shortcuts",
+      "formula": {
+        "latex": "\\text{PPT: Ctrl+M}=\\text{new slide};\\; \\text{F5}=\\text{show};\\; \\text{Outlook: Ctrl+Shift+M}=\\text{new email};\\; \\text{F9}=\\text{send/receive}",
+        "text": "PowerPoint: Ctrl+M new slide, F5 start show. Outlook: Ctrl+Shift+M new email, F9 send/receive."
+      },
+      "whenToUse": "Any PowerPoint or Outlook shortcut MCQ. The two apps share the F5 key (different meanings) and have distinctive shortcuts.",
+      "explanation": [
+        "PowerPoint: Ctrl+M = new slide (after the currently selected one). Ctrl+D = duplicate the selected slide. F5 = start the slide show from the beginning. Shift+F5 = from the current slide. Esc = end. B = black screen. W = white screen.",
+        "Outlook: Ctrl+Shift+M = new email from anywhere in Outlook. Ctrl+R = reply. Ctrl+F = forward. Ctrl+Shift+R = reply all. F9 = Send / Receive (force Outlook to sync with the server).",
+        "Outlook calendar: Ctrl+Shift+A = new appointment. Ctrl+Shift+Q = new meeting request. Ctrl+Shift+K = new task.",
+        "Outlook navigation: Ctrl+1 = Mail, Ctrl+2 = Calendar, Ctrl+3 = People (Contacts), Ctrl+4 = Tasks. Same for the 'New' group: Ctrl+Shift+M (email), A (appointment), Q (meeting), K (task), C (contact).",
+        "F5 means different things: PowerPoint = start show. Excel = Go To. Word = Go To (Browsing mode). Context-dependent shortcuts are the exam trap."
+      ],
+      "example": {
+        "prompt": "Shortcut to add a new slide in PowerPoint:",
+        "steps": [
+          "Ctrl+M = new slide. Ctrl+D = duplicate slide.",
+          "Answer: Ctrl+M."
+        ],
+        "answer": "Ctrl+M"
+      },
+      "memoryTip": "PowerPoint Ctrl shortcuts start with Ctrl+M (sli**M**). Outlook Ctrl+Shift shortcuts are 'from anywhere': Ctrl+Shift+M (e**M**ail), Ctrl+Shift+A (**A**ppointment), Ctrl+Shift+Q (meeting re**Q**uest), Ctrl+Shift+K (tas**K**).",
+      "commonMistake": "Ctrl+M in Mail view of Outlook = new email. Ctrl+M in Calendar view = new appointment. View-dependent - the same trap as Ctrl+N."
+    }
+  ],
+  "practiceProblems": {
+    "universal-eight": [
+      {"q": "Shortcut to copy selected text:", "opts": ["Ctrl+X", "Ctrl+C", "Ctrl+V", "Ctrl+Z"], "c": 1, "s": ["Ctrl+C = copy. Ctrl+X = cut. Ctrl+V = paste. Ctrl+Z = undo."], "a": "Ctrl+C"},
+      {"q": "Shortcut to paste the clipboard contents:", "opts": ["Ctrl+C", "Ctrl+X", "Ctrl+V", "Ctrl+P"], "c": 2, "s": ["Ctrl+V = paste. (Ctrl+C/X/P do different things.)"], "a": "Ctrl+V"},
+      {"q": "Shortcut to undo the last action:", "opts": ["Ctrl+Z", "Ctrl+Y", "Ctrl+U", "Ctrl+R"], "c": 0, "s": ["Ctrl+Z = undo. Ctrl+Y = redo (in most apps)."], "a": "Ctrl+Z"},
+      {"q": "Shortcut to redo the last undone action (in most Office apps):", "opts": ["Ctrl+Z", "Ctrl+Y", "Ctrl+R", "Ctrl+Shift+Z"], "c": 1, "s": ["Ctrl+Y = redo. Ctrl+Z = undo. (In MS Word Ctrl+Y means 'Repeat' but most apps treat it as redo.)"], "a": "Ctrl+Y"},
+      {"q": "Shortcut to select ALL in a document:", "opts": ["Ctrl+S", "Ctrl+A", "Ctrl+L", "Ctrl+N"], "c": 1, "s": ["Ctrl+A = select all. Ctrl+S = save. Ctrl+L = left-align (in Word/Outlook)."], "a": "Ctrl+A"},
+      {"q": "Shortcut to save the current document:", "opts": ["Ctrl+S", "Ctrl+D", "Ctrl+Q", "Ctrl+W"], "c": 0, "s": ["Ctrl+S = save. Ctrl+D = bookmark (browser) or duplicate (PowerPoint). Ctrl+W = close."], "a": "Ctrl+S"},
+      {"q": "Shortcut to open the Print dialog:", "opts": ["Ctrl+P", "Ctrl+Shift+P", "Ctrl+Alt+P", "Ctrl+F4"], "c": 0, "s": ["Ctrl+P opens the print dialog."], "a": "Ctrl+P"},
+      {"q": "Shortcut to open the Find bar:", "opts": ["Ctrl+F", "Ctrl+H", "Ctrl+G", "Ctrl+R"], "c": 0, "s": ["Ctrl+F = Find. Ctrl+H = Find and Replace. Ctrl+G = Go To. Ctrl+R = Reload (browser) or Refresh."], "a": "Ctrl+F"},
+      {"q": "Shortcut to CUT selected text (copy + delete):", "opts": ["Ctrl+C", "Ctrl+X", "Ctrl+D", "Ctrl+Delete"], "c": 1, "s": ["Ctrl+X = cut. Ctrl+C = copy. Ctrl+D = bookmark / duplicate."], "a": "Ctrl+X"},
+      {"q": "Shortcut to close the current window / document / tab:", "opts": ["Ctrl+X", "Ctrl+W", "Ctrl+Q", "Alt+F4"], "c": 1, "s": ["Ctrl+W = close the current document or tab. Alt+F4 = close the entire application. Ctrl+Q is 'quit' in some apps (rare)."], "a": "Ctrl+W"}
+    ],
+    "word-biu": [
+      {"q": "Shortcut to apply Bold formatting to selected text:", "opts": ["Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+D"], "c": 0, "s": ["Ctrl+B = Bold. Ctrl+I = Italic. Ctrl+U = Underline. Ctrl+D = Font dialog in some versions."], "a": "Ctrl+B"},
+      {"q": "Shortcut to apply Italic:", "opts": ["Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+Shift+I"], "c": 1, "s": ["Ctrl+I = Italic."], "a": "Ctrl+I"},
+      {"q": "Shortcut to apply Underline:", "opts": ["Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+Shift+U"], "c": 2, "s": ["Ctrl+U = Underline."], "a": "Ctrl+U"},
+      {"q": "Shortcut to align the selected paragraph to the LEFT:", "opts": ["Ctrl+L", "Ctrl+E", "Ctrl+R", "Ctrl+J"], "c": 0, "s": ["L = Left. E = cEntre. R = Right. J = Justify."], "a": "Ctrl+L"},
+      {"q": "Shortcut to align the selected paragraph to the CENTRE:", "opts": ["Ctrl+L", "Ctrl+E", "Ctrl+R", "Ctrl+J"], "c": 1, "s": ["E = cEntre (British spelling)."], "a": "Ctrl+E"},
+      {"q": "Shortcut to JUSTIFY the selected paragraph (both edges straight):", "opts": ["Ctrl+L", "Ctrl+E", "Ctrl+R", "Ctrl+J"], "c": 3, "s": ["J = Justify. Aligns both left and right edges."], "a": "Ctrl+J"},
+      {"q": "Shortcut to insert a manual page break in Word:", "opts": ["Ctrl+Enter", "Ctrl+Shift+Enter", "Ctrl+Break", "Alt+Enter"], "c": 0, "s": ["Ctrl+Enter = page break. Ctrl+Shift+Enter = column break."], "a": "Ctrl+Enter"},
+      {"q": "Shortcut to apply single line spacing to a paragraph:", "opts": ["Ctrl+1", "Ctrl+2", "Ctrl+5", "Ctrl+0"], "c": 0, "s": ["Ctrl+1 = single. Ctrl+2 = double. Ctrl+5 = 1.5. Ctrl+0 = 12pt font (different meaning)."], "a": "Ctrl+1"},
+      {"q": "Shortcut to apply double line spacing:", "opts": ["Ctrl+1", "Ctrl+2", "Ctrl+5", "Ctrl+0"], "c": 1, "s": ["Ctrl+2 = double spacing."], "a": "Ctrl+2"},
+      {"q": "Shortcut to toggle Track Changes on/off in Word:", "opts": ["Ctrl+Shift+E", "Ctrl+Shift+T", "Ctrl+Alt+E", "F7"], "c": 0, "s": ["Ctrl+Shift+E = Track Changes on/off. F7 = spell check."], "a": "Ctrl+Shift+E"}
+    ],
+    "excel-keys": [
+      {"q": "Shortcut to edit the active cell (move cursor inside):", "opts": ["F2", "F4", "F7", "F11"], "c": 0, "s": ["F2 = edit cell. F4 = cycle reference. F7 = spell check. F11 = chart on new sheet."], "a": "F2"},
+      {"q": "Shortcut to insert today's date in a cell:", "opts": ["Ctrl+D", "Ctrl+; ", "Ctrl+T", "Ctrl+Shift+D"], "c": 1, "s": ["Ctrl+; (semicolon) = today. Ctrl+Shift+; = current time."], "a": "Ctrl+;"},
+      {"q": "Shortcut to apply AutoSUM in a cell:", "opts": ["Alt+S", "Alt+= ", "Ctrl+S", "Ctrl+="], "c": 1, "s": ["Alt+= = AutoSUM. Inserts =SUM(...) and guesses the range."], "a": "Alt+="},
+      {"q": "Shortcut to cycle cell reference types (A1 / $A$1 / A$1 / $A1) in formula edit:", "opts": ["F2", "F4", "F5", "F7"], "c": 1, "s": ["F4 cycles: A1 -> $A$1 -> A$1 -> $A1 -> A1. Works in formula edit mode."], "a": "F4"},
+      {"q": "Shortcut to select the ENTIRE COLUMN of the active cell:", "opts": ["Ctrl+Space", "Shift+Space", "Ctrl+Shift+C", "Ctrl+A"], "c": 0, "s": ["Ctrl+Space = column. Shift+Space = row."], "a": "Ctrl+Space"},
+      {"q": "Shortcut to select the ENTIRE ROW of the active cell:", "opts": ["Ctrl+Space", "Shift+Space", "Ctrl+R", "Ctrl+Shift+R"], "c": 1, "s": ["Shift+Space = row. Ctrl+Space = column."], "a": "Shift+Space"},
+      {"q": "Shortcut to jump to the last used cell in a worksheet:", "opts": ["Ctrl+Home", "Ctrl+End", "F5", "Ctrl+G"], "c": 1, "s": ["Ctrl+End = last used cell. Ctrl+Home = A1."], "a": "Ctrl+End"},
+      {"q": "Shortcut to toggle AutoFilter on the current data set:", "opts": ["Ctrl+Shift+L", "Ctrl+Shift+F", "Ctrl+F", "Ctrl+Alt+F"], "c": 0, "s": ["Ctrl+Shift+L toggles AutoFilter. Ctrl+Shift+F opens advanced filter."], "a": "Ctrl+Shift+L"},
+      {"q": "Shortcut to copy a formula from the cell above (Fill Down):", "opts": ["Ctrl+D", "Ctrl+R", "Ctrl+Shift+D", "F4"], "c": 0, "s": ["Ctrl+D = Fill Down (copies the top of the selection down). Ctrl+R = Fill Right."], "a": "Ctrl+D"},
+      {"q": "Shortcut to move to the next worksheet in the workbook:", "opts": ["Ctrl+Page Down", "Ctrl+Page Up", "Ctrl+Tab", "F5"], "c": 0, "s": ["Ctrl+Page Down = next sheet. Ctrl+Page Up = previous sheet."], "a": "Ctrl+Page Down"}
+    ],
+    "powerpoint-outlook-keys": [
+      {"q": "Shortcut to add a NEW SLIDE in PowerPoint:", "opts": ["Ctrl+N", "Ctrl+M", "Ctrl+Shift+M", "F5"], "c": 1, "s": ["Ctrl+M = new slide. (Ctrl+N = new presentation - new file.)"], "a": "Ctrl+M"},
+      {"q": "Shortcut to duplicate the selected slide in PowerPoint:", "opts": ["Ctrl+D", "Ctrl+C", "Ctrl+V", "Ctrl+Shift+D"], "c": 0, "s": ["Ctrl+D duplicates the selected slide (and selected objects in any Office app)."], "a": "Ctrl+D"},
+      {"q": "Shortcut to start the slide show FROM THE BEGINNING:", "opts": ["F5", "Shift+F5", "Alt+F5", "Ctrl+F5"], "c": 0, "s": ["F5 = from beginning. Shift+F5 = from current slide. Alt+F5 = Presenter View."], "a": "F5"},
+      {"q": "Shortcut to end a running slide show:", "opts": ["F5", "Shift+F5", "Esc", "Alt+F4"], "c": 2, "s": ["Esc ends the slide show and returns to editing."], "a": "Esc"},
+      {"q": "During a slide show, B gives you:", "opts": ["Bookmark", "Bold", "Black screen", "Next slide"], "c": 2, "s": ["B = black screen. W = white screen. Esc = end."], "a": "Black screen"},
+      {"q": "Outlook: shortcut to create a new email FROM ANYWHERE in Outlook:", "opts": ["Ctrl+N", "Ctrl+Shift+M", "Ctrl+M", "Ctrl+E"], "c": 1, "s": ["Ctrl+Shift+M = new email from any view. (Ctrl+M in Mail view = new email; in Calendar = new appointment - view-dependent.)"], "a": "Ctrl+Shift+M"},
+      {"q": "Outlook: shortcut to REPLY to the sender of the selected message:", "opts": ["Ctrl+R", "Ctrl+F", "Ctrl+Shift+R", "Ctrl+1"], "c": 0, "s": ["Ctrl+R = Reply. Ctrl+F = Forward. Ctrl+Shift+R = Reply All."], "a": "Ctrl+R"},
+      {"q": "Outlook: shortcut to force Send / Receive (sync with server):", "opts": ["F5", "F7", "F9", "Ctrl+S"], "c": 2, "s": ["F9 = Send / Receive All. Forces Outlook to check for new mail and send queued mail."], "a": "F9"},
+      {"q": "Outlook: shortcut to create a new meeting request (from anywhere):", "opts": ["Ctrl+N", "Ctrl+Shift+A", "Ctrl+Shift+Q", "Ctrl+M"], "c": 2, "s": ["Ctrl+Shift+Q = new meeting request. Ctrl+Shift+A = new appointment. Ctrl+M = view-dependent."], "a": "Ctrl+Shift+Q"},
+      {"q": "Outlook: shortcut to create a new TASK (from anywhere):", "opts": ["Ctrl+Shift+K", "Ctrl+Shift+T", "Ctrl+Shift+N", "Ctrl+T"], "c": 0, "s": ["Ctrl+Shift+K = new task. (K for tasK.)"], "a": "Ctrl+Shift+K"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Universal shortcut to COPY selected text or an object:", "opts": ["Ctrl+X", "Ctrl+C", "Ctrl+V", "Ctrl+Z"], "c": 1, "d": "easy", "t": "Universal Shortcuts (Ctrl+C/V/X/Z)", "exp": ["Ctrl+C copy, Ctrl+X cut, Ctrl+V paste, Ctrl+Z undo."]},
+    {"id": 2, "q": "Universal shortcut to PASTE from the clipboard:", "opts": ["Ctrl+V", "Ctrl+P", "Ctrl+C", "Ctrl+Y"], "c": 0, "d": "easy", "t": "Universal Shortcuts (Ctrl+C/V/X/Z)", "exp": ["Ctrl+V = paste. Ctrl+P = print."]},
+    {"id": 3, "q": "Universal shortcut to UNDO the last action:", "opts": ["Ctrl+Z", "Ctrl+Y", "Ctrl+U", "Ctrl+R"], "c": 0, "d": "easy", "t": "Universal Shortcuts (Ctrl+C/V/X/Z)", "exp": ["Ctrl+Z undo, Ctrl+Y redo (in most apps)."]},
+    {"id": 4, "q": "Universal shortcut to SELECT ALL in the current document / window:", "opts": ["Ctrl+A", "Ctrl+S", "Ctrl+L", "Ctrl+N"], "c": 0, "d": "easy", "t": "Universal Shortcuts (Ctrl+C/V/X/Z)", "exp": ["Ctrl+A select all. Ctrl+S save. Ctrl+L left-align. Ctrl+N new."]},
+    {"id": 5, "q": "Shortcut to SAVE the current file in any Windows app:", "opts": ["Ctrl+S", "Ctrl+D", "Ctrl+W", "Ctrl+Q"], "c": 0, "d": "easy", "t": "Universal Shortcuts (Ctrl+C/V/X/Z)", "exp": ["Ctrl+S = save. Ctrl+W = close. Ctrl+D = bookmark / duplicate. Ctrl+Q = quit (some apps)."]},
+    {"id": 6, "q": "Shortcut to open the PRINT dialog in any Windows app:", "opts": ["Ctrl+P", "Ctrl+Shift+P", "Ctrl+Alt+P", "Ctrl+F4"], "c": 0, "d": "easy", "t": "Universal Shortcuts (Ctrl+C/V/X/Z)", "exp": ["Ctrl+P opens the print dialog. Ctrl+Shift+P in some apps (e.g. Word) toggles superscript."]},
+    {"id": 7, "q": "Shortcut to open the FIND bar in any Windows app:", "opts": ["Ctrl+F", "Ctrl+H", "Ctrl+G", "Ctrl+R"], "c": 0, "d": "easy", "t": "Universal Shortcuts (Ctrl+C/V/X/Z)", "exp": ["Ctrl+F find, Ctrl+H find and replace, Ctrl+G go to, Ctrl+R reload."]},
+    {"id": 8, "q": "Shortcut to open the Windows Clipboard History (Windows 10/11):", "opts": ["Ctrl+V", "Win+V", "Win+C", "Ctrl+Shift+V"], "c": 1, "d": "medium", "t": "Universal Shortcuts (Ctrl+C/V/X/Z)", "exp": ["Win+V opens Clipboard History (up to 25 recent copies, with pin option)."]},
+    {"id": 9, "q": "Format Painter copies:", "opts": ["Text content", "Text formatting (font, size, colour) without the text", "Pictures", "The clipboard"], "c": 1, "d": "medium", "t": "Universal Shortcuts (Ctrl+C/V/X/Z)", "exp": ["Format Painter = copy formatting (not text). Ctrl+Shift+C copies; Ctrl+Shift+V applies."]},
+    {"id": 10, "q": "Shortcut to open the Start menu from the keyboard:", "opts": ["Ctrl+Esc (or Win key)", "Ctrl+Shift+Esc", "Alt+Tab", "F1"], "c": 0, "d": "medium", "t": "Universal Shortcuts (Ctrl+C/V/X/Z)", "exp": ["Ctrl+Esc or the Win key opens the Start menu."]},
+    {"id": 11, "q": "MS Word: shortcut to apply BOLD formatting:", "opts": ["Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+Shift+B"], "c": 0, "d": "easy", "t": "Word Shortcuts", "exp": ["Ctrl+B = Bold. (Ctrl+Shift+B is paste as plain text in some apps - not Bold.)"]},
+    {"id": 12, "q": "MS Word: shortcut to apply ITALIC:", "opts": ["Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+Shift+I"], "c": 1, "d": "easy", "t": "Word Shortcuts", "exp": ["Ctrl+I = Italic."]},
+    {"id": 13, "q": "MS Word: shortcut to apply UNDERLINE:", "opts": ["Ctrl+B", "Ctrl+I", "Ctrl+U", "Ctrl+Shift+U"], "c": 2, "d": "easy", "t": "Word Shortcuts", "exp": ["Ctrl+U = Underline."]},
+    {"id": 14, "q": "MS Word: shortcut to JUSTIFY the selected paragraph (both edges straight):", "opts": ["Ctrl+L", "Ctrl+E", "Ctrl+R", "Ctrl+J"], "c": 3, "d": "medium", "t": "Word Shortcuts", "exp": ["L=Left, E=cEntre, R=Right, J=Justify."]},
+    {"id": 15, "q": "MS Word: shortcut to insert a manual page break:", "opts": ["Ctrl+Enter", "Ctrl+Shift+Enter", "Ctrl+Break", "Alt+Enter"], "c": 0, "d": "easy", "t": "Word Shortcuts", "exp": ["Ctrl+Enter = page break. Ctrl+Shift+Enter = column break."]},
+    {"id": 16, "q": "MS Word: shortcut to toggle Track Changes on/off:", "opts": ["Ctrl+Shift+E", "Ctrl+Shift+T", "Ctrl+Alt+T", "F7"], "c": 0, "d": "medium", "t": "Word Shortcuts", "exp": ["Ctrl+Shift+E = Track Changes. F7 = spell check."]},
+    {"id": 17, "q": "MS Word: shortcut to start a Spelling & Grammar check:", "opts": ["F1", "F5", "F7", "F12"], "c": 2, "d": "easy", "t": "Word Shortcuts", "exp": ["F7 = Spelling & Grammar. (F1 = Help, F5 = Go To, F12 = Save As.)"]},
+    {"id": 18, "q": "MS Word: shortcut to open the Find and Replace dialog:", "opts": ["Ctrl+F", "Ctrl+H", "Ctrl+G", "Ctrl+R"], "c": 1, "d": "easy", "t": "Word Shortcuts", "exp": ["Ctrl+H = Find and Replace. Ctrl+F = Find only."]},
+    {"id": 19, "q": "MS Word: shortcut to go to the BEGINNING of a document:", "opts": ["Ctrl+Home", "Ctrl+End", "Ctrl+G", "Page Up"], "c": 0, "d": "easy", "t": "Word Shortcuts", "exp": ["Ctrl+Home = top of document. Ctrl+End = bottom."]},
+    {"id": 20, "q": "MS Word: shortcut to apply single line spacing:", "opts": ["Ctrl+1", "Ctrl+2", "Ctrl+5", "Ctrl+0"], "c": 0, "d": "medium", "t": "Word Shortcuts", "exp": ["Ctrl+1 = single. Ctrl+2 = double. Ctrl+5 = 1.5 lines. Ctrl+0 (zero) = 12pt font (different meaning)."]},
+    {"id": 21, "q": "MS Excel: shortcut to enter the edit mode for the active cell:", "opts": ["F2", "F4", "F7", "F11"], "c": 0, "d": "easy", "t": "Excel Shortcuts", "exp": ["F2 = edit. F4 = cycle reference. F7 = spell check. F11 = new chart on a sheet."]},
+    {"id": 22, "q": "MS Excel: shortcut to insert the CURRENT DATE in a cell:", "opts": ["Ctrl+D", "Ctrl+; ", "Ctrl+T", "Ctrl+Shift+D"], "c": 1, "d": "medium", "t": "Excel Shortcuts", "exp": ["Ctrl+; (semicolon) = today. Ctrl+Shift+; = time."]},
+    {"id": 23, "q": "MS Excel: shortcut to apply AutoSUM to the selected cells:", "opts": ["Alt+S", "Alt+= ", "Ctrl+=", "F2"], "c": 1, "d": "medium", "t": "Excel Shortcuts", "exp": ["Alt+= = AutoSUM."]},
+    {"id": 24, "q": "MS Excel: shortcut to cycle cell reference types (A1 <-> $A$1) in a formula:", "opts": ["F2", "F4", "F5", "F7"], "c": 1, "d": "medium", "t": "Excel Shortcuts", "exp": ["F4 cycles: A1 -> $A$1 -> A$1 -> $A1 -> A1. Works in formula edit mode."]},
+    {"id": 25, "q": "MS Excel: shortcut to select the ENTIRE COLUMN of the active cell:", "opts": ["Ctrl+Space", "Shift+Space", "Ctrl+Shift+C", "Ctrl+A"], "c": 0, "d": "medium", "t": "Excel Shortcuts", "exp": ["Ctrl+Space = column. Shift+Space = row."]},
+    {"id": 26, "q": "MS Excel: shortcut to toggle AutoFilter on the active data range:", "opts": ["Ctrl+Shift+L", "Ctrl+Shift+F", "Ctrl+Alt+L", "Ctrl+L"], "c": 0, "d": "medium", "t": "Excel Shortcuts", "exp": ["Ctrl+Shift+L = toggle AutoFilter."]},
+    {"id": 27, "q": "MS Excel: shortcut to jump to the LAST USED cell in the worksheet:", "opts": ["Ctrl+End", "Ctrl+Home", "Ctrl+Page Down", "Ctrl+G"], "c": 0, "d": "easy", "t": "Excel Shortcuts", "exp": ["Ctrl+End = last used cell. Ctrl+Home = A1."]},
+    {"id": 28, "q": "MS Excel: shortcut to copy the formula from the cell above (Fill Down):", "opts": ["Ctrl+D", "Ctrl+R", "Ctrl+Shift+D", "Ctrl+F"], "c": 0, "d": "medium", "t": "Excel Shortcuts", "exp": ["Ctrl+D = Fill Down. Ctrl+R = Fill Right."]},
+    {"id": 29, "q": "MS Excel: shortcut to move to the NEXT worksheet in the workbook:", "opts": ["Ctrl+Page Down", "Ctrl+Page Up", "Ctrl+Tab", "F5"], "c": 0, "d": "medium", "t": "Excel Shortcuts", "exp": ["Ctrl+Page Down = next sheet. Ctrl+Page Up = previous sheet."]},
+    {"id": 30, "q": "MS Excel: shortcut to open the Format Cells dialog:", "opts": ["Ctrl+1", "Ctrl+F", "F2", "F4"], "c": 0, "d": "easy", "t": "Excel Shortcuts", "exp": ["Ctrl+1 = Format Cells (universal Office shortcut for the Format dialog of whatever is selected)."]},
+    {"id": 31, "q": "PowerPoint: shortcut to add a new slide:", "opts": ["Ctrl+N", "Ctrl+M", "Ctrl+Shift+M", "F5"], "c": 1, "d": "easy", "t": "PowerPoint & Outlook Shortcuts", "exp": ["Ctrl+M = new slide. Ctrl+N = new presentation (new file)."]},
+    {"id": 32, "q": "PowerPoint: shortcut to duplicate the selected slide:", "opts": ["Ctrl+D", "Ctrl+C", "Ctrl+V", "Ctrl+Shift+D"], "c": 0, "d": "easy", "t": "PowerPoint & Outlook Shortcuts", "exp": ["Ctrl+D = duplicate slide."]},
+    {"id": 33, "q": "PowerPoint: shortcut to start the slide show FROM THE BEGINNING:", "opts": ["F5", "Shift+F5", "Alt+F5", "Ctrl+F5"], "c": 0, "d": "easy", "t": "PowerPoint & Outlook Shortcuts", "exp": ["F5 = from beginning. Shift+F5 = from current slide."]},
+    {"id": 34, "q": "PowerPoint: shortcut to end a running slide show:", "opts": ["F5", "Esc", "Alt+F4", "Ctrl+Q"], "c": 1, "d": "easy", "t": "PowerPoint & Outlook Shortcuts", "exp": ["Esc ends the slide show."]},
+    {"id": 35, "q": "During a PowerPoint slide show, B gives you:", "opts": ["Bookmark", "Bold", "Black screen", "Next slide"], "c": 2, "d": "medium", "t": "PowerPoint & Outlook Shortcuts", "exp": ["B = black screen. W = white. Esc = end. Space = next."]},
+    {"id": 36, "q": "Outlook: shortcut to create a new email FROM ANYWHERE in Outlook:", "opts": ["Ctrl+N", "Ctrl+Shift+M", "Ctrl+M", "Ctrl+E"], "c": 1, "d": "medium", "t": "PowerPoint & Outlook Shortcuts", "exp": ["Ctrl+Shift+M = new email from any view. (Ctrl+M is view-dependent.)"]},
+    {"id": 37, "q": "Outlook: shortcut to REPLY to the sender of the selected message:", "opts": ["Ctrl+R", "Ctrl+F", "Ctrl+Shift+R", "Ctrl+E"], "c": 0, "d": "easy", "t": "PowerPoint & Outlook Shortcuts", "exp": ["Ctrl+R = Reply. Ctrl+F = Forward. Ctrl+Shift+R = Reply All."]},
+    {"id": 38, "q": "Outlook: shortcut to FORWARD the selected message:", "opts": ["Ctrl+R", "Ctrl+F", "Ctrl+Shift+F", "Ctrl+Alt+F"], "c": 1, "d": "easy", "t": "PowerPoint & Outlook Shortcuts", "exp": ["Ctrl+F = Forward. Ctrl+R = Reply. Ctrl+Shift+R = Reply All."]},
+    {"id": 39, "q": "Outlook: shortcut to force Send / Receive (sync with server):", "opts": ["F5", "F7", "F9", "Ctrl+S"], "c": 2, "d": "medium", "t": "PowerPoint & Outlook Shortcuts", "exp": ["F9 = Send / Receive All. F5 = Go To in Outlook (not slide show)."]},
+    {"id": 40, "q": "Outlook: shortcut to create a new meeting request FROM ANYWHERE:", "opts": ["Ctrl+N", "Ctrl+Shift+A", "Ctrl+Shift+Q", "Ctrl+M"], "c": 2, "d": "medium", "t": "PowerPoint & Outlook Shortcuts", "exp": ["Ctrl+Shift+Q = new meeting. Ctrl+Shift+A = new appointment. Ctrl+Shift+K = new task."]},
+    {"id": 41, "q": "Windows key shortcut to open FILE EXPLORER:", "opts": ["Win+E", "Win+F", "Win+L", "Win+X"], "c": 0, "d": "easy", "t": "Windows Key Combos", "exp": ["Win+E = File Explorer. Win+F = Search (older Windows). Win+L = Lock. Win+X = Power user menu."]},
+    {"id": 42, "q": "Windows key shortcut to LOCK the screen:", "opts": ["Win+L", "Win+E", "Win+K", "Win+D"], "c": 0, "d": "easy", "t": "Windows Key Combos", "exp": ["Win+L = Lock. Press it every time you walk away from the desk."]},
+    {"id": 43, "q": "Windows key shortcut to show the DESKTOP (minimise all windows):", "opts": ["Win+D", "Win+M", "Win+Tab", "Win+Home"], "c": 0, "d": "medium", "t": "Windows Key Combos", "exp": ["Win+D = Show Desktop (toggles). Win+M = minimise all. Win+Tab = Task View."]},
+    {"id": 44, "q": "Windows key shortcut to take a REGION screenshot (Snip & Sketch):", "opts": ["PrtScn", "Alt+PrtScn", "Win+Shift+S", "Win+PrtScn"], "c": 2, "d": "medium", "t": "Windows Key Combos", "exp": ["Win+Shift+S = region select (rectangle, freeform, window, full screen)."]},
+    {"id": 45, "q": "Shortcut to open TASK MANAGER directly (no Ctrl+Alt+Del menu):", "opts": ["Ctrl+Alt+Del", "Ctrl+Shift+Esc", "Win+X", "Alt+F4"], "c": 1, "d": "medium", "t": "Windows Key Combos", "exp": ["Ctrl+Shift+Esc opens Task Manager directly. Alt+F4 closes the active window."]},
+    {"id": 46, "q": "Windows key shortcut to open the SETTINGS app:", "opts": ["Win+I", "Win+S", "Win+X", "Win+P"], "c": 0, "d": "medium", "t": "Windows Key Combos", "exp": ["Win+I = Settings. Win+S = Search. Win+X = Power user menu. Win+P = Project (display)."]},
+    {"id": 47, "q": "Shortcut to snap the active window to the LEFT half of the screen:", "opts": ["Win+Left", "Win+Right", "Win+L", "Alt+Left"], "c": 0, "d": "medium", "t": "Windows Key Combos", "exp": ["Win+Left snaps left, Win+Right snaps right. Alt+Left is browser back."]},
+    {"id": 48, "q": "Windows key shortcut to open the Power user menu (Device Manager, Task Manager, etc.):", "opts": ["Win+X", "Win+P", "Win+I", "Win+Z"], "c": 0, "d": "medium", "t": "Windows Key Combos", "exp": ["Win+X = Power user menu. Quick access to Device Manager, Disk Management, Task Manager, Settings, etc."]},
+    {"id": 49, "q": "Windows shortcut to create a new virtual desktop:", "opts": ["Win+Ctrl+D", "Win+Shift+D", "Win+Tab", "Alt+Ctrl+D"], "c": 0, "d": "medium", "t": "Windows Key Combos", "exp": ["Win+Ctrl+D = new virtual desktop. Win+Ctrl+Left/Right = switch between them. Win+Ctrl+F4 = close current."]},
+    {"id": 50, "q": "Windows key shortcut to open the Run dialog (cmd, msconfig, regedit):", "opts": ["Win+R", "Win+X", "Win+E", "Ctrl+R"], "c": 0, "d": "medium", "t": "Windows Key Combos", "exp": ["Win+R = Run dialog. Type 'cmd', 'msconfig', 'regedit', 'powershell' for advanced tools."]},
+    {"id": 51, "q": "Format Painter shortcut (copy formatting):", "opts": ["Ctrl+C", "Ctrl+Shift+C", "Ctrl+Alt+C", "Ctrl+Shift+F"], "c": 1, "d": "medium", "t": "Universal Shortcuts (Ctrl+C/V/X/Z)", "exp": ["Ctrl+Shift+C copies formatting. Ctrl+Shift+V pastes formatting."]},
+    {"id": 52, "q": "MS Excel: shortcut to insert the CURRENT TIME in a cell:", "opts": ["Ctrl+T", "Ctrl+Shift+; ", "Ctrl+; ", "Ctrl+Shift+T"], "c": 1, "d": "medium", "t": "Excel Shortcuts", "exp": ["Ctrl+Shift+; = current time. Ctrl+; = today's date."]},
+    {"id": 53, "q": "MS Word: shortcut to align the selected paragraph to the RIGHT:", "opts": ["Ctrl+L", "Ctrl+E", "Ctrl+R", "Ctrl+J"], "c": 2, "d": "medium", "t": "Word Shortcuts", "exp": ["R = Right. L = Left. E = cEntre. J = Justify."]},
+    {"id": 54, "q": "MS Word: shortcut to apply 1.5 line spacing:", "opts": ["Ctrl+1", "Ctrl+2", "Ctrl+5", "Ctrl+3"], "c": 2, "d": "medium", "t": "Word Shortcuts", "exp": ["Ctrl+5 = 1.5 line spacing. (Ctrl+1 = single, Ctrl+2 = double.)"]},
+    {"id": 55, "q": "MS Word: shortcut to go to the END of a document:", "opts": ["Ctrl+End", "Ctrl+Home", "Ctrl+G", "Page Down"], "c": 0, "d": "easy", "t": "Word Shortcuts", "exp": ["Ctrl+End = bottom of document. Ctrl+Home = top."]},
+    {"id": 56, "q": "MS Excel: shortcut to select the entire ROW of the active cell:", "opts": ["Ctrl+Space", "Shift+Space", "Ctrl+R", "Ctrl+Shift+R"], "c": 1, "d": "medium", "t": "Excel Shortcuts", "exp": ["Shift+Space = row. Ctrl+Space = column."]},
+    {"id": 57, "q": "MS Excel: shortcut to Fill RIGHT (copy left cell across selection):", "opts": ["Ctrl+D", "Ctrl+R", "Ctrl+Shift+R", "Ctrl+F"], "c": 1, "d": "medium", "t": "Excel Shortcuts", "exp": ["Ctrl+R = Fill Right. Ctrl+D = Fill Down."]},
+    {"id": 58, "q": "Outlook: shortcut to REPLY ALL to a message:", "opts": ["Ctrl+R", "Ctrl+Shift+R", "Ctrl+Alt+R", "Ctrl+1"], "c": 1, "d": "medium", "t": "PowerPoint & Outlook Shortcuts", "exp": ["Ctrl+Shift+R = Reply All. Ctrl+R = Reply (just to sender)."]},
+    {"id": 59, "q": "PowerPoint: shortcut to start the slide show from the CURRENT slide:", "opts": ["F5", "Shift+F5", "Alt+F5", "Ctrl+F5"], "c": 1, "d": "medium", "t": "PowerPoint & Outlook Shortcuts", "exp": ["Shift+F5 = from current slide. F5 = from beginning."]},
+    {"id": 60, "q": "Shortcut to open the Windows Start menu (universal):", "opts": ["Ctrl+Esc (or Win key)", "Ctrl+Shift+Esc", "Alt+Tab", "F1"], "c": 0, "d": "easy", "t": "Windows Key Combos", "exp": ["Ctrl+Esc or the Win key opens the Start menu. Ctrl+Shift+Esc = Task Manager. Alt+Tab = switch apps. F1 = Help."]}
+  ]
+}

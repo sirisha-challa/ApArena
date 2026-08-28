@@ -1,0 +1,506 @@
+{
+  "id": "file-extensions",
+  "title": "File Extensions & Formats",
+  "icon": "Ext",
+  "category": "ms-office",
+  "subtitle": "Every extension you will see in Office and placement MCQs — Office, images, media, executables, archives, web and text",
+  "days": "1",
+  "color": "#0D9488",
+  "subtopics": [
+    "Office Formats (.docx/.xlsx/.pptx)",
+    "Images & Media",
+    "Executables & Archives",
+    "Web & Text Formats"
+  ],
+  "estimatedHours": 3,
+  "readingSections": [
+    {
+      "id": "ext-intro",
+      "title": "What a File Extension Is (and Why Windows Hides It)",
+      "type": "concept",
+      "quickSummary": "Extension = the dot + letters at the end of a filename (report.docx). Tells Windows which app opens the file. Windows hides extensions by default — turn on File name extensions in View. Never rename the extension unless you are converting the file.",
+      "content": [
+        "Every file has a NAME and an EXTENSION. The extension is the dot plus 3-4 letters at the end: report.docx, photo.jpg, song.mp3, backup.zip. Windows uses it to decide which program opens the file. Double-click a .docx and Word opens; double-click a .pdf and your PDF reader opens.",
+        "Beginner trap: Windows HIDES extensions by default. You see 'report' in File Explorer but the real name is 'report.docx'. To see them, open File Explorer, click View in the ribbon, and tick 'File name extensions'. Once visible you can tell a real .jpg photo from a disguised .exe virus file. Placement papers love this fact.",
+        "Never rename just the extension to convert a file. Renaming photo.png to photo.jpg does NOT convert PNG to JPG — it only confuses Windows and the file may stop opening. To truly convert, use Save As in the app or a converter. The extension is a label, not the content.",
+        "Extensions are NOT case sensitive. .JPG and .jpg are the same, .DOCX and .docx are the same. The dot is always a dot, never a comma or colon. On the web, the extension in a download URL tells you what you are downloading before you click.",
+        "Grouped by family, extensions are far easier to memorize than one by one. This topic does that: Office, Images and Media, Executables and Archives, Web and Text. Learn the family first, then the individual members."
+      ],
+      "subsections": [
+        {
+          "title": "Associated program vs default app",
+          "content": "Windows stores a mapping: .docx is associated with Word, .xlsx with Excel, .pdf with Edge or Acrobat, .mp3 with Media Player. Right-click a file, choose Open with, and tick Always to change the default. The icon you see in File Explorer comes from that association."
+        },
+        {
+          "title": "Show extensions — the 5-second safety habit",
+          "content": "File Explorer > View > Show > File name extensions. Once on, you will instantly spot dangerous double extensions like invoice.pdf.exe — Windows shows the true .exe at the end, revealing it is an executable, not a PDF. Many phishing emails rely on hidden extensions."
+        }
+      ],
+      "quickRevision": [
+        "Extension = dot + 3-4 letters at the end: .docx, .jpg, .mp3, .zip.",
+        "Windows hides extensions by default; turn on View > File name extensions.",
+        "Renaming the extension does NOT convert the file — use Save As.",
+        "Extensions are case-insensitive; the dot is always a dot.",
+        "Learn by family: Office, Images/Media, Executables/Archives, Web/Text."
+      ],
+      "tricks": [
+        "If File Explorer shows 'photo' with no dot, extensions are hidden — the real name is still photo.jpg.",
+        "Double extension trap: 'report.pdf.exe' is an EXE, not a PDF. The last dot wins.",
+        "To truly convert, use Save As — never just rename the letters after the dot."
+      ],
+      "patterns": [
+        "'Windows hides file extensions by default — where do you turn them on?' -> File Explorer > View > File name extensions.",
+        "'You rename image.png to image.jpg — does it become a JPG?' -> No, only the label changes; the bytes are still PNG.",
+        "'What does the extension tell Windows?' -> Which app opens the file."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in every placement file-extension set (Testbook / Sanfoundry)",
+          "question": "Which setting shows the dot + letters at the end of filenames?",
+          "approach": "File Explorer > View > File name extensions (Show > File name extensions on Windows 11)."
+        },
+        {
+          "source": "PrepInsta / IndiaBIX — hidden extension trap",
+          "question": "A file named 'notes' with a Word icon is actually 'notes.docx' — why don't you see the dot part?",
+          "approach": "Windows hides known extensions by default. Turn on File name extensions."
+        }
+      ],
+      "companyNote": "The hidden-extension fact and the 'renaming does not convert' fact appear in almost every Office + OS paper. Both are free marks."
+    },
+    {
+      "id": "office-formats",
+      "title": "Office Formats: .docx / .xlsx / .pptx (and the old .doc / .xls / .ppt)",
+      "type": "concept",
+      "quickSummary": "Modern Office uses .docx (Word), .xlsx (Excel), .pptx (PowerPoint) — all ZIP-based open XML since Office 2007. Old versions used .doc, .xls, .ppt (binary). Template files are .dotx, .xltx, .potx; macros add an m (.docm, .xlsm, .pptm).",
+      "content": [
+        "The three modern Office extensions you must know cold: .docx for Word, .xlsx for Excel, .pptx for PowerPoint. The x means open XML — since Office 2007 these files are actually ZIP archives containing XML. Old versions used the binary formats .doc (Word), .xls (Excel), .ppt (PowerPoint). Both still open in modern Office for backward compatibility.",
+        "Templates are the t variants: .dotx is a Word template (the file behind every new blank document; Normal.dotm is the default), .xltx is an Excel template, .potx is a PowerPoint template. When an exam says 'PowerPoint template file extension' the answer is .potx (correct) — not .pptx, not .ppt, not .ppsx.",
+        "The m means macros: .docm, .xlsm, .pptm are the same formats but allowed to contain VBA macros (small programs inside the document). Without the m, Office blocks macros for safety. If a bank says macros are disabled, they are sending you the x variant.",
+        "Slideshows have their own formats: .ppsx (PowerPoint Show — double-click starts the presentation immediately, no editing view), .pptx is the editable deck. The exam loves: '.ppsx vs .pptx?' -> .ppsx auto-plays, .pptx opens in edit mode. Both are modern XML.",
+        "Outlook and Access extras: .pst and .ost are Outlook data files (Personal/Offline storage — mail, calendar, contacts), .msg is a single saved Outlook message, .accdb is the modern Access database (replaced .mdb from older Access). You will also see .pdf often treated as an Office export target: every Office app can Save As PDF."
+      ],
+      "subsections": [
+        {
+          "title": "The Office 2007 split — old vs new at a glance",
+          "content": "Old (binary, pre-2007): .doc, .xls, .ppt, .mdb, .dot. New (XML, 2007 onward): .docx, .xlsx, .pptx, .accdb, .dotx, .xltx, .potx. Add m for macro-enabled: .docm, .xlsm, .pptm. Add s for auto-play shows: .ppsx, .pps. The single letter after the base tells you the variant."
+        },
+        {
+          "title": "OpenDocument cousins",
+          "content": "LibreOffice uses OpenDocument: .odt (text, like .docx), .ods (spreadsheet, like .xlsx), .odp (presentation, like .pptx). The exam sometimes mixes these in option lists to catch you. If the question says Microsoft Word document, the answer is never .odt."
+        }
+      ],
+      "quickRevision": [
+        "Modern: .docx (Word), .xlsx (Excel), .pptx (PowerPoint) — since Office 2007, XML+ZIP.",
+        "Old: .doc, .xls, .ppt — binary, pre-2007, still opens today.",
+        "Templates: .dotx (Word), .xltx (Excel), .potx (PowerPoint).",
+        "Macro-enabled: add m -> .docm, .xlsm, .pptm.",
+        "Show: .ppsx auto-plays; .pptx opens editable. Outlook: .pst/.ost data, .msg single mail. Access: .accdb (new) vs .mdb (old)."
+      ],
+      "tricks": [
+        "If options contain both .pptx and .ppt — .pptx is the correct answer for modern PowerPoint unless the question says pre-2007.",
+        "The letter after the base is the clue: t = template, m = macro, s = show. dotx/xltx/potx/ppsx.",
+        ".odt/.ods/.odp are LibreOffice — not Microsoft Office. Do not pick them for a Microsoft question."
+      ],
+      "patterns": [
+        "'Modern Word document extension?' -> .docx (old was .doc).",
+        "'Excel workbook extension since 2007?' -> .xlsx (old was .xls).",
+        "'PowerPoint template file?' -> .potx (Word template .dotx, Excel template .xltx).",
+        "'Which file can contain macros?' -> .xlsm / .docm / .pptm (the m variants)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Testbook / Sanfoundry / PrepInsta — Office extensions, every year",
+          "question": "Extension of a Microsoft Word file / Excel file / PowerPoint file?",
+          "approach": "Word .docx, Excel .xlsx, PowerPoint .pptx. Old: .doc/.xls/.ppt."
+        },
+        {
+          "source": "Wipro / TCS NQT — template trick",
+          "question": "Which is the PowerPoint template extension?",
+          "approach": ".potx. (Word .dotx, Excel .xltx. The exam often lists .potx and .pptx together.)"
+        }
+      ],
+      "companyNote": "The single most asked Office MCQ. Expect at least one question on docx/xlsx/pptx and one on dotx/potx/xltx or the m variants."
+    },
+    {
+      "id": "images-media",
+      "title": "Images & Media: .jpg / .png / .gif / .svg and .mp3 / .mp4 / .avi / .mov",
+      "type": "concept",
+      "quickSummary": "Raster images: .jpg (photos, lossy), .png (transparent, lossless), .gif (animation, 256 colors), .bmp (uncompressed), .tiff (print). Vector: .svg (code, scales cleanly). Audio: .mp3, .wav. Video: .mp4, .avi, .mov, .mkv, .wmv.",
+      "content": [
+        "Raster images are pixel grids. .jpg (or .jpeg — same format) is the standard for photos: lossy compression (smaller file, some quality loss), no transparency, best for camera images. .png is lossless with transparency — best for logos, screenshots, and graphics where sharp edges matter. The exam's favourite: 'Which format supports transparency?' -> .png (and .gif/.svg), never .jpg.",
+        ".gif supports animation but only 256 colors, so gradients look banded — modern replacement is short .mp4 clips. .bmp is uncompressed raster (huge files, rarely used except as a distractor). .tiff (or .tif) is the print/production raster: lossless, supports layers and CMYK, preferred in publishing, not for the web.",
+        "Vector images are not pixels but math: .svg (Scalable Vector Graphics) is code that draws shapes, so it stays sharp at any size. The icon you see in File Explorer is itself an .svg or .ico conceptually — vector for UI, raster for photos. Distractor .psd is Photoshop's native layered file; .ai is Illustrator's native vector; neither is a final web format.",
+        "Audio: .mp3 is the universal compressed audio (small, lossy, plays everywhere). .wav (Waveform Audio) is uncompressed — studio quality, very large, the audio equivalent of .bmp. .aac is the Apple/modern compressed audio used inside .mp4 and .m4a. .flac is lossless compressed (smaller than .wav but no quality loss).",
+        "Video is a container plus codecs. .mp4 is the universal video container (plays on every device and browser — the correct answer 90 percent of the time). .avi is old Microsoft video (large), .mov is Apple QuickTime, .mkv (Matroska) is the enthusiast container that can hold many audio/subtitle tracks, .wmv (Windows Media Video) is Microsoft's compressed video, .flv was Flash Video (now obsolete like Flash itself)."
+      ],
+      "subsections": [
+        {
+          "title": "How to choose in 2 seconds",
+          "content": "Photo from a camera -> .jpg. Logo/screenshot needing transparency or sharp text -> .png. Simple animation -> .gif (or short .mp4 for better quality). Icon that must scale cleanly -> .svg. Never .bmp for delivery; never .jpg if you need transparency."
+        },
+        {
+          "title": "Lossy vs lossless",
+          "content": "Lossy (.jpg, .mp3, .mp4) throws away data to save space — smaller, slight quality loss. Lossless (.png, .wav, .flac, .zip) keeps everything — larger or compressed without loss. The exam loves to sort formats into these two buckets."
+        }
+      ],
+      "quickRevision": [
+        "Raster: .jpg photos (lossy, no transparency), .png lossless+transparent, .gif animated 256 colors, .bmp uncompressed, .tiff print/CMYK, .psd Photoshop native.",
+        "Vector: .svg scales cleanly (code, not pixels). .ai Illustrator native.",
+        "Audio: .mp3 universal lossy, .wav uncompressed large, .aac modern lossy, .flac lossless compressed.",
+        "Video: .mp4 universal, .avi old Microsoft, .mov Apple, .mkv multi-track, .wmv Windows compressed, .flv obsolete Flash.",
+        "Rule: photos -> jpg; logos/transparency -> png; animation -> gif/mp4; scalable icons -> svg."
+      ],
+      "tricks": [
+        "If options include .jpg, .png, .gif — and the question is transparency, pick .png, not .gif (gif transparency is 1-bit, png is 8-bit alpha).",
+        ".jpeg and .jpg are the same format — the exam sometimes lists both to split votes.",
+        ".mp4 is the safe video answer unless the question specifically says Apple QuickTime (.mov) or Windows Media (.wmv)."
+      ],
+      "patterns": [
+        "'Which image format supports transparency?' -> .png (and .gif/.svg) — never .jpg.",
+        "'Uncompressed image format?' -> .bmp (or .tiff for print).",
+        "'Scalable vector image for the web?' -> .svg.",
+        "'Universal audio / video format?' -> .mp3 for audio, .mp4 for video."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "PrepInsta / Sanfoundry / Testbook — image format MCQs",
+          "question": "Which file extension is used for images? Which image format supports transparency?",
+          "approach": ".png supports transparency and lossless compression. .jpg does not. .svg is vector and also scalable."
+        },
+        {
+          "source": "TCS / Accenture — audio/video extensions",
+          "question": "Extension for an audio file / video file?",
+          "approach": "Audio: .mp3 is universal. Video: .mp4 is universal (.avi/.mov/.mkv/.wmv are the distractors by vendor)."
+        }
+      ],
+      "companyNote": "1-2 questions every paper: one image-format choice (.jpg vs .png vs .svg) and one audio/video (.mp3 vs .mp4 vs .wav)."
+    },
+    {
+      "id": "executables-archives",
+      "title": "Executables & Archives: .exe / .msi / .bat and .zip / .rar / .7z / .tar / .gz",
+      "type": "concept",
+      "quickSummary": ".exe is the Windows executable (a program). .msi is a Windows installer. .bat is a batch script. .dll is a shared library. Archives: .zip universal, .rar (WinRAR), .7z (7-Zip), .tar/.gz Linux. Double extensions like .pdf.exe are a virus trick.",
+      "content": [
+        "Executables are runnable programs. .exe (executable) is the Windows program you double-click to launch — Word itself is WINWORD.EXE. .msi (Microsoft Installer) is the installer package that puts a program on your machine (double-click installs, not just runs). .bat (batch file) is a text file of Windows commands that runs line by line — the classic automation script on Windows.",
+        ".dll (Dynamic Link Library) is shared code that many programs reuse — never double-click a .dll directly; it is loaded by .exe files. .app and .apk are not Windows: .app is macOS, .apk is Android package. If the exam says Windows executable, the answer is .exe, not .apk.",
+        "Archives compress many files into one smaller file. .zip is universal — Windows can open it without installing anything. .rar needs WinRAR, .7z needs 7-Zip (both compress better than .zip). Linux common pair is .tar (tape archive — bundles files) + .gz (gzip — compresses the .tar), so you often see .tar.gz or .tgz — a bundled then compressed archive.",
+        "System and safety: Windows warns before running downloaded .exe files — SmartScreen. The double-extension trap is the exam favourite: a file named 'invoice.pdf.exe' shows with a PDF icon if extensions are hidden, but the true extension is .exe. Always show file name extensions (View > File name extensions) to see the real last dot.",
+        "Other safety extensions: .js (JavaScript) and .vbs (VBScript) downloaded from email can be malicious if double-clicked. Place real executables only from trusted sources. On servers you will also see .iso (disc image — a whole CD/DVD as one file) and .img."
+      ],
+      "subsections": [
+        {
+          "title": "Installers vs programs",
+          "content": ".exe runs a program directly. .msi is an installer that registers the program in Programs and Features (Add/Remove), often requiring admin permission. Many installers are themselves .exe files — the distinction is what the publisher packaged them as."
+        },
+        {
+          "title": "Archive choice in 5 seconds",
+          "content": "Need something any Windows PC can open? -> .zip. Best compression on Windows? -> .7z or .rar. On Linux and in downloads you see .tar.gz: first tar bundles, gzip compresses. Two steps in one filename."
+        }
+      ],
+      "quickRevision": [
+        "Windows executable: .exe (program). Installer: .msi. Script: .bat. Shared library: .dll (loaded by exe, not run directly).",
+        "Archives: .zip universal (built into Windows), .rar WinRAR, .7z 7-Zip, .tar+.gz Linux (.tar.gz).",
+        "Not Windows: .app is macOS, .apk is Android, .deb is Debian Linux.",
+        "Double extension trap: 'file.pdf.exe' is an EXE — the last dot is the real extension.",
+        "Risky double-click from email: .exe, .js, .vbs, .bat, .msi — verify sender first."
+      ],
+      "tricks": [
+        "If options include .exe, .apk, .app and the question says Windows executable — only .exe is correct.",
+        "If the question says 'compressed archive any Windows can open without installing anything' -> .zip, not .rar or .7z.",
+        ".tar.gz looks like two extensions because it is: .tar bundles, .gz compresses. The exam loves to ask what .gz does."
+      ],
+      "patterns": [
+        "'Windows executable file?' -> .exe (installer is .msi).",
+        "'Compressed file format?' -> .zip is the safe universal answer.",
+        "'Android package?' -> .apk (Windows is .exe).",
+        "'File looks like invoice.pdf but is actually an executable — why?' -> Hidden extensions + double extension .pdf.exe."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Placement papers — executable vs archive",
+          "question": "Which is an executable file / which is a compressed file?",
+          "approach": "Executable .exe (Windows). Compressed .zip (.rar/.7z are also compressed but need extra software)."
+        },
+        {
+          "source": "Accenture / Wipro — double-extension safety",
+          "question": "A downloaded file appears as 'report.pdf' but runs as a program when clicked. What likely happened?",
+          "approach": "The file is actually report.pdf.exe with extensions hidden. The last extension (.exe) is the real type."
+        }
+      ],
+      "companyNote": "One question on .exe vs .zip vs .apk is almost guaranteed. The double-extension safety twist has appeared in recent AXIS practice sets."
+    },
+    {
+      "id": "web-text",
+      "title": "Web & Text Formats: .html / .css / .js / .pdf / .txt / .csv / .json / .xml",
+      "type": "concept",
+      "quickSummary": "Web: .html (structure), .css (style), .js (behavior) — the trio every page uses. Portable: .pdf (fixed layout). Data: .csv (comma-separated table), .json (modern APIs), .xml (older data). Text: .txt plain, .rtf formatted, .md markdown.",
+      "content": [
+        "The web trio: .html is the structure of a web page, .css is the styling (colors, fonts, layout), .js (JavaScript) is the behavior (menus, sliders, validation). Every page you see in a browser downloaded at least one of each. The exam asks them as a set: 'Which three extensions make up a web page?' -> .html + .css + .js.",
+        ".pdf (Portable Document Format) looks the same on every device — the layout is frozen, fonts and pagination are fixed. Great for resumes, invoices, and question papers. Unlike .docx, a .pdf is not meant to be freely edited (you need Acrobat or similar). Every Office app exports to PDF via Save As.",
+        "Text and data: .txt is plain text — no formatting, no fonts, just characters. .rtf (Rich Text Format) is text plus basic formatting, a stepping stone between .txt and .docx. .csv (Comma-Separated Values) is a raw table: each line is a row, commas separate columns — opens cleanly in Excel and in any database. .json (JavaScript Object Notation) and .xml (eXtensible Markup Language) are data-exchange formats: .json is modern APIs, .xml is older enterprise data.",
+        ".md (Markdown) is plain text with tiny formatting marks like # Heading and **bold** — used for README files on GitHub and for notes. .log is a plain text log file. .bak is a backup copy. .tmp is a temporary file.",
+        "Encoding note: .txt can be ANSI, UTF-8, or Unicode — UTF-8 handles emoji and all languages. You normally never need to choose; just remember .txt is the simplest format with the widest compatibility."
+      ],
+      "subsections": [
+        {
+          "title": "CSV in practice",
+          "content": ".csv is the workhorse for moving tables between apps: Excel Save As CSV, then upload into a database or Google Sheets. Because it is just text with commas, any program can read it. Warning: if a cell itself contains a comma, the file wraps that cell in quotes."
+        },
+        {
+          "title": "JSON vs XML — which will you see?",
+          "content": "Modern web APIs return .json: {\"name\":\"Asha\",\"marks\":92}. Older enterprise systems and Office internals use .xml: <student><name>Asha</name></student>. In AXIS MCQs, if options contain both .json and .xml for 'modern data exchange', pick .json."
+        }
+      ],
+      "quickRevision": [
+        "Web trio: .html structure, .css style, .js behavior.",
+        "Portable fixed layout: .pdf — looks identical on every device; not freely editable.",
+        "Text: .txt plain, .rtf rich text, .md markdown, .log plain log.",
+        "Data: .csv comma table (raw Excel data), .json modern APIs, .xml older enterprise data.",
+        "Office can Save As .pdf; browsers can open .pdf and all three web formats."
+      ],
+      "tricks": [
+        "If the question says 'editable document format' the answer is .docx, not .pdf.",
+        ".htm and .html are the same format — the exam sometimes lists both to test if you hesitate.",
+        ".csv opens in Excel but it is NOT an Excel format — it has no formulas, no formatting, no charts, just raw text with commas."
+      ],
+      "patterns": [
+        "'Which format is portable and looks the same everywhere?' -> .pdf.",
+        "'Which format stores a table as plain text with commas?' -> .csv.",
+        "'Which three formats make a web page?' -> .html + .css + .js.",
+        "'Modern data-exchange format for APIs?' -> .json (older: .xml)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Placement papers — web and portable formats",
+          "question": "Which extension is used for a web page / a portable document?",
+          "approach": "Web .html (trio .html/.css/.js). Portable .pdf. Plain text .txt. Comma table .csv."
+        },
+        {
+          "source": "TCS NQT / Infosys — data formats",
+          "question": "Which format is used for data exchange between systems?",
+          "approach": "Modern .json, legacy .xml. The question wording tells you which: 'lightweight/modern' -> .json."
+        }
+      ],
+      "companyNote": "The web trio plus .pdf/.csv/.json/.xml is a regular 1-2 question block. Often asked as a combined 'match the extension to its use' table question."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "office-family",
+      "title": "Office Extension Family (modern vs old vs variant)",
+      "formula": {
+        "latex": "\\text{Modern } .docx/.xlsx/.pptx \\quad | \\quad \\text{Old } .doc/.xls/.ppt \\quad | \\quad +t=\\text{template} \\; +m=\\text{macro} \\; +s=\\text{show}",
+        "text": "Modern 2007+ = docx/xlsx/pptx | Old pre-2007 = doc/xls/ppt | +t template (dotx/xltx/potx) | +m macro (docm/xlsm/pptm) | +s show (ppsx)"
+      },
+      "whenToUse": "Any 'which is the correct Office extension?' MCQ — the family rule answers it without memorizing each variant.",
+      "explanation": [
+        "Modern (2007 onward, XML+ZIP): .docx Word, .xlsx Excel, .pptx PowerPoint.",
+        "Old (binary, pre-2007): .doc Word, .xls Excel, .ppt PowerPoint — still opens today.",
+        "Template (+t): .dotx Word template, .xltx Excel template, .potx PowerPoint template.",
+        "Macro (+m): .docm, .xlsm, .pptm — same as modern but allowed to carry macros.",
+        "Show (+s): .ppsx auto-plays on double-click; .pptx opens in edit mode.",
+        "Extras: Outlook .pst/.ost (data), .msg (single mail); Access .accdb (new) vs .mdb (old); LibreOffice .odt/.ods/.odp are NOT Microsoft answers."
+      ],
+      "example": {
+        "prompt": "Which file will auto-play as a slideshow when double-clicked?",
+        "steps": [
+          "Editable PowerPoint deck is .pptx; auto-play show is .ppsx (the s = show).",
+          "Check options: if both .pptx and .ppsx appear, pick .ppsx for auto-play."
+        ],
+        "answer": ".ppsx"
+      },
+      "memoryTip": "x = XML modern. Old had no x. t = template, m = macro, s = show — the letter after the base tells you the job.",
+      "commonMistake": "Picking .pptx for a template question. Template is .potx (correct), not .pptx. The t matters."
+    },
+    {
+      "id": "image-media-map",
+      "title": "Image and Media Extension Map",
+      "formula": {
+        "latex": "\\text{Raster } .jpg/.png/.gif/.bmp/.tiff \\; | \\; \\text{Vector } .svg \\; | \\; \\text{Audio } .mp3/.wav/.aac/.flac \\; | \\; \\text{Video } .mp4/.avi/.mov/.mkv/.wmv",
+        "text": "Raster: jpg photos, png transparent, gif animated, bmp uncompressed, tiff print | Vector: svg scalable | Audio: mp3 universal, wav raw | Video: mp4 universal"
+      },
+      "whenToUse": "Any image/audio/video extension MCQ — locate the format in the map, then apply the rule (transparency, quality, scalability, compatibility).",
+      "explanation": [
+        "Raster (pixels): .jpg photos (lossy, no transparency), .png lossless+transparent, .gif animated 256 colors, .bmp uncompressed huge, .tiff print/CMYK lossless.",
+        "Vector (math): .svg stays sharp at any size (icons, logos that must scale).",
+        "Audio: .mp3 universal compressed, .wav uncompressed large, .aac modern Apple, .flac lossless compressed.",
+        "Video: .mp4 universal (pick this 90 percent of the time), .avi old Microsoft, .mov Apple QuickTime, .mkv multi-track, .wmv Windows compressed, .flv obsolete Flash."
+      ],
+      "example": {
+        "prompt": "Logo with a transparent background for a website — which format?",
+        "steps": [
+          "Need transparency and sharp edges — .jpg cannot do transparency.",
+          "Shortlist: .png or .svg (both support transparency). For a scalable logo, .svg is best; otherwise .png.",
+          "If options are jpg/png/gif/bmp, answer is .png."
+        ],
+        "answer": ".png (or .svg if scalable vector is an option)"
+      },
+      "memoryTip": "jpg = photo, png = preserve (lossless+transparent), gif = graphics 256 + animation, svg = scalable vector. mp3 = music, mp4 = movie.",
+      "commonMistake": "Picking .jpg for transparency. JPG never supports transparency — only png/gif/svg do."
+    },
+    {
+      "id": "exe-archive-map",
+      "title": "Executables and Archives Map",
+      "formula": {
+        "latex": "\\text{Run } .exe \\; \\text{Install } .msi \\; \\text{Script } .bat \\; \\text{Library } .dll \\; | \\; \\text{Archive } .zip/.rar/.7z/.tar.gz \\; | \\; \\text{Phone } .apk \\; \\text{Mac } .app",
+        "text": "Run = exe | Install = msi | Script = bat | Library = dll (not run directly) | Archive = zip/rar/7z/tar.gz | Android = apk | macOS = app"
+      },
+      "whenToUse": "Any 'which is an executable / installer / archive' MCQ — especially ones that mix Windows, Android and macOS formats to test the platform.",
+      "explanation": [
+        "Windows run: .exe (program), .msi (installer package), .bat (batch script, text of commands). .dll is shared library — loaded by exe, never double-clicked directly.",
+        "Archive: .zip universal (Windows opens without extra app), .rar needs WinRAR, .7z needs 7-Zip, .tar.gz is Linux pair (tar bundles, gz compresses).",
+        "Mobile/Mac: .apk is Android, .app is macOS. On a Windows question, both are wrong.",
+        "Disc: .iso/.img is a whole CD or DVD as one file.",
+        "Safety: last dot wins — report.pdf.exe is an EXE, not a PDF. Show File name extensions to see it."
+      ],
+      "example": {
+        "prompt": "Which file is the Windows executable?",
+        "steps": [
+          "Options include .exe, .apk, .app — check platform: Windows executable is .exe.",
+          ".apk is Android, .app is macOS — both wrong for Windows."
+        ],
+        "answer": ".exe"
+      },
+      "memoryTip": "exe = execute, msi = Microsoft installer, zip = zip it up, apk = Android package — platform name hides in the question.",
+      "commonMistake": "Confusing .rar/.7z with .zip. If the question says 'no extra software needed on Windows', only .zip is correct."
+    },
+    {
+      "id": "web-text-map",
+      "title": "Web and Text Format Family",
+      "formula": {
+        "latex": "\\text{Web } .html+.css+.js \\; | \\; \\text{Fixed } .pdf \\; | \\; \\text{Text } .txt/.rtf/.md/.log \\; | \\; \\text{Data } .csv/.json/.xml",
+        "text": "Web trio: html structure + css style + js behavior | Fixed layout: pdf | Text: txt/rtf/md/log | Data: csv table, json modern, xml legacy"
+      },
+      "whenToUse": "Any MCQ that asks for a web page format, portable format, or data-exchange format — the family gets you there.",
+      "explanation": [
+        "Web trio: .html structure, .css style, .js behavior — every browser page uses all three.",
+        "Fixed: .pdf looks identical on every device, not freely editable (needs Acrobat). Office exports to PDF via Save As.",
+        "Text: .txt plain (no formatting), .rtf rich text (basic formatting), .md markdown (README), .log plain log, .bak backup, .tmp temporary.",
+        "Data: .csv comma table (raw Excel data, no formulas), .json modern data exchange (APIs), .xml older enterprise data — Office internals use XML.",
+        ".htm and .html are the same format. .jpeg and .jpg are the same format — the exam lists both to split votes."
+      ],
+      "example": {
+        "prompt": "A file stores a student table as plain text with commas. Which extension?",
+        "steps": [
+          "Plain table with commas: each row is a line, commas separate columns.",
+          "That is .csv (Comma-Separated Values) — opens in Excel as a plain table with no formulas or charts."
+        ],
+        "answer": ".csv"
+      },
+      "memoryTip": "html = how the page is built, css = color and style, js = just the behavior, pdf = portable, csv = comma-separated, json = JavaScript object.",
+      "commonMistake": "Thinking .csv is an Excel format. It is plain text with commas — no formulas, no formatting, no charts."
+    }
+  ],
+  "practiceProblems": {
+    "office-family": [
+      {"q": "Modern Microsoft Word document extension (since Office 2007):", "opts": [".doc", ".docx", ".dotx", ".odt"], "c": 1, "s": ["Modern Word is .docx (XML+ZIP). Old was .doc (binary). .dotx is a Word template. .odt is LibreOffice."], "a": ".docx"},
+      {"q": "Modern Microsoft Excel workbook extension (since Office 2007):", "opts": [".xls", ".xlsx", ".xlsm", ".ods"], "c": 1, "s": ["Modern Excel is .xlsx. Old was .xls. .xlsm is the macro-enabled variant. .ods is LibreOffice Calc."], "a": ".xlsx"},
+      {"q": "Modern PowerPoint presentation extension (editable deck):", "opts": [".ppt", ".pptx", ".ppsx", ".potx"], "c": 1, "s": [".pptx is the editable deck. .ppt was the old binary. .ppsx auto-plays. .potx is a template."], "a": ".pptx"},
+      {"q": "Which Office file will auto-play as a slideshow on double-click?", "opts": [".pptx", ".ppsx", ".potx", ".pptm"], "c": 1, "s": ["The s = show. .ppsx starts the show immediately. .pptx opens in edit mode. .potx is a template."], "a": ".ppsx"},
+      {"q": "PowerPoint template file extension:", "opts": [".pptx", ".potx", ".ppsx", ".pptm"], "c": 1, "s": ["t = template. PowerPoint template is .potx (Word .dotx, Excel .xltx)."], "a": ".potx"},
+      {"q": "Word template file extension:", "opts": [".docx", ".dotx", ".docm", ".odt"], "c": 1, "s": ["Word template is .dotx. .docx is a Word document, .docm is macro-enabled, .odt is LibreOffice."], "a": ".dotx"},
+      {"q": "Which Office file can contain macros (VBA code)?", "opts": [".docx", ".xlsx", ".xlsm", ".pdf"], "c": 2, "s": ["The m = macro. .xlsm is macro-enabled Excel. .xlsx blocks macros. .docx and .pdf never carry Office macros in the question's context."], "a": ".xlsm"},
+      {"q": "Old PowerPoint presentation format before Office 2007:", "opts": [".pptx", ".ppt", ".ppsx", ".potx"], "c": 1, "s": ["Old binary PowerPoint was .ppt. Modern XML is .pptx."], "a": ".ppt"},
+      {"q": "Outlook data file that stores your mailbox on disk:", "opts": [".pst", ".msg", ".accdb", ".ost"], "c": 0, "s": [".pst is the Personal Storage Table (mail, calendar, contacts). .ost is the offline cache. .msg is a single saved mail. .accdb is Access."], "a": ".pst"},
+      {"q": "Microsoft Access database (modern, since Access 2007):", "opts": [".mdb", ".accdb", ".xlsx", ".pst"], "c": 1, "s": ["Modern Access is .accdb (XML-based). Old was .mdb (binary). .xlsx is Excel, .pst is Outlook."], "a": ".accdb"}
+    ],
+    "image-media-map": [
+      {"q": "Standard image format for photos from a camera (lossy, no transparency):", "opts": [".png", ".jpg", ".gif", ".svg"], "c": 1, "s": [".jpg (jpeg) is the photo standard — lossy, small, no transparency."], "a": ".jpg"},
+      {"q": "Which image format supports transparency and lossless compression for logos and screenshots?", "opts": [".jpg", ".png", ".bmp", ".mp4"], "c": 1, "s": [".png is lossless and supports 8-bit alpha transparency — best for logos, UI, text graphics."], "a": ".png"},
+      {"q": "Scalable vector image for the web that stays sharp at any size:", "opts": [".jpg", ".png", ".svg", ".bmp"], "c": 2, "s": [".svg is vector (code that draws shapes), so it scales infinitely without blur."], "a": ".svg"},
+      {"q": "Animated image format limited to 256 colors:", "opts": [".jpg", ".png", ".gif", ".tiff"], "c": 2, "s": [".gif allows simple animation but only 256 colors. Modern short animations often use .mp4 instead."], "a": ".gif"},
+      {"q": "Uncompressed raster image with very large file size (rarely used except as a distractor):", "opts": [".jpg", ".bmp", ".png", ".svg"], "c": 1, "s": [".bmp is uncompressed — the audio equivalent is .wav. Rarely used for delivery."], "a": ".bmp"},
+      {"q": "Print and publishing raster format, lossless, supports CMYK layers:", "opts": [".jpg", ".tiff", ".gif", ".mp4"], "c": 1, "s": [".tiff (or .tif) is the print/production raster — lossless, supports layers, CMYK."], "a": ".tiff"},
+      {"q": "Universal compressed audio format that plays everywhere:", "opts": [".wav", ".mp3", ".flac", ".bmp"], "c": 1, "s": [".mp3 is the universal compressed audio (lossy, small). .wav is uncompressed large."], "a": ".mp3"},
+      {"q": "Uncompressed audio with very large file size (studio quality):", "opts": [".mp3", ".wav", ".aac", ".mp4"], "c": 1, "s": [".wav is uncompressed audio — the largest but highest fidelity before lossless compression."], "a": ".wav"},
+      {"q": "Universal video container that plays on every device and browser:", "opts": [".avi", ".mov", ".mp4", ".wmv"], "c": 2, "s": [".mp4 is the universal video container. .avi is old Microsoft, .mov is Apple, .wmv is Windows compressed, .mkv is multi-track enthusiast."], "a": ".mp4"},
+      {"q": "Windows compressed video format:", "opts": [".mov", ".mp4", ".wmv", ".tiff"], "c": 2, "s": [".wmv is Windows Media Video. .mov is Apple QuickTime. .mp4 is universal. .tiff is an image."], "a": ".wmv"}
+    ],
+    "exe-archive-map": [
+      {"q": "Windows executable file that you double-click to run a program:", "opts": [".exe", ".apk", ".app", ".deb"], "c": 0, "s": [".exe is the Windows executable. .apk is Android, .app is macOS, .deb is Debian Linux."], "a": ".exe"},
+      {"q": "Windows installer package that registers a program in Add or Remove Programs:", "opts": [".exe", ".msi", ".bat", ".dll"], "c": 1, "s": [".msi is the Microsoft Installer package. Many installers are also .exe, but .msi is the designated installer format."], "a": ".msi"},
+      {"q": "Archive format that any Windows PC can open without installing extra software:", "opts": [".rar", ".7z", ".zip", ".tar.gz"], "c": 2, "s": [".zip is built into Windows. .rar needs WinRAR, .7z needs 7-Zip, .tar.gz is the Linux pair."], "a": ".zip"},
+      {"q": "Archive format associated with WinRAR (better compression than ZIP):", "opts": [".zip", ".rar", ".iso", ".exe"], "c": 1, "s": [".rar is WinRAR. .7z is 7-Zip (also better than ZIP). .iso is a disc image. .exe is a program."], "a": ".rar"},
+      {"q": "Linux archive pair where one bundles and the other compresses (often seen as .tar.gz):", "opts": [".zip + .rar", ".tar + .gz", ".7z + .iso", ".exe + .dll"], "c": 1, "s": [".tar bundles files, .gz (gzip) compresses the bundle. You see them together as .tar.gz or .tgz."], "a": ".tar + .gz"},
+      {"q": "Android package file extension:", "opts": [".exe", ".apk", ".app", ".msi"], "c": 1, "s": [".apk is Android Package. .exe is Windows, .app is macOS."], "a": ".apk"},
+      {"q": "macOS application bundle extension:", "opts": [".exe", ".apk", ".app", ".msi"], "c": 2, "s": [".app is macOS. .apk is Android. .exe/.msi are Windows."], "a": ".app"},
+      {"q": "Shared library loaded by .exe files, never double-clicked directly:", "opts": [".exe", ".dll", ".bat", ".zip"], "c": 1, "s": [".dll is Dynamic Link Library — shared code loaded by programs."], "a": ".dll"},
+      {"q": "A file appears as 'invoice.pdf' but Windows runs it as a program. Most likely:", "opts": ["The file is a hidden PDF", "The file is actually invoice.pdf.exe with extensions hidden", "Windows always runs PDFs as programs", "The file is a .zip"], "c": 1, "s": ["Double extension with hidden extensions: the last dot is the real type — .exe. Turn on File name extensions to see it."], "a": "The file is actually invoice.pdf.exe with extensions hidden"},
+      {"q": "Whole CD or DVD saved as a single file (disc image):", "opts": [".zip", ".iso", ".jpg", ".mp4"], "c": 1, "s": [".iso (or .img) is a disc image — the entire disc as one file."], "a": ".iso"}
+    ],
+    "web-text-map": [
+      {"q": "Structure of a web page — the main web document format:", "opts": [".html", ".pdf", ".docx", ".txt"], "c": 0, "s": [".html is the web structure. .pdf is fixed portable, .docx is Word, .txt is plain text."], "a": ".html"},
+      {"q": "Styling of a web page (colors, fonts, layout):", "opts": [".html", ".css", ".js", ".pdf"], "c": 1, "s": [".css is the style sheet. .html is structure, .js is behavior."], "a": ".css"},
+      {"q": "Behavior of a web page (menus, validation, sliders):", "opts": [".html", ".css", ".js", ".txt"], "c": 2, "s": [".js (JavaScript) is the behavior. .html structure, .css style."], "a": ".js"},
+      {"q": "Format that looks identical on every device — not meant to be freely edited:", "opts": [".docx", ".pdf", ".txt", ".csv"], "c": 1, "s": [".pdf is Portable Document Format — frozen layout, fixed fonts, not freely editable. .docx is editable Word."], "a": ".pdf"},
+      {"q": "Plain table where each row is a line and commas separate columns — opens cleanly in Excel but is just text:", "opts": [".xlsx", ".pdf", ".csv", ".html"], "c": 2, "s": [".csv is Comma-Separated Values — raw text table. .xlsx is a full Excel workbook with formulas and formatting."], "a": ".csv"},
+      {"q": "Modern lightweight data-exchange format used by web APIs:", "opts": [".json", ".bmp", ".mp3", ".exe"], "c": 0, "s": [".json (JavaScript Object Notation) is modern. Legacy enterprise uses .xml. .bmp is an image, .mp3 is audio."], "a": ".json"},
+      {"q": "Older enterprise data-exchange format, tag-heavy, also inside Office XML:", "opts": [".json", ".xml", ".jpg", ".zip"], "c": 1, "s": [".xml is the older tag-heavy format. Modern APIs prefer .json. Office XML files are themselves zip+xml."], "a": ".xml"},
+      {"q": "Plain text — no formatting, just characters — most compatible format:", "opts": [".txt", ".docx", ".pdf", ".pptx"], "c": 0, "s": [".txt is plain text. .docx has fonts/styles, .pdf has fixed layout, .pptx has slides."], "a": ".txt"},
+      {"q": ".htm and .html:", "opts": ["Are different formats", ".htm is newer", "Are the same web page format", ".htm is only for Internet Explorer"], "c": 2, "s": [".htm and .html are the same format — .htm is just the 3-letter limit from old DOS days."], "a": "Are the same web page format"},
+      {"q": "Markdown README format commonly seen on GitHub:", "opts": [".txt", ".md", ".pdf", ".docx"], "c": 1, "s": [".md is Markdown — plain text with tiny marks like # Heading and **bold**."], "a": ".md"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Modern Microsoft Word document extension (since Office 2007):", "opts": [".doc", ".docx", ".dotx", ".odt"], "c": 1, "d": "easy", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": ["Office 2007 moved Word to .docx (XML+ZIP). Old binary was .doc. .dotx is a Word template." ]},
+    {"id": 2, "q": "Modern Microsoft Excel workbook extension (since Office 2007):", "opts": [".xls", ".xlsx", ".xlsm", ".ods"], "c": 1, "d": "easy", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": ["Modern Excel is .xlsx. Old was .xls. .xlsm is the macro variant. .ods is LibreOffice."]},
+    {"id": 3, "q": "Modern PowerPoint presentation extension (editable deck):", "opts": [".ppt", ".pptx", ".ppsx", ".potx"], "c": 1, "d": "easy", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": [".pptx is the editable deck. .ppt was old binary. .ppsx auto-plays. .potx is a template."]},
+    {"id": 4, "q": "PowerPoint template file extension:", "opts": [".pptx", ".potx", ".ppsx", ".pptm"], "c": 1, "d": "medium", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": ["t = template. PowerPoint template is .potx. Word .dotx, Excel .xltx."]},
+    {"id": 5, "q": "Which file auto-plays as a slideshow when double-clicked?", "opts": [".pptx", ".ppsx", ".potx", ".pptm"], "c": 1, "d": "medium", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": ["s = show. .ppsx starts the show immediately. .pptx opens in edit mode."]},
+    {"id": 6, "q": "Which file can contain Office macros (VBA code)?", "opts": [".docx", ".xlsx", ".xlsm", ".pdf"], "c": 2, "d": "medium", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": ["m = macro. .xlsm (macro-enabled workbook) is the correct answer; .xlsx blocks macros."]},
+    {"id": 7, "q": "Old Word document format before Office 2007:", "opts": [".docx", ".doc", ".dotx", ".odt"], "c": 1, "d": "easy", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": ["Pre-2007 Word was .doc (binary). Modern is .docx (XML)."]},
+    {"id": 8, "q": "Microsoft Access modern database file (since Access 2007):", "opts": [".mdb", ".accdb", ".xlsx", ".pst"], "c": 1, "d": "medium", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": [".accdb is modern Access. Old was .mdb. .xlsx is Excel, .pst is Outlook."]},
+    {"id": 9, "q": "Outlook data file storing your mailbox on disk:", "opts": [".pst", ".msg", ".accdb", ".docx"], "c": 0, "d": "medium", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": [".pst is Personal Storage Table. .msg is a single mail. .ost is the offline cache."]},
+    {"id": 10, "q": "LibreOffice Writer text extension (not Microsoft Word):", "opts": [".docx", ".odt", ".dotx", ".rtf"], "c": 1, "d": "medium", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": [".odt is OpenDocument Text (LibreOffice). Microsoft Word is .docx. .dotx is a Microsoft template."]},
+    {"id": 11, "q": "Which image format supports transparency for logos and screenshots?", "opts": [".jpg", ".png", ".bmp", ".mp4"], "c": 1, "d": "easy", "t": "Images & Media", "exp": [".png is lossless and supports alpha transparency. .jpg never supports transparency."]},
+    {"id": 12, "q": "Standard photo format from cameras — lossy, no transparency, small files:", "opts": [".png", ".jpg", ".gif", ".svg"], "c": 1, "d": "easy", "t": "Images & Media", "exp": [".jpg (jpeg) is the camera photo standard — lossy, small, no transparency."]},
+    {"id": 13, "q": "Scalable vector image that stays sharp at any zoom level:", "opts": [".jpg", ".png", ".svg", ".bmp"], "c": 2, "d": "easy", "t": "Images & Media", "exp": [".svg is vector (code), scales infinitely. Raster (jpg/png/bmp) pixelates when zoomed."]},
+    {"id": 14, "q": "Animated image format limited to 256 colors:", "opts": [".jpg", ".png", ".gif", ".tiff"], "c": 2, "d": "easy", "t": "Images & Media", "exp": [".gif holds simple animation but only 256 colors. Short clips now often use .mp4."]},
+    {"id": 15, "q": "Uncompressed raster image with very large file sizes:", "opts": [".jpg", ".bmp", ".png", ".svg"], "c": 1, "d": "medium", "t": "Images & Media", "exp": [".bmp is uncompressed (large). Modern delivery uses compressed .jpg/.png."]},
+    {"id": 16, "q": "Print and publishing raster — lossless, supports CMYK and layers:", "opts": [".jpg", ".tiff", ".gif", ".mp4"], "c": 1, "d": "medium", "t": "Images & Media", "exp": [".tiff (or .tif) is the production raster for print — lossless, layers, CMYK."]},
+    {"id": 17, "q": "Photoshop native layered file extension:", "opts": [".png", ".psd", ".jpg", ".svg"], "c": 1, "d": "medium", "t": "Images & Media", "exp": [".psd is Photoshop native (layers, effects). Export to .jpg/.png/.svg for delivery."]},
+    {"id": 18, "q": "Universal compressed audio that plays on every device:", "opts": [".wav", ".mp3", ".flac", ".bmp"], "c": 1, "d": "easy", "t": "Images & Media", "exp": [".mp3 is universal compressed audio (lossy, small). .wav is uncompressed large."]},
+    {"id": 19, "q": "Uncompressed audio — studio quality, very large files:", "opts": [".mp3", ".wav", ".aac", ".mp4"], "c": 1, "d": "medium", "t": "Images & Media", "exp": [".wav is uncompressed (large, highest fidelity before lossless compression)."]},
+    {"id": 20, "q": "Universal video container — plays in every browser and device:", "opts": [".avi", ".mov", ".mp4", ".wmv"], "c": 2, "d": "easy", "t": "Images & Media", "exp": [".mp4 is the universal video container. .avi old Microsoft, .mov Apple, .wmv Windows compressed."]},
+    {"id": 21, "q": "Apple QuickTime video format:", "opts": [".avi", ".mov", ".mp4", ".wmv"], "c": 1, "d": "medium", "t": "Images & Media", "exp": [".mov is Apple QuickTime video. .avi Microsoft old, .wmv Windows compressed, .mp4 universal."]},
+    {"id": 22, "q": "Windows compressed video format:", "opts": [".mov", ".mp4", ".wmv", ".tiff"], "c": 2, "d": "medium", "t": "Images & Media", "exp": [".wmv is Windows Media Video. .mov Apple, .mp4 universal, .tiff image."]},
+    {"id": 23, "q": "Matroska video container that can hold many audio and subtitle tracks:", "opts": [".mp4", ".mkv", ".wav", ".png"], "c": 1, "d": "medium", "t": "Images & Media", "exp": [".mkv (Matroska) is the enthusiast container for multiple tracks. .mp4 more universal."]},
+    {"id": 24, "q": "Obsolete Flash video format (Flash itself discontinued in 2020):", "opts": [".mp4", ".flv", ".mov", ".avi"], "c": 1, "d": "medium", "t": "Images & Media", "exp": [".flv was Flash Video, obsolete after Flash EOL. Modern replacement is .mp4."]},
+    {"id": 25, "q": "Windows executable — the program you double-click to run:", "opts": [".exe", ".apk", ".app", ".deb"], "c": 0, "d": "easy", "t": "Executables & Archives", "exp": [".exe Windows executable. .apk Android, .app macOS, .deb Debian Linux."]},
+    {"id": 26, "q": "Windows installer package that appears in Add or Remove Programs:", "opts": [".exe", ".msi", ".bat", ".dll"], "c": 1, "d": "medium", "t": "Executables & Archives", "exp": [".msi is the Microsoft Installer package. Many installers are also .exe, but .msi is the designated installer."]},
+    {"id": 27, "q": "Archive type any Windows PC can open without installing extra apps:", "opts": [".rar", ".7z", ".zip", ".tar.gz"], "c": 2, "d": "easy", "t": "Executables & Archives", "exp": [".zip is built into Windows. .rar needs WinRAR, .7z needs 7-Zip, .tar.gz is Linux pair."]},
+    {"id": 28, "q": "Archive associated with WinRAR — better compression than ZIP:", "opts": [".zip", ".rar", ".iso", ".exe"], "c": 1, "d": "medium", "t": "Executables & Archives", "exp": [".rar WinRAR, .7z 7-Zip (also better than ZIP). .iso disc image, .exe program."]},
+    {"id": 29, "q": "Archive associated with 7-Zip — high compression:", "opts": [".zip", ".7z", ".iso", ".exe"], "c": 1, "d": "medium", "t": "Executables & Archives", "exp": [".7z is 7-Zip. Also better than .zip on Windows."]},
+    {"id": 30, "q": "Linux archive pair where one bundles and the other compresses (often together):", "opts": [".zip + .rar", ".tar + .gz", ".7z + .iso", ".exe + .dll"], "c": 1, "d": "medium", "t": "Executables & Archives", "exp": [".tar bundles files, .gz compresses the bundle. Seen as .tar.gz or .tgz."]},
+    {"id": 31, "q": "Android package file extension:", "opts": [".exe", ".apk", ".app", ".msi"], "c": 1, "d": "easy", "t": "Executables & Archives", "exp": [".apk Android Package. .exe Windows, .app macOS."]},
+    {"id": 32, "q": "macOS application bundle extension:", "opts": [".exe", ".apk", ".app", ".msi"], "c": 2, "d": "easy", "t": "Executables & Archives", "exp": [".app macOS. .apk Android. .exe/.msi Windows."]},
+    {"id": 33, "q": "Shared library loaded by .exe files, never run directly by double-clicking:", "opts": [".exe", ".dll", ".bat", ".zip"], "c": 1, "d": "medium", "t": "Executables & Archives", "exp": [".dll Dynamic Link Library — shared code loaded by programs."]},
+    {"id": 34, "q": "A file appears as 'invoice.pdf' but runs as a program when clicked. Most likely:", "opts": ["The file is a hidden PDF", "The file is actually invoice.pdf.exe with extensions hidden", "Windows always runs PDFs as programs", "The file is compressed as .zip"], "c": 1, "d": "medium", "t": "Executables & Archives", "exp": ["Double extension with hidden extensions: the last dot is the real type — .exe. Show File name extensions to see it."]},
+    {"id": 35, "q": "Windows batch script — a text file of commands that runs line by line:", "opts": [".exe", ".bat", ".dll", ".zip"], "c": 1, "d": "medium", "t": "Executables & Archives", "exp": [".bat is a Windows batch file (script of commands). .exe is a compiled program."]},
+    {"id": 36, "q": "Whole CD or DVD saved as a single file:", "opts": [".zip", ".iso", ".jpg", ".mp4"], "c": 1, "d": "medium", "t": "Executables & Archives", "exp": [".iso (or .img) disc image — entire disc as one file. Mount or burn it."]},
+    {"id": 37, "q": "Structure of a web page — the main web document:", "opts": [".html", ".pdf", ".docx", ".txt"], "c": 0, "d": "easy", "t": "Web & Text Formats", "exp": [".html is the web structure. .pdf is fixed portable, .docx Word, .txt plain."]},
+    {"id": 38, "q": "Styling of a web page (colors, fonts, layout):", "opts": [".html", ".css", ".js", ".pdf"], "c": 1, "d": "easy", "t": "Web & Text Formats", "exp": [".css is the style sheet. .html structure, .js behavior."]},
+    {"id": 39, "q": "Behavior of a web page (menus, validation, sliders):", "opts": [".html", ".css", ".js", ".txt"], "c": 2, "d": "easy", "t": "Web & Text Formats", "exp": [".js (JavaScript) is the behavior. .html structure, .css style."]},
+    {"id": 40, "q": "Fixed-layout document that looks identical on every device — not freely editable:", "opts": [".docx", ".pdf", ".txt", ".csv"], "c": 1, "d": "easy", "t": "Web & Text Formats", "exp": [".pdf Portable Document Format — frozen layout. .docx is editable Word."]},
+    {"id": 41, "q": "Plain table where each row is a line and commas separate columns — just text, no formulas:", "opts": [".xlsx", ".pdf", ".csv", ".html"], "c": 2, "d": "easy", "t": "Web & Text Formats", "exp": [".csv Comma-Separated Values — raw text table. .xlsx is a full Excel workbook."]},
+    {"id": 42, "q": "Modern lightweight data-exchange format used by web APIs:", "opts": [".json", ".bmp", ".mp3", ".exe"], "c": 0, "d": "easy", "t": "Web & Text Formats", "exp": [".json JavaScript Object Notation — modern APIs. Legacy enterprise uses .xml."]},
+    {"id": 43, "q": "Older tag-heavy data format also used inside Office XML internals:", "opts": [".json", ".xml", ".jpg", ".zip"], "c": 1, "d": "medium", "t": "Web & Text Formats", "exp": [".xml older tag-heavy format. Modern APIs prefer .json. Office files are zip+xml internally."]},
+    {"id": 44, "q": "Plain text — no formatting, just characters, widest compatibility:", "opts": [".txt", ".docx", ".pdf", ".pptx"], "c": 0, "d": "easy", "t": "Web & Text Formats", "exp": [".txt plain text. .docx formatted Word, .pdf fixed layout, .pptx slides."]},
+    {"id": 45, "q": ".htm and .html are:", "opts": ["Different formats", ".htm is newer", "The same web page format", ".htm works only in Internet Explorer"], "c": 2, "d": "medium", "t": "Web & Text Formats", "exp": [".htm and .html are the same — .htm is the 3-letter legacy from old DOS."]},
+    {"id": 46, "q": "Markdown README format commonly seen on GitHub:", "opts": [".txt", ".md", ".pdf", ".docx"], "c": 1, "d": "medium", "t": "Web & Text Formats", "exp": [".md Markdown — plain text with marks like # Heading and **bold**."]},
+    {"id": 47, "q": ".jpeg and .jpg are:", "opts": ["Different formats", ".jpeg is higher quality", "The same image format", ".jpeg works only on macOS"], "c": 2, "d": "medium", "t": "Images & Media", "exp": [".jpeg and .jpg are the same format — .jpeg is just the 4-letter name."]},
+    {"id": 48, "q": "Rich Text Format — a step between .txt and .docx with basic formatting:", "opts": [".rtf", ".bmp", ".exe", ".zip"], "c": 0, "d": "medium", "t": "Web & Text Formats", "exp": [".rtf Rich Text Format — text plus basic formatting, lighter than .docx."]},
+    {"id": 49, "q": "You rename photo.png to photo.jpg by editing the name in File Explorer. What happens?", "opts": ["The file is cleanly converted to JPG", "Only the label changes — the bytes are still PNG and the file may fail to open", "Windows creates both a PNG and a JPG", "The file size is halved"], "c": 1, "d": "medium", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": ["Renaming the extension does not convert the content — only Save As or a converter does. The file may stop opening."]},
+    {"id": 50, "q": "Excel template file extension:", "opts": [".xlsx", ".xltx", ".xlsm", ".ods"], "c": 1, "d": "medium", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": ["Excel template is .xltx. .xlsx is a workbook, .xlsm is macro-enabled, .ods LibreOffice."]},
+    {"id": 51, "q": "Single saved Outlook message file:", "opts": [".pst", ".msg", ".ost", ".accdb"], "c": 1, "d": "medium", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": [".msg is a single saved mail. .pst/.ost are the whole mailbox stores."]},
+    {"id": 52, "q": "Backup copy extension commonly seen in editors and databases:", "opts": [".bak", ".exe", ".mp3", ".html"], "c": 0, "d": "easy", "t": "Web & Text Formats", "exp": [".bak is a backup copy. .tmp temporary, .log log, .old older version."]},
+    {"id": 53, "q": "Lossless compressed audio — smaller than .wav with no quality loss:", "opts": [".mp3", ".flac", ".jpg", ".zip"], "c": 1, "d": "medium", "t": "Images & Media", "exp": [".flac Free Lossless Audio Codec — shrinks .wav without losing quality. .mp3 is lossy."]},
+    {"id": 54, "q": "To see the dot-plus-letters at the end of filenames in Windows, you turn on:", "opts": ["Hide extensions", "File name extensions in File Explorer > View", "Show hidden files only", "Reinstall Office"], "c": 1, "d": "easy", "t": "Executables & Archives", "exp": ["View > Show > File name extensions (File name extensions in the View ribbon on older Windows)."]},
+    {"id": 55, "q": "Which archive format typically gives the best compression on Windows but needs 7-Zip?", "opts": [".zip", ".7z", ".txt", ".html"], "c": 1, "d": "medium", "t": "Executables & Archives", "exp": [".7z (7-Zip) compresses better than .zip and better than .rar in most tests, but needs 7-Zip installed."]},
+    {"id": 56, "q": "Vector drawing saved from Adobe Illustrator — native format:", "opts": [".svg", ".ai", ".jpg", ".mp4"], "c": 1, "d": "medium", "t": "Images & Media", "exp": [".ai is Illustrator native vector. Export to .svg for web delivery. .jpg is raster, .mp4 video."]},
+    {"id": 57, "q": "Which extension is commonly used for a comma-separated data export from a database?", "opts": [".docx", ".csv", ".pdf", ".png"], "c": 1, "d": "easy", "t": "Web & Text Formats", "exp": [".csv is the standard data export — plain text rows with commas. Opens in Excel, databases, Sheets."]},
+    {"id": 58, "q": "Temporary file extension that Windows and apps create and normally delete automatically:", "opts": [".tmp", ".exe", ".pdf", ".mp3"], "c": 0, "d": "easy", "t": "Web & Text Formats", "exp": [".tmp is a temporary file. Safe to delete if no app is using it."]},
+    {"id": 59, "q": "Old Excel format before Office 2007 (binary):", "opts": [".xlsx", ".xls", ".xltx", ".ods"], "c": 1, "d": "easy", "t": "Office Formats (.docx/.xlsx/.pptx)", "exp": ["Pre-2007 Excel was .xls (binary). Modern is .xlsx (XML+ZIP). .xltx is a template."]},
+    {"id": 60, "q": "Which image format is best for a crisp screenshot of text for documentation?", "opts": [".jpg", ".png", ".mp3", ".zip"], "c": 1, "d": "medium", "t": "Images & Media", "exp": [".png is lossless and keeps sharp text edges. .jpg would blur text with lossy artifacts."] }
+  ]
+}

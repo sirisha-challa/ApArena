@@ -1,0 +1,523 @@
+{
+  "id": "internet-browser",
+  "title": "Internet & Browser Basics",
+  "icon": "IB",
+  "category": "ms-office",
+  "subtitle": "Browsers, URLs, domains, tabs, downloads and web protocols - the foundation of every office workflow",
+  "days": "2",
+  "color": "#0D9488",
+  "subtopics": [
+    "Browsers & Search",
+    "Tabs, History & Bookmarks",
+    "Email Etiquette & Fields",
+    "URLs & Domains",
+    "Downloads & Plugins"
+  ],
+  "estimatedHours": 5,
+  "readingSections": [
+    {
+      "id": "browsers-search",
+      "title": "Browsers & Search Engines",
+      "type": "concept",
+      "quickSummary": "Browser = Chrome / Edge / Firefox / Safari - renders web pages from URLs. Search engine = Google / Bing / DuckDuckGo - helps you find pages. URL bar = the address bar.",
+      "content": [
+        "A WEB BROWSER (Chrome, Microsoft Edge, Mozilla Firefox, Safari, Opera, Brave) is the application that retrieves and displays web pages. You type a URL (or click a link) and the browser fetches the page from a server and renders it. All major browsers are free.",
+        "Microsoft Edge is the default browser on Windows 10/11 (replacing Internet Explorer, which was retired in 2022). Chrome is the most-used browser worldwide. Safari ships with macOS / iOS. Firefox is the open-source alternative.",
+        "A SEARCH ENGINE is a website that helps you find other websites: Google, Bing, DuckDuckGo, Yahoo. You type keywords into a search box and the engine returns ranked links. SEO (Search Engine Optimisation) is the practice of making pages rank higher in search results.",
+        "The ADDRESS BAR (or URL bar) at the top of the browser shows the URL of the current page. You can type a URL directly or a search query - the browser either navigates to the URL or performs a search using your default search engine. In Chrome, type 'google.com' or 'cats' - both work.",
+        "Browser SHORTCUTS you should know: Ctrl+T (new tab), Ctrl+W (close tab), Ctrl+L or F6 (focus the address bar), Ctrl+R or F5 (reload), Ctrl+H (history), Ctrl+J (downloads), Ctrl+D (bookmark), Ctrl+Shift+N (private/incognito window), Ctrl+Shift+T (reopen last closed tab)."
+      ],
+      "subsections": [
+        {
+          "title": "Private / Incognito browsing",
+          "content": "Ctrl+Shift+N in Chrome / Edge opens a private (incognito) window. The browser does NOT save history, cookies, or form data for that session. IMPORTANT: private browsing only hides your activity from YOUR device. Your ISP, employer (on a work network), and the websites themselves can still see what you do."
+        },
+        {
+          "title": "Cookies and cache",
+          "content": "COOKIES are small text files websites save in your browser to remember you (login state, preferences, shopping cart). CACHE is a local copy of web resources (images, CSS, JS) so pages load faster on revisit. Both are stored in your browser profile. Clearing them logs you out of websites."
+        }
+      ],
+      "quickRevision": [
+        "Browser = application that renders web pages. Examples: Chrome, Edge, Firefox, Safari.",
+        "Search engine = website that finds pages. Google is the most-used.",
+        "Default browser on Windows 10/11: Microsoft Edge (replaced Internet Explorer).",
+        "Address bar = the URL bar. Type URL or search query.",
+        "Private / Incognito: Ctrl+Shift+N. Hides activity from your device only."
+      ],
+      "tricks": [
+        "If the question says 'default browser on Windows 11' -> Microsoft Edge (NOT Internet Explorer).",
+        "Private browsing does NOT make you anonymous on the internet - it only hides activity from your local device.",
+        "Ctrl+L focuses the address bar in every major browser."
+      ],
+      "patterns": [
+        "'Default browser on Windows 10/11?' -> Microsoft Edge.",
+        "'Shortcut to open a private / incognito window?' -> Ctrl+Shift+N.",
+        "'Where do you type a URL?' -> Address bar (or URL bar).",
+        "'Most popular search engine worldwide?' -> Google."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in T4Tutorials / Sanfoundry / PrepInsta internet MCQ sets",
+          "question": "Default browser on Windows 10/11:",
+          "approach": "Microsoft Edge. (Internet Explorer was retired in 2022.)"
+        },
+        {
+          "source": "Asked in PrepInsta / Sanfoundry internet MCQ sets",
+          "question": "Which is NOT a web browser?",
+          "approach": "Google is a search engine, not a browser. Chrome, Edge, Firefox, Safari are browsers."
+        }
+      ],
+      "companyNote": "Default browser, private browsing, and the difference between browser/search engine are the most-asked."
+    },
+    {
+      "id": "tabs-history-bookmarks",
+      "title": "Tabs, History, Bookmarks & the Back Button",
+      "type": "concept",
+      "quickSummary": "Tabs let you open multiple pages in one window. History records every page you visit. Bookmarks (favourites) save pages you want to revisit. Back / Forward buttons navigate the recent page history.",
+      "content": [
+        "TABS let you open multiple web pages in a single browser window. The tab bar at the top of the browser shows every open tab; click a tab to switch to it. Ctrl+T = new tab, Ctrl+W = close current tab, Ctrl+Shift+T = reopen the last closed tab (works up to ~10 times).",
+        "BROWSER HISTORY records every page you visit, with a timestamp. Open history with Ctrl+H (or the menu > History). The list is searchable. Clearing history removes this record (use it for privacy, but be careful - the list is also useful).",
+        "BOOKMARKS (called FAVOURITES in older Edge / Internet Explorer) save pages you want to revisit. Add a bookmark with Ctrl+D. Open the bookmarks list with Ctrl+Shift+B (toggles the bookmarks bar). Chrome stores bookmarks in your Google account if you're signed in - same bookmarks on every device.",
+        "BACK and FORWARD buttons (top-left of the browser) navigate your recent navigation history. Alt+Left Arrow = Back. Alt+Right Arrow = Forward. The browser keeps a history PER TAB, not globally - closing a tab forgets its history.",
+        "Tab management shortcuts: Ctrl+1 to Ctrl+8 jump to the corresponding tab (Ctrl+9 jumps to the last tab). Ctrl+Tab cycles to the next tab. Middle-click a link to open it in a NEW tab. Ctrl+Shift+Click also opens in a new tab. These are huge time-savers."
+      ],
+      "subsections": [
+        {
+          "title": "Bookmarks vs History",
+          "content": "History is automatic - every page you visit is recorded. Bookmarks are manual - YOU add them. History gets cluttered and is usually deleted periodically; bookmarks are curated and persist long-term."
+        },
+        {
+          "title": "Pin tabs and tab groups",
+          "content": "Pinning a tab shrinks it to just its favicon (the small site icon), saving space. Tab Groups (newer Chrome) let you colour-code and group related tabs together. Both features are quality-of-life for managing many open tabs."
+        }
+      ],
+      "quickRevision": [
+        "Tab = one open page in the browser window.",
+        "Ctrl+T new tab, Ctrl+W close, Ctrl+Shift+T reopen last closed.",
+        "Ctrl+1 to Ctrl+8 jump to tab 1-8, Ctrl+9 to last tab.",
+        "History = automatic log of every visit (Ctrl+H).",
+        "Bookmarks / Favourites = manual saves (Ctrl+D). Bookmarks bar toggles with Ctrl+Shift+B.",
+        "Back / Forward: Alt+Left / Alt+Right."
+      ],
+      "tricks": [
+        "Ctrl+9 always jumps to the LAST tab (not tab 9) - this is a common trap.",
+        "Middle-click a link to open in a new tab. Saves the right-click > 'Open in new tab' menu step.",
+        "If the question says 'Bookmarks are automatically saved for every page' -> wrong. History is auto, bookmarks are manual."
+      ],
+      "patterns": [
+        "'Shortcut to add a bookmark?' -> Ctrl+D.",
+        "'Shortcut to view browser history?' -> Ctrl+H.",
+        "'Reopen a closed tab?' -> Ctrl+Shift+T."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in internet MCQ sets",
+          "question": "Shortcut to add a bookmark in a browser:",
+          "approach": "Ctrl+D."
+        },
+        {
+          "source": "Asked in internet MCQ sets",
+          "question": "Where is every web page you've ever visited recorded?",
+          "approach": "Browser history (Ctrl+H to open)."
+        }
+      ],
+      "companyNote": "1-2 questions per paper on tabs, bookmarks vs history, and the navigation shortcuts."
+    },
+    {
+      "id": "email-fields",
+      "title": "Email Etiquette, Fields & Attachments (Web/Browser context)",
+      "type": "concept",
+      "quickSummary": "In a webmail (Gmail, Outlook.com) or browser-based email client, the same field rules apply as in desktop Outlook: TO, CC, BCC, Subject, Body, Attachments. The browser is just the rendering engine - the email rules are the same.",
+      "content": [
+        "WEBMAIL clients (Gmail, Outlook.com, Yahoo Mail) run inside the browser and have the same field structure as desktop Outlook: TO, CC, BCC, Subject, Body, Attachments. The keyboard shortcut to send an email is Ctrl+Enter in most webmails (Gmail, Outlook.com).",
+        "Email ETIQUETTE for placement / office communication: use a descriptive subject ('Resume attached - 2026 application' beats 'Hi' or 'Important!!!'). Don't TYPE IN ALL CAPS (reads as shouting). Use a proper salutation ('Dear Ms. Sharma' or 'Hi Amit'). Sign off with your name. Reply-all only when everyone needs to see your reply. Don't forward chain letters.",
+        "ATTACHMENTS: the paperclip icon is universal across webmail clients. Drag-and-drop works. The size limit varies: Gmail 25 MB, Outlook.com 20 MB, Yahoo 25 MB. For larger files, use a Google Drive / OneDrive / Dropbox LINK instead of direct attachment.",
+        "The CC and BCC rules are the same in webmail as in desktop Outlook: CC = visible, BCC = hidden. The exam's classic: 'You want to send a mass mailout to 50 customers without exposing each customer's address to the others. Which field?' -> BCC. Always.",
+        "PHISHING: the most common email scam - a fake email that looks like a bank / IT support / boss, asking you to click a link or send your password. Red flags: urgency, generic greeting ('Dear Customer'), mismatched URL when you hover over a link, attachment you didn't expect. The exam's classic: 'You receive an email from your bank asking to verify your password. What is this?' -> Phishing."
+      ],
+      "subsections": [
+        {
+          "title": "Gmail vs Outlook.com vs Yahoo Mail",
+          "content": "All three are the big webmail providers. Gmail (Google) is the most popular. Outlook.com (Microsoft) is tightly integrated with Windows and Office. Yahoo Mail is older but still widely used. The keyboard shortcut for Send in all three is Ctrl+Enter."
+        },
+        {
+          "title": "Inline vs Cloud attachments",
+          "content": "INLINE attachments are files attached directly to the email (subject to the provider's size limit). CLOUD attachments are links to files stored in Google Drive / OneDrive / Dropbox - the email contains a link, the file lives in the cloud. Cloud is the modern way to share large files; some companies disable direct attachments entirely."
+        }
+      ],
+      "quickRevision": [
+        "Webmail: email in the browser (Gmail, Outlook.com, Yahoo Mail).",
+        "Ctrl+Enter = Send (most webmails).",
+        "Gmail 25 MB, Outlook.com 20 MB, Yahoo 25 MB attachment limit.",
+        "CC visible, BCC hidden. Same as desktop Outlook.",
+        "Phishing = fake email to steal credentials. Red flags: urgency, generic greeting, mismatched URL."
+      ],
+      "tricks": [
+        "If the question lists 'Cc recipients are hidden from To recipients' -> wrong (CC is visible to all).",
+        "Phishing vs Spam: Spam is unsolicited bulk mail. Phishing is targeted social engineering to steal data. Both are annoying, different intents.",
+        "Cloud attachments (Drive / OneDrive links) bypass the 20-25 MB limit and are the modern default."
+      ],
+      "patterns": [
+        "'Where do you type the recipient's address in webmail?' -> TO field (visible to all).",
+        "'Send a mass mailout without exposing recipients?' -> Use BCC.",
+        "'You receive an email from your bank asking to verify your password - what is this?' -> Phishing."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in internet / email MCQ sets",
+          "question": "BCC vs CC in webmail:",
+          "approach": "CC = visible. BCC = hidden from TO and CC."
+        },
+        {
+          "source": "Asked in internet MCQ sets",
+          "question": "What is phishing?",
+          "approach": "A fraudulent email designed to steal credentials / personal info. Red flag: generic greeting, urgency, suspicious link."
+        }
+      ],
+      "companyNote": "Phishing + CC vs BCC are the two highest-yield email MCQs."
+    },
+    {
+      "id": "urls-domains",
+      "title": "URLs, Domains, HTTP/HTTPS & DNS",
+      "type": "concept",
+      "quickSummary": "URL = the full web address. HTTPS = secure protocol (port 443). HTTP = plain (port 80). DNS = converts domain names to IP addresses. Domain has a TLD (.com, .org, .in).",
+      "content": [
+        "A URL (Uniform Resource Locator) is the full address of a resource on the web. Format: scheme://subdomain.domain.tld:port/path?query#fragment. Example: https://www.example.com:443/products/shoes?color=red#reviews. The exam breaks this down piece by piece.",
+        "SCHEME / PROTOCOL: tells the browser how to fetch the resource. http (port 80) is plain text, insecure. https (port 443) is encrypted with SSL/TLS - always use it for anything sensitive (login, payment, email). ftp is for file transfer. mailto opens an email client.",
+        "DOMAIN NAME: the human-readable address. Has 3+ parts: subdomain (www) + domain (example) + TLD (.com). The TLD is the rightmost part: .com (commercial), .org (organisation), .edu (education), .gov (government), .net, .io, .in (India), .uk (UK), .co, etc. Country-code TLDs (.in, .uk, .de) are 2-letter.",
+        "DNS (Domain Name System) is the internet's phonebook. You type example.com in the browser; DNS converts that to an IP address like 93.184.216.34, which the browser actually connects to. The exam's classic: 'What does DNS do?' -> Converts domain names to IP addresses. DNS A record maps a name to an IPv4 address. MX record specifies mail servers.",
+        "IP ADDRESS: a unique identifier for a device on a network. IPv4 = 32-bit, written as four numbers 0-255 separated by dots (e.g. 192.168.1.1). IPv6 = 128-bit, written in hex (e.g. 2001:0db8::1). Most home networks still use IPv4. Public IPs face the internet; private IPs (192.168.x.x, 10.x.x.x, 172.16-31.x.x) are used inside LANs and NAT'd to one public IP by the router."
+      ],
+      "subsections": [
+        {
+          "title": "Parts of a URL in detail",
+          "content": "https:// (scheme) www (subdomain) example (domain) .com (TLD) :443 (port - default for https so often hidden) /products/shoes (path - the specific resource on the server) ?color=red (query string - parameters passed to the server) #reviews (fragment - jumps to a section on the page)."
+        },
+        {
+          "title": "Top-level domain categories",
+          "content": "gTLDs (generic TLDs): .com, .org, .net, .edu, .gov, .info, .io, .co, .ai. ccTLDs (country-code TLDs): .in (India), .uk (UK), .de (Germany), .jp (Japan), .cn (China), .au (Australia), etc. Sponsored TLDs: .edu (US education), .gov (US government), .mil (US military), .int (international orgs)."
+        }
+      ],
+      "quickRevision": [
+        "URL = scheme://subdomain.domain.tld:port/path?query#fragment.",
+        "HTTP port 80 (plain). HTTPS port 443 (encrypted).",
+        "DNS = converts domain names to IP addresses.",
+        "TLD examples: .com, .org, .edu, .in (India), .uk (UK).",
+        "IPv4 = 32-bit (e.g. 192.168.1.1). IPv6 = 128-bit (hex).",
+        "Private IP ranges: 10.x.x.x, 172.16-31.x.x, 192.168.x.x."
+      ],
+      "tricks": [
+        "If the question lists 'DNS encrypts web traffic' -> wrong. DNS just converts names to IPs. SSL/TLS encrypts traffic.",
+        "If the question lists 'HTTP uses port 443' -> wrong. HTTP = 80, HTTPS = 443.",
+        "Private IP ranges: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16. The 192.168.x.x range is the most-asked."
+      ],
+      "patterns": [
+        "'Default port for HTTPS?' -> 443.",
+        "'Default port for HTTP?' -> 80.",
+        "'What does DNS do?' -> Converts domain names to IP addresses.",
+        "'Which is a private IP address?' -> 192.168.1.1, 10.0.0.1, 172.16.0.1."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in T4Tutorials / Sanfoundry / Testbook internet MCQ sets",
+          "question": "What does DNS do?",
+          "approach": "Converts domain names to IP addresses."
+        },
+        {
+          "source": "Asked in internet MCQ sets",
+          "question": "Default port for HTTPS:",
+          "approach": "443. (HTTP = 80.)"
+        }
+      ],
+      "companyNote": "DNS, HTTPS port, and private IP ranges are the three most-tested internet fundamentals."
+    },
+    {
+      "id": "downloads-plugins",
+      "title": "Downloads, Extensions, Plugins & Browser Security",
+      "type": "concept",
+      "quickSummary": "Downloads = files saved from the web. Extensions = small programs that add features. Plugins (deprecated) = code that runs inside the browser. Cookies = small text files for sessions. Cache = local copy of resources.",
+      "content": [
+        "A DOWNLOAD is a file transferred from a web server to your computer. By default, browsers save downloads to a 'Downloads' folder. The download list (Ctrl+J) shows active and recent downloads. A file marked 'dangerous' is one whose type the browser considers risky (e.g. .exe, .bat) - Chrome may warn or block it.",
+        "Browser EXTENSIONS (Chrome Extensions, Firefox Add-ons) are small programs that add features to the browser - ad blockers, password managers, grammar checkers, dark mode toggle. Installed via the browser's web store (Chrome Web Store, Firefox Add-ons site). They run inside the browser and can read/modify the pages you visit - so install only from trusted sources.",
+        "PLUGINS (NPAPI, Flash, Java) used to be separate code that ran inside the browser (Flash for video, Java for applets). Modern browsers have largely REMOVED plugin support (Flash was killed in 2020, Java applets are dead). If the question asks 'what does a browser plugin do?' -> it's legacy; modern browsers use extensions instead.",
+        "CACHE is the browser's local copy of web resources (images, CSS, JS files) so pages load faster on revisit. COOKIES are small text files that remember you across visits. Both live in your browser profile. Clearing them is the 'reset' if a site misbehaves: Ctrl+Shift+Delete opens Clear Browsing Data in most browsers.",
+        "Browser security basics: HTTPS for sensitive sites (the padlock icon), don't click suspicious links (phishing), keep the browser updated (patches are pushed automatically), use unique strong passwords (a password manager helps), enable two-factor authentication on important accounts."
+      ],
+      "subsections": [
+        {
+          "title": "Browser security model",
+          "content": "Each tab runs in a 'sandbox' - a restricted environment that limits what a malicious page can do. Tabs are isolated from each other (one tab crashing doesn't take down the others). The browser also enforces same-origin policy - a page from evil.com cannot read cookies or data from bank.com."
+        },
+        {
+          "title": "Common browser threats",
+          "content": "Phishing (fake emails/links), malware (downloads that install viruses), tracking cookies (ads that follow you across sites), drive-by downloads (malware that installs from just visiting a page). Modern browsers warn about most of these. Keeping the browser updated and using HTTPS are the two biggest protections."
+        }
+      ],
+      "quickRevision": [
+        "Downloads: files saved from the web. Ctrl+J shows download list.",
+        "Extensions: add features to the browser. Install from official web store only.",
+        "Plugins: legacy (Flash, Java). Modern browsers use extensions instead.",
+        "Cookies: small files for sessions / preferences. Cache: local copy of web resources.",
+        "Clear browsing data: Ctrl+Shift+Delete.",
+        "HTTPS = secure (padlock). HTTP = plain."
+      ],
+      "tricks": [
+        "If the question says 'Flash is the modern way to play video' -> wrong. Flash was killed in 2020. HTML5 video is the standard now.",
+        "Extensions vs Plugins: extensions are the modern, supported, sandboxed way. Plugins are legacy.",
+        "Ctrl+J opens downloads in Chrome, Edge, Firefox. Same shortcut across browsers."
+      ],
+      "patterns": [
+        "'Shortcut to view recent downloads?' -> Ctrl+J.",
+        "'Shortcut to clear browsing data?' -> Ctrl+Shift+Delete.",
+        "'Modern way to add a feature to a browser?' -> Extension (NOT plugin)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in internet MCQ sets",
+          "question": "Where do downloads show up in the browser?",
+          "approach": "Downloads list, accessible via Ctrl+J (Chrome, Edge, Firefox)."
+        },
+        {
+          "source": "Asked in internet MCQ sets",
+          "question": "Modern browsers support which of these for adding features?",
+          "approach": "Extensions. (Plugins like Flash and Java are deprecated.)"
+        }
+      ],
+      "companyNote": "1-2 questions per paper on downloads/extensions/plugins and HTTPS vs HTTP."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "url-anatomy",
+      "title": "URL Anatomy (every part of an address)",
+      "formula": {
+        "latex": "\\text{URL}=\\text{scheme://subdomain.domain.tld:port/path?query\\#fragment}",
+        "text": "Scheme (http/https/ftp) | Subdomain (www) | Domain (example) | TLD (.com) | Port (80/443) | Path (/products) | Query (?color=red) | Fragment (#reviews)."
+      },
+      "whenToUse": "Any 'parts of a URL' MCQ. One of the most-asked internet fundamentals questions.",
+      "explanation": [
+        "SCHEME (or protocol): tells the browser how to fetch. http (port 80) = plain. https (port 443) = encrypted.",
+        "SUBDOMAIN: a subdivision of the main domain. www is the most common. mail.google.com is the 'mail' subdomain of google.com.",
+        "DOMAIN: the human-readable name (e.g., example, google, github).",
+        "TLD (Top-Level Domain): the rightmost part. Generic: .com, .org, .net, .edu, .gov, .io. Country: .in, .uk, .de, .jp, .cn.",
+        "PORT: the network port on the server. Default for http is 80 (often hidden), for https is 443. Other ports (8080, 3000) are for testing / dev servers.",
+        "PATH: the specific resource on the server. /products/shoes, /index.html. Case-sensitive on most servers.",
+        "QUERY STRING: starts with ?, key=value pairs separated by &. ?color=red&size=10.",
+        "FRAGMENT: starts with #, points to a section within the page. #reviews jumps to the reviews section."
+      ],
+      "example": {
+        "prompt": "In https://www.example.com:443/products/shoes?color=red#reviews, which part is the TLD?",
+        "steps": [
+          "https = scheme.",
+          "www = subdomain.",
+          "example = domain.",
+          ".com = TLD.",
+          ":443 = port.",
+          "/products/shoes = path.",
+          "?color=red = query string.",
+          "#reviews = fragment."
+        ],
+        "answer": ".com"
+      },
+      "memoryTip": "Read a URL left to right: scheme, subdomain, domain, TLD, port, path, query, fragment.",
+      "commonMistake": "Confusing the domain (example) with the TLD (.com) or subdomain (www)."
+    },
+    {
+      "id": "http-vs-https",
+      "title": "HTTP vs HTTPS vs DNS vs IP",
+      "formula": {
+        "latex": "\\text{HTTP}=\\text{port 80, plain};\\; \\text{HTTPS}=\\text{port 443, SSL/TLS};\\; \\text{DNS}=\\text{name}\\to\\text{IP};\\; \\text{IP}=\\text{device address}",
+        "text": "HTTP port 80 plain. HTTPS port 443 encrypted. DNS = name to IP. IP = device address. IPv4 = 32-bit. IPv6 = 128-bit."
+      },
+      "whenToUse": "Any 'what port / what protocol / what does X do' MCQ. Foundation of every internet question.",
+      "explanation": [
+        "HTTP (HyperText Transfer Protocol): the web's request-response protocol. Plain text (anyone snooping can read it). Default port 80.",
+        "HTTPS (HTTP Secure): HTTP + SSL/TLS encryption. The padlock icon in the address bar. Default port 443. Required for login / payment / any sensitive data.",
+        "DNS (Domain Name System): the internet's phonebook. Translates example.com -> 93.184.216.34 (an IP address). The exam's classic: 'What does DNS do?' -> converts domain names to IP addresses.",
+        "IP ADDRESS: a unique number for every device on a network. IPv4 = 32-bit (e.g. 192.168.1.1). IPv6 = 128-bit (e.g. 2001:0db8::1). Public IPs face the internet; private IPs (10.x, 172.16-31.x, 192.168.x) are used inside LANs.",
+        "PRIVATE vs PUBLIC IP: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 are reserved for private networks. 8.8.8.8 (Google DNS) and 1.1.1.1 (Cloudflare DNS) are public."
+      ],
+      "example": {
+        "prompt": "Which is a private IP address?",
+        "steps": [
+          "Private ranges: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.",
+          "192.168.1.1 is in the 192.168.0.0/16 range -> private.",
+          "8.8.8.8 (Google DNS) is public."
+        ],
+        "answer": "192.168.1.1"
+      },
+      "memoryTip": "HTTP = 80 (port 80). HTTPS = 443 (port 443). The 3 in 443 is between 8 and 0 - it locks down the middle. Private IPs start with 10, 172.16, or 192.168.",
+      "commonMistake": "Thinking DNS encrypts traffic. DNS only translates names to IPs. SSL/TLS is what encrypts HTTPS traffic."
+    },
+    {
+      "id": "browser-shortcuts",
+      "title": "Browser Tab & Address Bar Shortcuts",
+      "formula": {
+        "latex": "\\text{Ctrl+T}=\\text{new tab};\\; \\text{Ctrl+W}=\\text{close};\\; \\text{Ctrl+Shift+T}=\\text{reopen};\\; \\text{Ctrl+L}=\\text{address bar};\\; \\text{Ctrl+D}=\\text{bookmark};\\; \\text{Ctrl+H}=\\text{history};\\; \\text{Ctrl+J}=\\text{downloads}",
+        "text": "Ctrl+T new tab, Ctrl+W close, Ctrl+Shift+T reopen, Ctrl+L address bar, Ctrl+D bookmark, Ctrl+H history, Ctrl+J downloads, Ctrl+Shift+N private."
+      },
+      "whenToUse": "Any 'shortcut for X in the browser' MCQ. These are the same across Chrome, Edge, and Firefox.",
+      "explanation": [
+        "TABS: Ctrl+T (new), Ctrl+W (close), Ctrl+Shift+T (reopen closed), Ctrl+1 to Ctrl+8 (jump to tab), Ctrl+9 (last tab).",
+        "ADDRESS BAR: Ctrl+L (focus the address bar so you can type a URL or search). F6 also focuses the address bar in some browsers.",
+        "BOOKMARKS: Ctrl+D (bookmark current page), Ctrl+Shift+B (toggle bookmarks bar visibility).",
+        "HISTORY: Ctrl+H (open history list).",
+        "DOWNLOADS: Ctrl+J (open downloads list).",
+        "PRIVATE / INCOGNITO: Ctrl+Shift+N (new private window).",
+        "RELOAD: Ctrl+R or F5 (reload page). Ctrl+Shift+R or Ctrl+F5 (hard reload, bypasses cache)."
+      ],
+      "example": {
+        "prompt": "Which shortcut opens a private / incognito window in Chrome or Edge?",
+        "steps": [
+          "Ctrl+Shift+N = new private / incognito window.",
+          "Private browsing hides your activity from your local device only."
+        ],
+        "answer": "Ctrl+Shift+N"
+      },
+      "memoryTip": "Ctrl+Shift+X = the 'global' shortcuts: T (new tab), N (private), B (bookmarks bar), R (hard reload).",
+      "commonMistake": "Confusing Ctrl+H (history) with Ctrl+Shift+Delete (clear browsing data). Different things."
+    },
+    {
+      "id": "http-ports",
+      "title": "Common Internet Port Numbers (must memorise)",
+      "formula": {
+        "latex": "\\text{80}=\\text{HTTP};\\; \\text{443}=\\text{HTTPS};\\; \\text{21}=\\text{FTP};\\; \\text{25}=\\text{SMTP (mail out)};\\; \\text{110}=\\text{POP3 (mail in)};\\; \\text{143}=\\text{IMAP (mail in)};\\; \\text{53}=\\text{DNS}",
+        "text": "80 HTTP, 443 HTTPS, 21 FTP, 25 SMTP, 110 POP3, 143 IMAP, 53 DNS."
+      },
+      "whenToUse": "Any 'what port is used for X?' MCQ. The most-asked network trivia.",
+      "explanation": [
+        "80 = HTTP (web, plain).",
+        "443 = HTTPS (web, encrypted).",
+        "21 = FTP (file transfer).",
+        "25 = SMTP (sending email - from your client to the mail server, server-to-server).",
+        "110 = POP3 (downloading email to a single device; deletes from server).",
+        "143 = IMAP (syncing email across multiple devices; stays on server).",
+        "53 = DNS (domain name resolution).",
+        "22 = SSH (secure shell). 23 = Telnet (insecure remote). 3389 = RDP (Windows remote desktop). 3306 = MySQL. 5432 = PostgreSQL. 22 and 80 are the most-asked after 443."
+      ],
+      "example": {
+        "prompt": "Which port is used by HTTPS by default?",
+        "steps": [
+          "HTTP = 80 (plain).",
+          "HTTPS = 443 (encrypted with SSL/TLS).",
+          "Answer: 443."
+        ],
+        "answer": "443"
+      },
+      "memoryTip": "HTTPS = 443. HTTP = 80. SMTP = 25. POP3 = 110. IMAP = 143. DNS = 53. FTP = 21. Memorise the seven most-asked.",
+      "commonMistake": "Confusing POP3 (110, downloads, deletes) with IMAP (143, syncs, keeps on server)."
+    }
+  ],
+  "practiceProblems": {
+    "url-anatomy": [
+      {"q": "In https://www.example.com:443/path, what does 'https' represent?", "opts": ["Domain", "Path", "Scheme (protocol)", "Port"], "c": 2, "s": ["https = scheme (protocol). Tells the browser to fetch via HTTP Secure."], "a": "Scheme (protocol)"},
+      {"q": "In a URL, the TLD is:", "opts": ["The leftmost part", "The rightmost part (after the last dot)", "Always .com", "The protocol"], "c": 1, "s": ["TLD = Top-Level Domain, the rightmost part (.com, .org, .in, etc.)."], "a": "The rightmost part (after the last dot)"},
+      {"q": "In https://www.example.com/path?query=1, the '?query=1' part is the:", "opts": ["Path", "Domain", "Query string", "Fragment"], "c": 2, "s": ["Query string starts with ?. Key=value pairs separated by &."], "a": "Query string"},
+      {"q": "In a URL, the part after '#' is the:", "opts": ["Port", "Query string", "Fragment (jumps to a section on the page)", "Subdomain"], "c": 2, "s": ["Fragment (#) jumps to a section within the page (e.g., #reviews)."], "a": "Fragment (jumps to a section on the page)"},
+      {"q": "The 'www' in 'www.example.com' is the:", "opts": ["Domain", "Subdomain", "TLD", "Scheme"], "c": 1, "s": ["www is the most common subdomain. example is the domain. .com is the TLD."], "a": "Subdomain"},
+      {"q": "In a URL like 'example.com:8080', the 8080 is the:", "opts": ["Path", "Port", "Protocol", "Domain"], "c": 1, "s": ["Port comes after the domain, separated by :."], "a": "Port"},
+      {"q": "What does the scheme 'ftp' indicate?", "opts": ["File Transfer Protocol", "Fast Text Protocol", "Form Text Protocol", "Free Transfer Protocol"], "c": 0, "s": ["FTP = File Transfer Protocol (port 21). Used to upload/download files to/from a server."], "a": "File Transfer Protocol"},
+      {"q": "Which part of a URL identifies the specific server on the internet?", "opts": ["Path", "Query string", "Domain", "Fragment"], "c": 2, "s": ["The domain (combined with TLD) is the human-readable name of the server."], "a": "Domain"},
+      {"q": "The fragment identifier in a URL is preceded by:", "opts": ["?", "!", "#", "$"], "c": 2, "s": ["# starts the fragment. ? starts the query string."], "a": "#"},
+      {"q": "The query string in a URL is preceded by:", "opts": ["#", "?", "&", "/"], "c": 1, "s": ["? starts the query string. # starts the fragment. & separates key=value pairs."], "a": "?"}
+    ],
+    "http-vs-https": [
+      {"q": "What does HTTP stand for?", "opts": ["HyperText Transfer Protocol", "HighText Transfer Process", "Hyperlink and Text Protocol", "Hyper Transfer Text Protocol"], "c": 0, "s": ["HTTP = HyperText Transfer Protocol. The protocol that powers the web."], "a": "HyperText Transfer Protocol"},
+      {"q": "Default port for HTTP:", "opts": ["21", "25", "80", "443"], "c": 2, "s": ["HTTP = port 80. HTTPS = port 443."], "a": "80"},
+      {"q": "Default port for HTTPS:", "opts": ["80", "443", "21", "25"], "c": 1, "s": ["HTTPS = port 443. HTTP = 80."], "a": "443"},
+      {"q": "What does DNS do?", "opts": ["Encrypts web traffic", "Converts domain names to IP addresses", "Sends email", "Hosts web pages"], "c": 1, "s": ["DNS = Domain Name System. The internet's phonebook - name to IP lookup."], "a": "Converts domain names to IP addresses"},
+      {"q": "HTTPS encrypts data using:", "opts": ["FTP", "SSL/TLS", "DNS", "SMTP"], "c": 1, "s": ["HTTPS = HTTP + SSL/TLS encryption. The padlock in the address bar."], "a": "SSL/TLS"},
+      {"q": "Which is a PRIVATE IP address?", "opts": ["8.8.8.8", "192.168.1.1", "172.217.0.46", "1.1.1.1"], "c": 1, "s": ["Private ranges: 10.x.x.x, 172.16-31.x.x, 192.168.x.x. 192.168.1.1 is private."], "a": "192.168.1.1"},
+      {"q": "IPv4 addresses are how many bits?", "opts": ["16", "32", "64", "128"], "c": 1, "s": ["IPv4 = 32 bits, written as 4 octets (e.g. 192.168.1.1)."], "a": "32"},
+      {"q": "IPv6 addresses are how many bits?", "opts": ["32", "64", "128", "256"], "c": 2, "s": ["IPv6 = 128 bits, written in hex with colons (e.g. 2001:0db8::1)."], "a": "128"},
+      {"q": "Default DNS port:", "opts": ["21", "25", "53", "80"], "c": 2, "s": ["DNS = port 53 (both UDP and TCP)."], "a": "53"},
+      {"q": "Default HTTPS port:", "opts": ["80", "443", "21", "22"], "c": 1, "s": ["HTTPS = 443. (HTTP = 80, FTP = 21, SSH = 22, DNS = 53.)"], "a": "443"}
+    ],
+    "browser-shortcuts": [
+      {"q": "Shortcut to open a new tab in Chrome / Edge:", "opts": ["Ctrl+N", "Ctrl+T", "Ctrl+W", "Ctrl+Shift+T"], "c": 1, "s": ["Ctrl+T = new tab. Ctrl+N = new browser window. Ctrl+W = close tab."], "a": "Ctrl+T"},
+      {"q": "Shortcut to close the current tab:", "opts": ["Ctrl+T", "Ctrl+W", "Ctrl+Shift+T", "Ctrl+Q"], "c": 1, "s": ["Ctrl+W = close current tab. Ctrl+Shift+T = reopen last closed tab."], "a": "Ctrl+W"},
+      {"q": "Shortcut to reopen the last closed tab:", "opts": ["Ctrl+Z", "Ctrl+Shift+T", "Ctrl+Y", "Ctrl+H"], "c": 1, "s": ["Ctrl+Shift+T reopens the last closed tab (up to ~10 times)."], "a": "Ctrl+Shift+T"},
+      {"q": "Shortcut to focus the address bar (URL bar):", "opts": ["Ctrl+A", "Ctrl+L", "Ctrl+B", "Ctrl+F"], "c": 1, "s": ["Ctrl+L focuses the address bar so you can type a URL or search."], "a": "Ctrl+L"},
+      {"q": "Shortcut to add the current page as a bookmark:", "opts": ["Ctrl+B", "Ctrl+D", "Ctrl+S", "Ctrl+M"], "c": 1, "s": ["Ctrl+D adds the current page to your bookmarks (D for 'bookmark', despite the conventional B)."], "a": "Ctrl+D"},
+      {"q": "Shortcut to open the browser's Downloads list:", "opts": ["Ctrl+J", "Ctrl+D", "Ctrl+H", "Ctrl+L"], "c": 0, "s": ["Ctrl+J opens the downloads list. (H = history, D = bookmark, L = address bar.)"], "a": "Ctrl+J"},
+      {"q": "Shortcut to open the browser's History list:", "opts": ["Ctrl+H", "Ctrl+J", "Ctrl+D", "Ctrl+L"], "c": 0, "s": ["Ctrl+H opens the history list."], "a": "Ctrl+H"},
+      {"q": "Shortcut to open a new PRIVATE / INCOGNITO window:", "opts": ["Ctrl+N", "Ctrl+Shift+N", "Ctrl+Alt+N", "Ctrl+P"], "c": 1, "s": ["Ctrl+Shift+N opens a private (incognito) window in Chrome / Edge / Firefox."], "a": "Ctrl+Shift+N"},
+      {"q": "Shortcut to reload the current page:", "opts": ["F5", "F1", "F12", "Esc"], "c": 0, "s": ["F5 (or Ctrl+R) reloads the page. Ctrl+Shift+R (or Ctrl+F5) is a hard reload (bypasses cache)."], "a": "F5"},
+      {"q": "Shortcut to clear browsing data (cookies, cache, history):", "opts": ["Ctrl+Shift+Delete", "Ctrl+Alt+Delete", "Ctrl+Delete", "Shift+Delete"], "c": 0, "s": ["Ctrl+Shift+Delete opens the Clear Browsing Data dialog in Chrome / Edge / Firefox."], "a": "Ctrl+Shift+Delete"}
+    ],
+    "http-ports": [
+      {"q": "Default port for HTTPS:", "opts": ["80", "443", "21", "25"], "c": 1, "s": ["HTTPS = port 443. (HTTP = 80, FTP = 21, SMTP = 25.)"], "a": "443"},
+      {"q": "Default port for HTTP (plain):", "opts": ["80", "443", "21", "53"], "c": 0, "s": ["HTTP = port 80. HTTPS = 443."], "a": "80"},
+      {"q": "Default port for FTP (File Transfer Protocol):", "opts": ["21", "22", "25", "80"], "c": 0, "s": ["FTP = port 21. (SSH = 22, SMTP = 25, HTTP = 80, HTTPS = 443, DNS = 53.)"], "a": "21"},
+      {"q": "Default port for SMTP (sending email):", "opts": ["21", "25", "80", "110"], "c": 1, "s": ["SMTP = port 25 (mail out). POP3 = 110. IMAP = 143."], "a": "25"},
+      {"q": "Default port for POP3 (downloading email):", "opts": ["25", "80", "110", "143"], "c": 2, "s": ["POP3 = port 110. IMAP = 143. SMTP = 25."], "a": "110"},
+      {"q": "Default port for IMAP (syncing email):", "opts": ["25", "110", "143", "587"], "c": 2, "s": ["IMAP = port 143. POP3 = 110. SMTP = 25 (587 is the submission port)."], "a": "143"},
+      {"q": "Default port for DNS:", "opts": ["21", "25", "53", "80"], "c": 2, "s": ["DNS = port 53 (both UDP and TCP)."], "a": "53"},
+      {"q": "Port 80 is used by:", "opts": ["HTTPS", "HTTP (plain)", "FTP", "SMTP"], "c": 1, "s": ["HTTP = 80. HTTPS = 443. FTP = 21. SMTP = 25."], "a": "HTTP (plain)"},
+      {"q": "Port 443 is used by:", "opts": ["HTTP", "HTTPS", "FTP", "SSH"], "c": 1, "s": ["HTTPS = port 443. (HTTP = 80, SSH = 22, FTP = 21.)"], "a": "HTTPS"},
+      {"q": "Port 22 is used by:", "opts": ["HTTP", "HTTPS", "SSH (secure shell)", "Telnet"], "c": 2, "s": ["SSH = port 22 (encrypted remote shell). Telnet = 23 (insecure)."], "a": "SSH (secure shell)"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Default browser on Windows 10/11:", "opts": ["Google Chrome", "Mozilla Firefox", "Microsoft Edge", "Safari"], "c": 2, "d": "easy", "t": "Browsers & Search", "exp": ["Microsoft Edge is the default browser on Windows 10/11. Internet Explorer was retired in 2022."]},
+    {"id": 2, "q": "Most-used web browser worldwide:", "opts": ["Microsoft Edge", "Google Chrome", "Mozilla Firefox", "Safari"], "c": 1, "d": "easy", "t": "Browsers & Search", "exp": ["Chrome has the largest market share worldwide."]},
+    {"id": 3, "q": "A SEARCH ENGINE is:", "opts": ["The same as a browser", "A website that helps you find other websites (e.g. Google, Bing)", "A type of email client", "A protocol for transferring files"], "c": 1, "d": "easy", "t": "Browsers & Search", "exp": ["Search engines index web pages and return ranked results. Google, Bing, DuckDuckGo."]},
+    {"id": 4, "q": "A WEB BROWSER is:", "opts": ["An application that retrieves and displays web pages", "A type of email server", "A programming language", "A database system"], "c": 0, "d": "easy", "t": "Browsers & Search", "exp": ["Browser = Chrome / Edge / Firefox / Safari - fetches and renders web pages."]},
+    {"id": 5, "q": "Which is NOT a web browser?", "opts": ["Chrome", "Edge", "Google", "Firefox"], "c": 2, "d": "easy", "t": "Browsers & Search", "exp": ["Google is a search engine, not a browser. Chrome is the browser; Google is the search engine on it."]},
+    {"id": 6, "q": "Private / Incognito browsing hides your activity from:", "opts": ["Your ISP and employer", "The websites you visit", "Your local device only", "The government"], "c": 2, "d": "medium", "t": "Browsers & Search", "exp": ["Private browsing hides your activity from your LOCAL device (no history / cookies saved). Your ISP, employer, and websites still see you."]},
+    {"id": 7, "q": "Shortcut to open a new private / incognito window in Chrome / Edge:", "opts": ["Ctrl+N", "Ctrl+Shift+N", "Ctrl+P", "Ctrl+Alt+N"], "c": 1, "d": "easy", "t": "Browsers & Search", "exp": ["Ctrl+Shift+N opens a private (incognito) window in Chrome, Edge, and Firefox."]},
+    {"id": 8, "q": "The address bar in a browser is also called the:", "opts": ["Title bar", "URL bar", "Status bar", "Search bar only"], "c": 1, "d": "easy", "t": "Browsers & Search", "exp": ["Address bar / URL bar - the text field at the top where you type a URL or search."]},
+    {"id": 9, "q": "Ctrl+L in a browser:", "opts": ["Closes the current tab", "Focuses the address bar (URL bar)", "Opens a new tab", "Reloads the page"], "c": 1, "d": "easy", "t": "Browsers & Search", "exp": ["Ctrl+L focuses the address bar so you can immediately type a URL or search query."]},
+    {"id": 10, "q": "Internet Explorer was retired in:", "opts": ["2015", "2018", "2022", "2025"], "c": 2, "d": "medium", "t": "Browsers & Search", "exp": ["Microsoft retired Internet Explorer on June 15, 2022. Edge is its successor."]},
+    {"id": 11, "q": "Bookmark a page in a browser with:", "opts": ["Ctrl+B", "Ctrl+D", "Ctrl+S", "Ctrl+M"], "c": 1, "d": "easy", "t": "Tabs, History & Bookmarks", "exp": ["Ctrl+D adds a bookmark (D despite the conventional B)."]},
+    {"id": 12, "q": "View browser history with:", "opts": ["Ctrl+H", "Ctrl+J", "Ctrl+D", "Ctrl+B"], "c": 0, "d": "easy", "t": "Tabs, History & Bookmarks", "exp": ["Ctrl+H opens the history list. (J = downloads, D = bookmark, B = toggle bookmarks bar.)"]},
+    {"id": 13, "q": "Reopen the last closed browser tab with:", "opts": ["Ctrl+Z", "Ctrl+Shift+T", "Ctrl+Y", "Ctrl+H"], "c": 1, "d": "easy", "t": "Tabs, History & Bookmarks", "exp": ["Ctrl+Shift+T reopens the last closed tab. Works up to ~10 times in most browsers."]},
+    {"id": 14, "q": "Bookmarks vs History - which is TRUE?", "opts": ["Both are saved automatically for every page", "Bookmarks are manual; History is automatic", "Both are manual", "Neither can be deleted"], "c": 1, "d": "medium", "t": "Tabs, History & Bookmarks", "exp": ["History = automatic log of every visit. Bookmarks = manual saves."]},
+    {"id": 15, "q": "Ctrl+1 through Ctrl+8 in a browser jump to:", "opts": ["Pages 1-8 of the current website", "Tabs 1-8 (in order), Ctrl+9 to last tab", "Bookmarks 1-8", "Search results 1-8"], "c": 1, "d": "medium", "t": "Tabs, History & Bookmarks", "exp": ["Ctrl+1 to Ctrl+8 jump to the corresponding tab in order. Ctrl+9 always jumps to the LAST tab."]},
+    {"id": 16, "q": "Press F5 in a browser to:", "opts": ["Open a new tab", "Reload the current page", "Open Bookmarks", "Close the browser"], "c": 1, "d": "easy", "t": "Tabs, History & Bookmarks", "exp": ["F5 (or Ctrl+R) reloads. Ctrl+Shift+R (or Ctrl+F5) is a hard reload that bypasses the cache."]},
+    {"id": 17, "q": "To open a link in a new tab without leaving the current page, you can:", "opts": ["Double-click the link", "Middle-click the link (or Ctrl+Click)", "Right-click > Open in new tab only", "Drag the link out of the browser"], "c": 1, "d": "medium", "t": "Tabs, History & Bookmarks", "exp": ["Middle-click OR Ctrl+Click opens in a new tab. Saves time."]},
+    {"id": 18, "q": "Webmail means:", "opts": ["An email client installed on your computer", "Email that runs in a web browser (Gmail, Outlook.com, Yahoo Mail)", "A protocol for transferring email", "Email with attachments"], "c": 1, "d": "easy", "t": "Email Etiquette & Fields", "exp": ["Webmail = email that runs in the browser. Gmail, Outlook.com, Yahoo Mail."]},
+    {"id": 19, "q": "Gmail's default attachment size limit is approximately:", "opts": ["5 MB", "20 MB", "25 MB", "100 MB"], "c": 2, "d": "medium", "t": "Email Etiquette & Fields", "exp": ["Gmail = 25 MB. Outlook.com = 20 MB. Yahoo Mail = 25 MB. Use Google Drive links for larger."]},
+    {"id": 20, "q": "Ctrl+Enter in most webmails does what?", "opts": ["New message", "Send the current message", "Save as draft", "Reply"], "c": 1, "d": "medium", "t": "Email Etiquette & Fields", "exp": ["Ctrl+Enter = Send in Gmail, Outlook.com, and most webmail clients."]},
+    {"id": 21, "q": "Phishing is:", "opts": ["Spam advertising", "A fraudulent email designed to steal credentials / personal data", "A protocol for sending bulk mail", "A type of firewall"], "c": 1, "d": "easy", "t": "Email Etiquette & Fields", "exp": ["Phishing = fraudulent email pretending to be a trusted sender (bank, IT, boss) to steal login / personal data."]},
+    {"id": 22, "q": "Best way to send a 200 MB file to a colleague via email:", "opts": ["Compress with WinZip first", "Send via cloud link (OneDrive / Google Drive / Dropbox)", "Split into 4 parts of 50 MB each", "Burn to a CD and courier it"], "c": 1, "d": "medium", "t": "Email Etiquette & Fields", "exp": ["Email attachment limit is 20-25 MB. Use a cloud link (OneDrive, Google Drive, Dropbox) for larger files."]},
+    {"id": 23, "q": "URL stands for:", "opts": ["Uniform Resource Locator", "Universal Reference Link", "Unified Resource List", "User Resource Locator"], "c": 0, "d": "easy", "t": "URLs & Domains", "exp": ["URL = Uniform Resource Locator. The full address of a web resource."]},
+    {"id": 24, "q": "DNS converts:", "opts": ["IP addresses to domain names", "Domain names to IP addresses", "URLs to ports", "HTTP to HTTPS"], "c": 1, "d": "easy", "t": "URLs & Domains", "exp": ["DNS = Domain Name System. Translates domain names (example.com) to IP addresses (93.184.216.34)."]},
+    {"id": 25, "q": "HTTPS stands for:", "opts": ["HyperText Transfer Protocol Secure", "High Transfer Text Protocol Secure", "Hyperlink Text Transfer Protocol Safe", "Hyper Type Text Protocol Secure"], "c": 0, "d": "easy", "t": "URLs & Domains", "exp": ["HTTPS = HyperText Transfer Protocol Secure. HTTP + SSL/TLS encryption."]},
+    {"id": 26, "q": "Default port for HTTPS:", "opts": ["80", "443", "21", "25"], "c": 1, "d": "easy", "t": "URLs & Domains", "exp": ["HTTPS = port 443. HTTP = 80."]},
+    {"id": 27, "q": "Default port for HTTP (plain):", "opts": ["80", "443", "21", "53"], "c": 0, "d": "easy", "t": "URLs & Domains", "exp": ["HTTP = 80. HTTPS = 443. FTP = 21. DNS = 53."]},
+    {"id": 28, "q": "Which is a PRIVATE IP address?", "opts": ["8.8.8.8", "1.1.1.1", "192.168.1.1", "208.67.222.222"], "c": 2, "d": "medium", "t": "URLs & Domains", "exp": ["Private ranges: 10.x, 172.16-31.x, 192.168.x. 8.8.8.8 is Google DNS (public). 1.1.1.1 is Cloudflare DNS (public). 208.67.222.222 is OpenDNS (public)."]},
+    {"id": 29, "q": "IPv4 address format:", "opts": ["8-bit, dotted hex", "32-bit, four numbers 0-255 separated by dots", "128-bit, hex with colons", "64-bit, binary"], "c": 1, "d": "easy", "t": "URLs & Domains", "exp": ["IPv4 = 32 bits, written as four octets 0-255 separated by dots. e.g. 192.168.1.1."]},
+    {"id": 30, "q": "IPv6 address format:", "opts": ["Same as IPv4", "32-bit, dotted decimal", "128-bit, hex with colons", "64-bit, dotted hex"], "c": 2, "d": "easy", "t": "URLs & Domains", "exp": ["IPv6 = 128 bits, written in hex with colons. e.g. 2001:0db8:85a3::8a2e:0370:7334."]},
+    {"id": 31, "q": "In a URL, the scheme is:", "opts": ["The rightmost part", "The leftmost part (e.g. http, https, ftp)", "Always .com", "The path after the domain"], "c": 1, "d": "easy", "t": "URLs & Domains", "exp": ["The scheme (http, https, ftp) is the leftmost part of a URL. Tells the browser how to fetch."]},
+    {"id": 32, "q": "The fragment in a URL (after the #) is used for:", "opts": ["Passing query parameters to the server", "Jumping to a section within the page", "Identifying the host", "Specifying the protocol"], "c": 1, "d": "medium", "t": "URLs & Domains", "exp": ["#reviews jumps to the 'reviews' section of the page. Not sent to the server."]},
+    {"id": 33, "q": "In 'https://shop.example.com:8080/cart', the ':8080' is the:", "opts": ["Path", "Port", "Query", "Scheme"], "c": 1, "d": "medium", "t": "URLs & Domains", "exp": ["Port comes after the host, separated by :. Default 80 (http) and 443 (https) are often hidden."]},
+    {"id": 34, "q": "A browser PLUGIN (legacy) was used to:", "opts": ["Add a feature to the browser (like ad-block)", "Display Flash video or run Java applets", "Search the web", "Send email"], "c": 1, "d": "medium", "t": "Downloads & Plugins", "exp": ["Plugins like Flash and Java ran code inside the browser. Modern browsers use EXTENSIONS instead (Chrome Web Store, Firefox Add-ons)."]},
+    {"id": 35, "q": "A modern browser EXTENSION:", "opts": ["Is a small program that adds a feature to the browser", "Is the same as a plugin (Flash)", "Replaces the browser", "Is required for HTTPS"], "c": 0, "d": "medium", "t": "Downloads & Plugins", "exp": ["Extensions add features: ad blocker, password manager, dark mode, etc. Install from the official web store only."]},
+    {"id": 36, "q": "The shortcut to view recent downloads in a browser:", "opts": ["Ctrl+J", "Ctrl+D", "Ctrl+H", "Ctrl+B"], "c": 0, "d": "easy", "t": "Downloads & Plugins", "exp": ["Ctrl+J opens the Downloads list in Chrome, Edge, and Firefox."]},
+    {"id": 37, "q": "Shortcut to clear browsing data (history, cookies, cache) in Chrome / Edge / Firefox:", "opts": ["Ctrl+Shift+Delete", "Ctrl+Alt+Delete", "Ctrl+Delete", "Shift+Delete"], "c": 0, "d": "medium", "t": "Downloads & Plugins", "exp": ["Ctrl+Shift+Delete opens the Clear Browsing Data dialog. Choose what to clear and the time range."]},
+    {"id": 38, "q": "What is the CACHE in a browser?", "opts": ["A type of cookie for login", "A local copy of web resources (images, CSS, JS) for faster loading", "The browser's bookmarks", "The browser's history list"], "c": 1, "d": "medium", "t": "Downloads & Plugins", "exp": ["Cache = local copy of web resources. Speeds up page loads on revisit. Lives in your browser profile."]},
+    {"id": 39, "q": "Which is a typical URL part that comes BEFORE the domain in a fully-qualified URL?", "opts": ["Path", "Subdomain (e.g. www)", "Query string", "Fragment"], "c": 1, "d": "medium", "t": "URLs & Domains", "exp": ["www is the most common subdomain. e.g. www.example.com. Path, query, fragment come AFTER the domain."]},
+    {"id": 40, "q": "What does the 's' in HTTPS stand for?", "opts": ["Standard", "Simple", "Secure", "Server"], "c": 2, "d": "easy", "t": "URLs & Domains", "exp": ["HTTPS = HyperText Transfer Protocol SECURE. HTTP + SSL/TLS encryption."]},
+    {"id": 41, "q": "Default SMTP port (for sending email):", "opts": ["21", "25", "80", "110"], "c": 1, "d": "medium", "t": "URLs & Domains", "exp": ["SMTP = port 25 (sending email). POP3 = 110 (downloading). IMAP = 143 (syncing)."]},
+    {"id": 42, "q": "Default POP3 port (for downloading email to a single device):", "opts": ["25", "80", "110", "143"], "c": 2, "d": "medium", "t": "URLs & Domains", "exp": ["POP3 = port 110. IMAP = 143. SMTP = 25."]},
+    {"id": 43, "q": "Default IMAP port (for syncing email across devices):", "opts": ["25", "110", "143", "587"], "c": 2, "d": "medium", "t": "URLs & Domains", "exp": ["IMAP = port 143. POP3 = 110. SMTP = 25 (587 is the modern submission port)."]},
+    {"id": 44, "q": "Default FTP port:", "opts": ["20", "21", "22", "23"], "c": 1, "d": "medium", "t": "URLs & Domains", "exp": ["FTP = port 21. SSH = 22. Telnet = 23."]},
+    {"id": 45, "q": "Which protocol is used to send email from a client to a server?", "opts": ["POP3", "IMAP", "SMTP", "HTTP"], "c": 2, "d": "medium", "t": "URLs & Domains", "exp": ["SMTP = port 25, used to SEND email (and for server-to-server transfer). POP3 / IMAP are for RECEIVING."]},
+    {"id": 46, "q": "Which protocol keeps email on the server so multiple devices can sync?", "opts": ["POP3", "IMAP", "SMTP", "FTP"], "c": 1, "d": "medium", "t": "URLs & Domains", "exp": ["IMAP = port 143. Keeps email on the server, syncs across devices. POP3 = 110 downloads and (usually) deletes from server."]},
+    {"id": 47, "q": "To open the browser's download list with one shortcut, press:", "opts": ["Ctrl+D", "Ctrl+J", "Ctrl+H", "Ctrl+L"], "c": 1, "d": "easy", "t": "Downloads & Plugins", "exp": ["Ctrl+J opens Downloads. (D = bookmark, H = history, L = address bar.)"]},
+    {"id": 48, "q": "To reload a webpage and bypass the cache (force fresh copy):", "opts": ["F5", "Ctrl+R", "Ctrl+Shift+R (or Ctrl+F5)", "Esc"], "c": 2, "d": "medium", "t": "Tabs, History & Bookmarks", "exp": ["F5 / Ctrl+R = normal reload (uses cache). Ctrl+Shift+R (or Ctrl+F5) = hard reload (bypasses cache)."]},
+    {"id": 49, "q": "The 'A' record in DNS maps:", "opts": ["A domain name to an IPv4 address", "A domain to a mail server", "A domain to an alias", "A domain to text records"], "c": 0, "d": "medium", "t": "URLs & Domains", "exp": ["A record = Address record (IPv4). MX = mail server. CNAME = alias. TXT = text."]},
+    {"id": 50, "q": "The 'MX' record in DNS specifies:", "opts": ["The domain's IPv4 address", "The mail server(s) for the domain", "An alias for the domain", "Text records for verification"], "c": 1, "d": "medium", "t": "URLs & Domains", "exp": ["MX = Mail Exchange. Tells SMTP which server handles @yourdomain.com mail."]},
+    {"id": 51, "q": "What is the 'cache' in a browser?", "opts": ["A list of bookmarks", "A local copy of web resources for faster loading", "A list of saved passwords", "A list of installed extensions"], "c": 1, "d": "easy", "t": "Downloads & Plugins", "exp": ["Cache = local copy of web resources (HTML, CSS, JS, images). Speeds up revisit. Cleared via Ctrl+Shift+Delete."]},
+    {"id": 52, "q": "Which is a benefit of using HTTPS over HTTP?", "opts": ["Faster page load", "Encrypted communication (data integrity + privacy)", "Lower data usage", "Automatic DNS resolution"], "c": 1, "d": "easy", "t": "URLs & Domains", "exp": ["HTTPS encrypts data (SSL/TLS), preventing eavesdropping and tampering. HTTP is plain text."]},
+    {"id": 53, "q": "A browser EXTENSION vs PLUGIN - which is true?", "opts": ["They are the same thing", "Extensions are modern and supported; plugins are deprecated (Flash, Java applets)", "Plugins are newer", "Both are deprecated"], "c": 1, "d": "medium", "t": "Downloads & Plugins", "exp": ["Extensions = modern, sandboxed, supported. Plugins (Flash, Java) = deprecated, removed from major browsers."]},
+    {"id": 54, "q": "The 'CNAME' record in DNS maps:", "opts": ["A name to an IP address", "A name to another name (alias)", "A name to a mail server", "A name to a text value"], "c": 1, "d": "medium", "t": "URLs & Domains", "exp": ["CNAME = Canonical Name. Alias. www.example.com -> example.com."]},
+    {"id": 55, "q": "What does the padlock icon in the browser address bar mean?", "opts": ["The site is bookmarked", "The site uses HTTPS (encrypted connection)", "The site is verified by your employer", "The site is a search engine"], "c": 1, "d": "easy", "t": "URLs & Domains", "exp": ["Padlock = HTTPS / SSL/TLS certificate is valid. The connection to the site is encrypted."]},
+    {"id": 56, "q": "A 'TLD' in a URL is:", "opts": ["The Transport Layer Domain", "The Top-Level Domain (rightmost part - .com, .org, .in, etc.)", "The Total Link Directory", "The Trusted Link Domain"], "c": 1, "d": "easy", "t": "URLs & Domains", "exp": ["TLD = Top-Level Domain. The rightmost part. .com (commercial), .org (organisation), .in (India country-code), etc."]},
+    {"id": 57, "q": "Best definition of a 'web browser':", "opts": ["A program that retrieves and displays web pages", "A search engine", "A web server", "A type of email client"], "c": 0, "d": "easy", "t": "Browsers & Search", "exp": ["Browser = application that fetches and renders web pages (Chrome, Edge, Firefox, Safari)."]},
+    {"id": 58, "q": "In a URL like 'http://example.com/path', what is 'example.com'?", "opts": ["The path", "The domain", "The TLD", "The protocol"], "c": 1, "d": "easy", "t": "URLs & Domains", "exp": ["example = the domain. .com = the TLD. Together they form the host the browser connects to."]},
+    {"id": 59, "q": "Ctrl+Enter in a webmail compose window usually does what?", "opts": ["Save as draft", "Send the message", "Open a new message", "Insert an attachment"], "c": 1, "d": "medium", "t": "Email Etiquette & Fields", "exp": ["Ctrl+Enter = Send in most webmail (Gmail, Outlook.com, Yahoo)."]},
+    {"id": 60, "q": "To reload a webpage in a browser, the shortcut is:", "opts": ["F5 (or Ctrl+R)", "F2", "F12", "Esc"], "c": 0, "d": "easy", "t": "Tabs, History & Bookmarks", "exp": ["F5 (or Ctrl+R) reloads. Ctrl+Shift+R (or Ctrl+F5) is a hard reload."]}
+  ]
+}

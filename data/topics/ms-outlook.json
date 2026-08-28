@@ -1,0 +1,558 @@
+{
+  "id": "ms-outlook",
+  "title": "MS Outlook",
+  "icon": "O",
+  "category": "ms-office",
+  "subtitle": "Email, calendar, contacts, tasks, rules and signatures - the productivity hub of MS Office",
+  "days": "2",
+  "color": "#0D9488",
+  "subtopics": [
+    "Mail Basics (CC/BCC/Attachments)",
+    "Calendar & Appointments",
+    "Tasks & Notes",
+    "Folders & Search",
+    "Rules & Signatures",
+    "Shortcuts & Data Files"
+  ],
+  "estimatedHours": 5,
+  "readingSections": [
+    {
+      "id": "mail-basics",
+      "title": "Mail Basics: To, CC, BCC, Subject, Attachments",
+      "type": "concept",
+      "quickSummary": "TO = primary recipient. CC = Carbon Copy (visible to all). BCC = Blind Carbon Copy (hidden from others). Subject = short summary. Attachments = files added to the email.",
+      "content": [
+        "An email in MS Outlook has four key address fields: TO, CC, BCC, and SUBJECT. The TO field is for primary recipients - the people the email is 'addressed to'. CC stands for CARBON COPY - recipients on CC are visible to everyone else on the email (TO and CC). BCC stands for BLIND CARBON COPY - recipients on BCC are HIDDEN from TO and CC recipients (each BCC recipient only sees themselves and the TO/CC, not the other BCCs).",
+        "SUBJECT is the short headline that appears in the inbox preview. Keep it specific and short - 'Resume attached - 2026 Application' beats 'Hi' or 'Important!!!'. Empty subject lines are often treated as spam.",
+        "ATTACHMENTS: use the paperclip icon in the message window, or drag a file from File Explorer into the message. Outlook blocks many executable file types by default (.exe, .bat, .js) - they are replaced with a text file saying 'Outlook blocked access to the following potentially unsafe attachments'. The exam loves this trap: 'You try to attach a .exe; what happens?' -> Outlook blocks it.",
+        "When an email has an attachment, a paperclip icon appears in the message list. To see all attachments in a message, click the paperclip OR open the message. Save an attachment: right-click > Save As. Forward an email WITH its attachments: Home > Forward (or Ctrl+F) - the attachments go with the message."
+      ],
+      "subsections": [
+        {
+          "title": "CC vs BCC - the exam trap",
+          "content": "CC recipients are visible to ALL recipients (TO + CC). BCC recipients are hidden from TO + CC but visible to other BCCs (in some clients; New Outlook hides them from each other too). Common use: BCC a manager on a customer email without the customer knowing; CC a colleague who should see the thread but isn't the primary recipient."
+        },
+        {
+          "title": "Attachment size limit",
+          "content": "Outlook's default attachment size limit is 20 MB (Exchange / Microsoft 365 servers; was 10 MB on older Exchange). For larger files, use OneDrive / SharePoint links instead of direct attachments. The attachment icon (paperclip) shows a count next to it for multi-attach messages."
+        }
+      ],
+      "quickRevision": [
+        "TO = primary recipient. CC = visible copy. BCC = hidden copy.",
+        "Subject is the inbox preview headline. Keep it short and specific.",
+        "Attachments: paperclip icon, drag-and-drop, or Home > Attach File.",
+        "Outlook blocks .exe, .bat, .js, .vbs by default ('unsafe attachments').",
+        "CC recipients are visible to everyone; BCC recipients are hidden from TO/CC."
+      ],
+      "tricks": [
+        "If the question says 'CC recipients are hidden from TO recipients' -> wrong (CC is visible to TO).",
+        "If the question lists BCC's purpose as 'the same as CC' -> wrong. BCC's defining feature is HIDING.",
+        "Blocked attachment types in the exam: .exe, .bat, .js, .vbs, .scr (anything that can run code)."
+      ],
+      "patterns": [
+        "'CC vs BCC - which is hidden from other recipients?' -> BCC.",
+        "'Where is the Attach File button?' -> Home > Attach File (paperclip icon) in the message window.",
+        "'What does Outlook do with a .exe attachment?' -> Blocks it as a 'potentially unsafe attachment'."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked across Accenture / campus MS Office MCQ sets",
+          "question": "BCC stands for:",
+          "approach": "Blind Carbon Copy. Hidden from TO and CC recipients."
+        },
+        {
+          "source": "Asked in Outlook MCQ sets",
+          "question": "What happens when you try to attach a .exe file?",
+          "approach": "Outlook blocks it as a potentially unsafe attachment."
+        }
+      ],
+      "companyNote": "CC vs BCC is the most-asked Outlook MCQ - free marks if you know the distinction."
+    },
+    {
+      "id": "calendar-appointments",
+      "title": "Calendar, Appointments, Meetings & Recurrence",
+      "type": "concept",
+      "quickSummary": "Appointment = a block on your calendar (no invitees). Meeting = an appointment with invitees (uses Resources / Rooms). Recurrence = repeat. Outlook stores events as .ics (iCalendar).",
+      "content": [
+        "The CALENDAR in Outlook is where you schedule time. There are three item types: APPOINTMENT (a time block on YOUR calendar only - no invitees, no email), MEETING (an appointment WITH invitees who get a meeting request email), and EVENT (an all-day item - birthday, holiday).",
+        "Create an appointment: Calendar > New Appointment (or Ctrl+N in Calendar view, or Ctrl+Shift+A from anywhere in Outlook). The appointment window has Subject, Location, Start, End, Reminder fields. The Notes area at the bottom is for private notes visible only to you.",
+        "Create a meeting: Calendar > New Meeting (or Ctrl+Shift+Q from anywhere in Outlook). Type attendees in the To field. Outlook auto-checks the address book. The Scheduling Assistant tab shows everyone's free/busy time and helps pick a slot that works. Send the meeting - invitees get an email with Accept / Tentative / Decline buttons.",
+        "RECURRENCE: any appointment or meeting can be made recurring (daily, weekly, monthly, etc.) via the 'Recurrence' button on the ribbon. You set the repeat pattern (every Monday, every 2 weeks, the third Tuesday of the month, etc.) and an end date or a number of occurrences. Editing a single occurrence vs the whole series is a common trap - right-click the event > Open This Occurrence / Open the Series.",
+        "VIEWS: Day, Work Week (Mon-Fri), Week, Month. Toggle via Home > Day/Work Week/Week/Month OR Ctrl+1/2/3/4 (or Alt+1...Alt+0 for 1-10 days in some versions). Today is Home > Today (or Ctrl+Home in calendar). Go to a specific date: Home > Go to Date (or Ctrl+G)."
+      ],
+      "subsections": [
+        {
+          "title": "Free/Busy, Rooms, Resources",
+          "content": "When you add attendees to a meeting, Outlook's Scheduling Assistant shows each person's free/busy schedule (the colored bars). The Rooms list (if your admin has set it up) lets you book a meeting room. The exam rarely goes deep here, but knowing 'Scheduling Assistant helps pick a meeting time' is enough."
+        },
+        {
+          "title": "Recurrence traps",
+          "content": "'Edit the series' vs 'Edit this occurrence' - editing the series changes all future events; editing this occurrence changes only the one date. 'Delete' the series removes everything; 'Delete' this occurrence removes only one. The exam's classic: 'Edit a single occurrence of a recurring meeting' -> right-click > Open This Occurrence."
+        }
+      ],
+      "quickRevision": [
+        "Appointment = on your calendar only. Meeting = with invitees (sends meeting request).",
+        "New Appointment: Ctrl+N (in Calendar) or Ctrl+Shift+A (anywhere).",
+        "New Meeting: Ctrl+Shift+Q.",
+        "Recurrence: daily, weekly, monthly, yearly; set end date or count.",
+        "View shortcuts: Ctrl+1 Day, Ctrl+2 Work Week, Ctrl+3 Week, Ctrl+4 Month."
+      ],
+      "tricks": [
+        "Ctrl+N opens a NEW APPOINTMENT only when you're already in Calendar view. From Mail view, Ctrl+N opens a new email message window.",
+        "Ctrl+Shift+A and Ctrl+Shift+Q work from anywhere in Outlook - useful exam fact.",
+        "If the question lists 'Meeting = no invitees' -> wrong. Meeting REQUIRES invitees; appointment is the no-invitees one."
+      ],
+      "patterns": [
+        "'Shortcut to create a meeting from anywhere in Outlook?' -> Ctrl+Shift+Q.",
+        "'Shortcut to create a new appointment from anywhere?' -> Ctrl+Shift+A.",
+        "'Edit a single occurrence of a recurring meeting?' -> right-click > Open This Occurrence."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Outlook MCQ sets (PrepInsta, Sanfoundry)",
+          "question": "Shortcut to create a new meeting request from anywhere in Outlook:",
+          "approach": "Ctrl+Shift+Q."
+        },
+        {
+          "source": "Asked in Outlook MCQ sets",
+          "question": "Difference between an appointment and a meeting:",
+          "approach": "Appointment = no invitees. Meeting = has invitees and sends a meeting request."
+        }
+      ],
+      "companyNote": "2-3 questions per paper on calendar items: appointment vs meeting, shortcuts, recurrence."
+    },
+    {
+      "id": "tasks-notes",
+      "title": "Tasks, To-Do List, Notes & Sticky Notes",
+      "type": "concept",
+      "quickSummary": "Tasks = trackable to-do items with due dates and status. Notes = free-form text panels. Sticky Notes = quick Windows-desktop yellow notes. All have their own folders in the Outlook navigation pane.",
+      "content": [
+        "The TASK module in Outlook is a built-in to-do list. Each task has Subject, Due date, Start date, Status (Not Started / In Progress / Completed / Waiting / Deferred), Priority (Low / Normal / High), and % Complete. Tasks show up in the To-Do Bar (the small task list in Mail and Calendar) and in the Tasks folder.",
+        "Create a task: Ctrl+Shift+K from anywhere in Outlook. The task window is similar to the appointment window. Tick 'Done' (Ctrl+1 inside a task) to mark it complete. To make a task recurring (e.g. 'Submit weekly report'), use the Recurrence button (same as on appointments).",
+        "The TO-DO BAR is the small task list that appears in Mail and Calendar. Tasks with today's or overdue due dates show up there. Right-click a task in the bar to mark complete, edit, or delete.",
+        "NOTES is a free-form text storage inside Outlook. Each note is a separate page in the Notes folder. Notes are not shared - they're personal scratchpads. Useful for: snippets, passwords (with caution), random ideas. The exam rarely goes deep on Notes; it usually just asks 'what is the Notes folder for?' -> personal text storage.",
+        "STICKY NOTES (the Windows desktop app, not Outlook itself) is a separate program that adds yellow post-it notes to your desktop. They are independent of Outlook. The exam's classic: 'In which program do you create Sticky Notes?' -> the Sticky Notes app (not Outlook)."
+      ],
+      "subsections": [
+        {
+          "title": "Quick Steps and To-Do Bar",
+          "content": "Outlook's Quick Steps (Home > Quick Steps) are one-click macros: 'Move to Folder', 'Reply & Delete', 'Forward as Attachment', 'To Manager', etc. You can create custom Quick Steps. The To-Do Bar shows today's calendar + flagged email + tasks. To flag an email for follow-up: open the message > Home > Follow Up > set a flag (Today, Tomorrow, This Week, Custom)."
+        },
+        {
+          "title": "Task status icons",
+          "content": "A red exclamation mark = overdue. A clock = due today. A blank flag = no due date. A checked flag = complete. A red line through a flag = the task is past its due date and still not done."
+        }
+      ],
+      "quickRevision": [
+        "Task = trackable to-do with due date, priority, status.",
+        "New task: Ctrl+Shift+K from anywhere in Outlook.",
+        "To-Do Bar shows today's tasks and flagged email.",
+        "Notes = personal text storage in Outlook. Sticky Notes = separate Windows app.",
+        "Flag an email for follow-up: Home > Follow Up > set flag."
+      ],
+      "tricks": [
+        "Sticky Notes is NOT in Outlook. It's a separate Windows app.",
+        "Ctrl+1 inside a task marks it complete (the '1' on a number key, not F1).",
+        "A task with a red exclamation = OVERDUE. The most-asked icon trap."
+      ],
+      "patterns": [
+        "'Shortcut to create a new task?' -> Ctrl+Shift+K.",
+        "'Where do you find today's tasks and flagged email?' -> To-Do Bar.",
+        "'What is the red exclamation on a task?' -> Overdue."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Outlook MCQ sets",
+          "question": "Shortcut to create a new task in Outlook:",
+          "approach": "Ctrl+Shift+K."
+        },
+        {
+          "source": "Asked in Outlook MCQ sets",
+          "question": "A red exclamation mark on a task means:",
+          "approach": "The task is OVERDUE."
+        }
+      ],
+      "companyNote": "1-2 questions per paper on tasks and the to-do bar."
+    },
+    {
+      "id": "folders-search",
+      "title": "Folders, Search & the Navigation Pane",
+      "type": "concept",
+      "quickSummary": "Default folders: Inbox, Drafts, Sent Items, Deleted Items, Junk Email, Outbox, Archive. Search bar at top is instant. Navigation Pane on the left switches between Mail / Calendar / People / Tasks.",
+      "content": [
+        "Outlook's default folder set for a Mail account: INBOX (incoming mail), DRAFTS (messages you're composing but haven't sent), SENT ITEMS (a copy of every email you sent), OUTBOX (queued mail waiting to be sent - usually transient), DELETED ITEMS (recycle bin - emptied on close or after 30 days), JUNK EMAIL (spam folder), ARCHIVE (long-term storage), NOTES, RSS FEEDS, CLENDAR, CONTACTS, TASKS, SEARCH FOLDERS (saved searches).",
+        "Create a custom folder: right-click the parent folder in the folder pane > New Folder. Drag and drop to move messages between folders. Delete a folder: right-click > Delete (Outlook will warn if the folder is non-empty).",
+        "SEARCH is the most-used feature. The Instant Search box at the top of Outlook searches every field of every message in the current folder. Use operators in quotes for exact matches ('budget report'), from: to find by sender, has:attachment: to find messages with files, subject: for subject-only. Search is FAST because Outlook builds an index in the background.",
+        "SEARCH FOLDERS are SAVED searches that auto-update. Example: 'All unread mail from my manager' - create once, every new matching message automatically appears. Right-click Search Folders > New Search Folder. The exam's classic: 'What is a Search Folder?' -> a saved search that auto-updates as new mail arrives."
+      ],
+      "subsections": [
+        {
+          "title": "Navigation Pane icons",
+          "content": "Bottom-left of Outlook: Mail, Calendar, People (Contacts), Tasks. The three dots '...' show more. You can also pin Folders, Favorites, and individual folders. Drag a folder to the Favorites section to keep it at the top."
+        },
+        {
+          "title": "Quick search tips",
+          "content": "Subject:hire -> finds messages with 'hire' in the subject. from:boss@company.com -> mail from the boss. hasattachment:true -> only messages with attachments. received:last week -> time filter. Combine with AND by default (from:boss subject:urgent). The exam loves: 'Find all unread messages from the boss with attachments' -> 'from:boss hasattachment:true isread:no' or use the ribbon filters."
+        }
+      ],
+      "quickRevision": [
+        "Default folders: Inbox, Drafts, Sent Items, Outbox, Deleted Items, Junk Email, Archive.",
+        "Deleted Items is the recycle bin. Junk Email catches spam. Archive is long-term storage.",
+        "Instant Search box at top searches the current folder (and all folders in All Outlook Items view).",
+        "Search Folder = a saved search that auto-updates.",
+        "Navigation Pane: Mail / Calendar / People / Tasks icons at the bottom-left."
+      ],
+      "tricks": [
+        "Drafts is NOT the same as Sent Items. Drafts = unsent, Sent = sent.",
+        "If the question lists 'Sent Items = where drafts go' -> wrong. Drafts is for drafts.",
+        "Search operators: from: / subject: / has:attachment: / isread: - chain them."
+      ],
+      "patterns": [
+        "'Where do unsent messages go?' -> Drafts.",
+        "'Where do deleted messages go before being permanently removed?' -> Deleted Items (recycle bin).",
+        "'What is a Search Folder?' -> A saved search that auto-updates as new mail arrives."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Outlook MCQ sets",
+          "question": "Where do unsent email messages go?",
+          "approach": "Drafts."
+        },
+        {
+          "source": "Asked in Outlook MCQ sets",
+          "question": "What is a Search Folder?",
+          "approach": "A saved search that automatically includes new matching items."
+        }
+      ],
+      "companyNote": "1-2 questions per paper on default folders and search operators."
+    },
+    {
+      "id": "rules-signatures",
+      "title": "Rules, Quick Steps, Signatures & Voting Buttons",
+      "type": "concept",
+      "quickSummary": "Rules auto-move, flag, or forward incoming mail. Signatures auto-append to every new email. Quick Steps are one-click macros. Voting buttons let recipients reply with a single click (Approve / Reject).",
+      "content": [
+        "RULES automatically process incoming or outgoing mail. Home > Rules > Manage Rules & Alerts opens the dialog. Common rules: 'Move messages from X to folder Y', 'Flag messages with subject X', 'Forward mail from X to Y', 'Play a sound when mail arrives from my manager'. Rules can run on the server (Exchange) or on the client (the local computer).",
+        "QUICK STEPS are one-click buttons that run a sequence of actions. Home > Quick Steps gallery has built-in ones: Move to Folder, Reply & Delete, Forward as Attachment, To Manager, Done. You can create custom Quick Steps too. Useful for 'always CC my manager on replies to a specific project' or 'always move mail from this client to the project folder'.",
+        "SIGNATURES: File > Options > Mail > Signatures (or File > Options > Mail > Signatures... in older Outlook). Create a signature with your name, title, contact info. The signature is auto-appended to every New Message, Reply, or Forward - you pick the default for each. The exam asks: 'Where do you create an email signature?' -> File > Options > Mail > Signatures.",
+        "VOTING BUTTONS: Options > Use Voting Buttons (or Options > Voting in older versions). Adds Approve / Reject buttons (or custom choices) to the message. Recipients click a button - the response is recorded and tabulated automatically. The exam's classic: 'To get a yes/no answer from many people with one click each, use...' -> Voting Buttons."
+      ],
+      "subsections": [
+        {
+          "title": "Out-of-Office (Automatic Replies)",
+          "content": "File > Automatic Replies (or File > Out of Office Assistant in older Outlook). Set 'I am out of the office' with start and end dates, plus a message. Inside vs Outside my organization: separate messages for internal colleagues and external senders. The exam: 'Where do you set the out-of-office message?' -> File > Automatic Replies (or Out of Office Assistant)."
+        },
+        {
+          "title": "Delay Delivery and Recall",
+          "content": "Options > Delay Delivery lets you schedule an email to send at a future time. Message > Actions > Recall This Message tries to recall an email you just sent (works only if the recipient hasn't opened it AND they're on the same Exchange server - otherwise it just sends a recall request email). The exam's classic: 'Can you recall a message after the recipient has read it?' -> No."
+        }
+      ],
+      "quickRevision": [
+        "Rules: auto-process incoming/outgoing mail (Home > Rules > Manage Rules & Alerts).",
+        "Quick Steps: one-click macros for common sequences (Home > Quick Steps).",
+        "Signatures: File > Options > Mail > Signatures.",
+        "Voting Buttons: Options > Use Voting Buttons.",
+        "Out-of-Office: File > Automatic Replies."
+      ],
+      "tricks": [
+        "If the question lists 'where to create a signature' as 'Home > Signature' -> wrong. It's File > Options > Mail > Signatures.",
+        "Recalling a message only works if the recipient hasn't opened it AND the same Exchange server. Otherwise it just asks them to ignore the original.",
+        "Quick Steps are NOT the same as Rules. Quick Steps are user-triggered (you click the button); Rules are auto-triggered on incoming/outgoing mail."
+      ],
+      "patterns": [
+        "'Where do you set Out of Office?' -> File > Automatic Replies.",
+        "'Where do you create a signature?' -> File > Options > Mail > Signatures.",
+        "'To send a one-click Yes/No survey, use...' -> Options > Use Voting Buttons."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Outlook MCQ sets",
+          "question": "Where do you set an out-of-office message in Outlook?",
+          "approach": "File > Automatic Replies (or Out of Office Assistant in older versions)."
+        },
+        {
+          "source": "Asked in Outlook MCQ sets",
+          "question": "To add Approve/Reject buttons to an email, use:",
+          "approach": "Options > Use Voting Buttons."
+        }
+      ],
+      "companyNote": "1-2 questions per paper on Out of Office and Voting Buttons (most-tested)."
+    },
+    {
+      "id": "shortcuts-data",
+      "title": "Most-Asked Outlook Shortcuts & Data Files (.pst / .ost)",
+      "type": "concept",
+      "quickSummary": "Ctrl+N email, Ctrl+Shift+M new email, Ctrl+R reply, Ctrl+F forward, F9 send/receive, F1 help. .pst = personal storage, .ost = offline storage. Default 20MB attachment limit.",
+      "content": [
+        "Essential email shortcuts: Ctrl+N = new message (in Mail view). Ctrl+Shift+M = new message (from anywhere in Outlook - the universal 'new email' shortcut). Ctrl+R = REPLY to the sender. Ctrl+F = FORWARD. Ctrl+Shift+R = REPLY ALL. F9 = Send/Receive (force Outlook to check for new mail). F1 = Outlook Help.",
+        "Calendar shortcuts: Ctrl+N (in Calendar) = new appointment. Ctrl+Shift+A = new appointment from anywhere. Ctrl+Shift+Q = new meeting request from anywhere. Ctrl+G = Go to date. Ctrl+1/2/3/4 = Day/Work Week/Week/Month views.",
+        "Tasks / Contacts / Notes: Ctrl+Shift+K = new task from anywhere. Ctrl+Shift+L = new contact (some versions). Ctrl+Shift+C = new contact. (The exact bindings shift slightly between versions - the exam is forgiving on the exact modifier if you know the intent.)",
+        "DATA FILES: Outlook stores mail locally in two formats. .pst (Personal Storage Table) = the file Outlook uses for POP3 accounts, archive folders, and exported data. .ost (Offline Storage Table) = the cache file for IMAP / Exchange / Microsoft 365 accounts. Default location: %USERPROFILE%\\Documents\\Outlook Files (Windows 10/11). .ost is recreated automatically if deleted; .pst is permanent. The exam: 'Which is the offline storage file?' -> .ost."
+      ],
+      "subsections": [
+        {
+          "title": "Send/Receive groups",
+          "content": "F9 forces a Send/Receive (Outlook checks for new mail, sends queued mail). Send/Receive Groups (Ctrl+Alt+S) lets you define which accounts to sync, how often, and which folders to include - useful if you have multiple accounts (e.g. work + personal POP3)."
+        },
+        {
+          "title": "Quick Parts",
+          "content": "Insert > Quick Parts > AutoText lets you save and re-insert reusable text blocks (boilerplate responses, signatures, addresses). Similar to Word's Quick Parts / Building Blocks. The exam rarely goes deep here."
+        }
+      ],
+      "quickRevision": [
+        "Ctrl+N in Mail = new message. Ctrl+Shift+M = new message from anywhere.",
+        "Ctrl+R = Reply. Ctrl+F = Forward. Ctrl+Shift+R = Reply All. F9 = Send/Receive.",
+        "Ctrl+Shift+A = new appointment. Ctrl+Shift+Q = new meeting. Ctrl+Shift+K = new task.",
+        ".pst = personal storage (POP3, archives). .ost = offline storage (Exchange/IMAP).",
+        "Default attachment size: 20 MB on modern Outlook."
+      ],
+      "tricks": [
+        "If the question lists 'Ctrl+R = Forward' -> wrong. Ctrl+R = Reply. Ctrl+F = Forward.",
+        ".pst is for POP3 / archives. .ost is for Exchange / IMAP / M365. They are not interchangeable in role.",
+        "Ctrl+Shift+M works from ANY view in Outlook (Mail, Calendar, Tasks, Notes). Most-asked universal shortcut."
+      ],
+      "patterns": [
+        "'Shortcut for new email from anywhere in Outlook?' -> Ctrl+Shift+M.",
+        "'Shortcut to reply all?' -> Ctrl+Shift+R.",
+        "'Where is the offline storage file?' -> .ost (in Documents\\Outlook Files)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Outlook MCQ sets",
+          "question": "Shortcut to create a new email from anywhere in Outlook:",
+          "approach": "Ctrl+Shift+M."
+        },
+        {
+          "source": "Asked in Outlook MCQ sets",
+          "question": "Which file stores offline mail for an Exchange / Microsoft 365 account?",
+          "approach": ".ost (Offline Storage Table)."
+        }
+      ],
+      "companyNote": "2-3 questions per paper on shortcuts (Ctrl+R reply, Ctrl+F forward, Ctrl+Shift+M new email) and data file types."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "cc-bcc-rules",
+      "title": "CC vs BCC: The Most-Asked Outlook Distinction",
+      "formula": {
+        "latex": "\\text{CC}=\\text{visible copy};\\; \\text{BCC}=\\text{hidden copy};\\; \\text{TO}=\\text{primary recipient}",
+        "text": "CC = visible to all (TO + CC + each other). BCC = hidden from TO + CC. TO = primary addressee."
+      },
+      "whenToUse": "Any CC vs BCC MCQ. The single most-tested Outlook concept.",
+      "explanation": [
+        "TO: the primary recipient(s) - the people the message is 'addressed to'. Their address is what the recipient sees in the 'To:' field of their copy.",
+        "CC (Carbon Copy): all CC recipients are visible to everyone on the email (TO + CC + each other). If the message has 5 people on CC, every recipient sees those 5 names.",
+        "BCC (Blind Carbon Copy): BCC recipients are HIDDEN from TO and CC. New Outlook hides BCC from each other too. The TO/CC list shows only the TO/CC names, not the BCC names.",
+        "When to use CC: keep a colleague in the loop (e.g. CC your manager on a customer email so they can see the thread).",
+        "When to use BCC: protect recipient privacy (mass mailouts, blind copy your manager on a customer complaint, send to many people without exposing each other's addresses)."
+      ],
+      "example": {
+        "prompt": "You send a mail with TO: customer@acme.com, CC: ceo@myco.com, BCC: cfo@myco.com. Who can see the CFO's address?",
+        "steps": [
+          "TO and CC: only see TO and CC (CEO).",
+          "BCC (CFO): is hidden from TO and CC.",
+          "In New Outlook, the CFO cannot see the CEO's address either.",
+          "Only the SENDER sees all three addresses."
+        ],
+        "answer": "Only the sender sees the CFO's address. The customer and CEO cannot see the CFO."
+      },
+      "memoryTip": "CC = 'see copy' (everyone sees the names). BCC = 'blind copy' (only the sender sees the name).",
+      "commonMistake": "Thinking CC is hidden. CC is VISIBLE to all. The whole point of BCC is to be HIDDEN."
+    },
+    {
+      "id": "calendar-items",
+      "title": "Appointment vs Meeting vs Event",
+      "formula": {
+        "latex": "\\text{Appointment}=\\text{no invitees};\\; \\text{Meeting}=\\text{with invitees (sends request)};\\; \\text{Event}=\\text{all-day}",
+        "text": "Appointment = block on your calendar, no invitees. Meeting = appointment + invitees (sends a meeting request). Event = an all-day marker."
+      },
+      "whenToUse": "Any 'what is the difference between an appointment and a meeting?' MCQ. The second-most-asked Outlook concept.",
+      "explanation": [
+        "APPOINTMENT: a time block on YOUR calendar only. No email is sent. Use for solo work blocks, reminders, focus time. The Appointment window has Subject, Location, Start, End, Reminder - no To field.",
+        "MEETING: an appointment with attendees. You add people in the To/Cc/Required/Optional fields, and Outlook sends each of them a meeting request email. The recipient clicks Accept / Tentative / Decline. The meeting appears on BOTH calendars.",
+        "EVENT: an all-day item (typically). Birthdays, holidays, conferences, all-day training. Shows as a banner at the top of Day / Week / Month views. No specific time slot.",
+        "Resource: rooms and equipment (projector, screen) you can also book as part of a meeting. The Rooms list comes from your admin."
+      ],
+      "example": {
+        "prompt": "You need to block 2 hours for focused work tomorrow. Which Outlook item type?",
+        "steps": [
+          "Solo time - no one to invite.",
+          "Use an APPOINTMENT (not a meeting - that would send invites).",
+          "Ctrl+Shift+A from anywhere in Outlook, or Home > New Appointment in Calendar view."
+        ],
+        "answer": "Appointment (no invitees; it stays on your calendar only)."
+      },
+      "memoryTip": "Appointment = on your calendar. Meeting = on everyone's calendar (because of the invite). Event = all-day.",
+      "commonMistake": "Calling a meeting a 'no-invitee' item. A meeting REQUIRES attendees - that's what makes it a meeting."
+    },
+    {
+      "id": "default-folders",
+      "title": "Outlook's Default Folder Set (must memorise)",
+      "formula": {
+        "latex": "\\text{Inbox}=\\text{incoming};\\; \\text{Drafts}=\\text{unsent};\\; \\text{Sent}=\\text{sent copies};\\; \\text{Outbox}=\\text{queued to send};\\; \\text{Deleted}=\\text{recycle bin};\\; \\text{Junk}=\\text{spam};\\; \\text{Archive}=\\text{long-term storage}",
+        "text": "Inbox = incoming. Drafts = unsent. Sent Items = sent copies. Outbox = queued. Deleted Items = recycle bin. Junk Email = spam. Archive = long-term storage."
+      },
+      "whenToUse": "Any 'where does X go?' or 'which folder is for Y?' MCQ. 2-3 questions per paper on default folders.",
+      "explanation": [
+        "INBOX: where incoming mail arrives.",
+        "DRAFTS: where messages you started but haven't sent live.",
+        "SENT ITEMS: a copy of every email you sent.",
+        "OUTBOX: transient - holds mail waiting to be sent (usually briefly). The mail moves to Sent Items the moment the server accepts it.",
+        "DELETED ITEMS: the recycle bin. Items stay here until you empty the folder, or until 30 days (your admin sets the retention).",
+        "JUNK EMAIL: Outlook's spam folder. Mail classified as spam goes here automatically (you can also right-click > Mark as Junk).",
+        "ARCHIVE: long-term storage. The Archive button (on the ribbon) moves the selected message to the Archive folder (does NOT delete it)."
+      ],
+      "example": {
+        "prompt": "You started writing an email but didn't send it. Where is it saved?",
+        "steps": [
+          "Outlook auto-saves drafts every few seconds.",
+          "Unsent messages go to the DRAFTS folder.",
+          "(Not Sent Items - that requires actually sending.)"
+        ],
+        "answer": "Drafts folder"
+      },
+      "memoryTip": "Drafts = not yet sent. Sent Items = already sent. Outbox = sending now. Deleted Items = trashed (recoverable). Junk = spam. Archive = saved for later.",
+      "commonMistake": "Confusing Drafts and Sent Items. Drafts is the in-progress notebook; Sent Items is the history of what went out."
+    },
+    {
+      "id": "shortcut-map",
+      "title": "Most-Asked Outlook Shortcuts",
+      "formula": {
+        "latex": "\\text{Ctrl+Shift+M}=\\text{new email (anywhere)};\\; \\text{Ctrl+R}=\\text{Reply};\\; \\text{Ctrl+F}=\\text{Forward};\\; \\text{F9}=\\text{Send/Receive};\\; \\text{Ctrl+Shift+A}=\\text{new appt};\\; \\text{Ctrl+Shift+Q}=\\text{new meeting}",
+        "text": "Ctrl+Shift+M new email. Ctrl+R reply. Ctrl+F forward. Ctrl+Shift+R reply all. F9 send/receive. Ctrl+Shift+A appt. Ctrl+Shift+Q meeting."
+      },
+      "whenToUse": "Any 'shortcut for X in Outlook' MCQ. 2-3 questions per paper on shortcuts.",
+      "explanation": [
+        "Email: Ctrl+Shift+M (new email from anywhere) > Ctrl+N (new email in Mail view). Ctrl+R reply. Ctrl+F forward. Ctrl+Shift+R reply all. F9 send/receive.",
+        "Calendar: Ctrl+Shift+A (new appointment from anywhere). Ctrl+Shift+Q (new meeting from anywhere). Ctrl+G (go to date). Ctrl+1/2/3/4 (Day/Work Week/Week/Month).",
+        "Tasks: Ctrl+Shift+K (new task from anywhere).",
+        "Other: F1 (Outlook Help). Ctrl+1 inside a task = mark complete.",
+        "The exam's most-asked: 'Shortcut for new email from anywhere in Outlook?' -> Ctrl+Shift+M. Don't confuse with Ctrl+N (new email in Mail view only)."
+      ],
+      "example": {
+        "prompt": "You're in Calendar view and want to create a new email. Which shortcut works from any view in Outlook?",
+        "steps": [
+          "Ctrl+N is view-dependent (Mail: new email; Calendar: new appointment).",
+          "Ctrl+Shift+M works from ANY view in Outlook.",
+          "Answer: Ctrl+Shift+M."
+        ],
+        "answer": "Ctrl+Shift+M"
+      },
+      "memoryTip": "Ctrl+Shift+X = the 'anywhere' shortcuts in Outlook: M (email), A (appointment), Q (meeting), K (task), L (contact, some versions).",
+      "commonMistake": "Saying Ctrl+N is universal - it's view-dependent. The exam's 'from anywhere' questions expect Ctrl+Shift+X."
+    }
+  ],
+  "practiceProblems": {
+    "cc-bcc-rules": [
+      {"q": "BCC stands for:", "opts": ["Best Carbon Copy", "Blind Carbon Copy", "Broadcast Carbon Copy", "Big Carbon Copy"], "c": 1, "s": ["Blind Carbon Copy - hidden from TO and CC recipients."], "a": "Blind Carbon Copy"},
+      {"q": "CC recipients are:", "opts": ["Hidden from everyone", "Visible to everyone (TO + CC + each other)", "Only visible to TO recipients", "Only visible to the sender"], "c": 1, "s": ["CC = visible copy. All recipients can see everyone on the CC list."], "a": "Visible to everyone (TO + CC + each other)"},
+      {"q": "A recipient on BCC can see:", "opts": ["Other BCC recipients", "TO and CC recipients", "Nobody except themselves (in New Outlook)", "Only the sender's address"], "c": 2, "s": ["BCC = Blind. In New Outlook, BCC recipients cannot see the other BCC addresses."], "a": "Nobody except themselves (in New Outlook)"},
+      {"q": "Best use case for BCC:", "opts": ["Reply to sender", "Forward a message", "Mass mailout to many recipients without exposing each other's addresses", "Mark a message as high priority"], "c": 2, "s": ["BCC protects privacy in mass mailouts (newsletters, announcements to many people)."], "a": "Mass mailout to many recipients without exposing each other's addresses"},
+      {"q": "CC is short for:", "opts": ["Carbon Copy", "Common Copy", "Courtesy Copy", "Carbon Class"], "c": 0, "s": ["CC = Carbon Copy. Legacy from carbon paper used to duplicate typed pages."], "a": "Carbon Copy"},
+      {"q": "Default attachment size limit in modern Outlook:", "opts": ["2 MB", "10 MB", "20 MB", "100 MB"], "c": 2, "s": ["20 MB on Exchange / Microsoft 365 servers (was 10 MB on older Exchange)."], "a": "20 MB"},
+      {"q": "Outlook blocks which file types as unsafe attachments?", "opts": [".docx and .xlsx", ".exe, .bat, .js, .vbs", ".pdf and .txt", ".jpg and .png"], "c": 1, "s": ["Outlook blocks executable file types by default (.exe, .bat, .js, .vbs, .scr, etc.)."], "a": ".exe, .bat, .js, .vbs"},
+      {"q": "To add an attachment to an email, you can:", "opts": ["Use the paperclip icon (or Home > Attach File)", "Drag a file into the message", "Copy-paste the file", "Both A and B work"], "c": 3, "s": ["Both paperclip and drag-and-drop work."], "a": "Both A and B work"},
+      {"q": "To save an attachment from an email:", "opts": ["Right-click the attachment > Save As", "Drag it to a folder", "Forward it to yourself", "Both A and B work"], "c": 3, "s": ["Either right-click > Save As or drag to a folder."], "a": "Both A and B work"},
+      {"q": "Forwarding an email:", "opts": ["Sends the original to a new recipient; may or may not include attachments", "Always includes the attachments", "Always strips the attachments", "Only works in Calendar"], "c": 0, "s": ["Forward (Ctrl+F) sends the original message and any attachments. The Send button at the bottom confirms what gets included."], "a": "Sends the original to a new recipient; may or may not include attachments"}
+    ],
+    "calendar-items": [
+      {"q": "An appointment in Outlook:", "opts": ["Sends meeting requests to invitees", "Is a calendar block with no invitees (stays on your calendar only)", "Is an all-day event", "Is the same as a meeting"], "c": 1, "s": ["Appointment = solo time block. No email sent. No invitees."], "a": "Is a calendar block with no invitees (stays on your calendar only)"},
+      {"q": "A meeting in Outlook:", "opts": ["Is a calendar block with no invitees", "Has invitees and sends a meeting request", "Is an all-day event", "Is only for appointments"], "c": 1, "s": ["Meeting = appointment with invitees. Sends a meeting request email."], "a": "Has invitees and sends a meeting request"},
+      {"q": "An all-day event in Outlook:", "opts": ["Requires a specific time slot", "Shows as a banner across the day; no specific time", "Sends an email automatically", "Must be a meeting"], "c": 1, "s": ["Events = all-day markers (birthdays, holidays). No specific time, just a banner at the top of the day."], "a": "Shows as a banner across the day; no specific time"},
+      {"q": "Shortcut to create a new meeting request from anywhere in Outlook:", "opts": ["Ctrl+N", "Ctrl+Shift+Q", "Ctrl+Shift+M", "F9"], "c": 1, "s": ["Ctrl+Shift+Q = new meeting from anywhere."], "a": "Ctrl+Shift+Q"},
+      {"q": "Shortcut to create a new appointment from anywhere in Outlook:", "opts": ["Ctrl+N", "Ctrl+Shift+A", "Ctrl+Shift+Q", "Ctrl+Shift+M"], "c": 1, "s": ["Ctrl+Shift+A = new appointment from anywhere."], "a": "Ctrl+Shift+A"},
+      {"q": "You block 2 hours for focused solo work. Use:", "opts": ["A new meeting with no invitees", "A new appointment (no invitees)", "A new event", "A new task"], "c": 1, "s": ["Solo time = Appointment. No email sent."], "a": "A new appointment (no invitees)"},
+      {"q": "Ctrl+N in Calendar view opens:", "opts": ["A new email", "A new appointment", "A new task", "A new meeting"], "c": 1, "s": ["Ctrl+N is view-dependent. In Calendar view, it opens a new appointment."], "a": "A new appointment"},
+      {"q": "Recurrence lets you:", "opts": ["Repeat an appointment or meeting", "Forward events to other people", "Recall a sent message", "Mark a message as junk"], "c": 0, "s": ["Recurrence = repeat pattern (daily, weekly, monthly, etc.)."], "a": "Repeat an appointment or meeting"},
+      {"q": "To edit only one occurrence of a recurring meeting:", "opts": ["Open the Series", "Right-click the occurrence > Open This Occurrence", "Delete and recreate", "Drag the event"], "c": 1, "s": ["Right-click > Open This Occurrence edits only that one. Open the Series edits all."], "a": "Right-click the occurrence > Open This Occurrence"},
+      {"q": "In Calendar, Ctrl+1 / Ctrl+2 / Ctrl+3 / Ctrl+4 switch to:", "opts": ["Different months", "Day / Work Week / Week / Month views", "Different years", "Different time zones"], "c": 1, "s": ["Ctrl+1 = Day, Ctrl+2 = Work Week, Ctrl+3 = Week, Ctrl+4 = Month."], "a": "Day / Work Week / Week / Month views"}
+    ],
+    "default-folders": [
+      {"q": "Where do incoming email messages go?", "opts": ["Drafts", "Sent Items", "Inbox", "Junk Email"], "c": 2, "s": ["Inbox is the incoming mail folder."], "a": "Inbox"},
+      {"q": "Where do unsent email drafts go?", "opts": ["Inbox", "Drafts", "Sent Items", "Outbox"], "c": 1, "s": ["Drafts = messages you started but haven't sent."], "a": "Drafts"},
+      {"q": "Where is the recycle bin?", "opts": ["Junk Email", "Deleted Items", "Drafts", "Archive"], "c": 1, "s": ["Deleted Items is Outlook's recycle bin."], "a": "Deleted Items"},
+      {"q": "Where do sent messages go after the server accepts them?", "opts": ["Outbox", "Sent Items", "Inbox", "Drafts"], "c": 1, "s": ["After the server accepts a sent message, it moves from Outbox to Sent Items."], "a": "Sent Items"},
+      {"q": "Where do messages classified as spam go?", "opts": ["Deleted Items", "Drafts", "Junk Email", "Outbox"], "c": 2, "s": ["Junk Email = Outlook's spam folder."], "a": "Junk Email"},
+      {"q": "The Archive folder is for:", "opts": ["Deleted messages", "Long-term storage of messages you want to keep but don't need in the Inbox", "Spam", "Sent items"], "c": 1, "s": ["Archive = long-term storage. The Archive button (ribbon) moves the selected message there."], "a": "Long-term storage of messages you want to keep but don't need in the Inbox"},
+      {"q": "The Outbox holds:", "opts": ["Mail waiting to be sent (transient)", "Old mail", "Drafts only", "Spam"], "c": 0, "s": ["Outbox = mail queued to send. Transient - usually empty unless the server is unreachable."], "a": "Mail waiting to be sent (transient)"},
+      {"q": "To move a message to a custom folder, you can:", "opts": ["Right-click the message > Move > choose folder", "Drag the message to the folder in the folder pane", "Use a Rule to do it automatically", "All of the above"], "c": 3, "s": ["All three methods work."], "a": "All of the above"},
+      {"q": "A Search Folder in Outlook is:", "opts": ["A regular folder", "A saved search that automatically includes new matching items", "A hidden folder", "A deleted folder"], "c": 1, "s": ["Search Folder = saved search that auto-updates. Example: 'All unread from my manager'."], "a": "A saved search that automatically includes new matching items"},
+      {"q": "To permanently delete a message (skip the recycle bin):", "opts": ["Press Delete", "Shift+Delete", "Right-click > Delete", "Move to Deleted Items"], "c": 1, "s": ["Shift+Delete bypasses Deleted Items and deletes permanently."], "a": "Shift+Delete"}
+    ],
+    "shortcut-map": [
+      {"q": "Shortcut to create a new email from anywhere in Outlook:", "opts": ["Ctrl+N", "Ctrl+Shift+M", "Ctrl+E", "Ctrl+Alt+M"], "c": 1, "s": ["Ctrl+Shift+M = new email from anywhere. Universal Outlook shortcut."], "a": "Ctrl+Shift+M"},
+      {"q": "Shortcut to REPLY to a message:", "opts": ["Ctrl+R", "Ctrl+F", "Ctrl+Shift+R", "Ctrl+E"], "c": 0, "s": ["Ctrl+R = Reply. (Don't confuse with Forward = Ctrl+F.)"], "a": "Ctrl+R"},
+      {"q": "Shortcut to FORWARD a message:", "opts": ["Ctrl+R", "Ctrl+F", "Ctrl+Shift+F", "Ctrl+E"], "c": 1, "s": ["Ctrl+F = Forward."], "a": "Ctrl+F"},
+      {"q": "Shortcut to REPLY ALL:", "opts": ["Ctrl+R", "Ctrl+Shift+R", "Ctrl+Alt+R", "Ctrl+Shift+A"], "c": 1, "s": ["Ctrl+Shift+R = Reply All."], "a": "Ctrl+Shift+R"},
+      {"q": "Shortcut to force Outlook to check for new mail (Send/Receive):", "opts": ["F5", "F9", "F7", "Ctrl+F5"], "c": 1, "s": ["F9 = Send/Receive All. Forces Outlook to sync with the server."], "a": "F9"},
+      {"q": "Shortcut to create a new task from anywhere:", "opts": ["Ctrl+N", "Ctrl+Shift+T", "Ctrl+Shift+K", "Ctrl+T"], "c": 2, "s": ["Ctrl+Shift+K = new task from anywhere."], "a": "Ctrl+Shift+K"},
+      {"q": "Outlook Help shortcut:", "opts": ["F1", "F5", "Ctrl+H", "Ctrl+Shift+H"], "c": 0, "s": ["F1 opens Outlook Help."], "a": "F1"},
+      {"q": "Shortcut to go to a specific date in Calendar:", "opts": ["Ctrl+D", "Ctrl+G", "Ctrl+Shift+G", "Alt+G"], "c": 1, "s": ["Ctrl+G = Go to date. Also works in Mail to find messages by date."], "a": "Ctrl+G"},
+      {"q": "In Mail view, Ctrl+N opens:", "opts": ["A new appointment", "A new email message", "A new task", "A new meeting"], "c": 1, "s": ["Ctrl+N is view-dependent. In Mail view, it opens a new email. In Calendar view, it opens a new appointment."], "a": "A new email message"},
+      {"q": "To mark a task as complete while inside the task:", "opts": ["F1", "Ctrl+1", "Ctrl+Shift+C", "Enter"], "c": 1, "s": ["Ctrl+1 inside a task marks it complete."], "a": "Ctrl+1"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "MS Outlook is primarily used for:", "opts": ["Word processing", "Spreadsheets", "Email, calendar and contact management", "Slideshows"], "c": 2, "d": "easy", "t": "Mail Basics (CC/BCC/Attachments)", "exp": ["Outlook is the Office email + calendar + contacts + tasks app."]},
+    {"id": 2, "q": "BCC stands for:", "opts": ["Best Carbon Copy", "Blind Carbon Copy", "Broadcast Carbon Copy", "Big Carbon Copy"], "c": 1, "d": "easy", "t": "Mail Basics (CC/BCC/Attachments)", "exp": ["Blind Carbon Copy. Hidden from TO and CC recipients."]},
+    {"id": 3, "q": "CC recipients are:", "opts": ["Hidden from everyone", "Visible to all recipients (TO + CC + each other)", "Only visible to TO", "Only visible to the sender"], "c": 1, "d": "easy", "t": "Mail Basics (CC/BCC/Attachments)", "exp": ["CC = Carbon Copy. All recipients can see the CC list."]},
+    {"id": 4, "q": "Best use of BCC is to:", "opts": ["Keep a colleague in the loop on a thread", "Mass-mailout to many recipients without exposing their addresses to each other", "Send a meeting request", "Mark a message as high priority"], "c": 1, "d": "easy", "t": "Mail Basics (CC/BCC/Attachments)", "exp": ["BCC's purpose is PRIVACY in mass mailouts (and blind-copying a manager)."]},
+    {"id": 5, "q": "Outlook's default attachment size limit (modern):", "opts": ["2 MB", "10 MB", "20 MB", "100 MB"], "c": 2, "d": "easy", "t": "Mail Basics (CC/BCC/Attachments)", "exp": ["20 MB on Exchange / Microsoft 365. Older Exchange was 10 MB."]},
+    {"id": 6, "q": "Outlook blocks which file types as unsafe attachments by default?", "opts": [".docx, .xlsx", ".pdf, .txt", ".exe, .bat, .js, .vbs", ".jpg, .png"], "c": 2, "d": "medium", "t": "Mail Basics (CC/BCC/Attachments)", "exp": ["Executable / script file types: .exe, .bat, .js, .vbs, .scr - Outlook replaces them with a 'blocked' text file."]},
+    {"id": 7, "q": "To add an attachment to an email, you can use:", "opts": ["The paperclip icon / Home > Attach File", "Drag-and-drop a file from File Explorer", "Both A and B work", "Only the paperclip"], "c": 2, "d": "easy", "t": "Mail Basics (CC/BCC/Attachments)", "exp": ["Both the paperclip button and drag-and-drop work."]},
+    {"id": 8, "q": "Where is the recycle bin in Outlook?", "opts": ["Junk Email", "Deleted Items", "Drafts", "Archive"], "c": 1, "d": "easy", "t": "Folders & Search", "exp": ["Deleted Items is Outlook's recycle bin."]},
+    {"id": 9, "q": "Where do unsent email drafts go?", "opts": ["Sent Items", "Inbox", "Drafts", "Outbox"], "c": 2, "d": "easy", "t": "Folders & Search", "exp": ["Drafts folder - auto-saves every few seconds."]},
+    {"id": 10, "q": "Where is a sent message stored after the server accepts it?", "opts": ["Drafts", "Outbox", "Sent Items", "Inbox"], "c": 2, "d": "easy", "t": "Folders & Search", "exp": ["Sent Items is the history of sent mail. (Outbox is the transient queue.)"]},
+    {"id": 11, "q": "An Outlook APPOINTMENT is:", "opts": ["A calendar block with invitees (sends a meeting request)", "A calendar block with no invitees (stays on your calendar only)", "An all-day event", "A task with a date"], "c": 1, "d": "easy", "t": "Calendar & Appointments", "exp": ["Appointment = solo time block. No email sent. No invitees."]},
+    {"id": 12, "q": "An Outlook MEETING is:", "opts": ["A calendar block with no invitees", "A calendar block WITH invitees (sends a meeting request email)", "An all-day event", "The same as an appointment"], "c": 1, "d": "easy", "t": "Calendar & Appointments", "exp": ["Meeting = appointment + invitees. Sends a meeting request."]},
+    {"id": 13, "q": "Shortcut to create a new meeting request from anywhere in Outlook:", "opts": ["Ctrl+N", "Ctrl+Shift+M", "Ctrl+Shift+Q", "F9"], "c": 2, "d": "medium", "t": "Calendar & Appointments", "exp": ["Ctrl+Shift+Q = new meeting from anywhere in Outlook."]},
+    {"id": 14, "q": "Shortcut to create a new appointment from anywhere in Outlook:", "opts": ["Ctrl+N", "Ctrl+Shift+A", "Ctrl+Shift+Q", "Ctrl+Shift+M"], "c": 1, "d": "medium", "t": "Calendar & Appointments", "exp": ["Ctrl+Shift+A = new appointment from anywhere."]},
+    {"id": 15, "q": "Shortcut to create a new task from anywhere in Outlook:", "opts": ["Ctrl+Shift+T", "Ctrl+Shift+K", "Ctrl+T", "Ctrl+N"], "c": 1, "d": "medium", "t": "Tasks & Notes", "exp": ["Ctrl+Shift+K = new task from anywhere."]},
+    {"id": 16, "q": "A red exclamation mark on a task in the To-Do Bar means:", "opts": ["The task is high priority", "The task is overdue", "The task is complete", "The task has a due date of today"], "c": 1, "d": "easy", "t": "Tasks & Notes", "exp": ["Red exclamation = overdue task."]},
+    {"id": 17, "q": "Sticky Notes in Windows are part of which app?", "opts": ["MS Word", "MS Outlook", "Sticky Notes (a separate Windows app)", "MS OneNote"], "c": 2, "d": "medium", "t": "Tasks & Notes", "exp": ["Sticky Notes is a separate Windows app, NOT part of Outlook. Outlook has its own 'Notes' folder but that's different from Sticky Notes."]},
+    {"id": 18, "q": "To mark a task as complete while inside the task, press:", "opts": ["F1", "Ctrl+1", "Ctrl+Shift+C", "Delete"], "c": 1, "d": "medium", "t": "Tasks & Notes", "exp": ["Ctrl+1 inside a task marks it complete."]},
+    {"id": 19, "q": "To set an Out of Office message, use:", "opts": ["Home > Out of Office", "File > Automatic Replies", "Insert > Out of Office", "View > Out of Office"], "c": 1, "d": "easy", "t": "Rules & Signatures", "exp": ["File > Automatic Replies (or Out of Office Assistant in older Outlook)."]},
+    {"id": 20, "q": "To create an email signature, use:", "opts": ["Home > Signature", "Insert > Signature", "File > Options > Mail > Signatures", "Format > Signature"], "c": 2, "d": "easy", "t": "Rules & Signatures", "exp": ["File > Options > Mail > Signatures."]},
+    {"id": 21, "q": "To send an email with one-click Approve/Reject buttons, use:", "opts": ["Quick Steps", "Rules", "Options > Use Voting Buttons", "Format > Buttons"], "c": 2, "d": "medium", "t": "Rules & Signatures", "exp": ["Options > Use Voting Buttons adds Approve / Reject (or custom) buttons to a message."]},
+    {"id": 22, "q": "Quick Steps in Outlook are:", "opts": ["The same as Rules", "One-click buttons that run a sequence of actions", "Keyboard shortcuts", "Theme presets"], "c": 1, "d": "medium", "t": "Rules & Signatures", "exp": ["Quick Steps = one-click macros. Home > Quick Steps gallery."]},
+    {"id": 23, "q": "To recall a sent message:", "opts": ["It works only if the recipient has not opened the message AND is on the same Exchange server", "It always works", "It works for any email after sending", "It works only for internal recipients"], "c": 0, "d": "hard", "t": "Rules & Signatures", "exp": ["Recall works only if the recipient hasn't opened it AND they're on the same Exchange / Microsoft 365 server. Otherwise it sends a recall REQUEST email."]},
+    {"id": 24, "q": "Rules in Outlook can:", "opts": ["Only apply to incoming mail", "Apply to incoming or outgoing mail (auto-move, flag, forward, etc.)", "Only delete spam", "Only mark messages as read"], "c": 1, "d": "medium", "t": "Rules & Signatures", "exp": ["Rules can apply to both incoming AND outgoing messages - 'Apply rule on messages I send' / 'I receive'."]},
+    {"id": 25, "q": "The To: field in an email is for:", "opts": ["Hidden recipients", "Primary recipients (visible to all)", "Carbon copy recipients", "Attachments"], "c": 1, "d": "easy", "t": "Mail Basics (CC/BCC/Attachments)", "exp": ["TO = primary recipient(s), visible to everyone."]},
+    {"id": 26, "q": "Shortcut to create a new email from anywhere in Outlook:", "opts": ["Ctrl+N", "Ctrl+Shift+M", "Ctrl+E", "Ctrl+M"], "c": 1, "d": "easy", "t": "Shortcuts & Data Files", "exp": ["Ctrl+Shift+M is the universal 'new email from anywhere' shortcut."]},
+    {"id": 27, "q": "Shortcut to REPLY to a message:", "opts": ["Ctrl+R", "Ctrl+F", "Ctrl+Shift+R", "Ctrl+E"], "c": 0, "d": "easy", "t": "Shortcuts & Data Files", "exp": ["Ctrl+R = Reply. (Don't confuse with Ctrl+F = Forward.)"]},
+    {"id": 28, "q": "Shortcut to FORWARD a message:", "opts": ["Ctrl+R", "Ctrl+F", "Ctrl+Shift+F", "Ctrl+E"], "c": 1, "d": "easy", "t": "Shortcuts & Data Files", "exp": ["Ctrl+F = Forward."]},
+    {"id": 29, "q": "Shortcut to REPLY ALL:", "opts": ["Ctrl+R", "Ctrl+Shift+R", "Ctrl+Alt+R", "Ctrl+Shift+A"], "c": 1, "d": "easy", "t": "Shortcuts & Data Files", "exp": ["Ctrl+Shift+R = Reply All."]},
+    {"id": 30, "q": "Shortcut to force Outlook to send/receive:", "opts": ["F5", "F9", "F7", "Ctrl+F5"], "c": 1, "d": "easy", "t": "Shortcuts & Data Files", "exp": ["F9 = Send/Receive All Folders. Forces Outlook to sync with the server."]},
+    {"id": 31, "q": "Outlook's offline storage file for Exchange / M365 accounts is:", "opts": [".pst", ".ost", ".mbox", ".eml"], "c": 1, "d": "medium", "t": "Shortcuts & Data Files", "exp": [".ost (Offline Storage Table) - the cache for Exchange / IMAP / M365. Recreated automatically if deleted."]},
+    {"id": 32, "q": "Outlook's personal storage file (for POP3 / archives) is:", "opts": [".ost", ".pst", ".mbox", ".dbx"], "c": 1, "d": "medium", "t": "Shortcuts & Data Files", "exp": [".pst (Personal Storage Table) - used for POP3, exported data, and Archive folders."]},
+    {"id": 33, "q": "The To-Do Bar in Outlook shows:", "opts": ["Today's calendar + flagged email + tasks", "Only calendar", "Only sent mail", "Only contacts"], "c": 0, "d": "easy", "t": "Tasks & Notes", "exp": ["To-Do Bar = today's calendar + flagged email + tasks. Right-click a task to mark complete."]},
+    {"id": 34, "q": "To flag an email for follow-up:", "opts": ["Right-click > Flag", "Home > Follow Up > set flag", "File > Flag", "Insert > Flag"], "c": 1, "d": "medium", "t": "Tasks & Notes", "exp": ["Home > Follow Up > set a flag (Today, Tomorrow, This Week, Custom). The flagged email then appears in the To-Do Bar."]},
+    {"id": 35, "q": "A Search Folder in Outlook is:", "opts": ["A saved search that auto-updates with new matching items", "A read-only copy of a folder", "A hidden folder", "A deleted folder"], "c": 0, "d": "medium", "t": "Folders & Search", "exp": ["Search Folder = saved search that auto-updates. Create via right-click Search Folders > New Search Folder."]},
+    {"id": 36, "q": "The Instant Search box at the top of Outlook searches:", "opts": ["Only the current folder", "Only the subject", "All fields of all messages in the current folder (and all folders in 'All Outlook Items')", "Only messages from today"], "c": 2, "d": "medium", "t": "Folders & Search", "exp": ["Instant Search searches every field of every message in the current folder (or all items if 'All Outlook Items' is selected at the bottom of the folder pane)."]},
+    {"id": 37, "q": "To find all unread messages from your manager, use:", "opts": ["from:manager isread:no", "subject:manager", "A rule called 'Manager Unread'", "Manual folder sort"], "c": 0, "d": "medium", "t": "Folders & Search", "exp": ["from:manager isread:no in the Instant Search box, or a saved Search Folder."]},
+    {"id": 38, "q": "The Navigation Pane (bottom-left) of Outlook shows icons for:", "opts": ["Mail, Calendar, People, Tasks", "Word, Excel, PowerPoint", "Send, Receive, Forward, Reply", "Inbox, Drafts, Sent, Junk"], "c": 0, "d": "easy", "t": "Folders & Search", "exp": ["The four core icons: Mail, Calendar, People (Contacts), Tasks. Click the three dots for more."]},
+    {"id": 39, "q": "Where do Outlook Junk Email filters usually send spam?", "opts": ["Deleted Items", "Junk Email folder", "Inbox (with a [Junk] tag)", "Drafts"], "c": 1, "d": "easy", "t": "Folders & Search", "exp": ["Spam goes to the Junk Email folder. Review it occasionally; mark false positives as 'Not Junk' to train the filter."]},
+    {"id": 40, "q": "Press Ctrl+R in Mail view to:", "opts": ["Forward the message", "Reply to the sender", "Reply All", "Mark as read"], "c": 1, "d": "easy", "t": "Shortcuts & Data Files", "exp": ["Ctrl+R = Reply. Ctrl+F = Forward. Ctrl+Shift+R = Reply All."]},
+    {"id": 41, "q": "Press F1 in Outlook to:", "opts": ["Mark the message as flagged", "Open Outlook Help", "Send / Receive", "Forward"], "c": 1, "d": "easy", "t": "Shortcuts & Data Files", "exp": ["F1 = Outlook Help."]},
+    {"id": 42, "q": "Marking a message as Junk:", "opts": ["Moves it to Junk Email and trains the filter", "Deletes it permanently", "Forwards it to Microsoft", "Marks the sender as VIP"], "c": 0, "d": "medium", "t": "Rules & Signatures", "exp": ["Home > Junk > Junk (or right-click > Mark as Junk). Outlook learns to filter similar future messages."]},
+    {"id": 43, "q": "Marking a message as 'Not Junk' (a false positive):", "opts": ["Deletes it permanently", "Moves it back to Inbox and trains the filter to allow similar mail", "Blocks the sender", "Forwards it to your manager"], "c": 1, "d": "medium", "t": "Rules & Signatures", "exp": ["Right-click in Junk Email > Not Junk. Moves to Inbox and trains the filter to allow similar messages."]},
+    {"id": 44, "q": "An Outlook EVENT is typically:", "opts": ["A meeting with one invitee", "An all-day marker (birthday, holiday)", "A task with a due date", "An email with attachments"], "c": 1, "d": "medium", "t": "Calendar & Appointments", "exp": ["Events = all-day calendar markers. No specific time slot."]},
+    {"id": 45, "q": "Default maximum attachment size for a single message in modern Outlook:", "opts": ["2 MB", "10 MB", "20 MB", "100 MB"], "c": 2, "d": "easy", "t": "Mail Basics (CC/BCC/Attachments)", "exp": ["20 MB on modern Exchange / Microsoft 365 servers."]},
+    {"id": 46, "q": "To create a new folder in Outlook:", "opts": ["Right-click the parent folder in the folder pane > New Folder", "File > New > Folder", "Ctrl+Shift+F", "Insert > New Folder"], "c": 0, "d": "easy", "t": "Folders & Search", "exp": ["Right-click any folder in the folder pane > New Folder. Name it and press Enter."]},
+    {"id": 47, "q": "To permanently delete a message (bypass the Deleted Items bin):", "opts": ["Press Delete", "Shift+Delete", "Drag to Deleted Items", "Right-click > Remove"], "c": 1, "d": "medium", "t": "Folders & Search", "exp": ["Shift+Delete skips the recycle bin. The message is permanently deleted."]},
+    {"id": 48, "q": "The Drafts folder auto-saves your in-progress messages:", "opts": ["Only when you press Ctrl+S", "Every few seconds while you type", "Only when you click Send", "Never - you must save manually"], "c": 1, "d": "easy", "t": "Folders & Search", "exp": ["Outlook auto-saves drafts every few seconds. You can also force-save with Ctrl+S."]},
+    {"id": 49, "q": "Which Outlook feature auto-CCs someone on every email you send?", "opts": ["Rules Wizard", "Automatic Cc (or a Quick Step)", "Out of Office", "Voting Buttons"], "c": 1, "d": "medium", "t": "Rules & Signatures", "exp": ["Set this in File > Options > Mail > 'Automatically Cc' section, or with a Quick Step / Rule 'Apply rule on messages I send'."]},
+    {"id": 50, "q": "To delay-deliver an email (schedule it to send later), use:", "opts": ["Options > Delay Delivery", "Schedule Send in the ribbon", "File > Schedule", "Insert > Schedule"], "c": 0, "d": "hard", "t": "Rules & Signatures", "exp": ["Options tab > Delay Delivery > 'Do not deliver before' set a date/time. Outlook holds the message in Outbox until then."]},
+    {"id": 51, "q": "Outlook's Quick Steps gallery is on which tab?", "opts": ["Home", "Insert", "Send / Receive", "View"], "c": 0, "d": "easy", "t": "Rules & Signatures", "exp": ["Home tab > Quick Steps group > the gallery of one-click buttons."]},
+    {"id": 52, "q": "What does the 'Archive' button on the ribbon do?", "opts": ["Permanently deletes the message", "Moves the message to the Archive folder (long-term storage, NOT delete)", "Marks the message as spam", "Marks the message as read"], "c": 1, "d": "easy", "t": "Folders & Search", "exp": ["Archive moves the message to the Archive folder. It does NOT delete - you can still find it in Archive."]},
+    {"id": 53, "q": "F1 in Outlook shows:", "opts": ["Find dialog", "The first item in the folder", "Outlook Help", "Flag the selected message"], "c": 2, "d": "easy", "t": "Shortcuts & Data Files", "exp": ["F1 = Outlook Help."]},
+    {"id": 54, "q": "To switch between Mail / Calendar / People / Tasks quickly, use:", "opts": ["The icons in the status bar", "The Navigation Pane (bottom-left)", "The View tab", "File menu"], "c": 1, "d": "easy", "t": "Folders & Search", "exp": ["Navigation Pane (bottom-left) has Mail, Calendar, People (Contacts), Tasks icons."]},
+    {"id": 55, "q": "In Mail view, Ctrl+N opens:", "opts": ["A new email", "A new appointment", "A new task", "A new meeting"], "c": 0, "d": "easy", "t": "Shortcuts & Data Files", "exp": ["Ctrl+N is view-dependent. In Mail view, it opens a new email message."]},
+    {"id": 56, "q": "In Calendar view, Ctrl+N opens:", "opts": ["A new email", "A new appointment", "A new task", "A new contact"], "c": 1, "d": "medium", "t": "Shortcuts & Data Files", "exp": ["Ctrl+N is view-dependent. In Calendar view, it opens a new appointment."]},
+    {"id": 57, "q": "Default file location of .pst / .ost files in Windows 10/11:", "opts": ["C:\\Program Files\\Outlook", "%USERPROFILE%\\Documents\\Outlook Files", "C:\\Outlook\\Data", "Desktop"], "c": 1, "d": "hard", "t": "Shortcuts & Data Files", "exp": ["Default: %USERPROFILE%\\Documents\\Outlook Files (C:\\Users\\<you>\\Documents\\Outlook Files)."]},
+    {"id": 58, "q": "Which is TRUE about .ost files?", "opts": ["Created automatically for Exchange / M365 accounts; recreated if deleted", "Permanent local archive of POP3 mail", "Used for junk mail only", "Encrypted by default"], "c": 0, "d": "hard", "t": "Shortcuts & Data Files", "exp": [".ost = Offline Storage Table. Auto-recreated by Outlook for Exchange / IMAP / M365 if deleted. Don't manually delete it - it will rebuild."]},
+    {"id": 59, "q": "How do you mark ALL messages in a folder as read at once?", "opts": ["Edit > Mark All as Read", "Right-click the folder > Mark All Read", "Both A and B", "Format > Mark All Read"], "c": 2, "d": "hard", "t": "Folders & Search", "exp": ["Either right-click the folder > 'Mark All Read' (newer Outlook) or Edit menu > Mark All Read > 'In this folder and subfolders'."]},
+    {"id": 60, "q": "If your manager complains their email is full, the manager should:", "opts": ["Archive old messages to the Archive folder", "Empty the Deleted Items folder", "Use OneDrive for large attachments instead of direct attachments", "All of the above"], "c": 3, "d": "medium", "t": "Folders & Search", "exp": ["All four help: archive frees space, empty Deleted Items, OneDrive links for large files, and rules can auto-archive old mail."]}
+  ]
+}

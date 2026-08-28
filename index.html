@@ -3,135 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ApArena — Placement Preparation Hub</title>
-<meta name="description" content="Aptitude, Reasoning, Verbal, Pseudocode, Programming, Core, Behavioural, Gamified & Communication — 9 banks, one lovely glassmorphism hub.">
+<title>ApArena</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235B4DFF'/%3E%3Ctext x='32' y='43' font-family='Arial' font-size='32' font-weight='bold' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
 <style>
-  /* home-only editorial polish — keeps shared tokens */
   .nav{max-width:1200px;margin:0 auto;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px}
-  .brand{display:flex;gap:12px;align-items:center}
-  .brand-mark{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,#5B4DFF,#06B6D4);display:grid;place-items:center;color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(91,77,255,.35)}
-  .brand-text strong{font-family:var(--font-display);font-size:17px;letter-spacing:-.01em}
-  .brand-text span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);display:block}
-  .chip{font-size:12px;font-weight:600;padding:7px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--border);color:var(--text-2)}
-  .chip.accent{background:linear-gradient(135deg,#5B4DFF,#06B6D4);color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(91,77,255,.25)}
+  .brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit}
+  .brand-mark{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,#5B4DFF,#06B6D4);display:grid;place-items:center;color:#fff;font-weight:700;box-shadow:0 6px 18px rgba(91,77,255,.35)}
+  .brand-text strong{font-family:var(--font-display);font-size:16px;letter-spacing:-.01em}
+  .nav-actions{display:flex;gap:8px;align-items:center}
+  .nav-link{font-size:13px;font-weight:600;padding:7px 14px;border-radius:10px;background:var(--surface);border:1px solid var(--border);color:var(--text-2);text-decoration:none;transition:.15s}
+  .nav-link:hover{color:var(--text);border-color:var(--border-2)}
+  .nav-link.accent{background:linear-gradient(135deg,#5B4DFF,#06B6D4);color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(91,77,255,.25)}
   .wrap{max-width:1200px;margin:0 auto;padding:8px 24px 44px}
-  /* subtle serif accent for hero headline */
-  .hero h1{font-family:var(--font-display)}
-  .hero h1 em{font-style:normal;position:relative}
-  .hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:8px;background:linear-gradient(90deg,rgba(91,77,255,.18),rgba(6,182,214,.12));border-radius:4px;z-index:-1}
+  .section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:8px 0 18px;flex-wrap:wrap}
+  .section-head h2{font-family:var(--font-display);font-size:18px;letter-spacing:-.01em;margin:0}
+  .section-head .count{font-family:var(--font-mono);font-size:12px;color:var(--text-3)}
+  .search{position:relative;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 12px;min-width:260px;transition:.15s}
+  .search:focus-within{border-color:var(--accent-soft-2)}
+  .search svg{width:16px;height:16px;color:var(--text-3);flex:none}
+  .search input{flex:1;background:transparent;border:none;outline:none;font:inherit;color:var(--text);font-size:13px}
+  .search input::placeholder{color:var(--text-3)}
+  .loader{display:flex;gap:10px;align-items:center;color:var(--text-3);font-size:13px;margin:18px 0}
+  .spin{width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;display:inline-block;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .empty-state{padding:24px;text-align:center;color:var(--text-3);font-size:13px;border:1px dashed var(--border);border-radius:12px}
 </style>
 </head>
 <body>
   <nav class="nav">
-    <a href="/" class="brand"><span class="brand-mark">A</span><span class="brand-text"><strong>ApArena</strong><span>9 Banks · Lovely · Modular</span></span></a>
-    <div style="display:flex;gap:8px;align-items:center">
-      <span class="chip" id="nav-stats">Loading…</span>
-      <a class="chip accent" href="#banks">Browse banks →</a>
+    <a href="/" class="brand"><span class="brand-mark">A</span><span class="brand-text"><strong>ApArena</strong></span></a>
+    <div class="nav-actions">
+      <a class="nav-link" href="/coding/">&lt;/&gt; Coding Arena</a>
     </div>
   </nav>
 
   <div class="wrap">
-    <section class="hero hero-wrap" style="margin-top:10px">
-      <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center">
-        <div>
-          <p class="eyebrow">ApArena · Nine Banks · One Language</p>
-          <h1><span>Every topic.</span><br><em>One lovely hub.</em></h1>
-          <p class="sub">Aptitude, Reasoning, Verbal, Pseudocode, Programming, Core, Behavioural, Gamified & Communication — each bank is a self-contained atelier. Topics are indexed in memory and surface only when authored, so the UI stays calm and focused.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="/coding/" style="background:linear-gradient(120deg,#5B4DFF,#06B6D4);border:none">&lt;/&gt; Coding Arena</a>
-            <a class="btn btn-primary" href="#banks">Explore banks →</a>
-            <a class="btn btn-outline" href="#banks" id="cta-ready">View ready topics</a>
-          </div>
-          <div class="meta-row">
-            <span class="meta-chip">Glass · bento · editorial</span>
-            <span class="meta-chip">Deep link #/topic/&lt;id&gt;</span>
-            <span class="meta-chip">Indexed-but-hidden</span>
-          </div>
-        </div>
-        <div class="mosaic" id="mosaic">
-          <div class="m-card"><span class="m-num violet" id="m-banks">9</span><span class="m-label">Banks</span><span class="m-sub">modular</span></div>
-          <div class="m-card"><span class="m-num cyan" id="m-indexed">–</span><span class="m-label">Topics indexed</span><span class="m-sub">in memory</span></div>
-          <div class="m-card"><span class="m-num amber" id="m-ready">–</span><span class="m-label">Ready now</span><span class="m-sub">visible</span></div>
-          <div class="m-card"><span class="m-num emerald" id="m-hidden">–</span><span class="m-label">Hidden</span><span class="m-sub">pending</span></div>
-          <div class="m-card wide"><span class="m-icon">◈</span><div><div style="font-weight:700;font-size:13px">Lovely · calm · fast</div><div style="font-size:12px;color:var(--text-2)">Editorial type + glass bento + subtle motion. KaTeX only where math lives.</div></div></div>
-        </div>
+    <section>
+      <div class="section-head">
+        <div><h2>Banks</h2><span class="count" id="nav-stats">–</span></div>
+        <label class="search" aria-label="Filter banks">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="bank-search" type="search" placeholder="Filter…">
+        </label>
       </div>
-    </section>
-
-    <section id="banks" style="margin-top:36px">
-      <div class="banks-head">
-        <div><h2>Banks</h2><p>Each bank opens at <code>/&lt;bank&gt;/</code> — same shell, isolated progress. Filter, then jump straight to a topic.</p></div>
-        <label class="search" aria-label="Filter banks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg><input id="bank-search" type="search" placeholder="Filter banks or topics…"></label>
-      </div>
-      <div class="loader" id="bank-loader" style="display:flex;gap:10px;align-items:center;color:var(--text-3);font-size:13px;margin:18px 0"><span class="spin" style="width:18px;height:18px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;display:inline-block;animation:spin .8s linear infinite"></span> Loading banks…</div>
+      <div class="loader" id="bank-loader"><span class="spin"></span> Loading…</div>
       <div class="grid" id="grid" hidden></div>
-      <div id="empty" hidden class="empty-state" style="margin-top:12px">No banks match your filter.</div>
+      <div id="empty" hidden class="empty-state">No banks match your filter.</div>
     </section>
   </div>
 
-  <footer class="app-footer" style="max-width:1200px;margin:18px auto 0">ApArena — 9 banks, one lovely language. Topics appear as they are published.</footer>
+  <footer class="app-footer" style="max-width:1200px;margin:18px auto 0">ApArena</footer>
 
 <script>
 (function(){
   var BANKS_FALLBACK = [
-    {id:'aptitude', title:'Aptitude', subtitle:'Quantitative Aptitude — Number System to Ratio & Proportion', color:'#5B4DFF', icon:'Σ', accent:'aptitude'},
-    {id:'reasoning', title:'Reasoning', subtitle:'Logical Reasoning — Blood Relations, Direction, Statements & Clock', color:'#DC2626', icon:'◈', accent:'reasoning'},
-    {id:'verbal', title:'Verbal', subtitle:'Verbal & English — Analogies, Coding-Decoding, Grammar & Jumbles', color:'#059669', icon:'A', accent:'verbal'},
-    {id:'pseudocode', title:'Pseudocode', subtitle:'Trace & predict output — loops, conditions, bitwise & structures', color:'#7C3AED', icon:'</>', accent:'pseudocode'},
-    {id:'programming', title:'Programming', subtitle:'DSA, SQL & UI tasks — the coding round playbook', color:'#2563EB', icon:'{}', accent:'programming'},
-    {id:'core', title:'Core', subtitle:'Core CS, Networking, Cloud & Office — the technical MCQ core', color:'#0D9488', icon:'⬢', accent:'core'},
-    {id:'behavioural', title:'Behavioural', subtitle:'Personality & work-style — consistency over extremes', color:'#5B4DFF', icon:'♥', accent:'behavioural'},
-    {id:'gamified', title:'Gamified Assessment', subtitle:'Memory, quick math & pattern games — speed under pressure', color:'#F59E0B', icon:'◐', accent:'gamified'},
-    {id:'communication', title:'Communication', subtitle:'Fluency, clarity & pronunciation — AI-scored speaking', color:'#0284C7', icon:'🎤', accent:'communication'}
+    {id:'aptitude', title:'Aptitude', subtitle:'Quantitative Aptitude', color:'#5B4DFF', icon:'Σ', accent:'aptitude'},
+    {id:'reasoning', title:'Reasoning', subtitle:'Logical Reasoning', color:'#DC2626', icon:'◈', accent:'reasoning'},
+    {id:'verbal', title:'Verbal', subtitle:'Verbal & English', color:'#059669', icon:'A', accent:'verbal'},
+    {id:'pseudocode', title:'Pseudocode', subtitle:'Trace & predict output', color:'#7C3AED', icon:'</>', accent:'pseudocode'},
+    {id:'programming', title:'Programming', subtitle:'DSA, SQL & UI tasks', color:'#2563EB', icon:'{}', accent:'programming'},
+    {id:'core', title:'Core', subtitle:'Core CS, Networking, Cloud & Office', color:'#0D9488', icon:'⬢', accent:'core'},
+    {id:'behavioural', title:'Behavioural', subtitle:'Personality & work-style', color:'#5B4DFF', icon:'♥', accent:'behavioural'},
+    {id:'gamified', title:'Gamified', subtitle:'Memory, quick math & pattern games', color:'#F59E0B', icon:'◐', accent:'gamified'},
+    {id:'communication', title:'Communication', subtitle:'Fluency & pronunciation', color:'#0284C7', icon:'🎤', accent:'communication'},
+    {id:'coding', title:'Coding Arena', subtitle:'In-browser Python judge', color:'#5B4DFF', icon:'</>', accent:'coding'}
   ];
-  function loadBanks(){ return fetch('/data/banks.json',{cache:'default'}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(j){ var list=(j.banks||[]).map(function(b){ var f=BANKS_FALLBACK.find(function(x){return x.id===b.id}); return f? Object.assign({},f,b): b; }); return list.length? list: BANKS_FALLBACK; }).catch(function(){ return BANKS_FALLBACK; }); }
+  function loadBanks(){ return fetch('/data/banks.json',{cache:'default'}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(j){
+    var list=(j.banks||[]).map(function(b){ var f=BANKS_FALLBACK.find(function(x){return x.id===b.id}); return f? Object.assign({},f,b): b; });
+    return list.length? list: BANKS_FALLBACK;
+  }).catch(function(){ return BANKS_FALLBACK; }); }
   var esc=function(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')};
   var isVisible=function(t){ var s=(t.status||'ready').toLowerCase(); return s!=='pending' && s!=='outline' && s!=='hidden'; };
-  var iconInline=function(b){
-    var map={aptitude:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h2"/><path d="M12 10h2"/><path d="M16 10h.01"/></svg>',
-      reasoning:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0 4 4v2"/><path d="M12 7a3 3 0 1 0 5 0 3 3 0 0 0-5 0Z"/><path d="M12 11v2"/></svg>',
-      verbal:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/></svg>',
-      pseudocode:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>',
-      programming:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
-      core:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>',
-      behavioural:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
-      gamified:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>',
-      communication:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>'};
-    return map[b]||map.aptitude;
-  };
   loadBanks().then(function(BANKS){
     return Promise.all(BANKS.map(function(b){
       return fetch('/data/'+b.id+'.json',{cache:'default'}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(j){
-        b._total=(j.topics||[]).length; b._ready=(j.topics||[]).filter(isVisible).length; b._readyList=(j.topics||[]).filter(isVisible).slice(0,5); b._hidden=b._total-b._ready; return b;
-      }).catch(function(){ b._total=0; b._ready=0; b._readyList=[]; b._hidden=0; return b; });
+        b._total=(j.topics||[]).length; b._ready=(j.topics||[]).filter(isVisible).length; b._hidden=b._total-b._ready; return b;
+      }).catch(function(){ b._total=0; b._ready=0; b._hidden=0; return b; });
     }));
   }).then(function(banks){
     var totalIndexed=banks.reduce(function(a,b){return a+b._total},0);
     var totalReady=banks.reduce(function(a,b){return a+b._ready},0);
-    var totalHidden=totalIndexed-totalReady;
-    document.getElementById('m-indexed').textContent=totalIndexed;
-    document.getElementById('m-ready').textContent=totalReady;
-    document.getElementById('m-hidden').textContent=totalHidden;
     document.getElementById('nav-stats').textContent=totalReady+' ready · '+ totalIndexed+' indexed';
-    document.getElementById('cta-ready').textContent='View '+totalReady+' ready topics';
     var grid=document.getElementById('grid'); var loader=document.getElementById('bank-loader'); loader.hidden=true; loader.style.display='none'; grid.hidden=false; grid.style.display='grid';
     grid.innerHTML=banks.map(function(b){
-      var ready=b._ready, total=b._total, hidden=b._hidden; var pct= total? Math.round(ready/total*100):0; var isEmpty=ready===0;
-      var chips=b._readyList.map(function(t){return '<span class="t-chip ready">'+esc(t.title)+'</span>';}).join('');
-      var more= b._ready>5? '<span class="t-chip more">+'+(b._ready-5)+' more</span>':'';
-      if(isEmpty && total>0) chips='<span class="t-chip">'+esc(b._total+' topics indexed — none ready yet')+'</span>';
-      if(!total) chips='<span class="t-chip">Bank index pending</span>';
+      var ready=b._ready, total=b._total, hidden=b._hidden; var pct= total? Math.round(ready/total*100):0; var isEmpty=ready===0 && total>0;
       var meta= hidden? '<span style="color:var(--text-3)">'+hidden+' hidden</span>':'<span style="color:var(--success)">all ready</span>';
-      return '<a class="b-card '+(isEmpty?'coming':'')+'" href="/'+esc(b.id)+'/" data-search="'+esc(b.title+' '+b.subtitle+' '+(b._readyList.map(function(t){return t.title}).join(' ')) )+'">'
-        +'<div class="b-top"><span class="b-icon '+esc(b.accent)+'">'+iconInline(b.accent)+'</span><span style="display:flex;gap:6px"><span class="pill '+(ready?'ready':'soon')+'">'+(isEmpty?'SOON':'READY')+'</span><span class="pill">'+ready+'/'+total+'</span></span></div>'
-        +'<h3 class="b-name">'+esc(b.title)+'</h3><p class="b-sub">'+esc(b.subtitle)+'</p><div class="b-chips">'+chips+more+'</div>'
+      var href=b.id==='coding' ? '/coding/' : '/'+esc(b.id)+'/';
+      return '<a class="b-card '+(isEmpty?'coming':'')+'" href="'+href+'" data-search="'+esc(b.title+' '+b.subtitle)+'">'
+        +'<div class="b-top"><span class="b-icon '+esc(b.accent)+'">'+esc(b.icon)+'</span><span style="display:flex;gap:6px"><span class="pill '+(ready?'ready':'soon')+'">'+(isEmpty?'SOON':(ready?'READY':'EMPTY'))+'</span><span class="pill">'+ready+'/'+total+'</span></span></div>'
+        +'<h3 class="b-name">'+esc(b.title)+'</h3><p class="b-sub">'+esc(b.subtitle)+'</p>'
         +'<div class="progress" style="display:flex;gap:10px;align-items:center;margin-top:auto;padding-top:8px"><div class="track" style="flex:1;height:6px;background:var(--surface-3);border-radius:999px;overflow:hidden"><div class="fill" style="width:'+pct+'%"></div></div><span class="p-label">'+ready+'/'+total+' · '+meta+'</span></div>'
-        +'<span class="go">'+(isEmpty?'Preview bank':'Open bank')+' <span aria-hidden="true">→</span></span></a>';
+        +'<span class="go">Open <span aria-hidden="true">→</span></span></a>';
     }).join('');
     var input=document.getElementById('bank-search');
     input.addEventListener('input',function(){

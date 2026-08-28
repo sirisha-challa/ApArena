@@ -5,21 +5,21 @@
       "title": "Common Apps & MS Office",
       "icon": "Office",
       "color": "#0D9488",
-      "subtitle": "AXIS Technical: Word, Excel, PowerPoint, Outlook, browsers & shortcuts — about 12 questions"
+      "subtitle": "AXIS Technical: Word, Excel, PowerPoint, Outlook, browsers & shortcuts \u2014 about 12 questions"
     },
     {
       "id": "networking-cloud",
       "title": "Networking, Security & Cloud",
       "icon": "Network",
       "color": "#0891B2",
-      "subtitle": "AXIS Technical: client-server, auth, firewalls, attacks, encryption & cloud — about 10-11 questions"
+      "subtitle": "AXIS Technical: client-server, auth, firewalls, attacks, encryption & cloud \u2014 about 10-11 questions"
     },
     {
       "id": "cs-foundations",
       "title": "CS Foundations",
       "icon": "Core",
       "color": "#475569",
-      "subtitle": "OOPs, DBMS, SQL, OS, DSA & web — powers the coding round and interviews"
+      "subtitle": "OOPs, DBMS, SQL, OS, DSA & web \u2014 powers the coding round and interviews"
     }
   ],
   "topics": [
@@ -57,7 +57,8 @@
         "Generations of Computers"
       ],
       "estimatedHours": 6,
-      "status": null,
+      "status": "ready",
+      "authoredAt": "2026-08-28",
       "axisSection": "Common Applications & MS Office"
     },
     {
@@ -76,7 +77,8 @@
         "Proofing & Review"
       ],
       "estimatedHours": 8,
-      "status": null,
+      "status": "ready",
+      "authoredAt": "2026-08-28",
       "axisSection": "Common Applications & MS Office"
     },
     {
@@ -88,14 +90,15 @@
       "days": "4",
       "subtopics": [
         "Cells, Ranges & References",
-        "Core Functions (SUM/AVERAGE/COUNT)",
-        "Formula Syntax (= and operators)",
+        "Core Functions & Ranges",
         "Worksheets & Navigation",
         "Formatting & Charts",
-        "Data Tools (Sort/Filter)"
+        "Data Tools (Sort/Filter)",
+        "Pivot Tables & Subtotals"
       ],
       "estimatedHours": 9,
-      "status": null,
+      "status": "ready",
+      "authoredAt": "2026-08-28",
       "axisSection": "Common Applications & MS Office"
     },
     {
@@ -107,14 +110,15 @@
       "days": "2",
       "subtopics": [
         "Slides & Layouts",
-        "Views (Normal/Slide Sorter/Reading)",
+        "Views (Normal/Slide Show/Sorter)",
+        "Themes & Slide Master",
         "Transitions & Animations",
-        "Slide Shows & Navigation",
-        "Hyperlinks & Action Buttons",
-        "Master Slides"
+        "Slide Show & Notes",
+        "Shortcuts & Tips"
       ],
       "estimatedHours": 6,
-      "status": null,
+      "status": "ready",
+      "authoredAt": "2026-08-28",
       "axisSection": "Common Applications & MS Office"
     },
     {
@@ -126,13 +130,15 @@
       "days": "2",
       "subtopics": [
         "Mail Basics (CC/BCC/Attachments)",
-        "Calendar (Appointments & Meetings)",
+        "Calendar & Appointments",
         "Tasks & Notes",
-        "Folders (Inbox/Drafts/Trash)",
-        "Signatures & Rules"
+        "Folders & Search",
+        "Rules & Signatures",
+        "Shortcuts & Data Files"
       ],
       "estimatedHours": 5,
-      "status": null,
+      "status": "ready",
+      "authoredAt": "2026-08-28",
       "axisSection": "Common Applications & MS Office"
     },
     {
@@ -150,8 +156,9 @@
         "Downloads & Plugins"
       ],
       "estimatedHours": 5,
-      "status": null,
-      "axisSection": "Common Applications & MS Office"
+      "status": "ready",
+      "axisSection": "Common Applications & MS Office",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "shortcut-keys",
@@ -168,8 +175,9 @@
         "Windows Key Combos"
       ],
       "estimatedHours": 5,
-      "status": null,
-      "axisSection": "Common Applications & MS Office"
+      "status": "ready",
+      "axisSection": "Common Applications & MS Office",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "file-extensions",
@@ -185,8 +193,9 @@
         "Web & Text Formats"
       ],
       "estimatedHours": 3,
-      "status": null,
-      "axisSection": "Common Applications & MS Office"
+      "status": "ready",
+      "axisSection": "Common Applications & MS Office",
+      "authoredAt": "2026-08-28"
     },
     {
       "id": "command-prompt",

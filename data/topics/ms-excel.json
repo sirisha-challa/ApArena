@@ -1,0 +1,2009 @@
+{
+  "id": "ms-excel",
+  "title": "MS Excel (Formulas & Functions)",
+  "icon": "X",
+  "category": "ms-office",
+  "subtitle": "Cells, references, formulas, VLOOKUP, charts, sort/filter and pivot tables - the most-tested MS Office topic",
+  "days": "4",
+  "color": "#0D9488",
+  "subtopics": [
+    "Cells, Ranges & References",
+    "Core Functions & Ranges",
+    "Worksheets & Navigation",
+    "Formatting & Charts",
+    "Data Tools (Sort/Filter)",
+    "Pivot Tables & Subtotals"
+  ],
+  "estimatedHours": 9,
+  "readingSections": [
+    {
+      "id": "cells-references",
+      "title": "Cells, Ranges & References (Relative, Absolute, Mixed)",
+      "type": "concept",
+      "quickSummary": "Cell = column letter + row number (A1). Range = two cells with a colon (A1:B10). References are Relative (no $) or Absolute ($A$1) or Mixed ($A1 or A$1). F4 toggles.",
+      "content": [
+        "A CELL in Excel is identified by its CELL ADDRESS: a column letter (A, B, C, ... Z, AA, AB, ... XFD) and a row number (1, 2, 3, ... 1048576). A1 is the top-left cell. The active cell is the one currently selected (the Name Box shows its address).",
+        "A RANGE is a rectangular block of cells, written as two addresses separated by a colon. A1:B10 means column A-B, rows 1-10 = 20 cells. A1:A1 is a single cell. You can also use whole-column references like A:A (all 1,048,576 cells in column A) or whole-row references like 5:5.",
+        "A WORKSHEET in modern Excel (2007+) has 1,048,576 rows and 16,384 columns. That gives 17.2 billion cells per sheet. Columns end at XFD (the 16,384th column letter). The 2^20 and 2^14 binary boundaries explain the magic numbers. Press Ctrl+End to jump to the last used cell.",
+        "There are three kinds of CELL REFERENCES. RELATIVE (A1) - the default - shifts when you copy a formula to another cell. ABSOLUTE ($A$1) - stays locked when you copy. MIXED ($A1 or A$1) - locks the column OR the row but not both. The $ sign in front of the column letter locks the column; in front of the row number locks the row.",
+        "F4 is the magic shortcut. While editing a formula, click a cell reference and press F4 to cycle through the four states: A1 -> $A$1 -> A$1 -> $A1 -> A1. F4 only works in formula edit mode (start with =, then click a cell, then press F4)."
+      ],
+      "subsections": [
+        {
+          "title": "When to use which reference",
+          "content": "Use RELATIVE (A1) when you want the formula to repeat the same logic across a range - e.g. =A1*2 copied down column B will compute each row's double. Use ABSOLUTE ($A$1) when you want a fixed value - e.g. a tax rate in $A$1 applied to every cell in a column =B1*$A$1. Use MIXED ($A1) when you want a fixed column but sliding row (rare)."
+        },
+        {
+          "title": "Cell references across sheets",
+          "content": "To reference a cell in another sheet of the same workbook, use =SheetName!CellAddress. Example: =Sheet2!A1. If the sheet name has a space, wrap in single quotes: ='Sales 2024'!B5. To reference another workbook entirely: ='[Budget.xlsx]Sheet1'!A1."
+        }
+      ],
+      "quickRevision": [
+        "Cell address = column letter + row number (e.g. A1, B5, XFD1048576).",
+        "Range = A1:B10 (rectangle), A:A (whole column), 5:5 (whole row).",
+        "Per sheet: 1,048,576 rows x 16,384 columns (XFD).",
+        "Reference types: Relative A1, Absolute $A$1, Mixed $A1 / A$1.",
+        "F4 cycles: A1 -> $A$1 -> A$1 -> $A1 -> A1."
+      ],
+      "tricks": [
+        "If the option lists 'A1' as an absolute reference -> wrong (A1 is relative).",
+        "F4 only works inside a formula (=A1 then F4). It does NOT toggle a reference when the cell is just selected.",
+        "Whole-column reference A:A is NOT the same as A1:A1048576 - A:A includes rows beyond your data as you add it.",
+        "Last column = XFD (16,384th). The exam often asks this."
+      ],
+      "patterns": [
+        "'Maximum rows in an Excel worksheet?' -> 1,048,576.",
+        "'Maximum columns in an Excel worksheet?' -> 16,384 (XFD).",
+        "'Shortcut to toggle reference types?' -> F4 (in formula edit mode).",
+        "'Difference between A1 and $A$1?' -> A1 relative (shifts on copy), $A$1 absolute (locked)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in GeeksforGeeks / PrepInsta / Sanfoundry MS Excel MCQ banks",
+          "question": "The maximum number of rows in an Excel worksheet is:",
+          "approach": "1,048,576 (2^20)."
+        },
+        {
+          "source": "Asked across Excel MCQ sets",
+          "question": "The shortcut to toggle between relative, absolute and mixed cell references is:",
+          "approach": "F4 (in formula edit mode)."
+        }
+      ],
+      "companyNote": "Three of the most-asked questions in MS Office: max rows, max columns, F4 reference toggle."
+    },
+    {
+      "id": "core-functions",
+      "title": "Core Functions: SUM, AVERAGE, IF, COUNTIF, VLOOKUP",
+      "type": "concept",
+      "quickSummary": "SUM / AVERAGE / COUNT / MIN / MAX are the basic stats. IF / COUNTIF / SUMIF add logic. VLOOKUP / HLOOKUP / INDEX-MATCH are lookups. All start with = and the function name in caps.",
+      "content": [
+        "Every formula in Excel starts with =. The function name follows, then arguments in parentheses. =SUM(A1:A10) adds 10 cells. =AVERAGE(B1:B5) gives the mean. =COUNT(A1:A100) counts cells that contain NUMBERS only - text-containing cells are skipped.",
+        "Statistical family: SUM (add), AVERAGE (mean), MIN (smallest), MAX (largest), COUNT (count numbers), COUNTA (count non-empty cells, including text), COUNTBLANK (count empty cells), MEDIAN (middle value), MODE (most frequent), STDEV (standard deviation).",
+        "Logical family: IF(condition, value_if_true, value_if_false) - the workhorse. =IF(A1>=50, 'Pass', 'Fail'). AND, OR, NOT combine conditions. IFERROR(value, fallback) replaces an error with a friendly message - =IFERROR(VLOOKUP(...), 'Not found').",
+        "Conditional aggregates: COUNTIF(range, criteria) counts cells matching a single criterion. SUMIF(range, criteria, sum_range) sums cells matching a criterion. AVERAGEIF does the average. Examples: =COUNTIF(A:A, 'Delhi') counts all rows whose column A says 'Delhi'. =SUMIF(B:B, '>100', C:C) sums column C where column B > 100.",
+        "Lookup family: VLOOKUP(lookup_value, table_array, col_index, FALSE) finds a value in the FIRST column of a table and returns a value from a column to the right. FALSE means exact match (use this in exams). HLOOKUP is the horizontal version - looks in the first ROW and returns a value from a row below. INDEX-MATCH is the more flexible combo: MATCH finds the position, INDEX returns the value at that position. INDEX-MATCH can look LEFT (VLOOKUP cannot)."
+      ],
+      "subsections": [
+        {
+          "title": "VLOOKUP trap - exact vs approximate",
+          "content": "VLOOKUP's 4th argument (range_lookup) is FALSE for EXACT match and TRUE (or omitted) for APPROXIMATE match. The exam's most common trap: 'What does FALSE mean in VLOOKUP?' -> Exact match. 'What if you omit it?' -> Approximate match (TRUE). Approximate match REQUIRES the first column to be sorted ascending - otherwise it returns wrong answers. Always use FALSE unless you have a sorted lookup table."
+        },
+        {
+          "title": "COUNTIF vs COUNTIFS",
+          "content": "COUNTIF takes ONE criterion. COUNTIFS takes MULTIPLE criteria (all must match). Example: =COUNTIFS(A:A, 'Delhi', B:B, '>1000') counts rows where column A is Delhi AND column B > 1000. Same for SUMIFS, AVERAGEIFS - add the 'S' to get the multi-criteria version."
+        }
+      ],
+      "quickRevision": [
+        "All formulas start with = and the function name in uppercase (Excel auto-capitalises).",
+        "Statistical: SUM, AVERAGE, COUNT, COUNTA, MAX, MIN, MEDIAN.",
+        "Logical: IF, AND, OR, NOT, IFERROR.",
+        "Conditional: COUNTIF, SUMIF, AVERAGEIF (one criterion); COUNTIFS, SUMIFS, AVERAGEIFS (multiple).",
+        "Lookup: VLOOKUP (vertical), HLOOKUP (horizontal), INDEX-MATCH (most flexible).",
+        "VLOOKUP's last arg: FALSE = exact, TRUE/omitted = approximate."
+      ],
+      "tricks": [
+        "COUNT counts numbers only; COUNTA counts anything non-empty (text included).",
+        "VLOOKUP only looks RIGHT - if you need to look LEFT, use INDEX-MATCH.",
+        "VLOOKUP's column_index is the number of the column IN the table, not the worksheet.",
+        "=VLOOKUP(A2, range, 3, FALSE) returns the 3rd column of the table."
+      ],
+      "patterns": [
+        "'Function to look up a value in the first column?' -> VLOOKUP.",
+        "'Function to look up a value in the first row?' -> HLOOKUP.",
+        "'Function to count cells meeting a condition?' -> COUNTIF.",
+        "'Function to sum cells meeting a condition?' -> SUMIF.",
+        "'What does FALSE in VLOOKUP mean?' -> Exact match."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked across T4Tutorials / Sanfoundry / igmguru Excel MCQ banks (2024-2026)",
+          "question": "Which function is used to search for a value in the first column of a table and return a value in the same row from a specified column?",
+          "approach": "VLOOKUP."
+        },
+        {
+          "source": "Asked in multiple Excel MCQ sets",
+          "question": "VLOOKUP's 4th argument FALSE means:",
+          "approach": "Exact match."
+        }
+      ],
+      "companyNote": "VLOOKUP and COUNTIF/SUMIF are the highest-yield Excel topics - at least 2-3 questions per MS Office paper."
+    },
+    {
+      "id": "worksheets-navigation",
+      "title": "Worksheets, Workbooks & Navigation Shortcuts",
+      "type": "concept",
+      "quickSummary": "A workbook is a file (.xlsx). A workbook contains one or more worksheets (the tabs at the bottom). A worksheet has 1,048,576 rows x 16,384 columns. Ctrl+Page Up/Down switches tabs; Ctrl+Home goes to A1.",
+      "content": [
+        "An Excel FILE is a WORKBOOK. The default file extension is .xlsx (since Excel 2007, replacing .xls). A workbook contains one or more WORKSHEETS - the tabs you see at the bottom of the window (Sheet1, Sheet2, ...). By default, a new workbook has 1 worksheet (or 3 in some older versions).",
+        "The CELL is the smallest unit. A row of cells is a RECORD; a column of cells is a FIELD. The column letter + row number is the cell address. The active cell is the highlighted one; its address appears in the NAME BOX on the left of the formula bar.",
+        "Three navigation shortcuts every exam asks about: Ctrl+Home jumps to cell A1. Ctrl+End jumps to the LAST USED cell in the worksheet (the bottom-right corner of your data). Ctrl+G (or F5) opens the Go-To dialog - jump to a specific cell address, named range, or comment.",
+        "Tab navigation: Ctrl+Page Down moves to the NEXT worksheet tab. Ctrl+Page Up moves to the PREVIOUS. Right-click the tab arrows at the bottom-left for a tab list. To create a new sheet, click the + next to the last tab, or press Shift+F11. To rename, double-click the tab name.",
+        "The Name Box (left of the formula bar) lets you type a cell address and press Enter to jump there - e.g. type 'Z500' to jump straight to Z500. You can also type a named range there. The formula bar shows the formula in the active cell; the cell shows the result."
+      ],
+      "subsections": [
+        {
+          "title": "Workbook protection",
+          "content": "File > Info > Protect Workbook lets you lock the structure (preventing add/delete/rename/tab-reorder) with a password. Review > Protect Sheet protects individual cells - by default ALL cells are locked, but the protection does nothing until you enable it via Review > Protect Sheet. The trick: lock formatting or only specific ranges for editing."
+        },
+        {
+          "title": "Freeze panes",
+          "content": "View > Freeze Panes keeps the top row, left column, or both visible while you scroll. Freeze Top Row (Alt+W, F, R) keeps row 1. Freeze First Column (Alt+W, F, C) keeps column A. To freeze both, click a cell in B2 and select Freeze Panes."
+        }
+      ],
+      "quickRevision": [
+        "Workbook = .xlsx file. Worksheet = tab at the bottom of a workbook.",
+        "New workbook has 1 worksheet by default (Excel 2013+).",
+        "Active cell's address shows in the Name Box.",
+        "Ctrl+Home -> A1. Ctrl+End -> last used cell. F5 / Ctrl+G -> Go To.",
+        "Ctrl+Page Down / Page Up -> next / previous tab.",
+        "Shift+F11 -> new worksheet. F2 -> edit active cell."
+      ],
+      "tricks": [
+        "Ctrl+End goes to the last USED cell - if you have stray formatting, this can land you far below your real data. Use Ctrl+End after pressing Ctrl+Home to spot the gap.",
+        "If the question lists 'Ctrl+End' as 'go to last cell of the document' -> right. 'last cell with data' is closer to right but technically 'last used'.",
+        "Newer Excel (Office 365) has 1 sheet by default; older had 3. The exam usually goes with 1 unless a specific version is mentioned."
+      ],
+      "patterns": [
+        "'Shortcut to go to A1?' -> Ctrl+Home.",
+        "'Shortcut to jump to the last used cell?' -> Ctrl+End.",
+        "'Shortcut to switch to the next worksheet?' -> Ctrl+Page Down.",
+        "'Shortcut to open Go To dialog?' -> F5 (or Ctrl+G)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in mcqstop / Sanfoundry Excel MCQ banks",
+          "question": "Shortcut to go to the beginning of a worksheet (cell A1):",
+          "approach": "Ctrl+Home."
+        },
+        {
+          "source": "Asked in Sanfoundry / PrepInsta Excel sets",
+          "question": "Default file extension of MS Excel 2016+ is:",
+          "approach": ".xlsx (since Excel 2007; .xls was the older extension)."
+        }
+      ],
+      "companyNote": "Navigation shortcuts are free marks - 2-3 questions per paper on Ctrl+Home, Ctrl+End, Ctrl+Page Down, F5."
+    },
+    {
+      "id": "formatting-charts",
+      "title": "Cell Formatting, Number Formats & Charts",
+      "type": "concept",
+      "quickSummary": "Formatting = making data look right (number formats, alignment, borders, colours). Charts = Insert tab > Chart - pick from Column, Bar, Line, Pie, Scatter. Each chart has a data range and a chart type.",
+      "content": [
+        "NUMBER FORMATS tell Excel how to DISPLAY a number without changing the value. General is the default. Currency adds a currency symbol ($, Rs, €). Percentage multiplies by 100 and adds %. Date / Time displays as a date or time. Custom lets you type your own format code (e.g. #,##0.00 for thousands with 2 decimal places).",
+        "Where to apply formatting: Home tab > Number group > dropdown (or Ctrl+1 for the full Format Cells dialog). Common exam fact: a cell with value 0.85 formatted as Percentage shows as 85%. The value stays 0.85 in the formula bar.",
+        "Charts (Insert tab > Chart) are visual representations of data. Common types: COLUMN (vertical bars, default), BAR (horizontal bars), LINE (trends), PIE (proportions of a whole), SCATTER (X-Y relationships), AREA (stacked line). To create a chart, select the data first (or any cell in the data), then Insert > Chart > pick a type.",
+        "Every chart has these key pieces: DATA RANGE (the cells being plotted), CHART TYPE (column, bar, line, etc.), AXES (X = categories, Y = values), LEGEND (colour key), TITLE, DATA LABELS (numbers on the bars/points). Right-click any of these in an existing chart to edit them.",
+        "FORMATTING tricks: Merge & Center (Home > Merge & Center) joins cells and centres the text. Wrap Text (Home > Wrap Text) wraps long text inside a cell. Borders (Home > Borders dropdown) add cell borders. Conditional Formatting (Home > Conditional Formatting) auto-formats cells based on rules - e.g. highlight all values > 100 in red."
+      ],
+      "subsections": [
+        {
+          "title": "Number format codes you'll see in MCQs",
+          "content": "0 = digit placeholder (shows digit or 0 if missing). # = digit placeholder (shows nothing if missing). , = thousand separator. . = decimal point. % = percent. $ = currency. @ = text placeholder. So #,##0.00 shows a number with commas and 2 decimal places (1234.5 -> 1,234.50). 0% on the value 0.85 shows 85%."
+        },
+        {
+          "title": "Chart shortcut",
+          "content": "Press F11 with a cell selected to instantly create a default column chart on a new sheet ('Chart1'). Alt+F1 creates the chart on the same sheet. These are quick ways to preview data; you'll then edit the chart type and formatting."
+        }
+      ],
+      "quickRevision": [
+        "Number format = how a value is displayed, not the value itself.",
+        "Currency, Percentage, Date, Time, Custom - the main number format types.",
+        "Ctrl+1 opens the Format Cells dialog with every format option.",
+        "Charts: Column, Bar, Line, Pie, Scatter, Area (and 3D versions).",
+        "F11 = instant default column chart on a new sheet. Alt+F1 = same chart on the current sheet."
+      ],
+      "tricks": [
+        "If the question lists '0.85 displays as 0.85%' -> wrong. Formatted as Percentage, 0.85 displays as 85%.",
+        "F11 works only when a cell is selected; it ignores the selected range and uses the contiguous data.",
+        "Conditional Formatting > Highlight Cells Rules > Greater Than is a 2-click rule - the exam tests this often."
+      ],
+      "patterns": [
+        "'Shortcut to open the Format Cells dialog?' -> Ctrl+1.",
+        "'Shortcut to create a default chart on a new sheet?' -> F11.",
+        "'Cell value 0.85 formatted as Percentage displays as:' -> 85%.",
+        "'Which chart for showing trends over time?' -> Line chart."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Sanfoundry / mcqstop Excel MCQ sets",
+          "question": "A cell contains 0.85 and is formatted as Percentage. The cell displays:",
+          "approach": "85% (the format multiplies by 100 and adds %)."
+        },
+        {
+          "source": "Asked across Excel sets",
+          "question": "Shortcut to open the Format Cells dialog:",
+          "approach": "Ctrl+1."
+        }
+      ],
+      "companyNote": "2-3 questions per paper on number formats, chart types, and the F11 / Ctrl+1 shortcuts."
+    },
+    {
+      "id": "data-tools",
+      "title": "Data Tools: Sort, Filter, Find & Replace, Remove Duplicates",
+      "type": "concept",
+      "quickSummary": "Sort arranges rows by a column. Filter hides rows that don't match. Find/Replace (Ctrl+F / Ctrl+H) searches text. Remove Duplicates drops repeated rows. Data tab owns all of these.",
+      "content": [
+        "SORT arranges rows by the values in one or more columns. Data > Sort opens a dialog with 'My data has headers' (always tick this if your data has a header row). Pick a column from the 'Sort by' dropdown, choose A-Z or Z-A, then click OK. Multi-level sort (Sort by > Then by) lets you sort by City, then by Name, etc.",
+        "FILTER hides rows that don't match a criterion, so you see only the data you care about. Data > Filter adds dropdown arrows to every header. Click the arrow on the column you want to filter, untick the values you want to hide, or use Number/Text Filters for conditions like 'greater than 100' or 'begins with D'. Clear the filter via Data > Clear.",
+        "ADVANCED FILTER (Data > Advanced) lets you filter to a DIFFERENT range or extract a unique list. Useful when the basic filter dropdown is too restrictive.",
+        "FIND & REPLACE: Ctrl+F opens Find. Ctrl+H opens Find and Replace. Replace All replaces every occurrence in one click. Use Options for case-sensitive or whole-word matching. Note: Ctrl+H is the same shortcut as in MS Word - find/replace works the same way across the Office apps.",
+        "REMOVE DUPLICATES (Data > Remove Duplicates) deletes rows whose values are identical in the selected columns. It does NOT highlight - it deletes. The exam asks for the difference between 'highlight duplicates' (Conditional Formatting > Highlight Duplicates) and 'remove duplicates' (permanently delete).",
+        "TEXT TO COLUMNS (Data > Text to Columns) splits a single column of data into multiple columns - e.g. 'Aarav Sharma' into first-name and last-name columns. It uses Delimiter (comma, tab, semicolon) or Fixed Width as the split rule."
+      ],
+      "subsections": [
+        {
+          "title": "Sort gotcha: the 'Expand the selection' choice",
+          "content": "When you sort a single column without first selecting the whole data range, Excel asks 'Do you want to expand the selection to include adjacent data?'. Always click 'Expand' - otherwise only the sorted column moves and the data in other columns stays put, scrambling your rows."
+        },
+        {
+          "title": "AutoFilter vs Advanced Filter",
+          "content": "AutoFilter (Data > Filter) is the dropdown-based filter - good for one criterion or a few checkboxes. Advanced Filter (Data > Advanced) lets you build complex AND/OR conditions in a criteria range (a small block of cells that lists the rules) and even copy the filtered output to a different location. AutoFilter is what the exam tests most often."
+        }
+      ],
+      "quickRevision": [
+        "Data tab: Sort, Filter, Text to Columns, Remove Duplicates, Validation, Subtotal.",
+        "Sort: A-Z / Z-A; multi-level via 'Then by'. Always tick 'My data has headers'.",
+        "Filter: Data > Filter adds dropdowns to headers. Clear via Data > Clear.",
+        "Find Ctrl+F, Replace Ctrl+H (same as Word).",
+        "Remove Duplicates permanently deletes; Conditional Formatting only highlights."
+      ],
+      "tricks": [
+        "If the question says 'highlight duplicates' -> Conditional Formatting > Highlight Cells Rules > Duplicate Values.",
+        "If the question says 'remove duplicates' -> Data > Remove Duplicates (DESTRUCTIVE).",
+        "When sorting, the 'Expand the selection' prompt is THE exam trap. Always expand."
+      ],
+      "patterns": [
+        "'Tab for Sort and Filter?' -> Data.",
+        "'Shortcut for Find?' -> Ctrl+F.",
+        "'Shortcut for Find and Replace?' -> Ctrl+H.",
+        "'To split a column into multiple columns?' -> Data > Text to Columns."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Sanfoundry / igmguru Excel MCQ sets",
+          "question": "Where do you find the Sort command in Excel?",
+          "approach": "Data tab > Sort."
+        },
+        {
+          "source": "Asked in T4Tutorials Excel sets",
+          "question": "To highlight duplicate values without deleting them, use:",
+          "approach": "Home > Conditional Formatting > Highlight Cells Rules > Duplicate Values."
+        }
+      ],
+      "companyNote": "Sort/Filter/Duplicates are MS Office staples - 2-3 questions per paper."
+    },
+    {
+      "id": "pivot-tables",
+      "title": "Pivot Tables & Subtotals",
+      "type": "concept",
+      "quickSummary": "Pivot Table = summarise large data by category. Insert > PivotTable. Drag fields to Rows, Columns, Values, Filters. Subtotal = automatic =SUM() below each group when you Sort data and use Data > Subtotal.",
+      "content": [
+        "A PIVOT TABLE is a summarisation tool. It takes a large flat list (e.g. one row per sale) and groups it by categories (e.g. total sales per region per product), then sums / counts / averages the numbers. You don't write a single formula - you drag fields around.",
+        "To create one: click any cell in your data, Insert > PivotTable (or Alt+N, V). Excel auto-detects the data range. The PivotTable Fields pane has four boxes: ROWS (categories down the side), COLUMNS (categories across the top), VALUES (the numbers to aggregate), FILTERS (a field that filters the whole table).",
+        "Example: sales data with columns Region, Product, Sales. Drag Region to Rows, Product to Columns, Sales to Values. You get a grid: one row per region, one column per product, the cells = sum of sales. Drag Region to Filters and you can pick a single region to view.",
+        "VALUE FIELD SETTINGS let you change how the value is aggregated - Sum, Count, Average, Max, Min, Product. Right-click any value in the pivot and choose 'Value Field Settings'. The exam's classic: 'How do I change Sum to Count in a Pivot Table?' -> Right-click > Value Field Settings > Count.",
+        "SUBTOTAL (a different feature) automatically inserts =SUBTOTAL() formulas below each group when your data is sorted by the same column. Data > Subtotal. It is the legacy way to do what Pivot Tables now do better. The formula =SUBTOTAL(function_num, range) lets you manually create subtotals that ignore other SUBTOTAL formulas (so nested subtotals don't double-count)."
+      ],
+      "subsections": [
+        {
+          "title": "PivotTable shortcuts",
+          "content": "Alt+N, V - Insert PivotTable dialog. Alt+Down Arrow - open the field dropdown. Right-click any value cell to refresh, change Value Field Settings, or show details (which double-clicks through to the underlying rows). Ctrl+Alt+F5 - refresh the pivot table when the source data changes."
+        },
+        {
+          "title": "PivotTable vs Subtotal - when to use which",
+          "content": "Use PIVOT TABLE when: your data has many columns and you want to slice by any combination; you want to drag fields around to explore; you want to filter at the top. Use SUBTOTAL when: you want a one-shot summary in place; the data is sorted; you want =SUBTOTAL() formulas visible in cells (some people prefer the transparency). For the exam, the answer to 'summarise a large dataset quickly' is almost always Pivot Table."
+        }
+      ],
+      "quickRevision": [
+        "Pivot Table = drag-and-drop summarisation of large data.",
+        "Insert > PivotTable. Four field zones: Rows, Columns, Values, Filters.",
+        "Value Field Settings: Sum / Count / Average / Max / Min / Product.",
+        "Subtotal (Data > Subtotal) inserts =SUBTOTAL() formulas after sorting.",
+        "Pivot Table is the modern answer; Subtotal is the legacy answer."
+      ],
+      "tricks": [
+        "If the option lists 'Pivot Table' for 'summarise large data' -> right.",
+        "If the option lists 'a formula you write manually' for the same question -> wrong (that's a regular formula, not the summarisation tool).",
+        "Pivot Table needs a header row in the source data - 'My data has headers' must be true (it is by default)."
+      ],
+      "patterns": [
+        "'Which tool summarises large data with drag-and-drop?' -> Pivot Table.",
+        "'Where do the four field zones (Rows, Columns, Values, Filters) live?' -> PivotTable Fields pane on the right.",
+        "'To change Sum to Count in a pivot value?' -> Right-click > Value Field Settings."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in igmguru / iim-study Advanced Excel MCQ sets",
+          "question": "To summarise a large sales table by region and product, the best tool is:",
+          "approach": "Pivot Table."
+        },
+        {
+          "source": "Asked in Sanfoundry / igmguru Excel MCQs",
+          "question": "Data > Subtotal does which of the following?",
+          "approach": "Inserts SUBTOTAL() formulas below each group after sorting the data."
+        }
+      ],
+      "companyNote": "1-2 questions per paper on Pivot Table - mostly which tool summarises, and the four field zones."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "reference-types",
+      "title": "Cell Reference Types (Relative / Absolute / Mixed)",
+      "formula": {
+        "latex": "\\text{Relative}=A1;\\; \\text{Absolute}=\\$A\\$1;\\; \\text{Mixed}=\\$A1\\text{ or }A\\$1",
+        "text": "No $ = relative (shifts on copy). $A$1 = absolute (locked on both). $A1 = column locked, row relative. A$1 = row locked, column relative."
+      },
+      "whenToUse": "Any 'what does $ mean in a cell reference?' or 'how to keep a value constant when copying a formula?' MCQ. Also 'which F4 cycle?' questions.",
+      "explanation": [
+        "RELATIVE reference (A1): default. When you copy the formula down a column, the row number increments. =A1*2 in B1, copied to B2, becomes =A2*2.",
+        "ABSOLUTE reference ($A$1): row AND column are locked. The reference does NOT change when you copy. =$A$1*2 in B1, copied to B2, stays =$A$1*2.",
+        "MIXED - column locked (the column letter has the dollar sign): the column letter is locked but the row number still changes. =A1*2 in B1 with the column part locked, copied to B2, becomes a row-shifted reference.",
+        "MIXED - row locked (the row number has the dollar sign): the row number is locked but the column letter still changes. =A1*2 in B1 with the row part locked, copied to C1, becomes a column-shifted reference.",
+        "F4 cycles through the four states: A1 -> absolute -> row-locked -> column-locked -> back to A1.",
+        "Practical use: absolute for tax rates or fixed multipliers; mixed for lookup tables with one locked row or column."
+      ],
+      "example": {
+        "prompt": "You have a tax rate in $A$1. You want every cell in B to show A*tax. The formula in B1 is:",
+        "steps": [
+          "Tax rate must not change when you copy down - it is in $A$1.",
+          "Column A reference should change to A1, A2, A3 - relative.",
+          "Formula: =A1*$A$1."
+        ],
+        "answer": "=A1*$A$1"
+      },
+      "memoryTip": "A dollar sign locks whatever it is in front of. Dollar-A locks the column. A-dollar locks the row. Dollar-A-dollar-1 locks both.",
+      "commonMistake": "Forgetting the dollar before the row when you want the row to stay fixed (A-dollar-1, not A1)."
+    },
+    {
+      "id": "vlookup-form",
+      "title": "VLOOKUP Anatomy (and the FALSE trap)",
+      "formula": {
+        "latex": "=VLOOKUP(\\text{lookup\\_value},\\; \\text{table\\_array},\\; \\text{col\\_index\\_num},\\; \\text{[range\\_lookup]});\\; \\text{use FALSE for exact match}",
+        "text": "=VLOOKUP(what, where, which column, exact or approximate). FALSE = exact. TRUE/omitted = approximate (needs sorted data)."
+      },
+      "whenToUse": "Any VLOOKUP / HLOOKUP / lookup-function MCQ. The FALSE/TRUE distinction is the most-asked trap.",
+      "explanation": [
+        "lookup_value: the value to find. Usually a cell reference like A2.",
+        "table_array: the range to search in. The lookup column must be the FIRST column of this range. Use absolute references ($A$2:$D$100) so the table doesn't shift when copied.",
+        "col_index_num: which column of the table to return. 1 = first column (the lookup column itself), 2 = second column, etc.",
+        "range_lookup: FALSE = exact match (always use this in exams and most real work). TRUE or omitted = approximate match (requires the lookup column to be sorted ascending - returns wrong results otherwise).",
+        "HLOOKUP is the horizontal version: looks in the first ROW, returns a value from a row below. INDEX-MATCH is more flexible than VLOOKUP: MATCH finds the position, INDEX returns the value. INDEX-MATCH can look LEFT (VLOOKUP cannot)."
+      ],
+      "example": {
+        "prompt": "=VLOOKUP(101, A2:D20, 3, FALSE) returns:",
+        "steps": [
+          "Find 101 in the FIRST column of A2:D20.",
+          "Return the value in the 3rd column of the same row.",
+          "FALSE = exact match (so 101 must be present, else #N/A)."
+        ],
+        "answer": "The value in the 3rd column of the row where the first column equals 101 (exact match)."
+      },
+      "memoryTip": "VLOOKUP = Vertical LOOKUP. HLOOKUP = Horizontal LOOKUP. The 'V' and 'H' tell you which direction the lookup goes.",
+      "commonMistake": "Using TRUE / omitting range_lookup in a non-sorted table - silently returns wrong answers."
+    },
+    {
+      "id": "stat-functions",
+      "title": "Basic Statistical Functions",
+      "formula": {
+        "latex": "\\text{SUM}=\\sum;\\; \\text{AVERAGE}=\\bar{x};\\; \\text{COUNT}=\\#\\text{numbers};\\; \\text{COUNTA}=\\#\\text{non-empty};\\; \\text{MIN/MAX}=\\text{extremes};\\; \\text{MEDIAN}=\\text{middle}",
+        "text": "SUM, AVERAGE, COUNT, COUNTA, MIN, MAX, MEDIAN. COUNT counts numbers only; COUNTA counts anything non-empty."
+      },
+      "whenToUse": "Any 'which function for X?' MCQ where X is a summary statistic.",
+      "explanation": [
+        "SUM(range) - adds all numbers in the range. Empty cells and text are ignored.",
+        "AVERAGE(range) - mean. Same ignoring rule as SUM.",
+        "COUNT(range) - counts cells containing NUMBERS. Text cells are skipped.",
+        "COUNTA(range) - counts cells that are NOT EMPTY, including text and numbers. (A is for 'All'.)",
+        "COUNTBLANK(range) - counts empty cells.",
+        "MIN(range) / MAX(range) - smallest / largest number. Ignores text and empty.",
+        "MEDIAN(range) - middle value when sorted. MODE(range) - most frequent value.",
+        "The IF family: SUMIF(range, criteria, sum_range) sums cells meeting a criterion. =SUMIF(B:B, '>100') sums column B values > 100. =COUNTIF(A:A, 'Delhi') counts 'Delhi' in column A."
+      ],
+      "example": {
+        "prompt": "How many cells in A1:A10 contain numbers?",
+        "steps": [
+          "Use COUNT - it counts numbers only.",
+          "=COUNT(A1:A10) returns the count of numeric cells."
+        ],
+        "answer": "=COUNT(A1:A10)"
+      },
+      "memoryTip": "COUNT = numbers. COUNTA = All non-empty. COUNTBLANK = empty. Easy to remember if you imagine COUNT counting only 'real' data.",
+      "commonMistake": "Using COUNT when you want to count text (use COUNTA). Using AVERAGE on a range that contains text - it skips text and may give an unexpected mean."
+    },
+    {
+      "id": "if-and-error",
+      "title": "IF, AND, OR, IFERROR",
+      "formula": {
+        "latex": "=\\text{IF}(\\text{cond},\\, \\text{true\\_val},\\, \\text{false\\_val});\\; \\text{IFERROR}(\\text{expr},\\, \\text{fallback});\\; \\text{AND/OR}=\\text{boolean combiners}",
+        "text": "IF returns one value or another based on a condition. AND/OR combine conditions. IFERROR replaces error values with a friendly message."
+      },
+      "whenToUse": "Any logical-function MCQ. Also used to wrap formulas that may produce #N/A or #DIV/0! so the cell shows a clean message instead.",
+      "explanation": [
+        "IF(condition, value_if_true, value_if_false). Example: =IF(A1>=50, 'Pass', 'Fail').",
+        "AND(condition1, condition2, ...) - TRUE only if ALL conditions are true. OR - TRUE if ANY condition is true. NOT(condition) - inverts TRUE/FALSE.",
+        "Nested IF: =IF(A1>=90, 'A', IF(A1>=75, 'B', IF(A1>=50, 'C', 'F'))) - chains multiple IFs.",
+        "IFERROR(value, value_if_error): if the value expression produces an error (#DIV/0!, #N/A, #VALUE!, #REF!, #NAME?, #NUM!), return value_if_error instead. Example: =IFERROR(VLOOKUP(...), 'Not found') - shows 'Not found' instead of #N/A."
+      ],
+      "example": {
+        "prompt": "If VLOOKUP doesn't find the value, the cell shows #N/A. How do you show 'Not found' instead?",
+        "steps": [
+          "Wrap the VLOOKUP in IFERROR.",
+          "=IFERROR(VLOOKUP(A2, range, 3, FALSE), 'Not found')."
+        ],
+        "answer": "=IFERROR(VLOOKUP(A2, range, 3, FALSE), 'Not found')"
+      },
+      "memoryTip": "IF = 'is this true? then A, else B'. IFERROR = 'did this error? then this, else whatever'.",
+      "commonMistake": "Confusing AND and OR. AND wants EVERY condition true; OR wants AT LEAST ONE."
+    }
+  ],
+  "practiceProblems": {
+    "reference-types": [
+      {
+        "q": "A cell reference with no $ sign (e.g. A1) is called:",
+        "opts": [
+          "Absolute",
+          "Relative",
+          "Mixed",
+          "Locked"
+        ],
+        "c": 1,
+        "s": [
+          "No $ = Relative. Reference shifts on copy.",
+          "$A$1 = Absolute. $A1 or A$1 = Mixed."
+        ],
+        "a": "Relative"
+      },
+      {
+        "q": "An absolute reference has $ signs on:",
+        "opts": [
+          "Only the column",
+          "Only the row",
+          "Both column and row",
+          "Either column or row"
+        ],
+        "c": 2,
+        "s": [
+          "$A$1 = absolute: $ before column AND $ before row.",
+          "$A1 or A$1 = mixed."
+        ],
+        "a": "Both column and row"
+      },
+      {
+        "q": "Shortcut to toggle cell reference types in formula edit mode:",
+        "opts": [
+          "F2",
+          "F4",
+          "Ctrl+R",
+          "Ctrl+Shift+$"
+        ],
+        "c": 1,
+        "s": [
+          "F4 cycles A1 -> $A$1 -> A$1 -> $A1 -> A1.",
+          "Works only when you're inside a formula."
+        ],
+        "a": "F4"
+      },
+      {
+        "q": "If =A1 is in cell B1, what does it become when copied to B2?",
+        "opts": [
+          "=A1",
+          "=A2",
+          "=$A$1",
+          "=#REF!"
+        ],
+        "c": 1,
+        "s": [
+          "Relative reference: row shifts from 1 to 2 when copied down.",
+          "Column doesn't shift (A is still A since B1 to B2 only moved down)."
+        ],
+        "a": "=A2"
+      },
+      {
+        "q": "If =$A$1 is in cell B1, what does it become when copied to B2?",
+        "opts": [
+          "=A1",
+          "=A2",
+          "=$A$1",
+          "=$A2"
+        ],
+        "c": 2,
+        "s": [
+          "Absolute reference: row AND column both locked. Stays $A$1."
+        ],
+        "a": "=$A$1"
+      },
+      {
+        "q": "If =A$1 is in cell B1, what does it become when copied to C1?",
+        "opts": [
+          "=A$1",
+          "=B$1",
+          "=$A$1",
+          "=A1"
+        ],
+        "c": 1,
+        "s": [
+          "Mixed: row locked ($1), column relative (A -> B)."
+        ],
+        "a": "=B$1"
+      },
+      {
+        "q": "Maximum number of rows in an Excel worksheet:",
+        "opts": [
+          "65536",
+          "1000000",
+          "1048576",
+          "16777216"
+        ],
+        "c": 2,
+        "s": [
+          "Since Excel 2007, max rows = 2^20 = 1,048,576.",
+          "Older Excel 2003 had 65,536 rows."
+        ],
+        "a": "1048576"
+      },
+      {
+        "q": "Maximum number of columns in an Excel worksheet:",
+        "opts": [
+          "256",
+          "1024",
+          "16384",
+          "65536"
+        ],
+        "c": 2,
+        "s": [
+          "Since Excel 2007, max columns = 2^14 = 16,384 (XFD)."
+        ],
+        "a": "16384"
+      },
+      {
+        "q": "Last column letter in modern Excel:",
+        "opts": [
+          "ZZ",
+          "XFD",
+          "IV",
+          "ZZZ"
+        ],
+        "c": 1,
+        "s": [
+          "The 16,384th column is XFD.",
+          "Older Excel 2003 ended at IV."
+        ],
+        "a": "XFD"
+      },
+      {
+        "q": "Pressing Ctrl+End takes you to:",
+        "opts": [
+          "Cell A1",
+          "The last used cell in the worksheet",
+          "The next empty cell",
+          "The last cell of column A"
+        ],
+        "c": 1,
+        "s": [
+          "Ctrl+End jumps to the last USED cell (the bottom-right corner of your data)."
+        ],
+        "a": "The last used cell in the worksheet"
+      }
+    ],
+    "vlookup-form": [
+      {
+        "q": "VLOOKUP looks for the lookup value in which column of the table?",
+        "opts": [
+          "The last column",
+          "The first column",
+          "Any column",
+          "The middle column"
+        ],
+        "c": 1,
+        "s": [
+          "VLOOKUP always searches the FIRST column of the table_array.",
+          "To look in another column, use INDEX-MATCH."
+        ],
+        "a": "The first column"
+      },
+      {
+        "q": "What does FALSE in VLOOKUP's last argument mean?",
+        "opts": [
+          "Approximate match",
+          "Exact match",
+          "No match",
+          "Error"
+        ],
+        "c": 1,
+        "s": [
+          "FALSE = exact match. Use this in exams and most real work.",
+          "TRUE/omitted = approximate (needs sorted data)."
+        ],
+        "a": "Exact match"
+      },
+      {
+        "q": "HLOOKUP looks for the lookup value in the:",
+        "opts": [
+          "First column",
+          "First row",
+          "Last row",
+          "Last column"
+        ],
+        "c": 1,
+        "s": [
+          "HLOOKUP = Horizontal LOOKUP. Searches the first ROW and returns from a row below."
+        ],
+        "a": "First row"
+      },
+      {
+        "q": "VLOOKUP returns #N/A when:",
+        "opts": [
+          "Lookup value not found and FALSE used",
+          "The formula is wrong",
+          "The table is empty",
+          "The column index is 0"
+        ],
+        "c": 0,
+        "s": [
+          "With FALSE (exact), no match -> #N/A. Wrap in IFERROR to show a friendly message."
+        ],
+        "a": "Lookup value not found and FALSE used"
+      },
+      {
+        "q": "Which combination can look LEFT (return a value to the left of the lookup column)?",
+        "opts": [
+          "VLOOKUP",
+          "HLOOKUP",
+          "INDEX-MATCH",
+          "COUNTIF"
+        ],
+        "c": 2,
+        "s": [
+          "INDEX-MATCH is the flexible combo. MATCH finds the position, INDEX returns the value.",
+          "VLOOKUP can only look right."
+        ],
+        "a": "INDEX-MATCH"
+      },
+      {
+        "q": "In =VLOOKUP(A2, $B$2:$D$20, 3, FALSE), the 3 means:",
+        "opts": [
+          "Row 3 of the sheet",
+          "Third column of the table",
+          "Column C of the sheet",
+          "Three rows down"
+        ],
+        "c": 1,
+        "s": [
+          "col_index_num is the column number within the table (1 = first column = B, 2 = C, 3 = D)."
+        ],
+        "a": "Third column of the table"
+      },
+      {
+        "q": "If VLOOKUP's column index is greater than the number of columns in the table:",
+        "opts": [
+          "Returns 0",
+          "Returns the last column",
+          "Returns #REF!",
+          "Returns the first column"
+        ],
+        "c": 2,
+        "s": [
+          "col_index out of range -> #REF! error."
+        ],
+        "a": "Returns #REF!"
+      },
+      {
+        "q": "VLOOKUP's TRUE (approximate) requires:",
+        "opts": [
+          "Sorted lookup column",
+          "No empty cells",
+          "Numeric data only",
+          "A separate index column"
+        ],
+        "c": 0,
+        "s": [
+          "Approximate match uses binary search - the first column must be sorted ascending.",
+          "Otherwise it returns wrong answers."
+        ],
+        "a": "Sorted lookup column"
+      },
+      {
+        "q": "MATCH function returns:",
+        "opts": [
+          "The matching value",
+          "The position of the value in the range",
+          "The row number of the cell",
+          "The column number"
+        ],
+        "c": 1,
+        "s": [
+          "MATCH returns the position (1, 2, 3, ...) of the value within the range, not the value itself."
+        ],
+        "a": "The position of the value in the range"
+      },
+      {
+        "q": "XLOOKUP (Excel 365) can look:",
+        "opts": [
+          "Only right",
+          "Only left",
+          "In any direction (left, right, up, down)",
+          "Only down"
+        ],
+        "c": 2,
+        "s": [
+          "XLOOKUP is the modern replacement for VLOOKUP - looks in any direction."
+        ],
+        "a": "In any direction (left, right, up, down)"
+      }
+    ],
+    "stat-functions": [
+      {
+        "q": "=SUM(A1:A10) returns:",
+        "opts": [
+          "The largest of A1:A10",
+          "The sum of all numbers in A1:A10",
+          "The average of A1:A10",
+          "The count of numbers in A1:A10"
+        ],
+        "c": 1,
+        "s": [
+          "SUM adds all numbers in the range. Text and empty cells are ignored."
+        ],
+        "a": "The sum of all numbers in A1:A10"
+      },
+      {
+        "q": "=COUNT(A1:A10) counts:",
+        "opts": [
+          "All non-empty cells",
+          "Only cells with numbers",
+          "Only text cells",
+          "Only empty cells"
+        ],
+        "c": 1,
+        "s": [
+          "COUNT counts cells with NUMBERS only.",
+          "COUNTA counts all non-empty cells."
+        ],
+        "a": "Only cells with numbers"
+      },
+      {
+        "q": "=COUNTA(A1:A10) counts:",
+        "opts": [
+          "Only numbers",
+          "Only text",
+          "All non-empty cells (numbers + text)",
+          "Only empty cells"
+        ],
+        "c": 2,
+        "s": [
+          "COUNTA = 'Count All' non-empty. Includes text and numbers."
+        ],
+        "a": "All non-empty cells (numbers + text)"
+      },
+      {
+        "q": "=AVERAGE(A1:A5) returns:",
+        "opts": [
+          "Sum of A1:A5",
+          "Arithmetic mean of numbers in A1:A5",
+          "Median of A1:A5",
+          "Largest of A1:A5"
+        ],
+        "c": 1,
+        "s": [
+          "AVERAGE = arithmetic mean (sum / count). Skips text."
+        ],
+        "a": "Arithmetic mean of numbers in A1:A5"
+      },
+      {
+        "q": "=COUNTIF(A:A, 'Delhi') returns:",
+        "opts": [
+          "Sum of 'Delhi' rows",
+          "Count of cells equal to 'Delhi'",
+          "Count of unique values",
+          "Average for 'Delhi'"
+        ],
+        "c": 1,
+        "s": [
+          "COUNTIF counts cells matching the criterion.",
+          "Use SUMIF to sum a related column."
+        ],
+        "a": "Count of cells equal to 'Delhi'"
+      },
+      {
+        "q": "=SUMIF(B:B, '>100', C:C) returns:",
+        "opts": [
+          "Count of B > 100",
+          "Sum of C where B > 100",
+          "Sum of B + C",
+          "Count of C"
+        ],
+        "c": 1,
+        "s": [
+          "SUMIF(range to test, criterion, range to sum). Sums C where B > 100."
+        ],
+        "a": "Sum of C where B > 100"
+      },
+      {
+        "q": "=MAX(A1:A10) returns:",
+        "opts": [
+          "The first value",
+          "The largest number",
+          "The smallest number",
+          "The average"
+        ],
+        "c": 1,
+        "s": [
+          "MAX returns the largest value in the range."
+        ],
+        "a": "The largest number"
+      },
+      {
+        "q": "=MIN(A1:A10) returns:",
+        "opts": [
+          "The largest number",
+          "The smallest number",
+          "The first value",
+          "Zero"
+        ],
+        "c": 1,
+        "s": [
+          "MIN returns the smallest value."
+        ],
+        "a": "The smallest number"
+      },
+      {
+        "q": "=MEDIAN(A1:A5) returns:",
+        "opts": [
+          "The mean",
+          "The middle value when sorted",
+          "The most frequent",
+          "The largest"
+        ],
+        "c": 1,
+        "s": [
+          "MEDIAN = middle value when the numbers are sorted."
+        ],
+        "a": "The middle value when sorted"
+      },
+      {
+        "q": "Which function counts cells meeting a condition?",
+        "opts": [
+          "SUM",
+          "AVERAGE",
+          "COUNTIF",
+          "MAX"
+        ],
+        "c": 2,
+        "s": [
+          "COUNTIF counts cells meeting a single criterion.",
+          "SUMIF sums; AVERAGEIF averages; COUNTIFS is the multi-criteria version."
+        ],
+        "a": "COUNTIF"
+      }
+    ],
+    "if-and-error": [
+      {
+        "q": "=IF(A1>=50, 'Pass', 'Fail') returns 'Pass' when:",
+        "opts": [
+          "A1 is less than 50",
+          "A1 is 50 or more",
+          "A1 is any number",
+          "A1 is text"
+        ],
+        "c": 1,
+        "s": [
+          "=IF(condition, value_if_true, value_if_false). >= means 50 OR MORE."
+        ],
+        "a": "A1 is 50 or more"
+      },
+      {
+        "q": "=IFERROR(VLOOKUP(A2, range, 3, FALSE), 'Not found') shows 'Not found' when:",
+        "opts": [
+          "A2 contains any text",
+          "VLOOKUP produces an error (#N/A, #REF!, etc.)",
+          "The range is empty",
+          "A2 is a number"
+        ],
+        "c": 1,
+        "s": [
+          "IFERROR catches errors (#N/A from no match, #REF! from bad column index, #DIV/0!, #VALUE!, etc.) and returns the fallback."
+        ],
+        "a": "VLOOKUP produces an error (#N/A, #REF!, etc.)"
+      },
+      {
+        "q": "AND(A1>10, B1<100) returns TRUE when:",
+        "opts": [
+          "Either A1>10 OR B1<100",
+          "BOTH A1>10 AND B1<100 are true",
+          "Both are equal",
+          "At least one is true"
+        ],
+        "c": 1,
+        "s": [
+          "AND returns TRUE only if ALL conditions are true. OR returns TRUE if ANY is true."
+        ],
+        "a": "BOTH A1>10 AND B1<100 are true"
+      },
+      {
+        "q": "OR(A1>10, B1<100) returns TRUE when:",
+        "opts": [
+          "ALL conditions are true",
+          "NO condition is true",
+          "AT LEAST ONE condition is true",
+          "Both are equal"
+        ],
+        "c": 2,
+        "s": [
+          "OR = 'at least one'. AND = 'all'."
+        ],
+        "a": "AT LEAST ONE condition is true"
+      },
+      {
+        "q": "Nested IF: =IF(A1>=90, 'A', IF(A1>=75, 'B', 'C')) returns 'A' when:",
+        "opts": [
+          "A1 >= 75",
+          "A1 >= 90",
+          "A1 < 75",
+          "A1 = 0"
+        ],
+        "c": 1,
+        "s": [
+          "First condition checked: A1 >= 90 returns 'A'. Otherwise check next."
+        ],
+        "a": "A1 >= 90"
+      },
+      {
+        "q": "IFERROR catches which of the following errors?",
+        "opts": [
+          "Only #N/A",
+          "All Excel error values (#N/A, #REF!, #DIV/0!, #VALUE!, #NAME?, #NUM!)",
+          "Only #REF!",
+          "Only #DIV/0!"
+        ],
+        "c": 1,
+        "s": [
+          "IFERROR catches all six major Excel error values."
+        ],
+        "a": "All Excel error values (#N/A, #REF!, #DIV/0!, #VALUE!, #NAME?, #NUM!)"
+      },
+      {
+        "q": "=NOT(TRUE) returns:",
+        "opts": [
+          "TRUE",
+          "FALSE",
+          "1",
+          "0"
+        ],
+        "c": 1,
+        "s": [
+          "NOT inverts the boolean. NOT(TRUE) = FALSE; NOT(FALSE) = TRUE."
+        ],
+        "a": "FALSE"
+      },
+      {
+        "q": "The IF function's three arguments are:",
+        "opts": [
+          "Range, criteria, value",
+          "Condition, value_if_true, value_if_false",
+          "Lookup_value, table_array, col_index",
+          "Value, format, code"
+        ],
+        "c": 1,
+        "s": [
+          "=IF(condition, value_if_true, value_if_false)."
+        ],
+        "a": "Condition, value_if_true, value_if_false"
+      },
+      {
+        "q": "Which is the right pattern for VLOOKUP-protected-against-N/A?",
+        "opts": [
+          "=VLOOKUP(A2, range, 3, FALSE)",
+          "=IFERROR(VLOOKUP(A2, range, 3, FALSE), 'Not found')",
+          "=IF(VLOOKUP(A2, range, 3, FALSE) = 0, 0, value)",
+          "=VLOOKUP(A2, range, 3, TRUE)"
+        ],
+        "c": 1,
+        "s": [
+          "Wrap VLOOKUP in IFERROR to show a friendly message instead of #N/A."
+        ],
+        "a": "=IFERROR(VLOOKUP(A2, range, 3, FALSE), 'Not found')"
+      },
+      {
+        "q": "What does =IF(A1='Mumbai', 'West', IF(A1='Chennai', 'South', 'Other')) return for A1='Pune'?",
+        "opts": [
+          "West",
+          "South",
+          "Other",
+          "#N/A"
+        ],
+        "c": 2,
+        "s": [
+          "Neither 'Mumbai' nor 'Chennai' - falls through both IFs to the final 'Other'."
+        ],
+        "a": "Other"
+      }
+    ]
+  },
+  "mcqs": [
+    {
+      "id": 1,
+      "q": "MS Excel is primarily used for:",
+      "opts": [
+        "Word processing",
+        "Spreadsheets and calculations",
+        "Slideshows",
+        "Databases"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Cells, Ranges & References",
+      "exp": [
+        "Excel is a spreadsheet program - rows, columns, formulas, charts."
+      ]
+    },
+    {
+      "id": 2,
+      "q": "Default file extension of MS Excel 2016+:",
+      "opts": [
+        ".xls",
+        ".xlsx",
+        ".csv",
+        ".xlsm"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        ".xlsx since Excel 2007. .xls was the pre-2007 extension.",
+        ".xlsm is the macro-enabled extension."
+      ]
+    },
+    {
+      "id": 3,
+      "q": "Maximum rows in a modern Excel worksheet:",
+      "opts": [
+        "65536",
+        "100000",
+        "1048576",
+        "16777216"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "Cells, Ranges & References",
+      "exp": [
+        "2^20 = 1,048,576 rows since Excel 2007."
+      ]
+    },
+    {
+      "id": 4,
+      "q": "Maximum columns in a modern Excel worksheet:",
+      "opts": [
+        "256",
+        "1024",
+        "16384",
+        "65536"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "Cells, Ranges & References",
+      "exp": [
+        "2^14 = 16,384 columns (XFD) since Excel 2007."
+      ]
+    },
+    {
+      "id": 5,
+      "q": "Last column letter in modern Excel:",
+      "opts": [
+        "IV",
+        "ZZ",
+        "XFD",
+        "ZZZ"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "Cells, Ranges & References",
+      "exp": [
+        "The 16,384th column is XFD.",
+        "Older Excel 2003 ended at IV (256 columns)."
+      ]
+    },
+    {
+      "id": 6,
+      "q": "Shortcut to toggle between relative and absolute references:",
+      "opts": [
+        "F2",
+        "F4",
+        "Ctrl+R",
+        "Ctrl+$"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Cells, Ranges & References",
+      "exp": [
+        "F4 cycles A1 -> $A$1 -> A$1 -> $A1 -> A1 (in formula edit mode)."
+      ]
+    },
+    {
+      "id": 7,
+      "q": "A cell reference with $ before both column letter and row number ($A$1) is:",
+      "opts": [
+        "Relative",
+        "Absolute",
+        "Mixed",
+        "Invalid"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Cells, Ranges & References",
+      "exp": [
+        "$A$1 = absolute: both column and row are locked."
+      ]
+    },
+    {
+      "id": 8,
+      "q": "If =A1 is in B1 and you copy it to B2, the formula becomes:",
+      "opts": [
+        "=A1",
+        "=A2",
+        "=$A$1",
+        "=#REF!"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Cells, Ranges & References",
+      "exp": [
+        "Relative reference: row shifts from 1 to 2 when copied down."
+      ]
+    },
+    {
+      "id": 9,
+      "q": "VLOOKUP looks for the lookup value in the:",
+      "opts": [
+        "Last column",
+        "First column",
+        "Any column",
+        "Middle column"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "VLOOKUP always searches the FIRST column of the table_array."
+      ]
+    },
+    {
+      "id": 10,
+      "q": "What does FALSE in VLOOKUP's last argument mean?",
+      "opts": [
+        "Approximate match",
+        "Exact match",
+        "No match",
+        "Error"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "FALSE = exact match. Use this in exams and most real work."
+      ]
+    },
+    {
+      "id": 11,
+      "q": "HLOOKUP looks for the lookup value in the:",
+      "opts": [
+        "First column",
+        "First row",
+        "Last column",
+        "Last row"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "HLOOKUP = Horizontal. Searches the first ROW, returns from a row below."
+      ]
+    },
+    {
+      "id": 12,
+      "q": "Which combination can look LEFT (return a value to the left of the lookup column)?",
+      "opts": [
+        "VLOOKUP",
+        "HLOOKUP",
+        "INDEX-MATCH",
+        "COUNTIF"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "INDEX-MATCH: MATCH finds the position, INDEX returns the value. Can look any direction."
+      ]
+    },
+    {
+      "id": 13,
+      "q": "=SUM(A1:A10) returns:",
+      "opts": [
+        "The largest",
+        "The sum of all numbers in A1:A10",
+        "The average",
+        "The count"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "SUM adds all numbers in the range. Text and empty cells are ignored."
+      ]
+    },
+    {
+      "id": 14,
+      "q": "=COUNT(A1:A10) counts:",
+      "opts": [
+        "All non-empty cells",
+        "Only cells with numbers",
+        "Only text cells",
+        "Only empty cells"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "COUNT counts cells containing NUMBERS only."
+      ]
+    },
+    {
+      "id": 15,
+      "q": "=COUNTA(A1:A10) counts:",
+      "opts": [
+        "Only numbers",
+        "Only text",
+        "All non-empty cells",
+        "Only empty cells"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "COUNTA = 'Count All' non-empty. Includes text and numbers."
+      ]
+    },
+    {
+      "id": 16,
+      "q": "=AVERAGE(A1:A5) returns:",
+      "opts": [
+        "Sum",
+        "Arithmetic mean",
+        "Median",
+        "Largest"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "AVERAGE = arithmetic mean (sum / count of numeric cells)."
+      ]
+    },
+    {
+      "id": 17,
+      "q": "=COUNTIF(A:A, 'Delhi') returns:",
+      "opts": [
+        "Sum of 'Delhi' rows",
+        "Count of cells equal to 'Delhi'",
+        "Count of unique values",
+        "Average for 'Delhi'"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "COUNTIF counts cells matching the single criterion."
+      ]
+    },
+    {
+      "id": 18,
+      "q": "=SUMIF(B:B, '>100', C:C) returns:",
+      "opts": [
+        "Count of B > 100",
+        "Sum of C where B > 100",
+        "Sum of B + C",
+        "Count of C"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "SUMIF(test range, criterion, sum range) - sums C where B meets the criterion."
+      ]
+    },
+    {
+      "id": 19,
+      "q": "=MAX(A1:A10) returns:",
+      "opts": [
+        "The first value",
+        "The largest number",
+        "The smallest",
+        "The average"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "MAX = largest value in the range."
+      ]
+    },
+    {
+      "id": 20,
+      "q": "=MIN(A1:A10) returns:",
+      "opts": [
+        "The largest",
+        "The smallest",
+        "The first value",
+        "Zero"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "MIN = smallest value."
+      ]
+    },
+    {
+      "id": 21,
+      "q": "=IF(A1>=50, 'Pass', 'Fail') returns 'Pass' when:",
+      "opts": [
+        "A1 < 50",
+        "A1 >= 50",
+        "A1 = 0",
+        "A1 is text"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "IF(condition, true_val, false_val). >= means 50 or more."
+      ]
+    },
+    {
+      "id": 22,
+      "q": "=IFERROR(VLOOKUP(...), 'Not found') catches:",
+      "opts": [
+        "Only #N/A",
+        "All Excel error values",
+        "Only #REF!",
+        "Only #DIV/0!"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "IFERROR catches all six error types: #N/A, #REF!, #DIV/0!, #VALUE!, #NAME?, #NUM!."
+      ]
+    },
+    {
+      "id": 23,
+      "q": "AND(A1>10, B1<100) returns TRUE when:",
+      "opts": [
+        "Either A1>10 OR B1<100",
+        "BOTH A1>10 AND B1<100 are true",
+        "Both equal",
+        "At least one is true"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "AND = ALL conditions true. OR = ANY condition true."
+      ]
+    },
+    {
+      "id": 24,
+      "q": "OR(A1>10, B1<100) returns TRUE when:",
+      "opts": [
+        "All true",
+        "No condition true",
+        "At least one is true",
+        "Both equal"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "OR = 'at least one'."
+      ]
+    },
+    {
+      "id": 25,
+      "q": "Shortcut to go to cell A1:",
+      "opts": [
+        "Ctrl+End",
+        "Ctrl+Home",
+        "F5",
+        "Ctrl+G"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        "Ctrl+Home jumps to A1."
+      ]
+    },
+    {
+      "id": 26,
+      "q": "Shortcut to jump to the last used cell:",
+      "opts": [
+        "Ctrl+End",
+        "Ctrl+Home",
+        "F5",
+        "Page Down"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        "Ctrl+End = last USED cell (bottom-right of the data)."
+      ]
+    },
+    {
+      "id": 27,
+      "q": "Shortcut to open Go To dialog:",
+      "opts": [
+        "Ctrl+F",
+        "Ctrl+H",
+        "F5",
+        "Ctrl+G"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        "F5 opens Go To. (Ctrl+G also works in older Excel; the canonical shortcut is F5.)"
+      ]
+    },
+    {
+      "id": 28,
+      "q": "Shortcut to switch to the next worksheet:",
+      "opts": [
+        "Ctrl+Tab",
+        "Ctrl+Page Down",
+        "Alt+Tab",
+        "Shift+Tab"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        "Ctrl+Page Down / Ctrl+Page Up move between worksheet tabs."
+      ]
+    },
+    {
+      "id": 29,
+      "q": "Shortcut to insert a new worksheet:",
+      "opts": [
+        "Ctrl+N",
+        "Shift+F11",
+        "Alt+N",
+        "F11"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        "Shift+F11 inserts a new worksheet. F11 creates a default chart."
+      ]
+    },
+    {
+      "id": 30,
+      "q": "Shortcut to open the Format Cells dialog:",
+      "opts": [
+        "Ctrl+1",
+        "Ctrl+F",
+        "F2",
+        "Alt+O"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "Formatting & Charts",
+      "exp": [
+        "Ctrl+1 opens the Format Cells dialog with all number / font / alignment / border options."
+      ]
+    },
+    {
+      "id": 31,
+      "q": "A cell contains 0.85 and is formatted as Percentage. The cell displays:",
+      "opts": [
+        "0.85",
+        "0.85%",
+        "85%",
+        "85"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "Formatting & Charts",
+      "exp": [
+        "Percentage format multiplies by 100 and adds %. 0.85 -> 85%."
+      ]
+    },
+    {
+      "id": 32,
+      "q": "Shortcut to create a default column chart on a new sheet:",
+      "opts": [
+        "F5",
+        "F11",
+        "Alt+F1",
+        "F12"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Formatting & Charts",
+      "exp": [
+        "F11 creates a default chart on a new sheet ('Chart1'). Alt+F1 puts it on the same sheet."
+      ]
+    },
+    {
+      "id": 33,
+      "q": "Which chart type is best for showing trends over time?",
+      "opts": [
+        "Pie",
+        "Bar",
+        "Line",
+        "Scatter"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "Formatting & Charts",
+      "exp": [
+        "Line charts are the standard for showing a trend over time."
+      ]
+    },
+    {
+      "id": 34,
+      "q": "Which chart type is best for showing proportions of a whole?",
+      "opts": [
+        "Line",
+        "Scatter",
+        "Pie",
+        "Column"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "Formatting & Charts",
+      "exp": [
+        "Pie charts show parts of a whole (percentages summing to 100%)."
+      ]
+    },
+    {
+      "id": 35,
+      "q": "Which chart type shows the relationship between two numeric variables?",
+      "opts": [
+        "Pie",
+        "Line",
+        "Scatter",
+        "Bar"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "Formatting & Charts",
+      "exp": [
+        "Scatter (X-Y) plots show correlation between two numeric variables."
+      ]
+    },
+    {
+      "id": 36,
+      "q": "Where do you find the Sort and Filter commands in Excel?",
+      "opts": [
+        "Home tab",
+        "Insert tab",
+        "Data tab",
+        "View tab"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "Data Tools (Sort/Filter)",
+      "exp": [
+        "Data tab owns Sort, Filter, Remove Duplicates, Text to Columns, Subtotal."
+      ]
+    },
+    {
+      "id": 37,
+      "q": "Which shortcut opens Find in Excel?",
+      "opts": [
+        "Ctrl+F",
+        "Ctrl+H",
+        "F5",
+        "Ctrl+S"
+      ],
+      "c": 0,
+      "d": "easy",
+      "t": "Data Tools (Sort/Filter)",
+      "exp": [
+        "Ctrl+F = Find. Ctrl+H = Replace. F5 = Go To."
+      ]
+    },
+    {
+      "id": 38,
+      "q": "Which shortcut opens Find and Replace in Excel?",
+      "opts": [
+        "Ctrl+F",
+        "Ctrl+H",
+        "Ctrl+R",
+        "F7"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Data Tools (Sort/Filter)",
+      "exp": [
+        "Ctrl+H opens the Replace dialog."
+      ]
+    },
+    {
+      "id": 39,
+      "q": "To split a column of full names into first and last name columns, use:",
+      "opts": [
+        "Data > Sort",
+        "Data > Text to Columns",
+        "Data > Filter",
+        "Data > Subtotal"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Data Tools (Sort/Filter)",
+      "exp": [
+        "Text to Columns splits a column using a delimiter (comma, space, tab) or fixed width."
+      ]
+    },
+    {
+      "id": 40,
+      "q": "To highlight duplicate values without deleting them:",
+      "opts": [
+        "Data > Remove Duplicates",
+        "Home > Conditional Formatting > Duplicate Values",
+        "Data > Sort",
+        "Review > Spelling"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Data Tools (Sort/Filter)",
+      "exp": [
+        "Conditional Formatting > Highlight Cells Rules > Duplicate Values highlights without deleting."
+      ]
+    },
+    {
+      "id": 41,
+      "q": "Data > Remove Duplicates does what?",
+      "opts": [
+        "Highlights duplicates",
+        "Permanently deletes rows with repeated values",
+        "Sorts unique values to the top",
+        "Adds a column counting duplicates"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Data Tools (Sort/Filter)",
+      "exp": [
+        "Remove Duplicates is DESTRUCTIVE - it deletes the duplicate rows. (It asks to confirm first.)"
+      ]
+    },
+    {
+      "id": 42,
+      "q": "Best tool to summarise a large flat dataset (e.g. sales per region per product):",
+      "opts": [
+        "Subtotal",
+        "Pivot Table",
+        "Find & Replace",
+        "Filter"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Pivot Tables & Subtotals",
+      "exp": [
+        "Pivot Table = drag-and-drop summarisation of large data with categories and aggregates."
+      ]
+    },
+    {
+      "id": 43,
+      "q": "In a Pivot Table, the four field zones are:",
+      "opts": [
+        "Rows, Columns, Values, Filters",
+        "Top, Bottom, Left, Right",
+        "A, B, C, D",
+        "Header, Body, Footer, Summary"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "Pivot Tables & Subtotals",
+      "exp": [
+        "PivotTable Fields pane: Rows (categories down), Columns (categories across), Values (numbers to aggregate), Filters (a top-level filter)."
+      ]
+    },
+    {
+      "id": 44,
+      "q": "To change Sum to Count in a Pivot Table value:",
+      "opts": [
+        "Right-click > Value Field Settings > Count",
+        "Edit the source data",
+        "Recreate the Pivot Table",
+        "Use a different function in the Values box"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "Pivot Tables & Subtotals",
+      "exp": [
+        "Right-click any value in the pivot -> Value Field Settings -> choose Count (or Average, Max, Min, etc.)."
+      ]
+    },
+    {
+      "id": 45,
+      "q": "Data > Subtotal inserts which formulas?",
+      "opts": [
+        "=SUM() at the bottom",
+        "=SUBTOTAL() below each group after sorting",
+        "=AVERAGE() at the bottom",
+        "=COUNT() at the bottom"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Pivot Tables & Subtotals",
+      "exp": [
+        "Subtotal inserts =SUBTOTAL() formulas below each group after you sort by the same column."
+      ]
+    },
+    {
+      "id": 46,
+      "q": "A1 contains 0.85 formatted as Percentage. The formula bar shows:",
+      "opts": [
+        "85%",
+        "0.85",
+        "85",
+        "0.85%"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Formatting & Charts",
+      "exp": [
+        "The formula bar shows the underlying VALUE (0.85). The cell DISPLAYS 85%. Format only changes display."
+      ]
+    },
+    {
+      "id": 47,
+      "q": "What does =AVERAGE(A1:A5) return if A1:A5 contains one text cell and four numbers?",
+      "opts": [
+        "Includes text as 0",
+        "Average of the four numbers (text is skipped)",
+        "Error #VALUE!",
+        "The text value as a number"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "AVERAGE skips text and empty cells - it averages only the four numbers."
+      ]
+    },
+    {
+      "id": 48,
+      "q": "Which function returns the position of a value in a range?",
+      "opts": [
+        "INDEX",
+        "VLOOKUP",
+        "MATCH",
+        "HLOOKUP"
+      ],
+      "c": 2,
+      "d": "medium",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "MATCH returns the position (1, 2, 3, ...) of the value within the range."
+      ]
+    },
+    {
+      "id": 49,
+      "q": "=INDEX(A2:D10, 5, 2) returns:",
+      "opts": [
+        "The value in the 5th column and 2nd row of A2:D10",
+        "The value in the 2nd column and 5th row of A2:D10",
+        "Row 5 of column A",
+        "An error"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "INDEX(array, row_num, column_num). Row 5, column 2 of the 9-row x 4-column range."
+      ]
+    },
+    {
+      "id": 50,
+      "q": "VLOOKUP returns #N/A when:",
+      "opts": [
+        "The column index is wrong",
+        "The lookup value is not found with FALSE",
+        "The table is empty",
+        "The cell A2 is text"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "With exact match (FALSE), no match found -> #N/A. Wrap in IFERROR to clean up."
+      ]
+    },
+    {
+      "id": 51,
+      "q": "The Name Box in Excel shows:",
+      "opts": [
+        "The formula in the active cell",
+        "The address of the active cell",
+        "The file name",
+        "The current sheet"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        "The Name Box (left of the formula bar) shows the address (A1, B5, XFD1048576) of the active cell."
+      ]
+    },
+    {
+      "id": 52,
+      "q": "To freeze the top row so it stays visible when scrolling, use:",
+      "opts": [
+        "View > Freeze Panes > Freeze Top Row",
+        "View > New Window",
+        "Window > Split",
+        "Home > Freeze"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        "View > Freeze Panes > Freeze Top Row keeps row 1 visible."
+      ]
+    },
+    {
+      "id": 53,
+      "q": "Ctrl+Page Down in Excel moves to:",
+      "opts": [
+        "The next row",
+        "The next worksheet",
+        "The next cell with data",
+        "The bottom of the data"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        "Ctrl+Page Down / Ctrl+Page Up move between worksheet tabs."
+      ]
+    },
+    {
+      "id": 54,
+      "q": "An Excel workbook contains:",
+      "opts": [
+        "Only one worksheet",
+        "One or more worksheets (tabs)",
+        "Only data, no formulas",
+        "Only charts"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        "A workbook = the .xlsx file. It contains one or more worksheets (the tabs at the bottom)."
+      ]
+    },
+    {
+      "id": 55,
+      "q": "In VLOOKUP, the table_array must have the lookup column as the:",
+      "opts": [
+        "Last column",
+        "First column",
+        "Any column",
+        "Middle column"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Core Functions & Ranges",
+      "exp": [
+        "VLOOKUP searches the FIRST column of the table_array by design."
+      ]
+    },
+    {
+      "id": 56,
+      "q": "To remove duplicate rows permanently from a dataset, use:",
+      "opts": [
+        "Data > Remove Duplicates",
+        "Home > Conditional Formatting > Duplicate Values",
+        "Edit each row manually",
+        "Sort A to Z"
+      ],
+      "c": 0,
+      "d": "medium",
+      "t": "Data Tools (Sort/Filter)",
+      "exp": [
+        "Data > Remove Duplicates deletes rows. Conditional Formatting only highlights."
+      ]
+    },
+    {
+      "id": 57,
+      "q": "Excel's 'Tell me what you want to do' box is used to:",
+      "opts": [
+        "Send a message",
+        "Search for any command by name",
+        "Translate",
+        "Check spelling"
+      ],
+      "c": 1,
+      "d": "easy",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        "The 'Tell me' / 'Search' box finds any command by name."
+      ]
+    },
+    {
+      "id": 58,
+      "q": "How do you rename a worksheet tab?",
+      "opts": [
+        "Right-click the tab > Rename",
+        "Click Format > Sheet > Rename",
+        "Both A and B work",
+        "You cannot rename a tab"
+      ],
+      "c": 2,
+      "d": "easy",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        "Both right-click > Rename AND Home > Format > Rename Sheet work. Or just double-click the tab."
+      ]
+    },
+    {
+      "id": 59,
+      "q": "The default file extension for a macro-enabled Excel workbook is:",
+      "opts": [
+        ".xlsx",
+        ".xlsm",
+        ".xlsb",
+        ".xltx"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Worksheets & Navigation",
+      "exp": [
+        ".xlsm = Excel with macros enabled.",
+        ".xlsx = without macros.",
+        ".xlsb = binary format (also macro-enabled)."
+      ]
+    },
+    {
+      "id": 60,
+      "q": "A Pivot Table's VALUES zone aggregates numbers by default using:",
+      "opts": [
+        "Count",
+        "Sum",
+        "Average",
+        "Max"
+      ],
+      "c": 1,
+      "d": "medium",
+      "t": "Pivot Tables & Subtotals",
+      "exp": [
+        "By default, dragging a numeric field to Values uses Sum. Right-click > Value Field Settings to change."
+      ]
+    }
+  ]
+}

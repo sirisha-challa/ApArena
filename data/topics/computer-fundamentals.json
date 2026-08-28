@@ -1,0 +1,537 @@
+{
+  "id": "computer-fundamentals",
+  "title": "Computer Fundamentals",
+  "icon": "CF",
+  "category": "ms-office",
+  "subtitle": "Hardware vs software, memory units (bit/byte/KB/MB/GB), I/O devices, OS basics, and the five generations of computers",
+  "days": "2",
+  "color": "#0D9488",
+  "subtopics": [
+    "Hardware vs Software",
+    "Memory Units",
+    "Input/Output Devices",
+    "OS Basics",
+    "Generations of Computers"
+  ],
+  "estimatedHours": 6,
+  "readingSections": [
+    {
+      "id": "hardware-vs-software",
+      "title": "Hardware vs Software: What a Computer Actually Is",
+      "type": "concept",
+      "quickSummary": "Hardware is the physical machine you can touch; software is the set of instructions that tells the hardware what to do. Neither works without the other.",
+      "content": [
+        "A computer is a programmable machine that takes input, processes it, and produces output. It has two halves: HARDWARE (the physical parts - chips, wires, screen, keyboard, the box itself) and SOFTWARE (the programs - the operating system, the browser, Word, the calculator). Think of hardware as the kitchen and software as the recipe: you need both to cook anything.",
+        "HARDWARE examples: CPU (the brain), RAM (short-term memory), hard disk / SSD (long-term memory), motherboard, monitor, keyboard, mouse, printer, USB drive, graphics card. If you can pick it up and drop it, it is hardware.",
+        "SOFTWARE comes in two flavours. SYSTEM SOFTWARE is the operating system (Windows, macOS, Linux, Android) plus low-level utilities - it runs the machine. APPLICATION SOFTWARE is what you actually open to do work: Chrome, Excel, WhatsApp, a music player. System software sits underneath; application software sits on top.",
+        "Programming languages (Python, Java, C, JavaScript) are not software by themselves - they are the tools you use to WRITE software. The final .exe or .app or .apk file the user double-clicks is the software.",
+        "Why placement tests ask this: every Accenture AXIS 'Common Applications & MS Office' MCQ block assumes you know the difference. 'Is MS Word hardware or software?' is a 30-second question that should be free."
+      ],
+      "subsections": [
+        {
+          "title": "The simple test that always works",
+          "content": "If you can physically damage it by dropping it -> hardware. If you can copy it to a USB drive -> software. A virus is software. A broken screen is a hardware problem. A frozen screen can be EITHER (software bug or hardware fault)."
+        },
+        {
+          "title": "Firmware: the in-between",
+          "content": "Firmware is software that lives permanently inside a hardware device - the program inside your router, washing machine, or the BIOS/UEFI chip on your motherboard. You rarely touch it, but it is software stored in hardware."
+        }
+      ],
+      "quickRevision": [
+        "Hardware = physical; Software = instructions.",
+        "System software = OS + utilities; Application software = Word, Chrome, games.",
+        "Programming language != software; software is the program the language produces.",
+        "Firmware = software stored permanently in a hardware device."
+      ],
+      "tricks": [
+        "If the option says 'set of instructions' -> software.",
+        "If the option says 'physical component' / 'tangible' / 'electronic' -> hardware.",
+        "Virus / malware / app = software. Monitor / CPU / printer = hardware."
+      ],
+      "patterns": [
+        "'A program is a set of...' -> instructions (software).",
+        "'Which is NOT hardware?' with a list of devices + 1 program -> pick the program.",
+        "'Which is application software?' -> MS Word, Excel, Photoshop (not Windows, not Linux)."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Standard placement set (Sanfoundry, Scientech Easy)",
+          "question": "Which of the following is hardware?",
+          "approach": "Pick the physical device (CPU / Monitor / Keyboard), reject OS / program / data."
+        },
+        {
+          "source": "Standard placement set",
+          "question": "MS Word is an example of:",
+          "approach": "Application software - it is a program the user runs to do work."
+        }
+      ],
+      "companyNote": "Two or three such classification questions appear in most campus paper Common Apps & MS Office blocks."
+    },
+    {
+      "id": "memory-units",
+      "title": "Memory Units: Bits, Bytes, KB, MB, GB, TB",
+      "type": "numerical",
+      "quickSummary": "A bit is 0 or 1. A nibble is 4 bits. A byte is 8 bits and stores one character. Every step up is roughly 1000x bigger (technically 1024x in binary).",
+      "content": [
+        "A computer only understands two things: 0 and 1. A single 0-or-1 value is called a BIT (short for binary digit). It is the smallest possible piece of data.",
+        "8 bits together = 1 BYTE. A byte is the basic unit computers use to store a single character like 'A', '7', or '?'. Because 8 bits can combine in 256 ways (2 to the power 8), a byte can represent any of 256 different symbols - which is why early alphabets like ASCII had exactly 256 characters.",
+        "4 bits = 1 NIBBLE (also called a 'half byte' or 'nybble'). A nibble holds one hexadecimal digit (0-9, A-F). You will see nibbles in hex colour codes (#FF5733) and in BCD (Binary Coded Decimal) work.",
+        "Above the byte, units climb by 1024 each step (in the binary convention) or by 1000 each step (in the decimal convention). Most placement exams use 1024. So 1 KB = 1024 bytes, 1 MB = 1024 KB, 1 GB = 1024 MB, 1 TB = 1024 GB. The exact byte counts are powers of 2: 1 KB = 2^10 bytes, 1 MB = 2^20 bytes, 1 GB = 2^30 bytes, 1 TB = 2^40 bytes.",
+        "Roughly: a 3-page text file is a few KB; an MP3 song is 3-5 MB; a DVD holds 4.7 GB; a typical laptop SSD is 512 GB to 2 TB; cloud data centres store petabytes (PB) and beyond. Knowing the order of magnitude is what exam options test."
+      ],
+      "subsections": [
+        {
+          "title": "The exact byte counts you must memorise",
+          "content": "1 byte = 8 bits\n1 KB = 1,024 bytes = 2^10\n1 MB = 1,024 KB = 1,048,576 bytes = 2^20\n1 GB = 1,024 MB = 1,073,741,824 bytes = 2^30\n1 TB = 1,024 GB = 1,099,511,627,776 bytes = 2^40\n1 PB = 1,024 TB = 2^50 bytes\nThe trick: when an option shows 1,000, 1,000,000 or 1,000,000,000 it is the DECIMAL convention (used by hard drive marketing). The placement-exam answer is 1,024, 1,048,576, 1,073,741,824."
+        },
+        {
+          "title": "Why 1024 and not 1000",
+          "content": "Computers think in binary. 1000 in decimal is not a round number in binary (it is 1111101000). 1024 is 2^10, which is binary-round. So memory addresses step in 1024-byte blocks. Disk-drive manufacturers cheat and use 1000 (decimal) so a '1 TB' drive shows as ~931 GB in Windows."
+        },
+        {
+          "title": "Word size in modern CPUs",
+          "content": "A WORD is the natural data size a CPU handles in one instruction. Older CPUs were 8-bit or 16-bit; modern laptops/desktops are 64-bit. So a 64-bit machine can fetch 8 bytes at a time. Exams sometimes ask this - answer is 64 bits on a modern PC."
+        }
+      ],
+      "quickRevision": [
+        "1 bit = 0 or 1 (smallest).",
+        "1 nibble = 4 bits (one hex digit).",
+        "1 byte = 8 bits = 1 character.",
+        "1 KB = 1024 bytes; 1 MB = 1024 KB; 1 GB = 1024 MB; 1 TB = 1024 GB.",
+        "Each step is also 2^10, 2^20, 2^30, 2^40 in bytes.",
+        "Modern CPU word = 64 bits."
+      ],
+      "tricks": [
+        "If the option says 1000, 1000000, 1000000000 -> decimal convention, not the placement exam answer.",
+        "If the question asks 'smallest unit' -> bit, not byte or nibble.",
+        "If the question asks 'next bigger than byte' -> kilobyte (KB), NOT megabyte.",
+        "TB -> PB -> EB -> ZB -> YB ladder. 1 PB > 1 TB (trap: 'petabyte is smaller than terabyte' is wrong)."
+      ],
+      "patterns": [
+        "'How many bits in a byte?' -> 8 (distractors: 4, 16, 32).",
+        "'How many bytes in 1 KB?' -> 1024 (decimal distractor: 1000).",
+        "'1 character is stored in?' -> 1 byte (for ASCII).",
+        "'Nibble = ?' -> 4 bits / half a byte."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked across PrepInsta / Sanfoundry / ExamRadar 2024-2026 sets",
+          "question": "How many bits are there in a byte?",
+          "approach": "8 bits. Most common number-system question."
+        },
+        {
+          "source": "Asked in Accenture and other campus sets",
+          "question": "1 KB = ? bytes",
+          "approach": "1024 bytes (binary convention)."
+        },
+        {
+          "source": "Standard placement set",
+          "question": "A nibble is:",
+          "approach": "4 bits / half a byte - represents 1 hex digit."
+        }
+      ],
+      "companyNote": "Three to five memory-unit questions per campus paper. Memorise the 1,024-step ladder and the 8-bits-in-a-byte fact cold."
+    },
+    {
+      "id": "io-devices",
+      "title": "Input and Output Devices",
+      "type": "concept",
+      "quickSummary": "Input devices send data TO the computer (keyboard, mouse, scanner, mic). Output devices send data FROM the computer (monitor, printer, speaker). Some are both (touchscreen, modem, hard disk).",
+      "content": [
+        "An INPUT DEVICE converts what a human does (typing, clicking, speaking, scanning) into data the computer can process. Common input devices: keyboard, mouse (the default pointing device on a desktop), touchpad/trackpad, scanner, microphone, joystick, digital camera, barcode reader, light pen, graphics tablet, fingerprint scanner.",
+        "An OUTPUT DEVICE takes processed data and presents it to a human. Common output devices: monitor (also called VDU - Visual Display Unit), printer, speakers, headphones, plotter (for large engineering drawings), projector.",
+        "Some devices work BOTH ways and are called INPUT/OUTPUT devices. The classic example is the TOUCHSCREEN - you tap it (input) and it shows you a result (output). Modems, network interface cards (NIC), and hard disks (they READ data and WRITE data) also fall here. Touchscreen and modem are the two the exam loves to test.",
+        "Two scanner-family devices that confuse students: OCR (Optical Character Recognition) scans PRINTED text and turns it into editable text. MICR (Magnetic Ink Character Recognition) reads the magnetic ink on the bottom of cheques - that is why the cheque number at the bottom of a bank cheque uses a special font. Barcode readers read product barcodes in shops.",
+        "Printers come in three flavours for exams: IMPACT (dot matrix - strikes the paper, noisy, used for carbon copies); NON-IMPACT (inkjet - sprays ink; laser - uses toner and a heated roller, fastest and most common). Plotter prints vector graphics on large paper (engineering / architecture drawings)."
+      ],
+      "subsections": [
+        {
+          "title": "Pointing devices",
+          "content": "The mouse is the default pointing device on a desktop computer (Scientech Easy: 'mouse is the most common pointing device'). A trackball is a mouse turned upside-down - you spin the ball with your fingers instead of moving the whole mouse (good for limited-desk setups). A touchpad is a flat surface you slide your finger across (laptops). A joystick is a stick for games / flight sims."
+        },
+        {
+          "title": "Storage vs I/O - the overlap",
+          "content": "Hard disks, SSDs, USB drives, optical drives (CD/DVD/Blu-ray) are STORAGE devices, but they are also I/O devices because the computer reads from them (input) and writes to them (output). Exams usually call them 'secondary storage' or 'auxiliary storage' rather than I/O. Do not be tricked by an option that says 'hard disk is an output device' - it can act as one but the textbook category is storage."
+        },
+        {
+          "title": "VDU vs Monitor",
+          "content": "VDU = Visual Display Unit. It is the same thing as a monitor. Old exam papers use VDU; new ones use monitor. Both answers are correct if both are in the options."
+        }
+      ],
+      "quickRevision": [
+        "Input: keyboard, mouse, scanner, mic, joystick, touchpad, OCR, MICR, barcode reader.",
+        "Output: monitor/VDU, printer (inkjet/laser/dot matrix), speaker, plotter, projector.",
+        "Both: touchscreen, modem, hard disk (storage + I/O).",
+        "Mouse = default pointing device on a desktop.",
+        "OCR scans printed text; MICR reads cheque ink."
+      ],
+      "tricks": [
+        "If the stem says 'reads cheques' -> MICR. If 'scans printed text' -> OCR / scanner.",
+        "If asked 'which is NOT an input device' and the options include monitor -> monitor is output, so it is the answer.",
+        "Touchscreen and modem are the exam's favourite 'both' traps - they test whether you know I/O vs storage categories."
+      ],
+      "patterns": [
+        "'Which device scans printed text?' -> Scanner / OCR.",
+        "'Which is used to read barcodes in shops?' -> Barcode reader.",
+        "'Which is an output device?' -> Monitor, printer, speaker (NOT keyboard, NOT scanner).",
+        "'Which is a pointing device?' -> Mouse, trackball, touchpad, joystick, light pen."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in campus placement sets (Scientech Easy, ExamRadar)",
+          "question": "The default pointing device on a desktop is:",
+          "approach": "Mouse."
+        },
+        {
+          "source": "Asked in common placement MCQs",
+          "question": "MICR is used to read:",
+          "approach": "Magnetic-ink characters on cheques."
+        }
+      ],
+      "companyNote": "I/O device questions are common in the MS Office block and reappear year after year with the same distractors."
+    },
+    {
+      "id": "os-basics",
+      "title": "Operating System Basics",
+      "type": "concept",
+      "quickSummary": "An operating system (OS) is the master program that manages the hardware and lets applications run. It handles memory, processes, files, devices, and security. Examples: Windows, macOS, Linux, Android, iOS.",
+      "content": [
+        "An OPERATING SYSTEM (OS) is the system software that controls the entire computer. Without an OS, an application cannot run. When you turn on a computer, the OS loads first; then everything else (browser, editor, games) runs ON TOP of the OS. Windows, macOS, Linux, Android, iOS, and Unix are all operating systems.",
+        "The OS does five big jobs. (1) PROCESS MANAGEMENT - decides which running program (process) gets the CPU right now, and switches between them thousands of times per second. (2) MEMORY MANAGEMENT - tracks which parts of RAM each process is using and stops them from stomping on each other. (3) FILE MANAGEMENT - organises files and folders on disk and handles reads/writes. (4) DEVICE MANAGEMENT - talks to printers, keyboards, disks, network cards via drivers. (5) SECURITY / ACCESS CONTROL - decides who can open which file or use which program.",
+        "The KERNEL is the core part of the OS that runs in privileged 'kernel mode' with direct access to hardware. The rest of the OS - the shell, the desktop, the file explorer - runs in 'user mode' and asks the kernel to do the dangerous bits. This split is called DUAL-MODE OPERATION and is what stops a buggy app from crashing the whole machine.",
+        "Three key OS concepts the exam tests. MULTIPROGRAMMING keeps several programs in memory at once so the CPU is never idle. MULTITASKING is the user-visible version - running multiple apps at once and switching between them (Alt-Tab). TIME-SHARING is a flavour of multitasking where the CPU time is divided into small slices and given to each user in turn - it is what made mainframes serve many users at once in the 1960s-70s."
+      ],
+      "subsections": [
+        {
+          "title": "Spooling",
+          "content": "SPOOL = Simultaneous Peripheral Operations Online. The OS pretends to print immediately by saving the print job to a queue on disk; the printer prints from the queue at its own speed while you keep working. The exam definition is verbatim: 'a process of temporarily storing data in a buffer so it can be processed by a device at its own pace'."
+        },
+        {
+          "title": "OS examples you should be able to name",
+          "content": "Desktop: Windows (Microsoft, dominant), macOS (Apple), Linux (open source, Ubuntu/Fedora/Debian flavours). Mobile: Android (Google, Linux kernel), iOS (Apple). Servers / mainframes: Linux, Unix (Solaris, AIX). Note: Android is technically a Linux distribution; the exam sometimes asks if Android is an OS (yes) and what kernel it uses (Linux)."
+        },
+        {
+          "title": "Functions the exam asks about directly",
+          "content": "Memory management, file management, process management, device management, security. The classic PYQ stem is: 'Which of the following is NOT a function of an OS?' with options that mix in 'web browsing' or 'compiling code' - those are application functions, not OS functions."
+        }
+      ],
+      "quickRevision": [
+        "OS = system software that manages hardware and runs applications.",
+        "5 jobs: process, memory, file, device, security management.",
+        "Kernel = core, runs in privileged mode; user programs run in user mode.",
+        "Multiprogramming = many programs in memory. Multitasking = user sees many at once. Time-sharing = many users, slices of CPU.",
+        "Examples: Windows, macOS, Linux, Android, iOS, Unix.",
+        "Spooling = queue print jobs on disk so the printer works at its own pace."
+      ],
+      "tricks": [
+        "If the stem says 'NOT a function of OS' and an option is 'compiling' / 'web browsing' / 'word processing' -> that is the answer (it is an application function).",
+        "Android is a Linux-based OS (not a separate kernel).",
+        "Kernel is part of the OS, not a separate program. Driver is part of OS support, not the OS itself."
+      ],
+      "patterns": [
+        "'Which is NOT a function of the OS?' -> pick the user / application task.",
+        "'The core of the OS is called:' -> kernel.",
+        "'The OS manages...' -> processes, memory, files, devices, security."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked across placement sets (PerfectNotes OS MCQ bank)",
+          "question": "Which of the following is NOT a function of an operating system?",
+          "approach": "Pick the user task (e.g. 'editing a document'); the OS does not edit - the application does."
+        },
+        {
+          "source": "Standard placement OS MCQ",
+          "question": "The part of the OS that interacts directly with hardware is the:",
+          "approach": "Kernel."
+        }
+      ],
+      "companyNote": "OS basics overlap with the 'Software' MCQs. 1-2 questions appear in the Common Applications & MS Office block."
+    },
+    {
+      "id": "generations",
+      "title": "The Five Generations of Computers",
+      "type": "process",
+      "quickSummary": "1st = vacuum tubes (1940s-50s). 2nd = transistors (50s-60s). 3rd = integrated circuits (60s-70s). 4th = microprocessors (70s-present). 5th = AI + ULSI (present-future).",
+      "content": [
+        "The story of computers is usually told in FIVE GENERATIONS, each defined by the core electronic component. Every generation got smaller, faster, cheaper, and more reliable than the one before. The exam almost always asks one of three things: which generation used which component, which language was used, or which computer was an example.",
+        "FIRST GENERATION (1940s-1950s) used VACUUM TUBES. A vacuum tube is a sealed glass tube that controls electron flow - it is big, hot, fragile, and burns out often. ENIAC (Electronic Numerical Integrator and Computer) used about 18,000 vacuum tubes. EDVAC and UNIVAC were other 1st-gen machines. Programs were in MACHINE LANGUAGE (raw 0s and 1s). Memory was magnetic drums and magnetic tape. Input was paper tape and punched cards. They filled entire rooms, generated huge heat, and needed constant maintenance.",
+        "SECOND GENERATION (1950s-1960s) replaced vacuum tubes with TRANSISTORS. A transistor is a tiny semiconductor device that does the same switching job but with much less heat, less power, and far higher reliability. Memory moved to magnetic cores and magnetic tape / disk. Programming shifted to ASSEMBLY and early HIGH-LEVEL languages: FORTRAN (1956), ALGOL (1958), COBOL (1959). Example machines: PDP-8, IBM 1400 series, IBM 7090/7094, UNIVAC 1107, CDC 3600.",
+        "THIRD GENERATION (1960s-1970s) used INTEGRATED CIRCUITS (ICs) - many transistors packed onto a single silicon chip. The OS arrived in this era, which let computers run multiple programs at once. Programming was in true HIGH-LEVEL languages (BASIC became popular here). Memory: large magnetic core. I/O: monitor, keyboard, printer, magnetic tape. Example machines: IBM 360, IBM 370, PDP-11, NCR 395, UNIVAC 1108."
+      ],
+      "subsections": [
+        {
+          "title": "FOURTH GENERATION (1970s-Present)",
+          "content": "The MICROPROCESSOR defines the 4th generation - the entire CPU on a single chip. The Intel 4004 (1971) is widely cited as the first commercial microprocessor. VLSI (Very Large Scale Integration) put thousands of transistors on one chip. Memory shifted to SEMICONDUCTOR memory (RAM, ROM). Operating systems added time-sharing, multiprogramming, multiprocessing and virtual memory. Personal computers appeared: IBM PC (1981), Apple II, Apple Macintosh. This is the generation we are in - the laptop, desktop, and smartphone all use 4th-gen technology."
+        },
+        {
+          "title": "FIFTH GENERATION (Present-Future)",
+          "content": "The defining tech is ARTIFICIAL INTELLIGENCE - voice recognition, natural-language understanding, machine learning, robotics. Hardware uses ULSI (Ultra Large Scale Integration) with millions of transistors per chip and parallel processing (multiple CPUs working together). The goal: computers that behave like humans. We are partway into the 5th generation; full human-level AI is still a research target. Examples: modern AI assistants, voice-controlled smartphones, self-driving cars, IBM Watson, modern GPUs running neural networks."
+        },
+        {
+          "title": "The three things every MCQ on this topic tests",
+          "content": "(a) Component match: vacuum tube = 1st, transistor = 2nd, IC = 3rd, microprocessor = 4th, AI/ULSI = 5th. (b) Period range: if you remember '40s = 1st, 50s-60s = 2nd, 60s-70s = 3rd, 70s-present = 4th' you can answer any 'in which generation' stem. (c) Examples: ENIAC = 1st, PDP-8 = 2nd, IBM 360 = 3rd, IBM PC = 4th."
+        }
+      ],
+      "quickRevision": [
+        "1st: 1940s-50s, vacuum tubes, machine language, ENIAC / EDVAC / UNIVAC.",
+        "2nd: 1950s-60s, transistors, FORTRAN / COBOL, PDP-8 / IBM 1400.",
+        "3rd: 1960s-70s, integrated circuits, BASIC, IBM 360 / PDP-11.",
+        "4th: 1970s-present, microprocessors (Intel 4004 1971), VLSI, IBM PC / Apple.",
+        "5th: present-future, AI + ULSI, parallel processing, voice / NLP."
+      ],
+      "tricks": [
+        "Component-to-generation is one-way; if the option lists 'microprocessors' against 1st, 2nd, 3rd -> pick 4th.",
+        "ENIAC = 1st (with ~18,000 vacuum tubes) - the exam loves this number.",
+        "If the question is about the 'first microprocessor' -> Intel 4004 (1971), 4th generation.",
+        "If the question is about 'first high-level language' in 2nd gen -> FORTRAN (1956).",
+        "Batch processing = 1st generation. Time-sharing and multiprogramming = 4th."
+      ],
+      "patterns": [
+        "'Which generation used vacuum tubes?' -> 1st.",
+        "'Microprocessors are the basis of which generation?' -> 4th.",
+        "'ENIAC was an example of which generation?' -> 1st.",
+        "'FORTRAN was developed during which generation?' -> 2nd.",
+        "'Which generation introduced the microprocessor?' -> 4th."
+      ],
+      "pyqPatterns": [
+        {
+          "source": "Asked in Sanfoundry Generations of Computers MCQ bank (2024-2026)",
+          "question": "______ generation of computer started with using vacuum tubes as the basic components.",
+          "approach": "1st generation."
+        },
+        {
+          "source": "Asked in GeeksforGeeks / Sanfoundry placement MCQs",
+          "question": "The fourth generation was based on:",
+          "approach": "Microprocessors / VLSI."
+        },
+        {
+          "source": "Standard placement set",
+          "question": "ENIAC used how many vacuum tubes?",
+          "approach": "About 18,000."
+        }
+      ],
+      "companyNote": "At least one generation-of-computers MCQ appears in nearly every Common Applications paper - it is a guaranteed point if you memorise the 5-component ladder."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "memory-ladder",
+      "title": "Memory Unit Ladder (1024-Step Rule)",
+      "formula": {
+        "latex": "1\\,\\text{KB} = 2^{10}\\,\\text{B};\\; 1\\,\\text{MB} = 2^{20}\\,\\text{B};\\; 1\\,\\text{GB} = 2^{30}\\,\\text{B};\\; 1\\,\\text{TB} = 2^{40}\\,\\text{B}",
+        "text": "Each step up the ladder multiplies by 1024 (or 2^10). The byte count grows by 2^10 each time."
+      },
+      "whenToUse": "Any 'how many bytes in X KB / MB / GB / TB?' question, and any 'which is larger / smaller' between two units.",
+      "explanation": [
+        "1 KB = 1,024 bytes. The decimal value 1,000 is the marketing convention; the placement exam uses 1,024.",
+        "1 MB = 1,024 KB = 1,048,576 bytes. The 1,048,576 is 2^20 - memorise this number.",
+        "1 GB = 1,024 MB = 1,073,741,824 bytes (2^30). This exact number shows up as an option.",
+        "1 TB = 1,024 GB = 1,099,511,627,776 bytes (2^40).",
+        "Order from smallest to largest: Bit < Nibble < Byte < KB < MB < GB < TB < PB < EB < ZB < YB.",
+        "When the question asks for the next-bigger unit, step one ladder rung up - KB after byte, MB after KB, etc."
+      ],
+      "example": {
+        "prompt": "How many bytes in 2 KB?",
+        "steps": [
+          "1 KB = 1,024 bytes.",
+          "2 KB = 2 x 1,024 = 2,048 bytes."
+        ],
+        "answer": "2,048 bytes"
+      },
+      "memoryTip": "Think 'K = Kilo = thousand-ish'. Real value: 1,024. Each 'K/M/G/T' is 2^10 / 2^20 / 2^30 / 2^40 bytes.",
+      "commonMistake": "Choosing 1,000 / 1,000,000 / 1,000,000,000 - those are decimal (drive marketing) and are wrong for placement exams."
+    },
+    {
+      "id": "bit-byte-math",
+      "title": "Bit-Byte-Nibble Conversions",
+      "formula": {
+        "latex": "1\\,\\text{byte} = 8\\,\\text{bits};\\; 1\\,\\text{nibble} = 4\\,\\text{bits} = \\tfrac{1}{2}\\,\\text{byte}",
+        "text": "Bits -> bytes: divide by 8. Bytes -> bits: multiply by 8. Nibble = 4 bits (one hex digit)."
+      },
+      "whenToUse": "Conversions between bits and bytes, and any nibble / hex-digit question.",
+      "explanation": [
+        "1 byte = 8 bits. Always. 1 character (ASCII) = 1 byte = 8 bits.",
+        "1 nibble = 4 bits. Nibble = half a byte. One nibble holds one hexadecimal digit (0-F).",
+        "Bytes to bits: multiply by 8. Bits to bytes: divide by 8.",
+        "Two nibbles make one byte.",
+        "A 'word' on a 64-bit CPU = 64 bits = 8 bytes."
+      ],
+      "example": {
+        "prompt": "How many bytes in 32 bits?",
+        "steps": [
+          "8 bits = 1 byte.",
+          "32 bits / 8 = 4 bytes."
+        ],
+        "answer": "4 bytes"
+      },
+      "memoryTip": "'8 bits make a byte, 4 bits make a nibble.' Nibble = half-byte, byte = full.",
+      "commonMistake": "Confusing nibble (4 bits) with byte (8 bits); 4-bits and 8-bits are different sizes."
+    },
+    {
+      "id": "io-classification",
+      "title": "I/O Device Classification",
+      "formula": {
+        "latex": "\\text{Input}=\\text{human->machine};\\; \\text{Output}=\\text{machine->human};\\; \\text{Both}=\\text{two-way}",
+        "text": "Keyboard/mouse/scanner/mic/joystick = input. Monitor/printer/speaker/plotter = output. Touchscreen/modem/hard disk = both."
+      },
+      "whenToUse": "Any 'is this device input, output, or both?' MCQ. Most common I/O block questions.",
+      "explanation": [
+        "INPUT devices convert human action into data: keyboard, mouse, scanner, mic, joystick, touchpad, OCR, MICR, barcode reader, digital camera, light pen.",
+        "OUTPUT devices convert data into something a human senses: monitor / VDU, printer (inkjet / laser / dot matrix), speaker, plotter, projector.",
+        "BOTH-WAY devices: touchscreen (you tap, it shows), modem (sends and receives), network card, hard disk (reads and writes).",
+        "Mouse = default pointing device on a desktop. Trackball = mouse upside-down. Touchpad = laptop flat surface. Joystick = game / flight-sim stick.",
+        "OCR scans printed text. MICR reads magnetic-ink characters on cheques. Barcode reader scans product codes.",
+        "Hard disk is technically an I/O device but the textbook label is 'secondary storage'."
+      ],
+      "example": {
+        "prompt": "Which of the following is an output device?",
+        "steps": [
+          "Check each option against the input / output / both lists.",
+          "Monitor -> output. Keyboard -> input. Touchscreen -> both. Mouse -> input."
+        ],
+        "answer": "Monitor"
+      },
+      "memoryTip": "INPUT = I (the human puts something in). OUTPUT = human looks/listens. BOTH = the device can do both (touchscreen, modem, hard disk).",
+      "commonMistake": "Listing a hard disk as 'pure output' or 'pure input' - it is storage and acts as both."
+    },
+    {
+      "id": "generation-match",
+      "title": "Generation-Component-Time Matching",
+      "formula": {
+        "latex": "\\text{1st}=\\text{Vacuum tube} (40s{-}50s);\\; \\text{2nd}=\\text{Transistor} (50s{-}60s);\\; \\text{3rd}=\\text{IC} (60s{-}70s);\\; \\text{4th}=\\text{Microprocessor} (70s{-}\\text{Now});\\; \\text{5th}=\\text{AI/ULSI}",
+        "text": "Match each generation to its core hardware and period. One memory ladder: tube -> transistor -> IC -> microprocessor -> AI."
+      },
+      "whenToUse": "Any 'which generation used X?' or 'in which generation did Y appear?' MCQ.",
+      "explanation": [
+        "1st gen (1940s-50s) = vacuum tubes. ENIAC (~18,000 tubes), EDVAC, UNIVAC. Machine language. Magnetic tape / drum.",
+        "2nd gen (1950s-60s) = transistors. FORTRAN 1956, COBOL 1959. Magnetic core memory. PDP-8, IBM 1400.",
+        "3rd gen (1960s-70s) = integrated circuits. BASIC, OS appears. IBM 360, PDP-11.",
+        "4th gen (1970s-present) = microprocessors. Intel 4004 (1971). VLSI. Personal computers (IBM PC, Apple).",
+        "5th gen (present-future) = AI, ULSI, parallel processing. Voice recognition, NLP, machine learning.",
+        "Batch processing belongs to the 1st gen. Time-sharing, multiprogramming, multiprocessing -> 4th gen."
+      ],
+      "example": {
+        "prompt": "Which generation used microprocessors?",
+        "steps": [
+          "1st = vacuum tube, 2nd = transistor, 3rd = IC, 4th = microprocessor, 5th = AI/ULSI.",
+          "Microprocessor -> 4th generation."
+        ],
+        "answer": "4th generation (1970s - present)"
+      },
+      "memoryTip": "Read top to bottom: tube, transistor, IC, microprocessor, AI. The 'shrinking' story: each generation fits more into less space.",
+      "commonMistake": "Picking 'transistor' for the microprocessor question. Transistor = 2nd, microprocessor = 4th. They are NOT the same."
+    }
+  ],
+  "practiceProblems": {
+    "memory-ladder": [
+      {"q": "How many bytes in 1 KB?", "opts": ["1000", "1024", "1048", "2048"], "c": 1, "s": ["Placement exam uses 1024 (2^10).", "1000 is the decimal / drive-marketing value."], "a": "1024"},
+      {"q": "How many bytes in 1 MB?", "opts": ["1,000,000", "1,024,000", "1,048,576", "2,097,152"], "c": 2, "s": ["1 MB = 2^20 bytes = 1,048,576."], "a": "1,048,576"},
+      {"q": "How many KB in 1 GB?", "opts": ["1,000", "1,024", "1,048,576", "1,073,741,824"], "c": 2, "s": ["1 GB = 1024 MB = 1024 x 1024 KB = 1,048,576 KB."], "a": "1,048,576"},
+      {"q": "How many MB in 1 TB?", "opts": ["1,024", "1,048,576", "1,073,741,824", "1,099,511,627,776"], "c": 1, "s": ["1 TB = 1024 GB = 1024 x 1024 MB = 1,048,576 MB."], "a": "1,048,576"},
+      {"q": "How many bytes in 4 KB?", "opts": ["4000", "4096", "4192", "8192"], "c": 1, "s": ["1 KB = 1024 bytes.", "4 x 1024 = 4096 bytes."], "a": "4096"},
+      {"q": "Which is larger - 1 GB or 1,073,741,824 bytes?", "opts": ["1 GB", "1,073,741,824 bytes", "They are equal", "Cannot compare"], "c": 2, "s": ["1 GB = 2^30 bytes = 1,073,741,824 bytes.", "Same number."], "a": "They are equal"},
+      {"q": "Order from smallest to largest:", "opts": ["MB < GB < KB < TB", "KB < MB < GB < TB", "GB < MB < TB < KB", "TB < GB < MB < KB"], "c": 1, "s": ["KB (10^3 bytes) < MB (10^6) < GB (10^9) < TB (10^12)."], "a": "KB < MB < GB < TB"},
+      {"q": "How many KB in 2 GB?", "opts": ["2,000", "2,048", "2,097,152", "1,048,576"], "c": 2, "s": ["1 GB = 1,048,576 KB.", "2 GB = 2 x 1,048,576 = 2,097,152 KB."], "a": "2,097,152"},
+      {"q": "What is the next unit larger than a terabyte?", "opts": ["Gigabyte", "Petabyte", "Exabyte", "Zettabyte"], "c": 1, "s": ["Order: KB -> MB -> GB -> TB -> PB -> EB -> ZB -> YB.", "After TB comes PB."], "a": "Petabyte"},
+      {"q": "A 1 TB hard drive shown as ~931 GB in Windows is because:", "opts": ["Windows uses binary 1024 but drives are marketed in decimal 1000", "Windows has a bug", "TB is smaller than GB", "Manufacturers lie about size"], "c": 0, "s": ["Drive makers use 1 TB = 1,000,000,000,000 bytes (decimal).", "Windows reads in 1024-based units and reports the lower number."], "a": "Windows uses binary 1024 but drives are marketed in decimal 1000"}
+    ],
+    "bit-byte-math": [
+      {"q": "How many bits in 1 byte?", "opts": ["4", "8", "16", "32"], "c": 1, "s": ["Always 8 bits per byte."], "a": "8"},
+      {"q": "How many nibbles in 1 byte?", "opts": ["1", "2", "4", "8"], "c": 1, "s": ["1 nibble = 4 bits = 1/2 byte.", "So 1 byte = 2 nibbles."], "a": "2"},
+      {"q": "How many bytes in 64 bits?", "opts": ["6", "8", "12", "16"], "c": 1, "s": ["64 / 8 = 8 bytes."], "a": "8"},
+      {"q": "How many bits in 4 nibbles?", "opts": ["8", "16", "24", "32"], "c": 1, "s": ["1 nibble = 4 bits.", "4 nibbles = 16 bits."], "a": "16"},
+      {"q": "A nibble can represent a single:", "opts": ["Decimal digit", "Hexadecimal digit", "ASCII character", "Kilobyte"], "c": 1, "s": ["4 bits = 16 values = 1 hex digit (0-9, A-F)."], "a": "Hexadecimal digit"},
+      {"q": "Word size on a modern 64-bit CPU is:", "opts": ["32 bits", "64 bits", "8 bytes", "16 bytes"], "c": 1, "s": ["Modern desktop / laptop CPUs are 64-bit - 64 bits per word.", "Equivalently 8 bytes."], "a": "64 bits"},
+      {"q": "How many bytes in 2 kilobytes and 8 bits?", "opts": ["2048 + 1", "2049", "4096", "1024"], "c": 0, "s": ["2 KB = 2048 bytes. 8 bits = 1 byte.", "Total = 2049 bytes."], "a": "2048 + 1 (i.e. 2049)"},
+      {"q": "1 character in ASCII fits in:", "opts": ["1 bit", "4 bits (nibble)", "8 bits (1 byte)", "16 bits"], "c": 2, "s": ["ASCII uses 7-8 bits per character -> 1 byte."], "a": "8 bits (1 byte)"},
+      {"q": "Nibble is also called:", "opts": ["Half-byte", "Quarter-byte", "Full byte", "Double byte"], "c": 0, "s": ["4 bits = 1/2 byte -> 'half-byte'."], "a": "Half-byte"},
+      {"q": "Maximum value in one byte (binary 11111111) is:", "opts": ["127", "128", "255", "256"], "c": 2, "s": ["8 bits -> 2^8 = 256 distinct values, ranging 0 to 255."], "a": "255"}
+    ],
+    "io-classification": [
+      {"q": "Which is an INPUT device?", "opts": ["Monitor", "Printer", "Keyboard", "Speaker"], "c": 2, "s": ["Keyboard sends data TO the computer -> input.", "Monitor / printer / speaker are output."], "a": "Keyboard"},
+      {"q": "Which is an OUTPUT device?", "opts": ["Scanner", "Mouse", "Monitor", "Microphone"], "c": 2, "s": ["Monitor (VDU) shows data FROM the computer -> output."], "a": "Monitor"},
+      {"q": "The default pointing device on a desktop is:", "opts": ["Trackball", "Touchpad", "Mouse", "Joystick"], "c": 2, "s": ["Mouse is the standard desktop pointing device."], "a": "Mouse"},
+      {"q": "Which device is BOTH input and output?", "opts": ["Keyboard", "Touchscreen", "Printer", "Scanner"], "c": 1, "s": ["Touchscreen accepts taps (input) and displays (output)."], "a": "Touchscreen"},
+      {"q": "MICR is used to read:", "opts": ["Printed text on a page", "Magnetic ink characters on cheques", "Barcodes in a shop", "CD / DVD discs"], "c": 1, "s": ["MICR = Magnetic Ink Character Reader. Bank cheques use MICR-readable ink at the bottom."], "a": "Magnetic ink characters on cheques"},
+      {"q": "OCR is used to:", "opts": ["Read magnetic ink", "Scan printed text into editable text", "Print high-quality graphics", "Connect to the internet"], "c": 1, "s": ["OCR = Optical Character Recognition. Scans printed text -> editable digital text."], "a": "Scan printed text into editable text"},
+      {"q": "Which is a pointing device?", "opts": ["Speaker", "Joystick", "Printer", "Plotter"], "c": 1, "s": ["Joystick = pointing / control device. Others are output."], "a": "Joystick"},
+      {"q": "A plotter is typically used to print:", "opts": ["A short text document", "Large engineering / architecture drawings", "A photograph", "An email"], "c": 1, "s": ["Plotters print vector graphics on large paper - common in engineering / architecture."], "a": "Large engineering / architecture drawings"},
+      {"q": "A modem is classified as:", "opts": ["Input only", "Output only", "Both input and output", "Storage only"], "c": 2, "s": ["Modem sends AND receives data -> both."], "a": "Both input and output"},
+      {"q": "A barcode reader in a shop reads:", "opts": ["Magnetic ink", "Printed bar codes on products", "Handwritten signatures", "Audio waves"], "c": 1, "s": ["It scans the printed bar codes on products at checkout."], "a": "Printed bar codes on products"}
+    ],
+    "generation-match": [
+      {"q": "Which generation used vacuum tubes?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 0, "s": ["1st generation (1940s-50s) = vacuum tubes."], "a": "1st"},
+      {"q": "Transistors were the basis of which generation?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 1, "s": ["2nd generation (1950s-60s) = transistors."], "a": "2nd"},
+      {"q": "Integrated circuits (ICs) are the hallmark of which generation?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 2, "s": ["3rd generation (1960s-70s) = integrated circuits."], "a": "3rd"},
+      {"q": "The microprocessor defines which generation?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 3, "s": ["4th generation (1970s-present) = microprocessors (Intel 4004, 1971)."], "a": "4th"},
+      {"q": "ENIAC is an example of:", "opts": ["1st generation", "2nd generation", "3rd generation", "4th generation"], "c": 0, "s": ["ENIAC (~18,000 vacuum tubes) is 1st generation."], "a": "1st generation"},
+      {"q": "FORTRAN (1956) was developed during which generation?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 1, "s": ["FORTRAN 1956 -> 2nd gen. COBOL 1959 -> 2nd gen. BASIC -> 3rd gen."], "a": "2nd"},
+      {"q": "The Intel 4004 (1971) is known as the first commercial:", "opts": ["Vacuum tube", "Transistor", "Integrated circuit", "Microprocessor"], "c": 3, "s": ["Intel 4004 (1971) -> first commercial microprocessor. 4th gen."], "a": "Microprocessor"},
+      {"q": "Which generation is associated with Artificial Intelligence (AI)?", "opts": ["1st", "2nd", "3rd", "5th"], "c": 3, "s": ["5th generation = AI, ULSI, parallel processing, NLP."], "a": "5th"},
+      {"q": "Batch processing was mainly used in:", "opts": ["1st generation", "2nd generation", "3rd generation", "4th generation"], "c": 0, "s": ["1st-gen mainframes ran batch jobs. Time-sharing / multiprogramming came with the 4th."], "a": "1st generation"},
+      {"q": "Personal computers (IBM PC, Apple II) appeared in which generation?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 3, "s": ["Personal computers appeared in the 4th generation (1970s-present)."], "a": "4th"}
+    ]
+  },
+  "mcqs": [
+    {"id": 1, "q": "Which of the following is hardware?", "opts": ["MS Word", "Windows 11", "CPU", "Google Chrome"], "c": 2, "d": "easy", "t": "Hardware vs Software", "exp": ["CPU is a physical chip you can touch - hardware.", "MS Word, Windows 11, Chrome are all software (programs)."]},
+    {"id": 2, "q": "MS Excel is an example of:", "opts": ["Hardware", "System software", "Application software", "Firmware"], "c": 2, "d": "easy", "t": "Hardware vs Software", "exp": ["Excel is a program the user runs to do work - application software.", "System software = the OS itself."]},
+    {"id": 3, "q": "Which is system software?", "opts": ["MS Word", "Windows 11", "WhatsApp", "Photoshop"], "c": 1, "d": "easy", "t": "Hardware vs Software", "exp": ["System software manages the machine - the operating system (Windows 11, macOS, Linux).", "Word / WhatsApp / Photoshop are application software."]},
+    {"id": 4, "q": "The smallest unit of data in a computer is:", "opts": ["Byte", "Nibble", "Bit", "Kilobyte"], "c": 2, "d": "easy", "t": "Memory Units", "exp": ["A bit is 0 or 1 - the smallest data unit.", "1 byte = 8 bits, 1 nibble = 4 bits."]},
+    {"id": 5, "q": "How many bits make one byte?", "opts": ["4", "8", "16", "32"], "c": 1, "d": "easy", "t": "Memory Units", "exp": ["1 byte = 8 bits, always."]},
+    {"id": 6, "q": "1 KB equals how many bytes?", "opts": ["1000", "1024", "2048", "512"], "c": 1, "d": "easy", "t": "Memory Units", "exp": ["Placement exam convention: 1 KB = 1024 bytes (2^10).", "1000 is the marketing / decimal convention."]},
+    {"id": 7, "q": "How many bytes are in 1 MB?", "opts": ["1,000,000", "1,024,000", "1,048,576", "2,097,152"], "c": 2, "d": "easy", "t": "Memory Units", "exp": ["1 MB = 2^20 bytes = 1,048,576."]},
+    {"id": 8, "q": "A nibble is equal to:", "opts": ["2 bits", "4 bits", "8 bits", "16 bits"], "c": 1, "d": "easy", "t": "Memory Units", "exp": ["Nibble = 4 bits = half a byte, represents 1 hex digit."]},
+    {"id": 9, "q": "Which of the following is an input device?", "opts": ["Monitor", "Printer", "Keyboard", "Speaker"], "c": 2, "d": "easy", "t": "Input/Output Devices", "exp": ["Keyboard sends data to the computer - input.", "Monitor / printer / speaker are output."]},
+    {"id": 10, "q": "The default pointing device on a desktop computer is the:", "opts": ["Trackball", "Joystick", "Mouse", "Touchpad"], "c": 2, "d": "easy", "t": "Input/Output Devices", "exp": ["Mouse is the standard desktop pointing device."]},
+    {"id": 11, "q": "Which is an output device?", "opts": ["Scanner", "Microphone", "Monitor", "Joystick"], "c": 2, "d": "easy", "t": "Input/Output Devices", "exp": ["Monitor / VDU displays output.", "Scanner, mic, joystick are input."]},
+    {"id": 12, "q": "MICR is used to read:", "opts": ["Printed text on paper", "Magnetic-ink characters on cheques", "Barcodes", "CD-ROMs"], "c": 1, "d": "medium", "t": "Input/Output Devices", "exp": ["MICR = Magnetic Ink Character Reader. Bank cheque routing numbers are printed in magnetic ink."]},
+    {"id": 13, "q": "OCR stands for:", "opts": ["Optical Character Recognition", "Online Character Reader", "Optical Code Reader", "Output Card Reader"], "c": 0, "d": "medium", "t": "Input/Output Devices", "exp": ["OCR = Optical Character Recognition. Scans printed text -> editable digital text."]},
+    {"id": 14, "q": "Which device is BOTH input and output?", "opts": ["Mouse", "Touchscreen", "Speaker", "Printer"], "c": 1, "d": "medium", "t": "Input/Output Devices", "exp": ["Touchscreen takes taps (input) and displays (output).", "Modem and hard disk are also both-way."]},
+    {"id": 15, "q": "The core part of an operating system is the:", "opts": ["Shell", "Kernel", "Driver", "Desktop"], "c": 1, "d": "easy", "t": "OS Basics", "exp": ["The kernel is the OS core that talks directly to hardware.", "Shell / driver / desktop are layers built on top of the kernel."]},
+    {"id": 16, "q": "Which of the following is NOT a function of an operating system?", "opts": ["Memory management", "Process management", "Compiling source code", "File management"], "c": 2, "d": "medium", "t": "OS Basics", "exp": ["Compiling is done by a compiler (a user application).", "OS handles memory, processes, files, devices, security."]},
+    {"id": 17, "q": "An operating system manages:", "opts": ["Hardware only", "Software only", "Both hardware and software resources", "Only memory"], "c": 2, "d": "easy", "t": "OS Basics", "exp": ["The OS mediates between hardware and applications - managing both."]},
+    {"id": 18, "q": "Which is an example of an operating system?", "opts": ["MS Word", "Linux", "Google Chrome", "Adobe Photoshop"], "c": 1, "d": "easy", "t": "OS Basics", "exp": ["Linux is an OS. Windows, macOS, Android, iOS, Unix are others.", "Word / Chrome / Photoshop are applications."]},
+    {"id": 19, "q": "Android is based on the:", "opts": ["Windows kernel", "Linux kernel", "macOS kernel", "IBM kernel"], "c": 1, "d": "medium", "t": "OS Basics", "exp": ["Android is a Linux-based OS. Linux kernel + Android userland."]},
+    {"id": 20, "q": "SPOOL stands for:", "opts": ["Simultaneous Peripheral Operations Online", "System Process On-Line", "Stored Program Output Loop", "Serial Port On-Line"], "c": 0, "d": "hard", "t": "OS Basics", "exp": ["SPOOL = Simultaneous Peripheral Operations Online. The OS queues print jobs on disk so the printer works at its own pace."]},
+    {"id": 21, "q": "First-generation computers used:", "opts": ["Transistors", "Vacuum tubes", "Integrated circuits", "Microprocessors"], "c": 1, "d": "easy", "t": "Generations of Computers", "exp": ["1st gen (1940s-50s) = vacuum tubes."]},
+    {"id": 22, "q": "Transistors replaced vacuum tubes in which generation?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 1, "d": "easy", "t": "Generations of Computers", "exp": ["2nd gen (1950s-60s) = transistors."]},
+    {"id": 23, "q": "Integrated circuits characterise which generation?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 2, "d": "easy", "t": "Generations of Computers", "exp": ["3rd gen (1960s-70s) = integrated circuits (ICs)."]},
+    {"id": 24, "q": "Microprocessors are the basis of which generation?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 3, "d": "easy", "t": "Generations of Computers", "exp": ["4th gen (1970s-present) = microprocessors."]},
+    {"id": 25, "q": "ENIAC used approximately how many vacuum tubes?", "opts": ["1,800", "18,000", "180,000", "1,800,000"], "c": 1, "d": "medium", "t": "Generations of Computers", "exp": ["ENIAC had about 18,000 vacuum tubes - a published PYQ number."]},
+    {"id": 26, "q": "FORTRAN was developed in:", "opts": ["1946", "1956", "1966", "1976"], "c": 1, "d": "medium", "t": "Generations of Computers", "exp": ["FORTRAN (1956), COBOL (1959) - 2nd-generation high-level languages."]},
+    {"id": 27, "q": "The first commercial microprocessor was the:", "opts": ["Intel 8086", "Intel 4004 (1971)", "AMD 286", "Motorola 6800"], "c": 1, "d": "medium", "t": "Generations of Computers", "exp": ["Intel 4004 (1971) is widely credited as the first commercial microprocessor - 4th gen."]},
+    {"id": 28, "q": "Which generation is associated with Artificial Intelligence?", "opts": ["1st", "2nd", "3rd", "5th"], "c": 3, "d": "easy", "t": "Generations of Computers", "exp": ["5th gen = AI, ULSI, parallel processing, NLP, voice recognition."]},
+    {"id": 29, "q": "IBM 360 is an example of which generation?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 2, "d": "medium", "t": "Generations of Computers", "exp": ["IBM 360 and PDP-11 are 3rd-gen (ICs) classics."]},
+    {"id": 30, "q": "Batch processing was characteristic of which generation?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 0, "d": "medium", "t": "Generations of Computers", "exp": ["1st-gen mainframes ran batch jobs (no interactive time-sharing yet)."]},
+    {"id": 31, "q": "A word on a 64-bit CPU is:", "opts": ["8 bits", "32 bits", "64 bits", "128 bits"], "c": 2, "d": "medium", "t": "Memory Units", "exp": ["Modern desktop / laptop CPUs are 64-bit - 64 bits per word."]},
+    {"id": 32, "q": "How many distinct values can one byte represent?", "opts": ["128", "255", "256", "512"], "c": 2, "d": "medium", "t": "Memory Units", "exp": ["2^8 = 256 distinct values (0-255).", "255 is the maximum VALUE; there are 256 distinct values."]},
+    {"id": 33, "q": "How many bytes in 1 GB (binary)?", "opts": ["1,000,000,000", "1,073,741,824", "1,099,511,627,776", "1,048,576"], "c": 1, "d": "medium", "t": "Memory Units", "exp": ["1 GB = 2^30 bytes = 1,073,741,824."]},
+    {"id": 34, "q": "Which is the correct order from smallest to largest?", "opts": ["Byte < Nibble < Bit", "Bit < Nibble < Byte", "Nibble < Bit < Byte", "Bit < Byte < Nibble"], "c": 1, "d": "easy", "t": "Memory Units", "exp": ["1 bit < 4-bit nibble < 8-bit byte."]},
+    {"id": 35, "q": "1 character (ASCII) takes up:", "opts": ["1 bit", "4 bits", "1 byte", "4 bytes"], "c": 2, "d": "easy", "t": "Memory Units", "exp": ["ASCII characters fit in 1 byte (7-8 bits)."]},
+    {"id": 36, "q": "32 bits is equal to:", "opts": ["2 bytes", "4 bytes", "8 bytes", "16 bytes"], "c": 1, "d": "easy", "t": "Memory Units", "exp": ["32 / 8 = 4 bytes."]},
+    {"id": 37, "q": "A trackball is a pointing device that:", "opts": ["You move the whole unit", "You spin the ball with your fingers", "Responds to voice", "Scans barcodes"], "c": 1, "d": "medium", "t": "Input/Output Devices", "exp": ["A trackball is a mouse turned upside-down - you spin the ball with your fingers."]},
+    {"id": 38, "q": "Which is NOT a pointing device?", "opts": ["Mouse", "Light pen", "Joystick", "Plotter"], "c": 3, "d": "medium", "t": "Input/Output Devices", "exp": ["Plotter is an output device. Mouse / light pen / joystick are pointing devices."]},
+    {"id": 39, "q": "A plotter is most often used for:", "opts": ["Word processing", "Large engineering drawings", "Web browsing", "Database queries"], "c": 1, "d": "medium", "t": "Input/Output Devices", "exp": ["Plotters print vector graphics on large paper - engineering / architecture drawings."]},
+    {"id": 40, "q": "A laser printer uses:", "opts": ["Striking pins against a ribbon", "Toner and a heated roller", "Liquid ink sprayed onto paper", "A plotter mechanism"], "c": 1, "d": "medium", "t": "Input/Output Devices", "exp": ["Laser printer = toner + heated roller. Inkjet = sprayed liquid. Dot matrix = striking pins."]},
+    {"id": 41, "q": "A dot matrix printer is an example of:", "opts": ["Non-impact printer", "Impact printer", "Plotter", "Inkjet"], "c": 1, "d": "medium", "t": "Input/Output Devices", "exp": ["Dot matrix strikes an inked ribbon against paper - impact printer."]},
+    {"id": 42, "q": "VDU stands for:", "opts": ["Video Display Unit", "Visual Display Unit", "Volume Display Unit", "Virtual Drive Unit"], "c": 1, "d": "medium", "t": "Input/Output Devices", "exp": ["VDU = Visual Display Unit. Another name for the monitor."]},
+    {"id": 43, "q": "A hard disk is best classified as:", "opts": ["Pure input device", "Pure output device", "Secondary storage", "Application software"], "c": 2, "d": "medium", "t": "Input/Output Devices", "exp": ["Hard disk is secondary storage (not I/O, not software)."]},
+    {"id": 44, "q": "Which is NOT a function of an operating system?", "opts": ["Memory management", "File management", "Web browsing", "Process management"], "c": 2, "d": "medium", "t": "OS Basics", "exp": ["Web browsing is done by an application (browser).", "Memory / file / process / device / security management are OS jobs."]},
+    {"id": 45, "q": "Which is NOT an operating system?", "opts": ["Windows", "Linux", "macOS", "MS Excel"], "c": 3, "d": "easy", "t": "OS Basics", "exp": ["MS Excel is an application. Windows / Linux / macOS are operating systems."]},
+    {"id": 46, "q": "Multitasking means:", "opts": ["Running one program at a time", "Running multiple programs and switching between them", "A type of printer", "A pointing device"], "c": 1, "d": "medium", "t": "OS Basics", "exp": ["Multitasking = the user sees multiple programs running and switches between them (Alt-Tab)."]},
+    {"id": 47, "q": "Time-sharing operating systems allow:", "opts": ["One user to run one program", "Many users to share a computer by taking CPU slices", "Only batch jobs", "Print spooling only"], "c": 1, "d": "medium", "t": "OS Basics", "exp": ["Time-sharing = CPU time divided into small slices, each user / program gets turns. Made mainframes serve many users."]},
+    {"id": 48, "q": "The OS is loaded into memory:", "opts": ["When you open an app", "At computer startup (boot)", "Only when a file is opened", "Never"], "c": 1, "d": "easy", "t": "OS Basics", "exp": ["The OS loads first when the computer boots. Everything else runs on top of it."]},
+    {"id": 49, "q": "Which language was developed in the 2nd generation of computers?", "opts": ["BASIC", "FORTRAN", "Python", "Java"], "c": 1, "d": "medium", "t": "Generations of Computers", "exp": ["FORTRAN 1956, COBOL 1959, ALGOL 1958 are 2nd-gen languages.", "BASIC is 3rd gen. Python / Java are 4th gen."]},
+    {"id": 50, "q": "COBOL was developed in:", "opts": ["1946", "1956", "1959", "1970"], "c": 2, "d": "medium", "t": "Generations of Computers", "exp": ["COBOL 1959 - 2nd-generation language."]},
+    {"id": 51, "q": "Personal computers (IBM PC, Apple II) appeared in which generation?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 3, "d": "easy", "t": "Generations of Computers", "exp": ["PCs arrived in the 4th gen, enabled by the microprocessor."]},
+    {"id": 52, "q": "Which generation used the VLSI (Very Large Scale Integration) technology?", "opts": ["1st", "2nd", "3rd", "4th"], "c": 3, "d": "medium", "t": "Generations of Computers", "exp": ["VLSI = 4th generation. ULSI = 5th generation."]},
+    {"id": 53, "q": "Natural language understanding is a goal of which generation?", "opts": ["3rd", "4th", "5th", "2nd"], "c": 2, "d": "medium", "t": "Generations of Computers", "exp": ["5th gen aims: AI, natural-language understanding, parallel processing."]},
+    {"id": 54, "q": "Firmware is:", "opts": ["A type of hardware", "Software stored permanently inside a hardware device", "Only used in printers", "A pointing device"], "c": 1, "d": "medium", "t": "Hardware vs Software", "exp": ["Firmware is software that lives permanently in a hardware device (router BIOS, washing-machine controller)."]},
+    {"id": 55, "q": "What is the next unit larger than a gigabyte?", "opts": ["Megabyte", "Terabyte", "Petabyte", "Kilobyte"], "c": 1, "d": "easy", "t": "Memory Units", "exp": ["Order: KB -> MB -> GB -> TB -> PB.", "After GB comes TB."]},
+    {"id": 56, "q": "Application software runs:", "opts": ["On top of the operating system", "Directly on the hardware without an OS", "Only at boot time", "Only in kernel mode"], "c": 0, "d": "easy", "t": "OS Basics", "exp": ["Applications run ON TOP OF the OS, which mediates hardware access."]},
+    {"id": 57, "q": "Which of the following is an example of an I/O device?", "opts": ["MS Word", "Keyboard", "Linux kernel", "Hard disk (as a storage device)"], "c": 1, "d": "medium", "t": "Input/Output Devices", "exp": ["Keyboard is an input device. Hard disk is usually classified as storage, not I/O.", "MS Word and the Linux kernel are software."]},
+    {"id": 58, "q": "A scanner is an example of:", "opts": ["Output device", "Input device", "Storage device", "Operating system"], "c": 1, "d": "easy", "t": "Input/Output Devices", "exp": ["Scanner reads paper into the computer - input."]},
+    {"id": 59, "q": "Memory unit order smallest to largest:", "opts": ["MB < KB < GB < TB", "KB < MB < GB < TB", "GB < KB < MB < TB", "TB < GB < MB < KB"], "c": 1, "d": "easy", "t": "Memory Units", "exp": ["Each step is ~1000x bigger: KB < MB < GB < TB."]},
+    {"id": 60, "q": "The 1st-generation computers were programmed in:", "opts": ["High-level languages like FORTRAN", "Assembly language", "Machine language (binary)", "Natural language"], "c": 2, "d": "medium", "t": "Generations of Computers", "exp": ["1st-gen = machine language (raw 0s and 1s). High-level languages came in the 2nd gen (FORTRAN 1956)."]}
+  ]
+}
