@@ -1,0 +1,623 @@
+{
+  "id": "veda-sequential-logic",
+  "title": "Sequential Logic Circuits - Latches, Flip-Flops, Counters, FSM",
+  "icon": "S",
+  "subtitle": "Latches, flip-flops, counters, timing waveforms, Mealy and Moore diagrams and tables - design for functionality and timing",
+  "days": "6-8",
+  "color": "#4F46E5",
+  "category": "digital-design",
+  "subtopics": [
+    "Latches, Flip-flops",
+    "Counters (incl. timing and waveforms)",
+    "Timing waveforms (design from waveform with D flip-flops)",
+    "Mealy and Moore State Diagrams (incl. non-overlapping 1011 Moore FSM)",
+    "State tables",
+    "Synchronous design for functionality and timing"
+  ],
+  "estimatedHours": 14,
+  "learningPath": [
+    { "sectionId": "latch-memory", "type": "concept" },
+    { "sectionId": "flipflops", "type": "concept" },
+    { "sectionId": "registers-counters", "type": "concept" },
+    { "sectionId": "timing-waveforms", "type": "concept" },
+    { "sectionId": "fsm-mealy-moore", "type": "concept" },
+    { "sectionId": "sync-design", "type": "concept" }
+  ],
+  "readingSections": [
+    {
+      "id": "latch-memory",
+      "title": "1. Why Sequential? SR and D Latches (From Zero)",
+      "type": "concept",
+      "quickSummary": "Combinational forgets. Sequential remembers via feedback. A latch is the smallest memory: one bit held in a loop.",
+      "content": [
+        "Combinational output depends only on present inputs. Sequential output depends on present inputs AND stored past - it has memory elements plus combinational next-state logic, all stepped by a clock. Counters, registers and FSMs are sequential.",
+        "The SR latch (NOR version): two cross-coupled NOR gates. $S=1,R=0$ sets $Q=1$. $S=0,R=1$ resets $Q=0$. $S=0,R=0$ holds (memory). $S=1,R=1$ is forbidden (both outputs forced $0$, and releasing together races). $Q$ and $\\bar{Q}$ are complements in valid states.",
+        "The NAND SR latch flips polarity: $S=0,R=0$ forbidden, $S=1,R=1$ holds, $S=0$ sets? Careful: NAND latch with active-low inputs $\\bar{S},\\bar{R}$: $\\bar{S}=0$ sets $Q=1$, $\\bar{R}=0$ resets. Gated SR adds an enable (or clock level): inputs pass only when $EN=1$.",
+        "The D latch removes the forbidden state: $D$ goes straight to $S$, inverted to $R$. $EN=1$: transparent ($Q$ follows $D$). $EN=0$: holds. Problem: transparency passes glitches while enabled - which is why edge-triggered flip-flops (next section) run synchronous systems, not latches."
+      ],
+      "subsections": [
+        {
+          "title": "Level-sensitive vs edge-triggered",
+          "content": [
+            "Latch: level-sensitive, transparent during active level. Flip-flop: edge-triggered, samples only at clock rise (or fall).",
+            "Synchronous design uses flip-flops so the whole chip updates on one clock edge - timing analysable. Latches appear in special cases (time-borrowing, synchronizers need care).",
+            "VEDA waveform questions use D flip-flops (edge), not latches - watch which symbol the question shows."
+          ],
+          "example": {
+            "prompt": "NOR SR latch with S=1,R=0. State?",
+            "steps": [
+              "Set input dominates: $Q=1$, $\\bar{Q}=0$.",
+              "Return S to $0$: holding $1$ (memory)."
+            ],
+            "answer": "Set: $Q=1$"
+          }
+        },
+        {
+          "title": "Forbidden and race",
+          "content": [
+            "NOR latch $S=R=1$: both NOR outputs $0$, so $Q=\\bar{Q}=0$ (not complements). Releasing both to $0$ together: gates race - final state unpredictable (metastability seed).",
+            "Design rule: never assert $S$ and $R$ together. D latch enforces this by construction."
+          ]
+        },
+        {
+          "title": "Propagation delay first look",
+          "content": [
+            "Every gate/latch takes $t_{pd}$ to react. Outputs change AFTER inputs, never instantly. Waveform sketches must shift edges right by delay.",
+            "This delay thinking is the whole of timing analysis (later section)."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Sequential = combinational + memory + clock.",
+        "NOR SR: S sets, R resets, 00 holds, 11 forbidden.",
+        "D latch: transparent when EN=1, holds when 0."
+      ],
+      "companyNote": "Latch forbidden-state and transparency questions are prelims favourites."
+    },
+    {
+      "id": "flipflops",
+      "title": "2. Flip-Flops - SR, JK, D, T with Tables and Equations",
+      "type": "concept",
+      "quickSummary": "Flip-flops sample on the clock edge. D stores, T toggles, JK does everything, SR is the ancestor.",
+      "content": [
+        "Edge triggering (master-slave or edge-detect pulse) makes the device copy input only at the clock edge and ignore it otherwise. Rising-edge is default; a bubble means falling-edge.",
+        "D flip-flop: $Q^{+} = D$. The workhorse: registers, counters, FSM state. Asynchronous preset ($PRE=0$ forces $Q=1$) and clear ($CLR=0$ forces $Q=0$) override clock for power-on reset.",
+        "JK flip-flop: $Q^{+} = J\\bar{Q} + \\bar{K}Q$. $J=K=0$ hold, $J=1,K=0$ set, $J=0,K=1$ reset, $J=K=1$ toggle. Fixes SR's forbidden state by toggling instead. Old race-around (level JK oscillating while clock high) is cured by master-slave/edge triggering.",
+        "T flip-flop: $Q^{+} = T \\oplus Q$. $T=1$ toggles (frequency divide by $2$ per stage - the counter bit), $T=0$ holds. SR flip-flop: clocked SR, $Q^{+} = S + \\bar{R}Q$ with $SR=0$.",
+        "Excitation tables (design inputs from $Q \\to Q^{+}$): SR: $0\\to0$: $S=0,R=X$; $0\\to1$: $S=1,R=0$; $1\\to0$: $S=0,R=1$; $1\\to1$: $S=X,R=0$. JK: $0\\to0$: $J=0,K=X$; $0\\to1$: $J=1,K=X$; $1\\to0$: $J=X,K=1$; $1\\to1$: $J=X,K=0$. D: $D = Q^{+}$ ($0\\to0$: $0$; $0\\to1$: $1$; $1\\to0$: $0$; $1\\to1$: $1$). T: $T = Q \\oplus Q^{+}$ ($0\\to0$: $0$; $0\\to1$: $1$; $1\\to0$: $1$; $1\\to1$: $0$). VEDA mains expects D-flip-flop excitation ($D = Q^{+}$) cold."
+      ],
+      "subsections": [
+        {
+          "title": "Reading a flip-flop waveform",
+          "content": [
+            "Mark every active clock edge. At each edge, read $D$ (for D FF) just before the edge (setup) - that becomes $Q$ after clock-to-$Q$ delay.",
+            "Between edges $Q$ is frozen regardless of $D$ dancing. Asynchronous clear/preset acts immediately, even between edges.",
+            "VEDA Q4 reverses this: from $Q$ waveform deduce the $D$ logic driven by present state."
+          ],
+          "example": {
+            "prompt": "Rising D FF, D=1 just before edge 1, D=0 before edge 2. Q?",
+            "steps": [
+              "Edge 1 samples $1$: $Q$ becomes $1$ after $t_{cq}$.",
+              "Holds $1$ until edge 2.",
+              "Edge 2 samples $0$: $Q$ becomes $0$."
+            ],
+            "answer": "Q goes 1 then 0, one edge delayed"
+          }
+        },
+        {
+          "title": "Toggle chains divide frequency",
+          "content": [
+            "T=1 (or JK=11) stage toggles each clock: output frequency halves. Two stages divide by $4$, $n$ stages by $2^{n}$ - the binary counter.",
+            "Clock dividers in chips are toggle chains with gating for odd ratios."
+          ]
+        },
+        {
+          "title": "Preset/clear priority",
+          "content": [
+            "Async $PRE/CLR$ beat clock and usually beat each other by convention ($CLR$ wins if both). In waveforms, a $CLR$ pulse forces $Q=0$ at once.",
+            "Power-on reset trees use them; normal operation keeps both inactive."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "D: Q+=D. T: Q+=T xor Q. JK: Q+=JQ'+K'Q.",
+        "D excitation is trivial: D = next state.",
+        "Toggle (T=1/JK=11) halves frequency."
+      ],
+      "companyNote": "Excitation tables plus D-waveform reading cover most flip-flop marks."
+    },
+    {
+      "id": "registers-counters",
+      "title": "3. Registers and Counters - MOD, Ripple, Ring, Johnson",
+      "type": "concept",
+      "quickSummary": "n flip-flops hold n bits and count at most 2^n states. Ripple is simple but slow; synchronous is fast; ring/Johnson trade codes for decoding ease.",
+      "content": [
+        "Registers: PIPO (parallel hold, one clock), SISO (serial delay line, $n$ clocks latency), SIPO/PISO (serial-parallel conversion for UART/SPI). Shift direction (left/right) and rotate variants matter for sequence questions.",
+        "Binary counters: $n$ flip-flops give at most $2^{n}$ states, MOD-$M$ uses $M$ of them. Full-sequence MOD-$2^{n}$ needs no reset logic. Truncated MOD-$M$ ($M < 2^{n}$) decodes state $M$ to synchronously/asynchronously reset (e.g. MOD-10 decade: $4$ FFs, clear when $Q_{3}Q_{2}Q_{1}Q_{0} = 1010$, i.e. $CLR = \\overline{Q_{3}Q_{1}}$).",
+        "Ripple (asynchronous): each stage clocked by previous $Q$ (T=1 everywhere). Simple, but delay adds ($n \\times t_{pd}$), max frequency falls, and transient wrong codes appear (glitchy decoding). Synchronous: common clock, T/JK logic per stage ($T_{0}=1, T_{1}=Q_{0}, T_{2}=Q_{1}Q_{0}$...), one $t_{pd}$ per step, clean at speed.",
+        "Ring: one $1$ circulates in $n$ FFs (D chain, last $Q$ to first $D$ with single-1 init): $n$ states, one-hot, decodes with NO gates (state = which $Q$ is $1$). Needs start-up/reset into one-hot (forbidden states lock). Johnson (twisted ring): last $\\bar{Q}$ fed back: $2n$ states, decodes each state with one $2$-input AND, self-corrects better. Up/down: control $M$ picks $Q$ or $\\bar{Q}$ as next clock/data path."
+      ],
+      "subsections": [
+        {
+          "title": "MOD arithmetic in one minute",
+          "content": [
+            "MOD-$M$ counter visits $M$ states then repeats. Binary $n$ FFs: $M \\le 2^{n}$, minimum $n = \\lceil \\log_{2} M \\rceil$.",
+            "MOD-8: $3$ FFs, $000$-$111$. MOD-5: $3$ FFs ($2^{2}=4 < 5 \\le 8$), reset at $101$. MOD-12: $4$ FFs, reset at $1100$.",
+            "Frequency at last stage of ripple MOD-$M$: $f_{in}/M$ (any counter divides by its MOD)."
+          ],
+          "example": {
+            "prompt": "FFs needed for MOD-10? Reset code?",
+            "steps": [
+              "$2^{3}=8 < 10 \\le 16=2^{4}$: $4$ FFs.",
+              "First unused state $1010$: clear on $Q_{3}Q_{1}=11$."
+            ],
+            "answer": "4 FFs, reset at 1010"
+          }
+        },
+        {
+          "title": "Ring vs Johnson at a glance",
+          "content": [
+            "Ring $n$ FFs: $n$ states ($1000,0100,0010,0001$ for $n=4$), one-hot, zero decode gates, needs one-hot init.",
+            "Johnson $n$ FFs: $2n$ states ($0000,1000,1100,1110,1111,0111,0011,0001$ for $n=4$), $2$-input AND decode, all-zero init works.",
+            "Both are shift-register counters, not binary - state order is shift order."
+          ]
+        },
+        {
+          "title": "Up/down control idea",
+          "content": [
+            "Binary up uses $Q$ chain ($T_{1}=Q_{0}$); down uses $\\bar{Q}$ chain. A $MUX$ per stage with $M$ selects up/down - one extra MUX delay.",
+            "In ripple down-counters the previous $\\bar{Q}$ clocks the next stage."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "MOD-M needs ceil(log2 M) FFs; truncates reset at M.",
+        "Ripple O(n) delay, glitchy; synchronous one delay, clean.",
+        "Ring n states one-hot; Johnson 2n states, 2-input decode."
+      ],
+      "companyNote": "MOD/reset-code and ring-vs-Johnson counts are guaranteed prelims marks."
+    },
+    {
+      "id": "timing-waveforms",
+      "title": "4. Timing - Setup, Hold, Clock-to-Q and Waveform Design (VEDA Q4)",
+      "type": "concept",
+      "quickSummary": "Data must be stable around the clock edge (setup before, hold after). VEDA Q4 inverts waveform reading: from Q sequence, find D logic.",
+      "content": [
+        "Setup $t_{su}$: $D$ stable BEFORE edge. Hold $t_{h}$: stable AFTER edge. Clock-to-$Q$ $t_{cq}$: edge to new $Q$. Violate setup/hold and the flop may go metastable (hovers then resolves randomly) - synchronizer chains (2 FFs) absorb input-domain crossings.",
+        "Single-flop-plus-comb-loop rule: $T_{clk} \\ge t_{cq} + t_{comb} + t_{su}$ (minus helpful skew). So $f_{max} = 1/T_{min}$. Ripple $n$-bit counter needs $T \\ge n \\times t_{ff}$ roughly; synchronous needs one $t_{cq}+t_{AND}+t_{su}$.",
+        "Reading (VEDA Q4 forward): list clock edges, note $D$ before each, draw $Q$ one step delayed. Design (VEDA Q4 asked): given $Q$ waveform and clock, recover required $D$ sequence ($D$ before edge $k$ = $Q$ after edge $k$), write present-state/next-state table over observed states, then $D = Q^{+}$ gives truth table of $D$ in terms of current $Q$s (and inputs), minimise with K-map, draw gates + D FFs.",
+        "Sketch discipline: vertical dashed lines at edges, shade setup/hold windows, shift $Q$ by $t_{cq}$, never change $Q$ mid-cycle. Mark async clear pulses separately - they override everything instantly."
+      ],
+      "subsections": [
+        {
+          "title": "VEDA Q4 method step by step",
+          "content": [
+            "Step 1: number the clock edges, sample the given $Q$ waveform into a $Q^{+}$ sequence.",
+            "Step 2: shift back one edge: $D_{k} = Q^{+}_{k}$ (D before edge k).",
+            "Step 3: tabulate present $Q$ vs required $D$; express $D$ as function of present state bits (K-map).",
+            "Step 4: draw minimised gates feeding D, FFs clocked together. Verify by re-simulating two cycles."
+          ],
+          "example": {
+            "prompt": "Single D FF, Q waveform 0,1,1,0 after edges 1-4. D logic in terms of Q?",
+            "steps": [
+              "D before edge1 = 0 (Q was 0, stays? Q after edge1 = 0? given after-edge sequence 0,1,1,0: D1=0, D2=1, D3=1, D4=0).",
+              "Present Q before edges: Q0=0(initial),0,1,1.",
+              "Table (Q,D): (0,0),(0,1),(1,1),(1,0): D = not-Q? (0->0? no: (0,0) and (0,1) conflict - needs more state bits or input; single FF insufficient - add a second FF).",
+              "Lesson: conflicts reveal needed state width."
+            ],
+            "answer": "Method exposes required state - add FFs on conflict"
+          }
+        },
+        {
+          "title": "Skew and metastability in one paragraph each",
+          "content": [
+            "Skew: clock arrives at different FFs at different times. Helps hold, hurts setup (or reverse) - budget it in $T_{min}$.",
+            "Metastability: sampling changing data can trap a flop mid-rail; resolves in unbounded time. Two-flop synchronizers + MTBF reasoning for clock-domain crossing (CDC)."
+          ]
+        },
+        {
+          "title": "Async inputs on waveforms",
+          "content": [
+            "Clear/preset pulses act at once, not on edges. After release near an edge, setup/hold (recovery/removal) applies again.",
+            "In sketches, draw async-forced segments first, then edge-sampled segments."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Setup before, hold after, cq after edge.",
+        "T >= tcq + tcomb + tsu. Ripple T >= n*tff.",
+        "D-before-edge-k = Q-after-edge-k (design inversion)."
+      ],
+      "companyNote": "VEDA Q4 is waveform-to-circuit with D FFs - practice the inversion until mechanical."
+    },
+    {
+      "id": "fsm-mealy-moore",
+      "title": "5. FSMs - Mealy vs Moore, Diagrams, Tables, 1011 Detector (VEDA Q5)",
+      "type": "concept",
+      "quickSummary": "Moore output depends on state only (clean, one more delay). Mealy depends on state+input (fewer states, faster, can glitch). 1011 non-overlapping Moore needs 5 states.",
+      "content": [
+        "A synchronous FSM = state register (D FFs) + next-state combinational + output combinational. Moore: $Z = f(state)$ written inside the state circle; output changes only on clock edges (clean). Mealy: $Z = f(state,input)$ written on transitions as input/output; reacts immediately (fewer states, possible input-glitch feedthrough).",
+        "State diagram: circles = states (Moore: name/output inside), arcs = transitions labelled input (Mealy: input/output). State table: present-state + input columns, next-state + output columns - the synthesis-ready form. Equivalent states (same next/outputs for all inputs) merge to minimise.",
+        "VEDA Q5: synchronous Moore FSM detecting non-overlapping $1011$. Five states: $S_{0}$ idle, $S_{1}$ got $1$, $S_{2}$ got $10$, $S_{3}$ got $101$, $S_{4}$ got $1011$ with output $1$ (others $0$). Transitions: $S_{0}$: $0\\to S_{0}$, $1\\to S_{1}$. $S_{1}$: $0\\to S_{2}$, $1\\to S_{1}$. $S_{2}$: $0\\to S_{0}$, $1\\to S_{3}$. $S_{3}$: $0\\to S_{2}$, $1\\to S_{4}$. $S_{4}$ (non-overlapping restart): $0\\to S_{0}$, $1\\to S_{1}$. Output: $Z=1$ only in $S_{4}$.",
+        "Overlapping vs non-overlapping: overlapping reuses the tail (for $1011$, from $S_{4}$: $0\\to S_{2}$ since $10$ is a prefix, $1\\to S_{1}$). Non-overlapping restarts ($S_{4}$: $0\\to S_{0}$, $1\\to S_{1}$) - which VEDA asks. Sequence check $1101011$: non-overlapping detects once at the end; overlapping would also catch earlier embedded copies."
+      ],
+      "subsections": [
+        {
+          "title": "Mealy 1011 for contrast (3-4 states)",
+          "content": [
+            "Mealy can output during the transition into the last bit, saving the terminal state: typically $4$ states ($S_{0},S_{1},S_{2},S_{3}$) with the $S_{3},1/1$ arc asserting $Z$.",
+            "Cost: output timing depends on input arrival within the cycle - glitch-prone, harder timing closure. Mains answers should state the trade-off when choosing."
+          ],
+          "example": {
+            "prompt": "States for non-overlapping 1011: Moore vs Mealy?",
+            "steps": [
+              "Moore needs distinct output state: $5$ states.",
+              "Mealy outputs on arc: $4$ states.",
+              "Same detection, one cycle earlier visibility in Mealy."
+            ],
+            "answer": "Moore 5, Mealy 4"
+          }
+        },
+        {
+          "title": "Drawing discipline that earns marks",
+          "content": [
+            "Moore: output inside every circle. Mealy: every arc labelled in/out. Reset arc to $S_{0}$ drawn. Self-loops explicit ($S_{1},1\\to S_{1}$).",
+            "Synchronous: note single clock for all FFs; outputs registered (Moore) or combinational (Mealy)."
+          ]
+        },
+        {
+          "title": "State minimisation glance",
+          "content": [
+            "Row matching (same next-states and outputs for all inputs) merges compatible states; implication charts systematise it.",
+            "Binary assign $\\lceil \\log_{2} S \\rceil$ FFs ($5$ states need $3$ FFs); one-hot ($5$ FFs) simplifies decode at area cost - FPGAs love one-hot."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Moore Z=f(state): clean, +1 state. Mealy Z=f(state,input): compact, glitchy.",
+        "1011 non-overlap Moore: S0..S4, Z=1 only in S4.",
+        "Tables are diagrams in synthesizable form."
+      ],
+      "companyNote": "VEDA Q5 is the diagram question - draw the 5-state Moore with outputs in circles."
+    },
+    {
+      "id": "sync-design",
+      "title": "6. Synchronous Design Procedure - States to Gates",
+      "type": "concept",
+      "quickSummary": "Spec, diagram, table, codes, excitation, K-maps, circuit. With D flip-flops the K-map inputs are just next-state bits.",
+      "content": [
+        "Procedure: (1) word spec + Moore/Mealy choice, (2) state diagram, (3) state table (present, input, next, output), (4) state assignment (binary needs $\\lceil \\log_{2} S \\rceil$ FFs), (5) transition table with FF excitation ($D = Q^{+}$ for D FFs - no separate excitation table needed), (6) K-map each $D$ and each output, (7) draw FFs + minimised gates + single clock + async reset, (8) verify by cycle simulation including reset and one full pattern.",
+        "Worked skeleton (MOD-4 up-counter, $2$ D FFs $Q_{1}Q_{0}$): table $00\\to01$, $01\\to10$, $10\\to11$, $11\\to00$. $D_{0} = Q^{+}_{0}$ column $1,0,1,0$ over $Q_{1}Q_{0} = 00,01,10,11$: $D_{0} = \\bar{Q_{0}}$. $D_{1} = Q^{+}_{1}$ column $0,1,1,0$: $D_{1} = Q_{1} \\oplus Q_{0}$. Circuit: one NOT for $D_{0}$, one XOR for $D_{1}$.",
+        "Timing closure note (syllabus: for functionality AND timing): compute $T_{min} = t_{cq} + t_{comb} + t_{su}$ on the longest $Q$-to-$D$ path; if violated, pipeline, use faster library cells, or one-hot encode to cut decode depth. Mention this line in mains design answers.",
+        "Unused states ($5$-state machine in $3$ FFs has $3$ unused): route them to reset (safe FSM) or mark don't-care for area - state your choice; safe recovery beats minimal gates in silicon."
+      ],
+      "subsections": [
+        {
+          "title": "Why D flip-flops dominate exams and chips",
+          "content": [
+            "Excitation $D = Q^{+}$ skips tables - fewer mistakes under time pressure.",
+            "Standard-cell and FPGA flows map D FFs + LUT/comb directly; JK/T are teaching tools and special dividers.",
+            "VEDA Q4/Q5 both say D flip-flops - obey the question."
+          ]
+        },
+        {
+          "title": "Verification checklist",
+          "content": [
+            "Reset reaches $S_{0}$. One legal pattern walk matches spec. One illegal/overlap input behaves as specified. No unintended latch (all $D$s fully specified).",
+            "State your clocking (single rising edge) and reset (async active-low typical)."
+          ]
+        },
+        {
+          "title": "Area vs speed remarks",
+          "content": [
+            "Binary coding: fewer FFs, deeper decode. One-hot: more FFs, shallow fast decode, easy illegal-state detect.",
+            "Shares product terms across $D$s and outputs where K-maps align."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Diagram, table, codes, D=Q+ maps, gates, verify.",
+        "MOD-4: D0=not-Q0, D1=Q1 xor Q0.",
+        "Route unused states to reset (safe)."
+      ],
+      "companyNote": "A complete small design (counter or 101 detector next-state) with timing line is a full-marks mains answer."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "ff-count",
+      "title": "Flip-Flops Needed and MOD",
+      "formula": { "latex": "n \\ge \\lceil \\log_{2} M \\rceil, \\quad MOD\\text{-}M \\Rightarrow M \\text{ states}", "text": "n flip-flops hold at most 2^n states. MOD-M visits M states; truncated counters reset at state M." },
+      "whenToUse": "Counter sizing and reset-decode questions.",
+      "explanation": ["Full binary MOD-2^n uses all states.", "Truncated MOD-M decodes state M to clear.", "Last-stage frequency is fin divided by M."],
+      "example": {
+        "prompt": "FFs for MOD-10? Reset code?",
+        "steps": ["$2^{3}=8 < 10 \\le 16$: $4$ FFs.", "Clear at $1010$ ($Q_{3}Q_{1}$)."],
+        "answer": "4 FFs, reset at 1010"
+      },
+      "memoryTip": "MOD = states visited, not FFs.",
+      "commonMistake": "Using 3 FFs for MOD-5+ (only 8 states max is fine for 5 - wait 3 FFs give 8 states so MOD-5 OK; MOD-10 needs 4)."
+    },
+    {
+      "id": "d-char",
+      "title": "D Characteristic and Excitation",
+      "formula": { "latex": "Q^{+} = D, \\quad D_{req} = Q^{+}", "text": "Next state equals D. Required D equals desired next state - trivial excitation." },
+      "whenToUse": "All D flip-flop analysis and design.",
+      "explanation": ["Sample D at edge, Q follows after tcq.", "Design: write next-state column, that IS the D map."],
+      "example": {
+        "prompt": "Want 0->1. D?",
+        "steps": ["D equals next state: $1$."],
+        "answer": "$D=1$"
+      },
+      "memoryTip": "D stands for Data and for Direct.",
+      "commonMistake": "Adding excitation tables for D - unnecessary."
+    },
+    {
+      "id": "jk-char",
+      "title": "JK Characteristic",
+      "formula": { "latex": "Q^{+} = J\\bar{Q} + \\bar{K}Q", "text": "Hold, set, reset, toggle by J,K. J=K=1 toggles." },
+      "whenToUse": "JK analysis and toggle designs.",
+      "explanation": ["00 hold, 10 set, 01 reset, 11 toggle.", "Excitation: 0->0: J=0,K=X; 0->1: J=1,K=X; 1->0: J=X,K=1; 1->1: J=X,K=0."],
+      "example": {
+        "prompt": "JK=11, Q=0?",
+        "steps": ["Toggle: next is $1$."],
+        "answer": "$Q^{+}=1$"
+      },
+      "memoryTip": "JK = fancy SR with toggle instead of forbidden.",
+      "commonMistake": "Forgetting K bar in second term."
+    },
+    {
+      "id": "t-char",
+      "title": "T Characteristic",
+      "formula": { "latex": "Q^{+} = T \\oplus Q, \\quad T_{req} = Q \\oplus Q^{+}", "text": "T=1 toggles, T=0 holds. Each toggle stage halves frequency." },
+      "whenToUse": "Counters, dividers, toggle analysis.",
+      "explanation": ["Ripple counter ties all T=1.", "Sync counter computes T per stage."],
+      "example": {
+        "prompt": "T=1, Q=1?",
+        "steps": ["$1 \\oplus 1 = 0$."],
+        "answer": "$Q^{+}=0$"
+      },
+      "memoryTip": "T for Toggle.",
+      "commonMistake": "T=0 does not reset - it holds."
+    },
+    {
+      "id": "sr-char",
+      "title": "SR (Clocked) Characteristic",
+      "formula": { "latex": "Q^{+} = S + \\bar{R}Q, \\quad SR = 0", "text": "Set dominates with reset held off. SR=1 forbidden." },
+      "whenToUse": "Latch and SR FF questions.",
+      "explanation": ["Excitation mirrors latch set/reset/hold.", "Never assert both."],
+      "example": {
+        "prompt": "S=1,R=0?",
+        "steps": ["$Q^{+} = 1 + \\bar{0}Q = 1$."],
+        "answer": "$Q^{+}=1$"
+      },
+      "memoryTip": "S sets, R resets, both banished.",
+      "commonMistake": "Allowing S=R=1 in design."
+    },
+    {
+      "id": "clk-rule",
+      "title": "Clock Period Rule",
+      "formula": { "latex": "T_{clk} \\ge t_{cq} + t_{comb} + t_{su}, \\quad f_{max} = 1/T_{min}", "text": "Worst Q-to-D path must fit: flop delay plus logic plus setup. Skew subtracts margin." },
+      "whenToUse": "Max-frequency and timing-closure questions.",
+      "explanation": ["Ripple n-bit needs about n flop delays.", "Sync needs one cq plus decode plus setup."],
+      "example": {
+        "prompt": "tcq=2ns, tcomb=5ns, tsu=1ns. fmax?",
+        "steps": ["$T_{min} = 2+5+1 = 8ns$.", "$f_{max} = 125MHz$."],
+        "answer": "$125MHz$"
+      },
+      "memoryTip": "C-Q-L-SU: flop, logic, setup.",
+      "commonMistake": "Forgetting hold is a separate min-delay check, not period."
+    },
+    {
+      "id": "ring-johnson",
+      "title": "Ring and Johnson Counts",
+      "formula": { "latex": "Ring: n \\text{ states}, \\quad Johnson: 2n \\text{ states}", "text": "Ring circulates one 1. Johnson circulates with inversion, doubling states." },
+      "whenToUse": "Shift-counter state counts and init.",
+      "explanation": ["Ring one-hot: state = position of 1.", "Johnson 4-FF order: 0000,1000,1100,1110,1111,0111,0011,0001."],
+      "example": {
+        "prompt": "States of 5-FF Johnson?",
+        "steps": ["$2n = 10$."],
+        "answer": "$10$ states"
+      },
+      "memoryTip": "Ring n, Johnson double-n.",
+      "commonMistake": "Calling Johnson 2^n - it is linear, not exponential."
+    },
+    {
+      "id": "moore-mealy",
+      "title": "Moore vs Mealy Outputs",
+      "formula": { "latex": "Z_{Moore} = f(state), \\quad Z_{Mealy} = f(state, input)", "text": "Moore changes on edges only. Mealy reacts within the cycle and usually needs fewer states." },
+      "whenToUse": "FSM classification and state-count questions.",
+      "explanation": ["1011 non-overlap: Moore 5 states, Mealy 4.", "Mealy outputs can glitch with input."],
+      "example": {
+        "prompt": "Output 1 only inside a state. Type?",
+        "steps": ["Depends on state alone."],
+        "answer": "Moore"
+      },
+      "memoryTip": "Moore-more states, Mealy-minimal states.",
+      "commonMistake": "Drawing Mealy outputs inside circles."
+    },
+    {
+      "id": "trunc-reset",
+      "title": "Truncated-Counter Reset Decode",
+      "formula": { "latex": "CLR = \\overline{(state = M)} \\; (active\\text{-}low), \\quad M < 2^{n}", "text": "NAND the 1-bits of M's code to clear. Use minimal product (e.g. Q3Q1 for 1010)." },
+      "whenToUse": "MOD-5, MOD-10, MOD-12 reset logic.",
+      "explanation": ["MOD-10: clear at 1010 via Q3Q1.", "MOD-5: clear at 101."],
+      "example": {
+        "prompt": "MOD-12 reset code?",
+        "steps": ["$12 = 1100$.", "Clear on $Q_{3}Q_{2}$."],
+        "answer": "Reset at 1100"
+      },
+      "memoryTip": "Reset at the first UNUSED code.",
+      "commonMistake": "Decoding M-1 (last used) instead of M."
+    },
+    {
+      "id": "d-invert",
+      "title": "Waveform Inversion (Q to D)",
+      "formula": { "latex": "D_{k} = Q^{+}_{k} \\text{ (D before edge k = Q after edge k)}", "text": "Design from waveform runs reading backwards: required D is the observed next Q." },
+      "whenToUse": "VEDA Q4-style waveform-to-circuit.",
+      "explanation": ["Sample Q after each edge.", "Shift back one edge to get D.", "Map D against present state, minimise."],
+      "example": {
+        "prompt": "Q after edges: 0,1,1. D before edges?",
+        "steps": ["D1=0, D2=1, D3=1."],
+        "answer": "$D = 0,1,1$ before edges 1-3"
+      },
+      "memoryTip": "D leads, Q lags by one edge.",
+      "commonMistake": "Aligning D and Q to the same edge."
+    }
+  ],
+  "practiceProblems": {
+    "d-char": [
+      { "q": "Rising D FF: D=1 before edge 1, D=0 before edge 2. Q?", "s": ["Edge 1 samples 1: Q becomes 1 after tcq", "Holds till edge 2", "Edge 2 samples 0: Q becomes 0"], "a": "Q goes 1 then 0, one edge delayed" },
+      { "q": "Want Q: 0->1. Required D?", "s": ["D equals next state"], "a": "$D=1$" },
+      { "q": "Q after edges is 0,1,1. D before edges?", "s": ["D1=0, D2=1, D3=1"], "a": "$D = 0,1,1$" },
+      { "q": "D FF with D tied to Q-bar (toggle). Sequence from 0?", "s": ["Q=0: D=1, next 1", "Q=1: D=0, next 0", "Oscillates 0,1,0,1"], "a": "Toggles each clock" },
+      { "q": "Two D FFs in series (shift), DIN=1,0. Q0,Q1 after 2 edges from 00?", "s": ["Edge1: Q0=1, Q1=0", "Edge2: Q0=0, Q1=1"], "a": "$Q0Q1 = 01$" }
+    ],
+    "ff-count": [
+      { "q": "FFs for MOD-10? Reset code?", "s": ["8 < 10 <= 16: 4 FFs", "Clear at 1010 (Q3Q1)"], "a": "4 FFs, reset at 1010" },
+      { "q": "FFs for MOD-5? Reset code?", "s": ["4 < 5 <= 8: 3 FFs", "Clear at 101"], "a": "3 FFs, reset at 101" },
+      { "q": "States of 4-FF Johnson?", "s": ["2n = 8", "0000,1000,1100,1110,1111,0111,0011,0001"], "a": "$8$ states" },
+      { "q": "States of 4-FF ring?", "s": ["One-hot: n states", "1000,0100,0010,0001"], "a": "$4$ states" },
+      { "q": "MOD-12 reset code?", "s": ["12 = 1100", "Clear on Q3Q2"], "a": "Reset at 1100" }
+    ],
+    "jk-char": [
+      { "q": "JK=11, Q=0. Next?", "s": ["Toggle: 0 becomes 1"], "a": "$Q^{+}=1$" },
+      { "q": "T=1, Q=1. Next?", "s": ["1 xor 1 = 0"], "a": "$Q^{+}=0$" },
+      { "q": "S=1,R=0 on SR FF. Next?", "s": ["Set: Q=1"], "a": "$Q^{+}=1$" },
+      { "q": "0->1 needs? (SR / JK / D / T)", "s": ["SR: S=1,R=0", "JK: J=1,K=X", "D: 1", "T: 1"], "a": "S=1R=0; J=1; D=1; T=1" },
+      { "q": "1->0 needs? (SR / JK / D / T)", "s": ["SR: S=0,R=1", "JK: J=X,K=1", "D: 0", "T: 1"], "a": "S=0R=1; K=1; D=0; T=1" }
+    ],
+    "clk-rule": [
+      { "q": "tcq=2ns, tcomb=5ns, tsu=1ns. fmax?", "s": ["Tmin = 2+5+1 = 8ns", "fmax = 1/8ns = 125MHz"], "a": "$125MHz$" },
+      { "q": "3-bit ripple, tff=4ns. Approx min period?", "s": ["About 3 x 4 = 12ns"], "a": "$12ns$ order" },
+      { "q": "NOR SR latch S=1,R=0?", "s": ["Set: Q=1, Qbar=0", "Hold on return to 00"], "a": "$Q=1$" },
+      { "q": "Forbidden combo, NOR SR?", "s": ["S=R=1 forces Q=Qbar=0", "Release races"], "a": "$S=R=1$ forbidden" }
+    ],
+    "moore-mealy": [
+      { "q": "States: non-overlapping 1011 Moore vs Mealy?", "s": ["Moore: S0..S4 = 5 states, Z in S4", "Mealy: 4 states, Z on S3,1 arc"], "a": "Moore 5, Mealy 4" },
+      { "q": "Moore S4 (got 1011) transitions, non-overlapping?", "s": ["0 -> S0 (restart)", "1 -> S1 (fresh 1)"], "a": "$S4,0->S0; S4,1->S1$" },
+      { "q": "Overlapping 1011 from S4?", "s": ["0 -> S2 (tail 10 is prefix)", "1 -> S1 (tail 1 is prefix)"], "a": "$S4,0->S2; S4,1->S1$" },
+      { "q": "Output Z for Moore 1011 detector?", "s": ["Z=1 only in S4", "0 elsewhere"], "a": "$Z = (state==S4)$" }
+    ],
+    "trunc-reset": [
+      { "q": "MOD-4 up-counter with D FFs: D0,D1?", "s": ["Table 00->01, 01->10, 10->11, 11->00", "D0 column 1,0,1,0: D0 = Q0bar", "D1 column 0,1,1,0: D1 = Q1 xor Q0"], "a": "$D0=\\bar{Q0}, D1=Q1 \\oplus Q0$" },
+      { "q": "Single D FF: Q waveform 0,1,1,0 after edges 1-4. Meaning?", "s": ["D1=0,D2=1,D3=1,D4=0", "Single present-Q cannot explain (0->0 and 0->1 both) - need more state"], "a": "Conflict: add a second FF" },
+      { "q": "Trace 1101011 through non-overlapping Moore 1011?", "s": ["Walk: S0-1S1-1S1-0S2-1S3-0S2-1S3-1S4", "Z=1 once at end"], "a": "One detection at final bit" }
+    ]
+  },
+  "mcqs": [
+    { "id": "vsl-001", "q": "Sequential output depends on?", "opts": ["Present inputs and stored past", "Present inputs only", "Clock frequency only", "Temperature"], "c": 0, "d": "easy", "t": "concepts", "source": "VEDA IIT Prelim Pattern", "exp": ["Sequential = combinational + memory.", "Past state joins present inputs."], "shortcut": "Sequential remembers.", "pattern": "Definition opens the topic." },
+    { "id": "vsl-002", "q": "NOR SR latch with $S=1,R=0$?", "opts": ["Set: $Q=1$", "Reset: $Q=0$", "Hold", "Forbidden"], "c": 0, "d": "easy", "t": "latch", "source": "VEDA IIT Prelim Pattern", "exp": ["S asserts set.", "$Q=1$, $\\bar{Q}=0$."], "shortcut": "S sets, R resets.", "pattern": "Set/reset vocabulary." },
+    { "id": "vsl-003", "q": "NOR SR latch with $S=0,R=1$?", "opts": ["Reset: $Q=0$", "Set: $Q=1$", "Hold", "Forbidden"], "c": 0, "d": "easy", "t": "latch", "source": "Practice - Latch", "exp": ["R asserts reset.", "$Q=0$."], "shortcut": "R resets.", "pattern": "Twin of set." },
+    { "id": "vsl-004", "q": "NOR SR latch with $S=0,R=0$?", "opts": ["Hold (memory)", "Set", "Reset", "Forbidden"], "c": 0, "d": "easy", "t": "latch", "source": "Practice - Latch", "exp": ["No drive: loop keeps old $Q$.", "This is the memory state."], "shortcut": "00 holds.", "pattern": "Memory lives in 00." },
+    { "id": "vsl-005", "q": "NOR SR latch forbidden combo?", "opts": ["$S=1,R=1$", "$S=0,R=0$", "$S=1,R=0$", "$S=0,R=1$"], "c": 0, "d": "easy", "t": "latch", "source": "VEDA IIT Prelim Pattern", "exp": ["Both NORs forced $0$: $Q=\\bar{Q}=0$.", "Release races unpredictably."], "shortcut": "11 forbidden in NOR.", "pattern": "Forbidden-state must be instant." },
+    { "id": "vsl-006", "q": "D latch with $EN=1$?", "opts": ["Transparent: $Q$ follows $D$", "Holds", "Resets", "Oscillates"], "c": 0, "d": "easy", "t": "latch", "source": "Practice - Latch", "exp": ["Enabled: $Q=D$ continuously.", "Glitches pass through."], "shortcut": "EN-1 transparent.", "pattern": "Transparency motivates edge flops." },
+    { "id": "vsl-007", "q": "D latch with $EN=0$?", "opts": ["Holds last $Q$", "Follows $D$", "Resets", "Sets"], "c": 0, "d": "easy", "t": "latch", "source": "Practice - Latch", "exp": ["Disabled: loop closed, $Q$ frozen."], "shortcut": "EN-0 holds.", "pattern": "Twin of transparent." },
+    { "id": "vsl-008", "q": "Latch vs flip-flop trigger?", "opts": ["Latch level-sensitive, flop edge-triggered", "Both edge-triggered", "Both level-sensitive", "Latch edge, flop level"], "c": 0, "d": "easy", "t": "concepts", "source": "VEDA IIT Prelim Pattern", "exp": ["Latch obeys levels; flop samples edges.", "Sync systems use flops."], "shortcut": "Level-latch, edge-flop.", "pattern": "Most-tested distinction." },
+    { "id": "vsl-009", "q": "D flip-flop next state?", "opts": ["$Q^{+}=D$", "$Q^{+}=\\bar{D}$", "$Q^{+}=Q$", "$Q^{+}=0$"], "c": 0, "d": "easy", "t": "ff", "source": "VEDA IIT Mains Pattern", "exp": ["D stores: next equals data at edge."], "shortcut": "D is Direct.", "pattern": "Core flop equation." },
+    { "id": "vsl-010", "q": "T flip-flop with $T=1$?", "opts": ["Toggles", "Holds", "Resets", "Sets"], "c": 0, "d": "easy", "t": "ff", "source": "Practice - FF", "exp": ["$Q^{+}=T \\oplus Q = \\bar{Q}$.", "Each clock flips."], "shortcut": "T-1 toggles.", "pattern": "Counter bit behaviour." },
+    { "id": "vsl-011", "q": "T flip-flop with $T=0$?", "opts": ["Holds", "Toggles", "Resets", "Sets"], "c": 0, "d": "easy", "t": "ff", "source": "Practice - FF", "exp": ["$Q^{+}=0 \\oplus Q = Q$."], "shortcut": "T-0 holds.", "pattern": "Twin of toggle." },
+    { "id": "vsl-012", "q": "JK with $J=1,K=0$?", "opts": ["Set ($Q^{+}=1$)", "Reset", "Hold", "Toggle"], "c": 0, "d": "easy", "t": "ff", "source": "Practice - FF", "exp": ["$Q^{+}=1\\cdot\\bar{Q}+1\\cdot Q = 1$."], "shortcut": "10 sets.", "pattern": "JK command pair." },
+    { "id": "vsl-013", "q": "JK with $J=0,K=1$?", "opts": ["Reset ($Q^{+}=0$)", "Set", "Hold", "Toggle"], "c": 0, "d": "easy", "t": "ff", "source": "Practice - FF", "exp": ["$Q^{+}=0\\cdot\\bar{Q}+0\\cdot Q = 0$."], "shortcut": "01 resets.", "pattern": "Twin of set." },
+    { "id": "vsl-014", "q": "JK with $J=K=1$?", "opts": ["Toggle", "Hold", "Set", "Reset"], "c": 0, "d": "easy", "t": "ff", "source": "VEDA IIT Prelim Pattern", "exp": ["$Q^{+}=\\bar{Q}$.", "Fixes SR forbidden by toggling."], "shortcut": "11 toggles.", "pattern": "JK advantage over SR." },
+    { "id": "vsl-015", "q": "JK with $J=K=0$?", "opts": ["Hold", "Toggle", "Set", "Reset"], "c": 0, "d": "easy", "t": "ff", "source": "Practice - FF", "exp": ["$Q^{+}=0+Q = Q$."], "shortcut": "00 holds.", "pattern": "Completes JK quartet." },
+    { "id": "vsl-016", "q": "SR FF with $S=1,R=0$?", "opts": ["Set", "Reset", "Hold", "Forbidden"], "c": 0, "d": "easy", "t": "ff", "source": "Practice - FF", "exp": ["$Q^{+}=S+\\bar{R}Q = 1$."], "shortcut": "Clocked set.", "pattern": "SR needs SR=0." },
+    { "id": "vsl-017", "q": "Forbidden SR FF input?", "opts": ["$S=1,R=1$", "$S=0,R=0$", "$S=1,R=0$", "$S=0,R=1$"], "c": 0, "d": "easy", "t": "ff", "source": "Practice - FF", "exp": ["$SR=0$ required.", "$S=R=1$ banned."], "shortcut": "SR-zero rule.", "pattern": "Constraint appears in design checks." },
+    { "id": "vsl-018", "q": "$n$ flip-flops hold at most?", "opts": ["$2^{n}$ states", "$n$ states", "$2n$ states", "$n^{2}$ states"], "c": 0, "d": "easy", "t": "count", "source": "VEDA IIT Prelim Pattern", "exp": ["Binary combinations of $n$ bits.", "$3$ FFs: $8$ states."], "shortcut": "States double per flop.", "pattern": "Capacity rule for all counters." },
+    { "id": "vsl-019", "q": "FFs for MOD-8?", "opts": ["$3$", "$8$", "$4$", "$2$"], "c": 0, "d": "easy", "t": "count", "source": "Practice - MOD", "exp": ["$2^{3}=8$: exactly $3$."], "shortcut": "Powers of 2 are exact.", "pattern": "MOD-8/16/32 instant." },
+    { "id": "vsl-020", "q": "FFs for MOD-10?", "opts": ["$4$", "$3$", "$10$", "$5$"], "c": 0, "d": "easy", "t": "count", "source": "VEDA IIT Prelim Pattern", "exp": ["$8 < 10 \\le 16$: $4$ FFs."], "shortcut": "Bracket between powers.", "pattern": "Decade counter sizing." },
+    { "id": "vsl-021", "q": "MOD-5 needs?", "opts": ["$3$ FFs", "$5$ FFs", "$2$ FFs", "$4$ FFs"], "c": 0, "d": "easy", "t": "count", "source": "Practice - MOD", "exp": ["$4 < 5 \\le 8$: $3$ FFs."], "shortcut": "5-8 need 3.", "pattern": "Small MOD bracketing." },
+    { "id": "vsl-022", "q": "Ring counter with $4$ FFs: states?", "opts": ["$4$", "$8$", "$16$", "$2$"], "c": 0, "d": "easy", "t": "ring", "source": "VEDA IIT Prelim Pattern", "exp": ["One-hot: one state per position.", "$1000,0100,0010,0001$."], "shortcut": "Ring n.", "pattern": "One-hot signature." },
+    { "id": "vsl-023", "q": "Johnson counter with $4$ FFs: states?", "opts": ["$8$", "$4$", "$16$", "$6$"], "c": 0, "d": "easy", "t": "ring", "source": "VEDA IIT Prelim Pattern", "exp": ["Twisted ring: $2n = 8$.", "0000..1111..0001 sequence."], "shortcut": "Johnson double-n.", "pattern": "Twin of ring count." },
+    { "id": "vsl-024", "q": "Moore output depends on?", "opts": ["State only", "State and input", "Input only", "Clock only"], "c": 0, "d": "easy", "t": "fsm", "source": "VEDA IIT Mains Pattern", "exp": ["$Z = f(state)$.", "Inside the circle."], "shortcut": "Moore-in-circle.", "pattern": "Classification must be instant." },
+    { "id": "vsl-025", "q": "Mealy output depends on?", "opts": ["State and input", "State only", "Input only", "Nothing"], "c": 0, "d": "easy", "t": "fsm", "source": "VEDA IIT Mains Pattern", "exp": ["$Z = f(state,input)$.", "On the arc as in/out."], "shortcut": "Mealy-on-arc.", "pattern": "Twin of Moore." },
+    { "id": "vsl-026", "q": "Which needs fewer states for $1011$ (non-overlap)?", "opts": ["Mealy ($4$)", "Moore ($4$)", "Equal", "Neither works"], "c": 0, "d": "easy", "t": "fsm", "source": "Practice - FSM", "exp": ["Mealy outputs on arc: $4$ states.", "Moore needs terminal state: $5$."], "shortcut": "Mealy-minimal.", "pattern": "State-count trade-off." },
+    { "id": "vsl-027", "q": "Setup time means?", "opts": ["Data stable BEFORE clock edge", "Data stable AFTER edge", "Clock delay", "Output delay"], "c": 0, "d": "easy", "t": "timing", "source": "VEDA IIT Mains Pattern", "exp": ["Setup guards sampling: $D$ ready before edge."], "shortcut": "Setup-before.", "pattern": "Setup/hold pair." },
+    { "id": "vsl-028", "q": "Hold time means?", "opts": ["Data stable AFTER clock edge", "Data stable BEFORE edge", "Clock delay", "Output delay"], "c": 0, "d": "easy", "t": "timing", "source": "VEDA IIT Mains Pattern", "exp": ["Hold keeps $D$ past the edge so sampling completes."], "shortcut": "Hold-after.", "pattern": "Twin of setup." },
+    { "id": "vsl-029", "q": "Clock-to-Q means?", "opts": ["Edge to new $Q$ delay", "Data to clock delay", "Clear pulse width", "Period"], "c": 0, "d": "easy", "t": "timing", "source": "Practice - Timing", "exp": ["Flop reacts after $t_{cq}$.", "Waveforms shift right by it."], "shortcut": "Edge-then-Q.", "pattern": "Delay chain start." },
+    { "id": "vsl-030", "q": "Async clear acts?", "opts": ["Immediately, any time", "Only on clock edge", "Only on reset", "Never"], "c": 0, "d": "easy", "t": "timing", "source": "Practice - Async", "exp": ["Async overrides clock at once.", "$Q=0$ without waiting."], "shortcut": "Async-at-once.", "pattern": "Async vs sync priority." },
+    { "id": "vsl-031", "q": "$4$-bit SISO delay (clocks in to out)?", "opts": ["$4$", "$1$", "$2$", "$8$"], "c": 0, "d": "easy", "t": "register", "source": "Practice - Registers", "exp": ["Bit shifts one stage per clock.", "$4$ stages: $4$ clocks latency."], "shortcut": "SISO latency = stages.", "pattern": "Shift timing." },
+    { "id": "vsl-032", "q": "Ripple counter clocking?", "opts": ["Each stage by previous $Q$", "All by common clock", "By data", "No clock"], "c": 0, "d": "easy", "t": "counter", "source": "Practice - Counters", "exp": ["Asynchronous chain: ripples through.", "Delay accumulates."], "shortcut": "Ripple-chains-clock.", "pattern": "Ripple vs sync core difference." },
+    { "id": "vsl-033", "q": "Synchronous counter clocking?", "opts": ["Common clock to all FFs", "Chained $Q$ clocks", "No clock", "Two clocks"], "c": 0, "d": "easy", "t": "counter", "source": "Practice - Counters", "exp": ["Parallel clock, one $t_{pd}$ per step.", "Clean at speed."], "shortcut": "Sync-shares-clock.", "pattern": "Twin of ripple." },
+    { "id": "vsl-034", "q": "Ring init needs?", "opts": ["One-hot ($1000$)", "All zero", "All one", "Random"], "c": 0, "d": "easy", "t": "ring", "source": "Practice - Ring", "exp": ["Single $1$ circulates.", "$0000$ locks (no $1$ to move)."], "shortcut": "Ring needs its one.", "pattern": "Init discipline." },
+    { "id": "vsl-035", "q": "Johnson init commonly?", "opts": ["All zero ($0000$)", "One-hot", "All one", "Impossible"], "c": 0, "d": "easy", "t": "ring", "source": "Practice - Johnson", "exp": ["$0000$ is a valid Johnson state.", "Sequence starts cleanly."], "shortcut": "Johnson zeros OK.", "pattern": "Contrast with ring lock." },
+    { "id": "vsl-036", "q": "Mealy output can?", "opts": ["Glitch with input changes", "Never change", "Change only yearly", "Need no input"], "c": 0, "d": "easy", "t": "fsm", "source": "Practice - FSM", "exp": ["Combinational input path feeds output.", "Input hazards pass through."], "shortcut": "Mealy-may-glitch.", "pattern": "Timing cost of compactness." },
+    { "id": "vsl-037", "q": "Moore output changes?", "opts": ["Only on clock edges", "Any input wiggle", "Never", "On reset only"], "c": 0, "d": "easy", "t": "fsm", "source": "Practice - FSM", "exp": ["Registered state drives output.", "Clean synchronous changes."], "shortcut": "Moore-on-edge.", "pattern": "Timing benefit of extra state." },
+    { "id": "vsl-038", "q": "State table lists?", "opts": ["Present, input, next, output", "Only outputs", "Only clocks", "Resistors"], "c": 0, "d": "easy", "t": "fsm", "source": "Practice - FSM", "exp": ["Tabular diagram: all transitions enumerated.", "Synthesis-ready form."], "shortcut": "Table = diagram in rows.", "pattern": "Representation fluency." },
+    { "id": "vsl-039", "q": "D excitation for $0\\to1$?", "opts": ["$D=1$", "$D=0$", "$D=X$", "$D=Q$"], "c": 0, "d": "easy", "t": "excitation", "source": "Practice - Excitation", "exp": ["$D$ equals desired next: $1$."], "shortcut": "D-is-next.", "pattern": "Trivial excitation." },
+    { "id": "vsl-040", "q": "T excitation for $1\\to0$?", "opts": ["$T=1$", "$T=0$", "$T=X$", "$T=Q$"], "c": 0, "d": "easy", "t": "excitation", "source": "Practice - Excitation", "exp": ["Change needs toggle: $T = Q \\oplus Q^{+} = 1$."], "shortcut": "Change-means-1.", "pattern": "T detects transitions." },
+    { "id": "vsl-041", "q": "NAND SR latch holds when?", "opts": ["$\\bar{S}=1,\\bar{R}=1$", "$\\bar{S}=0,\\bar{R}=0$", "$\\bar{S}=0,\\bar{R}=1$", "Never"], "c": 0, "d": "medium", "t": "latch", "source": "Practice - Latch", "exp": ["Inactive-high holds.", "Either low drives set/reset."], "shortcut": "NAND holds at 11.", "pattern": "Active-low polarity." },
+    { "id": "vsl-042", "q": "NAND SR forbidden?", "opts": ["$\\bar{S}=0,\\bar{R}=0$", "$\\bar{S}=1,\\bar{R}=1$", "$\\bar{S}=0,\\bar{R}=1$", "$\\bar{S}=1,\\bar{R}=0$"], "c": 0, "d": "medium", "t": "latch", "source": "Practice - Latch", "exp": ["Both low force both outputs $1$.", "Mirror of NOR case."], "shortcut": "00 forbidden in NAND.", "pattern": "Polarity twin." },
+    { "id": "vsl-043", "q": "Gated SR with $EN=0$?", "opts": ["Holds regardless of $S,R$", "Follows $S,R$", "Resets", "Oscillates"], "c": 0, "d": "medium", "t": "latch", "source": "Practice - Latch", "exp": ["Enable blocks inputs.", "Latch keeps state."], "shortcut": "EN gates inputs.", "pattern": "Enable discipline." },
+    { "id": "vsl-044", "q": "SR excitation $0\\to0$?", "opts": ["$S=0,R=X$", "$S=1,R=0$", "$S=0,R=1$", "$S=1,R=1$"], "c": 0, "d": "medium", "t": "excitation", "source": "VEDA IIT Mains Pattern", "exp": ["Stay $0$: do not set, reset don't-care."], "shortcut": "Stay-0: S0.", "pattern": "Excitation rows." },
+    { "id": "vsl-045", "q": "SR excitation $1\\to1$?", "opts": ["$S=X,R=0$", "$S=0,R=0$", "$S=1,R=1$", "$S=0,R=1$"], "c": 0, "d": "medium", "t": "excitation", "source": "VEDA IIT Mains Pattern", "exp": ["Stay $1$: do not reset, set don't-care."], "shortcut": "Stay-1: R0.", "pattern": "Twin row." },
+    { "id": "vsl-046", "q": "JK excitation $0\\to1$?", "opts": ["$J=1,K=X$", "$J=0,K=0$", "$J=0,K=1$", "$J=1,K=1$ only"], "c": 0, "d": "medium", "t": "excitation", "source": "VEDA IIT Mains Pattern", "exp": ["Must set: $J=1$, $K$ free (toggle also works)."], "shortcut": "Go-1: J1.", "pattern": "J drives 0-to-1." },
+    { "id": "vsl-047", "q": "JK excitation $1\\to0$?", "opts": ["$J=X,K=1$", "$J=1,K=0$", "$J=0,K=0$", "$J=1,K=1$ only"], "c": 0, "d": "medium", "t": "excitation", "source": "VEDA IIT Mains Pattern", "exp": ["Must reset: $K=1$, $J$ free."], "shortcut": "Go-0: K1.", "pattern": "K drives 1-to-0." },
+    { "id": "vsl-048", "q": "D FF: $D=0$ at edge, $Q$ was $1$?", "opts": ["$Q^{+}=0$", "$Q^{+}=1$", "Holds $1$", "Oscillates"], "c": 0, "d": "medium", "t": "ff-wave", "source": "Practice - Waveform", "exp": ["Sample $0$: $Q$ becomes $0$ after $t_{cq}$."], "shortcut": "Sample-is-next.", "pattern": "Edge sampling." },
+    { "id": "vsl-049", "q": "T chain of $3$ stages divides by?", "opts": ["$8$", "$3$", "$6$", "$4$"], "c": 0, "d": "medium", "t": "counter", "source": "Practice - Dividers", "exp": ["Each halves: $2^{3} = 8$."], "shortcut": "n stages divide 2^n.", "pattern": "Divider math." },
+    { "id": "vsl-050", "q": "MOD-12 needs? Resets at?", "opts": ["$4$ FFs, reset $1100$", "$3$ FFs, reset $1100$", "$4$ FFs, reset $1011$", "$5$ FFs, reset $1100$"], "c": 0, "d": "medium", "t": "counter", "source": "VEDA IIT Prelim Pattern", "exp": ["$8 < 12 \\le 16$: $4$ FFs.", "$12 = 1100$: clear on $Q_{3}Q_{2}$."], "shortcut": "12 is 1100.", "pattern": "Reset at first unused." },
+    { "id": "vsl-051", "q": "MOD-10 resets at? Clears on?", "opts": ["$1010$, $Q_{3}Q_{1}$", "$1001$, $Q_{3}Q_{0}$", "$1010$, $Q_{2}Q_{1}$", "$1111$, all"], "c": 0, "d": "medium", "t": "counter", "source": "VEDA IIT Prelim Pattern", "exp": ["First unused $10 = 1010$.", "Ones at $Q_{3},Q_{1}$: NAND them to clear."], "shortcut": "Decade 1010.", "pattern": "Minimal reset product." },
+    { "id": "vsl-052", "q": "MOD-5 resets at?", "opts": ["$101$", "$100$", "$110$", "$111$"], "c": 0, "d": "medium", "t": "counter", "source": "Practice - Counters", "exp": ["First unused after $0$-$4$ is $5 = 101$."], "shortcut": "Reset at M itself.", "pattern": "Twin rule." },
+    { "id": "vsl-053", "q": "Ripple $3$-bit max frequency vs sync?", "opts": ["Lower (delays add)", "Higher", "Equal", "Zero"], "c": 0, "d": "medium", "t": "timing", "source": "Practice - Timing", "exp": ["Ripple waits $3$ stages per step.", "Sync waits one."], "shortcut": "Ripple-slow.", "pattern": "Speed hierarchy." },
+    { "id": "vsl-054", "q": "$T_{0}$ in sync binary up-counter?", "opts": ["$1$", "$Q_{0}$", "$Q_{1}$", "$0$"], "c": 0, "d": "medium", "t": "counter", "source": "Practice - Sync", "exp": ["LSB toggles every clock.", "$T_{0}=1$ always."], "shortcut": "LSB always flips.", "pattern": "Sync toggle ladder." },
+    { "id": "vsl-055", "q": "$T_{1}$ in sync binary up-counter?", "opts": ["$Q_{0}$", "$1$", "$Q_{1}$", "$0$"], "c": 0, "d": "medium", "t": "counter", "source": "Practice - Sync", "exp": ["Bit 1 flips when bit 0 is $1$ (carry)."], "shortcut": "Toggle on lower-ones.", "pattern": "Carry-chain logic." },
+    { "id": "vsl-056", "q": "$T_{2}$ in sync binary up-counter?", "opts": ["$Q_{1}Q_{0}$", "$Q_{0}$", "$1$", "$Q_{2}$"], "c": 0, "d": "medium", "t": "counter", "source": "Practice - Sync", "exp": ["Bit 2 flips when $Q_{1}Q_{0}=11$."], "shortcut": "AND of all lower.", "pattern": "General toggle rule." },
+    { "id": "vsl-057", "q": "Ring $1000$ next (shift right)?", "opts": ["$0100$", "$0001$", "$1000$", "$0000$"], "c": 0, "d": "medium", "t": "ring", "source": "Practice - Ring", "exp": ["The $1$ moves one position.", "$1000 \\to 0100$."], "shortcut": "Follow the one.", "pattern": "Shift-order states." },
+    { "id": "vsl-058", "q": "Johnson $0000$ next ($4$ FF)?", "opts": ["$1000$", "$0001$", "$0000$", "$1111$"], "c": 0, "d": "medium", "t": "ring", "source": "Practice - Johnson", "exp": ["Last $\\bar{Q}=1$ feeds first.", "$0000 \\to 1000$."], "shortcut": "Inverted feedback fills ones.", "pattern": "Johnson fill phase." },
+    { "id": "vsl-059", "q": "Johnson $1111$ next ($4$ FF)?", "opts": ["$0111$", "$1111$", "$1110$", "$0000$"], "c": 0, "d": "medium", "t": "ring", "source": "Practice - Johnson", "exp": ["Last $\\bar{Q}=0$ feeds first.", "$1111 \\to 0111$ (emptying)."], "shortcut": "Zeros then empty.", "pattern": "Johnson empty phase." },
+    { "id": "vsl-060", "q": "Decode Johnson state $1110$ with?", "opts": ["One $2$-input AND", "One $4$-input AND", "No gate", "Clock"], "c": 0, "d": "medium", "t": "ring", "source": "Practice - Decode", "exp": ["Johnson states decode with $2$ inputs.", "e.g. $Q_{2}\\bar{Q_{3}}$ style pair."], "shortcut": "Johnson-2-input.", "pattern": "Decode-cost advantage." },
+    { "id": "vsl-061", "q": "Up/down select uses?", "opts": ["$MUX$ per stage on $M$", "Extra clock", "Bigger supply", "No logic"], "c": 0, "d": "medium", "t": "counter", "source": "Practice - UpDown", "exp": ["$M$ picks $Q$ (up) or $\\bar{Q}$ (down) chain."], "shortcut": "M steers carry source.", "pattern": "Control overhead." },
+    { "id": "vsl-062", "q": "$f_{max}$ with $t_{cq}=2,t_{comb}=5,t_{su}=1$ns?", "opts": ["$125MHz$", "$500MHz$", "$200MHz$", "$1GHz$"], "c": 0, "d": "medium", "t": "timing", "source": "Practice - Fmax", "exp": ["$T_{min}=2+5+1=8ns$.", "$1/8ns = 125MHz$."], "shortcut": "Add-then-invert.", "pattern": "Period-budget math." },
+    { "id": "vsl-063", "q": "Metastability risk when?", "opts": ["Setup/hold violated", "Clock too slow", "Reset asserted", "Power off"], "c": 0, "d": "medium", "t": "timing", "source": "VEDA IIT Mains Pattern", "exp": ["Sampling changing data traps mid-rail.", "Resolves randomly late."], "shortcut": "Changing-data danger.", "pattern": "Why synchronizers exist." },
+    { "id": "vsl-064", "q": "Two-flop synchronizer purpose?", "opts": ["Absorb CDC metastability", "Divide clock", "Store bytes", "Drive outputs"], "c": 0, "d": "medium", "t": "timing", "source": "Practice - CDC", "exp": ["First may go metastable; second samples settled value.", "Raises MTBF enormously."], "shortcut": "Double-flop crossing.", "pattern": "CDC standard." },
+    { "id": "vsl-065", "q": "Skew hurts?", "opts": ["Setup (or hold) margin", "Nothing ever", "Only power", "Only reset"], "c": 0, "d": "medium", "t": "timing", "source": "Practice - Skew", "exp": ["Late clock steals setup time downstream.", "Budget it in $T_{min}$."], "shortcut": "Skew eats margin.", "pattern": "Clock-tree concern." },
+    { "id": "vsl-066", "q": "D before edge $k$ equals? (design inversion)", "opts": ["$Q$ after edge $k$", "$Q$ before edge $k$", "Clock", "$0$ always"], "c": 0, "d": "medium", "t": "waveform", "source": "VEDA IIT Mains Pattern", "exp": ["$D$ sampled at edge becomes next $Q$.", "So required $D_{k} = Q^{+}_{k}$."], "shortcut": "D-leads-Q-lags.", "pattern": "Q4 inversion rule." },
+    { "id": "vsl-067", "q": "$Q$ after edges: $0,1,1$. $D$ before edges?", "opts": ["$0,1,1$", "$1,1,0$", "$0,0,0$", "$1,0,1$"], "c": 0, "d": "medium", "t": "waveform", "source": "Practice - Waveform", "exp": ["Shift back one edge each.", "$D1=0, D2=1, D3=1$."], "shortcut": "Copy Q back one slot.", "pattern": "Mechanical inversion." },
+    { "id": "vsl-068", "q": "$Q$ changes?", "opts": ["Only at edges (+$t_{cq}$)", "With every $D$ wiggle", "At mid-cycle", "Randomly"], "c": 0, "d": "medium", "t": "waveform", "source": "Practice - Waveform", "exp": ["Edge-triggered: frozen between edges.", "Shifted by clock-to-Q."], "shortcut": "Edges move Q.", "pattern": "Sketch discipline." },
+    { "id": "vsl-069", "q": "Moore $1011$: meaning of $S_{2}$?", "opts": ["Got $10$", "Got $1$", "Got $101$", "Detected"], "c": 0, "d": "medium", "t": "fsm1011", "source": "VEDA IIT Sample Pattern (Q5)", "exp": ["$S_{0}$ idle, $S_{1}$ got $1$, $S_{2}$ got $10$.", "$S_{3}$ got $101$, $S_{4}$ detected."], "shortcut": "State = prefix matched.", "pattern": "Prefix naming." },
+    { "id": "vsl-070", "q": "Moore $1011$: $S_{1},0\\to$?", "opts": ["$S_{2}$", "$S_{0}$", "$S_{1}$", "$S_{4}$"], "c": 0, "d": "medium", "t": "fsm1011", "source": "VEDA IIT Sample Pattern (Q5)", "exp": ["Had $1$, see $0$: now $10$.", "Go $S_{2}$."], "shortcut": "Append the bit.", "pattern": "Transition by prefix extension." },
+    { "id": "vsl-071", "q": "Moore $1011$: $S_{1},1\\to$?", "opts": ["$S_{1}$", "$S_{0}$", "$S_{2}$", "$S_{4}$"], "c": 0, "d": "medium", "t": "fsm1011", "source": "VEDA IIT Sample Pattern (Q5)", "exp": ["Had $1$, see $1$: still just $1$.", "Self-loop $S_{1}$."], "shortcut": "Extra ones stay.", "pattern": "Self-loop discipline." },
+    { "id": "vsl-072", "q": "Moore $1011$: $S_{2},1\\to$?", "opts": ["$S_{3}$", "$S_{0}$", "$S_{1}$", "$S_{4}$"], "c": 0, "d": "medium", "t": "fsm1011", "source": "VEDA IIT Sample Pattern (Q5)", "exp": ["Had $10$, see $1$: now $101$.", "Go $S_{3}$."], "shortcut": "Extend the prefix.", "pattern": "Forward progress." },
+    { "id": "vsl-073", "q": "Moore $1011$: $S_{2},0\\to$?", "opts": ["$S_{0}$", "$S_{1}$", "$S_{3}$", "$S_{4}$"], "c": 0, "d": "medium", "t": "fsm1011", "source": "VEDA IIT Sample Pattern (Q5)", "exp": ["Had $10$, see $0$: $100$ has no useful prefix.", "Restart $S_{0}$."], "shortcut": "Dead end restarts.", "pattern": "Fallback reasoning." },
+    { "id": "vsl-074", "q": "Moore $1011$: $S_{3},0\\to$?", "opts": ["$S_{2}$", "$S_{0}$", "$S_{1}$", "$S_{4}$"], "c": 0, "d": "medium", "t": "fsm1011", "source": "VEDA IIT Sample Pattern (Q5)", "exp": ["Had $101$, see $0$: $1010$ ends with $10$.", "Longest prefix-suffix: $S_{2}$."], "shortcut": "Tail-prefix match.", "pattern": "Overlap logic inside Moore." },
+    { "id": "vsl-075", "q": "Moore $1011$: $S_{3},1\\to$?", "opts": ["$S_{4}$ (output $1$)", "$S_{0}$", "$S_{1}$", "$S_{2}$"], "c": 0, "d": "medium", "t": "fsm1011", "source": "VEDA IIT Sample (Q5)", "exp": ["Had $101$, see $1$: full $1011$.", "Enter $S_{4}$, $Z=1$."], "shortcut": "Final bit detects.", "pattern": "Detection transition." },
+    { "id": "vsl-076", "q": "Non-overlap $S_{4},0\\to$? $S_{4},1\\to$?", "opts": ["$S_{0}$ and $S_{1}$", "$S_{2}$ and $S_{1}$", "$S_{0}$ and $S_{0}$", "$S_{4}$ and $S_{4}$"], "c": 0, "d": "medium", "t": "fsm1011", "source": "VEDA IIT Sample (Q5)", "exp": ["Non-overlapping restarts fresh.", "$0$: nothing started ($S_{0}$). $1$: fresh prefix ($S_{1}$)."], "shortcut": "Restart, keep fresh 1.", "pattern": "Non-overlap signature." },
+    { "id": "vsl-077", "q": "Overlapping $S_{4},0\\to$?", "opts": ["$S_{2}$", "$S_{0}$", "$S_{4}$", "$S_{1}$"], "c": 0, "d": "medium", "t": "fsm1011", "source": "Practice - Overlap", "exp": ["Tail $10110$ ends with prefix $10$.", "Reuse: go $S_{2}$."], "shortcut": "Tail reuses prefix.", "pattern": "Overlap vs restart contrast." },
+    { "id": "vsl-078", "q": "Output $Z$ in Moore $1011$?", "opts": ["$1$ only in $S_{4}$", "$1$ in all states", "$1$ on arcs", "$0$ always"], "c": 0, "d": "medium", "t": "fsm1011", "source": "VEDA IIT Sample (Q5)", "exp": ["Moore output lives in state.", "$Z(S_{4})=1$, else $0$."], "shortcut": "Circle holds output.", "pattern": "Moore drawing rule." },
+    { "id": "vsl-079", "q": "FFs for $5$-state Moore $1011$ (binary)?", "opts": ["$3$", "$5$", "$2$", "$4$"], "c": 0, "d": "medium", "t": "fsm-code", "source": "Practice - Encoding", "exp": ["$2^{2}=4 < 5 \\le 8$: $3$ FFs.", "$3$ codes unused."], "shortcut": "States bracket like MOD.", "pattern": "Binary assignment cost." },
+    { "id": "vsl-080", "q": "One-hot $5$-state needs? Benefit?", "opts": ["$5$ FFs, shallow fast decode", "$3$ FFs, slow", "$5$ FFs, slow", "$1$ FF"], "c": 0, "d": "medium", "t": "fsm-code", "source": "Practice - Encoding", "exp": ["One FF per state.", "Decode = single $Q$; fast, more area."], "shortcut": "One-hot trades area for speed.", "pattern": "FPGA favourite." },
+    { "id": "vsl-081", "q": "MOD-4 up-counter ($2$ D FFs): $D_{0}$?", "opts": ["$\\bar{Q_{0}}$", "$Q_{0}$", "$Q_{1}$", "$1$"], "c": 0, "d": "hard", "t": "design", "source": "Practice - Design", "exp": ["$D_{0}$ column over $00,01,10,11$: $1,0,1,0$.", "Alone in $Q_{0}$: $D_{0} = \\bar{Q_{0}}$."], "shortcut": "LSB toggles: NOT itself.", "pattern": "Counter LSB rule." },
+    { "id": "vsl-082", "q": "MOD-4 up-counter: $D_{1}$?", "opts": ["$Q_{1} \\oplus Q_{0}$", "$Q_{1}$", "$Q_{0}$", "$0$"], "c": 0, "d": "hard", "t": "design", "source": "Practice - Design", "exp": ["$D_{1}$ column: $0,1,1,0$.", "XOR shape: $D_{1} = Q_{1} \\oplus Q_{0}$."], "shortcut": "MSB XORs below.", "pattern": "Binary count logic." },
+    { "id": "vsl-083", "q": "Unused FSM codes should?", "opts": ["Route to reset (safe)", "Be ignored always", "Oscillate", "Float"], "c": 0, "d": "hard", "t": "design", "source": "VEDA IIT Mains Pattern", "exp": ["Illegal states from upset must recover.", "Safe beats minimal gates."], "shortcut": "Safe recovery first.", "pattern": "Silicon robustness." },
+    { "id": "vsl-084", "q": "Mealy $1011$ states (non-overlap)?", "opts": ["$4$", "$5$", "$3$", "$6$"], "c": 0, "d": "hard", "t": "fsm", "source": "Practice - Mealy", "exp": ["Output on $S_{3},1$ arc: no terminal state.", "$S_{0},S_{1},S_{2},S_{3}$ suffice."], "shortcut": "Arc-output saves one.", "pattern": "Mealy compactness proof." },
+    { "id": "vsl-085", "q": "Trace $1011$ on non-overlap Moore: $Z$?", "opts": ["$1$ at $4$th bit", "$1$ at $3$rd bit", "$0$ always", "$1$ twice"], "c": 0, "d": "hard", "t": "fsm-trace", "source": "Practice - Trace", "exp": ["Walk $S_{0}$-1$S_{1}$-0$S_{2}$-1$S_{3}$-1$S_{4}$.", "$Z=1$ on entering $S_{4}$ (after $4$th edge)."], "shortcut": "Walk the arcs.", "pattern": "Trace discipline." },
+    { "id": "vsl-086", "q": "Trace $1011011$ overlapping $1011$: detections?", "opts": ["$2$ (at bits $4$ and $7$)", "$1$", "$0$", "$3$"], "c": 0, "d": "hard", "t": "fsm-trace", "source": "Practice - Overlap", "exp": ["Bits 1-4 walk S0-1S1-0S2-1S3-1S4: detect 1 at bit 4.", "Bit 5 = 0: S4-0S2 (tail 10 reused).", "Bit 6 = 1: S2-1S3. Bit 7 = 1: S3-1S4: detect 2."], "shortcut": "Overlap reuses the tail.", "pattern": "Why overlap matters." },
+    { "id": "vsl-087", "q": "Ripple $4$-bit period ($t_{ff}=3$ns) order?", "opts": ["$12$ns", "$3$ns", "$6$ns", "$48$ns"], "c": 0, "d": "hard", "t": "timing", "source": "Practice - Ripple", "exp": ["About $n \\times t_{ff} = 12$ns."], "shortcut": "Multiply stages.", "pattern": "Ripple scaling." },
+    { "id": "vsl-088", "q": "Sync $4$-bit period ($t_{cq}=2,t_{and}=3,t_{su}=1$)?", "opts": ["$6$ns", "$24$ns", "$2$ns", "$12$ns"], "c": 0, "d": "hard", "t": "timing", "source": "Practice - Sync", "exp": ["One $t_{cq}+t_{AND}+t_{su} = 6$ns.", "Independent of $n$ (to first order)."], "shortcut": "One stage only.", "pattern": "Sync scaling win." },
+    { "id": "vsl-089", "q": "D FF $D=\\bar{Q}$ (toggle) from $0$: first $3$ $Q$?", "opts": ["$1,0,1$", "$0,0,0$", "$1,1,1$", "$0,1,1$"], "c": 0, "d": "hard", "t": "toggle", "source": "Practice - Toggle", "exp": ["$0 \\to D=1 \\to 1 \\to D=0 \\to 0 \\to D=1 \\to 1$."], "shortcut": "Flip each edge.", "pattern": "Toggle loop." },
+    { "id": "vsl-090", "q": "Two-DFF shift $DIN=1,1,0$ from $00$: $Q_{0}Q_{1}$ after $3$ edges?", "opts": ["$01$", "$11$", "$10$", "$00$"], "c": 0, "d": "hard", "t": "shift", "source": "Practice - Shift", "exp": ["E1: $10$. E2: $11$. E3: $Q_{0}=0, Q_{1}=1$: $01$."], "shortcut": "Shift DIN right each edge.", "pattern": "Pipeline walk." },
+    { "id": "vsl-091", "q": "Race-around in level-clocked JK?", "opts": ["Oscillates while $CLK=1$", "Never happens", "Only at power-on", "Only in D FFs"], "c": 0, "d": "hard", "t": "jk-race", "source": "Practice - JK", "exp": ["$J=K=1$ toggles repeatedly during long high clock.", "Master-slave/edge triggering cures it."], "shortcut": "Level-11 races.", "pattern": "Why edge triggering won." },
+    { "id": "vsl-092", "q": "Master-slave JK gives?", "opts": ["Edge-like single sample", "Level transparency", "Combinational output", "No clock needed"], "c": 0, "d": "hard", "t": "jk-race", "source": "Practice - JK", "exp": ["Master loads, slave copies on opposite phase.", "One update per cycle."], "shortcut": "Two-phase single update.", "pattern": "Race cure." },
+    { "id": "vsl-093", "q": "Async preset ($PRE=0$) does?", "opts": ["Forces $Q=1$ at once", "Waits for clock", "Forces $Q=0$", "Toggles"], "c": 0, "d": "hard", "t": "async", "source": "Practice - Async", "exp": ["Preset overrides everything immediately."], "shortcut": "Preset-ones-now.", "pattern": "Async priority." },
+    { "id": "vsl-094", "q": "3-bit ripple sequence?", "opts": ["$000$-$111$ ($8$ states)", "$000$-$100$", "$4$ states", "$16$ states"], "c": 0, "d": "hard", "t": "counter", "source": "Practice - Ripple", "exp": ["Binary $0$-$7$: $8$ states, MOD-$8$."], "shortcut": "3 bits, 8 counts.", "pattern": "Full-sequence baseline." },
+    { "id": "vsl-095", "q": "Decade counter is MOD?", "opts": ["$8$", "$10$", "$12$", "$16$"], "c": 1, "d": "hard", "t": "counter", "source": "GATE Pattern Practice", "exp": ["Decade = ten states $0$-$9$."], "shortcut": "Deca-ten.", "pattern": "Name-to-MOD mapping." },
+    { "id": "vsl-096", "q": "Ring state decoded by?", "opts": ["Single $Q$ (no gate)", "$4$-input AND", "XOR tree", "Clock"], "c": 0, "d": "hard", "t": "ring", "source": "Practice - Decode", "exp": ["One-hot: state $i$ means $Q_{i}=1$.", "Zero decode gates."], "shortcut": "Hot bit is the decode.", "pattern": "Ring area advantage." },
+    { "id": "vsl-097", "q": "Ripple down-counter stages clocked by?", "opts": ["Previous $\\bar{Q}$", "Previous $Q$", "Common clock", "Data"], "c": 0, "d": "hard", "t": "counter", "source": "Practice - Down", "exp": ["Falling $\\bar{Q}$ edges step down-count.", "Up uses $Q$."], "shortcut": "Down-uses-bar.", "pattern": "Direction wiring." },
+    { "id": "vsl-098", "q": "PIPO vs SISO?", "opts": ["Parallel load/hold vs serial delay", "Same thing", "SISO is faster", "PIPO needs no clock"], "c": 0, "d": "hard", "t": "register", "source": "Practice - Registers", "exp": ["PIPO captures a word each clock.", "SISO pipelines bits with latency."], "shortcut": "Parallel-word vs serial-stream.", "pattern": "Register roles." },
+    { "id": "vsl-099", "q": "Gray counter advantage?", "opts": ["One-bit change, fewer glitches", "More states", "No clock", "Fewer FFs"], "c": 0, "d": "hard", "t": "codes", "source": "Practice - Codes", "exp": ["Adjacent Gray codes differ once.", "No multi-bit race in decode."], "shortcut": "Gray glides.", "pattern": "Why maps use Gray." },
+    { "id": "vsl-100", "q": "Recovery/removal apply to?", "opts": ["Async clear near clock edge", "Sync data always", "Power rails", "Combinational loops"], "c": 0, "d": "hard", "t": "timing", "source": "Practice - Async", "exp": ["Async release needs setup/hold-like margins.", "Same metastability physics."], "shortcut": "Async has timing too.", "pattern": "Reset-domain care." },
+    { "id": "vsl-101", "q": "VEDA Q4 rule: $D$ before edge $k$? [PYQ - VEDA IIT Sample, Sequential]", "opts": ["$Q$ after edge $k$", "$Q$ before edge $k$", "Always $1$", "Always $0$"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Sequential (verified method)", "exp": ["D sampled at edge k becomes Q after edge k.", "So required D(k) = observed Q-after-k.", "Shift the waveform back one edge."], "shortcut": "D-leads-Q-lags.", "pattern": "VEDA Q4 inversion." },
+    { "id": "vsl-102", "q": "VEDA Q4: same present-$Q$ needs $D=0$ once, $D=1$ later. Meaning? [PYQ]", "opts": ["Need more state (add FF)", "No circuit exists", "Use a latch", "Remove the clock"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Pattern - Sequential (verified method)", "exp": ["One present state cannot demand two futures.", "Conflict proves hidden state: widen to 2 FFs."], "shortcut": "Conflict means add state.", "pattern": "State-width diagnosis." },
+    { "id": "vsl-103", "q": "VEDA Q5: states in sync Moore non-overlapping $1011$? [PYQ]", "opts": ["$5$", "$4$", "$3$", "$8$"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Sequential (verified)", "exp": ["S0 idle, S1 got 1, S2 got 10, S3 got 101, S4 detected.", "Output lives in S4: 5 states."], "shortcut": "Prefixes plus terminal.", "pattern": "VEDA Q5 count." },
+    { "id": "vsl-104", "q": "VEDA Q5: $Z=1$ where? [PYQ]", "opts": ["Only $S_{4}$", "All states", "On arcs", "Never"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Sequential (verified)", "exp": ["Moore output in state.", "Z(S4)=1, else 0."], "shortcut": "Circle holds output.", "pattern": "VEDA Q5 output." },
+    { "id": "vsl-105", "q": "VEDA Q5 non-overlap: $S_{4}$ on $0$/$1$? [PYQ]", "opts": ["$S_{0}$ and $S_{1}$", "$S_{2}$ and $S_{1}$", "$S_{0}$ and $S_{0}$", "$S_{4}$ and $S_{4}$"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Sequential (verified)", "exp": ["Restart fresh on 0 (S0).", "Fresh 1 on 1 (S1)."], "shortcut": "Restart, keep fresh 1.", "pattern": "VEDA Q5 restart." },
+    { "id": "vsl-106", "q": "FFs for MOD-16? [GATE-pattern PYQ]", "opts": ["$4$", "$16$", "$5$", "$3$"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (counters)", "exp": ["2^4 = 16 exactly.", "Full 4-bit sequence."], "shortcut": "16-4 reflex.", "pattern": "Power-of-2 sizing." },
+    { "id": "vsl-107", "q": "States of $5$-FF Johnson? [GATE-pattern PYQ]", "opts": ["$10$", "$5$", "$32$", "$25$"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (counters)", "exp": ["2n = 10.", "Linear, not exponential."], "shortcut": "Johnson double-n.", "pattern": "Shift-counter math." },
+    { "id": "vsl-108", "q": "$T=1, Q=0$: next? [GATE-pattern PYQ]", "opts": ["$1$", "$0$", "Metastable", "High-Z"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (FF)", "exp": ["Toggle: 0 becomes 1."], "shortcut": "T-1 flips.", "pattern": "Toggle basic." },
+    { "id": "vsl-109", "q": "SR $0\\to1$ needs? [GATE-pattern PYQ]", "opts": ["$S=1,R=0$", "$S=0,R=1$", "$S=1,R=1$", "$S=0,R=0$"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (excitation)", "exp": ["Set required, reset must be 0."], "shortcut": "Go-1 needs S.", "pattern": "Excitation basic." },
+    { "id": "vsl-110", "q": "$T_{min}=10$ns: $f_{max}$? [GATE-pattern PYQ]", "opts": ["$100MHz$", "$10MHz$", "$1GHz$", "$10GHz$"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (timing)", "exp": ["1/10ns = 100MHz."], "shortcut": "10ns is 100MHz.", "pattern": "Period-frequency flip." },
+    { "id": "vsl-111", "q": "MOD-4 counter: $D_{0}$? [VEDA-pattern PYQ]", "opts": ["$\\bar{Q_{0}}$", "$Q_{0}$", "$1$", "$0$"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA Mains Pattern Practice (design)", "exp": ["D0 column 1,0,1,0 over 00,01,10,11.", "Depends only on Q0 inverted."], "shortcut": "LSB toggles.", "pattern": "Counter LSB rule." },
+    { "id": "vsl-112", "q": "Which FSM output can glitch on input? [VEDA-pattern PYQ]", "opts": ["Mealy", "Moore", "Both never", "Neither exists"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA Mains Pattern Practice (FSM)", "exp": ["Mealy output path includes input combinationally.", "Moore changes on edges only."], "shortcut": "Mealy-may-glitch.", "pattern": "Closes the topic." }
+  ],
+  "category": "digital-design"
+}

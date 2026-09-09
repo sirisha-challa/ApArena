@@ -1,0 +1,638 @@
+{
+  "id": "veda-combinational-logic",
+  "title": "Combinational Logic Circuits - Gates, Minimization, MUX, Decoders, Adders",
+  "icon": "C",
+  "subtitle": "Boolean functions, gates, K-map, MUX/DEMUX, decoders, encoders, adders, subtractors, comparators - design for functionality and timing",
+  "days": "3-5",
+  "color": "#4F46E5",
+  "category": "digital-design",
+  "subtopics": [
+    "Minimization of Boolean functions",
+    "Logic gates (incl. 4-input NAND from 2-input NANDs)",
+    "Multiplexers and Demultiplexers (incl. F=Sum(0,1,3,4,6) on 4-to-1 MUX)",
+    "Decoders, Encoders, Priority Encoders",
+    "Comparators",
+    "Adders, Subtractors"
+  ],
+  "estimatedHours": 14,
+  "learningPath": [
+    { "sectionId": "bool-foundations", "type": "concept" },
+    { "sectionId": "gates-universal", "type": "concept" },
+    { "sectionId": "minimization-kmap", "type": "concept" },
+    { "sectionId": "mux-demux", "type": "concept" },
+    { "sectionId": "decoder-encoder", "type": "concept" },
+    { "sectionId": "adder-sub-comp", "type": "concept" }
+  ],
+  "readingSections": [
+    {
+      "id": "bool-foundations",
+      "title": "1. Boolean Foundations - Truth Tables, SOP, POS (From Zero)",
+      "type": "concept",
+      "quickSummary": "A combinational output depends only on present inputs. Truth table lists every input combo. SOP adds the rows where output is 1.",
+      "content": [
+        "Combinational means no memory: same inputs always give same output. Contrast with sequential (later topic) where past matters. Every question here is a truth table in some disguise.",
+        "A truth table with $n$ inputs has $2^{n}$ rows. Write binary counting $00...0$ to $11...1$. Minterm $m_{i}$ is the AND of all inputs for row $i$ (complement where input is $0$). Maxterm $M_{i}$ is the OR. SOP (sum of products) ORs the minterms where output is $1$. POS (product of sums) ANDs the maxterms where output is $0$. Both describe the same function.",
+        "Example $2$-input XOR: rows $00\\to0, 01\\to1, 10\\to1, 11\\to0$. SOP: $F = A'B + AB'$. POS: $F = (A+B)(A'+B')$. VEDA writes $F(A,B,C) = \\sum(0,1,3,4,6)$ meaning SOP minterms $0,1,3,4,6$ are $1$.",
+        "Core laws: Identity ($A+0=A, A\\cdot1=A$), Null ($A+1=1, A\\cdot0=0$), Idempotent ($A+A=A$), Complement ($A+A'=1, A\\cdot A'=0$), Commutative, Associative, Distributive, Absorption ($A+AB=A$), Consensus ($AB+A'C+BC=AB+A'C$), De Morgan (below). Duality: swap AND/OR and $0$/$1$ to get a second theorem free."
+      ],
+      "subsections": [
+        {
+          "title": "SOP and POS with a worked example",
+          "content": [
+            "SOP: focus on $1$-rows, AND each row, OR the rows. POS: focus on $0$-rows, OR each row, AND the rows.",
+            "Function $F(A,B) = 1$ only when $A \\neq B$ (XOR): SOP $A'B + AB'$.",
+            "Notation $\\sum m(1,2)$ equals $\\sum(1,2)$. $\\prod M(0,3)$ is the POS twin."
+          ],
+          "example": {
+            "prompt": "Write SOP for F=1 on rows 0 and 3 of A,B (XNOR)",
+            "steps": [
+              "Row 0 is $A=0,B=0$: minterm $A'B'$.",
+              "Row 3 is $A=1,B=1$: minterm $AB$.",
+              "OR them: $F = A'B' + AB$."
+            ],
+            "answer": "$F = A'B' + AB$"
+          }
+        },
+        {
+          "title": "De Morgan - the most-used law in VLSI",
+          "content": [
+            "De Morgan: $\\overline{A+B} = \\bar{A}\\cdot\\bar{B}$ and $\\overline{A\\cdot B} = \\bar{A}+\\bar{B}$. Break the bar, flip the sign. Extends to $n$ variables.",
+            "Why it matters: NAND is AND+NOT, NOR is OR+NOT. De Morgan converts between them, which is how NAND-only designs (VEDA Q2) are derived and how(any AND-OR becomes NAND-NAND for CMOS.",
+            "Bubble pushing: a bubble (NOT) crossing a gate flips AND to OR. Two bubbles cancel. This visual trick simplifies transistor-level schematics."
+          ]
+        },
+        {
+          "title": "Canonical vs minimal form",
+          "content": [
+            "Canonical SOP lists every minterm fully (each with all literals). Minimal form is shorter after minimization (next section). Both give identical truth tables.",
+            "VEDA gives canonical $\\sum(0,1,3,4,6)$ and asks for MUX or gate implementation - you choose the form that fits the hardware, not necessarily minimal SOP first."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "n inputs give 2^n rows. SOP = OR of minterms where F=1.",
+        "De Morgan: break bar, flip AND/OR.",
+        "Sigma = minterms (SOP). Pi = maxterms (POS)."
+      ],
+      "companyNote": "SOP/sigma notation appears verbatim in VEDA mains. Misreading it loses the whole question."
+    },
+    {
+      "id": "gates-universal",
+      "title": "2. Logic Gates and Universal NAND/NOR (VEDA Q2 Inside)",
+      "type": "concept",
+      "quickSummary": "NAND alone (or NOR alone) can build any function. A 4-input NAND needs five 2-input NANDs by cascade or tree.",
+      "content": [
+        "Seven gates: AND ($1$ only if all $1$), OR ($1$ if any $1$), NOT (flip), NAND (AND then NOT), NOR (OR then NOT), XOR ($1$ if odd number of $1$s, for $2$ inputs: inputs differ), XNOR (complement of XOR, equality detector). Memorise truth tables for $2$ inputs - everything else is composition.",
+        "NAND and NOR are universal: NOT from NAND by tying inputs ($NAND(A,A) = \\bar{A}$), AND by NAND+NOT, OR by De Morgan ($A+B = \\overline{\\bar{A}\\cdot\\bar{B}}$ = three NANDs), and so on. CMOS naturally makes inverting gates (NAND/NOR/INV) faster and smaller than AND/OR, which is why libraries are NAND/NOR based.",
+        "VEDA Q2: design $4$-input NAND $Y = \\overline{A\\cdot B\\cdot C\\cdot D}$ using only $2$-input NANDs. Cascade method: $G1 = NAND(A,B) = \\overline{AB}$. $G2 = NAND(G1,G1) = AB$. $G3 = NAND(G2,C) = \\overline{ABC}$. $G4 = NAND(G3,G3) = ABC$. $G5 = NAND(G4,D) = \\overline{ABCD}$. Five gates. Tree method also uses five: two ANDs (two NANDs each) plus final NAND. Minimum is five with strict $2$-input NANDs.",
+        "Exam drawing tips: label every intermediate ($AB$, $\\overline{AB}$ etc.), show tied inputs clearly for inverters, and verify with $A=B=C=D=1$ (output must be $0$) and $A=0$ rest $1$ (output must be $1$)."
+      ],
+      "subsections": [
+        {
+          "title": "XOR and XNOR - the odd/even detectors",
+          "content": [
+            "$2$-input XOR: $A \\oplus B = A'B + AB'$. $1$ when inputs differ. $3$-input XOR is $1$ for odd parity ($1$ or $3$ ones).",
+            "XNOR is complement: $A \\odot B = AB + A'B'$. $1$ when inputs equal. Used in comparators (next sections).",
+            "XOR with $0$ passes through ($A \\oplus 0 = A$), with $1$ inverts ($A \\oplus 1 = \\bar{A}$). This controllability is used in adder/subtractors."
+          ],
+          "example": {
+            "prompt": "Output of XOR with inputs 1,1,1 (3-input)?",
+            "steps": [
+              "Count ones: three.",
+              "Three is odd, XOR gives $1$."
+            ],
+            "answer": "$1$"
+          }
+        },
+        {
+          "title": "NAND as NOT, AND, OR, NOR",
+          "content": [
+            "NOT: $NAND(A,A) = \\overline{A\\cdot A} = \\bar{A}$.",
+            "AND: $NAND$ then NOT: $AND(A,B) = NAND(NAND(A,B),NAND(A,B))$.",
+            "OR: invert inputs first: $OR(A,B) = NAND(\\bar{A},\\bar{B})$.",
+            "NOR: OR then NOT (four NANDs). In the exam, state the count if asked for minimum."
+          ]
+        },
+        {
+          "title": "Why designers prefer NAND",
+          "content": [
+            "In CMOS, NAND has series PMOS in parallel-friendly arrangement and is faster than NOR for wide inputs (electrons move faster than holes). Standard-cell libraries therefore NAND-heavy.",
+            "Any AND-OR network converts to NAND-NAND by double inversion + De Morgan. This is not just exam theory - synthesis tools do it daily."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "NAND/NOR are universal. NAND(A,A) = NOT.",
+        "4-input NAND from 2-input NANDs: five gates (cascade or tree).",
+        "XOR = differ, XNOR = equal."
+      ],
+      "companyNote": "VEDA sample Q2 is exactly the 4-input NAND design. Draw cleanly with labels - presentation earns marks."
+    },
+    {
+      "id": "minimization-kmap",
+      "title": "3. Minimization - Boolean Algebra and K-Maps",
+      "type": "concept",
+      "quickSummary": "Group 2^k adjacent ones in a K-map. Bigger groups kill more literals. Goal: fewest product terms with fewest literals.",
+      "content": [
+        "Minimal SOP costs fewer gates and less delay. Two tools: algebra (Absorption $A+AB=A$, $A+A'B=A+B$, Consensus) for small proofs, K-map for $2$-$4$ variables in the exam hall.",
+        "K-map layout: $2$-var has $4$ cells, $3$-var has $8$, $4$-var has $16$. Order is Gray code ($00,01,11,10$) so neighbours differ by one bit - including wrap-around edges (left-right and top-bottom are adjacent). Diagonal cells are NOT adjacent.",
+        "Grouping rules: circle only $1$s (for SOP; $0$s for POS), groups must be rectangles of size $1,2,4,8,16$ (powers of $2$), overlap allowed and encouraged, every $1$ covered at least once, make groups as big as possible, use fewest groups. A group of $2^{k}$ kills $k$ literals. Don't-cares ($X$) can be taken as $1$ or $0$ whichever grows groups.",
+        "Example $F(A,B,C) = \\sum(0,1,3,4,6)$ (VEDA Q3 function): K-map ones at $000,001,011,100,110$. Groups: $\\bar{B}\\bar{C}$ (cells $0,1,4$? check adjacency) - do systematically in the answer: one common minimal SOP is $F = \\bar{B}\\bar{C} + B'C? $ - actually minimise carefully: cells $0(000),1(001)$ pair gives $\\bar{A}\\bar{B}$? $000+001 = 00-$ = $\\bar{A}\\bar{B}$. Cells $0,4$: $000+100 = -00$ = $\\bar{B}\\bar{C}$. Cells $4,6$: $100+110 = 1-0$ = $A\\bar{C}$. Cells $1,3$: $001+011 = 0-1$ = $\\bar{A}C$. Essential prime implicants cover: minimal $F = \\bar{B}\\bar{C} + \\bar{A}C + A\\bar{C}$? Verify $m2(010)=0$: $\\bar{B}\\bar{C}=0$ (B=1), $\\bar{A}C=0$ (C=0), $A\\bar{C}=0$ (A=0): $0$. Good. $m5(101)=0$: $\\bar{B}\\bar{C}=0$ (B=0? $\\bar{B}=1,\\bar{C}=0$ so $0$), $\\bar{A}C=0$ (A=1), $A\\bar{C}=0$ (C=1): $0$. Good. $m7(111)=0$: all zero. Good. So $F = \\bar{B}\\bar{C} + C(\\bar{A}+A\\cdot?)$ - keep sum of three $2$-literal terms. MUX solution (next section) does not need this first, but minimised form helps gate-count questions."
+      ],
+      "subsections": [
+        {
+          "title": "Algebra shortcuts that replace big K-maps",
+          "content": [
+            "$A + AB = A$. $A + \\bar{A}B = A + B$. $AB + \\bar{A}C + BC = AB + \\bar{A}C$ (drop consensus).",
+            "$(A+B)(A+\\bar{B}) = A$. $A\\oplus B = A\\bar{B} + \\bar{A}B$.",
+            "Apply before drawing when you spot $X + \\bar{X}Y$ or redundant third term."
+          ],
+          "example": {
+            "prompt": "Simplify $F = A + \\bar{A}B$",
+            "steps": [
+              "$A + \\bar{A}B = (A + \\bar{A})(A + B)$ by distributive.",
+              "$A + \\bar{A} = 1$.",
+              "$1 \\cdot (A+B) = A + B$."
+            ],
+            "answer": "$F = A + B$"
+          }
+        },
+        {
+          "title": "Don't-cares and POS K-maps",
+          "content": [
+            "Don't-care $X$ means output can be either (unused input combo or invalid BCD etc.). Include $X$ in a group only if it enlarges it.",
+            "POS K-map: group $0$s, read complements (variable uncomplemented where cell has $0$). Dual of SOP grouping.",
+            "If asked for minimum NOR-NOR or NAND-NAND, minimise to SOP then double-invert, or minimise POS for NOR-NOR."
+          ]
+        },
+        {
+          "title": "Hazards glance (for timing-aware design)",
+          "content": [
+            "Syllabus says design for functionality AND timing. A minimal SOP can glitch when one input flips between adjacent ones covered by different terms (static-1 hazard). Adding the consensus/redundant group removes it at the cost of one extra gate.",
+            "You will not be asked to draw hazard covers in prelims usually, but mentioning it in mains design answers shows timing awareness."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Groups are 1/2/4/8 rectangles, wrap-around counts.",
+        "Group of 2^k kills k literals. Overlap freely.",
+        "Don't-cares help only if they grow a group."
+      ],
+      "companyNote": "K-map appears in both prelims (2-3 var) and mains (4-var with don't-cares). Practice Gray order until automatic."
+    },
+    {
+      "id": "mux-demux",
+      "title": "4. Multiplexers and Demultiplexers (VEDA Q3 Inside)",
+      "type": "concept",
+      "quickSummary": "An n-select MUX is a 2^n-to-1 digitally controlled switch. Any n-variable function fits one MUX; (n-1) selects plus last variable on data pins is the exam favourite.",
+      "content": [
+        "MUX equation ($4$-to-$1$ with selects $S1,S0$): $Y = \\bar{S1}\\bar{S0}D0 + \\bar{S1}S0D1 + S1\\bar{S0}D2 + S1S0D3$. DEMUX is the reverse: one input steered to $2^{n}$ outputs by selects, others $0$ (plus enable). A decoder with enable IS a DEMUX.",
+        "MUX is universal: $2$-to-$1$ MUX with $D0=0,D1=1$ is a buffer of $S$; $D0=1,D1=0$ is NOT; suitable constants give AND/OR. Any $n$-variable truth table maps directly: connect selects to variables, each data pin to the row's output ($0$/$1$). That uses $n$ selects.",
+        "Exam favourite uses $(n-1)$ selects and feeds the last variable (or its complement, $0$, $1$) to data pins - halves MUX size. VEDA Q3: $F(A,B,C) = \\sum(0,1,3,4,6)$ on a single $4$-to-$1$ MUX. Two selects cover $B,C$; data pins get functions of $A$. Rows by $BC$: $BC=00$ has $m0(A=0)=1, m4(A=1)=1$: $D0=1$. $BC=01$ has $m1=1, m5=0$: $D1=\\bar{A}$. $BC=10$ has $m2=0, m6=1$: $D2=A$. $BC=11$ has $m3=1, m7=0$: $D3=\\bar{A}$. Wire $S1=B, S0=C, D0=1, D1=\\bar{A}, D2=A, D3=\\bar{A}$. Verify $ABC=011$: selects $11$ pick $D3=\\bar{A}=1$: correct. $ABC=101$: selects $01$ pick $\\bar{A}=0$: correct.",
+        "Implementation table method (fast in hall): list minterms per select combo; if both $0$: tie $0$; both $1$: tie $1$; only $A=0$ row is $1$: $\\bar{A}$; only $A=1$ row is $1$: $A$. Choose any variable as the data variable - usually the MSB ($A$)."
+      ],
+      "subsections": [
+        {
+          "title": "2-to-1 MUX anatomy",
+          "content": [
+            "$Y = \\bar{S}D0 + SD1$. When $S=0$ pick $D0$, else $D1$.",
+            "Bigger MUXes cascade from $2$-to-$1$ ( Shannon expansion). An $8$-to-$1$ needs seven $2$-to-$1$s in tree, or two $4$-to-$1$ plus one $2$-to-$1$.",
+            "Enable ($E$): when $0$, output forced $0$ regardless. Active-low enables common in decoders."
+          ],
+          "example": {
+            "prompt": "Y of 4-to-1 with S1S0=10, D=(0,1,0,1)?",
+            "steps": [
+              "Select $10$ picks $D2$.",
+              "$D2 = 0$ (D0=0,D1=1,D2=0,D3=1)."
+            ],
+            "answer": "$Y = 0$"
+          }
+        },
+        {
+          "title": "DEMUX in one paragraph",
+          "content": [
+            "$1$-to-$4$ DEMUX: $Y0 = \\bar{S1}\\bar{S0}Din, Y1 = \\bar{S1}S0Din, Y2 = S1\\bar{S0}Din, Y3 = S1S0Din$.",
+            "With $Din=1$ it is a decoder (selected output $1$). Routing, bus distribution and chip-select generation use it.",
+            "MUX (many-to-one, data selector) vs DEMUX (one-to-many, data distributor) - direction is the difference."
+          ]
+        },
+        {
+          "title": "Design choices examiners reward",
+          "content": [
+            "State selects and data mapping explicitly ($S1=B, S0=C, D0=1...$). Show the decomposition table. Verify two rows (one $1$, one $0$).",
+            "If only NAND gates allowed after MUX, keep MUX as block and convert surrounding inverters to NAND-tied.",
+            "Mention that any function of $B,C$ alone would need no $A$ on data pins - here $A$ is essential because rows differ."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "4-to-1: Y = S1'S0'D0 + S1'S0D1 + S1S0'D2 + S1S0D3.",
+        "(n-1) selects + last variable on data = minimum MUX.",
+        "DEMUX with Din=1 is a decoder."
+      ],
+      "companyNote": "VEDA sample Q3 is exactly the 4-to-1 mapping above. Reproduce the table, not just the final wiring."
+    },
+    {
+      "id": "decoder-encoder",
+      "title": "5. Decoders, Encoders, Priority Encoders",
+      "type": "concept",
+      "quickSummary": "Decoder: n lines to 2^n minterms (one-hot). Encoder: reverse. Priority encoder breaks ties by fixed order plus a valid bit.",
+      "content": [
+        "Decoder ($n$-to-$2^{n}$): exactly one output $1$ (active-high) for each input code; output $i$ IS minterm $m_{i}$. $2$-to-$4$ with $A,B$: $Y0=\\bar{A}\\bar{B}, Y1=\\bar{A}B, Y2=A\\bar{B}, Y3=AB$. With enable it demultiplexes. $3$-to-$8$ (74x138 style) has active-low outputs plus enables - read the bubbles carefully.",
+        "Any SOP function = decoder + OR: OR the minterm outputs. $F = \\sum(0,1,3,4,6)$ = $3$-to-$8$ decoder with $Y0+Y1+Y3+Y4+Y6$ ORed. Useful when decoder already exists for address decoding.",
+        "Encoder ($2^{n}$-to-$n$): reverse, valid only if exactly one input is $1$. Priority encoder (e.g. $4$-to-$2$) resolves multiple ones by priority ($D3>D2>D1>D0$) and adds Valid $V=1$ if any input $1$. Truth table with $X$ (don't-care) rows: $D3=1$ gives $11$ regardless of lower bits.",
+        "Comparators belong nearby: $1$-bit equality $E = A\\odot B = AB + \\bar{A}\\bar{B}$; $A>B$ is $A\\bar{B}$; $A<B$ is $\\bar{A}B$. Wider comparators cascade (e.g. $4$-bit 74x85 with $A>B, A=B, A<B$ cascade inputs)."
+      ],
+      "subsections": [
+        {
+          "title": "Decoder as minterm generator",
+          "content": [
+            "Each output is one minterm, so any function is a wired OR of outputs.",
+            "Active-low decoder outputs are maxterms instead - NAND them (or AND with bubbles).",
+            "Address decoding in memories is the industrial use: $n$ address lines pick one of $2^{n}$ rows."
+          ],
+          "example": {
+            "prompt": "Implement F=Sum(1,2) with 2-to-4 decoder (active-high) + gate?",
+            "steps": [
+              "Decoder gives Y0..Y3 = m0..m3.",
+              "OR Y1+Y2.",
+              "Single OR gate."
+            ],
+            "answer": "$F = Y1 + Y2$"
+          }
+        },
+        {
+          "title": "Priority encoder truth table reading",
+          "content": [
+            "$V = D3+D2+D1+D0$ (any request). Outputs encode highest active index.",
+            "$D3=1$: $Y=11$ irrespective of rest. $D3=0,D2=1$: $Y=10$. And so on. $0000$ gives $V=0$ (outputs don't care).",
+            "Keyboard encoders and interrupt controllers are priority encoders in silicon."
+          ]
+        },
+        {
+          "title": "Seven-segment and code converters",
+          "content": [
+            "BCD-to-seven-segment, binary-to-Gray, Gray-to-binary are fixed encoder/decoder ROMs - minimised SOPs per output.",
+            "Gray code changes one bit per step ($00,01,11,10$), which is why K-maps use Gray order and why Gray counters glitch less."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Decoder outputs are minterms. Encoder is the inverse.",
+        "Priority + Valid handles multiple ones.",
+        "Decoder + OR builds any SOP."
+      ],
+      "companyNote": "Priority encoder with Valid bit is a favourite short-answer: draw table with X rows."
+    },
+    {
+      "id": "adder-sub-comp",
+      "title": "6. Adders, Subtractors, Comparators - Arithmetic Blocks",
+      "type": "concept",
+      "quickSummary": "Half adder: S=A xor B, C=AB. Full adder adds carry-in. Chain for ripple; lookahead for speed. Subtract via 2's complement.",
+      "content": [
+        "Half adder (no carry-in): $S = A \\oplus B$, $C = AB$. Full adder: $S = A \\oplus B \\oplus Cin$, $Cout = AB + Cin(A \\oplus B) = AB + BCin + ACin$ (majority). Half subtractor: $D = A \\oplus B$, $Borrow = \\bar{A}B$. Full subtractor: $D = A \\oplus B \\oplus Bin$, $Bout = \\bar{A}B + \\bar{A}Bin + BBin$.",
+        "Ripple-carry adder chains $Cout$ to next $Cin$: simple, $O(n)$ delay. Carry-lookahead computes generates ($G=AB$) and propagates ($P=A\\oplus B$ or $A+B$) in parallel: $C1 = G0 + P0C0$, $C2 = G1 + P1G0 + P1P0C0$, etc. Fast $O(\\log n)$ at more gates. VEDA asks ripple delay ($n$ full-adder delays) vs lookahead concept, rarely full lookahead algebra.",
+        "Subtractor via adder: $A - B = A + \\bar{B} + 1$ (2's complement). One control line $M$: $B \\oplus M$ per bit plus $M$ as $Cin$ gives adder ($M=0$) / subtractor ($M=1$) in one circuit. Overflow for signed (previous topic) = $Cin \\oplus Cout$ at MSB.",
+        "Comparators: $1$-bit $E = \\overline{A \\oplus B}$, $G = A\\bar{B}$, $L = \\bar{A}B$. $n$-bit compares MSB-first (like dictionary): check top bits, cascade down. IC 7485 pattern with $A>B, A=B, A<B$ cascading."
+      ],
+      "subsections": [
+        {
+          "title": "Full adder from two half adders",
+          "content": [
+            "First half adds $A,B$: $S1, C1$. Second half adds $S1,Cin$: $S, C2$. $Cout = C1 + C2$.",
+            "This $5$-gate structure is the standard exam drawing. Label $S1$ intermediate.",
+            "XOR count: full adder uses two XORs - the slowest gates, setting critical path."
+          ],
+          "example": {
+            "prompt": "Add A=1,B=1,Cin=1 (full adder)?",
+            "steps": [
+              "$1+1+1 = 3 = 11$ binary.",
+              "Sum $1$, carry $1$."
+            ],
+            "answer": "$S=1, Cout=1$"
+          }
+        },
+        {
+          "title": "Ripple delay and why lookahead exists",
+          "content": [
+            "Each full adder waits for carry: $n$-bit ripple takes about $n$ carry delays (plus sum XOR). $16$-bit ripple is ~$16$ gate stages.",
+            "Lookahead precomputes carries from $G,P$ - constant-ish depth. Costs more AND-OR fan-in. Modern adders (carry-select, Kogge-Stone) refine the trade-off.",
+            "Syllabus phrase design for timing points here: same function, different delay/area."
+          ]
+        },
+        {
+          "title": "Comparator cascade logic",
+          "content": [
+            "Compare MSB pair first. If differ, decision done. If equal, pass to next bits. Equality of words is AND of bitwise XNORs.",
+            "Magnitude comparator truth table for $2$ bits has $16$ rows - derive via MSB-first reasoning, not brute force."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "HA: S=XOR, C=AND. FA: S=3-XOR, Cout=majority.",
+        "A-B = A + not-B + 1. M line makes adder/subtractor.",
+        "Ripple O(n) delay; lookahead precomputes via G/P."
+      ],
+      "companyNote": "Adder/subtractor derivations plus one ripple-vs-lookahead short answer cover this block's mains share."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "demorgan",
+      "title": "De Morgan's Theorems",
+      "formula": { "latex": "\\overline{A + B} = \\bar{A} \\cdot \\bar{B}, \\quad \\overline{A \\cdot B} = \\bar{A} + \\bar{B}", "text": "Break the bar, flip AND/OR. Extends to n variables." },
+      "whenToUse": "NAND-only/NOR-only conversion, bubble pushing, POS-SOP duality.",
+      "explanation": ["Long bar splits into short bars.", "AND becomes OR and vice versa.", "Double complement cancels."],
+      "example": {
+        "prompt": "Complement of $AB + CD$?",
+        "steps": ["$\\overline{AB+CD} = \\overline{AB} \\cdot \\overline{CD}$", "$= (\\bar{A}+\\bar{B})(\\bar{C}+\\bar{D})$"],
+        "answer": "$(\\bar{A}+\\bar{B})(\\bar{C}+\\bar{D})$"
+      },
+      "memoryTip": "Break-flip: break bar, flip gate.",
+      "commonMistake": "Flipping variables instead of the operator."
+    },
+    {
+      "id": "bool-absorb",
+      "title": "Absorption and Covering",
+      "formula": { "latex": "A + AB = A, \\quad A + \\bar{A}B = A + B", "text": "Redundant terms absorb. Second form is the covering theorem." },
+      "whenToUse": "Quick algebra minimisation before K-map.",
+      "explanation": ["$AB$ needs $A$ anyway, so $A$ covers it.", "$A+\\bar{A}B$: when A=1 done, when A=0 need B."],
+      "example": {
+        "prompt": "Simplify $X + \\bar{X}Y$",
+        "steps": ["Covering form with $A=X, B=Y$.", "Result $X + Y$."],
+        "answer": "$X + Y$"
+      },
+      "memoryTip": "A plus not-A-something is A plus something.",
+      "commonMistake": "Expanding instead of absorbing - goes backwards."
+    },
+    {
+      "id": "min-max",
+      "title": "Minterms, Maxterms, SOP/POS Counts",
+      "formula": { "latex": "2^{n} \\text{ rows}, \\quad F = \\sum m(1\\text{-rows}) = \\prod M(0\\text{-rows})", "text": "n inputs give 2^n minterms and maxterms. SOP sums the 1-rows." },
+      "whenToUse": "Canonical form and sigma/pi notation questions.",
+      "explanation": ["Minterm i: AND with complement where bit is 0.", "Maxterm i: OR with complement where bit is 1.", "Sigma lists 1s, Pi lists 0s."],
+      "example": {
+        "prompt": "Rows 1,2 are 1 for A,B. SOP?",
+        "steps": ["m1 = A'B.", "m2 = AB'.", "F = A'B + AB' (XOR)."],
+        "answer": "$F = A'B + AB'$"
+      },
+      "memoryTip": "Sigma-SOP-Ones. Pi-POS-Zeros.",
+      "commonMistake": "Swapping minterm/maxterm complement rule."
+    },
+    {
+      "id": "kmap-group",
+      "title": "K-Map Grouping Rule",
+      "formula": { "latex": "\\text{group } 2^{k} \\Rightarrow \\text{kill } k \\text{ literals}", "text": "Groups must be power-of-2 rectangles including wrap-around. Bigger is better." },
+      "whenToUse": "Every K-map minimisation.",
+      "explanation": ["Sizes allowed: 1,2,4,8,16.", "Overlap encouraged.", "Don't-cares taken only if they grow a group."],
+      "example": {
+        "prompt": "Group of 4 in 3-var map kills how many literals?",
+        "steps": ["k=2 (4=2^2).", "3 literals minus 2 = 1 literal term."],
+        "answer": "Single-literal term (e.g. B or B-bar)"
+      },
+      "memoryTip": "Pair kills 1, quad kills 2, octet kills 3.",
+      "commonMistake": "Diagonal or L-shaped groups - illegal."
+    },
+    {
+      "id": "mux-eq",
+      "title": "MUX Equations (2:1 and 4:1)",
+      "formula": { "latex": "Y_{2:1} = \\bar{S}D_{0} + SD_{1}, \\quad Y_{4:1} = \\bar{S_{1}}\\bar{S_{0}}D_{0} + \\bar{S_{1}}S_{0}D_{1} + S_{1}\\bar{S_{0}}D_{2} + S_{1}S_{0}D_{3}", "text": "Selects pick exactly one data product term." },
+      "whenToUse": "MUX output evaluation and function implementation.",
+      "explanation": ["Each select combo enables one data line.", "Enable forces 0 when off.", "Cascades build bigger MUXes."],
+      "example": {
+        "prompt": "4:1 with S1S0=10, D=(0,1,0,1)?",
+        "steps": ["Select 10 picks D2.", "D2=0."],
+        "answer": "$Y=0$"
+      },
+      "memoryTip": "Select binary number = chosen Dn index.",
+      "commonMistake": "Reversing S1/S0 order."
+    },
+    {
+      "id": "mux-univ",
+      "title": "MUX as Universal + (n-1)-Select Mapping",
+      "formula": { "latex": "D_{i} \\in \\{0, 1, V, \\bar{V}\\} \\text{ per select combo}", "text": "With (n-1) selects, each data pin gets 0/1/V/not-V based on the two rows sharing that select code." },
+      "whenToUse": "VEDA Q3-style single-MUX implementation.",
+      "explanation": ["Both rows 0: tie 0.", "Both rows 1: tie 1.", "Only V=0 row is 1: not-V.", "Only V=1 row is 1: V."],
+      "example": {
+        "prompt": "F=Sum(0,1,3,4,6) with S1=B,S0=C?",
+        "steps": ["BC=00: rows m0=1,m4=1: D0=1.", "BC=01: m1=1,m5=0: D1=A-bar.", "BC=10: m2=0,m6=1: D2=A.", "BC=11: m3=1,m7=0: D3=A-bar."],
+        "answer": "$D0=1, D1=\\bar{A}, D2=A, D3=\\bar{A}$"
+      },
+      "memoryTip": "00-11 table: 00->0, 11->1, 10->V, 01->notV (V=1-row).",
+      "commonMistake": "Using wrong variable as data input without redoing table."
+    },
+    {
+      "id": "decoder-eq",
+      "title": "Decoder Outputs are Minterms",
+      "formula": { "latex": "Y_{i} = m_{i}, \\quad n \\text{-to-} 2^{n} \\text{ outputs}", "text": "2-to-4: Y0=A-bar B-bar ... Y3=AB. Any SOP is OR of Yi." },
+      "whenToUse": "Decoder+OR implementations, address decoding.",
+      "explanation": ["Exactly one output active per code.", "Active-low gives maxterms.", "Enable turns decoder into DEMUX."],
+      "example": {
+        "prompt": "F=Sum(1,2) with 2:4 decoder?",
+        "steps": ["Y1=m1, Y2=m2.", "OR them."],
+        "answer": "$F = Y1 + Y2$"
+      },
+      "memoryTip": "Decoder generates, OR collects.",
+      "commonMistake": "Forgetting enable polarity."
+    },
+    {
+      "id": "encoder-prio",
+      "title": "Priority Encoder with Valid",
+      "formula": { "latex": "V = D_{3}+D_{2}+D_{1}+D_{0}, \\quad Y = \\text{index of highest } 1", "text": "Fixed priority D3>D2>D1>D0. Valid says any request present." },
+      "whenToUse": "Multiple-one resolution, interrupt tables.",
+      "explanation": ["Higher index masks lower.", "V=0 means outputs meaningless.", "X rows encode priority."],
+      "example": {
+        "prompt": "Inputs D3D2D1D0=0101?",
+        "steps": ["Highest 1 is D2.", "Y=10, V=1."],
+        "answer": "$Y=10, V=1$"
+      },
+      "memoryTip": "Highest wins, Valid confirms.",
+      "commonMistake": "Reading as binary value instead of highest index."
+    },
+    {
+      "id": "full-adder",
+      "title": "Half/Full Adder and Subtractor",
+      "formula": { "latex": "S = A \\oplus B \\oplus C_{in}, \\quad C_{out} = AB + C_{in}(A \\oplus B)", "text": "Half adder: S=XOR, C=AND. Full adds Cin. Subtract: D=XOR, Bout=A-bar B + ... ." },
+      "whenToUse": "Adder drawings, sum/carry evaluation, adder-subtractor control.",
+      "explanation": ["Cout is majority of A,B,Cin.", "A-B = A + B-bar + 1.", "M=0 add, M=1 subtract with B xor M and Cin=M."],
+      "example": {
+        "prompt": "A=1,B=1,Cin=1?",
+        "steps": ["Count ones: 3.", "Binary 11: S=1, Cout=1."],
+        "answer": "$S=1, Cout=1$"
+      },
+      "memoryTip": "Sum is odd-parity, carry is majority.",
+      "commonMistake": "Half adder has no Cin - using it where full needed."
+    },
+    {
+      "id": "comparator",
+      "title": "1-Bit Comparator",
+      "formula": { "latex": "E = \\overline{A \\oplus B}, \\quad G = A\\bar{B}, \\quad L = \\bar{A}B", "text": "Equal is XNOR. Greater/less are single ANDs. Wide compares go MSB-first." },
+      "whenToUse": "Equality and magnitude questions, 7485 cascade.",
+      "explanation": ["E=1 iff equal.", "G=1 iff A=1,B=0.", "Words: AND of bitwise Es for equality."],
+      "example": {
+        "prompt": "A=1,B=0?",
+        "steps": ["Not equal: E=0.", "A>B: G=1."],
+        "answer": "$G=1, E=0, L=0$"
+      },
+      "memoryTip": "Equal-XNOR, Greater-A-notB.",
+      "commonMistake": "XOR vs XNOR swap for equality."
+    }
+  ],
+  "practiceProblems": {
+    "demorgan": [
+      { "q": "Complement $F = AB + CD$ using De Morgan", "s": ["$\\overline{AB+CD} = \\overline{AB} \\cdot \\overline{CD}$", "$= (\\bar{A}+\\bar{B})(\\bar{C}+\\bar{D})$"], "a": "$(\\bar{A}+\\bar{B})(\\bar{C}+\\bar{D})$" },
+      { "q": "Simplify $F = A + \\bar{A}B$", "s": ["Covering: $A + \\bar{A}B = A + B$"], "a": "$A + B$" },
+      { "q": "Simplify $F = AB + \\bar{A}C + BC$ (consensus)", "s": ["$BC$ is redundant consensus of $AB$ and $\\bar{A}C$", "Drop $BC$"], "a": "$AB + \\bar{A}C$" },
+      { "q": "Write SOP for 2-input XNOR (rows 0,3)", "s": ["m0 = $A'B'$, m3 = $AB$", "OR: $A'B' + AB$"], "a": "$A'B' + AB$" },
+      { "q": "NAND(A,A) equals?", "s": ["$\\overline{A \\cdot A} = \\bar{A}$"], "a": "NOT gate" }
+    ],
+    "kmap-group": [
+      { "q": "Group of 4 in 3-var map kills how many literals?", "s": ["$4 = 2^2$, kills 2", "3 literals -> 1 literal term"], "a": "Single-literal term" },
+      { "q": "Minimise $F(A,B,C) = \\sum(0,1,4)$", "s": ["Cells 000,001,100", "Pair 0-1: $\\bar{A}\\bar{B}$", "Pair 0-4: $\\bar{B}\\bar{C}$", "F = $\\bar{B}(\\bar{A}+\\bar{C})$ = $\\bar{A}\\bar{B} + \\bar{B}\\bar{C}$"], "a": "$\\bar{A}\\bar{B} + \\bar{B}\\bar{C}$" },
+      { "q": "Minimise $F = \\sum(0,1,3,4,6)$ (VEDA function)", "s": ["Pairs: 0-1 gives $\\bar{A}\\bar{B}$, 0-4 gives $\\bar{B}\\bar{C}$, 4-6 gives $A\\bar{C}$, 1-3 gives $\\bar{A}C$", "Cover all ones with $\\bar{B}\\bar{C} + \\bar{A}C + A\\bar{C}$"], "a": "$\\bar{B}\\bar{C} + \\bar{A}C + A\\bar{C}$" },
+      { "q": "Why are diagonal K-map cells not adjacent?", "s": ["Diagonal differs by 2 bits", "Adjacency needs exactly 1-bit (Gray) difference"], "a": "They differ in 2 bits" },
+      { "q": "Use of don't-care X in K-map?", "s": ["Take X as 1 only if it enlarges a group", "Else leave as 0"], "a": "Enlarge groups opportunistically" }
+    ],
+    "mux-univ": [
+      { "q": "4:1 MUX, S1S0=10, D=(0,1,0,1). Output?", "s": ["Select 10 picks D2", "D2 = 0"], "a": "$Y = 0$" },
+      { "q": "Implement $F(A,B,C)=\\sum(0,1,3,4,6)$ with 4:1 (S1=B,S0=C)", "s": ["BC=00: m0=1,m4=1 -> D0=1", "BC=01: m1=1,m5=0 -> D1=$\\bar{A}$", "BC=10: m2=0,m6=1 -> D2=$A$", "BC=11: m3=1,m7=0 -> D3=$\\bar{A}$"], "a": "$D0=1, D1=\\bar{A}, D2=A, D3=\\bar{A}$" },
+      { "q": "Verify above with ABC=011 and 101", "s": ["011: selects 11 -> D3=$\\bar{A}$=1. Row m3=1 correct", "101: selects 01 -> D1=$\\bar{A}$=0. Row m5=0 correct"], "a": "Both verify" },
+      { "q": "2:1 MUX as NOT gate?", "s": ["Set D0=1, D1=0", "$Y = \\bar{S}\\cdot1 + S\\cdot0 = \\bar{S}$"], "a": "$D0=1, D1=0$" },
+      { "q": "DEMUX with Din=1 acts as?", "s": ["Selected output follows Din=1, rest 0", "One-hot minterm generator"], "a": "Decoder" }
+    ],
+    "decoder-eq": [
+      { "q": "F=Sum(1,2) with 2:4 decoder?", "s": ["Y1=m1, Y2=m2", "OR: $F = Y1 + Y2$"], "a": "$Y1 + Y2$" },
+      { "q": "4:2 priority inputs 0101. Outputs?", "s": ["Highest 1 is D2", "Y=10, V=1"], "a": "$Y=10, V=1$" },
+      { "q": "2:4 decoder input 10. Active output?", "s": ["Binary 10 = 2", "Y2 = 1, rest 0"], "a": "$Y2$" },
+      { "q": "Valid bit V for inputs 0000?", "s": ["No request", "V=0, outputs don't care"], "a": "$V=0$" },
+      { "q": "1-bit equality of A=1,B=1?", "s": ["$E = \\overline{A \\oplus B} = 1$"], "a": "$E=1$ (equal)" }
+    ],
+    "full-adder": [
+      { "q": "Full adder A=1,B=1,Cin=1?", "s": ["Three ones = 3 = 11 binary", "S=1, Cout=1"], "a": "$S=1, Cout=1$" },
+      { "q": "Half adder A=1,B=1?", "s": ["$S = 1 \\oplus 1 = 0$", "$C = 1 \\cdot 1 = 1$"], "a": "$S=0, C=1$" },
+      { "q": "5 - 3 via 4-bit 2's complement?", "s": ["$-3 = 1101$", "$0101 + 1101 = 10010$, keep $0010 = 2$"], "a": "$0010$ ($+2$)" },
+      { "q": "4-input NAND from 2-input NANDs: count?", "s": ["Cascade: NAND(A,B), NOT->AB, NAND(AB,C), NOT->ABC, NAND(ABC,D)", "5 gates"], "a": "$5$ gates" },
+      { "q": "Ripple vs lookahead for 16 bits?", "s": ["Ripple ~16 carry stages O(n)", "Lookahead precomputes via G/P, O(log n), more gates"], "a": "Ripple slow-small, lookahead fast-large" }
+    ],
+    "comparator": [
+      { "q": "1-bit A=1,B=0: G,E,L?", "s": ["$G = A\\bar{B} = 1$", "$E = 0$, $L = 0$"], "a": "$G=1$" },
+      { "q": "3-input XOR with 1,1,1?", "s": ["Three ones is odd", "XOR = 1"], "a": "$1$" },
+      { "q": "XOR with 0 vs 1?", "s": ["$A \\oplus 0 = A$ (pass)", "$A \\oplus 1 = \\bar{A}$ (invert)"], "a": "0 passes, 1 inverts" }
+    ]
+  },
+  "mcqs": [
+    { "id": "vcl-001", "q": "A combinational circuit's output depends on?", "opts": ["Present inputs only", "Past inputs only", "Clock edge", "Power supply"], "c": 0, "d": "easy", "t": "concepts", "source": "VEDA IIT Prelim Pattern", "exp": ["Combinational = memoryless.", "Same inputs always give same output.", "Past/clock belong to sequential."], "shortcut": "Combinational = present only.", "pattern": "Definition questions open the paper." },
+    { "id": "vcl-002", "q": "Truth table rows for $3$ inputs?", "opts": ["$6$", "$8$", "$9$", "$4$"], "c": 1, "d": "easy", "t": "basics", "source": "Practice - Basics", "exp": ["Rows $= 2^{n} = 2^{3} = 8$."], "shortcut": "Rows double per input.", "pattern": "2^n underlies minterm counts." },
+    { "id": "vcl-003", "q": "SOP form ORs which rows?", "opts": ["Rows where F=1 (minterms)", "Rows where F=0", "Don't-care rows only", "First and last rows"], "c": 0, "d": "easy", "t": "sop-pos", "source": "VEDA IIT Mains Pattern", "exp": ["SOP = sum of minterms where output is $1$.", "POS uses $0$-rows instead."], "shortcut": "Sigma-SOP-Ones.", "pattern": "SOP/POS duality is tested yearly." },
+    { "id": "vcl-004", "q": "$F(A,B,C)=\\sum(0,1,3,4,6)$ means?", "opts": ["F=1 on minterms 0,1,3,4,6", "F=0 on those minterms", "F has 6 inputs", "F is POS form"], "c": 0, "d": "easy", "t": "sop-pos", "source": "VEDA IIT Sample (Q3 function)", "exp": ["Sigma lists minterms where F=1.", "So rows 0,1,3,4,6 output $1$, rest $0$."], "shortcut": "Sigma = ones list.", "pattern": "VEDA writes functions exactly this way." },
+    { "id": "vcl-005", "q": "Output of AND gate with inputs $1,0$?", "opts": ["$0$", "$1$", "$X$", "$Z$"], "c": 0, "d": "easy", "t": "gates", "source": "Practice - Gates", "exp": ["AND is $1$ only if ALL inputs $1$.", "One $0$ forces $0$."], "shortcut": "AND: any 0 kills.", "pattern": "Single-gate outputs must be reflex." },
+    { "id": "vcl-006", "q": "Output of OR gate with inputs $0,0$?", "opts": ["$0$", "$1$", "$X$", "$Z$"], "c": 0, "d": "easy", "t": "gates", "source": "Practice - Gates", "exp": ["OR is $1$ if ANY input $1$.", "Both $0$: output $0$."], "shortcut": "OR: any 1 wins.", "pattern": "OR/AND duality pair." },
+    { "id": "vcl-007", "q": "NAND output for inputs $1,1$?", "opts": ["$0$", "$1$", "$X$", "$Z$"], "c": 0, "d": "easy", "t": "gates", "source": "Practice - Gates", "exp": ["AND gives $1$, NAND inverts to $0$.", "NAND is $0$ only for all-$1$."], "shortcut": "NAND: all-1 gives 0.", "pattern": "NAND/NOR invert the AND/OR rule." },
+    { "id": "vcl-008", "q": "NOR output for inputs $0,0$?", "opts": ["$1$", "$0$", "$X$", "$Z$"], "c": 0, "d": "easy", "t": "gates", "source": "Practice - Gates", "exp": ["OR gives $0$, NOR inverts to $1$.", "NOR is $1$ only for all-$0$."], "shortcut": "NOR: all-0 gives 1.", "pattern": "Mirror of NAND rule." },
+    { "id": "vcl-009", "q": "2-input XOR with $1,0$?", "opts": ["$1$", "$0$", "$X$", "$Z$"], "c": 0, "d": "easy", "t": "gates", "source": "Practice - Gates", "exp": ["XOR detects difference.", "$1 \\neq 0$: output $1$."], "shortcut": "XOR = differ.", "pattern": "XOR appears in adders and comparators." },
+    { "id": "vcl-010", "q": "2-input XNOR with $1,0$?", "opts": ["$0$", "$1$", "$X$", "$Z$"], "c": 0, "d": "easy", "t": "gates", "source": "Practice - Gates", "exp": ["XNOR is complement of XOR.", "XOR gives $1$, XNOR gives $0$."], "shortcut": "XNOR = equal.", "pattern": "Equality detection uses XNOR." },
+    { "id": "vcl-011", "q": "Which gates are universal?", "opts": ["NAND and NOR", "AND and OR", "XOR and XNOR", "NOT only"], "c": 0, "d": "easy", "t": "universal", "source": "VEDA IIT Prelim Pattern", "exp": ["NAND alone builds NOT/AND/OR/XOR.", "NOR likewise.", "AND/OR alone cannot make NOT."], "shortcut": "Inverting gates are universal.", "pattern": "Universality justifies NAND-only designs." },
+    { "id": "vcl-012", "q": "$NAND(A,A)$ equals?", "opts": ["$\\bar{A}$", "$A$", "$0$", "$1$"], "c": 0, "d": "easy", "t": "universal", "source": "Practice - Universal", "exp": ["$\\overline{A \\cdot A} = \\bar{A}$.", "Tied NAND is an inverter."], "shortcut": "Tie inputs to invert.", "pattern": "First step of every NAND-only build." },
+    { "id": "vcl-013", "q": "$A + 0$ equals?", "opts": ["$A$", "$0$", "$1$", "$\\bar{A}$"], "c": 0, "d": "easy", "t": "laws", "source": "Practice - Laws", "exp": ["Identity law: OR with $0$ changes nothing."], "shortcut": "+0 keeps, +1 forces 1.", "pattern": "Identity/null pair." },
+    { "id": "vcl-014", "q": "$A \\cdot 0$ equals?", "opts": ["$0$", "$A$", "$1$", "$\\bar{A}$"], "c": 0, "d": "easy", "t": "laws", "source": "Practice - Laws", "exp": ["Null law: AND with $0$ forces $0$."], "shortcut": "AND-0 kills.", "pattern": "Mirror of OR-1." },
+    { "id": "vcl-015", "q": "$A + \\bar{A}$ equals?", "opts": ["$1$", "$0$", "$A$", "$\\bar{A}$"], "c": 0, "d": "easy", "t": "laws", "source": "Practice - Laws", "exp": ["One of $A$, $\\bar{A}$ is always $1$.", "OR gives $1$."], "shortcut": "Variable plus complement is 1.", "pattern": "Complement laws anchor simplifications." },
+    { "id": "vcl-016", "q": "$A \\cdot \\bar{A}$ equals?", "opts": ["$0$", "$1$", "$A$", "$\\bar{A}$"], "c": 0, "d": "easy", "t": "laws", "source": "Practice - Laws", "exp": ["Both cannot be $1$ together.", "AND gives $0$."], "shortcut": "Variable times complement is 0.", "pattern": "Twin of previous law." },
+    { "id": "vcl-017", "q": "$A + AB$ equals?", "opts": ["$A$", "$B$", "$AB$", "$A+B$"], "c": 0, "d": "easy", "t": "laws", "source": "Practice - Laws", "exp": ["Absorption: $A$ covers $AB$."], "shortcut": "A absorbs AB.", "pattern": "Most-used minimisation step." },
+    { "id": "vcl-025", "q": "$4$-to-$1$ MUX has how many selects?", "opts": ["$2$", "$4$", "$1$", "$3$"], "c": 0, "d": "easy", "t": "mux", "source": "VEDA IIT Prelim Pattern", "exp": ["$2^{n}$ inputs need $n$ selects.", "$4 = 2^{2}$: $2$ selects."], "shortcut": "Inputs 2^n, selects n.", "pattern": "Size relationships for MUX/decoder." },
+    { "id": "vcl-026", "q": "$4$-to-$1$ MUX with $S1S0=10$ picks?", "opts": ["$D2$", "$D1$", "$D3$", "$D0$"], "c": 0, "d": "easy", "t": "mux", "source": "Practice - MUX", "exp": ["Select binary $10 = 2$.", "Picks $D2$."], "shortcut": "Select number = data index.", "pattern": "Index reading is the MUX skill." },
+    { "id": "vcl-027", "q": "$2$-to-$4$ decoder: active outputs per input?", "opts": ["Exactly one", "All four", "None", "Two"], "c": 0, "d": "easy", "t": "decoder", "source": "Practice - Decoder", "exp": ["Decoder is one-hot: one minterm active per code."], "shortcut": "One code, one line.", "pattern": "One-hot property defines decoders." },
+    { "id": "vcl-028", "q": "$2$-to-$4$ decoder input $10$ activates?", "opts": ["$Y2$", "$Y1$", "$Y3$", "$Y0$"], "c": 0, "d": "easy", "t": "decoder", "source": "Practice - Decoder", "exp": ["Binary $10 = 2$.", "$Y2 = A\\bar{B} = 1$."], "shortcut": "Input number = active Y index.", "pattern": "Mirror of MUX index rule." },
+    { "id": "vcl-029", "q": "Half adder sum $S$?", "opts": ["$A \\oplus B$", "$AB$", "$A+B$", "$\\overline{A \\oplus B}$"], "c": 0, "d": "easy", "t": "adder", "source": "VEDA IIT Prelim Pattern", "exp": ["Sum is $1$ when inputs differ: XOR."], "shortcut": "Sum-XOR, Carry-AND.", "pattern": "Half-adder pair must be instant." },
+    { "id": "vcl-030", "q": "Half adder carry $C$?", "opts": ["$AB$", "$A \\oplus B$", "$A+B$", "$\\bar{A}B$"], "c": 0, "d": "easy", "t": "adder", "source": "VEDA IIT Prelim Pattern", "exp": ["Carry is $1$ only when both $1$: AND."], "shortcut": "Carry-AND.", "pattern": "Twin of sum rule." },
+    { "id": "vcl-018", "q": "$A + \\bar{A}B$ equals?", "opts": ["$A+B$", "$AB$", "$A$", "$B$"], "c": 0, "d": "easy", "t": "laws", "source": "VEDA IIT Mains Pattern", "exp": ["Covering theorem.", "If $A=1$ done; if $A=0$ need $B$."], "shortcut": "A plus not-A-B is A plus B.", "pattern": "Covering appears in algebra proofs." },
+    { "id": "vcl-019", "q": "De Morgan: $\\overline{A+B}$ equals?", "opts": ["$\\bar{A}\\cdot\\bar{B}$", "$\\bar{A}+\\bar{B}$", "$AB$", "$A+B$"], "c": 0, "d": "easy", "t": "demorgan", "source": "VEDA IIT Prelim Pattern", "exp": ["Break the bar, flip OR to AND."], "shortcut": "Break-flip.", "pattern": "De Morgan heads every NAND question." },
+    { "id": "vcl-020", "q": "De Morgan: $\\overline{A\\cdot B}$ equals?", "opts": ["$\\bar{A}+\\bar{B}$", "$\\bar{A}\\cdot\\bar{B}$", "$A+B$", "$AB$"], "c": 0, "d": "easy", "t": "demorgan", "source": "VEDA IIT Prelim Pattern", "exp": ["Break the bar, flip AND to OR."], "shortcut": "Break-flip the other way.", "pattern": "Twin of previous - know both cold." },
+    { "id": "vcl-021", "q": "3-input XOR with $1,1,1$?", "opts": ["$1$", "$0$", "$X$", "$Z$"], "c": 0, "d": "easy", "t": "gates", "source": "Practice - Gates", "exp": ["XOR detects odd parity.", "Three ones is odd: $1$."], "shortcut": "Count ones: odd gives 1.", "pattern": "Odd-parity rule generalises XOR." },
+    { "id": "vcl-022", "q": "$A \\oplus 0$ equals?", "opts": ["$A$", "$\\bar{A}$", "$0$", "$1$"], "c": 0, "d": "easy", "t": "xor", "source": "Practice - XOR", "exp": ["XOR with $0$ passes input through."], "shortcut": "XOR-0 passes.", "pattern": "Controllable buffer in adders." },
+    { "id": "vcl-023", "q": "$A \\oplus 1$ equals?", "opts": ["$\\bar{A}$", "$A$", "$0$", "$1$"], "c": 0, "d": "easy", "t": "xor", "source": "Practice - XOR", "exp": ["XOR with $1$ inverts."], "shortcut": "XOR-1 inverts.", "pattern": "Controlled complement in subtractors." },
+    { "id": "vcl-024", "q": "Minterm $m_{1}$ for inputs $A,B$?", "opts": ["$\\bar{A}B$", "$A\\bar{B}$", "$AB$", "$\\bar{A}\\bar{B}$"], "c": 0, "d": "easy", "t": "minterms", "source": "Practice - Minterms", "exp": ["Row $1$ is $A=0,B=1$.", "Complement where $0$: $\\bar{A}B$."], "shortcut": "0 means bar, 1 means plain.", "pattern": "Minterm writing must be error-free." },
+    { "id": "vcl-031", "q": "Full adder sum $S$ with $A=1,B=1,Cin=0$?", "opts": ["$0$", "$1$", "$X$", "$Z$"], "c": 0, "d": "easy", "t": "adder", "source": "Practice - Adder", "exp": ["Two ones: even parity.", "$1 \\oplus 1 \\oplus 0 = 0$.", "Carry $1$."], "shortcut": "Even ones give sum 0.", "pattern": "Sum parity must be automatic." },
+    { "id": "vcl-032", "q": "Full adder $Cout$ with $A=1,B=1,Cin=0$?", "opts": ["$1$", "$0$", "$X$", "$Z$"], "c": 0, "d": "easy", "t": "adder", "source": "Practice - Adder", "exp": ["Majority of $1,1,0$ is $1$.", "$AB + Cin(A \\oplus B) = 1 + 0 = 1$."], "shortcut": "Two-or-more ones give carry 1.", "pattern": "Carry is majority vote." },
+    { "id": "vcl-033", "q": "$1$-bit $A>B$ output $G$?", "opts": ["$A\\bar{B}$", "$\\bar{A}B$", "$A \\oplus B$", "$AB$"], "c": 0, "d": "easy", "t": "comparator", "source": "Practice - Comparator", "exp": ["Greater means $A=1,B=0$.", "So $G = A\\bar{B}$."], "shortcut": "Greater-A-notB.", "pattern": "Comparator trio: G, E, L." },
+    { "id": "vcl-034", "q": "$1$-bit equality $E$?", "opts": ["$\\overline{A \\oplus B}$", "$A \\oplus B$", "$A+B$", "$AB$"], "c": 0, "d": "easy", "t": "comparator", "source": "Practice - Comparator", "exp": ["Equal inputs give XOR $0$.", "Invert: $E = \\overline{XOR} = 1$."], "shortcut": "Equal-XNOR.", "pattern": "Equality is XNOR." },
+    { "id": "vcl-035", "q": "$8$-to-$1$ MUX selects?", "opts": ["$3$", "$8$", "$2$", "$4$"], "c": 0, "d": "easy", "t": "mux", "source": "Practice - MUX", "exp": ["$8 = 2^{3}$: $3$ selects."], "shortcut": "8-3, 4-2, 16-4.", "pattern": "Power-of-two sizing." },
+    { "id": "vcl-036", "q": "$3$-to-$8$ decoder outputs?", "opts": ["$8$", "$3$", "$6$", "$16$"], "c": 0, "d": "easy", "t": "decoder", "source": "Practice - Decoder", "exp": ["Outputs $= 2^{n} = 2^{3} = 8$."], "shortcut": "Decoder expands: n to 2^n.", "pattern": "Inverse of encoder compression." },
+    { "id": "vcl-037", "q": "$4$-to-$2$ encoder inputs:outputs?", "opts": ["$4$:$2$", "$2$:$4$", "$4$:$3$", "$8$:$3$"], "c": 0, "d": "easy", "t": "encoder", "source": "Practice - Encoder", "exp": ["Encoder compresses $2^{n}$ lines to $n$.", "$4$-to-$2$."], "shortcut": "Encoder is decoder backwards.", "pattern": "Direction distinguishes them." },
+    { "id": "vcl-038", "q": "Priority encoder $V$ bit means?", "opts": ["Any input is 1", "All inputs are 1", "No input is 1", "Clock is high"], "c": 0, "d": "easy", "t": "encoder", "source": "Practice - Encoder", "exp": ["$V = D3+D2+D1+D0$.", "$V=1$ iff at least one request."], "shortcut": "Valid = OR of inputs.", "pattern": "V=0 means ignore outputs." },
+    { "id": "vcl-039", "q": "$1$-to-$4$ DEMUX steers?", "opts": ["One input to one of four outputs", "Four inputs to one output", "Two inputs to two outputs", "Clock to data"], "c": 0, "d": "easy", "t": "demux", "source": "Practice - DEMUX", "exp": ["DEMUX is one-to-many distributor.", "Selects choose which output gets Din."], "shortcut": "DEMUX distributes.", "pattern": "MUX selects, DEMUX distributes." },
+    { "id": "vcl-040", "q": "$AB + \\bar{A}C + BC$ simplifies to?", "opts": ["$AB + \\bar{A}C$", "$AB + BC$", "$\\bar{A}C + BC$", "$ABC$"], "c": 0, "d": "easy", "t": "laws", "source": "Practice - Laws", "exp": ["$BC$ is consensus of $AB$ and $\\bar{A}C$.", "Drop it."], "shortcut": "Spot the consensus trio.", "pattern": "Redundant third term trap." },
+    { "id": "vcl-041", "q": "SOP for 2-input XNOR (F=1 on rows 0 and 3)?", "opts": ["$\\bar{A}\\bar{B} + AB$", "$\\bar{A}B + A\\bar{B}$", "$AB$", "$A + B$"], "c": 0, "d": "medium", "t": "sop-pos", "source": "Practice - SOP", "exp": ["Row 0 ($00$): $\\bar{A}\\bar{B}$.", "Row 3 ($11$): $AB$.", "OR: $\\bar{A}\\bar{B} + AB$."], "shortcut": "XNOR = equality terms.", "pattern": "Row-to-minterm translation." },
+    { "id": "vcl-042", "q": "POS for 2-input XOR (F=0 on rows 0 and 3)?", "opts": ["$(A+B)(\\bar{A}+\\bar{B})$", "$AB$", "$A+B$", "$(A+\\bar{B})(\\bar{A}+B)$"], "c": 0, "d": "medium", "t": "sop-pos", "source": "Practice - POS", "exp": ["Row 0 ($00$): maxterm $(A+B)$.", "Row 3 ($11$): maxterm $(\\bar{A}+\\bar{B})$.", "AND: $(A+B)(\\bar{A}+\\bar{B})$."], "shortcut": "POS = AND of zero-row sums.", "pattern": "Maxterm complements confuse - 0 means plain." },
+    { "id": "vcl-043", "q": "Cells in a $3$-variable K-map?", "opts": ["$4$", "$8$", "$16$", "$6$"], "c": 1, "d": "medium", "t": "kmap", "source": "VEDA IIT Mains Pattern", "exp": ["Cells $= 2^{n} = 2^{3} = 8$."], "shortcut": "Cells equal truth-table rows.", "pattern": "Map size must be instant." },
+    { "id": "vcl-044", "q": "K-map column order is?", "opts": ["Gray code $00,01,11,10$", "Binary $00,01,10,11$", "Random", "Decimal $0,1,2,3$"], "c": 0, "d": "medium", "t": "kmap", "source": "VEDA IIT Mains Pattern", "exp": ["Gray order changes one bit per step.", "Makes physical neighbours logical neighbours."], "shortcut": "Middle two columns swapped vs binary.", "pattern": "Binary-order maps give wrong groups." },
+    { "id": "vcl-045", "q": "A group of $2$ in a K-map eliminates?", "opts": ["$1$ literal", "$2$ literals", "$0$ literals", "All literals"], "c": 0, "d": "medium", "t": "kmap", "source": "Practice - K-map", "exp": ["Group $2^{k}$ kills $k$ literals.", "$2 = 2^{1}$: kills $1$."], "shortcut": "Pair kills 1, quad kills 2.", "pattern": "Group-size rule drives minimisation." },
+    { "id": "vcl-046", "q": "A group of $8$ in a $4$-variable map leaves?", "opts": ["$1$ literal", "$2$ literals", "$3$ literals", "$4$ literals"], "c": 0, "d": "medium", "t": "kmap", "source": "Practice - K-map", "exp": ["$8 = 2^{3}$: kills $3$.", "$4 - 3 = 1$ literal left."], "shortcut": "Octet kills 3.", "pattern": "Bigger groups = simpler terms." },
+    { "id": "vcl-047", "q": "Are diagonal K-map cells adjacent?", "opts": ["No - differ in $2$ bits", "Yes - always", "Only in 4-var maps", "Only with don't-cares"], "c": 0, "d": "medium", "t": "kmap", "source": "Practice - K-map", "exp": ["Adjacency needs exactly $1$-bit difference.", "Diagonal differs in $2$ bits."], "shortcut": "Rectangles only, no L or diagonal.", "pattern": "Illegal shapes are a top K-map error." },
+    { "id": "vcl-048", "q": "Don't-care $X$ in K-map should be?", "opts": ["Taken as $1$ only if it enlarges a group", "Always taken as $1$", "Always taken as $0$", "Ignored always"], "c": 0, "d": "medium", "t": "kmap", "source": "VEDA IIT Mains Pattern", "exp": ["$X$ is flexible: use only when helpful.", "Growing a group kills a literal; else leave $0$."], "shortcut": "X helps or it hides.", "pattern": "Forced-X inclusion creates non-minimal cover." },
+    { "id": "vcl-049", "q": "Minimise $F(A,B,C)=\\sum(0,1,4)$?", "opts": ["$\\bar{A}\\bar{B} + \\bar{B}\\bar{C}$", "$\\bar{A}\\bar{C} + AB$", "$A + B + C$", "$\\bar{B} + C$"], "c": 0, "d": "medium", "t": "kmap", "source": "Practice - K-map", "exp": ["Ones at $000,001,100$.", "Pair $0$-$1$: $\\bar{A}\\bar{B}$.", "Pair $0$-$4$: $\\bar{B}\\bar{C}$.", "Cover: $\\bar{A}\\bar{B} + \\bar{B}\\bar{C}$. Verify $m3(011)=0$: $\\bar{A}\\bar{B}=0$, $\\bar{B}\\bar{C}=0$. Good."], "shortcut": "Cell 0 pairs both ways.", "pattern": "Corner cell 0 groups widely." },
+    { "id": "vcl-050", "q": "Minimal SOP of VEDA $F=\\sum(0,1,3,4,6)$?", "opts": ["$\\bar{B}\\bar{C} + \\bar{A}C + A\\bar{C}$", "$\\bar{A}\\bar{B} + AB$", "$B + C$", "$\\bar{B} + C$"], "c": 0, "d": "medium", "t": "kmap", "source": "VEDA IIT Sample (Q3 function)", "exp": ["Pairs: $0$-$1$: $\\bar{A}\\bar{B}$; $0$-$4$: $\\bar{B}\\bar{C}$; $4$-$6$: $A\\bar{C}$; $1$-$3$: $\\bar{A}C$.", "Essential cover: $\\bar{B}\\bar{C} + \\bar{A}C + A\\bar{C}$.", "Check $m2(010)=0$: all three $0$. $m5(101)=0$: all $0$. $m7=0$: all $0$."], "shortcut": "Three 2-literal terms.", "pattern": "VEDA function minimised - compare with MUX form." },
+    { "id": "vcl-051", "q": "2-input NAND gates for one NOT?", "opts": ["$1$", "$2$", "$3$", "$4$"], "c": 0, "d": "medium", "t": "universal", "source": "Practice - NAND-only", "exp": ["Tie both inputs: $NAND(A,A) = \\bar{A}$.", "Single gate."], "shortcut": "NOT costs one NAND.", "pattern": "Gate-counting starts here." },
+    { "id": "vcl-052", "q": "2-input NAND gates for one AND?", "opts": ["$2$", "$1$", "$3$", "$4$"], "c": 0, "d": "medium", "t": "universal", "source": "Practice - NAND-only", "exp": ["NAND then invert tied-NAND.", "$AND(A,B) = NOT(NAND(A,B))$: $2$ gates."], "shortcut": "AND costs two NANDs.", "pattern": "Inverting outputs cost one extra." },
+    { "id": "vcl-053", "q": "2-input NAND gates for one OR?", "opts": ["$3$", "$1$", "$2$", "$4$"], "c": 0, "d": "medium", "t": "universal", "source": "Practice - NAND-only", "exp": ["$A+B = \\overline{\\bar{A}\\cdot\\bar{B}}$.", "Two NOTs plus one NAND: $3$ gates."], "shortcut": "OR costs three NANDs.", "pattern": "De Morgan gate count." },
+    { "id": "vcl-054", "q": "$4$-input NAND from $2$-input NANDs needs?", "opts": ["$5$", "$3$", "$4$", "$2$"], "c": 0, "d": "medium", "t": "universal", "source": "VEDA IIT Sample Pattern (Q2)", "exp": ["Cascade: $G1=NAND(A,B)$, $G2=NOT(G1)=AB$.", "$G3=NAND(G2,C)$, $G4=NOT(G3)=ABC$.", "$G5=NAND(G4,D)$. Total $5$."], "shortcut": "Each added input costs ~1 extra gate pair step.", "pattern": "VEDA Q2 gate count." },
+    { "id": "vcl-055", "q": "$4$-to-$1$ MUX equation?", "opts": ["$Y=\\bar{S1}\\bar{S0}D0+\\bar{S1}S0D1+S1\\bar{S0}D2+S1S0D3$", "$Y=D0+D1+D2+D3$", "$Y=S1S0$", "$Y=D0D1D2D3$"], "c": 0, "d": "medium", "t": "mux", "source": "Practice - MUX", "exp": ["Each select combo enables one data term.", "Four AND terms ORed."], "shortcut": "Select bits choose the live term.", "pattern": "Equation reading for evaluation." },
+    { "id": "vcl-056", "q": "$4$:1 with $S1S0=01$, $D=(1,0,1,0)$?", "opts": ["$0$", "$1$", "$X$", "$Z$"], "c": 0, "d": "medium", "t": "mux", "source": "Practice - MUX", "exp": ["Select $01$ picks $D1$.", "$D1 = 0$."], "shortcut": "01 picks second pin.", "pattern": "Index discipline again." },
+    { "id": "vcl-057", "q": "VEDA $F=\\sum(0,1,3,4,6)$ on $4$:1 ($S1=B,S0=C$): $D0$?", "opts": ["$1$", "$0$", "$A$", "$\\bar{A}$"], "c": 0, "d": "medium", "t": "mux-veda", "source": "VEDA IIT Sample (Q3)", "exp": ["$BC=00$: rows $m0(A=0)=1$, $m4(A=1)=1$.", "Both $1$: tie $1$."], "shortcut": "11-rows give 1.", "pattern": "VEDA Q3 table row one." },
+    { "id": "vcl-058", "q": "Same VEDA mapping: $D1$ ($BC=01$)?", "opts": ["$\\bar{A}$", "$A$", "$1$", "$0$"], "c": 0, "d": "medium", "t": "mux-veda", "source": "VEDA IIT Sample (Q3)", "exp": ["$BC=01$: $m1(A=0)=1$, $m5(A=1)=0$.", "Only $A=0$ row is $1$: $\\bar{A}$."], "shortcut": "10-pattern gives not-V.", "pattern": "VEDA Q3 table row two." },
+    { "id": "vcl-059", "q": "Same VEDA mapping: $D2$ ($BC=10$)?", "opts": ["$A$", "$\\bar{A}$", "$1$", "$0$"], "c": 0, "d": "medium", "t": "mux-veda", "source": "VEDA IIT Sample (Q3)", "exp": ["$BC=10$: $m2(A=0)=0$, $m6(A=1)=1$.", "Only $A=1$ row is $1$: $A$."], "shortcut": "01-pattern gives V.", "pattern": "VEDA Q3 table row three." },
+    { "id": "vcl-060", "q": "Same VEDA mapping: $D3$ ($BC=11$)?", "opts": ["$\\bar{A}$", "$A$", "$1$", "$0$"], "c": 0, "d": "medium", "t": "mux-veda", "source": "VEDA IIT Sample (Q3)", "exp": ["$BC=11$: $m3(A=0)=1$, $m7(A=1)=0$.", "Only $A=0$ row is $1$: $\\bar{A}$.", "Full map: $D0=1, D1=\\bar{A}, D2=A, D3=\\bar{A}$."], "shortcut": "Verify $ABC=011$ picks $D3=1$. Correct.", "pattern": "VEDA Q3 complete." },
+    { "id": "vcl-061", "q": "$2$:1 MUX as $AND(A,B)$ with $S=A$ needs?", "opts": ["$D0=0, D1=B$", "$D0=1, D1=B$", "$D0=B, D1=0$", "$D0=1, D1=1$"], "c": 0, "d": "medium", "t": "mux-univ", "source": "Practice - MUX Universal", "exp": ["$Y = \\bar{S}D0 + SD1$.", "Need $Y = AB$: when $A=0$, $0$; when $A=1$, $B$.", "So $D0=0, D1=B$."], "shortcut": "AND: zero the S=0 pin.", "pattern": "MUX universality proof pattern." },
+    { "id": "vcl-062", "q": "$2$:1 MUX as $OR(A,B)$ with $S=A$ needs?", "opts": ["$D0=B, D1=1$", "$D0=0, D1=B$", "$D0=1, D1=0$", "$D0=B, D1=0$"], "c": 0, "d": "medium", "t": "mux-univ", "source": "Practice - MUX Universal", "exp": ["Need $Y = A+B$: when $A=0$, $B$; when $A=1$, $1$.", "So $D0=B, D1=1$."], "shortcut": "OR: one the S=1 pin.", "pattern": "Twin of AND mapping." },
+    { "id": "vcl-063", "q": "$2$:1 MUX as buffer $Y=S$ needs?", "opts": ["$D0=0, D1=1$", "$D0=1, D1=0$", "$D0=1, D1=1$", "$D0=0, D1=0$"], "c": 0, "d": "medium", "t": "mux-univ", "source": "Practice - MUX Universal", "exp": ["$Y = \\bar{S}\\cdot0 + S\\cdot1 = S$."], "shortcut": "0,1 passes select.", "pattern": "Buffer vs inverter pin swap." },
+    { "id": "vcl-064", "q": "$1$-to-$4$ DEMUX: $Y2$ equals?", "opts": ["$Din\\cdot S1\\cdot\\bar{S0}$", "$Din$", "$S1+S0$", "$0$ always"], "c": 0, "d": "medium", "t": "demux", "source": "Practice - DEMUX", "exp": ["$Y2$ active when $S1S0=10$.", "$Y2 = Din \\cdot S1 \\cdot \\bar{S0}$."], "shortcut": "Output index matches select code.", "pattern": "DEMUX equations mirror MUX terms." },
+    { "id": "vcl-065", "q": "$F=\\sum(0,3)$ with $2$:4 decoder + gate?", "opts": ["$Y0 + Y3$ (one OR)", "$Y1 + Y2$", "$Y0 \\cdot Y3$", "$Y1 \\cdot Y2$"], "c": 0, "d": "medium", "t": "decoder-func", "source": "Practice - Decoder", "exp": ["Decoder gives minterms $Y0..Y3$.", "OR the $1$-rows: $Y0+Y3$."], "shortcut": "Decoder generates, OR collects.", "pattern": "Any SOP from decoder plus OR." },
+    { "id": "vcl-066", "q": "Active-low $2$:4 decoder, input $10$: outputs?", "opts": ["$Y2=0$, rest $1$", "$Y2=1$, rest $0$", "All $0$", "All $1$"], "c": 0, "d": "medium", "t": "decoder", "source": "Practice - Decoder", "exp": ["Selected output asserted low.", "Input $2$ selects $Y2=0$, others $1$."], "shortcut": "Active-low flips the one-hot.", "pattern": "Bubble polarity decides minterm vs maxterm." },
+    { "id": "vcl-067", "q": "Priority $4$:2, inputs $D3D2D1D0=1010$?", "opts": ["$Y=11, V=1$", "$Y=10, V=1$", "$Y=01, V=1$", "$Y=00, V=0$"], "c": 0, "d": "medium", "t": "encoder", "source": "Practice - Priority", "exp": ["Highest $1$ is $D3$.", "Index $3 = 11$, $V=1$. Lower $D1$ masked."], "shortcut": "Highest wins.", "pattern": "Priority masks lower requests." },
+    { "id": "vcl-068", "q": "Priority $4$:2, inputs $0100$?", "opts": ["$Y=10, V=1$", "$Y=11, V=1$", "$Y=00, V=1$", "$Y=00, V=0$"], "c": 0, "d": "medium", "t": "encoder", "source": "Practice - Priority", "exp": ["Only $D2=1$.", "Index $2 = 10$, $V=1$."], "shortcut": "Single request passes through.", "pattern": "No contention case." },
+    { "id": "vcl-069", "q": "Priority $4$:2, inputs $0001$?", "opts": ["$Y=00, V=1$", "$Y=11, V=1$", "$Y=00, V=0$", "$Y=10, V=1$"], "c": 0, "d": "medium", "t": "encoder", "source": "Practice - Priority", "exp": ["Only $D0=1$: index $0 = 00$.", "$V=1$ (request present)."], "shortcut": "Lowest index still valid.", "pattern": "V distinguishes 0000 from 0001." },
+    { "id": "vcl-070", "q": "Priority $4$:2, inputs $0000$?", "opts": ["$V=0$ (outputs meaningless)", "$Y=11, V=1$", "$Y=00, V=1$", "$Y=10, V=0$"], "c": 0, "d": "medium", "t": "encoder", "source": "Practice - Priority", "exp": ["No request: $V = 0$.", "Outputs don't care."], "shortcut": "No request, no valid.", "pattern": "Valid bit resolves the 0000/0001 ambiguity." },
+    { "id": "vcl-071", "q": "Half subtractor difference $D$?", "opts": ["$A \\oplus B$", "$AB$", "$A+B$", "$\\bar{A}$"], "c": 0, "d": "medium", "t": "subtractor", "source": "Practice - Subtractor", "exp": ["Difference is $1$ when inputs differ: XOR.", "Same as adder sum."], "shortcut": "Diff-XOR like sum.", "pattern": "Add/sub share XOR core." },
+    { "id": "vcl-072", "q": "Half subtractor borrow $Bout$ ($A-B$)?", "opts": ["$\\bar{A}B$", "$A\\bar{B}$", "$AB$", "$A \\oplus B$"], "c": 0, "d": "medium", "t": "subtractor", "source": "Practice - Subtractor", "exp": ["Borrow when $A=0,B=1$.", "So $Bout = \\bar{A}B$."], "shortcut": "Borrow needs A-0-B-1.", "pattern": "Borrow mirrors carry with A inverted." },
+    { "id": "vcl-073", "q": "Full adder $Cout$ formula?", "opts": ["$AB + Cin(A \\oplus B)$", "$A \\oplus B \\oplus Cin$", "$A+B+Cin$", "$AB\\cdot Cin$"], "c": 0, "d": "medium", "t": "adder", "source": "VEDA IIT Mains Pattern", "exp": ["Carry = majority of $A,B,Cin$.", "$AB + BCin + ACin = AB + Cin(A \\oplus B)$.", "Second option is sum, not carry."], "shortcut": "Carry-majority, Sum-parity.", "pattern": "Sum/carry swap is the classic trap." },
+    { "id": "vcl-074", "q": "$A - B$ via complements?", "opts": ["$A + \\bar{B} + 1$", "$A + B$", "$\\bar{A} + B$", "$A - B$ needs no logic"], "c": 0, "d": "medium", "t": "subtractor", "source": "VEDA IIT Mains Pattern", "exp": ["$\\bar{B}+1$ is 2's complement of $B$.", "$A - B = A + (2's of B)$."], "shortcut": "Subtract by adding complement.", "pattern": "Hardware has one adder, not two units." },
+    { "id": "vcl-075", "q": "Shared adder-subtractor with $M=1$ does?", "opts": ["Add", "Subtract", "Multiply", "Compare only"], "c": 1, "d": "medium", "t": "adder-sub", "source": "Practice - Adder-Subtractor", "exp": ["$M$ XORs each $B$ bit and feeds $Cin=M$.", "$M=1$: $B$ inverted plus $1$ = subtract.", "$M=0$: add."], "shortcut": "M-1-minus, M-0-more.", "pattern": "Control-line duality." },
+    { "id": "vcl-076", "q": "$4$-bit ripple-carry delay order?", "opts": ["$4$ carry stages", "$1$ gate", "$16$ stages", "$2$ stages"], "c": 0, "d": "medium", "t": "timing", "source": "Practice - Timing", "exp": ["Each stage waits for previous carry.", "$n$ bits wait $n$ carry steps: $O(n)$."], "shortcut": "Ripple waits in line.", "pattern": "Linear delay motivates lookahead." },
+    { "id": "vcl-077", "q": "Carry lookahead uses?", "opts": ["Generate $G=AB$ and Propagate $P$", "Only XOR gates", "Clocked registers", "Capacitors"], "c": 0, "d": "medium", "t": "timing", "source": "VEDA IIT Mains Pattern", "exp": ["$G$ creates carry, $P$ passes incoming carry.", "Carries computed in parallel from $G,P$."], "shortcut": "G-creates, P-passes.", "pattern": "Area-for-speed trade-off." },
+    { "id": "vcl-078", "q": "$1$-bit compare $A=0,B=1$?", "opts": ["$G=1$", "$E=1$", "$L=1$", "All $0$"], "c": 2, "d": "medium", "t": "comparator", "source": "Practice - Comparator", "exp": ["$A<B$: $L = \\bar{A}B = 1$.", "$G = 0, E = 0$."], "shortcut": "Less-barA-B.", "pattern": "One of G/E/L is always 1." },
+    { "id": "vcl-079", "q": "$2$-bit equality needs?", "opts": ["AND of bitwise XNORs", "OR of bitwise XORs", "Single NAND", "Clock"], "c": 0, "d": "medium", "t": "comparator", "source": "Practice - Comparator", "exp": ["Each bit pair XNORed.", "AND all: $1$ only if every bit equal."], "shortcut": "Equal-everywhere means AND.", "pattern": "Word comparator from bit slices." },
+    { "id": "vcl-080", "q": "POS K-map groups which cells?", "opts": ["Ones", "Zeros", "Don't-cares only", "Edges only"], "c": 1, "d": "medium", "t": "kmap-pos", "source": "Practice - K-map", "exp": ["POS covers $0$-rows to make sum terms.", "Read complements of grouped variables."], "shortcut": "POS-zeros, SOP-ones.", "pattern": "Dual grouping rule." },
+    { "id": "vcl-081", "q": "Dual of $AB + C$?", "opts": ["$(A+B)C$", "$AB+C$", "$(A+C)(B+C)$", "$A+B+C$"], "c": 0, "d": "hard", "t": "duality", "source": "Practice - Duality", "exp": ["Swap AND/OR: $AB$ becomes $A+B$, $+$ becomes $\\cdot$.", "Dual: $(A+B) \\cdot C$."], "shortcut": "Swap operators, keep variables.", "pattern": "Duality gives free theorems." },
+    { "id": "vcl-082", "q": "A bubble crossing a gate (bubble pushing) does?", "opts": ["Flips AND to OR (and vice versa)", "Deletes the gate", "Adds a clock", "Nothing"], "c": 0, "d": "hard", "t": "bubbles", "source": "Practice - Schematics", "exp": ["NOT through AND/OR flips type by De Morgan.", "Two bubbles cancel."], "shortcut": "Bubble flips gate.", "pattern": "Visual De Morgan for schematics." },
+    { "id": "vcl-083", "q": "Largest group in $4$-var K-map gives?", "opts": ["Constant $1$ (all $16$ ones)", "Single literal", "$4$ literals", "$0$"], "c": 0, "d": "hard", "t": "kmap", "source": "Practice - K-map", "exp": ["Group $16 = 2^{4}$ kills all $4$ literals.", "Function is $1$ always."], "shortcut": "Full map is tautology.", "pattern": "Extreme grouping case." },
+    { "id": "vcl-084", "q": "Essential prime implicant covers?", "opts": ["A $1$ no other prime implicant covers", "Only don't-cares", "All zeros", "Clock"], "c": 0, "d": "hard", "t": "kmap", "source": "VEDA IIT Mains Pattern", "exp": ["Some $1$s belong to exactly one maximal group.", "That group is mandatory in every minimal cover."], "shortcut": "Lonely 1 forces its group.", "pattern": "Minimal-cover reasoning." },
+    { "id": "vcl-085", "q": "Static-1 hazard removed by?", "opts": ["Adding redundant consensus group", "Removing gates", "Adding clock", "Larger supply"], "c": 0, "d": "hard", "t": "timing", "source": "VEDA IIT Mains Pattern", "exp": ["Adjacent ones in different terms glitch on transition.", "Consensus term bridges them at one extra gate cost."], "shortcut": "Bridge adjacent ones.", "pattern": "Functionality-vs-timing trade-off." },
+    { "id": "vcl-086", "q": "$8$:1 MUX from $2$:1 MUXes needs?", "opts": ["$7$", "$3$", "$8$", "$4$"], "c": 0, "d": "hard", "t": "mux-tree", "source": "Practice - MUX", "exp": ["Tree: $4 + 2 + 1 = 7$.", "Each stage halves lines."], "shortcut": "N:1 needs N-1 two-to-ones.", "pattern": "Tree counting generalises." },
+    { "id": "vcl-087", "q": "VEDA $F$ with $S1=A,S0=B$ (data in $C$): $D1$ ($AB=01$)?", "opts": ["$C$", "$\\bar{C}$", "$1$", "$0$"], "c": 0, "d": "hard", "t": "mux-veda", "source": "VEDA IIT Sample Pattern (Q3 variant)", "exp": ["$AB=01$: rows $m2(C=0)=0, m3(C=1)=1$.", "Only $C=1$ row is $1$: $D1 = C$."], "shortcut": "Any variable can be data.", "pattern": "Select-choice flexibility." },
+    { "id": "vcl-088", "q": "Full subtractor $Bout$?", "opts": ["$\\bar{A}B + \\bar{A}Bin + BBin$", "$AB + Bin$", "$A \\oplus B$", "$1$ always"], "c": 0, "d": "hard", "t": "subtractor", "source": "Practice - Subtractor", "exp": ["Borrow = majority with $A$ inverted.", "Mirror of $Cout$ with $A$ flipped."], "shortcut": "Bout mirrors Cout on not-A.", "pattern": "Add/sub formula symmetry." },
+    { "id": "vcl-089", "q": "$4$-bit unsigned $1011 + 0111$?", "opts": ["$0010$ with $Cout=1$ ($18$)", "$0010$ no carry", "$10010$ fits $4$ bits", "$0000$"], "c": 0, "d": "hard", "t": "adder", "source": "Practice - Addition", "exp": ["$11 + 7 = 18$.", "$18 = 10010$ needs $5$ bits.", "$4$-bit sum $0010$, carry-out $1$."], "shortcut": "Sums over 15 spill carry.", "pattern": "Carry-out vs overflow distinction." },
+    { "id": "vcl-090", "q": "$2$-bit $A=10, B=01$: comparator?", "opts": ["$A>B$ ($G=1$)", "$A<B$", "$A=B$", "None"], "c": 0, "d": "hard", "t": "comparator", "source": "Practice - Comparator", "exp": ["MSB decides first: $A1=1 > B1=0$.", "Word $2 > 1$: $G=1$."], "shortcut": "MSB-first like dictionary.", "pattern": "Cascade reasoning beats $16$-row tables." },
+    { "id": "vcl-091", "q": "Gray code after $01$?", "opts": ["$11$", "$10$", "$00$", "$01$ again"], "c": 0, "d": "hard", "t": "codes", "source": "Practice - Codes", "exp": ["Gray sequence: $00, 01, 11, 10$.", "After $01$ comes $11$ (one bit flips)."], "shortcut": "Gray flips one bit per step.", "pattern": "Gray order is K-map order." },
+    { "id": "vcl-092", "q": "$3$:8 decoder for VEDA $F=\\sum(0,1,3,4,6)$ needs?", "opts": ["OR of $Y0,Y1,Y3,Y4,Y6$", "OR of $Y2,Y5,Y7$", "AND of all $Y$", "XOR of $Y$"], "c": 0, "d": "hard", "t": "decoder-func", "source": "VEDA IIT Sample Pattern", "exp": ["Decoder outputs are minterms.", "OR the $1$-rows: $Y0+Y1+Y3+Y4+Y6$ ($5$-input OR)."], "shortcut": "Collect the ones.", "pattern": "Decoder-plus-OR universal build." },
+    { "id": "vcl-093", "q": "$NOR(A,A)$ equals?", "opts": ["$\\bar{A}$", "$A$", "$0$", "$1$"], "c": 0, "d": "hard", "t": "universal", "source": "Practice - NOR-only", "exp": ["$\\overline{A + A} = \\bar{A}$.", "Tied NOR is an inverter like tied NAND."], "shortcut": "Tie to invert, either family.", "pattern": "NOR universality mirrors NAND." },
+    { "id": "vcl-094", "q": "$4$-input XOR with $1,1,1,0$?", "opts": ["$1$", "$0$", "$X$", "$Z$"], "c": 0, "d": "hard", "t": "gates", "source": "Practice - XOR", "exp": ["Count ones: three.", "Odd parity: $1$."], "shortcut": "XOR = odd detector at any width.", "pattern": "Parity generalisation." },
+    { "id": "vcl-095", "q": "$2$-bit words $10$ vs $10$: equality?", "opts": ["$E=1$", "$E=0$", "$G=1$", "$L=1$"], "c": 0, "d": "hard", "t": "comparator", "source": "Practice - Comparator", "exp": ["Bitwise XNOR: $1 \\odot 1 = 1$, $0 \\odot 0 = 1$.", "AND: $1 \\cdot 1 = 1$."], "shortcut": "Equal words AND to 1.", "pattern": "Word equality from slices." },
+    { "id": "vcl-096", "q": "Carry generate $G$?", "opts": ["$AB$", "$A \\oplus B$", "$A+B+Cin$", "$0$"], "c": 0, "d": "hard", "t": "timing", "source": "Practice - Lookahead", "exp": ["Generate creates carry regardless of $Cin$.", "$G = AB$. Propagate $P = A \\oplus B$."], "shortcut": "G-AND, P-XOR.", "pattern": "G/P vocabulary for timing answers." },
+    { "id": "vcl-097", "q": "Half adder from $2$-input NANDs needs?", "opts": ["$5$", "$2$", "$3$", "$9$"], "c": 0, "d": "hard", "t": "universal", "source": "GATE Pattern Practice", "exp": ["XOR from NANDs: $4$; AND: $2$.", "Shared $NAND(A,B)$ term saves one: total $5$."], "shortcut": "Share the common NAND.", "pattern": "Gate-count sharing insight." },
+    { "id": "vcl-098", "q": "POS form of VEDA $F=\\sum(0,1,3,4,6)$?", "opts": ["$\\prod(2,5,7)$", "$\\prod(0,1,3,4,6)$", "$\\sum(2,5,7)$", "$\\prod(0,7)$"], "c": 0, "d": "hard", "t": "sop-pos", "source": "VEDA IIT Mains Pattern", "exp": ["$3$ vars have rows $0$-$7$.", "$1$-rows: $0,1,3,4,6$. $0$-rows: $2,5,7$.", "POS: $\\prod M(2,5,7)$."], "shortcut": "POS rows = missing sigma rows.", "pattern": "Sigma-pi complement in fixed width." },
+    { "id": "vcl-099", "q": "Maxterms in $3$ variables?", "opts": ["$8$", "$3$", "$6$", "$16$"], "c": 0, "d": "hard", "t": "sop-pos", "source": "Practice - Minterms", "exp": ["One maxterm per row: $2^{3} = 8$."], "shortcut": "Minterms = maxterms = rows.", "pattern": "Count symmetry." },
+    { "id": "vcl-100", "q": "$16$:1 MUX selects?", "opts": ["$4$", "$16$", "$5$", "$8$"], "c": 0, "d": "hard", "t": "mux", "source": "Practice - MUX", "exp": ["$16 = 2^{4}$: $4$ selects."], "shortcut": "16-4, 8-3, 32-5.", "pattern": "Log2 sizing both ways." },
+    { "id": "vcl-101", "q": "VEDA Q2 cascade: $G1=NAND(A,B)$, $G2=NAND(G1,G1)$ equals? [PYQ - VEDA IIT Sample, Digital]", "opts": ["$AB$", "$\\overline{AB}$", "$A+B$", "$0$"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Logic Design (verified)", "exp": ["$G1 = \\overline{AB}$.", "$G2 = \\overline{G1 \\cdot G1} = \\bar{G1} = AB$.", "Double inversion restores AND. Next $G3 = NAND(G2,C)$."], "shortcut": "NAND-then-tied-NAND makes AND.", "pattern": "VEDA Q2 first two gates." },
+    { "id": "vcl-102", "q": "VEDA Q2: minimum $2$-input NANDs for $4$-input NAND? [PYQ - VEDA IIT Sample, Digital]", "opts": ["$5$", "$3$", "$4$", "$8$"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Logic Design (verified)", "exp": ["Cascade: $G1=NAND(A,B)$, $G2=AB$, $G3=NAND(G2,C)$, $G4=ABC$, $G5=NAND(G4,D)$. ", "Tree also needs $5$. Verify $ABCD=1111$: output $0$."], "shortcut": "Count the cascade.", "pattern": "VEDA Q2 full answer." },
+    { "id": "vcl-103", "q": "VEDA Q3: $F=\\sum(0,1,3,4,6)$ on single $4$:1 ($S1=B,S0=C$). Data map? [PYQ - VEDA IIT Sample, Digital]", "opts": ["$D0=1, D1=\\bar{A}, D2=A, D3=\\bar{A}$", "$D0=A, D1=A, D2=A, D3=A$", "$D0=0, D1=0, D2=0, D3=0$", "$D0=1, D1=1, D2=1, D3=1$"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Logic Design (verified)", "exp": ["$BC=00$: $m0=1,m4=1$: $D0=1$.", "$BC=01$: $m1=1,m5=0$: $D1=\\bar{A}$.", "$BC=10$: $m2=0,m6=1$: $D2=A$.", "$BC=11$: $m3=1,m7=0$: $D3=\\bar{A}$."], "shortcut": "00-gives-1, mixed give A-literals.", "pattern": "VEDA Q3 full answer." },
+    { "id": "vcl-104", "q": "VEDA Q3 map check: $ABC=101$ gives? [PYQ - VEDA IIT Sample, Digital]", "opts": ["$0$", "$1$", "$X$", "$Z$"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Logic Design (verified)", "exp": ["Selects $S1=B=0, S0=C=1$: picks $D1$.", "$D1 = \\bar{A} = \\bar{1} = 0$.", "Row $m5$ is indeed $0$. Verified."], "shortcut": "Pick then substitute.", "pattern": "Verification earns mains marks." },
+    { "id": "vcl-105", "q": "Minimise $F(A,B,C)=\\sum(0,2,5,7)$? [GATE-pattern PYQ]", "opts": ["$\\bar{A}\\bar{C} + AC$", "$AB + BC$", "$A + B + C$", "$\\bar{A} + C$"], "c": 0, "d": "hard", "t": "pyq-gate", "source": "GATE Pattern Practice (K-map)", "exp": ["Ones: $000,010,101,111$.", "Pair $0$-$2$ ($00$-$010$): $\\bar{A}\\bar{C}$? No - $000+010 = 0$-$0$: $\\bar{A}\\bar{C}$.", "Pair $5$-$7$: $101+111 = 1$-$1$: $AC$.", "Cover $\\bar{A}\\bar{C} + AC$ (= $A \\odot C$). Check $m1=0$: both $0$. Good."], "shortcut": "B drops out entirely.", "pattern": "Variable-elimination K-maps." },
+    { "id": "vcl-106", "q": "Max variables on single $8$:1 MUX (with data-variable trick)? [GATE-pattern PYQ]", "opts": ["$4$", "$3$", "$8$", "$2$"], "c": 0, "d": "hard", "t": "pyq-gate", "source": "GATE Pattern Practice (MUX)", "exp": ["$3$ selects plus $1$ data variable.", "Total $4$ variables on one $8$:1."], "shortcut": "MUX covers selects-plus-one.", "pattern": "(n-1)-selects rule generalises." },
+    { "id": "vcl-107", "q": "XOR from $2$:4 decoder + OR? [GATE-pattern PYQ]", "opts": ["$Y1 + Y2$", "$Y0 + Y3$", "$Y0 \\cdot Y1$", "$Y2 \\cdot Y3$"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (decoder)", "exp": ["XOR ones at rows $1,2$.", "OR minterms $Y1+Y2$."], "shortcut": "XOR rows are 01 and 10.", "pattern": "Standard-function decoder builds." },
+    { "id": "vcl-108", "q": "Half adder $A=1,B=0$: $S,C$? [GATE-pattern PYQ]", "opts": ["$S=1, C=0$", "$S=0, C=1$", "$S=0, C=0$", "$S=1, C=1$"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (adder)", "exp": ["$S = 1 \\oplus 0 = 1$.", "$C = 1 \\cdot 0 = 0$."], "shortcut": "Differ-no-carry.", "pattern": "Single-one addition." },
+    { "id": "vcl-109", "q": "$8$:3 priority encoder output lines? [GATE-pattern PYQ]", "opts": ["$4$ ($3$ code + Valid)", "$8$", "$3$ only", "$2$"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (encoder)", "exp": ["$3$ code bits for index $0$-$7$.", "Plus $V$: total $4$."], "shortcut": "Code bits plus Valid.", "pattern": "Encoder width counting." },
+    { "id": "vcl-110", "q": "Full adder $A=0,B=0,Cin=1$? [GATE-pattern PYQ]", "opts": ["$S=1, Cout=0$", "$S=0, Cout=1$", "$S=0, Cout=0$", "$S=1, Cout=1$"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (adder)", "exp": ["One $1$: odd parity $S=1$.", "Majority $0$: $Cout=0$."], "shortcut": "Single-one passes through.", "pattern": "Cin-only addition." },
+    { "id": "vcl-111", "q": "Minimise $F=\\sum(0,1,4)$? [VEDA-pattern PYQ]", "opts": ["$\\bar{A}\\bar{B} + \\bar{B}\\bar{C}$", "$AB + BC$", "$A+B$", "$C$"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA Mains Pattern Practice (K-map)", "exp": ["Ones $000,001,100$.", "Pair $0$-$1$: $\\bar{A}\\bar{B}$.", "Pair $0$-$4$: $\\bar{B}\\bar{C}$.", "Cover both. Check $m3=0$: $\\bar{A}\\bar{B}=0$ ($B=1$), $\\bar{B}\\bar{C}=0$. Good."], "shortcut": "Cell 0 pairs both ways.", "pattern": "Corner-cell grouping." },
+    { "id": "vcl-112", "q": "Any $3$-var function on one $4$:1 MUX needs? [VEDA-pattern PYQ]", "opts": ["$2$ selects + $3$rd variable on data", "$3$ selects, no data trick", "$8$:1 minimum", "Impossible"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA Mains Pattern Practice (MUX)", "exp": ["$(n-1) = 2$ selects cover two variables.", "Third variable (true/complement/$0$/$1$) on data pins.", "VEDA Q3 is the proof."], "shortcut": "n-1 selects suffice.", "pattern": "MUX sizing rule closes the topic." }
+  ],
+  "category": "digital-design"
+}

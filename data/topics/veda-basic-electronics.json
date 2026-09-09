@@ -1,0 +1,620 @@
+{
+  "id": "veda-basic-electronics",
+  "title": "Basic Electronics - RC Circuits, Diodes, BJTs, Network Theorems",
+  "icon": "E",
+  "subtitle": "RC circuits, Kirchhoff laws, node/mesh, superposition, Thevenin/Norton, max power, PN diode, rectifiers, clipping/clamping, Zener, BJT",
+  "days": "9-10",
+  "color": "#0D9488",
+  "category": "basic-electronics",
+  "subtopics": [
+    "Basic RC Circuits",
+    "Kirchhoff's Laws, Node and mesh analysis",
+    "Superposition, Thevenin's and Norton's theorems, Maximum power transfer",
+    "PN junction diode: clipping, clamping and rectifiers",
+    "Zener diode",
+    "BJT basics"
+  ],
+  "estimatedHours": 10,
+  "learningPath": [
+    { "sectionId": "foundations-kcl-kvl", "type": "concept" },
+    { "sectionId": "network-theorems", "type": "concept" },
+    { "sectionId": "rc-circuits", "type": "concept" },
+    { "sectionId": "pn-diode-rect", "type": "concept" },
+    { "sectionId": "zener-bjt", "type": "concept" },
+    { "sectionId": "exam-waveforms", "type": "concept" }
+  ],
+  "readingSections": [
+    {
+      "id": "foundations-kcl-kvl",
+      "title": "1. Foundations - V, I, R, Power, KCL, KVL (From Zero)",
+      "type": "concept",
+      "quickSummary": "Current is charge flow, voltage is push, resistor obeys V=IR. KCL: currents at a node sum to zero. KVL: voltages around a loop sum to zero.",
+      "content": [
+        "Charge $Q$ (coulombs), current $I = dQ/dt$ (amperes = coulombs/sec), voltage $V$ (joules/coulomb = push per charge), power $P = VI$ (watts). Passive sign convention: current enters the positive terminal of a load, so $P = VI$ absorbed is positive.",
+        "Ohm's law $V = IR$. Series: same current, resistances add $R_{eq} = R_{1}+R_{2}$. Parallel: same voltage, conductances add $1/R_{eq} = 1/R_{1}+1/R_{2}$ (two resistors: $R_{eq} = R_{1}R_{2}/(R_{1}+R_{2})$). Voltage divider (series): $V_{1} = V_{s}R_{1}/(R_{1}+R_{2})$. Current divider (parallel): $I_{1} = I_{s}R_{2}/(R_{1}+R_{2})$ (opposite arm on top).",
+        "KCL: algebraic sum of currents leaving a node = 0 (charge cannot pile up). KVL: algebraic sum of voltages around any closed loop = 0 (energyRound trip nets zero). Sign discipline: pick a traversal direction; voltage drop (+ to -) is negative rise... fix convention: sum of rises = sum of drops.",
+        "Worked example: $10V$ source, $R_{1}=2k$ series $R_{2}=3k$. Current $I = 10/5k = 2mA$. $V_{R2} = 2mA \\times 3k = 6V$ (divider: $10 \\times 3/5$). Power in $R_{2}$: $V^{2}/R = 36/3k = 12mW$."
+      ],
+      "subsections": [
+        {
+          "title": "Divider twins - which ratio?",
+          "content": [
+            "Voltage divider: wanted resistor on TOP. Current divider: OPPOSITE resistor on top.",
+            "Mnemonic: voltage favours self, current favours the other branch.",
+            "Always verify: divider output must be smaller than source (passive)."
+          ],
+          "example": {
+            "prompt": "12V across series 1k and 2k. Voltage on 2k?",
+            "steps": [
+              "Total $3k$, current $12/3k = 4mA$.",
+              "Divider: $12 \\times 2/3 = 8V$."
+            ],
+            "answer": "$8V$"
+          }
+        },
+        {
+          "title": "KCL/KVL sign method that never fails",
+          "content": [
+            "Label every resistor with + where assumed current enters. KCL at node: in = out. KVL loop: walking from + to - is a drop ($-IR$), - to + is a rise ($+IR$); sources $+V$ rising.",
+            "If a computed current is negative, direction was backwards - magnitude still right."
+          ]
+        },
+        {
+          "title": "Power check",
+          "content": [
+            "Sum of absorbed powers = 0 (sources deliver negative absorption). Use it to verify every DC solution in seconds.",
+            "Resistor power forms: $I^{2}R = V^{2}/R = VI$ - pick the known quantity."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "V=IR. Series add, parallel reciprocal-add.",
+        "Voltage divider: self on top. Current divider: opposite on top.",
+        "KCL nodes, KVL loops. Power sums to zero."
+      ],
+      "companyNote": "One divider + one KCL/KVL question is standard in prelims."
+    },
+    {
+      "id": "network-theorems",
+      "title": "2. Network Theorems - Node/Mesh, Superposition, Thevenin/Norton, Max Power",
+      "type": "concept",
+      "quickSummary": "Node writes KCL at unknowns, mesh writes KVL in windows. Superposition kills all-but-one source. Thevenin compresses any linear network to Vth+Rth.",
+      "content": [
+        "Nodal: pick reference (ground), assign node voltages, write KCL at each unknown node ($\\sum$ leaving currents = 0, each $V_{diff}/R$), solve. Supernode when a voltage source bridges two unknown nodes. Mesh: assign clockwise mesh currents, write KVL per window ($R_{self}I_{m} - \\sum R_{shared}I_{neighbour} = \\sum$ rises), solve. Supermesh when a current source is shared by two meshes.",
+        "Superposition: linear circuits only - keep ONE independent source alive at a time (voltage shorted, current opened), solve, ADD results. Dependent sources stay on always. Power does NOT superpose (quadratic) - compute power last from total V/I.",
+        "Thevenin: any linear two-terminal network = $V_{th}$ (open-circuit voltage) in series with $R_{th}$. Norton: same as $I_{N}$ (short-circuit current) in parallel with $R_{N} = R_{th}$. Conversions: $V_{th} = I_{N}R_{th}$. $R_{th}$ = deactivate independents (short V, open I) and look back; with dependent sources use test-source ($1A/1V$) method.",
+        "Maximum power transfer: load gets most when $R_{L} = R_{th}$, and $P_{max} = V_{th}^{2}/(4R_{th})$. Efficiency then is only 50% - used for signals, never for power grids."
+      ],
+      "subsections": [
+        {
+          "title": "Thevenin in 3 steps",
+          "content": [
+            "Step 1: remove load, find open-circuit voltage = $V_{th}$ (divider/node often enough).",
+            "Step 2: deactivate sources, find $R_{th}$ by series/parallel (or test source).",
+            "Step 3: reconnect load to $V_{th}$-$R_{th}$ and solve trivially."
+          ],
+          "example": {
+            "prompt": "12V source, series 2k to node A, 4k from A to ground. Thevenin at A?",
+            "steps": [
+              "$V_{th}$ = divider: $12 \\times 4/6 = 8V$.",
+              "Deactivate (short 12V): $2k \\parallel 4k = 1.33k$.",
+              "Answer $8V$ + $1.33k$."
+            ],
+            "answer": "$V_{th}=8V, R_{th}=1.33k$"
+          }
+        },
+        {
+          "title": "Superposition traps",
+          "content": [
+            "Short voltage sources (0V) but never short a current source; open current sources but never open a voltage source.",
+            "Dependent sources never deactivated. Power needs totals first.",
+            "Two-source circuits split into two one-source halves - each half is usually a divider."
+          ]
+        },
+        {
+          "title": "Max power line",
+          "content": [
+            "Set $R_{L} = R_{th}$ first, then $P_{max} = V_{th}^{2}/4R_{th}$.",
+            "If $R_{L}$ is fixed and unequal, power is $V_{th}^{2}R_{L}/(R_{th}+R_{L})^{2}$ - less than max."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Node=KCL, mesh=KVL. Supernode/supermesh for bridging sources.",
+        "Superposition: one source alive, add (not power).",
+        "Thevenin Vth+Rth; Norton IN||RN; RL=Rth for max power."
+      ],
+      "companyNote": "Mains lists every theorem by name - expect one direct application each cycle."
+    },
+    {
+      "id": "rc-circuits",
+      "title": "3. RC Circuits - Transients, Impedance, RMS (VEDA Sample Heart)",
+      "type": "concept",
+      "quickSummary": "Capacitor blocks DC when charged, passes changes. tau=RC sets speed. Sine steady state uses complex impedance. RMS adds orthogonally in series RC.",
+      "content": [
+        "Capacitor $Q = CV$, $I = C\\,dV/dt$. DC steady state: open circuit (charged, no current). Charging toward source through $R$: $V_{C}(t) = V_{s}(1-e^{-t/\\tau})$, $\\tau = RC$. After $5\\tau$ it is settled (>99%). Discharging: $V_{C} = V_{0}e^{-t/\\tau}$.",
+        "Sine steady state at $\\omega$: $Z_{R} = R$, $Z_{C} = 1/(j\\omega C) = -j/(\\omega C)$, $Z_{L} = j\\omega L$. Series: add. Magnitude $|Z| = \\sqrt{R^{2}+X^{2}}$, current $I = V/|Z|$, resistor and capacitor voltages are $90^{\\circ}$ apart so they add by Pythagoras, NOT directly.",
+        "VEDA sample: series RC with $V_{R} = 12V$ RMS, $V_{C} = 15V$ RMS. Source $V_{s} = \\sqrt{12^{2}+15^{2}} = \\sqrt{369} \\approx 19.2V$ RMS. Adding $12+15 = 27V$ is the classic trap.",
+        "Linear circuits never create new frequencies: $6kHz$ sine in gives $6kHz$ everywhere (only amplitude/phase change). So the voltage across the resistor in the $6kHz$ series-RC question is still $6kHz$.",
+        "Impedance design ($1+4j \\, \\Omega$ at $\\omega = 1$): real part 1 = $1\\Omega$ resistor; imaginary $+j4$ = inductor $j\\omega L = j4$ so $L = 4H$. Simplest: $1\\Omega$ in series with $4H$. (Capacitor gives $-j$; to use one you would add a bigger inductor and subtract - pointless.)",
+        "Square-wave + RC ($R=1k, C=1\\mu F$, $200Hz$): $\\tau = RC = 1ms$, period $T = 5ms$, half-period $2.5ms = 2.5\\tau$ - transitional regime. Low-pass (C shunt): exponential charge/discharge edges, visible rounding/tilt, average preserved. High-pass (C series): tilted square with sag toward zero between edges. Rule of thumb: $T/2 \\gg \\tau$ passes shape; $T/2 \\ll \\tau$ differentiates/integrates into spikes/ramps."
+      ],
+      "subsections": [
+        {
+          "title": "tau intuition",
+          "content": [
+            "$\\tau = RC$: bigger $R$ (slow fill) or bigger $C$ (big tank) means slower.",
+            "$1\\tau$: 63% there. $2.2\\tau$: 90%. $5\\tau$: settled.",
+            "VEDA's $1ms$ vs $2.5ms$ half-cycle sits mid-scale - expect clear exponentials, not corners."
+          ],
+          "example": {
+            "prompt": "R=1k, C=1uF. tau? Settled after?",
+            "steps": [
+              "$\\tau = 10^{3} \\times 10^{-6} = 10^{-3}s = 1ms$.",
+              "Settled after $5ms$."
+            ],
+            "answer": "$\\tau=1ms$, settled $5ms$"
+          }
+        },
+        {
+          "title": "RMS Pythagoras",
+          "content": [
+            "Series RC: $V_{s}^{2} = V_{R}^{2}+V_{C}^{2}$. Series RL: same with $V_{L}$. RLC: $V_{s}^{2} = V_{R}^{2}+(V_{L}-V_{C})^{2}$.",
+            "Resistor voltage is in phase with current (real power); L/C voltages are quadrature (reactive)."
+          ]
+        },
+        {
+          "title": "Frequency preservation",
+          "content": [
+            "R, L, C are linear: output frequencies equal input frequencies present.",
+            "New frequencies need nonlinearity (diodes - next section) or switching.",
+            "So $6kHz$ in, $6kHz$ out - amplitude/phase only."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "tau=RC; 5tau settled. DC steady: C open.",
+        "Series RMS adds by Pythagoras, not directly.",
+        "Linear: frequency in = frequency out. 1+4j at w=1: 1 ohm + 4H."
+      ],
+      "companyNote": "All four VEDA circuit-basic samples live in this section - master tau, RMS, frequency, impedance."
+    },
+    {
+      "id": "pn-diode-rect",
+      "title": "4. PN Diode - Models, Rectifiers, Clipping, Clamping",
+      "type": "concept",
+      "quickSummary": "Diode conducts forward (0.7V Si), blocks reverse. Rectifiers turn AC to pulsating DC; clippers slice levels; clampers shift the whole waveform.",
+      "content": [
+        "IV: forward exponential past knee (~0.7V Si, ~0.3V Ge), reverse tiny saturation current until breakdown. Exam models: ideal (0V drop, perfect switch), constant-drop (0.7V when on), piecewise-linear (+ small $r_{d}$). State assumption method: guess on/off, solve, check consistency (on needs forward bias, off needs reverse).",
+        "Half-wave rectifier: passes one half-cycle, blocks other. No filter: $V_{dc} = V_{p}/\\pi$, ripple frequency = input $f$. Full-wave bridge: both halves used (4 diodes, no centre tap): $V_{dc} = 2V_{p}/\\pi$, ripple $2f$, PIV per diode = $V_{p}$ (bridge) vs $2V_{p}$ (centre-tapped). Capacitor filter charges to $V_{p}$, sags between peaks: full-wave ripple $V_{r} \\approx I_{DC}/(2fC)$, half-wave $I_{DC}/(fC)$. Bigger $C$ or lighter load smooths.",
+        "Clippers: diode (+reference $V_{ref}$) clips the top (shunt diode to $V_{ref}$) or bottom (reversed). Series clipper blocks one polarity entirely. Transfer curve ($V_{o}$ vs $V_{i}$) has slope $1$ (pass) and $0$ (clip) segments meeting at the reference (plus 0.7V if non-ideal).",
+        "Clampers: C + diode + $V_{ref}$ shift the DC level without changing shape: capacitor holds the peak difference, diode conducts briefly each cycle to restore it. Positive clamper pushes waveform up (negative peaks to $V_{ref}$); negative clamper pushes down. Rule: the peak touched by the diode is clamped to $V_{ref}$ (minus diode drop)."
+      ],
+      "subsections": [
+        {
+          "title": "Rectifier numbers to memorise",
+          "content": [
+            "Half-wave $V_{dc} = V_{p}/\\pi \\approx 0.318V_{p}$, ripple $f$.",
+            "Full-wave $V_{dc} = 2V_{p}/\\pi \\approx 0.636V_{p}$, ripple $2f$.",
+            "Capacitor filter: $V_{dc} \\approx V_{p}$, ripple $I/(2fC)$ full-wave, $I/(fC)$ half-wave."
+          ],
+          "example": {
+            "prompt": "Bridge, 10V peak sine, no filter. Vdc?",
+            "steps": [
+              "Full-wave: $2V_{p}/\\pi$.",
+              "$20/\\pi \\approx 6.36V$."
+            ],
+            "answer": "$\\approx 6.36V$"
+          }
+        },
+        {
+          "title": "Clipper sketch recipe",
+          "content": [
+            "Find diode-on condition (anode > cathode + 0.7). Solve output in on-state (clipped level) and off-state (follower).",
+            "Join segments at the transition input. Ideal ($0V$) shifts levels by $0.7V$ vs practical - note the model."
+          ]
+        },
+        {
+          "title": "Clamper sketch recipe",
+          "content": [
+            "Assume steady state: capacitor holds $V_{C} = $ peak difference. Diode on only at one extreme per cycle.",
+            "Output = input $\\pm V_{C}$ shifted so the touched peak sits at $V_{ref}$.",
+            "Shape and peak-to-peak never change - only DC level moves."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Ideal switch, 0.7V practical. Guess-and-check states.",
+        "Half Vp/pi at f; full 2Vp/pi at 2f; cap filter to Vp.",
+        "Clipper slices, clamper shifts (shape kept)."
+      ],
+      "companyNote": "Syllabus names clipping, clamping and rectifiers explicitly - one sketch each is typical."
+    },
+    {
+      "id": "zener-bjt",
+      "title": "5. Zener Diode and BJT Basics",
+      "type": "concept",
+      "quickSummary": "Zener holds reverse voltage constant for regulation. BJT: small base current controls large collector current; modes are cutoff/active/saturation.",
+      "content": [
+        "Zener: heavily doped for sharp reverse breakdown at $V_{Z}$. Regulator: series resistor drops the excess, Zener holds load at $V_{Z}$ while $I_{Z}$ stays between knee ($I_{Zmin}$) and power limit ($I_{Zmax} = P_{Z}/V_{Z}$). Needs $V_{in} > V_{Z}$ plus headroom, and load current bounded so the Zener never starves ($I_{Z} = I_{R} - I_{L} > 0$).",
+        "BJT structure: NPN ($n$-$p$-$n$) and PNP (arrow on emitter shows conventional outflow for NPN... emitter arrow points out for NPN, in for PNP). Two junctions: base-emitter (controls) and base-collector. Active mode: BE forward ($V_{BE} \\approx 0.7V$ NPN), BC reverse; $I_{C} = \\beta I_{B}$, $I_{E} = I_{C}+I_{B} = (\\beta+1)I_{B}$.",
+        "Modes: cutoff (both reverse: OFF, $I_{C} \\approx 0$) - digital 0/standby. Active (BE fwd, BC rev: amplifier, $I_{C} = \\beta I_{B}$) - analog gain. Saturation (both forward: ON switch, $V_{CE,sat} \\approx 0.2V$, $I_{C} < \\beta I_{B}$) - digital 1 pull. Inverted (swapped, low gain) - avoid. VEDA depth stops at modes + switch reading + simple bias currents unless the poster adds more.",
+        "Digital view: BJT as switch - cutoff = open, saturation = closed ($0.2V$). That plus diode AND/OR thinking covers most VEDA BJT questions; small-signal ($g_{m}, r_{\\pi}$) belongs to the analog paper, not this one."
+      ],
+      "subsections": [
+        {
+          "title": "Zener current window",
+          "content": [
+            "Series current $I_{R} = (V_{in}-V_{Z})/R$. Load takes $I_{L} = V_{Z}/R_{L}$. Zener keeps $I_{Z} = I_{R}-I_{L}$.",
+            "Regulation holds while $I_{Zmin} < I_{Z} < I_{Zmax}$ across line/load corners.",
+            "Design picks $R$ for worst case (min $V_{in}$, max $I_{L}$ still leaves $I_{Zmin}$)."
+          ],
+          "example": {
+            "prompt": "Vin=12V, Vz=5V, R=1k, RL=1k. Iz?",
+            "steps": [
+              "$I_{R} = (12-5)/1k = 7mA$.",
+              "$I_{L} = 5/1k = 5mA$.",
+              "$I_{Z} = 7-5 = 2mA$ (regulating if within limits)."
+            ],
+            "answer": "$I_{Z}=2mA$"
+          }
+        },
+        {
+          "title": "BJT mode table",
+          "content": [
+            "Cutoff: BE rev, BC rev - OFF.",
+            "Active: BE fwd, BC rev - $I_{C}=\\beta I_{B}$.",
+            "Saturation: BE fwd, BC fwd - switch ON ($V_{CE} \\approx 0.2V$).",
+            "Test order: assume active, check $V_{CE} > V_{CE,sat}$ (NPN); else saturated."
+          ]
+        },
+        {
+          "title": "NPN vs PNP currents",
+          "content": [
+            "NPN: conventional currents flow in ($I_{B},I_{C}$ into device for active biasing with positive rails).",
+            "PNP: mirror image - emitter to higher voltage, currents flow out. Arrow direction is the emitter-current direction."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Zener: Vz held while Iz in window; R drops the rest.",
+        "Active Ic=B Ib; saturation VCE 0.2V switch; cutoff off.",
+        "Assume active, verify VCE."
+      ],
+      "companyNote": "BJT depth here is modes + switch + bias currents; small-signal is the analog-domain paper."
+    },
+    {
+      "id": "exam-waveforms",
+      "title": "6. Exam Waveform Skills - Sketching Vout Under Time Pressure",
+      "type": "concept",
+      "quickSummary": "Compare half-period with tau, use RMS Pythagoras for sine, keep frequency, clamp touches one peak.",
+      "content": [
+        "RC + square wave drill: (1) compute $\\tau = RC$ and $T/2$; (2) ratio $T/2\\tau$ decides: $>5$ square-ish, $<0.2$ spikes/ramps, in-between exponential tilt (VEDA's $2.5$); (3) mark start levels from previous half-cycle continuity (capacitor voltage cannot jump); (4) draw exponentials toward asymptotes ($V_{s}$ for charge, $0$/opposite for discharge).",
+        "Diode + sine drill: (1) mark diode-on intervals (anode > cathode); (2) draw conducting levels (0V ideal / 0.7V / $V_{ref}$); (3) draw blocked intervals as follower (clipper) or shifted copy (clamper); (4) label peaks and zero crossings.",
+        "RMS drill: identify series quadrature pair first ($R$ vs $X$), then Pythagoras; never add magnitudes linearly. Frequency drill: linear R/C network - output has input's frequencies only.",
+        "Presentation: axes labelled ($V,t$ with units), $\\tau$ and $T/2$ marked, peak values written, diode states annotated per interval. Examiners award method marks for these labels even if a segment wobbles."
+      ],
+      "subsections": [
+        {
+          "title": "Continuity rules",
+          "content": [
+            "Capacitor voltage cannot jump (needs infinite current). Inductor current cannot jump (needs infinite voltage).",
+            "Use the end of one interval as the start of the next - the whole sketch chains.",
+            "Resistor voltage/current CAN jump - fine."
+          ]
+        },
+        {
+          "title": "Asymptote habit",
+          "content": [
+            "Charging aims at source level; discharging aims at zero (or opposite source).",
+            "Draw the faint asymptote first, then the exponential approaching it - looks professional and stays accurate."
+          ]
+        },
+        {
+          "title": "Model statement",
+          "content": [
+            "Write Ideal (0V) or Si (0.7V) at the top. Level answers shift by exactly the drop.",
+            "If unspecified, solve ideal first, then note the 0.7V shift - covers both markings."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "tau vs T/2 sets the shape regime.",
+        "C voltage continuous; R can jump.",
+        "Label tau, peaks, diode states."
+      ],
+      "companyNote": "The 4-mark waveform question rewards labelled method - never submit a bare curve."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "ohm-div",
+      "title": "Ohm, Series/Parallel, Dividers",
+      "formula": { "latex": "V = IR, \\quad R_{s} = \\sum R, \\quad \\frac{1}{R_{p}} = \\sum \\frac{1}{R}", "text": "Divider: series voltage takes self ratio, parallel current takes opposite ratio." },
+      "whenToUse": "Every resistive DC question first.",
+      "explanation": ["Voltage on R1 of series pair: Vs*R1/(R1+R2).", "Current in R1 of parallel pair: Is*R2/(R1+R2)."],
+      "example": {
+        "prompt": "12V, series 1k+2k. V on 2k?",
+        "steps": ["$12 \\times 2/3 = 8V$."],
+        "answer": "$8V$"
+      },
+      "memoryTip": "Voltage-self, current-other.",
+      "commonMistake": "Swapping divider ratios."
+    },
+    {
+      "id": "thevenin",
+      "title": "Thevenin-Norton Conversion",
+      "formula": { "latex": "V_{th} = I_{N}R_{th}, \\quad R_{N} = R_{th}", "text": "Open-circuit voltage with series Rth equals short-circuit current with parallel RN." },
+      "whenToUse": "Compressing networks, load questions.",
+      "explanation": ["Vth = open terminals voltage.", "Rth = deactivated-network resistance.", "IN = short-circuit current."],
+      "example": {
+        "prompt": "12V, 2k series, 4k shunt. Thevenin?",
+        "steps": ["Vth = divider $8V$.", "Rth = 2k||4k = 1.33k."],
+        "answer": "$8V$, $1.33k$"
+      },
+      "memoryTip": "Open for volts, short for amps, dead for ohms.",
+      "commonMistake": "Forgetting dependent sources need test-source Rth."
+    },
+    {
+      "id": "maxpower",
+      "title": "Maximum Power Transfer",
+      "formula": { "latex": "R_{L} = R_{th}, \\quad P_{max} = \\frac{V_{th}^{2}}{4R_{th}}", "text": "Matched load draws max, at 50 percent efficiency." },
+      "whenToUse": "Load-matching and max-power value.",
+      "explanation": ["Set RL = Rth.", "Then Pmax formula."],
+      "example": {
+        "prompt": "Vth=8V, Rth=2 ohm. Pmax?",
+        "steps": ["$64/(8) = 8W$."],
+        "answer": "$8W$"
+      },
+      "memoryTip": "Match then quarter-square.",
+      "commonMistake": "Using max power where efficiency matters."
+    },
+    {
+      "id": "tau",
+      "title": "RC Time Constant and Settling",
+      "formula": { "latex": "\\tau = RC, \\quad V_{C} = V_{s}(1-e^{-t/\\tau}), \\quad 5\\tau \\approx settled", "text": "Speed of charge/discharge. 63 percent at 1 tau, settled at 5." },
+      "whenToUse": "Transients, square-wave regimes, settling checks.",
+      "explanation": ["Compare T/2 with tau for shape.", "DC steady: C is open."],
+      "example": {
+        "prompt": "R=1k, C=1uF. tau?",
+        "steps": ["$10^{3} \\times 10^{-6} = 1ms$."],
+        "answer": "$1ms$"
+      },
+      "memoryTip": "63-90-settled at 1, 2.2, 5 taus.",
+      "commonMistake": "Using Rth wrong in Thevenin-seen tau."
+    },
+    {
+      "id": "impedance",
+      "title": "Impedances and Series Magnitude",
+      "formula": { "latex": "Z_{R} = R, \\; Z_{C} = \\frac{1}{j\\omega C}, \\; Z_{L} = j\\omega L, \\quad |Z| = \\sqrt{R^{2}+X^{2}}", "text": "Add complex for series. Magnitude sets current, angle sets phase." },
+      "whenToUse": "Sine steady state, impedance design.",
+      "explanation": ["Capacitor is -j, inductor +j.", "1+4j at w=1: 1 ohm plus 4H."],
+      "example": {
+        "prompt": "Build 1+4j at w=1 rad/s?",
+        "steps": ["Real 1: $1\\Omega$ series.", "Imag +4: $j\\omega L = j4$, $L=4H$."],
+        "answer": "$1\\Omega + 4H$ series"
+      },
+      "memoryTip": "Inductor-j-plus, capacitor-j-minus.",
+      "commonMistake": "Adding RMS magnitudes linearly."
+    },
+    {
+      "id": "rms-pyth",
+      "title": "Series RMS Pythagoras",
+      "formula": { "latex": "V_{s}^{2} = V_{R}^{2} + V_{X}^{2}", "text": "Resistor and reactance voltages are 90 degrees apart." },
+      "whenToUse": "Series RC/RL RMS questions.",
+      "explanation": ["Square, add, root.", "12V and 15V give ~19.2V, not 27V."],
+      "example": {
+        "prompt": "VR=12V, VC=15V series. Vs?",
+        "steps": ["$\\sqrt{144+225} = \\sqrt{369} \\approx 19.2V$."],
+        "answer": "$\\approx 19.2V$ RMS"
+      },
+      "memoryTip": "Orthogonal adds by squares.",
+      "commonMistake": "12+15=27 trap."
+    },
+    {
+      "id": "freq-pres",
+      "title": "Frequency Preservation",
+      "formula": { "latex": "f_{out} = f_{in} \\text{ (linear R, L, C)}", "text": "Linear networks change amplitude/phase only, never create frequencies." },
+      "whenToUse": "Frequency-across-element questions.",
+      "explanation": ["6kHz sine in: 6kHz everywhere.", "New tones need nonlinearity/switching."],
+      "example": {
+        "prompt": "6kHz into series RC. Frequency across R?",
+        "steps": ["Linear: unchanged."],
+        "answer": "$6kHz$"
+      },
+      "memoryTip": "Linear keeps the tune.",
+      "commonMistake": "Doubling/halving from RMS math."
+    },
+    {
+      "id": "rectifier",
+      "title": "Rectifier DC and Ripple",
+      "formula": { "latex": "V_{dc,hw} = \\frac{V_{p}}{\\pi}, \\; V_{dc,fw} = \\frac{2V_{p}}{\\pi}, \\; V_{r,fw} \\approx \\frac{I}{2fC}", "text": "Half uses one hump at f, full uses both at 2f. Capacitor filter rides near peak." },
+      "whenToUse": "Rectifier DC/ripple/PIV questions.",
+      "explanation": ["Bridge PIV = Vp; centre-tap = 2Vp.", "Half ripple twice the full (same C, load)."],
+      "example": {
+        "prompt": "Bridge, Vp=10V, no filter. Vdc?",
+        "steps": ["$20/\\pi \\approx 6.36V$."],
+        "answer": "$\\approx 6.36V$"
+      },
+      "memoryTip": "Half-pi, full-two-pi; ripple halves when humps double.",
+      "commonMistake": "Using Vrms where Vp belongs."
+    },
+    {
+      "id": "zener-win",
+      "title": "Zener Regulator Window",
+      "formula": { "latex": "I_{Z} = \\frac{V_{in}-V_{Z}}{R} - \\frac{V_{Z}}{R_{L}}, \\quad I_{Zmin} < I_{Z} < I_{Zmax}", "text": "Resistor feeds load plus Zener; Zener absorbs the slack within limits." },
+      "whenToUse": "Regulation hold/fail and Iz questions.",
+      "explanation": ["Check worst corners (low Vin, heavy load).", "Starved Zener (Iz<=0) loses regulation."],
+      "example": {
+        "prompt": "12V, Vz=5V, R=1k, RL=1k. Iz?",
+        "steps": ["IR=7mA, IL=5mA.", "Iz=2mA."],
+        "answer": "$2mA$"
+      },
+      "memoryTip": "Resistor feeds, Zener steadies.",
+      "commonMistake": "Forgetting Iz must stay positive."
+    },
+    {
+      "id": "bjt-modes",
+      "title": "BJT Modes and Active Relations",
+      "formula": { "latex": "I_{C} = \\beta I_{B}, \\; I_{E} = (\\beta+1)I_{B} \\; (active)", "text": "Active: BE forward, BC reverse. Saturation: both forward (~0.2V switch). Cutoff: both reverse (off)." },
+      "whenToUse": "Mode identification and bias currents.",
+      "explanation": ["Assume active, verify VCE above sat.", "Fails check: saturated."],
+      "example": {
+        "prompt": "Beta=100, IB=20uA active. IC?",
+        "steps": ["$100 \\times 20\\mu A = 2mA$."],
+        "answer": "$2mA$"
+      },
+      "memoryTip": "Assume active, verify CE.",
+      "commonMistake": "Using beta in saturation."
+    }
+  ],
+  "practiceProblems": {
+    "ohm-div": [
+      { "q": "12V across series 1k and 2k. Voltage on 2k?", "s": ["Current 12/3k = 4mA", "Divider 12 x 2/3 = 8V"], "a": "$8V$" },
+      { "q": "10V, R1=2k series R2=3k. Current and V_R2?", "s": ["I = 10/5k = 2mA", "V_R2 = 6V, P = 12mW"], "a": "$2mA$, $6V$" },
+      { "q": "Parallel 2k and 3k equivalent?", "s": ["2x3/(2+3) = 1.2k"], "a": "$1.2k$" },
+      { "q": "Current divider: 6mA into parallel 1k and 2k. Current in 2k?", "s": ["Opposite arm 1k on top: 6 x 1/3 = 2mA"], "a": "$2mA$" }
+    ],
+    "thevenin": [
+      { "q": "12V, series 2k, shunt 4k. Thevenin at node?", "s": ["Vth = divider 8V", "Rth = 2k||4k = 1.33k"], "a": "$8V$, $1.33k$" },
+      { "q": "Vth=8V, Rth=2 ohm. Pmax?", "s": ["RL = 2 ohm", "64/8 = 8W"], "a": "$8W$" },
+      { "q": "Norton IN=4A, RN=3 ohm. Vth?", "s": ["Vth = IN x RN = 12V"], "a": "$12V$" }
+    ],
+    "tau": [
+      { "q": "R=1k, C=1uF. tau and settle?", "s": ["tau = 1ms", "Settled 5ms"], "a": "$1ms$, $5ms$" },
+      { "q": "VR=12V, VC=15V series RC. Source RMS?", "s": ["sqrt(144+225) = sqrt(369) = 19.2V"], "a": "$19.2V$" },
+      { "q": "6kHz sine into series RC. Frequency across R?", "s": ["Linear: unchanged"], "a": "$6kHz$" },
+      { "q": "Build 1+4j ohm at w=1?", "s": ["Real: 1 ohm series", "Imag +j4: L = 4H"], "a": "$1 ohm + 4H$ series" },
+      { "q": "R=1k C=1uF square 200Hz. Regime?", "s": ["tau=1ms, T/2=2.5ms = 2.5tau", "Transitional exponential tilt"], "a": "$2.5 tau$, tilt not spikes" }
+    ],
+    "rectifier": [
+      { "q": "Bridge, Vp=10V, no filter. Vdc?", "s": ["Full-wave 2Vp/pi", "20/pi = 6.36V"], "a": "$6.36V$" },
+      { "q": "Half-wave, Vp=10V. Vdc and ripple freq (50Hz in)?", "s": ["Vp/pi = 3.18V", "Ripple 50Hz"], "a": "$3.18V$, $50Hz$" },
+      { "q": "Full-wave cap filter ripple: I=100mA, f=50Hz, C=1000uF?", "s": ["I/(2fC) = 0.1/(2x50x0.001) = 1V"], "a": "$1V$" }
+    ],
+    "zener-win": [
+      { "q": "Vin=12V, Vz=5V, R=1k, RL=1k. Iz?", "s": ["IR = 7mA", "IL = 5mA", "IZ = 2mA"], "a": "$2mA$" },
+      { "q": "Beta=100, IB=20uA active. IC?", "s": ["100 x 20uA = 2mA"], "a": "$2mA$" },
+      { "q": "BJT with VCE=0.15V, BE forward. Mode?", "s": ["Below sat threshold ~0.2V", "Both junctions forward"], "a": "Saturation (switch ON)" }
+    ],
+    "bjt-modes": [
+      { "q": "NPN, BE fwd 0.7V, BC rev. Mode and IC (beta=50, IB=10uA)?", "s": ["Active", "IC = 0.5mA"], "a": "Active, $0.5mA$" },
+      { "q": "Both junctions reverse. Mode?", "s": ["No conduction"], "a": "Cutoff (OFF)" }
+    ]
+  },
+  "mcqs": [
+    { "id": "vbe-001", "q": "Ohm's law?", "opts": ["$V=IR$", "$V=I/R$", "$V=R/I$", "$V=I+R$"], "c": 0, "d": "easy", "t": "basics", "source": "VEDA IIT Prelim Pattern", "exp": ["Voltage equals current times resistance."], "shortcut": "V-IR triangle.", "pattern": "First-principles mark." },
+    { "id": "vbe-002", "q": "KCL states?", "opts": ["Currents at a node sum to zero", "Voltages sum to zero", "Power sums to V", "Resistance sums"], "c": 0, "d": "easy", "t": "kcl-kvl", "source": "VEDA IIT Prelim Pattern", "exp": ["Charge cannot pile at a node.", "In equals out."], "shortcut": "Nodes: currents.", "pattern": "KCL-vs-KVL pair." },
+    { "id": "vbe-003", "q": "KVL states?", "opts": ["Voltages around a loop sum to zero", "Currents sum to zero", "Power doubles", "Charge piles"], "c": 0, "d": "easy", "t": "kcl-kvl", "source": "VEDA IIT Prelim Pattern", "exp": ["Round-trip energy nets zero.", "Rises equal drops."], "shortcut": "Loops: voltages.", "pattern": "Twin of KCL." },
+    { "id": "vbe-004", "q": "Series $2k + 3k$ equals?", "opts": ["$5k$", "$1.2k$", "$6k$", "$0.5k$"], "c": 0, "d": "easy", "t": "resistors", "source": "Practice - Resistors", "exp": ["Series adds: 2+3 = 5k."], "shortcut": "Series sums.", "pattern": "One-line equivalent." },
+    { "id": "vbe-005", "q": "Parallel $2k$, $3k$ equals?", "opts": ["$1.2k$", "$5k$", "$6k$", "$2.5k$"], "c": 0, "d": "easy", "t": "resistors", "source": "Practice - Resistors", "exp": ["2x3/(2+3) = 6/5 = 1.2k."], "shortcut": "Product over sum.", "pattern": "Two-resistor shortcut." },
+    { "id": "vbe-006", "q": "$12V$ on series $1k+2k$. Voltage on $2k$?", "opts": ["$8V$", "$4V$", "$12V$", "$6V$"], "c": 0, "d": "easy", "t": "divider", "source": "VEDA IIT Prelim Pattern", "exp": ["Divider: 12 x 2/3 = 8V."], "shortcut": "Self on top.", "pattern": "Divider must be reflex." },
+    { "id": "vbe-007", "q": "$6mA$ into parallel $1k$ and $2k$. Current in $2k$?", "opts": ["$2mA$", "$4mA$", "$6mA$", "$3mA$"], "c": 0, "d": "easy", "t": "divider", "source": "Practice - Divider", "exp": ["Opposite arm 1k on top: 6 x 1/3 = 2mA."], "shortcut": "Current-other.", "pattern": "Twin divider." },
+    { "id": "vbe-008", "q": "Power in $2V$ across $4$ ohm?", "opts": ["$1W$", "$8W$", "$0.5W$", "$4W$"], "c": 0, "d": "easy", "t": "power", "source": "Practice - Power", "exp": ["V2/R = 4/4 = 1W."], "shortcut": "V-squared-over-R.", "pattern": "Pick known quantity." },
+    { "id": "vbe-009", "q": "Capacitor in DC steady state?", "opts": ["Open circuit", "Short circuit", "Battery", "Resistor"], "c": 0, "d": "easy", "t": "capacitor", "source": "VEDA IIT Prelim Pattern", "exp": ["Charged: no current flows.", "Blocks DC."], "shortcut": "C-opens-DC.", "pattern": "Steady-state shortcut." },
+    { "id": "vbe-010", "q": "Inductor in DC steady state?", "opts": ["Short circuit", "Open circuit", "Capacitor", "Diode"], "c": 0, "d": "easy", "t": "inductor", "source": "Practice - Steady State", "exp": ["No change: no induced voltage.", "Plain wire (ideal)."], "shortcut": "L-shorts-DC.", "pattern": "Twin of capacitor." },
+    { "id": "vbe-011", "q": "Time constant $R=1k, C=1uF$?", "opts": ["$1ms$", "$1us$", "$1s$", "$1ns$"], "c": 0, "d": "easy", "t": "tau", "source": "VEDA IIT Sample Pattern", "exp": ["1e3 x 1e-6 = 1e-3s."], "shortcut": "k times u gives m.", "pattern": "tau must be instant." },
+    { "id": "vbe-012", "q": "Settled after (in tau)?", "opts": ["$5$ tau", "$1$ tau", "$0.5$ tau", "$100$ tau"], "c": 0, "d": "easy", "t": "tau", "source": "Practice - Transients", "exp": ["5 tau passes 99 percent."], "shortcut": "Five to finish.", "pattern": "Settling rule." },
+    { "id": "vbe-013", "q": "Si diode knee voltage?", "opts": ["$0.7V$", "$0V$", "$5V$", "$12V$"], "c": 0, "d": "easy", "t": "diode", "source": "VEDA IIT Prelim Pattern", "exp": ["Silicon conducts past ~0.7V."], "shortcut": "Si-seven.", "pattern": "Model baseline." },
+    { "id": "vbe-014", "q": "Ideal diode drop?", "opts": ["$0V$", "$0.7V$", "$1V$", "$5V$"], "c": 0, "d": "easy", "t": "diode", "source": "Practice - Models", "exp": ["Perfect switch, no loss."], "shortcut": "Ideal-zero.", "pattern": "Model statement matters." },
+    { "id": "vbe-015", "q": "Diode conducts when?", "opts": ["Anode above cathode (~0.7V)", "Cathode above anode", "Zero bias always", "Reverse breakdown always"], "c": 0, "d": "easy", "t": "diode", "source": "Practice - Diode", "exp": ["Forward bias turns on.", "Reverse blocks (until breakdown)."], "shortcut": "Forward-flows.", "pattern": "Bias reading." },
+    { "id": "vbe-016", "q": "Half-wave rectifier passes?", "opts": ["One half-cycle", "Both halves", "Nothing", "DC only"], "c": 0, "d": "easy", "t": "rectifier", "source": "VEDA IIT Prelim Pattern", "exp": ["Diode conducts one polarity.", "Other half blocked."], "shortcut": "Half-uses-half.", "pattern": "Rectifier basics." },
+    { "id": "vbe-017", "q": "Bridge rectifier diodes?", "opts": ["$4$", "$1$", "$2$", "$8$"], "c": 0, "d": "easy", "t": "rectifier", "source": "Practice - Rectifier", "exp": ["Four-diode bridge, no tap needed."], "shortcut": "Bridge-four.", "pattern": "Topology counts." },
+    { "id": "vbe-018", "q": "Clipper does?", "opts": ["Slices waveform above/below a level", "Shifts DC level", "Amplifies", "Rectifies fully"], "c": 0, "d": "easy", "t": "clipper", "source": "VEDA IIT Mains Pattern", "exp": ["Diode clamps output at reference.", "Excess cut off."], "shortcut": "Clip-cuts.", "pattern": "Clip-vs-clamp pair." },
+    { "id": "vbe-019", "q": "Clamper does?", "opts": ["Shifts whole waveform DC level", "Slices peaks off", "Amplifies", "Filters noise"], "c": 0, "d": "easy", "t": "clamper", "source": "VEDA IIT Mains Pattern", "exp": ["Capacitor holds peak offset.", "Shape kept, level moved."], "shortcut": "Clamp-shifts.", "pattern": "Twin of clipper." },
+    { "id": "vbe-020", "q": "Zener works in?", "opts": ["Reverse breakdown", "Forward only", "Cutoff only", "Saturation"], "c": 0, "d": "easy", "t": "zener", "source": "VEDA IIT Prelim Pattern", "exp": ["Sharp reverse knee holds Vz.", "Series R drops excess."], "shortcut": "Zener-reverse.", "pattern": "Regulator basis." },
+    { "id": "vbe-021", "q": "NPN emitter arrow?", "opts": ["Points out", "Points in", "No arrow", "Both ways"], "c": 0, "d": "easy", "t": "bjt", "source": "Practice - BJT", "exp": ["NPN: emitter current flows out.", "PNP: arrow in."], "shortcut": "NPN-out.", "pattern": "Device identification." },
+    { "id": "vbe-022", "q": "Active mode junctions (NPN)?", "opts": ["BE forward, BC reverse", "Both reverse", "Both forward", "BE reverse, BC forward"], "c": 0, "d": "easy", "t": "bjt", "source": "VEDA IIT Mains Pattern", "exp": ["Forward BE injects, reverse BC collects.", "Ic = B Ib."], "shortcut": "Active: E-fwd C-rev.", "pattern": "Mode table core." },
+    { "id": "vbe-023", "q": "Cutoff means?", "opts": ["Both junctions reverse, OFF", "Both forward", "Amplifying", "Breakdown"], "c": 0, "d": "easy", "t": "bjt", "source": "Practice - BJT", "exp": ["No conduction: open switch."], "shortcut": "Cutoff-closed-off.", "pattern": "Switch OFF state." },
+    { "id": "vbe-024", "q": "Saturation VCE about?", "opts": ["$0.2V$", "$0.7V$", "$5V$", "$12V$"], "c": 0, "d": "easy", "t": "bjt", "source": "Practice - BJT", "exp": ["Both forward: closed switch drop.", "~0.2V NPN."], "shortcut": "Sat-two-tenths.", "pattern": "Switch ON state." },
+    { "id": "vbe-025", "q": "Superposition works for?", "opts": ["Linear circuits", "Power directly", "Nonlinear diodes", "Saturated cores"], "c": 0, "d": "easy", "t": "theorems", "source": "VEDA IIT Mains Pattern", "exp": ["Additivity needs linearity.", "Diodes break it."], "shortcut": "Linear-only.", "pattern": "Applicability first." },
+    { "id": "vbe-026", "q": "Max power when?", "opts": ["$R_{L}=R_{th}$", "$R_{L}=0$", "$R_{L}=$ infinite", "$R_{L}=2R_{th}$"], "c": 0, "d": "easy", "t": "theorems", "source": "VEDA IIT Mains Pattern", "exp": ["Matched load draws most.", "Pmax = Vth2/4Rth."], "shortcut": "Match for max.", "pattern": "Load-matching rule." },
+    { "id": "vbe-027", "q": "Thevenin equivalent?", "opts": ["$V_{th}$ in series with $R_{th}$", "$I_{N}$ in parallel only", "Just a resistor", "Just a source"], "c": 0, "d": "easy", "t": "theorems", "source": "VEDA IIT Mains Pattern", "exp": ["Open-circuit volts + lookback ohms."], "shortcut": "Volts-with-series.", "pattern": "Compression idea." },
+    { "id": "vbe-028", "q": "Norton equivalent?", "opts": ["$I_{N}$ in parallel with $R_{N}$", "$V_{th}$ in series", "Just a wire", "Open circuit"], "c": 0, "d": "easy", "t": "theorems", "source": "Practice - Theorems", "exp": ["Short-circuit amps + same Rth."], "shortcut": "Amps-with-parallel.", "pattern": "Twin of Thevenin." },
+    { "id": "vbe-029", "q": "$V_{R}=12V, V_{C}=15V$ series. Source?", "opts": ["$19.2V$", "$27V$", "$3V$", "$12V$"], "c": 0, "d": "easy", "t": "rms", "source": "VEDA IIT Sample Pattern", "exp": ["Pythagoras: sqrt(144+225) = 19.2V.", "27V linear add is the trap."], "shortcut": "Root-sum-squares.", "pattern": "VEDA sample signature." },
+    { "id": "vbe-030", "q": "$6kHz$ sine into series RC. Frequency on R?", "opts": ["$6kHz$", "$3kHz$", "$12kHz$", "$0Hz$"], "c": 0, "d": "easy", "t": "frequency", "source": "VEDA IIT Sample Pattern", "exp": ["Linear: frequency preserved.", "Only amplitude/phase shift."], "shortcut": "Linear keeps tune.", "pattern": "VEDA sample signature." },
+    { "id": "vbe-031", "q": "Build $1+4j$ at $w=1$? Real part?", "opts": ["$1$ ohm resistor", "$4$ ohm resistor", "Capacitor", "Wire"], "c": 0, "d": "easy", "t": "impedance", "source": "VEDA IIT Sample Pattern", "exp": ["Real 1 = 1 ohm series."], "shortcut": "Real-is-R.", "pattern": "VEDA design split." },
+    { "id": "vbe-032", "q": "Build $1+4j$ at $w=1$? Imaginary part?", "opts": ["$4H$ inductor series", "$4F$ capacitor", "$4$ ohm resistor", "Diode"], "c": 0, "d": "easy", "t": "impedance", "source": "VEDA IIT Sample Pattern", "exp": ["+j4 needs jwL = j4: L = 4H."], "shortcut": "Plus-j-is-L.", "pattern": "Sign picks element." },
+    { "id": "vbe-033", "q": "$R=1k,C=1uF$ square $200Hz$: tau vs half-period?", "opts": ["$1ms$ vs $2.5ms$", "$1ms$ vs $1ms$", "$5ms$ vs $1ms$", "$1us$ vs $5ms$"], "c": 0, "d": "easy", "t": "waveform", "source": "VEDA IIT Sample Pattern", "exp": ["tau = 1ms. T = 5ms, half 2.5ms.", "2.5tau: tilt, not spikes."], "shortcut": "Compare first.", "pattern": "VEDA regime check." },
+    { "id": "vbe-034", "q": "Capacitor voltage can?", "opts": ["Never jump", "Jump freely", "Stay zero", "Reverse instantly"], "c": 0, "d": "easy", "t": "continuity", "source": "Practice - Waveforms", "exp": ["Jump needs infinite current.", "Chains intervals together."], "shortcut": "C-continuous.", "pattern": "Sketch anchor." },
+    { "id": "vbe-035", "q": "Resistor voltage can?", "opts": ["Jump", "Never change", "Stay zero", "Only rise"], "c": 0, "d": "easy", "t": "continuity", "source": "Practice - Waveforms", "exp": ["No storage: follows instantly."], "shortcut": "R-jumps.", "pattern": "Twin of C rule." },
+    { "id": "vbe-036", "q": "Half-wave Vdc ($V_{p}$, no filter)?", "opts": ["$V_{p}/pi$", "$2V_{p}/pi$", "$V_{p}$", "$0$"], "c": 0, "d": "easy", "t": "rectifier", "source": "Practice - Rectifier", "exp": ["Average of one hump over full cycle."], "shortcut": "Half-pi.", "pattern": "Rectifier numbers." },
+    { "id": "vbe-037", "q": "Full-wave Vdc ($V_{p}$, no filter)?", "opts": ["$2V_{p}/pi$", "$V_{p}/pi$", "$V_{p}$", "$0$"], "c": 0, "d": "easy", "t": "rectifier", "source": "Practice - Rectifier", "exp": ["Both humps: double the half.", "~0.636Vp."], "shortcut": "Full-two-pi.", "pattern": "Twin number." },
+    { "id": "vbe-038", "q": "Bridge PIV per diode?", "opts": ["$V_{p}$", "$2V_{p}$", "$0.7V$", "$V_{dc}$"], "c": 0, "d": "easy", "t": "rectifier", "source": "Practice - Rectifier", "exp": ["Bridge shares stress: Vp each.", "Centre-tap sees 2Vp."], "shortcut": "Bridge-halves-PIV.", "pattern": "Topology benefit." },
+    { "id": "vbe-039", "q": "Zener Iz with $I_{R}=7mA, I_{L}=5mA$?", "opts": ["$2mA$", "$12mA$", "$7mA$", "$0mA$"], "c": 0, "d": "easy", "t": "zener", "source": "Practice - Zener", "exp": ["Iz = IR - IL = 2mA."], "shortcut": "Zener takes slack.", "pattern": "Current split." },
+    { "id": "vbe-040", "q": "Beta=100, IB=20uA active. IC?", "opts": ["$2mA$", "$20mA$", "$0.2mA$", "$200mA$"], "c": 0, "d": "easy", "t": "bjt", "source": "Practice - BJT", "exp": ["100 x 20uA = 2mA."], "shortcut": "Beta-times-base.", "pattern": "Active relation." },
+    { "id": "vbe-041", "q": "Node: $2mA$ enters, $0.5mA$ leaves one branch. Other branch?", "opts": ["$1.5mA$ leaves", "$2.5mA$ leaves", "$0.5mA$ enters", "$2mA$ enters"], "c": 0, "d": "medium", "t": "kcl", "source": "Practice - KCL", "exp": ["In = out: 2 = 0.5 + x.", "x = 1.5mA leaving."], "shortcut": "Balance the node.", "pattern": "KCL arithmetic." },
+    { "id": "vbe-042", "q": "Loop $10V$ source, drops $3V$ and $2V$. Third drop?", "opts": ["$5V$", "$15V$", "$1V$", "$10V$"], "c": 0, "d": "medium", "t": "kvl", "source": "Practice - KVL", "exp": ["Rises = drops: 10 = 3+2+x.", "x = 5V."], "shortcut": "Fill the loop.", "pattern": "KVL arithmetic." },
+    { "id": "vbe-043", "q": "Supernode needed when?", "opts": ["Voltage source between two unknown nodes", "Always", "Never", "Only with capacitors"], "c": 0, "d": "medium", "t": "nodal", "source": "Practice - Nodal", "exp": ["Source constrains both nodes jointly.", "Write combined KCL plus constraint."], "shortcut": "Bridge means super.", "pattern": "Technique triggers." },
+    { "id": "vbe-044", "q": "Shared resistor in mesh equations?", "opts": ["Subtracted with neighbour current", "Added always", "Ignored", "Replaced by wire"], "c": 0, "d": "medium", "t": "mesh", "source": "Practice - Mesh", "exp": ["Net current is difference of meshes.", "Rself*Im - Rshared*Ineighbour."], "shortcut": "Share-subtract.", "pattern": "Mesh setup." },
+    { "id": "vbe-045", "q": "Deactivate independent voltage source?", "opts": ["Short it", "Open it", "Double it", "Remove resistor"], "c": 0, "d": "medium", "t": "theorems", "source": "VEDA IIT Mains Pattern", "exp": ["0V = short circuit."], "shortcut": "Volts-short.", "pattern": "Deactivation pair." },
+    { "id": "vbe-046", "q": "Deactivate independent current source?", "opts": ["Open it", "Short it", "Double it", "Ground it"], "c": 0, "d": "medium", "t": "theorems", "source": "VEDA IIT Mains Pattern", "exp": ["0A = open circuit."], "shortcut": "Amps-open.", "pattern": "Twin rule." },
+    { "id": "vbe-047", "q": "Source A alone gives $4V$, source B alone gives $-1V$. Total?", "opts": ["$3V$", "$5V$", "$4V$", "$-4V$"], "c": 0, "d": "medium", "t": "superposition", "source": "Practice - Superposition", "exp": ["Add with signs: 4 + (-1) = 3V."], "shortcut": "Add signed parts.", "pattern": "Superposition sum." },
+    { "id": "vbe-048", "q": "Can power superpose?", "opts": ["No (quadratic)", "Yes always", "Only DC", "Only AC"], "c": 0, "d": "medium", "t": "superposition", "source": "Practice - Superposition", "exp": ["P = V2/R mixes cross terms.", "Totals first, then power."], "shortcut": "Power-last.", "pattern": "Classic trap." },
+    { "id": "vbe-049", "q": "Dependent sources in superposition/Rth?", "opts": ["Stay on; use test source for Rth", "Turn off", "Double", "Ignore"], "c": 0, "d": "medium", "t": "theorems", "source": "Practice - Dependent", "exp": ["Dependents are circuit, not drive.", "Test-source method for Rth."], "shortcut": "Dependents persist.", "pattern": "Dependent handling." },
+    { "id": "vbe-050", "q": "Node $V$: $(V-12)/2k + V/4k = 0$. $V$?", "opts": ["$8V$", "$6V$", "$12V$", "$4V$"], "c": 0, "d": "medium", "t": "nodal", "source": "Practice - Nodal", "exp": ["Multiply 4k: 2(V-12)+V = 0.", "3V = 24: V = 8V."], "shortcut": "Clear denominators.", "pattern": "Single-node solve." },
+    { "id": "vbe-051", "q": "$V_{th}=8V, R_{th}=2$ ohm. $R_{L}$ for max? $P_{max}$?", "opts": ["$2$ ohm, $8W$", "$4$ ohm, $8W$", "$2$ ohm, $16W$", "$1$ ohm, $8W$"], "c": 0, "d": "medium", "t": "maxpower", "source": "Practice - Max Power", "exp": ["Match RL = 2 ohm.", "64/(4x2) = 8W."], "shortcut": "Match then quarter-square.", "pattern": "Two-part answer." },
+    { "id": "vbe-052", "q": "$I_{N}=3A, R_{N}=4$ ohm. $V_{th}$?", "opts": ["$12V$", "$7V$", "$0.75V$", "$1.33V$"], "c": 0, "d": "medium", "t": "thevenin", "source": "Practice - Conversion", "exp": ["Vth = IN x RN = 12V."], "shortcut": "Norton-times-R.", "pattern": "Source conversion." },
+    { "id": "vbe-053", "q": "$R_{th}$ of $2k$ series with ($4k$ shunt after load removed)?", "opts": ["$1.33k$", "$6k$", "$2k$", "$4k$"], "c": 0, "d": "medium", "t": "thevenin", "source": "Practice - Rth", "exp": ["Short source: 2k||4k = 1.33k."], "shortcut": "Dead-source parallel.", "pattern": "Lookback resistance." },
+    { "id": "vbe-054", "q": "Charging: fraction at $1$ tau?", "opts": ["$63$ percent", "$99$ percent", "$50$ percent", "$100$ percent"], "c": 0, "d": "medium", "t": "transient", "source": "Practice - Transients", "exp": ["1-e^-1 = 0.632."], "shortcut": "63 at one.", "pattern": "Tau landmarks." },
+    { "id": "vbe-055", "q": "90 percent charge at?", "opts": ["$2.3$ tau", "$1$ tau", "$5$ tau", "$0.5$ tau"], "c": 0, "d": "medium", "t": "transient", "source": "Practice - Transients", "exp": ["1-e^-2.3 = 0.90."], "shortcut": "2.3 for ninety.", "pattern": "Log landmarks." },
+    { "id": "vbe-056", "q": "$|Z|$ of $R=3, X=4$?", "opts": ["$5$", "$7$", "$1$", "$12$"], "c": 0, "d": "medium", "t": "impedance", "source": "Practice - Impedance", "exp": ["sqrt(9+16) = 5."], "shortcut": "3-4-5 triangle.", "pattern": "Magnitude drill." },
+    { "id": "vbe-057", "q": "$Z_{C}$ at $w=2, C=0.5F$?", "opts": ["$-j1$", "$j1$", "$1$", "$-j4$"], "c": 0, "d": "medium", "t": "impedance", "source": "Practice - Impedance", "exp": ["1/(j x 2 x 0.5) = 1/j = -j."], "shortcut": "Capacitor-minus-j.", "pattern": "Sign discipline." },
+    { "id": "vbe-058", "q": "$Z_{L}$ at $w=2, L=3H$?", "opts": ["$j6$", "$-j6$", "$6$", "$j1.5$"], "c": 0, "d": "medium", "t": "impedance", "source": "Practice - Impedance", "exp": ["jwL = j x 2 x 3 = j6."], "shortcut": "Inductor-plus-j.", "pattern": "Twin element." },
+    { "id": "vbe-059", "q": "Series $R=4, X_{C}=3$: current for $10V$ source?", "opts": ["$2A$", "$10A$", "$1.43A$", "$2.5A$"], "c": 0, "d": "medium", "t": "impedance", "source": "Practice - AC", "exp": ["|Z| = 5. I = 10/5 = 2A."], "shortcut": "Magnitude first.", "pattern": "AC Ohm law." },
+    { "id": "vbe-060", "q": "Above: resistor voltage?", "opts": ["$8V$", "$10V$", "$6V$", "$2V$"], "c": 0, "d": "medium", "t": "rms", "source": "Practice - AC", "exp": ["VR = I x R = 2 x 4 = 8V.", "Check sqrt(64+36) = 10V."], "shortcut": "I-times-R.", "pattern": "Split then verify." },
+    { "id": "vbe-061", "q": "Si diode with $0.3V$ forward: state?", "opts": ["OFF", "ON", "Breakdown", "Saturated"], "c": 0, "d": "medium", "t": "diode", "source": "Practice - Diode", "exp": ["Below 0.7V knee: negligible current.", "Treat OFF."], "shortcut": "Under-knee-off.", "pattern": "Model threshold." },
+    { "id": "vbe-062", "q": "Si diode with $5V$ reverse: state?", "opts": ["OFF (blocks)", "ON", "Zener regulating", "Short"], "c": 0, "d": "medium", "t": "diode", "source": "Practice - Diode", "exp": ["Reverse below breakdown: tiny leakage.", "Blocks."], "shortcut": "Reverse-rests.", "pattern": "Blocking direction." },
+    { "id": "vbe-063", "q": "Bridge $V_{p}=10V$ no filter. $V_{dc}$?", "opts": ["$6.36V$", "$3.18V$", "$10V$", "$14.1V$"], "c": 0, "d": "medium", "t": "rectifier", "source": "Practice - Rectifier", "exp": ["Full-wave 2Vp/pi = 6.36V."], "shortcut": "20-over-pi.", "pattern": "Worked-number recall." },
+    { "id": "vbe-064", "q": "Half-wave $50Hz$ in: ripple frequency?", "opts": ["$50Hz$", "$100Hz$", "$25Hz$", "$0Hz$"], "c": 0, "d": "medium", "t": "rectifier", "source": "Practice - Ripple", "exp": ["One hump per cycle: same f."], "shortcut": "Half-keeps-f.", "pattern": "Ripple counting." },
+    { "id": "vbe-065", "q": "Bridge $50Hz$ in: ripple frequency?", "opts": ["$100Hz$", "$50Hz$", "$25Hz$", "$200Hz$"], "c": 0, "d": "medium", "t": "rectifier", "source": "Practice - Ripple", "exp": ["Two humps per cycle: 2f."], "shortcut": "Full-doubles-f.", "pattern": "Twin count." },
+    { "id": "vbe-066", "q": "Cap filter $I=100mA, f=50Hz, C=1000uF$, full-wave ripple?", "opts": ["$1V$", "$2V$", "$0.5V$", "$10V$"], "c": 0, "d": "medium", "t": "ripple", "source": "Practice - Filter", "exp": ["I/(2fC) = 0.1/0.1 = 1V."], "shortcut": "Plug the trio.", "pattern": "Filter sizing." },
+    { "id": "vbe-067", "q": "Same but half-wave ripple?", "opts": ["$2V$", "$1V$", "$0.5V$", "$4V$"], "c": 0, "d": "medium", "t": "ripple", "source": "Practice - Filter", "exp": ["I/(fC) = 0.1/0.05 = 2V.", "Double the full-wave."], "shortcut": "Half-doubles-ripple.", "pattern": "Topology penalty." },
+    { "id": "vbe-068", "q": "Shunt diode to $+3V$ (ideal) clips?", "opts": ["Above $+3V$", "Below $+3V$", "Nothing", "Everything"], "c": 0, "d": "medium", "t": "clipper", "source": "Practice - Clipper", "exp": ["Conducts when output exceeds 3V.", "Holds at 3V."], "shortcut": "Shunt-holds-level.", "pattern": "Clip polarity." },
+    { "id": "vbe-069", "q": "Same with Si ($0.7V$) clips at?", "opts": ["$3.7V$", "$3V$", "$2.3V$", "$0.7V$"], "c": 0, "d": "medium", "t": "clipper", "source": "Practice - Clipper", "exp": ["Diode adds its drop: 3+0.7."], "shortcut": "Add the knee.", "pattern": "Ideal-to-practical shift." },
+    { "id": "vbe-070", "q": "Positive clamper moves?", "opts": ["Whole wave up (neg peak to Vref)", "Wave down", "Nothing", "Only peaks off"], "c": 0, "d": "medium", "t": "clamper", "source": "Practice - Clamper", "exp": ["Capacitor stores peak gap.", "Touched peak sits at Vref, shape kept."], "shortcut": "Clamp-lifts.", "pattern": "Shift-vs-slice." },
+    { "id": "vbe-071", "q": "Negative clamper moves?", "opts": ["Whole wave down (pos peak to Vref)", "Wave up", "Nothing", "Only DC"], "c": 0, "d": "medium", "t": "clamper", "source": "Practice - Clamper", "exp": ["Mirror of positive.", "Touched positive peak to Vref."], "shortcut": "Clamp-drops.", "pattern": "Polarity twin." },
+    { "id": "vbe-072", "q": "Clamper peak-to-peak?", "opts": ["Unchanged", "Halved", "Doubled", "Zeroed"], "c": 0, "d": "medium", "t": "clamper", "source": "Practice - Clamper", "exp": ["Only DC level moves.", "Shape and swing kept."], "shortcut": "Swing-stays.", "pattern": "Clamper invariant." },
+    { "id": "vbe-073", "q": "Zener $I_{Zmax}$ ($P_{Z}=1W, V_{Z}=5V$)?", "opts": ["$200mA$", "$5A$", "$0.2mA$", "$1A$"], "c": 0, "d": "medium", "t": "zener", "source": "Practice - Zener", "exp": ["P/V = 1/5 = 0.2A."], "shortcut": "Watts-over-volts.", "pattern": "Power limit." },
+    { "id": "vbe-074", "q": "Regulation lost when?", "opts": ["$I_{Z}$ starves to zero", "$I_{Z}$ rises", "$V_{in}$ rises", "Load opens fully"], "c": 0, "d": "medium", "t": "zener", "source": "VEDA IIT Mains Pattern", "exp": ["No Zener current: diode off.", "Output follows divider down."], "shortcut": "Starved-loses.", "pattern": "Failure mode." },
+    { "id": "vbe-075", "q": "Heavier load ($R_{L}$ down) does $I_{Z}$?", "opts": ["Falls", "Rises", "Stays", "Reverses"], "c": 0, "d": "medium", "t": "zener", "source": "Practice - Zener", "exp": ["Load steals from fixed IR.", "IZ = IR - IL shrinks."], "shortcut": "Load-steals.", "pattern": "Current split dynamics." },
+    { "id": "vbe-076", "q": "NPN active: $I_{B}=10uA$, $\\beta=50$. $I_{C}$?", "opts": ["$0.5mA$", "$5mA$", "$0.05mA$", "$60uA$"], "c": 0, "d": "medium", "t": "bjt", "source": "Practice - BJT", "exp": ["50 x 10uA = 500uA = 0.5mA."], "shortcut": "Beta-times-base.", "pattern": "Bias math." },
+    { "id": "vbe-077", "q": "Above: $I_{E}$?", "opts": ["$0.51mA$", "$0.5mA$", "$5.1mA$", "$10uA$"], "c": 0, "d": "medium", "t": "bjt", "source": "Practice - BJT", "exp": ["IE = IC+IB = 0.5+0.01 mA."], "shortcut": "Emitter-sums.", "pattern": "KCL at transistor." },
+    { "id": "vbe-078", "q": "Claimed active but $V_{CE}=0.1V$ (NPN). Really?", "opts": ["Saturated", "Active", "Cutoff", "Breakdown"], "c": 0, "d": "medium", "t": "bjt", "source": "VEDA IIT Mains Pattern", "exp": ["Below ~0.2V sat knee.", "BC forward: switch ON."], "shortcut": "Low-CE-means-sat.", "pattern": "Verify step." },
+    { "id": "vbe-079", "q": "PNP emitter vs NPN?", "opts": ["Higher voltage, current out", "Lower voltage, current in", "Same as NPN", "No emitter"], "c": 0, "d": "medium", "t": "bjt", "source": "Practice - BJT", "exp": ["Mirror image supplies.", "Arrow shows outflow direction."], "shortcut": "PNP-mirror.", "pattern": "Polarity twin." },
+    { "id": "vbe-080", "q": "BJT as digital switch uses?", "opts": ["Cutoff and saturation", "Active only", "Breakdown only", "Inverted only"], "c": 0, "d": "medium", "t": "bjt", "source": "Practice - Switch", "exp": ["OFF = cutoff, ON = saturation.", "Active is for amps."], "shortcut": "Switch-skips-active.", "pattern": "Digital-vs-analog use." },
+    { "id": "vbe-081", "q": "$10V$ source pushes $2A$ out of $+$ terminal. Power?", "opts": ["Delivers $20W$", "Absorbs $20W$", "$5W$", "$0W$"], "c": 0, "d": "hard", "t": "power", "source": "Practice - Power", "exp": ["Leaving + means delivering.", "P = 20W supplied."], "shortcut": "Out-of-plus-delivers.", "pattern": "Sign convention." },
+    { "id": "vbe-082", "q": "Efficiency at max power transfer?", "opts": ["$50$ percent", "$100$ percent", "$0$ percent", "$90$ percent"], "c": 0, "d": "hard", "t": "maxpower", "source": "Practice - Max Power", "exp": ["Half burns in Rth.", "Signals only, not grids."], "shortcut": "Match-halves.", "pattern": "Why not power systems." },
+    { "id": "vbe-083", "q": "Test source for $R_{th}$ when?", "opts": ["Dependent sources present", "Always", "Never", "Only AC"], "c": 0, "d": "hard", "t": "thevenin", "source": "VEDA IIT Mains Pattern", "exp": ["Deactivation kills dependents wrongly.", "Drive 1A/1V, read ratio."], "shortcut": "Dependents-need-test.", "pattern": "Rth methods." },
+    { "id": "vbe-084", "q": "Charge $0$-$10V$: $V_{C}$ at $1$ tau?", "opts": ["$6.3V$", "$10V$", "$3.7V$", "$0V$"], "c": 0, "d": "hard", "t": "transient", "source": "Practice - Transients", "exp": ["10 x 0.632 = 6.32V."], "shortcut": "63 percent of swing.", "pattern": "Landmark value." },
+    { "id": "vbe-085", "q": "Discharge $10V$ to $0$: $V_{C}$ at $1$ tau?", "opts": ["$3.7V$", "$6.3V$", "$0V$", "$10V$"], "c": 0, "d": "hard", "t": "transient", "source": "Practice - Transients", "exp": ["10 x e^-1 = 3.68V."], "shortcut": "37 percent left.", "pattern": "Twin landmark." },
+    { "id": "vbe-086", "q": "Series RLC at resonance: $Z$?", "opts": ["$R$ (X cancels)", "$0$", "Infinite", "$X_{L}+X_{C}$"], "c": 0, "d": "hard", "t": "resonance", "source": "Practice - Resonance", "exp": ["XL = XC cancel.", "Purely resistive minimum."], "shortcut": "Resonance-resistive.", "pattern": "Cancellation idea." },
+    { "id": "vbe-087", "q": "Low-pass RC, square with $T/2 = 2.5$ tau: output?", "opts": ["Exponential tilt/rounding", "Perfect square", "Sharp spikes", "Zero"], "c": 0, "d": "hard", "t": "waveform", "source": "VEDA IIT Sample Pattern", "exp": ["Mid-regime: partial charge each half.", "Tilt, not corners or spikes."], "shortcut": "Mid-ratio tilts.", "pattern": "VEDA regime answer." },
+    { "id": "vbe-088", "q": "High-pass RC, same square: output?", "opts": ["Tilted square sagging to zero", "Perfect square", "Triangle", "DC level"], "c": 0, "d": "hard", "t": "waveform", "source": "VEDA IIT Sample Pattern", "exp": ["Series C blocks DC average.", "Output sags between edges."], "shortcut": "HP-sags.", "pattern": "Twin regime." },
+    { "id": "vbe-089", "q": "$5V$ via $1k$, Si diode shunt to ground (anode at node). Node?", "opts": ["$0.7V$", "$5V$", "$0V$", "$4.3V$"], "c": 0, "d": "hard", "t": "diode", "source": "Practice - Clamp", "exp": ["Forward clamps node at knee.", "Rest drops on 1k."], "shortcut": "Shunt-holds-knee.", "pattern": "Guess-and-check." },
+    { "id": "vbe-090", "q": "Series diode clipper (ideal) passes?", "opts": ["One polarity entirely blocked", "Both fully", "Nothing", "Only DC"], "c": 0, "d": "hard", "t": "clipper", "source": "Practice - Clipper", "exp": ["Series opens for reverse half.", "Half-wave style block."], "shortcut": "Series-blocks-half.", "pattern": "Series-vs-shunt." },
+    { "id": "vbe-091", "q": "Clamper with $V_{ref}=2V$: touched peak sits at?", "opts": ["$2V$", "$0V$", "$0.7V$", "$5V$"], "c": 0, "d": "hard", "t": "clamper", "source": "Practice - Clamper", "exp": ["Ideal: peak equals reference.", "Si: off by 0.7V."], "shortcut": "Touch-equals-ref.", "pattern": "Clamp level rule." },
+    { "id": "vbe-092", "q": "Design $R$: $V_{in,min}=9V, V_{Z}=5V, R_{L}=0.5k, I_{Zmin}=2mA$?", "opts": ["$333$ ohm", "$1k$", "$100$ ohm", "$2k$"], "c": 0, "d": "hard", "t": "zener", "source": "Practice - Design", "exp": ["IL = 5/0.5k = 10mA.", "IR = 10+2 = 12mA.", "R = (9-5)/12mA = 333 ohm."], "shortcut": "Worst-corner first.", "pattern": "Regulator design." },
+    { "id": "vbe-093", "q": "$I_{B}=50uA, \\beta=100$, collector resistor allows $2mA$ max. Mode?", "opts": ["Saturated", "Active", "Cutoff", "Breakdown"], "c": 0, "d": "hard", "t": "bjt", "source": "VEDA IIT Mains Pattern", "exp": ["Beta would give 5mA > 2mA cap.", "Capped: saturated switch."], "shortcut": "Capped-means-sat.", "pattern": "Mode verdict." },
+    { "id": "vbe-094", "q": "$V_{CE}=5V$, BE forward (NPN). Mode?", "opts": ["Active", "Saturated", "Cutoff", "Inverted"], "c": 0, "d": "hard", "t": "bjt", "source": "Practice - BJT", "exp": ["High VCE: BC reverse.", "Amplifier region."], "shortcut": "High-CE-active.", "pattern": "Twin verdict." },
+    { "id": "vbe-095", "q": "Centre-tapped full-wave PIV?", "opts": ["$2V_{p}$", "$V_{p}$", "$0.7V$", "$V_{p}/2$"], "c": 0, "d": "hard", "t": "rectifier", "source": "Practice - PIV", "exp": ["Off diode spans both halves.", "Double the bridge stress."], "shortcut": "Tap-doubles-PIV.", "pattern": "Topology trade-off." },
+    { "id": "vbe-096", "q": "Why $2f$ ripple preferred?", "opts": ["Smaller $C$ for same ripple", "Bigger $C$ needed", "No reason", "More diodes only"], "c": 0, "d": "hard", "t": "ripple", "source": "Practice - Filter", "exp": ["Shorter sag time halves ripple.", "Cheaper capacitors."], "shortcut": "Double-hump-half-C.", "pattern": "Filter economics." },
+    { "id": "vbe-097", "q": "Supermesh needed when?", "opts": ["Current source shared by two meshes", "Always", "Never", "Only DC"], "c": 0, "d": "hard", "t": "mesh", "source": "Practice - Mesh", "exp": ["Shared current constrains both.", "Combined KVL plus relation."], "shortcut": "Shared-means-super.", "pattern": "Twin trigger." },
+    { "id": "vbe-098", "q": "Supernode constraint form?", "opts": ["$V_{1}-V_{2}=V_{s}$", "$V_{1}+V_{2}=0$", "$I_{1}=I_{2}$", "$V_{1}=0$"], "c": 0, "d": "hard", "t": "nodal", "source": "Practice - Nodal", "exp": ["Source fixes the difference.", "Plus combined KCL."], "shortcut": "Bridge-difference.", "pattern": "Constraint plus KCL." },
+    { "id": "vbe-099", "q": "tau seen by $C$ with $R_{th}=2k$, $C=0.5uF$?", "opts": ["$1ms$", "$4ms$", "$0.25ms$", "$2ms$"], "c": 0, "d": "hard", "t": "tau", "source": "Practice - Thevenin", "exp": ["tau = Rth x C = 2k x 0.5u = 1ms."], "shortcut": "Thevenin-then-tau.", "pattern": "Combined skill." },
+    { "id": "vbe-100", "q": "RC low-pass cutoff $R=1k,C=1uF$?", "opts": ["$159Hz$", "$1kHz$", "$200Hz$", "$1MHz$"], "c": 0, "d": "hard", "t": "filter", "source": "Practice - Filters", "exp": ["1/(2 pi RC) = 1/6.28ms = 159Hz."], "shortcut": "1-over-2pi-tau.", "pattern": "Cutoff formula." },
+    { "id": "vbe-101", "q": "VEDA Sample: $1+4j$ ohm at $w=1$ rad/s from R, L, C? [PYQ]", "opts": ["$1$ ohm + $4H$ series", "$1$ ohm + $4F$ series", "$4$ ohm + $1H$ series", "Capacitor only"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Circuit Basics (verified, 2M)", "exp": ["Real 1: series 1 ohm.", "+j4 at w=1: jwL=j4 gives L=4H.", "Capacitor gives -j: wrong sign."], "shortcut": "Split real/imag.", "pattern": "VEDA design answer." },
+    { "id": "vbe-102", "q": "VEDA Sample: series RC, $V_{R}=12V, V_{C}=15V$ RMS. Source? [PYQ]", "opts": ["$19.2V$", "$27V$", "$3V$", "$9.9V$"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Circuit Basics (verified, 1M)", "exp": ["sqrt(144+225) = sqrt(369) = 19.2V.", "27V linear sum is the trap."], "shortcut": "Root-sum-squares.", "pattern": "VEDA RMS answer." },
+    { "id": "vbe-103", "q": "VEDA Sample: $6kHz$ sine to series RC. Frequency on R? [PYQ]", "opts": ["$6kHz$", "$3kHz$", "$12kHz$", "$0Hz$"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Circuit Basics (verified, 1M)", "exp": ["Linear network: no new frequencies.", "Amplitude/phase only."], "shortcut": "Linear keeps tune.", "pattern": "VEDA frequency answer." },
+    { "id": "vbe-104", "q": "VEDA Sample: $R=1k, C=1uF$, square $200Hz$. tau and regime? [PYQ]", "opts": ["$1ms$, $2.5$ tau half-cycle: tilt", "$1ms$, spikes", "$5ms$, settled square", "$1us$, spikes"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Circuit Basics (verified, 4M)", "exp": ["tau = RC = 1ms.", "T = 5ms, half 2.5ms = 2.5tau.", "Mid-regime: exponential tilt, labelled sketch."], "shortcut": "Compare first, sketch labelled.", "pattern": "VEDA waveform answer." },
+    { "id": "vbe-105", "q": "Series RC: $V_{R}=9V, V_{C}=12V$. Source? [VEDA-pattern]", "opts": ["$15V$", "$21V$", "$3V$", "$10.5V$"], "c": 0, "d": "medium", "t": "pyq-rms", "source": "VEDA Prelim Pattern Practice", "exp": ["sqrt(81+144) = sqrt(225) = 15V.", "3-4-5 triangle."], "shortcut": "Spot Pythagorean triples.", "pattern": "Clean-number variant." },
+    { "id": "vbe-106", "q": "Series RC: $V_{R}=6V$, source $10V$. $V_{C}$? [VEDA-pattern]", "opts": ["$8V$", "$4V$", "$16V$", "$6V$"], "c": 0, "d": "medium", "t": "pyq-rms", "source": "VEDA Prelim Pattern Practice", "exp": ["100-36 = 64: sqrt = 8V."], "shortcut": "Rearrange Pythagoras.", "pattern": "Inverse RMS solve." },
+    { "id": "vbe-107", "q": "$12V$, series $2k$, shunt $4k$. Thevenin? [GATE-pattern PYQ]", "opts": ["$8V$, $1.33k$", "$12V$, $6k$", "$4V$, $2k$", "$6V$, $4k$"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (Thevenin)", "exp": ["Vth = divider 8V.", "Rth = 2k||4k = 1.33k."], "shortcut": "Divide then parallel.", "pattern": "Two-step standard." },
+    { "id": "vbe-108", "q": "$V_{th}=12V, R_{th}=6$ ohm. $P_{max}$? [GATE-pattern PYQ]", "opts": ["$6W$", "$24W$", "$12W$", "$2W$"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (max power)", "exp": ["144/(4x6) = 6W."], "shortcut": "Square-over-4R.", "pattern": "Plug-and-go." },
+    { "id": "vbe-109", "q": "Half-wave, $V_{p}=5V$, no filter. $V_{dc}$? [GATE-pattern PYQ]", "opts": ["$1.59V$", "$3.18V$", "$5V$", "$0V$"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (rectifier)", "exp": ["5/pi = 1.59V."], "shortcut": "Peak-over-pi.", "pattern": "Small-peak variant." },
+    { "id": "vbe-110", "q": "$\\beta=200, I_{B}=10uA$ active. $I_{C}$? [GATE-pattern PYQ]", "opts": ["$2mA$", "$20mA$", "$0.2mA$", "$200uA$"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (BJT)", "exp": ["200 x 10uA = 2mA."], "shortcut": "Beta-times-base.", "pattern": "Bias plug-in." },
+    { "id": "vbe-111", "q": "Zener: $I_{R}=12mA, I_{L}=9mA$. $I_{Z}$? Regulating? [VEDA-pattern]", "opts": ["$3mA$, yes if within limits", "$21mA$, yes", "$3mA$, never", "$0mA$"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA Mains Pattern Practice (Zener)", "exp": ["IZ = 12-9 = 3mA positive.", "Holds if above knee, below power cap."], "shortcut": "Positive-slack-holds.", "pattern": "Window check." },
+    { "id": "vbe-112", "q": "Bridge, $V_{p}=7V$, no filter. $V_{dc}$? [VEDA-pattern]", "opts": ["$4.46V$", "$2.23V$", "$7V$", "$9.9V$"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA Mains Pattern Practice (rectifier)", "exp": ["2x7/pi = 14/3.1416 = 4.46V."], "shortcut": "Double-peak-over-pi.", "pattern": "Closes the topic." }
+  ],
+  "category": "basic-electronics"
+}

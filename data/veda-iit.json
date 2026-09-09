@@ -87,7 +87,7 @@
         "Adders, Subtractors"
       ],
       "estimatedHours": 14,
-      "status": "outline",
+      "status": "ready",
       "examWeight": "Part of Digital 15M prelim + 20M mains"
     },
     {
@@ -107,7 +107,7 @@
         "Clock, setup/hold basics for interview"
       ],
       "estimatedHours": 14,
-      "status": "outline",
+      "status": "ready",
       "examWeight": "Part of Digital 15M prelim + 20M mains"
     },
     {
@@ -128,7 +128,7 @@
         "Impedance design (e.g. 1+4j ohm at w=1) + Vout waveform for R=1K C=1uF square 200Hz"
       ],
       "estimatedHours": 10,
-      "status": "outline",
+      "status": "ready",
       "examWeight": "Prelim 5M + Mains 10M"
     },
     {
