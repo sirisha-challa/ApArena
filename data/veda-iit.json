@@ -1,0 +1,197 @@
+{
+  "meta": {
+    "bank": "veda-iit",
+    "title": "Veda IIT - VLSI Digital Engineering",
+    "domain": "VLSI Digital Engineering (RTL / DV / Implementation / DFT / Physical Design)",
+    "exam": "Training and Internship in Applied AI, VLSI & ESD leading to sponsorship and employment by Participating Companies",
+    "examDates": ["2026-09-26", "2026-09-27"],
+    "theoryTarget": "2026-09-23",
+    "mockWindow": ["2026-09-24", "2026-09-25", "2026-09-26"],
+    "note": "Theory target 23 Sep. 3 days buffer for practice and mock tests before 26-27 Sep exam. Prelim 30M/1hr (9AM) + Mains 70M/2hr (3-5PM).",
+    "centers": ["Hyderabad - VEDA IIT, AYDIV IT Park, Puppalaguda", "Greater Noida - Knowledge Park 3"],
+    "sources": ["https://vedaiit.org/logic-design-test-pattern/", "https://vedaiit.org/industry-ready-professional-training-test-pattern/", "https://vedaiit.org/logic-design-sample-questions/"]
+  },
+  "categories": [
+    {
+      "id": "digital-design",
+      "title": "Digital Design",
+      "icon": "D",
+      "color": "#4F46E5",
+      "subtitle": "Number Systems, Combinational & Sequential - Prelim 15M + Mains 20M"
+    },
+    {
+      "id": "basic-electronics",
+      "title": "Basic Electronics",
+      "icon": "E",
+      "color": "#0D9488",
+      "subtitle": "RC Circuits, Diodes, BJTs, Network theorems - Prelim 5M + Mains 10M"
+    },
+    {
+      "id": "c-programming",
+      "title": "C Programming",
+      "icon": "C",
+      "color": "#7C3AED",
+      "subtitle": "Full C syllabus - Mains 20M"
+    },
+    {
+      "id": "aptitude",
+      "title": "Aptitude",
+      "icon": "A",
+      "color": "#DC2626",
+      "subtitle": "General Mathematical Aptitude + Logical Reasoning - Prelim 10M + Mains 20M"
+    },
+    {
+      "id": "mocks",
+      "title": "Practice & Mocks",
+      "icon": "M",
+      "color": "#F59E0B",
+      "subtitle": "3-day buffer 24-26 Sep - prelim + mains mocks + interview"
+    }
+  ],
+  "topics": [
+    {
+      "id": "veda-number-systems",
+      "title": "Number Systems",
+      "icon": "#",
+      "category": "digital-design",
+      "color": "#4F46E5",
+      "days": "1-2",
+      "targetDate": "2026-09-11",
+      "status": "ready",
+      "subtopics": [
+        "Different radices/bases and conversions (binary, octal, decimal, hex)",
+        "Arithmetic operations on different radices",
+        "Signed numbers: signed magnitude numbers",
+        "1's complement numbers",
+        "2's complement numbers (incl. decimal conversion e.g. 101101110011110.1)",
+        "Floating / fractional binary"
+      ],
+      "estimatedHours": 10,
+      "examWeight": "Part of Digital 15M prelim + 20M mains"
+    },
+    {
+      "id": "veda-combinational-logic",
+      "title": "Combinational Logic Circuits",
+      "icon": "C",
+      "category": "digital-design",
+      "color": "#4F46E5",
+      "days": "3-5",
+      "targetDate": "2026-09-14",
+      "subtopics": [
+        "Minimization of Boolean functions (Boolean algebra, K-map)",
+        "Logic gates (incl. design 4-input NAND using only 2-input NAND)",
+        "Multiplexers and Demultiplexers (incl. F(A,B,C) using only 4-to-1 MUX)",
+        "Decoders",
+        "Encoders, Priority Encoders",
+        "Comparators",
+        "Adders, Subtractors"
+      ],
+      "estimatedHours": 14,
+      "status": "outline",
+      "examWeight": "Part of Digital 15M prelim + 20M mains"
+    },
+    {
+      "id": "veda-sequential-logic",
+      "title": "Sequential Logic Circuits + FSM",
+      "icon": "S",
+      "category": "digital-design",
+      "color": "#4F46E5",
+      "days": "6-8",
+      "targetDate": "2026-09-17",
+      "subtopics": [
+        "Latches vs Flip-flops (SR, JK, D, T)",
+        "Counters (sync/async, timing waveforms)",
+        "Timing waveforms (design sync circuit from waveform using D FFs)",
+        "Mealy & Moore State Diagrams",
+        "State tables (incl. non-overlapping 1011 Moore FSM)",
+        "Clock, setup/hold basics for interview"
+      ],
+      "estimatedHours": 14,
+      "status": "outline",
+      "examWeight": "Part of Digital 15M prelim + 20M mains"
+    },
+    {
+      "id": "veda-basic-electronics",
+      "title": "Basic Electronics (RC, Diodes, BJTs)",
+      "icon": "E",
+      "category": "basic-electronics",
+      "color": "#0D9488",
+      "days": "9-10",
+      "targetDate": "2026-09-19",
+      "subtopics": [
+        "Basic RC Circuits (charging, time constant, frequency response, RMS in series RC)",
+        "Kirchhoff's Laws, Node and mesh analysis",
+        "Superposition, Thevenin's theorem, Norton's theorem, Maximum power transfer",
+        "PN junction diode: clipping, clamping and rectifiers",
+        "Zener diode",
+        "BJT basics",
+        "Impedance design (e.g. 1+4j ohm at w=1) + Vout waveform for R=1K C=1uF square 200Hz"
+      ],
+      "estimatedHours": 10,
+      "status": "outline",
+      "examWeight": "Prelim 5M + Mains 10M"
+    },
+    {
+      "id": "veda-c-programming",
+      "title": "C Programming",
+      "icon": "C",
+      "category": "c-programming",
+      "color": "#7C3AED",
+      "days": "11-12",
+      "targetDate": "2026-09-21",
+      "subtopics": [
+        "Introduction, Character set, ascii and unicode, Tokens: Keywords, Identifiers, Literals, Operators",
+        "Builtin Data Types, Variables, Modifiers, Scope (incl. short int size, operator precedence)",
+        "Flow Control Statements, Pointers, Input/Output",
+        "Arrays: Single Dimensional for Numbers and characters, Multidimensional arrays",
+        "Structures, Bit Fields, Union, Enum, Bitwise ops, Dynamic Allocation of Memory",
+        "User defined Functions: Definition, Invocation, Declaration; Libraries",
+        "Text Files: Open modes, Opening, Processing, Closing; Binary Files; Low level Programming",
+        "Command line Arguments, Function Pointers, Preprocessor Directives",
+        "Programs: char-type check (digit/lower/upper/special), output tracing"
+      ],
+      "estimatedHours": 12,
+      "status": "outline",
+      "examWeight": "Mains 20M"
+    },
+    {
+      "id": "veda-aptitude",
+      "title": "General Aptitude + Logical Reasoning",
+      "icon": "A",
+      "category": "aptitude",
+      "color": "#DC2626",
+      "days": "13-14",
+      "targetDate": "2026-09-23",
+      "subtopics": [
+        "Area, Average, Partnership, Percentage, Ratio and Proportion",
+        "Boats and Streams, Pipes and Cistern, Time and Distance, Time and Work, Problems on Trains",
+        "Calendar, Clock, Logarithm, Square Root and Cube Root, Volume and Surface Area",
+        "Numericals and Numbers, Problems on Ages, Problems on H.C.F and L.C.M, True Discount, Stocks and Shares",
+        "Profit and Loss, Races and Games, Height and Distance",
+        "Permutation and Combination, Probability",
+        "Logical Reasoning (sales/publishing Venn, workers-together, book-price puzzle)"
+      ],
+      "estimatedHours": 12,
+      "status": "outline",
+      "examWeight": "Prelim 10M + Mains 20M"
+    },
+    {
+      "id": "veda-mocks",
+      "title": "Prelim + Mains Mocks & Interview",
+      "icon": "M",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "days": "15-17",
+      "targetDate": "2026-09-26",
+      "subtopics": [
+        "Prelim mock: 20M tech + 10M aptitude, 1 hour, with negative marking drill",
+        "Mains mock: 70M (20+10+20+20), 2 hours, fill-blanks + short answers + problems",
+        "Previous/sample questions revision (NAND, MUX, FSM, RC, C, aptitude sets)",
+        "Technical + Personal interview prep at Hyderabad"
+      ],
+      "estimatedHours": 12,
+      "status": "outline",
+      "examWeight": "Buffer 24-26 Sep - do not extend theory beyond 23 Sep"
+    }
+  ]
+}

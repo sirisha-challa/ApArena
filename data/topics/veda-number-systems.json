@@ -1,0 +1,684 @@
+{
+  "id": "veda-number-systems",
+  "title": "Number Systems - Bases, Conversions, Arithmetic and Complements",
+  "icon": "#",
+  "subtitle": "Radices, conversions, binary arithmetic, signed magnitude, 1's and 2's complement - the foundation of VEDA IIT Digital prelims and mains",
+  "days": "1-2",
+  "color": "#4F46E5",
+  "category": "digital-design",
+  "subtopics": [
+    "Different radices/bases and conversions",
+    "Arithmetic operations on different radices",
+    "Signed magnitude numbers",
+    "1's complement numbers",
+    "2's complement numbers",
+    "Fractional binary and VEDA sample patterns"
+  ],
+  "estimatedHours": 10,
+  "learningPath": [
+    { "sectionId": "why-bases", "type": "concept" },
+    { "sectionId": "positional-system", "type": "concept" },
+    { "sectionId": "fractional-binary", "type": "concept" },
+    { "sectionId": "grouping-shortcuts", "type": "concept" },
+    { "sectionId": "binary-arithmetic", "type": "concept" },
+    { "sectionId": "signed-complements", "type": "concept" }
+  ],
+  "readingSections": [
+    {
+      "id": "why-bases",
+      "title": "1. Why Different Bases? Why Binary in Hardware?",
+      "type": "concept",
+      "quickSummary": "Humans count in base 10. Digital hardware stores only ON/OFF, so it counts in base 2. Octal and hex are shorthands for binary.",
+      "content": [
+        "A base (also called radix) is simply how many different digits you are allowed to use before you must carry to the next position. Base 10 allows $0,1,2,3,4,5,6,7,8,9$ - ten digits. After $9$ you run out, so you write $10$, which means one group of ten and zero ones.",
+        "Base 2 (binary) allows only $0$ and $1$. After $1$ you run out, so you write $10$, which now means one group of two and zero ones. That is why binary $10$ equals decimal $2$ - the same symbols mean different values in different bases. Always note the base: $(10)_{2} = (2)_{10}$.",
+        "Hardware uses binary because a transistor is most reliable as a switch: OFF is $0$, ON is $1$. Two states are easy to distinguish even with noise, voltage drop and temperature change. Ten different voltage levels would be fragile. So everything in a chip - numbers, letters, images - is finally stored as strings of $0$s and $1$s called bits.",
+        "Base 8 (octal, digits $0$-$7$) and base 16 (hexadecimal, digits $0$-$9$ plus $A,B,C,D,E,F$ for ten to fifteen) exist only to make long binary strings readable by humans. One octal digit replaces exactly $3$ bits. One hex digit replaces exactly $4$ bits. You will use hex daily in RTL, simulation waveforms and memory addresses."
+      ],
+      "subsections": [
+        {
+          "title": "The four bases VEDA expects you to know cold",
+          "content": [
+            "Binary base $2$: digits $0,1$. Example $(101)_{2}$. Each position is a power of $2$.",
+            "Octal base $8$: digits $0$-$7$. Example $(75)_{8}$. Never contains $8$ or $9$ - if you see $8$ in an octal option, it is instantly wrong.",
+            "Decimal base $10$: digits $0$-$9$. This is the default human base. When no base is written, assume $10$.",
+            "Hexadecimal base $16$: digits $0$-$9,A,B,C,D,E,F$ where $A=10, B=11, C=12, D=13, E=14, F=15$. Example $(2F)_{16}$. Lowercase $a$-$f$ means the same."
+          ],
+          "example": {
+            "prompt": "Which of these cannot be an octal number? $(25)_{8}, (89)_{8}, (70)_{8}$",
+            "steps": [
+              "Octal allows only digits $0$ to $7$.",
+              "$(25)_{8}$ uses only $2,5$ - valid.",
+              "$(89)_{8}$ uses $8$ and $9$ - both forbidden in octal.",
+              "Answer is $(89)_{8}$."
+            ],
+            "answer": "$(89)_{8}$ is invalid in octal"
+          }
+        },
+        {
+          "title": "Bits, MSB, LSB - the vocabulary of every digital question",
+          "content": [
+            "A bit is one binary digit. $8$ bits make a byte. A group of $n$ bits can represent $2^{n}$ different patterns.",
+            "MSB means Most Significant Bit - the leftmost bit, with the biggest weight. LSB means Least Significant Bit - the rightmost bit, with weight $1$. In $(1011)_{2}$, MSB is $1$ (worth $8$) and LSB is $1$ (worth $1$).",
+            "In signed numbers the MSB doubles as the sign bit: $0$ means positive or zero, $1$ means negative. This one fact unlocks all complement questions."
+          ]
+        },
+        {
+          "title": "Common mistake: reading $(10)_{2}$ as ten",
+          "content": [
+            "Beginners see $10$ and think ten. In binary, $10$ is one-two plus zero-ones, so it is two. Always ask: what base am I in? VEDA loves this trap in fill-in-the-blank prelims.",
+            "Trick: say the base aloud. $(101)_{2}$ is one-zero-one-base-two, value five. $(101)_{10}$ is one-hundred-one. $(101)_{16}$ is two-hundred-fifty-seven. Same digits, three different values."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Base = how many digits allowed. Binary 2, octal 8, decimal 10, hex 16.",
+        "Hardware uses binary (ON/OFF). Octal = 3-bit shorthand, hex = 4-bit shorthand.",
+        "MSB is leftmost (sign bit in signed numbers). LSB is rightmost."
+      ],
+      "companyNote": "VEDA prelims always includes 1-2 questions testing whether you notice the base - invalid digits, $(10)_{r}$ value, MSB/LSB identification."
+    },
+    {
+      "id": "positional-system",
+      "title": "2. Positional Weights - The One Rule Behind Every Conversion",
+      "type": "concept",
+      "quickSummary": "Every position has a weight = base raised to position index. Multiply digit by weight and add. That single rule converts any base to decimal.",
+      "content": [
+        "Every number is a sum: each digit multiplied by its position weight. Positions are counted from the point: $0,1,2,3$ to the left and $-1,-2,-3$ to the right. Weight of a position is $(base)^{position}$.",
+        "Example $(1011)_{2}$: positions $3,2,1,0$ from left. Value $= 1 \\times 2^{3} + 0 \\times 2^{2} + 1 \\times 2^{1} + 1 \\times 2^{0} = 8 + 0 + 2 + 1 = 11$. So $(1011)_{2} = (11)_{10}$.",
+        "The reverse direction (decimal to another base) uses repeated division: divide by the target base, keep remainders, read remainders bottom-to-top. To convert $(13)_{10}$ to binary: $13 \\div 2 = 6$ rem $1$, $6 \\div 2 = 3$ rem $0$, $3 \\div 2 = 1$ rem $1$, $1 \\div 2 = 0$ rem $1$. Read bottom to top: $(1101)_{2}$.",
+        "Powers of $2$ up to $2^{10} = 1024$ must be memorised: $1,2,4,8,16,32,64,128,256,512,1024$. Nearly every fast conversion uses them. Powers of $16$ up to $16^{3} = 4096$ help hex: $1,16,256,4096$."
+      ],
+      "subsections": [
+        {
+          "title": "Any base to decimal: multiply and add",
+          "content": [
+            "Write position numbers above each digit. Multiply. Add. Works for binary, octal, hex, any base.",
+            "$(2F)_{16} = 2 \\times 16^{1} + 15 \\times 16^{0} = 32 + 15 = 47$.",
+            "$(75)_{8} = 7 \\times 8 + 5 = 56 + 5 = 61$."
+          ],
+          "example": {
+            "prompt": "Convert $(11010)_{2}$ to decimal",
+            "steps": [
+              "Positions: $4,3,2,1,0$. Weights: $16,8,4,2,1$.",
+              "Multiply: $1 \\times 16 + 1 \\times 8 + 0 \\times 4 + 1 \\times 2 + 0 \\times 1$.",
+              "$16 + 8 + 0 + 2 + 0 = 26$."
+            ],
+            "answer": "$(11010)_{2} = (26)_{10}$"
+          }
+        },
+        {
+          "title": "Decimal to any base: divide and read backwards",
+          "content": [
+            "Divide by target base repeatedly. Collect remainders. The FIRST remainder is the LSB (rightmost). The LAST remainder is the MSB (leftmost).",
+            "For hex, remainders $10$-$15$ become $A$-$F$.",
+            "Check by converting back. This catches reversed-order mistakes, the most common error."
+          ],
+          "example": {
+            "prompt": "Convert $(47)_{10}$ to hexadecimal",
+            "steps": [
+              "$47 \\div 16 = 2$ remainder $15$.",
+              "$2 \\div 16 = 0$ remainder $2$. Stop.",
+              "Remainders bottom to top: $2$ then $15 = F$.",
+              "Result $(2F)_{16}$. Check: $2 \\times 16 + 15 = 47$."
+            ],
+            "answer": "$(47)_{10} = (2F)_{16}$"
+          }
+        },
+        {
+          "title": "How many patterns with n bits? Maximum value?",
+          "content": [
+            "With $n$ bits you get $2^{n}$ different patterns (from all zeros to all ones). The maximum unsigned value is $2^{n} - 1$.",
+            "$4$ bits: $2^{4} = 16$ patterns, $0$ to $15$. $8$ bits: $256$ patterns, $0$ to $255$.",
+            "VEDA asks this as: how many bits needed to represent decimal $X$? Answer: smallest $n$ with $2^{n} > X$ (unsigned) or fitting signed range (see complements section)."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "To decimal: value = sum of digit x base^position.",
+        "From decimal: repeated divide, read remainders bottom-to-top (last = MSB).",
+        "Memorise powers of 2 to 1024. n bits give 2^n patterns, max 2^n - 1."
+      ],
+      "companyNote": "At least 2-3 prelims questions are pure conversions. Speed here saves time for FSM and C sections."
+    },
+    {
+      "id": "fractional-binary",
+      "title": "3. Fractional Numbers - The Binary Point (VEDA Favourite)",
+      "type": "concept",
+      "quickSummary": "Right of the point, weights are 1/2, 1/4, 1/8. VEDA sample Q1 ends with .1 binary = 0.5 decimal. Master this.",
+      "content": [
+        "The binary point works exactly like the decimal point. Left of it weights are $2^{0}, 2^{1}, 2^{2}$. Right of it weights are $2^{-1} = 0.5$, $2^{-2} = 0.25$, $2^{-3} = 0.125$, $2^{-4} = 0.0625$.",
+        "Example $(101.11)_{2} = 1 \\times 4 + 0 \\times 2 + 1 \\times 1 + 1 \\times 0.5 + 1 \\times 0.25 = 4 + 0 + 1 + 0.5 + 0.25 = 5.75$.",
+        "The VEDA sample $(101101110011110.1)_{2}$ as 2's complement ends with $.1$ which contributes $0.5$ - many students forget the fraction and lose the mark.",
+        "Decimal fraction to binary uses repeated multiplication by $2$: multiply fraction by $2$, record integer part (0 or 1), repeat with new fraction, read top-to-bottom. $(0.625)_{10}$: $0.625 \\times 2 = 1.25$ record $1$, $0.25 \\times 2 = 0.5$ record $0$, $0.5 \\times 2 = 1.0$ record $1$. Result $(0.101)_{2}$. Some fractions never terminate (like $0.1$ decimal) - VEDA may ask how many bits for given precision."
+      ],
+      "subsections": [
+        {
+          "title": "Binary fraction to decimal: add the weights",
+          "content": [
+            "Memorise: $.1 = 0.5$, $.01 = 0.25$, $.001 = 0.125$, $.0001 = 0.0625$, $.00001 = 0.03125$.",
+            "$(0.101)_{2} = 0.5 + 0 + 0.125 = 0.625$.",
+            "For mixed numbers convert integer and fraction separately and add."
+          ],
+          "example": {
+            "prompt": "Convert $(11.01)_{2}$ to decimal",
+            "steps": [
+              "Integer $(11)_{2} = 3$.",
+              "Fraction $.01 = 0 \\times 0.5 + 1 \\times 0.25 = 0.25$.",
+              "Total $3 + 0.25 = 3.25$."
+            ],
+            "answer": "$(11.01)_{2} = (3.25)_{10}$"
+          }
+        },
+        {
+          "title": "Decimal fraction to binary: multiply by 2, read down",
+          "content": [
+            "Integer part and fraction part are converted by different methods - divide for integer, multiply for fraction. Do not mix them.",
+            "If fraction does not terminate in 4-5 steps, stop and note it is non-terminating. VEDA asks which decimals terminate in binary: only those whose denominator (in lowest terms) is a power of $2$."
+          ]
+        },
+        {
+          "title": "Trap: 2's complement with fraction",
+          "content": [
+            "Complement rules apply to the whole string including fraction bits. When finding magnitude of a negative 2's complement number with a binary point, invert ALL bits (integer + fraction) then add $1$ at the LSB position (the rightmost fractional position).",
+            "Example $4$-bit $(10.1)_{2}$ as 2's complement: MSB $1$ so negative. Invert: $01.0$. Add $1$ at LSB (worth $0.5$): $01.0 + 00.1 = 01.1 = 1.5$. So value is $-1.5$. Full method shown in complements section."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Right-side weights: 0.5, 0.25, 0.125, 0.0625.",
+        "Fraction binary to decimal: add weights where bit is 1.",
+        "Fraction decimal to binary: repeated x2, read integer parts top-down."
+      ],
+      "companyNote": "VEDA sample paper ends its 2's complement number with .1 - fractional complements are a signature VEDA twist. Practice at least 10 fractional conversions."
+    },
+    {
+      "id": "grouping-shortcuts",
+      "title": "4. Fast Shortcuts - 3-Bit and 4-Bit Grouping",
+      "type": "concept",
+      "quickSummary": "Binary to octal: group by 3 from the point. Binary to hex: group by 4. Reverse by expanding each digit. 10x faster than via decimal.",
+      "content": [
+        "Because $8 = 2^{3}$, each octal digit is exactly $3$ binary bits: $000=0$ to $111=7$. Because $16 = 2^{4}$, each hex digit is exactly $4$ bits: $0000=0$ to $1111=F$.",
+        "Binary to octal: start at the binary point, group $3$ bits left (integer) and $3$ bits right (fraction), pad with zeros at the far ends, convert each group. $(1011011)_{2}$: pad to $001$ $011$ $011$ = $(133)_{8}$.",
+        "Binary to hex: same but groups of $4$. $(1011011)_{2}$: pad to $0101$ $1011$ = $5B$ = $(5B)_{16}$.",
+        "Reverse is even easier: expand each octal digit to $3$ bits, each hex digit to $4$ bits. $(3E)_{16} = 0011$ $1110$ = $(111110)_{2}$ (drop leading zeros). Octal to hex and back goes via binary - never via decimal in the exam hall."
+      ],
+      "subsections": [
+        {
+          "title": "Grouping table to memorise",
+          "content": [
+            "Binary to octal groups: $000=0, 001=1, 010=2, 011=3, 100=4, 101=5, 110=6, 111=7$.",
+            "Binary to hex groups: $0000=0$ through $1001=9$, then $1010=A, 1011=B, 1100=C, 1101=D, 1110=E, 1111=F$.",
+            "Write these two rows on rough paper the moment the exam starts - it prevents all grouping slips."
+          ],
+          "example": {
+            "prompt": "Convert $(101101110011110)_{2}$ to hex (integer part of VEDA sample)",
+            "steps": [
+              "Group by 4 from right: $101$ $1011$ $1001$ $1110$ - left group short, pad to $0101$.",
+              "Groups: $0101$ $1011$ $1001$ $1110$.",
+              "$0101=5, 1011=B, 1001=9, 1110=E$.",
+              "Result $(5B9E)_{16}$."
+            ],
+            "answer": "$(101101110011110)_{2} = (5B9E)_{16}$"
+          }
+        },
+        {
+          "title": "Padding rules - where beginners lose marks",
+          "content": [
+            "Integer part: pad with zeros on the LEFT (MSB side). Fraction part: pad with zeros on the RIGHT (LSB side). Padding the wrong side changes the value.",
+            "Fraction example: $(0.1)_{2}$ to octal: need $3$ bits right of point, pad to $100$ = $4$, so $(0.4)_{8}$. Padding left would be wrong.",
+            "After expanding, drop only leading zeros of the whole number (leftmost) and trailing zeros only if they are beyond needed precision - never drop zeros between ones."
+          ]
+        },
+        {
+          "title": "Why never go via decimal",
+          "content": [
+            "Binary to hex via decimal needs a big decimal multiplication then division - slow and error-prone for $12$-$16$ bit strings like VEDA's. Grouping is direct digit-by-digit, each group independent. One wrong group spoils only one digit, not the whole answer.",
+            "In a $1$-hour prelim with $30$ marks, grouping saves $5$-$8$ minutes. That is one extra FSM or C question solved."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Octal = groups of 3. Hex = groups of 4. Start at the point.",
+        "Pad integer left, fraction right.",
+        "Octal/hex to binary: expand each digit. Octal to hex: via binary."
+      ],
+      "companyNote": "VEDA prelims rewards grouping speed. Any 12+ bit binary string is a signal to group, not to expand powers of 2."
+    },
+    {
+      "id": "binary-arithmetic",
+      "title": "5. Arithmetic in Any Base - Add, Subtract, Multiply",
+      "type": "concept",
+      "quickSummary": "Same column method as decimal, but carry/borrow equals the base. Binary: 1+1=0 carry 1. Octal: 7+1=10. Hex: F+1=10.",
+      "content": [
+        "Column arithmetic works in every base. The only change: you carry when the column total reaches the base, not $10$. In binary carry at $2$. In octal carry at $8$. In hex carry at $16$.",
+        "Binary addition rules: $0+0=0$, $0+1=1$, $1+0=1$, $1+1=0$ carry $1$, $1+1+1$ (with incoming carry) $=1$ carry $1$. Example $1011 + 0111$: column by column from right: $1+1=0$ carry $1$; $1+1+1=1$ carry $1$; $0+1+1=0$ carry $1$; $1+0+1=0$ carry $1$; final carry $1$. Result $(10010)_{2} = 18 = 11+7$. Correct.",
+        "Binary subtraction: $0-0=0$, $1-0=1$, $1-1=0$, $0-1=1$ borrow $1$ (borrow is worth $2$). In hardware subtraction is actually done by adding 2's complement (next section) - faster and no separate subtractor circuit. VEDA may ask both direct subtraction and complement addition - answers must match.",
+        "Multiplication in binary is easy: multiply by $0$ gives $0$, by $1$ copies the number. So binary multiplication is just shifted copies added. $(101)_{2} \\times (11)_{2}$: $101 \\times 1 = 101$, $101 \\times 1$ shifted $= 1010$, add: $101 + 1010 = 1111 = 15 = 5 \\times 3$. Correct."
+      ],
+      "subsections": [
+        {
+          "title": "Octal and hex addition - carry at 8 and 16",
+          "content": [
+            "Octal: $7 + 1 = (10)_{8}$ (eight). $7 + 2 = (11)_{8}$ (nine = one eight + one). If column sum is $8$-$15$, subtract $8$, carry $1$. If $16+$, carry accordingly.",
+            "Hex: $9 + 1 = A$, $A + 1 = B$, $F + 1 = (10)_{16}$ (sixteen). If sum is $16$-$31$, subtract $16$, carry $1$. Memorise $A=10$ to $F=15$ or every hex addition stalls.",
+            "Subtraction borrows the base: borrowing $1$ in octal gives $8$ in the column; in hex gives $16$."
+          ],
+          "example": {
+            "prompt": "Add $(57)_{8} + (46)_{8}$",
+            "steps": [
+              "Right column: $7 + 6 = 13$ decimal. $13 - 8 = 5$, carry $1$. Write $5$.",
+              "Left column: $5 + 4 + 1$ (carry) $= 10$ decimal. $10 - 8 = 2$, carry $1$. Write $2$.",
+              "Final carry $1$. Result $(125)_{8}$. Check: $47 + 38 = 85 = 1 \\times 64 + 2 \\times 8 + 5$. Correct."
+            ],
+            "answer": "$(57)_{8} + (46)_{8} = (125)_{8}$"
+          }
+        },
+        {
+          "title": "Subtraction by borrowing vs by complements",
+          "content": [
+            "Direct borrow method is fine for $2$-$4$ bit prelims questions. For longer strings use complements (next section) - fewer borrow-chain mistakes.",
+            "Always verify subtraction by adding: $(A - B) + B$ must equal $A$. This $10$-second check catches most borrow errors.",
+            "If $A < B$ in unsigned subtraction, the result borrows out - in hardware this sets a borrow/carry flag. In signed arithmetic it may instead be a valid negative (see overflow)."
+          ]
+        },
+        {
+          "title": "Multiplication and shifts",
+          "content": [
+            "Multiplying by $(10)_{2}$ (two) is a left shift: append $0$. $(101)_{2} \\times (10)_{2} = (1010)_{2}$. Multiplying by $2^{k}$ appends $k$ zeros.",
+            "Dividing by $2^{k}$ (unsigned) drops $k$ rightmost bits (logical shift right). These shift facts return in sequential circuits (shift registers) and in C (operators << >>).",
+            "VEDA rarely asks long multiplication directly, but shift-multiply appears inside microprocessor and 8051 questions."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Carry/borrow value = base (2, 8, 16).",
+        "Binary 1+1 = 0 carry 1. Verify subtraction by adding back.",
+        "x2^k = left shift by k (append k zeros)."
+      ],
+      "companyNote": "Arithmetic questions test base discipline. Write the base next to every intermediate sum to avoid decimal carry slips."
+    },
+    {
+      "id": "signed-complements",
+      "title": "6. Signed Numbers - Sign Magnitude, 1's and 2's Complement (Core VEDA Topic)",
+      "type": "concept",
+      "quickSummary": "MSB is sign (0 positive, 1 negative). Positive numbers are identical in all three systems. Negative numbers differ. 2's complement is what hardware uses.",
+      "content": [
+        "Unsigned $n$ bits cover $0$ to $2^{n}-1$. To include negatives we sacrifice the MSB as sign bit. Three historical systems do this differently. VEDA syllabus names all three, but 2's complement carries the most marks.",
+        "Sign-magnitude: MSB is sign, remaining $n-1$ bits are magnitude. $4$-bit $0101 = +5$, $1101 = -5$. Range $-(2^{n-1}-1)$ to $+(2^{n-1}-1)$. Two zeros: $0000$ (+0) and $1000$ (-0). Simple for humans, awkward for hardware (two zeros, separate add/subtract).",
+        "1's complement: negative = invert every bit of positive. $4$-bit $+5 = 0101$, $-5 = 1010$. Range same as sign-magnitude. Still two zeros: $0000$ and $1111$. Addition needs end-around carry (carry-out added back). VEDA asks this carry step explicitly.",
+        "2's complement: negative = invert every bit then add $1$. $4$-bit $+5 = 0101$, invert $1010$, add $1 = 1011 = -5$. Range $-2^{n-1}$ to $+(2^{n-1}-1)$ (one extra negative, e.g. $4$-bit $-8$ to $+7$). Single zero $0000$. Addition is plain binary addition, carry-out discarded. This is why every processor uses it - one adder does both addition and subtraction ($A - B = A + (2's complement of B)$)."
+      ],
+      "subsections": [
+        {
+          "title": "Finding 2's complement value step by step (VEDA Q1 method)",
+          "content": [
+            "Step 1: Look at MSB. If $0$, number is positive - convert directly to decimal (include fraction). Done.",
+            "Step 2: If MSB is $1$, number is negative. To find magnitude: invert ALL bits (0 becomes 1, 1 becomes 0, including fraction bits), then add $1$ at the LSB (rightmost, smallest weight) position.",
+            "Step 3: Convert the resulting magnitude to decimal. Put minus sign. For fractions, LSB weight may be $0.5, 0.25$ etc. - add there.",
+            "Step 4 (check): magnitude must fit in range. $n$-bit 2's complement magnitude of negative side is at most $2^{n-1}$."
+          ],
+          "example": {
+            "prompt": "4-bit 2's complement $(1011)_{2}$ - decimal value?",
+            "steps": [
+              "MSB is $1$, so negative.",
+              "Invert all bits: $1011$ becomes $0100$.",
+              "Add $1$: $0100 + 0001 = 0101 = 5$.",
+              "Value is $-5$."
+            ],
+            "answer": "$(1011)_{2}$ in 4-bit 2's complement $= -5$"
+          }
+        },
+        {
+          "title": "Ranges to memorise (asked directly)",
+          "content": [
+            "Unsigned $n$ bits: $0$ to $2^{n}-1$. $8$-bit: $0$ to $255$.",
+            "Sign-magnitude $n$ bits: $-(2^{n-1}-1)$ to $+(2^{n-1}-1)$. $8$-bit: $-127$ to $+127$. Two zeros.",
+            "1's complement $n$ bits: same range as sign-magnitude, two zeros.",
+            "2's complement $n$ bits: $-2^{n-1}$ to $+(2^{n-1}-1)$. $8$-bit: $-128$ to $+127$. Single zero. The most negative number ($1000...0$) has no positive mirror - negating it overflows.",
+            "Minimum bits to hold value $X$: smallest $n$ whose 2's complement range contains $X$."
+          ]
+        },
+        {
+          "title": "Overflow: when the sign lies",
+          "content": [
+            "Overflow means the true result does not fit in $n$ bits, so the sign bit is wrong. Rules: adding two positives must give positive; adding two negatives must give negative; adding opposite signs can never overflow.",
+            "Hardware rule: overflow = carry INTO sign bit XOR carry OUT of sign bit. If they differ, overflow. VEDA may give an addition and ask if overflow occurred - check signs, not just carry-out.",
+            "Discarding final carry-out in 2's complement addition is NORMAL, not overflow. Overflow is only about the sign being impossible."
+          ],
+          "example": {
+            "prompt": "4-bit 2's complement: $0111 (+7) + 0001 (+1)$. Overflow?",
+            "steps": [
+              "Add: $0111 + 0001 = 1000$.",
+              "$1000$ in 4-bit 2's complement is $-8$.",
+              "Positive + positive gave negative - impossible, so overflow.",
+              "True sum $8$ exceeds max $+7$. Needs 5 bits."
+            ],
+            "answer": "Yes, overflow. Result wraps to -8."
+          }
+        },
+        {
+          "title": "1's complement addition: end-around carry",
+          "content": [
+            "Add as plain binary. If there is a carry-out of MSB, add $1$ to the result (end-around carry). If no carry-out, result is correct (if negative, it is in 1's complement form).",
+            "Example $4$-bit 1's: $(-5) + (+3) = 1010 + 0011 = 1101$ with no carry-out. $1101$ is 1's complement negative: invert $0010 = 2$, so $-2$. Correct ($-5+3=-2$).",
+            "2's complement has no such extra step - another reason hardware prefers it. If a question mentions end-around carry, it is 1's complement."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "MSB 0 = positive, 1 = negative. Positive identical in all systems.",
+        "Negative: sign-mag = sign + magnitude; 1's = invert; 2's = invert + 1.",
+        "2's range -2^(n-1) to 2^(n-1)-1, single zero. Overflow = impossible sign."
+      ],
+      "companyNote": "This section is the highest-weightage in Digital mains (part of 20M). VEDA sample Q1 is exactly 2's complement decode with fraction. Expect 2-4 complement questions plus 1 range/overflow question."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "positional-value",
+      "title": "Positional Value - Any Base to Decimal",
+      "formula": { "latex": "V = \\sum d_{i} \\times r^{i}", "text": "Value equals sum over all digits of digit times base^position. Positions are 0,1,2 left of point and -1,-2,-3 right of point." },
+      "whenToUse": "Converting any binary, octal or hex number (integer or fractional) to decimal.",
+      "explanation": [
+        "Write position index above each digit, point is between position -1 and 0.",
+        "Multiply each digit by base^position.",
+        "Add all products."
+      ],
+      "example": {
+        "prompt": "$(1011)_{2}$ to decimal",
+        "steps": ["$1 \\times 2^{3} + 0 \\times 2^{2} + 1 \\times 2^{1} + 1 \\times 2^{0}$", "$8 + 0 + 2 + 1 = 11$"],
+        "answer": "$(1011)_{2} = (11)_{10}$"
+      },
+      "memoryTip": "Point splits + and - powers. Left counts up from 0, right counts down from -1.",
+      "commonMistake": "Forgetting hex letters A=10 to F=15 before multiplying."
+    },
+    {
+      "id": "dec-to-base",
+      "title": "Decimal to Any Base - Repeated Division (Integers)",
+      "formula": { "latex": "D \\div r \\to rem_{0} (LSB), \\; q_{0} \\div r \\to rem_{1}, \\; \\ldots", "text": "Divide by target base, record remainder (LSB first), repeat with quotient until zero, read remainders last-to-first." },
+      "whenToUse": "Converting a decimal integer to binary, octal or hex.",
+      "explanation": ["First remainder is LSB (rightmost).", "Last remainder is MSB (leftmost).", "Remainders 10-15 become A-F in hex."],
+      "example": {
+        "prompt": "$(13)_{10}$ to binary",
+        "steps": ["$13 \\div 2 = 6$ rem $1$", "$6 \\div 2 = 3$ rem $0$", "$3 \\div 2 = 1$ rem $1$", "$1 \\div 2 = 0$ rem $1$", "Read bottom-up: $1101$"],
+        "answer": "$(13)_{10} = (1101)_{2}$"
+      },
+      "memoryTip": "Divide-collect-read backwards. First out is last in answer.",
+      "commonMistake": "Reading remainders top-down (gives reversed bits)."
+    },
+    {
+      "id": "frac-dec-to-bin",
+      "title": "Decimal Fraction to Binary - Repeated Multiplication",
+      "formula": { "latex": "f \\times 2 \\to int_{1} (MSB), \\; frac_{1} \\times 2 \\to int_{2}, \\; \\ldots", "text": "Multiply fraction by 2, record integer part (MSB first), repeat with new fraction, read top-down." },
+      "whenToUse": "Converting decimal fractions like 0.625 to binary.",
+      "explanation": ["First integer recorded is closest to point (MSB of fraction).", "Stop when fraction becomes 0 or after required bits.", "Some decimals never terminate."],
+      "example": {
+        "prompt": "$(0.625)_{10}$ to binary",
+        "steps": ["$0.625 \\times 2 = 1.25$ record $1$", "$0.25 \\times 2 = 0.5$ record $0$", "$0.5 \\times 2 = 1.0$ record $1$"],
+        "answer": "$(0.625)_{10} = (0.101)_{2}$"
+      },
+      "memoryTip": "Integer: divide, read up. Fraction: multiply, read down. Opposite directions.",
+      "commonMistake": "Mixing the two methods - dividing fractions or multiplying integers."
+    },
+    {
+      "id": "bin-oct-hex-group",
+      "title": "Binary-Octal-Hex Grouping",
+      "formula": { "latex": "1 \\text{ octal} = 3 \\text{ bits}, \\quad 1 \\text{ hex} = 4 \\text{ bits}", "text": "Group binary in 3s for octal, 4s for hex, starting at the point. Pad integer left, fraction right." },
+      "whenToUse": "Fast conversion of long binary strings without going via decimal.",
+      "explanation": ["Group from the point outward.", "Pad short end groups with zeros.", "Convert each group to one digit."],
+      "example": {
+        "prompt": "$(1011011)_{2}$ to octal and hex",
+        "steps": ["Octal groups of 3: $001$ $011$ $011$ = $1$ $3$ $3$", "Hex groups of 4: $0101$ $1011$ = $5$ $B$"],
+        "answer": "$(133)_{8}$ and $(5B)_{16}$"
+      },
+      "memoryTip": "3-4 rule: octal-3, hex-4. Point is the anchor.",
+      "commonMistake": "Padding integer on the right or fraction on the left - flips the value."
+    },
+    {
+      "id": "unsigned-count",
+      "title": "Unsigned Count and Maximum",
+      "formula": { "latex": "count = 2^{n}, \\quad max = 2^{n} - 1", "text": "n bits give 2^n patterns from 0 to 2^n minus 1." },
+      "whenToUse": "How many values, maximum value, or bits needed for unsigned range.",
+      "explanation": ["$n=4$: $16$ patterns $0$-$15$.", "$n=8$: $256$ patterns $0$-$255$.", "Bits for value X: smallest n with $2^{n} > X$."],
+      "example": {
+        "prompt": "Maximum unsigned value with 6 bits?",
+        "steps": ["$2^{6} = 64$ patterns.", "$max = 64 - 1 = 63$."],
+        "answer": "$63$"
+      },
+      "memoryTip": "Minus 1 because zero occupies one pattern.",
+      "commonMistake": "Answering 2^n as max instead of 2^n - 1."
+    },
+    {
+      "id": "sign-magnitude",
+      "title": "Sign-Magnitude Representation",
+      "formula": { "latex": "range = -(2^{n-1}-1) \\text{ to } +(2^{n-1}-1)", "text": "MSB is sign, rest is magnitude. Two zeros exist." },
+      "whenToUse": "Identifying sign-magnitude values and range questions.",
+      "explanation": ["MSB 0 positive, 1 negative.", "Magnitude bits read as unsigned.", "Zeros: 0000 and 1000 (4-bit)."],
+      "example": {
+        "prompt": "4-bit sign-magnitude $1101$?",
+        "steps": ["MSB $1$ so negative.", "Magnitude $101 = 5$."],
+        "answer": "$-5$"
+      },
+      "memoryTip": "Sign-magnitude: sign glued onto unsigned magnitude.",
+      "commonMistake": "Confusing with 1's complement - sign-magnitude magnitude is NOT inverted, it is direct."
+    },
+    {
+      "id": "ones-complement",
+      "title": "1's Complement - Invert All Bits",
+      "formula": { "latex": "-X = \\overline{X}, \\quad range = -(2^{n-1}-1) \\text{ to } +(2^{n-1}-1)", "text": "Negative is bitwise NOT of positive. Range same as sign-magnitude with two zeros. Addition uses end-around carry." },
+      "whenToUse": "1's complement encode/decode and end-around-carry addition.",
+      "explanation": ["Invert every bit for negative.", "Zeros: all-0 and all-1.", "Add, then if carry-out, add 1 back."],
+      "example": {
+        "prompt": "4-bit 1's complement of $+5 (0101)$?",
+        "steps": ["Invert each bit: $0\\to1, 1\\to0$.", "$0101$ becomes $1010$."],
+        "answer": "$-5 = 1010$ in 4-bit 1's complement"
+      },
+      "memoryTip": "One's: one operation (invert). Two's: two operations (invert + 1).",
+      "commonMistake": "Forgetting end-around carry - that step defines 1's complement addition."
+    },
+    {
+      "id": "twos-complement-make",
+      "title": "2's Complement - Invert and Add 1",
+      "formula": { "latex": "-X = \\overline{X} + 1", "text": "Negative is bitwise NOT plus 1 at LSB. Single zero. This is what processors store." },
+      "whenToUse": "Encoding a negative number into 2's complement.",
+      "explanation": ["Invert all bits.", "Add 1 at LSB (rightmost).", "For fractions add at fractional LSB."],
+      "example": {
+        "prompt": "Encode $-5$ in 4-bit 2's complement",
+        "steps": ["$+5 = 0101$.", "Invert: $1010$.", "Add 1: $1010 + 0001 = 1011$."],
+        "answer": "$-5 = 1011$"
+      },
+      "memoryTip": "Invert-plus-one. Shortcut: copy zeros from right up to and including first 1, then invert the rest.",
+      "commonMistake": "Adding 1 at MSB side or forgetting fractions need LSB = smallest fractional weight."
+    },
+    {
+      "id": "twos-complement-read",
+      "title": "Reading a 2's Complement Value",
+      "formula": { "latex": "\\text{if MSB}=1: value = -(\\overline{bits} + 1)", "text": "If MSB is 0 read directly. If 1, invert-plus-1 to get magnitude, then negate." },
+      "whenToUse": "Decoding VEDA Q1-style long 2's complement strings including fractions.",
+      "explanation": ["Check MSB first.", "If 1: invert all bits, add 1 at LSB, convert to decimal, negate.", "Include fraction bits in invert and add."],
+      "example": {
+        "prompt": "4-bit 2's $(1011)_{2}$?",
+        "steps": ["MSB $1$: negative.", "Invert: $0100$. Add 1: $0101 = 5$.", "Negate."],
+        "answer": "$-5$"
+      },
+      "memoryTip": "MSB decides: 0 direct, 1 invert-plus-1 then minus.",
+      "commonMistake": "Converting directly without complementing - gives wrong positive (11 instead of -5)."
+    },
+    {
+      "id": "twos-range-overflow",
+      "title": "2's Complement Range and Overflow",
+      "formula": { "latex": "range = -2^{n-1} \\text{ to } +(2^{n-1}-1), \\quad overflow = c_{in} \\oplus c_{out}", "text": "Asymmetric range with one extra negative. Overflow when carry into sign differs from carry out, equivalently impossible sign." },
+      "whenToUse": "Range, minimum-bits, and overflow yes/no questions.",
+      "explanation": ["8-bit: -128 to +127.", "Same-sign add giving opposite sign = overflow.", "Opposite-sign add never overflows."],
+      "example": {
+        "prompt": "4-bit 2's $0111 + 0001$?",
+        "steps": ["$7 + 1 = 8$ true sum.", "Max is $+7$, so overflow.", "$0111+0001 = 1000 = -8$ wrapped."],
+        "answer": "Overflow, wraps to $-8$"
+      },
+      "memoryTip": "One extra negative soldier with no positive twin (1000).",
+      "commonMistake": "Calling discarded final carry overflow - it is normal. Overflow is about wrong sign."
+    }
+  ],
+  "practiceProblems": {
+    "positional-value": [
+      { "q": "Convert $(101101)_{2}$ to decimal", "s": ["Positions 5 to 0, weights 32,16,8,4,2,1", "$1\\times32 + 0\\times16 + 1\\times8 + 1\\times4 + 0\\times2 + 1\\times1 = 32+8+4+1 = 45$"], "a": "$(101101)_{2} = (45)_{10}$" },
+      { "q": "Convert $(3A)_{16}$ to decimal", "s": ["$3 \\times 16 + 10 = 48 + 10 = 58$ (A = 10)"], "a": "$(3A)_{16} = (58)_{10}$" },
+      { "q": "Convert $(237)_{8}$ to decimal", "s": ["$2 \\times 64 + 3 \\times 8 + 7 = 128 + 24 + 7 = 159$"], "a": "$(237)_{8} = (159)_{10}$" },
+      { "q": "Convert $(11010)_{2}$ to decimal", "s": ["$16 + 8 + 0 + 2 + 0 = 26$"], "a": "$(26)_{10}$" },
+      { "q": "Convert $(FF)_{16}$ to decimal", "s": ["$15 \\times 16 + 15 = 240 + 15 = 255$"], "a": "$(255)_{10}$" },
+      { "q": "Convert $(10000000)_{2}$ to decimal", "s": ["Single 1 at position 7: $2^{7} = 128$"], "a": "$(128)_{10}$" }
+    ],
+    "dec-to-base": [
+      { "q": "Convert $(25)_{10}$ to binary", "s": ["$25 \\div 2 = 12$ rem 1", "$12 \\div 2 = 6$ rem 0", "$6 \\div 2 = 3$ rem 0", "$3 \\div 2 = 1$ rem 1", "$1 \\div 2 = 0$ rem 1", "Read bottom-up: 11001"], "a": "$(11001)_{2}$" },
+      { "q": "Convert $(200)_{10}$ to hexadecimal", "s": ["$200 \\div 16 = 12$ rem 8", "$12 \\div 16 = 0$ rem 12 = C", "Read bottom-up: C8"], "a": "$(C8)_{16}$" },
+      { "q": "Convert $(100)_{10}$ to octal", "s": ["$100 \\div 8 = 12$ rem 4", "$12 \\div 8 = 1$ rem 4", "$1 \\div 8 = 0$ rem 1", "Read bottom-up: 144"], "a": "$(144)_{8}$" },
+      { "q": "Convert $(31)_{10}$ to binary", "s": ["Remainders: 1,1,1,1,1 - five ones"], "a": "$(11111)_{2}$" },
+      { "q": "Convert $(47)_{10}$ to hexadecimal", "s": ["$47 \\div 16 = 2$ rem 15 = F", "$2 \\div 16 = 0$ rem 2", "Result 2F"], "a": "$(2F)_{16}$" }
+    ],
+    "frac-dec-to-bin": [
+      { "q": "Convert $(0.625)_{10}$ to binary", "s": ["$0.625 \\times 2 = 1.25$ record 1", "$0.25 \\times 2 = 0.5$ record 0", "$0.5 \\times 2 = 1.0$ record 1"], "a": "$(0.101)_{2}$" },
+      { "q": "Convert $(5.75)_{10}$ to binary", "s": ["Integer 5 = 101", "Fraction 0.75: $0.75\\times2=1.5$ record 1, $0.5\\times2=1.0$ record 1", "Combine: 101.11"], "a": "$(101.11)_{2}$" },
+      { "q": "Convert $(0.1)_{2}$ to decimal", "s": ["$1 \\times 2^{-1} = 0.5$"], "a": "$(0.5)_{10}$" },
+      { "q": "Convert $(11.01)_{2}$ to decimal", "s": ["Integer 11 = 3", "Fraction .01 = 0.25", "Total 3.25"], "a": "$(3.25)_{10}$" },
+      { "q": "Convert $(0.101)_{2}$ to decimal", "s": ["$0.5 + 0 + 0.125 = 0.625$"], "a": "$(0.625)_{10}$" }
+    ],
+    "bin-oct-hex-group": [
+      { "q": "Convert $(1011011)_{2}$ to octal", "s": ["Pad left: 001 011 011", "= 1 3 3"], "a": "$(133)_{8}$" },
+      { "q": "Convert $(1011011)_{2}$ to hex", "s": ["Pad left: 0101 1011", "= 5 B"], "a": "$(5B)_{16}$" },
+      { "q": "Convert $(3E)_{16}$ to binary", "s": ["3 = 0011, E = 1110", "Join: 00111110, drop leading zeros: 111110"], "a": "$(111110)_{2}$" },
+      { "q": "Convert $(57)_{8}$ to binary", "s": ["5 = 101, 7 = 111", "Join: 101111"], "a": "$(101111)_{2}$" },
+      { "q": "Convert $(101101110011110)_{2}$ to hex", "s": ["Group by 4 from right: 0101 1011 1001 1110", "= 5 B 9 E"], "a": "$(5B9E)_{16}$" }
+    ],
+    "twos-complement-make": [
+      { "q": "Encode $-5$ in 4-bit 2's complement", "s": ["+5 = 0101", "Invert: 1010", "Add 1: 1011"], "a": "$1011$" },
+      { "q": "Encode $-1$ in 4-bit 2's complement", "s": ["+1 = 0001", "Invert: 1110", "Add 1: 1111"], "a": "$1111$" },
+      { "q": "Decode 4-bit 2's $(1011)_{2}$", "s": ["MSB 1: negative", "Invert: 0100, add 1: 0101 = 5", "Value -5"], "a": "$-5$" },
+      { "q": "Decode 4-bit 2's $(0111)_{2}$", "s": ["MSB 0: positive, read directly: 7"], "a": "$+7$" },
+      { "q": "Decode $(10.1)_{2}$ as 4-bit 2's complement with fraction", "s": ["MSB 1: negative", "Invert all incl fraction: 01.0", "Add 1 at LSB (0.5): 01.0 + 00.1 = 01.1 = 1.5", "Value -1.5"], "a": "$-1.5$" },
+      { "q": "Add 4-bit 2's $0111 + 0001$ and check overflow", "s": ["Sum = 1000", "Positive + positive gave negative (-8)", "True sum 8 exceeds +7 max"], "a": "Overflow, wraps to $-8$" }
+    ],
+    "twos-range-overflow": [
+      { "q": "Range of 8-bit 2's complement?", "s": ["$-2^{7}$ to $2^{7}-1$", "= -128 to +127"], "a": "$-128$ to $+127$" },
+      { "q": "Minimum bits to hold $-19$ in 2's complement?", "s": ["5-bit range: -16 to +15 - too small", "6-bit range: -32 to +31 - fits"], "a": "$6$ bits" },
+      { "q": "How many zeros in 2's complement?", "s": ["Only 0000 - single zero", "1000 is most negative, not negative zero"], "a": "One zero" },
+      { "q": "How many zeros in 1's complement 4-bit?", "s": ["0000 (+0) and 1111 (-0)"], "a": "Two zeros" },
+      { "q": "Is $1100 + 1010$ overflow in 4-bit 2's? (-4 + -6)", "s": ["Sum: 1100+1010 = 10110, keep 4 bits: 0110 = +6", "Negative + negative gave positive - overflow", "True sum -10 below -8 min"], "a": "Yes, overflow" }
+    ]
+  },
+  "mcqs": [
+    { "id": "vns-001", "q": "What is the base (radix) of the binary number system?", "opts": ["$2$", "$8$", "$10$", "$16$"], "c": 0, "d": "easy", "t": "bases", "source": "VEDA IIT Prelim Pattern", "exp": ["Base means how many digits are allowed.", "Binary allows only $0$ and $1$ - two digits.", "So base is $2$."], "shortcut": "Binary-Bi-2, Octal-Oct-8, Hex-16.", "pattern": "Direct definition questions are free marks - answer in seconds." },
+    { "id": "vns-002", "q": "Which digits are allowed in octal?", "opts": ["$0$ to $9$", "$0$ to $7$", "$0$ to $1$", "$0$-$9$ plus $A$-$F$"], "c": 1, "d": "easy", "t": "bases", "source": "VEDA IIT Prelim Pattern", "exp": ["Octal is base $8$.", "It allows $8$ digits starting from $0$: $0,1,2,3,4,5,6,7$.", "$8$ and $9$ are never valid in octal."], "shortcut": "If you see 8 or 9 in an octal option, eliminate it instantly.", "pattern": "Invalid-digit spotting is a classic VEDA trap." },
+    { "id": "vns-003", "q": "Which of these cannot be a valid octal number?", "opts": ["$(25)_{8}$", "$(70)_{8}$", "$(89)_{8}$", "$(17)_{8}$"], "c": 2, "d": "easy", "t": "bases", "source": "VEDA IIT Prelim Pattern", "exp": ["Octal allows only digits $0$ to $7$.", "$(89)_{8}$ contains $8$ and $9$, both forbidden.", "All others use only valid digits."], "shortcut": "Scan for 8/9 - one glance answer.", "pattern": "VEDA prelims asks at least one validity question." },
+    { "id": "vns-004", "q": "Which symbols are used in hexadecimal?", "opts": ["$0$-$7$", "$0,1$", "$0$-$9$ plus $A$-$F$", "$0$-$9$ plus $G$-$H$"], "c": 2, "d": "easy", "t": "bases", "source": "Practice - Bases", "exp": ["Hex is base $16$ needing $16$ symbols.", "Digits $0$-$9$ give ten, letters $A$-$F$ give six more.", "$A=10, B=11, C=12, D=13, E=14, F=15$."], "shortcut": "A-F = After-9: A is ten.", "pattern": "Hex letter values must be automatic." },
+    { "id": "vns-005", "q": "Decimal value of hex digit $A$?", "opts": ["$8$", "$9$", "$10$", "$11$"], "c": 2, "d": "easy", "t": "hex", "source": "Practice - Bases", "exp": ["Hex counts $0,1,...,9$ then $A$.", "$9$ is nine, next symbol $A$ is ten."], "shortcut": "A=10, B=11, C=12, D=13, E=14, F=15.", "pattern": "Single hex digit conversion is the atom of all hex work." },
+    { "id": "vns-006", "q": "Decimal value of hex digit $F$?", "opts": ["$14$", "$15$", "$16$", "$17$"], "c": 1, "d": "easy", "t": "hex", "source": "Practice - Bases", "exp": ["$F$ is the largest hex digit.", "Counting: $A=10, B=11, C=12, D=13, E=14, F=15$."], "shortcut": "F=15 = four ones in binary 1111.", "pattern": "F=1111 linkage returns in grouping questions." },
+    { "id": "vns-007", "q": "How many bits make one byte?", "opts": ["$2$", "$4$", "$8$", "$16$"], "c": 2, "d": "easy", "t": "bits", "source": "Practice - Bases", "exp": ["By definition $1$ byte $= 8$ bits.", "A byte holds $2^{8} = 256$ patterns ($0$ to $255$)."], "shortcut": "Byte-8, Nibble-4.", "pattern": "Byte/nibble vocabulary appears in memory questions." },
+    { "id": "vns-008", "q": "In $(1011)_{2}$, which bit is the MSB?", "opts": ["Rightmost $1$", "Leftmost $1$", "Middle $0$", "All bits"], "c": 1, "d": "easy", "t": "bits", "source": "VEDA IIT Prelim Pattern", "exp": ["MSB = Most Significant Bit = leftmost, biggest weight.", "Here leftmost $1$ has weight $8$.", "Rightmost is LSB with weight $1$."], "shortcut": "MSB-Left-Max, LSB-Right-One.", "pattern": "MSB doubles as sign bit in signed questions." },
+    { "id": "vns-009", "q": "Weight of LSB in any integer number?", "opts": ["Equal to base", "$1$", "$0$", "Equal to MSB"], "c": 1, "d": "easy", "t": "weights", "source": "Practice - Bases", "exp": ["LSB is at position $0$.", "Weight $= base^{0} = 1$ in every base."], "shortcut": "Position 0 always weighs 1.", "pattern": "Position-zero insight simplifies all conversions." },
+    { "id": "vns-010", "q": "Decimal value of $(101)_{2}$?", "opts": ["$3$", "$4$", "$5$", "$6$"], "c": 2, "d": "easy", "t": "bin-to-dec", "source": "Practice - Conversion", "exp": ["Weights $4,2,1$.", "$1 \\times 4 + 0 \\times 2 + 1 \\times 1 = 4 + 0 + 1 = 5$."], "shortcut": "101 is the classic 5 - memorise it.", "pattern": "Small binary patterns must be instant." },
+    { "id": "vns-011", "q": "Decimal value of $(10)_{2}$?", "opts": ["$10$", "$2$", "$1$", "$0$"], "c": 1, "d": "easy", "t": "bin-to-dec", "source": "VEDA IIT Prelim Pattern", "exp": ["$(10)_{2}$ means one-two plus zero-ones.", "$1 \\times 2 + 0 = 2$.", "Reading it as ten is the famous trap."], "shortcut": "Say the base aloud: one-zero-base-two.", "pattern": "VEDA tests whether you respect the base subscript." },
+    { "id": "vns-012", "q": "Decimal value of $(1111)_{2}$?", "opts": ["$14$", "$15$", "$16$", "$7$"], "c": 1, "d": "easy", "t": "bin-to-dec", "source": "Practice - Conversion", "exp": ["$8 + 4 + 2 + 1 = 15$.", "Four ones is always $2^{4}-1 = 15$."], "shortcut": "n ones = 2^n minus 1.", "pattern": "All-ones patterns link to max-value formula." },
+    { "id": "vns-013", "q": "Decimal value of $(10000)_{2}$?", "opts": ["$8$", "$10$", "$16$", "$32$"], "c": 2, "d": "easy", "t": "bin-to-dec", "source": "Practice - Conversion", "exp": ["Single $1$ at position $4$.", "Value $= 2^{4} = 16$."], "shortcut": "1 followed by n zeros = 2^n.", "pattern": "Power-of-two recognition speeds up everything." },
+    { "id": "vns-014", "q": "Binary of $(13)_{10}$?", "opts": ["$1011$", "$1101$", "$1110$", "$1001$"], "c": 1, "d": "easy", "t": "dec-to-bin", "source": "Practice - Conversion", "exp": ["$13 \\div 2 = 6$ rem $1$ (LSB).", "$6 \\div 2 = 3$ rem $0$.", "$3 \\div 2 = 1$ rem $1$.", "$1 \\div 2 = 0$ rem $1$ (MSB).", "Read bottom-up: $1101$. Check: $8+4+0+1=13$."], "shortcut": "13 = 8+4+1 so bits 8,4,1 set: 1101.", "pattern": "Decompose into powers of 2 as a cross-check." },
+    { "id": "vns-015", "q": "Binary of $(25)_{10}$?", "opts": ["$10101$", "$11001$", "$11011$", "$10011$"], "c": 1, "d": "easy", "t": "dec-to-bin", "source": "Practice - Conversion", "exp": ["$25 = 16 + 8 + 1$.", "Bits $16,8,1$ set: $11001$.", "Check: $16+8+0+0+1 = 25$."], "shortcut": "Subtract largest power of 2 repeatedly.", "pattern": "Power-subtraction is faster than division for small numbers." },
+    { "id": "vns-016", "q": "Binary of $(8)_{10}$?", "opts": ["$100$", "$1000$", "$10000$", "$111$"], "c": 1, "d": "easy", "t": "dec-to-bin", "source": "Practice - Conversion", "exp": ["$8 = 2^{3}$.", "$1$ followed by $3$ zeros: $1000$."], "shortcut": "Powers of 2 are 1-plus-zeros.", "pattern": "Every power of 2 must be instant." },
+    { "id": "vns-017", "q": "Binary of $(31)_{10}$?", "opts": ["$1111$", "$11111$", "$100000$", "$10101$"], "c": 1, "d": "easy", "t": "dec-to-bin", "source": "Practice - Conversion", "exp": ["$31 = 2^{5} - 1$.", "Five ones: $11111$.", "Check: $16+8+4+2+1 = 31$."], "shortcut": "31-63-127-255 are all-ones boundaries.", "pattern": "One-less-than-power-of-2 gives all ones." },
+    { "id": "vns-018", "q": "Decimal value of $(75)_{8}$?", "opts": ["$75$", "$61$", "$57$", "$49$"], "c": 1, "d": "easy", "t": "oct-to-dec", "source": "Practice - Conversion", "exp": ["$7 \\times 8 + 5 = 56 + 5 = 61$."], "shortcut": "Two-digit octal: high-digit times 8 plus low.", "pattern": "Two-digit conversions are single-line." },
+    { "id": "vns-019", "q": "Decimal value of $(100)_{8}$?", "opts": ["$100$", "$64$", "$80$", "$8$"], "c": 1, "d": "easy", "t": "oct-to-dec", "source": "Practice - Conversion", "exp": ["$1 \\times 8^{2} = 1 \\times 64 = 64$.", "Zeros contribute nothing."], "shortcut": "100 in any base = base squared.", "pattern": "100-base = base-squared generalises to all bases." },
+    { "id": "vns-020", "q": "Decimal value of $(17)_{8}$?", "opts": ["$17$", "$15$", "$7$", "$23$"], "c": 1, "d": "easy", "t": "oct-to-dec", "source": "Practice - Conversion", "exp": ["$1 \\times 8 + 7 = 8 + 7 = 15$."], "shortcut": "High digit times 8, add low.", "pattern": "Verify by range: two-digit octal is 8 to 63." },
+    { "id": "vns-021", "q": "Decimal value of $(2F)_{16}$?", "opts": ["$47$", "$2F$", "$44$", "$31$"], "c": 0, "d": "easy", "t": "hex-to-dec", "source": "Practice - Conversion", "exp": ["$F = 15$.", "$2 \\times 16 + 15 = 32 + 15 = 47$."], "shortcut": "Two-digit hex: high times 16 plus low.", "pattern": "Hex F in low nibble adds 15." },
+    { "id": "vns-022", "q": "Decimal value of $(FF)_{16}$?", "opts": ["$256$", "$255$", "$240$", "$15$"], "c": 1, "d": "easy", "t": "hex-to-dec", "source": "Practice - Conversion", "exp": ["$15 \\times 16 + 15 = 240 + 15 = 255$.", "Also $16^{2} - 1 = 255$."], "shortcut": "FF is always 255 (one byte max).", "pattern": "FF=255 is the most-used hex fact in hardware." },
+    { "id": "vns-023", "q": "Decimal value of $(100)_{16}$?", "opts": ["$100$", "$16$", "$256$", "$4096$"], "c": 2, "d": "easy", "t": "hex-to-dec", "source": "Practice - Conversion", "exp": ["$1 \\times 16^{2} = 256$.", "Same rule: 100-base = base-squared."], "shortcut": "100-hex = 256, the byte boundary.", "pattern": "256 appears in memory-size questions." },
+    { "id": "vns-024", "q": "Hexadecimal of $(47)_{10}$?", "opts": ["$2F$", "$3F$", "$47$", "$2D$"], "c": 0, "d": "easy", "t": "dec-to-hex", "source": "Practice - Conversion", "exp": ["$47 \\div 16 = 2$ remainder $15$.", "$15 = F$.", "$2 \\div 16 = 0$ remainder $2$.", "Read up: $2F$. Check $32+15=47$."], "shortcut": "47-32=15 so 2F.", "pattern": "Subtract 16s to cross-check division." },
+    { "id": "vns-025", "q": "Hexadecimal of $(255)_{10}$?", "opts": ["$FE$", "$FF$", "$100$", "$FFF$"], "c": 1, "d": "easy", "t": "dec-to-hex", "source": "Practice - Conversion", "exp": ["$255 \\div 16 = 15$ remainder $15$.", "$15 \\div 16 = 0$ remainder $15$.", "Both $15 = F$: result $FF$."], "shortcut": "255 is always FF.", "pattern": "Boundary values 255/256/257 must be reflexes." },
+    { "id": "vns-026", "q": "Octal of $(1011011)_{2}$?", "opts": ["$(133)_{8}$", "$(155)_{8}$", "$(113)_{8}$", "$(131)_{8}$"], "c": 0, "d": "easy", "t": "grouping", "source": "Practice - Grouping", "exp": ["Group by $3$ from right: $1$ $011$ $011$.", "Pad left group to $001$.", "$001=1, 011=3, 011=3$: $(133)_{8}$."], "shortcut": "Pad-cast: left-pad integer groups.", "pattern": "Grouping beats power-expansion for 7+ bits." },
+    { "id": "vns-027", "q": "Hex of $(1011011)_{2}$?", "opts": ["$(5B)_{16}$", "$(6B)_{16}$", "$(5A)_{16}$", "$(4B)_{16}$"], "c": 0, "d": "easy", "t": "grouping", "source": "Practice - Grouping", "exp": ["Group by $4$ from right: $101$ $1011$.", "Pad left to $0101$ $1011$.", "$0101=5, 1011=B$: $(5B)_{16}$."], "shortcut": "4-bit groups map straight to hex.", "pattern": "Hex grouping is the fastest long-binary route." },
+    { "id": "vns-028", "q": "Binary of $(3E)_{16}$?", "opts": ["$111110$", "$111101$", "$111010$", "$101110$"], "c": 0, "d": "easy", "t": "grouping", "source": "Practice - Grouping", "exp": ["$3 = 0011$, $E = 1110$.", "Join: $00111110$.", "Drop leading zeros: $111110$. Check: $32+16+8+4+2+0 = 62 = 3x16+14$."], "shortcut": "Expand each hex digit to 4 bits.", "pattern": "Expansion is the reverse of grouping." },
+    { "id": "vns-029", "q": "Binary of $(57)_{8}$?", "opts": ["$101111$", "$101101$", "$111101$", "$100111$"], "c": 0, "d": "easy", "t": "grouping", "source": "Practice - Grouping", "exp": ["$5 = 101$, $7 = 111$.", "Join: $101111$.", "Check: $32+0+8+4+2+1 = 47 = 5x8+7$."], "shortcut": "Expand each octal digit to 3 bits.", "pattern": "Keep leading zeros inside groups until joined." },
+    { "id": "vns-030", "q": "How many different patterns with $4$ bits?", "opts": ["$8$", "$15$", "$16$", "$32$"], "c": 2, "d": "easy", "t": "count", "source": "VEDA IIT Prelim Pattern", "exp": ["Count $= 2^{n} = 2^{4} = 16$.", "Patterns $0000$ to $1111$."], "shortcut": "Count is 2^n, max is 2^n minus 1.", "pattern": "Count-vs-max confusion is the classic trap." },
+    { "id": "vns-031", "q": "Maximum unsigned value with $8$ bits?", "opts": ["$128$", "$255$", "$256$", "$511$"], "c": 1, "d": "easy", "t": "count", "source": "VEDA IIT Prelim Pattern", "exp": ["Max $= 2^{8} - 1 = 256 - 1 = 255$.", "Range $0$ to $255$."], "shortcut": "8-bit max is 255 (FF).", "pattern": "255/256 boundary must be reflex." },
+    { "id": "vns-032", "q": "Maximum unsigned value with $4$ bits?", "opts": ["$8$", "$16$", "$15$", "$7$"], "c": 2, "d": "easy", "t": "count", "source": "Practice - Range", "exp": ["$2^{4} - 1 = 16 - 1 = 15$.", "All ones $1111 = 15$."], "shortcut": "All-ones equals max.", "pattern": "Small-n ranges verify bigger reasoning." },
+    { "id": "vns-033", "q": "Minimum bits to represent $(13)_{10}$ unsigned?", "opts": ["$3$", "$4$", "$5$", "$2$"], "c": 1, "d": "easy", "t": "count", "source": "Practice - Range", "exp": ["$3$ bits max $7$ - too small.", "$4$ bits max $15$ - fits $13$.", "So $4$ bits."], "shortcut": "Find smallest 2^n - 1 covering the value.", "pattern": "Bits-needed questions test range, not conversion." },
+    { "id": "vns-034", "q": "Decimal of $(1010)_{2}$?", "opts": ["$9$", "$10$", "$11$", "$12$"], "c": 1, "d": "easy", "t": "bin-to-dec", "source": "Practice - Conversion", "exp": ["$8 + 0 + 2 + 0 = 10$."], "shortcut": "1010 is the classic 10 (A in hex).", "pattern": "1010/1011 pair maps to A/B." },
+    { "id": "vns-035", "q": "Decimal of $(11010)_{2}$?", "opts": ["$24$", "$26$", "$28$", "$22$"], "c": 1, "d": "easy", "t": "bin-to-dec", "source": "Practice - Conversion", "exp": ["$16 + 8 + 0 + 2 + 0 = 26$."], "shortcut": "Split 16 + remainder.", "pattern": "Five-bit numbers: peel off 16 first." },
+    { "id": "vns-036", "q": "Hex of $(200)_{10}$?", "opts": ["$C8$", "$D8$", "$B8$", "$C0$"], "c": 0, "d": "easy", "t": "dec-to-hex", "source": "Practice - Conversion", "exp": ["$200 \\div 16 = 12$ remainder $8$.", "$12 = C$.", "$12 \\div 16 = 0$ remainder $12 = C$.", "Read up: $C8$. Check $12x16+8 = 200$."], "shortcut": "200 = 12x16 + 8.", "pattern": "Round hundreds give clean hex." },
+    { "id": "vns-037", "q": "Octal of $(100)_{10}$?", "opts": ["$144$", "$124$", "$164$", "$100$"], "c": 0, "d": "easy", "t": "dec-to-oct", "source": "Practice - Conversion", "exp": ["$100 \\div 8 = 12$ rem $4$.", "$12 \\div 8 = 1$ rem $4$.", "$1 \\div 8 = 0$ rem $1$.", "Read up: $144$. Check $64+32+4 = 100$."], "shortcut": "100 = 64+32+4 maps to 1-4-4.", "pattern": "Octal weights 64-8-1 guide guessing." },
+    { "id": "vns-038", "q": "Decimal of $(3A)_{16}$?", "opts": ["$58$", "$48$", "$3A$", "$42$"], "c": 0, "d": "easy", "t": "hex-to-dec", "source": "Practice - Conversion", "exp": ["$A = 10$.", "$3 \\times 16 + 10 = 48 + 10 = 58$."], "shortcut": "High-times-16 plus low.", "pattern": "Letter-digit mixes test A-F recall." },
+    { "id": "vns-039", "q": "Decimal of $(237)_{8}$?", "opts": ["$159$", "$237$", "$167$", "$151$"], "c": 0, "d": "easy", "t": "oct-to-dec", "source": "Practice - Conversion", "exp": ["$2 \\times 64 + 3 \\times 8 + 7 = 128 + 24 + 7 = 159$."], "shortcut": "Weights 64-8-1 for three-digit octal.", "pattern": "Three-digit octal uses 64 as anchor." },
+    { "id": "vns-040", "q": "Which binary equals $(8)_{10}$?", "opts": ["$1000$", "$100$", "$10000$", "$111$"], "c": 0, "d": "easy", "t": "dec-to-bin", "source": "Practice - Conversion", "exp": ["$8 = 2^{3}$.", "So $1$ plus three zeros: $1000$."], "shortcut": "8-16-32-64 are 1-plus-zeros.", "pattern": "Power-of-two forms close the easy set." },
+    { "id": "vns-041", "q": "Decimal value of $(0.1)_{2}$?", "opts": ["$0.1$", "$0.5$", "$0.25$", "$1.0$"], "c": 1, "d": "medium", "t": "fractions", "source": "VEDA IIT Mains Pattern", "exp": ["Right of point first weight is $2^{-1} = 0.5$.", "$1 \\times 0.5 = 0.5$."], "shortcut": ".1=.5, .01=.25, .001=.125 - memorise.", "pattern": "VEDA sample ends with .1 - this fact is the key." },
+    { "id": "vns-042", "q": "Decimal value of $(0.01)_{2}$?", "opts": ["$0.5$", "$0.1$", "$0.25$", "$0.01$"], "c": 2, "d": "medium", "t": "fractions", "source": "Practice - Fractions", "exp": ["Second fractional weight is $2^{-2} = 0.25$.", "$0 \\times 0.5 + 1 \\times 0.25 = 0.25$."], "shortcut": "Second place is quarter.", "pattern": "Position counting continues past the point." },
+    { "id": "vns-043", "q": "Decimal value of $(11.01)_{2}$?", "opts": ["$3.1$", "$3.25$", "$2.25$", "$3.5$"], "c": 1, "d": "medium", "t": "fractions", "source": "Practice - Fractions", "exp": ["Integer $(11)_{2} = 3$.", "Fraction $.01 = 0.25$.", "Total $3 + 0.25 = 3.25$."], "shortcut": "Split integer and fraction, add at end.", "pattern": "Mixed numbers are two easy halves." },
+    { "id": "vns-044", "q": "Decimal value of $(101.11)_{2}$?", "opts": ["$5.75$", "$5.5$", "$5.25$", "$6.75$"], "c": 0, "d": "medium", "t": "fractions", "source": "Practice - Fractions", "exp": ["Integer $101 = 5$.", "Fraction $.11 = 0.5 + 0.25 = 0.75$.", "Total $5.75$."], "shortcut": ".11 is always .75.", "pattern": "Common fractions .11/.101 recur in exams." },
+    { "id": "vns-045", "q": "Decimal value of $(0.101)_{2}$?", "opts": ["$0.625$", "$0.5$", "$0.75$", "$0.101$"], "c": 0, "d": "medium", "t": "fractions", "source": "Practice - Fractions", "exp": ["$1 \\times 0.5 + 0 \\times 0.25 + 1 \\times 0.125$.", "$0.5 + 0 + 0.125 = 0.625$."], "shortcut": "101 after point = .625, mirrors 101=5 plus halves.", "pattern": "Bit pattern 101 appears both sides of point." },
+    { "id": "vns-046", "q": "Binary of $(0.625)_{10}$?", "opts": ["$0.101$", "$0.11$", "$0.011$", "$0.1$"], "c": 0, "d": "medium", "t": "fractions", "source": "Practice - Fractions", "exp": ["$0.625 \\times 2 = 1.25$ record $1$.", "$0.25 \\times 2 = 0.5$ record $0$.", "$0.5 \\times 2 = 1.0$ record $1$.", "Read down: $0.101$."], "shortcut": "Multiply-record-read-down.", "pattern": "Fraction conversion is the mirror of integer division." },
+    { "id": "vns-047", "q": "Binary of $(5.75)_{10}$?", "opts": ["$101.11$", "$101.01$", "$111.11$", "$101.10$"], "c": 0, "d": "medium", "t": "fractions", "source": "Practice - Fractions", "exp": ["Integer $5 = 101$.", "Fraction $0.75$: $0.75x2=1.5$ record $1$, $0.5x2=1.0$ record $1$: $.11$.", "Combine $101.11$."], "shortcut": ".75 is always .11.", "pattern": "Integers and fractions use different methods - do both." },
+    { "id": "vns-048", "q": "Add $(1011)_{2} + (0111)_{2}$?", "opts": ["$(10010)_{2}$", "$(11010)_{2}$", "$(10000)_{2}$", "$(11110)_{2}$"], "c": 0, "d": "medium", "t": "arithmetic", "source": "Practice - Arithmetic", "exp": ["Right to left: $1+1=0$ carry $1$.", "$1+1+1=1$ carry $1$.", "$0+1+1=0$ carry $1$.", "$1+0+1=0$ carry $1$, final carry $1$.", "Result $10010$. Check $11+7=18$."], "shortcut": "1+1=0 carry 1 is the only new fact.", "pattern": "Verify binary sums in decimal." },
+    { "id": "vns-049", "q": "Add $(1101)_{2} + (1011)_{2}$?", "opts": ["$(11000)_{2}$", "$(10100)_{2}$", "$(11110)_{2}$", "$(10000)_{2}$"], "c": 0, "d": "medium", "t": "arithmetic", "source": "Practice - Arithmetic", "exp": ["$13 + 11 = 24$ decimal.", "$24 = 16+8 = 11000$.", "Column check: $1+1=0$ c1, $0+1+1=0$ c1, $1+0+1=0$ c1, $1+1+1=1$ c1, final $1$: $11000$."], "shortcut": "Add in decimal to predict length.", "pattern": "Decimal cross-check catches carry slips." },
+    { "id": "vns-050", "q": "Subtract $(1010)_{2} - (0111)_{2}$?", "opts": ["$(0011)_{2}$", "$(0101)_{2}$", "$(0110)_{2}$", "$(1100)_{2}$"], "c": 0, "d": "medium", "t": "arithmetic", "source": "Practice - Arithmetic", "exp": ["$10 - 7 = 3$ decimal.", "$3 = 0011$.", "Borrow check: $0-1=1$ borrow $1$ (worth $2$) etc. gives $0011$."], "shortcut": "Subtract in decimal first to know target.", "pattern": "Borrow chains are where errors hide - verify by adding back." },
+    { "id": "vns-051", "q": "Multiply $(101)_{2} \\times (11)_{2}$?", "opts": ["$(1111)_{2}$", "$(1011)_{2}$", "$(1101)_{2}$", "$(1110)_{2}$"], "c": 0, "d": "medium", "t": "arithmetic", "source": "Practice - Arithmetic", "exp": ["$5 \\times 3 = 15$ decimal.", "$15 = 8+4+2+1 = 1111$.", "Shift method: $101 + 1010 = 1111$."], "shortcut": "Binary multiply is shifted adds.", "pattern": "Multiply-by-11 means copy plus shifted copy." },
+    { "id": "vns-052", "q": "Add $(57)_{8} + (46)_{8}$?", "opts": ["$(125)_{8}$", "$(103)_{8}$", "$(115)_{8}$", "$(135)_{8}$"], "c": 0, "d": "medium", "t": "arithmetic", "source": "Practice - Arithmetic", "exp": ["Right: $7+6=13$ decimal, $13-8=5$ carry $1$.", "Left: $5+4+1=10$ decimal, $10-8=2$ carry $1$.", "Result $(125)_{8}$. Check $47+38=85=64+16+5$."], "shortcut": "Carry at 8, not 10.", "pattern": "Write base-8 carry explicitly to avoid decimal habits." },
+    { "id": "vns-053", "q": "In hex, $(A)_{16} + (5)_{16} = ?", "opts": ["$(F)_{16}$", "$(14)_{16}$", "$(10)_{16}$", "$(E)_{16}$"], "c": 0, "d": "medium", "t": "arithmetic", "source": "Practice - Arithmetic", "exp": ["$A = 10$.", "$10 + 5 = 15$.", "$15 = F$."], "shortcut": "A+5=F is a single step.", "pattern": "Single-digit hex sums test A-F recall." },
+    { "id": "vns-054", "q": "In hex, $(F)_{16} + (1)_{16} = ?", "opts": ["$(10)_{16}$", "$(G)_{16}$", "$(16)_{16}$", "$(F)_{16}$"], "c": 0, "d": "medium", "t": "arithmetic", "source": "VEDA IIT Prelim Pattern", "exp": ["$15 + 1 = 16$ decimal.", "$16 = 1 \\times 16 + 0$: $(10)_{16}$.", "There is no digit $G$."], "shortcut": "F+1 rolls to 10 in hex.", "pattern": "Boundary rollover F-to-10 mirrors 9-to-10 in decimal." },
+    { "id": "vns-055", "q": "$(101)_{2} left-shifted by $1$ (multiply by $2$)?", "opts": ["$(1010)_{2}$", "$(1001)_{2}$", "$(1101)_{2}$", "$(10100)_{2}$"], "c": 0, "d": "medium", "t": "shifts", "source": "Practice - Shifts", "exp": ["Left shift by $1$ appends one $0$.", "$101$ becomes $1010$.", "Check $5 \\times 2 = 10$."], "shortcut": "Shift-left = append zeros.", "pattern": "Shift facts return in registers and C operators." },
+    { "id": "vns-056", "q": "1's complement of $0101$ (4-bit)?", "opts": ["$1010$", "$1011$", "$0101$", "$1111$"], "c": 0, "d": "medium", "t": "ones", "source": "VEDA IIT Mains Pattern", "exp": ["1's complement inverts every bit.", "$0\\to1, 1\\to0$: $0101$ becomes $1010$."], "shortcut": "Flip all bits - one operation.", "pattern": "Inversion must be bit-perfect; one missed bit flips answer." },
+    { "id": "vns-057", "q": "1's complement of $0011$ (4-bit, +3)?", "opts": ["$1100$", "$1101$", "$1011$", "$1111$"], "c": 0, "d": "medium", "t": "ones", "source": "Practice - Complements", "exp": ["Invert: $0\\to1, 0\\to1, 1\\to0, 1\\to0$.", "$0011$ becomes $1100$ ($-3$)."], "shortcut": "Symmetric flip.", "pattern": "Positive and negative are mirror images in 1's." },
+    { "id": "vns-058", "q": "2's complement of $+5$ in $4$ bits?", "opts": ["$1011$", "$1010$", "$0101$", "$1101$"], "c": 0, "d": "medium", "t": "twos", "source": "VEDA IIT Mains Pattern", "exp": ["$+5 = 0101$.", "Invert: $1010$.", "Add $1$: $1010 + 0001 = 1011$."], "shortcut": "Invert-plus-one.", "pattern": "This exact encode appears in every VEDA mains." },
+    { "id": "vns-059", "q": "2's complement of $+1$ in $4$ bits?", "opts": ["$1111$", "$1110$", "$0001$", "$1001$"], "c": 0, "d": "medium", "t": "twos", "source": "Practice - Complements", "exp": ["$+1 = 0001$.", "Invert: $1110$.", "Add $1$: $1111$."], "shortcut": "-1 is always all ones.", "pattern": "-1 = all-ones is the most-used 2's fact." },
+    { "id": "vns-060", "q": "4-bit 2's complement $1011$ equals?", "opts": ["$-5$", "$+11$", "$-3$", "$+5$"], "c": 0, "d": "medium", "t": "twos", "source": "VEDA IIT Mains Pattern", "exp": ["MSB $1$: negative.", "Invert: $0100$.", "Add $1$: $0101 = 5$.", "Value $-5$. Direct read $11$ is the trap."], "shortcut": "MSB-1 means invert-plus-1 then negate.", "pattern": "Direct-read trap: MSB-1 numbers are never positive." },
+    { "id": "vns-061", "q": "4-bit 2's complement $0111$ equals?", "opts": ["$+7$", "$-7$", "$-8$", "$+15$"], "c": 0, "d": "medium", "t": "twos", "source": "Practice - Complements", "exp": ["MSB $0$: positive, read directly.", "$111 = 7$."], "shortcut": "MSB-0 reads direct.", "pattern": "Positive 2's values match unsigned." },
+    { "id": "vns-062", "q": "4-bit 2's complement $1000$ equals?", "opts": ["$-8$", "$+8$", "$0$", "$-7$"], "c": 0, "d": "medium", "t": "twos", "source": "VEDA IIT Mains Pattern", "exp": ["MSB $1$: negative.", "Invert $0111$, add $1$: $1000 = 8$.", "Value $-8$ - the most negative, no positive mirror."], "shortcut": "1000 is always the most negative.", "pattern": "Most-negative has no twin - negating it overflows." },
+    { "id": "vns-063", "q": "4-bit 2's complement $1111$ equals?", "opts": ["$-1$", "$+15$", "$0$", "$-15$"], "c": 0, "d": "medium", "t": "twos", "source": "Practice - Complements", "exp": ["MSB $1$: negative.", "Invert $0000$, add $1$: $0001 = 1$.", "Value $-1$."], "shortcut": "All-ones is -1 in 2's.", "pattern": "-1 recognition must be instant." },
+    { "id": "vns-064", "q": "Range of $4$-bit 2's complement?", "opts": ["$-8$ to $+7$", "$-7$ to $+7$", "$0$ to $15$", "$-8$ to $+8$"], "c": 0, "d": "medium", "t": "range", "source": "VEDA IIT Mains Pattern", "exp": ["Formula $-2^{n-1}$ to $2^{n-1}-1$.", "$n=4$: $-8$ to $+7$.", "Asymmetric by one on negative side."], "shortcut": "Neg side is round power of 2.", "pattern": "Range questions are direct formula marks." },
+    { "id": "vns-065", "q": "Range of $8$-bit 2's complement?", "opts": ["$-128$ to $+127$", "$-127$ to $+127$", "$0$ to $255$", "$-128$ to $+128$"], "c": 0, "d": "medium", "t": "range", "source": "VEDA IIT Mains Pattern", "exp": ["$-2^{7}$ to $2^{7}-1$.", "$-128$ to $+127$."], "shortcut": "8-bit: 128/127 pair.", "pattern": "8-bit range is asked more than any other." },
+    { "id": "vns-066", "q": "Range of $4$-bit sign-magnitude?", "opts": ["$-7$ to $+7$", "$-8$ to $+7$", "$0$ to $15$", "$-8$ to $+8$"], "c": 0, "d": "medium", "t": "range", "source": "Practice - Range", "exp": ["Formula $-(2^{n-1}-1)$ to $+(2^{n-1}-1)$.", "$n=4$: $-7$ to $+7$.", "Symmetric with two zeros."], "shortcut": "Sign-mag and 1's share symmetric range.", "pattern": "Symmetric-vs-asymmetric distinguishes the systems." },
+    { "id": "vns-067", "q": "How many zeros in 2's complement?", "opts": ["One", "Two", "None", "Depends on n"], "c": 0, "d": "medium", "t": "range", "source": "VEDA IIT Mains Pattern", "exp": ["Only $0000$.", "$1000$ is most-negative, not negative zero."], "shortcut": "2's has single zero - hardware advantage.", "pattern": "Zero-count identifies the system." },
+    { "id": "vns-068", "q": "How many zeros in 1's complement?", "opts": ["Two", "One", "None", "Four"], "c": 0, "d": "medium", "t": "range", "source": "Practice - Range", "exp": ["$0000$ (+0) and $1111$ (-0) in 4-bit.", "In general all-$0$ and all-$1$."], "shortcut": "All-0 and all-1 are both zero in 1's.", "pattern": "Two-zero property is 1's signature weakness." },
+    { "id": "vns-069", "q": "How many zeros in sign-magnitude?", "opts": ["Two", "One", "None", "Three"], "c": 0, "d": "medium", "t": "range", "source": "Practice - Range", "exp": ["$0000$ (+0) and $1000$ (-0) in 4-bit.", "Sign differs, magnitude zero."], "shortcut": "Zero magnitude with either sign.", "pattern": "Sign-mag shares the two-zero cost with 1's." },
+    { "id": "vns-070", "q": "4-bit 2's: $0111 + 0001$. Overflow?", "opts": ["Yes - wraps to $-8$", "No - result $+8$", "No - result $0$", "Yes - wraps to $0$"], "c": 0, "d": "medium", "t": "overflow", "source": "VEDA IIT Mains Pattern", "exp": ["True sum $7+1 = 8$.", "Max is $+7$, so overflow.", "$0111+0001 = 1000 = -8$ wrapped.", "Positive + positive gave negative - impossible."], "shortcut": "Impossible sign = overflow.", "pattern": "Same-sign add flipping sign is the overflow signature." },
+    { "id": "vns-071", "q": "4-bit 2's: $0101 + 0011$ ($5+3$). Overflow?", "opts": ["Yes - wraps to $-8$", "No - result $+8$", "No - result $+2$", "Yes - wraps to $0$"], "c": 0, "d": "medium", "t": "overflow", "source": "Practice - Overflow", "exp": ["True sum $8$ exceeds $+7$ max.", "$0101+0011 = 1000 = -8$.", "Positive + positive gave negative: overflow."], "shortcut": "Sum over +7 in 4-bit always overflows.", "pattern": "Small numbers overflowing surprises beginners - check max." },
+    { "id": "vns-072", "q": "4-bit 2's: $0101 + 1011$ ($5 + (-5)$). Overflow?", "opts": ["No - result $0$", "Yes - wraps", "No - result $-10$", "Yes - carry means overflow"], "c": 0, "d": "medium", "t": "overflow", "source": "Practice - Overflow", "exp": ["$0101 + 1011 = 10000$, keep $4$ bits: $0000 = 0$.", "Opposite signs can never overflow.", "Discarded final carry is normal, not overflow."], "shortcut": "Opposite signs never overflow.", "pattern": "Carry-out alone is NOT overflow." },
+    { "id": "vns-073", "q": "4-bit 1's: $(-5) + (+3) = 1010 + 0011$?", "opts": ["$1101$ ($-2$), no end-around needed", "$1110$ ($-1$)", "$1100$ ($-3$)", "$0101$ ($+5$)"], "c": 0, "d": "medium", "t": "ones-add", "source": "Practice - 1's Addition", "exp": ["Add: $1010 + 0011 = 1101$, no carry-out.", "No end-around needed.", "$1101$ invert: $0010 = 2$, so $-2$.", "Check $-5+3 = -2$. Correct."], "shortcut": "No carry-out means direct result.", "pattern": "1's questions hinge on the carry-out step." },
+    { "id": "vns-074", "q": "$(0.1)_{2}$ in octal?", "opts": ["$(0.4)_{8}$", "$(0.1)_{8}$", "$(0.2)_{8}$", "$(0.5)_{8}$"], "c": 0, "d": "medium", "t": "grouping", "source": "Practice - Grouping", "exp": ["Fraction groups pad RIGHT.", "$.1$ pad to $100$ = $4$.", "So $(0.4)_{8}$. Check $0.5 = 4/8$."], "shortcut": "Fraction pads right, integer pads left.", "pattern": "Padding side is the #1 grouping trap." },
+    { "id": "vns-075", "q": "Hex of $(101101110011110)_{2}$ (integer part of VEDA sample)?", "opts": ["$(5B9E)_{16}$", "$(5A9E)_{16}$", "$(5B8E)_{16}$", "$(6B9E)_{16}$"], "c": 0, "d": "medium", "t": "grouping", "source": "VEDA IIT Sample Pattern", "exp": ["Group by $4$ from right: $101$ $1011$ $1001$ $1110$.", "Pad left to $0101$.", "$0101=5, 1011=B, 1001=9, 1110=E$."], "shortcut": "Long strings signal grouping, not powers.", "pattern": "VEDA sample integer converts cleanly by grouping." },
+    { "id": "vns-076", "q": "Bits needed for $(19)_{10}$ unsigned?", "opts": ["$4$", "$5$", "$6$", "$3$"], "c": 1, "d": "medium", "t": "count", "source": "Practice - Range", "exp": ["$4$ bits max $15$ - too small for $19$.", "$5$ bits max $31$ - fits.", "So $5$ bits."], "shortcut": "Bracket between 2^n - 1 values.", "pattern": "19/20 sits right above the 4-bit ceiling." },
+    { "id": "vns-077", "q": "Minimum bits for $-19$ in 2's complement?", "opts": ["$5$", "$6$", "$4$", "$7$"], "c": 1, "d": "medium", "t": "range", "source": "VEDA IIT Mains Pattern", "exp": ["$5$-bit 2's range $-16$ to $+15$ - $-19$ outside.", "$6$-bit range $-32$ to $+31$ - fits.", "So $6$ bits."], "shortcut": "Negative side needs the round power.", "pattern": "Signed bits-needed uses asymmetric range." },
+    { "id": "vns-078", "q": "$(10.1)_{2}$ as 2's complement with fraction equals?", "opts": ["$-1.5$", "$+2.5$", "$-2.5$", "$+1.5$"], "c": 0, "d": "medium", "t": "twos-frac", "source": "VEDA IIT Sample Pattern", "exp": ["MSB $1$: negative.", "Invert all incl fraction: $10.1$ becomes $01.0$.", "Add $1$ at LSB (worth $0.5$): $01.0 + 00.1 = 01.1 = 1.5$.", "Value $-1.5$."], "shortcut": "Fraction LSB weight is where you add one.", "pattern": "Fractional complements are the VEDA signature twist." },
+    { "id": "vns-079", "q": "Binary of $(0.5)_{10}$?", "opts": ["$0.1$", "$0.01$", "$0.11$", "$0.001$"], "c": 0, "d": "medium", "t": "fractions", "source": "Practice - Fractions", "exp": ["$0.5 \\times 2 = 1.0$ record $1$.", "Done: $0.1$."], "shortcut": ".5 is always .1.", "pattern": "Halves terminate in one bit." },
+    { "id": "vns-080", "q": "Binary of $(FF)_{16}$?", "opts": ["$11111111$", "$1111111$", "$1111111111111111$", "$10000000$"], "c": 0, "d": "medium", "t": "grouping", "source": "Practice - Grouping", "exp": ["$F = 1111$.", "$FF = 1111$ $1111$ = $8$ ones.", "Value $255$."], "shortcut": "Each F is four ones.", "pattern": "FF-to-binary must be instant for byte work." },
+    { "id": "vns-081", "q": "2's complement of $0000$ (4-bit) is?", "opts": ["$0000$", "$1111$", "$1000$", "$0001$"], "c": 0, "d": "hard", "t": "twos", "source": "Practice - Edge Cases", "exp": ["Invert $0000$ gives $1111$.", "Add $1$: $1111 + 0001 = 10000$, keep $4$ bits: $0000$.", "Zero negates to itself."], "shortcut": "Zero is its own complement.", "pattern": "Edge-case zeros test true understanding." },
+    { "id": "vns-082", "q": "Relation between 1's and 2's complement of $X$?", "opts": ["$2's = 1's + 1$", "$1's = 2's + 1$", "They are equal", "$2's = 1's - 1$"], "c": 0, "d": "hard", "t": "concepts", "source": "VEDA IIT Mains Pattern", "exp": ["1's is invert only.", "2's is invert plus $1$.", "So 2's $=$ 1's $+ 1$ (discarding overflow beyond $n$ bits)."], "shortcut": "Two is One-plus-one.", "pattern": "Relationship questions unify the two systems." },
+    { "id": "vns-083", "q": "Sign-extend $1011$ ($-5$ in 4-bit 2's) to $8$ bits?", "opts": ["$11111011$", "$00001011$", "$10001011$", "$11111000$"], "c": 0, "d": "hard", "t": "twos", "source": "Practice - Sign Extension", "exp": ["Replicate sign bit $1$ into new MSB positions.", "$1011$ becomes $1111$ $1011$.", "Check $11111011$: MSB $1$ negative, invert $00000100+1 = 00000101 = 5$: $-5$. Correct."], "shortcut": "Copy the sign left.", "pattern": "Sign extension preserves value when widening." },
+    { "id": "vns-084", "q": "Subtract $(52)_{8} - (27)_{8}$?", "opts": ["$(23)_{8}$", "$(25)_{8}$", "$(33)_{8}$", "$(21)_{8}$"], "c": 0, "d": "hard", "t": "arithmetic", "source": "Practice - Octal Arithmetic", "exp": ["Check decimal: $52_{8} = 42$, $27_{8} = 23$.", "$42 - 23 = 19$.", "$19 = 2x8+3$: $(23)_{8}$.", "Borrow check: $2-7$ needs borrow $8$: $10-7=3$? wait $2+8=10$, $10-7=3$, tens $4-2=2$: $23$."], "shortcut": "Convert-check-convert for octal subtract.", "pattern": "Borrow gives 8, not 10." },
+    { "id": "vns-085", "q": "Subtract $(2F)_{16} - (18)_{16}$?", "opts": ["$(17)_{16}$", "$(27)_{16}$", "$(16)_{16}$", "$(18)_{16}$"], "c": 0, "d": "hard", "t": "arithmetic", "source": "Practice - Hex Arithmetic", "exp": ["Decimal: $2F = 47$, $18_{16} = 24$.", "$47 - 24 = 23$.", "$23 = 1x16+7$: $(17)_{16}$."], "shortcut": "Hex borrow gives 16.", "pattern": "Decimal check is fastest for hex subtract." },
+    { "id": "vns-086", "q": "Divide $(1100)_{2} \\div (100)_{2}$?", "opts": ["$(11)_{2}$", "$(10)_{2}$", "$(100)_{2}$", "$(101)_{2}$"], "c": 0, "d": "hard", "t": "arithmetic", "source": "Practice - Arithmetic", "exp": ["$1100 = 12$, $100 = 4$.", "$12 \\div 4 = 3$.", "$3 = 11$ binary."], "shortcut": "Translate to decimal for divide.", "pattern": "Binary division is rare - convert out." },
+    { "id": "vns-087", "q": "Add $(1010)_{2} + (0101)_{2}$ (unsigned $4$-bit). Fits?", "opts": ["$(1111)_{2} = 15$, fits (max $15$)", "$(1111)_{2}$ with overflow", "$(0000)_{2}$", "$(1110)_{2}$"], "c": 0, "d": "hard", "t": "arithmetic", "source": "Practice - Range", "exp": ["$10 + 5 = 15$.", "$4$-bit unsigned max $15$.", "Exactly fits, no overflow. $1010+0101 = 1111$."], "shortcut": "10+5=15 boundary fit.", "pattern": "Boundary-fit vs overflow by one." },
+    { "id": "vns-088", "q": "Range of $5$-bit 2's complement?", "opts": ["$-16$ to $+15$", "$-15$ to $+15$", "$-16$ to $+16$", "$0$ to $31$"], "c": 0, "d": "hard", "t": "range", "source": "Practice - Range", "exp": ["$-2^{4}$ to $2^{4}-1$.", "$-16$ to $+15$."], "shortcut": "Half of 32 split asymmetric.", "pattern": "Odd-bit ranges test formula, not memory." },
+    { "id": "vns-089", "q": "Minimum bits for $+19$ in 2's complement?", "opts": ["$5$", "$6$", "$4$", "$7$"], "c": 1, "d": "hard", "t": "range", "source": "VEDA IIT Mains Pattern", "exp": ["$5$-bit max $+15$ - too small for $+19$.", "$6$-bit max $+31$ - fits.", "So $6$ bits. Note unsigned needs only $5$, signed needs $6$."], "shortcut": "Positive side costs an extra sign bit.", "pattern": "Signed needs one more bit than unsigned for positives near max." },
+    { "id": "vns-090", "q": "4-bit 1's: $0111$ ($+7$) + $1010$ ($-5$)?", "opts": ["$0010$ ($+2$) after end-around carry", "$0001$ ($+1$)", "$0011$ ($+3$)", "$1100$ ($-3$)"], "c": 0, "d": "hard", "t": "ones-add", "source": "Practice - 1's Addition", "exp": ["Add: $0111 + 1010 = 10001$ ($5$ bits).", "Carry-out $1$: end-around, add back: $0001 + 1 = 0010$.", "$0010 = +2$. Check $7-5 = 2$."], "shortcut": "Carry-out loops back in 1's.", "pattern": "End-around carry is THE 1's exam step." },
+    { "id": "vns-091", "q": "Compute $5 - 3$ via 2's complement ($0101 + 1101$, $4$-bit)?", "opts": ["$0010$ ($+2$), carry discarded", "$0011$ ($+3$)", "$1010$ ($-6$)", "$0000$ ($0$)"], "c": 0, "d": "hard", "t": "twos-add", "source": "Practice - 2's Arithmetic", "exp": ["$-3$: $+3 = 0011$, invert $1100$, add $1$: $1101$.", "Add: $0101 + 1101 = 10010$, keep $4$ bits: $0010 = 2$.", "Discarded carry is normal. $5-3 = 2$."], "shortcut": "A minus B = A plus 2's-of-B.", "pattern": "Hardware subtracts by adding complements." },
+    { "id": "vns-092", "q": "Decimal of $(0.4)_{8}$?", "opts": ["$0.5$", "$0.4$", "$0.25$", "$0.125$"], "c": 0, "d": "hard", "t": "fractions", "source": "Practice - Fractions", "exp": ["$4 \\times 8^{-1} = 4/8 = 0.5$.", "Matches $(0.1)_{2}$."], "shortcut": "4/8 = 1/2.", "pattern": "Cross-base fraction equivalence." },
+    { "id": "vns-093", "q": "Decimal of $(0.2)_{8}$?", "opts": ["$0.25$", "$0.2$", "$0.5$", "$0.125$"], "c": 0, "d": "hard", "t": "fractions", "source": "Practice - Fractions", "exp": ["$2 \\times 8^{-1} = 2/8 = 0.25$.", "Matches $(0.01)_{2}$."], "shortcut": "2/8 = 1/4.", "pattern": "Octal fractions are eighths." },
+    { "id": "vns-094", "q": "Decimal of $(0.8)_{16}$?", "opts": ["$0.5$", "$0.8$", "$0.25$", "$0.125$"], "c": 0, "d": "hard", "t": "fractions", "source": "Practice - Fractions", "exp": ["$8 \\times 16^{-1} = 8/16 = 0.5$."], "shortcut": "8/16 = 1/2.", "pattern": "Hex fractions are sixteenths." },
+    { "id": "vns-095", "q": "Negating $1011$ ($-5$, $4$-bit 2's) gives?", "opts": ["$0101$ ($+5$)", "$1010$", "$1100$", "$0111$"], "c": 0, "d": "hard", "t": "twos", "source": "Practice - Negation", "exp": ["Invert $1011$ gives $0100$.", "Add $1$: $0101 = +5$.", "Double negation returns original: $-(-5) = +5$."], "shortcut": "Negate twice returns home.", "pattern": "Negation symmetry (except most-negative)." },
+    { "id": "vns-096", "q": "Negating $1000$ ($-8$, $4$-bit 2's) gives?", "opts": ["$1000$ (still $-8$, overflow)", "$0111$", "$0000$", "$1111$"], "c": 0, "d": "hard", "t": "twos", "source": "VEDA IIT Mains Pattern", "exp": ["Invert $1000$ gives $0111$.", "Add $1$: $1000$ again.", "$+8$ does not fit in $4$-bit 2's (max $+7$), so it wraps to $-8$. Overflow."], "shortcut": "Most-negative has no twin.", "pattern": "Negation overflow is the deepest 2's trap." },
+    { "id": "vns-097", "q": "4-bit 2's: $1010$ ($-6$) + $1001$ ($-7$). Overflow?", "opts": ["Yes - true $-13$ wraps to $+3$", "No - result $-13$", "No - result $-3$", "Yes - wraps to $0$"], "c": 0, "d": "hard", "t": "overflow", "source": "Practice - Overflow", "exp": ["True sum $-13$ below $-8$ min: overflow.", "$1010+1001 = 10011$, keep $4$ bits: $0011 = +3$.", "Negative + negative gave positive - impossible."], "shortcut": "Sum below min means wrap to positive.", "pattern": "Large-magnitude same-sign adds overflow." },
+    { "id": "vns-098", "q": "Encode $-6$ in $4$-bit sign-magnitude?", "opts": ["$1110$", "$1010$", "$1001$", "$0110$"], "c": 0, "d": "hard", "t": "sign-mag", "source": "Practice - Sign Magnitude", "exp": ["$+6 = 0110$.", "Set sign bit: $1110$.", "Magnitude bits unchanged."], "shortcut": "Sign-mag: flip only MSB.", "pattern": "Sign-mag encode touches one bit only." },
+    { "id": "vns-099", "q": "Decode $4$-bit sign-magnitude $1101$?", "opts": ["$-5$", "$-3$", "$+13$", "$-8$"], "c": 0, "d": "hard", "t": "sign-mag", "source": "Practice - Sign Magnitude", "exp": ["MSB $1$: negative.", "Magnitude $101 = 5$.", "Value $-5$. (In 2's the same bits mean $-3$ - system matters.)"], "shortcut": "Same bits, different system, different value.", "pattern": "VEDA may give same bits in two systems." },
+    { "id": "vns-100", "q": "$(1101)_{2} \\times (10)_{2}$?", "opts": ["$(11010)_{2}$", "$(11101)_{2}$", "$(11001)_{2}$", "$(10101)_{2}$"], "c": 0, "d": "hard", "t": "shifts", "source": "Practice - Shifts", "exp": ["Multiply by $2$ = left shift $1$.", "$1101$ append $0$: $11010$.", "Check $13x2 = 26 = 16+8+0+2+0$."], "shortcut": "x2 appends zero.", "pattern": "Shift-multiply links arithmetic to hardware." },
+    { "id": "vns-101", "q": "VEDA Sample: 2's complement $(101101110011110.1)_{2}$ equals? [PYQ - VEDA IIT Sample Paper, Digital]", "opts": ["$-9313.5$", "$+23486.5$", "$-23486.5$", "$+9313.5$"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Logic Design (verified)", "exp": ["MSB $1$: negative - eliminate positive options.", "Value $= -2^{14} +$ rest: $-16384 + (4096+2048+512+256+128+16+8+4+2) + 0.5$.", "Rest $= 7070$, fraction $0.5$: $-16384 + 7070.5 = -9313.5$.", "Invert-plus-1 check: invert gives $010010001100001.0$, add $00.1$ gives $010010001100001.1 = 9313.5$ magnitude."], "shortcut": "MSB-negative plus fraction .5 narrows to -9313.5.", "pattern": "Long VEDA strings: sign first, MSB-weight minus rest." },
+    { "id": "vns-102", "q": "8-bit 2's complement $11110000$ equals? [GATE-pattern PYQ]", "opts": ["$-16$", "$+240$", "$-240$", "$+16$"], "c": 0, "d": "hard", "t": "pyq-gate", "source": "GATE EC Pattern Practice (2's decode)", "exp": ["MSB $1$: negative.", "Invert: $00001111$.", "Add $1$: $00010000 = 16$.", "Value $-16$."], "shortcut": "Trailing zeros: count them for magnitude shortcut.", "pattern": "Byte-size 2's decodes are GATE staples." },
+    { "id": "vns-103", "q": "Minimum bits for $-64$ in 2's complement? [GATE-pattern PYQ]", "opts": ["$7$", "$8$", "$6$", "$9$"], "c": 0, "d": "hard", "t": "pyq-gate", "source": "GATE EC Pattern Practice (range)", "exp": ["$7$-bit 2's range $-64$ to $+63$.", "$-64$ is exactly the most-negative - fits.", "$6$-bit range $-32$ to $+31$ - too small. So $7$."], "shortcut": "Exact power-of-two negative fits its own width.", "pattern": "Boundary negatives test asymmetric range edge." },
+    { "id": "vns-104", "q": "4-bit 1's addition $1101 + 1011$ with end-around gives? [GATE-pattern PYQ]", "opts": ["$1001$ ($-6$)", "$1000$ ($-7$)", "$0010$ ($+2$)", "$1111$ ($-0$)"], "c": 0, "d": "hard", "t": "pyq-gate", "source": "GATE Pattern Practice (1's end-around)", "exp": ["$1101$ is $-2$, $1011$ is $-4$ in 1's.", "Add: $1101+1011 = 11000$, carry-out $1$.", "End-around: $1000 + 1 = 1001$.", "$1001$ invert $0110 = 6$: $-6$. Check $-2 + -4 = -6$."], "shortcut": "Loop the carry back.", "pattern": "End-around carry defines 1's PYQs." },
+    { "id": "vns-105", "q": "Binary of $(2F)_{16}$? [PYQ-pattern]", "opts": ["$00101111$", "$00101110$", "$00111111$", "$01001111$"], "c": 0, "d": "medium", "t": "pyq-group", "source": "VEDA Prelim Pattern Practice", "exp": ["$2 = 0010$, $F = 1111$.", "Join: $00101111$.", "Drop leading zeros: $101111$. Value $47$."], "shortcut": "One hex digit at a time.", "pattern": "Hex-to-binary expansion is prelim speed work." },
+    { "id": "vns-106", "q": "$(57)_{8}$ equals which hex? [PYQ-pattern]", "opts": ["$(2F)_{16}$", "$(3F)_{16}$", "$(2E)_{16}$", "$(57)_{16}$"], "c": 0, "d": "medium", "t": "pyq-group", "source": "VEDA Prelim Pattern Practice", "exp": ["$57_{8} = 101$ $111 = 101111$.", "Regroup by $4$: $0010$ $1111 = 2$ $F$.", "So $(2F)_{16} = 47$ decimal both ways."], "shortcut": "Octal to hex via binary bridge.", "pattern": "Triple conversion via binary is fastest." },
+    { "id": "vns-107", "q": "$5 - 3$ via 4-bit 2's ($0101 + 1101$)? [PYQ-pattern]", "opts": ["$0010$ ($+2$)", "$0001$ ($+1$)", "$0100$ ($+4$)", "$1101$ ($-3$)"], "c": 0, "d": "hard", "t": "pyq-twos", "source": "GATE Pattern Practice (subtract via add)", "exp": ["$-3 = 1101$.", "$0101 + 1101 = 10010$, keep $0010 = 2$.", "Carry discarded. $5-3 = 2$."], "shortcut": "Subtract by adding the complement.", "pattern": "A-minus-B questions are addition in disguise." },
+    { "id": "vns-108", "q": "4-bit 2's $1100$ ($-4$) + $1010$ ($-6$)? [PYQ-pattern]", "opts": ["Overflow - wraps to $+6$", "$-10$ (fits)", "$-2$", "$0$"], "c": 0, "d": "hard", "t": "pyq-overflow", "source": "GATE Pattern Practice (overflow)", "exp": ["True sum $-10$ below $-8$ min: overflow.", "$1100+1010 = 10110$, keep $0110 = +6$.", "Negative + negative gave positive."], "shortcut": "Below-min wraps positive.", "pattern": "Overflow direction tells wrap direction." },
+    { "id": "vns-109", "q": "Decimal of $(0.2)_{8}$? [PYQ-pattern]", "opts": ["$0.25$", "$0.2$", "$0.5$", "$0.125$"], "c": 0, "d": "medium", "t": "pyq-frac", "source": "VEDA Prelim Pattern Practice", "exp": ["$2/8 = 0.25$."], "shortcut": "Octal fractions are eighths.", "pattern": "Small fraction conversions are prelim free marks." },
+    { "id": "vns-110", "q": "Minimum bits for $+19$ in 2's? [PYQ-pattern]", "opts": ["$6$", "$5$", "$4$", "$7$"], "c": 0, "d": "hard", "t": "pyq-range", "source": "GATE Pattern Practice (bits needed)", "exp": ["$5$-bit max $+15$ - too small.", "$6$-bit max $+31$ - fits.", "Unsigned needs $5$, signed $6$."], "shortcut": "Signed positives cost a sign bit.", "pattern": "Signed-vs-unsigned bits-needed contrast." },
+    { "id": "vns-111", "q": "$-6$ in $4$-bit sign-magnitude? [PYQ-pattern]", "opts": ["$1110$", "$1010$", "$1101$", "$0110$"], "c": 0, "d": "medium", "t": "pyq-signmag", "source": "VEDA Mains Pattern Practice", "exp": ["$+6 = 0110$.", "Set sign: $1110$."], "shortcut": "Flip MSB only.", "pattern": "Sign-mag encode is one-bit work." },
+    { "id": "vns-112", "q": "$8$-bit 2's most-negative value and hex? [PYQ-pattern]", "opts": ["$-128 = (80)_{16}$", "$+128 = (80)_{16}$", "$-127 = (7F)_{16}$", "$-128 = (FF)_{16}$"], "c": 0, "d": "hard", "t": "pyq-range", "source": "GATE EC Pattern Practice (extremes)", "exp": ["Most-negative $= -2^{7} = -128$.", "Bits $10000000 = 1000$ $0000 = 8$ $0$: $(80)_{16}$.", "$(FF)_{16}$ is $-1$, $(7F)_{16}$ is $+127$."], "shortcut": "80-hex is the most-negative byte.", "pattern": "80/7F/FF trio must be instant." }
+  ],
+  "category": "digital-design"
+}

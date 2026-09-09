@@ -80,6 +80,15 @@
       "color": "#0284C7",
       "href": "/communication/",
       "accent": "communication"
+    },
+    {
+      "id": "veda-iit",
+      "title": "Veda IIT",
+      "subtitle": "VLSI Digital Engineering — RTL/DV/PD + C + Aptitude | Target 23 Sep",
+      "icon": "V",
+      "color": "#0EA5E9",
+      "href": "/veda-iit/",
+      "accent": "veda-iit"
     }
   ]
 }
