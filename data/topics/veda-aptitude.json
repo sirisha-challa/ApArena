@@ -1,0 +1,636 @@
+{
+  "id": "veda-aptitude",
+  "title": "General Aptitude - Quant, Reasoning, Speed Maths",
+  "icon": "A",
+  "subtitle": "All 30 official areas: percentages to probability, trains to calendars, plus logical reasoning and the five sample puzzles",
+  "days": "13-14",
+  "color": "#DC2626",
+  "category": "aptitude",
+  "subtopics": [
+    "Numbers, Percentage, Ratio, Partnership, Profit-Loss, Discount, Stocks, HCF-LCM",
+    "Time-Work, Pipes, Time-Distance, Trains, Boats-Streams, Races",
+    "Average, Ages",
+    "Area, Volume-Surface, Height-Distance, Roots, Logarithm",
+    "Permutation-Combination, Probability, Logical Reasoning",
+    "Calendar, Clock, exam speed tactics"
+  ],
+  "estimatedHours": 12,
+  "learningPath": [
+    { "sectionId": "numbers-percent", "type": "concept" },
+    { "sectionId": "work-time", "type": "concept" },
+    { "sectionId": "averages-ages", "type": "concept" },
+    { "sectionId": "mensuration", "type": "concept" },
+    { "sectionId": "counting-prob-logic", "type": "concept" },
+    { "sectionId": "calendar-clock", "type": "concept" }
+  ],
+  "readingSections": [
+    {
+      "id": "numbers-percent",
+      "title": "1. Numbers, Percent, Ratio, Business Maths (From Zero)",
+      "type": "concept",
+      "quickSummary": "Percent means per-hundred. Ratio splits, profit compares to cost, discount compares to marked price. HCF-LCM and digit facts power number questions.",
+      "content": [
+        "Numericals and Numbers: place value, divisibility (2,3,4,5,8,9,11), prime/composite, unit digits. HCF = greatest common divisor (Euclid), LCM = smallest common multiple; for two numbers HCF x LCM = product. Fractions-decimals-percent table: 1/2=50%, 1/3=33.33%, 1/4=25%, 1/5=20%, 1/8=12.5%, 1/10=10%, 1/20=5%.",
+        "Percentage: x% of N = xN/100. Change% = (new-old)/old x 100 (base is OLD). Successive a% then b%: net = a+b+ab/100 (signs included). Ratio a:b divides X as aX/(a+b). Proportion a:b::c:d means ad=bc. Partnership profits split by (capital x time) ratios.",
+        "Profit-Loss: on COST unless stated. P% = (SP-CP)/CP x 100. Discount on MARKED price: SP = MP(1-d%). True discount = interest on present worth: TD = Amount x rate x time/(100+rate x time); present worth = Amount - TD. Stocks: face value vs market value; dividend% is on FACE; yield = dividend/market x 100.",
+        "Worked: cost 800, sold 920: P% = 120/800 = 15%. MP 500, 20% off: SP 400. Two workers (sample): 1/6+1/12 = 1/4 per day, so 4 days together."
+      ],
+      "subsections": [
+        {
+          "title": "Base discipline (the 80% error)",
+          "content": [
+            "Percent base is the OLD/ORIGINAL unless asked otherwise.",
+            "Up 25% then down 25% is NOT break-even: 1.25 x 0.75 = 0.9375 (6.25% loss).",
+            "Profit on SP vs CP differ - read which the question uses."
+          ],
+          "example": {
+            "prompt": "Price up 20%, then down 20%. Net?",
+            "steps": [
+              "20 + (-20) + 20x(-20)/100 = -4.",
+              "Net 4% down."
+            ],
+            "answer": "4% loss"
+          }
+        },
+        {
+          "title": "HCF-LCM speed",
+          "content": [
+            "HCF by Euclid remainders; LCM by prime powers (max exponents).",
+            "Two numbers: product = HCF x LCM (extends only pairwise).",
+            "Trailing zeros, bells-together (LCM of periods) are classic frames."
+          ]
+        },
+        {
+          "title": "Business chain",
+          "content": [
+            "CP -> (+profit) / (-loss) -> SP; MP -> (-discount) -> SP.",
+            "True discount belongs to bills/debts: PW = Amount/(1+rt/100).",
+            "Stocks: always convert dividend to yield before comparing."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Percent base is old. Successive: a+b+ab/100.",
+        "Profit on CP, discount on MP.",
+        "HCFxLCM = product (two numbers)."
+      ],
+      "companyNote": "Percentage-ratio-profit is the densest prelims cluster."
+    },
+    {
+      "id": "work-time",
+      "title": "2. Work-Time Family - Work, Pipes, Distance, Trains, Boats, Races",
+      "type": "concept",
+      "quickSummary": "Work adds rates. Pipes add signed rates. Distance = speed x time with unit discipline. Trains add lengths; boats add/subtract current.",
+      "content": [
+        "Time-Work: rate = 1/days for the whole job. Together: add rates. A(6d)+B(12d): 1/6+1/12 = 1/4, so 4 days (VEDA sample). Man-days = men x days constant for fixed work. Alternate days: pair-cycle method.",
+        "Pipes-Cistern: inlet +rate, outlet -rate. Net fills/empties. Leaks subtract. Time to fill with leak: 1/(in - leak).",
+        "Time-Distance: D = S x T. Units: km/h x 5/18 = m/s; m/s x 18/5 = km/h. Average speed over equal distances = harmonic 2ab/(a+b), NOT arithmetic mean. Relative speed: towards each other add, same direction subtract.",
+        "Trains: train passing object = its length; passing platform/bridge/train = lengths added. VEDA sample: speed 15 m/s, man in 20s gives length 300m; station in 36s gives 540m total, platform 240m. Boats: downstream u+v, upstream u-v (u boat, v stream); still-water speed = (down+up)/2, stream = (down-up)/2. Races: head starts and dead heats read off distance-time graphs; circular tracks meet at LCM of round times."
+      ],
+      "subsections": [
+        {
+          "title": "Unit discipline",
+          "content": [
+            "Convert before computing: km/h to m/s multiply 5/18.",
+            "Train seconds x m/s gives metres directly.",
+            "Keep days/hours consistent in work-pipe mixes."
+          ],
+          "example": {
+            "prompt": "Train 15 m/s passes man in 20s. Length?",
+            "steps": [
+              "Point object: length = speed x time.",
+              "15 x 20 = 300m."
+            ],
+            "answer": "$300m$"
+          }
+        },
+        {
+          "title": "Rate addition everywhere",
+          "content": [
+            "Workers, pipes, even relative motion all add signed rates.",
+            "Together-time = 1/(sum of reciprocals) for two: ab/(a+b).",
+            "Outlet/leak/upstream carry minus signs."
+          ]
+        },
+        {
+          "title": "Average-speed trap",
+          "content": [
+            "Equal distances at a,b: 2ab/(a+b), always below (a+b)/2.",
+            "Equal TIMES average arithmetically - check what is equal.",
+            "Races: leader's time decides; lapped meets need LCM."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Together: add reciprocals. ab/(a+b) for two.",
+        "km/h to m/s: 5/18. Lengths add for crossings.",
+        "Downstream u+v, upstream u-v."
+      ],
+      "companyNote": "Two train/work samples are official - method must be automatic."
+    },
+    {
+      "id": "averages-ages",
+      "title": "3. Averages and Ages",
+      "type": "concept",
+      "quickSummary": "Average = total/count. Ages shift together: gaps never change. Weighted average respects group sizes.",
+      "content": [
+        "Average = sum/n. Adding/removing a member: new total = old total +/- value. If average rises by d when a member of value v joins n members: v = old_avg + d(n+1). Weighted average = (n1a1+n2a2)/(n1+n2); mixture age/price problems are weighted averages in disguise.",
+        "Ages: difference between two ages is CONSTANT over time. Sum/difference frames solve by equations: present ages x,y; k years ago/hence shift both by k. Ratios of ages at two times give two equations.",
+        "x is 80% of y (VEDA sample): x = 0.8y, y/x = 1.25, so y is 1.25/2 = 62.5% of 2x. Read what the percent is OF - the base is 2x here, not y.",
+        "Book-price puzzle (VEDA sample): Ram has P-2, Shyam P-24 (integer rupees, both positive), together short: 2P-26 < P gives P < 26; Shyam positive gives P > 24; integer P = 25."
+      ],
+      "subsections": [
+        {
+          "title": "Average-change shortcut",
+          "content": [
+            "New member value = new_avg +/- d x (old count). Sign by rise/fall.",
+            "Batsman/cricket averages are the classic frame.",
+            "Removing works mirrored: value = old_avg -/+ d x (remaining)."
+          ],
+          "example": {
+            "prompt": "Avg of 10 rises 2 when an 80 joins. Old avg?",
+            "steps": [
+              "80 = old + 2x11.",
+              "old = 80-22 = 58."
+            ],
+            "answer": "$58$"
+          }
+        },
+        {
+          "title": "Age equations",
+          "content": [
+            "Let present ages be variables; shift both sides equally.",
+            "Gap constant: if A-B = 5 now, always 5.",
+            "Two time-frames give two equations - solve."
+          ]
+        },
+        {
+          "title": "Of-what discipline",
+          "content": [
+            "Percent questions hide the base: underline OF.",
+            "x is 80% of y: base y. y as % of 2x: base 2x.",
+            "Convert to fractions early (0.8 = 4/5)."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Average = total/count. Gaps constant in ages.",
+        "Newcomer = avg +/- d x count.",
+        "Underline the OF base."
+      ],
+      "companyNote": "Two of five official samples live here - master bases."
+    },
+    {
+      "id": "mensuration",
+      "title": "4. Mensuration, Roots, Logarithms, Height-Distance",
+      "type": "concept",
+      "quickSummary": "Area squares length units, volume cubes them. Roots invert powers. Logs turn multiply into add. Height-distance is one tan.",
+      "content": [
+        "Area: rectangle lw, square a2, triangle bh/2, circle pi r2, trapezium h(a+b)/2, sector theta/360 x pi r2. Perimeter/circumference linear in length. Volume: cube a3, cuboid lbh, cylinder pi r2 h, cone pi r2 h/3, sphere 4/3 pi r3, hemisphere 2/3 pi r3. Surface: cube 6a2, cuboid 2(lb+bh+hl), cylinder 2 pi r(h+r) curved 2 pi r h, sphere 4 pi r2.",
+        "Square roots: perfect squares to 30 (1,4,9,...,900) plus sqrt2 1.414, sqrt3 1.732. Cube roots of 1,8,27,64,125,216,343,512,729,1000. Simplify radicals: sqrt(72) = 6 sqrt2. Rationalise 1/sqrt2 = sqrt2/2.",
+        "Logarithms: log(ab) = log a + log b, log(a/b) = log a - log b, log(a^n) = n log a, log_a(a) = 1, log 1 = 0, change of base log_b(a) = log a/log b. log10(2) = 0.3010, log10(3) = 0.4771 unlock digit counts (digits in 2^10 = floor(10x0.3010)+1 = 4).",
+        "Height-Distance: one right triangle, tan = opposite/adjacent. Angle of elevation = looking up, depression = looking down (alternate with elevation from the object). Common: 30/45/60 with tan 1/sqrt3, 1, sqrt3. Shadow = height/tan(elevation)."
+      ],
+      "subsections": [
+        {
+          "title": "Unit power check",
+          "content": [
+            "Area in unit2, volume unit3 - mismatch flags formula errors.",
+            "Scale: lengths x k gives area x k2, volume x k3.",
+            "Pi handling: keep symbolic till the end for exact options."
+          ],
+          "example": {
+            "prompt": "Circle radius doubles. Area?",
+            "steps": [
+              "Scale k=2.",
+              "Area x4."
+            ],
+            "answer": "4 times"
+          }
+        },
+        {
+          "title": "Log-digit trick",
+          "content": [
+            "Digits in N = floor(log10 N)+1.",
+            "2^10: 10x0.3010 = 3.01, floor 3, +1 = 4.",
+            "Trails zeros in n! need Legendre (beyond scope - skip)."
+          ]
+        },
+        {
+          "title": "Elevation setup",
+          "content": [
+            "Draw ground, vertical, sight line. Mark known side and angle.",
+            "tan ties height to ground distance directly.",
+            "Two positions give two equations (tower + walk problems)."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Area x k2, volume x k3 on scaling.",
+        "Log: multiply-add, power-bring-down.",
+        "Height = distance x tan(angle)."
+      ],
+      "companyNote": "Formula breadth beats depth here - memorise the table."
+    },
+    {
+      "id": "counting-prob-logic",
+      "title": "5. Counting, Probability, Logical Reasoning (Official Samples Inside)",
+      "type": "concept",
+      "quickSummary": "Arrange with factorial, choose with combinations. Probability = good/total. Venn: add both, subtract overlap thrice-counted.",
+      "content": [
+        "Permutations nPr = n!/(n-r)! (order matters: seats, ranks, codes without repeat). Combinations nCr = n!/(r!(n-r)!) (order free: teams, hands). nCr = nC(n-r). Circular seats: (n-1)!. Repeated letters divide by repeats. AND means multiply (sequential choices), OR across exclusive cases means add.",
+        "Probability = favourable/possible (equally likely). Complement P(not) = 1-P. Independent AND multiplies, mutually-exclusive OR adds. Dice/cards/coins/balls-without-replacement are the four frames. Conditional P(A|B) = P(AB)/P(B).",
+        "Logical reasoning VEDA set, all solved: (1) Venn jobs: 90 total, 10 neither, so 80 in circle(s); 65+58 = 123 counts both twice, overlap = 123-80 = 43. (2) Workers 6/12 days: 1/6+1/12 = 1/4, so 4 days. (3) Book Rs 25 (shown in Ages section). (4) Train platform 240m (shown in Trains). (5) 62.5% (shown in Percent). General Venn: |A u B| = |A|+|B|-|AB|; three-set adds triple back once.",
+        "Reasoning tactics: draw the Venn, write equations for unknowns, extreme-case test (all/none overlap) to bound answers, verify totals sum to universe."
+      ],
+      "subsections": [
+        {
+          "title": "Choose vs arrange test",
+          "content": [
+            "Labels/positions/ranks differ: permute.",
+            "Mere membership: combine.",
+            "Mixed: choose then arrange (committees with posts)."
+          ],
+          "example": {
+            "prompt": "Ways to choose 2 of 5?",
+            "steps": [
+              "Order free: C(5,2).",
+              "10."
+            ],
+            "answer": "$10$"
+          }
+        },
+        {
+          "title": "Probability frames",
+          "content": [
+            "Dice: 36 pairs. Cards: 52 (26 red, 4 suits). Coins: 2^n.",
+            "Without replacement: denominators shrink.",
+            "At-least-one via complement: 1 - P(none)."
+          ]
+        },
+        {
+          "title": "Venn in 20 seconds",
+          "content": [
+            "Neither-outside first: inside = total - neither.",
+            "Sum of circles minus inside = overlap.",
+            "Only-A = A minus overlap."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "nPr orders, nCr chooses. AND-multiply, OR-add.",
+        "P = good/total. Complement shortcuts at-least.",
+        "Overlap = sum minus inside."
+      ],
+      "companyNote": "All five official aptitude samples are in this bank - reproduce them cold."
+    },
+    {
+      "id": "calendar-clock",
+      "title": "6. Calendar, Clock, Stocks Wrap, Speed Tactics",
+      "type": "concept",
+      "quickSummary": "Odd days mod 7 drive calendars. Clock hands move 360/12/720. Stocks compare yield, not dividend. In the hall: decimals last, triples first.",
+      "content": [
+        "Calendar: ordinary year 365 = 52 weeks + 1 odd day; leap 366 = +2. Century odd days: 100 (5), 200 (3), 300 (1), 400 (0, repeats every 400 years). Month codes via odd days (Jan 3 in ordinary/4 in leap, Feb 0/1, Mar 3, Apr 6, May 1, Jun 4, Jul 6, Aug 2, Sep 5, Oct 0, Nov 3, Dec 5). Day = (year odd + month odd + date) mod 7 (0 Sunday). Leap if divisible by 4, except centuries need 400.",
+        "Clock: minute hand 360 deg/hour (6/min), hour hand 30 deg/hour (0.5/min), relative 5.5 deg/min. Angle = |30H - 5.5M|. Coincide every 65 5/11 min (~12/11 h). Right angles twice hourly (except 2-4 band quirks), opposite once hourly. Gains/losses scale indicated vs true time.",
+        "Stocks wrap: dividend% on face; price is market; yield decides. Buy low-yield? No - buy HIGH yield (more dividend per rupee). Brokerage adds to cost.",
+        "Tactics: attempt order - Venn/percent/average first (fast), trains/work next, P&C/probability with diagrams, calendars/clocks by formula, mensuration by table lookup. Keep fraction-decimal-percent table on rough sheet. Never linear-add RMS-like or rate quantities - pause and check the operation."
+      ],
+      "subsections": [
+        {
+          "title": "Odd-day arithmetic",
+          "content": [
+            "Everything mod 7. Leap adds one extra day after Feb.",
+            "2000 was leap (400 rule); 1900 was not.",
+            "Same calendar repeats with same Jan-1 weekday + leap match."
+          ],
+          "example": {
+            "prompt": "Odd days in 100 years?",
+            "steps": [
+              "76 ordinary (+76) + 24 leap (+48).",
+              "124 mod 7 = 5."
+            ],
+            "answer": "$5$"
+          }
+        },
+        {
+          "title": "Clock angle drill",
+          "content": [
+            "|30H - 5.5M|, take smaller with 360 if needed.",
+            "3:00 gives 90 exactly.",
+            "Coincidence ~ every 1h05m."
+          ],
+          "example": {
+            "prompt": "Angle at 3:00?",
+            "steps": [
+              "|90 - 0| = 90."
+            ],
+            "answer": "$90$ deg"
+          }
+        },
+        {
+          "title": "Yield comparison",
+          "content": [
+            "Rs 100 at 60 (8% dividend): yield 8/60 = 13.3%.",
+            "Rs 100 at 120 (8%): yield 6.7%. Same dividend, worse buy.",
+            "Face is for dividend, market is for money."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Odd days mod 7; century 5/3/1/0.",
+        "Angle |30H-5.5M|.",
+        "Yield = dividend/market."
+      ],
+      "companyNote": "Calendar/clock are pure formula marks - do not skip."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "percent-change",
+      "title": "Percentage and Successive Change",
+      "formula": { "latex": "p\\% = \\frac{pN}{100}, \\quad net = a+b+\\frac{ab}{100}", "text": "Base is the old value. Chain two changes with signs in the ab term." },
+      "whenToUse": "Discounts, hikes, two-step changes, x-is-what-percent.",
+      "explanation": ["Change% uses old as base.", "Up-down equal % loses (negative ab)."],
+      "example": {
+        "prompt": "x is 80% of y. y as % of 2x?",
+        "steps": ["x = 0.8y, y/x = 1.25.", "1.25/2 = 0.625 = 62.5%."],
+        "answer": "$62.5\\%$"
+      },
+      "memoryTip": "Underline the OF base.",
+      "commonMistake": "Using new value as base."
+    },
+    {
+      "id": "ratio-pl",
+      "title": "Ratio Split and Profit-Loss",
+      "formula": { "latex": "share = X\\frac{a}{a+b}, \\quad P\\% = \\frac{SP-CP}{CP}\\times100", "text": "Split totals by ratio parts. Profit measured on cost; discount on marked price." },
+      "whenToUse": "Partnership, division, SP/CP/MP questions.",
+      "explanation": ["Partnership weights capital x time.", "SP = MP(1-d%)."],
+      "example": {
+        "prompt": "CP 800, SP 920. P%?",
+        "steps": ["120/800 = 0.15."],
+        "answer": "$15\\%$"
+      },
+      "memoryTip": "Profit-cost, discount-marked.",
+      "commonMistake": "Profit on SP unless asked."
+    },
+    {
+      "id": "work-rate",
+      "title": "Work Rates and Pipes",
+      "formula": { "latex": "\\frac{1}{T} = \\sum \\frac{1}{T_{i}}, \\quad T_{pair} = \\frac{ab}{a+b}", "text": "Add signed daily rates. Inlets positive, outlets/leaks negative." },
+      "whenToUse": "Together-work, pipes, alternate days via cycles.",
+      "explanation": ["6d+12d: 1/6+1/12 = 1/4, 4 days.", "Leak subtracts its rate."],
+      "example": {
+        "prompt": "6-day and 12-day workers together?",
+        "steps": ["1/6+1/12 = 3/12 = 1/4.", "Invert: 4 days."],
+        "answer": "$4$ days"
+      },
+      "memoryTip": "Add rates, invert at end.",
+      "commonMistake": "Averaging days directly."
+    },
+    {
+      "id": "speed-trains",
+      "title": "Speed, Trains, Boats",
+      "formula": { "latex": "D = ST, \\quad L = S\\times t, \\quad down = u+v,\\ up = u-v", "text": "Crossing length = speed times time with lengths added. Convert km/h with 5/18." },
+      "whenToUse": "Distance, platform, stream problems.",
+      "explanation": ["Point object: own length. Extended: add lengths.", "Still water = (down+up)/2."],
+      "example": {
+        "prompt": "15 m/s, man 20s, station 36s. Platform?",
+        "steps": ["Train 300m.", "Total 540m.", "Platform 240m."],
+        "answer": "$240m$"
+      },
+      "memoryTip": "Add lengths, convert units.",
+      "commonMistake": "Forgetting platform adds."
+    },
+    {
+      "id": "avg-ages",
+      "title": "Average and Age Shifts",
+      "formula": { "latex": "avg = \\frac{total}{n}, \\quad gaps\\ constant", "text": "Newcomer value = avg +/- d times count. Both ages shift equally." },
+      "whenToUse": "Join/leave averages, age equations.",
+      "explanation": ["Rise of d over n: newcomer = avg + d(n+1).", "Two time-frames: two equations."],
+      "example": {
+        "prompt": "Avg 10 rises 2 on 80 joining?",
+        "steps": ["80 = old + 2x11.", "Old 58."],
+        "answer": "$58$"
+      },
+      "memoryTip": "Totals first, average last.",
+      "commonMistake": "Weighting groups equally."
+    },
+    {
+      "id": "pnc",
+      "title": "Permutations and Combinations",
+      "formula": { "latex": "P(n,r) = \\frac{n!}{(n-r)!}, \\quad C(n,r) = \\frac{n!}{r!(n-r)!}", "text": "Order matters: permute. Membership only: combine. Circular: (n-1)!." },
+      "whenToUse": "Seats, teams, codes, hands.",
+      "explanation": ["nCr = nC(n-r).", "AND multiplies, exclusive OR adds."],
+      "example": {
+        "prompt": "Choose 2 of 5?",
+        "steps": ["10."],
+        "answer": "$10$"
+      },
+      "memoryTip": "Labels-permute, members-combine.",
+      "commonMistake": "Permuting pure choices."
+    },
+    {
+      "id": "prob-venn",
+      "title": "Probability and Two-Set Venn",
+      "formula": { "latex": "P = \\frac{good}{total}, \\quad |A\\cup B| = |A|+|B|-|AB|", "text": "Complement shortcuts at-least-one. Overlap = sum minus inside." },
+      "whenToUse": "Dice/cards/balls, survey overlaps.",
+      "explanation": ["Inside = total - neither.", "Both = 65+58-80 = 43 (sample)."],
+      "example": {
+        "prompt": "90 apply, 10 neither, 65 sales, 58 publishing. Both?",
+        "steps": ["Inside 80.", "123-80 = 43."],
+        "answer": "$43$"
+      },
+      "memoryTip": "Neither-outside first.",
+      "commonMistake": "Forgetting to subtract overlap."
+    },
+    {
+      "id": "roots-logs",
+      "title": "Roots and Log Laws",
+      "formula": { "latex": "\\sqrt{a^{2}b} = a\\sqrt{b}, \\quad \\log ab = \\log a+\\log b, \\ \\log a^{n} = n\\log a", "text": "Factor squares out of radicals. Logs turn products into sums, powers into multiples." },
+      "whenToUse": "Simplification, digit counts.",
+      "explanation": ["sqrt72 = 6 sqrt2.", "Digits in N = floor(log10 N)+1."],
+      "example": {
+        "prompt": "Digits in 2^10?",
+        "steps": ["10x0.3010 = 3.01.", "Floor 3 +1 = 4."],
+        "answer": "$4$"
+      },
+      "memoryTip": "Squares-out, powers-down.",
+      "commonMistake": "sqrt(a+b) split."
+    },
+    {
+      "id": "mensuration",
+      "title": "Core Area-Volume Table",
+      "formula": { "latex": "A_{circle} = \\pi r^{2}, \\ V_{sph} = \\frac{4}{3}\\pi r^{3}, \\ V_{cyl} = \\pi r^{2}h", "text": "Plus rectangle, triangle, cube, cuboid, cone (1/3), sphere surface 4 pi r2." },
+      "whenToUse": "Direct area/volume questions.",
+      "explanation": ["Scale k: area k2, volume k3.", "Keep pi symbolic."],
+      "example": {
+        "prompt": "Radius doubles. Area?",
+        "steps": ["k2 = 4."],
+        "answer": "4 times"
+      },
+      "memoryTip": "Square-flat, cube-solid.",
+      "commonMistake": "Unit-power mismatch."
+    },
+    {
+      "id": "cal-clock",
+      "title": "Calendar Odd Days and Clock Angle",
+      "formula": { "latex": "day = (Y+M+D)\\bmod 7, \\quad angle = |30H-5.5M|", "text": "Century odds 5/3/1/0. Leap +1 after Feb. Hands: minute 6/min, hour 0.5/min." },
+      "whenToUse": "Weekday and angle questions.",
+      "explanation": ["Ordinary +1, leap +2 odd days.", "3:00 gives exactly 90."],
+      "example": {
+        "prompt": "Angle 3:00?",
+        "steps": ["|90-0| = 90."],
+        "answer": "$90$ deg"
+      },
+      "memoryTip": "Mod-7 dates, 5.5 relative.",
+      "commonMistake": "1900 is not leap."
+    }
+  ],
+  "practiceProblems": {
+    "percent-change": [
+      { "q": "x is 80% of y. y as % of 2x?", "s": ["x=0.8y, y/x=1.25", "1.25/2 = 62.5%"], "a": "$62.5\\%$" },
+      { "q": "Up 20% then down 20%. Net?", "s": ["20-20+20x(-20)/100 = -4"], "a": "4% loss" },
+      { "q": "CP 800, SP 920. P%?", "s": ["120/800 = 15%"], "a": "$15\\%$" },
+      { "q": "Book Rs P: Ram P-2, Shyam P-24, together short. P (integer)?", "s": ["2P-26<P: P<26", "Both positive: P>24", "Integer: 25"], "a": "$Rs\\ 25$" }
+    ],
+    "work-rate": [
+      { "q": "6-day and 12-day workers together?", "s": ["1/6+1/12 = 1/4", "Invert: 4 days"], "a": "$4$ days" },
+      { "q": "Train 15 m/s, man 20s, station 36s. Platform?", "s": ["Train 300m", "Total 540m", "Platform 240m"], "a": "$240m$" },
+      { "q": "Avg of 10 rises 2 on 80 joining. Old avg?", "s": ["80 = old+2x11", "old = 58"], "a": "$58$" },
+      { "q": "90 apply, 10 neither, 65 sales, 58 publishing. Both?", "s": ["Inside 80", "123-80 = 43"], "a": "$43$" }
+    ],
+    "pnc": [
+      { "q": "Choose 2 of 5?", "s": ["C(5,2) = 10"], "a": "$10$" },
+      { "q": "Digits in 2^10?", "s": ["10x0.3010 = 3.01", "floor+1 = 4"], "a": "$4$" },
+      { "q": "Circle radius doubles. Area?", "s": ["k2 = 4"], "a": "4 times" },
+      { "q": "Angle at 3:00?", "s": ["|90-0| = 90"], "a": "$90$ deg" }
+    ],
+    "prob-venn": [
+      { "q": "P(at least one head, 2 coins)?", "s": ["1 - P(TT) = 1-1/4"], "a": "$3/4$" },
+      { "q": "Odd days in 100 years?", "s": ["76+48 = 124", "124 mod 7 = 5"], "a": "$5$" }
+    ],
+    "roots-logs": [
+      { "q": "Simplify sqrt(72)?", "s": ["36x2: 6 sqrt2"], "a": "$6\\sqrt{2}$" },
+      { "q": "log(1000) base 10?", "s": ["10^3"], "a": "$3$" }
+    ],
+    "cal-clock": [
+      { "q": "1900 leap?", "s": ["Century needs 400: no"], "a": "Not leap" },
+      { "q": "Yield: 8% on face 100 at price 60?", "s": ["8/60 = 13.3%"], "a": "$13.3\\%$" }
+    ]
+  },
+  "mcqs": [
+    { "id": "vap-001", "q": "20% of 150?", "opts": ["30", "20", "15", "45"], "c": 0, "d": "easy", "t": "percent", "source": "VEDA IIT Prelim Pattern", "exp": ["20x150/100 = 30."], "shortcut": "Tenth-doubled.", "pattern": "Direct percent." },
+    { "id": "vap-002", "q": "Ratio 2:3 of 50? First part?", "opts": ["20", "30", "25", "10"], "c": 0, "d": "easy", "t": "ratio", "source": "VEDA IIT Prelim Pattern", "exp": ["50x2/5 = 20."], "shortcut": "Part-over-total.", "pattern": "Split drill." },
+    { "id": "vap-003", "q": "CP 800, SP 920. Profit%?", "opts": ["15", "12", "20", "10"], "c": 0, "d": "easy", "t": "profit", "source": "Practice - Profit", "exp": ["120/800 = 15%."], "shortcut": "Gain-over-cost.", "pattern": "P-on-CP." },
+    { "id": "vap-004", "q": "MP 500, 20% off. SP?", "opts": ["400", "450", "300", "480"], "c": 0, "d": "easy", "t": "discount", "source": "Practice - Discount", "exp": ["500x0.8."], "shortcut": "Keep-percent.", "pattern": "Discount-on-MP." },
+    { "id": "vap-005", "q": "HCF of 12 and 18?", "opts": ["6", "36", "3", "9"], "c": 0, "d": "easy", "t": "hcf-lcm", "source": "Practice - HCF", "exp": ["Common divisors max 6."], "shortcut": "List-divisors.", "pattern": "HCF basic." },
+    { "id": "vap-006", "q": "LCM of 4 and 6?", "opts": ["12", "24", "2", "10"], "c": 0, "d": "easy", "t": "hcf-lcm", "source": "Practice - LCM", "exp": ["Multiples meet at 12."], "shortcut": "Meet-point.", "pattern": "LCM basic." },
+    { "id": "vap-007", "q": "A does job in 6 days. Daily rate?", "opts": ["1/6", "6", "1/12", "1/3"], "c": 0, "d": "easy", "t": "work", "source": "Practice - Work", "exp": ["Rate inverts days."], "shortcut": "Rate-reciprocal.", "pattern": "Rate basis." },
+    { "id": "vap-008", "q": "Speed 60 km/h in m/s?", "opts": ["16.67", "60", "600", "6"], "c": 0, "d": "easy", "t": "speed", "source": "Practice - Units", "exp": ["60x5/18 = 16.67."], "shortcut": "Five-by-eighteen.", "pattern": "Unit conversion." },
+    { "id": "vap-009", "q": "Downstream (boat 5, stream 2)?", "opts": ["7", "3", "10", "2.5"], "c": 0, "d": "easy", "t": "boats", "source": "Practice - Boats", "exp": ["u+v."], "shortcut": "Down-adds.", "pattern": "Current pair." },
+    { "id": "vap-010", "q": "Upstream (boat 5, stream 2)?", "opts": ["3", "7", "10", "1"], "c": 0, "d": "easy", "t": "boats", "source": "Practice - Boats", "exp": ["u-v."], "shortcut": "Up-subtracts.", "pattern": "Twin direction." },
+    { "id": "vap-011", "q": "Average of 2, 4, 6?", "opts": ["4", "6", "3", "12"], "c": 0, "d": "easy", "t": "average", "source": "Practice - Average", "exp": ["12/3."], "shortcut": "Total-over-count.", "pattern": "Mean basic." },
+    { "id": "vap-012", "q": "Area of 4x5 rectangle?", "opts": ["20", "18", "9", "40"], "c": 0, "d": "easy", "t": "area", "source": "Practice - Area", "exp": ["lw."], "shortcut": "Length-times-width.", "pattern": "Table lookup." },
+    { "id": "vap-013", "q": "Circle r=7 (pi=22/7). Area?", "opts": ["154", "44", "49", "22"], "c": 0, "d": "easy", "t": "area", "source": "Practice - Circle", "exp": ["22/7x49 = 154."], "shortcut": "Seven-cancels.", "pattern": "Pi handling." },
+    { "id": "vap-014", "q": "P(head) one coin?", "opts": ["1/2", "1", "1/4", "0"], "c": 0, "d": "easy", "t": "probability", "source": "Practice - Coins", "exp": ["One of two faces."], "shortcut": "Half-coin.", "pattern": "Sample space." },
+    { "id": "vap-015", "q": "C(5,2)?", "opts": ["10", "20", "5", "15"], "c": 0, "d": "easy", "t": "pnc", "source": "Practice - Choose", "exp": ["5x4/2."], "shortcut": "Five-choose-two-ten.", "pattern": "Choose basic." },
+    { "id": "vap-016", "q": "Odd days, ordinary year?", "opts": ["1", "2", "0", "7"], "c": 0, "d": "easy", "t": "calendar", "source": "Practice - Calendar", "exp": ["365 = 52x7+1."], "shortcut": "Ordinary-one.", "pattern": "Year remainder." },
+    { "id": "vap-017", "q": "Odd days, leap year?", "opts": ["2", "1", "0", "3"], "c": 0, "d": "easy", "t": "calendar", "source": "Practice - Calendar", "exp": ["366 = 52x7+2."], "shortcut": "Leap-two.", "pattern": "Twin remainder." },
+    { "id": "vap-018", "q": "Angle at 3:00?", "opts": ["90", "0", "180", "45"], "c": 0, "d": "easy", "t": "clock", "source": "Practice - Clock", "exp": ["|90-0|."], "shortcut": "Three-ninety.", "pattern": "Right-angle mark." },
+    { "id": "vap-019", "q": "1900 leap?", "opts": ["No", "Yes", "Half", "Always"], "c": 0, "d": "easy", "t": "calendar", "source": "Practice - Leap", "exp": ["Century needs 400."], "shortcut": "Nineteen-not.", "pattern": "Century exception." },
+    { "id": "vap-020", "q": "2000 leap?", "opts": ["Yes", "No", "Half", "Never"], "c": 0, "d": "easy", "t": "calendar", "source": "Practice - Leap", "exp": ["400-divisible century."], "shortcut": "Two-thousand-yes.", "pattern": "Twin exception." },
+    { "id": "vap-021", "q": "sqrt(144)?", "opts": ["12", "14", "16", "72"], "c": 0, "d": "easy", "t": "roots", "source": "Practice - Roots", "exp": ["12x12."], "shortcut": "Dozen-squared.", "pattern": "Perfect squares." },
+    { "id": "vap-022", "q": "Cube root of 27?", "opts": ["3", "9", "4", "6"], "c": 0, "d": "easy", "t": "roots", "source": "Practice - Roots", "exp": ["3x3x3."], "shortcut": "Triple-three.", "pattern": "Perfect cubes." },
+    { "id": "vap-023", "q": "log10(1000)?", "opts": ["3", "10", "100", "30"], "c": 0, "d": "easy", "t": "logs", "source": "Practice - Logs", "exp": ["10^3."], "shortcut": "Count-zeros.", "pattern": "Power reading." },
+    { "id": "vap-024", "q": "Volume of cube side 3?", "opts": ["27", "9", "18", "54"], "c": 0, "d": "easy", "t": "volume", "source": "Practice - Volume", "exp": ["a^3."], "shortcut": "Cube-cubes.", "pattern": "Volume basic." },
+    { "id": "vap-025", "q": "Ages gap now 5. Gap in 10 years?", "opts": ["5", "15", "10", "0"], "c": 0, "d": "easy", "t": "ages", "source": "Practice - Ages", "exp": ["Both shift equally."], "shortcut": "Gap-constant.", "pattern": "Age invariant." },
+    { "id": "vap-026", "q": "Partnership 2:3 of 50 profit? First?", "opts": ["20", "30", "25", "10"], "c": 0, "d": "easy", "t": "partnership", "source": "Practice - Partnership", "exp": ["50x2/5."], "shortcut": "Parts-of-total.", "pattern": "Twin split." },
+    { "id": "vap-027", "q": "True discount belongs to?", "opts": ["Present worth of debts", "Profit always", "Discount always", "Stocks"], "c": 0, "d": "easy", "t": "discount", "source": "Practice - TD", "exp": ["Interest on present worth."], "shortcut": "TD-is-interest.", "pattern": "Bill maths." },
+    { "id": "vap-028", "q": "Dividend% is on?", "opts": ["Face value", "Market price", "Profit", "Tax"], "c": 0, "d": "easy", "t": "stocks", "source": "Practice - Stocks", "exp": ["Declared on nominal face."], "shortcut": "Dividend-face.", "pattern": "Stock base." },
+    { "id": "vap-029", "q": "Trains same direction: relative?", "opts": ["Subtract speeds", "Add speeds", "Multiply", "Zero"], "c": 0, "d": "easy", "t": "trains", "source": "Practice - Relative", "exp": ["Chase gap closes by difference."], "shortcut": "Same-subtract.", "pattern": "Relative pair." },
+    { "id": "vap-030", "q": "Trains towards each other: relative?", "opts": ["Add speeds", "Subtract", "Multiply", "Zero"], "c": 0, "d": "easy", "t": "trains", "source": "Practice - Relative", "exp": ["Closing from both ends."], "shortcut": "Face-add.", "pattern": "Twin rule." },
+    { "id": "vap-031", "q": "P(6) on a die?", "opts": ["1/6", "1/2", "1/3", "1"], "c": 0, "d": "easy", "t": "probability", "source": "Practice - Dice", "exp": ["One of six faces."], "shortcut": "One-in-six.", "pattern": "Die space." },
+    { "id": "vap-032", "q": "P(red card)?", "opts": ["1/2", "1/4", "1/3", "1/13"], "c": 0, "d": "easy", "t": "probability", "source": "Practice - Cards", "exp": ["26 of 52."], "shortcut": "Half-deck.", "pattern": "Card space." },
+    { "id": "vap-033", "q": "P(ace)?", "opts": ["1/13", "1/4", "1/2", "4/13"], "c": 0, "d": "easy", "t": "probability", "source": "Practice - Cards", "exp": ["4 of 52."], "shortcut": "Four-over-52.", "pattern": "Rank odds." },
+    { "id": "vap-034", "q": "Arrangements of 3 distinct?", "opts": ["6", "3", "9", "5"], "c": 0, "d": "easy", "t": "pnc", "source": "Practice - Arrange", "exp": ["3!."], "shortcut": "Three-six.", "pattern": "Factorial basic." },
+    { "id": "vap-035", "q": "Circular seats of 4?", "opts": ["6", "24", "12", "4"], "c": 0, "d": "easy", "t": "pnc", "source": "Practice - Circular", "exp": ["(4-1)!."], "shortcut": "Fix-one.", "pattern": "Round table." },
+    { "id": "vap-036", "q": "tan 45?", "opts": ["1", "0", "Root 3", "Infinity"], "c": 0, "d": "easy", "t": "height", "source": "Practice - Trig", "exp": ["Equal legs."], "shortcut": "Forty-five-one.", "pattern": "Standard angles." },
+    { "id": "vap-037", "q": "Shadow equals height when elevation?", "opts": ["45 deg", "30 deg", "60 deg", "90 deg"], "c": 0, "d": "easy", "t": "height", "source": "Practice - Shadow", "exp": ["tan45 = 1: equal."], "shortcut": "Equal-at-45.", "pattern": "Shadow rule." },
+    { "id": "vap-038", "q": "log(ab)?", "opts": ["log a + log b", "log a x log b", "log a - log b", "a log b"], "c": 0, "d": "easy", "t": "logs", "source": "Practice - Log laws", "exp": ["Product to sum."], "shortcut": "Times-to-plus.", "pattern": "First log law." },
+    { "id": "vap-039", "q": "log(a^n)?", "opts": ["n log a", "log a / n", "(log a)^n", "log n"], "c": 0, "d": "easy", "t": "logs", "source": "Practice - Log laws", "exp": ["Power comes down."], "shortcut": "Power-down.", "pattern": "Second law." },
+    { "id": "vap-040", "q": "Sphere r: surface?", "opts": ["4 pi r2", "2 pi r", "pi r2", "4/3 pi r3"], "c": 0, "d": "easy", "t": "volume", "source": "Practice - Sphere", "exp": ["Four circle-areas."], "shortcut": "Four-pi-r2.", "pattern": "Surface vs volume." },
+    { "id": "vap-041", "q": "Up 20% then down 20%. Net?", "opts": ["4% loss", "No change", "4% gain", "40% loss"], "c": 0, "d": "medium", "t": "percent", "source": "Practice - Successive", "exp": ["20-20-400/100 = -4."], "shortcut": "Equal-swing-loses.", "pattern": "ab-term trap." },
+    { "id": "vap-042", "q": "Up 25% then down 20%. Net?", "opts": ["No change", "5% gain", "5% loss", "45% gain"], "c": 0, "d": "medium", "t": "percent", "source": "Practice - Successive", "exp": ["25-20-500/100 = 0."], "shortcut": "Quarter-up-fifth-down-flat.", "pattern": "Inverse pair." },
+    { "id": "vap-043", "q": "x is 80% of y. y is what % of x?", "opts": ["125", "80", "120", "100"], "c": 0, "d": "medium", "t": "percent", "source": "Practice - Base", "exp": ["y/x = 1/0.8 = 1.25."], "shortcut": "Invert-fraction.", "pattern": "Base flip." },
+    { "id": "vap-044", "q": "Profit 20% on CP 500. SP?", "opts": ["600", "550", "625", "520"], "c": 0, "d": "medium", "t": "profit", "source": "Practice - SP", "exp": ["500x1.2."], "shortcut": "Cost-times-one-plus.", "pattern": "SP build." },
+    { "id": "vap-045", "q": "SP 600 at 20% profit. CP?", "opts": ["500", "480", "550", "720"], "c": 0, "d": "medium", "t": "profit", "source": "Practice - CP", "exp": ["600/1.2 = 500."], "shortcut": "Divide-back.", "pattern": "Reverse solve." },
+    { "id": "vap-046", "q": "Loss 10% on CP 200. SP?", "opts": ["180", "190", "220", "210"], "c": 0, "d": "medium", "t": "profit", "source": "Practice - Loss", "exp": ["200x0.9."], "shortcut": "Keep-percent.", "pattern": "Loss twin." },
+    { "id": "vap-047", "q": "Capitals 2:3, times equal. Profit 50 split?", "opts": ["20 and 30", "25 and 25", "10 and 40", "15 and 35"], "c": 0, "d": "medium", "t": "partnership", "source": "Practice - Split", "exp": ["Parts of 5."], "shortcut": "Parts-fractions.", "pattern": "Equal-time split." },
+    { "id": "vap-048", "q": "Capitals equal, times 2:1. Profits?", "opts": ["2:1", "1:1", "1:2", "4:1"], "c": 0, "d": "medium", "t": "partnership", "source": "Practice - Time-weight", "exp": ["Weight capital x time."], "shortcut": "Time-weights.", "pattern": "Duration matters." },
+    { "id": "vap-049", "q": "HCFxLCM of 12,18? Product?", "opts": ["216 both", "36 and 216", "6 and 36", "18 and 12"], "c": 0, "d": "medium", "t": "hcf-lcm", "source": "Practice - Relation", "exp": ["HCF 6, LCM 36, product 216."], "shortcut": "Six-thirty-six.", "pattern": "Product check." },
+    { "id": "vap-050", "q": "Lamps together every 6,8,12s. Together again?", "opts": ["24s", "12s", "48s", "6s"], "c": 0, "d": "medium", "t": "hcf-lcm", "source": "Practice - Bells", "exp": ["LCM 24."], "shortcut": "LCM-together.", "pattern": "Event sync." },
+    { "id": "vap-051", "q": "A 10d, B 15d together?", "opts": ["6 days", "12.5 days", "25 days", "5 days"], "c": 0, "d": "medium", "t": "work", "source": "Practice - Together", "exp": ["10x15/25 = 6."], "shortcut": "ab-over-aplusb.", "pattern": "Pair formula." },
+    { "id": "vap-052", "q": "Pipe fills 4h, leak empties 6h. Net fill?", "opts": ["12h", "10h", "24h", "2h"], "c": 0, "d": "medium", "t": "pipes", "source": "Practice - Leak", "exp": ["1/4-1/6 = 1/12."], "shortcut": "Minus-leak.", "pattern": "Signed rates." },
+    { "id": "vap-053", "q": "Two pipes 3h, 6h together?", "opts": ["2h", "9h", "4.5h", "3h"], "c": 0, "d": "medium", "t": "pipes", "source": "Practice - Pipes", "exp": ["3x6/9 = 2."], "shortcut": "Same-as-work.", "pattern": "Rate twin." },
+    { "id": "vap-054", "q": "120 km at 60 km/h. Time?", "opts": ["2h", "1h", "3h", "0.5h"], "c": 0, "d": "medium", "t": "speed", "source": "Practice - DST", "exp": ["D/S."], "shortcut": "Divide-distance.", "pattern": "DST triangle." },
+    { "id": "vap-055", "q": "Equal legs 40, 60 km/h. Avg?", "opts": ["48", "50", "52", "45"], "c": 0, "d": "medium", "t": "speed", "source": "Practice - AvgSpeed", "exp": ["2x40x60/100 = 48."], "shortcut": "Harmonic-not-mean.", "pattern": "Mean trap." },
+    { "id": "vap-056", "q": "Train 300m at 15 m/s passes pole. Time?", "opts": ["20s", "36s", "15s", "45s"], "c": 0, "d": "medium", "t": "trains", "source": "Practice - Pole", "exp": ["300/15."], "shortcut": "Own-length-only.", "pattern": "Point crossing." },
+    { "id": "vap-057", "q": "Platform 240m, train 300m, 15 m/s. Time?", "opts": ["36s", "20s", "16s", "40s"], "c": 0, "d": "medium", "t": "trains", "source": "VEDA IIT Sample Pattern", "exp": ["540/15 = 36."], "shortcut": "Add-lengths.", "pattern": "Sample numbers." },
+    { "id": "vap-058", "q": "Down 10, up 6 (km/h). Still water?", "opts": ["8", "2", "16", "4"], "c": 0, "d": "medium", "t": "boats", "source": "Practice - Still", "exp": ["(10+6)/2."], "shortcut": "Average-pair.", "pattern": "Half-sum." },
+    { "id": "vap-059", "q": "Down 10, up 6. Stream?", "opts": ["2", "8", "4", "1"], "c": 0, "d": "medium", "t": "boats", "source": "Practice - Stream", "exp": ["(10-6)/2."], "shortcut": "Half-difference.", "pattern": "Twin formula." },
+    { "id": "vap-060", "q": "A laps 6min, B 8min circle. Meet at start?", "opts": ["24min", "14min", "48min", "8min"], "c": 0, "d": "medium", "t": "races", "source": "Practice - Circular", "exp": ["LCM 24."], "shortcut": "LCM-meet.", "pattern": "Round sync." },
+    { "id": "vap-061", "q": "Avg 10 items 20. New item 50. New avg?", "opts": ["22.7", "20", "25", "35"], "c": 0, "d": "medium", "t": "average", "source": "Practice - Join", "exp": ["(200+50)/11 = 22.7."], "shortcut": "Retotalise.", "pattern": "Join math." },
+    { "id": "vap-062", "q": "Avg of 4 is 8. Newcomer makes avg 10. Value?", "opts": ["18", "10", "8", "12"], "c": 0, "d": "medium", "t": "average", "source": "Practice - Newcomer", "exp": ["10 + 2x4 = 18."], "shortcut": "Avg-plus-d-times-n.", "pattern": "Newcomer formula." },
+    { "id": "vap-063", "q": "Father 3x son, sum 48. Son?", "opts": ["12", "16", "36", "24"], "c": 0, "d": "medium", "t": "ages", "source": "Practice - Ages", "exp": ["4x = 48."], "shortcut": "Parts-of-sum.", "pattern": "Ratio ages." },
+    { "id": "vap-064", "q": "5 years ago sum 30. Sum now (2 people)?", "opts": ["40", "30", "35", "45"], "c": 0, "d": "medium", "t": "ages", "source": "Practice - Shift", "exp": ["Each +5: +10 total."], "shortcut": "Shift-times-heads.", "pattern": "Time shift." },
+    { "id": "vap-065", "q": "Triangle base 10 height 6. Area?", "opts": ["30", "60", "16", "26"], "c": 0, "d": "medium", "t": "area", "source": "Practice - Triangle", "exp": ["bh/2."], "shortcut": "Half-bh.", "pattern": "Table recall." },
+    { "id": "vap-066", "q": "Cylinder r=2 h=7 (pi=22/7). Volume?", "opts": ["88", "44", "176", "28"], "c": 0, "d": "medium", "t": "volume", "source": "Practice - Cylinder", "exp": ["22/7x4x7 = 88."], "shortcut": "Cancel-seven.", "pattern": "Volume plug." },
+    { "id": "vap-067", "q": "Sphere r=3 (pi=22/7)? Volume?", "opts": ["792/7", "36pi", "108", "81"], "c": 0, "d": "medium", "t": "volume", "source": "Practice - Sphere", "exp": ["4/3x22/7x27 = 792/7 ~113."], "shortcut": "Four-thirds.", "pattern": "Fraction keep." },
+    { "id": "vap-068", "q": "Simplify sqrt(72)?", "opts": ["6 root2", "8 root2", "36 root2", "9 root2"], "c": 0, "d": "medium", "t": "roots", "source": "Practice - Surds", "exp": ["36x2."], "shortcut": "Squares-out.", "pattern": "Surd split." },
+    { "id": "vap-069", "q": "1/root2 rationalised?", "opts": ["root2/2", "root2", "2 root2", "1/2"], "c": 0, "d": "medium", "t": "roots", "source": "Practice - Rationalise", "exp": ["Multiply top-bottom root2."], "shortcut": "Clear-denominator.", "pattern": "Rational form." },
+    { "id": "vap-070", "q": "log2 + log5 (base 10)?", "opts": ["1", "7", "10", "0.7"], "c": 0, "d": "medium", "t": "logs", "source": "Practice - Logs", "exp": ["log10 = 1."], "shortcut": "Pair-to-ten.", "pattern": "Sum-to-product." },
+    { "id": "vap-071", "q": "P(5,2)?", "opts": ["20", "10", "25", "7"], "c": 0, "d": "medium", "t": "pnc", "source": "Practice - Permute", "exp": ["5x4."], "shortcut": "Falling-product.", "pattern": "Arrange count." },
+    { "id": "vap-072", "q": "Ways: post + peon from 5 (distinct posts)?", "opts": ["20", "10", "25", "15"], "c": 0, "d": "medium", "t": "pnc", "source": "Practice - Posts", "exp": ["Ordered: P(5,2)."], "shortcut": "Posts-permute.", "pattern": "Label test." },
+    { "id": "vap-073", "q": "Ways: team of 2 from 5?", "opts": ["10", "20", "25", "15"], "c": 0, "d": "medium", "t": "pnc", "source": "Practice - Team", "exp": ["Unordered: C(5,2)."], "shortcut": "Team-combines.", "pattern": "Membership test." },
+    { "id": "vap-074", "q": "P(both heads, 2 coins)?", "opts": ["1/4", "1/2", "3/4", "1/3"], "c": 0, "d": "medium", "t": "probability", "source": "Practice - AND", "exp": ["1/2 x 1/2."], "shortcut": "Multiply-independent.", "pattern": "AND rule." },
+    { "id": "vap-075", "q": "P(at least one head, 2 coins)?", "opts": ["3/4", "1/2", "1/4", "1"], "c": 0, "d": "medium", "t": "probability", "source": "Practice - Complement", "exp": ["1 - 1/4."], "shortcut": "One-minus-none.", "pattern": "Complement shortcut." },
+    { "id": "vap-076", "q": "Bag 3R 2B. P(red, no replace first)?", "opts": ["3/5", "2/5", "3/4", "1/2"], "c": 0, "d": "medium", "t": "probability", "source": "Practice - Balls", "exp": ["3 of 5."], "shortcut": "Count-colours.", "pattern": "Single draw." },
+    { "id": "vap-077", "q": "1947 non-leap, Jan 1 Wednesday. 15 Aug weekday?", "opts": ["Friday", "Thursday", "Saturday", "Monday"], "c": 0, "d": "medium", "t": "calendar", "source": "Practice - Weekday", "exp": ["Days before Aug: 212.", "Aug 15 is day 227.", "(227-1) mod 7 = 2: Wed+2 = Friday."], "shortcut": "Day-number-mod-7.", "pattern": "Weekday frame." },
+    { "id": "vap-078", "q": "Coincide interval hands?", "opts": ["65 5/11 min", "60 min", "65 min", "12 min"], "c": 0, "d": "medium", "t": "clock", "source": "Practice - Coincide", "exp": ["12/11 hours."], "shortcut": "Twelve-by-eleven.", "pattern": "Relative lap." },
+    { "id": "vap-079", "q": "Better buy (8% stock)? 60 vs 120?", "opts": ["At 60 (yield 13.3%)", "At 120", "Equal", "Neither"], "c": 0, "d": "medium", "t": "stocks", "source": "Practice - Yield", "exp": ["8/60 > 8/120."], "shortcut": "Yield-decides.", "pattern": "Price-vs-dividend." },
+    { "id": "vap-080", "q": "Elevation 60 deg, ground 20m. Height?", "opts": ["20 root3 m", "20 m", "10 root3 m", "40 m"], "c": 0, "d": "medium", "t": "height", "source": "Practice - Elevation", "exp": ["h = 20 tan60 = 20 root3."], "shortcut": "Sixty-root-three.", "pattern": "Standard angle." },
+    { "id": "vap-081", "q": "Two successive 10% hikes. Net?", "opts": ["21%", "20%", "10%", "25%"], "c": 0, "d": "hard", "t": "percent", "source": "Practice - Chain", "exp": ["10+10+100/100 = 21."], "shortcut": "ab-adds.", "pattern": "Same-sign chain." },
+    { "id": "vap-082", "q": "SP 660 at 10% loss. CP?", "opts": ["733.3", "600", "726", "594"], "c": 0, "d": "hard", "t": "profit", "source": "Practice - Reverse", "exp": ["660/0.9 = 733.3."], "shortcut": "Divide-by-keep.", "pattern": "Loss reversal." },
+    { "id": "vap-083", "q": "A 8d, B 12d, C 24d together?", "opts": ["4 days", "5 days", "6 days", "3 days"], "c": 0, "d": "hard", "t": "work", "source": "Practice - Trio", "exp": ["1/8+1/12+1/24 = 6/24 = 1/4."], "shortcut": "Common-24.", "pattern": "Triple rates." },
+    { "id": "vap-084", "q": "A+B 4d, B+C 6d, A+C 12d. B alone?", "opts": ["6 days", "4 days", "12 days", "8 days"], "c": 0, "d": "hard", "t": "work", "source": "Practice - Pairs", "exp": ["2S = 1/4+1/6+1/12 = 1/2: S = 1/4.", "B = S-(A+C) = 1/4-1/12 = 1/6.", "T = 6 days."], "shortcut": "Halve-sum-minus-third.", "pattern": "Pair-system solve." },
+    { "id": "vap-085", "q": "Train 240m at 20 m/s passes bridge 360m. Time?", "opts": ["30s", "12s", "18s", "48s"], "c": 0, "d": "hard", "t": "trains", "source": "Practice - Bridge", "exp": ["600/20 = 30s."], "shortcut": "Add-then-divide.", "pattern": "Extended crossing." },
+    { "id": "vap-086", "q": "Boat 8, stream 2: up 60km time?", "opts": ["10h", "6h", "7.5h", "30h"], "c": 0, "d": "hard", "t": "boats", "source": "Practice - Time", "exp": ["Up speed 6: 60/6."], "shortcut": "Up-then-divide.", "pattern": "Stream timing." },
+    { "id": "vap-087", "q": "P(neither A 0.3 nor B 0.4, independent)?", "opts": ["0.42", "0.7", "0.12", "0.58"], "c": 0, "d": "hard", "t": "probability", "source": "Practice - Neither", "exp": ["0.7x0.6 = 0.42."], "shortcut": "Complement-product.", "pattern": "Neither rule." },
+    { "id": "vap-088", "q": "C(10,3)?", "opts": ["120", "720", "30", "60"], "c": 0, "d": "hard", "t": "pnc", "source": "Practice - Choose", "exp": ["10x9x8/6 = 120."], "shortcut": "Cancel-first.", "pattern": "Bigger choose." },
+    { "id": "vap-089", "q": "ARRANGE letters (7, R x2)?", "opts": ["2520", "5040", "1260", "360"], "c": 0, "d": "hard", "t": "pnc", "source": "Practice - Repeats", "exp": ["7!/2! = 2520."], "shortcut": "Divide-repeats.", "pattern": "Repeat division." },
+    { "id": "vap-090", "q": "Clock gains 5 min/hour. True 12h shows?", "opts": ["12h 36m", "12h", "11h 24m", "13h"], "c": 3, "d": "hard", "t": "clock", "source": "Practice - Gain", "exp": ["65 shown per true 60.", "12 true hours show 12x65/60 = 13h."], "shortcut": "Scale-by-65-60.", "pattern": "Fast-clock math." },
+    { "id": "vap-091", "q": "Alternate days A(6d),B(12d), A starts. Time?", "opts": ["8 days", "7 days", "9 days", "6 days"], "c": 0, "d": "hard", "t": "work", "source": "Practice - Alternate", "exp": ["2-day cycle: 1/6+1/12 = 1/4.", "3 cycles (6d) = 3/4. A day7: +1/6 = 11/12.", "B day8: +1/12 = 1. Done day 8."], "shortcut": "Cycle-then-spill.", "pattern": "Alternate-day method." },
+    { "id": "vap-092", "q": "Pipe A 3h fill, B 4h fill, C 6h empty. Net?", "opts": ["2.4h fill", "12h fill", "5h fill", "1.2h fill"], "c": 0, "d": "hard", "t": "pipes", "source": "Practice - Trio", "exp": ["1/3+1/4-1/6 = 5/12.", "Invert: 12/5 = 2.4h fill."], "shortcut": "Sign-then-invert.", "pattern": "Mixed trio." },
+    { "id": "vap-093", "q": "Boat 10, stream 4: 30km each way total?", "opts": ["50/7h (~7.14h)", "7.5h", "6h", "8h"], "c": 0, "d": "hard", "t": "boats", "source": "Practice - Round", "exp": ["Down 14: 30/14 = 15/7.", "Up 6: 30/6 = 5.", "Total 15/7+5 = 50/7 ~7.14h."], "shortcut": "Legs-separately.", "pattern": "Round-trip sum." },
+    { "id": "vap-094", "q": "P(sum 9, two dice)?", "opts": ["1/9", "1/6", "5/36", "1/12"], "c": 0, "d": "hard", "t": "probability", "source": "Practice - Dice", "exp": ["Ways 3-6,4-5,5-4,6-3: 4/36 = 1/9."], "shortcut": "Count-pairs.", "pattern": "Sum table." },
+    { "id": "vap-095", "q": "P(king or queen)?", "opts": ["2/13", "1/13", "1/2", "4/13"], "c": 0, "d": "hard", "t": "probability", "source": "Practice - Cards", "exp": ["8/52 = 2/13."], "shortcut": "Add-ranks.", "pattern": "Exclusive OR." },
+    { "id": "vap-096", "q": "P(both red, no replace)?", "opts": ["25/102", "1/2", "26/51", "1/4"], "c": 0, "d": "hard", "t": "probability", "source": "Practice - WithoutReplace", "exp": ["26/52 x 25/51 = 25/102."], "shortcut": "Shrink-denominator.", "pattern": "Dependent draws." },
+    { "id": "vap-097", "q": "Three-set: 100 total, neither 10. Overlap rule?", "opts": ["Add back triple once", "Ignore triple", "Subtract twice", "Zero"], "c": 0, "d": "hard", "t": "venn", "source": "Practice - Venn3", "exp": ["Inclusion-exclusion: +singles -pairs +triple."], "shortcut": "Alternate-signs.", "pattern": "Three-set form." },
+    { "id": "vap-098", "q": "Only-A (A=65, both=43)?", "opts": ["22", "65", "43", "108"], "c": 0, "d": "hard", "t": "venn", "source": "VEDA IIT Sample Pattern", "exp": ["65-43."], "shortcut": "Minus-overlap.", "pattern": "Only-region." },
+    { "id": "vap-099", "q": "Digits in 5^10 (log10 5 = 0.699)?", "opts": ["7", "6", "8", "10"], "c": 0, "d": "hard", "t": "logs", "source": "Practice - Digits", "exp": ["10x0.699 = 6.99: floor 6 +1."], "shortcut": "Floor-plus-one.", "pattern": "Digit count." },
+    { "id": "vap-100", "q": "Height 100m, elevation 30 deg. Distance?", "opts": ["100 root3", "100", "50", "200"], "c": 0, "d": "hard", "t": "height", "source": "Practice - Distance", "exp": ["d = 100/tan30 = 100 root3."], "shortcut": "Divide-by-tan.", "pattern": "Ground solve." },
+    { "id": "vap-101", "q": "VEDA Sample: 90 applied, 10 neither, 65 sales, 58 publishing. Both? [PYQ]", "opts": ["43", "33", "53", "23"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Aptitude (verified)", "exp": ["Inside circles: 90-10 = 80.", "65+58-80 = 43."], "shortcut": "Sum-minus-inside.", "pattern": "VEDA Venn answer." },
+    { "id": "vap-102", "q": "VEDA Sample: 6-day and 12-day workers together? [PYQ]", "opts": ["4 days", "9 days", "3 days", "6 days"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Aptitude (verified)", "exp": ["1/6+1/12 = 1/4.", "Invert: 4 days."], "shortcut": "Add-reciprocals.", "pattern": "VEDA work answer." },
+    { "id": "vap-103", "q": "VEDA Sample: Ram short Rs 2, Shyam Rs 24, together still short. Price (integer)? [PYQ]", "opts": ["Rs 25", "Rs 26", "Rs 24", "Rs 27"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Aptitude (verified)", "exp": ["2P-26<P: P<26.", "Both positive: P>24.", "Integer: 25."], "shortcut": "Bound-both-sides.", "pattern": "VEDA puzzle answer." },
+    { "id": "vap-104", "q": "VEDA Sample: train 15 m/s, station 36s, man 20s. Platform? [PYQ]", "opts": ["240m", "300m", "540m", "180m"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Aptitude (verified)", "exp": ["Train 15x20 = 300m.", "Total 15x36 = 540m.", "Platform 240m."], "shortcut": "Subtract-train.", "pattern": "VEDA train answer." },
+    { "id": "vap-105", "q": "VEDA Sample: x is 80% of y. y as % of 2x? [PYQ]", "opts": ["62.5", "80", "125", "40"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA IIT Sample Question - Aptitude (verified)", "exp": ["y/x = 1.25.", "1.25/2 = 62.5%."], "shortcut": "Flip-then-halve.", "pattern": "VEDA percent answer." },
+    { "id": "vap-106", "q": "Only-publishing (58 total, both 43)? [VEDA-pattern]", "opts": ["15", "43", "58", "22"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA Prelim Pattern Practice", "exp": ["58-43."], "shortcut": "Minus-overlap.", "pattern": "Only-region." },
+    { "id": "vap-107", "q": "Equal legs 40, 60 km/h. Average? [GATE-pattern PYQ]", "opts": ["48", "50", "52", "45"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (speed)", "exp": ["2x40x60/100 = 48."], "shortcut": "Harmonic-not-mean.", "pattern": "Mean trap." },
+    { "id": "vap-108", "q": "P(two sixes)? [GATE-pattern PYQ]", "opts": ["1/36", "1/6", "1/12", "2/6"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (dice)", "exp": ["1/6 x 1/6."], "shortcut": "Multiply-independent.", "pattern": "Joint dice." },
+    { "id": "vap-109", "q": "C(10,2)? [GATE-pattern PYQ]", "opts": ["45", "90", "20", "100"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (choose)", "exp": ["10x9/2."], "shortcut": "Pair-formula.", "pattern": "Choose drill." },
+    { "id": "vap-110", "q": "Odd days in 400 years? [GATE-pattern PYQ]", "opts": ["0", "1", "5", "3"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (calendar)", "exp": ["400-year cycle repeats exactly."], "shortcut": "Four-hundred-flat.", "pattern": "Cycle anchor." },
+    { "id": "vap-111", "q": "HCF(24,36)? [VEDA-pattern]", "opts": ["12", "72", "6", "18"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA Prelim Pattern Practice", "exp": ["Common divisors max 12."], "shortcut": "Twelve-divides-both.", "pattern": "HCF drill." },
+    { "id": "vap-112", "q": "Amount 110, 10%, 1yr. True discount? [VEDA-pattern]", "opts": ["10", "11", "9", "12"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA Mains Pattern Practice (TD)", "exp": ["110x10x1/110 = 10.", "PW = 100."], "shortcut": "Interest-on-present.", "pattern": "Closes the topic." }
+  ],
+  "category": "aptitude"
+}

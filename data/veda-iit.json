@@ -151,7 +151,7 @@
         "Programs: char-type check (digit/lower/upper/special), output tracing"
       ],
       "estimatedHours": 12,
-      "status": "outline",
+      "status": "ready",
       "examWeight": "Mains 20M"
     },
     {
@@ -172,7 +172,7 @@
         "Logical Reasoning (sales/publishing Venn, workers-together, book-price puzzle)"
       ],
       "estimatedHours": 12,
-      "status": "outline",
+      "status": "ready",
       "examWeight": "Prelim 10M + Mains 20M"
     },
     {

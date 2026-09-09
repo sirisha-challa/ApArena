@@ -1,0 +1,636 @@
+{
+  "id": "veda-c-programming",
+  "title": "C Programming - Tokens to Files, Pointers to Preprocessor",
+  "icon": "C",
+  "subtitle": "Character set to files: tokens, types, operators, control flow, functions, arrays, strings, pointers, malloc, struct/union/enum, files, argv, function pointers, preprocessor",
+  "days": "11-12",
+  "color": "#7C3AED",
+  "category": "c-programming",
+  "subtopics": [
+    "Introduction, Character set, ascii/unicode, Tokens, Operators, Data types, Scope",
+    "Flow Control Statements, Functions, Libraries",
+    "Arrays (1D/2D), Strings, Pointers, Dynamic Allocation",
+    "Structures, Bit Fields, Union, Enum, Bitwise ops",
+    "Text/Binary Files, Low level Programming",
+    "Command line Arguments, Function Pointers, Preprocessor Directives"
+  ],
+  "estimatedHours": 12,
+  "learningPath": [
+    { "sectionId": "tokens-types", "type": "concept" },
+    { "sectionId": "control-functions", "type": "concept" },
+    { "sectionId": "arrays-strings-pointers", "type": "concept" },
+    { "sectionId": "struct-union-bits", "type": "concept" },
+    { "sectionId": "files-argv", "type": "concept" },
+    { "sectionId": "fnptr-preproc", "type": "concept" }
+  ],
+  "readingSections": [
+    {
+      "id": "tokens-types",
+      "title": "1. Tokens, Character Set, Types, Operators (From Zero)",
+      "type": "concept",
+      "quickSummary": "Programs are built from tokens: keywords, identifiers, literals, operators. Types fix size and meaning. Operators have strict precedence with postfix on top.",
+      "content": [
+        "Character set: letters, digits, whitespace, and symbols plus escape sequences (\\n newline, \\t tab, \\0 null terminator, \\ backslash). ASCII codes 0-127 (digits 48-57, A-Z 65-90, a-z 97-122); Unicode extends the idea worldwide. VEDA's char-type program (digit/lower/upper/special) is ASCII-range logic.",
+        "Tokens: keywords (32 classic reserved words like int, if, while - cannot be identifiers), identifiers ([A-Za-z_][A-Za-z0-9_]*, case-sensitive, no leading digit), literals/constants (integer 10/010 octal/0x10 hex, float 3.14/1e-3, char 'a', string \"hi\" with hidden \\0), operators and punctuators.",
+        "Builtin types and typical sizes (x86-64 Linux, the exam assumption; short is 2): char 1, short 2, int 4, long 8, float 4, double 8, pointers 8 bytes. Modifiers signed/unsigned/short/long shift range. Scope: block locals die at }, globals live whole program, static locals persist between calls, extern shares across files.",
+        "Operators by precedence (high to low): postfix () [] . -> expr++ expr-- (HIGHEST - VEDA sample answer), then unary (! ~ ++x --x (type) * & sizeof, right-to-left), multiplicative (* / %), additive (+ -), shifts, relational, equality, bitwise (& ^ |), logical (&& ||), ternary (?:), assignment (right-to-left), comma (lowest). Associativity breaks ties: most group left-to-right; unary/ternary/assignment group right-to-left."
+      ],
+      "subsections": [
+        {
+          "title": "The two sample blanks, solved",
+          "content": [
+            "Memory of short int: typically 2 bytes (16 bits). State the platform assumption; VEDA expects 2.",
+            "Highest precedence above all operators: postfix - function call (), subscript [], member . ->, postfix ++/--. Any of () or [] is the accepted answer."
+          ],
+          "example": {
+            "prompt": "Memory of short int? Highest-precedence operator?",
+            "steps": [
+              "short is 16-bit on the assumed platform: 2 bytes.",
+              "Postfix group (function call, subscript) binds tightest."
+            ],
+            "answer": "2 bytes; () / [] postfix group"
+          }
+        },
+        {
+          "title": "Literal traps",
+          "content": [
+            "Leading 0 means octal: 010 is 8, not 10. 0x prefix is hex.",
+            "'a' is an int-valued char constant; \"a\" is a 2-byte array (a plus \\0).",
+            "Integer division truncates: 7/2 is 3. Use 7.0/2 for 3.5."
+          ]
+        },
+        {
+          "title": "Scope and storage in one paragraph",
+          "content": [
+            "auto locals: born and die per block. static locals: born once, remember. register: hint only. extern/global: shared, zero-initialised.",
+            "Uninitialised locals hold garbage - the classic output-question trap."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Tokens: keyword/identifier/literal/operator.",
+        "short 2 bytes (assumed); int 4; pointer 8.",
+        "Postfix () [] highest; comma lowest."
+      ],
+      "companyNote": "Both official C sample blanks live here - free marks if memorised."
+    },
+    {
+      "id": "control-functions",
+      "title": "2. Control Flow and Functions",
+      "type": "concept",
+      "quickSummary": "if/switch choose, loops repeat, break/continue steer. Functions declare, define, and call - recursion stacks frames until the base case.",
+      "content": [
+        "Selection: if/else-if/else chains conditions; switch jumps by constant integer/char cases with break to stop fall-through (missing break falls into next case - favourite output trap). Loops: while checks first (zero trips possible), do-while checks last (runs once), for packs init/test/step. break exits the loop/switch, continue skips to next iteration, goto jumps (avoid).",
+        "Functions: declaration/prototype (return type, name, params) before use; definition holds the body; call/ invocation passes arguments by value in C (copies - callee cannot change caller ints, but CAN change pointed-to memory). Return delivers one value (or none for void). Libraries (stdio.h, stdlib.h, string.h, math.h with -lm) declare ready-made functions.",
+        "Recursion: function calling itself with a shrinking argument plus a base case that stops. Each call pushes a frame (locals + return address); base case unwinds with answers. Trace with a call tree or stack table, never by guessing. Missing base = stack overflow.",
+        "VEDA char-type program shape: read a char (getchar/scanf %c), test ranges ('0'-'9' digit, 'a'-'z' lower, 'A'-'Z' upper, else special) with if/else-if, print the class. ctype.h gives isdigit/islower/isupper/ispunct directly."
+      ],
+      "subsections": [
+        {
+          "title": "Switch fall-through drill",
+          "content": [
+            "No break: execution slides into the next case body, including default.",
+            "Trace case-by-case downward from the matched label, collecting prints.",
+            "Deliberate fall-through groups cases (1,2,3 sharing code) - read carefully."
+          ],
+          "example": {
+            "prompt": "switch(2){case 1:printf(\"A\");case 2:printf(\"B\");case 3:printf(\"C\");}?",
+            "steps": [
+              "Match case 2: print B.",
+              "No break: fall to case 3: print C.",
+              "End of switch."
+            ],
+            "answer": "BC"
+          }
+        },
+        {
+          "title": "Recursion trace habit",
+          "content": [
+            "Write the stack: args per frame, return values bubbling up.",
+            "Count calls for complexity talk (factorial n calls, naive fib exponential).",
+            "Check base first: n<=1 return before recursing."
+          ]
+        },
+        {
+          "title": "Call-by-value consequence",
+          "content": [
+            "swap(a,b) with plain ints cannot work - copies swap, originals stay.",
+            "swap(&a,&b) with pointers works - dereference writes caller memory.",
+            "Arrays decay to pointers, so array arguments CAN be modified."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "Missing break falls through. while-first, do-once.",
+        "Args by value; pointers share memory.",
+        "Recursion needs shrinking + base."
+      ],
+      "companyNote": "Output tracing on switch/loops/recursion is the mains C core."
+    },
+    {
+      "id": "arrays-strings-pointers",
+      "title": "3. Arrays, Strings, Pointers, Dynamic Memory",
+      "type": "concept",
+      "quickSummary": "Arrays are contiguous same-type cells. Strings are char arrays ending in null. Pointers hold addresses; p+1 steps one element. malloc asks the heap at runtime.",
+      "content": [
+        "Single-dimensional: int a[5] holds a[0..4]; out-of-range access is undefined (no bounds check - silent corruption). Initialiser int a[5]={1,2} zeroes the rest. Multidimensional int m[2][3] is row-major: m[i][j] sits at base + (i*3+j)*4 bytes; rows are contiguous.",
+        "Strings: char s[]=\"hi\" stores h,i,\\0 (3 bytes). %s prints to \\0; missing terminator overruns. string.h: strlen (length without \\0), strcpy/strncpy copy, strcat/strncat join, strcmp (0 equal, <0 less, >0 greater), all byte-wise by ASCII.",
+        "Pointers: int *p = &x stores x's address; *p reads/writes x. Arithmetic scales by type: p+1 moves sizeof(*p) bytes. Array name decays to &a[0] (except sizeof/&): a[i] IS *(a+i). Pointer subtraction gives element distance. char * vs char[]: pointer reassignable, array fixed base.",
+        "Dynamic: malloc(n) raw bytes (garbage), calloc(n,sz) zeroed, realloc grows/moves, free returns. Always check NULL, free exactly once, never touch after free (dangling). sizeof computes sizes at compile time (operator, not function)."
+      ],
+      "subsections": [
+        {
+          "title": "The five pointer facts",
+          "content": [
+            "& gives address, * follows it. p+1 steps an element, not a byte.",
+            "a[i] equals *(a+i). &a[i] equals a+i.",
+            "Strings end at the first \\0 - strlen counts before it.",
+            "Uninitialised pointers (wild) must never be dereferenced.",
+            "free(NULL) is safe; double-free is undefined."
+          ],
+          "example": {
+            "prompt": "int a[5]={10,20,30,40,50}; int *p=a+2; *p?",
+            "steps": [
+              "a decays to &a[0].",
+              "a+2 points at a[2] = 30.",
+              "Dereference: 30."
+            ],
+            "answer": "$30$"
+          }
+        },
+        {
+          "title": "2D address drill",
+          "content": [
+            "int m[2][3], base B, ints 4 bytes: &m[1][2] = B + (1*3+2)*4 = B+20.",
+            "Row i starts at B + i*cols*size. Columns add one element each.",
+            "Passing m to functions needs all dims but first: f(int m[][3])."
+          ]
+        },
+        {
+          "title": "malloc pattern",
+          "content": [
+            "int *p = malloc(n*sizeof *p); if(!p) fail-path; use; free(p); p=NULL.",
+            "sizeof *p (not sizeof(int)) survives type changes.",
+            "calloc for zeroed arrays; realloc result into a temp (keeps old block on failure)."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "a[i] = *(a+i). Strings end \\0.",
+        "p+1 steps sizeof(*p). free once, NULL after.",
+        "Row-major: base + (i*cols+j)*size."
+      ],
+      "companyNote": "Pointer-plus-array output questions dominate C mains."
+    },
+    {
+      "id": "struct-union-bits",
+      "title": "4. Structures, Unions, Enums, Bit-Fields, Bitwise Ops",
+      "type": "concept",
+      "quickSummary": "struct groups different types (size = padded sum). union overlays them (size = largest). enum names ints. Bitwise ops touch single bits.",
+      "content": [
+        "struct {int id; char g; float f;} packs fields in order, each aligned: total is the padded sum (alignment may insert holes; typical sizes: 4+1+pad3+4 = 12). Access with . (object) and -> (pointer). Assignment copies whole structs; passing copies unless pointer given.",
+        "union {int i; float f; char c[4];} shares ONE memory block sized to the largest member (here 4): writing one field clobbers the others - read only the last-written field (type punning aside). enum {RED, GREEN=5, BLUE} names ints (0, 5, 6) for readable states and switch labels.",
+        "Bit-fields struct {unsigned a:3; unsigned b:5;} pack into ints with declared widths - layout is implementation-defined (exam sticks to width sums and simple packing). Bitwise: & and, | or, ^ xor, ~ not, << left shift (x*2^k), >> right shift. Masks: set bit (x|mask), clear (x&~mask), toggle (x^mask), test ((x>>k)&1).",
+        "Precedence caution: & and | sit BELOW ==/!=, so (x & mask) == value needs the parentheses - a legendary bug source and exam trap."
+      ],
+      "subsections": [
+        {
+          "title": "struct vs union in one line each",
+          "content": [
+            "struct: every field has its own slot (sum + padding).",
+            "union: one shared slot (max of members).",
+            "Exam: sizeof each, and which read-after-write is valid."
+          ],
+          "example": {
+            "prompt": "struct{char c; int i;} vs union{char c; int i;} typical sizes?",
+            "steps": [
+              "struct: 1 + pad3 + 4 = 8.",
+              "union: max(1,4) = 4."
+            ],
+            "answer": "struct 8, union 4"
+          }
+        },
+        {
+          "title": "Shift facts",
+          "content": [
+            "x<<k multiplies by 2^k (unsigned). x>>k divides (logical for unsigned, arithmetic for signed negatives - implementation note).",
+            "Shift counts >= width are undefined - never shift 32 on int.",
+            "Masks are usually hex: 0x0F nibble, 0xFF byte."
+          ]
+        },
+        {
+          "title": "Enum habits",
+          "content": [
+            "Defaults count from 0; explicit = resets the counter.",
+            "Enums are ints: arithmetic allowed but style frowns.",
+            "switch over enums with all cases needs no default (but keep one defensively)."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "struct sums+pads; union maxes.",
+        "set |, clear &~, toggle ^, test shift-&1.",
+        "Parenthesise & | with ==."
+      ],
+      "companyNote": "sizeof struct/union and mask ops are regular one-markers."
+    },
+    {
+      "id": "files-argv",
+      "title": "5. Files, Command-Line Arguments, Low-Level Notes",
+      "type": "concept",
+      "quickSummary": "fopen mode strings decide read/write/append and text/binary. main takes argc/argv. Binary I/O moves raw bytes with fread/fwrite.",
+      "content": [
+        "Text modes: r (read, must exist), w (write, truncate/create), a (append/create); add + for update (r+/w+/a+). Binary adds b (rb/wb/ab): no newline translation (vital on Windows; identical on Linux). Always check FILE* for NULL, fclose when done (flushes buffers).",
+        "Text I/O: fprintf/fscanf with formats (%d %f %s %c), fgets/fputs line-safe (fgets keeps \\n, guards length - prefer over gets which is removed/dangerous), fgetc/fputc chars, EOF (-1) ends loops: while((c=fgetc(fp))!=EOF). Binary I/O: fread(ptr,size,n,fp)/fwrite return item counts; fseek(fp,offset,SEEK_SET/CUR/END)+ftell reposition/measure; rewind resets.",
+        "Command line: int main(int argc, char *argv[]) - argc counts program name as argv[0]; arguments are strings (atoi/atof/strtol convert). prog 10 hi: argc=3, argv[1]=\"10\".",
+        "Low-level notes for the syllabus line: file descriptors (open/read/write/close, unbuffered) sit under stdio streams; exit codes return to OS; stderr unbuffered for errors. One line in answers suffices unless asked deeper."
+      ],
+      "subsections": [
+        {
+          "title": "Mode table",
+          "content": [
+            "r: read text, file must exist. w: write text, wiped/created. a: append text.",
+            "r+/w+/a+: read+write variants (w+ still truncates). rb/wb/ab: binary twins.",
+            "Wrong mode is the top file bug (write to r-stream fails NULL or UB)."
+          ],
+          "example": {
+            "prompt": "Open log.txt to add lines, keep old content?",
+            "steps": [
+              "Append preserves: a.",
+              "Text: no b needed on Linux."
+            ],
+            "answer": "fopen(\"log.txt\",\"a\")"
+          }
+        },
+        {
+          "title": "EOF loop done right",
+          "content": [
+            "int c (not char) holds EOF (-1) distinctly from byte 255.",
+            "while((c=fgetc(fp))!=EOF) processes every byte exactly once.",
+            "feof checks AFTER a failed read, not before."
+          ]
+        },
+        {
+          "title": "argv indexing",
+          "content": [
+            "argv[0] is the program name. User args start at argv[1].",
+            "Count check: need 2 args means argc==3.",
+            "Convert explicitly: numbers arrive as text."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "r/w/a + b for binary; + for update; NULL-check; fclose.",
+        "int c for EOF; fgets over gets.",
+        "argv[0] is program; convert strings."
+      ],
+      "companyNote": "File modes + argv indexing are quick prelims marks."
+    },
+    {
+      "id": "fnptr-preproc",
+      "title": "6. Function Pointers, Preprocessor, Output-Tracing Method",
+      "type": "concept",
+      "quickSummary": "Function pointers call through variables (callbacks, dispatch tables). The preprocessor edits text before compiling (#include/#define/#if). Trace outputs with a variable table, never by feel.",
+      "content": [
+        "Function pointer: int (*fp)(int,int) points at matching functions (fp = add; fp(2,3) calls add). Arrays of them build menus/dispatch; qsort-style callbacks take comparators. Signatures must match exactly (return + params).",
+        "Preprocessor: #include pastes headers, #define MACRO text (with classic paren rule: #define SQ(x) ((x)*(x)) - every use and param parenthesised, else precedence/double-eval bugs), #define constants, #ifdef/#ifndef/#endif + #pragma once guard headers, #if for config, predefined __FILE__/__LINE__/__DATE__. Macros are text substitution BEFORE compiling - no type checks, no sequence points between re-evaluated args (SQ(i++) increments twice).",
+        "Output-tracing method for mains: (1) box every variable with current value, (2) walk statements in order including loop back-edges, (3) update boxes per statement, (4) copy exact printf text incl. spaces/newlines, (5) recheck ++/-- positions and break/continue targets. Two passes beat one clever glance.",
+        "Scope of this section in VEDA: recognise declarations (especially (*fp) vs *f() - pointer-to-function vs function-returning-pointer), predict small macro expansions, and write the char-class program cleanly."
+      ],
+      "subsections": [
+        {
+          "title": "Declaration reading trick",
+          "content": [
+            "int (*fp)(int) - parens bind *: pointer to function.",
+            "int *f(int) - []/() bind tighter: function returning int*.",
+            "Clockwise/spiral rule resolves hairy ones."
+          ],
+          "example": {
+            "prompt": "int (*fp)(int,int); fp = add; fp(2,3)?",
+            "steps": [
+              "fp points at add.",
+              "Call through: add(2,3) = 5."
+            ],
+            "answer": "$5$"
+          }
+        },
+        {
+          "title": "Macro paren rule",
+          "content": [
+            "#define SQ(x) ((x)*(x)): SQ(2+1) becomes ((2+1)*(2+1)) = 9, not 2+1*2+1 = 5.",
+            "Side effects double: SQ(i++) is undefined-ish - never do it.",
+            "Prefer static inline functions for type safety where allowed."
+          ]
+        },
+        {
+          "title": "Char-class program (sample answer shape)",
+          "content": [
+            "Read int c = getchar(). Test '0'-'9', 'a'-'z', 'A'-'Z', else special.",
+            "Print exactly one class word. Handle EOF (-1) gracefully.",
+            "ctype.h one-liners (isdigit etc.) are acceptable equivalents."
+          ]
+        }
+      ],
+      "quickRevision": [
+        "(*fp) points; *f() returns pointer.",
+        "Macros: parenthesise everything.",
+        "Trace with variable boxes."
+      ],
+      "companyNote": "Declaration-reading + macro expansion are the two theory marks here."
+    }
+  ],
+  "formulas": [
+    {
+      "id": "sizes",
+      "title": "Typical Type Sizes (x86-64 Linux assumption)",
+      "formula": { "latex": "\\text{char}=1,\\ \\text{short}=2,\\ \\text{int}=4,\\ \\text{long}=8,\\ \\text{ptr}=8", "text": "Bytes per type on the assumed platform. short is 2 (the sample blank). State the assumption." },
+      "whenToUse": "sizeof blanks, struct totals, malloc counts.",
+      "explanation": ["char 1, short 2, int 4, long 8, float 4, double 8, pointer 8.", "Signedness does not change size."],
+      "example": {
+        "prompt": "short s; sizeof(s)?",
+        "steps": ["short is 16-bit.", "2 bytes."],
+        "answer": "$2$"
+      },
+      "memoryTip": "1-2-4-8 ladder (char-short-int-long).",
+      "commonMistake": "Assuming sizes are universal - they are platform ABI."
+    },
+    {
+      "id": "precedence",
+      "title": "Precedence Ladder",
+      "formula": { "latex": "\\text{postfix} > \\text{unary} > \\text{*/\\%} > \\text{+-} > \\text{shifts} > \\text{rel} > \\text{eq} > \\text{\\&} > \\text{^} > \\text{|} > \\text{\\&\\&} > \\text{||} > \\text{?:} > \\text{=} > \\text{,}", "text": "Postfix () [] . -> ++ -- bind tightest. Comma loosest. Unary/ternary/assignment group right-to-left." },
+      "whenToUse": "Any expression-evaluation or output question.",
+      "explanation": ["Evaluate highest level first.", "Same level: associativity decides.", "Parenthesise to be sure."],
+      "example": {
+        "prompt": "Highest of all?",
+        "steps": ["Postfix group: () [] . -> ++ --."],
+        "answer": "Postfix () / []"
+      },
+      "memoryTip": "Postfix-peaks, comma-creeps.",
+      "commonMistake": "& below == : parenthesise bit tests."
+    },
+    {
+      "id": "array-addr",
+      "title": "Array Address Arithmetic",
+      "formula": { "latex": "a[i] = *(a+i), \\quad \\&a[i][j] = base + (i\\times cols+j)\\times size", "text": "Indexing is pointer addition scaled by element size. 2D is row-major." },
+      "whenToUse": "Address/offset and 2D layout questions.",
+      "explanation": ["p+1 steps sizeof(*p).", "Row i starts at base+i*cols*size."],
+      "example": {
+        "prompt": "int m[2][3] base B. &m[1][2]?",
+        "steps": ["(1x3+2)x4 = 20.", "B+20."],
+        "answer": "$B+20$"
+      },
+      "memoryTip": "Scale-then-add.",
+      "commonMistake": "Forgetting sizeof scale."
+    },
+    {
+      "id": "string-lib",
+      "title": "String Library Facts",
+      "formula": { "latex": "\\text{strlen} = \\text{chars before } \\backslash 0, \\quad \\text{strcmp}=0 \\iff equal", "text": "strlen excludes terminator. strcpy/strcat copy/join. strcmp orders by bytes." },
+      "whenToUse": "String output and length questions.",
+      "explanation": ["\"hi\" occupies 3 bytes.", "%s stops at first null."],
+      "example": {
+        "prompt": "strlen(\"hi\")?",
+        "steps": ["h,i then null.", "Count 2."],
+        "answer": "$2$"
+      },
+      "memoryTip": "Length-without-null.",
+      "commonMistake": "Off-by-one with the terminator."
+    },
+    {
+      "id": "malloc-pattern",
+      "title": "Allocation Pattern",
+      "formula": { "latex": "p = malloc(n\\times sizeof(*p));\\ check;\\ use;\\ free;\\ NULL", "text": "Ask, verify, use, release, clear. calloc zeroes, realloc resizes via temp." },
+      "whenToUse": "Dynamic-memory correctness questions.",
+      "explanation": ["malloc garbage, calloc zero.", "free once, NULL after."],
+      "example": {
+        "prompt": "After free(p), use p?",
+        "steps": ["Dangling: undefined.", "Set NULL at free."],
+        "answer": "Never touch"
+      },
+      "memoryTip": "Ask-check-use-free-null.",
+      "commonMistake": "Double free / use after free."
+    },
+    {
+      "id": "struct-union-size",
+      "title": "Struct vs Union Size",
+      "formula": { "latex": "size(struct) = padded\\ sum, \\quad size(union) = max", "text": "Struct aligns each field (holes possible). Union overlays all fields." },
+      "whenToUse": "sizeof questions.",
+      "explanation": ["char+int struct often 8 (pad 3).", "Same union is 4."],
+      "example": {
+        "prompt": "struct{char c;int i;} typical?",
+        "steps": ["1 + pad3 + 4 = 8."],
+        "answer": "$8$"
+      },
+      "memoryTip": "Struct sums, union maxes.",
+      "commonMistake": "Ignoring alignment padding."
+    },
+    {
+      "id": "bitmasks",
+      "title": "Bit Masks",
+      "formula": { "latex": "set: x|m, \\quad clear: x\\&\\sim m, \\quad toggle: x\\oplus m, \\quad test: (x>>k)\\&1", "text": "One-line single-bit surgery. Parenthesise & | against ==." },
+      "whenToUse": "Flag manipulation questions.",
+      "explanation": ["Mask has 1s where acting.", "~ flips the mask for clearing."],
+      "example": {
+        "prompt": "Clear bit 2 of x?",
+        "steps": ["Mask 1<<2.", "x & ~mask."],
+        "answer": "$x = x \\& \\sim(1<<2)$"
+      },
+      "memoryTip": "Set-or, clear-and-not, flip-xor.",
+      "commonMistake": "x & mask == v parses as x & (mask==v)."
+    },
+    {
+      "id": "file-modes",
+      "title": "File Mode Table",
+      "formula": { "latex": "\\text{r/w/a} + b + : read/write/append, binary, update", "text": "r needs file, w truncates, a appends. + adds update. b picks binary. NULL-check, fclose." },
+      "whenToUse": "File-open questions.",
+      "explanation": ["Append keeps old bytes.", "w+ still wipes first."],
+      "example": {
+        "prompt": "Add lines, keep old?",
+        "steps": ["Append mode a."],
+        "answer": "fopen(f,\"a\")"
+      },
+      "memoryTip": "r-reads, w-wipes, a-appends.",
+      "commonMistake": "Writing through an r stream."
+    },
+    {
+      "id": "argv-idx",
+      "title": "argv Indexing",
+      "formula": { "latex": "argc \\ge 1, \\quad argv[0] = program, \\quad user = argv[1..]", "text": "Count includes program name. Arguments arrive as strings." },
+      "whenToUse": "Command-line questions.",
+      "explanation": ["Need 2 args: argc==3.", "Convert with atoi/strtol."],
+      "example": {
+        "prompt": "prog 10 hi: argc? argv[1]?",
+        "steps": ["3 items total.", "argv[1] is \"10\"."],
+        "answer": "$argc=3$, $argv[1]$=\"10\""
+      },
+      "memoryTip": "Zero-is-program.",
+      "commonMistake": "Reading argv[argc] (NULL)."
+    },
+    {
+      "id": "macro-paren",
+      "title": "Macro Parenthesisation",
+      "formula": { "latex": "\\#define\\ F(x)\\ ((x)\\ op\\ (x))", "text": "Parenthesise the body and every parameter use. Never pass side effects." },
+      "whenToUse": "Macro expansion prediction.",
+      "explanation": ["Text substitution precedes compiling.", "SQ(2+1) must give 9."],
+      "example": {
+        "prompt": "#define SQ(x) ((x)*(x)). SQ(2+1)?",
+        "steps": ["Expands ((2+1)*(2+1)).", "9."],
+        "answer": "$9$"
+      },
+      "memoryTip": "Parens-everywhere.",
+      "commonMistake": "SQ(i++) double-increments."
+    }
+  ],
+  "practiceProblems": {
+    "sizes": [
+      { "q": "short s; sizeof(s) (assumed platform)?", "s": ["short is 16-bit"], "a": "$2$ bytes" },
+      { "q": "Highest precedence operator group?", "s": ["Postfix: () [] . -> ++ --"], "a": "Postfix () / []" },
+      { "q": "010 in C equals?", "s": ["Leading 0 is octal: 8"], "a": "$8$" },
+      { "q": "7/2 in C?", "s": ["Integer division truncates"], "a": "$3$" }
+    ],
+    "control-functions": [
+      { "q": "switch(2){case 1:A;case 2:B;case 3:C;} prints?", "s": ["Match 2: B", "Fall through: C"], "a": "BC" },
+      { "q": "swap(a,b) plain ints. Originals?", "s": ["Copies swap only"], "a": "Unchanged" },
+      { "q": "Classify input 'g' (digit/lower/upper/special)?", "s": ["Not digit", "a-z range: lower"], "a": "Lower case" },
+      { "q": "Classify input '5'?", "s": ["0-9 range"], "a": "Digit" },
+      { "q": "Classify input '@'?", "s": ["No alphanumeric range"], "a": "Special character" }
+    ],
+    "array-addr": [
+      { "q": "int a[5]={10,20,30,40,50}; *(a+2)?", "s": ["a+2 is &a[2]", "Value 30"], "a": "$30$" },
+      { "q": "int m[2][3] base B (4-byte int). &m[1][2]?", "s": ["(1x3+2)x4 = 20"], "a": "$B+20$" },
+      { "q": "strlen(\"hi\")?", "s": ["h,i then null"], "a": "$2$" },
+      { "q": "strcmp(\"ab\",\"ac\") sign?", "s": ["b<c at last byte: negative"], "a": "Negative" }
+    ],
+    "struct-union-size": [
+      { "q": "struct{char c;int i;} typical size?", "s": ["1+pad3+4 = 8"], "a": "$8$" },
+      { "q": "union{char c;int i;} size?", "s": ["max(1,4) = 4"], "a": "$4$" },
+      { "q": "Clear bit 2 of x?", "s": ["x & ~(1<<2)"], "a": "Mask clear" },
+      { "q": "Set bit 0 of x?", "s": ["x | 1"], "a": "Mask set" }
+    ],
+    "file-modes": [
+      { "q": "Append lines keeping old content?", "s": ["Mode a"], "a": "fopen(f,\"a\")" },
+      { "q": "prog 10 hi: argc and argv[1]?", "s": ["3 items", "argv[1] is 10 as text"], "a": "$argc=3$" },
+      { "q": "Read bytes till end idiom?", "s": ["int c; while((c=fgetc(fp))!=EOF)"], "a": "EOF loop" }
+    ],
+    "macro-paren": [
+      { "q": "#define SQ(x) ((x)*(x)). SQ(2+1)?", "s": ["((2+1)*(2+1)) = 9"], "a": "$9$" },
+      { "q": "int (*fp)(int,int); fp=add; fp(2,3) with add?", "s": ["Calls add(2,3)"], "a": "$5$" },
+      { "q": "int *f(int): meaning?", "s": ["Function returning int pointer"], "a": "Function, not pointer" }
+    ]
+  },
+  "mcqs": [
+    { "id": "vcp-001", "q": "Which is a keyword?", "opts": ["int", "value", "total", "data"], "c": 0, "d": "easy", "t": "tokens", "source": "VEDA IIT Prelim Pattern", "exp": ["int is reserved.", "Others are valid identifiers."], "shortcut": "Type-words reserved.", "pattern": "Keyword spotting." },
+    { "id": "vcp-002", "q": "Valid identifier?", "opts": ["_total1", "1total", "int", "my-var"], "c": 0, "d": "easy", "t": "tokens", "source": "VEDA IIT Prelim Pattern", "exp": ["Letters/underscore start, then alnum/underscore.", "int is reserved; hyphen illegal; digit start illegal."], "shortcut": "Letter-underscore start.", "pattern": "Identifier rules." },
+    { "id": "vcp-003", "q": "Size of short int (assumed)?", "opts": ["2 bytes", "4 bytes", "1 byte", "8 bytes"], "c": 0, "d": "easy", "t": "sizes", "source": "VEDA IIT Sample (verified blank)", "exp": ["16-bit short on assumed platform."], "shortcut": "Short-two.", "pattern": "Sample blank." },
+    { "id": "vcp-004", "q": "Highest precedence?", "opts": ["Postfix () []", "Assignment =", "Comma ,", "Logical ||"], "c": 0, "d": "easy", "t": "precedence", "source": "VEDA IIT Sample (verified blank)", "exp": ["Function call/subscript bind tightest."], "shortcut": "Postfix-peaks.", "pattern": "Sample blank." },
+    { "id": "vcp-005", "q": "Size of char?", "opts": ["1 byte", "2 bytes", "4 bytes", "8 bytes"], "c": 0, "d": "easy", "t": "sizes", "source": "Practice - Sizes", "exp": ["char is one byte by definition."], "shortcut": "Char-one.", "pattern": "Size ladder." },
+    { "id": "vcp-006", "q": "Size of int (assumed)?", "opts": ["4 bytes", "2 bytes", "8 bytes", "1 byte"], "c": 0, "d": "easy", "t": "sizes", "source": "Practice - Sizes", "exp": ["32-bit int on assumed platform."], "shortcut": "Int-four.", "pattern": "Size ladder." },
+    { "id": "vcp-007", "q": "010 in C equals?", "opts": ["8", "10", "16", "0"], "c": 0, "d": "easy", "t": "literals", "source": "Practice - Literals", "exp": ["Leading 0 is octal: 1x8+0."], "shortcut": "Zero-leads-octal.", "pattern": "Literal trap." },
+    { "id": "vcp-008", "q": "0x10 in C equals?", "opts": ["16", "10", "8", "32"], "c": 0, "d": "easy", "t": "literals", "source": "Practice - Literals", "exp": ["Hex: 1x16+0."], "shortcut": "0x-is-hex.", "pattern": "Twin trap." },
+    { "id": "vcp-009", "q": "7/2 in C?", "opts": ["3", "3.5", "4", "2"], "c": 0, "d": "easy", "t": "operators", "source": "Practice - Operators", "exp": ["Integer division truncates."], "shortcut": "Int-div-truncates.", "pattern": "Division trap." },
+    { "id": "vcp-010", "q": "Lowest precedence?", "opts": ["Comma", "Assignment", "Postfix", "Unary"], "c": 0, "d": "easy", "t": "precedence", "source": "Practice - Precedence", "exp": ["Comma separates last."], "shortcut": "Comma-creeps.", "pattern": "Ladder ends." },
+    { "id": "vcp-011", "q": "while vs do-while?", "opts": ["do runs at least once", "Same always", "while runs once", "do never runs"], "c": 0, "d": "easy", "t": "loops", "source": "Practice - Loops", "exp": ["do checks after body."], "shortcut": "do-does-once.", "pattern": "Loop entry." },
+    { "id": "vcp-012", "q": "Missing break in switch?", "opts": ["Falls to next case", "Exits switch", "Compile error", "Restarts"], "c": 0, "d": "easy", "t": "switch", "source": "VEDA IIT Mains Pattern", "exp": ["Execution slides down cases."], "shortcut": "No-break-slides.", "pattern": "Fall-through core." },
+    { "id": "vcp-013", "q": "Array int a[5] valid index?", "opts": ["0 to 4", "1 to 5", "0 to 5", "-1 to 4"], "c": 0, "d": "easy", "t": "arrays", "source": "Practice - Arrays", "exp": ["Zero-based, size 5 ends at 4."], "shortcut": "N-minus-one.", "pattern": "Bounds habit." },
+    { "id": "vcp-014", "q": "String end marker?", "opts": ["Null character", "Space", "Newline", "Semicolon"], "c": 0, "d": "easy", "t": "strings", "source": "Practice - Strings", "exp": ["Functions scan to null."], "shortcut": "Null-terminates.", "pattern": "String invariant." },
+    { "id": "vcp-015", "q": "strlen of hello?", "opts": ["5", "6", "4", "0"], "c": 0, "d": "easy", "t": "strings", "source": "Practice - Strings", "exp": ["Five letters before null."], "shortcut": "Count-without-null.", "pattern": "Length basic." },
+    { "id": "vcp-016", "q": "strcmp equal strings gives?", "opts": ["0", "1", "-1", "Null"], "c": 0, "d": "easy", "t": "strings", "source": "Practice - Strings", "exp": ["Zero means equal."], "shortcut": "Zero-equal.", "pattern": "Compare convention." },
+    { "id": "vcp-017", "q": "&x gives?", "opts": ["Address of x", "Value of x", "Size of x", "Type of x"], "c": 0, "d": "easy", "t": "pointers", "source": "Practice - Pointers", "exp": ["Address-of operator."], "shortcut": "Ampersand-address.", "pattern": "Pointer pair." },
+    { "id": "vcp-018", "q": "*p gives (p valid)?", "opts": ["Value at address", "Address itself", "Size", "Garbage always"], "c": 0, "d": "easy", "t": "pointers", "source": "Practice - Pointers", "exp": ["Dereference follows pointer."], "shortcut": "Star-follows.", "pattern": "Twin operator." },
+    { "id": "vcp-019", "q": "malloc returns? Check?", "opts": ["Bytes or NULL; check NULL", "Always valid", "Zeroed array", "File handle"], "c": 0, "d": "easy", "t": "malloc", "source": "Practice - malloc", "exp": ["Heap may fail: test pointer."], "shortcut": "Ask-then-check.", "pattern": "Allocation discipline." },
+    { "id": "vcp-020", "q": "free(p) then use p?", "opts": ["Never (dangling)", "Always safe", "Faster", "Zeroed"], "c": 0, "d": "easy", "t": "malloc", "source": "Practice - malloc", "exp": ["Memory returned; contents undefined."], "shortcut": "Free-means-hands-off.", "pattern": "Dangling rule." },
+    { "id": "vcp-021", "q": "struct vs union size?", "opts": ["Struct sums, union maxes", "Both sum", "Both max", "Equal always"], "c": 0, "d": "easy", "t": "struct", "source": "Practice - Struct", "exp": ["Struct separate slots; union shared."], "shortcut": "Sum-vs-max.", "pattern": "Layout core." },
+    { "id": "vcp-022", "q": "enum {A, B=5, C} values?", "opts": ["0, 5, 6", "1, 5, 6", "0, 5, 5", "1, 2, 3"], "c": 0, "d": "easy", "t": "enum", "source": "Practice - Enum", "exp": ["Count from 0; = resets counter."], "shortcut": "Zero-start.", "pattern": "Enum counting." },
+    { "id": "vcp-023", "q": "fopen append mode?", "opts": ["a", "r", "w", "x"], "c": 0, "d": "easy", "t": "files", "source": "Practice - Files", "exp": ["Append keeps old bytes."], "shortcut": "a-appends.", "pattern": "Mode table." },
+    { "id": "vcp-024", "q": "fopen write mode?", "opts": ["w", "r", "a", "q"], "c": 0, "d": "easy", "t": "files", "source": "Practice - Files", "exp": ["Write truncates/creates."], "shortcut": "w-wipes.", "pattern": "Twin mode." },
+    { "id": "vcp-025", "q": "argv[0] is?", "opts": ["Program name", "First argument", "Count", "Null always"], "c": 0, "d": "easy", "t": "argv", "source": "VEDA IIT Mains Pattern", "exp": ["Zero slot holds program."], "shortcut": "Zero-is-program.", "pattern": "Index base." },
+    { "id": "vcp-026", "q": "#include does?", "opts": ["Pastes header text", "Compiles separately", "Links libraries", "Runs program"], "c": 0, "d": "easy", "t": "preproc", "source": "Practice - Preprocessor", "exp": ["Textual paste before compiling."], "shortcut": "Include-pastes.", "pattern": "Preprocessor role." },
+    { "id": "vcp-027", "q": "Function declaration (prototype) gives?", "opts": ["Return, name, params", "Body code", "Memory", "Output"], "c": 0, "d": "easy", "t": "functions", "source": "Practice - Functions", "exp": ["Interface before use."], "shortcut": "Declare-before-use.", "pattern": "Prototype role." },
+    { "id": "vcp-028", "q": "C arguments pass by?", "opts": ["Value (copies)", "Reference always", "Name", "Nothing"], "c": 0, "d": "easy", "t": "functions", "source": "VEDA IIT Mains Pattern", "exp": ["Callee gets copies.", "Pointers share memory."], "shortcut": "Value-copies.", "pattern": "Swap-trap basis." },
+    { "id": "vcp-029", "q": "Recursion needs?", "opts": ["Base case + shrinking", "Goto", "Global only", "Two mains"], "c": 0, "d": "easy", "t": "recursion", "source": "Practice - Recursion", "exp": ["Stop rule plus progress."], "shortcut": "Base-plus-shrink.", "pattern": "Termination pair." },
+    { "id": "vcp-030", "q": "break in loop does?", "opts": ["Exits loop", "Skips iteration", "Restarts", "Returns value"], "c": 0, "d": "easy", "t": "loops", "source": "Practice - Loops", "exp": ["Leaves loop/switch at once."], "shortcut": "Break-bails.", "pattern": "Steering pair." },
+    { "id": "vcp-031", "q": "continue does?", "opts": ["Next iteration", "Exits loop", "Exits program", "Pauses"], "c": 0, "d": "easy", "t": "loops", "source": "Practice - Loops", "exp": ["Skips rest of body once."], "shortcut": "Continue-continues.", "pattern": "Twin steering." },
+    { "id": "vcp-032", "q": "Uninitialised local holds?", "opts": ["Garbage", "Zero always", "One always", "Null"], "c": 0, "d": "easy", "t": "scope", "source": "Practice - Scope", "exp": ["Auto storage indeterminate."], "shortcut": "Local-litter.", "pattern": "Init discipline." },
+    { "id": "vcp-033", "q": "Global without init holds?", "opts": ["Zero", "Garbage", "One", "Random"], "c": 0, "d": "easy", "t": "scope", "source": "Practice - Scope", "exp": ["Static storage zeroes."], "shortcut": "Global-zero.", "pattern": "Twin rule." },
+    { "id": "vcp-034", "q": "sizeof is?", "opts": ["Compile-time operator", "Library function", "Keyword type", "Macro always"], "c": 0, "d": "easy", "t": "operators", "source": "Practice - Operators", "exp": ["Evaluated by compiler."], "shortcut": "Sizeof-operator.", "pattern": "Operator fact." },
+    { "id": "vcp-035", "q": "Bitwise AND symbol?", "opts": ["&", "&&", "|", "!"], "c": 0, "d": "easy", "t": "bitwise", "source": "Practice - Bitwise", "exp": ["Single & is bitwise.", "Double && is logical."], "shortcut": "Single-bitwise.", "pattern": "Symbol pairs." },
+    { "id": "vcp-036", "q": "1<<3 equals?", "opts": ["8", "4", "6", "32"], "c": 0, "d": "easy", "t": "bitwise", "source": "Practice - Shifts", "exp": ["Times 2^3."], "shortcut": "Shift-multiplies.", "pattern": "Shift math." },
+    { "id": "vcp-037", "q": "fclose does?", "opts": ["Flushes and closes", "Deletes file", "Rewinds only", "Renames"], "c": 0, "d": "easy", "t": "files", "source": "Practice - Files", "exp": ["Buffers written out first."], "shortcut": "Close-flushes.", "pattern": "Cleanup rule." },
+    { "id": "vcp-038", "q": "EOF value/type holder?", "opts": ["-1 in int c", "0 in char", "255 always", "Null"], "c": 0, "d": "easy", "t": "files", "source": "Practice - EOF", "exp": ["int holds -1 distinctly."], "shortcut": "int-for-EOF.", "pattern": "Loop idiom." },
+    { "id": "vcp-039", "q": "Never use for input?", "opts": ["gets", "fgets", "fgetc", "scanf width"], "c": 0, "d": "easy", "t": "files", "source": "Practice - Safety", "exp": ["gets cannot limit length."], "shortcut": "gets-gone.", "pattern": "Safety rule." },
+    { "id": "vcp-040", "q": "Function pointer stores?", "opts": ["Function address", "Return value", "First local", "File offset"], "c": 0, "d": "easy", "t": "fnptr", "source": "Practice - FnPtr", "exp": ["Called through variable."], "shortcut": "Pointer-to-code.", "pattern": "Dispatch basis." },
+    { "id": "vcp-041", "q": "switch(2){case1:A;case2:B;case3:C;} prints?", "opts": ["BC", "B", "C", "ABC"], "c": 0, "d": "medium", "t": "switch", "source": "Practice - Output", "exp": ["Match 2 prints B.", "Fall to 3 prints C."], "shortcut": "Fall-collects.", "pattern": "Trace downward." },
+    { "id": "vcp-042", "q": "for(i=0;i<3;i++)printf(i) prints?", "opts": ["012", "123", "0011", "0"], "c": 0, "d": "medium", "t": "loops", "source": "Practice - Output", "exp": ["i = 0,1,2 then stop."], "shortcut": "Count-then-stop.", "pattern": "Bound tracing." },
+    { "id": "vcp-043", "q": "n=3; while(n){n--;} iterations?", "opts": ["3", "4", "2", "Infinite"], "c": 0, "d": "medium", "t": "loops", "source": "Practice - Loops", "exp": ["3,2,1 then 0 stops."], "shortcut": "Down-to-zero.", "pattern": "Condition counting." },
+    { "id": "vcp-044", "q": "fact(4) (fact(n)=n*fact(n-1), base 1)?", "opts": ["24", "12", "6", "4"], "c": 0, "d": "medium", "t": "recursion", "source": "Practice - Recursion", "exp": ["4x3x2x1."], "shortcut": "Unwind-multiply.", "pattern": "Linear recursion." },
+    { "id": "vcp-045", "q": "fib(3) (f0=0,f1=1)?", "opts": ["2", "3", "1", "5"], "c": 0, "d": "medium", "t": "recursion", "source": "Practice - Recursion", "exp": ["f2=1, f3=f2+f1=2."], "shortcut": "Build-up table.", "pattern": "Tree recursion." },
+    { "id": "vcp-046", "q": "static int c=0; c++; return c; second call?", "opts": ["2", "1", "0", "Garbage"], "c": 0, "d": "medium", "t": "scope", "source": "Practice - Static", "exp": ["Persists: 1 then 2."], "shortcut": "Static-remembers.", "pattern": "State kept." },
+    { "id": "vcp-047", "q": "Global x=5, block x=1 printed inside?", "opts": ["1", "5", "6", "0"], "c": 0, "d": "medium", "t": "scope", "source": "Practice - Shadow", "exp": ["Inner shadows outer."], "shortcut": "Inner-wins.", "pattern": "Shadowing." },
+    { "id": "vcp-048", "q": "a[i] equals?", "opts": ["*(a+i)", "*(a-i)", "&a[i]", "a-i"], "c": 0, "d": "medium", "t": "pointers", "source": "Practice - Equivalence", "exp": ["Index is scaled addition."], "shortcut": "Bracket-star-same.", "pattern": "Core identity." },
+    { "id": "vcp-049", "q": "sizeof(hi) with char s[]=hi?", "opts": ["3", "2", "4", "1"], "c": 0, "d": "medium", "t": "strings", "source": "Practice - Sizeof", "exp": ["h,i plus null."], "shortcut": "Plus-null.", "pattern": "Array-vs-length." },
+    { "id": "vcp-050", "q": "int *p; p+1 moves?", "opts": ["4 bytes (one int)", "1 byte", "8 bytes always", "0 bytes"], "c": 0, "d": "medium", "t": "pointers", "source": "Practice - Arithmetic", "exp": ["Scaled by sizeof int."], "shortcut": "Step-an-element.", "pattern": "Scale rule." },
+    { "id": "vcp-051", "q": "int a[5]={10,20,30,40,50}; *(a+2)?", "opts": ["30", "20", "10", "40"], "c": 0, "d": "medium", "t": "pointers", "source": "Practice - Output", "exp": ["a+2 is &a[2].", "Value 30."], "shortcut": "Offset-then-deref.", "pattern": "Address trace." },
+    { "id": "vcp-052", "q": "char s[]=hello; s[1]?", "opts": ["e", "h", "l", "o"], "c": 0, "d": "medium", "t": "strings", "source": "Practice - Strings", "exp": ["Zero-based: h0 e1."], "shortcut": "Zero-index.", "pattern": "Index habit." },
+    { "id": "vcp-053", "q": "strcmp(ab,ac) sign?", "opts": ["Negative", "Positive", "Zero", "Null"], "c": 0, "d": "medium", "t": "strings", "source": "Practice - Strings", "exp": ["b<c at last byte."], "shortcut": "First-difference-decides.", "pattern": "Compare trace." },
+    { "id": "vcp-054", "q": "strcpy then strlen unchanged?", "opts": ["Length of source", "Zero", "Buffer size", "Random"], "c": 0, "d": "medium", "t": "strings", "source": "Practice - Strings", "exp": ["Copy carries terminator.", "Length follows content."], "shortcut": "Content-length.", "pattern": "Copy semantics." },
+    { "id": "vcp-055", "q": "int m[2][3]; element (1,2) offset (ints)?", "opts": ["5", "4", "6", "3"], "c": 0, "d": "medium", "t": "arrays", "source": "Practice - 2D", "exp": ["1x3+2 = 5th element."], "shortcut": "Row-times-cols-plus.", "pattern": "Row-major math." },
+    { "id": "vcp-056", "q": "Passing array to function allows?", "opts": ["Modify caller elements", "Resize array", "Change length", "Nothing"], "c": 0, "d": "medium", "t": "arrays", "source": "Practice - Calls", "exp": ["Decays to pointer sharing."], "shortcut": "Arrays-share.", "pattern": "Decay consequence." },
+    { "id": "vcp-057", "q": "malloc(10) vs calloc(10,1)?", "opts": ["calloc zeroes", "Same always", "malloc zeroes", "Both fail"], "c": 0, "d": "medium", "t": "malloc", "source": "Practice - malloc", "exp": ["calloc clears bytes."], "shortcut": "calloc-clears.", "pattern": "Zero guarantee." },
+    { "id": "vcp-058", "q": "realloc failure handling?", "opts": ["Keep old pointer (use temp)", "Old freed", "Exit always", "Ignore"], "c": 0, "d": "medium", "t": "malloc", "source": "Practice - realloc", "exp": ["NULL return keeps old block.", "Assign via temp."], "shortcut": "Temp-catches.", "pattern": "Failure safety." },
+    { "id": "vcp-059", "q": "free(NULL)?", "opts": ["Safe no-op", "Crash always", "Frees everything", "Double-frees"], "c": 0, "d": "medium", "t": "malloc", "source": "Practice - free", "exp": ["Defined safe no-op."], "shortcut": "Null-free-fine.", "pattern": "Edge safety." },
+    { "id": "vcp-060", "q": "sizeof(*p) advantage?", "opts": ["Survives type change", "Faster", "Smaller", "No check"], "c": 0, "d": "medium", "t": "malloc", "source": "Practice - sizeof", "exp": ["Tied to pointer, not spelled type."], "shortcut": "Deref-size.", "pattern": "Robust idiom." },
+    { "id": "vcp-061", "q": "struct{char c;int i;} typical size?", "opts": ["8", "5", "4", "12"], "c": 0, "d": "medium", "t": "struct", "source": "Practice - Sizeof", "exp": ["1 + pad3 + 4."], "shortcut": "Pad-then-sum.", "pattern": "Alignment cost." },
+    { "id": "vcp-062", "q": "union{char c;int i;} size?", "opts": ["4", "5", "8", "1"], "c": 0, "d": "medium", "t": "struct", "source": "Practice - Sizeof", "exp": ["Max member wins."], "shortcut": "Max-only.", "pattern": "Twin sizing." },
+    { "id": "vcp-063", "q": "Read union member not last-written?", "opts": ["Unspecified/garbage", "Always fine", "Zero", "Compile error"], "c": 0, "d": "medium", "t": "struct", "source": "Practice - Union", "exp": ["Shared bytes reinterpreted."], "shortcut": "Last-write-wins.", "pattern": "Overlay risk." },
+    { "id": "vcp-064", "q": "x=12 (1100), x&(1<<2)?", "opts": ["4", "12", "0", "8"], "c": 0, "d": "medium", "t": "bitwise", "source": "Practice - Masks", "exp": ["Bit2 of 1100 is 1: value 4."], "shortcut": "Test-extracts.", "pattern": "Mask test." },
+    { "id": "vcp-065", "q": "x=8 (1000), x|(1<<1)?", "opts": ["10", "8", "9", "11"], "c": 0, "d": "medium", "t": "bitwise", "source": "Practice - Masks", "exp": ["Set bit1: 1010 = 10."], "shortcut": "OR-sets.", "pattern": "Mask set." },
+    { "id": "vcp-066", "q": "x=15, x&~(1<<0)?", "opts": ["14", "15", "0", "7"], "c": 0, "d": "medium", "t": "bitwise", "source": "Practice - Masks", "exp": ["Clear bit0: 1110 = 14."], "shortcut": "AND-NOT-clears.", "pattern": "Mask clear." },
+    { "id": "vcp-067", "q": "x=10 (1010), x^(1<<1)?", "opts": ["8", "10", "11", "2"], "c": 0, "d": "medium", "t": "bitwise", "source": "Practice - Masks", "exp": ["Flip bit1: 1000 = 8."], "shortcut": "XOR-flips.", "pattern": "Mask toggle." },
+    { "id": "vcp-068", "q": "fopen r on missing file?", "opts": ["NULL", "Creates it", "Truncates", "Appends"], "c": 0, "d": "medium", "t": "files", "source": "Practice - Files", "exp": ["Read needs existence."], "shortcut": "r-requires.", "pattern": "Mode consequence." },
+    { "id": "vcp-069", "q": "fopen w on existing file?", "opts": ["Truncates to zero", "Keeps content", "Appends", "Fails NULL"], "c": 0, "d": "medium", "t": "files", "source": "Practice - Files", "exp": ["Write wipes first (w+ too)."], "shortcut": "w-wipes.", "pattern": "Destructive mode." },
+    { "id": "vcp-070", "q": "prog a b: argc?", "opts": ["3", "2", "4", "0"], "c": 0, "d": "medium", "t": "argv", "source": "Practice - argv", "exp": ["Program + 2 args."], "shortcut": "Count-plus-program.", "pattern": "Argc math." },
+    { "id": "vcp-071", "q": "int (*fp)(int,int) is?", "opts": ["Pointer to function", "Function returning pointer", "Array of ints", "Void"], "c": 0, "d": "medium", "t": "fnptr", "source": "VEDA IIT Mains Pattern", "exp": ["Parens bind star: points at function."], "shortcut": "Parens-point.", "pattern": "Declaration reading." },
+    { "id": "vcp-072", "q": "int *f(int) is?", "opts": ["Function returning int*", "Pointer to function", "Array", "Void"], "c": 0, "d": "medium", "t": "fnptr", "source": "VEDA IIT Mains Pattern", "exp": ["Call binds tighter: returns pointer."], "shortcut": "Call-binds-first.", "pattern": "Twin declaration." },
+    { "id": "vcp-073", "q": "SQ(2+1) with #define SQ(x) ((x)*(x))?", "opts": ["9", "5", "6", "7"], "c": 0, "d": "medium", "t": "macro", "source": "VEDA IIT Mains Pattern", "exp": ["Expands ((2+1)*(2+1))."], "shortcut": "Parens-save.", "pattern": "Macro expansion." },
+    { "id": "vcp-074", "q": "SQ(2+1) with #define SQ(x) x*x?", "opts": ["5", "9", "6", "4"], "c": 0, "d": "medium", "t": "macro", "source": "Practice - Macros", "exp": ["Expands 2+1*2+1 = 5."], "shortcut": "Bare-macro-breaks.", "pattern": "Paren lesson." },
+    { "id": "vcp-075", "q": "Classify g?", "opts": ["Lower case", "Upper case", "Digit", "Special"], "c": 0, "d": "medium", "t": "charclass", "source": "VEDA IIT Sample (program)", "exp": ["a-z range hit."], "shortcut": "Range-check.", "pattern": "Sample program logic." },
+    { "id": "vcp-076", "q": "Classify 5?", "opts": ["Digit", "Lower", "Upper", "Special"], "c": 0, "d": "medium", "t": "charclass", "source": "VEDA IIT Sample (program)", "exp": ["0-9 range hit."], "shortcut": "Digit-range.", "pattern": "Twin class." },
+    { "id": "vcp-077", "q": "Classify @?", "opts": ["Special", "Lower", "Upper", "Digit"], "c": 0, "d": "medium", "t": "charclass", "source": "VEDA IIT Sample (program)", "exp": ["No alphanumeric range.", "Falls to else."], "shortcut": "Else-special.", "pattern": "Default branch." },
+    { "id": "vcp-078", "q": "Classify Z?", "opts": ["Upper case", "Lower case", "Digit", "Special"], "c": 0, "d": "medium", "t": "charclass", "source": "VEDA IIT Sample (program)", "exp": ["A-Z range hit."], "shortcut": "Caps-range.", "pattern": "Third class." },
+    { "id": "vcp-079", "q": "ASCII of 0? A? a?", "opts": ["48, 65, 97", "0, 65, 97", "48, 97, 65", "48, 65, 65"], "c": 0, "d": "medium", "t": "ascii", "source": "Practice - ASCII", "exp": ["Digits from 48, caps 65, small 97."], "shortcut": "48-65-97.", "pattern": "Code anchors." },
+    { "id": "vcp-080", "q": "a-f loop sum 1..4?", "opts": ["10", "9", "11", "4"], "c": 0, "d": "medium", "t": "loops", "source": "Practice - Output", "exp": ["1+2+3+4."], "shortcut": "Add-range.", "pattern": "Accumulator trace." },
+    { "id": "vcp-081", "q": "int x=5; y=x++; x,y?", "opts": ["6, 5", "5, 5", "6, 6", "5, 6"], "c": 0, "d": "hard", "t": "postfix", "source": "Practice - Sequence", "exp": ["Postfix yields old, then bumps.", "y=5, x=6."], "shortcut": "Post-gives-old.", "pattern": "Post-vs-pre." },
+    { "id": "vcp-082", "q": "int x=5; y=++x; x,y?", "opts": ["6, 6", "6, 5", "5, 6", "5, 5"], "c": 0, "d": "hard", "t": "postfix", "source": "Practice - Sequence", "exp": ["Prefix bumps first.", "Both 6."], "shortcut": "Pre-gives-new.", "pattern": "Twin order." },
+    { "id": "vcp-083", "q": "x=(1,2,3); x?", "opts": ["3", "1", "6", "2"], "c": 0, "d": "hard", "t": "comma", "source": "Practice - Comma", "exp": ["Comma yields last."], "shortcut": "Comma-keeps-last.", "pattern": "Lowest precedence." },
+    { "id": "vcp-084", "q": "5>3?10:20 gives?", "opts": ["10", "20", "5", "3"], "c": 0, "d": "hard", "t": "ternary", "source": "Practice - Ternary", "exp": ["True picks middle."], "shortcut": "True-takes-middle.", "pattern": "Branch-in-expression." },
+    { "id": "vcp-085", "q": "~0 (two's complement int)?", "opts": ["-1", "0", "1", "255"], "c": 0, "d": "hard", "t": "bitwise", "source": "Practice - Complement", "exp": ["All bits flip: all ones is -1."], "shortcut": "Not-zero-is-neg-one.", "pattern": "Complement meaning." },
+    { "id": "vcp-086", "q": "5 & 3?", "opts": ["1", "7", "6", "3"], "c": 0, "d": "hard", "t": "bitwise", "source": "Practice - Bitwise", "exp": ["0101 & 0011 = 0001."], "shortcut": "Align-and-AND.", "pattern": "Bit column math." },
+    { "id": "vcp-087", "q": "5 | 3?", "opts": ["7", "1", "6", "8"], "c": 0, "d": "hard", "t": "bitwise", "source": "Practice - Bitwise", "exp": ["0101 | 0011 = 0111."], "shortcut": "Either-one-sets.", "pattern": "Twin op." },
+    { "id": "vcp-088", "q": "5 ^ 3?", "opts": ["6", "7", "1", "2"], "c": 0, "d": "hard", "t": "bitwise", "source": "Practice - Bitwise", "exp": ["0101 ^ 0011 = 0110."], "shortcut": "Differ-sets.", "pattern": "Third op." },
+    { "id": "vcp-089", "q": "16>>2?", "opts": ["4", "8", "14", "64"], "c": 0, "d": "hard", "t": "shifts", "source": "Practice - Shifts", "exp": ["Divide by 4."], "shortcut": "Right-divides.", "pattern": "Shift math." },
+    { "id": "vcp-090", "q": "20>>2?", "opts": ["5", "10", "18", "40"], "c": 0, "d": "hard", "t": "shifts", "source": "Practice - Shifts", "exp": ["10100 to 00101 = 5."], "shortcut": "Drop-two-bits.", "pattern": "Binary shift view." },
+    { "id": "vcp-091", "q": "2+3*4?", "opts": ["14", "20", "24", "9"], "c": 0, "d": "hard", "t": "precedence", "source": "Practice - Precedence", "exp": ["Times before plus: 2+12."], "shortcut": "Times-first.", "pattern": "Classic precedence." },
+    { "id": "vcp-092", "q": "10-4-3?", "opts": ["3", "9", "7", "-3"], "c": 0, "d": "hard", "t": "assoc", "source": "Practice - Assoc", "exp": ["Left assoc: (10-4)-3 = 3."], "shortcut": "Left-to-right.", "pattern": "Associativity matters." },
+    { "id": "vcp-093", "q": "a=b=c=5; all?", "opts": ["5, 5, 5", "0, 0, 5", "5, 0, 0", "Garbage"], "c": 0, "d": "hard", "t": "assoc", "source": "Practice - Assoc", "exp": ["Right assoc chains 5 right-to-left."], "shortcut": "Assign-right.", "pattern": "Right grouping." },
+    { "id": "vcp-094", "q": "7&1 tests?", "opts": ["Odd (gives 1)", "Even", "Zero", "Sign"], "c": 0, "d": "hard", "t": "bitwise", "source": "Practice - Idioms", "exp": ["LSB set means odd."], "shortcut": "AND-1-checks-odd.", "pattern": "Idiom recognition." },
+    { "id": "vcp-095", "q": "int a[]={5,6,7}; *(a+1)?", "opts": ["6", "5", "7", "Address"], "c": 0, "d": "hard", "t": "pointers", "source": "Practice - Output", "exp": ["Second element."], "shortcut": "Plus-one-next.", "pattern": "Offset read." },
+    { "id": "vcp-096", "q": "int a[]={5,6,7}; 2[a]?", "opts": ["7", "5", "Error", "2"], "c": 0, "d": "hard", "t": "pointers", "source": "GATE Pattern Practice", "exp": ["2[a] is *(2+a) = a[2] = 7.", "Addition commutes."], "shortcut": "Subscript-commutes.", "pattern": "Famous trick, well-defined." },
+    { "id": "vcp-097", "q": "sizeof(hi) literal?", "opts": ["3", "2", "4", "6"], "c": 0, "d": "hard", "t": "sizeof", "source": "Practice - Sizeof", "exp": ["h,i plus terminator."], "shortcut": "Literal-plus-null.", "pattern": "Literal size." },
+    { "id": "vcp-098", "q": "enum {A,B=5,C}; C?", "opts": ["6", "5", "7", "2"], "c": 0, "d": "hard", "t": "enum", "source": "Practice - Enum", "exp": ["Counter resumes after 5."], "shortcut": "Resume-plus-one.", "pattern": "Explicit reset." },
+    { "id": "vcp-099", "q": "fact(5) call count (fact(n)=n*fact(n-1), base fact(1))?", "opts": ["5", "4", "6", "120"], "c": 0, "d": "hard", "t": "recursion", "source": "Practice - Depth", "exp": ["fact(5)..fact(1): five frames.", "120 is the value, not count."], "shortcut": "Count-frames-not-value.", "pattern": "Depth vs value." },
+    { "id": "vcp-100", "q": "Loop 3x {static int s=0; s++;} final s?", "opts": ["3", "1", "0", "Garbage"], "c": 0, "d": "hard", "t": "scope", "source": "Practice - Static", "exp": ["Init once; increments persist."], "shortcut": "Static-survives.", "pattern": "Loop-static trap." },
+    { "id": "vcp-101", "q": "VEDA Sample blank: short int memory? [PYQ]", "opts": ["2 bytes", "4 bytes", "1 byte", "8 bytes"], "c": 0, "d": "easy", "t": "pyq-veda", "source": "VEDA IIT Sample Question - C (verified blank)", "exp": ["16-bit short on assumed platform."], "shortcut": "Short-two.", "pattern": "VEDA blank answer." },
+    { "id": "vcp-102", "q": "VEDA Sample blank: highest precedence? [PYQ]", "opts": ["Postfix () []", "Assignment", "Comma", "OR"], "c": 0, "d": "easy", "t": "pyq-veda", "source": "VEDA IIT Sample Question - C (verified blank)", "exp": ["Call/subscript bind tightest."], "shortcut": "Postfix-peaks.", "pattern": "VEDA blank answer." },
+    { "id": "vcp-103", "q": "VEDA Sample program must print for any char? [PYQ]", "opts": ["digit/lower/upper/special", "Only digit", "Only ASCII code", "Nothing"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA IIT Sample Question - C (verified program)", "exp": ["Four range branches cover all chars."], "shortcut": "Four-classes.", "pattern": "VEDA program shape." },
+    { "id": "vcp-104", "q": "Header for isdigit/islower? [PYQ]", "opts": ["ctype.h", "stdio.h only", "math.h", "string.h"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA IIT Sample Pattern - C (library)", "exp": ["Character-class helpers live in ctype."], "shortcut": "c-type-helpers.", "pattern": "Library mapping." },
+    { "id": "vcp-105", "q": "printf(5/2*2)? [GATE-pattern PYQ]", "opts": ["4", "5", "2", "6"], "c": 0, "d": "hard", "t": "pyq-gate", "source": "GATE Pattern Practice (precedence)", "exp": ["Left assoc: (5/2)*2 = 2*2 = 4."], "shortcut": "Same-level-left.", "pattern": "Assoc arithmetic." },
+    { "id": "vcp-106", "q": "sizeof(int*) assumed 64-bit?", "opts": ["8", "4", "2", "16"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (sizes)", "exp": ["Addresses are 64-bit."], "shortcut": "Pointer-eight.", "pattern": "Width fact." },
+    { "id": "vcp-107", "q": "sum(3), sum(n)=n+sum(n-1), sum(0)=0? [GATE-pattern PYQ]", "opts": ["6", "3", "9", "0"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (recursion)", "exp": ["3+2+1+0."], "shortcut": "Unwind-add.", "pattern": "Sum recursion." },
+    { "id": "vcp-108", "q": "Open binary for reading?", "opts": ["rb", "r", "w", "a"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (files)", "exp": ["b picks binary, r reads."], "shortcut": "rb-reads-bytes.", "pattern": "Mode recall." },
+    { "id": "vcp-109", "q": "prog x: argc? [GATE-pattern PYQ]", "opts": ["2", "1", "3", "0"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (argv)", "exp": ["Program plus one arg."], "shortcut": "Plus-program.", "pattern": "Count rule." },
+    { "id": "vcp-110", "q": "ADD(1,2) with #define ADD(x,y) ((x)+(y))? [GATE-pattern PYQ]", "opts": ["3", "12", "4", "Error"], "c": 0, "d": "medium", "t": "pyq-gate", "source": "GATE Pattern Practice (macros)", "exp": ["((1)+(2)) = 3."], "shortcut": "Parens-safe.", "pattern": "Good-macro proof." },
+    { "id": "vcp-111", "q": "int a[]={1,2,3}, *p=a; *p+1? [VEDA-pattern]", "opts": ["2", "3", "1", "Address"], "c": 0, "d": "hard", "t": "pyq-veda", "source": "VEDA Mains Pattern Practice (pointers)", "exp": ["*p is 1; plus 1 is 2.", "Not *(p+1)."], "shortcut": "Deref-then-add.", "pattern": "Star-plus parse." },
+    { "id": "vcp-112", "q": "union{double d; char c[10];} size? [VEDA-pattern]", "opts": ["10", "8", "18", "16"], "c": 0, "d": "medium", "t": "pyq-veda", "source": "VEDA Mains Pattern Practice (union)", "exp": ["max(8,10) = 10."], "shortcut": "Max-wins.", "pattern": "Closes the topic." }
+  ],
+  "category": "c-programming"
+}
