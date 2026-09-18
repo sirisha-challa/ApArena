@@ -1331,5 +1331,4696 @@
   ],
   "complexity": "O(n) time, O(1) extra space beyond the input.",
   "insight": "Sum-formula subtraction (and its XOR twin) is the standard 'one missing from 1..n' pattern."
+ },
+ {
+  "id": "array-rotation",
+  "title": "Array Rotation by K",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "rotation",
+  "years": "TCS NQT 2021, 2022; Wipro 2022",
+  "statement": "Given an array of n integers and a number k, rotate the array to the left by k positions. The first k elements move to the end in the same order. For example if n=5, array is 1 2 3 4 5 and k=2, the answer is 3 4 5 1 2.",
+  "inputFormat": "Line 1: n (size of array)<br>Line 2: n space-separated integers<br>Line 3: k (number of left rotations)",
+  "outputFormat": "Print the rotated array as space-separated integers on one line.",
+  "constraints": "1 <= n <= 1000<br>0 <= k <= 1000<br>-1000 <= arr[i] <= 1000",
+  "samples": [
+   {
+    "stdin": "5\n1 2 3 4 5\n2\n",
+    "expected": "3 4 5 1 2"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n1 2 3 4 5\n2\n",
+    "expected": "3 4 5 1 2"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n0\n",
+    "expected": "1 2 3 4 5"
+   },
+   {
+    "stdin": "4\n10 20 30 40\n6\n",
+    "expected": "30 40 10 20"
+   },
+   {
+    "stdin": "1\n99\n5\n",
+    "expected": "99"
+   },
+   {
+    "stdin": "3\n7 8 9\n1\n",
+    "expected": "8 9 7"
+   }
+  ],
+  "starter": "n = int(input())\narr = list(map(int, input().split()))\nk = int(input())\n# TODO: rotate arr left by k and print result\n",
+  "solution": "import sys\ndef main():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    k = int(data[1+n]) if len(data) > 1+n else 0\n    if n == 0:\n        return\n    k = k % n\n    res = arr[k:] + arr[:k]\n    print(' '.join(map(str, res)))\nif __name__ == '__main__':\n    main()\n",
+  "approach": "Use modulo to handle k larger than n, then slice the array into two parts and join them swapped.",
+  "steps": [
+   "Read n, the array, and k.",
+   "If n is 0 do nothing.",
+   "Replace k with k % n so big k values wrap around.",
+   "Split array into first k items and remaining items.",
+   "Join remaining items first, then the first k items.",
+   "Print the new array with spaces.",
+   "Check with k = 0 and k bigger than n."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "Left rotation is just a split and swap using k % n."
+ },
+ {
+  "id": "large-small-sum",
+  "title": "Large-Small Sum",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "sorting",
+  "years": "Accenture 2021, 2022, 2023",
+  "statement": "Given an array, take elements at even indices (0, 2, 4...) and elements at odd indices (1, 3, 5...) separately. Find the second largest among even-index elements and the second smallest among odd-index elements, then print their sum. For example array 3 2 1 7 5 4 gives even part 3 1 5 with second largest 3 and odd part 2 7 4 with second smallest 4, so answer is 7. If either part has less than 2 elements print 0.",
+  "inputFormat": "Line 1: n (size of array)<br>Line 2: n space-separated integers",
+  "outputFormat": "Print one integer which is the required sum, or 0 if not possible.",
+  "constraints": "1 <= n <= 1000<br>-1000 <= arr[i] <= 1000",
+  "samples": [
+   {
+    "stdin": "6\n3 2 1 7 5 4\n",
+    "expected": "7"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "6\n3 2 1 7 5 4\n",
+    "expected": "7"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "7"
+   },
+   {
+    "stdin": "4\n5 1 4 2\n",
+    "expected": "6"
+   },
+   {
+    "stdin": "2\n10 20\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "1\n5\n",
+    "expected": "0"
+   }
+  ],
+  "starter": "n = int(input())\narr = list(map(int, input().split()))\n# TODO: find second largest at even indices and second smallest at odd indices and print sum\n",
+  "solution": "import sys\ndef main():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    even = [arr[i] for i in range(n) if i % 2 == 0]\n    odd = [arr[i] for i in range(n) if i % 2 == 1]\n    if len(even) < 2 or len(odd) < 2:\n        print(0)\n        return\n    even_sorted = sorted(even)\n    odd_sorted = sorted(odd)\n    print(even_sorted[-2] + odd_sorted[1])\nif __name__ == '__main__':\n    main()\n",
+  "approach": "Split the array by index parity, sort each part, then pick second largest from even part and second smallest from odd part.",
+  "steps": [
+   "Read n and the array.",
+   "Make one list of items at even indices 0, 2, 4.",
+   "Make one list of items at odd indices 1, 3, 5.",
+   "If either list has less than 2 items print 0.",
+   "Sort both lists in increasing order.",
+   "Take second last of even list and second of odd list.",
+   "Print their sum."
+  ],
+  "complexity": "O(n log n) time, O(n) space",
+  "insight": "Splitting by index parity turns it into two small sorting problems."
+ },
+ {
+  "id": "equilibrium-point",
+  "title": "Equilibrium Point",
+  "difficulty": "medium",
+  "topic": "arrays",
+  "pattern": "prefix-sum",
+  "years": "TCS NQT 2022; Infosys 2022; Cognizant 2023",
+  "statement": "Given an array, find the first position where the sum of elements on the left equals the sum on the right. Print that position as a 1-based index. For example 1 3 5 2 2 has equilibrium at index 3 because 1+3 equals 2+2. If no such position exists print -1.",
+  "inputFormat": "Line 1: n (size of array)<br>Line 2: n space-separated integers",
+  "outputFormat": "Print the 1-based equilibrium index, or -1 if none exists.",
+  "constraints": "1 <= n <= 1000<br>-1000 <= arr[i] <= 1000",
+  "samples": [
+   {
+    "stdin": "5\n1 3 5 2 2\n",
+    "expected": "3"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n1 3 5 2 2\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "4\n1 2 3 3\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "3\n1 2 3\n",
+    "expected": "-1"
+   },
+   {
+    "stdin": "1\n10\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "2\n1 1\n",
+    "expected": "-1"
+   }
+  ],
+  "starter": "n = int(input())\narr = list(map(int, input().split()))\n# TODO: find 1-based equilibrium index or print -1\n",
+  "solution": "import sys\ndef main():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    total = sum(arr)\n    left = 0\n    for i in range(n):\n        if left == total - left - arr[i]:\n            print(i + 1)\n            return\n        left += arr[i]\n    print(-1)\nif __name__ == '__main__':\n    main()\n",
+  "approach": "Keep total sum and a running left sum; at each index right sum is total minus left minus current value.",
+  "steps": [
+   "Read n and the array.",
+   "Find the total sum of the array.",
+   "Start left sum at 0.",
+   "Go through each index from left to right.",
+   "Right sum is total minus left sum minus current item.",
+   "If left equals right print index + 1 and stop.",
+   "If loop ends print -1."
+  ],
+  "complexity": "O(n) time, O(1) space",
+  "insight": "One total sum plus a running left sum gives every right sum for free."
+ },
+ {
+  "id": "merge-sorted",
+  "title": "Merge Two Sorted Arrays",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "two-pointers",
+  "years": "Wipro 2021, 2022; Capgemini 2022",
+  "statement": "Given two sorted arrays, merge them into one sorted array. Print all elements in increasing order. For example arrays 1 3 5 and 2 4 6 merge to 1 2 3 4 5 6.",
+  "inputFormat": "Line 1: n (size of first array)<br>Line 2: n space-separated sorted integers<br>Line 3: m (size of second array)<br>Line 4: m space-separated sorted integers",
+  "outputFormat": "Print the merged sorted array as space-separated integers.",
+  "constraints": "1 <= n, m <= 1000<br>-1000 <= arr[i] <= 1000",
+  "samples": [
+   {
+    "stdin": "3\n1 3 5\n3\n2 4 6\n",
+    "expected": "1 2 3 4 5 6"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "3\n1 3 5\n3\n2 4 6\n",
+    "expected": "1 2 3 4 5 6"
+   },
+   {
+    "stdin": "2\n1 2\n2\n3 4\n",
+    "expected": "1 2 3 4"
+   },
+   {
+    "stdin": "3\n1 5 9\n2\n2 6\n",
+    "expected": "1 2 5 6 9"
+   },
+   {
+    "stdin": "1\n5\n1\n1\n",
+    "expected": "1 5"
+   },
+   {
+    "stdin": "4\n1 1 2 3\n3\n1 2 4\n",
+    "expected": "1 1 1 2 2 3 4"
+   }
+  ],
+  "starter": "n = int(input())\na = list(map(int, input().split()))\nm = int(input())\nb = list(map(int, input().split()))\n# TODO: merge a and b into one sorted array and print it\n",
+  "solution": "import sys\ndef main():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    p = 0\n    n = int(data[p]); p += 1\n    a = list(map(int, data[p:p+n])); p += n\n    m = int(data[p]); p += 1\n    b = list(map(int, data[p:p+m])); p += m\n    i = 0\n    j = 0\n    res = []\n    while i < n and j < m:\n        if a[i] <= b[j]:\n            res.append(a[i]); i += 1\n        else:\n            res.append(b[j]); j += 1\n    while i < n:\n        res.append(a[i]); i += 1\n    while j < m:\n        res.append(b[j]); j += 1\n    print(' '.join(map(str, res)))\nif __name__ == '__main__':\n    main()\n",
+  "approach": "Walk both arrays with two pointers, always taking the smaller front element until one array ends.",
+  "steps": [
+   "Read both sizes and both sorted arrays.",
+   "Put one finger at the start of each array.",
+   "Compare the two pointed values and take the smaller one.",
+   "Move that finger one step forward.",
+   "Repeat until one array is over.",
+   "Copy the leftover items of the other array.",
+   "Print the merged list."
+  ],
+  "complexity": "O(n + m) time, O(n + m) space",
+  "insight": "Two sorted inputs merge in one linear pass with two pointers."
+ },
+ {
+  "id": "two-sum",
+  "title": "Two Sum",
+  "difficulty": "medium",
+  "topic": "arrays",
+  "pattern": "hash-map",
+  "years": "TCS Digital 2022; Infosys 2023; Accenture 2022",
+  "statement": "Given an array and a target number, find two different positions whose values add up to the target. Print their 0-based indices as i j with i smaller than j. For example array 2 7 11 15 with target 9 gives 0 1 because 2 + 7 = 9. Assume exactly one answer exists.",
+  "inputFormat": "Line 1: n (size of array)<br>Line 2: n space-separated integers<br>Line 3: target integer",
+  "outputFormat": "Print two 0-based indices i j separated by a space.",
+  "constraints": "2 <= n <= 1000<br>-1000 <= arr[i], target <= 1000",
+  "samples": [
+   {
+    "stdin": "4\n2 7 11 15\n9\n",
+    "expected": "0 1"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "4\n2 7 11 15\n9\n",
+    "expected": "0 1"
+   },
+   {
+    "stdin": "3\n3 2 4\n6\n",
+    "expected": "1 2"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n9\n",
+    "expected": "3 4"
+   },
+   {
+    "stdin": "2\n0 0\n0\n",
+    "expected": "0 1"
+   },
+   {
+    "stdin": "4\n-1 2 3 7\n6\n",
+    "expected": "0 3"
+   }
+  ],
+  "starter": "n = int(input())\narr = list(map(int, input().split()))\ntarget = int(input())\n# TODO: find i j such that arr[i] + arr[j] == target and print them\n",
+  "solution": "import sys\ndef main():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    target = int(data[1+n])\n    seen = {}\n    for i, v in enumerate(arr):\n        need = target - v\n        if need in seen:\n            print(str(seen[need]) + ' ' + str(i))\n            return\n        seen[v] = i\nif __name__ == '__main__':\n    main()\n",
+  "approach": "Scan once while storing seen values in a map, checking if target minus current value was seen before.",
+  "steps": [
+   "Read n, the array, and the target.",
+   "Make an empty map from value to index.",
+   "Go through each position i and value v.",
+   "Needed value is target minus v.",
+   "If needed value is in the map print its index and i.",
+   "Else store v with its index in the map.",
+   "Only one answer exists so we always stop in the loop."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "A hash map remembers past values so each complement check is instant."
+ },
+ {
+  "id": "stock-profit",
+  "title": "Best Time to Buy and Sell Stock",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "greedy",
+  "years": "Accenture 2022; Cognizant 2022, 2023",
+  "statement": "Given daily stock prices, buy on one day and sell on a later day to get maximum profit. Print the maximum profit, or 0 if no profit is possible. For example prices 7 1 5 3 6 4 give profit 5 by buying at 1 and selling at 6.",
+  "inputFormat": "Line 1: n (number of days)<br>Line 2: n space-separated prices",
+  "outputFormat": "Print one integer which is the maximum profit.",
+  "constraints": "1 <= n <= 1000<br>0 <= price <= 10000",
+  "samples": [
+   {
+    "stdin": "6\n7 1 5 3 6 4\n",
+    "expected": "5"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "6\n7 1 5 3 6 4\n",
+    "expected": "5"
+   },
+   {
+    "stdin": "5\n7 6 4 3 1\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "3\n1 2 3\n",
+    "expected": "2"
+   },
+   {
+    "stdin": "1\n5\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "5\n2 4 1 5 3\n",
+    "expected": "4"
+   }
+  ],
+  "starter": "n = int(input())\nprices = list(map(int, input().split()))\n# TODO: find max profit buying before selling and print it\n",
+  "solution": "import sys\ndef main():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    min_price = float('inf')\n    best = 0\n    for p in arr:\n        if p < min_price:\n            min_price = p\n        if p - min_price > best:\n            best = p - min_price\n    print(best)\nif __name__ == '__main__':\n    main()\n",
+  "approach": "Track the lowest price seen so far and the best sell profit against it in a single pass.",
+  "steps": [
+   "Read n and the price list.",
+   "Set lowest price very high and best profit 0.",
+   "Go through each price one by one.",
+   "Update lowest price if current price is smaller.",
+   "Profit today is price minus lowest price.",
+   "Keep the biggest profit seen so far.",
+   "Print the best profit."
+  ],
+  "complexity": "O(n) time, O(1) space",
+  "insight": "Lowest price so far plus current price gives the best deal ending today."
+ },
+ {
+  "id": "move-zeroes",
+  "title": "Move Zeroes to End",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "two-pointers",
+  "years": "TCS NQT 2021, 2023; Wipro 2022",
+  "statement": "Given an array, move all zeroes to the end keeping the order of non-zero elements the same. For example 0 1 0 3 12 becomes 1 3 12 0 0. Print the final array.",
+  "inputFormat": "Line 1: n (size of array)<br>Line 2: n space-separated integers",
+  "outputFormat": "Print the array after moving zeroes as space-separated integers.",
+  "constraints": "1 <= n <= 1000<br>-1000 <= arr[i] <= 1000",
+  "samples": [
+   {
+    "stdin": "5\n0 1 0 3 12\n",
+    "expected": "1 3 12 0 0"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n0 1 0 3 12\n",
+    "expected": "1 3 12 0 0"
+   },
+   {
+    "stdin": "3\n0 0 0\n",
+    "expected": "0 0 0"
+   },
+   {
+    "stdin": "4\n1 2 3 4\n",
+    "expected": "1 2 3 4"
+   },
+   {
+    "stdin": "4\n0 0 1 2\n",
+    "expected": "1 2 0 0"
+   },
+   {
+    "stdin": "5\n4 0 5 0 6\n",
+    "expected": "4 5 6 0 0"
+   }
+  ],
+  "starter": "n = int(input())\narr = list(map(int, input().split()))\n# TODO: move zeroes to end keeping order and print array\n",
+  "solution": "import sys\ndef main():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    nz = [x for x in arr if x != 0]\n    res = nz + [0] * (n - len(nz))\n    print(' '.join(map(str, res)))\nif __name__ == '__main__':\n    main()\n",
+  "approach": "Collect non-zero elements in order, then pad the end with the needed count of zeroes.",
+  "steps": [
+   "Read n and the array.",
+   "Make a new list of only non-zero numbers in order.",
+   "Count how many zeroes are missing.",
+   "Add that many zeroes at the end.",
+   "Print the result with spaces.",
+   "Try all zeroes and no zeroes cases.",
+   "Order of non-zero items never changes."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "Stable partition is just filter plus zero padding."
+ },
+ {
+  "id": "contains-duplicate",
+  "title": "Contains Duplicate",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "hash-set",
+  "years": "Infosys 2021, 2022; Capgemini 2023",
+  "statement": "Given an array, check if any value appears more than once. Print 1 if a duplicate exists and 0 otherwise. For example 1 2 3 1 5 contains a duplicate so print 1, while 1 2 3 4 has none so print 0.",
+  "inputFormat": "Line 1: n (size of array)<br>Line 2: n space-separated integers",
+  "outputFormat": "Print 1 if any duplicate exists, else 0.",
+  "constraints": "1 <= n <= 1000<br>-1000 <= arr[i] <= 1000",
+  "samples": [
+   {
+    "stdin": "5\n1 2 3 1 5\n",
+    "expected": "1"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n1 2 3 1 5\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "4\n1 2 3 4\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "2\n7 7\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "1\n5\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "6\n1 2 3 4 5 6\n",
+    "expected": "0"
+   }
+  ],
+  "starter": "n = int(input())\narr = list(map(int, input().split()))\n# TODO: print 1 if duplicate exists else 0\n",
+  "solution": "import sys\ndef main():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    print(1 if len(set(arr)) < n else 0)\nif __name__ == '__main__':\n    main()\n",
+  "approach": "Compare set size with array size; a smaller set means some value repeated.",
+  "steps": [
+   "Read n and the array.",
+   "Put all items into a set to drop repeats.",
+   "Compare set size with n.",
+   "If set is smaller print 1.",
+   "Else print 0.",
+   "Test with all same and all different.",
+   "One duplicate is enough for 1."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "Set size smaller than list size proves a repeat."
+ },
+ {
+  "id": "max-subarray",
+  "title": "Maximum Subarray Sum",
+  "difficulty": "medium",
+  "topic": "arrays",
+  "pattern": "kadane",
+  "years": "TCS Digital 2021, 2022; Accenture 2023",
+  "statement": "Given an array, find the contiguous part with the largest sum and print that sum. The subarray must have at least one element. For example -2 1 -3 4 -1 2 1 -5 4 has best sum 6 from 4 -1 2 1.",
+  "inputFormat": "Line 1: n (size of array)<br>Line 2: n space-separated integers",
+  "outputFormat": "Print one integer which is the maximum subarray sum.",
+  "constraints": "1 <= n <= 1000<br>-1000 <= arr[i] <= 1000",
+  "samples": [
+   {
+    "stdin": "9\n-2 1 -3 4 -1 2 1 -5 4\n",
+    "expected": "6"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "9\n-2 1 -3 4 -1 2 1 -5 4\n",
+    "expected": "6"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "15"
+   },
+   {
+    "stdin": "4\n-1 -2 -3 -4\n",
+    "expected": "-1"
+   },
+   {
+    "stdin": "1\n5\n",
+    "expected": "5"
+   },
+   {
+    "stdin": "3\n-2 -1 -3\n",
+    "expected": "-1"
+   }
+  ],
+  "starter": "n = int(input())\narr = list(map(int, input().split()))\n# TODO: find max sum of any contiguous subarray and print it\n",
+  "solution": "import sys\ndef main():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    best = arr[0]\n    cur = arr[0]\n    for x in arr[1:]:\n        cur = x if x > cur + x else cur + x\n        if cur > best:\n            best = cur\n    print(best)\nif __name__ == '__main__':\n    main()\n",
+  "approach": "Kadane scan keeps best sum ending at each spot, either starting fresh or extending the old run.",
+  "steps": [
+   "Read n and the array.",
+   "Set both current sum and best sum to first item.",
+   "Go through remaining items one by one.",
+   "New current is max of item alone or item plus old current.",
+   "Update best if current is bigger.",
+   "After loop print best.",
+   "Works even when all numbers are negative."
+  ],
+  "complexity": "O(n) time, O(1) space",
+  "insight": "Best subarray ending here is either this item or this item plus previous best run."
+ },
+ {
+  "id": "majority-element",
+  "title": "Majority Element",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "boyer-moore",
+  "years": "Wipro 2022; Infosys 2023",
+  "statement": "Given an array where one element appears more than n divided by 2 times, find that majority element. It is guaranteed to exist. For example 3 2 3 has majority 3. Print the majority element.",
+  "inputFormat": "Line 1: n (size of array)<br>Line 2: n space-separated integers",
+  "outputFormat": "Print the majority element.",
+  "constraints": "1 <= n <= 1000<br>-1000 <= arr[i] <= 1000",
+  "samples": [
+   {
+    "stdin": "3\n3 2 3\n",
+    "expected": "3"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "3\n3 2 3\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "5\n2 2 1 1 1\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "7\n1 1 1 2 2 2 2\n",
+    "expected": "2"
+   },
+   {
+    "stdin": "1\n5\n",
+    "expected": "5"
+   },
+   {
+    "stdin": "5\n6 6 6 7 7\n",
+    "expected": "6"
+   }
+  ],
+  "starter": "n = int(input())\narr = list(map(int, input().split()))\n# TODO: find majority element (appears more than n//2 times) and print it\n",
+  "solution": "import sys\ndef main():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    cand = None\n    count = 0\n    for x in arr:\n        if count == 0:\n            cand = x\n            count = 1\n        elif x == cand:\n            count += 1\n        else:\n            count -= 1\n    print(cand)\nif __name__ == '__main__':\n    main()\n",
+  "approach": "Boyer-Moore voting cancels different pairs, leaving the majority candidate which is guaranteed correct.",
+  "steps": [
+   "Read n and the array.",
+   "Start with no candidate and count 0.",
+   "For each number check the count.",
+   "If count is 0 make this number the candidate.",
+   "Else if number equals candidate add 1 to count.",
+   "Else subtract 1 from count.",
+   "Print the final candidate."
+  ],
+  "complexity": "O(n) time, O(1) space",
+  "insight": "Pairing off different numbers leaves only the majority survivor."
+ },
+ {
+  "id": "sort-012",
+  "title": "Sort 0s 1s 2s",
+  "difficulty": "medium",
+  "topic": "arrays",
+  "pattern": "dutch-flag",
+  "years": "TCS NQT 2022; Cognizant 2023",
+  "statement": "Given an array containing only 0s, 1s and 2s, sort it in increasing order. Print the sorted array. For example 2 0 2 1 1 0 becomes 0 0 1 1 2 2.",
+  "inputFormat": "Line 1: n (size of array)<br>Line 2: n space-separated integers (each 0, 1 or 2)",
+  "outputFormat": "Print the sorted array as space-separated integers.",
+  "constraints": "1 <= n <= 1000<br>arr[i] is 0, 1 or 2",
+  "samples": [
+   {
+    "stdin": "6\n2 0 2 1 1 0\n",
+    "expected": "0 0 1 1 2 2"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "6\n2 0 2 1 1 0\n",
+    "expected": "0 0 1 1 2 2"
+   },
+   {
+    "stdin": "3\n0 1 2\n",
+    "expected": "0 1 2"
+   },
+   {
+    "stdin": "5\n2 2 2 0 0\n",
+    "expected": "0 0 2 2 2"
+   },
+   {
+    "stdin": "4\n1 1 1 0\n",
+    "expected": "0 1 1 1"
+   },
+   {
+    "stdin": "1\n1\n",
+    "expected": "1"
+   }
+  ],
+  "starter": "n = int(input())\narr = list(map(int, input().split()))\n# TODO: sort array of 0s 1s 2s and print it\n",
+  "solution": "import sys\ndef main():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    c0 = arr.count(0)\n    c1 = arr.count(1)\n    c2 = n - c0 - c1\n    res = [0]*c0 + [1]*c1 + [2]*c2\n    print(' '.join(map(str, res)))\nif __name__ == '__main__':\n    main()\n",
+  "approach": "Count how many 0s and 1s exist, then output that many 0s, 1s and the rest 2s.",
+  "steps": [
+   "Read n and the array.",
+   "Count how many 0s are present.",
+   "Count how many 1s are present.",
+   "Rest are 2s.",
+   "Make a new list with 0s first then 1s then 2s.",
+   "Print it with spaces.",
+   "This is one pass counting plus one pass printing."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "Only three values means counting beats full sorting."
+ },
+ {
+  "id": "rotate-by-one",
+  "title": "Rotate Array by One",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "rotation",
+  "years": "TCS NQT 2021; Capgemini 2022",
+  "statement": "Given an array, rotate it to the right by one position (clockwise). The last element moves to the front. For example 1 2 3 4 5 becomes 5 1 2 3 4. Print the rotated array.",
+  "inputFormat": "Line 1: n (size of array)<br>Line 2: n space-separated integers",
+  "outputFormat": "Print the rotated array as space-separated integers.",
+  "constraints": "1 <= n <= 1000<br>-1000 <= arr[i] <= 1000",
+  "samples": [
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "5 1 2 3 4"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "5 1 2 3 4"
+   },
+   {
+    "stdin": "1\n10\n",
+    "expected": "10"
+   },
+   {
+    "stdin": "3\n1 2 3\n",
+    "expected": "3 1 2"
+   },
+   {
+    "stdin": "4\n0 0 1 2\n",
+    "expected": "2 0 0 1"
+   },
+   {
+    "stdin": "2\n5 6\n",
+    "expected": "6 5"
+   }
+  ],
+  "starter": "n = int(input())\narr = list(map(int, input().split()))\n# TODO: rotate array right by one and print result\n",
+  "solution": "import sys\ndef main():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    if n == 0:\n        return\n    res = [arr[-1]] + arr[:-1]\n    print(' '.join(map(str, res)))\nif __name__ == '__main__':\n    main()\n",
+  "approach": "Take the last element and place it first, shifting all other elements one step right.",
+  "steps": [
+   "Read n and the array.",
+   "If array is empty do nothing.",
+   "Save the last element.",
+   "Put saved element at the front.",
+   "Follow it with all elements except the last.",
+   "Print the new array with spaces.",
+   "Single element stays the same."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "Right-by-one is just last element first plus the rest."
+ },
+ {
+  "id": "binary-search",
+  "title": "Binary Search",
+  "difficulty": "easy",
+  "topic": "searching",
+  "pattern": "Binary Search",
+  "years": "TCS NQT 2022, Infosys 2023, Wipro 2022",
+  "statement": "Given a sorted array of n integers and a target value x, find the index of x using Binary Search. Print the 0-based index if found, otherwise print -1.",
+  "inputFormat": "Line 1: n (size of array). Line 2: n space-separated sorted integers. Line 3: target integer x.",
+  "outputFormat": "Print the 0-based index of x, or -1 if not found.",
+  "constraints": "1 <= n <= 10^5, -10^9 <= arr[i], x <= 10^9. Array is sorted in ascending order.",
+  "samples": [
+   {
+    "stdin": "5\n1 2 3 4 5\n3\n",
+    "expected": "2"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n6\n",
+    "expected": "-1"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n1 2 3 4 5\n3\n",
+    "expected": "2"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n6\n",
+    "expected": "-1"
+   },
+   {
+    "stdin": "1\n10\n10\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "4\n2 4 6 8\n2\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "6\n-5 -2 0 3 7 9\n-2\n",
+    "expected": "1"
+   }
+  ],
+  "starter": "import sys\ndef solve():\n    # TODO: read n, sorted array and target, binary search and print index or -1\n    pass\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "import sys\ndef solve():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    x = int(data[1+n]) if len(data) > 1+n else 0\n    lo, hi = 0, n-1\n    ans = -1\n    while lo <= hi:\n        mid = (lo + hi) // 2\n        if arr[mid] == x:\n            ans = mid\n            break\n        elif arr[mid] < x:\n            lo = mid + 1\n        else:\n            hi = mid - 1\n    print(ans)\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Binary search halves the interval each step using the sorted order to discard one side.",
+  "steps": [
+   "Read n, the sorted array and target x",
+   "Set lo=0 and hi=n-1 with answer -1",
+   "While lo<=hi compute mid=(lo+hi)//2",
+   "If arr[mid]==x store mid and break",
+   "If arr[mid]<x move lo to mid+1 else move hi to mid-1",
+   "Print the stored index or -1",
+   "Each step halves the search range"
+  ],
+  "complexity": "Time O(log n), Space O(1)",
+  "insight": "Sorted order lets you discard half the array per comparison."
+ },
+ {
+  "id": "linear-search",
+  "title": "Linear Search",
+  "difficulty": "easy",
+  "topic": "searching",
+  "pattern": "Linear Scan",
+  "years": "TCS NQT 2021, Accenture 2023, Cognizant 2022",
+  "statement": "Given an array of n integers and a target value x, find the first index of x by scanning from left to right. Print the 0-based index if found, otherwise print -1.",
+  "inputFormat": "Line 1: n. Line 2: n space-separated integers. Line 3: target integer x.",
+  "outputFormat": "Print the 0-based index of first occurrence of x, or -1 if not found.",
+  "constraints": "1 <= n <= 10^5, -10^9 <= arr[i], x <= 10^9.",
+  "samples": [
+   {
+    "stdin": "5\n4 2 7 1 9\n7\n",
+    "expected": "2"
+   },
+   {
+    "stdin": "4\n1 2 3 4\n5\n",
+    "expected": "-1"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n4 2 7 1 9\n7\n",
+    "expected": "2"
+   },
+   {
+    "stdin": "4\n1 2 3 4\n5\n",
+    "expected": "-1"
+   },
+   {
+    "stdin": "1\n42\n42\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "6\n5 5 5 2 5 1\n2\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "5\n-3 -1 -7 -1 0\n-1\n",
+    "expected": "1"
+   }
+  ],
+  "starter": "import sys\ndef solve():\n    # TODO: read n, array and target, linear scan and print index or -1\n    pass\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "import sys\ndef solve():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    x = int(data[1+n]) if len(data) > 1+n else 0\n    ans = -1\n    for i in range(n):\n        if arr[i] == x:\n            ans = i\n            break\n    print(ans)\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Scan the array from left to right and return the first position matching x.",
+  "steps": [
+   "Read n, the array and target x",
+   "Initialize answer to -1",
+   "Loop i from 0 to n-1",
+   "If arr[i]==x set answer to i and break",
+   "Continue scanning otherwise",
+   "Print the answer",
+   "First match wins so scan order matters"
+  ],
+  "complexity": "Time O(n), Space O(1)",
+  "insight": "Unsorted search must check each element; break on first hit."
+ },
+ {
+  "id": "first-last-position",
+  "title": "First and Last Occurrence",
+  "difficulty": "medium",
+  "topic": "searching",
+  "pattern": "Binary Search Bounds",
+  "years": "TCS NQT 2023, Infosys 2022, Capgemini 2023",
+  "statement": "Given a sorted array of n integers with duplicates and a target x, find the first and last occurrence of x. Print them as \"first last\" (0-based). If x is absent print \"-1 -1\".",
+  "inputFormat": "Line 1: n. Line 2: n space-separated sorted integers. Line 3: target x.",
+  "outputFormat": "Print \"first last\" indices, or \"-1 -1\" if not found.",
+  "constraints": "1 <= n <= 10^5, -10^9 <= arr[i], x <= 10^9. Array sorted ascending.",
+  "samples": [
+   {
+    "stdin": "7\n1 2 2 2 3 4 5\n2\n",
+    "expected": "1 3"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n6\n",
+    "expected": "-1 -1"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "7\n1 2 2 2 3 4 5\n2\n",
+    "expected": "1 3"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n6\n",
+    "expected": "-1 -1"
+   },
+   {
+    "stdin": "4\n5 5 5 5\n5\n",
+    "expected": "0 3"
+   },
+   {
+    "stdin": "1\n7\n7\n",
+    "expected": "0 0"
+   },
+   {
+    "stdin": "6\n1 1 2 3 3 3\n3\n",
+    "expected": "3 5"
+   }
+  ],
+  "starter": "import sys\ndef solve():\n    # TODO: read n, sorted array and x, print first and last index\n    pass\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "import sys\ndef solve():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    x = int(data[1+n]) if len(data) > 1+n else 0\n    first = -1\n    last = -1\n    for i in range(n):\n        if arr[i] == x:\n            if first == -1:\n                first = i\n            last = i\n    print(f\"{first} {last}\")\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "One linear pass records the first time x appears and keeps updating the last position.",
+  "steps": [
+   "Read n, sorted array and target x",
+   "Initialize first and last to -1",
+   "Scan i from 0 to n-1",
+   "On arr[i]==x set first if still -1 and always update last",
+   "Finish the full scan to capture the rightmost duplicate",
+   "Print first and last separated by space",
+   "Absent x naturally leaves -1 -1"
+  ],
+  "complexity": "Time O(n), Space O(1)",
+  "insight": "Duplicates form one block, so first and last bound the whole group."
+ },
+ {
+  "id": "peak-element",
+  "title": "Peak Element",
+  "difficulty": "medium",
+  "topic": "searching",
+  "pattern": "Neighbour Comparison",
+  "years": "Accenture 2022, Cognizant 2023, Wipro 2023",
+  "statement": "Given an array of n integers, find a peak element (strictly greater than its neighbours). For the first and last elements compare only the single neighbour. The array has at least one peak. Print the value of the first peak from the left.",
+  "inputFormat": "Line 1: n. Line 2: n space-separated integers.",
+  "outputFormat": "Print the value of the first peak element.",
+  "constraints": "1 <= n <= 10^5, -10^9 <= arr[i] <= 10^9.",
+  "samples": [
+   {
+    "stdin": "5\n1 3 2 4 1\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "4\n1 2 3 4\n",
+    "expected": "4"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n1 3 2 4 1\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "4\n1 2 3 4\n",
+    "expected": "4"
+   },
+   {
+    "stdin": "4\n4 3 2 1\n",
+    "expected": "4"
+   },
+   {
+    "stdin": "1\n10\n",
+    "expected": "10"
+   },
+   {
+    "stdin": "5\n1 2 1 2 1\n",
+    "expected": "2"
+   }
+  ],
+  "starter": "import sys\ndef solve():\n    # TODO: read n and array, find and print first peak value\n    pass\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "import sys\ndef solve():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    if n == 1:\n        print(arr[0])\n        return\n    for i in range(n):\n        left_ok = (i == 0) or (arr[i] > arr[i-1])\n        right_ok = (i == n-1) or (arr[i] > arr[i+1])\n        if left_ok and right_ok:\n            print(arr[i])\n            return\n    print(max(arr))\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Linear scan checks each element against its one or two neighbours and prints the first peak.",
+  "steps": [
+   "Read n and the array",
+   "Handle n==1 by printing the only element",
+   "For each i check left condition and right condition",
+   "Edge elements need only one side to hold",
+   "Print arr[i] at the first i where both hold and stop",
+   "Fallback prints max if no strict peak exists",
+   "Scan order guarantees the leftmost peak"
+  ],
+  "complexity": "Time O(n), Space O(1)",
+  "insight": "Ends need one comparison, so a peak always exists in a finite array."
+ },
+ {
+  "id": "selection-sort-swaps",
+  "title": "Selection Sort Result",
+  "difficulty": "easy",
+  "topic": "sorting",
+  "pattern": "Selection Sort Simulation",
+  "years": "Wipro 2022, TCS NQT 2021, Capgemini 2022",
+  "statement": "Given an array of n integers, simulate Selection Sort (find minimum of unsorted part and swap into place) and print the final sorted array in ascending order, space-separated on one line.",
+  "inputFormat": "Line 1: n. Line 2: n space-separated integers.",
+  "outputFormat": "Print the sorted array space-separated on one line.",
+  "constraints": "1 <= n <= 1000, -10^9 <= arr[i] <= 10^9.",
+  "samples": [
+   {
+    "stdin": "5\n64 25 12 22 11\n",
+    "expected": "11 12 22 25 64"
+   },
+   {
+    "stdin": "4\n4 3 2 1\n",
+    "expected": "1 2 3 4"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n64 25 12 22 11\n",
+    "expected": "11 12 22 25 64"
+   },
+   {
+    "stdin": "4\n4 3 2 1\n",
+    "expected": "1 2 3 4"
+   },
+   {
+    "stdin": "1\n42\n",
+    "expected": "42"
+   },
+   {
+    "stdin": "6\n5 -1 3 0 2 -2\n",
+    "expected": "-2 -1 0 2 3 5"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "1 2 3 4 5"
+   }
+  ],
+  "starter": "import sys\ndef solve():\n    # TODO: read n and array, selection sort, print sorted array\n    pass\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "import sys\ndef solve():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    for i in range(n):\n        mn = i\n        for j in range(i+1, n):\n            if arr[j] < arr[mn]:\n                mn = j\n        arr[i], arr[mn] = arr[mn], arr[i]\n    print(' '.join(map(str, arr)))\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Repeatedly select the minimum from the unsorted suffix and swap it to the current position.",
+  "steps": [
+   "Read n and the array",
+   "For i from 0 to n-1 assume minimum at i",
+   "Scan j from i+1 to n-1 to find true minimum index",
+   "Swap arr[i] with arr[minimum]",
+   "Repeat until the whole array is sorted",
+   "Print the array space-separated",
+   "Outer loop fixes one position per pass"
+  ],
+  "complexity": "Time O(n^2), Space O(1)",
+  "insight": "Selection sort fixes one smallest remaining element per pass."
+ },
+ {
+  "id": "insertion-sort-steps",
+  "title": "Insertion Sort Result",
+  "difficulty": "easy",
+  "topic": "sorting",
+  "pattern": "Insertion Sort Simulation",
+  "years": "Infosys 2022, Accenture 2022, Cognizant 2023",
+  "statement": "Given an array of n integers, simulate Insertion Sort (insert each element into its correct place among previous elements) and print the final sorted array in ascending order, space-separated on one line.",
+  "inputFormat": "Line 1: n. Line 2: n space-separated integers.",
+  "outputFormat": "Print the sorted array space-separated on one line.",
+  "constraints": "1 <= n <= 1000, -10^9 <= arr[i] <= 10^9.",
+  "samples": [
+   {
+    "stdin": "5\n5 4 3 2 1\n",
+    "expected": "1 2 3 4 5"
+   },
+   {
+    "stdin": "5\n12 11 13 5 6\n",
+    "expected": "5 6 11 12 13"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n5 4 3 2 1\n",
+    "expected": "1 2 3 4 5"
+   },
+   {
+    "stdin": "5\n12 11 13 5 6\n",
+    "expected": "5 6 11 12 13"
+   },
+   {
+    "stdin": "3\n3 1 2\n",
+    "expected": "1 2 3"
+   },
+   {
+    "stdin": "1\n99\n",
+    "expected": "99"
+   },
+   {
+    "stdin": "4\n-3 -1 -2 0\n",
+    "expected": "-3 -2 -1 0"
+   }
+  ],
+  "starter": "import sys\ndef solve():\n    # TODO: read n and array, insertion sort, print sorted array\n    pass\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "import sys\ndef solve():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    for i in range(1, n):\n        key = arr[i]\n        j = i - 1\n        while j >= 0 and arr[j] > key:\n            arr[j+1] = arr[j]\n            j -= 1\n        arr[j+1] = key\n    print(' '.join(map(str, arr)))\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Grow a sorted prefix one element at a time by shifting larger elements right and inserting the key.",
+  "steps": [
+   "Read n and the array",
+   "For i from 1 to n-1 take key=arr[i]",
+   "Set j=i-1 and shift arr[j] right while arr[j]>key",
+   "Insert key at arr[j+1]",
+   "Repeat until the prefix covers the array",
+   "Print the sorted array space-separated",
+   "Each pass inserts one element correctly"
+  ],
+  "complexity": "Time O(n^2), Space O(1)",
+  "insight": "Insertion sort keeps the left prefix sorted and inserts into it."
+ },
+ {
+  "id": "array-sum-avg",
+  "title": "Sum and Average of Array",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "Accumulation",
+  "years": "TCS NQT 2021, Wipro 2022, Accenture 2023",
+  "statement": "Given an array of n integers, compute the sum and the average. Print them as \"sum avg\" where avg is shown with exactly 1 decimal place.",
+  "inputFormat": "Line 1: n. Line 2: n space-separated integers.",
+  "outputFormat": "Print \"sum avg\" with avg formatted to 1 decimal.",
+  "constraints": "1 <= n <= 10^5, -10^9 <= arr[i] <= 10^9.",
+  "samples": [
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "15 3.0"
+   },
+   {
+    "stdin": "3\n10 20 30\n",
+    "expected": "60 20.0"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "15 3.0"
+   },
+   {
+    "stdin": "3\n10 20 30\n",
+    "expected": "60 20.0"
+   },
+   {
+    "stdin": "4\n1 1 1 2\n",
+    "expected": "5 1.2"
+   },
+   {
+    "stdin": "1\n7\n",
+    "expected": "7 7.0"
+   },
+   {
+    "stdin": "4\n-2 2 -3 3\n",
+    "expected": "0 0.0"
+   }
+  ],
+  "starter": "import sys\ndef solve():\n    # TODO: read n and array, print sum and average with 1 decimal\n    pass\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "import sys\ndef solve():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    s = sum(arr)\n    avg = s / n\n    print(f\"{s} {avg:.1f}\")\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Accumulate the sum in one pass then divide by n and format to one decimal.",
+  "steps": [
+   "Read n and the array",
+   "Compute sum of all elements",
+   "Divide sum by n to get average as float",
+   "Format average with exactly 1 decimal place",
+   "Print sum and formatted average with a space",
+   "Single pass accumulation is enough",
+   "Check float division not integer division"
+  ],
+  "complexity": "Time O(n), Space O(1)",
+  "insight": "Average is just sum over count; formatting controls decimals."
+ },
+ {
+  "id": "min-max-array",
+  "title": "Min and Max in Array",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "Single Pass Min Max",
+  "years": "Infosys 2021, TCS NQT 2022, Wipro 2023",
+  "statement": "Given an array of n integers, find the minimum and maximum elements. Print them as \"min max\" separated by a space.",
+  "inputFormat": "Line 1: n. Line 2: n space-separated integers.",
+  "outputFormat": "Print \"min max\".",
+  "constraints": "1 <= n <= 10^5, -10^9 <= arr[i] <= 10^9.",
+  "samples": [
+   {
+    "stdin": "5\n3 1 4 1 5\n",
+    "expected": "1 5"
+   },
+   {
+    "stdin": "1\n42\n",
+    "expected": "42 42"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n3 1 4 1 5\n",
+    "expected": "1 5"
+   },
+   {
+    "stdin": "1\n42\n",
+    "expected": "42 42"
+   },
+   {
+    "stdin": "4\n-5 -2 -9 -1\n",
+    "expected": "-9 -1"
+   },
+   {
+    "stdin": "3\n7 7 7\n",
+    "expected": "7 7"
+   },
+   {
+    "stdin": "6\n10 -10 0 5 -5 3\n",
+    "expected": "-10 10"
+   }
+  ],
+  "starter": "import sys\ndef solve():\n    # TODO: read n and array, print min and max\n    pass\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "import sys\ndef solve():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    print(f\"{min(arr)} {max(arr)}\")\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Track minimum and maximum in a single scan of the array.",
+  "steps": [
+   "Read n and the array",
+   "Initialize mn and mx to the first element",
+   "Scan remaining elements updating mn and mx",
+   "Compare each element against both extremes",
+   "Finish the pass covering all n elements",
+   "Print mn and mx separated by space",
+   "One pass suffices for both values"
+  ],
+  "complexity": "Time O(n), Space O(1)",
+  "insight": "Min and max can share one loop instead of two passes."
+ },
+ {
+  "id": "frequency-array",
+  "title": "Frequency of Array Elements",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "Hashing / Counting",
+  "years": "TCS NQT 2023, Cognizant 2022, Capgemini 2023",
+  "statement": "Given an array of n integers, count the frequency of each distinct element. Print each as \"val:count\" on its own line, sorted by val in ascending order.",
+  "inputFormat": "Line 1: n. Line 2: n space-separated integers.",
+  "outputFormat": "Print one \"val:count\" line per distinct value, sorted ascending by val.",
+  "constraints": "1 <= n <= 10^5, -10^9 <= arr[i] <= 10^9.",
+  "samples": [
+   {
+    "stdin": "6\n1 2 2 3 1 2\n",
+    "expected": "1:2\n2:3\n3:1"
+   },
+   {
+    "stdin": "4\n5 5 5 5\n",
+    "expected": "5:4"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "6\n1 2 2 3 1 2\n",
+    "expected": "1:2\n2:3\n3:1"
+   },
+   {
+    "stdin": "4\n5 5 5 5\n",
+    "expected": "5:4"
+   },
+   {
+    "stdin": "5\n3 1 2 1 3\n",
+    "expected": "1:2\n2:1\n3:2"
+   },
+   {
+    "stdin": "1\n9\n",
+    "expected": "9:1"
+   },
+   {
+    "stdin": "5\n-1 0 -1 0 2\n",
+    "expected": "-1:2\n0:2\n2:1"
+   }
+  ],
+  "starter": "import sys\ndef solve():\n    # TODO: read n and array, print val:count lines sorted by val\n    pass\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "import sys\nfrom collections import Counter\ndef solve():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    c = Counter(arr)\n    for v in sorted(c):\n        print(f\"{v}:{c[v]}\")\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Count with a hash map then output keys in sorted order.",
+  "steps": [
+   "Read n and the array",
+   "Build a frequency map of value to count",
+   "Sort the distinct keys ascending",
+   "For each key print val:count",
+   "Each distinct value appears exactly once",
+   "Sorting keys gives the required order",
+   "Counting is linear, sorting is over distinct values"
+  ],
+  "complexity": "Time O(n log k), Space O(k) where k is distinct count",
+  "insight": "Hash map counts, sorted keys order the output."
+ },
+ {
+  "id": "wave-array",
+  "title": "Wave Array",
+  "difficulty": "medium",
+  "topic": "arrays",
+  "pattern": "Sort and Swap",
+  "years": "Infosys 2023, Accenture 2022, TCS NQT 2022",
+  "statement": "Given an array of n integers, convert it to wave form: first sort ascending, then swap every adjacent pair (0-1, 2-3, ...). If n is odd the last element stays. Print the resulting array space-separated.",
+  "inputFormat": "Line 1: n. Line 2: n space-separated integers.",
+  "outputFormat": "Print the wave array space-separated on one line.",
+  "constraints": "1 <= n <= 10^5, -10^9 <= arr[i] <= 10^9.",
+  "samples": [
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "2 1 4 3 5"
+   },
+   {
+    "stdin": "4\n4 3 2 1\n",
+    "expected": "2 1 4 3"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "2 1 4 3 5"
+   },
+   {
+    "stdin": "4\n4 3 2 1\n",
+    "expected": "2 1 4 3"
+   },
+   {
+    "stdin": "1\n10\n",
+    "expected": "10"
+   },
+   {
+    "stdin": "6\n10 90 49 2 1 5\n",
+    "expected": "2 1 10 5 90 49"
+   },
+   {
+    "stdin": "3\n7 5 9\n",
+    "expected": "7 5 9"
+   }
+  ],
+  "starter": "import sys\ndef solve():\n    # TODO: read n and array, sort then swap pairs, print result\n    pass\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "import sys\ndef solve():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    arr.sort()\n    for i in range(0, n-1, 2):\n        arr[i], arr[i+1] = arr[i+1], arr[i]\n    print(' '.join(map(str, arr)))\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Sort ascending then swap each adjacent pair to create the wave pattern.",
+  "steps": [
+   "Read n and the array",
+   "Sort the array in ascending order",
+   "Loop i over 0,2,4,... while i+1<n",
+   "Swap arr[i] and arr[i+1]",
+   "Leave the last element if n is odd",
+   "Print the array space-separated",
+   "Sorted swaps guarantee arr0>=arr1<=arr2 pattern"
+  ],
+  "complexity": "Time O(n log n), Space O(1)",
+  "insight": "Sorting first makes pairwise swaps produce a valid wave."
+ },
+ {
+  "id": "leaders-count",
+  "title": "Count of Leaders",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "Right to Left Scan",
+  "years": "TCS NQT 2022, Wipro 2023, Cognizant 2022",
+  "statement": "Given an array of n integers, a leader is an element strictly greater than all elements to its right. The last element is always a leader. Print the count of leaders.",
+  "inputFormat": "Line 1: n. Line 2: n space-separated integers.",
+  "outputFormat": "Print the count of leaders.",
+  "constraints": "1 <= n <= 10^5, -10^9 <= arr[i] <= 10^9.",
+  "samples": [
+   {
+    "stdin": "6\n16 17 4 3 5 2\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "1"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "6\n16 17 4 3 5 2\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "5\n5 4 3 2 1\n",
+    "expected": "5"
+   },
+   {
+    "stdin": "1\n10\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "4\n7 7 7 7\n",
+    "expected": "1"
+   }
+  ],
+  "starter": "import sys\ndef solve():\n    # TODO: read n and array, count leaders, print count\n    pass\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "import sys\ndef solve():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    count = 0\n    mx = float('-inf')\n    for i in range(n-1, -1, -1):\n        if arr[i] > mx:\n            count += 1\n            mx = arr[i]\n    print(count)\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Scan from right keeping the maximum seen so far; each new maximum is a leader.",
+  "steps": [
+   "Read n and the array",
+   "Set max_so_far to negative infinity and count to 0",
+   "Traverse i from n-1 down to 0",
+   "If arr[i]>max_so_far increment count and update max",
+   "Strictly greater ensures equal values are not leaders",
+   "Last element always passes and starts the count",
+   "Print the final count"
+  ],
+  "complexity": "Time O(n), Space O(1)",
+  "insight": "Right-to-left maxima are exactly the leaders."
+ },
+ {
+  "id": "missing-repeating",
+  "title": "Missing and Repeating",
+  "difficulty": "medium",
+  "topic": "arrays",
+  "pattern": "Frequency Map",
+  "years": "TCS NQT 2023, Infosys 2023, Accenture 2023",
+  "statement": "Given an array of n integers containing numbers from 1 to n with one number repeating and one number missing, find both. Print them as \"repeating missing\" separated by a space.",
+  "inputFormat": "Line 1: n. Line 2: n space-separated integers (values 1..n, one duplicate one missing).",
+  "outputFormat": "Print \"repeating missing\".",
+  "constraints": "2 <= n <= 10^5, 1 <= arr[i] <= n.",
+  "samples": [
+   {
+    "stdin": "5\n1 2 2 4 5\n",
+    "expected": "2 3"
+   },
+   {
+    "stdin": "4\n1 1 3 4\n",
+    "expected": "1 2"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n1 2 2 4 5\n",
+    "expected": "2 3"
+   },
+   {
+    "stdin": "4\n1 1 3 4\n",
+    "expected": "1 2"
+   },
+   {
+    "stdin": "3\n3 1 3\n",
+    "expected": "3 2"
+   },
+   {
+    "stdin": "6\n1 2 3 4 4 6\n",
+    "expected": "4 5"
+   },
+   {
+    "stdin": "2\n2 2\n",
+    "expected": "2 1"
+   }
+  ],
+  "starter": "import sys\ndef solve():\n    # TODO: read n and array, find repeating and missing, print them\n    pass\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "import sys\nfrom collections import Counter\ndef solve():\n    data = sys.stdin.read().strip().split()\n    if not data:\n        return\n    n = int(data[0])\n    arr = list(map(int, data[1:1+n]))\n    c = Counter(arr)\n    rep = -1\n    miss = -1\n    for v in range(1, n+1):\n        if c.get(v, 0) == 2:\n            rep = v\n        elif c.get(v, 0) == 0:\n            miss = v\n    if rep == -1:\n        for v, k in c.items():\n            if k > 1:\n                rep = v\n                break\n    print(f\"{rep} {miss}\")\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Count frequencies from 1 to n; the value with count 2 is repeating and count 0 is missing.",
+  "steps": [
+   "Read n and the array",
+   "Build a frequency map of the array",
+   "Loop v from 1 to n",
+   "Mark v as repeating if its count is 2",
+   "Mark v as missing if its count is 0",
+   "Fallback picks any value with count above 1",
+   "Print repeating and missing separated by space"
+  ],
+  "complexity": "Time O(n), Space O(n)",
+  "insight": "In 1..n with one swap, counts reveal both anomalies."
+ },
+ {
+  "id": "longest-unique-substring",
+  "title": "Longest Substring Without Repeating Characters",
+  "difficulty": "medium",
+  "topic": "strings",
+  "pattern": "sliding-window",
+  "years": "TCS 2023, Infosys 2022, Accenture 2023",
+  "statement": "Given a lowercase string s, find the length of the longest substring without repeating characters.",
+  "inputFormat": "A single line containing string s (lowercase letters).",
+  "outputFormat": "Print the length of the longest substring without repeating characters.",
+  "constraints": "1 <= len(s) <= 10000\ns consists of lowercase English letters.",
+  "samples": [
+   {
+    "stdin": "abcabcbb\n",
+    "expected": "3\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "abcabcbb\n",
+    "expected": "3\n"
+   },
+   {
+    "stdin": "bbbbb\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "pwwkew\n",
+    "expected": "3\n"
+   },
+   {
+    "stdin": "abcdef\n",
+    "expected": "6\n"
+   },
+   {
+    "stdin": "abba\n",
+    "expected": "2\n"
+   }
+  ],
+  "starter": "s = input().strip()\n# write your code here\n",
+  "solution": "s = input().strip()\nseen = {}\nl = 0\nbest = 0\nfor r, ch in enumerate(s):\n    if ch in seen and seen[ch] >= l:\n        l = seen[ch] + 1\n    seen[ch] = r\n    if r - l + 1 > best:\n        best = r - l + 1\nprint(best)",
+  "approach": "Sliding window with last-seen index map to maintain a window of unique characters.",
+  "steps": [
+   "Read string s.",
+   "Keep left pointer l and map of last index.",
+   "Expand right pointer r one char at a time.",
+   "If char repeats inside window, move l past its last occurrence.",
+   "Update best window length.",
+   "Print best length."
+  ],
+  "complexity": "O(n) time, O(1) space (at most 26 letters)",
+  "insight": "Last-seen index lets you slide left in O(1) instead of rescanning."
+ },
+ {
+  "id": "valid-parentheses",
+  "title": "Valid Parentheses",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "stack",
+  "years": "TCS 2022, Wipro 2023, Cognizant 2022",
+  "statement": "Given a string containing only brackets '(', ')', '{', '}', '[' and ']', check if the brackets are balanced. Every opening bracket must be closed by the same type in correct order.",
+  "inputFormat": "A single line containing string s of brackets.",
+  "outputFormat": "Print Balanced if valid, else Not Balanced.",
+  "constraints": "1 <= len(s) <= 10000\ns consists of (){}[] only.",
+  "samples": [
+   {
+    "stdin": "()[]{}\n",
+    "expected": "Balanced\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "()[]{}\n",
+    "expected": "Balanced\n"
+   },
+   {
+    "stdin": "(]\n",
+    "expected": "Not Balanced\n"
+   },
+   {
+    "stdin": "([{}])\n",
+    "expected": "Balanced\n"
+   },
+   {
+    "stdin": "((()\n",
+    "expected": "Not Balanced\n"
+   },
+   {
+    "stdin": "{[}]\n",
+    "expected": "Not Balanced\n"
+   }
+  ],
+  "starter": "s = input().strip()\n# write your code here\n",
+  "solution": "s = input().strip()\nstack = []\nmp = {')': '(', ']': '[', '}': '{'}\nok = True\nfor ch in s:\n    if ch in '([{':\n        stack.append(ch)\n    else:\n        if not stack or stack.pop() != mp.get(ch, ''):\n            ok = False\n            break\nif ok and not stack:\n    print('Balanced')\nelse:\n    print('Not Balanced')",
+  "approach": "Use a stack to match each closing bracket with the most recent opening bracket.",
+  "steps": [
+   "Read bracket string s.",
+   "Create empty stack and closing-to-opening map.",
+   "Push opening brackets onto stack.",
+   "On closing bracket pop and check it matches.",
+   "If mismatch or stack empty, mark invalid.",
+   "After loop print Balanced only if stack is empty and no mismatch."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "Stack gives LIFO order which is exactly how nested brackets must close."
+ },
+ {
+  "id": "roman-to-int",
+  "title": "Roman to Integer",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "hashmap",
+  "years": "Infosys 2023, Capgemini 2022, Accenture 2022",
+  "statement": "Given a Roman numeral string (I, V, X, L, C, D, M), convert it to an integer.",
+  "inputFormat": "A single line containing a valid Roman numeral string s (uppercase).",
+  "outputFormat": "Print the integer value.",
+  "constraints": "1 <= len(s) <= 15\ns is a valid Roman numeral.",
+  "samples": [
+   {
+    "stdin": "MCMXCIV\n",
+    "expected": "1994\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "III\n",
+    "expected": "3\n"
+   },
+   {
+    "stdin": "LVIII\n",
+    "expected": "58\n"
+   },
+   {
+    "stdin": "MCMXCIV\n",
+    "expected": "1994\n"
+   },
+   {
+    "stdin": "IV\n",
+    "expected": "4\n"
+   },
+   {
+    "stdin": "IX\n",
+    "expected": "9\n"
+   }
+  ],
+  "starter": "s = input().strip()\n# write your code here\n",
+  "solution": "s = input().strip()\nval = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\ntotal = 0\nprev = 0\nfor ch in reversed(s):\n    cur = val[ch]\n    if cur < prev:\n        total -= cur\n    else:\n        total += cur\n    prev = cur\nprint(total)",
+  "approach": "Scan from right to left, subtracting when a smaller value precedes a larger one.",
+  "steps": [
+   "Read Roman string s.",
+   "Store value map for I, V, X, L, C, D, M.",
+   "Traverse s from right to left.",
+   "If current value is smaller than previous, subtract it.",
+   "Otherwise add it.",
+   "Print total."
+  ],
+  "complexity": "O(n) time, O(1) space",
+  "insight": "Right-to-left scan turns the subtraction rule into a single comparison."
+ },
+ {
+  "id": "reverse-string",
+  "title": "Reverse a String",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "two-pointers",
+  "years": "TCS 2021, Wipro 2022, Infosys 2021",
+  "statement": "Given a line of text s, print its reverse.",
+  "inputFormat": "A single line containing string s (may contain spaces).",
+  "outputFormat": "Print the reversed string.",
+  "constraints": "1 <= len(s) <= 10000",
+  "samples": [
+   {
+    "stdin": "hello\n",
+    "expected": "olleh\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "hello\n",
+    "expected": "olleh\n"
+   },
+   {
+    "stdin": "arena\n",
+    "expected": "anera\n"
+   },
+   {
+    "stdin": "a\n",
+    "expected": "a\n"
+   },
+   {
+    "stdin": "ab\n",
+    "expected": "ba\n"
+   },
+   {
+    "stdin": "hello world\n",
+    "expected": "dlrow olleh\n"
+   }
+  ],
+  "starter": "import sys\ns = sys.stdin.readline().rstrip('\\n')\n# write your code here\n",
+  "solution": "import sys\ns = sys.stdin.readline().rstrip('\\n')\nprint(s[::-1])",
+  "approach": "Slice the string with step -1 to reverse it.",
+  "steps": [
+   "Read full line s preserving spaces.",
+   "Handle empty line as empty string.",
+   "Reverse using slicing with step -1.",
+   "Keep all spaces and characters in reversed order.",
+   "Print reversed string."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "Python slicing s[::-1] reverses without an explicit loop."
+ },
+ {
+  "id": "longest-pal-substring",
+  "title": "Longest Palindromic Substring Length",
+  "difficulty": "medium",
+  "topic": "strings",
+  "pattern": "expand-around-center",
+  "years": "TCS 2023, Accenture 2023, Infosys 2022",
+  "statement": "Given a lowercase string s, find the length of the longest palindromic substring.",
+  "inputFormat": "A single line containing string s (lowercase letters).",
+  "outputFormat": "Print the length of the longest palindromic substring.",
+  "constraints": "1 <= len(s) <= 1000\ns consists of lowercase English letters.",
+  "samples": [
+   {
+    "stdin": "babad\n",
+    "expected": "3\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "babad\n",
+    "expected": "3\n"
+   },
+   {
+    "stdin": "cbbd\n",
+    "expected": "2\n"
+   },
+   {
+    "stdin": "a\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "aaaa\n",
+    "expected": "4\n"
+   },
+   {
+    "stdin": "abcde\n",
+    "expected": "1\n"
+   }
+  ],
+  "starter": "s = input().strip()\n# write your code here\n",
+  "solution": "s = input().strip()\nn = len(s)\nbest = 1 if n > 0 else 0\nfor c in range(n):\n    l = r = c\n    while l >= 0 and r < n and s[l] == s[r]:\n        if r - l + 1 > best:\n            best = r - l + 1\n        l -= 1\n        r += 1\n    l, r = c, c + 1\n    while l >= 0 and r < n and s[l] == s[r]:\n        if r - l + 1 > best:\n            best = r - l + 1\n        l -= 1\n        r += 1\nprint(best)",
+  "approach": "Expand around every center for odd and even length palindromes and track max length.",
+  "steps": [
+   "Read string s.",
+   "Set best to 1.",
+   "For each index treat it as odd center and expand.",
+   "For each index treat gap after it as even center and expand.",
+   "Update best whenever a larger palindrome is found.",
+   "Print best."
+  ],
+  "complexity": "O(n^2) time, O(1) space",
+  "insight": "Every palindrome has a center, so checking all 2n-1 centers finds the longest."
+ },
+ {
+  "id": "first-unique-char",
+  "title": "First Unique Character",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "frequency-count",
+  "years": "Wipro 2023, TCS 2022, Cognizant 2023",
+  "statement": "Given a lowercase string s, find the 0-based index of the first non-repeating character. If none exists, print -1.",
+  "inputFormat": "A single line containing string s (lowercase letters).",
+  "outputFormat": "Print the index of the first unique character or -1.",
+  "constraints": "1 <= len(s) <= 10000\ns consists of lowercase English letters.",
+  "samples": [
+   {
+    "stdin": "loveleetcode\n",
+    "expected": "2\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "leetcode\n",
+    "expected": "0\n"
+   },
+   {
+    "stdin": "loveleetcode\n",
+    "expected": "2\n"
+   },
+   {
+    "stdin": "aabb\n",
+    "expected": "-1\n"
+   },
+   {
+    "stdin": "abcd\n",
+    "expected": "0\n"
+   },
+   {
+    "stdin": "aabbcdd\n",
+    "expected": "4\n"
+   }
+  ],
+  "starter": "s = input().strip()\n# write your code here\n",
+  "solution": "s = input().strip()\nfrom collections import Counter\nc = Counter(s)\nans = -1\nfor i, ch in enumerate(s):\n    if c[ch] == 1:\n        ans = i\n        break\nprint(ans)",
+  "approach": "Count frequencies then scan left to right for the first character with count 1.",
+  "steps": [
+   "Read string s.",
+   "Count frequency of each character.",
+   "Scan s from left to right.",
+   "Pick first character with count 1.",
+   "Print its index or -1 if none."
+  ],
+  "complexity": "O(n) time, O(1) space",
+  "insight": "Two passes (count then scan) find the first unique in linear time."
+ },
+ {
+  "id": "group-anagrams-count",
+  "title": "Count Anagram Groups",
+  "difficulty": "medium",
+  "topic": "strings",
+  "pattern": "sorting-grouping",
+  "years": "Infosys 2023, TCS 2022, Capgemini 2023",
+  "statement": "Given n words, two words are in the same group if they are anagrams of each other. Print the number of distinct anagram groups.",
+  "inputFormat": "First line contains integer n. Next n lines each contain a word (lowercase).",
+  "outputFormat": "Print the number of anagram groups.",
+  "constraints": "1 <= n <= 1000\n1 <= len(word) <= 100",
+  "samples": [
+   {
+    "stdin": "6\neat\ntea\ntan\nate\nnat\nbat\n",
+    "expected": "3\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "6\neat\ntea\ntan\nate\nnat\nbat\n",
+    "expected": "3\n"
+   },
+   {
+    "stdin": "3\nabc\nbca\ncab\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "3\nabc\ndef\nghi\n",
+    "expected": "3\n"
+   },
+   {
+    "stdin": "1\nhello\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "4\nlisten\nsilent\nenlist\ngoogle\n",
+    "expected": "2\n"
+   }
+  ],
+  "starter": "n = int(input().strip())\n# read n words and write your code here\n",
+  "solution": "n = int(input().strip())\nseen = set()\nfor _ in range(n):\n    w = input().strip()\n    seen.add(''.join(sorted(w)))\nprint(len(seen))",
+  "approach": "Sort characters of each word as canonical key and count distinct keys.",
+  "steps": [
+   "Read integer n.",
+   "Read n words one by one.",
+   "Sort letters of each word to form its key.",
+   "Insert each key into a set.",
+   "Print size of the set."
+  ],
+  "complexity": "O(n * k log k) time, O(n * k) space where k is word length",
+  "insight": "Anagrams share the same sorted form, so sorting reduces grouping to dedup."
+ },
+ {
+  "id": "string-rotation",
+  "title": "Check String Rotation",
+  "difficulty": "medium",
+  "topic": "strings",
+  "pattern": "string-concat-trick",
+  "years": "TCS 2022, Accenture 2023, Wipro 2022",
+  "statement": "Given two strings s1 and s2, check if s2 is a rotation of s1. Print 1 if yes, else 0.",
+  "inputFormat": "Two lines: first line s1, second line s2 (lowercase, no spaces).",
+  "outputFormat": "Print 1 if s2 is a rotation of s1, else 0.",
+  "constraints": "1 <= len(s1), len(s2) <= 10000",
+  "samples": [
+   {
+    "stdin": "abcd\ncdab\n",
+    "expected": "1\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "abcd\ncdab\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "abcd\nacbd\n",
+    "expected": "0\n"
+   },
+   {
+    "stdin": "hello\nhello\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "abcde\ncdeab\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "abc\nabcd\n",
+    "expected": "0\n"
+   }
+  ],
+  "starter": "s1 = input().strip()\ns2 = input().strip()\n# write your code here\n",
+  "solution": "s1 = input().strip()\ntry:\n    s2 = input().strip()\nexcept EOFError:\n    s2 = ''\nif len(s1) != len(s2):\n    print(0)\nelse:\n    print(1 if s2 in (s1 + s1) else 0)",
+  "approach": "Check equal length and whether s2 is a substring of s1+s1.",
+  "steps": [
+   "Read strings s1 and s2.",
+   "If lengths differ, print 0.",
+   "Concatenate s1 with itself.",
+   "Check if s2 appears in s1+s1.",
+   "Print 1 if found else 0."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "All rotations of s1 are substrings of s1+s1."
+ },
+ {
+  "id": "longest-common-prefix",
+  "title": "Longest Common Prefix",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "vertical-scanning",
+  "years": "Infosys 2022, TCS 2023, Cognizant 2022",
+  "statement": "Given n strings, find the longest common prefix shared by all of them. If there is no common prefix, print -1.",
+  "inputFormat": "First line contains integer n. Next n lines each contain a string (lowercase, no spaces).",
+  "outputFormat": "Print the longest common prefix or -1 if none.",
+  "constraints": "1 <= n <= 1000\n1 <= len(string) <= 1000",
+  "samples": [
+   {
+    "stdin": "3\nflower\nflow\nflight\n",
+    "expected": "fl\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "3\nflower\nflow\nflight\n",
+    "expected": "fl\n"
+   },
+   {
+    "stdin": "3\ndog\nracecar\ncar\n",
+    "expected": "-1\n"
+   },
+   {
+    "stdin": "2\ninterspecies\ninterstate\n",
+    "expected": "inters\n"
+   },
+   {
+    "stdin": "1\nsingle\n",
+    "expected": "single\n"
+   },
+   {
+    "stdin": "2\nabc\nabc\n",
+    "expected": "abc\n"
+   }
+  ],
+  "starter": "n = int(input().strip())\n# read n strings and write your code here\n",
+  "solution": "n = int(input().strip())\narr = [input().strip() for _ in range(n)]\nif not arr:\n    print(-1)\nelse:\n    pref = arr[0]\n    for w in arr[1:]:\n        i = 0\n        while i < len(pref) and i < len(w) and pref[i] == w[i]:\n            i += 1\n        pref = pref[:i]\n        if not pref:\n            break\n    print(pref if pref else -1)",
+  "approach": "Compare characters column by column, shrinking the prefix on mismatch.",
+  "steps": [
+   "Read n and the n strings.",
+   "Start with first string as prefix.",
+   "Compare prefix with each next string char by char.",
+   "Trim prefix to matching part.",
+   "Stop early if prefix becomes empty.",
+   "Print prefix or -1 if empty."
+  ],
+  "complexity": "O(n * m) time, O(1) extra space where m is shortest length",
+  "insight": "The answer cannot exceed the shortest string, so shrinking works."
+ },
+ {
+  "id": "count-words",
+  "title": "Count Words in Sentence",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "string-split",
+  "years": "TCS 2021, Wipro 2021, Accenture 2022",
+  "statement": "Given a sentence that may contain extra spaces, count the number of words. Words are separated by spaces.",
+  "inputFormat": "A single line containing the sentence (may contain leading, trailing or multiple spaces).",
+  "outputFormat": "Print the word count.",
+  "constraints": "0 <= len(sentence) <= 10000",
+  "samples": [
+   {
+    "stdin": "hello world from tcs\n",
+    "expected": "4\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "hello world from tcs\n",
+    "expected": "4\n"
+   },
+   {
+    "stdin": "hello\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "  hello   world  \n",
+    "expected": "2\n"
+   },
+   {
+    "stdin": "   \n",
+    "expected": "0\n"
+   },
+   {
+    "stdin": "one two three four five\n",
+    "expected": "5\n"
+   }
+  ],
+  "starter": "import sys\ns = sys.stdin.readline().rstrip('\\n')\n# write your code here\n",
+  "solution": "import sys\ns = sys.stdin.readline().rstrip('\\n')\nprint(len(s.split()))",
+  "approach": "Split on whitespace which handles extra spaces automatically and count parts.",
+  "steps": [
+   "Read full line preserving spaces.",
+   "Split using default split to ignore extra spaces.",
+   "Count the resulting words.",
+   "Print the count.",
+   "Empty or blank line gives 0."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "split() with no args treats any run of spaces as one separator."
+ },
+ {
+  "id": "toggle-case",
+  "title": "Toggle Case",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "char-manipulation",
+  "years": "Infosys 2021, TCS 2022, Capgemini 2022",
+  "statement": "Given a string s, toggle the case of each alphabet character (lower to upper and upper to lower). Non-letters stay unchanged.",
+  "inputFormat": "A single line containing string s.",
+  "outputFormat": "Print the toggled string.",
+  "constraints": "1 <= len(s) <= 10000",
+  "samples": [
+   {
+    "stdin": "HeLLo\n",
+    "expected": "hEllO\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "HeLLo\n",
+    "expected": "hEllO\n"
+   },
+   {
+    "stdin": "hello\n",
+    "expected": "HELLO\n"
+   },
+   {
+    "stdin": "WORLD\n",
+    "expected": "world\n"
+   },
+   {
+    "stdin": "HeLLo World\n",
+    "expected": "hEllO wORLD\n"
+   },
+   {
+    "stdin": "abcXYZ123\n",
+    "expected": "ABCxyz123\n"
+   }
+  ],
+  "starter": "import sys\ns = sys.stdin.readline().rstrip('\\n')\n# write your code here\n",
+  "solution": "import sys\ns = sys.stdin.readline().rstrip('\\n')\nprint(s.swapcase())",
+  "approach": "Use swapcase to flip case of every letter in one pass.",
+  "steps": [
+   "Read full line s preserving spaces.",
+   "Apply swapcase to toggle each letter.",
+   "Lower becomes upper and upper becomes lower.",
+   "Non-letters like digits and spaces stay unchanged.",
+   "Print the toggled result."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "swapcase does the whole toggle without manual ASCII math."
+ },
+ {
+  "id": "sum-numbers-string",
+  "title": "Sum of Numbers Hidden in String",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "parsing",
+  "years": "TCS 2023, Infosys 2023, Wipro 2023",
+  "statement": "Given an alphanumeric string s, find the sum of all numbers hidden in it. Consecutive digits form one number. If no number exists, print 0.",
+  "inputFormat": "A single line containing string s.",
+  "outputFormat": "Print the sum of hidden numbers.",
+  "constraints": "1 <= len(s) <= 10000",
+  "samples": [
+   {
+    "stdin": "ab12c3\n",
+    "expected": "15\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "ab12c3\n",
+    "expected": "15\n"
+   },
+   {
+    "stdin": "abc\n",
+    "expected": "0\n"
+   },
+   {
+    "stdin": "1a2b3\n",
+    "expected": "6\n"
+   },
+   {
+    "stdin": "ab100cd20\n",
+    "expected": "120\n"
+   },
+   {
+    "stdin": "123\n",
+    "expected": "123\n"
+   }
+  ],
+  "starter": "s = input().rstrip('\\n')\n# write your code here\n",
+  "solution": "s = input().rstrip('\\n')\ntotal = 0\nnum = ''\nfor ch in s + ' ':\n    if ch.isdigit():\n        num += ch\n    elif num:\n        total += int(num)\n        num = ''\nprint(total)",
+  "approach": "Accumulate consecutive digits into a number and add to total on non-digit.",
+  "steps": [
+   "Read string s.",
+   "Keep a buffer for current digits.",
+   "Append digits to buffer as you scan.",
+   "On non-digit, convert buffer to int and add to total.",
+   "Clear buffer after adding.",
+   "Print total."
+  ],
+  "complexity": "O(n) time, O(1) space",
+  "insight": "One linear scan groups digits without regex."
+ },
+ {
+  "id": "atoi-convert",
+  "title": "String to Integer (atoi)",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "parsing",
+  "years": "TCS NQT 2022, Infosys 2023, Accenture 2022",
+  "statement": "Implement atoi: given a line s, ignore leading spaces, read an optional '+' or '-' sign, then read as many consecutive digits as possible and stop at the first non-digit. Convert to integer with the sign. If there are no digits, print 0.",
+  "inputFormat": "A single line s (may contain leading spaces, sign, digits and other characters).",
+  "outputFormat": "Print the converted integer, or 0 if there are no digits to convert.",
+  "constraints": "0 <= len(s) <= 100\ns contains spaces, signs, digits and letters.",
+  "samples": [
+   {
+    "stdin": "   -42xyz\n",
+    "expected": "-42\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "   -42xyz\n",
+    "expected": "-42\n"
+   },
+   {
+    "stdin": "4193 with words\n",
+    "expected": "4193\n"
+   },
+   {
+    "stdin": "words 123\n",
+    "expected": "0\n"
+   },
+   {
+    "stdin": "   +007\n",
+    "expected": "7\n"
+   },
+   {
+    "stdin": "   \n",
+    "expected": "0\n"
+   }
+  ],
+  "starter": "import sys\ns = sys.stdin.readline().rstrip('\\n')\n# write your code here\n",
+  "solution": "import sys\ns = sys.stdin.readline().rstrip('\\n')\nif s is None:\n    s = ''\ni = 0\nn = len(s)\nwhile i < n and s[i] == ' ':\n    i += 1\nsign = 1\nif i < n and s[i] in ('+', '-'):\n    if s[i] == '-':\n        sign = -1\n    i += 1\nnum = 0\nfound = False\nwhile i < n and s[i].isdigit():\n    found = True\n    num = num * 10 + int(s[i])\n    i += 1\nif not found:\n    print(0)\nelse:\n    print(sign * num)",
+  "approach": "Skip spaces, record sign, then accumulate consecutive digits and apply sign.",
+  "steps": [
+   "Read the full line preserving leading spaces.",
+   "Skip leading space characters.",
+   "Check for optional '+' or '-' sign.",
+   "Scan consecutive digits and build the number.",
+   "If no digits were found print 0.",
+   "Otherwise print the number with its sign.",
+   "Test with signs, spaces and trailing words."
+  ],
+  "complexity": "O(n) time, O(1) space",
+  "insight": "atoi is just skip-spaces, sign, then digits-stop-at-first-nondigit."
+ },
+ {
+  "id": "add-binary",
+  "title": "Add Binary Strings",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "math-simulation",
+  "years": "TCS 2022, Wipro 2023, Cognizant 2022",
+  "statement": "Given two binary strings a and b, add them as binary numbers and print the sum as a binary string without extra leading zeros (except print 0 for zero).",
+  "inputFormat": "Line 1: binary string a\nLine 2: binary string b",
+  "outputFormat": "Print the binary sum of a and b.",
+  "constraints": "1 <= len(a), len(b) <= 10\na and b contain only 0 and 1.",
+  "samples": [
+   {
+    "stdin": "11\n1\n",
+    "expected": "100\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "11\n1\n",
+    "expected": "100\n"
+   },
+   {
+    "stdin": "1010\n1011\n",
+    "expected": "10101\n"
+   },
+   {
+    "stdin": "0\n0\n",
+    "expected": "0\n"
+   },
+   {
+    "stdin": "1111\n1\n",
+    "expected": "10000\n"
+   },
+   {
+    "stdin": "1\n1\n",
+    "expected": "10\n"
+   }
+  ],
+  "starter": "a = input().strip()\nb = input().strip()\n# write your code here\n",
+  "solution": "a = input().strip()\nb = input().strip()\nprint(bin(int(a, 2) + int(b, 2))[2:])",
+  "approach": "Convert both binary strings to integers, add, then convert back to binary.",
+  "steps": [
+   "Read binary strings a and b.",
+   "Convert a and b from base 2 to integers.",
+   "Add the two integers.",
+   "Convert the sum back to binary form.",
+   "Strip the 0b prefix.",
+   "Print the resulting binary string."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "Binary string addition is int(x, 2) plus bin() conversion."
+ },
+ {
+  "id": "valid-palindrome-2",
+  "title": "Valid Palindrome Ignoring Case and Symbols",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "two-pointers-filtering",
+  "years": "Infosys 2022, TCS 2023, Capgemini 2022",
+  "statement": "Given a line s, check if it is a palindrome when considering only alphanumeric characters and ignoring case. Print 1 if it is a palindrome, else 0. An empty filtered string counts as palindrome.",
+  "inputFormat": "A single line s (may contain spaces and punctuation).",
+  "outputFormat": "Print 1 if s is a palindrome ignoring case and non-alphanumeric characters, else 0.",
+  "constraints": "0 <= len(s) <= 100\ns contains printable ASCII.",
+  "samples": [
+   {
+    "stdin": "A man, a plan, a canal: Panama\n",
+    "expected": "1\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "A man, a plan, a canal: Panama\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "race a car\n",
+    "expected": "0\n"
+   },
+   {
+    "stdin": "ab@a\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "0P\n",
+    "expected": "0\n"
+   },
+   {
+    "stdin": " \n",
+    "expected": "1\n"
+   }
+  ],
+  "starter": "import sys\ns = sys.stdin.readline().rstrip('\\n')\n# write your code here\n",
+  "solution": "import sys\ns = sys.stdin.readline().rstrip('\\n')\nif s is None:\n    s = ''\nf = ''.join(c.lower() for c in s if c.isalnum())\nprint(1 if f == f[::-1] else 0)",
+  "approach": "Filter to lowercase alphanumerics then check if the result reads the same backwards.",
+  "steps": [
+   "Read the full line preserving spaces.",
+   "Keep only alphanumeric characters.",
+   "Convert each kept character to lowercase.",
+   "Compare the filtered string to its reverse.",
+   "Print 1 if equal else 0.",
+   "Check empty and single-char cases give 1."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "Filtering first reduces palindrome check to a simple reverse compare."
+ },
+ {
+  "id": "reverse-vowels",
+  "title": "Reverse Vowels Only",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "two-pointers",
+  "years": "TCS 2021, Accenture 2023, Wipro 2022",
+  "statement": "Given a string s, reverse only its vowels (a, e, i, o, u in both lowercase and uppercase). All other characters stay in place. Print the resulting string.",
+  "inputFormat": "A single line containing string s.",
+  "outputFormat": "Print s with only its vowels reversed.",
+  "constraints": "1 <= len(s) <= 100\ns contains letters and spaces.",
+  "samples": [
+   {
+    "stdin": "hello\n",
+    "expected": "holle\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "hello\n",
+    "expected": "holle\n"
+   },
+   {
+    "stdin": "leetcode\n",
+    "expected": "leotcede\n"
+   },
+   {
+    "stdin": "aA\n",
+    "expected": "Aa\n"
+   },
+   {
+    "stdin": "xyz\n",
+    "expected": "xyz\n"
+   },
+   {
+    "stdin": "AeI\n",
+    "expected": "IeA\n"
+   }
+  ],
+  "starter": "import sys\ns = sys.stdin.readline().rstrip('\\n')\n# write your code here\n",
+  "solution": "import sys\ns = sys.stdin.readline().rstrip('\\n')\nvowels = set('aeiouAEIOU')\nlst = list(s)\ni, j = 0, len(lst) - 1\nwhile i < j:\n    while i < j and lst[i] not in vowels:\n        i += 1\n    while i < j and lst[j] not in vowels:\n        j -= 1\n    if i < j:\n        lst[i], lst[j] = lst[j], lst[i]\n        i += 1\n        j -= 1\nprint(''.join(lst))",
+  "approach": "Two pointers from both ends swapping vowels when both ends point at vowels.",
+  "steps": [
+   "Read the full line s.",
+   "Make a vowel set for both cases.",
+   "Place pointers at start and end.",
+   "Move each pointer to the next vowel.",
+   "Swap the two vowels and move inward.",
+   "Repeat until pointers meet.",
+   "Print the modified string."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "Vowels form a subsequence, reversing it needs only two pointers."
+ },
+ {
+  "id": "max-occurring-char",
+  "title": "Maximum Occurring Character",
+  "difficulty": "easy",
+  "topic": "strings",
+  "pattern": "frequency-count",
+  "years": "Wipro 2022, TCS 2023, Infosys 2021",
+  "statement": "Given a string s with no spaces, find the character that occurs most frequently. If several characters tie, print the lexicographically smallest one.",
+  "inputFormat": "A single line containing string s (no spaces).",
+  "outputFormat": "Print the maximum occurring character.",
+  "constraints": "1 <= len(s) <= 100\ns contains lowercase letters.",
+  "samples": [
+   {
+    "stdin": "aabbbcc\n",
+    "expected": "b\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "aabbbcc\n",
+    "expected": "b\n"
+   },
+   {
+    "stdin": "abcabc\n",
+    "expected": "a\n"
+   },
+   {
+    "stdin": "zzzaa\n",
+    "expected": "z\n"
+   },
+   {
+    "stdin": "q\n",
+    "expected": "q\n"
+   },
+   {
+    "stdin": "hello\n",
+    "expected": "l\n"
+   }
+  ],
+  "starter": "s = input().strip()\n# write your code here\n",
+  "solution": "s = input().strip()\nfrom collections import Counter\nc = Counter(s)\nbest = max(c.values())\nprint(min(ch for ch, f in c.items() if f == best))",
+  "approach": "Count frequencies then pick the smallest character among those with max count.",
+  "steps": [
+   "Read string s.",
+   "Count frequency of each character.",
+   "Find the maximum frequency value.",
+   "Collect all characters with that frequency.",
+   "Pick the smallest one lexicographically.",
+   "Print the chosen character."
+  ],
+  "complexity": "O(n) time, O(1) space",
+  "insight": "Counter plus min over max-frequency keys handles ties in one pass."
+ },
+ {
+  "id": "run-length-decode",
+  "title": "Run-Length Decode",
+  "difficulty": "medium",
+  "topic": "strings",
+  "pattern": "parsing",
+  "years": "TCS 2023, Cognizant 2022, Accenture 2023",
+  "statement": "Given an encoded string where each letter is followed by its count (for example a3b2 means aaabb), decode it by repeating each letter count times. Counts may have multiple digits. Print the decoded string.",
+  "inputFormat": "A single line containing the encoded string (letter followed by count, repeated).",
+  "outputFormat": "Print the decoded string.",
+  "constraints": "1 <= len(encoded) <= 20\n1 <= count <= 10\nDecoded length <= 50.",
+  "samples": [
+   {
+    "stdin": "a3b2\n",
+    "expected": "aaabb\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "a3b2\n",
+    "expected": "aaabb\n"
+   },
+   {
+    "stdin": "x1y5\n",
+    "expected": "xyyyyy\n"
+   },
+   {
+    "stdin": "a10\n",
+    "expected": "aaaaaaaaaa\n"
+   },
+   {
+    "stdin": "m2n2\n",
+    "expected": "mmnn\n"
+   },
+   {
+    "stdin": "p4\n",
+    "expected": "pppp\n"
+   }
+  ],
+  "starter": "s = input().strip()\n# write your code here\n",
+  "solution": "s = input().strip()\nres = []\ni = 0\nn = len(s)\nwhile i < n:\n    ch = s[i]\n    i += 1\n    num = 0\n    has = False\n    while i < n and s[i].isdigit():\n        has = True\n        num = num * 10 + int(s[i])\n        i += 1\n    if has:\n        res.append(ch * num)\n    else:\n        res.append(ch)\nprint(''.join(res))",
+  "approach": "Scan letter by letter, parse the full multi-digit count after each letter, repeat and join.",
+  "steps": [
+   "Read encoded string s.",
+   "Walk through s with index i.",
+   "Take the letter at i.",
+   "Parse all following digits into one count.",
+   "Repeat the letter count times.",
+   "Join all pieces and print.",
+   "Test multi-digit counts like a10."
+  ],
+  "complexity": "O(m) time where m is decoded length, O(m) space",
+  "insight": "Greedy digit grouping after each letter decodes multi-digit counts."
+ },
+ {
+  "id": "next-greater",
+  "title": "Next Greater Element",
+  "difficulty": "medium",
+  "topic": "stack",
+  "pattern": "monotonic-stack",
+  "years": "TCS 2022, Infosys 2023, Wipro 2023",
+  "statement": "Given n and an array of n integers, for each element find the first greater element to its right. If none exists, use -1. Print the results space-separated on one line.",
+  "inputFormat": "Line 1: n (size of array)\nLine 2: n space-separated integers",
+  "outputFormat": "Print n space-separated integers: the next greater element for each position, or -1.",
+  "constraints": "1 <= n <= 10\n-100 <= arr[i] <= 100",
+  "samples": [
+   {
+    "stdin": "4\n4 5 2 25\n",
+    "expected": "5 25 25 -1\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "4\n4 5 2 25\n",
+    "expected": "5 25 25 -1\n"
+   },
+   {
+    "stdin": "3\n5 4 3\n",
+    "expected": "-1 -1 -1\n"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "2 3 4 5 -1\n"
+   },
+   {
+    "stdin": "1\n10\n",
+    "expected": "-1\n"
+   },
+   {
+    "stdin": "4\n2 1 2 1\n",
+    "expected": "-1 2 -1 -1\n"
+   }
+  ],
+  "starter": "n = int(input().strip())\narr = list(map(int, input().split()))\n# write your code here\n",
+  "solution": "n = int(input().strip())\narr = list(map(int, input().split()))\nres = [-1] * n\nst = []\nfor i in range(n - 1, -1, -1):\n    while st and st[-1] <= arr[i]:\n        st.pop()\n    if st:\n        res[i] = st[-1]\n    st.append(arr[i])\nprint(' '.join(map(str, res)))",
+  "approach": "Scan from right with a decreasing stack that holds candidates for next greater.",
+  "steps": [
+   "Read n and the array.",
+   "Create empty stack and result array of -1.",
+   "Scan the array from right to left.",
+   "Pop stack tops that are not greater.",
+   "Top of stack is the next greater, if any.",
+   "Push current element and continue.",
+   "Print results space-separated."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "A decreasing stack keeps only future elements that can be someone's next greater."
+ },
+ {
+  "id": "queue-simulation",
+  "title": "Queue Simulation",
+  "difficulty": "medium",
+  "topic": "queue",
+  "pattern": "simulation",
+  "years": "TCS NQT 2021, Accenture 2022, Capgemini 2023",
+  "statement": "Simulate a queue. You get q operations: 'enqueue x' appends x to the back, 'dequeue' removes the front. After each dequeue, record the new front element, or -1 if the queue is empty (also -1 if dequeue on empty queue). Print all recorded answers space-separated on one line.",
+  "inputFormat": "Line 1: q (number of operations)\nNext q lines: 'enqueue x' or 'dequeue'",
+  "outputFormat": "Print space-separated answers for each dequeue in order. Print empty line if there is no dequeue.",
+  "constraints": "1 <= q <= 10\n0 <= x <= 100",
+  "samples": [
+   {
+    "stdin": "5\nenqueue 10\nenqueue 20\ndequeue\ndequeue\ndequeue\n",
+    "expected": "20 -1 -1\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\nenqueue 10\nenqueue 20\ndequeue\ndequeue\ndequeue\n",
+    "expected": "20 -1 -1\n"
+   },
+   {
+    "stdin": "3\nenqueue 5\ndequeue\ndequeue\n",
+    "expected": "-1 -1\n"
+   },
+   {
+    "stdin": "4\nenqueue 1\nenqueue 2\nenqueue 3\ndequeue\n",
+    "expected": "2\n"
+   },
+   {
+    "stdin": "2\ndequeue\ndequeue\n",
+    "expected": "-1 -1\n"
+   },
+   {
+    "stdin": "6\nenqueue 7\nenqueue 8\ndequeue\nenqueue 9\ndequeue\ndequeue\n",
+    "expected": "8 9 -1\n"
+   }
+  ],
+  "starter": "from collections import deque\nq = int(input().strip())\n# read q ops and simulate queue\n",
+  "solution": "from collections import deque\nimport sys\nq = int(sys.stdin.readline().strip())\nd = deque()\nout = []\nfor _ in range(q):\n    parts = sys.stdin.readline().split()\n    if not parts:\n        continue\n    if parts[0] == 'enqueue':\n        d.append(int(parts[1]))\n    else:\n        if d:\n            d.popleft()\n        out.append(str(d[0]) if d else '-1')\nprint(' '.join(out))",
+  "approach": "Use deque for O(1) queue ops and collect the front value after every dequeue.",
+  "steps": [
+   "Read q and create empty deque.",
+   "For each of the q lines read the operation.",
+   "On enqueue append x to the back.",
+   "On dequeue pop left if queue is non-empty.",
+   "Record current front or -1 after each dequeue.",
+   "Print recorded answers space-separated."
+  ],
+  "complexity": "O(q) time, O(q) space",
+  "insight": "Deque gives O(1) popleft so simulation stays linear."
+ },
+ {
+  "id": "stack-min-query",
+  "title": "Stack Min Query",
+  "difficulty": "medium",
+  "topic": "stack",
+  "pattern": "aux-stack",
+  "years": "Infosys 2023, TCS 2022, Cognizant 2023",
+  "statement": "Simulate a stack with q operations: 'push x' pushes x, 'pop' removes the top (does nothing if empty), 'min' asks for the current minimum. For each 'min' record the minimum value, or -1 if the stack is empty. Print all recorded answers space-separated on one line.",
+  "inputFormat": "Line 1: q (number of operations)\nNext q lines: 'push x' or 'pop' or 'min'",
+  "outputFormat": "Print space-separated answers for each min in order. Print empty line if there is no min.",
+  "constraints": "1 <= q <= 10\n0 <= x <= 100",
+  "samples": [
+   {
+    "stdin": "6\npush 5\npush 2\nmin\npop\nmin\npop\n",
+    "expected": "2 5\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "6\npush 5\npush 2\nmin\npop\nmin\npop\n",
+    "expected": "2 5\n"
+   },
+   {
+    "stdin": "3\nmin\npush 10\nmin\n",
+    "expected": "-1 10\n"
+   },
+   {
+    "stdin": "5\npush 3\npush 1\npush 4\nmin\npop\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "4\npush 7\npop\npop\nmin\n",
+    "expected": "-1\n"
+   },
+   {
+    "stdin": "7\npush 4\npush 4\nmin\npop\nmin\npop\nmin\n",
+    "expected": "4 4 -1\n"
+   }
+  ],
+  "starter": "q = int(input().strip())\n# read q ops and simulate stack with min\n",
+  "solution": "import sys\nq = int(sys.stdin.readline().strip())\nst = []\nmn = []\nout = []\nfor _ in range(q):\n    parts = sys.stdin.readline().split()\n    if not parts:\n        continue\n    if parts[0] == 'push':\n        x = int(parts[1])\n        st.append(x)\n        mn.append(x if not mn else (x if x < mn[-1] else mn[-1]))\n    elif parts[0] == 'pop':\n        if st:\n            st.pop()\n            mn.pop()\n    else:\n        out.append(str(mn[-1]) if mn else '-1')\nprint(' '.join(out))",
+  "approach": "Keep a parallel min stack where each entry is the minimum up to that depth.",
+  "steps": [
+   "Read q and create empty value and min stacks.",
+   "On push append x and new minimum.",
+   "On pop remove top of both stacks if any.",
+   "On min record top of min stack or -1.",
+   "Repeat for all q operations.",
+   "Print recorded answers space-separated."
+  ],
+  "complexity": "O(q) time, O(q) space",
+  "insight": "Storing running minimum at each depth makes min O(1)."
+ },
+ {
+  "id": "middle-element",
+  "title": "Middle of Array (Linked-List Middle)",
+  "difficulty": "easy",
+  "topic": "linked-list",
+  "pattern": "two-pointers",
+  "years": "TCS 2021, Wipro 2022, Accenture 2022",
+  "statement": "Given n and an array of n integers (think of it as a linked list), print its middle element. If n is even, print the second middle element (element at index n//2).",
+  "inputFormat": "Line 1: n (size of array)\nLine 2: n space-separated integers",
+  "outputFormat": "Print the middle element.",
+  "constraints": "1 <= n <= 10\n-100 <= arr[i] <= 100",
+  "samples": [
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "3\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "3\n"
+   },
+   {
+    "stdin": "4\n1 2 3 4\n",
+    "expected": "3\n"
+   },
+   {
+    "stdin": "1\n99\n",
+    "expected": "99\n"
+   },
+   {
+    "stdin": "2\n5 10\n",
+    "expected": "10\n"
+   },
+   {
+    "stdin": "6\n1 2 3 4 5 6\n",
+    "expected": "4\n"
+   }
+  ],
+  "starter": "n = int(input().strip())\narr = list(map(int, input().split()))\n# write your code here\n",
+  "solution": "n = int(input().strip())\narr = list(map(int, input().split()))\nprint(arr[n // 2])",
+  "approach": "Middle index of an array is n//2, which matches slow-fast pointer result on a list.",
+  "steps": [
+   "Read n and the array.",
+   "Compute middle index as n//2.",
+   "Pick the element at that index.",
+   "Print it.",
+   "Check odd case picks exact center.",
+   "Check even case picks second middle."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "Slow-fast pointers land at n//2, so direct indexing simulates it."
+ },
+ {
+  "id": "reverse-linked",
+  "title": "Reverse Array (Linked-List Reversal)",
+  "difficulty": "easy",
+  "topic": "linked-list",
+  "pattern": "reversal",
+  "years": "Infosys 2021, TCS 2022, Cognizant 2022",
+  "statement": "Given n and an array of n integers (think of it as a linked list), reverse it and print the reversed list space-separated on one line.",
+  "inputFormat": "Line 1: n (size of array)\nLine 2: n space-separated integers",
+  "outputFormat": "Print the reversed array space-separated on one line.",
+  "constraints": "1 <= n <= 10\n-100 <= arr[i] <= 100",
+  "samples": [
+   {
+    "stdin": "4\n1 2 3 4\n",
+    "expected": "4 3 2 1\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "4\n1 2 3 4\n",
+    "expected": "4 3 2 1\n"
+   },
+   {
+    "stdin": "3\n5 5 5\n",
+    "expected": "5 5 5\n"
+   },
+   {
+    "stdin": "1\n42\n",
+    "expected": "42\n"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "5 4 3 2 1\n"
+   },
+   {
+    "stdin": "2\n10 20\n",
+    "expected": "20 10\n"
+   }
+  ],
+  "starter": "n = int(input().strip())\narr = list(map(int, input().split()))\n# write your code here\n",
+  "solution": "n = int(input().strip())\narr = list(map(int, input().split()))\nprint(' '.join(map(str, arr[::-1])))",
+  "approach": "Reverse the array order, which is what iterative linked-list reversal produces.",
+  "steps": [
+   "Read n and the array.",
+   "Reverse the array order.",
+   "Convert each number back to string.",
+   "Join with single spaces.",
+   "Print the reversed line.",
+   "Check single element stays same."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "Array slicing [::-1] mirrors pointer-flipping reversal."
+ },
+ {
+  "id": "cycle-check-array",
+  "title": "Cycle Check in Index-Jump Array",
+  "difficulty": "medium",
+  "topic": "linked-list",
+  "pattern": "visited-set",
+  "years": "TCS 2023, Infosys 2022, Wipro 2023",
+  "statement": "Given n and an array nxt of n next-indices (each value is the next index to jump to), start at index 0 and walk: jump to nxt[current]. Use a visited set for at most n+1 steps. If any index repeats, print 1 (cycle). Otherwise (jump goes out of bounds below 0 or >= n) print 0.",
+  "inputFormat": "Line 1: n (size of array)\nLine 2: n space-separated integers (next indices)",
+  "outputFormat": "Print 1 if a cycle is found, else 0.",
+  "constraints": "1 <= n <= 10\n-5 <= nxt[i] <= 10",
+  "samples": [
+   {
+    "stdin": "3\n1 2 0\n",
+    "expected": "1\n"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "3\n1 2 0\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "3\n1 2 5\n",
+    "expected": "0\n"
+   },
+   {
+    "stdin": "4\n1 2 3 1\n",
+    "expected": "1\n"
+   },
+   {
+    "stdin": "2\n1 -1\n",
+    "expected": "0\n"
+   },
+   {
+    "stdin": "1\n0\n",
+    "expected": "1\n"
+   }
+  ],
+  "starter": "n = int(input().strip())\narr = list(map(int, input().split()))\n# walk from 0 with visited set\n",
+  "solution": "n = int(input().strip())\narr = list(map(int, input().split()))\nvisited = set()\ncur = 0\nans = 0\nfor _ in range(n + 1):\n    if cur < 0 or cur >= n:\n        ans = 0\n        break\n    if cur in visited:\n        ans = 1\n        break\n    visited.add(cur)\n    cur = arr[cur]\nelse:\n    ans = 1\nprint(ans)",
+  "approach": "Walk from 0 tracking visited indices; repeat means cycle, out-of-bounds means no cycle.",
+  "steps": [
+   "Read n and the next-index array.",
+   "Create empty visited set starting at 0.",
+   "Repeat at most n+1 steps.",
+   "If index is out of bounds print 0.",
+   "If index already visited print 1.",
+   "Otherwise mark visited and jump.",
+   "Print the answer."
+  ],
+  "complexity": "O(n) time, O(n) space",
+  "insight": "n+1 in-bounds steps on n nodes forces a repeat by pigeonhole."
+ },
+ {
+  "id": "prime-range",
+  "title": "Primes in Range L to R",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Trial-division primality in a loop",
+  "years": "TCS NQT 2019-2024 repeat (prime-range greatest hit)",
+  "statement": "Given two integers L and R (L <= R), print all prime numbers from L to R inclusive, separated by a single space in increasing order. If there is no prime in the range, print -1.",
+  "inputFormat": "One line: two integers L R separated by a space.",
+  "outputFormat": "One line: primes from L to R space-separated, or -1 if none.",
+  "constraints": "1 <= L <= R <= 10000.",
+  "samples": [
+   {
+    "stdin": "10 20\n",
+    "expected": "11 13 17 19"
+   },
+   {
+    "stdin": "14 16\n",
+    "expected": "-1"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "10 20\n",
+    "expected": "11 13 17 19"
+   },
+   {
+    "stdin": "1 10\n",
+    "expected": "2 3 5 7"
+   },
+   {
+    "stdin": "14 16\n",
+    "expected": "-1"
+   },
+   {
+    "stdin": "2 2\n",
+    "expected": "2"
+   },
+   {
+    "stdin": "1 1\n",
+    "expected": "-1"
+   },
+   {
+    "stdin": "90 100\n",
+    "expected": "97"
+   }
+  ],
+  "starter": "L, R = map(int, input().split())\n# TODO: print primes from L to R space-separated, or -1 if none\n",
+  "solution": "import sys\ndef is_prime(x):\n    if x < 2:\n        return False\n    if x == 2:\n        return True\n    if x % 2 == 0:\n        return False\n    i = 3\n    while i * i <= x:\n        if x % i == 0:\n            return False\n        i += 2\n    return True\ndata = list(map(int, sys.stdin.read().strip().split()))\nL, R = data[0], data[1]\nprimes = [str(i) for i in range(L, R + 1) if is_prime(i)]\nprint(' '.join(primes) if primes else -1)",
+  "approach": "Test every number in [L, R] for primality with trial division up to sqrt; collect and print, or -1 when empty.",
+  "steps": [
+   "Read L and R from the single input line.",
+   "Define is_prime(x): reject x < 2, accept 2, reject even numbers, then trial-divide by odd i up to sqrt(x).",
+   "Loop i from L to R and keep every i where is_prime(i) is true.",
+   "If the list is non-empty, print it joined by single spaces.",
+   "If the list is empty, print -1.",
+   "Trial division only checks divisors up to sqrt(x), which is fast enough for R <= 10000.",
+   "Print exactly one line with no trailing space."
+  ],
+  "complexity": "O((R-L+1) * sqrt(R)) time, O(1) extra space.",
+  "insight": "The odd-only trial division up to sqrt is the standard NQT prime template — reused for prime-sum and prime-check."
+ },
+ {
+  "id": "prime-sum",
+  "title": "Sum of Primes up to N",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Sieve-style accumulation with trial division",
+  "years": "TCS NQT 2020-2024 repeat (prime-sum variant)",
+  "statement": "Given an integer N, print the sum of all prime numbers less than or equal to N. If N < 2 there are no primes, so print 0.",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: sum of all primes <= N (0 if none).",
+  "constraints": "1 <= N <= 10000.",
+  "samples": [
+   {
+    "stdin": "10\n",
+    "expected": "17"
+   },
+   {
+    "stdin": "1\n",
+    "expected": "0"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "10\n",
+    "expected": "17"
+   },
+   {
+    "stdin": "1\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "2\n",
+    "expected": "2"
+   },
+   {
+    "stdin": "20\n",
+    "expected": "77"
+   },
+   {
+    "stdin": "5\n",
+    "expected": "10"
+   },
+   {
+    "stdin": "100\n",
+    "expected": "1060"
+   }
+  ],
+  "starter": "N = int(input())\n# TODO: print the sum of all primes <= N\n",
+  "solution": "import sys\ndef is_prime(x):\n    if x < 2:\n        return False\n    if x == 2:\n        return True\n    if x % 2 == 0:\n        return False\n    i = 3\n    while i * i <= x:\n        if x % i == 0:\n            return False\n        i += 2\n    return True\nN = int(sys.stdin.read().strip())\nprint(sum(i for i in range(2, N + 1) if is_prime(i)))",
+  "approach": "Check each number 2..N with trial division and accumulate the primes.",
+  "steps": [
+   "Read N as an integer.",
+   "Define is_prime(x) using trial division by odd divisors up to sqrt(x).",
+   "Iterate i from 2 to N inclusive.",
+   "Add i to a running total whenever is_prime(i) is true.",
+   "Print the total (0 automatically when N < 2).",
+   "The loop is trivially fast for N <= 10000.",
+   "Print exactly one integer on one line."
+  ],
+  "complexity": "O(N * sqrt(N)) time, O(1) extra space.",
+  "insight": "Same primality helper as prime-range — one template covers the whole NQT prime family."
+ },
+ {
+  "id": "gcd-lcm",
+  "title": "GCD and LCM of Two Numbers",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Euclidean GCD then LCM formula",
+  "years": "TCS NQT 2018-2024 evergreen repeat",
+  "statement": "Given two positive integers a and b, print their GCD and LCM separated by a space, in the format \"gcd lcm\".",
+  "inputFormat": "One line: two integers a b separated by a space.",
+  "outputFormat": "One line: gcd and lcm separated by a space.",
+  "constraints": "1 <= a, b <= 1000000.",
+  "samples": [
+   {
+    "stdin": "12 18\n",
+    "expected": "6 36"
+   },
+   {
+    "stdin": "4 5\n",
+    "expected": "1 20"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "12 18\n",
+    "expected": "6 36"
+   },
+   {
+    "stdin": "4 5\n",
+    "expected": "1 20"
+   },
+   {
+    "stdin": "7 7\n",
+    "expected": "7 7"
+   },
+   {
+    "stdin": "100 10\n",
+    "expected": "10 100"
+   },
+   {
+    "stdin": "21 6\n",
+    "expected": "3 42"
+   }
+  ],
+  "starter": "a, b = map(int, input().split())\n# TODO: print gcd and lcm separated by a space\n",
+  "solution": "import sys, math\ndata = list(map(int, sys.stdin.read().strip().split()))\na, b = data[0], data[1]\ng = math.gcd(a, b)\nl = a // g * b\nprint(f\"{g} {l}\")",
+  "approach": "Compute GCD with Euclid's algorithm (math.gcd), then LCM as a//gcd*b.",
+  "steps": [
+   "Read a and b from the input line.",
+   "Compute g = gcd(a, b) using Euclid's algorithm.",
+   "Compute l = a // g * b (divide first to avoid overflow and keep it exact).",
+   "Print g and l separated by a single space.",
+   "Equal inputs give gcd = lcm = that number.",
+   "Coprime inputs give gcd 1 and lcm a*b.",
+   "Print exactly one line."
+  ],
+  "complexity": "O(log min(a,b)) time, O(1) space.",
+  "insight": "LCM always comes from GCD via a*b//gcd — never compute LCM by brute-force multiples."
+ },
+ {
+  "id": "factorial-num",
+  "title": "Factorial of N",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Iterative product loop",
+  "years": "TCS NQT 2019-2024 repeat (warm-up question)",
+  "statement": "Given a non-negative integer N, print N! (N factorial). Recall 0! = 1.",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: N! as an integer.",
+  "constraints": "0 <= N <= 20.",
+  "samples": [
+   {
+    "stdin": "5\n",
+    "expected": "120"
+   },
+   {
+    "stdin": "0\n",
+    "expected": "1"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n",
+    "expected": "120"
+   },
+   {
+    "stdin": "0\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "1\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "3628800"
+   },
+   {
+    "stdin": "7\n",
+    "expected": "5040"
+   }
+  ],
+  "starter": "N = int(input())\n# TODO: print N!\n",
+  "solution": "N = int(input().strip())\nf = 1\nfor i in range(2, N + 1):\n    f *= i\nprint(f)",
+  "approach": "Multiply 2..N into a running product starting at 1 (handles 0! and 1! naturally).",
+  "steps": [
+   "Read N as an integer.",
+   "Start with f = 1.",
+   "Loop i from 2 to N, multiplying f by i each step.",
+   "When N is 0 or 1 the loop does nothing and f stays 1.",
+   "Print f on one line.",
+   "Python integers hold 20! exactly, so no overflow handling is needed.",
+   "The loop runs at most 19 iterations."
+  ],
+  "complexity": "O(N) time, O(1) space.",
+  "insight": "Starting the product at 1 with range(2, N+1) unifies 0!, 1! and N! in one loop."
+ },
+ {
+  "id": "perfect-number",
+  "title": "Perfect Number Check",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Proper-divisor sum via sqrt pairing",
+  "years": "TCS NQT 2020-2024 repeat (6, 28, 496 family)",
+  "statement": "Given a positive integer N, print \"Yes\" if N is a perfect number (equals the sum of its proper divisors excluding itself), otherwise print \"No\". Examples: 6 = 1+2+3 so Yes; 12 != 1+2+3+4+6 so No.",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: Yes or No (exact capitalization).",
+  "constraints": "1 <= N <= 10000.",
+  "samples": [
+   {
+    "stdin": "6\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "12\n",
+    "expected": "No"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "6\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "28\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "12\n",
+    "expected": "No"
+   },
+   {
+    "stdin": "1\n",
+    "expected": "No"
+   },
+   {
+    "stdin": "496\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "No"
+   }
+  ],
+  "starter": "N = int(input())\n# TODO: print Yes if N is a perfect number, else No\n",
+  "solution": "N = int(input().strip())\nif N <= 1:\n    print(\"No\")\nelse:\n    s = 1\n    i = 2\n    while i * i <= N:\n        if N % i == 0:\n            s += i\n            j = N // i\n            if j != i:\n                s += j\n        i += 1\n    print(\"Yes\" if s == N else \"No\")",
+  "approach": "Sum proper divisors using sqrt divisor pairs, then compare the sum to N.",
+  "steps": [
+   "Read N as an integer.",
+   "Numbers <= 1 can never be perfect, so print No immediately.",
+   "Start the divisor sum at 1 (1 divides everything) and trial-divide i from 2 to sqrt(N).",
+   "When i divides N, add both i and N//i (skip the duplicate when N is a perfect square).",
+   "After the loop, the sum holds all proper divisors of N.",
+   "Print Yes if the sum equals N, else No.",
+   "Divisor pairing keeps the loop at O(sqrt(N)) instead of O(N)."
+  ],
+  "complexity": "O(sqrt(N)) time, O(1) space.",
+  "insight": "Pair i with N//i at sqrt boundary — the same pairing trick behind every NQT divisor-sum question."
+ },
+ {
+  "id": "strong-number",
+  "title": "Strong Number Check",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Digit factorial sum",
+  "years": "TCS NQT 2020-2024 repeat (145 is the classic)",
+  "statement": "Given a positive integer N, print \"Yes\" if N is a Strong number (sum of the factorials of its digits equals N itself, e.g. 145 = 1! + 4! + 5!), otherwise print \"No\".",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: Yes or No (exact capitalization).",
+  "constraints": "1 <= N <= 100000.",
+  "samples": [
+   {
+    "stdin": "145\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "123\n",
+    "expected": "No"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "145\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "1\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "2\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "123\n",
+    "expected": "No"
+   },
+   {
+    "stdin": "40585\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "No"
+   }
+  ],
+  "starter": "N = int(input())\n# TODO: print Yes if N is a Strong number, else No\n",
+  "solution": "import math\nN = int(input().strip())\nprint(\"Yes\" if sum(math.factorial(int(d)) for d in str(N)) == N else \"No\")",
+  "approach": "Precompute digit factorials implicitly via math.factorial, sum them over the decimal digits, compare to N.",
+  "steps": [
+   "Read N and keep its decimal string form for digit access.",
+   "Convert each digit character back to int and take its factorial.",
+   "Sum the digit factorials (145 -> 1 + 24 + 120 = 145).",
+   "Compare the sum to the original N.",
+   "Print Yes on equality, else No.",
+   "Only 1, 2, 145 and 40585 are Strong in this range — anything else is No.",
+   "At most 6 digits, so the work is trivial."
+  ],
+  "complexity": "O(d) time where d = digit count, O(1) space.",
+  "insight": "String-iterate the digits and use math.factorial — no manual factorial table needed."
+ },
+ {
+  "id": "harshad-number",
+  "title": "Harshad (Niven) Number Check",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Digit-sum divisibility",
+  "years": "TCS NQT 2021-2024 repeat",
+  "statement": "Given a positive integer N, print \"Yes\" if N is a Harshad (Niven) number — divisible by the sum of its own digits — otherwise print \"No\". Example: 18 -> 1+8=9 and 18 % 9 == 0, so Yes.",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: Yes or No (exact capitalization).",
+  "constraints": "1 <= N <= 1000000.",
+  "samples": [
+   {
+    "stdin": "18\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "19\n",
+    "expected": "No"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "18\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "19\n",
+    "expected": "No"
+   },
+   {
+    "stdin": "1\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "21\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "22\n",
+    "expected": "No"
+   }
+  ],
+  "starter": "N = int(input())\n# TODO: print Yes if N is a Harshad number, else No\n",
+  "solution": "N = int(input().strip())\ns = sum(int(d) for d in str(N))\nprint(\"Yes\" if N % s == 0 else \"No\")",
+  "approach": "Sum the decimal digits, then test N % digit_sum == 0.",
+  "steps": [
+   "Read N as an integer.",
+   "Compute the digit sum s by iterating over str(N).",
+   "s is at least 1 since N >= 1, so the modulo is always safe.",
+   "Check N % s == 0.",
+   "Print Yes when divisible, else No.",
+   "Example: 18 -> s = 9 -> 18 % 9 == 0 -> Yes.",
+   "Runs in time proportional to the digit count."
+  ],
+  "complexity": "O(d) time where d = digit count, O(1) space.",
+  "insight": "Digit-sum divisibility is one line once you iterate str(N) — the same digit-sum core as Neon and digit-range problems."
+ },
+ {
+  "id": "automorphic",
+  "title": "Automorphic Number Check",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Suffix check on square",
+  "years": "TCS NQT 2020-2024 repeat (5, 6, 25, 76 family)",
+  "statement": "Given a non-negative integer N, print \"Yes\" if N is automorphic — its square ends with N itself in decimal (e.g. 25^2 = 625 ends with 25) — otherwise print \"No\".",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: Yes or No (exact capitalization).",
+  "constraints": "0 <= N <= 100000.",
+  "samples": [
+   {
+    "stdin": "25\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "7\n",
+    "expected": "No"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "6\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "7\n",
+    "expected": "No"
+   },
+   {
+    "stdin": "25\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "12\n",
+    "expected": "No"
+   },
+   {
+    "stdin": "76\n",
+    "expected": "Yes"
+   }
+  ],
+  "starter": "N = int(input())\n# TODO: print Yes if N is automorphic, else No\n",
+  "solution": "N = int(input().strip())\nprint(\"Yes\" if str(N * N).endswith(str(N)) else \"No\")",
+  "approach": "Square N and check the decimal string of the square ends with the decimal string of N.",
+  "steps": [
+   "Read N as an integer.",
+   "Compute sq = N * N.",
+   "Convert both sq and N to strings.",
+   "Test str(sq).endswith(str(N)).",
+   "Print Yes when the square ends with N, else No.",
+   "Example: N = 25 -> sq = 625 -> ends with 25 -> Yes.",
+   "String suffix check avoids all modular arithmetic."
+  ],
+  "complexity": "O(d) time where d = digit count, O(d) space for the strings.",
+  "insight": "endswith on the square is the whole solution — modular versions (sq % 10^d == N) do the same work with more code."
+ },
+ {
+  "id": "neon-number",
+  "title": "Neon Number Check",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Square digit-sum comparison",
+  "years": "TCS NQT 2020-2024 repeat (0, 1, 9 only)",
+  "statement": "Given a non-negative integer N, print \"Yes\" if N is a Neon number — the sum of the digits of N^2 equals N itself (e.g. 9^2 = 81 and 8+1 = 9) — otherwise print \"No\".",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: Yes or No (exact capitalization).",
+  "constraints": "0 <= N <= 100000.",
+  "samples": [
+   {
+    "stdin": "9\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "7\n",
+    "expected": "No"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "9\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "1\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "0\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "7\n",
+    "expected": "No"
+   },
+   {
+    "stdin": "3\n",
+    "expected": "No"
+   }
+  ],
+  "starter": "N = int(input())\n# TODO: print Yes if N is a Neon number, else No\n",
+  "solution": "N = int(input().strip())\nprint(\"Yes\" if sum(int(d) for d in str(N * N)) == N else \"No\")",
+  "approach": "Square N, sum the square's decimal digits, compare to N.",
+  "steps": [
+   "Read N as an integer.",
+   "Compute sq = N * N.",
+   "Sum the decimal digits of sq by iterating over str(sq).",
+   "Compare that digit sum to the original N.",
+   "Print Yes on equality, else No.",
+   "Example: 9 -> 81 -> 8+1 = 9 -> Yes.",
+   "Only 0, 1 and 9 are Neon numbers, so most inputs print No."
+  ],
+  "complexity": "O(d) time where d = digits of N^2, O(1) extra space.",
+  "insight": "Square-then-digit-sum is the mirror of Harshad's digit-sum-then-divide — same str-digit idiom."
+ },
+ {
+  "id": "reverse-number",
+  "title": "Reverse Digits of a Number",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "String reversal with sign handling",
+  "years": "TCS NQT 2019-2024 repeat (sign-preserving variant)",
+  "statement": "Given an integer N (possibly negative), print the integer formed by reversing its decimal digits. Preserve the sign, and drop any leading zeros produced by the reversal (e.g. 100 -> 1, -456 -> -654). Reversing 0 gives 0.",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: the reversed integer.",
+  "constraints": "-1000000 <= N <= 1000000.",
+  "samples": [
+   {
+    "stdin": "123\n",
+    "expected": "321"
+   },
+   {
+    "stdin": "-456\n",
+    "expected": "-654"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "123\n",
+    "expected": "321"
+   },
+   {
+    "stdin": "-456\n",
+    "expected": "-654"
+   },
+   {
+    "stdin": "100\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "0\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "1200\n",
+    "expected": "21"
+   },
+   {
+    "stdin": "-100\n",
+    "expected": "-1"
+   }
+  ],
+  "starter": "N = input().strip()\n# TODO: print the digit-reversed integer, preserving the sign\n",
+  "solution": "s = input().strip()\nneg = s.startswith('-')\ndigits = s[1:] if neg else s\nrev = digits[::-1].lstrip('0')\nif rev == '':\n    rev = '0'\nprint('-' + rev if neg and rev != '0' else rev)",
+  "approach": "Strip the sign, reverse the digit string, strip leading zeros, reattach the sign.",
+  "steps": [
+   "Read the raw line and detect a leading minus sign.",
+   "Separate the digit part from the sign.",
+   "Reverse the digit part with slicing [::-1].",
+   "Strip leading zeros with lstrip('0') so 100 reversed becomes 1.",
+   "An empty result after stripping means the number was 0 — use '0'.",
+   "Reattach '-' for negative inputs (except negative zero, which prints 0).",
+   "Print the final string on one line."
+  ],
+  "complexity": "O(d) time where d = digit count, O(d) space.",
+  "insight": "String reverse + lstrip('0') beats arithmetic reversal — sign and zero handling fall out for free."
+ },
+ {
+  "id": "palindrome-number",
+  "title": "Number Palindrome Check",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "String mirror comparison",
+  "years": "TCS NQT 2019-2024 repeat (1/0 output variant)",
+  "statement": "Given an integer N, print 1 if N is a palindrome in decimal (reads the same forwards and backwards, e.g. 121), otherwise print 0. Negative numbers are never palindromes. Output is the digit 1 or 0, not Yes/No.",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: 1 if palindrome, else 0.",
+  "constraints": "-1000000 <= N <= 1000000.",
+  "samples": [
+   {
+    "stdin": "121\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "123\n",
+    "expected": "0"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "121\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "123\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "0\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "7\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "-121\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "1221\n",
+    "expected": "1"
+   }
+  ],
+  "starter": "N = input().strip()\n# TODO: print 1 if N is a palindrome, else 0\n",
+  "solution": "s = input().strip()\nprint(1 if s == s[::-1] and not s.startswith('-') else 0)",
+  "approach": "Compare the digit string to its own reversal; any leading minus fails automatically.",
+  "steps": [
+   "Read the raw input line as a string (keeps any minus sign).",
+   "Reverse the string with s[::-1].",
+   "A non-negative palindrome satisfies s == s[::-1].",
+   "Negative inputs start with '-' so the equality already fails, but also guard explicitly.",
+   "Print 1 when both checks pass, else 0.",
+   "Single digits and 0 are palindromes by definition.",
+   "Print exactly one digit on one line."
+  ],
+  "complexity": "O(d) time where d = digit count, O(d) space.",
+  "insight": "String mirror s == s[::-1] is shorter and safer than arithmetic half-reversal."
+ },
+ {
+  "id": "sum-digits-range",
+  "title": "Sum of Digits in Range 1 to N",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Brute-force digit-sum accumulation",
+  "years": "TCS NQT 2021-2024 repeat (N <= 1000 brute-force ok)",
+  "statement": "Given a positive integer N (N <= 1000), print the total sum of the sums of digits of all numbers from 1 to N. That is, compute S(i) = sum of decimal digits of i, and print S(1) + S(2) + ... + S(N). Example: N = 5 -> 1+2+3+4+5 = 15; N = 10 -> 45+1 = 46.",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: the total digit-sum from 1 to N.",
+  "constraints": "1 <= N <= 1000.",
+  "samples": [
+   {
+    "stdin": "5\n",
+    "expected": "15"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "46"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n",
+    "expected": "15"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "46"
+   },
+   {
+    "stdin": "1\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "13\n",
+    "expected": "55"
+   },
+   {
+    "stdin": "100\n",
+    "expected": "901"
+   }
+  ],
+  "starter": "N = int(input())\n# TODO: print the total digit-sum from 1 to N\n",
+  "solution": "N = int(input().strip())\nprint(sum(sum(int(d) for d in str(i)) for i in range(1, N + 1)))",
+  "approach": "Brute force: for each i in 1..N sum its decimal digits and accumulate — trivially fast for N <= 1000.",
+  "steps": [
+   "Read N as an integer.",
+   "Initialize the grand total to 0.",
+   "Loop i from 1 to N inclusive.",
+   "For each i, compute its digit sum by iterating over str(i).",
+   "Add each digit sum into the grand total.",
+   "Print the grand total on one line.",
+   "With N <= 1000 the double loop does at most ~3000 digit operations."
+  ],
+  "complexity": "O(N * d) time where d <= 4 digits, O(1) extra space.",
+  "insight": "Brute force is the intended NQT solution here — the O(log N) digit-DP formula is overkill for N <= 1000."
+ },
+ {
+  "id": "trailing-zeroes",
+  "title": "Trailing Zeroes in N!",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Count factor 5s",
+  "years": "TCS NQT (2021-2024)",
+  "statement": "Given a non-negative integer N, count the number of trailing zeroes in N! (N factorial). Trailing zeroes come from factors of 10 = 2 x 5, and since factors of 2 are always plenty, the answer is the total count of factor 5 in 1..N: N//5 + N//25 + N//125 + ...",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: the count of trailing zeroes in N!.",
+  "constraints": "0 <= N <= 10^9.",
+  "samples": [
+   {
+    "stdin": "5\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "2"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "0\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "5\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "2"
+   },
+   {
+    "stdin": "25\n",
+    "expected": "6"
+   },
+   {
+    "stdin": "100\n",
+    "expected": "24"
+   }
+  ],
+  "starter": "n = int(input().strip())\n# TODO: print trailing zeroes in n!\n",
+  "solution": "n = int(input().strip())\ncount = 0\nwhile n:\n    n //= 5\n    count += n\nprint(count)",
+  "approach": "Repeatedly divide N by 5 and accumulate the quotients.",
+  "steps": [
+   "Read integer N.",
+   "Set count = 0.",
+   "While N > 0: replace N with N // 5 and add it to count.",
+   "Each term N//5^k counts multiples of 5^k, i.e. extra factors of 5.",
+   "Print count, which equals the number of factor-10 pairs in N!.",
+   "Example N=25: 25//5=5, 5//5=1, total 6 trailing zeroes.",
+   "Runs in O(log5 N) time with O(1) memory."
+  ],
+  "complexity": "O(log N) time, O(1) space.",
+  "insight": "Trailing zeroes = count of 5s, not 10s — divide by powers of 5."
+ },
+ {
+  "id": "power-mod",
+  "title": "Power a^b",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Fast exponentiation / pow",
+  "years": "Infosys + TCS NQT (2019-2024)",
+  "statement": "Given two non-negative integers a and b, compute a raised to the power b (a^b). Python big integers handle large results, so just compute the exact value.",
+  "inputFormat": "One line: two space-separated integers a b.",
+  "outputFormat": "One line: a^b as an integer.",
+  "constraints": "0 <= a <= 1000; 0 <= b <= 30; not both zero.",
+  "samples": [
+   {
+    "stdin": "2 10\n",
+    "expected": "1024"
+   },
+   {
+    "stdin": "5 0\n",
+    "expected": "1"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "2 10\n",
+    "expected": "1024"
+   },
+   {
+    "stdin": "5 0\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "0 5\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "3 4\n",
+    "expected": "81"
+   },
+   {
+    "stdin": "10 5\n",
+    "expected": "100000"
+   }
+  ],
+  "starter": "a, b = map(int, input().split())\n# TODO: print a^b\n",
+  "solution": "a, b = map(int, input().split())\nprint(pow(a, b))",
+  "approach": "Use exponentiation directly; pow(a, b) computes the exact power.",
+  "steps": [
+   "Read a and b from one line.",
+   "Compute p = a^b using pow(a, b).",
+   "Python integers have arbitrary precision so no overflow handling is needed.",
+   "b = 0 gives 1 (including any nonzero a^0).",
+   "a = 0 with b > 0 gives 0.",
+   "Print p on one line.",
+   "Time is O(log b) multiplications inside pow."
+  ],
+  "complexity": "O(log b) time, O(1) extra space.",
+  "insight": "In Python pow() is exact for big ints — no manual loops needed."
+ },
+ {
+  "id": "leap-year",
+  "title": "Leap Year Check",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Divisibility rules",
+  "years": "TCS NQT (2018-2024)",
+  "statement": "Given a year Y, determine whether it is a leap year. A year is a leap year if it is divisible by 400, or divisible by 4 but not by 100. Print Yes if it is a leap year, otherwise print No.",
+  "inputFormat": "One line: integer Y.",
+  "outputFormat": "One line: Yes or No.",
+  "constraints": "1 <= Y <= 9999.",
+  "samples": [
+   {
+    "stdin": "2000\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "1900\n",
+    "expected": "No"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "2000\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "1900\n",
+    "expected": "No"
+   },
+   {
+    "stdin": "2024\n",
+    "expected": "Yes"
+   },
+   {
+    "stdin": "2023\n",
+    "expected": "No"
+   },
+   {
+    "stdin": "2100\n",
+    "expected": "No"
+   }
+  ],
+  "starter": "y = int(input().strip())\n# TODO: print Yes if leap year else No\n",
+  "solution": "y = int(input().strip())\nif (y % 400 == 0) or (y % 4 == 0 and y % 100 != 0):\n    print(\"Yes\")\nelse:\n    print(\"No\")",
+  "approach": "Apply the Gregorian rule: 400-divisible wins, else 4-but-not-100.",
+  "steps": [
+   "Read integer year Y.",
+   "Check if Y % 400 == 0 — if so it is a leap year (e.g. 2000).",
+   "Otherwise check if Y % 4 == 0 and Y % 100 != 0 (e.g. 2024 yes, 1900 no).",
+   "Both checks together cover every case.",
+   "Print Yes when either condition holds, else No.",
+   "Example 1900: divisible by 100 but not 400, so No.",
+   "Single O(1) check."
+  ],
+  "complexity": "O(1) time, O(1) space.",
+  "insight": "Century years need the 400-rule — 1900/2100 are not leap years."
+ },
+ {
+  "id": "quadratic-roots",
+  "title": "Nature of Quadratic Roots",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Discriminant sign",
+  "years": "Infosys + TCS NQT (2020-2024)",
+  "statement": "Given coefficients a, b, c of a quadratic equation ax^2 + bx + c = 0 (a != 0), determine the nature of its roots from the discriminant D = b^2 - 4ac. Print Real if D > 0 (two distinct real roots), Equal if D == 0 (two equal real roots), or Imaginary if D < 0 (complex roots).",
+  "inputFormat": "One line: three space-separated integers a b c.",
+  "outputFormat": "One line: Real or Equal or Imaginary.",
+  "constraints": "a != 0; -1000 <= a, b, c <= 1000.",
+  "samples": [
+   {
+    "stdin": "1 -3 2\n",
+    "expected": "Real"
+   },
+   {
+    "stdin": "1 -2 1\n",
+    "expected": "Equal"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "1 -3 2\n",
+    "expected": "Real"
+   },
+   {
+    "stdin": "1 -2 1\n",
+    "expected": "Equal"
+   },
+   {
+    "stdin": "1 2 5\n",
+    "expected": "Imaginary"
+   },
+   {
+    "stdin": "2 5 2\n",
+    "expected": "Real"
+   },
+   {
+    "stdin": "1 0 1\n",
+    "expected": "Imaginary"
+   }
+  ],
+  "starter": "a, b, c = map(int, input().split())\n# TODO: print Real / Equal / Imaginary\n",
+  "solution": "a, b, c = map(int, input().split())\nd = b * b - 4 * a * c\nif d > 0:\n    print(\"Real\")\nelif d == 0:\n    print(\"Equal\")\nelse:\n    print(\"Imaginary\")",
+  "approach": "Compute D = b*b - 4*a*c and branch on its sign.",
+  "steps": [
+   "Read a, b, c from one line.",
+   "Compute the discriminant D = b*b - 4*a*c.",
+   "If D > 0 there are two distinct real roots — print Real.",
+   "If D == 0 there is one repeated root — print Equal.",
+   "If D < 0 the roots are complex — print Imaginary.",
+   "Example 1 -3 2: D = 9-8 = 1 > 0, so Real.",
+   "Only integer arithmetic is needed, O(1) time."
+  ],
+  "complexity": "O(1) time, O(1) space.",
+  "insight": "Only the sign of b^2-4ac matters — never solve the roots."
+ },
+ {
+  "id": "decimal-binary",
+  "title": "Decimal to Binary",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Base conversion",
+  "years": "TCS NQT (2019-2024)",
+  "statement": "Given a non-negative decimal integer N, print its binary representation as a string of 0s and 1s (no leading zeroes, except N = 0 prints 0).",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: binary string.",
+  "constraints": "0 <= N <= 10^9.",
+  "samples": [
+   {
+    "stdin": "10\n",
+    "expected": "1010"
+   },
+   {
+    "stdin": "0\n",
+    "expected": "0"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "0\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "1\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "7\n",
+    "expected": "111"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "1010"
+   },
+   {
+    "stdin": "255\n",
+    "expected": "11111111"
+   }
+  ],
+  "starter": "n = int(input().strip())\n# TODO: print binary representation of n\n",
+  "solution": "n = int(input().strip())\nprint(bin(n)[2:])",
+  "approach": "Use bin() and strip the 0b prefix.",
+  "steps": [
+   "Read non-negative integer N.",
+   "Call bin(N), which returns a string like 0b1010.",
+   "Slice off the first two characters ([2:]) to drop the 0b prefix.",
+   "N = 0 gives 0b0, sliced to 0, which is correct.",
+   "Print the resulting binary string.",
+   "Conversion takes O(log N) time for the bits.",
+   "Equivalent manual method: repeated divmod by 2."
+  ],
+  "complexity": "O(log N) time, O(log N) space for output bits.",
+  "insight": "bin(n)[2:] is the whole conversion — no manual loop needed."
+ },
+ {
+  "id": "octal-decimal",
+  "title": "Octal to Decimal",
+  "difficulty": "easy",
+  "topic": "math",
+  "pattern": "Base conversion",
+  "years": "TCS NQT (2020-2023)",
+  "statement": "Given an octal number (digits 0-7 only) as a string, convert it to its decimal (base-10) value and print it.",
+  "inputFormat": "One line: the octal number (as digits, may be large but fits in range).",
+  "outputFormat": "One line: the decimal value.",
+  "constraints": "Valid octal string (only digits 0-7), length 1..10.",
+  "samples": [
+   {
+    "stdin": "17\n",
+    "expected": "15"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "8"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "10\n",
+    "expected": "8"
+   },
+   {
+    "stdin": "17\n",
+    "expected": "15"
+   },
+   {
+    "stdin": "0\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "7\n",
+    "expected": "7"
+   },
+   {
+    "stdin": "77\n",
+    "expected": "63"
+   }
+  ],
+  "starter": "s = input().strip()\n# TODO: print decimal value of octal s\n",
+  "solution": "s = input().strip()\nprint(int(s, 8))",
+  "approach": "Parse the string with base 8.",
+  "steps": [
+   "Read the octal number as a string (keep it as text, do not parse as decimal).",
+   "Call int(s, 8) to interpret it in base 8.",
+   "int() handles each digit as d * 8^position automatically.",
+   "Example 17 octal = 1*8 + 7 = 15 decimal.",
+   "Print the decimal integer.",
+   "Runs in O(L) time over the digits.",
+   "Manual alternative: loop digits with value = value*8 + digit."
+  ],
+  "complexity": "O(L) time where L is digit count, O(1) extra space.",
+  "insight": "int(s, 8) parses any base — never hand-roll positional sums."
+ },
+ {
+  "id": "happy-number",
+  "title": "Happy Number Check",
+  "difficulty": "medium",
+  "topic": "math",
+  "pattern": "Cycle detection with set",
+  "years": "Infosys (2021-2024)",
+  "statement": "A happy number is defined by repeatedly replacing the number with the sum of the squares of its digits: 19 -> 1^2+9^2=82 -> 68 -> 100 -> 1. If this process reaches 1, the number is happy; if it loops forever without reaching 1, it is unhappy. Given N, print 1 if N is happy, else print 0.",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: 1 (happy) or 0 (unhappy).",
+  "constraints": "1 <= N <= 10^9.",
+  "samples": [
+   {
+    "stdin": "19\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "2\n",
+    "expected": "0"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "19\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "2\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "1\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "7\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "20\n",
+    "expected": "0"
+   }
+  ],
+  "starter": "n = int(input().strip())\n# TODO: print 1 if happy else 0\n",
+  "solution": "n = int(input().strip())\nseen = set()\nwhile n != 1 and n not in seen:\n    seen.add(n)\n    n = sum(int(d) ** 2 for d in str(n))\nprint(1 if n == 1 else 0)",
+  "approach": "Iterate digit-square-sums, remembering seen values to detect the unhappy cycle.",
+  "steps": [
+   "Read integer N.",
+   "Keep a set of values already seen.",
+   "While N is not 1 and not seen before: add N to the set, then replace N with the sum of squares of its decimal digits.",
+   "If the loop exits at 1, the number is happy — print 1.",
+   "If it exits by repeating a value, a cycle was found — print 0.",
+   "Example 19 reaches 1 in 4 steps, so happy; 2 cycles, so unhappy.",
+   "At most a few hundred iterations; O(log N) work per step."
+  ],
+  "complexity": "O(k) time for k iterations, O(k) space for seen set.",
+  "insight": "Unhappy numbers always fall into the same cycle — a set detects it."
+ },
+ {
+  "id": "ugly-number",
+  "title": "Ugly Number Check",
+  "difficulty": "medium",
+  "topic": "math",
+  "pattern": "Strip prime factors",
+  "years": "Infosys (2020-2024)",
+  "statement": "An ugly number is a positive integer whose prime factors are only 2, 3, and 5. By convention 1 is ugly. Given N, print 1 if N is ugly, else print 0. (Zero and negatives are not ugly.)",
+  "inputFormat": "One line: integer N.",
+  "outputFormat": "One line: 1 (ugly) or 0 (not ugly).",
+  "constraints": "-10^9 <= N <= 10^9.",
+  "samples": [
+   {
+    "stdin": "6\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "14\n",
+    "expected": "0"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "1\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "6\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "8\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "14\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "0\n",
+    "expected": "0"
+   }
+  ],
+  "starter": "n = int(input().strip())\n# TODO: print 1 if ugly else 0\n",
+  "solution": "n = int(input().strip())\nif n <= 0:\n    print(0)\nelse:\n    for p in (2, 3, 5):\n        while n % p == 0:\n            n //= p\n    print(1 if n == 1 else 0)",
+  "approach": "Divide out all factors 2, 3, 5; ugly iff nothing remains but 1.",
+  "steps": [
+   "Read integer N.",
+   "If N <= 0 print 0 immediately (ugly numbers are positive).",
+   "For each of p = 2, 3, 5: while N is divisible by p, divide it out.",
+   "After stripping, N == 1 means only 2/3/5 factors existed — print 1.",
+   "Anything else left (e.g. 7 in 14) means another prime factor — print 0.",
+   "Example 6 = 2x3 strips to 1 (ugly); 14 = 2x7 strips to 7 (not ugly).",
+   "Runs in O(log N) divisions."
+  ],
+  "complexity": "O(log N) time, O(1) space.",
+  "insight": "Strip 2/3/5 fully — leftover > 1 proves a forbidden prime."
+ },
+ {
+  "id": "fibonacci-nth",
+  "title": "Nth Fibonacci Number",
+  "difficulty": "easy",
+  "topic": "series",
+  "pattern": "Iterative DP",
+  "years": "TCS NQT (2018-2024)",
+  "statement": "The Fibonacci sequence starts 0, 1, 1, 2, 3, 5, 8, ... where each term is the sum of the two before it. Given n (0-indexed, so fib(0)=0, fib(1)=1), print fib(n).",
+  "inputFormat": "One line: integer n.",
+  "outputFormat": "One line: fib(n).",
+  "constraints": "0 <= n <= 35.",
+  "samples": [
+   {
+    "stdin": "6\n",
+    "expected": "8"
+   },
+   {
+    "stdin": "0\n",
+    "expected": "0"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "0\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "1\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "6\n",
+    "expected": "8"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "55"
+   },
+   {
+    "stdin": "20\n",
+    "expected": "6765"
+   }
+  ],
+  "starter": "n = int(input().strip())\n# TODO: print fib(n) with fib(0)=0\n",
+  "solution": "n = int(input().strip())\na, b = 0, 1\nfor _ in range(n):\n    a, b = b, a + b\nprint(a)",
+  "approach": "Iterate n steps keeping only the last two values.",
+  "steps": [
+   "Read integer n.",
+   "Start with a=0 (fib 0) and b=1 (fib 1).",
+   "Repeat n times: shift forward with a, b = b, a+b.",
+   "After n steps, a equals fib(n).",
+   "Example n=6: the pair walks 0,1,1,2,3,5,8 and prints 8.",
+   "Uses O(n) time and O(1) memory — no array or recursion needed.",
+   "Recursion without memo would be exponential, so iterate."
+  ],
+  "complexity": "O(n) time, O(1) space.",
+  "insight": "Two rolling variables beat recursion — fib needs no array."
+ },
+ {
+  "id": "gp-series",
+  "title": "GP Series Nth Term",
+  "difficulty": "easy",
+  "topic": "series",
+  "pattern": "Geometric progression formula",
+  "years": "TCS NQT (2019-2024)",
+  "statement": "A geometric progression starts with first term a and common ratio r: a, a*r, a*r^2, ... Given a, r, and n (1-indexed), print the nth term, which is a * r^(n-1).",
+  "inputFormat": "One line: three space-separated integers a r n.",
+  "outputFormat": "One line: the nth term.",
+  "constraints": "-100 <= a, r <= 100; 1 <= n <= 20.",
+  "samples": [
+   {
+    "stdin": "2 3 4\n",
+    "expected": "54"
+   },
+   {
+    "stdin": "5 2 1\n",
+    "expected": "5"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "2 3 4\n",
+    "expected": "54"
+   },
+   {
+    "stdin": "5 2 1\n",
+    "expected": "5"
+   },
+   {
+    "stdin": "3 3 3\n",
+    "expected": "27"
+   },
+   {
+    "stdin": "1 10 5\n",
+    "expected": "10000"
+   },
+   {
+    "stdin": "4 0 3\n",
+    "expected": "0"
+   }
+  ],
+  "starter": "a, r, n = map(int, input().split())\n# TODO: print nth term of GP\n",
+  "solution": "a, r, n = map(int, input().split())\nprint(a * pow(r, n - 1))",
+  "approach": "Apply term_n = a * r^(n-1) directly.",
+  "steps": [
+   "Read a, r, n from one line.",
+   "Compute the exponent e = n - 1 (because n is 1-indexed).",
+   "Compute power = r^e with pow(r, e).",
+   "Multiply by the first term: answer = a * power.",
+   "Example 2 3 4: 2 * 3^3 = 2*27 = 54.",
+   "Print the answer on one line.",
+   "Edge case n=1 always prints a; r=0 with n>1 prints 0."
+  ],
+  "complexity": "O(log n) time, O(1) space.",
+  "insight": "1-indexed means the exponent is n-1 — the classic off-by-one."
+ },
+ {
+  "id": "ap-series",
+  "title": "AP Series Nth Term",
+  "difficulty": "easy",
+  "topic": "series",
+  "pattern": "Arithmetic progression formula",
+  "years": "TCS NQT (2019-2024)",
+  "statement": "An arithmetic progression starts with first term a and common difference d: a, a+d, a+2d, ... Given a, d, and n (1-indexed), print the nth term, which is a + (n-1)*d.",
+  "inputFormat": "One line: three space-separated integers a d n.",
+  "outputFormat": "One line: the nth term.",
+  "constraints": "-10^9 <= a, d <= 10^9; 1 <= n <= 10^9.",
+  "samples": [
+   {
+    "stdin": "2 3 5\n",
+    "expected": "14"
+   },
+   {
+    "stdin": "5 0 10\n",
+    "expected": "5"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "2 3 5\n",
+    "expected": "14"
+   },
+   {
+    "stdin": "5 0 10\n",
+    "expected": "5"
+   },
+   {
+    "stdin": "10 -2 4\n",
+    "expected": "4"
+   },
+   {
+    "stdin": "1 1 100\n",
+    "expected": "100"
+   },
+   {
+    "stdin": "0 5 1\n",
+    "expected": "0"
+   }
+  ],
+  "starter": "a, d, n = map(int, input().split())\n# TODO: print nth term of AP\n",
+  "solution": "a, d, n = map(int, input().split())\nprint(a + (n - 1) * d)",
+  "approach": "Apply term_n = a + (n-1)*d directly.",
+  "steps": [
+   "Read a, d, n from one line.",
+   "Compute steps = n - 1 (gaps from the first term).",
+   "Compute answer = a + steps * d.",
+   "Example 2 3 5: 2 + 4*3 = 14.",
+   "Print the answer on one line.",
+   "Formula is O(1) — never loop to the nth term.",
+   "Works for negative d and n = 1 (prints a)."
+  ],
+  "complexity": "O(1) time, O(1) space.",
+  "insight": "Closed form a+(n-1)d — looping n times is the trap."
+ },
+ {
+  "id": "climbing-stairs",
+  "title": "Climbing Stairs",
+  "difficulty": "medium",
+  "topic": "series",
+  "pattern": "Fibonacci DP",
+  "years": "Infosys + TCS NQT (2020-2024)",
+  "statement": "You climb a staircase of n steps. Each move you can climb either 1 or 2 steps. Count the number of distinct ways to reach the top. (ways(1)=1, ways(2)=2, and ways(n)=ways(n-1)+ways(n-2), i.e. fib(n+1).)",
+  "inputFormat": "One line: integer n.",
+  "outputFormat": "One line: the number of distinct ways.",
+  "constraints": "1 <= n <= 35.",
+  "samples": [
+   {
+    "stdin": "5\n",
+    "expected": "8"
+   },
+   {
+    "stdin": "2\n",
+    "expected": "2"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "1\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "2\n",
+    "expected": "2"
+   },
+   {
+    "stdin": "3\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "5\n",
+    "expected": "8"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "89"
+   }
+  ],
+  "starter": "n = int(input().strip())\n# TODO: print number of ways to climb n stairs\n",
+  "solution": "n = int(input().strip())\nif n <= 2:\n    print(n)\nelse:\n    a, b = 1, 2\n    for _ in range(3, n + 1):\n        a, b = b, a + b\n    print(b)",
+  "approach": "DP with two rolling values: ways(n) = ways(n-1) + ways(n-2).",
+  "steps": [
+   "Read integer n.",
+   "If n is 1 or 2, print n directly (1 way, then 2 ways).",
+   "Otherwise start with a=ways(1)=1 and b=ways(2)=2.",
+   "For each step i from 3 to n: next = a + b, then roll a, b = b, next.",
+   "After the loop b equals ways(n) — print it.",
+   "Example n=5: 1,2,3,5,8 so print 8.",
+   "Same recurrence as Fibonacci shifted by one; O(n) time, O(1) space."
+  ],
+  "complexity": "O(n) time, O(1) space.",
+  "insight": "Last move is 1 or 2 steps — so ways(n) is just fib(n+1)."
+ },
+ {
+  "id": "chocolate-distribution",
+  "title": "Chocolate Distribution - Minimum Difference",
+  "difficulty": "medium",
+  "topic": "greedy",
+  "pattern": "greedy",
+  "years": "Accenture 2021,2022,2024; Infosys 2022; TCS Digital 2023",
+  "statement": "Given n packets of chocolates with different counts, distribute them to m students such that each student gets exactly one packet. The difference between the maximum and minimum chocolates distributed should be minimized. Print the minimum possible difference. It is given that m <= n.",
+  "inputFormat": "Line 1: integer n (number of packets). Line 2: n space-separated integers (packets). Line 3: integer m (number of students).",
+  "outputFormat": "Print the minimum possible difference as an integer.",
+  "constraints": "1 <= m <= n <= 100, 1 <= packets[i] <= 100000",
+  "samples": [
+   {
+    "stdin": "7\n7 3 2 4 9 12 56\n3\n",
+    "expected": "2"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "7\n7 3 2 4 9 12 56\n3\n",
+    "expected": "2"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n1\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "5\n10 20 30 40 50\n5\n",
+    "expected": "40"
+   },
+   {
+    "stdin": "6\n12 4 7 9 2 23\n4\n",
+    "expected": "7"
+   },
+   {
+    "stdin": "4\n5 5 5 5\n2\n",
+    "expected": "0"
+   }
+  ],
+  "starter": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n = data[0]\n    arr = data[1:1+n]\n    m = data[1+n] if len(data) > 1+n else n\n    # TODO: sort arr and check windows of size m\n    print(0)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n = data[0]\n    arr = data[1:1+n]\n    if len(arr) < n:\n        n = len(arr)\n    m = data[1+n] if len(data) > 1+n else n\n    if m <= 0:\n        print(0)\n        return\n    if m > n:\n        print(-1)\n        return\n    arr.sort()\n    best = min(arr[i+m-1] - arr[i] for i in range(n - m + 1))\n    print(best)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Sort the packets and slide a window of size m; the minimum difference among all windows is the answer.",
+  "steps": [
+   "Read n, the packet array, and m.",
+   "Sort the packet array in ascending order.",
+   "Consider every consecutive window of size m in the sorted array.",
+   "Compute max-minus-min for each window as arr[i+m-1]-arr[i].",
+   "Take the minimum of these differences.",
+   "Print that minimum value.",
+   "This works because sorting puts closest values together."
+  ],
+  "complexity": "Time O(n log n), Space O(1) extra",
+  "insight": "After sorting, the optimal set must be consecutive - so just check windows."
+ },
+ {
+  "id": "activity-selection",
+  "title": "Activity Selection - Maximum Activities",
+  "difficulty": "medium",
+  "topic": "greedy",
+  "pattern": "greedy",
+  "years": "Accenture 2022,2023; Infosys SP 2021,2023; TCS NQT 2022",
+  "statement": "Given n activities with start and end times, select the maximum number of activities that can be performed by a single person without overlap. An activity can be picked if its start time is greater than or equal to the end time of the previously picked activity. Print the maximum count.",
+  "inputFormat": "Line 1: integer n. Line 2: n space-separated integers (start times). Line 3: n space-separated integers (end times).",
+  "outputFormat": "Print the maximum number of activities.",
+  "constraints": "1 <= n <= 100, 0 <= start[i] < end[i] <= 1000",
+  "samples": [
+   {
+    "stdin": "4\n1 3 0 5\n2 4 6 7\n",
+    "expected": "3"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "4\n1 3 0 5\n2 4 6 7\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "3\n1 2 3\n2 3 4\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "3\n1 1 1\n2 2 2\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "1\n5\n10\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "5\n1 3 2 5 6\n3 4 5 7 9\n",
+    "expected": "3"
+   }
+  ],
+  "starter": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n = data[0]\n    vals = data[1:]\n    starts = vals[:n]\n    ends = vals[n:2*n]\n    # TODO: sort by end time and greedily pick\n    print(0)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n = data[0]\n    if n <= 0:\n        print(0)\n        return\n    vals = data[1:]\n    starts = vals[:n]\n    ends = vals[n:2*n]\n    pairs = sorted(zip(ends, starts))\n    count = 0\n    last_end = -10**18\n    for e, s in pairs:\n        if s >= last_end:\n            count += 1\n            last_end = e\n    print(count)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Sort activities by end time and greedily pick each activity that starts after the last picked one ends.",
+  "steps": [
+   "Read n, starts array, and ends array.",
+   "Pair each activity as (end, start).",
+   "Sort pairs by end time ascending.",
+   "Initialize count=0 and last_end to negative infinity.",
+   "For each pair in order, if start >= last_end pick it and update last_end.",
+   "Increment count for each picked activity.",
+   "Print the count."
+  ],
+  "complexity": "Time O(n log n), Space O(n)",
+  "insight": "Earliest-finishing activity leaves maximum room - always pick it first."
+ },
+ {
+  "id": "min-coins",
+  "title": "Minimum Coins - Indian Denominations",
+  "difficulty": "easy",
+  "topic": "greedy",
+  "pattern": "greedy",
+  "years": "Accenture 2021,2023,2024; TCS NQT 2021,2022; Infosys 2022",
+  "statement": "Given an amount V, find the minimum number of coins needed to make that amount using Indian denominations 1, 2, 5, 10, 20, 50, 100, 500, 2000. Use a greedy approach picking the largest denomination possible each time. Print the count.",
+  "inputFormat": "Line 1: integer V (amount).",
+  "outputFormat": "Print the minimum number of coins.",
+  "constraints": "0 <= V <= 100000",
+  "samples": [
+   {
+    "stdin": "121\n",
+    "expected": "3"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "121\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "0\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "19\n",
+    "expected": "4"
+   },
+   {
+    "stdin": "543\n",
+    "expected": "5"
+   },
+   {
+    "stdin": "2000\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "2890\n",
+    "expected": "8"
+   }
+  ],
+  "starter": "def solve():\n    import sys\n    s = sys.stdin.read().strip().split()\n    if not s:\n        return\n    v = int(s[0])\n    # TODO: greedy with denominations 2000,500,100,50,20,10,5,2,1\n    print(0)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "def solve():\n    import sys\n    s = sys.stdin.read().strip().split()\n    if not s:\n        return\n    v = int(s[0])\n    denoms = [2000, 500, 100, 50, 20, 10, 5, 2, 1]\n    count = 0\n    for d in denoms:\n        if v >= d:\n            count += v // d\n            v %= d\n    print(count)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Iterate denominations from largest to smallest, taking as many of each as fit into the remaining amount.",
+  "steps": [
+   "Read amount V.",
+   "List denominations in descending order.",
+   "Initialize count to 0.",
+   "For each denomination d, add V//d to count.",
+   "Reduce V to V%d before the next smaller denomination.",
+   "Repeat until V becomes 0.",
+   "Print the total count."
+  ],
+  "complexity": "Time O(1) (9 denominations), Space O(1)",
+  "insight": "Canonical Indian denominations allow greedy - biggest-first is optimal."
+ },
+ {
+  "id": "max-product-pair",
+  "title": "Maximum Product of Two Numbers",
+  "difficulty": "easy",
+  "topic": "arrays",
+  "pattern": "greedy",
+  "years": "Accenture 2022,2024; Infosys 2021; TCS 2023",
+  "statement": "Given an array of n integers, find the maximum product of any two distinct numbers in the array. Print the product. The array contains at least two numbers and may contain negatives and zeros.",
+  "inputFormat": "Line 1: integer n. Line 2: n space-separated integers.",
+  "outputFormat": "Print the maximum product as an integer.",
+  "constraints": "2 <= n <= 100, -1000 <= arr[i] <= 1000",
+  "samples": [
+   {
+    "stdin": "5\n1 4 3 2 5\n",
+    "expected": "20"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n1 4 3 2 5\n",
+    "expected": "20"
+   },
+   {
+    "stdin": "4\n-10 -20 5 2\n",
+    "expected": "200"
+   },
+   {
+    "stdin": "3\n-5 -2 -8\n",
+    "expected": "40"
+   },
+   {
+    "stdin": "2\n-3 0\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "4\n7 7 7 7\n",
+    "expected": "49"
+   }
+  ],
+  "starter": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n = data[0]\n    arr = data[1:1+n]\n    # TODO: find max product of any two distinct numbers\n    print(0)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n = data[0]\n    arr = data[1:1+n]\n    arr.sort()\n    print(max(arr[0]*arr[1], arr[-1]*arr[-2]))\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Sort the array; the answer is the larger of product of two largest and product of two smallest (two negatives make a positive).",
+  "steps": [
+   "Read n and the array.",
+   "Sort the array ascending.",
+   "Compute product of the two smallest numbers.",
+   "Compute product of the two largest numbers.",
+   "Take the maximum of the two products.",
+   "Print that maximum.",
+   "This covers both large positives and two large negatives."
+  ],
+  "complexity": "Time O(n log n), Space O(1) extra",
+  "insight": "Answer is always at an extreme - check both ends after sorting."
+ },
+ {
+  "id": "first-nonrepeating",
+  "title": "First Non-Repeating Element",
+  "difficulty": "easy",
+  "topic": "hashing",
+  "pattern": "hashing",
+  "years": "Accenture 2022,2023; Infosys 2021,2022; TCS NQT 2023",
+  "statement": "Given an array of n integers, find the first element that does not repeat (frequency exactly 1) in the order of appearance. Print its value, or -1 if every element repeats.",
+  "inputFormat": "Line 1: integer n. Line 2: n space-separated integers.",
+  "outputFormat": "Print the first non-repeating value, or -1.",
+  "constraints": "1 <= n <= 100, -100000 <= arr[i] <= 100000",
+  "samples": [
+   {
+    "stdin": "6\n2 3 2 3 4 5\n",
+    "expected": "4"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "6\n2 3 2 3 4 5\n",
+    "expected": "4"
+   },
+   {
+    "stdin": "4\n1 1 2 2\n",
+    "expected": "-1"
+   },
+   {
+    "stdin": "1\n99\n",
+    "expected": "99"
+   },
+   {
+    "stdin": "5\n5 4 3 2 1\n",
+    "expected": "5"
+   },
+   {
+    "stdin": "7\n1 2 1 2 3 3 4\n",
+    "expected": "4"
+   }
+  ],
+  "starter": "def solve():\n    import sys\n    from collections import Counter\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n = data[0]\n    arr = data[1:1+n]\n    # TODO: count frequencies and find first with count 1\n    print(-1)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "def solve():\n    import sys\n    from collections import Counter\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n = data[0]\n    arr = data[1:1+n]\n    freq = Counter(arr)\n    for x in arr:\n        if freq[x] == 1:\n            print(x)\n            return\n    print(-1)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Count frequencies with a hash map, then scan in order and return the first element with count 1.",
+  "steps": [
+   "Read n and the array.",
+   "Build a frequency map of each value.",
+   "Scan the array from left to right.",
+   "For each element check if its frequency is 1.",
+   "Return the first such element immediately.",
+   "If none found, print -1.",
+   "Two passes keep order plus O(1) lookups."
+  ],
+  "complexity": "Time O(n), Space O(n)",
+  "insight": "Count first, then respect order - one hash map plus one scan."
+ },
+ {
+  "id": "intersection-arrays",
+  "title": "Intersection of Two Arrays",
+  "difficulty": "easy",
+  "topic": "hashing",
+  "pattern": "hashing",
+  "years": "Accenture 2021,2024; Infosys SP 2022; TCS 2021,2023",
+  "statement": "Given two arrays A (size n) and B (size m), print their intersection as distinct elements in ascending order, space-separated on one line. If there is no common element, print -1.",
+  "inputFormat": "Line 1: integers n m. Line 2: n space-separated integers (array A). Line 3: m space-separated integers (array B).",
+  "outputFormat": "Print distinct common elements sorted ascending space-separated, or -1.",
+  "constraints": "1 <= n, m <= 100, -100000 <= arr[i] <= 100000",
+  "samples": [
+   {
+    "stdin": "4 3\n1 2 3 4\n3 4 5\n",
+    "expected": "3 4"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "4 3\n1 2 3 4\n3 4 5\n",
+    "expected": "3 4"
+   },
+   {
+    "stdin": "3 3\n1 2 3\n4 5 6\n",
+    "expected": "-1"
+   },
+   {
+    "stdin": "5 4\n1 1 2 2 3\n2 3 3 4\n",
+    "expected": "2 3"
+   },
+   {
+    "stdin": "1 1\n7\n7\n",
+    "expected": "7"
+   },
+   {
+    "stdin": "4 4\n5 4 3 2\n2 3 4 5\n",
+    "expected": "2 3 4 5"
+   }
+  ],
+  "starter": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n, m = data[0], data[1]\n    vals = data[2:]\n    a = vals[:n]\n    b = vals[n:n+m]\n    # TODO: find sorted distinct intersection\n    print(-1)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n, m = data[0], data[1]\n    vals = data[2:]\n    a = vals[:n]\n    b = vals[n:n+m]\n    inter = sorted(set(a) & set(b))\n    if not inter:\n        print(-1)\n    else:\n        print(' '.join(map(str, inter)))\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Put both arrays into sets and output their sorted set-intersection.",
+  "steps": [
+   "Read n, m and both arrays.",
+   "Convert A and B to sets to remove duplicates.",
+   "Compute the set intersection.",
+   "If empty, print -1.",
+   "Otherwise sort the result ascending.",
+   "Print values space-separated on one line.",
+   "Sets give O(1) membership and dedup for free."
+  ],
+  "complexity": "Time O(n + m), Space O(n + m)",
+  "insight": "Sets turn intersection into one operator plus a sort."
+ },
+ {
+  "id": "union-count",
+  "title": "Union Count of Two Arrays",
+  "difficulty": "easy",
+  "topic": "hashing",
+  "pattern": "hashing",
+  "years": "Accenture 2022,2024; TCS NQT 2022; Infosys 2023",
+  "statement": "Given two arrays A (size n) and B (size m), print the count of distinct elements in their union (elements present in either array, counted once).",
+  "inputFormat": "Line 1: integers n m. Line 2: n space-separated integers (array A). Line 3: m space-separated integers (array B).",
+  "outputFormat": "Print the distinct union count as an integer.",
+  "constraints": "1 <= n, m <= 100, -100000 <= arr[i] <= 100000",
+  "samples": [
+   {
+    "stdin": "4 3\n1 2 3 4\n3 4 5\n",
+    "expected": "5"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "4 3\n1 2 3 4\n3 4 5\n",
+    "expected": "5"
+   },
+   {
+    "stdin": "3 3\n1 2 3\n4 5 6\n",
+    "expected": "6"
+   },
+   {
+    "stdin": "5 4\n1 1 2 2 3\n2 3 3 4\n",
+    "expected": "4"
+   },
+   {
+    "stdin": "1 1\n7\n7\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "3 2\n1 1 1\n1 1\n",
+    "expected": "1"
+   }
+  ],
+  "starter": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n, m = data[0], data[1]\n    vals = data[2:]\n    a = vals[:n]\n    b = vals[n:n+m]\n    # TODO: count distinct elements in union\n    print(0)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n, m = data[0], data[1]\n    vals = data[2:]\n    a = vals[:n]\n    b = vals[n:n+m]\n    print(len(set(a) | set(b)))\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Merge both arrays into one set and print its size.",
+  "steps": [
+   "Read n, m and both arrays.",
+   "Convert A and B to sets.",
+   "Take the set union.",
+   "The union holds each distinct value once.",
+   "Print the size of the union.",
+   "No sorting needed since only the count matters.",
+   "Sets handle duplicates automatically."
+  ],
+  "complexity": "Time O(n + m), Space O(n + m)",
+  "insight": "Union count is just the size of one merged set."
+ },
+ {
+  "id": "k-frequent",
+  "title": "Most Frequent Element",
+  "difficulty": "easy",
+  "topic": "hashing",
+  "pattern": "hashing",
+  "years": "Accenture 2021,2023; Infosys SP 2022,2023; TCS 2022",
+  "statement": "Given an array of n integers, find the element with the highest frequency. If multiple elements tie for the highest frequency, pick the smallest one. Print that element.",
+  "inputFormat": "Line 1: integer n. Line 2: n space-separated integers.",
+  "outputFormat": "Print the most frequent element (smallest on tie).",
+  "constraints": "1 <= n <= 100, -100000 <= arr[i] <= 100000",
+  "samples": [
+   {
+    "stdin": "6\n1 2 2 3 3 3\n",
+    "expected": "3"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "6\n1 2 2 3 3 3\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "4\n1 1 2 2\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "1\n42\n",
+    "expected": "42"
+   },
+   {
+    "stdin": "7\n5 5 4 4 4 5 6\n",
+    "expected": "4"
+   },
+   {
+    "stdin": "5\n3 3 2 2 1\n",
+    "expected": "2"
+   }
+  ],
+  "starter": "def solve():\n    import sys\n    from collections import Counter\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n = data[0]\n    arr = data[1:1+n]\n    # TODO: find max frequency, smallest on tie\n    print(0)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "def solve():\n    import sys\n    from collections import Counter\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        return\n    n = data[0]\n    arr = data[1:1+n]\n    if not arr:\n        print(-1)\n        return\n    freq = Counter(arr)\n    best = max(freq.values())\n    print(min(k for k, v in freq.items() if v == best))\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Count frequencies, find the maximum count, then pick the smallest key having that count.",
+  "steps": [
+   "Read n and the array.",
+   "Build a frequency map with Counter.",
+   "Find the maximum frequency value.",
+   "Collect all keys with that frequency.",
+   "Pick the minimum of those keys.",
+   "Print the picked element.",
+   "One pass to count, one pass to resolve ties."
+  ],
+  "complexity": "Time O(n), Space O(n)",
+  "insight": "Track max frequency first, then break ties by smallest value."
+ },
+ {
+  "id": "house-robber-1d",
+  "title": "House Robber - Maximum Loot",
+  "difficulty": "medium",
+  "topic": "dp",
+  "pattern": "dp",
+  "years": "Accenture 2023,2024; Infosys DSE 2022,2023; TCS Digital 2022",
+  "statement": "A robber wants to loot houses arranged in a line. Each house has some money (non-negative). Adjacent houses cannot be robbed on the same night. Given the money in each house, print the maximum amount that can be robbed.",
+  "inputFormat": "Line 1: integer n (number of houses). Line 2: n space-separated integers (money in each house).",
+  "outputFormat": "Print the maximum robbed amount.",
+  "constraints": "1 <= n <= 20, 0 <= money[i] <= 100",
+  "samples": [
+   {
+    "stdin": "5\n2 7 9 3 1\n",
+    "expected": "12"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n2 7 9 3 1\n",
+    "expected": "12"
+   },
+   {
+    "stdin": "4\n2 1 1 2\n",
+    "expected": "4"
+   },
+   {
+    "stdin": "1\n5\n",
+    "expected": "5"
+   },
+   {
+    "stdin": "3\n1 2 3\n",
+    "expected": "4"
+   },
+   {
+    "stdin": "6\n5 1 1 5 1 2\n",
+    "expected": "12"
+   }
+  ],
+  "starter": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        print(0)\n        return\n    n = data[0]\n    arr = data[1:1+n]\n    # TODO: dp[i] = max(dp[i-1], dp[i-2]+arr[i])\n    print(0)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        print(0)\n        return\n    n = data[0]\n    arr = data[1:1+n]\n    if not arr:\n        print(0)\n        return\n    prev2, prev1 = 0, 0\n    for x in arr:\n        cur = prev1 if prev1 > prev2 + x else prev2 + x\n        prev2, prev1 = prev1, cur\n    print(prev1)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Dynamic programming with two variables: at each house take max of skipping it or robbing it plus best up to i-2.",
+  "steps": [
+   "Read n and the house values.",
+   "Keep prev1 = best up to previous house, prev2 = best up to house before that.",
+   "For each house value x compute cur = max(prev1, prev2 + x).",
+   "Shift prev2 to prev1 and prev1 to cur.",
+   "Repeat for all houses.",
+   "Print prev1 as the answer.",
+   "Only two variables needed instead of a full table."
+  ],
+  "complexity": "Time O(n), Space O(1)",
+  "insight": "Each house is skip-or-take - only the last two answers matter."
+ },
+ {
+  "id": "coin-change-ways",
+  "title": "Coin Change - Count Ways",
+  "difficulty": "medium",
+  "topic": "dp",
+  "pattern": "dp",
+  "years": "Infosys SP/DSE 2022,2023; TCS Digital 2021,2023; Accenture 2023",
+  "statement": "Given an amount A, count the number of ways to make that amount using coins of denominations 1, 2 and 5. Order of coins does not matter (combinations, not permutations). Print the count.",
+  "inputFormat": "Line 1: integer A (amount).",
+  "outputFormat": "Print the number of ways.",
+  "constraints": "0 <= A <= 30",
+  "samples": [
+   {
+    "stdin": "5\n",
+    "expected": "4"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "5\n",
+    "expected": "4"
+   },
+   {
+    "stdin": "0\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "3\n",
+    "expected": "2"
+   },
+   {
+    "stdin": "10\n",
+    "expected": "10"
+   },
+   {
+    "stdin": "2\n",
+    "expected": "2"
+   }
+  ],
+  "starter": "def solve():\n    import sys\n    s = sys.stdin.read().strip().split()\n    if not s:\n        return\n    amt = int(s[0])\n    # TODO: 1D dp counting combinations with coins 1,2,5\n    print(0)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "def solve():\n    import sys\n    s = sys.stdin.read().strip().split()\n    if not s:\n        return\n    amt = int(s[0])\n    coins = [1, 2, 5]\n    dp = [0] * (amt + 1)\n    dp[0] = 1\n    for c in coins:\n        for a in range(c, amt + 1):\n            dp[a] += dp[a - c]\n    print(dp[amt])\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "1D DP over coins outer loop and amounts inner loop so each combination is counted once.",
+  "steps": [
+   "Read amount A.",
+   "Create dp array of size A+1 with dp[0]=1.",
+   "Loop coins 1, 2, 5 in the outer loop.",
+   "For each coin, loop amounts from coin to A.",
+   "Add dp[a-coin] into dp[a].",
+   "After all coins dp[A] holds the combination count.",
+   "Print dp[A]."
+  ],
+  "complexity": "Time O(A), Space O(A)",
+  "insight": "Coins outer, amounts inner counts combinations; swapped loops would count permutations."
+ },
+ {
+  "id": "longest-inc-subseq-len",
+  "title": "Longest Increasing Subsequence Length",
+  "difficulty": "medium",
+  "topic": "dp",
+  "pattern": "dp",
+  "years": "Infosys DSE 2022,2023; TCS Digital 2022,2023; Accenture 2024",
+  "statement": "Given an array of n integers, find the length of the longest strictly increasing subsequence (not necessarily contiguous). Print the length.",
+  "inputFormat": "Line 1: integer n. Line 2: n space-separated integers.",
+  "outputFormat": "Print the LIS length.",
+  "constraints": "1 <= n <= 20, -100 <= arr[i] <= 100",
+  "samples": [
+   {
+    "stdin": "8\n10 9 2 5 3 7 101 18\n",
+    "expected": "4"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "8\n10 9 2 5 3 7 101 18\n",
+    "expected": "4"
+   },
+   {
+    "stdin": "5\n1 2 3 4 5\n",
+    "expected": "5"
+   },
+   {
+    "stdin": "5\n5 4 3 2 1\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "1\n100\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "6\n3 10 2 1 20 4\n",
+    "expected": "3"
+   }
+  ],
+  "starter": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        print(0)\n        return\n    n = data[0]\n    arr = data[1:1+n]\n    # TODO: O(n^2) dp for LIS length\n    print(0)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "def solve():\n    import sys\n    data = list(map(int, sys.stdin.read().strip().split()))\n    if not data:\n        print(0)\n        return\n    n = data[0]\n    arr = data[1:1+n]\n    if not arr:\n        print(0)\n        return\n    dp = [1] * len(arr)\n    for i in range(len(arr)):\n        for j in range(i):\n            if arr[j] < arr[i] and dp[j] + 1 > dp[i]:\n                dp[i] = dp[j] + 1\n    print(max(dp))\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "O(n^2) DP where dp[i] is the LIS ending at i, extended from any earlier smaller element.",
+  "steps": [
+   "Read n and the array.",
+   "Initialize dp[i]=1 for every position.",
+   "For each i, scan all j < i.",
+   "If arr[j] < arr[i], dp[i] = max(dp[i], dp[j]+1).",
+   "After filling, take max(dp) as the answer.",
+   "Print that maximum.",
+   "Tiny n keeps O(n^2) instant."
+  ],
+  "complexity": "Time O(n^2), Space O(n)",
+  "insight": "LIS ending at i extends the best smaller element before it."
+ },
+ {
+  "id": "edit-distance-2str",
+  "title": "Edit Distance of Two Strings",
+  "difficulty": "hard",
+  "topic": "dp",
+  "pattern": "dp",
+  "years": "Infosys DSE 2023; TCS Digital 2022,2023",
+  "statement": "Given two lowercase strings s1 and s2 (no spaces), find the minimum number of operations to convert s1 into s2. Allowed operations are insert, delete, or replace a character (each costs 1). Print the edit distance.",
+  "inputFormat": "Line 1: string s1. Line 2: string s2.",
+  "outputFormat": "Print the edit distance as an integer.",
+  "constraints": "1 <= len(s1), len(s2) <= 8, lowercase letters only",
+  "samples": [
+   {
+    "stdin": "cat\ncut\n",
+    "expected": "1"
+   }
+  ],
+  "tests": [
+   {
+    "stdin": "cat\ncut\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "horse\nros\n",
+    "expected": "3"
+   },
+   {
+    "stdin": "same\nsame\n",
+    "expected": "0"
+   },
+   {
+    "stdin": "a\nb\n",
+    "expected": "1"
+   },
+   {
+    "stdin": "kitten\nsitting\n",
+    "expected": "3"
+   }
+  ],
+  "starter": "def solve():\n    import sys\n    parts = sys.stdin.read().split()\n    a = parts[0] if len(parts) > 0 else \"\"\n    b = parts[1] if len(parts) > 1 else \"\"\n    # TODO: dp[i][j] edit distance of prefixes\n    print(0)\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "solution": "def solve():\n    import sys\n    parts = sys.stdin.read().split()\n    if not parts:\n        print(0)\n        return\n    a = parts[0] if len(parts) > 0 else \"\"\n    b = parts[1] if len(parts) > 1 else \"\"\n    m, n = len(a), len(b)\n    dp = [[0]*(n+1) for _ in range(m+1)]\n    for i in range(m+1):\n        dp[i][0] = i\n    for j in range(n+1):\n        dp[0][j] = j\n    for i in range(1, m+1):\n        for j in range(1, n+1):\n            if a[i-1] == b[j-1]:\n                dp[i][j] = dp[i-1][j-1]\n            else:\n                dp[i][j] = 1 + min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1])\n    print(dp[m][n])\n\nif __name__ == \"__main__\":\n    solve()\n",
+  "approach": "Classic 2D DP on prefixes: match costs nothing, else 1 plus best of delete, insert, or replace.",
+  "steps": [
+   "Read strings s1 and s2.",
+   "Build (m+1)x(n+1) table dp.",
+   "Init first row/col to 0..m and 0..n (all inserts/deletes).",
+   "For each i,j: copy diagonal if chars equal.",
+   "Else take 1 + min(top, left, diagonal).",
+   "Answer is dp[m][n].",
+   "Print the answer."
+  ],
+  "complexity": "Time O(m*n) <= 64, Space O(m*n)",
+  "insight": "Only three moves matter - delete, insert, replace from neighboring cells."
  }
 ]
