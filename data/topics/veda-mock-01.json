@@ -1,0 +1,124 @@
+{
+  "id": "veda-mock-01",
+  "title": "Mock Test 1",
+  "prelims": {
+    "durationMin": 60,
+    "totalMarks": 30,
+    "negative": 0.25,
+    "correctMarks": 1,
+    "sections": [
+      {
+        "id": "digital",
+        "title": "Digital Design",
+        "marks": 15,
+        "questions": [
+          { "id": "m1p01", "q": "Decimal value of $(101101)_{2}$?", "opts": ["$44$", "$45$", "$46$", "$43$"], "c": 1, "t": "number-systems", "exp": ["Weights $32,16,8,4,2,1$.", "$1 \\times 32 + 0 \\times 16 + 1 \\times 8 + 1 \\times 4 + 0 \\times 2 + 1 \\times 1 = 32+8+4+1 = 45$."] },
+          { "id": "m1p02", "q": "Which of these cannot be a valid octal number?", "opts": ["$(25)_{8}$", "$(70)_{8}$", "$(89)_{8}$", "$(17)_{8}$"], "c": 2, "t": "number-systems", "exp": ["Octal allows only digits $0$ to $7$.", "$(89)_{8}$ uses $8$ and $9$ — both forbidden."] },
+          { "id": "m1p03", "q": "Decimal value of $(FF)_{16}$?", "opts": ["$255$", "$256$", "$240$", "$15$"], "c": 0, "t": "number-systems", "exp": ["$F = 15$.", "$15 \\times 16 + 15 = 240 + 15 = 255$."] },
+          { "id": "m1p04", "q": "Decimal value of 4-bit 2's complement $(1011)_{2}$?", "opts": ["$+11$", "$-5$", "$+5$", "$-3$"], "c": 1, "t": "complements", "exp": ["MSB is $1$, so negative.", "Invert all bits: $0100$. Add $1$: $0101 = 5$.", "Value is $-5$."] },
+          { "id": "m1p05", "q": "Range of 8-bit 2's complement numbers?", "opts": ["$-128$ to $+127$", "$-127$ to $+127$", "$0$ to $255$", "$-256$ to $+255$"], "c": 0, "t": "complements", "exp": ["2's complement range is $-2^{n-1}$ to $+(2^{n-1}-1)$.", "$n=8$: $-128$ to $+127$. Single zero."] },
+          { "id": "m1p06", "q": "$F(A,B,C)=\\sum(0,1,3,4,6)$ means?", "opts": ["$F=1$ on minterms $0,1,3,4,6$", "$F=0$ on those minterms", "$F$ has $6$ inputs", "$F$ is in POS form"], "c": 0, "t": "sop-pos", "exp": ["$\\sum$ lists minterms where $F=1$.", "Rows $0,1,3,4,6$ output $1$; rows $2,5,7$ output $0$."] },
+          { "id": "m1p07", "q": "Minimum number of 2-input NAND gates to build a 4-input NAND gate?", "opts": ["$3$", "$4$", "$5$", "$6$"], "c": 2, "t": "gates", "exp": ["Cascade: $NAND(A,B)$, invert to $AB$, $NAND(AB,C)$, invert to $ABC$, $NAND(ABC,D)$.", "Five gates total. Verify: $A=B=C=D=1$ gives $0$."] },
+          { "id": "m1p08", "q": "For $F=\\sum(0,1,3,4,6)$ on a 4-to-1 MUX with $S_{1}=B, S_{0}=C$, $D_{0}$ (for $BC=00$) equals?", "opts": ["$0$", "$1$", "$A$", "$\\bar{A}$"], "c": 1, "t": "mux", "exp": ["$BC=00$ covers rows $m_{0}$ ($A=0$) and $m_{4}$ ($A=1$).", "Both are in the set ($0$ and $4$): $D_{0}=1$."] },
+          { "id": "m1p09", "q": "Full adder with $A=1, B=1, C_{in}=0$. Sum $S$?", "opts": ["$0$", "$1$", "$X$", "$Z$"], "c": 0, "t": "adder", "exp": ["$S = A \\oplus B \\oplus C_{in} = 1 \\oplus 1 \\oplus 0 = 0$.", "Two ones is even parity; carry-out is $1$."] },
+          { "id": "m1p10", "q": "De Morgan: $\\overline{A \\cdot B}$ equals?", "opts": ["$\\bar{A}+\\bar{B}$", "$\\bar{A}\\cdot\\bar{B}$", "$A+B$", "$AB$"], "c": 0, "t": "demorgan", "exp": ["Break the bar, flip AND to OR.", "$\\overline{A \\cdot B} = \\bar{A}+\\bar{B}$."] },
+          { "id": "m1p11", "q": "NOR SR latch with $S=1, R=1$?", "opts": ["Forbidden state", "Hold", "Set", "Reset"], "c": 0, "t": "latch", "exp": ["Both NOR outputs forced $0$, so $Q=\\bar{Q}=0$ (not complements).", "Releasing both together races — never assert both."] },
+          { "id": "m1p12", "q": "JK flip-flop with $J=K=1$?", "opts": ["Hold", "Toggle", "Set", "Reset"], "c": 1, "t": "ff", "exp": ["$Q^{+} = J\\bar{Q}+\\bar{K}Q = \\bar{Q}$.", "Toggles each clock — this fixes the SR forbidden state."] },
+          { "id": "m1p13", "q": "Number of states of a 4-flip-flop Johnson counter?", "opts": ["$4$", "$8$", "$16$", "$6$"], "c": 1, "t": "counters", "exp": ["Twisted ring gives $2n$ states.", "$2 \\times 4 = 8$: $0000,1000,1100,1110,1111,0111,0011,0001$."] },
+          { "id": "m1p14", "q": "States in a non-overlapping Moore FSM detecting the $1011$ pattern?", "opts": ["$3$", "$4$", "$5$", "$6$"], "c": 2, "t": "fsm", "exp": ["Moore needs a distinct output state: $S_{0}$ idle, $S_{1}$ got $1$, $S_{2}$ got $10$, $S_{3}$ got $101$, $S_{4}$ got $1011$ with $Z=1$.", "Five states; Mealy would need four."] },
+          { "id": "m1p15", "q": "Setup time means data must be stable…?", "opts": ["After the clock edge", "It is the clock-to-Q delay", "Before the clock edge", "Only during the hold window"], "c": 2, "t": "timing", "exp": ["Setup guards sampling: $D$ must be ready BEFORE the edge.", "Hold keeps $D$ stable AFTER the edge."] }
+        ]
+      },
+      {
+        "id": "electronics",
+        "title": "Basic Electronics",
+        "marks": 5,
+        "questions": [
+          { "id": "m1p16", "q": "Series RC circuit: $V_{R}=12V$ RMS, $V_{C}=15V$ RMS. Source voltage?", "opts": ["$27V$", "$12V$", "$19.2V$", "$3V$"], "c": 2, "t": "rms", "exp": ["Resistor and capacitor voltages are $90^{\\circ}$ apart — add by Pythagoras, not directly.", "$V_{s} = \\sqrt{12^{2}+15^{2}} = \\sqrt{369} \\approx 19.2V$. $27V$ linear addition is the trap."] },
+          { "id": "m1p17", "q": "A $6kHz$ sinusoidal voltage drives a series RC circuit. Frequency of the voltage across the resistor?", "opts": ["$3kHz$", "$12kHz$", "$0Hz$", "$6kHz$"], "c": 3, "t": "frequency", "exp": ["R, L, C are linear: they change amplitude/phase only.", "No new frequencies are created — output stays $6kHz$."] },
+          { "id": "m1p18", "q": "To realise impedance $1+4j\\,\\Omega$ at $\\omega=1$ rad/s, the real part needs?", "opts": ["$4\\Omega$ resistor", "A capacitor", "A wire", "$1\\Omega$ resistor"], "c": 3, "t": "impedance", "exp": ["Real part $1$ is an ordinary resistance.", "Use a $1\\Omega$ resistor in series."] },
+          { "id": "m1p19", "q": "To realise $+j4$ at $\\omega=1$ rad/s (series), use?", "opts": ["$4F$ capacitor", "$4\\Omega$ resistor", "A diode", "$4H$ inductor"], "c": 3, "t": "impedance", "exp": ["$+j$ means inductance: $Z_{L} = j\\omega L$.", "$j \\times 1 \\times L = j4$ gives $L = 4H$. A capacitor would give $-j$."] },
+          { "id": "m1p20", "q": "For $R=1k\\Omega, C=1\\mu F$, the time constant $\\tau$?", "opts": ["$1\\mu s$", "$1s$", "$1ms$", "$1ns$"], "c": 2, "t": "tau", "exp": ["$\\tau = RC = 10^{3} \\times 10^{-6} = 10^{-3}s = 1ms$.", "Settled after $5\\tau = 5ms$."] }
+        ]
+      },
+      {
+        "id": "aptitude",
+        "title": "Aptitude",
+        "marks": 10,
+        "questions": [
+          { "id": "m1p21", "q": "90 applied; 10 had neither sales nor publishing experience; 65 sales; 58 publishing. Both?", "opts": ["$33$", "$43$", "$53$", "$23$"], "c": 1, "t": "venn", "exp": ["Inside the circles: $90-10 = 80$.", "Overlap counted twice: $65+58-80 = 43$."] },
+          { "id": "m1p22", "q": "Worker A needs 6 days, B needs 12 days. Together?", "opts": ["$3$ days", "$6$ days", "$4$ days", "$9$ days"], "c": 2, "t": "work", "exp": ["Add rates: $1/6+1/12 = 3/12 = 1/4$ job per day.", "Invert: $4$ days."] },
+          { "id": "m1p23", "q": "Ram is Rs 2 short of a book's price, Shyam Rs 24 short; pooled money still short. Price (integer Rs)?", "opts": ["$24$", "$26$", "$27$", "$25$"], "c": 3, "t": "logic", "exp": ["Ram has $P-2$, Shyam $P-24$ (both positive, so $P>24$).", "Together short: $(P-2)+(P-24) < P$ gives $P < 26$.", "Integer $P$ with $24 < P < 26$: $25$."] },
+          { "id": "m1p24", "q": "Train at $15$ m/s passes a man in $20s$ and a station in $36s$. Platform length?", "opts": ["$300m$", "$240m$", "$540m$", "$180m$"], "c": 1, "t": "trains", "exp": ["Train length $= 15 \\times 20 = 300m$ (point object).", "Train + platform $= 15 \\times 36 = 540m$.", "Platform $= 540-300 = 240m$."] },
+          { "id": "m1p25", "q": "If $x$ is $80\\%$ of $y$, then $y$ is what percent of $2x$?", "opts": ["$40\\%$", "$50\\%$", "$80\\%$", "$62.5\\%$"], "c": 3, "t": "percent", "exp": ["$x = 0.8y$, so $y/x = 1/0.8 = 1.25$.", "Base is $2x$: $1.25/2 = 0.625 = 62.5\\%$. Underline the OF base."] },
+          { "id": "m1p26", "q": "Price rises $20\\%$, then falls $20\\%$. Net change?", "opts": ["$-4\\%$", "$+4\\%$", "$0$", "$-40\\%$"], "c": 0, "t": "percent", "exp": ["Successive: $20+(-20)+20 \\times (-20)/100 = -4$.", "Equivalently $1.2 \\times 0.8 = 0.96$: $4\\%$ loss."] },
+          { "id": "m1p27", "q": "LCM of $4$ and $6$?", "opts": ["$24$", "$2$", "$10$", "$12$"], "c": 3, "t": "hcf-lcm", "exp": ["Multiples of $4$: $4,8,12$. Multiples of $6$: $6,12$.", "First common: $12$."] },
+          { "id": "m1p28", "q": "Two fair coins tossed. P(at least one head)?", "opts": ["$1/2$", "$1/4$", "$3/4$", "$1$"], "c": 2, "t": "probability", "exp": ["Complement shortcut: $1 - P(TT)$.", "$1 - 1/4 = 3/4$."] },
+          { "id": "m1p29", "q": "Angle between clock hands at 3:00?", "opts": ["$90^{\\circ}$", "$0^{\\circ}$", "$180^{\\circ}$", "$45^{\\circ}$"], "c": 0, "t": "clock", "exp": ["$|30H - 5.5M| = |90 - 0| = 90^{\\circ}$."] },
+          { "id": "m1p30", "q": "$C(5,2)$ = ?", "opts": ["$20$", "$10$", "$5$", "$15$"], "c": 1, "t": "pnc", "exp": ["Order-free choice: $5 \\times 4 / 2 = 10$.", "Ordered (posts/ranks) would be $P(5,2) = 20$."] }
+        ]
+      }
+    ]
+  },
+  "mains": {
+    "durationMin": 120,
+    "totalMarks": 70,
+    "sections": [
+      {
+        "id": "A",
+        "title": "Section A — Fill in the blanks",
+        "kind": "fill",
+        "marksEach": 1,
+        "questions": [
+          { "id": "m1a01", "subject": "Digital Design", "marks": 1, "q": "Minimum number of 2-input NAND gates needed to realise a 4-input NAND gate: ___", "accept": ["5", "five"], "exp": ["Cascade: NAND(A,B), invert to AB, NAND(AB,C), invert to ABC, NAND(ABC,D) — five gates."] },
+          { "id": "m1a02", "subject": "Digital Design", "marks": 1, "q": "A 3-to-8 decoder has ___ output lines.", "accept": ["8", "eight"], "exp": ["An n-to-2^n decoder has 2^n outputs; 2^3 = 8, one per minterm."] },
+          { "id": "m1a03", "subject": "Digital Design", "marks": 1, "q": "A MOD-10 (decade) counter needs ___ flip-flops.", "accept": ["4", "four"], "exp": ["2^3 = 8 < 10 ≤ 16 = 2^4, so 4 flip-flops with reset decoded at 1010."] },
+          { "id": "m1a04", "subject": "Basic Electronics", "marks": 1, "q": "For R = 1kΩ and C = 1µF, the time constant τ = ___ ms.", "accept": ["1", "1ms", "1 ms", "one"], "exp": ["τ = RC = 10^3 × 10^-6 = 10^-3 s = 1 ms."] },
+          { "id": "m1a05", "subject": "Basic Electronics", "marks": 1, "q": "Series RC: VR = 12V RMS, VC = 15V RMS. Source Vs ≈ ___ V RMS.", "accept": ["19.2", "19.21", "19.20", "19.3"], "exp": ["Vs = √(12² + 15²) = √369 ≈ 19.2V. Adding 12 + 15 = 27V is the trap — quadrature adds by squares."] },
+          { "id": "m1a06", "subject": "C Programming", "marks": 1, "q": "Memory used by a variable of type short int is ___ bytes (typical x86-64 Linux).", "accept": ["2", "2 bytes", "two"], "exp": ["short is 16-bit on the assumed platform: 2 bytes."] },
+          { "id": "m1a07", "subject": "C Programming", "marks": 1, "q": "In C, the integer literal 010 equals ___ in decimal.", "accept": ["8", "eight"], "exp": ["A leading 0 means octal: 1×8 + 0 = 8."] },
+          { "id": "m1a08", "subject": "C Programming", "marks": 1, "q": "The operator group with the highest precedence in C is ___ (postfix / () / []).", "accept": ["postfix", "()", "[]", "function call", "subscript"], "exp": ["Postfix () [] . -> ++ -- binds tightest; comma is loosest."] },
+          { "id": "m1a09", "subject": "Aptitude", "marks": 1, "q": "LCM of 4 and 6 is ___.", "accept": ["12", "twelve"], "exp": ["First common multiple of 4 and 6 is 12."] },
+          { "id": "m1a10", "subject": "Aptitude", "marks": 1, "q": "An ordinary (non-leap) year has ___ odd day(s).", "accept": ["1", "one"], "exp": ["365 = 52×7 + 1: one odd day. A leap year has 2."] }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "Section B — Short answers",
+        "kind": "short",
+        "marksEach": 2,
+        "questions": [
+          { "id": "m1b01", "subject": "Digital Design", "marks": 2, "q": "State De Morgan's theorems for two variables.", "model": "NEG(A+B) = NEG(A)·NEG(B) and NEG(A·B) = NEG(A)+NEG(B). Break the bar, flip AND/OR.", "scheme": ["1M per theorem (statement with correct flip)"], "exp": ["De Morgan converts AND-OR networks to NAND-NAND for CMOS and drives every NAND-only design."] },
+          { "id": "m1b02", "subject": "Digital Design", "marks": 2, "q": "Write the sum and carry equations of a half adder.", "model": "S = A XOR B; C = A·B. Sum is 1 when inputs differ; carry is 1 only when both are 1.", "scheme": ["1M sum equation", "1M carry equation"], "exp": ["S = odd parity, C = AND. A full adder adds Cin: S = A⊕B⊕Cin."] },
+          { "id": "m1b03", "subject": "Digital Design", "marks": 2, "q": "Distinguish Moore and Mealy machine outputs in one line each.", "model": "Moore: output Z = f(state) only — written inside the state circle, changes on clock edges. Mealy: output Z = f(state, input) — written on transition arcs, reacts within the cycle.", "scheme": ["1M Moore (state only)", "1M Mealy (state + input)"], "exp": ["Moore costs an extra state but is glitch-free; Mealy is compact (1011 in 4 states vs 5) but can glitch."] },
+          { "id": "m1b04", "subject": "Basic Electronics", "marks": 2, "q": "State Kirchhoff's current law and voltage law in one line each.", "model": "KCL: algebraic sum of currents at a node is zero (in = out). KVL: algebraic sum of voltages around any closed loop is zero (rises = drops).", "scheme": ["1M KCL (node currents)", "1M KVL (loop voltages)"], "exp": ["KCL feeds nodal analysis; KVL feeds mesh analysis."] },
+          { "id": "m1b05", "subject": "Basic Electronics", "marks": 2, "q": "State the maximum power transfer condition and the Pmax formula.", "model": "Load receives maximum power when RL = Rth. Pmax = Vth²/(4·Rth), at 50% efficiency.", "scheme": ["1M matching condition RL = Rth", "1M Pmax formula"], "exp": ["Used for signal matching, never for power grids (efficiency is only 50%)."] },
+          { "id": "m1b06", "subject": "C Programming", "marks": 2, "q": "What happens when break is missing in a switch case? Give a one-line example.", "model": "Execution falls through into the next case. switch(2){case 1:printf(\"A\");case 2:printf(\"B\");case 3:printf(\"C\");} prints BC.", "scheme": ["1M fall-through effect", "1M correct trace/example"], "exp": ["Trace downward from the matched label, collecting every case body until break or end."] },
+          { "id": "m1b07", "subject": "C Programming", "marks": 2, "q": "How are arguments passed to functions in C? What does this imply for swap(a,b) with plain ints?", "model": "By value — the callee gets copies. Plain swap(a,b) swaps only copies, so caller variables are unchanged; pass &a,&b (pointers) to swap for real.", "scheme": ["1M by value", "1M swap consequence + pointer fix"], "exp": ["Arrays decay to pointers, so array arguments CAN be modified by the callee."] },
+          { "id": "m1b08", "subject": "C Programming", "marks": 2, "q": "What is argv[0]? For the command `prog 10 hi`, give argc and argv[1].", "model": "argv[0] is the program name. prog 10 hi: argc = 3, argv[1] = \"10\" (a string, convert with atoi/strtol for numbers).", "scheme": ["1M argv[0] = program", "1M argc = 3 and argv[1] text"], "exp": ["User arguments start at argv[1]; needing N args means argc == N+1."] },
+          { "id": "m1b09", "subject": "Aptitude", "marks": 2, "q": "x is 80% of y. What percent of x is y?", "model": "x = 0.8y, so y/x = 1/0.8 = 1.25. y is 125% of x.", "scheme": ["1M invert the ratio (1/0.8)", "1M 125%"], "exp": ["Base flip: percent OF x, not of y. Convert 0.8 = 4/5 early."] },
+          { "id": "m1b10", "subject": "Aptitude", "marks": 2, "q": "A finishes a job in 10 days, B in 15 days. Working together, how long?", "model": "1/10 + 1/15 = 5/30 = 1/6 per day. Together: 6 days (pair formula ab/(a+b) = 150/25).", "scheme": ["1M add rates", "1M 6 days"], "exp": ["Never average the days — add reciprocals, invert at the end."] },
+          { "id": "m1b11", "subject": "Aptitude", "marks": 2, "q": "P(6) on a fair die? P(red card) from a 52-card deck?", "model": "P(6) = 1/6 (one of six faces). P(red) = 26/52 = 1/2.", "scheme": ["1M each"], "exp": ["Probability = favourable/equally-likely outcomes."] },
+          { "id": "m1b12", "subject": "Aptitude", "marks": 2, "q": "Write the clock angle formula and give the number of odd days in a leap year.", "model": "Angle = |30H − 5.5M| (take min with 360). A leap year has 2 odd days (366 = 52×7 + 2).", "scheme": ["1M angle formula", "1M 2 odd days"], "exp": ["Minute hand 6°/min, hour hand 0.5°/min, relative 5.5°/min."] }
+        ]
+      },
+      {
+        "id": "C",
+        "title": "Section C — Problems",
+        "kind": "problem",
+        "questions": [
+          { "id": "m1c01", "subject": "Digital Design", "marks": 4, "q": "Implement F(A,B,C) = Σ(0,1,3,4,6) using only a single 4-to-1 multiplexer with B,C as select lines. Give D0..D3 and verify one 1-row and one 0-row.", "model": "Rows per BC: BC=00 → m0=1,m4=1 ⇒ D0=1. BC=01 → m1=1,m5=0 ⇒ D1=Ā. BC=10 → m2=0,m6=1 ⇒ D2=A. BC=11 → m3=1,m7=0 ⇒ D3=Ā. Wire S1=B,S0=C. Verify ABC=011: selects 11 → D3=Ā=1 ✓ (m3=1). Verify ABC=101: selects 01 → D1=Ā=0 ✓ (m5=0).", "scheme": ["2M decomposition table", "1M D mapping", "1M verification of two rows"], "exp": ["Rule per select combo: both rows 0 → tie 0; both 1 → tie 1; only A=0 row is 1 → Ā; only A=1 row is 1 → A."] },
+          { "id": "m1c02", "subject": "Digital Design", "marks": 4, "q": "Add 0111 (+7) and 0001 (+1) in 4-bit 2's complement. Give the 4-bit result, its decoded value, and say whether overflow occurred with reason.", "model": "0111 + 0001 = 1000. Decoded: MSB 1 → negative; invert 0111, +1 → 1000 = 8, so −8. Positive + positive gave negative — impossible, hence overflow. True sum 8 exceeds max +7; needs 5 bits.", "scheme": ["1M binary sum 1000", "1M decode to −8", "2M overflow verdict + sign reason"], "exp": ["Overflow = carry into sign XOR carry out; equivalently an impossible sign. Discarded final carry alone is normal, not overflow."] },
+          { "id": "m1c03", "subject": "Digital Design", "marks": 3, "q": "For the synchronous non-overlapping Moore FSM detecting 1011: how many states, and what are the transitions out of the final state S4?", "model": "5 states (S0 idle, S1 got 1, S2 got 10, S3 got 101, S4 got 1011 with Z=1). Non-overlapping restart: S4,0→S0 and S4,1→S1.", "scheme": ["1M five states", "2M both S4 transitions"], "exp": ["Overlapping variant would reuse the tail: S4,0→S2, S4,1→S1. VEDA asks non-overlapping (restart)."] },
+          { "id": "m1c04", "subject": "Basic Electronics", "marks": 4, "q": "R = 1kΩ, C = 1µF, input is a 200 Hz square wave into a series-C (high-pass) RC circuit. Compute τ and the half-period, name the regime, and describe the Vout shape.", "model": "τ = RC = 1 ms. T = 1/200 = 5 ms, half-period 2.5 ms = 2.5τ — transitional regime. Vout: tilted square with exponential sag toward 0 V between edges (capacitor voltage continuous, cannot jump); visible rounding/tilt, not sharp spikes (those need T/2 ≪ τ) and not a clean square (needs T/2 ≫ τ).", "scheme": ["2M τ and half-period numbers", "1M transitional regime", "1M tilt/sag shape with continuity"], "exp": ["Compare T/2 with τ first: >5τ square-ish, <0.2τ spikes/ramps, between → exponential tilt."] },
+          { "id": "m1c05", "subject": "C Programming", "marks": 4, "q": "Write a C program to read one input character and print whether it is a digit, a lowercase letter, an uppercase letter, or a special character.", "model": "#include <stdio.h>\nint main(void) {\n  int c = getchar();\n  if (c >= '0' && c <= '9') printf(\"digit\");\n  else if (c >= 'a' && c <= 'z') printf(\"lower case\");\n  else if (c >= 'A' && c <= 'Z') printf(\"upper case\");\n  else printf(\"special character\");\n  return 0;\n} (ctype.h isdigit/islower/isupper equivalent accepted.)", "scheme": ["1M reading the char (int c for EOF)", "2M all four range branches", "1M exact single-class output"], "exp": ["ASCII ranges: '0'-'9' = 48-57, 'A'-'Z' = 65-90, 'a'-'z' = 97-122."] },
+          { "id": "m1c06", "subject": "C Programming", "marks": 3, "q": "Predict the output of: switch(2){case 1:printf(\"A\");case 2:printf(\"B\");case 3:printf(\"C\");} Explain in one line.", "model": "Output BC. case 2 matches and prints B; with no break, execution falls through into case 3 and prints C.", "scheme": ["1M output BC", "2M fall-through explanation"], "exp": ["Missing break slides into the next case body, including default."] },
+          { "id": "m1c07", "subject": "C Programming", "marks": 4, "q": "With #define SQ(x) ((x)*(x)), what is SQ(2+1)? What would it be with #define SQ(x) x*x? State the macro rule.", "model": "((2+1)*(2+1)) = 9 with the parenthesised macro. Bare x*x expands to 2+1*2+1 = 5. Rule: parenthesise the macro body and every parameter use; never pass side effects (SQ(i++) would increment twice).", "scheme": ["1M 9 with expansion shown", "1M 5 with expansion shown", "2M paren rule + side-effect warning"], "exp": ["Macros are text substitution before compiling — no type checks, re-evaluated args."] },
+          { "id": "m1c08", "subject": "Aptitude", "marks": 4, "q": "90 people applied for a salesperson job at a book publisher. 10 had neither sales nor publishing background; 65 had sales experience; 58 had publishing background. How many had both? Show steps.", "model": "Inside the circles: 90 − 10 = 80. Overlap counted twice: 65 + 58 − 80 = 43. Answer 43.", "scheme": ["1M neither-outside step (80)", "2M overlap equation", "1M answer 43"], "exp": ["|A∪B| = |A| + |B| − |AB|: subtract the overlap once."] },
+          { "id": "m1c09", "subject": "Aptitude", "marks": 3, "q": "A train at 15 m/s passes a man on a platform in 20 s and the whole station in 36 s. Find the platform length.", "model": "Train length = 15×20 = 300 m. Train + platform = 15×36 = 540 m. Platform = 540 − 300 = 240 m.", "scheme": ["1M train length", "1M total length", "1M platform 240 m"], "exp": ["Point object: own length only. Extended object: add lengths."] },
+          { "id": "m1c10", "subject": "Aptitude", "marks": 3, "q": "Ram is Rs 2 short of a book's price and Shyam Rs 24 short; even together they cannot buy it. Find the integer-rupee price.", "model": "Ram has P−2, Shyam P−24 (both ≥ 0, so P > 24). Together short: (P−2)+(P−24) < P ⇒ P < 26. Integer P with 24 < P < 26: Rs 25.", "scheme": ["1M money equations", "1M strict inequality P < 26", "1M Rs 25"], "exp": ["Bounds squeeze to a single integer — verify positivity too."] }
+        ]
+      }
+    ]
+  }
+}

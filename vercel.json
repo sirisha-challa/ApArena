@@ -12,7 +12,7 @@
       ]
     },
     {
-      "source": "/data/(aptitude|reasoning|verbal|pseudocode|programming|core|behavioural|gamified|communication).json",
+      "source": "/data/(aptitude|reasoning|verbal|pseudocode|programming|core|behavioural|gamified|communication|veda-iit|veda-mocks|sqlarena).json",
       "headers": [
         { "key": "Content-Type", "value": "application/json; charset=utf-8" },
         { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=60" }
@@ -58,6 +58,9 @@
     { "source": "/core/:path*", "destination": "/core/index.html" },
     { "source": "/behavioural/:path*", "destination": "/behavioural/index.html" },
     { "source": "/gamified/:path*", "destination": "/gamified/index.html" },
-    { "source": "/communication/:path*", "destination": "/communication/index.html" }
+    { "source": "/communication/:path*", "destination": "/communication/index.html" },
+    { "source": "/veda-iit/:path*", "destination": "/veda-iit/index.html" },
+    { "source": "/veda-mocks/:path*", "destination": "/veda-mocks/index.html" },
+    { "source": "/sqlarena/:path*", "destination": "/sqlarena/index.html" }
   ]
 }

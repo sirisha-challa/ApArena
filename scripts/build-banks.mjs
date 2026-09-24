@@ -9,6 +9,7 @@ const tmpl = readFileSync(join(ROOT, 'templates/bank.html'), 'utf8');
 
 let ok=0;
 for (const b of banks){
+  if (b.custom) { console.log(`skip ${b.id} (custom page)`); continue; }
   const html = tmpl
     .replaceAll('{{BANK_ID}}', b.id)
     .replaceAll('{{TITLE}}', b.title)

@@ -89,6 +89,26 @@
       "color": "#0EA5E9",
       "href": "/veda-iit/",
       "accent": "veda-iit"
+    },
+    {
+      "id": "veda-mocks",
+      "title": "Veda Mock Tests",
+      "subtitle": "12 × (Prelims 30M + Mains 70M) — exact VEDA pattern, timed exam mode",
+      "icon": "M",
+      "color": "#F59E0B",
+      "href": "/veda-mocks/",
+      "accent": "veda-mocks",
+      "custom": true
+    },
+    {
+      "id": "sqlarena",
+      "title": "SQL Arena",
+      "subtitle": "AXIS 2026 SQL track — 34 runnable problems, Basics to Mastery",
+      "icon": "SQL",
+      "color": "#0284C7",
+      "href": "/sqlarena/",
+      "accent": "sqlarena",
+      "custom": true
     }
   ]
 }

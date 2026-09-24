@@ -1,0 +1,3696 @@
+[
+ {
+  "id": "select-cols-where",
+  "title": "Select Columns With a WHERE Filter",
+  "difficulty": "easy",
+  "topic": "select-where",
+  "pattern": "Projection + row filter",
+  "years": "AXIS Technical MCQ pool (every drive)",
+  "statement": "Table <b>Employees</b> has columns id, name, dept, salary. Show <b>name and salary</b> of employees in the <b>'Sales'</b> dept only.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, dept TEXT, salary INTEGER);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha','Sales',60000),(2,'Ravi','HR',50000),(3,'Meena','Sales',75000),(4,'Arjun','IT',80000),(5,'Divya','Sales',55000);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'Kabir','Sales',90000),(11,'Nina','IT',70000),(12,'Om','Sales',40000);",
+  "solution": "SELECT name, salary FROM Employees WHERE dept = 'Sales';",
+  "starter": "-- Show name and salary of Sales employees\nSELECT name, salary FROM Employees\nWHERE dept = 'Sales';",
+  "approach": "SELECT picks columns, WHERE picks rows. Filter before anything else.",
+  "steps": [
+   "Read the stem: columns wanted = name, salary -> SELECT name, salary.",
+   "Rows wanted = dept Sales only -> WHERE dept = 'Sales'.",
+   "FROM Employees glues it: SELECT name, salary FROM Employees WHERE dept = 'Sales'.",
+   "Check: Ravi(HR) and Arjun(IT) must NOT appear; 3 Sales rows appear."
+  ],
+  "insight": "SELECT vs WHERE is the first AXIS MCQ trap: SELECT picks columns, WHERE picks rows.",
+  "ordered": false,
+  "level": "L1 \u00b7 SELECT & WHERE",
+  "learn": "SELECT chooses columns (projection). WHERE filters rows. Text uses single quotes.",
+  "expectedColumns": [
+   "name",
+   "salary"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "salary"
+    ],
+    "expectedRows": [
+     [
+      "Asha",
+      60000
+     ],
+     [
+      "Meena",
+      75000
+     ],
+     [
+      "Divya",
+      55000
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "salary"
+    ],
+    "expectedRows": [
+     [
+      "Kabir",
+      90000
+     ],
+     [
+      "Om",
+      40000
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "dept",
+     "salary"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      "Sales",
+      60000
+     ],
+     [
+      2,
+      "Ravi",
+      "HR",
+      50000
+     ],
+     [
+      3,
+      "Meena",
+      "Sales",
+      75000
+     ],
+     [
+      4,
+      "Arjun",
+      "IT",
+      80000
+     ],
+     [
+      5,
+      "Divya",
+      "Sales",
+      55000
+     ]
+    ],
+    "totalRows": 5
+   }
+  ]
+ },
+ {
+  "id": "salary-between",
+  "title": "Salary Range With BETWEEN",
+  "difficulty": "easy",
+  "topic": "select-where",
+  "pattern": "Inclusive range",
+  "years": "AXIS Technical MCQ pool",
+  "statement": "Show <b>name and salary</b> of employees whose salary is between <b>50000 and 75000 inclusive</b>, sorted by salary ascending.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, salary INTEGER);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha',60000),(2,'Ravi',50000),(3,'Meena',75000),(4,'Arjun',80000),(5,'Divya',45000);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'Kabir',50000),(11,'Nina',74999),(12,'Om',75001);",
+  "solution": "SELECT name, salary FROM Employees WHERE salary BETWEEN 50000 AND 75000 ORDER BY salary ASC;",
+  "starter": "-- name, salary where 50000..75000 inclusive, ordered by salary\nSELECT name, salary FROM Employees\nWHERE salary BETWEEN 50000 AND 75000\nORDER BY salary ASC;",
+  "approach": "BETWEEN ... AND ... is inclusive on both ends. ORDER BY sorts the survivors.",
+  "steps": [
+   "BETWEEN 50000 AND 75000 keeps 50000 and 75000 themselves (inclusive).",
+   "50000 (Ravi) and 75000 (Meena) are IN; 80000 and 45000 are OUT.",
+   "ORDER BY salary ASC sorts low to high.",
+   "Never write salary > 50000 AND salary < 75000 when the stem says inclusive \u2014 that drops the endpoints."
+  ],
+  "insight": "BETWEEN is inclusive. The exam's off-by-one trap is exclusive >/< vs inclusive BETWEEN.",
+  "ordered": true,
+  "level": "L1 \u00b7 SELECT & WHERE",
+  "learn": "BETWEEN a AND b keeps both endpoints. ORDER BY ... ASC sorts ascending.",
+  "expectedColumns": [
+   "name",
+   "salary"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "salary"
+    ],
+    "expectedRows": [
+     [
+      "Ravi",
+      50000
+     ],
+     [
+      "Asha",
+      60000
+     ],
+     [
+      "Meena",
+      75000
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "salary"
+    ],
+    "expectedRows": [
+     [
+      "Kabir",
+      50000
+     ],
+     [
+      "Nina",
+      74999
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "salary"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      60000
+     ],
+     [
+      2,
+      "Ravi",
+      50000
+     ],
+     [
+      3,
+      "Meena",
+      75000
+     ],
+     [
+      4,
+      "Arjun",
+      80000
+     ],
+     [
+      5,
+      "Divya",
+      45000
+     ]
+    ],
+    "totalRows": 5
+   }
+  ]
+ },
+ {
+  "id": "like-pattern",
+  "title": "Name Patterns With LIKE",
+  "difficulty": "easy",
+  "topic": "select-where",
+  "pattern": "% vs _ wildcards",
+  "years": "AXIS Technical MCQ pool; TCS NQT repeat",
+  "statement": "Show <b>names</b> that <b>start with 'A'</b>. Then the judge's hidden test checks names <b>ending with 'esh'</b> with a second query slot \u2014 write ONE query using LIKE that the hidden test reuses: match names starting with 'A'. (Concept: <b>%</b> = any length, <b>_</b> = exactly one char.)",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha'),(2,'Ravi'),(3,'Anil'),(4,'Ramesh'),(5,'A'),(6,'Aarav');",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'Arjun'),(11,'Vikram'),(12,'Asha'),(13,'Bob');",
+  "solution": "SELECT name FROM Employees WHERE name LIKE 'A%' ORDER BY name;",
+  "starter": "-- names starting with A\nSELECT name FROM Employees\nWHERE name LIKE 'A%'\nORDER BY name;",
+  "approach": "LIKE 'A%' = starts with A. % matches any length including zero.",
+  "steps": [
+   "LIKE 'A%' -> first letter A, rest anything (Asha, Anil, A, Aarav).",
+   "Ravi and Ramesh do NOT start with A -> excluded.",
+   "'A__' would mean exactly 3 letters starting with A \u2014 different from 'A%'.",
+   "ORDER BY name keeps output deterministic for the judge."
+  ],
+  "insight": "% = any length (incl. zero), _ = exactly one char. 'A%' vs 'A__' is a binary exam trap.",
+  "ordered": true,
+  "level": "L1 \u00b7 SELECT & WHERE",
+  "learn": "LIKE 'A%' starts-with, LIKE '%esh' ends-with, 'A__' exactly 3 chars.",
+  "expectedColumns": [
+   "name"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name"
+    ],
+    "expectedRows": [
+     [
+      "A"
+     ],
+     [
+      "Aarav"
+     ],
+     [
+      "Anil"
+     ],
+     [
+      "Asha"
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name"
+    ],
+    "expectedRows": [
+     [
+      "Arjun"
+     ],
+     [
+      "Asha"
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha"
+     ],
+     [
+      2,
+      "Ravi"
+     ],
+     [
+      3,
+      "Anil"
+     ],
+     [
+      4,
+      "Ramesh"
+     ],
+     [
+      5,
+      "A"
+     ]
+    ],
+    "totalRows": 6
+   }
+  ]
+ },
+ {
+  "id": "null-check",
+  "title": "NULL Check: Find Missing Phones",
+  "difficulty": "easy",
+  "topic": "select-where",
+  "pattern": "IS NULL (never = NULL)",
+  "years": "AXIS Technical MCQ pool (guaranteed 1)",
+  "statement": "Show <b>name</b> of employees whose <b>phone is missing (NULL)</b>.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, phone TEXT);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha','999'),(2,'Ravi',NULL),(3,'Meena',''),(4,'Arjun',NULL);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'Kabir',NULL),(11,'Nina','123'),(12,'Om',NULL);",
+  "solution": "SELECT name FROM Employees WHERE phone IS NULL ORDER BY name;",
+  "starter": "-- names with missing phone\nSELECT name FROM Employees\nWHERE phone IS NULL\nORDER BY name;",
+  "approach": "Any comparison with = NULL is never true. IS NULL is the only null test.",
+  "steps": [
+   "WHERE phone = NULL matches NOTHING (UNKNOWN, filtered out) \u2014 never write it.",
+   "WHERE phone IS NULL matches Ravi and Arjun.",
+   "Empty string '' is NOT null \u2014 Meena with '' is excluded. Correct.",
+   "ORDER BY name for determinism."
+  ],
+  "insight": "WHERE col = NULL is always wrong. IS NULL is the only null test (three-valued logic).",
+  "ordered": true,
+  "level": "L1 \u00b7 SELECT & WHERE",
+  "learn": "NULL means unknown. = NULL is never true; use IS NULL / IS NOT NULL.",
+  "expectedColumns": [
+   "name"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name"
+    ],
+    "expectedRows": [
+     [
+      "Arjun"
+     ],
+     [
+      "Ravi"
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name"
+    ],
+    "expectedRows": [
+     [
+      "Kabir"
+     ],
+     [
+      "Om"
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "phone"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      "999"
+     ],
+     [
+      2,
+      "Ravi",
+      ""
+     ],
+     [
+      3,
+      "Meena",
+      ""
+     ],
+     [
+      4,
+      "Arjun",
+      ""
+     ]
+    ],
+    "totalRows": 4
+   }
+  ]
+ },
+ {
+  "id": "top-n-order-limit",
+  "title": "Top 2 Earners (ORDER BY + LIMIT)",
+  "difficulty": "easy",
+  "topic": "select-where",
+  "pattern": "Sort then cap",
+  "years": "AXIS MCQ + coding warmup",
+  "statement": "Show <b>name and salary</b> of the <b>top 2 earners</b> (highest salary first).",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, salary INTEGER);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha',60000),(2,'Ravi',90000),(3,'Meena',75000),(4,'Arjun',90000);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'Kabir',100000),(11,'Nina',50000),(12,'Om',80000);",
+  "solution": "SELECT name, salary FROM Employees ORDER BY salary DESC LIMIT 2;",
+  "starter": "-- top 2 earners, highest first\nSELECT name, salary FROM Employees\nORDER BY salary DESC\nLIMIT 2;",
+  "approach": "ORDER BY salary DESC sorts high to low; LIMIT 2 caps at two rows.",
+  "steps": [
+   "ORDER BY salary DESC puts 90000s first.",
+   "LIMIT 2 keeps only the first two rows.",
+   "Ties (two 90000s) both fit in top 2 here; with LIMIT 1 the tie-break would need a second ORDER key.",
+   "SQL Server uses TOP 2, Oracle ROWNUM \u2014 AXIS uses LIMIT (MySQL/Postgres style)."
+  ],
+  "insight": "ORDER BY sorts after filtering; LIMIT caps last. DESC = high to low.",
+  "ordered": true,
+  "level": "L1 \u00b7 SELECT & WHERE",
+  "learn": "ORDER BY col DESC + LIMIT n = top-n pattern. LIMIT runs last.",
+  "expectedColumns": [
+   "name",
+   "salary"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "salary"
+    ],
+    "expectedRows": [
+     [
+      "Ravi",
+      90000
+     ],
+     [
+      "Arjun",
+      90000
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "salary"
+    ],
+    "expectedRows": [
+     [
+      "Kabir",
+      100000
+     ],
+     [
+      "Om",
+      80000
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "salary"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      60000
+     ],
+     [
+      2,
+      "Ravi",
+      90000
+     ],
+     [
+      3,
+      "Meena",
+      75000
+     ],
+     [
+      4,
+      "Arjun",
+      90000
+     ]
+    ],
+    "totalRows": 4
+   }
+  ]
+ },
+ {
+  "id": "max-salary",
+  "title": "Highest Salary (MAX)",
+  "difficulty": "easy",
+  "topic": "aggregates",
+  "pattern": "Scalar aggregate",
+  "years": "FACE Prep PYQ: 'Which query fetches highest salary?'",
+  "statement": "Return the <b>highest salary</b> in Employees as column <b>max_sal</b>.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, salary INTEGER);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha',60000),(2,'Ravi',90000),(3,'Meena',75000);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'Kabir',45000),(11,'Nina',120000);",
+  "solution": "SELECT MAX(salary) AS max_sal FROM Employees;",
+  "starter": "-- highest salary as max_sal\nSELECT MAX(salary) AS max_sal FROM Employees;",
+  "approach": "MAX() collapses all rows to one value. Alias it as asked.",
+  "steps": [
+   "MAX(salary) scans all rows, keeps the biggest: 90000.",
+   "AS max_sal renames the output column \u2014 the judge checks the column name.",
+   "WHERE salary = MAX() is INVALID \u2014 aggregates cannot sit in WHERE.",
+   "One row, one column is the whole answer."
+  ],
+  "insight": "FACE PYQ answer: SELECT MAX(salary) FROM employees. MAX() never goes in WHERE.",
+  "ordered": false,
+  "level": "L2 \u00b7 Aggregates",
+  "learn": "MAX/MIN/SUM/AVG/COUNT collapse many rows to one. Aliases rename output columns.",
+  "expectedColumns": [
+   "max_sal"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "max_sal"
+    ],
+    "expectedRows": [
+     [
+      90000
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "max_sal"
+    ],
+    "expectedRows": [
+     [
+      120000
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "salary"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      60000
+     ],
+     [
+      2,
+      "Ravi",
+      90000
+     ],
+     [
+      3,
+      "Meena",
+      75000
+     ]
+    ],
+    "totalRows": 3
+   }
+  ]
+ },
+ {
+  "id": "second-highest-salary",
+  "title": "Second Highest Salary",
+  "difficulty": "medium",
+  "topic": "aggregates",
+  "pattern": "LIMIT OFFSET / subquery",
+  "years": "Accenture DA interview Q4; classic repeat 2021-2025",
+  "statement": "Return the <b>second highest DISTINCT salary</b> as column <b>second_max</b>. Duplicates of the max do not count.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, salary INTEGER);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha',60000),(2,'Ravi',90000),(3,'Meena',90000),(4,'Arjun',75000);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'Kabir',50000),(11,'Nina',80000),(12,'Om',80000),(13,'Zed',30000);",
+  "solution": "SELECT MAX(salary) AS second_max FROM Employees WHERE salary < (SELECT MAX(salary) FROM Employees);",
+  "starter": "-- second highest distinct salary as second_max\nSELECT MAX(salary) AS second_max FROM Employees\nWHERE salary < (SELECT MAX(salary) FROM Employees);",
+  "approach": "Inner query finds the max; outer takes MAX of everything below it. Duplicates of max are excluded by <.",
+  "steps": [
+   "Inner: SELECT MAX(salary) = 90000.",
+   "Outer keeps rows with salary < 90000: 60000, 75000 (both 90000s dropped).",
+   "MAX of survivors = 75000 = second highest DISTINCT.",
+   "Alternative: SELECT DISTINCT salary ... ORDER BY salary DESC LIMIT 1 OFFSET 1."
+  ],
+  "insight": "Second-highest-DISTINCT is the most-asked Accenture SQL interview query. < max drops duplicate maxes.",
+  "ordered": false,
+  "level": "L2 \u00b7 Aggregates",
+  "learn": "Subquery in WHERE computes the max first; outer query filters below it.",
+  "expectedColumns": [
+   "second_max"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "second_max"
+    ],
+    "expectedRows": [
+     [
+      75000
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "second_max"
+    ],
+    "expectedRows": [
+     [
+      50000
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "salary"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      60000
+     ],
+     [
+      2,
+      "Ravi",
+      90000
+     ],
+     [
+      3,
+      "Meena",
+      90000
+     ],
+     [
+      4,
+      "Arjun",
+      75000
+     ]
+    ],
+    "totalRows": 4
+   }
+  ]
+ },
+ {
+  "id": "avg-cost-per-year",
+  "title": "Average Project Cost Per Year",
+  "difficulty": "easy",
+  "topic": "aggregates",
+  "pattern": "GROUP BY + AVG",
+  "years": "DataLemur Accenture Q8 (2025)",
+  "statement": "Table Projects(project_id, yr, cost). Return each <b>yr</b> and its <b>average cost as avg_cost</b>, ordered by yr.",
+  "schemaSQL": "CREATE TABLE Projects(project_id INTEGER PRIMARY KEY, yr INTEGER, cost INTEGER);",
+  "seedSQL": "INSERT INTO Projects VALUES (101,2021,30000),(102,2021,50000),(103,2021,15000),(104,2022,45000),(105,2022,35000),(106,2022,27000);",
+  "hiddenSeedSQL": "INSERT INTO Projects VALUES (201,2023,10000),(202,2023,20000),(203,2024,90000);",
+  "solution": "SELECT yr, AVG(cost) AS avg_cost FROM Projects GROUP BY yr ORDER BY yr;",
+  "starter": "-- yr and average cost per year\nSELECT yr, AVG(cost) AS avg_cost FROM Projects\nGROUP BY yr\nORDER BY yr;",
+  "approach": "GROUP BY yr makes one bucket per year; AVG(cost) reduces each bucket to one number.",
+  "steps": [
+   "GROUP BY yr -> bucket 2021 (3 rows), bucket 2022 (3 rows).",
+   "AVG(2021) = (30000+50000+15000)/3 = 31666.67.",
+   "AVG(2022) = (45000+35000+27000)/3 = 35666.67.",
+   "ORDER BY yr for determinism. Every SELECT col is grouped or aggregated -> valid."
+  ],
+  "insight": "DataLemur Q8 verbatim pattern. GROUP BY buckets, aggregate reduces.",
+  "ordered": true,
+  "level": "L2 \u00b7 Aggregates",
+  "learn": "GROUP BY defines buckets; AVG/SUM/COUNT reduce each bucket to one row.",
+  "expectedColumns": [
+   "yr",
+   "avg_cost"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "yr",
+     "avg_cost"
+    ],
+    "expectedRows": [
+     [
+      2021,
+      31666.67
+     ],
+     [
+      2022,
+      35666.67
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "yr",
+     "avg_cost"
+    ],
+    "expectedRows": [
+     [
+      2023,
+      15000.0
+     ],
+     [
+      2024,
+      90000.0
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Projects",
+    "columns": [
+     "project_id",
+     "yr",
+     "cost"
+    ],
+    "sampleRows": [
+     [
+      101,
+      2021,
+      30000
+     ],
+     [
+      102,
+      2021,
+      50000
+     ],
+     [
+      103,
+      2021,
+      15000
+     ],
+     [
+      104,
+      2022,
+      45000
+     ],
+     [
+      105,
+      2022,
+      35000
+     ]
+    ],
+    "totalRows": 6
+   }
+  ]
+ },
+ {
+  "id": "top3-products",
+  "title": "Top 3 Selling Products",
+  "difficulty": "medium",
+  "topic": "aggregates",
+  "pattern": "JOIN + GROUP BY + SUM + ORDER + LIMIT",
+  "years": "Accenture DA interview (LinkedIn 2025): 'top 3 selling products'",
+  "statement": "Tables <b>Products</b>(product_id, product_name) and <b>Sales</b>(sale_id, product_id, amount). Return the <b>top 3 product_name by total sales</b> with column <b>total_sales</b>, highest first.",
+  "schemaSQL": "CREATE TABLE Products(product_id INTEGER PRIMARY KEY, product_name TEXT); CREATE TABLE Sales(sale_id INTEGER PRIMARY KEY, product_id INTEGER, amount INTEGER);",
+  "seedSQL": "INSERT INTO Products VALUES (1,'Keyboard'),(2,'Mouse'),(3,'Monitor'),(4,'Cable'); INSERT INTO Sales VALUES (1,1,100),(2,1,200),(3,2,500),(4,3,400),(5,3,100),(6,2,100),(7,4,50);",
+  "hiddenSeedSQL": "INSERT INTO Products VALUES (10,'Pen'),(11,'Book'),(12,'Desk'),(13,'Lamp'); INSERT INTO Sales VALUES (20,10,1000),(21,11,900),(22,12,800),(23,13,700),(24,10,100);",
+  "solution": "SELECT p.product_name, SUM(s.amount) AS total_sales FROM Products p JOIN Sales s ON s.product_id = p.product_id GROUP BY p.product_name ORDER BY total_sales DESC LIMIT 3;",
+  "starter": "-- top 3 products by total sales\nSELECT p.product_name, SUM(s.amount) AS total_sales\nFROM Products p JOIN Sales s ON s.product_id = p.product_id\nGROUP BY p.product_name\nORDER BY total_sales DESC\nLIMIT 3;",
+  "approach": "JOIN lines up names with amounts; GROUP BY product collapses; SUM totals; ORDER+LIMIT takes top 3.",
+  "steps": [
+   "JOIN Products-Sales ON product_id: every sale now carries its product_name.",
+   "GROUP BY product_name -> one row per product.",
+   "SUM(amount): Keyboard 300, Mouse 600, Monitor 500, Cable 50.",
+   "ORDER BY total_sales DESC LIMIT 3 -> Mouse 600, Monitor 500, Keyboard 300."
+  ],
+  "insight": "Real Accenture DA question. JOIN+GROUP+SUM+ORDER+LIMIT is one inseparable pipeline.",
+  "ordered": true,
+  "level": "L2 \u00b7 Aggregates",
+  "learn": "JOIN first, GROUP BY product, SUM the measure, ORDER DESC, LIMIT n.",
+  "expectedColumns": [
+   "product_name",
+   "total_sales"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "product_name",
+     "total_sales"
+    ],
+    "expectedRows": [
+     [
+      "Mouse",
+      600
+     ],
+     [
+      "Monitor",
+      500
+     ],
+     [
+      "Keyboard",
+      300
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "product_name",
+     "total_sales"
+    ],
+    "expectedRows": [
+     [
+      "Pen",
+      1100
+     ],
+     [
+      "Book",
+      900
+     ],
+     [
+      "Desk",
+      800
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Products",
+    "columns": [
+     "product_id",
+     "product_name"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Keyboard"
+     ],
+     [
+      2,
+      "Mouse"
+     ],
+     [
+      3,
+      "Monitor"
+     ],
+     [
+      4,
+      "Cable"
+     ]
+    ],
+    "totalRows": 4
+   },
+   {
+    "name": "Sales",
+    "columns": [
+     "sale_id",
+     "product_id",
+     "amount"
+    ],
+    "sampleRows": [
+     [
+      1,
+      1,
+      100
+     ],
+     [
+      2,
+      1,
+      200
+     ],
+     [
+      3,
+      2,
+      500
+     ],
+     [
+      4,
+      3,
+      400
+     ],
+     [
+      5,
+      3,
+      100
+     ]
+    ],
+    "totalRows": 7
+   }
+  ]
+ },
+ {
+  "id": "customers-gt3-orders",
+  "title": "Customers With More Than 3 Orders",
+  "difficulty": "medium",
+  "topic": "aggregates",
+  "pattern": "GROUP BY + HAVING COUNT",
+  "years": "Accenture DA live coding (LinkedIn 2025): '>3 orders in 6 months'",
+  "statement": "Table <b>Orders</b>(order_id, customer_id). Return <b>customer_id</b> and <b>order_count</b> for customers with <b>more than 3 orders</b>, highest count first.",
+  "schemaSQL": "CREATE TABLE Orders(order_id INTEGER PRIMARY KEY, customer_id INTEGER);",
+  "seedSQL": "INSERT INTO Orders VALUES (1,101),(2,101),(3,101),(4,101),(5,102),(6,102),(7,103),(8,103),(9,103),(10,103),(11,103);",
+  "hiddenSeedSQL": "INSERT INTO Orders VALUES (20,201),(21,201),(22,201),(23,202),(24,202),(25,202),(26,202);",
+  "solution": "SELECT customer_id, COUNT(*) AS order_count FROM Orders GROUP BY customer_id HAVING COUNT(*) > 3 ORDER BY order_count DESC;",
+  "starter": "-- customers with >3 orders\nSELECT customer_id, COUNT(*) AS order_count\nFROM Orders\nGROUP BY customer_id\nHAVING COUNT(*) > 3\nORDER BY order_count DESC;",
+  "approach": "GROUP BY customer buckets orders; HAVING filters buckets on the COUNT aggregate.",
+  "steps": [
+   "GROUP BY customer_id: 101->4, 102->2, 103->5.",
+   "HAVING COUNT(*) > 3 keeps 101 and 103 (102 dropped).",
+   "WHERE COUNT(*) > 3 would be INVALID \u2014 aggregates invisible in WHERE.",
+   "ORDER BY order_count DESC: 103(5) then 101(4)."
+  ],
+  "insight": "HAVING filters groups after aggregation; WHERE cannot see aggregates. The defining trap.",
+  "ordered": true,
+  "level": "L2 \u00b7 Aggregates",
+  "learn": "WHERE filters rows before groups; HAVING filters groups after (on COUNT/SUM/AVG).",
+  "expectedColumns": [
+   "customer_id",
+   "order_count"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "customer_id",
+     "order_count"
+    ],
+    "expectedRows": [
+     [
+      103,
+      5
+     ],
+     [
+      101,
+      4
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "customer_id",
+     "order_count"
+    ],
+    "expectedRows": [
+     [
+      202,
+      4
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Orders",
+    "columns": [
+     "order_id",
+     "customer_id"
+    ],
+    "sampleRows": [
+     [
+      1,
+      101
+     ],
+     [
+      2,
+      101
+     ],
+     [
+      3,
+      101
+     ],
+     [
+      4,
+      101
+     ],
+     [
+      5,
+      102
+     ]
+    ],
+    "totalRows": 11
+   }
+  ]
+ },
+ {
+  "id": "dept-headcount",
+  "title": "Departments With 2+ Employees",
+  "difficulty": "easy",
+  "topic": "aggregates",
+  "pattern": "GROUP BY + HAVING",
+  "years": "AXIS Technical MCQ family",
+  "statement": "Table <b>Employees</b>(id, name, dept). Return <b>dept</b> and <b>headcount</b> for departments with <b>at least 2 employees</b>, ordered by headcount desc.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, dept TEXT);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha','Sales'),(2,'Ravi','HR'),(3,'Meena','Sales'),(4,'Arjun','IT'),(5,'Divya','Sales');",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'K','A'),(11,'L','A'),(12,'M','B');",
+  "solution": "SELECT dept, COUNT(*) AS headcount FROM Employees GROUP BY dept HAVING COUNT(*) >= 2 ORDER BY headcount DESC;",
+  "starter": "-- dept + headcount where >= 2\nSELECT dept, COUNT(*) AS headcount\nFROM Employees\nGROUP BY dept\nHAVING COUNT(*) >= 2\nORDER BY headcount DESC;",
+  "approach": "Bucket by dept, count rows per bucket, keep buckets with 2+.",
+  "steps": [
+   "Buckets: Sales 3, HR 1, IT 1.",
+   "HAVING COUNT(*) >= 2 keeps Sales only.",
+   "COUNT(*) counts rows even with NULLs; COUNT(col) would skip nulls.",
+   "ORDER BY headcount DESC."
+  ],
+  "insight": "Same skeleton as customers>3: GROUP BY bucket, HAVING on COUNT.",
+  "ordered": true,
+  "level": "L2 \u00b7 Aggregates",
+  "learn": "COUNT(*) counts rows (even NULLs); COUNT(col) counts non-null values.",
+  "expectedColumns": [
+   "dept",
+   "headcount"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "dept",
+     "headcount"
+    ],
+    "expectedRows": [
+     [
+      "Sales",
+      3
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "dept",
+     "headcount"
+    ],
+    "expectedRows": [
+     [
+      "A",
+      2
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "dept"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      "Sales"
+     ],
+     [
+      2,
+      "Ravi",
+      "HR"
+     ],
+     [
+      3,
+      "Meena",
+      "Sales"
+     ],
+     [
+      4,
+      "Arjun",
+      "IT"
+     ],
+     [
+      5,
+      "Divya",
+      "Sales"
+     ]
+    ],
+    "totalRows": 5
+   }
+  ]
+ },
+ {
+  "id": "second-highest-per-dept",
+  "title": "Second Highest Salary Per Department",
+  "difficulty": "hard",
+  "topic": "aggregates",
+  "pattern": "Correlated subquery / window",
+  "years": "Accenture DA interview: 'second highest in EACH department'",
+  "statement": "Tables <b>Employees</b>(id, name, dept, salary). Return <b>dept</b> and <b>second_max</b> (second highest DISTINCT salary within that dept), one row per dept, ordered by dept.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, dept TEXT, salary INTEGER);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'A','Sales',100),(2,'B','Sales',200),(3,'C','Sales',300),(4,'D','HR',500),(5,'E','HR',400),(6,'F','IT',700);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'G','X',10),(11,'H','X',20),(12,'I','X',30),(13,'J','Y',99),(14,'K','Y',50);",
+  "solution": "SELECT dept, MAX(salary) AS second_max FROM Employees e WHERE salary < (SELECT MAX(salary) FROM Employees WHERE dept = e.dept) GROUP BY dept ORDER BY dept;",
+  "starter": "-- dept + second highest distinct salary per dept\nSELECT dept, MAX(salary) AS second_max\nFROM Employees e\nWHERE salary < (SELECT MAX(salary) FROM Employees WHERE dept = e.dept)\nGROUP BY dept\nORDER BY dept;",
+  "approach": "Correlated subquery finds each row's own-dept max; outer keeps salaries below it, MAX per dept = second highest.",
+  "steps": [
+   "For Sales rows, inner finds Sales max 300; survivors 100,200 -> MAX 200.",
+   "For HR rows, inner finds HR max 500; survivor 400 -> MAX 400.",
+   "IT has one salary: nothing below max -> IT row vanishes (no second max exists).",
+   "Correlation WHERE dept = e.dept (outer ref inside) is the tell: runs per outer row."
+  ],
+  "insight": "Per-group max needs correlation (outer dept inside). Non-correlated = overall max, different answer.",
+  "ordered": true,
+  "level": "L2 \u00b7 Aggregates",
+  "learn": "Correlated subquery references the outer row (e.dept) and runs per row; non-correlated runs once.",
+  "expectedColumns": [
+   "dept",
+   "second_max"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "dept",
+     "second_max"
+    ],
+    "expectedRows": [
+     [
+      "HR",
+      400
+     ],
+     [
+      "Sales",
+      200
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "dept",
+     "second_max"
+    ],
+    "expectedRows": [
+     [
+      "X",
+      20
+     ],
+     [
+      "Y",
+      50
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "dept",
+     "salary"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "A",
+      "Sales",
+      100
+     ],
+     [
+      2,
+      "B",
+      "Sales",
+      200
+     ],
+     [
+      3,
+      "C",
+      "Sales",
+      300
+     ],
+     [
+      4,
+      "D",
+      "HR",
+      500
+     ],
+     [
+      5,
+      "E",
+      "HR",
+      400
+     ]
+    ],
+    "totalRows": 6
+   }
+  ]
+ },
+ {
+  "id": "inner-join",
+  "title": "Employees With Departments (INNER JOIN)",
+  "difficulty": "easy",
+  "topic": "joins",
+  "pattern": "Overlap only",
+  "years": "AXIS coding SQL slot archetype; GfG ASE interview",
+  "statement": "Tables <b>Employees</b>(id, name, dept_id) and <b>Departments</b>(id, dept_name). Show <b>name and dept_name</b> for employees that HAVE a matching department, ordered by name.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, dept_id INTEGER); CREATE TABLE Departments(id INTEGER PRIMARY KEY, dept_name TEXT);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha',10),(2,'Ravi',20),(3,'Meena',NULL),(4,'Arjun',99); INSERT INTO Departments VALUES (10,'Sales'),(20,'HR'),(30,'IT');",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'Kabir',30),(11,'Nina',NULL); INSERT INTO Departments VALUES (30,'Ops'),(40,'Legal');",
+  "solution": "SELECT e.name, d.dept_name FROM Employees e INNER JOIN Departments d ON e.dept_id = d.id ORDER BY e.name;",
+  "starter": "-- name + dept_name for matched rows only\nSELECT e.name, d.dept_name\nFROM Employees e INNER JOIN Departments d ON e.dept_id = d.id\nORDER BY e.name;",
+  "approach": "INNER JOIN keeps only rows matching on both sides. Meena(NULL) and Arjun(99) drop out.",
+  "steps": [
+   "ON e.dept_id = d.id is the match condition.",
+   "Asha 10->Sales match; Ravi 20->HR match.",
+   "Meena dept NULL matches nothing -> dropped. Arjun 99 has no dept 99 -> dropped.",
+   "Dept IT(30) with no employee -> dropped (no match on left)."
+  ],
+  "insight": "INNER = overlap only. The Venn centre. Non-matches on either side vanish.",
+  "ordered": true,
+  "level": "L3 \u00b7 JOINs",
+  "learn": "INNER JOIN keeps only matches. ON is the match condition.",
+  "expectedColumns": [
+   "name",
+   "dept_name"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "dept_name"
+    ],
+    "expectedRows": [
+     [
+      "Asha",
+      "Sales"
+     ],
+     [
+      "Ravi",
+      "HR"
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "dept_name"
+    ],
+    "expectedRows": [
+     [
+      "Kabir",
+      "Ops"
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Departments",
+    "columns": [
+     "id",
+     "dept_name"
+    ],
+    "sampleRows": [
+     [
+      10,
+      "Sales"
+     ],
+     [
+      20,
+      "HR"
+     ],
+     [
+      30,
+      "IT"
+     ]
+    ],
+    "totalRows": 3
+   },
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "dept_id"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      10
+     ],
+     [
+      2,
+      "Ravi",
+      20
+     ],
+     [
+      3,
+      "Meena",
+      ""
+     ],
+     [
+      4,
+      "Arjun",
+      99
+     ]
+    ],
+    "totalRows": 4
+   }
+  ]
+ },
+ {
+  "id": "left-join",
+  "title": "ALL Employees With Department If Any (LEFT JOIN)",
+  "difficulty": "easy",
+  "topic": "joins",
+  "pattern": "Preserve left + NULL",
+  "years": "AXIS coding SQL slot archetype; Top-25 Q1",
+  "statement": "Same tables. Show <b>ALL employees with dept_name where present</b> (NULL when missing), ordered by name.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, dept_id INTEGER); CREATE TABLE Departments(id INTEGER PRIMARY KEY, dept_name TEXT);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha',10),(2,'Ravi',20),(3,'Meena',NULL),(4,'Arjun',99); INSERT INTO Departments VALUES (10,'Sales'),(20,'HR');",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'Kabir',NULL),(11,'Nina',50); INSERT INTO Departments VALUES (50,'Ops');",
+  "solution": "SELECT e.name, d.dept_name FROM Employees e LEFT JOIN Departments d ON e.dept_id = d.id ORDER BY e.name;",
+  "starter": "-- all employees, dept where present\nSELECT e.name, d.dept_name\nFROM Employees e LEFT JOIN Departments d ON e.dept_id = d.id\nORDER BY e.name;",
+  "approach": "LEFT JOIN preserves every left row; right fills NULL on no match.",
+  "steps": [
+   "Asha->Sales, Ravi->HR (matches).",
+   "Meena NULL and Arjun 99 have no match -> kept with dept_name NULL.",
+   "4 rows out (vs 2 for INNER). That row-count gap is the exam's favourite distinguisher.",
+   "WHERE d.dept_name = 'Sales' after this LEFT would kill the NULL rows -> silently becomes INNER."
+  ],
+  "insight": "'All employees even if no department' -> LEFT JOIN from Employees. ON shapes join, WHERE filters after.",
+  "ordered": true,
+  "level": "L3 \u00b7 JOINs",
+  "learn": "LEFT JOIN keeps all left rows; missing right side becomes NULL.",
+  "expectedColumns": [
+   "name",
+   "dept_name"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "dept_name"
+    ],
+    "expectedRows": [
+     [
+      "Arjun",
+      ""
+     ],
+     [
+      "Asha",
+      "Sales"
+     ],
+     [
+      "Meena",
+      ""
+     ],
+     [
+      "Ravi",
+      "HR"
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "dept_name"
+    ],
+    "expectedRows": [
+     [
+      "Kabir",
+      ""
+     ],
+     [
+      "Nina",
+      "Ops"
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Departments",
+    "columns": [
+     "id",
+     "dept_name"
+    ],
+    "sampleRows": [
+     [
+      10,
+      "Sales"
+     ],
+     [
+      20,
+      "HR"
+     ]
+    ],
+    "totalRows": 2
+   },
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "dept_id"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      10
+     ],
+     [
+      2,
+      "Ravi",
+      20
+     ],
+     [
+      3,
+      "Meena",
+      ""
+     ],
+     [
+      4,
+      "Arjun",
+      99
+     ]
+    ],
+    "totalRows": 4
+   }
+  ]
+ },
+ {
+  "id": "left-where-vs-on",
+  "title": "LEFT JOIN: Filter Inside ON, Not WHERE",
+  "difficulty": "medium",
+  "topic": "joins",
+  "pattern": "ON vs WHERE with OUTER",
+  "years": "TCS/Infosys ON-vs-WHERE trap; AXIS 2025 emphasis",
+  "statement": "Show <b>ALL employees</b> with their dept_name <b>but only attach Sales departments</b> (other employees show NULL, yet still appear). Ordered by name.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, dept_id INTEGER); CREATE TABLE Departments(id INTEGER PRIMARY KEY, dept_name TEXT);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha',10),(2,'Ravi',20),(3,'Meena',NULL); INSERT INTO Departments VALUES (10,'Sales'),(20,'HR');",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'K',100),(11,'L',200),(12,'M',NULL); INSERT INTO Departments VALUES (100,'Sales'),(200,'Ops');",
+  "solution": "SELECT e.name, d.dept_name FROM Employees e LEFT JOIN Departments d ON e.dept_id = d.id AND d.dept_name = 'Sales' ORDER BY e.name;",
+  "starter": "-- all employees; attach dept only if Sales\nSELECT e.name, d.dept_name\nFROM Employees e LEFT JOIN Departments d ON e.dept_id = d.id AND d.dept_name = 'Sales'\nORDER BY e.name;",
+  "approach": "Put the Sales filter in ON: non-Sales matches become NULL but rows survive. WHERE would delete them.",
+  "steps": [
+   "Asha 10 Sales: ON matches fully -> Sales attached.",
+   "Ravi 20 HR: AND dept='Sales' fails -> kept with NULL (still appears!).",
+   "Meena NULL -> NULL.",
+   "If instead WHERE d.dept_name='Sales': NULL rows filtered out -> only Asha. That is the trap."
+  ],
+  "insight": "OUTER + WHERE on outer column = silently INNER. Filter the preserved side in ON.",
+  "ordered": true,
+  "level": "L3 \u00b7 JOINs",
+  "learn": "ON decides the match; WHERE prunes the joined result afterwards.",
+  "expectedColumns": [
+   "name",
+   "dept_name"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "dept_name"
+    ],
+    "expectedRows": [
+     [
+      "Asha",
+      "Sales"
+     ],
+     [
+      "Meena",
+      ""
+     ],
+     [
+      "Ravi",
+      ""
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "dept_name"
+    ],
+    "expectedRows": [
+     [
+      "K",
+      "Sales"
+     ],
+     [
+      "L",
+      ""
+     ],
+     [
+      "M",
+      ""
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Departments",
+    "columns": [
+     "id",
+     "dept_name"
+    ],
+    "sampleRows": [
+     [
+      10,
+      "Sales"
+     ],
+     [
+      20,
+      "HR"
+     ]
+    ],
+    "totalRows": 2
+   },
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "dept_id"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      10
+     ],
+     [
+      2,
+      "Ravi",
+      20
+     ],
+     [
+      3,
+      "Meena",
+      ""
+     ]
+    ],
+    "totalRows": 3
+   }
+  ]
+ },
+ {
+  "id": "self-join-managers",
+  "title": "Employees Earning More Than Their Managers",
+  "difficulty": "medium",
+  "topic": "joins",
+  "pattern": "SELF JOIN + comparison",
+  "years": "Top-25 SQL Q14 (TCS/Infosys/Accenture 2025)",
+  "statement": "Table <b>Employees</b>(id, name, salary, manager_id) where manager_id points to another employee's id. Show <b>names of employees earning more than their own manager</b>, ordered by name.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, salary INTEGER, manager_id INTEGER);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Alice',100000,NULL),(2,'Bob',80000,1),(3,'Carol',120000,1),(4,'Dave',70000,2);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'Boss',50000,NULL),(11,'X',60000,10),(12,'Y',40000,10);",
+  "solution": "SELECT e.name FROM Employees e JOIN Employees m ON e.manager_id = m.id WHERE e.salary > m.salary ORDER BY e.name;",
+  "starter": "-- employees earning more than their manager\nSELECT e.name\nFROM Employees e JOIN Employees m ON e.manager_id = m.id\nWHERE e.salary > m.salary\nORDER BY e.name;",
+  "approach": "SELF JOIN: same table twice with aliases e (employee) and m (manager).",
+  "steps": [
+   "Aliases e and m let one table play two roles.",
+   "Bob 80000 vs Alice 100000 -> no. Carol 120000 vs Alice 100000 -> YES.",
+   "Dave 70000 vs Bob 80000 -> no. Alice has no manager (NULL) -> no match -> excluded.",
+   "WHERE compares the pair's salaries."
+  ],
+  "insight": "Manager problems = SELF JOIN with aliases. e.manager_id = m.id is the skeleton.",
+  "ordered": true,
+  "level": "L3 \u00b7 JOINs",
+  "learn": "SELF JOIN joins a table to itself via aliases (employee vs manager).",
+  "expectedColumns": [
+   "name"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name"
+    ],
+    "expectedRows": [
+     [
+      "Carol"
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name"
+    ],
+    "expectedRows": [
+     [
+      "X"
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "salary",
+     "manager_id"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Alice",
+      100000,
+      ""
+     ],
+     [
+      2,
+      "Bob",
+      80000,
+      1
+     ],
+     [
+      3,
+      "Carol",
+      120000,
+      1
+     ],
+     [
+      4,
+      "Dave",
+      70000,
+      2
+     ]
+    ],
+    "totalRows": 4
+   }
+  ]
+ },
+ {
+  "id": "three-table-axis",
+  "title": "AXIS Archetype: Customer Orders With Product Names",
+  "difficulty": "medium",
+  "topic": "joins",
+  "pattern": "3-table JOIN chain",
+  "years": "AXIS 2025-26 coding slot: 'JOINs on 2-3 tables'",
+  "statement": "Tables <b>Customers</b>(customer_id, name), <b>Orders</b>(order_id, customer_id, product_id, qty), <b>Products</b>(product_id, product_name, price). Show <b>customer name, product_name, qty, and line total (qty*price) as total</b> for every order, ordered by order_id.",
+  "schemaSQL": "CREATE TABLE Customers(customer_id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE Orders(order_id INTEGER PRIMARY KEY, customer_id INTEGER, product_id INTEGER, qty INTEGER); CREATE TABLE Products(product_id INTEGER PRIMARY KEY, product_name TEXT, price INTEGER);",
+  "seedSQL": "INSERT INTO Customers VALUES (1,'Asha'),(2,'Ravi'); INSERT INTO Products VALUES (10,'Pen',100),(20,'Book',250); INSERT INTO Orders VALUES (100,1,10,2),(101,2,20,1),(102,1,20,3);",
+  "hiddenSeedSQL": "INSERT INTO Customers VALUES (5,'K'),(6,'L'); INSERT INTO Products VALUES (50,'Desk',1000),(60,'Lamp',500); INSERT INTO Orders VALUES (200,5,50,1),(201,6,60,4);",
+  "solution": "SELECT c.name, p.product_name, o.qty, (o.qty * p.price) AS total FROM Orders o JOIN Customers c ON o.customer_id = c.customer_id JOIN Products p ON o.product_id = p.product_id ORDER BY o.order_id;",
+  "starter": "-- customer, product, qty, total per order\nSELECT c.name, p.product_name, o.qty, (o.qty * p.price) AS total\nFROM Orders o\nJOIN Customers c ON o.customer_id = c.customer_id\nJOIN Products p ON o.product_id = p.product_id\nORDER BY o.order_id;",
+  "approach": "Chain two JOINs from the fact table (Orders) to each dimension. Compute qty*price inline.",
+  "steps": [
+   "Orders is the centre: one FK to Customers, one to Products.",
+   "First JOIN attaches customer names; second attaches product names+prices.",
+   "qty*price AS total computes the line value per row (no GROUP BY needed).",
+   "ORDER BY o.order_id keeps judge order deterministic."
+  ],
+  "insight": "This 3-table chain IS the AXIS SQL coding slot. Centre fact + two dimension JOINs.",
+  "ordered": true,
+  "level": "L3 \u00b7 JOINs",
+  "learn": "Chain JOINs: fact table JOIN dim1 ON fk1 JOIN dim2 ON fk2.",
+  "expectedColumns": [
+   "name",
+   "product_name",
+   "qty",
+   "total"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "product_name",
+     "qty",
+     "total"
+    ],
+    "expectedRows": [
+     [
+      "Asha",
+      "Pen",
+      2,
+      200
+     ],
+     [
+      "Ravi",
+      "Book",
+      1,
+      250
+     ],
+     [
+      "Asha",
+      "Book",
+      3,
+      750
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "product_name",
+     "qty",
+     "total"
+    ],
+    "expectedRows": [
+     [
+      "K",
+      "Desk",
+      1,
+      1000
+     ],
+     [
+      "L",
+      "Lamp",
+      4,
+      2000
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Customers",
+    "columns": [
+     "customer_id",
+     "name"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha"
+     ],
+     [
+      2,
+      "Ravi"
+     ]
+    ],
+    "totalRows": 2
+   },
+   {
+    "name": "Orders",
+    "columns": [
+     "order_id",
+     "customer_id",
+     "product_id",
+     "qty"
+    ],
+    "sampleRows": [
+     [
+      100,
+      1,
+      10,
+      2
+     ],
+     [
+      101,
+      2,
+      20,
+      1
+     ],
+     [
+      102,
+      1,
+      20,
+      3
+     ]
+    ],
+    "totalRows": 3
+   },
+   {
+    "name": "Products",
+    "columns": [
+     "product_id",
+     "product_name",
+     "price"
+    ],
+    "sampleRows": [
+     [
+      10,
+      "Pen",
+      100
+     ],
+     [
+      20,
+      "Book",
+      250
+     ]
+    ],
+    "totalRows": 2
+   }
+  ]
+ },
+ {
+  "id": "zero-count-depts",
+  "title": "Employee Count Per Department, Including Empty",
+  "difficulty": "medium",
+  "topic": "joins",
+  "pattern": "LEFT JOIN + COUNT zeros",
+  "years": "AXIS JOIN+COUNT favourite; GfG ASE",
+  "statement": "Tables <b>Departments</b>(id, dept_name), <b>Employees</b>(id, name, dept_id). Show <b>every dept_name with its headcount</b> (0 for empty depts), ordered by dept_name.",
+  "schemaSQL": "CREATE TABLE Departments(id INTEGER PRIMARY KEY, dept_name TEXT); CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, dept_id INTEGER);",
+  "seedSQL": "INSERT INTO Departments VALUES (10,'Sales'),(20,'HR'),(30,'IT'); INSERT INTO Employees VALUES (1,'A',10),(2,'B',10),(3,'C',20);",
+  "hiddenSeedSQL": "INSERT INTO Departments VALUES (1,'A'),(2,'B'); INSERT INTO Employees VALUES (10,'X',1);",
+  "solution": "SELECT d.dept_name, COUNT(e.id) AS headcount FROM Departments d LEFT JOIN Employees e ON e.dept_id = d.id GROUP BY d.dept_name ORDER BY d.dept_name;",
+  "starter": "-- every dept + headcount incl. zeros\nSELECT d.dept_name, COUNT(e.id) AS headcount\nFROM Departments d LEFT JOIN Employees e ON e.dept_id = d.id\nGROUP BY d.dept_name\nORDER BY d.dept_name;",
+  "approach": "LEFT from Departments preserves empty ones; COUNT(e.id) counts matches (NULL -> 0).",
+  "steps": [
+   "LEFT from Departments: IT(30) survives with NULL employee side.",
+   "COUNT(e.id) ignores NULLs -> IT headcount 0. (COUNT(*) would wrongly give 1!)",
+   "Sales 2, HR 1, IT 0.",
+   "INNER would drop IT entirely \u2014 the classic wrong answer."
+  ],
+  "insight": "Zero-count needs LEFT + COUNT(right.id). COUNT(*) counts the NULL row \u2014 use COUNT(col).",
+  "ordered": true,
+  "level": "L3 \u00b7 JOINs",
+  "learn": "COUNT(col) skips NULLs (gives 0 for empty groups); COUNT(*) counts rows.",
+  "expectedColumns": [
+   "dept_name",
+   "headcount"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "dept_name",
+     "headcount"
+    ],
+    "expectedRows": [
+     [
+      "HR",
+      1
+     ],
+     [
+      "IT",
+      0
+     ],
+     [
+      "Sales",
+      2
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "dept_name",
+     "headcount"
+    ],
+    "expectedRows": [
+     [
+      "A",
+      1
+     ],
+     [
+      "B",
+      0
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Departments",
+    "columns": [
+     "id",
+     "dept_name"
+    ],
+    "sampleRows": [
+     [
+      10,
+      "Sales"
+     ],
+     [
+      20,
+      "HR"
+     ],
+     [
+      30,
+      "IT"
+     ]
+    ],
+    "totalRows": 3
+   },
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "dept_id"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "A",
+      10
+     ],
+     [
+      2,
+      "B",
+      10
+     ],
+     [
+      3,
+      "C",
+      20
+     ]
+    ],
+    "totalRows": 3
+   }
+  ]
+ },
+ {
+  "id": "orders-with-names-date",
+  "title": "Orders With Customer Names in 2024",
+  "difficulty": "easy",
+  "topic": "joins",
+  "pattern": "JOIN + date filter",
+  "years": "AXIS coding slot variant",
+  "statement": "Tables <b>Customers</b>(customer_id, name), <b>Orders</b>(order_id, customer_id, order_date TEXT 'YYYY-MM-DD'). Show <b>order_id, name, order_date</b> for orders in <b>2024</b>, ordered by order_id.",
+  "schemaSQL": "CREATE TABLE Customers(customer_id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE Orders(order_id INTEGER PRIMARY KEY, customer_id INTEGER, order_date TEXT);",
+  "seedSQL": "INSERT INTO Customers VALUES (1,'Asha'),(2,'Ravi'); INSERT INTO Orders VALUES (100,1,'2024-03-01'),(101,2,'2023-12-31'),(102,1,'2024-07-15');",
+  "hiddenSeedSQL": "INSERT INTO Customers VALUES (5,'K'); INSERT INTO Orders VALUES (200,5,'2024-01-01'),(201,5,'2025-01-01');",
+  "solution": "SELECT o.order_id, c.name, o.order_date FROM Orders o JOIN Customers c ON o.customer_id = c.customer_id WHERE o.order_date LIKE '2024%' ORDER BY o.order_id;",
+  "starter": "-- 2024 orders with customer names\nSELECT o.order_id, c.name, o.order_date\nFROM Orders o JOIN Customers c ON o.customer_id = c.customer_id\nWHERE o.order_date LIKE '2024%'\nORDER BY o.order_id;",
+  "approach": "JOIN for names; WHERE on the date string filters the year (SQLite-friendly).",
+  "steps": [
+   "JOIN attaches names to orders.",
+   "Dates stored 'YYYY-MM-DD': LIKE '2024%' keeps 2024 rows.",
+   "2023-12-31 drops out.",
+   "ORDER BY order_id."
+  ],
+  "insight": "SQLite date-as-text + LIKE 'YYYY%' is the portable year filter (no DATEADD dialect issues).",
+  "ordered": true,
+  "level": "L3 \u00b7 JOINs",
+  "learn": "Store dates as 'YYYY-MM-DD' text; filter years with LIKE 'YYYY%'.",
+  "expectedColumns": [
+   "order_id",
+   "name",
+   "order_date"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "order_id",
+     "name",
+     "order_date"
+    ],
+    "expectedRows": [
+     [
+      100,
+      "Asha",
+      "2024-03-01"
+     ],
+     [
+      102,
+      "Asha",
+      "2024-07-15"
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "order_id",
+     "name",
+     "order_date"
+    ],
+    "expectedRows": [
+     [
+      200,
+      "K",
+      "2024-01-01"
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Customers",
+    "columns": [
+     "customer_id",
+     "name"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha"
+     ],
+     [
+      2,
+      "Ravi"
+     ]
+    ],
+    "totalRows": 2
+   },
+   {
+    "name": "Orders",
+    "columns": [
+     "order_id",
+     "customer_id",
+     "order_date"
+    ],
+    "sampleRows": [
+     [
+      100,
+      1,
+      "2024-03-01"
+     ],
+     [
+      101,
+      2,
+      "2023-12-31"
+     ],
+     [
+      102,
+      1,
+      "2024-07-15"
+     ]
+    ],
+    "totalRows": 3
+   }
+  ]
+ },
+ {
+  "id": "above-average",
+  "title": "Salary Above Company Average",
+  "difficulty": "easy",
+  "topic": "subqueries",
+  "pattern": "Non-correlated subquery",
+  "years": "AXIS/Infosys subquery pool",
+  "statement": "Show <b>name and salary</b> of employees earning <b>more than the company average</b>, ordered by name.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, salary INTEGER);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha',60000),(2,'Ravi',40000),(3,'Meena',80000);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'K',100),(11,'L',200),(12,'M',300);",
+  "solution": "SELECT name, salary FROM Employees WHERE salary > (SELECT AVG(salary) FROM Employees) ORDER BY name;",
+  "starter": "-- above company average\nSELECT name, salary FROM Employees\nWHERE salary > (SELECT AVG(salary) FROM Employees)\nORDER BY name;",
+  "approach": "Inner query runs once (overall AVG); outer compares each row to it.",
+  "steps": [
+   "Inner AVG = (60000+40000+80000)/3 = 60000.",
+   "Outer keeps salary > 60000: Meena 80000 only (Asha equals, not greater).",
+   "Non-correlated: no outer reference inside -> runs once.",
+   "Swap to correlated (dept = e.dept) and the answer becomes per-dept \u2014 different result."
+  ],
+  "insight": "No outer ref inside = runs once = overall average. The scope decides the result.",
+  "ordered": true,
+  "level": "L4 \u00b7 Subqueries",
+  "learn": "Subquery in WHERE runs first; outer query uses its single value.",
+  "expectedColumns": [
+   "name",
+   "salary"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "salary"
+    ],
+    "expectedRows": [
+     [
+      "Meena",
+      80000
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "salary"
+    ],
+    "expectedRows": [
+     [
+      "M",
+      300
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "salary"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      60000
+     ],
+     [
+      2,
+      "Ravi",
+      40000
+     ],
+     [
+      3,
+      "Meena",
+      80000
+     ]
+    ],
+    "totalRows": 3
+   }
+  ]
+ },
+ {
+  "id": "above-dept-average",
+  "title": "Salary Above Own Department Average",
+  "difficulty": "medium",
+  "topic": "subqueries",
+  "pattern": "Correlated subquery",
+  "years": "AXIS synthesis favourite: overall vs per-group",
+  "statement": "Show <b>name, dept, salary</b> of employees earning <b>more than their OWN department's average</b>, ordered by name.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, dept TEXT, salary INTEGER);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'A','Sales',100),(2,'B','Sales',200),(3,'C','Sales',300),(4,'D','HR',500),(5,'E','HR',100);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'K','X',10),(11,'L','X',30),(12,'M','Y',70),(13,'N','Y',90);",
+  "solution": "SELECT e.name, e.dept, e.salary FROM Employees e WHERE e.salary > (SELECT AVG(salary) FROM Employees WHERE dept = e.dept) ORDER BY e.name;",
+  "starter": "-- above own-dept average\nSELECT e.name, e.dept, e.salary FROM Employees e\nWHERE e.salary > (SELECT AVG(salary) FROM Employees WHERE dept = e.dept)\nORDER BY e.name;",
+  "approach": "dept = e.dept (outer ref) makes it correlated: average recomputed per row's dept.",
+  "steps": [
+   "Sales avg = 200: C 300 > 200 YES; A,B no.",
+   "HR avg = 300: D 500 YES; E 100 no.",
+   "Answer: C, D. Overall-avg version would give different rows (only D).",
+   "dept = e.dept inside is the correlation tell."
+  ],
+  "insight": "Same skeleton as above-average, but the outer ref flips overall -> per-group. Exam shows both.",
+  "ordered": true,
+  "level": "L4 \u00b7 Subqueries",
+  "learn": "Outer reference (e.dept) inside = correlated = per-row recomputation.",
+  "expectedColumns": [
+   "name",
+   "dept",
+   "salary"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "dept",
+     "salary"
+    ],
+    "expectedRows": [
+     [
+      "C",
+      "Sales",
+      300
+     ],
+     [
+      "D",
+      "HR",
+      500
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "dept",
+     "salary"
+    ],
+    "expectedRows": [
+     [
+      "L",
+      "X",
+      30
+     ],
+     [
+      "N",
+      "Y",
+      90
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "dept",
+     "salary"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "A",
+      "Sales",
+      100
+     ],
+     [
+      2,
+      "B",
+      "Sales",
+      200
+     ],
+     [
+      3,
+      "C",
+      "Sales",
+      300
+     ],
+     [
+      4,
+      "D",
+      "HR",
+      500
+     ],
+     [
+      5,
+      "E",
+      "HR",
+      100
+     ]
+    ],
+    "totalRows": 5
+   }
+  ]
+ },
+ {
+  "id": "sme-experts",
+  "title": "Subject Matter Experts (UNION + HAVING)",
+  "difficulty": "hard",
+  "topic": "subqueries",
+  "pattern": "GROUP BY + HAVING + UNION",
+  "years": "DataLemur Accenture Q1 (2025); LinkedIn SME post",
+  "statement": "Table <b>WorkExp</b>(employee_id, domain, years_of_experience). An SME has <b>8+ years in a single domain</b> OR <b>12+ total years across exactly two domains</b>. Return distinct <b>employee_id</b> of SMEs, ordered ascending.",
+  "schemaSQL": "CREATE TABLE WorkExp(employee_id INTEGER, domain TEXT, years_of_experience INTEGER);",
+  "seedSQL": "INSERT INTO WorkExp VALUES (101,'Digital Transformation',9),(102,'Supply Chain',6),(102,'IoT',7),(103,'Change Management',4),(104,'DevOps',5),(104,'Cloud Migration',5),(104,'Agile Transformation',5);",
+  "hiddenSeedSQL": "INSERT INTO WorkExp VALUES (201,'A',8),(202,'A',6),(202,'B',6),(203,'A',5),(203,'B',5),(204,'A',3);",
+  "solution": "SELECT employee_id FROM WorkExp WHERE years_of_experience >= 8 UNION SELECT employee_id FROM WorkExp GROUP BY employee_id HAVING COUNT(DISTINCT domain) = 2 AND SUM(years_of_experience) >= 12 ORDER BY employee_id;",
+  "starter": "-- SME ids: 8+ single domain OR 12+ across exactly two\nSELECT employee_id FROM WorkExp WHERE years_of_experience >= 8\nUNION\nSELECT employee_id FROM WorkExp GROUP BY employee_id\nHAVING COUNT(DISTINCT domain) = 2 AND SUM(years_of_experience) >= 12\nORDER BY employee_id;",
+  "approach": "Two SME rules = two queries UNIONed (UNION dedupes). Second rule is GROUP+HAVING on count and sum.",
+  "steps": [
+   "Rule 1 (WHERE >= 8): 101 (9) qualifies. Nobody else has a single 8+ row.",
+   "Rule 2 (GROUP+HAVING): 102 has 2 domains totalling 13 >= 12 YES; 103 one domain no; 104 three domains no.",
+   "UNION merges {101} + {102} = 101, 102 (deduped).",
+   "UNION (not UNION ALL) removes the duplicate if someone qualifies both ways."
+  ],
+  "insight": "Real Accenture PYQ. WHERE for single-row rule, GROUP+HAVING for multi-row rule, UNION to combine.",
+  "ordered": true,
+  "level": "L4 \u00b7 Subqueries",
+  "learn": "UNION merges two result sets and removes duplicates; UNION ALL keeps them.",
+  "expectedColumns": [
+   "employee_id"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "employee_id"
+    ],
+    "expectedRows": [
+     [
+      101
+     ],
+     [
+      102
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "employee_id"
+    ],
+    "expectedRows": [
+     [
+      201
+     ],
+     [
+      202
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "WorkExp",
+    "columns": [
+     "employee_id",
+     "domain",
+     "years_of_experience"
+    ],
+    "sampleRows": [
+     [
+      101,
+      "Digital Transformation",
+      9
+     ],
+     [
+      102,
+      "Supply Chain",
+      6
+     ],
+     [
+      102,
+      "IoT",
+      7
+     ],
+     [
+      103,
+      "Change Management",
+      4
+     ],
+     [
+      104,
+      "DevOps",
+      5
+     ]
+    ],
+    "totalRows": 7
+   }
+  ]
+ },
+ {
+  "id": "in-membership",
+  "title": "Products Ever Sold (IN Subquery)",
+  "difficulty": "easy",
+  "topic": "subqueries",
+  "pattern": "IN membership",
+  "years": "AXIS/Infosys IN-vs-EXISTS pool",
+  "statement": "Tables <b>Products</b>(product_id, product_name), <b>Sales</b>(sale_id, product_id). Show <b>product_name</b> of products that appear in Sales at least once, ordered by name.",
+  "schemaSQL": "CREATE TABLE Products(product_id INTEGER PRIMARY KEY, product_name TEXT); CREATE TABLE Sales(sale_id INTEGER PRIMARY KEY, product_id INTEGER);",
+  "seedSQL": "INSERT INTO Products VALUES (1,'Pen'),(2,'Book'),(3,'Desk'); INSERT INTO Sales VALUES (1,1),(2,1),(3,3);",
+  "hiddenSeedSQL": "INSERT INTO Products VALUES (10,'A'),(11,'B'); INSERT INTO Sales VALUES (20,11);",
+  "solution": "SELECT product_name FROM Products WHERE product_id IN (SELECT product_id FROM Sales) ORDER BY product_name;",
+  "starter": "-- products with >=1 sale\nSELECT product_name FROM Products\nWHERE product_id IN (SELECT product_id FROM Sales)\nORDER BY product_name;",
+  "approach": "IN checks membership of each product_id in the sales list.",
+  "steps": [
+   "Subquery list: {1, 1, 3} -> membership {1,3}.",
+   "Pen(1) YES, Book(2) NO, Desk(3) YES.",
+   "Ordered: Desk, Pen.",
+   "= ANY behaves like IN; EXISTS checks presence differently."
+  ],
+  "insight": "IN = 'is this value in the subquery list'. The membership operator.",
+  "ordered": true,
+  "level": "L4 \u00b7 Subqueries",
+  "learn": "WHERE x IN (subquery) = membership test against the subquery's values.",
+  "expectedColumns": [
+   "product_name"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "product_name"
+    ],
+    "expectedRows": [
+     [
+      "Desk"
+     ],
+     [
+      "Pen"
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "product_name"
+    ],
+    "expectedRows": [
+     [
+      "B"
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Products",
+    "columns": [
+     "product_id",
+     "product_name"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Pen"
+     ],
+     [
+      2,
+      "Book"
+     ],
+     [
+      3,
+      "Desk"
+     ]
+    ],
+    "totalRows": 3
+   },
+   {
+    "name": "Sales",
+    "columns": [
+     "sale_id",
+     "product_id"
+    ],
+    "sampleRows": [
+     [
+      1,
+      1
+     ],
+     [
+      2,
+      1
+     ],
+     [
+      3,
+      3
+     ]
+    ],
+    "totalRows": 3
+   }
+  ]
+ },
+ {
+  "id": "not-in-null-trap",
+  "title": "Never-Sold Products (NOT IN vs NULL Trap)",
+  "difficulty": "hard",
+  "topic": "subqueries",
+  "pattern": "NOT IN + NULL semantics",
+  "years": "Gate/placement NOT-IN-NULL trap; AXIS synthesis",
+  "statement": "Same tables, but the hidden dataset's Sales contains a <b>NULL product_id</b> (dirty data). Show <b>product_name</b> of products with <b>zero sales</b>, ordered by name. Your query must survive the NULL row.",
+  "schemaSQL": "CREATE TABLE Products(product_id INTEGER PRIMARY KEY, product_name TEXT); CREATE TABLE Sales(sale_id INTEGER PRIMARY KEY, product_id INTEGER);",
+  "seedSQL": "INSERT INTO Products VALUES (1,'Pen'),(2,'Book'),(3,'Desk'); INSERT INTO Sales VALUES (1,1),(2,NULL),(3,3);",
+  "hiddenSeedSQL": "INSERT INTO Products VALUES (10,'A'),(11,'B'),(12,'C'); INSERT INTO Sales VALUES (20,10),(21,NULL);",
+  "solution": "SELECT product_name FROM Products WHERE NOT EXISTS (SELECT 1 FROM Sales WHERE Sales.product_id = Products.product_id) ORDER BY product_name;",
+  "starter": "-- products with zero sales (NULL-safe)\nSELECT product_name FROM Products\nWHERE NOT EXISTS (SELECT 1 FROM Sales WHERE Sales.product_id = Products.product_id)\nORDER BY product_name;",
+  "approach": "NOT IN with a NULL in the list matches nothing (UNKNOWN). NOT EXISTS is NULL-safe.",
+  "steps": [
+   "Naive NOT IN (1, NULL, 3): Book vs NULL -> UNKNOWN -> filtered -> EMPTY answer. Wrong.",
+   "NOT EXISTS checks per product: Book has no matching sale row (NULL never equals 2) -> kept. Correct.",
+   "Answer: Book (visible) / B,C (hidden).",
+   "Rule: dirty/nullable columns -> NOT EXISTS, never NOT IN."
+  ],
+  "insight": "NOT IN (NULL) matches nothing. NOT EXISTS is the NULL-safe negation. Famous trap.",
+  "ordered": true,
+  "level": "L4 \u00b7 Subqueries",
+  "learn": "NOT IN + NULL = UNKNOWN = no rows. NOT EXISTS handles NULL correctly.",
+  "expectedColumns": [
+   "product_name"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "product_name"
+    ],
+    "expectedRows": [
+     [
+      "Book"
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "product_name"
+    ],
+    "expectedRows": [
+     [
+      "B"
+     ],
+     [
+      "C"
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Products",
+    "columns": [
+     "product_id",
+     "product_name"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Pen"
+     ],
+     [
+      2,
+      "Book"
+     ],
+     [
+      3,
+      "Desk"
+     ]
+    ],
+    "totalRows": 3
+   },
+   {
+    "name": "Sales",
+    "columns": [
+     "sale_id",
+     "product_id"
+    ],
+    "sampleRows": [
+     [
+      1,
+      1
+     ],
+     [
+      2,
+      ""
+     ],
+     [
+      3,
+      3
+     ]
+    ],
+    "totalRows": 3
+   }
+  ]
+ },
+ {
+  "id": "union-vs-all",
+  "title": "UNION vs UNION ALL Row Counts",
+  "difficulty": "easy",
+  "topic": "sets",
+  "pattern": "Distinct vs keep-duplicates",
+  "years": "AXIS set-operator pool",
+  "statement": "Tables <b>Auditors</b>(name) and <b>Mentors</b>(name). List <b>all distinct names</b> appearing in EITHER table, ordered by name.",
+  "schemaSQL": "CREATE TABLE Auditors(name TEXT); CREATE TABLE Mentors(name TEXT);",
+  "seedSQL": "INSERT INTO Auditors VALUES ('Asha'),('Ravi'),('Asha'); INSERT INTO Mentors VALUES ('Ravi'),('Meena');",
+  "hiddenSeedSQL": "INSERT INTO Auditors VALUES ('X'),('Y'); INSERT INTO Mentors VALUES ('Y'),('Z'),('Z');",
+  "solution": "SELECT name FROM Auditors UNION SELECT name FROM Mentors ORDER BY name;",
+  "starter": "-- distinct names from either table\nSELECT name FROM Auditors\nUNION\nSELECT name FROM Mentors\nORDER BY name;",
+  "approach": "UNION merges and dedupes. UNION ALL would keep duplicates (5 rows vs 3).",
+  "steps": [
+   "Combined multiset: Asha,Asha,Ravi + Ravi,Meena.",
+   "UNION dedupes -> Asha, Meena, Ravi (3 rows).",
+   "UNION ALL would keep 5 rows (dupes kept, faster).",
+   "Both sides need same column count/types."
+  ],
+  "insight": "UNION = distinct merge; UNION ALL = keep duplicates (faster, no sort-dedupe).",
+  "ordered": true,
+  "level": "L5 \u00b7 Sets & DML",
+  "learn": "UNION removes duplicates between two queries; UNION ALL keeps them.",
+  "expectedColumns": [
+   "name"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name"
+    ],
+    "expectedRows": [
+     [
+      "Asha"
+     ],
+     [
+      "Meena"
+     ],
+     [
+      "Ravi"
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name"
+    ],
+    "expectedRows": [
+     [
+      "X"
+     ],
+     [
+      "Y"
+     ],
+     [
+      "Z"
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Auditors",
+    "columns": [
+     "name"
+    ],
+    "sampleRows": [
+     [
+      "Asha"
+     ],
+     [
+      "Ravi"
+     ],
+     [
+      "Asha"
+     ]
+    ],
+    "totalRows": 3
+   },
+   {
+    "name": "Mentors",
+    "columns": [
+     "name"
+    ],
+    "sampleRows": [
+     [
+      "Ravi"
+     ],
+     [
+      "Meena"
+     ]
+    ],
+    "totalRows": 2
+   }
+  ]
+ },
+ {
+  "id": "case-bands",
+  "title": "Salary Bands With CASE",
+  "difficulty": "easy",
+  "topic": "sets",
+  "pattern": "CASE WHEN buckets",
+  "years": "AXIS/Capgemini CASE pool",
+  "statement": "Show <b>name, salary, and band</b> where band is <b>'High' if salary >= 80000, 'Mid' if >= 50000, else 'Low'</b>. Ordered by name.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, salary INTEGER);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha',90000),(2,'Ravi',60000),(3,'Meena',40000);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'K',80000),(11,'L',49999),(12,'M',50000);",
+  "solution": "SELECT name, salary, CASE WHEN salary >= 80000 THEN 'High' WHEN salary >= 50000 THEN 'Mid' ELSE 'Low' END AS band FROM Employees ORDER BY name;",
+  "starter": "-- name, salary, High/Mid/Low band\nSELECT name, salary,\nCASE WHEN salary >= 80000 THEN 'High' WHEN salary >= 50000 THEN 'Mid' ELSE 'Low' END AS band\nFROM Employees\nORDER BY name;",
+  "approach": "CASE evaluates WHENs in order; first true wins. 80000 must come before 50000.",
+  "steps": [
+   "Asha 90000 >= 80000 -> High.",
+   "Ravi 60000: first WHEN false, second >= 50000 true -> Mid.",
+   "Meena 40000 -> ELSE Low.",
+   "Order of WHENs matters: if 50000-check came first, 90000 would wrongly be Mid."
+  ],
+  "insight": "CASE = if-else per row. Put the strictest threshold first.",
+  "ordered": true,
+  "level": "L5 \u00b7 Sets & DML",
+  "learn": "CASE WHEN ... THEN ... ELSE ... END builds a computed column per row.",
+  "expectedColumns": [
+   "name",
+   "salary",
+   "band"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "salary",
+     "band"
+    ],
+    "expectedRows": [
+     [
+      "Asha",
+      90000,
+      "High"
+     ],
+     [
+      "Meena",
+      40000,
+      "Low"
+     ],
+     [
+      "Ravi",
+      60000,
+      "Mid"
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "salary",
+     "band"
+    ],
+    "expectedRows": [
+     [
+      "K",
+      80000,
+      "High"
+     ],
+     [
+      "L",
+      49999,
+      "Low"
+     ],
+     [
+      "M",
+      50000,
+      "Mid"
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "salary"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      90000
+     ],
+     [
+      2,
+      "Ravi",
+      60000
+     ],
+     [
+      3,
+      "Meena",
+      40000
+     ]
+    ],
+    "totalRows": 3
+   }
+  ]
+ },
+ {
+  "id": "update-salaries",
+  "title": "Give Sales a 10% Raise (UPDATE)",
+  "difficulty": "medium",
+  "topic": "dml",
+  "pattern": "UPDATE ... WHERE",
+  "years": "AXIS DML row-ops pool",
+  "dml": true,
+  "statement": "Table <b>Employees</b>(id, name, dept, salary). <b>Raise Sales salaries by 10%</b> (salary = salary * 1.1). The judge checks the table AFTER your statement runs.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, dept TEXT, salary INTEGER);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha','Sales',10000),(2,'Ravi','HR',10000),(3,'Meena','Sales',20000);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'K','Sales',5000),(11,'L','IT',5000);",
+  "solution": "UPDATE Employees SET salary = salary * 1.1 WHERE dept = 'Sales';",
+  "starter": "-- 10% raise for Sales only\nUPDATE Employees SET salary = salary * 1.1 WHERE dept = 'Sales';",
+  "verify": "SELECT name, salary FROM Employees ORDER BY name;",
+  "approach": "UPDATE changes existing rows; WHERE restricts to Sales. No WHERE = everyone raised (wrong).",
+  "steps": [
+   "SET salary = salary * 1.1 computes per row.",
+   "WHERE dept = 'Sales' restricts: Asha 11000, Meena 22000, Ravi stays 10000.",
+   "Forgetting WHERE raises everyone -> hidden test fails.",
+   "Judge runs your UPDATE then reads the table with the verify query."
+  ],
+  "insight": "UPDATE without WHERE updates everything. The WHERE is the whole question.",
+  "ordered": true,
+  "level": "L5 \u00b7 Sets & DML",
+  "learn": "UPDATE t SET col = expr WHERE filter \u2014 changes existing rows.",
+  "expectedColumns": [
+   "name",
+   "salary"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "salary"
+    ],
+    "expectedRows": [
+     [
+      "Asha",
+      11000
+     ],
+     [
+      "Meena",
+      22000
+     ],
+     [
+      "Ravi",
+      10000
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "salary"
+    ],
+    "expectedRows": [
+     [
+      "K",
+      5500
+     ],
+     [
+      "L",
+      5000
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "dept",
+     "salary"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      "Sales",
+      10000
+     ],
+     [
+      2,
+      "Ravi",
+      "HR",
+      10000
+     ],
+     [
+      3,
+      "Meena",
+      "Sales",
+      20000
+     ]
+    ],
+    "totalRows": 3
+   }
+  ]
+ },
+ {
+  "id": "delete-retired",
+  "title": "Delete Retired Employees (DELETE)",
+  "difficulty": "easy",
+  "topic": "dml",
+  "pattern": "DELETE ... WHERE",
+  "years": "AXIS DML row-ops pool",
+  "dml": true,
+  "statement": "Table <b>Employees</b>(id, name, status). <b>Delete rows with status 'retired'</b>. Judge checks remaining rows.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, status TEXT);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha','active'),(2,'Ravi','retired'),(3,'Meena','active');",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'K','retired'),(11,'L','active');",
+  "solution": "DELETE FROM Employees WHERE status = 'retired';",
+  "starter": "-- remove retired rows\nDELETE FROM Employees WHERE status = 'retired';",
+  "verify": "SELECT name, status FROM Employees ORDER BY name;",
+  "approach": "DELETE removes rows matching WHERE. TRUNCATE would wipe all (wrong).",
+  "steps": [
+   "WHERE status='retired' matches Ravi only.",
+   "After: Asha active, Meena active.",
+   "DELETE without WHERE empties the table -> fail.",
+   "TRUNCATE clears all fast but cannot filter \u2014 wrong here."
+  ],
+  "insight": "DELETE + WHERE removes matching rows. No WHERE = all rows gone.",
+  "ordered": true,
+  "level": "L5 \u00b7 Sets & DML",
+  "learn": "DELETE FROM t WHERE filter \u2014 removes matching rows only.",
+  "expectedColumns": [
+   "name",
+   "status"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "status"
+    ],
+    "expectedRows": [
+     [
+      "Asha",
+      "active"
+     ],
+     [
+      "Meena",
+      "active"
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "status"
+    ],
+    "expectedRows": [
+     [
+      "L",
+      "active"
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "status"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      "active"
+     ],
+     [
+      2,
+      "Ravi",
+      "retired"
+     ],
+     [
+      3,
+      "Meena",
+      "active"
+     ]
+    ],
+    "totalRows": 3
+   }
+  ]
+ },
+ {
+  "id": "rank-salaries",
+  "title": "Rank Employees by Salary (Window Function)",
+  "difficulty": "medium",
+  "topic": "window",
+  "pattern": "RANK() OVER",
+  "years": "Accenture 2024-25 interview: ranking/second-highest variants",
+  "statement": "Show <b>name, salary, and rnk</b> where rnk is the <b>RANK() by salary descending</b> (ties share a rank, next rank skips). Ordered by rnk, then name.",
+  "schemaSQL": "CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, salary INTEGER);",
+  "seedSQL": "INSERT INTO Employees VALUES (1,'Asha',90000),(2,'Ravi',90000),(3,'Meena',75000),(4,'Arjun',60000);",
+  "hiddenSeedSQL": "INSERT INTO Employees VALUES (10,'K',50000),(11,'L',70000),(12,'M',70000);",
+  "solution": "SELECT name, salary, RANK() OVER (ORDER BY salary DESC) AS rnk FROM Employees ORDER BY rnk, name;",
+  "starter": "-- name, salary, rank by salary desc\nSELECT name, salary, RANK() OVER (ORDER BY salary DESC) AS rnk\nFROM Employees\nORDER BY rnk, name;",
+  "approach": "RANK() OVER (ORDER BY salary DESC) numbers rows by salary; equal salaries share rank with a gap after.",
+  "steps": [
+   "90000,90000 tie -> both rnk 1; next (75000) is rnk 3 (gap).",
+   "ROW_NUMBER would give 1,2,3,4 (no shared rank) \u2014 wrong here.",
+   "DENSE_RANK would give 1,1,2,3 (no gap) \u2014 wrong here.",
+   "ORDER BY rnk, name for determinism."
+  ],
+  "insight": "RANK shares + skips; DENSE_RANK shares, no skip; ROW_NUMBER never shares. Exam tests the gap.",
+  "ordered": true,
+  "level": "L6 \u00b7 Window & CTE",
+  "learn": "RANK() OVER (ORDER BY x DESC) ranks rows; ties share rank with a gap.",
+  "expectedColumns": [
+   "name",
+   "salary",
+   "rnk"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "salary",
+     "rnk"
+    ],
+    "expectedRows": [
+     [
+      "Asha",
+      90000,
+      1
+     ],
+     [
+      "Ravi",
+      90000,
+      1
+     ],
+     [
+      "Meena",
+      75000,
+      3
+     ],
+     [
+      "Arjun",
+      60000,
+      4
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "salary",
+     "rnk"
+    ],
+    "expectedRows": [
+     [
+      "L",
+      70000,
+      1
+     ],
+     [
+      "M",
+      70000,
+      1
+     ],
+     [
+      "K",
+      50000,
+      3
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "salary"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha",
+      90000
+     ],
+     [
+      2,
+      "Ravi",
+      90000
+     ],
+     [
+      3,
+      "Meena",
+      75000
+     ],
+     [
+      4,
+      "Arjun",
+      60000
+     ]
+    ],
+    "totalRows": 4
+   }
+  ]
+ },
+ {
+  "id": "running-total-cte",
+  "title": "Monthly Running Total (CTE)",
+  "difficulty": "hard",
+  "topic": "window",
+  "pattern": "WITH + window SUM",
+  "years": "Accenture analytics-style; DataLemur CTE family",
+  "statement": "Table <b>Sales</b>(sale_id, month TEXT, amount). Show <b>month, monthly total as mtotal, and running total as running</b>, ordered by month. Use a <b>CTE</b>.",
+  "schemaSQL": "CREATE TABLE Sales(sale_id INTEGER PRIMARY KEY, month TEXT, amount INTEGER);",
+  "seedSQL": "INSERT INTO Sales VALUES (1,'2024-01',100),(2,'2024-01',200),(3,'2024-02',150),(4,'2024-03',300);",
+  "hiddenSeedSQL": "INSERT INTO Sales VALUES (10,'2024-01',50),(11,'2024-02',50),(12,'2024-02',100);",
+  "solution": "WITH M AS (SELECT month, SUM(amount) AS mtotal FROM Sales GROUP BY month) SELECT month, mtotal, SUM(mtotal) OVER (ORDER BY month) AS running FROM M ORDER BY month;",
+  "starter": "-- monthly + running totals via CTE\nWITH M AS (SELECT month, SUM(amount) AS mtotal FROM Sales GROUP BY month)\nSELECT month, mtotal, SUM(mtotal) OVER (ORDER BY month) AS running\nFROM M\nORDER BY month;",
+  "approach": "CTE M aggregates per month; outer window SUM OVER (ORDER BY month) accumulates.",
+  "steps": [
+   "M: 2024-01 300, 2024-02 150, 2024-03 300.",
+   "Window SUM over ordered months: 300, 450, 750.",
+   "CTE = named temp result (WITH M AS ...); readable + reusable.",
+   "Without ORDER BY in OVER, the running frame is undefined."
+  ],
+  "insight": "CTE for the grain (per-month), window for the accumulation. Two-layer pattern.",
+  "ordered": true,
+  "level": "L6 \u00b7 Window & CTE",
+  "learn": "WITH x AS (...) names a temp result; SUM(y) OVER (ORDER BY m) accumulates.",
+  "expectedColumns": [
+   "month",
+   "mtotal",
+   "running"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "month",
+     "mtotal",
+     "running"
+    ],
+    "expectedRows": [
+     [
+      "2024-01",
+      300,
+      300
+     ],
+     [
+      "2024-02",
+      150,
+      450
+     ],
+     [
+      "2024-03",
+      300,
+      750
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "month",
+     "mtotal",
+     "running"
+    ],
+    "expectedRows": [
+     [
+      "2024-01",
+      50,
+      50
+     ],
+     [
+      "2024-02",
+      150,
+      200
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Sales",
+    "columns": [
+     "sale_id",
+     "month",
+     "amount"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "2024-01",
+      100
+     ],
+     [
+      2,
+      "2024-01",
+      200
+     ],
+     [
+      3,
+      "2024-02",
+      150
+     ],
+     [
+      4,
+      "2024-03",
+      300
+     ]
+    ],
+    "totalRows": 4
+   }
+  ]
+ },
+ {
+  "id": "avg-duration",
+  "title": "Average Project Duration in Days",
+  "difficulty": "medium",
+  "topic": "window",
+  "pattern": "Date diff + AVG",
+  "years": "DataLemur Accenture Q4 (2025)",
+  "statement": "Table <b>Projects</b>(project_id, start_date TEXT 'YYYY-MM-DD', end_date TEXT). Return the <b>average duration in days as avg_days</b> (single row).",
+  "schemaSQL": "CREATE TABLE Projects(project_id INTEGER PRIMARY KEY, start_date TEXT, end_date TEXT);",
+  "seedSQL": "INSERT INTO Projects VALUES (101,'2022-01-01','2022-04-01'),(102,'2022-02-15','2022-05-15');",
+  "hiddenSeedSQL": "INSERT INTO Projects VALUES (201,'2022-01-01','2022-01-11'),(202,'2022-01-01','2022-01-21');",
+  "solution": "SELECT AVG(JULIANDAY(end_date) - JULIANDAY(start_date)) AS avg_days FROM Projects;",
+  "starter": "-- average duration in days\nSELECT AVG(JULIANDAY(end_date) - JULIANDAY(start_date)) AS avg_days FROM Projects;",
+  "approach": "JULIANDAY converts dates to day numbers; subtraction = duration; AVG averages.",
+  "steps": [
+   "Row 1: Apr 1 - Jan 1 = 90 days. Row 2: May 15 - Feb 15 = 89 days.",
+   "AVG(90, 89) = 89.5.",
+   "Dates must be 'YYYY-MM-DD' for JULIANDAY.",
+   "Dialect note: SQL Server uses DATEDIFF, Postgres casts ::date \u2014 SQLite uses JULIANDAY."
+  ],
+  "insight": "DataLemur Q4 adapted to SQLite. JULIANDAY(end)-JULIANDAY(start) = days.",
+  "ordered": false,
+  "level": "L6 \u00b7 Window & CTE",
+  "learn": "JULIANDAY(d) turns a date into a day number; differences are durations.",
+  "expectedColumns": [
+   "avg_days"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "avg_days"
+    ],
+    "expectedRows": [
+     [
+      89.5
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "avg_days"
+    ],
+    "expectedRows": [
+     [
+      15.0
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Projects",
+    "columns": [
+     "project_id",
+     "start_date",
+     "end_date"
+    ],
+    "sampleRows": [
+     [
+      101,
+      "2022-01-01",
+      "2022-04-01"
+     ],
+     [
+      102,
+      "2022-02-15",
+      "2022-05-15"
+     ]
+    ],
+    "totalRows": 2
+   }
+  ]
+ },
+ {
+  "id": "conversion-rate",
+  "title": "Click-Through Conversion Rate",
+  "difficulty": "hard",
+  "topic": "window",
+  "pattern": "Two CTEs + ratio",
+  "years": "DataLemur Accenture Q6 (2025)",
+  "statement": "Tables <b>Views</b>(view_id, product_id) and <b>Carts</b>(cart_id, product_id). Return <b>product_id and conv_rate</b> = 100.0 * carts / views per product, ordered by product_id. Include products with views even if zero carts.",
+  "schemaSQL": "CREATE TABLE Views(view_id INTEGER PRIMARY KEY, product_id INTEGER); CREATE TABLE Carts(cart_id INTEGER PRIMARY KEY, product_id INTEGER);",
+  "seedSQL": "INSERT INTO Views VALUES (1,101),(2,101),(3,101),(4,101),(5,202),(6,202); INSERT INTO Carts VALUES (1,101),(2,101),(3,202);",
+  "hiddenSeedSQL": "INSERT INTO Views VALUES (10,301),(11,301); INSERT INTO Carts VALUES (20,301);",
+  "solution": "WITH V AS (SELECT product_id, COUNT(*) AS v FROM Views GROUP BY product_id), C AS (SELECT product_id, COUNT(*) AS c FROM Carts GROUP BY product_id) SELECT V.product_id, (100.0 * COALESCE(C.c, 0) / V.v) AS conv_rate FROM V LEFT JOIN C ON V.product_id = C.product_id ORDER BY V.product_id;",
+  "starter": "-- conv_rate = 100*carts/views per product\nWITH V AS (SELECT product_id, COUNT(*) AS v FROM Views GROUP BY product_id),\nC AS (SELECT product_id, COUNT(*) AS c FROM Carts GROUP BY product_id)\nSELECT V.product_id, (100.0 * COALESCE(C.c, 0) / V.v) AS conv_rate\nFROM V LEFT JOIN C ON V.product_id = C.product_id\nORDER BY V.product_id;",
+  "approach": "Two CTEs count views and carts per product; LEFT JOIN keeps zero-cart products; 100.0 forces float division.",
+  "steps": [
+   "V: 101->4 views, 202->2. C: 101->2 carts, 202->1.",
+   "LEFT JOIN keeps products with no carts (COALESCE 0).",
+   "101: 100*2/4 = 50.0; 202: 100*1/2 = 50.0.",
+   "100.0 (not 100) avoids integer division -> 0."
+  ],
+  "insight": "Real Accenture analytics Q. CTE-per-grain + LEFT JOIN + float ratio is the reporting skeleton.",
+  "ordered": true,
+  "level": "L6 \u00b7 Window & CTE",
+  "learn": "COALESCE(x,0) turns NULL into 0; 100.0 forces float division.",
+  "expectedColumns": [
+   "product_id",
+   "conv_rate"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "product_id",
+     "conv_rate"
+    ],
+    "expectedRows": [
+     [
+      101,
+      50.0
+     ],
+     [
+      202,
+      50.0
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "product_id",
+     "conv_rate"
+    ],
+    "expectedRows": [
+     [
+      301,
+      50.0
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Carts",
+    "columns": [
+     "cart_id",
+     "product_id"
+    ],
+    "sampleRows": [
+     [
+      1,
+      101
+     ],
+     [
+      2,
+      101
+     ],
+     [
+      3,
+      202
+     ]
+    ],
+    "totalRows": 3
+   },
+   {
+    "name": "Views",
+    "columns": [
+     "view_id",
+     "product_id"
+    ],
+    "sampleRows": [
+     [
+      1,
+      101
+     ],
+     [
+      2,
+      101
+     ],
+     [
+      3,
+      101
+     ],
+     [
+      4,
+      101
+     ],
+     [
+      5,
+      202
+     ]
+    ],
+    "totalRows": 6
+   }
+  ]
+ },
+ {
+  "id": "mock-join-agg-having",
+  "title": "MOCK 1: High-Value Customers (3-Table + HAVING)",
+  "difficulty": "medium",
+  "topic": "mock",
+  "pattern": "AXIS coding-slot mock",
+  "years": "AXIS 2025-26 mock (coding slot shape)",
+  "statement": "Tables <b>Customers</b>(customer_id, name), <b>Orders</b>(order_id, customer_id), <b>Payments</b>(order_id, amount). Show <b>name and total_spent</b> for customers whose <b>total exceeds 1000</b>, ordered by total_spent desc.",
+  "schemaSQL": "CREATE TABLE Customers(customer_id INTEGER PRIMARY KEY, name TEXT); CREATE TABLE Orders(order_id INTEGER PRIMARY KEY, customer_id INTEGER); CREATE TABLE Payments(order_id INTEGER, amount INTEGER);",
+  "seedSQL": "INSERT INTO Customers VALUES (1,'Asha'),(2,'Ravi'),(3,'Meena'); INSERT INTO Orders VALUES (10,1),(11,1),(12,2),(13,3); INSERT INTO Payments VALUES (10,700),(11,500),(12,400),(13,2000);",
+  "hiddenSeedSQL": "INSERT INTO Customers VALUES (5,'K'),(6,'L'); INSERT INTO Orders VALUES (20,5),(21,6); INSERT INTO Payments VALUES (20,1500),(21,500);",
+  "solution": "SELECT c.name, SUM(p.amount) AS total_spent FROM Customers c JOIN Orders o ON o.customer_id = c.customer_id JOIN Payments p ON p.order_id = o.order_id GROUP BY c.name HAVING SUM(p.amount) > 1000 ORDER BY total_spent DESC;",
+  "starter": "-- customers with total > 1000\nSELECT c.name, SUM(p.amount) AS total_spent\nFROM Customers c\nJOIN Orders o ON o.customer_id = c.customer_id\nJOIN Payments p ON p.order_id = o.order_id\nGROUP BY c.name\nHAVING SUM(p.amount) > 1000\nORDER BY total_spent DESC;",
+  "approach": "Two JOINs to reach amounts; GROUP BY customer; HAVING on SUM; ORDER DESC.",
+  "steps": [
+   "Chain Customers-Orders-Payments.",
+   "Totals: Asha 1200, Ravi 400, Meena 2000.",
+   "HAVING SUM > 1000 keeps Asha, Meena (WHERE SUM impossible).",
+   "ORDER BY total_spent DESC: Meena, Asha."
+  ],
+  "insight": "Mock of the real slot: 3 tables + GROUP + HAVING. WHERE-vs-HAVING decides it.",
+  "ordered": true,
+  "level": "L7 \u00b7 AXIS Mocks",
+  "learn": "Full pipeline: JOIN -> GROUP BY -> HAVING (aggregate) -> ORDER BY.",
+  "expectedColumns": [
+   "name",
+   "total_spent"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "name",
+     "total_spent"
+    ],
+    "expectedRows": [
+     [
+      "Meena",
+      2000
+     ],
+     [
+      "Asha",
+      1200
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "name",
+     "total_spent"
+    ],
+    "expectedRows": [
+     [
+      "K",
+      1500
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Customers",
+    "columns": [
+     "customer_id",
+     "name"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Asha"
+     ],
+     [
+      2,
+      "Ravi"
+     ],
+     [
+      3,
+      "Meena"
+     ]
+    ],
+    "totalRows": 3
+   },
+   {
+    "name": "Orders",
+    "columns": [
+     "order_id",
+     "customer_id"
+    ],
+    "sampleRows": [
+     [
+      10,
+      1
+     ],
+     [
+      11,
+      1
+     ],
+     [
+      12,
+      2
+     ],
+     [
+      13,
+      3
+     ]
+    ],
+    "totalRows": 4
+   },
+   {
+    "name": "Payments",
+    "columns": [
+     "order_id",
+     "amount"
+    ],
+    "sampleRows": [
+     [
+      10,
+      700
+     ],
+     [
+      11,
+      500
+     ],
+     [
+      12,
+      400
+     ],
+     [
+      13,
+      2000
+     ]
+    ],
+    "totalRows": 4
+   }
+  ]
+ },
+ {
+  "id": "mock-second-max-join",
+  "title": "MOCK 2: Second-Highest Paid Dept (JOIN + Subquery)",
+  "difficulty": "hard",
+  "topic": "mock",
+  "pattern": "AXIS coding-slot mock",
+  "years": "AXIS 2025-26 mock (coding slot shape)",
+  "statement": "Tables <b>Departments</b>(id, dept_name), <b>Employees</b>(id, name, dept_id, salary). Show the <b>dept_name with the second-highest average salary</b> and its <b>avg_sal</b> (single row).",
+  "schemaSQL": "CREATE TABLE Departments(id INTEGER PRIMARY KEY, dept_name TEXT); CREATE TABLE Employees(id INTEGER PRIMARY KEY, name TEXT, dept_id INTEGER, salary INTEGER);",
+  "seedSQL": "INSERT INTO Departments VALUES (1,'Sales'),(2,'HR'),(3,'IT'); INSERT INTO Employees VALUES (1,'A',1,100),(2,'B',1,200),(3,'C',2,500),(4,'D',3,300),(5,'E',3,400);",
+  "hiddenSeedSQL": "INSERT INTO Departments VALUES (10,'A'),(20,'B'); INSERT INTO Employees VALUES (30,'X',10,1000),(31,'Y',20,100);",
+  "solution": "SELECT dept_name, avg_sal FROM (SELECT d.dept_name AS dept_name, AVG(e.salary) AS avg_sal FROM Departments d JOIN Employees e ON e.dept_id = d.id GROUP BY d.dept_name) ORDER BY avg_sal DESC LIMIT 1 OFFSET 1;",
+  "starter": "-- dept with 2nd-highest average salary\nSELECT dept_name, avg_sal FROM (\nSELECT d.dept_name AS dept_name, AVG(e.salary) AS avg_sal\nFROM Departments d JOIN Employees e ON e.dept_id = d.id\nGROUP BY d.dept_name)\nORDER BY avg_sal DESC\nLIMIT 1 OFFSET 1;",
+  "approach": "Inner aggregates avg per dept; outer orders and skips 1 (OFFSET 1) to land on second.",
+  "steps": [
+   "Avgs: Sales 150, HR 500, IT 350.",
+   "ORDER DESC: HR 500, IT 350, Sales 150.",
+   "LIMIT 1 OFFSET 1 skips HR, takes IT 350.",
+   "Subquery-in-FROM (derived table) + outer ORDER/LIMIT."
+  ],
+  "insight": "Derived table + ORDER + OFFSET = second-by-aggregate. Composes L2+L3 skills.",
+  "ordered": false,
+  "level": "L7 \u00b7 AXIS Mocks",
+  "learn": "Derived tables: aggregate inside, rank outside with ORDER BY + LIMIT/OFFSET.",
+  "expectedColumns": [
+   "dept_name",
+   "avg_sal"
+  ],
+  "tests": [
+   {
+    "name": "Sample",
+    "kind": "visible",
+    "expectedColumns": [
+     "dept_name",
+     "avg_sal"
+    ],
+    "expectedRows": [
+     [
+      "IT",
+      350.0
+     ]
+    ]
+   },
+   {
+    "name": "Hidden",
+    "kind": "hidden",
+    "expectedColumns": [
+     "dept_name",
+     "avg_sal"
+    ],
+    "expectedRows": [
+     [
+      "B",
+      100.0
+     ]
+    ]
+   }
+  ],
+  "tables": [
+   {
+    "name": "Departments",
+    "columns": [
+     "id",
+     "dept_name"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "Sales"
+     ],
+     [
+      2,
+      "HR"
+     ],
+     [
+      3,
+      "IT"
+     ]
+    ],
+    "totalRows": 3
+   },
+   {
+    "name": "Employees",
+    "columns": [
+     "id",
+     "name",
+     "dept_id",
+     "salary"
+    ],
+    "sampleRows": [
+     [
+      1,
+      "A",
+      1,
+      100
+     ],
+     [
+      2,
+      "B",
+      1,
+      200
+     ],
+     [
+      3,
+      "C",
+      2,
+      500
+     ],
+     [
+      4,
+      "D",
+      3,
+      300
+     ],
+     [
+      5,
+      "E",
+      3,
+      400
+     ]
+    ],
+    "totalRows": 5
+   }
+  ]
+ }
+]

@@ -1,0 +1,133 @@
+{
+ "levels": [
+  {
+   "id": "L1",
+   "title": "L1 \u00b7 SELECT & WHERE",
+   "goal": "Pick columns, filter rows, sort, cap. The MCQ bread-and-butter.",
+   "skills": [
+    "SELECT/FROM/WHERE",
+    "BETWEEN inclusive",
+    "LIKE % vs _",
+    "IS NULL (never = NULL)",
+    "ORDER BY + LIMIT"
+   ],
+   "problemIds": [
+    "select-cols-where",
+    "salary-between",
+    "like-pattern",
+    "null-check",
+    "top-n-order-limit"
+   ]
+  },
+  {
+   "id": "L2",
+   "title": "L2 \u00b7 Aggregates & GROUP BY",
+   "goal": "Collapse rows to numbers; bucket then filter buckets.",
+   "skills": [
+    "MAX/MIN/SUM/AVG/COUNT",
+    "Second-highest DISTINCT",
+    "GROUP BY buckets",
+    "HAVING (never WHERE for aggregates)",
+    "COUNT(*) vs COUNT(col)"
+   ],
+   "problemIds": [
+    "max-salary",
+    "second-highest-salary",
+    "avg-cost-per-year",
+    "top3-products",
+    "customers-gt3-orders",
+    "dept-headcount",
+    "second-highest-per-dept"
+   ]
+  },
+  {
+   "id": "L3",
+   "title": "L3 \u00b7 JOINs (the coding slot)",
+   "goal": "Glue 2-3 tables. The AXIS SQL coding question lives here.",
+   "skills": [
+    "INNER overlap",
+    "LEFT preserve + NULL",
+    "ON vs WHERE with OUTER",
+    "SELF JOIN (managers)",
+    "3-table chain",
+    "Zero-count via LEFT"
+   ],
+   "problemIds": [
+    "inner-join",
+    "left-join",
+    "left-where-vs-on",
+    "self-join-managers",
+    "three-table-axis",
+    "zero-count-depts",
+    "orders-with-names-date"
+   ]
+  },
+  {
+   "id": "L4",
+   "title": "L4 \u00b7 Subqueries",
+   "goal": "Overall vs per-group; membership vs existence; the NULL trap.",
+   "skills": [
+    "Non-correlated (runs once)",
+    "Correlated (runs per row)",
+    "IN / EXISTS",
+    "NOT IN + NULL trap -> NOT EXISTS",
+    "UNION combine"
+   ],
+   "problemIds": [
+    "above-average",
+    "above-dept-average",
+    "sme-experts",
+    "in-membership",
+    "not-in-null-trap"
+   ]
+  },
+  {
+   "id": "L5",
+   "title": "L5 \u00b7 Sets, CASE & DML",
+   "goal": "Combine result sets; bucket per row; change data.",
+   "skills": [
+    "UNION vs UNION ALL",
+    "CASE WHEN bands",
+    "UPDATE ... WHERE",
+    "DELETE ... WHERE"
+   ],
+   "problemIds": [
+    "union-vs-all",
+    "case-bands",
+    "update-salaries",
+    "delete-retired"
+   ]
+  },
+  {
+   "id": "L6",
+   "title": "L6 \u00b7 Windows, CTEs & Dates",
+   "goal": "Rank, accumulate, average durations, convert views to rates.",
+   "skills": [
+    "RANK vs DENSE_RANK vs ROW_NUMBER",
+    "CTE + window running total",
+    "JULIANDAY date math",
+    "Ratio with COALESCE + float division"
+   ],
+   "problemIds": [
+    "rank-salaries",
+    "running-total-cte",
+    "avg-duration",
+    "conversion-rate"
+   ]
+  },
+  {
+   "id": "L7",
+   "title": "L7 \u00b7 AXIS Mocks",
+   "goal": "Full-slot simulations: 3 tables + GROUP + HAVING + subquery.",
+   "skills": [
+    "3-table + HAVING mock",
+    "Derived table + OFFSET mock"
+   ],
+   "problemIds": [
+    "mock-join-agg-having",
+    "mock-second-max-join"
+   ]
+  }
+ ],
+ "examNote": "AXIS 2026 coding slot = 3 Qs in 60 min (DSA + SQL JOINs on 2-3 tables + UI). Clear = 2 complete + 1 partial. SQL slot is medium: chain JOINs, GROUP BY, HAVING, ORDER BY. This arena orders 34 problems L1->L7 so each level unlocks the next."
+}

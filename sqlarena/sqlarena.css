@@ -1,0 +1,31 @@
+/* SQLArena — extras on top of coding.css (shared IDE shell) */
+.sql-exam-note{font-size:13px;line-height:1.65;color:var(--text-2);background:var(--accent-soft);border:1px solid var(--accent-soft-2);border-left:3px solid var(--accent);border-radius:10px;padding:11px 14px;margin-bottom:12px}
+.linklike{background:none;border:none;color:var(--accent);font:inherit;font-weight:700;cursor:pointer;padding:0}
+.linklike:hover{text-decoration:underline}
+.stmt-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0 4px}
+.pyq-tag{display:inline-block;font-size:11.5px;font-family:var(--font-mono);color:var(--warning);background:var(--warning-soft);border:1px solid rgba(217,119,6,.25);border-radius:8px;padding:4px 10px;margin:6px 0}
+.sql-ddl{font-size:12px;max-height:260px;overflow:auto}
+.schema-table{margin-top:10px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.schema-table .sc-head{padding:6px 12px;background:var(--surface-2);font-size:11px;font-weight:700;color:var(--text-2);border-bottom:1px solid var(--border);font-family:var(--font-mono)}
+.sql-table-wrap{overflow-x:auto}
+.sql-table{border-collapse:collapse;width:100%;font-family:var(--font-mono);font-size:12px;line-height:1.55}
+.sql-table th{background:var(--surface-2);color:var(--text-2);font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;text-align:left;padding:7px 10px;border-bottom:1px solid var(--border);white-space:nowrap}
+.sql-table td{padding:7px 10px;border-bottom:1px solid var(--border);color:var(--text);white-space:nowrap}
+.sql-table tr:last-child td{border-bottom:none}
+.sql-null{color:var(--text-3);font-style:italic}
+.sql-empty{font-size:12.5px;color:var(--text-3);padding:8px 2px}
+.sql-more{font-size:11px;color:var(--text-3);font-family:var(--font-mono);margin-top:4px}
+/* learn path */
+.learn-level{border:1px solid var(--border);border-radius:14px;background:var(--surface);padding:16px 18px;margin-bottom:14px}
+.learn-level-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px}
+.learn-level-head h2{font-family:var(--font-display);font-size:15.5px;margin:0 0 4px}
+.learn-level-head p{font-size:13px;color:var(--text-2);margin:0;line-height:1.6}
+.learn-skills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.skill-chip{font-size:11.5px;font-family:var(--font-mono);color:var(--accent);background:var(--accent-soft);border:1px solid var(--accent-soft-2);padding:3px 10px;border-radius:999px}
+.learn-problems{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
+.learn-problem{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface-2);font-size:13px;font-weight:500;color:var(--text);cursor:pointer;text-align:left;transition:.12s}
+.learn-problem:hover{border-color:var(--accent-soft-2);background:var(--accent-soft)}
+.learn-problem .lp-tick{color:var(--text-3);font-weight:700}
+.learn-problem.solved .lp-tick{color:var(--success)}
+.learn-problem .diff-chip{margin-left:auto}
+@media (max-width:640px){.learn-level-head{flex-direction:column}}

@@ -1,0 +1,156 @@
+{
+  "meta": {
+    "bank": "veda-mocks",
+    "title": "Veda IIT — Mock Test Series (Digital / RTL-DV-DFT)",
+    "exam": "Prelims 30M/1hr (MCQ, negative marking) + Mains 70M/2hr (fill blanks + short answers + problems, no negative)",
+    "pattern": "Prelims: Digital 15M + Basic Electronics 5M + Aptitude 10M. Mains: Digital 20M + Basic Electronics 10M + C 20M + Aptitude 20M.",
+    "marking": "Prelims MCQ: +1 correct, -0.25 wrong (official FAQ confirms negative marking; ratio assumed standard quarter). Mains written: no negative.",
+    "sources": ["https://vedaiit.org/logic-design-test-pattern/", "https://vedaiit.org/logic-design-sample-questions/", "https://vedaiit.org/logic-design-faq/"]
+  },
+  "categories": [
+    {
+      "id": "mocks",
+      "title": "Mock Test Series",
+      "icon": "M",
+      "color": "#F59E0B",
+      "subtitle": "12 full tests — each with Prelims (30M, 60 min) + Mains (70M, 120 min). One test unlocks at a time."
+    }
+  ],
+  "topics": [
+    {
+      "id": "veda-mock-01",
+      "title": "Mock Test 1",
+      "icon": "1",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "status": "ready",
+      "subtopics": [
+        "Prelims: 30 x 1M MCQ (Digital 15 + Electronics 5 + Aptitude 10), 60 min, -0.25",
+        "Mains: 70M — 10 fill blanks + 12 short answers + 10 problems, 120 min"
+      ],
+      "estimatedHours": 3,
+      "examWeight": "Prelims 30M + Mains 70M = 100M"
+    },
+    {
+      "id": "veda-mock-02",
+      "title": "Mock Test 2",
+      "icon": "2",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "status": "ready",
+      "subtopics": ["Prelims 30M + Mains 70M — unlocks after Mock 1"],
+      "estimatedHours": 3,
+      "examWeight": "Prelims 30M + Mains 70M = 100M"
+    },
+    {
+      "id": "veda-mock-03",
+      "title": "Mock Test 3",
+      "icon": "3",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "status": "outline",
+      "subtopics": ["Prelims 30M + Mains 70M — unlocks after Mock 2"],
+      "estimatedHours": 3,
+      "examWeight": "Prelims 30M + Mains 70M = 100M"
+    },
+    {
+      "id": "veda-mock-04",
+      "title": "Mock Test 4",
+      "icon": "4",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "status": "outline",
+      "subtopics": ["Prelims 30M + Mains 70M — unlocks after Mock 3"],
+      "estimatedHours": 3,
+      "examWeight": "Prelims 30M + Mains 70M = 100M"
+    },
+    {
+      "id": "veda-mock-05",
+      "title": "Mock Test 5",
+      "icon": "5",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "status": "outline",
+      "subtopics": ["Prelims 30M + Mains 70M — unlocks after Mock 4"],
+      "estimatedHours": 3,
+      "examWeight": "Prelims 30M + Mains 70M = 100M"
+    },
+    {
+      "id": "veda-mock-06",
+      "title": "Mock Test 6",
+      "icon": "6",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "status": "outline",
+      "subtopics": ["Prelims 30M + Mains 70M — unlocks after Mock 5"],
+      "estimatedHours": 3,
+      "examWeight": "Prelims 30M + Mains 70M = 100M"
+    },
+    {
+      "id": "veda-mock-07",
+      "title": "Mock Test 7",
+      "icon": "7",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "status": "outline",
+      "subtopics": ["Prelims 30M + Mains 70M — unlocks after Mock 6"],
+      "estimatedHours": 3,
+      "examWeight": "Prelims 30M + Mains 70M = 100M"
+    },
+    {
+      "id": "veda-mock-08",
+      "title": "Mock Test 8",
+      "icon": "8",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "status": "outline",
+      "subtopics": ["Prelims 30M + Mains 70M — unlocks after Mock 7"],
+      "estimatedHours": 3,
+      "examWeight": "Prelims 30M + Mains 70M = 100M"
+    },
+    {
+      "id": "veda-mock-09",
+      "title": "Mock Test 9",
+      "icon": "9",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "status": "outline",
+      "subtopics": ["Prelims 30M + Mains 70M — unlocks after Mock 8"],
+      "estimatedHours": 3,
+      "examWeight": "Prelims 30M + Mains 70M = 100M"
+    },
+    {
+      "id": "veda-mock-10",
+      "title": "Mock Test 10",
+      "icon": "X",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "status": "outline",
+      "subtopics": ["Prelims 30M + Mains 70M — unlocks after Mock 9"],
+      "estimatedHours": 3,
+      "examWeight": "Prelims 30M + Mains 70M = 100M"
+    },
+    {
+      "id": "veda-mock-11",
+      "title": "Mock Test 11",
+      "icon": "XI",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "status": "outline",
+      "subtopics": ["Prelims 30M + Mains 70M — unlocks after Mock 10"],
+      "estimatedHours": 3,
+      "examWeight": "Prelims 30M + Mains 70M = 100M"
+    },
+    {
+      "id": "veda-mock-12",
+      "title": "Mock Test 12",
+      "icon": "XII",
+      "category": "mocks",
+      "color": "#F59E0B",
+      "status": "outline",
+      "subtopics": ["Prelims 30M + Mains 70M — unlocks after Mock 11"],
+      "estimatedHours": 3,
+      "examWeight": "Prelims 30M + Mains 70M = 100M"
+    }
+  ]
+}
