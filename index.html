@@ -94,6 +94,7 @@
           b._total=ts.length; b._ready=rd; b._hidden=ts.length-rd; return b;
         }).catch(function(){ b._total=0; b._ready=0; b._hidden=0; return b; });
       }
+      if(b.id==='sqlarena'){
         return fetch('/data/sql-problems.json',{cache:'default'}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(j){
           b._total=j.length; b._ready=j.length; b._hidden=0; return b;
         }).catch(function(){ b._total=0; b._ready=0; b._hidden=0; return b; });
