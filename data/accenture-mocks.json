@@ -1,0 +1,39 @@
+{
+  "meta": {
+    "series": "Accenture AXIS 2026 Mock Series",
+    "pattern": "Technical 45 MCQs / 45 min (no negative) + Coding 3 tasks / 60 min (DSA + SQL + UI). Elimination logic: clear Technical (>=60%) and solve >=1 coding task fully.",
+    "sources": "PrepInsta 2026 pattern, Payilagam cognitive+technical guide, Reddit Oct-2025 candidate report, Scribd AXIS coding guide, TalentBattle pseudocode PYQs"
+  },
+  "categories": [
+    {
+      "id": "accenture-mocks",
+      "title": "Accenture Mocks",
+      "icon": "AX",
+      "color": "#4F46E5",
+      "subtitle": "Full AXIS-pattern mocks: Technical 45/45min + Coding 3/60min, graded reports"
+    }
+  ],
+  "topics": [
+    {
+      "id": "accenture-mock-01",
+      "title": "Accenture Mock 1",
+      "icon": "1",
+      "subtopics": ["Technical 45 MCQs", "DSA + SQL + UI coding"],
+      "status": "ready"
+    },
+    {
+      "id": "accenture-mock-02",
+      "title": "Accenture Mock 2",
+      "icon": "2",
+      "subtopics": ["Technical 45 MCQs", "DSA + SQL + UI coding"],
+      "status": "outline"
+    },
+    {
+      "id": "accenture-mock-03",
+      "title": "Accenture Mock 3",
+      "icon": "3",
+      "subtopics": ["Technical 45 MCQs", "DSA + SQL + UI coding"],
+      "status": "outline"
+    }
+  ]
+}

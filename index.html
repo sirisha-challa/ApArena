@@ -72,7 +72,8 @@
     {id:'gamified', title:'Gamified', subtitle:'Memory, quick math & pattern games', color:'#F59E0B', icon:'◐', accent:'gamified'},
     {id:'communication', title:'Communication', subtitle:'Fluency & pronunciation', color:'#0284C7', icon:'🎤', accent:'communication'},
     {id:'coding', title:'Coding Arena', subtitle:'In-browser Python judge', color:'#5B4DFF', icon:'</>', accent:'coding'},
-    {id:'sqlarena', title:'SQL Arena', subtitle:'AXIS SQL · runnable SQLite + learn path', color:'#0284C7', icon:'SQL', accent:'sqlarena'}
+    {id:'sqlarena', title:'SQL Arena', subtitle:'AXIS SQL · runnable SQLite + learn path', color:'#0284C7', icon:'SQL', accent:'sqlarena'},
+    {id:'accenture-mocks', title:'Accenture Mocks', subtitle:'AXIS 2026 mock series · graded', color:'#4F46E5', icon:'AX', accent:'accenture-mocks'}
   ];
   function loadBanks(){ return fetch('/data/banks.json',{cache:'default'}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(j){
     var list=(j.banks||[]).map(function(b){ var f=BANKS_FALLBACK.find(function(x){return x.id===b.id}); return f? Object.assign({},f,b): b; });
@@ -87,7 +88,12 @@
           b._total=j.length; b._ready=j.length; b._hidden=0; return b;
         }).catch(function(){ b._total=0; b._ready=0; b._hidden=0; return b; });
       }
-      if(b.id==='sqlarena'){
+      if(b.id==='accenture-mocks'){
+        return fetch('/data/accenture-mocks.json',{cache:'default'}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(j){
+          var ts=(j.topics||[]); var rd=ts.filter(function(t){return (t.status||'')==='ready';}).length;
+          b._total=ts.length; b._ready=rd; b._hidden=ts.length-rd; return b;
+        }).catch(function(){ b._total=0; b._ready=0; b._hidden=0; return b; });
+      }
         return fetch('/data/sql-problems.json',{cache:'default'}).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }).then(function(j){
           b._total=j.length; b._ready=j.length; b._hidden=0; return b;
         }).catch(function(){ b._total=0; b._ready=0; b._hidden=0; return b; });

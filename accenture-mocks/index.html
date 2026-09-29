@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accenture Mock Tests — ApArena</title>
+  <meta name="description" content="Accenture AXIS 2026 mock series — Technical 45 MCQs in 45 min plus Coding (DSA + SQL + UI) in 60 min, with graded reports and per-question review.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+  <meta name="color-scheme" content="light dark">
+  <style>
+    .mock-timer{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin-bottom:14px;flex-wrap:wrap}
+    .mock-timer .clock{font-family:var(--font-mono);font-size:18px;font-weight:700}
+    .mock-timer.danger .clock{color:var(--color-error,#EF4444)}
+    .palette{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:8px;margin:12px 0}
+    .palette button{height:40px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-weight:700;cursor:pointer}
+    .palette button.ans{background:#10B981;color:#fff;border-color:transparent}
+    .palette button.cur{outline:2px solid var(--accent)}
+    .exam-q{border:1px solid var(--border);border-radius:12px;padding:14px;margin:12px 0;background:var(--surface)}
+    .exam-q .q-head{display:flex;gap:8px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+    .exam-q .q-num{font-family:var(--font-mono);font-weight:700}
+    .opt-picked{outline:2px solid var(--accent)}
+    .rev-correct{border-color:#10B981 !important}
+    .rev-wrong{border-color:#EF4444 !important}
+    .report-card{border:1px solid var(--border);border-radius:14px;padding:16px;margin:12px 0;background:var(--surface)}
+    .grade-big{font-size:44px;font-weight:800}
+    .mock-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+    .mock-card{border:1px solid var(--border);border-radius:14px;padding:16px;background:var(--surface)}
+    .mock-card.locked{opacity:.55}
+    .row-flex{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;background:var(--surface-3)}
+    .pill.ready{background:#10B981;color:#fff}
+    .pill.soon{background:#F59E0B;color:#fff}
+    .pill.risk{background:#EF4444;color:#fff}
+    .model-ans{border-left:3px solid #10B981;padding:8px 12px;margin-top:8px;background:var(--bg);border-radius:0 10px 10px 0}
+    .code-tabs{display:flex;gap:8px;margin:12px 0;flex-wrap:wrap}
+    .code-tabs button{padding:8px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-weight:700;cursor:pointer}
+    .code-tabs button.cur{background:var(--accent);color:#fff;border-color:transparent}
+    .code-editor{width:100%;min-height:180px;font-family:var(--font-mono);font-size:13px;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text)}
+    .split-table{width:100%;border-collapse:collapse;margin-top:8px}
+    .split-table th,.split-table td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);font-size:13px}
+    .verdict-clear{color:#10B981;font-weight:800}
+    .verdict-fail{color:#EF4444;font-weight:800}
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <span class="brand-icon" aria-hidden="true">A</span>
+          <a class="brand-text" href="/" style="text-decoration:none;color:inherit">ApArena</a>
+          <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">&#10005;</button>
+        </div>
+        <nav class="sidebar-nav" id="sidebar-nav" aria-label="Mock navigation"></nav>
+        <div class="sidebar-footer">
+          <div id="sidebar-progress">
+            <div class="sidebar-progress-label">Series Progress</div>
+            <div class="progress-bar"><div id="sidebar-progress-fill" style="width:0%"></div></div>
+            <span id="sidebar-progress-text">0%</span>
+          </div>
+        </div>
+      </aside>
+      <div class="main-area">
+        <header class="topbar">
+          <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">&#9776;</button>
+          <button class="back-button" id="back-button" type="button" aria-label="Go back" hidden>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/><path d="M9 12h11"/></svg>
+            <span>Back</span>
+          </button>
+          <h1 class="topbar-title" id="header-title">Accenture Mock Tests</h1>
+          <div class="topbar-actions">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle sidebar">Menu</button>
+            <div id="toast-container" class="toast-container"></div>
+            <button class="theme-btn" id="theme-toggle" aria-label="Toggle theme">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            </button>
+          </div>
+        </header>
+        <main class="content" id="app-content"></main>
+        <footer class="app-footer">ApArena — <a href="/">All Banks</a> · <a href="/programming/">Coding Round Prep</a> · <span>Accenture Mock Tests</span></footer>
+      </div>
+    </div>
+  </div>
+  <script src="/coding/judge.js?v=1"></script>
+  <script src="/sqlarena/sql-judge.js?v=1"></script>
+  <script src="/js/accenture-mock-runner.js?v=1"></script>
+</body>
+</html>

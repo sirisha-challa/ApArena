@@ -109,6 +109,16 @@
       "href": "/sqlarena/",
       "accent": "sqlarena",
       "custom": true
+    },
+    {
+      "id": "accenture-mocks",
+      "title": "Accenture Mocks",
+      "subtitle": "AXIS 2026 mock series — Technical 45 + Coding DSA/SQL/UI, graded",
+      "icon": "AX",
+      "color": "#4F46E5",
+      "href": "/accenture-mocks/",
+      "accent": "accenture-mocks",
+      "custom": true
     }
   ]
 }
