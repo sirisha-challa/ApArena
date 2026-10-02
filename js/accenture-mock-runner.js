@@ -186,16 +186,17 @@ function vDashboard() {
   topics.forEach(function (t, i) {
     var ready = (t.status || '') === 'ready';
     var s = st[t.id] || {};
-    var tech = s.technical && s.technical.submitted ? ('Technical ' + s.technical.score + '/45') : 'not attempted';
+    var submitted = !!(s.technical && s.technical.submitted);
+    var tech = submitted ? ('Technical ' + s.technical.score + '/45 · Grade ' + grade(Math.round(s.technical.score / 45 * 100)).g) : 'not attempted';
     var code = s.coding && s.coding.submitted ? 'Coding submitted' : 'not attempted';
-    var cl = cleared(t.id) ? ' <span class="pill ready">CLEARED</span>' : '';
+    var cl = cleared(t.id) ? ' <span class="pill ready">CLEARED</span>' : (submitted ? ' <span class="pill ready">COMPLETED</span>' : '');
     html += '<div class="mock-card' + (ready ? '' : ' locked') + '">'
       + '<div class="row-flex"><strong>' + esc(t.title) + '</strong>'
       + '<span class="pill ' + (ready ? 'ready' : 'soon') + '">' + (ready ? 'READY' : 'SOON') + '</span>' + cl + '</div>'
       + '<p class="text-muted">' + esc((t.subtopics || []).join(' · ')) + '</p>'
       + '<p class="text-muted">' + esc(tech) + ' · ' + esc(code) + '</p>'
       + (ready
-        ? '<button class="btn btn-primary btn-sm" data-open="' + esc(t.id) + '">' + (s.technical && s.technical.submitted ? 'Open / Review' : 'Start Mock ' + (i + 1)) + '</button>'
+        ? '<button class="btn btn-primary btn-sm" data-open="' + esc(t.id) + '">' + (submitted ? 'Score & reports (locked)' : 'Start Mock ' + (i + 1)) + '</button>'
         : '<span class="text-muted">Unlocks one mock at a time.</span>')
       + '</div>';
   });
@@ -229,7 +230,8 @@ function vMockHome(id) {
       + '<p class="text-muted">' + esc(mock.pattern) + '</p>'
       + '<div class="report-card"><h3>Technical (45M)</h3><p>' + esc(techLine(ms)) + '</p><div class="row-flex">'
       + (ms.technical && ms.technical.submitted
-        ? '<a class="btn btn-outline btn-sm" href="#/' + id + '/technical">Review report</a><button class="btn btn-ghost btn-sm" id="retake-tech">Retake</button>'
+        ? '<span class="pill ready">LOCKED · ' + ms.technical.score + '/45 · Grade ' + grade(Math.round(ms.technical.score / 45 * 100)).g + '</span>'
+          + '<a class="btn btn-outline btn-sm" href="#/' + id + '/technical">Review report</a>'
         : '<a class="btn btn-primary btn-sm" href="#/' + id + '/technical">' + (techLine(ms) === 'In progress' ? 'Continue' : 'Start Technical (45 min)') + '</a>')
       + '</div></div>'
       + '<div class="report-card"><h3>Coding — DSA + SQL + UI (60 min)</h3><p>' + esc(codeLine(ms)) + '</p><div class="row-flex">'
@@ -240,12 +242,6 @@ function vMockHome(id) {
         : '<p class="text-muted">Combined report unlocks after Technical is submitted.</p>')
       + '</div>';
     setContent(html);
-    var rt = document.getElementById('retake-tech');
-    if (rt) rt.addEventListener('click', function () {
-      if (!confirm('Retake Technical? Previous score will be replaced.')) return;
-      var s = mockState(id); delete s.cur.technical; delete s.cur.report; persistMock(id, s.cur);
-      location.hash = '#/' + id + '/technical';
-    });
   });
 }
 
