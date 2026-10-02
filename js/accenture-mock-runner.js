@@ -11,6 +11,39 @@ var TECH_PASS = 27; // 60% of 45 — sectional clear bar
 
 var manifest = null;
 var mockCache = {};
+var bankCache = {};
+function loadBank(url, cb) {
+  if (bankCache[url]) return cb(bankCache[url]);
+  fetch(url, { cache: 'default' }).then(function (r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  }).then(function (j) { bankCache[url] = j; cb(j); })
+  .catch(function () { cb([]); });
+}
+/* Resolve coding tasks shaped {kind, ref} against the arena banks.
+   Mocks 1-2 embed full problem objects; newer mocks use refs to stay small. */
+function resolveCodingRefs(mock, cb) {
+  var tasks = (mock.coding && mock.coding.tasks) || [];
+  var jobs = tasks.filter(function (t) { return !t.problem && t.ref; });
+  if (!jobs.length) return cb(mock);
+  var pending = jobs.length, failed = [];
+  jobs.forEach(function (t) {
+    var url = t.kind === 'sql' ? '/data/sql-problems.json' : '/data/coding-problems.json';
+    loadBank(url, function (bank) {
+      var found = null;
+      (bank || []).forEach(function (p) { if (p.id === t.ref) found = p; });
+      if (found) t.problem = found; else failed.push(t.ref);
+      if (--pending === 0) {
+        if (failed.length) {
+          setContent('<div class="page-content"><div class="empty-state">Mock references unknown problem(s): '
+            + esc(failed.join(', ')) + '.</div></div>');
+          return;
+        }
+        cb(mock);
+      }
+    });
+  });
+}
 var timerId = null;
 var timerLeft = 0;
 var techIdx = 0;
@@ -101,7 +134,7 @@ function loadMock(id, cb) {
   fetch(MOCK_URL(id), { cache: 'default' }).then(function (r) {
     if (!r.ok) throw new Error('HTTP ' + r.status);
     return r.json();
-  }).then(function (j) { mockCache[id] = j; cb(j); })
+  }).then(function (j) { mockCache[id] = j; resolveCodingRefs(j, cb); })
   .catch(function () {
     setContent('<div class="page-content"><div class="empty-state">Mock data not found yet — mocks release one at a time.</div></div>');
   });
@@ -578,7 +611,7 @@ function vCodingReview(id) {
       + '<table class="split-table"><tr><th>Task</th><th>Result</th><th>Status</th></tr>'
       + mock.coding.tasks.map(function (t, k) {
         var st = taskStatus(id, mock, k);
-        return '<tr><td>' + esc(t.kind.toUpperCase()) + ' — ' + esc(t.title || t.problem.title) + '</td>'
+        return '<tr><td>' + esc(t.kind.toUpperCase()) + ' — ' + esc(t.title || (t.problem || {}).title || t.ref || '') + '</td>'
           + '<td>' + esc(st.label) + '</td>'
           + '<td>' + (st.cls === 'ready' ? '<span class="pill ready">SOLVED</span>'
             : st.cls === 'soon' ? '<span class="pill soon">PARTIAL</span>' : '<span class="pill">OPEN</span>') + '</td></tr>';

@@ -33,7 +33,35 @@
       "title": "Accenture Mock 3",
       "icon": "3",
       "subtopics": ["Technical 45 MCQs", "DSA + SQL + UI coding"],
-      "status": "outline"
+      "status": "ready"
+    },
+    {
+      "id": "accenture-mock-04",
+      "title": "Accenture Mock 4",
+      "icon": "4",
+      "subtopics": ["Technical 45 MCQs", "DSA + SQL + UI coding"],
+      "status": "ready"
+    },
+    {
+      "id": "accenture-mock-05",
+      "title": "Accenture Mock 5",
+      "icon": "5",
+      "subtopics": ["Technical 45 MCQs", "DSA + SQL + UI coding"],
+      "status": "ready"
+    },
+    {
+      "id": "accenture-mock-06",
+      "title": "Accenture Mock 6",
+      "icon": "6",
+      "subtopics": ["Technical 45 MCQs", "DSA + SQL + UI coding"],
+      "status": "ready"
+    },
+    {
+      "id": "accenture-mock-07",
+      "title": "Accenture Mock 7",
+      "icon": "7",
+      "subtopics": ["Technical 45 MCQs", "DSA + SQL + UI coding"],
+      "status": "ready"
     }
   ]
 }
